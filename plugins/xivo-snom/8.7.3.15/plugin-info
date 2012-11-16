@@ -1,0 +1,43 @@
+{
+    "version": "0.4.2",
+    "description": "Plugin for Snom 3XX, 7XX, 8XX, MP and PA1 in version 8.7.3.15.",
+    "description_fr": "Greffon pour Snom 3XX, 7XX, 8XX, MP et PA1 en version 8.7.3.15.",
+    "capabilities": {
+        "Snom, 300, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, 320, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, 360, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, 370, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, 710, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, 720, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, 760, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, 820, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, 821, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, 870, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, MP, 8.7.3.15": {
+            "sip.lines": 12
+        },
+        "Snom, PA1, 8.4.35": {
+            "sip.lines": 1
+        }
+    }
+}

@@ -1,0 +1,19 @@
+[pkg_spa2102-fw]
+description: Firmware for Cisco SPA2102
+description_fr: Micrologiciel pour Cisco SPA2102
+version: 5.2.12
+files: spa2102fw
+install: cisco-zipfw
+
+
+
+[install_cisco-zipfw]
+a-b: unzip $FILE1
+b-c: cp *.bin firmware/
+
+
+
+[file_spa2102fw]
+url: http://download.cisco.com/swc/esd/04/282414111/anon/spa2102-5-2-12.zip
+size: 3086165
+sha1sum: c08a052e98b6079b27a1b2b9e64d7e5637d53d23

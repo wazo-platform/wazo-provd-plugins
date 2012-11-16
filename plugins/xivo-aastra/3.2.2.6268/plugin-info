@@ -1,0 +1,13 @@
+{
+    "version": "0.2",
+    "description": "Plugin for Aastra 6735i and 6737i in version 3.2.2.6268.",
+    "description_fr": "Greffon pour Aastra 6735i et 6737i en version 3.2.2.6268.",
+    "capabilities": {
+        "Aastra, 6735i, 3.2.2.6268": {
+            "sip.lines": 9
+        },
+        "Aastra, 6737i, 3.2.2.6268": {
+            "sip.lines": 9
+        }
+    }
+}

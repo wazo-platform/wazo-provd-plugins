@@ -1,0 +1,154 @@
+[pkg_6730i-fw]
+description: Firmware for Aastra 6730i
+description_fr: Micrologiciel pour Aastra 6730i
+version: 3.2.2.1136
+files: 6730i-fw
+install: aastra-fw
+
+[pkg_6731i-fw]
+description: Firmware for Aastra 6731i
+description_fr: Micrologiciel pour Aastra 6731i
+version: 3.2.2.1136
+files: 6731i-fw
+install: aastra-fw
+
+[pkg_6739i-fw]
+description: Firmware for Aastra 6739i
+description_fr: Micrologiciel pour Aastra 6739i
+version: 3.2.2.1136
+files: 6739i-fw
+install: aastra-fw
+
+[pkg_6753i-fw]
+description: Firmware for Aastra 6753i
+description_fr: Micrologiciel pour Aastra 6753i
+version: 3.2.2.1136
+files: 6753i-fw
+install: aastra-fw
+
+[pkg_6755i-fw]
+description: Firmware for Aastra 6755i
+description_fr: Micrologiciel pour Aastra 6755i
+version: 3.2.2.1136
+files: 6755i-fw
+install: aastra-fw
+
+[pkg_6757i-fw]
+description: Firmware for Aastra 6757i
+description_fr: Micrologiciel pour Aastra 6757i
+version: 3.2.2.1136
+files: 6757i-fw
+install: aastra-fw
+
+[pkg_6757iCT-fw]
+description: Firmware for Aastra 6757i CT
+description_fr: Micrologiciel pour Aastra 6757i CT
+version: 3.2.2.1136
+files: 6757iCT-fw
+install: aastra-fw
+
+[pkg_9143i-fw]
+description: Firmware for Aastra 9143i
+description_fr: Micrologiciel pour Aastra 9143i
+version: 3.2.2.1136
+files: 9143i-fw
+install: aastra-fw
+
+[pkg_9480i-fw]
+description: Firmware for Aastra 9480i
+description_fr: Micrologiciel pour Aastra 9480i
+version: 3.2.2.1136
+files: 9480i-fw
+install: aastra-fw
+
+[pkg_9480iCT-fw]
+description: Firmware for Aastra 9480i CT
+description_fr: Micrologiciel pour Aastra 9480i CT
+version: 3.2.2.1136
+files: 9480iCT-fw
+install: aastra-fw
+
+[pkg_lang]
+description: Language files
+description_fr: Fichiers de langue
+version: 3.2.2.1136
+files: lang
+install: aastra-lang
+
+
+
+[install_aastra-fw]
+a-b: unzip $FILE1
+b-c: include *.st
+
+[install_aastra-lang]
+a-b: unzip $FILE1
+b-c: cp * i18n/
+
+
+
+[file_6730i-fw]
+filename: 6730i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6167-15702-_P06_XML&dsproject=aastra&mtype=zip
+size: 1912335
+sha1sum: 3fc50171130782ae9533e5456e483acd83747657
+
+[file_6731i-fw]
+filename: 6731i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6274-15704-_P06_XML&dsproject=aastra&mtype=zip
+size: 1918592
+sha1sum: 57970711ef9f4c308c02d539cbc58bf1090517aa
+
+[file_6739i-fw]
+filename: 6739i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6354-15706-_P06_XML&dsproject=aastra&mtype=zip
+size: 4798988
+sha1sum: 9eecc8b69e956d3c7de8876ef65a9748988e472f
+
+[file_6753i-fw]
+filename: 6753i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6848-15708-_P06_XML&dsproject=aastra&mtype=zip
+size: 2666632
+sha1sum: 9b49ddc2baf23e692f35ec1571390d381b2c9f25
+
+[file_6755i-fw]
+filename: 6755i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6950-15710-_P06_XML&dsproject=aastra&mtype=zip
+size: 2699040
+sha1sum: 43a3ca0bf17b0dcd27f6f1b8351f9d1a2efce987
+
+[file_6757i-fw]
+filename: 6757i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=7041-15712-_P06_XML&dsproject=aastra&mtype=zip
+size: 2698547
+sha1sum: 0c841418c4063a430d100852bbd51ec476891805
+
+[file_6757iCT-fw]
+filename: 6757iCT-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=7128-15714-_P06_XML&dsproject=aastra&mtype=zip
+size: 2685896
+sha1sum: 032e9fc44baea32a629ff68ea6315bd6bfdcfbb7
+
+[file_9143i-fw]
+filename: 9143i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6528-15716-_P06_XML&dsproject=aastra&mtype=zip
+size: 2614615
+sha1sum: 4f14a9fb7cdf4fc6541222e2f311c3d1602ffc39
+
+[file_9480i-fw]
+filename: 9480i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6622-15718-_P06_XML&dsproject=aastra&mtype=zip
+size: 2642166
+sha1sum: 03bad083400c860b23953481c47e3886b3a419f8
+
+[file_9480iCT-fw]
+filename: 9480iCT-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6674-15720-_P06_XML&dsproject=aastra&mtype=zip
+size: 2627611
+sha1sum: 0f1aff780f866999484f0d325019a76f0787b0e9
+
+[file_lang]
+filename: lang.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6167-15723-_P06_XML&dsproject=aastra&mtype=zip
+size: 379790
+sha1sum: 8ccb8540c788c27b15d0d180751cf7f793475793

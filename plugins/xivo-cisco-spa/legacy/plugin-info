@@ -1,0 +1,25 @@
+{
+    "version": "0.3",
+    "description": "Plugin for Cisco (previously known as Linksys) SPA901, 921, 922, 941, 942, 962 in different versions.",
+    "description_fr": "Greffon pour Cisco (auparavant connu comme Linksys) SPA901, 921, 922, 941, 942, 962 en versions variées.",
+    "capabilities": {
+        "Cisco, SPA901, 5.1.5": {
+            "sip.lines": 1
+        },
+        "Cisco, SPA921, 5.1.8": {
+            "sip.lines": 1
+        },
+        "Cisco, SPA922, 6.1.5(a)": {
+            "sip.lines": 1
+        },
+        "Cisco, SPA941, 5.1.8": {
+            "sip.lines": 4
+        },
+        "Cisco, SPA942, 6.1.5(a)": {
+            "sip.lines": 4
+        },
+        "Cisco, SPA962, 6.1.5(a)": {
+            "sip.lines": 6
+        }
+    }
+}
