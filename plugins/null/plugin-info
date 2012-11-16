@@ -1,9 +1,0 @@
-{
-    "version": "1.0-a",
-    "description": "Plugin that offers no configuration service and rejects TFTP/HTTP requests.",
-    "capabilities": {
-        "*, *, *": {
-            "sip.lines": 0
-        }
-    }
-}
