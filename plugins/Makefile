@@ -8,8 +8,8 @@ STABLE_PATH := $(BUILDDIR)/stable
 
 REMOTE_HOST := provd.xivo.fr
 REMOTE_USER := root
-REMOTE_DEV_ADDONS_PATH := /var/www/provd.xivo.fr/plugins/1/addons/testing
-REMOTE_STABLE_ADDONS_PATH := /var/www/provd.xivo.fr/plugins/1/addons
+REMOTE_DEV_PATH := /var/www/provd.xivo.fr/plugins/1/testing
+REMOTE_STABLE_PATH := /var/www/provd.xivo.fr/plugins/1/stable
 
 
 .PHONY : build
@@ -24,7 +24,7 @@ build :
 
 .PHONY : upload
 upload : build
-	rsync -v -rt --delete $(DEV_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_DEV_ADDONS_PATH)
+	rsync -v -rt --delete $(DEV_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_DEV_PATH)
 
 
 .PHONY : download-stable
@@ -40,7 +40,7 @@ build-stable :
 
 .PHONY : upload-stable
 upload-stable : build-stable
-	rsync -v -rt --delete $(STABLE_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_STABLE_ADDONS_PATH)
+	rsync -v -rt --delete $(STABLE_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_STABLE_PATH)
 
 
 .PHONY : clean
