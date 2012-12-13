@@ -1,5 +1,3 @@
-sip xml notify event: 1
-
 {% if exten_voicemail -%}
 topsoftkey1 type: speeddial
 topsoftkey1 value: {{ exten_voicemail }}
