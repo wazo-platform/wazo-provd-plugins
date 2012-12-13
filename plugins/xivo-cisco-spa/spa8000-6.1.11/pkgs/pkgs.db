@@ -1,7 +1,7 @@
 [pkg_spa8000-fw]
 description: Firmware for Cisco SPA8000
 description_fr: Micrologiciel pour Cisco SPA8000
-version: 6.1.3
+version: 6.1.11
 files: spa8000fw
 install: cisco-zipfw
 
@@ -14,6 +14,6 @@ b-c: cp *.bin firmware/
 
 
 [file_spa8000fw]
-url: http://download-sj.cisco.com/swc/esd/03/282414110/anon/SPA8000_v6.1.3_fw.zip
-size: 2290349
-sha1sum: 043ddf18fae067e012b3e7f0f495bf82d4ecd4b1
+url: https://secure-global.esd.cisco.com/files/swc/sec/4_SDSP_688502_1341980285918/1/SPA8000_6.1.11_FW.zip
+size: 2374167
+sha1sum: fa413ffdfa53423a69be748af7b70dbecda0d829
