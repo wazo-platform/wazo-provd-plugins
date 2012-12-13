@@ -16,7 +16,7 @@ def build_7_4_8(path):
                 '7.4.8/', path])
 
 @target('7.5.4', 'xivo-cisco-spa-7.5.4')
-def build_7_5.4(path):
+def build_7_5_4(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
     
