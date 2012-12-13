@@ -1,0 +1,15 @@
+[pkg_spa50x-30x-fw]
+description: Firmware transition for Cisco SPA50XG and SPA30XG
+description_fr: Micrologiciel de transition pour Cisco SPA50XG et SPA30XG
+version: 7.5.2b
+files: spa50x-30xfw
+install: cisco-spa500fw
+
+[install_cisco-spa500fw]
+a-b: unzip $FILE1
+b-c: cp *.bin firmware/
+
+[file_spa50x-30xfw]
+url: http://public.ciscosupport.eu/SPA30x_SPA50x_7-5-2b_FW.zip
+size: 8434101
+sha1sum: b8ab481fdc8ae0a0cb27b6a3256c3c86bff8b023
