@@ -1,0 +1,63 @@
+[pkg_6731i-fw]
+description: Firmware for Aastra 6731i
+description_fr: Micrologiciel pour Aastra 6731i
+version: 3.2.2.1136
+files: 6731i-fw
+install: aastra-fw
+
+[pkg_6755i-fw]
+description: Firmware for Aastra 6755i
+description_fr: Micrologiciel pour Aastra 6755i
+version: 3.2.2.1136
+files: 6755i-fw
+install: aastra-fw
+
+[pkg_6757i-fw]
+description: Firmware for Aastra 6757i
+description_fr: Micrologiciel pour Aastra 6757i
+version: 3.2.2.1136
+files: 6757i-fw
+install: aastra-fw
+
+[pkg_lang]
+description: Language files
+description_fr: Fichiers de langue
+version: 3.2.2.1136
+files: lang
+install: aastra-lang
+
+
+
+[install_aastra-fw]
+a-b: unzip $FILE1
+b-c: include *.st
+
+[install_aastra-lang]
+a-b: unzip $FILE1
+b-c: cp * i18n/
+
+
+
+[file_6731i-fw]
+filename: 6731i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6274-15704-_P06_XML&dsproject=aastra&mtype=zip
+size: 1918592
+sha1sum: 57970711ef9f4c308c02d539cbc58bf1090517aa
+
+[file_6755i-fw]
+filename: 6755i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6950-15710-_P06_XML&dsproject=aastra&mtype=zip
+size: 2699040
+sha1sum: 43a3ca0bf17b0dcd27f6f1b8351f9d1a2efce987
+
+[file_6757i-fw]
+filename: 6757i-fw.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=7041-15712-_P06_XML&dsproject=aastra&mtype=zip
+size: 2698547
+sha1sum: 0c841418c4063a430d100852bbd51ec476891805
+
+[file_lang]
+filename: lang.zip
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6167-15723-_P06_XML&dsproject=aastra&mtype=zip
+size: 379790
+sha1sum: 8ccb8540c788c27b15d0d180751cf7f793475793
