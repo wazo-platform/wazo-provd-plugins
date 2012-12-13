@@ -7,22 +7,6 @@ from shutil import copy
 from subprocess import check_call
 
 
-@target('7.4.8', 'xivo-cisco-spa-7.4.8')
-def build_7_4_8(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
-    
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '7.4.8/', path])
-
-@target('7.5.2b', 'xivo-cisco-spa-7.5.2b')
-def build_7_5_2b(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
-    
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '7.5.2b/', path])
-
 @target('7.5.4', 'xivo-cisco-spa-7.5.4')
 def build_7_5_4(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
