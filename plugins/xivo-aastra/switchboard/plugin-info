@@ -1,5 +1,5 @@
 {
-    "version": "0.1",
+    "version": "0.2",
     "description": "Plugin for Aastra 6731i, 6755i, 6757i in version 3.2.2.1136.",
     "description_fr": "Greffon pour Aastra 6731i, 6755i, 6757i en version 3.2.2.1136.",
     "capabilities": {

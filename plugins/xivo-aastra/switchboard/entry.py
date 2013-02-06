@@ -8,14 +8,8 @@ execfile_('common.py', common)
 logger = logging.getLogger('plugin.xivo-aastra')
 
 
-MODELS = [u'6731i', u'6755i', u'6757i']
-VERSION = u'switchboard'
-
-
 class AastraPlugin(common['BaseAastraPlugin']):
     IS_PLUGIN = True
-
-    pg_associator = common['BaseAastraPgAssociator'](MODELS, VERSION)
 
     def _add_parking(self, raw_config):
         # hack to set the per line parking config if a park function key is used
