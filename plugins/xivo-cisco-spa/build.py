@@ -7,14 +7,13 @@ from shutil import copy
 from subprocess import check_call
 
 
-@target('7.4.8', 'xivo-cisco-spa-7.4.8')
-def build_7_4_8(path):
+@target('7.5.4', 'xivo-cisco-spa-7.5.4')
+def build_7_5_4(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
     
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '7.4.8/', path])
-
+                '7.5.4/', path])
 
 @target('legacy', 'xivo-cisco-spa-legacy')
 def build_legacy(path):
@@ -52,13 +51,13 @@ def build_spa3102_5_1_10(path):
                 'spa3102-5.1.10/', path])
 
 
-@target('spa8000-6.1.3', 'xivo-cisco-spa8000-6.1.3')
-def build_spa8000_6_1_3(path):
+@target('spa8000-6.1.11', 'xivo-cisco-spa8000-6.1.11')
+def build_spa8000_6_1_11(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
     
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                'spa8000-6.1.3/', path])
+                'spa8000-6.1.11/', path])
 
 
 @target('spa8800-6.1.7', 'xivo-cisco-spa8800-6.1.7')

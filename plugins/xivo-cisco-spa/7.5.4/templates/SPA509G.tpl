@@ -1,7 +1,7 @@
 {% extends 'base.tpl' %}
 
 {% block upgrade_rule %}
-<Upgrade_Rule>http://{{ ip }}:{{ http_port }}/firmware/spa50x-30x-7-4-8a.bin</Upgrade_Rule>
+<Upgrade_Rule>($SWVER lt 7.5.2b) ? http://{{ ip }}:{{ http_port }}/firmware/spa50x-30x-7-5-2b.bin | http://{{ ip }}:{{ http_port }}/firmware/spa50x-30x-7-5-4.bin</Upgrade_Rule>
 {% endblock %}
 
 {% block dictionary_server_script %}

@@ -1,14 +1,14 @@
 [pkg_spa50x-30x-fw]
 description: Firmware for Cisco SPA50XG and SPA30XG
 description_fr: Micrologiciel pour Cisco SPA50XG et SPA30XG
-version: 7.4.8a
+version: 7.5.4
 files: spa50x-30xfw
 install: cisco-spa500fw
 
 [pkg_spa525-fw]
 description: Firmware for Cisco SPA525G and SPA525G2
 description_fr: Micrologiciel pour Cisco SPA525G et SPA525G2
-version: 7.4.8
+version: 7.5.4
 files: spa525fw
 install: cisco-spa500fw
 
@@ -26,6 +26,12 @@ version: 7.4.8
 files: spa525lang
 install: cisco-spa525lang
 
+[pkg_spa50x-30x-trans-fw]
+description: Firmware transition for Cisco SPA50XG and SPA30XG
+description_fr: Micrologiciel de transition pour Cisco SPA50XG et SPA30XG
+version: 7.5.2b
+files: spa50x-30xfw-trans
+install: cisco-spa500fw
 
 
 [install_cisco-spa500fw]
@@ -49,14 +55,20 @@ b-f: cp spa525_fr_* i18n/spa525_fr.xml
 
 
 [file_spa50x-30xfw]
-url: http://download.cisco.com/swc/esd/04/282724524/anon/spa50x-30x-7-4-8a.zip
-size: 11907814
-sha1sum: d16fbfac1df6c9b77edb12469a692d615efc95e0
+url: http://download.cisco.com/swc/esd/01/282724524/anon/SPA30x_SPA50x_7.5.4_FW.zip
+size: 8554906
+sha1sum: 98e7f3d31e147e207980ad31c9b17e43dcb4f765
+
+[file_spa50x-30xfw-trans]
+url: http://public.ciscosupport.eu/SPA30x_SPA50x_7-5-2b_FW.zip
+size: 8434101
+sha1sum: b8ab481fdc8ae0a0cb27b6a3256c3c86bff8b023
+
 
 [file_spa525fw]
-url: http://download.cisco.com/swc/esd/04/282414147/anon/spa525g-7-4-8.zip
-size: 10078621
-sha1sum: 47d9f36e8375af17806f94a88cc9a580671978b7
+url: http://download.cisco.com/swc/esd/01/282414147/anon/SPA525G_7.5.4_FW.zip
+size: 21879312
+sha1sum: 328414aec43fd816103e7cfd897d47fc1278c2ca
 
 [file_spa50x-30xlang]
 url: https://supportforums.cisco.com/servlet/JiveServlet/download/17008-2-101639/spa50x_30x_v748.zip

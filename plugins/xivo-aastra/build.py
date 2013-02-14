@@ -41,3 +41,17 @@ def build_3_2_2_6268(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '3.2.2.6268/', path])
+
+
+@target('switchboard', 'xivo-aastra-switchboard')
+def build_switchboard(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--include', '/templates/6731i.tpl',
+                '--include', '/templates/6755i.tpl',
+                '--include', '/templates/6757i.tpl',
+                '--include', '/templates/base.tpl',
+                '--exclude', '/templates/*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'switchboard/', path])

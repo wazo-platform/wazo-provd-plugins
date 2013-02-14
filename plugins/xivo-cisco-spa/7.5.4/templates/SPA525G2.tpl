@@ -1,7 +1,7 @@
 {% extends 'base.tpl' %}
 
 {% block upgrade_rule %}
-<Upgrade_Rule>http://{{ ip }}:{{ http_port }}/firmware/spa525g-7-4-8.bin</Upgrade_Rule>
+<Upgrade_Rule>http://{{ ip }}:{{ http_port }}/firmware/spa525g-7-5-4.bin</Upgrade_Rule>
 {% endblock %}
 
 {% block dictionary_server_script %}
