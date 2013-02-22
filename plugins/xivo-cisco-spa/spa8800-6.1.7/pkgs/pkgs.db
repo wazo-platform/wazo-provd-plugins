@@ -14,6 +14,6 @@ b-c: cp *.bin firmware/
 
 
 [file_spa8800fw]
-url: http://download-sj.cisco.com/swc/esd/04/282675423/anon/SPA8800_Rel_617.zip
+url: http://download.cisco.com/swc/esd/04/282675423/anon/SPA8800_Rel_617.zip
 size: 4047731
 sha1sum: d738a87754eaf2825fe06d95d2a75a1bdccd5271
