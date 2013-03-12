@@ -1,6 +1,6 @@
 [pkg_7906-7911-fw]
-description: Firmware for Cisco 7911G
-description_fr: Micrologiciel pour Cisco 7911G
+description: Firmware for Cisco 7906G and 7911G
+description_fr: Micrologiciel pour Cisco 7906G and 7911G
 version: 9.0.3
 files: 7906-7911-fw
 install: cisco-unified-fw
@@ -10,6 +10,13 @@ description: Firmware for Cisco 7941G, 7941G-GE and 7961G
 description_fr: Micrologiciel pour Cisco 7941G, 7941G-GE et 7961G
 version: 9.0.3
 files: 7941-7961-fw
+install: cisco-unified-fw
+
+[pkg_7942-7962-fw]
+description: Firmware for Cisco 7942G and 7962G
+description_fr: Micrologiciel pour Cisco 7942G et 7962G
+version: 9.0.3
+files: 7942-7962-fw
 install: cisco-unified-fw
 
 [pkg_networklocale]

@@ -1,3 +1,10 @@
+[pkg_7905-fw]
+description: Firmware for Cisco 7905G
+description_fr: Micrologiciel pour Cisco 7905G
+version: 8.0.3
+files: 7905-fw
+install: cisco-unified-fw
+
 [pkg_7912-fw]
 description: Firmware for Cisco 7912G
 description_fr: Micrologiciel pour Cisco 7912G

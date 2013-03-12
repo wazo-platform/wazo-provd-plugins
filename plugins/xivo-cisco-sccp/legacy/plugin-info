@@ -1,7 +1,7 @@
 {
-    "version": "0.3",
-    "description": "Plugin for Cisco 7912G, 7940G and 7960G in version 8.1.2 of the SCCP software.<br/> Please see the documentation if you want to install Cisco firmwares.",
-    "description_fr": "Greffon pour Cisco 7912G, 7940G et 7960G en version 8.1.2 du logiciel SCCP.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
+    "version": "0.3.1",
+    "description": "Plugin for Cisco 7905G, 7912G, 7940G and 7960G in different versions of the SCCP software.<br/> Please see the documentation if you want to install Cisco firmwares.",
+    "description_fr": "Greffon pour Cisco 7905G, 7912G, 7940G et 7960G en version variées du logiciel SCCP.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
     "capabilities": {
         "Cisco, 7902G, 8.0.2/SCCP": {
             "sccp.lines": 1
