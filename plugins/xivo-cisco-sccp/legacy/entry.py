@@ -15,10 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-"""Plugin for legacy Cisco phones using the SCCP software."""
-
-sccpcommon = {}
-execfile_('sccpcommon.py', sccpcommon)
+common = {}
+execfile_('common.py', common)
 
 
 MODEL_VERSION = {u'7902G': u'8.0.2/SCCP',
@@ -29,7 +27,7 @@ MODEL_VERSION = {u'7902G': u'8.0.2/SCCP',
                  u'7960G': u'8.1.2/SCCP'}
 
 
-class CiscoSccpPlugin(sccpcommon['BaseCiscoSccpPlugin']):
+class CiscoSccpPlugin(common['BaseCiscoSccpPlugin']):
     IS_PLUGIN = True
     
-    pg_associator = sccpcommon['common']['BaseCiscoPgAssociator'](MODEL_VERSION)
+    pg_associator = common['BaseCiscoPgAssociator'](MODEL_VERSION)
