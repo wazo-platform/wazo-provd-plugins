@@ -1,0 +1,39 @@
+<featurePolicy  name="Default Policy">
+    <versionStamp>0000000000</versionStamp>
+    <featureDef  name="Forward All">
+        <id>1</id>
+        <enable>true</enable>
+    </featureDef>
+    <featureDef  name="Park">
+        <id>2</id>
+        <enable>false</enable>
+    </featureDef>
+    <featureDef  name="Divert (Alerting)">
+        <id>3</id>
+        <enable>false</enable>
+    </featureDef>
+    <featureDef  name="Conference List">
+        <id>4</id>
+        <enable>true</enable>
+    </featureDef>
+    <featureDef  name="Speed Dial">
+        <id>5</id>
+        <enable>true</enable>
+    </featureDef>
+    <featureDef  name="Call Back">
+        <id>6</id>
+        <enable>true</enable>
+    </featureDef>
+    <featureDef  name="Redial">
+        <id>7</id>
+        <enable>true</enable>
+    </featureDef>
+    <featureDef  name="Barge">
+        <id>8</id>
+        <enable>true</enable>
+    </featureDef>
+    <featureDef  name="Divert (Connected)">
+        <id>9</id>
+        <enable>false</enable>
+    </featureDef>
+</featurePolicy>
