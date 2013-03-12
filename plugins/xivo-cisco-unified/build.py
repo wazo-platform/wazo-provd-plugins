@@ -26,10 +26,7 @@ from subprocess import check_call
 def build_sccp_8_5_2(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
-    
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'sccp-common/', path])
-    
+
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'sccp-8.5.2/', path])
 
@@ -40,9 +37,6 @@ def build_sccp_9_0_3(path):
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                'sccp-common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
                 'sccp-9.0.3/', path])
 
 
@@ -50,9 +44,6 @@ def build_sccp_9_0_3(path):
 def build_sccp_legacy(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
-    
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'sccp-common/', path])
-    
+
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'sccp-legacy/', path])
