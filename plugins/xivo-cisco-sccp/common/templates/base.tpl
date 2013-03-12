@@ -51,4 +51,9 @@
  <messagesURL></messagesURL>
  <proxyServerURL></proxyServerURL>
  <servicesURL></servicesURL>
+ <vendorConfig>
+  <disableSpeaker>false</disableSpeaker>
+  <disableSpeakerAndHeadset>false</disableSpeakerAndHeadset>
+  <enableGroupListen>true</enableGroupListen>
+ </vendorConfig>
 </device>
