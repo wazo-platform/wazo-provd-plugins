@@ -68,15 +68,3 @@ def build_sccp_legacy(path):
     
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'sccp-legacy/', path])
-
-
-@target('sip-9.2.1', 'xivo-cisco-sip-9.2.1')
-def build_sip_9_2_1(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
-    
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'sip-common/', path])
-    
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'sip-9.2.1/', path])

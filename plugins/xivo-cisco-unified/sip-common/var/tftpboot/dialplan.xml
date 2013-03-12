@@ -1,3 +1,0 @@
-<DIALTEMPLATE>
-    <TEMPLATE MATCH="*" Timeout="15"/> <!-- Anything else -->
-</DIALTEMPLATE>
