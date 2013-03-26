@@ -10,3 +10,11 @@ def build_1_1_0_0(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '1.1.0.0/', path])
+
+@target('1.3.0.1', 'xivo-digium-1.3.0.1')
+def build_1_1_0_0(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '1.3.0.1/', path])
