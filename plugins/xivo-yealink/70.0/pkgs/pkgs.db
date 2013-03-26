@@ -1,0 +1,95 @@
+[pkg_T20P-fw]
+description: Firmware for Yealink T20P
+description_fr: Micrologiciel pour Yealink T20P
+version: 9.70.0.130
+files: T20P-fw
+install: yealink-fw
+
+[pkg_T22P-fw]
+description: Firmware for Yealink T22P
+description_fr: Micrologiciel pour Yealink T22P
+version: 7.70.0.130
+files: T22P-fw
+install: yealink-fw
+
+[pkg_T26P-fw]
+description: Firmware for Yealink T26P
+description_fr: Micrologiciel pour Yealink T26P
+version: 6.70.0.130
+files: T26P-fw
+install: yealink-fw
+
+[pkg_T28P-fw]
+description: Firmware for Yealink T28P
+description_fr: Micrologiciel pour Yealink T28P
+version: 2.70.0.130
+files: T28P-fw
+install: yealink-fw
+
+[pkg_T32G-fw]
+description: Firmware for Yealink T32G
+description_fr: Micrologiciel pour Yealink T32G
+version: 32.70.0.125
+files: T32G-fw
+install: yealink-zip-fw
+
+[pkg_T38G-fw]
+description: Firmware for Yealink T38G
+description_fr: Micrologiciel pour Yealink T38G
+version: 38.70.0.125
+files: T38G-fw
+install: yealink-zip-fw
+
+[pkg_VP530-fw]
+description: Firmware for Yealink VP530
+description_fr: Micrologiciel pour Yealink VP530
+version: 23.70.0.40
+files: VP530-fw
+install: yealink-vp-fw
+
+[install_yealink-fw]
+a-b: unrar $FILE1
+b-c: cp *.rom firmware/
+
+[install_yealink-zip-fw]
+a-b: unzip $FILE1
+b-c: cp *.rom firmware/
+
+[install_yealink-vp-fw]
+a-b: unzip $FILE1
+b-c: cp *.rom firmware/
+
+[file_T20P-fw]
+url: http://www.yealink.com/Upload/firmware/T2X/9.70.0.130.rar
+size: 6496405
+sha1sum: 69a42cbd3ba211fe766a6bb73a08ef360641dc5d
+
+[file_T22P-fw]
+url: http://www.yealink.com/Upload/firmware/T2X/7.70.0.130.rar
+size: 7132565
+sha1sum: f67adf2478899bc777cfe3b990e6d9c1fac2b2c4
+
+[file_T26P-fw]
+url: http://www.yealink.com/Upload/firmware/T2X/6.70.0.130.rar
+size: 7148281
+sha1sum: 5aba085537ac5a114f0f4f18834fc52ecb986029
+
+[file_T28P-fw]
+url: http://www.yealink.com/Upload/firmware/T2X/2.70.0.130.rar
+size: 7266807
+sha1sum: b268b89be954b43b0076d7fe490a3e3724e560a4
+
+[file_T32G-fw]
+url: http://www.yealink.com/Upload/firmware/T3X/32.70.0.125.zip
+size: 22615678
+sha1sum: ec76b71eddb31ee9860540e2b9919cc2354f180c
+
+[file_T38G-fw]
+url: http://www.yealink.com/Upload/firmware/T3X/38.70.0.125.zip
+size: 24506277
+sha1sum: 86f17cff0757f92fa0b129c0820fcbbd0869ba37
+
+[file_VP530-fw]
+url: http://www.yealink.com/Upload/gujian/VP530%20Firmware.zip
+size: 30944612
+sha1sum: 46e2e0ff165dee3358724eae917743cded6c1c04

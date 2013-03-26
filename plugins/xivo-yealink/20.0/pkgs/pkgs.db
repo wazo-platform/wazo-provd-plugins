@@ -1,0 +1,15 @@
+[pkg_W52P-fw]
+description: Firmware for Yealink W52P
+description_fr: Micrologiciel pour Yealink W52P
+version: 25.10.0.10
+files: W52P-fw
+install: yealink-fw
+
+[install_yealink-fw]
+a-b: unrar $FILE1
+b-c: cp *.rom firmware/
+
+[file_W52P-fw]
+url: http://www.yealink.com/Upload/firmware/not-supported
+size: 00000
+sha1sum: 0000
