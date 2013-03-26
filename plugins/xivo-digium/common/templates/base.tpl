@@ -28,6 +28,8 @@
 
     <contacts url="http://{{ ip }}:{{ http_port }}/Digium/{{ XX_mac }}-contacts.xml" id="internal" />
 
+    <setting id="locale" value="{{ XX_lang }}"/>
+
     <accounts>
         {% for line_no, line in sip_lines.iteritems() %}
         <account

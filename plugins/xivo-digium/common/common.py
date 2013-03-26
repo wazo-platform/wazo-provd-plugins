@@ -130,6 +130,7 @@ class BaseDigiumPlugin(StandardPlugin):
         raw_config['XX_mac'] = self._format_mac(device)
         raw_config['XX_main_proxy_ip'] = self._get_main_proxy_ip(raw_config)
         raw_config['XX_funckeys'] = self._transform_funckeys(raw_config)
+        raw_config['XX_lang'] = raw_config.get(u'locale')
 
         path = os.path.join(self._digium_dir, filename)
         contact_path = os.path.join(self._digium_dir, contact_filename)
@@ -188,4 +189,3 @@ class BaseDigiumPlugin(StandardPlugin):
         return dict(
             (int(k), v) for k, v in raw_config['funckeys'].iteritems()
         )
-
