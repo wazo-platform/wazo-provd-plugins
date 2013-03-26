@@ -25,7 +25,7 @@
 {% endif -%}
 
 {% if syslog_enabled -%}
-<Syslog_Server>{{ syslog_ip }}:{{ syslog_port }}</Syslog_Server>
+<Syslog_Server>{{ syslog_ip }}:{{ syslog_port }}</Syslog_Server>
 {% endif -%}
 
 {% if vlan_enabled -%}

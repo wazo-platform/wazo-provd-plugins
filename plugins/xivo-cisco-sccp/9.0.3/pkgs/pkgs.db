@@ -1,0 +1,126 @@
+[pkg_7906-7911-fw]
+description: Firmware for Cisco 7906G and 7911G
+description_fr: Micrologiciel pour Cisco 7906G and 7911G
+version: 9.0.3
+files: 7906-7911-fw
+install: cisco-unified-fw
+
+[pkg_7941-7961-fw]
+description: Firmware for Cisco 7941G, 7941G-GE and 7961G
+description_fr: Micrologiciel pour Cisco 7941G, 7941G-GE et 7961G
+version: 9.0.3
+files: 7941-7961-fw
+install: cisco-unified-fw
+
+[pkg_7942-7962-fw]
+description: Firmware for Cisco 7942G and 7962G
+description_fr: Micrologiciel pour Cisco 7942G et 7962G
+version: 9.0.3
+files: 7942-7962-fw
+install: cisco-unified-fw
+
+[pkg_networklocale]
+description: Network locale
+description_fr: Locale réseau
+version: 9.0.2
+files: networklocale
+install: cisco-networklocale
+
+[pkg_userlocale_de_DE]
+description: de_DE user locale
+description_fr: Locale utilisateur de_DE
+version: 9.0.2
+files: userlocale_de_DE
+install: cisco-userlocale
+
+[pkg_userlocale_es_ES]
+description: es_ES user locale
+description_fr: Locale utilisateur es_ES
+version: 9.0.2
+files: userlocale_es_ES
+install: cisco-userlocale
+
+[pkg_userlocale_fr_FR]
+description: fr_FR user locale
+description_fr: Locale utilisateur fr_FR
+version: 9.0.2
+files: userlocale_fr_FR
+install: cisco-userlocale
+
+
+
+[install_cisco-unified-fw]
+a-b: unzip $FILE1
+
+[install_cisco-networklocale]
+a-b: unsign $FILE1 f.tgz
+b-c: untar f.tgz
+c-d: untar *.tar
+d-e: cp usr/local/cm/tftp/canada
+        usr/local/cm/tftp/france
+        usr/local/cm/tftp/germany
+        usr/local/cm/tftp/spain
+        i18n/
+
+[install_cisco-userlocale]
+a-b: unsign $FILE1 f.tgz
+b-c: untar f.tgz
+c-d: untar *.tar
+d-e: cp usr/local/cm/tftp/* i18n/
+
+
+
+[file_7906-7911-fw]
+url: http://download-sj.cisco.com/swc/esd/04/280136569/contract/cmterm-7911_7906-sccp.9-0-3.zip
+size: 5066707
+sha1sum: 02f37cd69aab190d018d13f86ccdc61cc2bb4235
+
+[file_7931-fw]
+url: http://download-sj.cisco.com/swc/esd/04/280799963/contract/cmterm-7931-sccp.9-0-3.zip
+size: 5056948
+sha1sum: 9e85007387de085ebb0e8becf16197bacc01caa9
+
+[file_7941-7961-fw]
+url: http://download-sj.cisco.com/swc/esd/04/279251499/contract/cmterm-7941_7961-sccp.9-0-3.zip
+size: 5170819
+sha1sum: 3ff5b72ced1a8df06ad43727439fe0b497809c57
+
+[file_7942-7962-fw]
+url: http://download-sj.cisco.com/swc/esd/04/281346593/contract/cmterm-7942_7962-sccp.9-0-3.zip
+size: 5763153
+sha1sum: 752deea2d776790be5f6b43e93687193e00bec35
+
+[file_7945-7965-fw]
+url: http://download-sj.cisco.com/swc/esd/04/281346594/contract/cmterm-7945_7965-sccp.9-0-3.zip
+size: 5891955
+sha1sum: 98eb810de064cf777eb4660426aaa1e202413e78
+
+[file_7970-7971-fw]
+url: http://download-sj.cisco.com/swc/esd/04/278436620/contract/cmterm-7970_7971-sccp.9-0-3.zip
+size: 5279034
+sha1sum: 04e8620c3b84d761f9654cdcc20c837c35944cc7
+
+[file_7975-fw]
+url: http://download-sj.cisco.com/swc/esd/04/281346597/contract/cmterm-7975-sccp.9-0-3.zip
+size: 5891350
+sha1sum: f9d72ce5953cfd1364d33e218d941d5c1015ff28
+
+[file_networklocale]
+url: http://download.cisco.com/swc/esd/05/268437897/contract/po-locale-combined_network-9.0.2.1000-1.cop.sgn
+size: 9351296
+sha1sum: f08e688de664d7e6d4fb19377cc057e5fc251d1d
+
+[file_userlocale_de_DE]
+url: http://download.cisco.com/swc/esd/05/268437897/contract/po-locale-de_DE-9.0.2.1000-1.cop.sgn
+size: 3561211
+sha1sum: b5fb97239f7f3414557d7bc10606d66c2123ddff
+
+[file_userlocale_es_ES]
+url: http://download.cisco.com/swc/esd/05/268437897/contract/po-locale-es_ES-9.0.2.1000-1.cop.sgn
+size: 4306710
+sha1sum: 20a7a6e89a91c4df7119557423f533d207a1ee87
+
+[file_userlocale_fr_FR]
+url: http://download.cisco.com/swc/esd/05/268437897/contract/po-locale-fr_FR-9.0.2.1000-1.cop.sgn
+size: 4397839
+sha1sum: 326407685f6950e6d4b06c692a2243a218aaf62e

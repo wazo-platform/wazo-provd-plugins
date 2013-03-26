@@ -37,7 +37,7 @@
 
     {% if XX_lang -%}
     <language perm="R">{{ XX_lang[0] }}</language>
-    <web_language perm="R">{{ XX_lang[0] }}</language>
+    <web_language perm="R">{{ XX_lang[0] }}</web_language>
     <tone_scheme perm="R">{{ XX_lang[1] }}</tone_scheme>
     {% endif -%}
 
