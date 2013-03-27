@@ -130,8 +130,8 @@ class BaseYealinkPlugin(StandardPlugin):
     http_dev_info_extractor = BaseYealinkHTTPDeviceInfoExtractor()
 
     def configure_common(self, raw_config):
-        tpl = self._tpl_helper.get_template('common/model.tpl')
-        for filename, fw_filename in self._COMMON_FILES:
+        for filename, fw_filename, tpl_filename in self._COMMON_FILES:
+            tpl = self._tpl_helper.get_template('common/%s', % tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config[u'XX_fw_filename'] = fw_filename
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
