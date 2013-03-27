@@ -30,6 +30,15 @@ def build_3_2_2_1136(path):
                 '3.2.2.1136/', path])
 
 
+@target('3.2.2.2112', 'xivo-aastra-3.2.2.2112')
+def build_3_2_2_2112(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--exclude', '/templates/6751i.tpl',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '3.2.2.2112/', path])
+
 @target('3.2.2.6268', 'xivo-aastra-3.2.2.6268')
 def build_3_2_2_6268(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
