@@ -30,7 +30,6 @@ local_time.ntp_server1 = {{ ntp_ip }}
 {{ XX_timezone }}
 
 {% if XX_country -%}
-[ Country ]
 voice.tone.country = {{ XX_country }}
 {% endif -%}
 
