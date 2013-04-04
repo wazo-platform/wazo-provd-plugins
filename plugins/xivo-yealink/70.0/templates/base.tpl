@@ -56,6 +56,7 @@ account.{{ line['XX_line_no'] }}.sip_server_host = {{ line['proxy_ip'] }}
 
 {% if line['XX_dtmf_inband_transfer'] -%}
 account.{{ line['XX_line_no'] }}.dtmf.type = {{ line['XX_dtmf_inband_transfer'] }}
+account.{{ line['XX_line_no'] }}.dtmf.info_type = 1
 {% endif -%}
 
 {% if line['voicemail'] -%}
