@@ -29,6 +29,7 @@ def build_20_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '20.0/', path])
 
+
 @target('70.0', 'xivo-yealink-70.0')
 def build_70_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',

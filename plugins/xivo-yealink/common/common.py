@@ -15,13 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-"""Common code shared by the the various xivo-yealink plugins.
-
-Support the T12, T20, T22, T26 and T28.
-
-"""
-
-
 import logging
 import re
 import os.path
@@ -41,8 +34,10 @@ logger = logging.getLogger('plugin.xivo-yealink')
 
 
 class BaseYealinkHTTPDeviceInfoExtractor(object):
-    _UA_REGEX_LIST = [ re.compile(r'^yealink SIP-(\w+) ([\d.]+) ([\da-f:]{17})$'), re.compile (r'(VP530P) ([\d.]+) ([\da-f:]{17})$'), re.compile(r'^Yealink SIP-(\w+)  ([\d.]+) ([\da-f:]{17})$') ]
-    _PATH_REGEX_W52P = re.compile(r'^/y000000000025.cfg')
+    _UA_REGEX_LIST = [
+        re.compile(r'^[Yy]ealink SIP-(\w+) +([\d.]+) ([\da-f:]{17})$'),
+        re.compile(r'(VP530P) ([\d.]+) ([\da-f:]{17})$'),
+    ]
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -52,8 +47,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         if ua:
             return self._extract_from_ua(ua)
         else:
-           return self._extract_from_path(request)
-        return None
+            return self._extract_from_path(request)
 
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
@@ -68,20 +62,20 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
                 raw_model, raw_version, raw_mac = m.groups()
                 try:
                     mac = norm_mac(raw_mac.decode('ascii'))
-                except ValueError, e:
+                except ValueError as e:
                     logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
-                return {u'vendor': u'Yealink',
-                        u'model': raw_model.decode('ascii'),
-                        u'version': raw_version.decode('ascii'),
-                        u'mac': mac}
+                else:
+                    return {u'vendor': u'Yealink',
+                            u'model': raw_model.decode('ascii'),
+                            u'version': raw_version.decode('ascii'),
+                            u'mac': mac}
         return None
 
     def _extract_from_path(self, request):
-        match = self._PATH_REGEX_W52P.match(request.path)
-        if match:
-            dev_info = {u'vendor': u'Yealink',
-                        u'model' : u'W52P'}
-            return dev_info
+        if request.path.startswith('/y000000000025.cfg'):
+            return {u'vendor': u'Yealink',
+                    u'model' : u'W52P'}
+        return None
 
 
 class BaseYealinkPgAssociator(BasePgAssociator):
@@ -160,18 +154,11 @@ class BaseYealinkPlugin(StandardPlugin):
         lines.append(u'memorykey.%s.value = %s' % (funckey_no, funckey_dict[u'value']))
         lines.append(u'memorykey.%s.type = 13' % funckey_no)
         lines.append(u'memorykey.%s.label = %s' % (funckey_no, funckey_dict.get(u'label', u'')))
-        """
-        lines.append(u'Line = %s' % funckey_dict.get(u'line', u'0'))
-        lines.append(u'DKtype = 13')
-        lines.append(u'Value = %s' % funckey_dict[u'value'])
-        lines.append(u'Label = %s' % funckey_dict.get(u'label', u''))
-        """
         return lines
 
     def _format_funckey_blf(self, funckey_no, funckey_dict, exten_pickup_call=None):
         # Be warned that blf works only for DSS keys.
         lines = []
-
         lines.append(u'memorykey.%s.line = %s' % (funckey_no, funckey_dict.get(u'line', 1) - 1))
         value = funckey_dict[u'value']
         lines.append(u'memorykey.%s.value = %s' % (funckey_no, value))
@@ -179,17 +166,6 @@ class BaseYealinkPlugin(StandardPlugin):
         if exten_pickup_call:
             lines.append(u'memorykey.%s.pickup_value = %s%s' % (funckey_no, exten_pickup_call, value))
         lines.append(u'memorykey.%s.type = 16' % funckey_no)
-
-        """
-        lines.append(u'Line = %s' % (funckey_dict.get(u'line', 1) - 1))
-        lines.append(u'DKtype = 16')
-        lines.append(u'type = blf')
-        value = funckey_dict[u'value']
-        lines.append(u'Value = %s' % value)
-        if exten_pickup_call:
-            lines.append(u'PickupValue = %s%s' % (exten_pickup_call, value))
-        lines.append(u'Label = %s' % funckey_dict.get(u'label', u''))
-        """
         return lines
 
     def _add_fkeys(self, raw_config):
@@ -241,7 +217,6 @@ class BaseYealinkPlugin(StandardPlugin):
                 lines.append(u'local_time.dst_time_type = 1')
             lines.append(u'local_time.start_time = %s' % self._format_dst_change(tzinfo['dst']['start']))
             lines.append(u'local_time.end_time = %s' % self._format_dst_change(tzinfo['dst']['end']))
-            #lines.append(u'OffsetTime = %s' % tzinfo['dst']['save'].as_minutes)
         return u'\n'.join(lines)
 
     def _add_timezone(self, raw_config):

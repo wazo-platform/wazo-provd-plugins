@@ -45,7 +45,8 @@ description: Firmware for Yealink VP530
 description_fr: Micrologiciel pour Yealink VP530
 version: 23.70.0.40
 files: VP530-fw
-install: yealink-vp-fw
+install: yealink-zip-fw
+
 
 [install_yealink-fw]
 a-b: unrar $FILE1
@@ -55,9 +56,6 @@ b-c: cp *.rom firmware/
 a-b: unzip $FILE1
 b-c: cp *.rom firmware/
 
-[install_yealink-vp-fw]
-a-b: unzip $FILE1
-b-c: cp *.rom firmware/
 
 [file_T20P-fw]
 url: http://www.yealink.com/Upload/firmware/T2X/9.70.0.130.rar
