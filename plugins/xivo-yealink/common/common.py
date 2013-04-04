@@ -210,7 +210,7 @@ class BaseYealinkPlugin(StandardPlugin):
         if tzinfo['dst'] is None:
             lines.append(u'local_time.summer_time = 0')
         else:
-            lines.append(u'local_time.summer_time = 2')
+            lines.append(u'local_time.summer_time = 1')
             if tzinfo['dst']['start']['day'].startswith('D'):
                 lines.append(u'local_time.dst_time_type = 0')
             else:
