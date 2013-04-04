@@ -164,7 +164,7 @@ class BaseYealinkPlugin(StandardPlugin):
         lines.append(u'memorykey.%s.value = %s' % (funckey_no, value))
         lines.append(u'memorykey.%s.sub_type = blf' % funckey_no)
         if exten_pickup_call:
-            lines.append(u'memorykey.%s.pickup_value = %s%s' % (funckey_no, exten_pickup_call, value))
+            lines.append(u'memorykey.%s.pickup_value = %s' % (funckey_no, exten_pickup_call))
         lines.append(u'memorykey.%s.type = 16' % funckey_no)
         return lines
 
