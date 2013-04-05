@@ -86,15 +86,14 @@ class BaseAastraHTTPDeviceInfoExtractor(object):
 
 
 class BaseAastraPgAssociator(BasePgAssociator):
-    def __init__(self, models, version):
+    def __init__(self, model_versions):
         BasePgAssociator.__init__(self)
-        self._models = models
-        self._version = version
+        self._model_versions = model_versions
 
     def _do_associate(self, vendor, model, version):
         if vendor == u'Aastra':
-            if model in self._models:
-                if version == self._version:
+            if model in self._model_versions:
+                if version == self._model_versions[model]:
                     return FULL_SUPPORT
                 return COMPLETE_SUPPORT
             return UNKNOWN_SUPPORT
