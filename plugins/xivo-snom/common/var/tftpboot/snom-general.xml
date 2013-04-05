@@ -4,8 +4,12 @@
     <!-- auto_reboot must be at the top of the file to be effective -->
     <auto_reboot_on_setting_change perm="R">on</auto_reboot_on_setting_change>
 
+    <!-- the "perm" attribute for admin_mode must be "RW", else the admin
+         can't enter admin mode on the phone because the admin_mode value
+         is read only -->
+    <admin_mode perm="RW">off</admin_mode>
+
     <time_24_format perm="R">on</time_24_format>
-    <admin_mode perm="R">on</admin_mode>
     <display_method perm="R">display_name_number</display_method>
     <pnp_config perm="R">off</pnp_config>
     <update_policy perm="R">auto_update</update_policy>
