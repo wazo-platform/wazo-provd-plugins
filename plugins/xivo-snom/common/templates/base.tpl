@@ -9,18 +9,28 @@
     <vlan_qos perm="R"></vlan_qos>
     {% endif -%}
 
+    {% if admin_username -%}
+    <http_user perm="R">{{ admin_username|e }}</http_user>
+    {% else -%}
+    <http_user perm="R">guest</http_user>
+    {% endif -%}
+
     {% if admin_password -%}
     <admin_mode_password perm="R">{{ admin_password|e }}</admin_mode_password>
     <http_pass perm="R">{{ admin_password|e }}</http_pass>
+    {% else -%}
+    <admin_mode_password perm="R">12345</admin_mode_password>
+    <http_pass perm="R">guest</http_pass>
     {% endif -%}
-    {% if admin_username -%}
-    <http_user perm="R">{{ admin_username|e }}</http_user>
-    {% endif -%}
+
     {% if dns_enabled -%}
     <dns_server1 perm="R">{{ dns_ip }}</dns_server1>
     {% endif -%}
+
     {% if ntp_enabled -%}
     <ntp_server perm="R">{{ ntp_ip }}</ntp_server>
+    {% else -%}
+    <ntp_server perm="R"></ntp_server>
     {% endif -%}
 
     {% for line_no, line in sip_lines.iteritems() %}

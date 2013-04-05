@@ -4,13 +4,9 @@
     <!-- auto_reboot must be at the top of the file to be effective -->
     <auto_reboot_on_setting_change perm="R">on</auto_reboot_on_setting_change>
 
-    <ntp_server perm="R"></ntp_server>
     <time_24_format perm="R">on</time_24_format>
     <admin_mode perm="R">on</admin_mode>
-    <admin_mode_password perm="R">12345</admin_mode_password>
     <display_method perm="R">display_name_number</display_method>
-    <http_user perm="R">guest</http_user>
-    <http_pass perm="R">guest</http_pass>
     <pnp_config perm="R">off</pnp_config>
     <update_policy perm="R">auto_update</update_policy>
     <mwi_dialtone perm="R">normal</mwi_dialtone>
