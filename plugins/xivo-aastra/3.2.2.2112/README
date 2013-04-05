@@ -1,6 +1,0 @@
-WARNING: Applicable to IP Phone Models 6730i and 6731i only:
-The default negotiation setting for the Ethernet ports on the phones is “auto-nego-
-tiation”. If you have changed this default setting to another value (i.e., Half Duplex or
-Full Duplex), you MUST set the negotiation value back to the default value of “auto-
-negotiation” before upgrading to Release 3.2. Failure to do so may cause the phone
-to fail to connect to the network. In addition, downgrade will not be possible.
