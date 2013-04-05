@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <settings>
   <phone-settings>
-    <vlan perm="R"></vlan>
+    <vlan_id perm="R"></vlan_id>
+    <vlan_qos perm="R"></vlan_qos>
     <ntp_server perm="R"></ntp_server>
     <time_24_format perm="R">on</time_24_format>
     <admin_mode perm="R">on</admin_mode>

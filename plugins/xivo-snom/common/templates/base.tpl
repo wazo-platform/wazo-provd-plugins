@@ -2,7 +2,8 @@
 <settings>
   <phone-settings>
     {% if vlan_enabled -%}
-    <vlan perm="R">{{ vlan_id }} {{ vlan_priority|d('0') }}</vlan>
+    <vlan_id perm="R">{{ vlan_id }}</vlan_id>
+    <vlan_qos perm="R">{{ vlan_priority|d('0') }}</vlan_qos>
     {% endif -%}
 
     {% if admin_password -%}
