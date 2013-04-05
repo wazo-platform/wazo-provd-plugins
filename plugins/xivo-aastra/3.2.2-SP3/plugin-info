@@ -1,5 +1,5 @@
 {
-    "version": "0.4.1",
+    "version": "0.5",
     "description": "Plugin for Aastra 6730i, 6731i, 6735i, 6737i, 6739i, 6753i, 6755i, 6757i, 6757i CT, 9143i, 9480i, 9480i CT in version 3.2.2 SP3.",
     "description_fr": "Greffon pour Aastra 6730i, 6731i, 6735i, 6737i, 6739i, 6753i, 6755i, 6757i, 6757i CT, 9143i, 9480i, 9480i CT en version 3.2.2 SP3.",
     "capabilities": {
