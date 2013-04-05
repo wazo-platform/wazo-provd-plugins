@@ -4,6 +4,9 @@
     {% if vlan_enabled -%}
     <vlan_id perm="R">{{ vlan_id }}</vlan_id>
     <vlan_qos perm="R">{{ vlan_priority|d('0') }}</vlan_qos>
+    {% else -%}
+    <vlan_id perm="R"></vlan_id>
+    <vlan_qos perm="R"></vlan_qos>
     {% endif -%}
 
     {% if admin_password -%}
