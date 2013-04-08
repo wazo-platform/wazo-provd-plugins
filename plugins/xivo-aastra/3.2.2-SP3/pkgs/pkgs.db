@@ -29,7 +29,7 @@ install: aastra-fw 6737i
 [pkg_6739i-fw]
 description: Firmware for Aastra 6739i
 description_fr: Micrologiciel pour Aastra 6739i
-version: 3.2.2.2112
+version: 3.2.2.3077
 files: 6739i-fw
 install: aastra-fw
 
@@ -127,9 +127,9 @@ sha1sum: 9313b52305a7c6321d69fc83febe10b11d7bb260
 
 [file_6739i-fw]
 filename: 6739i-fw.zip
-url: http://www.aastra.com/cps/rde/aareddownload?file_id=6354-16706-_P06_XML&dsproject=aastra&mtype=zip
-size: 4821491
-sha1sum: af0c2b2973898445529f57f40d92feee9d9d6ea8
+url: http://www.aastra.com/cps/rde/aareddownload?file_id=6354-16826-_P06_XML&dsproject=aastra&mtype=zip
+size: 4848317
+sha1sum: d13dc2429b578e50f6157be5ac4a57cfcc3af424
 
 [file_6753i-fw]
 filename: 6753i-fw.zip
