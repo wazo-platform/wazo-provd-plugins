@@ -1,5 +1,5 @@
 {
-    "version": "0.3",
+    "version": "0.4",
     "description": "Plugin for Yealink W52P in version 20.0.",
     "description_fr": "Greffon pour Yealink W52P en version 20.0.",
     "vendor" : "Yealink",
