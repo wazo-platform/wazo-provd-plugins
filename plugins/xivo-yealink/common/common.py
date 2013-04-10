@@ -37,6 +37,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
         re.compile(r'^[Yy]ealink SIP-(\w+) +([\d.]+) ([\da-f:]{17})$'),
         re.compile(r'(VP530P) ([\d.]+) ([\da-f:]{17})$'),
+        re.compile(r'(W52P) ([\d.]+) ([\da-f:]{17})$'),
     ]
 
     def extract(self, request, request_type):
@@ -55,6 +56,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "yealink SIP-T28P 2.60.0.110 00:15:65:13:ae:0b"
         #   "Yealink SIP-T38G  38.0.0.115 00:15:65:2f:c3:5e"
         #   "VP530P 23.70.0.10 00:15:65:31:47:69"
+        #   "W52P 25.30.0.2 00:15:65:44:b3:7c"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
