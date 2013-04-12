@@ -31,14 +31,14 @@ description: Firmware for Yealink T32G
 description_fr: Micrologiciel pour Yealink T32G
 version: 32.70.0.130
 files: T32G-fw
-install: yealink-zip-fw
+install: yealink-fw
 
 [pkg_T38G-fw]
 description: Firmware for Yealink T38G
 description_fr: Micrologiciel pour Yealink T38G
 version: 38.70.0.125
 files: T38G-fw
-install: yealink-zip-fw
+install: yealink-fw
 
 [pkg_VP530-fw]
 description: Firmware for Yealink VP530
