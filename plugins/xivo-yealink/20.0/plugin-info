@@ -1,5 +1,5 @@
 {
-    "version": "0.7",
+    "version": "0.8",
     "description": "Plugin for Yealink W52P in version 20.0.",
     "description_fr": "Greffon pour Yealink W52P en version 20.0.",
     "vendor" : "Yealink",
@@ -7,7 +7,7 @@
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
     "vendor.official" : 1,
     "capabilities": {
-        "Yealink, W52P, 25.20.0.10": {
+        "Yealink, W52P, 25.30.0.20": {
             "sip.lines": 5,
             "xivo.ha" : 0,
             "tel.funckeys" : 0,
