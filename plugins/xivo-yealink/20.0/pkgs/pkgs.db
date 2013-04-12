@@ -1,7 +1,7 @@
 [pkg_W52P-fw]
 description: Firmware for Yealink W52P
 description_fr: Micrologiciel pour Yealink W52P
-version: 25.30.0.20.rom
+version: 25.30.0.20
 files: W52P-fw
 install: yealink-fw
 
