@@ -15,19 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-"""Plugin for Yealink phones using the 20.0.XX firmware.
-
-The following Yealink phones are supported:
-- W52P
-
-"""
-
 common_globals = {}
 execfile_('common.py', common_globals)
 
 
 MODEL_VERSIONS = {u'W52P': u'25.30.0.20'}
-COMMON_FILES = [('y000000000025.cfg', u'25.30.0.20.rom','model.tpl'),]
+COMMON_FILES = [('y000000000025.cfg', u'25.30.0.20.rom', 'model.tpl'),]
 
 
 class YealinkPlugin(common_globals['BaseYealinkPlugin']):
