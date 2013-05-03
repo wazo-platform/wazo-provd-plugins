@@ -47,7 +47,7 @@ logger = logging.getLogger('plugin.xivo-polycom')
 
 
 class BasePolycomHTTPDeviceInfoExtractor(object):
-    _UA_REGEX = re.compile(r'^FileTransport Polycom\w+-(\w*?)-UA/([\d.]+)$')
+    _UA_REGEX = re.compile(r'^FileTransport Polycom\w+-(\w*?)-UA/([\d.]+)')
     _PATH_REGEX = re.compile(r'/(?!000000000000)([\da-f]{12})(?:\.cfg|-boot\.log|-phone\.cfg|-license\.cfg|-directory\.xml|-app\.log)$')
     _IS_SIPAPP_REGEX = re.compile(r'/(?:(?:common\.cfg|phone1\.cfg|sip\.cfg)|(?:[\da-f]{12}-(?:phone\.cfg|license\.cfg|directory\.xml|app\.log)))$')
 
@@ -78,6 +78,7 @@ class BasePolycomHTTPDeviceInfoExtractor(object):
         #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/4.2.2.0710" (SPIP335 3.2.3.1734/4.2.2.0710)
         #   "FileTransport PolycomSoundPointIP-SPIP_450-UA/3.2.3.1734" (SPIP450 3.2.3.1734/4.2.2.0710)
         #   "FileTransport PolycomSoundPointIP-SPIP_550-UA/3.2.3.1734" (SPIP335 3.2.3.1734/4.2.2.0710)
+        #   "FileTransport PolycomSoundPointIP-SPIP_331-UA/4.0.4.2906 Type/Application" (SPIP331 4.0.4.2906/4.4.0)
         m = self._UA_REGEX.match(ua)
         if m:
             dev_info[u'vendor'] = u'Polycom'
