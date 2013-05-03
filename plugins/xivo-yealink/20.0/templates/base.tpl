@@ -1,9 +1,7 @@
 #!version:1.0.0.1
-## the file header "#!version:1.0.0.1" can not be edited or deleted. ##
-
+## the file header "#!version:..." can not be edited or deleted
 
 {% if vlan_enabled -%}
-#
 network.vlan.internet_port_enable = 1
 network.vlan.internet_port_vid = {{ vlan_id }}
 {% if vlan_priority -%}
@@ -58,6 +56,7 @@ account.{{ line['XX_line_no'] }}.sip_server_host = {{ line['proxy_ip'] }}
 
 {% if line['XX_dtmf_inband_transfer'] -%}
 account.{{ line['XX_line_no'] }}.dtmf.type = {{ line['XX_dtmf_inband_transfer'] }}
+account.{{ line['XX_line_no'] }}.dtmf.info_type = 1
 {% endif -%}
 
 {% if line['voicemail'] -%}
