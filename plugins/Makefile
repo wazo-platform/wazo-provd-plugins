@@ -29,6 +29,7 @@ upload : build
 
 .PHONY : download-stable
 download-stable :
+	mkdir -p $(STABLE_PATH)
 	rsync -v -rt --delete $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_STABLE_PATH)/ $(STABLE_PATH)
 
 
