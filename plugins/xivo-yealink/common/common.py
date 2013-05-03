@@ -218,6 +218,7 @@ class BaseYealinkPlugin(StandardPlugin):
                 lines.append(u'local_time.dst_time_type = 1')
             lines.append(u'local_time.start_time = %s' % self._format_dst_change(tzinfo['dst']['start']))
             lines.append(u'local_time.end_time = %s' % self._format_dst_change(tzinfo['dst']['end']))
+            lines.append(u'local_time.offset_time = %s' % tzinfo['dst']['save'].as_minutes)
         return u'\n'.join(lines)
 
     def _add_timezone(self, raw_config):
