@@ -36,8 +36,7 @@ logger = logging.getLogger('plugin.xivo-yealink')
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
         re.compile(r'^[Yy]ealink SIP-(\w+) +([\d.]+) ([\da-f:]{17})$'),
-        re.compile(r'(VP530P) ([\d.]+) ([\da-f:]{17})$'),
-        re.compile(r'(W52P) ([\d.]+) ([\da-f:]{17})$'),
+        re.compile(r'(VP530P|W52P) ([\d.]+) ([\da-f:]{17})$'),
     ]
 
     def extract(self, request, request_type):

@@ -52,6 +52,7 @@ install: yealink-fw
 a-b: unzip $FILE1
 b-c: cp *.rom firmware/
 
+
 [file_T20P-fw]
 url: http://www.yealink.com/Upload/firmware/T2X/9.70.0.140.zip
 size: 6490992

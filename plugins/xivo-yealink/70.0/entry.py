@@ -15,19 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-"""Plugin for Yealink phones using the 70.0.XX firmware.
-
-The following Yealink phones are supported:
-- T20P
-- T22P
-- T26P
-- T28P
-- T32G
-- T38G
-- VP530P
-
-"""
-
 common_globals = {}
 execfile_('common.py', common_globals)
 
