@@ -154,6 +154,28 @@ class BaseSnomPlugin(StandardPlugin):
             dst = os.path.join(self._tftpboot_dir, filename)
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
+
+    def _update_sip_lines(self, raw_config):
+        proxy_ip = raw_config.get(u'sip_proxy_ip')
+        proxy_port = raw_config.get(u'sip_proxy_port', u'0')
+        backup_proxy_ip = raw_config.get(u'sip_backup_proxy_ip', u'0.0.0.0')
+        backup_proxy_port = raw_config.get(u'sip_backup_proxy_port', u'0')
+        registrar_ip = raw_config.get(u'sip_registrar_ip')
+        registrar_port = raw_config.get(u'sip_registrar_port', u'0')
+        backup_registrar_ip = raw_config.get(u'sip_backup_registrar_ip', u'0.0.0.0')
+        backup_registrar_port = raw_config.get(u'sip_backup_registrar_port', u'0')
+        srtp_mode = raw_config.get(u'sip_srtp_mode')
+        voicemail = raw_config.get(u'exten_voicemail')
+        for line in raw_config[u'sip_lines'].itervalues():
+            line.setdefault(u'proxy_ip', proxy_ip)
+            line.setdefault(u'proxy_port', proxy_port)
+            line.setdefault(u'backup_proxy_ip', backup_proxy_ip)
+            line.setdefault(u'backup_proxy_port', backup_proxy_port)
+            line.setdefault(u'registrar_ip', registrar_ip)
+            line.setdefault(u'registrar_port', registrar_port)
+            line.setdefault(u'backup_registrar_ip', backup_registrar_ip)
+            line.setdefault(u'backup_registrar_port', backup_registrar_port)
+
     def _get_fkey_domain(self, raw_config):
         # Return None if there's no usable domain
         if u'sip_proxy_ip' in raw_config:
@@ -261,6 +283,7 @@ class BaseSnomPlugin(StandardPlugin):
         # generate xml file
         tpl = self._tpl_helper.get_dev_template(xml_filename, device)
 
+        self._update_sip_lines(raw_config)
         self._add_fkeys(raw_config)
         self._add_lang(raw_config)
         self._add_timezone(raw_config)
