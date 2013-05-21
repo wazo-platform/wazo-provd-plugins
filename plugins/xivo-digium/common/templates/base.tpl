@@ -58,6 +58,16 @@
             retry="25"
             num_retries="5" />
 
+        {% if line['backup_proxy_ip'] -%}
+            <host_alternate
+            server="{{ line['backup_proxy_ip'] }}"
+            port="{{ line['backup_proxy_port']|d(5060) }}"
+            transport="udp"
+            reregister="3600"
+            retry="25"
+            num_retries="5" />
+        {% endif -%}
+
         </account>
         {% endfor %}
     </accounts>
