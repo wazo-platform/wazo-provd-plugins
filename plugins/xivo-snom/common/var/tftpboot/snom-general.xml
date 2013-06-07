@@ -11,6 +11,8 @@
          is read only -->
     <admin_mode perm="RW">off</admin_mode>
 
+    <retry_after_failed_register perm="R">120</retry_after_failed_register>
+
     <time_24_format perm="R">on</time_24_format>
     <display_method perm="R">display_name_number</display_method>
     <pnp_config perm="R">off</pnp_config>
