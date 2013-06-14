@@ -262,12 +262,17 @@ class BaseCiscoPlugin(StandardPlugin):
         u'SPA525G': (5, 2),
         u'SPA525G2': (5, 2)
     }
+    _DEFAULT_LOCALE = u'en_US'
     _LOCALE = {
         u'de_DE': u'German',
         u'en_US': u'English',
         u'es_ES': u'Spanish',
         u'fr_FR': u'French',
         u'fr_CA': u'French',
+    }
+    _DIRECTORY_NAME = {
+        u'en_US': u'XiVO Directory',
+        u'fr_FR': u'Répertoire XiVO',
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
@@ -399,6 +404,12 @@ class BaseCiscoPlugin(StandardPlugin):
         if locale in self._LOCALE:
             raw_config[u'XX_language'] = self._LOCALE[locale]
 
+    def _add_directory_name(self, raw_config):
+        locale = raw_config.get(u'locale')
+        if locale not in self._DIRECTORY_NAME:
+            locale = self._DEFAULT_LOCALE
+        raw_config[u'XX_directory_name'] = self._DIRECTORY_NAME[locale]
+
     def _new_encryption_key(self):
         return b2a_hex(os.urandom(32))
 
@@ -425,6 +436,7 @@ class BaseCiscoPlugin(StandardPlugin):
         self._add_timezone(raw_config)
         self._add_proxies(raw_config)
         self._add_language(raw_config)
+        self._add_directory_name(raw_config)
 
         update_device = False
         if raw_config.get(u'config_encryption_enabled'):
