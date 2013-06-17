@@ -88,5 +88,9 @@
 <Extended_Function_{{ line_no }}_></Extended_Function_{{ line_no }}_>
 {% endfor %}
 
-</flat-profile>
+{% if X_xivo_phonebook_ip -%}
+<XML_Directory_Service_Name>{{ XX_directory_name }}</XML_Directory_Service_Name>
+<XML_Directory_Service_URL>http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search</XML_Directory_Service_URL>
+{% endif -%}
 
+</flat-profile>
