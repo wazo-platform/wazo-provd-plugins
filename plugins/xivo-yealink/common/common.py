@@ -35,8 +35,8 @@ logger = logging.getLogger('plugin.xivo-yealink')
 
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
-        re.compile(r'^[Yy]ealink SIP-(\w+) +([\d.]+) ([\da-f:]{17})$'),
-        re.compile(r'(VP530P|W52P) ([\d.]+) ([\da-f:]{17})$'),
+        re.compile(r'^[yY]ealink\s+SIP-(\w+)\s+([\d.]+)\s+([\da-f:]{17})$'),
+        re.compile(r'(VP530P?|W52P)\s+([\d.]+)\s+([\da-f:]{17})$'),
     ]
 
     def extract(self, request, request_type):
@@ -55,6 +55,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "yealink SIP-T28P 2.60.0.110 00:15:65:13:ae:0b"
         #   "Yealink SIP-T38G  38.0.0.115 00:15:65:2f:c3:5e"
         #   "VP530P 23.70.0.10 00:15:65:31:47:69"
+        #   "VP530 23.70.0.41 00:15:65:3d:58:e3"
         #   "W52P 25.30.0.2 00:15:65:44:b3:7c"
 
         for UA_REGEX in self._UA_REGEX_LIST:
