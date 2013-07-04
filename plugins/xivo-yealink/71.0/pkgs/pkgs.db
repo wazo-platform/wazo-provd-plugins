@@ -1,0 +1,15 @@
+[pkg_T46G-fw]
+description: Firmware for Yealink T46G
+description_fr: Micrologiciel pour Yealink T46G
+version: 28.71.0.81
+#files: T46G-fw
+#install: yealink-fw
+
+
+#[install_yealink-fw]
+#a-b: unzip $FILE1
+#b-c: cp *.rom firmware/
+
+
+#[file_W52P-fw]
+#url: http://www.yealink.com/Upload/xxxx

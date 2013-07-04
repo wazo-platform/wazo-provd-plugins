@@ -37,6 +37,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP-(\w+)\s+([\d.]+)\s+([\da-f:]{17})$'),
         re.compile(r'(VP530P?|W52P)\s+([\d.]+)\s+([\da-f:]{17})$'),
+        re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
 
     def extract(self, request, request_type):
@@ -57,6 +58,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "VP530P 23.70.0.10 00:15:65:31:47:69"
         #   "VP530 23.70.0.41 00:15:65:3d:58:e3"
         #   "W52P 25.30.0.2 00:15:65:44:b3:7c"
+        #   "Yealink-T46G 28.71.0.81 28.1.0.128.0.0.0"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
@@ -66,6 +68,9 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
                     mac = norm_mac(raw_mac.decode('ascii'))
                 except ValueError as e:
                     logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
+                    return {u'vendor': u'Yealink',
+                            u'model': raw_model.decode('ascii'),
+                            u'version': raw_version.decode('ascii')}
                 else:
                     return {u'vendor': u'Yealink',
                             u'model': raw_model.decode('ascii'),
@@ -74,6 +79,14 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         return None
 
     def _extract_from_path(self, request):
+        if request.path.startswith('/001565'):
+            raw_mac = path[1:-4]
+            try:
+                mac = norm_mac(raw_mac.decode('ascii'))
+            except ValueError as e:
+                logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
+            else:
+                return {u'mac': mac}
         if request.path.startswith('/y000000000025.cfg'):
             return {u'vendor': u'Yealink',
                     u'model' : u'W52P'}

@@ -1,0 +1,17 @@
+{
+    "version": "0.01",
+    "description": "Plugin for Yealink T46G in version 71.0.",
+    "description_fr": "Greffon pour Yealink T46G en version 71.0.",
+    "vendor" : "Yealink",
+    "vendor.url" : "http://www.yealink.com",
+    "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
+    "vendor.official" : 1,
+    "capabilities": {
+        "Yealink, T46G, 28.71.0.81": {
+            "sip.lines": 2,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 8,
+            "xivo.tested" : 0
+        }
+    }
+}
