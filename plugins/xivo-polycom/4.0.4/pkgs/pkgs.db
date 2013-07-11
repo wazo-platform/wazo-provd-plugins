@@ -9,7 +9,7 @@ install: polycom-sipapp
 description: Upgrader
 description_fr: Upgrader
 version: 4.4.0
-files: upgrader-bootrom 
+files: upgrader-bootrom
 install: polycom-upgrader
 
 
