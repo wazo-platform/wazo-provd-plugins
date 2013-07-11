@@ -243,19 +243,6 @@ class BasePolycomPlugin(StandardPlugin):
         raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'),
                                                                   self._SIP_TRANSPORT_DEF)
 
-    def _strip_pem_cert(self, pem_cert):
-        # Remove the header/footer of a pem certificate and return only the
-        # base64 encoded part of the certificate.
-        return pem_cert.replace('\n', '')[len('-----BEGIN CERTIFICATE-----'):
-                                          -len('-----END CERTIFICATE-----')]
-
-    def _add_custom_cert(self, raw_config):
-        if u'sip_servers_root_and_intermediate_certificates' in raw_config:
-            # Note that there's must be 1 and only 1 certificate in pem_cert,
-            # i.e. list of certificates isn't accepted, but is not checked...
-            pem_cert = raw_config[u'sip_servers_root_and_intermediate_certificates']
-            raw_config[u'XX_custom_cert'] = self._strip_pem_cert(pem_cert)
-
     def _update_sip_lines(self, raw_config):
         proxy_ip = raw_config.get(u'sip_proxy_ip')
         proxy_port = raw_config.get(u'sip_proxy_port', u'')
@@ -294,7 +281,6 @@ class BasePolycomPlugin(StandardPlugin):
         self._add_fkeys(raw_config, device.get(u'model'))
         self._add_syslog_level(raw_config)
         self._add_sip_transport(raw_config)
-        self._add_custom_cert(raw_config)
         self._update_sip_lines(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
