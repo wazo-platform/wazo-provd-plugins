@@ -5,6 +5,13 @@ version: 4.0.4.2906
 files: software
 install: polycom-software
 
+[pkg_updater]
+description: Updater for IP6000 and IP7000
+description_fr: Updater pour IP6000 et IP7000
+version: 5.0.3.1167
+files: updater
+install: polycom-updater
+
 [pkg_upgrader]
 description: Upgrader
 description_fr: Upgrader
@@ -17,6 +24,9 @@ install: polycom-upgrader
 a-b: unzip $FILE1
 b-c: cp */*.ld */SoundPointIPLocalization ./
 
+[install_polycom-updater]
+a-b: unzip $FILE1
+
 [install_polycom-upgrader]
 a-b: unzip $FILE1
 
@@ -25,6 +35,11 @@ a-b: unzip $FILE1
 url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_4_0_4_release_sig_split.zip
 size: 204557203
 sha1sum: 9050e3a1c73ad3645093a69cc8459f4d94b5f745
+
+[file_updater]
+url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Updater_5_0_3_release_sig.zip
+size: 12964727
+sha1sum: 9d07a7b38fbd096faaed72a6c08a35f15ea24cc8
 
 [file_upgrader]
 url: http://downloads.polycom.com/voice/voip/uc/SoundPoint_IP_BootROM_4_4_0B_Upgrader_release_sig.zip
