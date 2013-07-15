@@ -15,7 +15,7 @@ MODELS = [
     u'SSIP5000',
     u'SSIP6000',
     u'SSIP7000',
-    u'VVX1500'
+    u'VVX1500',
 ]
 VERSION = u'4.0.4.2906'
 
