@@ -29,15 +29,6 @@ device.syslog.transport="0"
 device.syslog.renderLevel="1"
 {% endif -%}
 
-device.sec.SSL.certList.set="1"
-{% if XX_custom_cert -%}
-device.sec.SSL.certList="custom"
-device.sec.SSL.customCert.set="1"
-device.sec.SSL.customCert="{{ XX_custom_cert }}"
-{% else -%}
-device.sec.SSL.certList="default"
-{% endif -%}
-
 {% if sip_srtp_mode == 'disabled' -%}
 sec.srtp.enable="0"
 sec.srtp.offer="0"

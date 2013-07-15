@@ -1,13 +1,5 @@
 # -*- coding: UTF-8 -*-
 
-"""Common code shared by the the various xivo-polycom plugins.
-
-Support the IP301, IP320, IP321, IP330, IP331, IP335, IP430, IP450, IP501,
-IP550, IP560, IP600, IP601, IP650, IP670, IP4000, IP5000, IP6000, IP7000 and
-VVX1500.
-
-"""
-
 __license__ = """
     Copyright (C) 2010-2011  Avencall
 
@@ -24,8 +16,6 @@ __license__ = """
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
-
-# TODO add DHCP device info extractor ? (see admin guide p.374)
 
 import logging
 import re
@@ -74,11 +64,10 @@ class BasePolycomHTTPDeviceInfoExtractor(object):
         # HTTP User-Agent:
         #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/3.2.1.0078" (SPIP335 3.2.1.0078/4.2.1.0275)
         #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/4.2.1.0275" (SPIP335 3.2.1.0078/4.2.1.0275)
-        #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/3.2.3.1734" (SPIP335 3.2.3.1734/4.2.2.0710)
-        #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/4.2.2.0710" (SPIP335 3.2.3.1734/4.2.2.0710)
         #   "FileTransport PolycomSoundPointIP-SPIP_450-UA/3.2.3.1734" (SPIP450 3.2.3.1734/4.2.2.0710)
         #   "FileTransport PolycomSoundPointIP-SPIP_550-UA/3.2.3.1734" (SPIP335 3.2.3.1734/4.2.2.0710)
-        #   "FileTransport PolycomSoundPointIP-SPIP_331-UA/4.0.4.2906 Type/Application" (SPIP331 4.0.4.2906/4.4.0)
+        #   "FileTransport PolycomSoundStationIP-SSIP_6000-UA/4.0.4.2906 Type/Application"
+        #   "FileTransport PolycomSoundStationIP-SSIP_6000-UA/5.0.3.1667 Type/Updater"
         m = self._UA_REGEX.match(ua)
         if m:
             dev_info[u'vendor'] = u'Polycom'
@@ -243,19 +232,6 @@ class BasePolycomPlugin(StandardPlugin):
         raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'),
                                                                   self._SIP_TRANSPORT_DEF)
 
-    def _strip_pem_cert(self, pem_cert):
-        # Remove the header/footer of a pem certificate and return only the
-        # base64 encoded part of the certificate.
-        return pem_cert.replace('\n', '')[len('-----BEGIN CERTIFICATE-----'):
-                                          -len('-----END CERTIFICATE-----')]
-
-    def _add_custom_cert(self, raw_config):
-        if u'sip_servers_root_and_intermediate_certificates' in raw_config:
-            # Note that there's must be 1 and only 1 certificate in pem_cert,
-            # i.e. list of certificates isn't accepted, but is not checked...
-            pem_cert = raw_config[u'sip_servers_root_and_intermediate_certificates']
-            raw_config[u'XX_custom_cert'] = self._strip_pem_cert(pem_cert)
-
     def _update_sip_lines(self, raw_config):
         proxy_ip = raw_config.get(u'sip_proxy_ip')
         proxy_port = raw_config.get(u'sip_proxy_port', u'')
@@ -294,7 +270,6 @@ class BasePolycomPlugin(StandardPlugin):
         self._add_fkeys(raw_config, device.get(u'model'))
         self._add_syslog_level(raw_config)
         self._add_sip_transport(raw_config)
-        self._add_custom_cert(raw_config)
         self._update_sip_lines(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)

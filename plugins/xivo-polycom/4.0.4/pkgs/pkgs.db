@@ -1,32 +1,47 @@
-[pkg_sipapp]
-description: SIP application and language files
-description_fr: Application SIP et fichiers de langue
+[pkg_software]
+description: UC software and language files
+description_fr: Logiciel UC et fichiers de langue
 version: 4.0.4.2906
-files: sipapp_split
-install: polycom-sipapp
+files: software
+install: polycom-software
+
+[pkg_updater]
+description: Updater for IP6000 and IP7000
+description_fr: Updater pour IP6000 et IP7000
+version: 5.0.3.1167
+files: updater
+install: polycom-updater
 
 [pkg_upgrader]
 description: Upgrader
 description_fr: Upgrader
-version: 4.4.0
-files: upgrader-bootrom 
+version: 4.4.0B
+files: upgrader
 install: polycom-upgrader
 
 
-[install_polycom-sipapp]
+[install_polycom-software]
 a-b: unzip $FILE1
 b-c: cp */*.ld */SoundPointIPLocalization ./
+
+[install_polycom-updater]
+a-b: unzip $FILE1
 
 [install_polycom-upgrader]
 a-b: unzip $FILE1
 
 
-[file_sipapp_split]
+[file_software]
 url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_4_0_4_release_sig_split.zip
 size: 204557203
 sha1sum: 9050e3a1c73ad3645093a69cc8459f4d94b5f745
 
-[file_upgrader-bootrom]
-url: http://downloads.polycom.com/voice/voip/uc/SoundPoint_IP_BootROM_4_4_0_Upgrader_release_sig.zip
-size: 9450531
-sha1sum: 9c57e348db3f97f042d5118510a1ac961bae6f84
+[file_updater]
+url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Updater_5_0_3_release_sig.zip
+size: 12964727
+sha1sum: 9d07a7b38fbd096faaed72a6c08a35f15ea24cc8
+
+[file_upgrader]
+url: http://downloads.polycom.com/voice/voip/uc/SoundPoint_IP_BootROM_4_4_0B_Upgrader_release_sig.zip
+size: 37060280
+sha1sum: 11f05d071b4c9fd974610fc0b6bb1894262fcde2
