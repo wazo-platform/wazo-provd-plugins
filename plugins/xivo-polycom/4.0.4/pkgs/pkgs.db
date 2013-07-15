@@ -1,19 +1,19 @@
-[pkg_sipapp]
-description: SIP application and language files
-description_fr: Application SIP et fichiers de langue
+[pkg_software]
+description: UC software and language files
+description_fr: Logiciel UC et fichiers de langue
 version: 4.0.4.2906
-files: sipapp_split
-install: polycom-sipapp
+files: software
+install: polycom-software
 
 [pkg_upgrader]
 description: Upgrader
 description_fr: Upgrader
 version: 4.4.0
-files: upgrader-bootrom
+files: upgrader
 install: polycom-upgrader
 
 
-[install_polycom-sipapp]
+[install_polycom-software]
 a-b: unzip $FILE1
 b-c: cp */*.ld */SoundPointIPLocalization ./
 
@@ -21,12 +21,12 @@ b-c: cp */*.ld */SoundPointIPLocalization ./
 a-b: unzip $FILE1
 
 
-[file_sipapp_split]
+[file_software]
 url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_4_0_4_release_sig_split.zip
 size: 204557203
 sha1sum: 9050e3a1c73ad3645093a69cc8459f4d94b5f745
 
-[file_upgrader-bootrom]
+[file_upgrader]
 url: http://downloads.polycom.com/voice/voip/uc/SoundPoint_IP_BootROM_4_4_0_Upgrader_release_sig.zip
 size: 9450531
 sha1sum: 9c57e348db3f97f042d5118510a1ac961bae6f84
