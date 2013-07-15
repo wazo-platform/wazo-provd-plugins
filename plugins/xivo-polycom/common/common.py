@@ -1,13 +1,5 @@
 # -*- coding: UTF-8 -*-
 
-"""Common code shared by the the various xivo-polycom plugins.
-
-Support the IP301, IP320, IP321, IP330, IP331, IP335, IP430, IP450, IP501,
-IP550, IP560, IP600, IP601, IP650, IP670, IP4000, IP5000, IP6000, IP7000 and
-VVX1500.
-
-"""
-
 __license__ = """
     Copyright (C) 2010-2011  Avencall
 
@@ -24,8 +16,6 @@ __license__ = """
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
-
-# TODO add DHCP device info extractor ? (see admin guide p.374)
 
 import logging
 import re
