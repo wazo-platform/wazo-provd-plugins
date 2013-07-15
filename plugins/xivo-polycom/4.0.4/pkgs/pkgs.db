@@ -8,7 +8,7 @@ install: polycom-software
 [pkg_upgrader]
 description: Upgrader
 description_fr: Upgrader
-version: 4.4.0
+version: 4.4.0B
 files: upgrader
 install: polycom-upgrader
 
@@ -27,6 +27,6 @@ size: 204557203
 sha1sum: 9050e3a1c73ad3645093a69cc8459f4d94b5f745
 
 [file_upgrader]
-url: http://downloads.polycom.com/voice/voip/uc/SoundPoint_IP_BootROM_4_4_0_Upgrader_release_sig.zip
-size: 9450531
-sha1sum: 9c57e348db3f97f042d5118510a1ac961bae6f84
+url: http://downloads.polycom.com/voice/voip/uc/SoundPoint_IP_BootROM_4_4_0B_Upgrader_release_sig.zip
+size: 37060280
+sha1sum: 11f05d071b4c9fd974610fc0b6bb1894262fcde2
