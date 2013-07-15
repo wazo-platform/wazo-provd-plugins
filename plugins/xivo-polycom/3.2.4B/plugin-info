@@ -1,5 +1,5 @@
 {
-    "version": "0.1.14",
+    "version": "0.2",
     "description": "Plugin for Polycom IP320, IP321, IP330, IP331, IP335, IP430, IP450, IP550, IP560, IP650, IP670, IP5000, IP6000, IP7000 and VVX1500 in version 3.2.4.0267.",
     "description_fr": "Greffon pour Polycom IP320, IP321, IP330, IP331, IP335, IP430, IP450, IP550, IP560, IP650, IP670, IP5000, IP6000, IP7000 et VVX1500 en version 3.2.4.0267.",
     "capabilities": {
