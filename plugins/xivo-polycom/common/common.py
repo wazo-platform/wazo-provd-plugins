@@ -64,11 +64,10 @@ class BasePolycomHTTPDeviceInfoExtractor(object):
         # HTTP User-Agent:
         #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/3.2.1.0078" (SPIP335 3.2.1.0078/4.2.1.0275)
         #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/4.2.1.0275" (SPIP335 3.2.1.0078/4.2.1.0275)
-        #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/3.2.3.1734" (SPIP335 3.2.3.1734/4.2.2.0710)
-        #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/4.2.2.0710" (SPIP335 3.2.3.1734/4.2.2.0710)
         #   "FileTransport PolycomSoundPointIP-SPIP_450-UA/3.2.3.1734" (SPIP450 3.2.3.1734/4.2.2.0710)
         #   "FileTransport PolycomSoundPointIP-SPIP_550-UA/3.2.3.1734" (SPIP335 3.2.3.1734/4.2.2.0710)
-        #   "FileTransport PolycomSoundPointIP-SPIP_331-UA/4.0.4.2906 Type/Application" (SPIP331 4.0.4.2906/4.4.0)
+        #   "FileTransport PolycomSoundStationIP-SSIP_6000-UA/4.0.4.2906 Type/Application"
+        #   "FileTransport PolycomSoundStationIP-SSIP_6000-UA/5.0.3.1667 Type/Updater"
         m = self._UA_REGEX.match(ua)
         if m:
             dev_info[u'vendor'] = u'Polycom'
