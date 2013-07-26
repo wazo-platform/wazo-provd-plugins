@@ -6,14 +6,13 @@ files: spa8000fw
 install: cisco-zipfw
 
 
-
 [install_cisco-zipfw]
 a-b: unzip $FILE1
 b-c: cp *.bin firmware/
 
 
-
 [file_spa8000fw]
-url: https://secure-global.esd.cisco.com/files/swc/sec/4_SDSP_688502_1341980285918/1/SPA8000_6.1.11_FW.zip
+url: cisco:flowid=5964,mdfid=282414110,softwareid=282463187,release=6.1.11
 size: 2374167
 sha1sum: fa413ffdfa53423a69be748af7b70dbecda0d829
+downloader: cisco
