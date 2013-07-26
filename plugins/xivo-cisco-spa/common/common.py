@@ -1,9 +1,5 @@
 # -*- coding: UTF-8 -*-
 
-"""Common plugin code shared by the the various xivo-cisco-spa plugins.
-
-"""
-
 __license__ = """
     Copyright (C) 2010-2011  Avencall
 
