@@ -53,17 +53,16 @@ b-e: cp spa525_es_v* i18n/spa525_es.xml
 b-f: cp spa525_fr_* i18n/spa525_fr.xml
 
 
-
 [file_spa50x-30xfw]
 url: http://download.cisco.com/swc/esd/01/282724524/anon/SPA30x_SPA50x_7.5.4_FW.zip
 size: 8554906
 sha1sum: 98e7f3d31e147e207980ad31c9b17e43dcb4f765
 
 [file_spa50x-30xfw-trans]
-url: http://public.ciscosupport.eu/SPA30x_SPA50x_7-5-2b_FW.zip
+url: cisco:flowid=5301,mdfid=282724651,softwareid=282463651,release=7.5.2b
 size: 8434101
 sha1sum: b8ab481fdc8ae0a0cb27b6a3256c3c86bff8b023
-
+downloader: cisco
 
 [file_spa525fw]
 url: http://download.cisco.com/swc/esd/01/282414147/anon/SPA525G_7.5.4_FW.zip

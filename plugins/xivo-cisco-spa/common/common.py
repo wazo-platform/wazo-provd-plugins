@@ -1,9 +1,5 @@
 # -*- coding: UTF-8 -*-
 
-"""Common plugin code shared by the the various xivo-cisco-spa plugins.
-
-"""
-
 __license__ = """
     Copyright (C) 2010-2011  Avencall
 
@@ -283,9 +279,12 @@ class BaseCiscoPlugin(StandardPlugin):
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
         downloaders = FetchfwPluginHelper.new_downloaders(gen_cfg.get('proxies'))
-        fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
+        if 'cisco' not in downloaders:
+            logger.warning('cisco downloader not found (xivo is probably not up to date); not loading plugin packages')
+        else:
+            fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
+            self.services = fetchfw_helper.services()
 
-        self.services = fetchfw_helper.services()
         self.http_service = BaseCiscoHTTPHookService(HTTPNoListingFileService(self._tftpboot_dir), self)
         self.tftp_service = TFTPFileService(self._tftpboot_dir)
 

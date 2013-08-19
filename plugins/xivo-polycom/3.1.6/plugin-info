@@ -1,5 +1,5 @@
 {
-    "version": "0.1.14",
+    "version": "0.2",
     "description": "Plugin for Polycom IP301, IP501, IP600, IP601 and IP4000 in version 3.1.6.0017.",
     "description_fr": "Greffon pour Polycom IP301, IP501, IP600, IP601 et IP4000 en version 3.1.6.0017.",
     "capabilities": {
