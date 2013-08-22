@@ -23,6 +23,8 @@
         allow members of "CiscoCP-7906G";
         allow members of "CiscoCP-7911G";
         allow members of "CiscoCP-7912G";
+        allow members of "CiscoCP-7920";
+        allow members of "CiscoCP-7921G";
         allow members of "CiscoCP-7931G";
         allow members of "CiscoCP-7940G";
         allow members of "CiscoCP-7941G";
