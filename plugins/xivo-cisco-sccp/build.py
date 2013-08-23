@@ -18,7 +18,6 @@
 # Depends on the following external programs:
 #  -rsync
 
-import os.path
 from subprocess import check_call
 
 
@@ -41,9 +40,18 @@ def build_9_0_3(path):
 
 
 @target('legacy', 'xivo-cisco-sccp-legacy')
-def build__legacy(path):
+def build_legacy(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'legacy/', path])
+
+
+@target('wireless-1.4.5', 'xivo-cisco-sccp-wireless-1.4.5')
+def build_wireless(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'wireless-1.4.5/', path])

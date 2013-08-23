@@ -57,7 +57,7 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
 
-    _VDI_REGEX = re.compile(r'IP Phone (?:79(\d\d)|CP-79(\d\d)G|CP-(\d\d\d\d))')
+    _VDI_REGEX = re.compile(r'\bPhone (?:79(\d\d)|CP-79(\d\d)G|CP-(\d\d\d\d))')
 
     def _do_extract(self, request):
         options = request[u'options']
@@ -73,13 +73,18 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
         #   "Cisco Systems, Inc. IP Phone CP-7960G\x00" (Cisco 7960 8.1.2)
         #   "Cisco Systems, Inc. IP Phone CP-8961\x00" (Cisco 8961 9.1.2)
         #   "Cisco Systems, Inc. IP Phone CP-9951\x00" (Cisco 9951 9.1.2)
-        if vdi.startswith('Cisco Systems, Inc.'):
+        #   "Cisco Systems Inc. Wireless Phone 7921"
+        if vdi.startswith('Cisco Systems'):
             dev_info = {u'vendor':  u'Cisco'}
             m = self._VDI_REGEX.search(vdi)
             if m:
                 _7900_modelnum = m.group(1) or m.group(2)
                 if _7900_modelnum:
-                    dev_info[u'model'] = u'79%sG' % _7900_modelnum
+                    if _7900_modelnum == '20':
+                        fmt = u'79%s'
+                    else:
+                        fmt = u'79%sG'
+                    dev_info[u'model'] = fmt % _7900_modelnum
                 else:
                     model_num = m.group(3)
                     dev_info[u'model'] = model_num.decode('ascii')

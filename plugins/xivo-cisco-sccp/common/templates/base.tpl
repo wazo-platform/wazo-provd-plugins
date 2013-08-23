@@ -26,6 +26,9 @@
    {% endfor -%}
    </members>
   </callManagerGroup>
+  <srstInfo>
+   <srstOption>Disable</srstOption>
+  </srstInfo>
  </devicePool>
  <versionStamp>{Dec 17 2010 16:03:58}</versionStamp>
  <loadInformation>{% block loadInformation %}{% endblock %}</loadInformation>
