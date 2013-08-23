@@ -18,13 +18,10 @@
 common = {}
 execfile_('common.py', common)
 
-
 MODELS = [u'7921G']
-VERSION = u'1.4.5/SCCP'
-MODEL_VERSION = dict((m, VERSION) for m in MODELS)
 
 
 class CiscoSccpPlugin(common['BaseCiscoSccpPlugin']):
     IS_PLUGIN = True
 
-    pg_associator = common['BaseCiscoPgAssociator'](MODEL_VERSION)
+    pg_associator = common['BaseCiscoPgAssociator'](MODELS)

@@ -22,7 +22,7 @@ from provd import synchronize
 from provd import tzinform
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT, \
-    NO_SUPPORT, FULL_SUPPORT, COMPLETE_SUPPORT, PROBABLE_SUPPORT
+    NO_SUPPORT, COMPLETE_SUPPORT, PROBABLE_SUPPORT
 from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
     TemplatePluginHelper
 from provd.servers.tftp.service import TFTPFileService
@@ -33,8 +33,8 @@ logger = logging.getLogger('plugin.xivo-cisco')
 
 
 class BaseCiscoPgAssociator(BasePgAssociator):
-    def __init__(self, model_version):
-        self._model_version = model_version
+    def __init__(self, models):
+        self._models = models
 
     def _do_associate(self, vendor, model, version):
         if vendor == u'Cisco':
@@ -42,12 +42,9 @@ class BaseCiscoPgAssociator(BasePgAssociator):
                 # when model is None, give a score slightly higher than
                 # xivo-cisco-spa plugins
                 return PROBABLE_SUPPORT + 10
-            assert model is not None
             if model.startswith(u'SPA'):
                 return NO_SUPPORT
-            if model in self._model_version:
-                if version == self._model_version[model]:
-                    return FULL_SUPPORT
+            if model in self._models:
                 return COMPLETE_SUPPORT
             return PROBABLE_SUPPORT
         return IMPROBABLE_SUPPORT
