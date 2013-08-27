@@ -9,8 +9,8 @@ from shutil import copy
 from subprocess import check_call
 
 
-@target('8.7.3.15', 'xivo-snom-8.7.3.15')
-def build_8_7_3_15(path):
+@target('8.7.3.19', 'xivo-snom-8.7.3.19')
+def build_8_7_3_19(path):
     MODELS = [('300', 'f'),
               ('320', 'f'),
               ('360', 'f'),
@@ -31,7 +31,7 @@ def build_8_7_3_15(path):
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
         model_tpl = os.path.join(path, 'templates', 'common', 'snom%s-firmware.xml.tpl' % model)
-        sed_script = 's/#FW_FILENAME#/snom%s-8.7.3.15-SIP-%s.bin/' % (model, fw_suffix)
+        sed_script = 's/#FW_FILENAME#/snom%s-8.7.3.19-SIP-%s.bin/' % (model, fw_suffix)
         with open(model_tpl, 'wb') as f:
             check_call(['sed', sed_script, 'common/templates/common/snom-model-firmware.xml.tpl.btpl'],
                        stdout=f)
@@ -51,7 +51,8 @@ def build_8_7_3_15(path):
                        stdout=f)
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '8.7.3.15/', path])
+                '8.7.3.19/', path])
+
 
 @target('8.7.4.8', 'xivo-snom-8.7.4.8')
 def build_8_7_4_8(path):
