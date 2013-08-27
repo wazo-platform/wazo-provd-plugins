@@ -36,7 +36,7 @@
         "Snom, MP, 8.7.3.19": {
             "sip.lines": 12
         },
-        "Snom, PA1, 8.4.35": {
+        "Snom, PA1, 8.7.3.19": {
             "sip.lines": 1
         }
     }
