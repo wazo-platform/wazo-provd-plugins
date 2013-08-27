@@ -12,6 +12,13 @@ version: 8.0.4
 files: 7912-fw
 install: cisco-unified-fw
 
+[pkg_7920-fw]
+description: Firmware for Cisco 7920
+description_fr: Micrologiciel pour Cisco 7920
+version: 3.0.2
+files: 7920-fw
+install: cisco-bin
+
 [pkg_7940-7960-fw]
 description: Firmware for Cisco 7940G and 7960G
 description_fr: Micrologiciel pour Cisco 7940G et 7960G
@@ -49,6 +56,9 @@ install: cisco-userlocale
 
 
 
+[install_cisco-bin]
+a-b: include *
+
 [install_cisco-unified-fw]
 a-b: unzip $FILE1
 
@@ -81,6 +91,13 @@ sha1sum: c68b1ddddc06ab7bc85eef2a5956d6a58844d700
 url: http://download-sj.cisco.com/swc/esd/02/278115698/contract/cmterm-7912G-sccp.8-0-4.zip
 size: 339004
 sha1sum: 5c93605519fb691690b3c1eefc67127e85497892
+
+[file_7920-fw]
+; Released on May 2007
+filename: cmterm_7920.4.0-03-02.bin
+url:
+size: 1155568
+sha1sum: 3e931a56e998f19b3623ad09b5a2f6a8e7492ce4
 
 [file_7940-7960-fw]
 ; Released on August 2009
