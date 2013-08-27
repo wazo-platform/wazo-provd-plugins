@@ -18,7 +18,7 @@
 common = {}
 execfile_('common.py', common)
 
-MODELS = [u'7905G', u'7912G', u'7920', '7940G', u'7960G']
+MODELS = [u'7921G']
 
 
 class CiscoSccpPlugin(common['BaseCiscoSccpPlugin']):

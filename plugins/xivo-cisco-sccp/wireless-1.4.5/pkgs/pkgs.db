@@ -1,0 +1,59 @@
+[pkg_7921-fw]
+description: Firmware for Cisco 7921G
+description_fr: Micrologiciel pour Cisco 7921G
+version: 1.4.5
+files: 7921-fw
+install: cisco-unified-fw
+
+[pkg_networklocale]
+description: Network locale
+description_fr: Locale réseau
+version: 9.0.2
+files: networklocale
+install: cisco-networklocale
+
+[pkg_userlocale_fr_FR]
+description: fr_FR user locale
+description_fr: Locale utilisateur fr_FR
+version: 9.0.2
+files: userlocale_fr_FR
+install: cisco-userlocale
+
+
+
+[install_cisco-unified-fw]
+a-b: unzip $FILE1
+
+[install_cisco-networklocale]
+a-b: unsign $FILE1 f.tgz
+b-c: untar f.tgz
+c-d: untar *.tar
+d-e: cp usr/local/cm/tftp/canada
+        usr/local/cm/tftp/france
+        usr/local/cm/tftp/germany
+        usr/local/cm/tftp/spain
+        i18n/
+
+[install_cisco-userlocale]
+a-b: unsign $FILE1 f.tgz
+b-c: untar f.tgz
+c-d: untar *.tar
+d-e: cp usr/local/cm/tftp/* i18n/
+
+
+
+[file_7921-fw]
+filename: cmterm-7921-sccp.1-4-5-3.zip
+url:
+size: 11008509
+sha1sum: 38c0a168519e328d5adb93d31467ea966e89ba12
+
+[file_networklocale]
+url: http://download.cisco.com/swc/esd/05/268437897/contract/po-locale-combined_network-9.0.2.1000-1.cop.sgn
+size: 9351296
+sha1sum: f08e688de664d7e6d4fb19377cc057e5fc251d1d
+
+[file_userlocale_fr_FR]
+url: http://download.cisco.com/swc/esd/05/268437897/contract/po-locale-fr_FR-9.0.2.1000-1.cop.sgn
+size: 4397839
+sha1sum: 326407685f6950e6d4b06c692a2243a218aaf62e

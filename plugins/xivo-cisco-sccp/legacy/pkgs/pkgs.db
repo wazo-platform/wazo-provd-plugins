@@ -12,6 +12,13 @@ version: 8.0.4
 files: 7912-fw
 install: cisco-unified-fw
 
+[pkg_7920-fw]
+description: Firmware for Cisco 7920
+description_fr: Micrologiciel pour Cisco 7920
+version: 3.0.2
+files: 7920-fw
+install: cisco-bin
+
 [pkg_7940-7960-fw]
 description: Firmware for Cisco 7940G and 7960G
 description_fr: Micrologiciel pour Cisco 7940G et 7960G
@@ -49,6 +56,9 @@ install: cisco-userlocale
 
 
 
+[install_cisco-bin]
+a-b: include *
+
 [install_cisco-unified-fw]
 a-b: unzip $FILE1
 
@@ -70,23 +80,11 @@ d-e: cp usr/local/cm/tftp/* i18n/
 
 
 
-[file_7902-fw]
-; Released on June 2006
-url: http://download-sj.cisco.com/swc/esd/02/278078615/contract/cmterm-7902G-sccp.8-0-2.zip
-size: 329363
-sha1sum: 691fb351d9228bd193dcb78cb1e7ddec73ccf835
-
 [file_7905-fw]
 ; Released on April 2007
 url: http://download-sj.cisco.com/swc/esd/02/273941556/contract/cmterm-7905G-sccp.8-0-3.zip
 size: 673168
 sha1sum: c68b1ddddc06ab7bc85eef2a5956d6a58844d700
-
-[file_7910-fw]
-; Released on May 2005
-url: http://download-sj.cisco.com/swc/esd/02/274382152/contract/cmterm-7910-sccp.5-0-7.zip
-size: 592359
-sha1sum: b1b640d14b925e9746953c761a2b9218d0248b52
 
 [file_7912-fw]
 ; Released on January 2008
@@ -94,26 +92,18 @@ url: http://download-sj.cisco.com/swc/esd/02/278115698/contract/cmterm-7912G-scc
 size: 339004
 sha1sum: 5c93605519fb691690b3c1eefc67127e85497892
 
+[file_7920-fw]
+; Released on May 2007
+filename: cmterm_7920.4.0-03-02.bin
+url:
+size: 1155568
+sha1sum: 3e931a56e998f19b3623ad09b5a2f6a8e7492ce4
+
 [file_7940-7960-fw]
 ; Released on August 2009
 url: http://download.cisco.com/swc/esd/05/268437897/guest/cmterm-7940-7960-sccp.8-1-2.zip
 size: 701384
 sha1sum: bdd4acc78d947ee0e50af88917d622b3fba3c545
-
-[file_7914-fw]
-url: http://download-sj.cisco.com/swc/esd/02/272881679/contract/cmterm-7914-sccp.5-0-4.zip
-size: 26206
-sha1sum: 187c5628874db55950a058480b9aa2ec3fdabd72
-
-[file_7915-fw]
-url: http://download-sj.cisco.com/swc/esd/03/282159701/contract/cmterm-7915.1-0-4.zip
-size: 64899
-sha1sum: 3897cb03c3cd76e031375b52a2275aa5d82a1674
-
-[file_7916-fw]
-url: http://download-sj.cisco.com/swc/esd/03/282159702/contract/cmterm-7916.1-0-4.zip
-size: 76859
-sha1sum: 4643db66e2c8b1800eee1ca110297b01c481bbcc
 
 [file_networklocale]
 url: http://download-sj.cisco.com/swc/esd/03/268437897/contract/po-locale-combined_network-9.0.2.1000-1.cop.sgn
