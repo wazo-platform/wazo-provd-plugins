@@ -102,63 +102,63 @@ b-c: cp * i18n/
 
 [file_300-fw]
 url: http://provisioning.snom.com/download/fw/snom300-8.7.3.19-SIP-f.bin
-size: 3317940
-sha1sum: 95c24605c78f6512e5f9ad1ca3e030ddf1584705
+size: 3333036
+sha1sum: 0aa7a6ecc624165dec21a584da8d8a94ac7b2235
 
 [file_320-fw]
 url: http://provisioning.snom.com/download/fw/snom320-8.7.3.19-SIP-f.bin
-size: 3318600
-sha1sum: 529a14418c0f47d716fca35b0986f35e26b3945d
+size: 3335552
+sha1sum: 18a7e300009418e0e7e12f64e64ac567c38a719f
 
 [file_360-fw]
 url: http://provisioning.snom.com/download/fw/snom360-8.7.3.19-SIP-f.bin
-size: 3338444
-sha1sum: f4d060a1828aecbf15fd7b955319a4e531eaf145
+size: 3349096
+sha1sum: ab847fe68af39c1a4bc74fc4e789ff9a41a7b76e
 
 [file_370-fw]
 url: http://provisioning.snom.com/download/fw/snom370-8.7.3.19-SIP-f.bin
-size: 6517480
-sha1sum: 28d59856057bfd8d7ffbda7caeb9c22f2e9a5bbc
+size: 6530628
+sha1sum: a6263e46866a3409771b1736335daf5dea7edcfe
 
 [file_710-fw]
 url: http://provisioning.snom.com/download/fw/snom710-8.7.3.19-SIP-r.bin
-size: 14082320
-sha1sum: 46599833f164d450044187502470ba44658487ab
+size: 14136208
+sha1sum: 677d9e5befd0cdb82eafe7c10ed41869c7b5a345
 
 [file_720-fw]
 url: http://provisioning.snom.com/download/fw/snom720-8.7.3.19-SIP-r.bin
-size: 24653712
-sha1sum: eb46319141c829f5b0c083e4318154d1c507083c
+size: 24712720
+sha1sum: c2cdbca94410787fd00cf5bdba4ed21f31b5b931
 
 [file_760-fw]
 url: http://provisioning.snom.com/download/fw/snom760-8.7.3.19-SIP-r.bin
-size: 28089456
-sha1sum: 76f7462978f6c8590379268c370761baaca0da22
+size: 28144112
+sha1sum: 8ec2a10fe121a7f1f0cdac94ce3d3d7343a71d1d
 
 [file_820-fw]
 url: http://provisioning.snom.com/download/fw/snom820-8.7.3.19-SIP-r.bin
-size: 36286448
-sha1sum: dd286fe6a1475359c0a9850d5cd92d38d828928b
+size: 36342768
+sha1sum: 3c7c2ed440792d8d8aad8c8b3b8910fa5ab80780
 
 [file_821-fw]
 url: http://provisioning.snom.com/download/fw/snom821-8.7.3.19-SIP-r.bin
-size: 25547584
-sha1sum: 5cf18399b9b019b593e92085a79307ddb2ab264b
+size: 25601664
+sha1sum: 3cf4e2a2077d6cda0fdd94b2d6c66556e1125bfb
 
 [file_870-fw]
 url: http://provisioning.snom.com/download/fw/snom870-8.7.3.19-SIP-r.bin
-size: 26576512
-sha1sum: 32317af586dd27817629ee255d96c41858c991bc
+size: 26629696
+sha1sum: 635e96fea1320735d2bb5f89afc9a8abf19d4c69
 
 [file_MP-fw]
 url: http://provisioning.snom.com/download/fw/snomMP-8.7.3.19-SIP-r.bin
-size: 17017056
-sha1sum: 23cbf48f2ca437055fdc45afff825eec21eab57b
+size: 17068048
+sha1sum: 0b8b3396e19b9fed7f26fb11033c518edbcc44c2
 
 [file_PA1-fw]
 url: http://provisioning.snom.com/download/fw/snomPA1-8.7.3.19-SIP-f.bin
-size: 3382540
-sha1sum: 33ae55c31f8b6e24253ec2bd99dc54df03e59e7b
+size: 3398104
+sha1sum: 69509c19d211a1591cffca9ac03a19fcdb533994
 
 [file_lang]
 url: http://fox.snom.com/config/snomlang-8.7.4.zip
