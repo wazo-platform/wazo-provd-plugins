@@ -22,7 +22,7 @@ install: polycom-upgrader
 
 [install_polycom-software]
 a-b: unzip $FILE1
-b-c: cp */*.ld */SoundPointIPLocalization ./
+b-c: include *.ld SoundPointIPLocalization
 
 [install_polycom-updater]
 a-b: unzip $FILE1
@@ -33,8 +33,8 @@ a-b: unzip $FILE1
 
 [file_software]
 url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_4_0_4_release_sig_split.zip
-size: 204557203
-sha1sum: 9050e3a1c73ad3645093a69cc8459f4d94b5f745
+size: 204579941
+sha1sum: 642207002c824777dd59d7d20cc4c4cbfc436883
 
 [file_updater]
 url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Updater_5_0_3_release_sig.zip
