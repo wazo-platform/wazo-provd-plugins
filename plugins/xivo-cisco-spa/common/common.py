@@ -255,6 +255,7 @@ class BaseCiscoPlugin(StandardPlugin):
         u'SPA504G': (4, 2),
         u'SPA508G': (8, 2),
         u'SPA509G': (12, 2),
+        u'SPA514G': (12, 2),
         u'SPA525G': (5, 2),
         u'SPA525G2': (5, 2)
     }
