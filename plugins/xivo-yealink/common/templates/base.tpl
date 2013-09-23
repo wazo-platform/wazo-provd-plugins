@@ -53,6 +53,7 @@ account.{{ line['XX_line_no'] }}.auth_name = {{ line['auth_username'] }}
 account.{{ line['XX_line_no'] }}.user_name = {{ line['username'] }}
 account.{{ line['XX_line_no'] }}.password = {{ line['password'] }}
 account.{{ line['XX_line_no'] }}.sip_server_host = {{ line['proxy_ip'] }}
+account.{{ line['XX_line_no'] }}.cid_source = 2
 
 {% if line['XX_dtmf_inband_transfer'] -%}
 account.{{ line['XX_line_no'] }}.dtmf.type = {{ line['XX_dtmf_inband_transfer'] }}
