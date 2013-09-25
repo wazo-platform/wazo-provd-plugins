@@ -68,6 +68,7 @@ class BasePolycomHTTPDeviceInfoExtractor(object):
         #   "FileTransport PolycomSoundPointIP-SPIP_550-UA/3.2.3.1734" (SPIP335 3.2.3.1734/4.2.2.0710)
         #   "FileTransport PolycomSoundStationIP-SSIP_6000-UA/4.0.4.2906 Type/Application"
         #   "FileTransport PolycomSoundStationIP-SSIP_6000-UA/5.0.3.1667 Type/Updater"
+        #   "FileTransport PolycomVVX-VVX_400-UA/4.1.4.7430 Type/Application"
         m = self._UA_REGEX.match(ua)
         if m:
             dev_info[u'vendor'] = u'Polycom'
@@ -115,6 +116,8 @@ class BasePolycomPlugin(StandardPlugin):
         u'SPIP560': 3,
         u'SPIP650': 47,
         u'SPIP670': 47,
+        u'VVX400': 12,
+        u'VVX500': 12,
     }
     _LOCALE = {
         u'de_DE': u'German_Germany',
