@@ -116,8 +116,13 @@ class BasePolycomPlugin(StandardPlugin):
         u'SPIP560': 3,
         u'SPIP650': 47,
         u'SPIP670': 47,
+        u'VVX300': 6,
+        u'VVX310': 6,
         u'VVX400': 12,
+        u'VVX410': 12,
         u'VVX500': 12,
+        u'VVX600': 16,
+        u'VVX1500': 6,
     }
     _LOCALE = {
         u'de_DE': u'German_Germany',
