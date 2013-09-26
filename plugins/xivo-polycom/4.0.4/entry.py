@@ -16,7 +16,7 @@ MODELS = [
     u'SSIP6000',
     u'SSIP7000',
 ]
-VERSION = u'4.1.0.84959'
+VERSION = u'4.0.4.2906'
 
 
 class PolycomPlugin(common_globals['BasePolycomPlugin']):

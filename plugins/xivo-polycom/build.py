@@ -6,8 +6,8 @@
 from subprocess import check_call
 
 
-@target('4.1.0', 'xivo-polycom-4.1.0')
-def build_4_1_0(path):
+@target('4.0.4', 'xivo-polycom-4.0.4')
+def build_4_0_4(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '--include', '/templates/base.tpl',
                 '--include', '/templates/SPIP321.tpl',
@@ -25,7 +25,7 @@ def build_4_1_0(path):
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '4.1.0/', path])
+                '4.0.4/', path])
 
 @target('5.0.0', 'xivo-polycom-5.0.0')
 def build_5_0_0(path):
