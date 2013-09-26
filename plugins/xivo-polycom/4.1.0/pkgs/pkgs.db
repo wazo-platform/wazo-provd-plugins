@@ -22,7 +22,7 @@ install: polycom-upgrader
 
 [install_polycom-software]
 a-b: unzip $FILE1
-b-c: include *.ld SoundPointIPLocalization
+b-c: cp */*.ld */SoundPointIPLocalization ./
 
 [install_polycom-updater]
 a-b: unzip $FILE1
