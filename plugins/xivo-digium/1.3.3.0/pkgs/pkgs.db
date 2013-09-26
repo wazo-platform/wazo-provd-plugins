@@ -8,7 +8,7 @@ install: digium-fw
 
 [install_digium-fw]
 a-b: untar $FILE1
-b-c: cp */*.eff firmware/
+b-c: cp */*.eff Digium/firmware/
 
 
 [file_firmware]
