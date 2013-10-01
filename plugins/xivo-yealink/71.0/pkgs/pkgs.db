@@ -11,7 +11,7 @@ a-b: unzip $FILE1
 b-c: cp *.rom firmware/
 
 
-[file_W52P-fw]
+[file_T46G-fw]
 url: http://www.yealink.com/Upload/T4X/GA/28.71.0.155.zip
 size: 24817365
 sha1sum: ec956bb179c2e6ebbf2219359e1af5ba352ebee7

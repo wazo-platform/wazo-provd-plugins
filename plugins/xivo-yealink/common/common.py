@@ -177,6 +177,7 @@ class BaseYealinkPlugin(StandardPlugin):
         lines.append(u'memorykey.%s.line = %s' % (funckey_no, funckey_dict.get(u'line', 1) - 1))
         value = funckey_dict[u'value']
         lines.append(u'memorykey.%s.value = %s' % (funckey_no, value))
+        lines.append(u'memorykey.%s.label = %s' % (funckey_no, funckey_dict.get(u'label', u'')))
         lines.append(u'memorykey.%s.sub_type = blf' % funckey_no)
         if exten_pickup_call:
             lines.append(u'memorykey.%s.pickup_value = %s' % (funckey_no, exten_pickup_call))
