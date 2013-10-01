@@ -8,4 +8,3 @@
 <fkey idx="4" context="active" perm="R">transfer</fkey>
 <fkey idx="5" context="active" perm="R">keyevent F_MUTE</fkey>
 {% endblock %}
-
