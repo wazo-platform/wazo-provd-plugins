@@ -1,7 +1,7 @@
 [pkg_software]
 description: UC software and language files
 description_fr: Logiciel UC et fichiers de langue
-version: 5.0.0
+version: 5.0.0.6874
 files: software
 install: polycom-software
 
