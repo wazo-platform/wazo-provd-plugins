@@ -27,6 +27,7 @@ def build_4_0_4(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '4.0.4/', path])
 
+
 @target('5.0.0', 'xivo-polycom-5.0.0')
 def build_5_0_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
