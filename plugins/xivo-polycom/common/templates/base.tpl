@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!-- TODO check for VLAN priority and qos.ethernet.rtp.user_priority attribute
-     and how it fit with our less specific config model. -->
-<!-- FIXME usage of sip_lines.x.number in this template is against what the
-     config (see config.py) says, i.e. that it should be use only for display. -->
 <config
 
 device.set="1"
