@@ -32,9 +32,9 @@ a-b: unzip $FILE1
 
 
 [file_software]
-url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_4_0_4_release_sig_combined.zip
-size: 195864256
-sha1sum: 08a8f452d3b88b50dc152974a4f53cbe874876f3
+url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_4_0_4_release_sig_split.zip
+size: 204579941
+sha1sum: 642207002c824777dd59d7d20cc4c4cbfc436883
 
 [file_updater]
 url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Updater_5_0_3_release_sig.zip

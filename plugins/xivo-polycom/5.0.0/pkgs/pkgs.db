@@ -5,11 +5,13 @@ version: 5.0.0
 files: software
 install: polycom-software
 
+
 [install_polycom-software]
 a-b: unzip $FILE1
-b-c: include *.ld SoundPointIPLocalization
+b-c: cp */*.ld */SoundPointIPLocalization ./
+
 
 [file_software]
-url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_5_0_0_release_sig_combined.zip
-size: 224541537
-sha1sum: 936d379f32c7aeb4df3a33d5fc538dc9c885d7f8
+url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_5_0_0_release_sig_split.zip
+size: 447603943
+sha1sum: cd92cd092474b3651af20b68a25a787309d60ab6
