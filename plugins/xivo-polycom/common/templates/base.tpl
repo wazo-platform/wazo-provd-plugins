@@ -100,6 +100,11 @@ call.directedCallPickupString="{{ exten_pickup_call }}"
 
 {% if X_xivo_phonebook_ip -%}
 mb.main.home="http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/"
+
+softkey.1.enable="1"
+softkey.1.action="http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/"
+softkey.1.label="{{ XX_dict['remote_directory'] }}"
+softkey.1.use.idle="1"
 {% endif -%}
 
 {% block model_specific_parameters -%}

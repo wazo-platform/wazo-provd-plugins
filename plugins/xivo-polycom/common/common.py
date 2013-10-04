@@ -147,6 +147,15 @@ class BasePolycomPlugin(StandardPlugin):
         u'tls': u'TLS'
     }
     _SIP_TRANSPORT_DEF = u'UDPOnly'
+    _XX_DICT_DEF = u'en'
+    _XX_DICT = {
+        u'en': {
+            u'remote_directory': u'Directory',
+        },
+        u'fr': {
+            u'remote_directory': u'Annuaire',
+        },
+    }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -254,6 +263,15 @@ class BasePolycomPlugin(StandardPlugin):
             if voicemail:
                 line.setdefault(u'voicemail', voicemail)
 
+    def _gen_xx_dict(self, raw_config):
+        xx_dict = self._XX_DICT[self._XX_DICT_DEF]
+        if u'locale' in raw_config:
+            locale = raw_config[u'locale']
+            lang = locale.split('_', 1)[0]
+            if lang in self._XX_DICT:
+                xx_dict = self._XX_DICT[lang]
+        return xx_dict
+
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='')
@@ -279,6 +297,7 @@ class BasePolycomPlugin(StandardPlugin):
         self._add_syslog_level(raw_config)
         self._add_sip_transport(raw_config)
         self._update_sip_lines(raw_config)
+        raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
