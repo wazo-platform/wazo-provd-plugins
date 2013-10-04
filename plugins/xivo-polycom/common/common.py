@@ -226,7 +226,7 @@ class BasePolycomPlugin(StandardPlugin):
             funckey_type = funckey_dict[u'type']
             if funckey_type == u'speeddial':
                 logger.info('Polycom doesn\'t support non-supervised function keys')
-            elif funckey_type != u'blf':
+            elif funckey_type != u'blf' and funckey_type != u'park':
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
             keynum = int(funckey_no)
