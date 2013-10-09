@@ -3,17 +3,17 @@
 # Depends on the following external programs:
 #  -rsync
 
-from shutil import copy
 from subprocess import check_call
 
 
-@target('7.5.4', 'xivo-cisco-spa-7.5.4')
-def build_7_5_4(path):
+@target('7.5.5', 'xivo-cisco-spa-7.5.5')
+def build_7_5_5(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
     
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '7.5.4/', path])
+                '7.5.5/', path])
+
 
 @target('legacy', 'xivo-cisco-spa-legacy')
 def build_legacy(path):

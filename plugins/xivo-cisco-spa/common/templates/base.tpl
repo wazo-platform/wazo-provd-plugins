@@ -53,6 +53,7 @@
 <Dictionary_Server_Script></Dictionary_Server_Script>
 {% endblock -%}
 <Language_Selection>{{ XX_language }}</Language_Selection>
+<Locale>{{ XX_locale }}</Locale>
 {{ XX_timezone }}
 
 {% for line_no, line in sip_lines.iteritems() %}

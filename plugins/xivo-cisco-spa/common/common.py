@@ -251,21 +251,29 @@ class BaseCiscoPlugin(StandardPlugin):
         u'SPA962': (6, 2),
         u'SPA303': (3, 2),
         u'SPA501G': (8, 2),
-        u'SPA502G': (2, 2),
+        u'SPA502G': (0, 2),
         u'SPA504G': (4, 2),
         u'SPA508G': (8, 2),
         u'SPA509G': (12, 2),
-        u'SPA514G': (12, 2),
+        u'SPA512G': (0, 2),
+        u'SPA514G': (4, 2),
         u'SPA525G': (5, 2),
         u'SPA525G2': (5, 2)
     }
     _DEFAULT_LOCALE = u'en_US'
-    _LOCALE = {
+    _LANGUAGE = {
         u'de_DE': u'German',
         u'en_US': u'English',
         u'es_ES': u'Spanish',
         u'fr_FR': u'French',
         u'fr_CA': u'French',
+    }
+    _LOCALE = {
+        u'de_DE': u'de-DE',
+        u'en_US': u'en-US',
+        u'es_ES': u'es-ES',
+        u'fr_FR': u'fr-FR',
+        u'fr_CA': u'fr-CA',
     }
     _DIRECTORY_NAME = {
         u'en_US': u'XiVO Directory',
@@ -401,14 +409,20 @@ class BaseCiscoPlugin(StandardPlugin):
 
     def _add_language(self, raw_config):
         locale = raw_config.get(u'locale')
-        if locale in self._LOCALE:
-            raw_config[u'XX_language'] = self._LOCALE[locale]
+        if locale in self._LANGUAGE:
+            raw_config[u'XX_language'] = self._LANGUAGE[locale]
 
     def _add_directory_name(self, raw_config):
         locale = raw_config.get(u'locale')
         if locale not in self._DIRECTORY_NAME:
             locale = self._DEFAULT_LOCALE
         raw_config[u'XX_directory_name'] = self._DIRECTORY_NAME[locale]
+
+    def _add_locale(self, raw_config):
+        locale = raw_config.get(u'locale')
+        if locale not in self._LOCALE:
+            locale = self._DEFAULT_LOCALE
+        raw_config[u'XX_locale'] = self._LOCALE[locale]
 
     def _new_encryption_key(self):
         return b2a_hex(os.urandom(32))
@@ -437,6 +451,7 @@ class BaseCiscoPlugin(StandardPlugin):
         self._add_proxies(raw_config)
         self._add_language(raw_config)
         self._add_directory_name(raw_config)
+        self._add_locale(raw_config)
 
         update_device = False
         if raw_config.get(u'config_encryption_enabled'):

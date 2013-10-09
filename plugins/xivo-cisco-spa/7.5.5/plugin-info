@@ -1,0 +1,40 @@
+{
+    "version": "0.8",
+    "description": "Plugin for Cisco SMB SPA301, 303, 501G, 502G, 504G, 508G, 509G, 512G, 514G, 525G and 525G2 in version 7.5.5.",
+    "description_fr": "Greffon pour Cisco SMB SPA301, 303, 501G, 502G, 504G, 508G, 509G, 512G, 514G, 525G et 525G2 en version 7.5.5.",
+    "capabilities": {
+        "Cisco, SPA301, 7.5.5": {
+            "sip.lines": 1
+        },
+        "Cisco, SPA303, 7.5.5": {
+            "sip.lines": 3
+        },
+        "Cisco, SPA501G, 7.5.5": {
+            "sip.lines": 8
+        },
+        "Cisco, SPA502G, 7.5.5": {
+            "sip.lines": 1
+        },
+        "Cisco, SPA504G, 7.5.5": {
+            "sip.lines": 4
+        },
+        "Cisco, SPA508G, 7.5.5": {
+            "sip.lines": 8
+        },
+        "Cisco, SPA509G, 7.5.5": {
+            "sip.lines": 12
+        },
+        "Cisco, SPA512G, 7.5.5": {
+            "sip.lines": 1
+        },
+        "Cisco, SPA514G, 7.5.5": {
+            "sip.lines": 4
+        },
+        "Cisco, SPA525G, 7.5.5": {
+            "sip.lines": 5
+        },
+        "Cisco, SPA525G2, 7.5.5": {
+            "sip.lines": 5
+        }
+    }
+}

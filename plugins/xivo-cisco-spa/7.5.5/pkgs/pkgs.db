@@ -1,0 +1,75 @@
+[pkg_spa50x-30x-fw]
+description: Firmware for Cisco SPA50XG and SPA30XG
+description_fr: Micrologiciel pour Cisco SPA50XG et SPA30XG
+version: 7.5.5
+files: spa50x-30x-fw
+install: cisco-spa-fw
+
+[pkg_spa50x-30x-trans-fw]
+description: Firmware transition for Cisco SPA50XG and SPA30XG
+description_fr: Micrologiciel de transition pour Cisco SPA50XG et SPA30XG
+version: 7.5.2b
+files: spa50x-30x-fw-trans
+install: cisco-spa-fw
+
+[pkg_spa51x-fw]
+description: Firmware for Cisco SPA51XG
+description_fr: Micrologiciel pour Cisco SPA51XG
+version: 7.5.5
+files: spa51x-fw
+install: cisco-spa-fw
+
+[pkg_spa525-fw]
+description: Firmware for Cisco SPA525G and SPA525G2
+description_fr: Micrologiciel pour Cisco SPA525G et SPA525G2
+version: 7.5.5
+files: spa525-fw
+install: cisco-spa-fw
+
+[pkg_lang]
+description: Language files
+description_fr: Fichiers de langue
+version: 7.5.5
+files: lang
+install: cisco-lang
+
+
+[install_cisco-spa-fw]
+a-b: unzip $FILE1
+b-c: cp *.bin firmware/
+
+[install_cisco-lang]
+a-b: unzip $FILE1
+b-c: unzip *.zip
+c-d: cp *.xml i18n/
+
+
+[file_spa50x-30x-fw]
+url: cisco:flowid=5301,mdfid=282724651,softwareid=282463651,release=7.5.5
+size: 12795894
+sha1sum: 49702745dc0fdf637a2cbbea616f745cf6ca556a
+downloader: cisco
+
+[file_spa50x-30x-fw-trans]
+url: cisco:flowid=5301,mdfid=282724651,softwareid=282463651,release=7.5.2b
+size: 8434101
+sha1sum: b8ab481fdc8ae0a0cb27b6a3256c3c86bff8b023
+downloader: cisco
+
+[file_spa51x-fw]
+url: cisco:flowid=5301,mdfid=284274685,softwareid=282463651,release=7.5.5
+size: 14277156
+sha1sum: 97f8a1bf2e4f204abaeef2c0960a0e50063d76f2
+downloader: cisco
+
+[file_spa525-fw]
+url: cisco:flowid=5301,mdfid=282414147,softwareid=282463651,release=7.5.5
+size: 21907881
+sha1sum: b416fc8b02738a92744c250188c83ad0da0fe313
+downloader: cisco
+
+[file_lang]
+url: cisco:flowid=5301,mdfid=282724651,softwareid=282582477,release=7.5.5
+size: 1837445
+sha1sum: 97d141bb773abe759cc2b05b12254f9c59b23c76
+downloader: cisco

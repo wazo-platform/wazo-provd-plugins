@@ -3,9 +3,9 @@
 common_globals = {}
 execfile_('common.py', common_globals)
 
-PSN = [u'301', u'303', u'501G', u'502G', u'504G', u'508G', u'509G', u'514G', u'525G', u'525G2']
+PSN = [u'301', u'303', u'501G', u'502G', u'504G', u'508G', u'509G', u'512G', u'514G', u'525G', u'525G2']
 MODELS = [u'SPA' + psn for psn in PSN]
-MODEL_VERSION = dict((model, u'7.5.4') for model in MODELS)
+MODEL_VERSION = dict((model, u'7.5.5') for model in MODELS)
 
 
 class CiscoPlugin(common_globals['BaseCiscoPlugin']):
