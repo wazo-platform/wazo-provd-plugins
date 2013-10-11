@@ -39,6 +39,15 @@ def build_9_0_3(path):
                 '9.0.3/', path])
 
 
+@target('cipc-2.1.2', 'xivo-cisco-sccp-cipc-2.1.2')
+def build_cipc_2_1_2(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'cipc-2.1.2/', path])
+
+
 @target('legacy', 'xivo-cisco-sccp-legacy')
 def build_legacy(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',

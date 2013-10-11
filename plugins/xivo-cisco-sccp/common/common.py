@@ -89,12 +89,12 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
 
 
 class BaseCiscoTFTPDeviceInfoExtractor(object):
+    _CIPC_REGEX = re.compile(r'^Communicator[/\\]')
     _FILENAME_REGEXES = [
         re.compile(r'^SEP([\dA-F]{12})\.cnf\.xml$'),
         re.compile(r'^CTLSEP([\dA-F]{12})\.tlv$'),
         re.compile(r'^ITLSEP([\dA-F]{12})\.tlv$'),
         re.compile(r'^ITLFile\.tlv$'),
-        re.compile(r'^g3-tones\.xml$'),
     ]
 
     def extract(self, request, request_type):
@@ -103,6 +103,8 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
     def _do_extract(self, request):
         packet = request['packet']
         filename = packet['filename']
+        if self._CIPC_REGEX.match(filename):
+            return {u'vendor': u'Cisco', u'model': u'CIPC'}
         for regex in self._FILENAME_REGEXES:
             m = regex.match(filename)
             if m:
