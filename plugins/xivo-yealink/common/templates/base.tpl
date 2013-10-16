@@ -67,4 +67,22 @@ voice_mail.number.{{ line['XX_line_no'] }} = {{ line['voicemail'] }}
 
 {% endfor -%}
 
+distinctive_ring_tones.alert_info.1.text = ring1
+distinctive_ring_tones.alert_info.2.text = ring2
+distinctive_ring_tones.alert_info.3.text = ring3
+distinctive_ring_tones.alert_info.4.text = ring4
+distinctive_ring_tones.alert_info.5.text = ring5
+distinctive_ring_tones.alert_info.6.text = ring6
+distinctive_ring_tones.alert_info.7.text = ring7
+distinctive_ring_tones.alert_info.8.text = ring8
+
+distinctive_ring_tones.alert_info.1.ringer = 1
+distinctive_ring_tones.alert_info.2.ringer = 2
+distinctive_ring_tones.alert_info.3.ringer = 3
+distinctive_ring_tones.alert_info.4.ringer = 4
+distinctive_ring_tones.alert_info.5.ringer = 5
+distinctive_ring_tones.alert_info.6.ringer = 6
+distinctive_ring_tones.alert_info.7.ringer = 7
+distinctive_ring_tones.alert_info.8.ringer = 8
+
 {{ XX_fkeys }}
