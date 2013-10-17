@@ -90,14 +90,12 @@ files: lang
 install: snom-lang
 
 
-
 [install_snom-fw]
 a-b: cp $FILE1 firmware/
 
 [install_snom-lang]
 a-b: unzip $FILE1
 b-c: cp * i18n/
-
 
 
 [file_300-fw]
