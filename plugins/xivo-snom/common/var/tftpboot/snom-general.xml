@@ -13,13 +13,21 @@
 
     <retry_after_failed_register perm="R">120</retry_after_failed_register>
 
+    <date_us_format perm="R">off</date_us_format>
     <time_24_format perm="R">on</time_24_format>
+
+    <dialnumber_us_format perm="R">off</dialnumber_us_format>
+
+    <transfer_on_hangup perm="R">on</transfer_on_hangup>
+    <transfer_on_hangup_non_pots perm="R">on</transfer_on_hangup_non_pots>
+
     <display_method perm="R">display_name_number</display_method>
     <pnp_config perm="R">off</pnp_config>
     <update_policy perm="R">auto_update</update_policy>
+    <!-- force subscription_delay to default value, for migration purpose only -->
+    <subscription_delay perm="R">0</subscription_delay>
+
     <mwi_dialtone perm="R">normal</mwi_dialtone>
-    <subscription_delay perm="R">100</subscription_delay>
-    <mailbox_active perm="R">on</mailbox_active>
 
     <network_id_port perm="R">5060</network_id_port>
 
