@@ -57,12 +57,10 @@ class BaseSnomHTTPDeviceInfoExtractor(object):
         #   "Mozilla/4.0 (compatible; snom320-SIP 6.5.20; snom320 jffs2 v3.36; snom320 linux 3.38)"
         #   "Mozilla/4.0 (compatible; snom320-SIP 7.3.30 1.1.3-u)"
         #   "Mozilla/4.0 (compatible; snom320-SIP 8.4.18 1.1.3-s)"
-        #   "Mozilla/4.0 (compatible; snom820-SIP 8.4.18 1.1.4-IFX-26.11.09)"
-        #   "Mozilla/4.0 (compatible; snom870-SIP 8.3.6 SPEAr300 SNOM 1.4)"
-        #   "Mozilla/4.0 (compatible; snom870-SIP 8.4.18 SPEAr300 SNOM 1.4)"
+        #   "Mozilla/4.0 (compatible; snom710-SIP 8.7.3.19 1.1.5-IFX-05.01.12)"
+        #   "Mozilla/4.0 (compatible; snom760-SIP 8.7.3.19 2010.06)"
         #   "Mozilla/4.0 (compatible; snom820-SIP 8.4.35 1.1.4-IFX-26.11.09)"
         #   "Mozilla/4.0 (compatible; snom870-SIP 8.4.35 SPEAr300 SNOM 1.4)"
-        #   "Mozilla/4.0 (compatible; snomPA1-SIP 8.4.23 1.1.3-s)"
         #   "Mozilla/4.0 (compatible; snomPA1-SIP 8.4.35 1.1.3-s)"
         m = self._UA_REGEX.search(ua)
         if m:
@@ -124,6 +122,15 @@ class BaseSnomPlugin(StandardPlugin):
         u'RTP-in-band': u'off',
         u'RTP-out-of-band': u'off',
         u'SIP-INFO': u'sip_info_only'
+    }
+    _XX_DICT_DEF = u'en'
+    _XX_DICT = {
+        u'en': {
+            u'remote_directory': u'Directory',
+        },
+        u'fr': {
+            u'remote_directory': u'Annuaire',
+        },
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
