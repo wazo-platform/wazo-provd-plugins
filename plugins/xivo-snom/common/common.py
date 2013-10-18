@@ -249,6 +249,23 @@ class BaseSnomPlugin(StandardPlugin):
             cur_dtmf_mode = line.get(u'dtmf_mode', dtmf_mode)
             line[u'XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, u'off')
 
+    def _add_msgs_blocked(self, raw_config):
+        msgs_blocked = ''
+        for line_no, line in raw_config[u'sip_lines'].iteritems():
+            if line.get('backup_proxy_ip'):
+                backup_line_no = int(line_no) + 1
+                msgs_blocked += ' Identity%02dIsNotRegistered' % backup_line_no
+        raw_config['XX_msgs_blocked'] = msgs_blocked
+
+    def _gen_xx_dict(self, raw_config):
+        xx_dict = self._XX_DICT[self._XX_DICT_DEF]
+        if u'locale' in raw_config:
+            locale = raw_config[u'locale']
+            lang = locale.split('_', 1)[0]
+            if lang in self._XX_DICT:
+                xx_dict = self._XX_DICT[lang]
+        return xx_dict
+
     def _dev_specific_filenames(self, device):
         # Return a tuple (htm filename, xml filename)
         fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
@@ -278,6 +295,8 @@ class BaseSnomPlugin(StandardPlugin):
         self._add_lang(raw_config)
         self._add_timezone(raw_config)
         self._add_user_dtmf_info(raw_config)
+        self._add_msgs_blocked(raw_config)
+        raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
 
         path = os.path.join(self._tftpboot_dir, xml_filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
