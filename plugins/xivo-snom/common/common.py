@@ -186,7 +186,7 @@ class BaseSnomPlugin(StandardPlugin):
             for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
                                                    key=itemgetter(0)):
                 funckey_type = funckey_dict[u'type']
-                if funckey_type == u'speeddial':
+                if funckey_type == u'speeddial' or funckey_type == u'park':
                     type_ = u'speed'
                     suffix = ''
                 elif funckey_type == u'blf':
