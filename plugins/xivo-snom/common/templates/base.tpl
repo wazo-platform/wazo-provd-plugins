@@ -73,6 +73,10 @@
     {% endif -%}
 
     {{ XX_timezone }}
+
+    <status_msgs_that_are_blocked perm="R">PhoneHasVoiceMessages PhoneHasTextMessages{{ XX_msgs_blocked }}</status_msgs_that_are_blocked>
+
+    {% block settings_suffix %}{% endblock %}
   </phone-settings>
   <functionKeys>
     {% block fkeys_prefix %}{% endblock %}
