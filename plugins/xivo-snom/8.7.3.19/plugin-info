@@ -1,5 +1,5 @@
 {
-    "version": "0.9.9",
+    "version": "0.9.10",
     "description": "Plugin for Snom 3XX, 7XX, 8XX, MP and PA1 in version 8.7.3.19.",
     "description_fr": "Greffon pour Snom 3XX, 7XX, 8XX, MP et PA1 en version 8.7.3.19.",
     "capabilities": {
