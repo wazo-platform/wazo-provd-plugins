@@ -75,8 +75,8 @@ files: PA1-fw
 install: snom-fw
 
 [pkg_lang]
-description: Language files for Snom 3x0
-description_fr: Fichiers de langue pour Snom 3x0
+description: Language files
+description_fr: Fichiers de langue
 version: 8.7.4
 files: lang
 install: snom-lang
