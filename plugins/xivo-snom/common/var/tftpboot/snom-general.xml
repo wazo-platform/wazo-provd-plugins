@@ -28,6 +28,7 @@
     <subscription_delay perm="R">0</subscription_delay>
 
     <mwi_dialtone perm="R">normal</mwi_dialtone>
+    <cw_dialtone perm="R">off</cw_dialtone>
 
     <network_id_port perm="R">5060</network_id_port>
 
