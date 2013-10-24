@@ -5,6 +5,13 @@ version: 9.0.3
 files: 7906-7911-fw
 install: cisco-unified-fw
 
+[pkg_7931-fw]
+description: Firmware for Cisco 7931G
+description_fr: Micrologiciel pour Cisco 7931G
+version: 9.0.3
+files: 7931-fw
+install: cisco-unified-fw
+
 [pkg_7941-7961-fw]
 description: Firmware for Cisco 7941G, 7941G-GE and 7961G
 description_fr: Micrologiciel pour Cisco 7941G, 7941G-GE et 7961G
