@@ -33,6 +33,8 @@
     <ntp_server perm="R"></ntp_server>
     {% endif -%}
 
+    <led_call_indicator_usage perm="R">PhoneHasCallInStateRinging PhoneHasCall</led_call_indicator_usage>
+
     {% for line_no, line in sip_lines.iteritems() %}
     <user_active idx="{{ line_no }}" perm="R">on</user_active>
     <user_idle_text idx="{{ line_no }}" perm="R">{{ line['display_name']|e }}</user_idle_text>
