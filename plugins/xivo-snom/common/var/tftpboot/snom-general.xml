@@ -34,6 +34,8 @@
 
     <answer_after_policy perm="R">idle</answer_after_policy>
 
+    <led_call_indicator_usage perm="R">PhoneHasCallInStateRinging PhoneHasCall</led_call_indicator_usage>
+
     <!-- reset the default value when switching back from a switchboard plugin -->
     <call_waiting perm="R">on</call_waiting>
 
