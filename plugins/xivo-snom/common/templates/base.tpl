@@ -43,6 +43,7 @@
     <user_realname idx="{{ line_no }}" perm="R">{{ line['display_name']|e }}</user_realname>
     <user_mailbox idx="{{ line_no }}" perm="R">{{ line['voicemail'] }}</user_mailbox>
     <user_dtmf_info idx="{{ line_no }}" perm="R">{{ line['XX_user_dtmf_info'] }}</user_dtmf_info>
+    <user_idle_text idx="{{ line_no }}" perm="R">{{ line['display_name'] }} {{ line['number'] }}</user_idle_text>
 
     {% if line['backup_proxy_ip'] -%}
     <user_failover_identity idx="{{ line_no }}" perm="R">{{ line_no|int + 1 }}</user_failover_identity>
