@@ -1,5 +1,5 @@
 {
-    "version": "0.2",
+    "version": "0.3",
     "description": "Plugin for Digium D40, D50 and D70 in version 1.3.3.0.",
     "description_fr": "Greffon pour Digium D40, D50 et D70 en version 1.3.3.0.",
     "capabilities": {
