@@ -30,13 +30,21 @@ def build_20_0(path):
 
 
 @target('25.30.0.40', 'xivo-yealink-25.30.0.40')
-def build_20_0(path):
+def build_25_30_0_40(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '25.30.0.40/', path])
 
+
+@target('25.30.0.50', 'xivo-yealink-25.30.0.50')
+def build_25_30_0_50(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '25.30.0.50/', path])
 
 @target('70.0', 'xivo-yealink-70.0')
 def build_70_0(path):
