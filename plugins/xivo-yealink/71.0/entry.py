@@ -47,6 +47,14 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
         lines.append(u'linekey.%s.label = %s' % (funckey_no, funckey_dict.get(u'label', u'')))
         return lines
 
+    def _format_funckey_call_park(self, funckey_no, funckey_dict):
+        lines = []
+        lines.append(u'linekey.%s.line = %s' % (funckey_no, funckey_dict.get(u'line', 1)))
+        lines.append(u'linekey.%s.value = %s' % (funckey_no, funckey_dict[u'value']))
+        lines.append(u'linekey.%s.type = 10' % funckey_no)
+        lines.append(u'linekey.%s.label = %s' % (funckey_no, funckey_dict.get(u'label', u'')))
+        return lines
+
     def _format_funckey_blf(self, funckey_no, funckey_dict, exten_pickup_call=None):
         # Be warned that blf works only for DSS keys.
         lines = []
