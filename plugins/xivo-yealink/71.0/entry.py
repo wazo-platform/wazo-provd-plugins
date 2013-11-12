@@ -19,14 +19,14 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODEL_VERSIONS = {
-    u'T41P': u'29.71.0.155',
-    u'T42G': u'36.71.0.155',
-    u'T46G': u'28.71.0.155',
+    u'T41P': u'29.71.0.50',
+    u'T42G': u'36.71.0.100',
+    u'T46G': u'28.71.0.180',
 }
 COMMON_FILES = [
-    ('y000000000028.cfg', u'28.71.0.155.rom', 'model.tpl'),
-    ('y000000000029.cfg', u'29.71.0.155.rom', 'model.tpl'),
-    ('y000000000036.cfg', u'29.71.0.155.rom', 'model.tpl'),
+    ('y000000000028.cfg', u'28.71.0.180.rom', 'model.tpl'),
+    ('y000000000029.cfg', u'29.71.0.100.rom', 'model.tpl'),
+    ('y000000000036.cfg', u'36.71.0.50.rom', 'model.tpl'),
 ]
 
 

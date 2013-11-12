@@ -1,17 +1,39 @@
+[pkg_T41P-fw]
+description: Firmware for Yealink T41P
+description_fr: Micrologiciel pour Yealink T41P
+version: 36.71.0.50
+files: T41P-fw
+install: yealink-fw
+
+[pkg_T42G-fw]
+description: Firmware for Yealink T42G
+description_fr: Micrologiciel pour Yealink T42G
+version: 29.71.0.100
+files: T42G-fw
+install: yealink-fw
+
 [pkg_T46G-fw]
 description: Firmware for Yealink T46G
 description_fr: Micrologiciel pour Yealink T46G
-version: 28.71.0.155
+version: 28.71.0.180
 files: T46G-fw
 install: yealink-fw
-
 
 [install_yealink-fw]
 a-b: unzip $FILE1
 b-c: cp *.rom firmware/
 
+[file_T41P-fw]
+url: http://yealink.com/Upload/T4X/T41/36.71.0.50.zip
+size: 7576708
+sha1sum: 61568dd08814ea9899cb8b263b28128f98c125db
+
+[file_T42G-fw]
+url: http://yealink.com/Upload/T4X/T42G/29.71.0.100.zip
+size: 7576799
+sha1sum: 61040bc98dbf23cd576193f356755a00bf84d56b
 
 [file_T46G-fw]
-url: http://www.yealink.com/Upload/T4X/GA/28.71.0.155.zip
-size: 24817365
-sha1sum: ec956bb179c2e6ebbf2219359e1af5ba352ebee7
+url: http://yealink.com/Upload/T4X/GA/20131106/28.71.0.180.zip
+size: 24977630
+sha1sum: f6f6bae5c6ff669db5acdc53b92dd3b596f176fd
