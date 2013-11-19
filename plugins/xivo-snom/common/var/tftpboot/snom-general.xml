@@ -18,8 +18,8 @@
 
     <dialnumber_us_format perm="R">off</dialnumber_us_format>
 
-    <transfer_on_hangup perm="R">on</transfer_on_hangup>
-    <transfer_on_hangup_non_pots perm="R">on</transfer_on_hangup_non_pots>
+    <transfer_on_hangup perm="R">off</transfer_on_hangup>
+    <transfer_on_hangup_non_pots perm="R">off</transfer_on_hangup_non_pots>
 
     <display_method perm="R">display_name_number</display_method>
     <pnp_config perm="R">off</pnp_config>
