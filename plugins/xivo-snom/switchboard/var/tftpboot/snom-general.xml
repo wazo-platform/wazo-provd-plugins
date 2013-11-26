@@ -18,6 +18,8 @@
 
     <dialnumber_us_format perm="R">off</dialnumber_us_format>
 
+    <always_show_active_call perm="R">off</always_show_active_call>
+
     <transfer_on_hangup perm="R">off</transfer_on_hangup>
     <transfer_on_hangup_non_pots perm="R">off</transfer_on_hangup_non_pots>
 
