@@ -319,16 +319,15 @@ class BaseCiscoPlugin(StandardPlugin):
         for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
                                                key=itemgetter(0)):
             funckey_type = funckey_dict[u'type']
+            value = funckey_dict[u'value']
+            label = escape(funckey_dict.get(u'label', value))
             if funckey_type == u'speeddial':
-                fnc = u'sd+cp'
+                function = u'fnc=sd;ext=%s@$PROXY;nme=%s' % (value, label)
             elif funckey_type == u'blf':
-                fnc = u'sd+cp+blf'
+                function = u'fnc=sd+blf+cp;sub=%s@$PROXY;nme=%s' % (value, label)
             else:
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
-            value = funckey_dict[u'value']
-            label = escape(funckey_dict.get(u'label', value))
-            function = u'fnc=%s;sub=%s@$PROXY;nme=%s' % (fnc, value, label)
             keynum = int(funckey_no)
             if keynum <= nb_keys:
                 lines.append(u'<Extension_%s_>Disabled</Extension_%s_>' %
