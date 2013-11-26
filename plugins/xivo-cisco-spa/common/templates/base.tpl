@@ -5,10 +5,6 @@
      If you believe some parameters are missing, it's probably because they
      are defined in another file (spa.xml, spa$PSN.cfg common file). -->
 
-{% if XX_key -%}
-<Profile_Rule_C>[--key {{ XX_key }}] http://{{ ip }}:{{ http_port }}/$MA.xml.encrypted</Profile_Rule_C>
-{% endif -%}
-
 {% if admin_password is defined -%}
 <Admin_Passwd>{{ admin_password|e }}</Admin_Passwd>
 {% endif -%}
