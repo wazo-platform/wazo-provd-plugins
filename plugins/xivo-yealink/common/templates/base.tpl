@@ -52,10 +52,12 @@ account.{{ line['XX_line_no'] }}.display_name = {{ line['display_name'] }}
 account.{{ line['XX_line_no'] }}.auth_name = {{ line['auth_username'] }}
 account.{{ line['XX_line_no'] }}.user_name = {{ line['username'] }}
 account.{{ line['XX_line_no'] }}.password = {{ line['password'] }}
+{% block sip_servers scoped %}
 account.{{ line['XX_line_no'] }}.sip_server.1.address = {{ line['proxy_ip'] }}
 account.{{ line['XX_line_no'] }}.sip_server.1.port = {{ line['proxy_port'] }}
 account.{{ line['XX_line_no'] }}.sip_server.2.address = {{ line['backup_proxy_ip'] }}
 account.{{ line['XX_line_no'] }}.sip_server.2.port = {{ line['backup_proxy_port'] }}
+{% endblock %}
 account.{{ line['XX_line_no'] }}.cid_source = 2
 account.{{ line['XX_line_no'] }}.alert_info_url_enable = 0
 
@@ -89,3 +91,5 @@ distinctive_ring_tones.alert_info.7.ringer = 7
 distinctive_ring_tones.alert_info.8.ringer = 8
 
 {{ XX_fkeys }}
+
+{% block suffix %}{% endblock %}
