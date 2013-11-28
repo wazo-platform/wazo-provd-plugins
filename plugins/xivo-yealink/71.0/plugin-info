@@ -1,5 +1,5 @@
 {
-    "version": "0.8",
+    "version": "1.18",
     "description": "Plugin for Yealink T41P, T42G and T46G in version 71.0.",
     "description_fr": "Greffon pour Yealink T41P, T42G et T46G en version 71.0.",
     "vendor" : "Yealink",
