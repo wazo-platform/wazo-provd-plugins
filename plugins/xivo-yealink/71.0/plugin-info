@@ -7,13 +7,13 @@
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
     "vendor.official" : 1,
     "capabilities": {
-        "Yealink, T41P, 36.71.0.50": {
+        "Yealink, T41P, 36.71.0.60": {
             "sip.lines": 2,
             "xivo.ha" : 0,
             "tel.funckeys" : 2,
             "xivo.tested" : 0
         },
-        "Yealink, T42G, 29.71.0.100": {
+        "Yealink, T42G, 29.71.0.120": {
             "sip.lines": 2,
             "xivo.ha" : 0,
             "tel.funckeys" : 6,
