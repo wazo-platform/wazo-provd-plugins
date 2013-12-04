@@ -47,17 +47,21 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
         lines = []
         funckeys = raw_config[u'funckeys']
         exten_pickup_call = raw_config.get('exten_pickup_call')
-        prefixes = _FunckeyPrefixIterator(device)
+        model = device.get(u'model')
+        prefixes = _FunckeyPrefixIterator(model)
         for funckey_no, prefix in enumerate(prefixes, start=1):
             funckey = funckeys.get(unicode(funckey_no))
-            self._format_funckey(lines, prefix, funckey, exten_pickup_call)
+            self._format_funckey(lines, funckey_no, model, prefix, funckey, exten_pickup_call)
             lines.append(u'')
 
         raw_config[u'XX_fkeys'] = u'\n'.join(lines)
 
-    def _format_funckey(self, lines, prefix, funckey, exten_pickup_call):
+    def _format_funckey(self, lines, funckey_no, model, prefix, funckey, exten_pickup_call):
         if funckey is None:
-            self._format_funckey_null(lines, prefix)
+            if funckey_no == 1 and model == u'T46G':
+                self._format_funckey_line(lines, prefix)
+            else:
+                self._format_funckey_null(lines, prefix)
             return
 
         funckey_type = funckey[u'type']
@@ -66,7 +70,7 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
         elif funckey_type == u'blf':
             self._format_funckey_blf(lines, prefix, funckey, exten_pickup_call)
         elif funckey_type == u'park':
-            self._format_funckey_park(lines, prefix, funckey_dict)
+            self._format_funckey_park(lines, prefix, funckey)
         else:
             logger.info('Unsupported funckey type: %s', funckey_type)
 
@@ -94,6 +98,11 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
         if exten_pickup_call:
             lines.append(u'%s.extension = %s' % (prefix, exten_pickup_call))
 
+    def _format_funckey_line(self, lines, prefix):
+        lines.append(u'%s.type = 15' % prefix)
+        lines.append(u'%s.line = 1' % prefix)
+        lines.append(u'%s.label = %%NULL%%' % prefix)
+
 
 class _FunckeyPrefixIterator(object):
 
@@ -104,8 +113,7 @@ class _FunckeyPrefixIterator(object):
     }
     _NB_EXPMODKEY = 40
 
-    def __init__(self, device):
-        model = device.get(u'model')
+    def __init__(self, model):
         self._nb_linekey = self._nb_linekey_by_model(model)
         self._nb_expmod = self._nb_expmod_by_model(model)
 
