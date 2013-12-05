@@ -192,7 +192,7 @@ class BaseYealinkPlugin(StandardPlugin):
         lines.append(u'memorykey.%s.type = 16' % funckey_no)
         return lines
 
-    def _add_fkeys(self, raw_config):
+    def _add_fkeys(self, raw_config, device):
         # XXX maybe rework this, a bit ugly
         lines = []
         exten_pickup_call = raw_config.get('exten_pickup_call')
@@ -274,7 +274,7 @@ class BaseYealinkPlugin(StandardPlugin):
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
-        self._add_fkeys(raw_config)
+        self._add_fkeys(raw_config, device)
         self._add_country_and_lang(raw_config)
         self._add_timezone(raw_config)
         self._update_sip_lines(raw_config)

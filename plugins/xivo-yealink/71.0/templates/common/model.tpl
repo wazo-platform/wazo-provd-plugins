@@ -4,3 +4,4 @@
 
 #
 firmware.url = http://{{ ip }}:{{ http_port }}/firmware/{{ XX_fw_filename }}
+
