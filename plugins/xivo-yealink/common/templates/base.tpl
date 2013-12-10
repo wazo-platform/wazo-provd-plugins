@@ -26,6 +26,7 @@ lang.gui = {{ XX_lang }}
 local_time.ntp_server1 = {{ ntp_ip }}
 {% endif -%}
 {{ XX_timezone }}
+local_time.date_format = 5-DD MMM YYYY
 
 {% if XX_country -%}
 voice.tone.country = {{ XX_country }}
