@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013 Avencall
+# Copyright (C) 2013-2014 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -44,4 +44,3 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
             raw_config[u'XX_fw_filename'] = fw_filename
             raw_config[u'XX_fw_handset_filename'] = fw_handset_filename
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
-
