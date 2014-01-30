@@ -1,0 +1,123 @@
+[pkg_T19P-fw]
+description: Firmware for Yealink T19P
+description_fr: Micrologiciel pour Yealink T19P
+version: 31.72.0.1
+files: T19P-fw
+install: yealink-fw
+
+[pkg_T20P-fw]
+description: Firmware for Yealink T20P
+description_fr: Micrologiciel pour Yealink T20P
+version: 9.72.0.25
+files: T20P-fw
+install: yealink-fw
+
+[pkg_T21P-fw]
+description: Firmware for Yealink T21P
+description_fr: Micrologiciel pour Yealink T21P
+version: 34.72.0.1
+files: T21P-fw
+install: yealink-fw
+
+[pkg_T22P-fw]
+description: Firmware for Yealink T22P
+description_fr: Micrologiciel pour Yealink T22P
+version: 7.72.0.25
+files: T22P-fw
+install: yealink-fw
+
+[pkg_T26P-fw]
+description: Firmware for Yealink T26P
+description_fr: Micrologiciel pour Yealink T26P
+version: 6.72.0.25
+files: T26P-fw
+install: yealink-fw
+
+[pkg_T28P-fw]
+description: Firmware for Yealink T28P
+description_fr: Micrologiciel pour Yealink T28P
+version: 2.72.0.25
+files: T28P-fw
+install: yealink-fw
+
+[pkg_T41P-fw]
+description: Firmware for Yealink T41P
+description_fr: Micrologiciel pour Yealink T41P
+version: 36.72.0.1
+files: T41P-fw
+install: yealink-fw
+
+[pkg_T42G-fw]
+description: Firmware for Yealink T42G
+description_fr: Micrologiciel pour Yealink T42G
+version: 29.72.0.1
+files: T42G-fw
+install: yealink-fw
+
+[pkg_T46G-fw]
+description: Firmware for Yealink T46G
+description_fr: Micrologiciel pour Yealink T46G
+version: 28.72.0.1
+files: T46G-fw
+install: yealink-fw
+
+[pkg_T48G-fw]
+description: Firmware for Yealink T48G
+description_fr: Micrologiciel pour Yealink T48G
+version: 35.72.0.5
+files: T48G-fw
+install: yealink-fw
+
+[install_yealink-fw]
+a-b: unzip $FILE1
+b-c: cp *.rom firmware/
+
+[file_T19P-fw]
+url: http://yealink.com/Upload/T19/2014102/31.72.0.1.zip
+size: 7336549
+sha1sum: 0ce224b086bc8bc46a73cf71bc5c409c075f628b
+
+[file_T20P-fw]
+url: http://yealink.com/Upload/T2X/2014.1.26/9.72.0.25.zip
+size: 6948516
+sha1sum: e655399040f84e13c5f106bf1ac019b857860b0c
+
+[file_T21P-fw]
+url: http://yealink.com/Upload/T21/20140102/34.72.0.1.zip
+size: 7565446
+sha1sum: 2628f34552c5eacb43197d76e2bb3c918f57b713
+
+[file_T22P-fw]
+url: http://yealink.com/Upload/T2X/2014.1.26/7.72.0.25.zip
+size: 7217159
+sha1sum: f72646b42d3ef819a2a290bfae7ebe3fc767c489
+
+[file_T26P-fw]
+url: http://yealink.com/Upload/T2X/2014.1.26/6.72.0.25.zip
+size: 7234417
+sha1sum: 08ae5d5b2e9265e15b50bb577135ce7ae33c8879
+
+[file_T28P-fw]
+url: http://yealink.com/Upload/T2X/2014.1.26/2.72.0.25.zip
+size: 7256344
+sha1sum: 15318e98bcaecb692dca690feb0da2f12b205204
+
+[file_T41P-fw]
+url: http://yealink.com/Upload/T4X/20140102/36.72.0.1.zip
+size: 7313178
+sha1sum: 6143eb69e5863a7da55c2383c8772c597a8d6f40
+
+[file_T42G-fw]
+url: http://yealink.com/Upload/T4X/20140102/29.72.0.1.zip
+size: 7313278
+sha1sum: b99e8fa2170513cd819e47d17718b318d492ab7d
+
+[file_T46G-fw]
+url: http://yealink.com/Upload/T4X/20140102/28.72.0.1.zip
+size: 25861918
+sha1sum: 0a512bd63896ef674b47c1c9acb0b0e89982b62c
+
+[file_T48G-fw]
+url: http://yealink.com/Upload/T4X/2014122/35.72.0.5.zip
+size: 23134790
+sha1sum: 4f81c9f59383e549a57968b48fd204e122b26ba9
