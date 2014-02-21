@@ -1,0 +1,164 @@
+[pkg_300-fw]
+description: Firmware for Snom 300
+description_fr: Micrologiciel pour Snom 300
+version: 8.7.3.25.5
+files: 300-fw
+install: snom-fw
+
+[pkg_320-fw]
+description: Firmware for Snom 320
+description_fr: Micrologiciel pour Snom 320
+version: 8.7.3.25.5
+files: 320-fw
+install: snom-fw
+
+[pkg_360-fw]
+description: Firmware for Snom 360
+description_fr: Micrologiciel pour Snom 360
+version: 8.7.3.25.5
+files: 360-fw
+install: snom-fw
+
+[pkg_370-fw]
+description: Firmware for Snom 370
+description_fr: Micrologiciel pour Snom 370
+version: 8.7.3.25.5
+files: 370-fw
+install: snom-fw
+
+[pkg_710-fw]
+description: Firmware for Snom 710
+description_fr: Micrologiciel pour Snom 710
+version: 8.7.3.25.5
+files: 710-fw
+install: snom-fw
+
+[pkg_720-fw]
+description: Firmware for Snom 720
+description_fr: Micrologiciel pour Snom 720
+version: 8.7.3.25.5
+files: 720-fw
+install: snom-fw
+
+[pkg_760-fw]
+description: Firmware for Snom 760
+description_fr: Micrologiciel pour Snom 760
+version: 8.7.3.25.5
+files: 760-fw
+install: snom-fw
+
+[pkg_820-fw]
+description: Firmware for Snom 820
+description_fr: Micrologiciel pour Snom 820
+version: 8.7.3.25.5
+files: 820-fw
+install: snom-fw
+
+[pkg_821-fw]
+description: Firmware for Snom 821
+description_fr: Micrologiciel pour Snom 821
+version: 8.7.3.25.5
+files: 821-fw
+install: snom-fw
+
+[pkg_870-fw]
+description: Firmware for Snom 870
+description_fr: Micrologiciel pour Snom 870
+version: 8.7.3.25.5
+files: 870-fw
+install: snom-fw
+
+[pkg_MP-fw]
+description: Firmware for Snom MP
+description_fr: Micrologiciel pour Snom MP
+version: 8.7.3.25.5
+files: MP-fw
+install: snom-fw
+
+[pkg_PA1-fw]
+description: Firmware for Snom PA1
+description_fr: Micrologiciel pour Snom PA1
+version: 8.7.3.25.5
+files: PA1-fw
+install: snom-fw
+
+[pkg_lang]
+description: Language files
+description_fr: Fichiers de langue
+version: 8.7.3
+files: lang
+install: snom-lang
+
+
+[install_snom-fw]
+a-b: cp $FILE1 firmware/
+
+[install_snom-lang]
+a-b: unzip $FILE1
+b-c: cp * i18n/
+
+
+[file_300-fw]
+url: http://provisioning.snom.com/download/fw/snom300-8.7.3.25.5-SIP-f.bin
+size: 3348984
+sha1sum: a4af91b0cb14610a706de48099883060037f1761
+
+[file_320-fw]
+url: http://provisioning.snom.com/download/fw/snom320-8.7.3.25.5-SIP-f.bin
+size: 3352008
+sha1sum: 3f1e432d53d49699a62395b5651ca7d612dfe685
+
+[file_360-fw]
+url: http://provisioning.snom.com/download/fw/snom360-8.7.3.25.5-SIP-f.bin
+size: 3368956
+sha1sum: fda4c48b763654fb76d4d71b9de7c7228588dd09
+
+[file_370-fw]
+url: http://provisioning.snom.com/download/fw/snom370-8.7.3.25.5-SIP-f.bin
+size: 6553100
+sha1sum: 9f9d7d4e0451a5c6d687621e2164854f70f17d1e
+
+[file_710-fw]
+url: http://provisioning.snom.com/download/fw/snom710-8.7.3.25.5-SIP-r.bin
+size: 14320832
+sha1sum: 88284ac0ac25659f2b7444f06d2ab69eccd796a2
+
+[file_720-fw]
+url: http://provisioning.snom.com/download/fw/snom720-8.7.3.25.5-SIP-r.bin
+size: 24121216
+sha1sum: e66c803b540ec0184465a00e62566ed5e2b8d14b
+
+[file_760-fw]
+url: http://provisioning.snom.com/download/fw/snom760-8.7.3.25.5-SIP-r.bin
+size: 27560352
+sha1sum: 04c60e9319ec21c6ce1c27552c3b10e12a4bb6f2
+
+[file_820-fw]
+url: http://provisioning.snom.com/download/fw/snom820-8.7.3.25.5-SIP-r.bin
+size: 36390944
+sha1sum: 804b7f7c9f4fd0dc83458a9d52817fd220fd52a7
+
+[file_821-fw]
+url: http://provisioning.snom.com/download/fw/snom821-8.7.3.25.5-SIP-r.bin
+size: 25003696
+sha1sum: d9e750066f2a47bcff2b6d16f80a4a6b72837002
+
+[file_870-fw]
+url: http://provisioning.snom.com/download/fw/snom870-8.7.3.25.5-SIP-r.bin
+size: 26032800
+sha1sum: 96efbf12b566c4b74afe86e77d6215ef9c4c51e1
+
+[file_MP-fw]
+url: http://provisioning.snom.com/download/fw/snomMP-8.7.3.25.5-SIP-r.bin
+size: 16305632
+sha1sum: 62d24bf17d5486c3996536225bcf9021fc6c479e
+
+[file_PA1-fw]
+url: http://provisioning.snom.com/download/fw/snomPA1-8.7.3.25.5-SIP-f.bin
+size: 3411440
+sha1sum: 2d2cb8b791b6750369af2262d3881be7f3a7bd2f
+
+[file_lang]
+url: http://fox.snom.com/config/snomlang-8.7.3.zip
+size: 763373
+sha1sum: 3e5ef9162f2053028871c396e2b6c108bde4e7ef
