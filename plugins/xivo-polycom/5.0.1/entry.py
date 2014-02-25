@@ -27,7 +27,7 @@ MODELS = [
     u'VVX600',
     u'VVX1500',
 ]
-VERSION = u'5.0.0.6874'
+VERSION = u'5.0.1.7310'
 
 
 class PolycomPlugin(common_globals['BasePolycomPlugin']):
