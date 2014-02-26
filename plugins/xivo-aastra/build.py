@@ -25,18 +25,6 @@ from subprocess import check_call
 # any error raised will be considered a build error
 # Pre: pg_dir is initially empty
 # Pre: current directory is the one of the bplugin
-@target('2.6.0.2019', 'xivo-aastra-2.6.0.2019')
-def build_2_6_0_2019(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '--exclude', '/templates/6735i.tpl',
-                '--exclude', '/templates/6737i.tpl',
-                '--exclude', '/templates/6739i.tpl',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '2.6.0.2019/', path])
-
-
 @target('3.2.2-SP3', 'xivo-aastra-3.2.2-SP3')
 def build_3_2_2_sp3(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
