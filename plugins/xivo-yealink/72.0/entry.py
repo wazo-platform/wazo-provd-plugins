@@ -24,21 +24,21 @@ logger = logging.getLogger('plugin.xivo-yealink')
 
 MODEL_VERSIONS = {
     u'T19P': u'31.72.0.1',
-    u'T20P': u'9.72.0.25',
+    u'T20P': u'9.72.0.30',
     u'T21P': u'34.72.0.1',
-    u'T22P': u'7.72.0.25',
-    u'T26P': u'6.72.0.25',
-    u'T28P': u'2.72.0.25',
+    u'T22P': u'7.72.0.30',
+    u'T26P': u'6.72.0.30',
+    u'T28P': u'2.72.0.30',
     u'T41P': u'36.72.0.1',
     u'T42G': u'29.72.0.1',
     u'T46G': u'28.72.0.1',
     u'T48G': u'35.72.0.5',
 }
 COMMON_FILES = [
-    ('y000000000000.cfg', u'2.72.0.25.rom', 'model-M7+M1.tpl'),
-    ('y000000000004.cfg', u'6.72.0.25.rom', 'model-M7+M1.tpl'),
-    ('y000000000005.cfg', u'7.72.0.25.rom', 'model-M7+M1.tpl'),
-    ('y000000000007.cfg', u'9.72.0.25.rom', 'model-M7+M1.tpl'),
+    ('y000000000000.cfg', u'2.72.0.30.rom', 'model-M7+M1.tpl'),
+    ('y000000000004.cfg', u'6.72.0.30.rom', 'model-M7+M1.tpl'),
+    ('y000000000005.cfg', u'7.72.0.30.rom', 'model-M7+M1.tpl'),
+    ('y000000000007.cfg', u'9.72.0.30.rom', 'model-M7+M1.tpl'),
     ('y000000000029.cfg', u'29.72.0.1.rom', 'model.tpl'),
     ('y000000000036.cfg', u'36.72.0.1.rom', 'model.tpl'),
     ('y000000000028.cfg', u'28.72.0.1.rom', 'model.tpl'),
@@ -122,6 +122,12 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
 class _FunckeyPrefixIterator(object):
 
     _NB_LINEKEY = {
+        u'T19P': 0,
+        u'T20P': 2,
+        u'T21P': 2,
+        u'T22P': 3,
+        u'T26P': 45,
+        u'T28P': 48,
         u'T41P': 15,
         u'T42G': 15,
         u'T46G': 27,

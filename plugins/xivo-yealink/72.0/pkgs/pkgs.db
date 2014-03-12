@@ -8,7 +8,7 @@ install: yealink-fw
 [pkg_T20P-fw]
 description: Firmware for Yealink T20P
 description_fr: Micrologiciel pour Yealink T20P
-version: 9.72.0.25
+version: 9.72.0.30
 files: T20P-fw
 install: yealink-fw
 
@@ -22,21 +22,21 @@ install: yealink-fw
 [pkg_T22P-fw]
 description: Firmware for Yealink T22P
 description_fr: Micrologiciel pour Yealink T22P
-version: 7.72.0.25
+version: 7.72.0.30
 files: T22P-fw
 install: yealink-fw
 
 [pkg_T26P-fw]
 description: Firmware for Yealink T26P
 description_fr: Micrologiciel pour Yealink T26P
-version: 6.72.0.25
+version: 6.72.0.30
 files: T26P-fw
 install: yealink-fw
 
 [pkg_T28P-fw]
 description: Firmware for Yealink T28P
 description_fr: Micrologiciel pour Yealink T28P
-version: 2.72.0.25
+version: 2.72.0.30
 files: T28P-fw
 install: yealink-fw
 
@@ -78,9 +78,9 @@ size: 7336549
 sha1sum: 0ce224b086bc8bc46a73cf71bc5c409c075f628b
 
 [file_T20P-fw]
-url: http://yealink.com/Upload/T2X/2014.1.26/9.72.0.25.zip
-size: 6948516
-sha1sum: e655399040f84e13c5f106bf1ac019b857860b0c
+url: http://www.yealink.com/Upload/T2X/2014.3.4/9.72.0.30.zip
+size: 6999729
+sha1sum: 950ef89f2476db6d6456791c17bc3834a74a810b
 
 [file_T21P-fw]
 url: http://yealink.com/Upload/T21/20140102/34.72.0.1.zip
@@ -88,19 +88,19 @@ size: 7565446
 sha1sum: 2628f34552c5eacb43197d76e2bb3c918f57b713
 
 [file_T22P-fw]
-url: http://yealink.com/Upload/T2X/2014.1.26/7.72.0.25.zip
-size: 7217159
-sha1sum: f72646b42d3ef819a2a290bfae7ebe3fc767c489
+url: http://www.yealink.com/Upload/T2X/2014.3.4/7.72.0.30.zip
+size: 7272323
+sha1sum: dfdfa3de8562502f1d3890a37f8e67354e09f05c
 
 [file_T26P-fw]
-url: http://yealink.com/Upload/T2X/2014.1.26/6.72.0.25.zip
-size: 7234417
-sha1sum: 08ae5d5b2e9265e15b50bb577135ce7ae33c8879
+url: http://www.yealink.com/Upload/T2X/2014.3.4/6.72.0.30.zip
+size: 7288976
+sha1sum: 5e96913587c7802ff0cda2333f1d5fac3019fff5
 
 [file_T28P-fw]
-url: http://yealink.com/Upload/T2X/2014.1.26/2.72.0.25.zip
-size: 7256344
-sha1sum: 15318e98bcaecb692dca690feb0da2f12b205204
+url: http://www.yealink.com/Upload/T2X/2014.3.4/2.72.0.30.zip
+size: 7311449
+sha1sum: 7bfe93b3df6a9e12c8ee659e4f48c53577034caf
 
 [file_T41P-fw]
 url: http://yealink.com/Upload/T4X/20140102/36.72.0.1.zip
