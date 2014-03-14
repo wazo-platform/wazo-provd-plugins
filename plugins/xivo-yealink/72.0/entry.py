@@ -111,8 +111,8 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
         lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
         lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
         if exten_pickup_call:
-            lines.append(u'%s.extension = %s' % (prefix, exten_pickup_call))
-
+            lines.append(u'%s.pickup_value = %s' % (prefix, exten_pickup_call)) 
+		
     def _format_funckey_line(self, lines, prefix):
         lines.append(u'%s.type = 15' % prefix)
         lines.append(u'%s.line = 1' % prefix)
@@ -126,16 +126,21 @@ class _FunckeyPrefixIterator(object):
         u'T20P': 2,
         u'T21P': 2,
         u'T22P': 3,
-        u'T26P': 45,
-        u'T28P': 48,
+        u'T26P': 3,
+        u'T28P': 6,
         u'T41P': 15,
         u'T42G': 15,
         u'T46G': 27,
+    }
+    _NB_MEMORYKEY = {
+        u'T26P': 10,
+        u'T28P': 10,
     }
     _NB_EXPMODKEY = 40
 
     def __init__(self, model):
         self._nb_linekey = self._nb_linekey_by_model(model)
+        self._nb_memorykey = self._nb_memorykey_by_model(model)
         self._nb_expmod = self._nb_expmod_by_model(model)
 
     def _nb_linekey_by_model(self, model):
@@ -148,6 +153,16 @@ class _FunckeyPrefixIterator(object):
             return 0
         return nb_linekey
 
+    def _nb_memorykey_by_model(self, model):
+        if model is None:
+            logger.info('No model information; no memorykey will be configured')
+            return 0
+        nb_memorykey = self._NB_MEMORYKEY.get(model)
+        if nb_memorykey is None:
+            logger.info('Unknown model %s; no memorykey will be configured', model)
+            return 0
+        return nb_memorykey
+
     def _nb_expmod_by_model(self, model):
         if model == u'T46G':
             return 6
@@ -157,6 +172,8 @@ class _FunckeyPrefixIterator(object):
     def __iter__(self):
         for linekey_no in xrange(1, self._nb_linekey + 1):
             yield u'linekey.%s' % linekey_no
+        for memorykey_no in xrange(1, self._nb_memorykey + 1):
+            yield u'memorykey.%s' % memorykey_no
         for expmod_no in xrange(1, self._nb_expmod + 1):
             for expmodkey_no in xrange(1, self._NB_EXPMODKEY + 1):
                 yield u'expansion_module.%s.key.%s' % (expmod_no, expmodkey_no)
