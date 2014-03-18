@@ -73,7 +73,7 @@
     </accounts>
 
     <firmwares>
-        {% block firmwares %}{% endblock %}
+        {% include 'firmware.tpl' %}
     </firmwares>
 
     {% block suffix %}{% endblock %}
