@@ -1,5 +1,5 @@
 {
-    "version": "0.14",
+    "version": "1.0",
     "description": "Plugin for Snom 3XX, 7XX, 8XX, MP and PA1 in version 8.7.4.8.",
     "description_fr": "Greffon pour Snom 3XX, 7XX, 8XX, MP et PA1 en version 8.7.4.8",
     "capabilities": {
@@ -16,7 +16,8 @@
             "sip.lines": 12
         },
         "Snom, 720, 8.7.4.8": {
-            "sip.lines": 12
+            "sip.lines": 12,
+            "switchboard": true
         },
         "Snom, 760, 8.7.4.8": {
             "sip.lines": 12
