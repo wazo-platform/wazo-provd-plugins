@@ -46,6 +46,23 @@ upload-stable : build-stable
 	rsync -v -rt --delete $(STABLE_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_STABLE_PATH)
 
 
+.PHONY : download-archive
+download-archive :
+	mkdir -p $(ARCHIVE_PATH)
+	rsync -v -rt --delete $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_ARCHIVE_PATH)/ $(ARCHIVE_PATH)
+
+
+.PHONY : build-archive
+build-archive :
+	$(PGBUILD) -D -s $(ARCHIVE_PATH) -d $(ARCHIVE_PATH)
+	chmod +r $(ARCHIVE_PATH)/*
+
+
+.PHONY : upload-archive
+upload-archive : build-archive
+	rsync -v -rt --delete $(ARCHIVE_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_ARCHIVE_PATH)
+
+
 .PHONY : clean
 clean :
 	rm -rf $(BUILDDIR)/*
