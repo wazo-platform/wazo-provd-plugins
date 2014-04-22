@@ -1,5 +1,5 @@
 {
-    "version": "0.6",
+    "version": "0.6.1",
     "description": "Plugin for Cisco SPA8000 in version 6.1.11.",
     "description_fr": "Greffon pour Cisco SPA8000 en version 6.1.11.",
     "capabilities": {
