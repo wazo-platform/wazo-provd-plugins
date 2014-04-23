@@ -1,5 +1,5 @@
 {
-    "version": "0.5.9",
+    "version": "1.0",
     "description": "Plugin for Aastra 6730i, 6731i, 6735i, 6737i, 6739i, 6753i, 6755i, 6757i, 6757i CT, 9143i, 9480i, 9480i CT in version 3.3.1 SP2.",
     "description_fr": "Greffon pour Aastra 6730i, 6731i, 6735i, 6737i, 6739i, 6753i, 6755i, 6757i, 6757i CT, 9143i, 9480i, 9480i CT en version 3.3.1 SP2.",
     "capabilities": {
@@ -7,7 +7,8 @@
             "sip.lines": 6
         },
         "Aastra, 6731i, 3.3.1.2235": {
-            "sip.lines": 6
+            "sip.lines": 6,
+            "switchboard": true
         },
         "Aastra, 6735i, 3.3.1.5089": {
             "sip.lines": 9
@@ -22,10 +23,12 @@
             "sip.lines": 9
         },
         "Aastra, 6755i, 3.3.1.2235": {
-            "sip.lines": 9
+            "sip.lines": 9,
+            "switchboard": true
         },
         "Aastra, 6757i, 3.3.1.2235": {
-            "sip.lines": 9
+            "sip.lines": 9,
+            "switchboard": true
         },
         "Aastra, 9143i, 3.3.1.2235": {
             "sip.lines": 9

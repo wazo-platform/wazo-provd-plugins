@@ -25,35 +25,10 @@ from subprocess import check_call
 # any error raised will be considered a build error
 # Pre: pg_dir is initially empty
 # Pre: current directory is the one of the bplugin
-@target('3.2.2-SP3', 'xivo-aastra-3.2.2-SP3')
-def build_3_2_2_sp3(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '--exclude', '/templates/6751i.tpl',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '3.2.2-SP3/', path])
-
-
 @target('3.3.1-SP2', 'xivo-aastra-3.3.1-SP2')
 def build_3_3_1_sp2(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '--exclude', '/templates/6751i.tpl',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '3.3.1-SP2/', path])
-
-
-@target('switchboard', 'xivo-aastra-switchboard')
-def build_switchboard(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '--include', '/templates/6731i.tpl',
-                '--include', '/templates/6755i.tpl',
-                '--include', '/templates/6757i.tpl',
-                '--include', '/templates/base.tpl',
-                '--exclude', '/templates/*',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'switchboard/', path])

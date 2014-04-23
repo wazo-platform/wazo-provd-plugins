@@ -402,6 +402,7 @@ class BaseAastraPlugin(StandardPlugin):
         self._update_sip_lines(raw_config)
         self._add_parking(raw_config)
         raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
+        raw_config[u'XX_options'] = device.get(u'options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)

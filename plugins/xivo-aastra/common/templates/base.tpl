@@ -110,6 +110,11 @@ sip line{{ line_no }} vmail: {{ line['voicemail'] }}
 directed call pickup prefix: {{ exten_pickup_call }}
 {% endif -%}
 
+{% if XX_options['switchboard'] -%}
+sip xml notify event: 1
+call waiting: 0
+{% endif -%}
+
 {{ XX_parking }}
 
 {{ XX_fkeys }}
