@@ -23,8 +23,8 @@ b-c: cp * i18n/
 
 [file_715-fw]
 url: http://provisioning.snom.com/download/fw/snom715-8.7.5.8.2-SIP-r.bin
-size: 22583952
-sha1sum: bd5f86a06f0236344e9c9083e5ebc11598f7003a
+size: 22582624
+sha1sum: fbf652e1bc919b8582629a084785a7b4d715770b
 
 [file_lang]
 url: http://fox.snom.com/config/snomlang-8.7.3.zip
