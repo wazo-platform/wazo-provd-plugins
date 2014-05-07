@@ -181,7 +181,7 @@ class BaseSnomPlugin(StandardPlugin):
                 return lines[min(lines.iterkeys())][u'proxy_ip']
         return None
 
-    def _add_fkeys(self, raw_config):
+    def _add_fkeys(self, raw_config, model):
         domain = self._get_fkey_domain(raw_config)
         if domain is None:
             if raw_config[u'funckeys']:
@@ -191,9 +191,16 @@ class BaseSnomPlugin(StandardPlugin):
             for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
                                                    key=itemgetter(0)):
                 funckey_type = funckey_dict[u'type']
-                if funckey_type == u'speeddial' or funckey_type == u'park':
+                if funckey_type == u'speeddial':
                     type_ = u'speed'
                     suffix = ''
+                elif funckey_type == u'park':
+                    if model in ['710', '720', '715', '760']:
+                        type_ = u'orbit'
+                        suffix = ''
+                    else:
+                        type_ = u'speed'
+                        suffix = ''
                 elif funckey_type == u'blf':
                     if u'exten_pickup_call' in raw_config:
                         type_ = u'blf'
@@ -295,8 +302,9 @@ class BaseSnomPlugin(StandardPlugin):
         # generate xml file
         tpl = self._tpl_helper.get_dev_template(xml_filename, device)
 
+        model = device.get(u'model')
         self._update_sip_lines(raw_config)
-        self._add_fkeys(raw_config)
+        self._add_fkeys(raw_config, model)
         self._add_lang(raw_config)
         self._add_timezone(raw_config)
         self._add_user_dtmf_info(raw_config)
