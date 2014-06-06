@@ -1,0 +1,17 @@
+[pkg_software]
+description: UC software and language files
+description_fr: Logiciel UC et fichiers de langue
+version: 4.1.7
+files: software
+install: polycom-software
+
+
+[install_polycom-software]
+a-b: unzip $FILE1
+b-c: cp *.ld */SoundPointIPLocalization ./
+
+
+[file_software]
+url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_4_1_7_release_sig_split.zip
+size: 382049304
+sha1sum: ccf9e3697e6b79a503515897b66477eb9ef5e5fd

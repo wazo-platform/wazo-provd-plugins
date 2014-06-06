@@ -114,12 +114,12 @@ class BasePolycomPlugin(StandardPlugin):
         u'SPIP560': 3,
         u'SPIP650': 47,
         u'SPIP670': 47,
-        u'VVX300': 6,
-        u'VVX310': 6,
-        u'VVX400': 12,
-        u'VVX410': 12,
-        u'VVX500': 12,
-        u'VVX600': 16,
+        u'VVX300': 261,
+        u'VVX310': 261,
+        u'VVX400': 266,
+        u'VVX410': 266,
+        u'VVX500': 266,
+        u'VVX600': 270,
         u'VVX1500': 6,
     }
     _LOCALE = {
