@@ -43,24 +43,6 @@ def build_4_0_4(path):
                 '4.0.4/', path])
 
 
-@target('4.1.6', 'xivo-polycom-4.1.6')
-def build_4_1_6(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '--include', '/templates/base.tpl',
-                '--include', '/templates/VVX300.tpl',
-                '--include', '/templates/VVX310.tpl',
-                '--include', '/templates/VVX400.tpl',
-                '--include', '/templates/VVX410.tpl',
-                '--include', '/templates/VVX500.tpl',
-                '--include', '/templates/VVX600.tpl',
-                '--include', '/templates/VVX1500.tpl',
-                '--exclude', '/templates/*',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '4.1.6/', path])
-
-
 @target('4.1.7', 'xivo-polycom-4.1.7')
 def build_4_1_7(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
