@@ -15,13 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-"""Plugin that offers no configuration service and rejects TFTP/HTTP requests
-by returning file not found errors.
-
-"""
-
-__version__ = "$Revision: 10355 $ $Date: 2011-03-08 14:38:11 -0500 (Tue, 08 Mar 2011) $"
-
 from provd.plugins import Plugin
 from provd.servers.tftp.service import TFTPNullService
 from twisted.web.resource import NoResource
