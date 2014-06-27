@@ -10,7 +10,7 @@ $(TARFILE) : $(SRCFILES)
 
 .PHONY : upload
 upload : $(TARFILE)
-	scp $(TARFILE) root@provd.xivo.fr:/var/www/provd.xivo.fr/xivo/dhcpd-update/13.17
+	scp $(TARFILE) root@provd.xivo.io:/var/www/provd.xivo.io/xivo/dhcpd-update/13.17
 
 
 .PHONY : clean
