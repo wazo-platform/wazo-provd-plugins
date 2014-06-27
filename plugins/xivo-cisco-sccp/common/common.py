@@ -297,9 +297,4 @@ class BaseCiscoSccpPlugin(StandardPlugin):
             logger.info('error while removing file: %s', e)
 
     def synchronize(self, device, raw_config):
-        device_name = 'SEP' + format_mac(device[u'mac'], separator='', uppercase=True).encode('ascii')
-        sync_service = synchronize.get_sync_service()
-        if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-            return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
-        else:
-            return threads.deferToThread(sync_service.sccp_reset, device_name)
+        return defer.fail(Exception('operation not supported'))
