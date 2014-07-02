@@ -1,5 +1,5 @@
 {
-    "version": "0.6.1",
+    "version": "0.7",
     "description": "Plugin for Cisco SPA3102 in version 5.1.10.",
     "description_fr": "Greffon pour Cisco SPA3102 en version 5.1.10.",
     "capabilities": {
