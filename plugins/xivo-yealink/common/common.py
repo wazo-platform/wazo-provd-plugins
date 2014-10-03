@@ -55,6 +55,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "yealink SIP-T28P 2.50.0.50 00:15:65:13:ae:0b"
         #   "yealink SIP-T28P 2.60.0.110 00:15:65:13:ae:0b"
         #   "Yealink SIP-T38G  38.0.0.115 00:15:65:2f:c3:5e"
+        #   "Yealink SIP-W52P 25.40.0.15 00:15:65:40:ae:35"
         #   "VP530P 23.70.0.10 00:15:65:31:47:69"
         #   "VP530 23.70.0.41 00:15:65:3d:58:e3"
         #   "W52P 25.30.0.2 00:15:65:44:b3:7c"
@@ -113,11 +114,11 @@ class BaseYealinkPgAssociator(BasePgAssociator):
 class BaseYealinkPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _LOCALE = {
-        u'de_DE': (u'German', u'Germany'),
-        u'en_US': (u'English', u'United States'),
-        u'es_ES': (u'Spanish', u'Spain'),
-        u'fr_FR': (u'French', u'France'),
-        u'fr_CA': (u'French', u'United States'),
+        u'de_DE': (u'German', u'Germany', u'2'),
+        u'en_US': (u'English', u'United States', u'0'),
+        u'es_ES': (u'Spanish', u'Spain', u'6'),
+        u'fr_FR': (u'French', u'France', u'1'),
+        u'fr_CA': (u'French', u'United States', u'1'),
     }
     _SIP_DTMF_MODE = {
         u'RTP-in-band': u'0',
@@ -152,7 +153,7 @@ class BaseYealinkPlugin(StandardPlugin):
             # set dtmf inband transfer
             dtmf_mode = line.get(u'dtmf_mode') or raw_config.get(u'sip_dtmf_mode')
             if dtmf_mode in self._SIP_DTMF_MODE:
-                line[u'XX_dtmf_inband_transfer'] = self._SIP_DTMF_MODE[dtmf_mode]
+                line[u'XX_dtmf_type'] = self._SIP_DTMF_MODE[dtmf_mode]
             # set voicemail
             if u'voicemail' not in line and u'exten_voicemail' in raw_config:
                 line[u'voicemail'] = raw_config[u'exten_voicemail']
@@ -220,7 +221,9 @@ class BaseYealinkPlugin(StandardPlugin):
     def _add_country_and_lang(self, raw_config):
         locale = raw_config.get(u'locale')
         if locale in self._LOCALE:
-            raw_config[u'XX_lang'], raw_config[u'XX_country'] = self._LOCALE[locale]
+            (raw_config[u'XX_lang'],
+             raw_config[u'XX_country'],
+             raw_config[u'XX_handset_lang']) = self._LOCALE[locale]
 
     def _format_dst_change(self, dst_change):
         if dst_change['day'].startswith('D'):

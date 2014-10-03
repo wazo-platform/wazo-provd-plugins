@@ -21,22 +21,13 @@
 from subprocess import check_call
 
 
-@target('25.30.0.50', 'xivo-yealink-25.30.0.50')
-def build_25_30_0_50(path):
+@target('25.73.0.20', 'xivo-yealink-25.73.0.20')
+def build_25_73_0_20(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '25.30.0.50/', path])
-
-
-@target('25.40.0.15', 'xivo-yealink-25.40.0.15')
-def build_25_40_0_15(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '25.40.0.15/', path])
+                '25.73.0.20/', path])
 
 
 @target('70.0', 'xivo-yealink-70.0')

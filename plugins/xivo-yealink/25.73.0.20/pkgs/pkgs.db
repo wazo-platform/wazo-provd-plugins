@@ -1,0 +1,29 @@
+[pkg_W52P-base-fw]
+description: Firmware for Yealink W52P base
+description_fr: Micrologiciel pour base Yealink W52P
+version: 25.73.0.20
+files: W52P-base-fw
+install: yealink-fw
+
+[pkg_W52P-handset-fw]
+description: Firmware for Yealink W52P handset
+description_fr: Micrologiciel pour combiné Yealink W52P
+version: 26.73.0.10
+files: W52P-handset-fw
+install: yealink-fw
+
+
+[install_yealink-fw]
+a-b: unzip $FILE1
+b-c: cp *.rom firmware/
+
+
+[file_W52P-base-fw]
+url: http://www.yealink.com/Upload/UCOne/2014.09.11/25.73.0.20.zip
+size: 7539965
+sha1sum: a2a0f81658f5887faa0b66e4729de4d02dd99419
+
+[file_W52P-handset-fw]
+url: http://www.yealink.com/Upload/UCOne/2014.09.11/26.73.0.10.zip
+size: 1367863
+sha1sum: 5b8352dc83d47b664dc3484b9678a896da00aa01

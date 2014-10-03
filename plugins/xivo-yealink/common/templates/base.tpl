@@ -62,10 +62,8 @@ account.{{ line['XX_line_no'] }}.sip_server_port = {{ line['proxy_port'] }}
 account.{{ line['XX_line_no'] }}.cid_source = 2
 account.{{ line['XX_line_no'] }}.alert_info_url_enable = 0
 
-{% if line['XX_dtmf_inband_transfer'] -%}
-account.{{ line['XX_line_no'] }}.dtmf.type = {{ line['XX_dtmf_inband_transfer'] }}
+account.{{ line['XX_line_no'] }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
 account.{{ line['XX_line_no'] }}.dtmf.info_type = 1
-{% endif -%}
 
 {% if line['voicemail'] -%}
 voice_mail.number.{{ line['XX_line_no'] }} = {{ line['voicemail'] }}

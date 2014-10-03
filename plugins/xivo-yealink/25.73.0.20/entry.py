@@ -15,14 +15,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+import os
+
 common_globals = {}
 execfile_('common.py', common_globals)
 
 MODEL_VERSIONS = {
-    u'W52P': u'25.30.0.50',
+    u'W52P': u'25.73.0.20',
 }
 COMMON_FILES = [
-    ('y000000000025.cfg', u'25.30.0.50.rom', 'model.tpl'),
+    ('y000000000025.cfg', u'25.73.0.20.rom', u'26.73.0.10.rom', 'model.tpl'),
 ]
 
 
@@ -31,6 +33,12 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
 
     pg_associator = common_globals['BaseYealinkPgAssociator'](MODEL_VERSIONS)
 
-    # Yealink plugin specific stuff
-
     _COMMON_FILES = COMMON_FILES
+
+    def configure_common(self, raw_config):
+        for filename, fw_filename, fw_handset_filename, tpl_filename in self._COMMON_FILES:
+            tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
+            dst = os.path.join(self._tftpboot_dir, filename)
+            raw_config[u'XX_fw_filename'] = fw_filename
+            raw_config[u'XX_fw_handset_filename'] = fw_handset_filename
+            self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
