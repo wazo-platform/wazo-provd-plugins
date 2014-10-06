@@ -1,49 +1,59 @@
 #!version:1.0.0.1
-## the file header "#!version:..." can not be edited or deleted
 
 {% if vlan_enabled -%}
 network.vlan.internet_port_enable = 1
 network.vlan.internet_port_vid = {{ vlan_id }}
-{% if vlan_priority -%}
-network.vlan.internet_port_priority = {{ vlan_priority }}
-{% endif -%}
-{% if vlan_pc_port_id -%}
+network.vlan.internet_port_priority = {{ vlan_priority|d('%NULL%') }}
+{% else -%}
+network.vlan.internet_port_enable = 0
+network.vlan.internet_port_vid = %NULL%
+network.vlan.internet_port_priority = %NULL%
+{% endif %}
+
+{% if vlan_enabled and vlan_pc_port_id -%}
 network.vlan.pc_port_enable = 1
 network.vlan.pc_port_vid = {{ vlan_pc_port_id }}
-{% endif -%}
-{% endif -%}
+{% else -%}
+network.vlan.pc_port_enable = 0
+network.vlan.pc_port_vid = %NULL%
+{% endif %}
 
 {% if syslog_enabled -%}
+syslog.mode = 1
 syslog.server = {{ syslog_ip }}
-{% endif -%}
+{% else -%}
+syslog.mode = 0
+syslog.server = %NULL%
+{% endif %}
 
-{% if XX_lang -%}
-lang.wui = {{ XX_lang }}
-lang.gui = {{ XX_lang }}
-{% endif -%}
+lang.wui = {{ XX_lang|d('%NULL%') }}
+lang.gui = {{ XX_lang|d('%NULL%') }}
 
-{% if ntp_enabled -%}
-local_time.ntp_server1 = {{ ntp_ip }}
-{% endif -%}
+voice.tone.country = {{ XX_country|d('%NULL%') }}
+
+local_time.ntp_server1 = {{ ntp_ip|d('pool.ntp.org') }}
+{% if XX_timezone -%}
 {{ XX_timezone }}
-local_time.date_format = 5-DD MMM YYYY
+{% else -%}
+local_time.time_zone = %NULL%
+local_time.time_zone_name = %NULL%
+local_time.summer_time = %NULL%
+{% endif %}
 
-{% if XX_country -%}
-voice.tone.country = {{ XX_country }}
-{% endif -%}
+local_time.date_format = 2
 
 {% if X_xivo_phonebook_ip -%}
 remote_phonebook.data.1.url = http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH
 remote_phonebook.data.1.name = XiVO
-{% endif -%}
+{% else -%}
+remote_phonebook.data.1.url = %NULL%
+remote_phonebook.data.1.name = %NULL%
+{% endif %}
 
-{% if admin_password -%}
-security.user_password = {{ admin_username }}:{{ admin_password }}
-{% endif -%}
-
-{% if user_password -%}
-security.user_password =  {{ user_username }}:{{ user_password }}
-{% endif -%}
+security.user_name.user = {{ user_username|d('user') }}
+security.user_name.admin = {{ admin_username|d('admin') }}
+security.user_password = {{ user_username|d('user') }}:{{ user_password|d('user') }}
+security.user_password = {{ admin_username|d('admin') }}:{{ admin_password|d('admin') }}
 
 {% for line in sip_lines.itervalues() %}
 
@@ -65,9 +75,7 @@ account.{{ line['XX_line_no'] }}.alert_info_url_enable = 0
 account.{{ line['XX_line_no'] }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
 account.{{ line['XX_line_no'] }}.dtmf.info_type = 1
 
-{% if line['voicemail'] -%}
-voice_mail.number.{{ line['XX_line_no'] }} = {{ line['voicemail'] }}
-{% endif -%}
+voice_mail.number.{{ line['XX_line_no'] }} = {{ line['voicemail']|d('%NULL%') }}
 
 {% endfor -%}
 
@@ -91,4 +99,3 @@ distinctive_ring_tones.alert_info.8.ringer = 8
 
 {{ XX_fkeys }}
 
-{% block suffix %}{% endblock %}
