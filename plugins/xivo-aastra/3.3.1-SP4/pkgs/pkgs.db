@@ -1,0 +1,154 @@
+[pkg_6730i-fw]
+description: Firmware for Aastra 6730i
+description_fr: Micrologiciel pour Aastra 6730i
+version: 3.3.1.4053
+files: 6730i-fw
+install: aastra-fw
+
+[pkg_6731i-fw]
+description: Firmware for Aastra 6731i
+description_fr: Micrologiciel pour Aastra 6731i
+version: 3.3.1.4053
+files: 6731i-fw
+install: aastra-fw
+
+[pkg_6735i-fw]
+description: Firmware for Aastra 6735i
+description_fr: Micrologiciel pour Aastra 6735i
+version: 3.3.1.8106
+files: 6735i-fw
+install: aastra-fw 6735i
+
+[pkg_6737i-fw]
+description: Firmware for Aastra 6737i
+description_fr: Micrologiciel pour Aastra 6737i
+version: 3.3.1.8106
+files: 6737i-fw
+install: aastra-fw 6737i
+
+[pkg_6739i-fw]
+description: Firmware for Aastra 6739i
+description_fr: Micrologiciel pour Aastra 6739i
+version: 3.3.1.4053
+files: 6739i-fw
+install: aastra-fw
+
+[pkg_6753i-fw]
+description: Firmware for Aastra 6753i
+description_fr: Micrologiciel pour Aastra 6753i
+version: 3.3.1.4053
+files: 6753i-fw
+install: aastra-fw
+
+[pkg_6755i-fw]
+description: Firmware for Aastra 6755i
+description_fr: Micrologiciel pour Aastra 6755i
+version: 3.3.1.4053
+files: 6755i-fw
+install: aastra-fw
+
+[pkg_6757i-fw]
+description: Firmware for Aastra 6757i
+description_fr: Micrologiciel pour Aastra 6757i
+version: 3.3.1.4053
+files: 6757i-fw
+install: aastra-fw
+
+[pkg_9143i-fw]
+description: Firmware for Aastra 9143i
+description_fr: Micrologiciel pour Aastra 9143i
+version: 3.3.1.4053
+files: 9143i-fw
+install: aastra-fw
+
+[pkg_9480i-fw]
+description: Firmware for Aastra 9480i
+description_fr: Micrologiciel pour Aastra 9480i
+version: 3.3.1.4053
+files: 9480i-fw
+install: aastra-fw
+
+[pkg_lang]
+description: Language files
+description_fr: Fichiers de langue
+version: 3.3.1 SP4
+files: lang
+install: aastra-lang
+
+
+
+[install_aastra-fw]
+a-b: unzip $FILE1
+b-c: include *.st
+
+[install_aastra-lang]
+a-b: unzip $FILE1
+b-c: cp * i18n/
+
+
+
+[file_6730i-fw]
+filename: 6730i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6167-17774-_P06_XML&dsproject=aastra&mtype=zip
+size: 2035337
+sha1sum: 5199b066cfba16495cabc0eaadd3cdb925d1ef30
+
+[file_6731i-fw]
+filename: 6731i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6274-17772-_P06_XML&dsproject=aastra&mtype=zip
+size: 2040013
+sha1sum: 25432f09a1a5cfd5b9d8f7bc947176238f7d7d77
+
+[file_6735i-fw]
+filename: 6735i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=15256-17757-_P06_XML&dsproject=aastra&mtype=zip
+size: 11692505
+sha1sum: aec360e204d056ae3d121b2a064eb92407423144
+
+[file_6737i-fw]
+filename: 6737i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=15257-17759-_P06_XML&dsproject=aastra&mtype=zip
+size: 11919346
+sha1sum: 46acd05062f27dd76b2af91c33383ac004012ba5
+
+[file_6739i-fw]
+filename: 6739i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6354-17770-_P06_XML&dsproject=aastra&mtype=zip
+size: 5006954
+sha1sum: 764dc1e0f4526de39cc44bf1e3e80c6e5a1b5045
+
+[file_6753i-fw]
+filename: 6753i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6848-17776-_P06_XML&dsproject=aastra&mtype=zip
+size: 2849470
+sha1sum: 817f323e586557637224fb5872c5946559aeee6f
+
+[file_6755i-fw]
+filename: 6755i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6950-17778-_P06_XML&dsproject=aastra&mtype=zip
+size: 2880140
+sha1sum: 6f630861abd419e86ed4c59bf7252e7f373dee0d
+
+[file_6757i-fw]
+filename: 6757i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=7041-17780-_P06_XML&dsproject=aastra&mtype=zip
+size: 2880672
+sha1sum: 64e2e6a691ab87a358259839f837352d1a2ef64e
+
+[file_9143i-fw]
+filename: 9143i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6528-17782-_P06_XML&dsproject=aastra&mtype=zip
+size: 2792019
+sha1sum: c70f7abbf07cfec4ba9522dce4b82b4343d1f4c4
+
+[file_9480i-fw]
+filename: 9480i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6622-17784-_P06_XML&dsproject=aastra&mtype=zip
+size: 2819010
+sha1sum: 33119f683ceda59508bc1bd747d5988bed24292b
+
+[file_lang]
+filename: lang.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6167-17788-_P06_XML&dsproject=aastra&mtype=zip
+size: 506083
+sha1sum: f1bef73c5ead523c291bfadf27b4b31cc17f7249
