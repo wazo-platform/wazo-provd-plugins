@@ -44,7 +44,7 @@ def _norm_model(raw_model):
 
 
 class BaseCiscoDHCPDeviceInfoExtractor(object):
-    _RAW_VENDORS = ['LINKSYS', 'Cisco']
+    _RAW_VENDORS = ['linksys', 'cisco']
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -66,10 +66,11 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
         #   "Cisco SPA525G" (SPA525G 7.4.4)
         #   "Cisco SPA525G" (SPA525G 7.4.7)
         #   "Cisco SPA525G2" (SPA525G2 7.4.5)
+        #   "CISCO SPA122"
         tokens = vdi.split()
         if len(tokens) == 2:
             raw_vendor, raw_model = tokens
-            if raw_vendor in self._RAW_VENDORS:
+            if raw_vendor.lower() in self._RAW_VENDORS:
                 dev_info = {u'vendor': u'Cisco',
                             u'model': _norm_model(raw_model)}
                 return dev_info
