@@ -16,6 +16,8 @@ Note that every parameters here has been manually specified, so be careful if
 you modify them, although some parameters should be reviewed for their
 usefulness/applicability.
 
+This file is only used by desk phone devices.
+
 -->
 
 <SPCP_Auto-detect>No</SPCP_Auto-detect>
