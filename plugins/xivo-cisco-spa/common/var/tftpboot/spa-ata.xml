@@ -40,6 +40,7 @@ This file is only used by ATA devices.
 <Talk_Package>Yes</Talk_Package>
 <Hold_Package>Yes</Hold_Package>
 
+<RTP_Packet_Size ua="na">0.020</RTP_Packet_Size>
 <RTP-Start-Loopback_Codec>G711a</RTP-Start-Loopback_Codec>
 
 <Reorder_Delay>5</Reorder_Delay>
@@ -151,6 +152,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_1_>Yes</Use_Auth_ID_1_>
 <Auth_ID_1_></Auth_ID_1_>
 <Dial_Plan_1_>([x*#].)</Dial_Plan_1_>
+<Call_Waiting_Serv_1_ ua="na">No</Call_Waiting_Serv_1_>
+<Three_Way_Call_Serv_1_ ua="na">No</Three_Way_Call_Serv_1_>
+<Preferred_Codec_1_ ua="na">G711a</Preferred_Codec_1_>
+<Silence_Supp_Enable_1_ ua="na">No</Silence_Supp_Enable_1_>
+<Echo_Canc_Adapt_Enable_1_ ua="na">Yes</Echo_Canc_Adapt_Enable_1_>
+<Echo_Supp_Enable_1_ ua="na">Yes</Echo_Supp_Enable_1_>
+<Echo_Canc_Enable_1_ ua="na">Yes</Echo_Canc_Enable_1_>
+<Use_Pref_Codec_Only_1_ ua="na">No</Use_Pref_Codec_Only_1_>
+<DTMF_Tx_Mode_1_ ua="na">Normal</DTMF_Tx_Mode_1_>
+<FAX_Enable_T38_1_ ua="na">Yes</FAX_Enable_T38_1_>
+<FAX_T38_Redundancy_1_ ua="na">1</FAX_T38_Redundancy_1_>
+<FAX_Passthru_Method_1_ ua="na">ReINVITE</FAX_Passthru_Method_1_>
+<FAX_Passthru_Codec_1_ ua="na">G711a</FAX_Passthru_Codec_1_>
+<FAX_Disable_ECAN_1_ ua="na">yes</FAX_Disable_ECAN_1_>
+<FAX_Tone_Detect_Mode_1_ ua="na">caller or callee</FAX_Tone_Detect_Mode_1_>
+<Network_Jitter_Level_1_ ua="na">very high</Network_Jitter_Level_1_>
+<Jitter_Buffer_Adjustment_1_ ua="na">disable</Jitter_Buffer_Adjustment_1_>
 <SIP_Remote-Party-ID_1_>no</SIP_Remote-Party-ID_1_>
 
 <Line_Enable_2_>No</Line_Enable_2_>
@@ -160,6 +178,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_2_>Yes</Use_Auth_ID_2_>
 <Auth_ID_2_></Auth_ID_2_>
 <Dial_Plan_2_>([x*#].)</Dial_Plan_2_>
+<Call_Waiting_Serv_2_ ua="na">No</Call_Waiting_Serv_2_>
+<Three_Way_Call_Serv_2_ ua="na">No</Three_Way_Call_Serv_2_>
+<Preferred_Codec_2_ ua="na">G711a</Preferred_Codec_2_>
+<Silence_Supp_Enable_2_ ua="na">No</Silence_Supp_Enable_2_>
+<Echo_Canc_Adapt_Enable_2_ ua="na">Yes</Echo_Canc_Adapt_Enable_2_>
+<Echo_Supp_Enable_2_ ua="na">Yes</Echo_Supp_Enable_2_>
+<Echo_Canc_Enable_2_ ua="na">Yes</Echo_Canc_Enable_2_>
+<Use_Pref_Codec_Only_2_ ua="na">No</Use_Pref_Codec_Only_2_>
+<DTMF_Tx_Mode_2_ ua="na">Normal</DTMF_Tx_Mode_2_>
+<FAX_Enable_T38_2_ ua="na">Yes</FAX_Enable_T38_2_>
+<FAX_T38_Redundancy_2_ ua="na">1</FAX_T38_Redundancy_2_>
+<FAX_Passthru_Method_2_ ua="na">ReINVITE</FAX_Passthru_Method_2_>
+<FAX_Passthru_Codec_2_ ua="na">G711a</FAX_Passthru_Codec_2_>
+<FAX_Disable_ECAN_2_ ua="na">yes</FAX_Disable_ECAN_2_>
+<FAX_Tone_Detect_Mode_2_ ua="na">caller or callee</FAX_Tone_Detect_Mode_2_>
+<Network_Jitter_Level_2_ ua="na">very high</Network_Jitter_Level_2_>
+<Jitter_Buffer_Adjustment_2_ ua="na">disable</Jitter_Buffer_Adjustment_2_>
 <SIP_Remote-Party-ID_2_>no</SIP_Remote-Party-ID_2_>
 
 <Line_Enable_3_>No</Line_Enable_3_>
@@ -169,6 +204,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_3_>Yes</Use_Auth_ID_3_>
 <Auth_ID_3_></Auth_ID_3_>
 <Dial_Plan_3_>([x*#].)</Dial_Plan_3_>
+<Call_Waiting_Serv_3_ ua="na">No</Call_Waiting_Serv_3_>
+<Three_Way_Call_Serv_3_ ua="na">No</Three_Way_Call_Serv_3_>
+<Preferred_Codec_3_ ua="na">G711a</Preferred_Codec_3_>
+<Silence_Supp_Enable_3_ ua="na">No</Silence_Supp_Enable_3_>
+<Echo_Canc_Adapt_Enable_3_ ua="na">Yes</Echo_Canc_Adapt_Enable_3_>
+<Echo_Supp_Enable_3_ ua="na">Yes</Echo_Supp_Enable_3_>
+<Echo_Canc_Enable_3_ ua="na">Yes</Echo_Canc_Enable_3_>
+<Use_Pref_Codec_Only_3_ ua="na">No</Use_Pref_Codec_Only_3_>
+<DTMF_Tx_Mode_3_ ua="na">Normal</DTMF_Tx_Mode_3_>
+<FAX_Enable_T38_3_ ua="na">Yes</FAX_Enable_T38_3_>
+<FAX_T38_Redundancy_3_ ua="na">1</FAX_T38_Redundancy_3_>
+<FAX_Passthru_Method_3_ ua="na">ReINVITE</FAX_Passthru_Method_3_>
+<FAX_Passthru_Codec_3_ ua="na">G711a</FAX_Passthru_Codec_3_>
+<FAX_Disable_ECAN_3_ ua="na">yes</FAX_Disable_ECAN_3_>
+<FAX_Tone_Detect_Mode_3_ ua="na">caller or callee</FAX_Tone_Detect_Mode_3_>
+<Network_Jitter_Level_3_ ua="na">very high</Network_Jitter_Level_3_>
+<Jitter_Buffer_Adjustment_3_ ua="na">disable</Jitter_Buffer_Adjustment_3_>
 <SIP_Remote-Party-ID_3_>no</SIP_Remote-Party-ID_3_>
 
 <Line_Enable_4_>No</Line_Enable_4_>
@@ -178,6 +230,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_4_>Yes</Use_Auth_ID_4_>
 <Auth_ID_4_></Auth_ID_4_>
 <Dial_Plan_4_>([x*#].)</Dial_Plan_4_>
+<Call_Waiting_Serv_4_ ua="na">No</Call_Waiting_Serv_4_>
+<Three_Way_Call_Serv_4_ ua="na">No</Three_Way_Call_Serv_4_>
+<Preferred_Codec_4_ ua="na">G711a</Preferred_Codec_4_>
+<Silence_Supp_Enable_4_ ua="na">No</Silence_Supp_Enable_4_>
+<Echo_Canc_Adapt_Enable_4_ ua="na">Yes</Echo_Canc_Adapt_Enable_4_>
+<Echo_Supp_Enable_4_ ua="na">Yes</Echo_Supp_Enable_4_>
+<Echo_Canc_Enable_4_ ua="na">Yes</Echo_Canc_Enable_4_>
+<Use_Pref_Codec_Only_4_ ua="na">No</Use_Pref_Codec_Only_4_>
+<DTMF_Tx_Mode_4_ ua="na">Normal</DTMF_Tx_Mode_4_>
+<FAX_Enable_T38_4_ ua="na">Yes</FAX_Enable_T38_4_>
+<FAX_T38_Redundancy_4_ ua="na">1</FAX_T38_Redundancy_4_>
+<FAX_Passthru_Method_4_ ua="na">ReINVITE</FAX_Passthru_Method_4_>
+<FAX_Passthru_Codec_4_ ua="na">G711a</FAX_Passthru_Codec_4_>
+<FAX_Disable_ECAN_4_ ua="na">yes</FAX_Disable_ECAN_4_>
+<FAX_Tone_Detect_Mode_4_ ua="na">caller or callee</FAX_Tone_Detect_Mode_4_>
+<Network_Jitter_Level_4_ ua="na">very high</Network_Jitter_Level_4_>
+<Jitter_Buffer_Adjustment_4_ ua="na">disable</Jitter_Buffer_Adjustment_4_>
 <SIP_Remote-Party-ID_4_>no</SIP_Remote-Party-ID_4_>
 
 <Line_Enable_5_>No</Line_Enable_5_>
@@ -187,6 +256,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_5_>Yes</Use_Auth_ID_5_>
 <Auth_ID_5_></Auth_ID_5_>
 <Dial_Plan_5_>([x*#].)</Dial_Plan_5_>
+<Call_Waiting_Serv_5_ ua="na">No</Call_Waiting_Serv_5_>
+<Three_Way_Call_Serv_5_ ua="na">No</Three_Way_Call_Serv_5_>
+<Preferred_Codec_5_ ua="na">G711a</Preferred_Codec_5_>
+<Silence_Supp_Enable_5_ ua="na">No</Silence_Supp_Enable_5_>
+<Echo_Canc_Adapt_Enable_5_ ua="na">Yes</Echo_Canc_Adapt_Enable_5_>
+<Echo_Supp_Enable_5_ ua="na">Yes</Echo_Supp_Enable_5_>
+<Echo_Canc_Enable_5_ ua="na">Yes</Echo_Canc_Enable_5_>
+<Use_Pref_Codec_Only_5_ ua="na">No</Use_Pref_Codec_Only_5_>
+<DTMF_Tx_Mode_5_ ua="na">Normal</DTMF_Tx_Mode_5_>
+<FAX_Enable_T38_5_ ua="na">Yes</FAX_Enable_T38_5_>
+<FAX_T38_Redundancy_5_ ua="na">1</FAX_T38_Redundancy_5_>
+<FAX_Passthru_Method_5_ ua="na">ReINVITE</FAX_Passthru_Method_5_>
+<FAX_Passthru_Codec_5_ ua="na">G711a</FAX_Passthru_Codec_5_>
+<FAX_Disable_ECAN_5_ ua="na">yes</FAX_Disable_ECAN_5_>
+<FAX_Tone_Detect_Mode_5_ ua="na">caller or callee</FAX_Tone_Detect_Mode_5_>
+<Network_Jitter_Level_5_ ua="na">very high</Network_Jitter_Level_5_>
+<Jitter_Buffer_Adjustment_5_ ua="na">disable</Jitter_Buffer_Adjustment_5_>
 <SIP_Remote-Party-ID_5_>no</SIP_Remote-Party-ID_5_>
 
 <Line_Enable_6_>No</Line_Enable_6_>
@@ -196,6 +282,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_6_>Yes</Use_Auth_ID_6_>
 <Auth_ID_6_></Auth_ID_6_>
 <Dial_Plan_6_>([x*#].)</Dial_Plan_6_>
+<Call_Waiting_Serv_6_ ua="na">No</Call_Waiting_Serv_6_>
+<Three_Way_Call_Serv_6_ ua="na">No</Three_Way_Call_Serv_6_>
+<Preferred_Codec_6_ ua="na">G711a</Preferred_Codec_6_>
+<Silence_Supp_Enable_6_ ua="na">No</Silence_Supp_Enable_6_>
+<Echo_Canc_Adapt_Enable_6_ ua="na">Yes</Echo_Canc_Adapt_Enable_6_>
+<Echo_Supp_Enable_6_ ua="na">Yes</Echo_Supp_Enable_6_>
+<Echo_Canc_Enable_6_ ua="na">Yes</Echo_Canc_Enable_6_>
+<Use_Pref_Codec_Only_6_ ua="na">No</Use_Pref_Codec_Only_6_>
+<DTMF_Tx_Mode_6_ ua="na">Normal</DTMF_Tx_Mode_6_>
+<FAX_Enable_T38_6_ ua="na">Yes</FAX_Enable_T38_6_>
+<FAX_T38_Redundancy_6_ ua="na">1</FAX_T38_Redundancy_6_>
+<FAX_Passthru_Method_6_ ua="na">ReINVITE</FAX_Passthru_Method_6_>
+<FAX_Passthru_Codec_6_ ua="na">G711a</FAX_Passthru_Codec_6_>
+<FAX_Disable_ECAN_6_ ua="na">yes</FAX_Disable_ECAN_6_>
+<FAX_Tone_Detect_Mode_6_ ua="na">caller or callee</FAX_Tone_Detect_Mode_6_>
+<Network_Jitter_Level_6_ ua="na">very high</Network_Jitter_Level_6_>
+<Jitter_Buffer_Adjustment_6_ ua="na">disable</Jitter_Buffer_Adjustment_6_>
 <SIP_Remote-Party-ID_6_>no</SIP_Remote-Party-ID_6_>
 
 <Line_Enable_7_>No</Line_Enable_7_>
@@ -205,6 +308,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_7_>Yes</Use_Auth_ID_7_>
 <Auth_ID_7_></Auth_ID_7_>
 <Dial_Plan_7_>([x*#].)</Dial_Plan_7_>
+<Call_Waiting_Serv_7_ ua="na">No</Call_Waiting_Serv_7_>
+<Three_Way_Call_Serv_7_ ua="na">No</Three_Way_Call_Serv_7_>
+<Preferred_Codec_7_ ua="na">G711a</Preferred_Codec_7_>
+<Silence_Supp_Enable_7_ ua="na">No</Silence_Supp_Enable_7_>
+<Echo_Canc_Adapt_Enable_7_ ua="na">Yes</Echo_Canc_Adapt_Enable_7_>
+<Echo_Supp_Enable_7_ ua="na">Yes</Echo_Supp_Enable_7_>
+<Echo_Canc_Enable_7_ ua="na">Yes</Echo_Canc_Enable_7_>
+<Use_Pref_Codec_Only_7_ ua="na">No</Use_Pref_Codec_Only_7_>
+<DTMF_Tx_Mode_7_ ua="na">Normal</DTMF_Tx_Mode_7_>
+<FAX_Enable_T38_7_ ua="na">Yes</FAX_Enable_T38_7_>
+<FAX_T38_Redundancy_7_ ua="na">1</FAX_T38_Redundancy_7_>
+<FAX_Passthru_Method_7_ ua="na">ReINVITE</FAX_Passthru_Method_7_>
+<FAX_Passthru_Codec_7_ ua="na">G711a</FAX_Passthru_Codec_7_>
+<FAX_Disable_ECAN_7_ ua="na">yes</FAX_Disable_ECAN_7_>
+<FAX_Tone_Detect_Mode_7_ ua="na">caller or callee</FAX_Tone_Detect_Mode_7_>
+<Network_Jitter_Level_7_ ua="na">very high</Network_Jitter_Level_7_>
+<Jitter_Buffer_Adjustment_7_ ua="na">disable</Jitter_Buffer_Adjustment_7_>
 <SIP_Remote-Party-ID_7_>no</SIP_Remote-Party-ID_7_>
 
 <Line_Enable_8_>No</Line_Enable_8_>
@@ -214,6 +334,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_8_>Yes</Use_Auth_ID_8_>
 <Auth_ID_8_></Auth_ID_8_>
 <Dial_Plan_8_>([x*#].)</Dial_Plan_8_>
+<Call_Waiting_Serv_8_ ua="na">No</Call_Waiting_Serv_8_>
+<Three_Way_Call_Serv_8_ ua="na">No</Three_Way_Call_Serv_8_>
+<Preferred_Codec_8_ ua="na">G711a</Preferred_Codec_8_>
+<Silence_Supp_Enable_8_ ua="na">No</Silence_Supp_Enable_8_>
+<Echo_Canc_Adapt_Enable_8_ ua="na">Yes</Echo_Canc_Adapt_Enable_8_>
+<Echo_Supp_Enable_8_ ua="na">Yes</Echo_Supp_Enable_8_>
+<Echo_Canc_Enable_8_ ua="na">Yes</Echo_Canc_Enable_8_>
+<Use_Pref_Codec_Only_8_ ua="na">No</Use_Pref_Codec_Only_8_>
+<DTMF_Tx_Mode_8_ ua="na">Normal</DTMF_Tx_Mode_8_>
+<FAX_Enable_T38_8_ ua="na">Yes</FAX_Enable_T38_8_>
+<FAX_T38_Redundancy_8_ ua="na">1</FAX_T38_Redundancy_8_>
+<FAX_Passthru_Method_8_ ua="na">ReINVITE</FAX_Passthru_Method_8_>
+<FAX_Passthru_Codec_8_ ua="na">G711a</FAX_Passthru_Codec_8_>
+<FAX_Disable_ECAN_8_ ua="na">yes</FAX_Disable_ECAN_8_>
+<FAX_Tone_Detect_Mode_8_ ua="na">caller or callee</FAX_Tone_Detect_Mode_8_>
+<Network_Jitter_Level_8_ ua="na">very high</Network_Jitter_Level_8_>
+<Jitter_Buffer_Adjustment_8_ ua="na">disable</Jitter_Buffer_Adjustment_8_>
 <SIP_Remote-Party-ID_8_>no</SIP_Remote-Party-ID_8_>
 
 <Line_Enable_9_>No</Line_Enable_9_>
@@ -223,6 +360,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_9_>Yes</Use_Auth_ID_9_>
 <Auth_ID_9_></Auth_ID_9_>
 <Dial_Plan_9_>([x*#].)</Dial_Plan_9_>
+<Call_Waiting_Serv_9_ ua="na">No</Call_Waiting_Serv_9_>
+<Three_Way_Call_Serv_9_ ua="na">No</Three_Way_Call_Serv_9_>
+<Preferred_Codec_9_ ua="na">G711a</Preferred_Codec_9_>
+<Silence_Supp_Enable_9_ ua="na">No</Silence_Supp_Enable_9_>
+<Echo_Canc_Adapt_Enable_9_ ua="na">Yes</Echo_Canc_Adapt_Enable_9_>
+<Echo_Supp_Enable_9_ ua="na">Yes</Echo_Supp_Enable_9_>
+<Echo_Canc_Enable_9_ ua="na">Yes</Echo_Canc_Enable_9_>
+<Use_Pref_Codec_Only_9_ ua="na">No</Use_Pref_Codec_Only_9_>
+<DTMF_Tx_Mode_9_ ua="na">Normal</DTMF_Tx_Mode_9_>
+<FAX_Enable_T38_9_ ua="na">Yes</FAX_Enable_T38_9_>
+<FAX_T38_Redundancy_9_ ua="na">1</FAX_T38_Redundancy_9_>
+<FAX_Passthru_Method_9_ ua="na">ReINVITE</FAX_Passthru_Method_9_>
+<FAX_Passthru_Codec_9_ ua="na">G711a</FAX_Passthru_Codec_9_>
+<FAX_Disable_ECAN_9_ ua="na">yes</FAX_Disable_ECAN_9_>
+<FAX_Tone_Detect_Mode_9_ ua="na">caller or callee</FAX_Tone_Detect_Mode_9_>
+<Network_Jitter_Level_9_ ua="na">very high</Network_Jitter_Level_9_>
+<Jitter_Buffer_Adjustment_9_ ua="na">disable</Jitter_Buffer_Adjustment_9_>
 <SIP_Remote-Party-ID_9_>no</SIP_Remote-Party-ID_9_>
 
 <Line_Enable_10_>No</Line_Enable_10_>
@@ -232,6 +386,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_10_>Yes</Use_Auth_ID_10_>
 <Auth_ID_10_></Auth_ID_10_>
 <Dial_Plan_10_>([x*#].)</Dial_Plan_10_>
+<Call_Waiting_Serv_10_ ua="na">No</Call_Waiting_Serv_10_>
+<Three_Way_Call_Serv_10_ ua="na">No</Three_Way_Call_Serv_10_>
+<Preferred_Codec_10_ ua="na">G711a</Preferred_Codec_10_>
+<Silence_Supp_Enable_10_ ua="na">No</Silence_Supp_Enable_10_>
+<Echo_Canc_Adapt_Enable_10_ ua="na">Yes</Echo_Canc_Adapt_Enable_10_>
+<Echo_Supp_Enable_10_ ua="na">Yes</Echo_Supp_Enable_10_>
+<Echo_Canc_Enable_10_ ua="na">Yes</Echo_Canc_Enable_10_>
+<Use_Pref_Codec_Only_10_ ua="na">No</Use_Pref_Codec_Only_10_>
+<DTMF_Tx_Mode_10_ ua="na">Normal</DTMF_Tx_Mode_10_>
+<FAX_Enable_T38_10_ ua="na">Yes</FAX_Enable_T38_10_>
+<FAX_T38_Redundancy_10_ ua="na">1</FAX_T38_Redundancy_10_>
+<FAX_Passthru_Method_10_ ua="na">ReINVITE</FAX_Passthru_Method_10_>
+<FAX_Passthru_Codec_10_ ua="na">G711a</FAX_Passthru_Codec_10_>
+<FAX_Disable_ECAN_10_ ua="na">yes</FAX_Disable_ECAN_10_>
+<FAX_Tone_Detect_Mode_10_ ua="na">caller or callee</FAX_Tone_Detect_Mode_10_>
+<Network_Jitter_Level_10_ ua="na">very high</Network_Jitter_Level_10_>
+<Jitter_Buffer_Adjustment_10_ ua="na">disable</Jitter_Buffer_Adjustment_10_>
 <SIP_Remote-Party-ID_10_>no</SIP_Remote-Party-ID_10_>
 
 <Line_Enable_11_>No</Line_Enable_11_>
@@ -241,6 +412,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_11_>Yes</Use_Auth_ID_11_>
 <Auth_ID_11_></Auth_ID_11_>
 <Dial_Plan_11_>([x*#].)</Dial_Plan_11_>
+<Call_Waiting_Serv_11_ ua="na">No</Call_Waiting_Serv_11_>
+<Three_Way_Call_Serv_11_ ua="na">No</Three_Way_Call_Serv_11_>
+<Preferred_Codec_11_ ua="na">G711a</Preferred_Codec_11_>
+<Silence_Supp_Enable_11_ ua="na">No</Silence_Supp_Enable_11_>
+<Echo_Canc_Adapt_Enable_11_ ua="na">Yes</Echo_Canc_Adapt_Enable_11_>
+<Echo_Supp_Enable_11_ ua="na">Yes</Echo_Supp_Enable_11_>
+<Echo_Canc_Enable_11_ ua="na">Yes</Echo_Canc_Enable_11_>
+<Use_Pref_Codec_Only_11_ ua="na">No</Use_Pref_Codec_Only_11_>
+<DTMF_Tx_Mode_11_ ua="na">Normal</DTMF_Tx_Mode_11_>
+<FAX_Enable_T38_11_ ua="na">Yes</FAX_Enable_T38_11_>
+<FAX_T38_Redundancy_11_ ua="na">1</FAX_T38_Redundancy_11_>
+<FAX_Passthru_Method_11_ ua="na">ReINVITE</FAX_Passthru_Method_11_>
+<FAX_Passthru_Codec_11_ ua="na">G711a</FAX_Passthru_Codec_11_>
+<FAX_Disable_ECAN_11_ ua="na">yes</FAX_Disable_ECAN_11_>
+<FAX_Tone_Detect_Mode_11_ ua="na">caller or callee</FAX_Tone_Detect_Mode_11_>
+<Network_Jitter_Level_11_ ua="na">very high</Network_Jitter_Level_11_>
+<Jitter_Buffer_Adjustment_11_ ua="na">disable</Jitter_Buffer_Adjustment_11_>
 <SIP_Remote-Party-ID_11_>no</SIP_Remote-Party-ID_11_>
 
 <Line_Enable_12_>No</Line_Enable_12_>
@@ -250,6 +438,23 @@ This file is only used by ATA devices.
 <Use_Auth_ID_12_>Yes</Use_Auth_ID_12_>
 <Auth_ID_12_></Auth_ID_12_>
 <Dial_Plan_12_>([x*#].)</Dial_Plan_12_>
+<Call_Waiting_Serv_12_ ua="na">No</Call_Waiting_Serv_12_>
+<Three_Way_Call_Serv_12_ ua="na">No</Three_Way_Call_Serv_12_>
+<Preferred_Codec_12_ ua="na">G711a</Preferred_Codec_12_>
+<Silence_Supp_Enable_12_ ua="na">No</Silence_Supp_Enable_12_>
+<Echo_Canc_Adapt_Enable_12_ ua="na">Yes</Echo_Canc_Adapt_Enable_12_>
+<Echo_Supp_Enable_12_ ua="na">Yes</Echo_Supp_Enable_12_>
+<Echo_Canc_Enable_12_ ua="na">Yes</Echo_Canc_Enable_12_>
+<Use_Pref_Codec_Only_12_ ua="na">No</Use_Pref_Codec_Only_12_>
+<DTMF_Tx_Mode_12_ ua="na">Normal</DTMF_Tx_Mode_12_>
+<FAX_Enable_T38_12_ ua="na">Yes</FAX_Enable_T38_12_>
+<FAX_T38_Redundancy_12_ ua="na">1</FAX_T38_Redundancy_12_>
+<FAX_Passthru_Method_12_ ua="na">ReINVITE</FAX_Passthru_Method_12_>
+<FAX_Passthru_Codec_12_ ua="na">G711a</FAX_Passthru_Codec_12_>
+<FAX_Disable_ECAN_12_ ua="na">yes</FAX_Disable_ECAN_12_>
+<FAX_Tone_Detect_Mode_12_ ua="na">caller or callee</FAX_Tone_Detect_Mode_12_>
+<Network_Jitter_Level_12_ ua="na">very high</Network_Jitter_Level_12_>
+<Jitter_Buffer_Adjustment_12_ ua="na">disable</Jitter_Buffer_Adjustment_12_>
 <SIP_Remote-Party-ID_12_>no</SIP_Remote-Party-ID_12_>
 
 <!-- Disable all line keys -->
@@ -401,10 +606,12 @@ This file is only used by ATA devices.
 <Modem_Line_Toggle_Code></Modem_Line_Toggle_Code>
 <FAX_Line_Toggle_Code></FAX_Line_Toggle_Code>
 
-<FXS_Port_Impedance>270+750||150nF</FXS_Port_Impedance>
+<FXS_Port_Impedance>600+2.16uF</FXS_Port_Impedance>
 <Ring_Waveform>Sinusoid</Ring_Waveform>
 <Ring_Frequency>50</Ring_Frequency>
-<Ring_Voltage>70</Ring_Voltage>
+<Ring_Voltage>85</Ring_Voltage>
+<Caller_ID_Method ua="na">Bellcore(N.Amer,China)</Caller_ID_Method>
+<Caller_ID_FSK_Standard ua="na">bell 202</Caller_ID_FSK_Standard>
 
 <Ring1_Cadence>2.25(.25/1.6);60(2/3.5)</Ring1_Cadence>
 

@@ -1,5 +1,5 @@
 {
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Plugin for Cisco SPA112 and SPA122 in version 1.3.5.",
     "description_fr": "Greffon pour Cisco SPA112 et SPA122 en version 1.3.5.",
     "capabilities": {
