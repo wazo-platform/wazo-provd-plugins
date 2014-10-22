@@ -419,4 +419,12 @@ This file is only used by ATA devices.
 <Network_Jitter_Level_8_>very high</Network_Jitter_Level_8_>
 <Jitter_Buffer_Adjustment_8_>disable</Jitter_Buffer_Adjustment_8_>
 
+<!-- SPA100 and SPA200 specific settings -->
+
+<router-configuration>
+	<Web_Management>
+		<Web_Remote_Management>1</Web_Remote_Management>
+	</Web_Management>
+</router-configuration>
+
 </flat-profile>
