@@ -90,4 +90,21 @@
 <XML_Directory_Service_URL>http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search</XML_Directory_Service_URL>
 {% endif -%}
 
+<!-- SPA100 and SPA200 specific settings -->
+
+<router-configuration>
+	<Time_Setup>
+		<Time_Zone>+01 2 2</Time_Zone>
+		<Time_Server>{{ ntp_ip }}</Time_Server>
+	</Time_Setup>
+	<WAN_VLAN_Setting>
+		<WAN_VLAN_Enable>{{ '1' if vlan_enabled else '0' }}</WAN_VLAN_Enable>
+		<WAN_VLAN_ID>{{ vlan_id|d('1') }}</WAN_VLAN_ID>
+	</WAN_VLAN_Setting>
+	<Web_Login_Admin_Name>{{ admin_username|d('admin') }}</Web_Login_Admin_Name>
+	<Web_Login_Admin_Password>{{ admin_password|d('admin') }}</Web_Login_Admin_Password>
+	<Web_Login_Guest_Name>{{ user_username|d('cisco') }}</Web_Login_Guest_Name>
+	<Web_Login_Guest_Password>{{ user_password|d('cisco') }}</Web_Login_Guest_Password>
+</router-configuration>
+
 </flat-profile>

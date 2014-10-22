@@ -16,6 +16,8 @@ Note that every parameters here has been manually specified, so be careful if
 you modify them, although some parameters should be reviewed for their
 usefulness/applicability.
 
+This file is only used by ATA devices.
+
 -->
 
 <SPCP_Auto-detect>No</SPCP_Auto-detect>
@@ -38,6 +40,7 @@ usefulness/applicability.
 <Talk_Package>Yes</Talk_Package>
 <Hold_Package>Yes</Hold_Package>
 
+<RTP_Packet_Size>0.020</RTP_Packet_Size>
 <RTP-Start-Loopback_Codec>G711a</RTP-Start-Loopback_Codec>
 
 <Reorder_Delay>5</Reorder_Delay>
@@ -214,42 +217,6 @@ usefulness/applicability.
 <Dial_Plan_8_>([x*#].)</Dial_Plan_8_>
 <SIP_Remote-Party-ID_8_>no</SIP_Remote-Party-ID_8_>
 
-<Line_Enable_9_>No</Line_Enable_9_>
-<Auth_Resync-Reboot_9_>No</Auth_Resync-Reboot_9_>
-<User_ID_9_></User_ID_9_>
-<Password_9_></Password_9_>
-<Use_Auth_ID_9_>Yes</Use_Auth_ID_9_>
-<Auth_ID_9_></Auth_ID_9_>
-<Dial_Plan_9_>([x*#].)</Dial_Plan_9_>
-<SIP_Remote-Party-ID_9_>no</SIP_Remote-Party-ID_9_>
-
-<Line_Enable_10_>No</Line_Enable_10_>
-<Auth_Resync-Reboot_10_>No</Auth_Resync-Reboot_10_>
-<User_ID_10_></User_ID_10_>
-<Password_10_></Password_10_>
-<Use_Auth_ID_10_>Yes</Use_Auth_ID_10_>
-<Auth_ID_10_></Auth_ID_10_>
-<Dial_Plan_10_>([x*#].)</Dial_Plan_10_>
-<SIP_Remote-Party-ID_10_>no</SIP_Remote-Party-ID_10_>
-
-<Line_Enable_11_>No</Line_Enable_11_>
-<Auth_Resync-Reboot_11_>No</Auth_Resync-Reboot_11_>
-<User_ID_11_></User_ID_11_>
-<Password_11_></Password_11_>
-<Use_Auth_ID_11_>Yes</Use_Auth_ID_11_>
-<Auth_ID_11_></Auth_ID_11_>
-<Dial_Plan_11_>([x*#].)</Dial_Plan_11_>
-<SIP_Remote-Party-ID_11_>no</SIP_Remote-Party-ID_11_>
-
-<Line_Enable_12_>No</Line_Enable_12_>
-<Auth_Resync-Reboot_12_>No</Auth_Resync-Reboot_12_>
-<User_ID_12_></User_ID_12_>
-<Password_12_></Password_12_>
-<Use_Auth_ID_12_>Yes</Use_Auth_ID_12_>
-<Auth_ID_12_></Auth_ID_12_>
-<Dial_Plan_12_>([x*#].)</Dial_Plan_12_>
-<SIP_Remote-Party-ID_12_>no</SIP_Remote-Party-ID_12_>
-
 <!-- Disable all line keys -->
 
 <Extension_1_>Disabled</Extension_1_>
@@ -276,107 +243,7 @@ usefulness/applicability.
 <Extension_8_>Disabled</Extension_8_>
 <Extended_Function_8_></Extended_Function_8_>
 
-<Extension_9_>Disabled</Extension_9_>
-<Extended_Function_9_></Extended_Function_9_>
-
-<Extension_10_>Disabled</Extension_10_>
-<Extended_Function_10_></Extended_Function_10_>
-
-<Extension_11_>Disabled</Extension_11_>
-<Extended_Function_11_></Extended_Function_11_>
-
-<Extension_12_>Disabled</Extension_12_>
-<Extended_Function_12_></Extended_Function_12_>
-
-<!-- Attendant Console stuff -->
-
-<Server_Type>Asterisk</Server_Type>
-<Attendant_Console_Call_Pickup_Code></Attendant_Console_Call_Pickup_Code>
-
-<Unit_1_Key_1></Unit_1_Key_1>
-<Unit_1_Key_2></Unit_1_Key_2>
-<Unit_1_Key_3></Unit_1_Key_3>
-<Unit_1_Key_4></Unit_1_Key_4>
-<Unit_1_Key_5></Unit_1_Key_5>
-<Unit_1_Key_6></Unit_1_Key_6>
-<Unit_1_Key_7></Unit_1_Key_7>
-<Unit_1_Key_8></Unit_1_Key_8>
-<Unit_1_Key_9></Unit_1_Key_9>
-<Unit_1_Key_10></Unit_1_Key_10>
-<Unit_1_Key_11></Unit_1_Key_11>
-<Unit_1_Key_12></Unit_1_Key_12>
-<Unit_1_Key_13></Unit_1_Key_13>
-<Unit_1_Key_14></Unit_1_Key_14>
-<Unit_1_Key_15></Unit_1_Key_15>
-<Unit_1_Key_16></Unit_1_Key_16>
-<Unit_1_Key_17></Unit_1_Key_17>
-<Unit_1_Key_18></Unit_1_Key_18>
-<Unit_1_Key_19></Unit_1_Key_19>
-<Unit_1_Key_20></Unit_1_Key_20>
-<Unit_1_Key_21></Unit_1_Key_21>
-<Unit_1_Key_22></Unit_1_Key_22>
-<Unit_1_Key_23></Unit_1_Key_23>
-<Unit_1_Key_24></Unit_1_Key_24>
-<Unit_1_Key_25></Unit_1_Key_25>
-<Unit_1_Key_26></Unit_1_Key_26>
-<Unit_1_Key_27></Unit_1_Key_27>
-<Unit_1_Key_28></Unit_1_Key_28>
-<Unit_1_Key_29></Unit_1_Key_29>
-<Unit_1_Key_30></Unit_1_Key_30>
-<Unit_1_Key_31></Unit_1_Key_31>
-<Unit_1_Key_32></Unit_1_Key_32>
-
-<Unit_2_Key_1></Unit_2_Key_1>
-<Unit_2_Key_2></Unit_2_Key_2>
-<Unit_2_Key_3></Unit_2_Key_3>
-<Unit_2_Key_4></Unit_2_Key_4>
-<Unit_2_Key_5></Unit_2_Key_5>
-<Unit_2_Key_6></Unit_2_Key_6>
-<Unit_2_Key_7></Unit_2_Key_7>
-<Unit_2_Key_8></Unit_2_Key_8>
-<Unit_2_Key_9></Unit_2_Key_9>
-<Unit_2_Key_10></Unit_2_Key_10>
-<Unit_2_Key_11></Unit_2_Key_11>
-<Unit_2_Key_12></Unit_2_Key_12>
-<Unit_2_Key_13></Unit_2_Key_13>
-<Unit_2_Key_14></Unit_2_Key_14>
-<Unit_2_Key_15></Unit_2_Key_15>
-<Unit_2_Key_16></Unit_2_Key_16>
-<Unit_2_Key_17></Unit_2_Key_17>
-<Unit_2_Key_18></Unit_2_Key_18>
-<Unit_2_Key_19></Unit_2_Key_19>
-<Unit_2_Key_20></Unit_2_Key_20>
-<Unit_2_Key_21></Unit_2_Key_21>
-<Unit_2_Key_22></Unit_2_Key_22>
-<Unit_2_Key_23></Unit_2_Key_23>
-<Unit_2_Key_24></Unit_2_Key_24>
-<Unit_2_Key_25></Unit_2_Key_25>
-<Unit_2_Key_26></Unit_2_Key_26>
-<Unit_2_Key_27></Unit_2_Key_27>
-<Unit_2_Key_28></Unit_2_Key_28>
-<Unit_2_Key_29></Unit_2_Key_29>
-<Unit_2_Key_30></Unit_2_Key_30>
-<Unit_2_Key_31></Unit_2_Key_31>
-<Unit_2_Key_32></Unit_2_Key_32>
-
-<!-- SPA525G specific settings -->
-
-<SPA525-auto-detect-sccp>No</SPA525-auto-detect-sccp>
-<SPA525-readonly>Yes</SPA525-readonly>
-
-<!-- SPA962 specific settings -->
-
-<RSS_Feed_URL_1></RSS_Feed_URL_1>
-<RSS_Feed_URL_2></RSS_Feed_URL_2>
-<RSS_Feed_URL_3></RSS_Feed_URL_3>
-<RSS_Feed_URL_4></RSS_Feed_URL_4>
-<RSS_Feed_URL_5></RSS_Feed_URL_5>
-<State></State>
-<City></City>
-<Street></Street>
-<Zip_Code></Zip_Code>
-
-<!-- SPA901/ATA specific settings -->
+<!-- ATA specific settings -->
 
 <Enable_DHCP_Server>No</Enable_DHCP_Server>
 <Enable_WAN_Web_Server>Yes</Enable_WAN_Web_Server>
@@ -399,83 +266,165 @@ usefulness/applicability.
 <Modem_Line_Toggle_Code></Modem_Line_Toggle_Code>
 <FAX_Line_Toggle_Code></FAX_Line_Toggle_Code>
 
-<FXS_Port_Impedance>270+750||150nF</FXS_Port_Impedance>
+<FXS_Port_Impedance>600+2.16uF</FXS_Port_Impedance>
 <Ring_Waveform>Sinusoid</Ring_Waveform>
 <Ring_Frequency>50</Ring_Frequency>
-<Ring_Voltage>70</Ring_Voltage>
+<Ring_Voltage>85</Ring_Voltage>
+<Caller_ID_Method>Bellcore(N.Amer,China)</Caller_ID_Method>
+<Caller_ID_FSK_Standard>bell 202</Caller_ID_FSK_Standard>
 
 <Ring1_Cadence>2.25(.25/1.6);60(2/3.5)</Ring1_Cadence>
 
+<Call_Waiting_Serv_1_>No</Call_Waiting_Serv_1_>
+<Three_Way_Call_Serv_1_>No</Three_Way_Call_Serv_1_>
 <Preferred_Codec_1_>G711a</Preferred_Codec_1_>
 <Silence_Supp_Enable_1_>No</Silence_Supp_Enable_1_>
-<Echo_Canc_Enable_1_>No</Echo_Canc_Enable_1_>
-<Echo_Canc_Adapt_Enable_1_>No</Echo_Canc_Adapt_Enable_1_>
-<Echo_Supp_Enable_1_>No</Echo_Supp_Enable_1_>
-<FAX_Passthru_Codec_1_>G711a</FAX_Passthru_Codec_1_>
+<Echo_Canc_Enable_1_>Yes</Echo_Canc_Enable_1_>
+<Echo_Canc_Adapt_Enable_1_>Yes</Echo_Canc_Adapt_Enable_1_>
+<Echo_Supp_Enable_1_>Yes</Echo_Supp_Enable_1_>
+<Use_Pref_Codec_Only_1_>No</Use_Pref_Codec_Only_1_>
 <DTMF_Tx_Mode_1_>Normal</DTMF_Tx_Mode_1_>
+<FAX_Enable_T38_1_>Yes</FAX_Enable_T38_1_>
+<FAX_T38_Redundancy_1_>1</FAX_T38_Redundancy_1_>
+<FAX_Passthru_Method_1_>ReINVITE</FAX_Passthru_Method_1_>
+<FAX_Passthru_Codec_1_>G711a</FAX_Passthru_Codec_1_>
 <FAX_Disable_ECAN_1_>Yes</FAX_Disable_ECAN_1_>
+<FAX_Tone_Detect_Mode_1_>caller or callee</FAX_Tone_Detect_Mode_1_>
+<Network_Jitter_Level_1_>very high</Network_Jitter_Level_1_>
+<Jitter_Buffer_Adjustment_1_>disable</Jitter_Buffer_Adjustment_1_>
 
+<Call_Waiting_Serv_2_>No</Call_Waiting_Serv_2_>
+<Three_Way_Call_Serv_2_>No</Three_Way_Call_Serv_2_>
 <Preferred_Codec_2_>G711a</Preferred_Codec_2_>
 <Silence_Supp_Enable_2_>No</Silence_Supp_Enable_2_>
-<Echo_Canc_Enable_2_>No</Echo_Canc_Enable_2_>
-<Echo_Canc_Adapt_Enable_2_>No</Echo_Canc_Adapt_Enable_2_>
-<Echo_Supp_Enable_2_>No</Echo_Supp_Enable_2_>
-<FAX_Passthru_Codec_2_>G711a</FAX_Passthru_Codec_2_>
+<Echo_Canc_Enable_2_>Yes</Echo_Canc_Enable_2_>
+<Echo_Canc_Adapt_Enable_2_>Yes</Echo_Canc_Adapt_Enable_2_>
+<Echo_Supp_Enable_2_>Yes</Echo_Supp_Enable_2_>
+<Use_Pref_Codec_Only_2_>No</Use_Pref_Codec_Only_2_>
 <DTMF_Tx_Mode_2_>Normal</DTMF_Tx_Mode_2_>
+<FAX_Enable_T38_2_>Yes</FAX_Enable_T38_2_>
+<FAX_T38_Redundancy_2_>1</FAX_T38_Redundancy_2_>
+<FAX_Passthru_Method_2_>ReINVITE</FAX_Passthru_Method_2_>
+<FAX_Passthru_Codec_2_>G711a</FAX_Passthru_Codec_2_>
 <FAX_Disable_ECAN_2_>Yes</FAX_Disable_ECAN_2_>
+<FAX_Tone_Detect_Mode_2_>caller or callee</FAX_Tone_Detect_Mode_2_>
+<Network_Jitter_Level_2_>very high</Network_Jitter_Level_2_>
+<Jitter_Buffer_Adjustment_2_>disable</Jitter_Buffer_Adjustment_2_>
 
+<Call_Waiting_Serv_3_>No</Call_Waiting_Serv_3_>
+<Three_Way_Call_Serv_3_>No</Three_Way_Call_Serv_3_>
 <Preferred_Codec_3_>G711a</Preferred_Codec_3_>
 <Silence_Supp_Enable_3_>No</Silence_Supp_Enable_3_>
-<Echo_Canc_Enable_3_>No</Echo_Canc_Enable_3_>
-<Echo_Canc_Adapt_Enable_3_>No</Echo_Canc_Adapt_Enable_3_>
-<Echo_Supp_Enable_3_>No</Echo_Supp_Enable_3_>
-<FAX_Passthru_Codec_3_>G711a</FAX_Passthru_Codec_3_>
+<Echo_Canc_Enable_3_>Yes</Echo_Canc_Enable_3_>
+<Echo_Canc_Adapt_Enable_3_>Yes</Echo_Canc_Adapt_Enable_3_>
+<Echo_Supp_Enable_3_>Yes</Echo_Supp_Enable_3_>
+<Use_Pref_Codec_Only_3_>No</Use_Pref_Codec_Only_3_>
 <DTMF_Tx_Mode_3_>Normal</DTMF_Tx_Mode_3_>
+<FAX_Enable_T38_3_>Yes</FAX_Enable_T38_3_>
+<FAX_T38_Redundancy_3_>1</FAX_T38_Redundancy_3_>
+<FAX_Passthru_Method_3_>ReINVITE</FAX_Passthru_Method_3_>
+<FAX_Passthru_Codec_3_>G711a</FAX_Passthru_Codec_3_>
 <FAX_Disable_ECAN_3_>Yes</FAX_Disable_ECAN_3_>
+<FAX_Tone_Detect_Mode_3_>caller or callee</FAX_Tone_Detect_Mode_3_>
+<Network_Jitter_Level_3_>very high</Network_Jitter_Level_3_>
+<Jitter_Buffer_Adjustment_3_>disable</Jitter_Buffer_Adjustment_3_>
 
+<Call_Waiting_Serv_4_>No</Call_Waiting_Serv_4_>
+<Three_Way_Call_Serv_4_>No</Three_Way_Call_Serv_4_>
 <Preferred_Codec_4_>G711a</Preferred_Codec_4_>
 <Silence_Supp_Enable_4_>No</Silence_Supp_Enable_4_>
-<Echo_Canc_Enable_4_>No</Echo_Canc_Enable_4_>
-<Echo_Canc_Adapt_Enable_4_>No</Echo_Canc_Adapt_Enable_4_>
-<Echo_Supp_Enable_4_>No</Echo_Supp_Enable_4_>
-<FAX_Passthru_Codec_4_>G711a</FAX_Passthru_Codec_4_>
+<Echo_Canc_Enable_4_>Yes</Echo_Canc_Enable_4_>
+<Echo_Canc_Adapt_Enable_4_>Yes</Echo_Canc_Adapt_Enable_4_>
+<Echo_Supp_Enable_4_>Yes</Echo_Supp_Enable_4_>
+<Use_Pref_Codec_Only_4_>No</Use_Pref_Codec_Only_4_>
 <DTMF_Tx_Mode_4_>Normal</DTMF_Tx_Mode_4_>
+<FAX_Enable_T38_4_>Yes</FAX_Enable_T38_4_>
+<FAX_T38_Redundancy_4_>1</FAX_T38_Redundancy_4_>
+<FAX_Passthru_Method_4_>ReINVITE</FAX_Passthru_Method_4_>
+<FAX_Passthru_Codec_4_>G711a</FAX_Passthru_Codec_4_>
 <FAX_Disable_ECAN_4_>Yes</FAX_Disable_ECAN_4_>
+<FAX_Tone_Detect_Mode_4_>caller or callee</FAX_Tone_Detect_Mode_4_>
+<Network_Jitter_Level_4_>very high</Network_Jitter_Level_4_>
+<Jitter_Buffer_Adjustment_4_>disable</Jitter_Buffer_Adjustment_4_>
 
+<Call_Waiting_Serv_5_>No</Call_Waiting_Serv_5_>
+<Three_Way_Call_Serv_5_>No</Three_Way_Call_Serv_5_>
 <Preferred_Codec_5_>G711a</Preferred_Codec_5_>
 <Silence_Supp_Enable_5_>No</Silence_Supp_Enable_5_>
-<Echo_Canc_Enable_5_>No</Echo_Canc_Enable_5_>
-<Echo_Canc_Adapt_Enable_5_>No</Echo_Canc_Adapt_Enable_5_>
-<Echo_Supp_Enable_5_>No</Echo_Supp_Enable_5_>
-<FAX_Passthru_Codec_5_>G711a</FAX_Passthru_Codec_5_>
+<Echo_Canc_Enable_5_>Yes</Echo_Canc_Enable_5_>
+<Echo_Canc_Adapt_Enable_5_>Yes</Echo_Canc_Adapt_Enable_5_>
+<Echo_Supp_Enable_5_>Yes</Echo_Supp_Enable_5_>
+<Use_Pref_Codec_Only_5_>No</Use_Pref_Codec_Only_5_>
 <DTMF_Tx_Mode_5_>Normal</DTMF_Tx_Mode_5_>
+<FAX_Enable_T38_5_>Yes</FAX_Enable_T38_5_>
+<FAX_T38_Redundancy_5_>1</FAX_T38_Redundancy_5_>
+<FAX_Passthru_Method_5_>ReINVITE</FAX_Passthru_Method_5_>
+<FAX_Passthru_Codec_5_>G711a</FAX_Passthru_Codec_5_>
 <FAX_Disable_ECAN_5_>Yes</FAX_Disable_ECAN_5_>
+<FAX_Tone_Detect_Mode_5_>caller or callee</FAX_Tone_Detect_Mode_5_>
+<Network_Jitter_Level_5_>very high</Network_Jitter_Level_5_>
+<Jitter_Buffer_Adjustment_5_>disable</Jitter_Buffer_Adjustment_5_>
 
+<Call_Waiting_Serv_6_>No</Call_Waiting_Serv_6_>
+<Three_Way_Call_Serv_6_>No</Three_Way_Call_Serv_6_>
 <Preferred_Codec_6_>G711a</Preferred_Codec_6_>
 <Silence_Supp_Enable_6_>No</Silence_Supp_Enable_6_>
-<Echo_Canc_Enable_6_>No</Echo_Canc_Enable_6_>
-<Echo_Canc_Adapt_Enable_6_>No</Echo_Canc_Adapt_Enable_6_>
-<Echo_Supp_Enable_6_>No</Echo_Supp_Enable_6_>
-<FAX_Passthru_Codec_6_>G711a</FAX_Passthru_Codec_6_>
+<Echo_Canc_Enable_6_>Yes</Echo_Canc_Enable_6_>
+<Echo_Canc_Adapt_Enable_6_>Yes</Echo_Canc_Adapt_Enable_6_>
+<Echo_Supp_Enable_6_>Yes</Echo_Supp_Enable_6_>
+<Use_Pref_Codec_Only_6_>No</Use_Pref_Codec_Only_6_>
 <DTMF_Tx_Mode_6_>Normal</DTMF_Tx_Mode_6_>
+<FAX_Enable_T38_6_>Yes</FAX_Enable_T38_6_>
+<FAX_T38_Redundancy_6_>1</FAX_T38_Redundancy_6_>
+<FAX_Passthru_Method_6_>ReINVITE</FAX_Passthru_Method_6_>
+<FAX_Passthru_Codec_6_>G711a</FAX_Passthru_Codec_6_>
 <FAX_Disable_ECAN_6_>Yes</FAX_Disable_ECAN_6_>
+<FAX_Tone_Detect_Mode_6_>caller or callee</FAX_Tone_Detect_Mode_6_>
+<Network_Jitter_Level_6_>very high</Network_Jitter_Level_6_>
+<Jitter_Buffer_Adjustment_6_>disable</Jitter_Buffer_Adjustment_6_>
 
+<Call_Waiting_Serv_7_>No</Call_Waiting_Serv_7_>
+<Three_Way_Call_Serv_7_>No</Three_Way_Call_Serv_7_>
 <Preferred_Codec_7_>G711a</Preferred_Codec_7_>
 <Silence_Supp_Enable_7_>No</Silence_Supp_Enable_7_>
-<Echo_Canc_Enable_7_>No</Echo_Canc_Enable_7_>
-<Echo_Canc_Adapt_Enable_7_>No</Echo_Canc_Adapt_Enable_7_>
-<Echo_Supp_Enable_7_>No</Echo_Supp_Enable_7_>
-<FAX_Passthru_Codec_7_>G711a</FAX_Passthru_Codec_7_>
+<Echo_Canc_Enable_7_>Yes</Echo_Canc_Enable_7_>
+<Echo_Canc_Adapt_Enable_7_>Yes</Echo_Canc_Adapt_Enable_7_>
+<Echo_Supp_Enable_7_>Yes</Echo_Supp_Enable_7_>
+<Use_Pref_Codec_Only_7_>No</Use_Pref_Codec_Only_7_>
 <DTMF_Tx_Mode_7_>Normal</DTMF_Tx_Mode_7_>
+<FAX_Enable_T38_7_>Yes</FAX_Enable_T38_7_>
+<FAX_T38_Redundancy_7_>1</FAX_T38_Redundancy_7_>
+<FAX_Passthru_Method_7_>ReINVITE</FAX_Passthru_Method_7_>
+<FAX_Passthru_Codec_7_>G711a</FAX_Passthru_Codec_7_>
 <FAX_Disable_ECAN_7_>Yes</FAX_Disable_ECAN_7_>
+<FAX_Tone_Detect_Mode_7_>caller or callee</FAX_Tone_Detect_Mode_7_>
+<Network_Jitter_Level_7_>very high</Network_Jitter_Level_7_>
+<Jitter_Buffer_Adjustment_7_>disable</Jitter_Buffer_Adjustment_7_>
 
+<Call_Waiting_Serv_8_>No</Call_Waiting_Serv_8_>
+<Three_Way_Call_Serv_8_>No</Three_Way_Call_Serv_8_>
 <Preferred_Codec_8_>G711a</Preferred_Codec_8_>
 <Silence_Supp_Enable_8_>No</Silence_Supp_Enable_8_>
-<Echo_Canc_Enable_8_>No</Echo_Canc_Enable_8_>
-<Echo_Canc_Adapt_Enable_8_>No</Echo_Canc_Adapt_Enable_8_>
-<Echo_Supp_Enable_8_>No</Echo_Supp_Enable_8_>
-<FAX_Passthru_Codec_8_>G711a</FAX_Passthru_Codec_8_>
+<Echo_Canc_Enable_8_>Yes</Echo_Canc_Enable_8_>
+<Echo_Canc_Adapt_Enable_8_>Yes</Echo_Canc_Adapt_Enable_8_>
+<Echo_Supp_Enable_8_>Yes</Echo_Supp_Enable_8_>
+<Use_Pref_Codec_Only_8_>No</Use_Pref_Codec_Only_8_>
 <DTMF_Tx_Mode_8_>Normal</DTMF_Tx_Mode_8_>
+<FAX_Enable_T38_8_>Yes</FAX_Enable_T38_8_>
+<FAX_T38_Redundancy_8_>1</FAX_T38_Redundancy_8_>
+<FAX_Passthru_Method_8_>ReINVITE</FAX_Passthru_Method_8_>
+<FAX_Passthru_Codec_8_>G711a</FAX_Passthru_Codec_8_>
 <FAX_Disable_ECAN_8_>Yes</FAX_Disable_ECAN_8_>
+<FAX_Tone_Detect_Mode_8_>caller or callee</FAX_Tone_Detect_Mode_8_>
+<Network_Jitter_Level_8_>very high</Network_Jitter_Level_8_>
+<Jitter_Buffer_Adjustment_8_>disable</Jitter_Buffer_Adjustment_8_>
+
+<!-- SPA100 and SPA200 specific settings -->
+
+<router-configuration>
+	<Web_Management>
+		<Web_Remote_Management>1</Web_Remote_Management>
+	</Web_Management>
+</router-configuration>
 
 </flat-profile>

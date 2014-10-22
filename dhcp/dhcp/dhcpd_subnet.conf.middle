@@ -51,6 +51,8 @@
         allow members of "CiscoSMBSPA509G";
         allow members of "CiscoSMBSPA525G";
         allow members of "CiscoSMBSPA525G2";
+        allow members of "CiscoSMBSPA112";
+        allow members of "CiscoSMBSPA122";
         # Digium
         allow members of "DigiumD40";
         allow members of "DigiumD50";
