@@ -13,7 +13,7 @@ softkey2 value: {{ exten_dnd }}
 {% if X_xivo_phonebook_ip -%}
 softkey3 type: xml
 softkey3 label: "{{ XX_dict['remote_directory'] }}"
-softkey3 value: https://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
+softkey3 value: http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
 {% endif -%}
 
 {% include 'base.tpl' %}

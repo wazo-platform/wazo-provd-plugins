@@ -21,7 +21,7 @@ prgkey6 type: services
 
 {% if X_xivo_phonebook_ip -%}
 prgkey7 type: xml
-prgkey7 value: https://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
+prgkey7 value: http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
 {% endif -%}
 
 {# include must be at the end of the file to be able to override the function

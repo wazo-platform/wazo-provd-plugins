@@ -21,7 +21,7 @@ prgkey6 type: services
 
 {% if X_xivo_phonebook_ip -%}
 softkey1 type: xml
-softkey1 value: https://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
+softkey1 value: http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
 softkey1 label: "{{ XX_dict['remote_directory'] }}"
 {% endif -%}
 
