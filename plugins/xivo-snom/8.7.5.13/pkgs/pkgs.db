@@ -1,0 +1,32 @@
+[pkg_715-fw]
+description: Firmware for Snom 715
+description_fr: Micrologiciel pour Snom 715
+version: 8.7.5.13
+files: 715-fw
+install: snom-fw
+
+[pkg_lang]
+description: Language files
+description_fr: Fichiers de langue
+version: 8.7.3
+files: lang
+install: snom-lang
+
+
+[install_snom-fw]
+a-b: cp $FILE1 firmware/
+
+[install_snom-lang]
+a-b: unzip $FILE1
+b-c: cp * i18n/
+
+
+[file_715-fw]
+url: http://downloads.snom.net/beta/snom715-8.7.5.13-SIP-r.bin
+size: 22739056
+sha1sum: ae20b51e53be5c4a0a395dd85b735b44a0bfa782
+
+[file_lang]
+url: http://fox.snom.com/config/snomlang-8.7.3.zip
+size: 763373
+sha1sum: 3e5ef9162f2053028871c396e2b6c108bde4e7ef
