@@ -39,14 +39,11 @@ COMMON_FILES = [
     ('y000000000004.cfg', u'6.72.0.80.rom', 'model-M7+M1.tpl'),
     ('y000000000005.cfg', u'7.72.0.80.rom', 'model-M7+M1.tpl'),
     ('y000000000007.cfg', u'9.72.0.80.rom', 'model-M7+M1.tpl'),
-    ('y000000000029.cfg', u'29.72.0.55.rom', 'model.tpl'),
-    ('y000000000036.cfg', u'36.72.0.55.rom', 'model.tpl'),
     ('y000000000028.cfg', u'28.72.0.45.rom', 'model.tpl'),
     ('y000000000029.cfg', u'29.72.0.55.rom', 'model.tpl'),
     ('y000000000036.cfg', u'36.72.0.55.rom', 'model.tpl'),
     ('y000000000031.cfg', u'31.72.0.75.rom', 'model.tpl'),
     ('y000000000034.cfg', u'34.72.0.75.rom', 'model.tpl'),
-
 ]
 
 class YealinkPlugin(common_globals['BaseYealinkPlugin']):
