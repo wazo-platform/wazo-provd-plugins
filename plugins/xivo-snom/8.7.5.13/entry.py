@@ -19,7 +19,10 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODELS = [
+    u'710',
     u'715',
+    u'720',
+    u'760',
 ]
 VERSION = u'8.7.5.13'
 

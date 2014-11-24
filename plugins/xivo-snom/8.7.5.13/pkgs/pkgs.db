@@ -1,8 +1,29 @@
+[pkg_710-fw]
+description: Firmware for Snom 710
+description_fr: Micrologiciel pour Snom 710
+version: 8.7.5.13
+files: 710-fw
+install: snom-fw
+
 [pkg_715-fw]
 description: Firmware for Snom 715
 description_fr: Micrologiciel pour Snom 715
 version: 8.7.5.13
 files: 715-fw
+install: snom-fw
+
+[pkg_720-fw]
+description: Firmware for Snom 720
+description_fr: Micrologiciel pour Snom 720
+version: 8.7.5.13
+files: 720-fw
+install: snom-fw
+
+[pkg_760-fw]
+description: Firmware for Snom 760
+description_fr: Micrologiciel pour Snom 760
+version: 8.7.5.13
+files: 760-fw
 install: snom-fw
 
 [pkg_lang]
@@ -21,10 +42,25 @@ a-b: unzip $FILE1
 b-c: cp * i18n/
 
 
+[file_710-fw]
+url: http://downloads.snom.net/beta/snom710-8.7.5.13-SIP-r.bin
+size: 16416768
+sha1sum: 5d50d851219b6655441698b29d6845eca84972e7
+
 [file_715-fw]
 url: http://downloads.snom.net/beta/snom715-8.7.5.13-SIP-r.bin
 size: 22739056
 sha1sum: ae20b51e53be5c4a0a395dd85b735b44a0bfa782
+
+[file_720-fw]
+url: http://downloads.snom.net/beta/snom720-8.7.5.13-SIP-r.bin
+size: 23495840
+sha1sum: 0cc576e3bc9d8b0b5bc84b377584f3b9f3eba9e5
+
+[file_760-fw]
+url: http://downloads.snom.net/beta/snom760-8.7.5.13-SIP-r.bin
+size: 27391232
+sha1sum: 82b3789fa8c3c1c6ffad6f122f7e8a1c656bf1b0
 
 [file_lang]
 url: http://fox.snom.com/config/snomlang-8.7.3.zip

@@ -25,7 +25,10 @@ from subprocess import check_call
 
 @target('8.7.5.13', 'xivo-snom-8.7.5.13')
 def build_8_7_5_13(path):
-    MODELS = [('715', 'r')]
+    MODELS = [('710', 'r'),
+              ('715', 'r'),
+              ('720', 'r'),
+              ('760', 'r')]
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '--exclude', '*.btpl',
