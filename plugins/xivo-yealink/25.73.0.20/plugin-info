@@ -1,13 +1,13 @@
 {
-    "version": "1.19",
-    "description": "Plugin for Yealink W52P in version 25.73.0.20.",
-    "description_fr": "Greffon pour Yealink W52P en version 25.73.0.20.",
+    "version": "1.20",
+    "description": "Plugin for Yealink W52P in version 25.73.0.25 (handset in version 26.73.0.10)",
+    "description_fr": "Greffon pour Yealink W52P en version 25.73.0.25 (combiné en version 26.73.0.10)",
     "vendor" : "Yealink",
     "vendor.url" : "http://www.yealink.com",
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
     "vendor.official" : 1,
     "capabilities": {
-        "Yealink, W52P, 25.73.0.20": {
+        "Yealink, W52P, 25.73.0.25": {
             "sip.lines": 5,
             "xivo.ha" : 1,
             "tel.funckeys" : 0,

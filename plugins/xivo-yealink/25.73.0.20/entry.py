@@ -21,10 +21,10 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODEL_VERSIONS = {
-    u'W52P': u'25.73.0.20',
+    u'W52P': u'25.73.0.25',
 }
 COMMON_FILES = [
-    ('y000000000025.cfg', u'25.73.0.20.rom', u'26.73.0.10.rom', 'model.tpl'),
+    ('y000000000025.cfg', u'25.73.0.25.rom', u'26.73.0.10.rom', 'model.tpl'),
 ]
 
 
