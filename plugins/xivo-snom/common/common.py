@@ -19,6 +19,7 @@ import logging
 import os.path
 import re
 from operator import itemgetter
+from xml.sax.saxutils import escape
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
@@ -213,8 +214,9 @@ class BaseSnomPlugin(StandardPlugin):
                     logger.info('Unsupported funckey type: %s', funckey_type)
                     continue
                 value = funckey_dict[u'value']
-                lines.append(u'<fkey idx="%d" context="active" perm="R">%s &lt;sip:%s@%s&gt;%s</fkey>' %
-                            (int(funckey_no) - 1, type_, value, domain, suffix))
+                label = escape(funckey_dict.get(u'label', value))
+                lines.append(u'<fkey idx="%d" label="%s" context="active" perm="R">%s &lt;sip:%s@%s&gt;%s</fkey>' %
+                            (int(funckey_no) - 1, label, type_, value, domain, suffix))
             raw_config[u'XX_fkeys'] = u'\n'.join(lines)
 
     def _add_lang(self, raw_config):
