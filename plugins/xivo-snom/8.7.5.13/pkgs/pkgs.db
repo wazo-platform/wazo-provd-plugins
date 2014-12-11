@@ -29,7 +29,7 @@ install: snom-fw
 [pkg_lang]
 description: Language files
 description_fr: Fichiers de langue
-version: 8.7.3
+version: 8.7.4
 files: lang
 install: snom-lang
 
@@ -63,6 +63,6 @@ size: 27391232
 sha1sum: 82b3789fa8c3c1c6ffad6f122f7e8a1c656bf1b0
 
 [file_lang]
-url: http://fox.snom.com/config/snomlang-8.7.3.zip
-size: 763373
-sha1sum: 3e5ef9162f2053028871c396e2b6c108bde4e7ef
+url: http://fox.snom.com/config/snomlang-8.7.4.zip
+size: 780639
+sha1sum: 7880adae5f404512d967a3845da4644dacfda780
