@@ -6,7 +6,5 @@ auto_provision.mode = 1
 network.lldp.enable = 1
 
 
-;;===========================M2============================
-
 [rom:Firmware]
 url = http://{{ ip }}:{{ http_port }}/firmware/{{ XX_fw_filename }}
