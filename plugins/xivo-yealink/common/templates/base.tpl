@@ -79,6 +79,14 @@ voice_mail.number.{{ line['XX_line_no'] }} = {{ line['voicemail']|d('%NULL%') }}
 
 {% endfor -%}
 
+{% if XX_options['switchboard'] -%}
+push_xml.sip_notify = 1
+call_waiting.enable = 0
+{% else -%}
+push_xml.sip_notify = 0
+call_waiting.enable = 1
+{% endif %}
+
 distinctive_ring_tones.alert_info.1.text = ring1
 distinctive_ring_tones.alert_info.2.text = ring2
 distinctive_ring_tones.alert_info.3.text = ring3
