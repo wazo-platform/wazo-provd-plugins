@@ -68,9 +68,11 @@ version: 35.72.0.30
 files: T48G-fw
 install: yealink-fw
 
+
 [install_yealink-fw]
 a-b: unzip $FILE1
 b-c: cp *.rom firmware/
+
 
 [file_T19P-fw]
 url: http://yealink.com/Upload/UCOne/2014.08.07/31.72.0.75.zip

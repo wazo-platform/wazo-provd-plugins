@@ -44,6 +44,7 @@ COMMON_FILES = [
     ('y000000000036.cfg', u'36.72.0.55.rom', 'model.tpl'),
     ('y000000000031.cfg', u'31.72.0.75.rom', 'model.tpl'),
     ('y000000000034.cfg', u'34.72.0.75.rom', 'model.tpl'),
+    ('y000000000035.cfg', u'35.72.0.30.rom', 'model.tpl'),
 ]
 
 class YealinkPlugin(common_globals['BaseYealinkPlugin']):
@@ -128,6 +129,7 @@ class _FunckeyPrefixIterator(object):
         u'T41P': 15,
         u'T42G': 15,
         u'T46G': 27,
+        u'T48G': 27,
     }
     _NB_MEMORYKEY = {
         u'T26P': 10,
