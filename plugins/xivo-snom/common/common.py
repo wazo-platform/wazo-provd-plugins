@@ -215,9 +215,13 @@ class BaseSnomPlugin(StandardPlugin):
                     continue
                 value = funckey_dict[u'value']
                 label = escape(funckey_dict.get(u'label', value))
-                lines.append(u'<fkey idx="%d" label="%s" context="active" perm="R">%s &lt;sip:%s@%s&gt;%s</fkey>' %
-                            (int(funckey_no) - 1, label, type_, value, domain, suffix))
+                fkey_value = self._format_fkey_value(type_, value, domain, suffix)
+                lines.append(u'<fkey idx="%d" label="%s" context="active" perm="R">%s</fkey>' %
+                            (int(funckey_no) - 1, label, fkey_value))
             raw_config[u'XX_fkeys'] = u'\n'.join(lines)
+
+    def _format_fkey_value(self, fkey_type, value, domain, suffix):
+        return '%s &lt;sip:%s@%s&gt;%s' % (fkey_type, value, domain, suffix)
 
     def _add_lang(self, raw_config):
         if u'locale' in raw_config:
