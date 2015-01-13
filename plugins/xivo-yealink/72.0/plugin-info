@@ -57,6 +57,7 @@
         },
         "Yealink, T46G, 28.72.0.45": {
             "sip.lines": 6,
+            "switchboard": true,
             "xivo.ha" : 0,
             "tel.funckeys" : 8,
             "xivo.tested" : 1

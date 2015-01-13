@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2011-2014 Avencall
+# Copyright (C) 2011-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -289,6 +289,7 @@ class BaseYealinkPlugin(StandardPlugin):
         self._add_country_and_lang(raw_config)
         self._add_timezone(raw_config)
         self._update_sip_lines(raw_config)
+        raw_config[u'XX_options'] = device.get(u'options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
