@@ -132,8 +132,16 @@ class _FunckeyPrefixIterator(object):
         u'T48G': 27,
     }
     _NB_MEMORYKEY = {
+        u'T19P': 0,
+        u'T20P': 0,
+        u'T21P': 0,
+        u'T22P': 0,
         u'T26P': 10,
         u'T28P': 10,
+        u'T41P': 0,
+        u'T42G': 0,
+        u'T46G': 0,
+        u'T48G': 0,
     }
     _NB_EXPMODKEY = 40
 
