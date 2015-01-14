@@ -89,6 +89,8 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
 
     def _format_funckey_null(self, lines, prefix):
         lines.append(u'%s.type = %%NULL%%' % prefix)
+        lines.append(u'%s.line = %%NULL%%' % prefix)
+        lines.append(u'%s.value = %%NULL%%' % prefix)
         lines.append(u'%s.label = %%NULL%%' % prefix)
 
     def _format_funckey_speeddial(self, lines, prefix, funckey):
@@ -114,6 +116,7 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     def _format_funckey_line(self, lines, prefix):
         lines.append(u'%s.type = 15' % prefix)
         lines.append(u'%s.line = 1' % prefix)
+        lines.append(u'%s.value = %%NULL%%' % prefix)
         lines.append(u'%s.label = %%NULL%%' % prefix)
 
 
