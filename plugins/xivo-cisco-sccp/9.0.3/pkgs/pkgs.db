@@ -97,21 +97,6 @@ url: http://download-sj.cisco.com/swc/esd/04/281346593/contract/cmterm-7942_7962
 size: 5763153
 sha1sum: 752deea2d776790be5f6b43e93687193e00bec35
 
-[file_7945-7965-fw]
-url: http://download-sj.cisco.com/swc/esd/04/281346594/contract/cmterm-7945_7965-sccp.9-0-3.zip
-size: 5891955
-sha1sum: 98eb810de064cf777eb4660426aaa1e202413e78
-
-[file_7970-7971-fw]
-url: http://download-sj.cisco.com/swc/esd/04/278436620/contract/cmterm-7970_7971-sccp.9-0-3.zip
-size: 5279034
-sha1sum: 04e8620c3b84d761f9654cdcc20c837c35944cc7
-
-[file_7975-fw]
-url: http://download-sj.cisco.com/swc/esd/04/281346597/contract/cmterm-7975-sccp.9-0-3.zip
-size: 5891350
-sha1sum: f9d72ce5953cfd1364d33e218d941d5c1015ff28
-
 [file_networklocale]
 url: http://download.cisco.com/swc/esd/05/268437897/contract/po-locale-combined_network-9.0.2.1000-1.cop.sgn
 size: 9351296
