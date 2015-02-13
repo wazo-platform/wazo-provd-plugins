@@ -54,27 +54,6 @@ version: 3.3.1.4053
 files: 6757i-fw
 install: aastra-fw
 
-[pkg_6863i-fw]
-description: Firmware for Aastra 6863i
-description_fr: Micrologiciel pour Aastra 6863i
-version: 3.3.1.8106
-files: 6863i-fw
-install: aastra-fw
-
-[pkg_6865i-fw]
-description: Firmware for Aastra 6865i
-description_fr: Micrologiciel pour Aastra 6865i
-version: 3.3.1.8106
-files: 6865i-fw
-install: aastra-fw
-
-[pkg_6867i-fw]
-description: Firmware for Aastra 6867i
-description_fr: Micrologiciel pour Aastra 6867i
-version: 3.3.1.8106
-files: 6867i-fw
-install: aastra-fw
-
 [pkg_9143i-fw]
 description: Firmware for Aastra 9143i
 description_fr: Micrologiciel pour Aastra 9143i
@@ -155,24 +134,6 @@ filename: 6757i-fw.zip
 url: http://miteldocs.com/cps/rde/aareddownload?file_id=7041-17780-_P06_XML&dsproject=aastra&mtype=zip
 size: 2880672
 sha1sum: 64e2e6a691ab87a358259839f837352d1a2ef64e
-
-[file_6863i-fw]
-filename: 6863i-fw.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=17407-17761-_P06_XML&dsproject=aastra&mtype=zip
-size: 12090333
-sha1sum: af6fafc46daed493f453ed964357ae8ae5703e6a
-
-[file_6865i-fw]
-filename: 6865i-fw.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=17408-17763-_P06_XML&dsproject=aastra&mtype=zip
-size: 11554142
-sha1sum: 05be14d535286de5b14eab58668af6a041d00bdd
-
-[file_6867i-fw]
-filename: 6867i-fw.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=17442-17766-_P06_XML&dsproject=aastra&mtype=zip
-size: 18262142
-sha1sum: bb16b2e46645e2243d98244234c54665b6d0594c
 
 [file_9143i-fw]
 filename: 9143i-fw.zip

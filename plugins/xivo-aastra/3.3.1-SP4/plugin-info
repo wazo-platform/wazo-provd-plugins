@@ -1,7 +1,7 @@
 {
     "version": "1.3",
-    "description": "Plugin for Aastra 67XXi, 68XXi, 9143i and 9480i in version 3.3.1 SP4.",
-    "description_fr": "Greffon pour Aastra 67XXi, 68XXi, 9143i et 9480i en version 3.3.1 SP4.",
+    "description": "Plugin for Aastra 67XXi, 9143i and 9480i in version 3.3.1 SP4.",
+    "description_fr": "Greffon pour Aastra 67XXi, 9143i et 9480i en version 3.3.1 SP4.",
     "capabilities": {
         "Aastra, 6730i, 3.3.1.4053": {
             "sip.lines": 6
@@ -31,15 +31,6 @@
         "Aastra, 6757i, 3.3.1.4053": {
             "sip.lines": 9,
             "switchboard": true
-        },
-        "Aastra, 6863i, 3.3.1.8106": {
-            "sip.lines": 2
-        },
-        "Aastra, 6865i, 3.3.1.8106": {
-            "sip.lines": 9
-        },
-        "Aastra, 6867i, 3.3.1.8106": {
-            "sip.lines": 9
         },
         "Aastra, 9143i, 3.3.1.4053": {
             "sip.lines": 9
