@@ -1,0 +1,74 @@
+[pkg_6863i-fw]
+description: Firmware for Mitel 6863i
+description_fr: Micrologiciel pour Mitel 6863i
+version: 4.0.0.1096
+files: 6863i-fw
+install: mitel-fw
+
+[pkg_6865i-fw]
+description: Firmware for Mitel 6865i
+description_fr: Micrologiciel pour Mitel 6865i
+version: 4.0.0.1096
+files: 6865i-fw
+install: mitel-fw
+
+[pkg_6867i-fw]
+description: Firmware for Mitel 6867i
+description_fr: Micrologiciel pour Mitel 6867i
+version: 4.0.0.1096
+files: 6867i-fw
+install: mitel-fw
+
+[pkg_6869i-fw]
+description: Firmware for Mitel 6869i
+description_fr: Micrologiciel pour Mitel 6869i
+version: 4.0.0.1096
+files: 6869i-fw
+install: mitel-fw
+
+[pkg_lang]
+description: Language files
+description_fr: Fichiers de langue
+version: 4.0.0.1096
+files: lang
+install: mitel-lang
+
+
+[install_mitel-fw]
+a-b: unzip $FILE1
+b-c: include *.st
+
+[install_mitel-lang]
+a-b: unzip $FILE1
+b-c: cp * i18n/
+
+
+[file_6863i-fw]
+filename: 6863i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=17407-18016-_P06_XML&dsproject=aastra&mtype=zip
+size: 11957482
+sha1sum: ff05a5473689a49d1ef342f1d7f052a50e6629ff
+
+[file_6865i-fw]
+filename: 6865i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=17408-18020-_P06_XML&dsproject=aastra&mtype=zip
+size: 23259663
+sha1sum: 8c40d00d6c81944f4f6abafe2047d6cc0dd1d7f7
+
+[file_6867i-fw]
+filename: 6867i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=17442-18022-_P06_XML&dsproject=aastra&mtype=zip
+size: 30285960
+sha1sum: 292b9f2e1807dfb5de2e0c2fa2e640a5e0f15a18
+
+[file_6869i-fw]
+filename: 6869i-fw.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=17448-18024-_P06_XML&dsproject=aastra&mtype=zip
+size: 31232408
+sha1sum: d6fa6047a55ef6b694de9fce49c0d77265a2d909
+
+[file_lang]
+filename: lang.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=17407-18062-_P06_XML&dsproject=aastra&mtype=zip
+size: 605900 
+sha1sum: 380af18288d7c9983fbc1316b7af92baa6a78567
