@@ -71,6 +71,11 @@
         allow members of "LinksysSPA2102";
         allow members of "LinksysSPA3102";
         allow members of "LinksysSPA8000";
+        # Mitel
+        allow members of "Mitel6863i";
+        allow members of "Mitel6865i";
+        allow members of "Mitel6867i";
+        allow members of "Mitel6869i";
         # Nortel
         allow members of "Nortel-SIP";
         allow members of "Nortel-UNIStim";
