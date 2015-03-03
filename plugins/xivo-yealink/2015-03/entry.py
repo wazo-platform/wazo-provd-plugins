@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import logging
+import os
 
 common_globals = {}
 execfile_('common.py', common_globals)
@@ -35,6 +36,7 @@ MODEL_VERSIONS = {
     u'T42G': u'29.73.0.45',
     u'T46G': u'28.73.0.45',
     u'T48G': u'35.73.0.40',
+    u'W52P': u'25.73.0.27',
 }
 COMMON_FILES = [
     ('y000000000000.cfg', u'2.73.0.40.rom', 'model-M7+M1.tpl'),
@@ -50,6 +52,9 @@ COMMON_FILES = [
     ('y000000000035.cfg', u'35.73.0.40.rom', 'model.tpl'),
     ('y000000000038.cfg', u'38.70.1.33.rom', 'model-M7+M2.tpl'),
 ]
+COMMON_FILES_DECT = [
+    ('y000000000025.cfg', u'25.73.0.27.rom', u'26.73.0.11.rom', 'W52P.tpl'),
+]
 
 class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     IS_PLUGIN = True
@@ -59,6 +64,15 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     # Yealink plugin specific stuff
 
     _COMMON_FILES = COMMON_FILES
+
+    def configure_common(self, raw_config):
+        super(YealinkPlugin, self).configure_common(raw_config)
+        for filename, fw_filename, fw_handset_filename, tpl_filename in COMMON_FILES_DECT:
+            tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
+            dst = os.path.join(self._tftpboot_dir, filename)
+            raw_config[u'XX_fw_filename'] = fw_filename
+            raw_config[u'XX_fw_handset_filename'] = fw_handset_filename
+            self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _add_fkeys(self, raw_config, device):
         lines = []
@@ -139,6 +153,7 @@ class _FunckeyPrefixIterator(object):
         u'T42G': 15,
         u'T46G': 27,
         u'T48G': 27,
+        u'W52P': 0,
     }
     _NB_MEMORYKEY = {
         u'T19P': 0,
@@ -153,6 +168,7 @@ class _FunckeyPrefixIterator(object):
         u'T42G': 0,
         u'T46G': 0,
         u'T48G': 0,
+        u'W52P': 0,
     }
     _NB_EXPMODKEY = 40
 

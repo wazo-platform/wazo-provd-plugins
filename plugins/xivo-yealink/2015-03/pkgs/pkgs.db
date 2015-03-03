@@ -82,6 +82,20 @@ version: 35.73.0.40
 files: T48G-fw
 install: yealink-fw
 
+[pkg_W52P-base-fw]
+description: Firmware for Yealink W52P base
+description_fr: Micrologiciel pour base Yealink W52P
+version: 25.73.0.27
+files: W52P-base-fw
+install: yealink-fw
+
+[pkg_W52P-handset-fw]
+description: Firmware for Yealink W52P handset
+description_fr: Micrologiciel pour combiné Yealink W52P
+version: 26.73.0.11
+files: W52P-handset-fw
+install: yealink-fw
+
 
 [install_yealink-fw]
 a-b: unzip $FILE1
@@ -151,3 +165,13 @@ sha1sum: cbd87fba9de94098c47a2ffef760f9751de77f47
 url: http://www.yealink.com/Upload/UCOne/20141231/T4X/0/35.73.0.40.zip
 size: 22782896
 sha1sum: 5b3799bec7fecd5f4d800cb8fc4a4b450276d242
+
+[file_W52P-base-fw]
+url: http://www.yealink.com/Upload/W52P/V73/Firmware/25.73.0.27.zip
+size: 7554794
+sha1sum: f7ea6e8a4a8e3228eafd6d04d17a0a631fcc0419
+
+[file_W52P-handset-fw]
+url: http://www.yealink.com/Upload/W52P/V73/Firmware/26.73.0.11.zip
+size: 1371425
+sha1sum: e78537c8f40039fbc9673ecc40cda75c34da4597

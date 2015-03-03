@@ -79,6 +79,12 @@
             "xivo.ha" : 0,
             "tel.funckeys" : 8,
             "xivo.tested" : 0
+        },
+        "Yealink, W52P, 25.73.0.27": {
+            "sip.lines": 5,
+            "xivo.ha" : 1,
+            "tel.funckeys" : 0,
+            "xivo.tested" : 1
         }
     }
 }
