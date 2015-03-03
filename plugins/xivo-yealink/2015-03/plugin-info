@@ -1,7 +1,7 @@
 {
     "version": "1.22.1a",
-    "description": "Plugin for Yealink T1X, T2X, T3X and T4X.",
-    "description_fr": "Greffon pour Yealink T1X, T2X, T3X et T4X.",
+    "description": "Plugin for Yealink T19P, T2X, T3X T4X and W52P.",
+    "description_fr": "Greffon pour Yealink T19P, T2X, T3X, T4X and W52P.",
     "vendor" : "Yealink",
     "vendor.url" : "http://www.yealink.com",
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
@@ -44,7 +44,7 @@
             "xivo.tested" : 1
         },
         "Yealink, T32G, 32.70.1.33": {
-            "sip.lines": 6,
+            "sip.lines": 3,
             "xivo.ha" : 0,
             "tel.funckeys" : 0,
             "xivo.tested" : 0
