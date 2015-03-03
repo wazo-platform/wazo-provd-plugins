@@ -43,6 +43,18 @@
             "tel.funckeys" : 0,
             "xivo.tested" : 1
         },
+        "Yealink, T32G, 32.70.1.33": {
+            "sip.lines": 6,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 0,
+            "xivo.tested" : 0
+        },
+        "Yealink, T38G, 38.70.1.33": {
+            "sip.lines": 6,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 0,
+            "xivo.tested" : 0
+        },
         "Yealink, T41P, 36.73.0.45": {
             "sip.lines": 2,
             "xivo.ha" : 0,

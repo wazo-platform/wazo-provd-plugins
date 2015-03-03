@@ -40,6 +40,20 @@ version: 2.73.0.40
 files: T28P-fw
 install: yealink-fw
 
+[pkg_T32G-fw]
+description: Firmware for Yealink T32G
+description_fr: Micrologiciel pour Yealink T32G
+version: 32.70.1.33
+files: T32G-fw
+install: yealink-fw
+
+[pkg_T38G-fw]
+description: Firmware for Yealink T38G
+description_fr: Micrologiciel pour Yealink T38G
+version: 38.70.1.33
+files: T38G-fw
+install: yealink-fw
+
 [pkg_T41P-fw]
 description: Firmware for Yealink T41P
 description_fr: Micrologiciel pour Yealink T41P
@@ -107,6 +121,16 @@ sha1sum: 7d6b856084460dd9fcfaa8ca0defec90c492c489
 url: http://www.yealink.com/Upload/UCOne/20141231/T2X/0/2.73.0.40.zip
 size: 7329200
 sha1sum: 9326d4e611dbacce782abdbef749cb421827095b
+
+[file_T32G-fw]
+url: http://www.yealink.com/Upload/firmware/T3X/32.70.1.33.zip
+size: 22708521
+sha1sum: b633a9333dcd561eb03ff72b42b79d128dbd9652
+
+[file_T38G-fw]
+url: http://www.yealink.com/Upload/firmware/T3X/38.70.1.33.zip
+size: 24607409
+sha1sum: e5cd976ca28b39dd08677dc129c206b5af911f38
 
 [file_T41P-fw]
 url: http://www.yealink.com/Upload/UCOne/20141231/T4X/0/36.73.0.45.zip
