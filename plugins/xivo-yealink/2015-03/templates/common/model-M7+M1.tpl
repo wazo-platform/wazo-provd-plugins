@@ -1,8 +1,9 @@
 #!version:1.0.0.1
 
 firmware.url = http://{{ ip }}:{{ http_port }}/firmware/{{ XX_fw_filename }}
-auto_provision.mode = 1
-network.lldp.enable = 1
+
+auto_provision.pnp_enable = 0
+auto_provision.custom.protect = 1
 
 
 # Some settings in this file might seem useless, but they are defined here
