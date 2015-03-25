@@ -1,35 +1,35 @@
 [pkg_6863i-fw]
 description: Firmware for Aastra 6863i
 description_fr: Micrologiciel pour Aastra 6863i
-version: 4.0.0.1096
+version: 4.0.0.2031
 files: 6863i-fw
 install: aastra-fw
 
 [pkg_6865i-fw]
 description: Firmware for Aastra 6865i
 description_fr: Micrologiciel pour Aastra 6865i
-version: 4.0.0.1096
+version: 4.0.0.2031
 files: 6865i-fw
 install: aastra-fw
 
 [pkg_6867i-fw]
 description: Firmware for Aastra 6867i
 description_fr: Micrologiciel pour Aastra 6867i
-version: 4.0.0.1096
+version: 4.0.0.2031
 files: 6867i-fw
 install: aastra-fw
 
 [pkg_6869i-fw]
 description: Firmware for Aastra 6869i
 description_fr: Micrologiciel pour Aastra 6869i
-version: 4.0.0.1096
+version: 4.0.0.2031
 files: 6869i-fw
 install: aastra-fw
 
 [pkg_lang]
 description: Language files
 description_fr: Fichiers de langue
-version: 4.0.0.1096
+version: 4.0.0.2031
 files: lang
 install: aastra-lang
 
@@ -45,30 +45,30 @@ b-c: cp * i18n/
 
 [file_6863i-fw]
 filename: 6863i-fw.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=17407-18016-_P06_XML&dsproject=aastra&mtype=zip
-size: 11957482
-sha1sum: ff05a5473689a49d1ef342f1d7f052a50e6629ff
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=17407-18105-_P06_XML&dsproject=aastra&mtype=zip
+size: 11364606
+sha1sum: eb2b49bc4d40c279dcacc6d17c43bc3ae27b47cf 
 
 [file_6865i-fw]
 filename: 6865i-fw.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=17408-18020-_P06_XML&dsproject=aastra&mtype=zip
-size: 23259663
-sha1sum: 8c40d00d6c81944f4f6abafe2047d6cc0dd1d7f7
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=17408-18103-_P06_XML&dsproject=aastra&mtype=zip
+size: 23326199
+sha1sum: 37d20bbe0412ce3aa605f35149a6aaa2b3dfa194
 
 [file_6867i-fw]
 filename: 6867i-fw.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=17442-18022-_P06_XML&dsproject=aastra&mtype=zip
-size: 30285960
-sha1sum: 292b9f2e1807dfb5de2e0c2fa2e640a5e0f15a18
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=17442-18099-_P06_XML&dsproject=aastra&mtype=zip
+size: 30368350
+sha1sum: 606e122c87b6f87c807a669e8e2b75df4007b8ee
 
 [file_6869i-fw]
 filename: 6869i-fw.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=17448-18024-_P06_XML&dsproject=aastra&mtype=zip
-size: 31232408
-sha1sum: d6fa6047a55ef6b694de9fce49c0d77265a2d909
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=17448-18095-_P06_XML&dsproject=aastra&mtype=zip
+size: 31311231
+sha1sum: 4663f0bd2fd761887cf23ee15d71d479c6861cc9
 
 [file_lang]
 filename: lang.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=17407-18062-_P06_XML&dsproject=aastra&mtype=zip
-size: 605900 
-sha1sum: 380af18288d7c9983fbc1316b7af92baa6a78567
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=17448-18097-_P06_XML&dsproject=aastra&mtype=zip
+size: 609910
+sha1sum: 6498aaedb11928d193b289ed39abf5977c486340

@@ -1,0 +1,19 @@
+{
+    "version": "1.0",
+    "description": "Plugin for Aastra 68XXi in version 4.0.0 SP2.",
+    "description_fr": "Greffon pour Aastra 68XXi en version 4.0.0 SP2.",
+    "capabilities": {
+        "Aastra, 6863i, 4.0.0.2031": {
+            "sip.lines": 2
+        },
+        "Aastra, 6865i, 4.0.0.2031": {
+            "sip.lines": 9
+        },
+        "Aastra, 6867i, 4.0.0.2031": {
+            "sip.lines": 9
+        },
+        "Aastra, 6869i, 4.0.0.2031": {
+            "sip.lines": 12
+        }
+    }
+}

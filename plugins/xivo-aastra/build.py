@@ -34,10 +34,10 @@ def build_3_3_1_sp4(path):
                 '3.3.1-SP4/', path])
 
 
-@target('4.0.0-SP1', 'xivo-aastra-4.0.0-SP1')
+@target('4.0.0-SP2', 'xivo-aastra-4.0.0-SP2')
 def build_4_0_0_sp1(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '4.0.0-SP1/', path])
+                '4.0.0-SP2/', path])
