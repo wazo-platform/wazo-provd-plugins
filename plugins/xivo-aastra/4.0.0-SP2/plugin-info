@@ -1,5 +1,5 @@
 {
-    "version": "1.0",
+    "version": "1.1",
     "description": "Plugin for Aastra 68XXi in version 4.0.0 SP2.",
     "description_fr": "Greffon pour Aastra 68XXi en version 4.0.0 SP2.",
     "capabilities": {
