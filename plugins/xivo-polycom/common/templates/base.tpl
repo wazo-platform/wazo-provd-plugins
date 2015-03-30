@@ -25,6 +25,11 @@ device.syslog.transport="0"
 device.syslog.renderLevel="1"
 {% endif -%}
 
+device.auth.localAdminPassword.set="1"
+device.auth.localAdminPassword="{{ admin_password|d(456)|e }}"
+device.auth.localUserPassword.set="1"
+device.auth.localUserPassword="{{ user_password|d(123)|e }}"
+
 {% if sip_srtp_mode == 'disabled' -%}
 sec.srtp.enable="0"
 sec.srtp.offer="0"
