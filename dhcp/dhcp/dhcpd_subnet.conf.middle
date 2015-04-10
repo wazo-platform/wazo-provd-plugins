@@ -94,6 +94,7 @@
         allow members of "Snom710";
         allow members of "Snom715";
         allow members of "Snom720";
+        allow members of "Snom725";
         allow members of "Snom760";
         allow members of "Snom820";
         allow members of "Snom821";
