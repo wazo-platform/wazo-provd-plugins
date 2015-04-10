@@ -1,0 +1,20 @@
+{
+    "version": "1.3a",
+    "description": "Plugin for Snom 710, 715, 720 and 760 in version 8.7.5.17.",
+    "description_fr": "Greffon pour Snom 710, 715, 720 et 760 en version 8.7.5.17.",
+    "capabilities": {
+        "Snom, 710, 8.7.5.17": {
+            "sip.lines": 12
+        },
+        "Snom, 715, 8.7.5.17": {
+            "sip.lines": 12
+        },
+        "Snom, 720, 8.7.5.17": {
+            "sip.lines": 12,
+            "switchboard": true
+        },
+        "Snom, 760, 8.7.5.17": {
+            "sip.lines": 12
+        }
+    }
+}

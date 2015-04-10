@@ -24,7 +24,7 @@ MODELS = [
     u'720',
     u'760',
 ]
-VERSION = u'8.7.5.13'
+VERSION = u'8.7.5.17'
 
 
 class SnomPlugin(common_globals['BaseSnomPlugin']):
