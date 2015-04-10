@@ -6,8 +6,8 @@ files: 710-fw
 install: snom-fw
 
 [pkg_715-fw]
-description: Firmware for Snom 715
-description_fr: Micrologiciel pour Snom 715
+description: Firmware for Snom 715/D715
+description_fr: Micrologiciel pour Snom 715/D715
 version: 8.7.5.17
 files: 715-fw
 install: snom-fw
@@ -17,6 +17,13 @@ description: Firmware for Snom 720
 description_fr: Micrologiciel pour Snom 720
 version: 8.7.5.17
 files: 720-fw
+install: snom-fw
+
+[pkg_725-fw]
+description: Firmware for Snom D725
+description_fr: Micrologiciel pour Snom D725
+version: 8.7.5.17
+files: 725-fw
 install: snom-fw
 
 [pkg_760-fw]
@@ -56,6 +63,11 @@ sha1sum: fad56cc700f68c436046397958f81f960710c519
 url: http://downloads.snom.com/fw/snom720-8.7.5.17-SIP-r.bin
 size: 23793696
 sha1sum: d729ce81db1e982a0a885ae645ebd494ac27e413
+
+[file_725-fw]
+url: http://downloads.snom.com/fw/snom725-8.7.5.17-SIP-r.bin
+size: 25093392
+sha1sum: 600be73136ecaffa7bfbdb2d09f77ae4f9d3925d
 
 [file_760-fw]
 url: http://downloads.snom.com/fw/snom760-8.7.5.17-SIP-r.bin

@@ -28,6 +28,7 @@ def build_8_7_5_17(path):
     MODELS = [('710', 'r'),
               ('715', 'r'),
               ('720', 'r'),
+              ('725', 'r'),
               ('760', 'r')]
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
