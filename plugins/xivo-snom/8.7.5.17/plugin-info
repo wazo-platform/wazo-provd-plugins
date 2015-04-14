@@ -1,7 +1,7 @@
 {
     "version": "1.3b",
-    "description": "Plugin for Snom 710, 715, 720 and 760 in version 8.7.5.17.",
-    "description_fr": "Greffon pour Snom 710, 715, 720 et 760 en version 8.7.5.17.",
+    "description": "Plugin for Snom 710, 715/D715, 720, D725 and 760 in version 8.7.5.17.",
+    "description_fr": "Greffon pour Snom 710, 715/D715, 720, D725 et 760 en version 8.7.5.17.",
     "capabilities": {
         "Snom, 710, 8.7.5.17": {
             "sip.lines": 12
