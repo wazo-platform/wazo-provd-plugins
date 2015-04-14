@@ -1,8 +1,17 @@
 {
     "version": "1.3b",
-    "description": "Plugin for Snom 710, 715/D715, 720, D725 and 760 in version 8.7.5.17.",
-    "description_fr": "Greffon pour Snom 710, 715/D715, 720, D725 et 760 en version 8.7.5.17.",
+    "description": "Plugin for Snom 300, 320, 370, 710, 715/D715, 720, D725, 760, 820, 821, 870, MP and PA1 in version 8.7.5.17.",
+    "description_fr": "Greffon pour Snom 300, 320, 370, 710, 715/D715, 720, D725, 760, 820, 821, 870, MP et PA1 en version 8.7.5.17.",
     "capabilities": {
+        "Snom, 300, 8.7.5.17": {
+            "sip.lines": 12
+        },
+        "Snom, 320, 8.7.5.17": {
+            "sip.lines": 12
+        },
+        "Snom, 370, 8.7.5.17": {
+            "sip.lines": 12
+        },
         "Snom, 710, 8.7.5.17": {
             "sip.lines": 12
         },
@@ -19,6 +28,21 @@
         },
         "Snom, 760, 8.7.5.17": {
             "sip.lines": 12
+        },
+        "Snom, 820, 8.7.5.17": {
+            "sip.lines": 12
+        },
+        "Snom, 821, 8.7.5.17": {
+            "sip.lines": 12
+        },
+        "Snom, 870, 8.7.5.17": {
+            "sip.lines": 12
+        },
+        "Snom, MP, 8.7.5.17": {
+            "sip.lines": 12
+        },
+        "Snom, PA1, 8.7.5.17": {
+            "sip.lines": 1
         }
     }
 }
