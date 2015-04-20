@@ -8,7 +8,7 @@ install: yealink-fw
 [pkg_T20P-fw]
 description: Firmware for Yealink T20P
 description_fr: Micrologiciel pour Yealink T20P
-version: 9.73.0.40
+version: 9.73.0.50
 files: T20P-fw
 install: yealink-fw-rar
 
@@ -22,21 +22,21 @@ install: yealink-fw
 [pkg_T22P-fw]
 description: Firmware for Yealink T22P
 description_fr: Micrologiciel pour Yealink T22P
-version: 7.73.0.40
+version: 7.73.0.50
 files: T22P-fw
 install: yealink-fw-rar
 
 [pkg_T26P-fw]
 description: Firmware for Yealink T26P
 description_fr: Micrologiciel pour Yealink T26P
-version: 6.73.0.40
+version: 6.73.0.50
 files: T26P-fw
 install: yealink-fw-rar
 
 [pkg_T28P-fw]
 description: Firmware for Yealink T28P
 description_fr: Micrologiciel pour Yealink T28P
-version: 2.73.0.40
+version: 2.73.0.50
 files: T28P-fw
 install: yealink-fw
 
@@ -57,28 +57,28 @@ install: yealink-fw
 [pkg_T41P-fw]
 description: Firmware for Yealink T41P
 description_fr: Micrologiciel pour Yealink T41P
-version: 36.73.0.45
+version: 36.73.0.50
 files: T41P-fw
 install: yealink-fw
 
 [pkg_T42G-fw]
 description: Firmware for Yealink T42G
 description_fr: Micrologiciel pour Yealink T42G
-version: 29.73.0.45
+version: 29.73.0.50
 files: T42G-fw
 install: yealink-fw
 
 [pkg_T46G-fw]
 description: Firmware for Yealink T46G
 description_fr: Micrologiciel pour Yealink T46G
-version: 28.73.0.45
+version: 28.73.0.50
 files: T46G-fw
 install: yealink-fw
 
 [pkg_T48G-fw]
 description: Firmware for Yealink T48G
 description_fr: Micrologiciel pour Yealink T48G
-version: 35.73.0.40
+version: 35.73.0.50
 files: T48G-fw
 install: yealink-fw
 
@@ -112,9 +112,9 @@ size: 7402851
 sha1sum: e6126804432b8789fe972edadd1b72237f5c1e99
 
 [file_T20P-fw]
-url: http://www.yealink.com/Upload/UCOne/20141231/T2X/0/9.73.0.40.rar
-size: 7048379
-sha1sum: 1cc26f990c2d8c11ff12b2cd97d707d34a779627
+url: http://www.yealink.com/Upload/UCOne/2015.02.05/T2X/9.73.0.50.zip
+size: 7041783
+sha1sum: 6c487192f65ea28236232e055a59312efe2d7956
 
 [file_T21P-fw]
 url: http://yealink.com/Upload/UCOne/2014.08.07/34.72.0.75.zip
@@ -122,19 +122,19 @@ size: 7637111
 sha1sum: 158029e78977829c73e71e5f8029cde2f2fa443a
 
 [file_T22P-fw]
-url: http://www.yealink.com/Upload/UCOne/20141231/T2X/0/7.73.0.40.rar
-size: 7300922
-sha1sum: 289c776e0493b3a75da118a52b98bbf86321c47e
+url: http://www.yealink.com/Upload/UCOne/2015.02.05/T2X/7.73.0.50.zip
+size: 7293360
+sha1sum: 72bf6c4049e6b711918697c49a23c39078cffd6d
 
 [file_T26P-fw]
-url: http://www.yealink.com/Upload/UCOne/20141231/T2X/0/6.73.0.40.rar
-size: 7317819
-sha1sum: 7d6b856084460dd9fcfaa8ca0defec90c492c489
+url: http://www.yealink.com/Upload/UCOne/2015.02.05/T2X/6.73.0.50.zip
+size: 7310340
+sha1sum: c5dc9b15bfdb36cbe3ce02b12dc1f3ab44600357
 
 [file_T28P-fw]
-url: http://www.yealink.com/Upload/UCOne/20141231/T2X/0/2.73.0.40.zip
-size: 7329200
-sha1sum: 9326d4e611dbacce782abdbef749cb421827095b
+url: http://www.yealink.com/Upload/UCOne/2015.02.05/T2X/2.73.0.50.zip
+size: 7330466
+sha1sum: 6941b009e97f44b791b3260c274f2e87e2288ace
 
 [file_T32G-fw]
 url: http://www.yealink.com/Upload/firmware/T3X/32.70.1.33.zip
@@ -147,24 +147,24 @@ size: 24607409
 sha1sum: e5cd976ca28b39dd08677dc129c206b5af911f38
 
 [file_T41P-fw]
-url: http://www.yealink.com/Upload/UCOne/20141231/T4X/0/36.73.0.45.zip
-size: 6604540
-sha1sum: 51c5dc13a82b79ac2278880b88d2313d859a1cc1
+url: http://www.yealink.com/Upload/UCOne/2015.02.05/T4X/36.73.0.50.zip
+size: 6605030
+sha1sum: 829400cc0a193cd4558508d4e89c61760056701e
 
 [file_T42G-fw]
-url: http://www.yealink.com/Upload/UCOne/20141231/T4X/0/29.73.0.45.zip
-size: 6604446
-sha1sum: 5527e45bebefa1aaf7f1c2039aff45c1126da7d4
+url: http://www.yealink.com/Upload/UCOne/2015.02.05/T4X/29.73.0.50.zip
+size: 6605355
+sha1sum: 50882b5340f1187d56a96265ab415159e783b025
 
 [file_T46G-fw]
-url: http://www.yealink.com/Upload/UCOne/20141231/T4X/0/28.73.0.45.zip
-size: 25909209
-sha1sum: cbd87fba9de94098c47a2ffef760f9751de77f47
+url: http://www.yealink.com/Upload/UCOne/2015.02.05/T4X/28.73.0.50.zip
+size: 25912572
+sha1sum: 30cb2f887c44393b52d0aae760c0be9034a43ebb
 
 [file_T48G-fw]
-url: http://www.yealink.com/Upload/UCOne/20141231/T4X/0/35.73.0.40.zip
-size: 22782896
-sha1sum: 5b3799bec7fecd5f4d800cb8fc4a4b450276d242
+url: http://www.yealink.com/Upload/UCOne/2015.02.05/T4X/35.73.0.50.zip
+size: 24962601
+sha1sum: 7d400398496f0302346c3ac0986223ce2151d267
 
 [file_W52P-base-fw]
 url: http://www.yealink.com/Upload/W52P/V73/Firmware/25.73.0.27.zip
