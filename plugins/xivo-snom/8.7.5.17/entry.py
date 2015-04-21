@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2014-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,9 @@ MODELS = [
     u'320',
     u'370',
     u'710',
+    u'715',
     u'720',
+    u'725',
     u'760',
     u'820',
     u'821',
@@ -31,7 +33,7 @@ MODELS = [
     u'MP',
     u'PA1',
 ]
-VERSION = u'8.7.4.8'
+VERSION = u'8.7.5.17'
 
 
 class SnomPlugin(common_globals['BaseSnomPlugin']):
@@ -40,3 +42,6 @@ class SnomPlugin(common_globals['BaseSnomPlugin']):
     _MODELS = MODELS
 
     pg_associator = common_globals['BaseSnomPgAssociator'](MODELS, VERSION)
+
+    def _format_fkey_value(self, fkey_type, value, domain, suffix):
+        return '%s %s%s' % (fkey_type, value, suffix)

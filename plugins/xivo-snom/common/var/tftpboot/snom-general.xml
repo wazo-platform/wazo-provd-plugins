@@ -38,6 +38,8 @@
 
     <led_call_indicator_usage perm="R">PhoneHasCallInStateRinging PhoneHasCall</led_call_indicator_usage>
 
+    <d7_state_format perm="R"></d7_state_format>
+
     <user_active idx="1" perm="R">off</user_active>
     <user_active idx="2" perm="R">off</user_active>
     <user_active idx="3" perm="R">off</user_active>
