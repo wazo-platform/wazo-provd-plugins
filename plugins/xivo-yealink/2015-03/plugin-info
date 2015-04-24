@@ -13,7 +13,7 @@
             "tel.funckeys" : 0,
             "xivo.tested" : 1
         },
-        "Yealink, T20P, 9.73.0.40": {
+        "Yealink, T20P, 9.73.0.50": {
             "sip.lines": 2,
             "xivo.ha" : 0,
             "tel.funckeys" : 0,
@@ -25,19 +25,19 @@
             "tel.funckeys" : 0,
             "xivo.tested" : 1
         },
-        "Yealink, T22P, 7.73.0.40": {
+        "Yealink, T22P, 7.73.0.50": {
             "sip.lines": 3,
             "xivo.ha" : 0,
             "tel.funckeys" : 0,
             "xivo.tested" : 1
         },
-        "Yealink, T26P, 6.73.0.40": {
+        "Yealink, T26P, 6.73.0.50": {
             "sip.lines": 3,
             "xivo.ha" : 0,
             "tel.funckeys" : 0,
             "xivo.tested" : 1
         },
-        "Yealink, T28P, 2.73.0.40": {
+        "Yealink, T28P, 2.73.0.50": {
             "sip.lines": 6,
             "xivo.ha" : 0,
             "tel.funckeys" : 0,
@@ -55,26 +55,26 @@
             "tel.funckeys" : 0,
             "xivo.tested" : 0
         },
-        "Yealink, T41P, 36.73.0.45": {
+        "Yealink, T41P, 36.73.0.50": {
             "sip.lines": 2,
             "xivo.ha" : 0,
             "tel.funckeys" : 2,
             "xivo.tested" : 1
         },
-        "Yealink, T42G, 29.73.0.45": {
+        "Yealink, T42G, 29.73.0.50": {
             "sip.lines": 4,
             "xivo.ha" : 0,
             "tel.funckeys" : 6,
             "xivo.tested" : 1
         },
-        "Yealink, T46G, 28.73.0.45": {
+        "Yealink, T46G, 28.73.0.50": {
             "sip.lines": 6,
             "switchboard": true,
             "xivo.ha" : 0,
             "tel.funckeys" : 8,
             "xivo.tested" : 1
         },
-        "Yealink, T48G, 35.73.0.40": {
+        "Yealink, T48G, 35.73.0.50": {
             "sip.lines": 6,
             "xivo.ha" : 0,
             "tel.funckeys" : 8,
