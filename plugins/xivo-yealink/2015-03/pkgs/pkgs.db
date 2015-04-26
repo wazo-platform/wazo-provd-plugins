@@ -10,7 +10,7 @@ description: Firmware for Yealink T20P
 description_fr: Micrologiciel pour Yealink T20P
 version: 9.73.0.50
 files: T20P-fw
-install: yealink-fw-rar
+install: yealink-fw
 
 [pkg_T21P-fw]
 description: Firmware for Yealink T21P
@@ -24,14 +24,14 @@ description: Firmware for Yealink T22P
 description_fr: Micrologiciel pour Yealink T22P
 version: 7.73.0.50
 files: T22P-fw
-install: yealink-fw-rar
+install: yealink-fw
 
 [pkg_T26P-fw]
 description: Firmware for Yealink T26P
 description_fr: Micrologiciel pour Yealink T26P
 version: 6.73.0.50
 files: T26P-fw
-install: yealink-fw-rar
+install: yealink-fw
 
 [pkg_T28P-fw]
 description: Firmware for Yealink T28P
