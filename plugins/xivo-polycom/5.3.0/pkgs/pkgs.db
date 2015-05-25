@@ -8,7 +8,7 @@ install: polycom-software
 
 [install_polycom-software]
 a-b: unzip $FILE1
-b-c: cp *.ld */SoundPointIPLocalization ./
+b-c: cp *.ld VVXLocalization ./
 
 
 [file_software]
