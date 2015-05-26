@@ -5,13 +5,28 @@ version: 5.3.0
 files: software
 install: polycom-software
 
+[pkg_bootblock]
+description: BootBlock for VVX1500
+description_fr: BootBlock pour VVX1500
+version: 3.0.4
+files: bootblock
+install: polycom-bootblock
+
 
 [install_polycom-software]
 a-b: unzip $FILE1
 b-c: cp *.ld VVXLocalization ./
+
+[install_polycom-bootblock]
+a-b: unzip $FILE1
 
 
 [file_software]
 url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_5_3_0_rts37_release_sig_split.zip
 size: 345354286
 sha1sum: 76db70b07f038688a908ed47989db22a9aadf06a
+
+[file_bootblock]
+url: http://downloads.polycom.com/voice/voip/sp_ss_bootrom/vvx1500_BootBlock_3_0_4_release_sig.zip
+size: 50042
+sha1sum: 70a95077043743a0919c1e6ffb863ab21f4e6d98
