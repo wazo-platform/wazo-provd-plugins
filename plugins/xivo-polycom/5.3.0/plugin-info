@@ -10,10 +10,12 @@
             "sip.lines": 6
         },
         "Polycom, VVX400, 5.3.0": {
-            "sip.lines": 12
+            "sip.lines": 12,
+            "switchboard": true
         },
         "Polycom, VVX410, 5.3.0": {
-            "sip.lines": 12
+            "sip.lines": 12,
+            "switchboard": true
         },
         "Polycom, VVX500, 5.3.0": {
             "sip.lines": 12
