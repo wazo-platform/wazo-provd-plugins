@@ -112,6 +112,18 @@ softkey.1.label="{{ XX_dict['remote_directory'] }}"
 softkey.1.use.idle="1"
 {% endif -%}
 
+{% if XX_options['switchboard'] -%}
+apps.push.messageType="5"
+apps.push.username="xivo_switchboard"
+apps.push.password="xivo_switchboard"
+call.callWaiting.enable="0"
+{% else -%}
+apps.push.messageType="0"
+apps.push.username=""
+apps.push.password=""
+call.callWaiting.enable="1"
+{% endif %}
+
 {% block model_specific_parameters -%}
 {% endblock -%}
 
