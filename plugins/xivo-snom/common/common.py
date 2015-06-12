@@ -172,56 +172,41 @@ class BaseSnomPlugin(StandardPlugin):
             if voicemail:
                 line.setdefault(u'voicemail', voicemail)
 
-    def _get_fkey_domain(self, raw_config):
-        # Return None if there's no usable domain
-        if u'sip_proxy_ip' in raw_config:
-            return raw_config[u'sip_proxy_ip']
-        else:
-            lines = raw_config[u'sip_lines']
-            if lines:
-                return lines[min(lines.iterkeys())][u'proxy_ip']
-        return None
-
     def _add_fkeys(self, raw_config, model):
-        domain = self._get_fkey_domain(raw_config)
-        if domain is None:
-            if raw_config[u'funckeys']:
-                logger.warning('Could not set funckeys: no domain part')
-        else:
-            lines = []
-            for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
-                                                   key=itemgetter(0)):
-                funckey_type = funckey_dict[u'type']
-                if funckey_type == u'speeddial':
+        lines = []
+        for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
+                                               key=itemgetter(0)):
+            funckey_type = funckey_dict[u'type']
+            if funckey_type == u'speeddial':
+                type_ = u'speed'
+                suffix = ''
+            elif funckey_type == u'park':
+                if model in ['710', '720', '715', '760']:
+                    type_ = u'orbit'
+                    suffix = ''
+                else:
                     type_ = u'speed'
                     suffix = ''
-                elif funckey_type == u'park':
-                    if model in ['710', '720', '715', '760']:
-                        type_ = u'orbit'
-                        suffix = ''
-                    else:
-                        type_ = u'speed'
-                        suffix = ''
-                elif funckey_type == u'blf':
-                    if u'exten_pickup_call' in raw_config:
-                        type_ = u'blf'
-                        suffix = '|%s' % raw_config[u'exten_pickup_call']
-                    else:
-                        logger.warning('Could not set funckey %s: no exten_pickup_call',
-                                       funckey_no)
-                        continue
+            elif funckey_type == u'blf':
+                if u'exten_pickup_call' in raw_config:
+                    type_ = u'blf'
+                    suffix = '|%s' % raw_config[u'exten_pickup_call']
                 else:
-                    logger.info('Unsupported funckey type: %s', funckey_type)
+                    logger.warning('Could not set funckey %s: no exten_pickup_call',
+                                   funckey_no)
                     continue
-                value = funckey_dict[u'value']
-                label = escape(funckey_dict.get(u'label', value))
-                fkey_value = self._format_fkey_value(type_, value, domain, suffix)
-                lines.append(u'<fkey idx="%d" label="%s" context="active" perm="R">%s</fkey>' %
-                            (int(funckey_no) - 1, label, fkey_value))
-            raw_config[u'XX_fkeys'] = u'\n'.join(lines)
+            else:
+                logger.info('Unsupported funckey type: %s', funckey_type)
+                continue
+            value = funckey_dict[u'value']
+            label = escape(funckey_dict.get(u'label', value))
+            fkey_value = self._format_fkey_value(type_, value, suffix)
+            lines.append(u'<fkey idx="%d" label="%s" context="active" perm="R">%s</fkey>' %
+                        (int(funckey_no) - 1, label, fkey_value))
+        raw_config[u'XX_fkeys'] = u'\n'.join(lines)
 
-    def _format_fkey_value(self, fkey_type, value, domain, suffix):
-        return '%s &lt;sip:%s@%s&gt;%s' % (fkey_type, value, domain, suffix)
+    def _format_fkey_value(self, fkey_type, value, suffix):
+        return '%s %s%s' % (fkey_type, value, suffix)
 
     def _add_lang(self, raw_config):
         if u'locale' in raw_config:

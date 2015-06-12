@@ -42,6 +42,3 @@ class SnomPlugin(common_globals['BaseSnomPlugin']):
     _MODELS = MODELS
 
     pg_associator = common_globals['BaseSnomPgAssociator'](MODELS, VERSION)
-
-    def _format_fkey_value(self, fkey_type, value, domain, suffix):
-        return '%s %s%s' % (fkey_type, value, suffix)
