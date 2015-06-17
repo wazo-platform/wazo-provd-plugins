@@ -198,7 +198,7 @@ class _FunckeyPrefixIterator(object):
         return nb_memorykey
 
     def _nb_expmod_by_model(self, model):
-        if model == u'T46G':
+        if model in (u'T46G', u'T48G'):
             return 6
         else:
             return 0
