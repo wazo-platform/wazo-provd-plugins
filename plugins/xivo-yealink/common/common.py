@@ -53,8 +53,10 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
         #   "yealink SIP-T18 18.0.0.80 00:15:65:27:3e:05"
+        #   "Yealink SIP-T19P_E2 53.80.0.3 00:15:65:4c:4c:26"
         #   "Yealink SIP-T20P 9.72.0.30 00:15:65:5e:16:7c"
         #   "Yealink SIP-T21P 34.72.0.1 00:15:65:4c:4c:26"
+        #   "Yealink SIP-T21P_E2 52.80.0.3 00:15:65:4c:4c:26"
         #   "Yealink SIP-T22P 7.72.0.30 00:15:65:39:31:fc"
         #   "Yealink SIP-T26P 6.72.0.30 00:15:65:4b:57:d2"
         #   "yealink SIP-T28P 2.70.0.140 00:15:65:13:ae:0b"

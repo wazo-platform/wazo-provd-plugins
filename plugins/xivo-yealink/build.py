@@ -55,3 +55,13 @@ def build_72_0(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '72.0/', path])
+
+
+@target('v80', 'xivo-yealink-v80')
+def build_v80(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--exclude', '/templates',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'v80/', path])
