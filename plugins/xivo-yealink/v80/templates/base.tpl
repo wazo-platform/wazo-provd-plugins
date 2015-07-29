@@ -65,12 +65,14 @@ account.{{ line['XX_line_no'] }}.display_name = {{ line['display_name'] }}
 account.{{ line['XX_line_no'] }}.auth_name = {{ line['auth_username'] }}
 account.{{ line['XX_line_no'] }}.user_name = {{ line['username'] }}
 account.{{ line['XX_line_no'] }}.password = {{ line['password'] }}
-{% block sip_servers scoped %}
-account.{{ line['XX_line_no'] }}.sip_server_host = {{ line['proxy_ip'] }}
-account.{{ line['XX_line_no'] }}.sip_server_port = {{ line['proxy_port'] }}
-{% endblock %}
+account.{{ line['XX_line_no'] }}.sip_server.1.address = {{ line['proxy_ip'] }}
+account.{{ line['XX_line_no'] }}.sip_server.1.port = {{ line['proxy_port']|d('%NULL%') }}
+account.{{ line['XX_line_no'] }}.sip_server.2.address = {{ line['backup_proxy_ip']|d('%NULL%') }}
+account.{{ line['XX_line_no'] }}.sip_server.2.port = {{ line['backup_proxy_port']|d('%NULL%') }}
+account.{{ line['XX_line_no'] }}.fallback.redundancy_type = 1
 account.{{ line['XX_line_no'] }}.cid_source = 2
 account.{{ line['XX_line_no'] }}.alert_info_url_enable = 0
+account.{{ line['XX_line_no'] }}.nat.udp_update_enable = 0
 
 account.{{ line['XX_line_no'] }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
 account.{{ line['XX_line_no'] }}.dtmf.info_type = 1
