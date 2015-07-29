@@ -58,9 +58,7 @@ security.user_password = {{ admin_username|d('admin') }}:{{ admin_password|d('ad
 {% for line in sip_lines.itervalues() %}
 
 account.{{ line['XX_line_no'] }}.enable = 1
-{% block sip_line_label scoped %}
 account.{{ line['XX_line_no'] }}.label = {{ line['number']|d(line['display_name']) }}
-{% endblock %}
 account.{{ line['XX_line_no'] }}.display_name = {{ line['display_name'] }}
 account.{{ line['XX_line_no'] }}.auth_name = {{ line['auth_username'] }}
 account.{{ line['XX_line_no'] }}.user_name = {{ line['username'] }}
