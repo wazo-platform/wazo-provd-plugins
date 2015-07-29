@@ -26,7 +26,7 @@ device.syslog.renderLevel="1"
 {% endif -%}
 
 device.auth.localAdminPassword.set="1"
-device.auth.localAdminPassword="{{ admin_password|d(456)|e }}"
+device.auth.localAdminPassword="{{ admin_password|d(9486)|e }}"
 device.auth.localUserPassword.set="1"
 device.auth.localUserPassword="{{ user_password|d(123)|e }}"
 
