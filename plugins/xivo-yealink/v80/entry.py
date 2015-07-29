@@ -31,6 +31,14 @@ MODEL_VERSIONS = {
     u'T46G': u'28.80.0.60',
     u'T48G': u'35.80.0.60',
 }
+MODEL_SIP_ACCOUNTS = {
+    u'T19P_E2': 1,
+    u'T21P_E2': 2,
+    u'T41P': 6,
+    u'T42G': 12,
+    u'T46G': 16,
+    u'T48G': 16,
+}
 COMMON_FILES = [
     ('y000000000028.cfg', u'28.80.0.60.rom', 'model.tpl'),
     ('y000000000029.cfg', u'29.80.0.60.rom', 'model.tpl'),
@@ -112,6 +120,9 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
         lines.append(u'%s.line = 1' % prefix)
         lines.append(u'%s.value = %%NULL%%' % prefix)
         lines.append(u'%s.label = %%NULL%%' % prefix)
+
+    def _get_sip_accounts(self, model):
+        return MODEL_SIP_ACCOUNTS.get(model)
 
 
 class _FunckeyPrefixIterator(object):

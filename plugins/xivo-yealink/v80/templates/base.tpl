@@ -55,29 +55,39 @@ security.user_name.admin = {{ admin_username|d('admin') }}
 security.user_password = {{ user_username|d('user') }}:{{ user_password|d('user') }}
 security.user_password = {{ admin_username|d('admin') }}:{{ admin_password|d('admin') }}
 
-{% for line in sip_lines.itervalues() %}
-
-account.{{ line['XX_line_no'] }}.enable = 1
-account.{{ line['XX_line_no'] }}.label = {{ line['number']|d(line['display_name']) }}
-account.{{ line['XX_line_no'] }}.display_name = {{ line['display_name'] }}
-account.{{ line['XX_line_no'] }}.auth_name = {{ line['auth_username'] }}
-account.{{ line['XX_line_no'] }}.user_name = {{ line['username'] }}
-account.{{ line['XX_line_no'] }}.password = {{ line['password'] }}
-account.{{ line['XX_line_no'] }}.sip_server.1.address = {{ line['proxy_ip'] }}
-account.{{ line['XX_line_no'] }}.sip_server.1.port = {{ line['proxy_port']|d('%NULL%') }}
-account.{{ line['XX_line_no'] }}.sip_server.2.address = {{ line['backup_proxy_ip']|d('%NULL%') }}
-account.{{ line['XX_line_no'] }}.sip_server.2.port = {{ line['backup_proxy_port']|d('%NULL%') }}
-account.{{ line['XX_line_no'] }}.fallback.redundancy_type = 1
-account.{{ line['XX_line_no'] }}.cid_source = 2
-account.{{ line['XX_line_no'] }}.alert_info_url_enable = 0
-account.{{ line['XX_line_no'] }}.nat.udp_update_enable = 0
-
-account.{{ line['XX_line_no'] }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
-account.{{ line['XX_line_no'] }}.dtmf.info_type = 1
-
-voice_mail.number.{{ line['XX_line_no'] }} = {{ line['voicemail']|d('%NULL%') }}
-
-{% endfor -%}
+{% for line_no, line in XX_sip_lines.iteritems() -%}
+{% if line -%}
+account.{{ line_no }}.enable = 1
+account.{{ line_no }}.label = {{ line['number']|d(line['display_name']) }}
+account.{{ line_no }}.display_name = {{ line['display_name'] }}
+account.{{ line_no }}.auth_name = {{ line['auth_username'] }}
+account.{{ line_no }}.user_name = {{ line['username'] }}
+account.{{ line_no }}.password = {{ line['password'] }}
+account.{{ line_no }}.sip_server.1.address = {{ line['proxy_ip'] }}
+account.{{ line_no }}.sip_server.1.port = {{ line['proxy_port']|d('%NULL%') }}
+account.{{ line_no }}.sip_server.2.address = {{ line['backup_proxy_ip']|d('%NULL%') }}
+account.{{ line_no }}.sip_server.2.port = {{ line['backup_proxy_port']|d('%NULL%') }}
+account.{{ line_no }}.fallback.redundancy_type = 1
+account.{{ line_no }}.cid_source = 2
+account.{{ line_no }}.alert_info_url_enable = 0
+account.{{ line_no }}.nat.udp_update_enable = 0
+account.{{ line_no }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
+account.{{ line_no }}.dtmf.info_type = 1
+voice_mail.number.{{ line_no }} = {{ line['voicemail']|d('%NULL%') }}
+{% else -%}
+account.{{ line_no }}.enable = 0
+account.{{ line_no }}.label = %NULL%
+account.{{ line_no }}.display_name = %NULL%
+account.{{ line_no }}.auth_name = %NULL%
+account.{{ line_no }}.user_name = %NULL%
+account.{{ line_no }}.password = %NULL%
+account.{{ line_no }}.sip_server.1.address = %NULL%
+account.{{ line_no }}.sip_server.1.port = %NULL%
+account.{{ line_no }}.sip_server.2.address = %NULL%
+account.{{ line_no }}.sip_server.2.port = %NULL%
+voice_mail.number.{{ line_no }} = %NULL%
+{% endif %}
+{% endfor %}
 
 {% if XX_options['switchboard'] -%}
 push_xml.sip_notify = 1

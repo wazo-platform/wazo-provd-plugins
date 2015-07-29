@@ -157,7 +157,7 @@ class BaseYealinkPlugin(StandardPlugin):
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _update_sip_lines(self, raw_config):
-        for line_no, line in raw_config['sip_lines'].iteritems():
+        for line_no, line in raw_config[u'sip_lines'].iteritems():
             # set line number
             line[u'XX_line_no'] = int(line_no)
             # set dtmf inband transfer
@@ -268,6 +268,24 @@ class BaseYealinkPlugin(StandardPlugin):
             else:
                 raw_config[u'XX_timezone'] = self._format_tz_info(tzinfo)
 
+    def _add_xx_sip_lines(self, device, raw_config):
+        sip_lines = raw_config[u'sip_lines']
+        sip_accounts = self._get_sip_accounts(device.get(u'model'))
+        if not sip_accounts:
+            xx_sip_lines = dict(sip_lines)
+        else:
+            xx_sip_lines = {}
+            for line_no in xrange(1, sip_accounts + 1):
+                line_no = str(line_no)
+                xx_sip_lines[line_no] = sip_lines.get(line_no)
+        raw_config[u'XX_sip_lines'] = xx_sip_lines
+
+    def _get_sip_accounts(self, model):
+        # To be overridden in derived class. Return the number of SIP accounts
+        # the model supports (or anything that evaluates to False if no information
+        # about the model)
+        return None
+
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='')
@@ -291,6 +309,7 @@ class BaseYealinkPlugin(StandardPlugin):
         self._add_country_and_lang(raw_config)
         self._add_timezone(raw_config)
         self._update_sip_lines(raw_config)
+        self._add_xx_sip_lines(device, raw_config)
         raw_config[u'XX_options'] = device.get(u'options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)
