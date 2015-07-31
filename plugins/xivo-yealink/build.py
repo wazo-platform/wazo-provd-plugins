@@ -30,13 +30,14 @@ def build_70_0(path):
                 '70.0/', path])
 
 
-@target('72.0', 'xivo-yealink-72.0')
+@target('v72', 'xivo-yealink-v72')
 def build_72_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--exclude', '/templates',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '72.0/', path])
+                'v72/', path])
 
 
 @target('v73', 'xivo-yealink-v73')

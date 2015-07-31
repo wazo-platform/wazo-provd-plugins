@@ -24,27 +24,11 @@ logger = logging.getLogger('plugin.xivo-yealink')
 
 MODEL_VERSIONS = {
     u'T19P': u'31.72.0.75',
-    u'T20P': u'9.72.0.80',
     u'T21P': u'34.72.0.75',
-    u'T22P': u'7.72.0.80',
-    u'T26P': u'6.72.0.80',
-    u'T28P': u'2.72.0.80',
-    u'T41P': u'36.72.0.55',
-    u'T42G': u'29.72.0.55',
-    u'T46G': u'28.72.0.45',
-    u'T48G': u'35.72.0.30',
 }
 COMMON_FILES = [
-    ('y000000000000.cfg', u'2.72.0.80.rom', 'model-M7+M1.tpl'),
-    ('y000000000004.cfg', u'6.72.0.80.rom', 'model-M7+M1.tpl'),
-    ('y000000000005.cfg', u'7.72.0.80.rom', 'model-M7+M1.tpl'),
-    ('y000000000007.cfg', u'9.72.0.80.rom', 'model-M7+M1.tpl'),
-    ('y000000000028.cfg', u'28.72.0.45.rom', 'model.tpl'),
-    ('y000000000029.cfg', u'29.72.0.55.rom', 'model.tpl'),
-    ('y000000000036.cfg', u'36.72.0.55.rom', 'model.tpl'),
     ('y000000000031.cfg', u'31.72.0.75.rom', 'model.tpl'),
     ('y000000000034.cfg', u'34.72.0.75.rom', 'model.tpl'),
-    ('y000000000035.cfg', u'35.72.0.30.rom', 'model.tpl'),
 ]
 
 class YealinkPlugin(common_globals['BaseYealinkPlugin']):
@@ -111,8 +95,8 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
         lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
         lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
         if exten_pickup_call:
-            lines.append(u'%s.pickup_value = %s' % (prefix, exten_pickup_call)) 
-		
+            lines.append(u'%s.pickup_value = %s' % (prefix, exten_pickup_call))
+
     def _format_funckey_line(self, lines, prefix):
         lines.append(u'%s.type = 15' % prefix)
         lines.append(u'%s.line = 1' % prefix)
@@ -124,27 +108,11 @@ class _FunckeyPrefixIterator(object):
 
     _NB_LINEKEY = {
         u'T19P': 0,
-        u'T20P': 2,
         u'T21P': 2,
-        u'T22P': 3,
-        u'T26P': 3,
-        u'T28P': 6,
-        u'T41P': 15,
-        u'T42G': 15,
-        u'T46G': 27,
-        u'T48G': 27,
     }
     _NB_MEMORYKEY = {
         u'T19P': 0,
-        u'T20P': 0,
         u'T21P': 0,
-        u'T22P': 0,
-        u'T26P': 10,
-        u'T28P': 10,
-        u'T41P': 0,
-        u'T42G': 0,
-        u'T46G': 0,
-        u'T48G': 0,
     }
     _NB_EXPMODKEY = 40
 

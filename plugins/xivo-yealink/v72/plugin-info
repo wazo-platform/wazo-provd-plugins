@@ -1,0 +1,23 @@
+{
+    "version": "1.22a",
+    "description": "Plugin for Yealink T19P and T21P in version V72.",
+    "description_fr": "Greffon pour Yealink T19P et T21P version V72.",
+    "vendor" : "Yealink",
+    "vendor.url" : "http://www.yealink.com",
+    "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
+    "vendor.official" : 1,
+    "capabilities": {
+        "Yealink, T19P, 31.72.0.75": {
+            "sip.lines": 2,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 0,
+            "xivo.tested" : 1
+        },
+        "Yealink, T21P, 34.72.0.75": {
+            "sip.lines": 2,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 0,
+            "xivo.tested" : 1
+        }
+    }
+}
