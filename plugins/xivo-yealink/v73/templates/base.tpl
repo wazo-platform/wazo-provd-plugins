@@ -20,6 +20,8 @@ distinctive_ring_tones.alert_info.6.ringer = 6
 distinctive_ring_tones.alert_info.7.ringer = 7
 distinctive_ring_tones.alert_info.8.ringer = 8
 
+local_time.date_format = 2
+
 sip.notify_reboot_enable = 0
 
 {% if vlan_enabled -%}
@@ -53,7 +55,6 @@ lang.gui = {{ XX_lang|d('%NULL%') }}
 
 voice.tone.country = {{ XX_country|d('%NULL%') }}
 
-local_time.date_format = 2
 local_time.ntp_server1 = {{ ntp_ip|d('pool.ntp.org') }}
 {% if XX_timezone -%}
 {{ XX_timezone }}
@@ -122,5 +123,3 @@ directory_setting.url = http://{{ ip }}:{{ http_port }}/directory_setting.xml
 
 {{ XX_fkeys }}
 
-{% block model_specific_parameters -%}
-{% endblock %}
