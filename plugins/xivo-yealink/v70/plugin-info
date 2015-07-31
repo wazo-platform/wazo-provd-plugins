@@ -8,22 +8,22 @@
     "vendor.official" : 1,
     "capabilities": {
         "Yealink, T32G, 32.70.1.33": {
-            "sip.lines": 6,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 0
+            "sip.lines": 3,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 0
         },
         "Yealink, T38G, 38.70.1.33": {
             "sip.lines": 6,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 0
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 0
         },
         "Yealink, VP530P, 23.70.0.40": {
-            "sip.lines": 6,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 0
+            "sip.lines": 4,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 0
         }
     }
 }
