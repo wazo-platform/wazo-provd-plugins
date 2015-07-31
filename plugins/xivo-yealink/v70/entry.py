@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,22 +19,14 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODEL_VERSIONS = {
-    u'T20P': u'9.70.0.140',
-    u'T22P': u'7.70.0.140',
-    u'T26P': u'6.70.0.140',
-    u'T28P': u'2.70.0.140',
-    u'T32G': u'32.70.0.130',
-    u'T38G': u'38.70.0.125',
+    u'T32G': u'32.70.1.33',
+    u'T38G': u'38.70.1.33',
     u'VP530P': u'23.70.0.40',
 }
 COMMON_FILES = [
-    ('y000000000000.cfg', u'2.70.0.140.rom', 'model-M7+M1.tpl'),
-    ('y000000000004.cfg', u'6.70.0.140.rom', 'model-M7+M1.tpl'),
-    ('y000000000005.cfg', u'7.70.0.140.rom', 'model-M7+M1.tpl'),
-    ('y000000000007.cfg', u'9.70.0.140.rom', 'model-M7+M1.tpl'),
     ('y000000000023.cfg', u'23.70.0.40-Yealink.rom', 'model-M7+M1.tpl'),
-    ('y000000000032.cfg', u'32.70.0.130.rom', 'model-M7+M2.tpl'),
-    ('y000000000038.cfg', u'38.70.0.125.rom', 'model-M7+M2.tpl'),
+    ('y000000000032.cfg', u'32.70.1.33.rom', 'model-M7+M2.tpl'),
+    ('y000000000038.cfg', u'38.70.1.33.rom', 'model-M7+M2.tpl'),
 ]
 
 
