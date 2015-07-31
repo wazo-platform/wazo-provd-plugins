@@ -1,7 +1,7 @@
 {
-    "version": "1.22a",
-    "description": "Plugin for Yealink T20P, T22P, T26P, T28P and W52P.",
-    "description_fr": "Greffon pour Yealink T20P, T22P, T26P, T28P and W52P.",
+    "version": "1.22d",
+    "description": "Plugin for Yealink T20P, T22P, T26P, T28P and W52P in version V73.",
+    "description_fr": "Greffon pour Yealink T20P, T22P, T26P, T28P and W52P en version V73.",
     "vendor" : "Yealink",
     "vendor.url" : "http://www.yealink.com",
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
