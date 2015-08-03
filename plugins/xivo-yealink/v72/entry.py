@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,10 +26,15 @@ MODEL_VERSIONS = {
     u'T19P': u'31.72.0.75',
     u'T21P': u'34.72.0.75',
 }
+MODEL_SIP_ACCOUNTS = {
+    u'T19P': 1,
+    u'T21P': 2,
+}
 COMMON_FILES = [
     ('y000000000031.cfg', u'31.72.0.75.rom', 'model.tpl'),
     ('y000000000034.cfg', u'34.72.0.75.rom', 'model.tpl'),
 ]
+
 
 class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     IS_PLUGIN = True
@@ -102,6 +107,9 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
         lines.append(u'%s.line = 1' % prefix)
         lines.append(u'%s.value = %%NULL%%' % prefix)
         lines.append(u'%s.label = %%NULL%%' % prefix)
+
+    def _get_sip_accounts(self, model):
+        return MODEL_SIP_ACCOUNTS.get(model)
 
 
 class _FunckeyPrefixIterator(object):

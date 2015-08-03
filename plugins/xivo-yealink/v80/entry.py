@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import logging
-import os
 
 common_globals = {}
 execfile_('common.py', common_globals)
