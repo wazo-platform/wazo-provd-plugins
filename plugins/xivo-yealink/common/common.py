@@ -121,6 +121,156 @@ class BaseYealinkPgAssociator(BasePgAssociator):
         return IMPROBABLE_SUPPORT
 
 
+class BaseYealinkFunckeyGenerator(object):
+
+    def __init__(self, device, raw_config):
+        self._model = device.get(u'model')
+        self._exten_pickup_call = raw_config.get(u'exten_pickup_call')
+        self._funckeys = raw_config[u'funckeys']
+        self._lines = []
+
+    def generate(self):
+        prefixes = BaseYealinkFunckeyPrefixIterator(self._model)
+        for funckey_no, prefix in enumerate(prefixes, start=1):
+            funckey = self._funckeys.get(unicode(funckey_no))
+            self._format_funckey(prefix, funckey_no, funckey)
+            self._lines.append(u'')
+
+        return u'\n'.join(self._lines)
+
+    def _format_funckey(self, prefix, funckey_no, funckey):
+        if funckey is None:
+            if funckey_no == 1 and self._model == u'T46G':
+                self._format_funckey_line(prefix)
+            else:
+                self._format_funckey_null(prefix)
+            return
+
+        funckey_type = funckey[u'type']
+        if funckey_type == u'speeddial':
+            self._format_funckey_speeddial(prefix, funckey)
+        elif funckey_type == u'blf':
+            self._format_funckey_blf(prefix, funckey)
+        elif funckey_type == u'park':
+            self._format_funckey_park(prefix, funckey)
+        else:
+            logger.info('Unsupported funckey type: %s', funckey_type)
+
+    def _format_funckey_null(self, prefix):
+        self._lines.append(u'%s.type = %%NULL%%' % prefix)
+        self._lines.append(u'%s.line = %%NULL%%' % prefix)
+        self._lines.append(u'%s.value = %%NULL%%' % prefix)
+        self._lines.append(u'%s.label = %%NULL%%' % prefix)
+
+    def _format_funckey_speeddial(self, prefix, funckey):
+        self._lines.append(u'%s.type = 13' % prefix)
+        self._lines.append(u'%s.line = %s' % (prefix, funckey.get(u'line', 1)))
+        self._lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
+        self._lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
+
+    def _format_funckey_park(self, prefix, funckey):
+        self._lines.append(u'%s.type = 10' % prefix)
+        self._lines.append(u'%s.line = %s' % (prefix, funckey.get(u'line', 1)))
+        self._lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
+        self._lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
+
+    def _format_funckey_blf(self, prefix, funckey):
+        line_no = funckey.get(u'line', 1)
+        if self._model in (u'T32G', u'T38G'):
+            line_no -= 1
+        self._lines.append(u'%s.type = 16' % prefix)
+        self._lines.append(u'%s.line = %s' % (prefix, line_no))
+        self._lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
+        self._lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
+        if self._exten_pickup_call:
+            self._lines.append(u'%s.pickup_value = %s' % (prefix, self._exten_pickup_call))
+
+    def _format_funckey_line(self, prefix):
+        self._lines.append(u'%s.type = 15' % prefix)
+        self._lines.append(u'%s.line = 1' % prefix)
+        self._lines.append(u'%s.value = %%NULL%%' % prefix)
+        self._lines.append(u'%s.label = %%NULL%%' % prefix)
+
+
+class BaseYealinkFunckeyPrefixIterator(object):
+
+    _NB_LINEKEY = {
+        u'T19P': 0,
+        u'T19P_E2': 0,
+        u'T20P': 2,
+        u'T21P': 2,
+        u'T21P_E2': 2,
+        u'T22P': 3,
+        u'T26P': 3,
+        u'T28P': 6,
+        u'T32G': 3,
+        u'T38G': 6,
+        u'T41P': 15,
+        u'T42G': 15,
+        u'T46G': 27,
+        u'T48G': 27,
+        u'W52P': 0,
+    }
+    _NB_MEMORYKEY = {
+        u'T19P': 0,
+        u'T19P_E2': 0,
+        u'T20P': 0,
+        u'T21P': 0,
+        u'T21P_E2': 0,
+        u'T22P': 0,
+        u'T26P': 10,
+        u'T28P': 10,
+        u'T32G': 0,
+        u'T38G': 10,
+        u'T41P': 0,
+        u'T42G': 0,
+        u'T46G': 0,
+        u'T48G': 0,
+        u'W52P': 0,
+    }
+    _NB_EXPMODKEY = 40
+
+    def __init__(self, model):
+        self._nb_linekey = self._nb_linekey_by_model(model)
+        self._nb_memorykey = self._nb_memorykey_by_model(model)
+        self._nb_expmod = self._nb_expmod_by_model(model)
+
+    def _nb_linekey_by_model(self, model):
+        if model is None:
+            logger.info('No model information; no linekey will be configured')
+            return 0
+        nb_linekey = self._NB_LINEKEY.get(model)
+        if nb_linekey is None:
+            logger.info('Unknown model %s; no linekey will be configured', model)
+            return 0
+        return nb_linekey
+
+    def _nb_memorykey_by_model(self, model):
+        if model is None:
+            logger.info('No model information; no memorykey will be configured')
+            return 0
+        nb_memorykey = self._NB_MEMORYKEY.get(model)
+        if nb_memorykey is None:
+            logger.info('Unknown model %s; no memorykey will be configured', model)
+            return 0
+        return nb_memorykey
+
+    def _nb_expmod_by_model(self, model):
+        if model in (u'T46G', u'T48G'):
+            return 6
+        else:
+            return 0
+
+    def __iter__(self):
+        for linekey_no in xrange(1, self._nb_linekey + 1):
+            yield u'linekey.%s' % linekey_no
+        for memorykey_no in xrange(1, self._nb_memorykey + 1):
+            yield u'memorykey.%s' % memorykey_no
+        for expmod_no in xrange(1, self._nb_expmod + 1):
+            for expmodkey_no in xrange(1, self._NB_EXPMODKEY + 1):
+                yield u'expansion_module.%s.key.%s' % (expmod_no, expmodkey_no)
+
+
 class BaseYealinkPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _LOCALE = {
@@ -174,59 +324,9 @@ class BaseYealinkPlugin(StandardPlugin):
             if u'proxy_port' not in line and u'sip_proxy_port' in raw_config:
                 line[u'proxy_port'] = raw_config[u'sip_proxy_port']
 
-    def _format_funckey_speeddial(self, funckey_no, funckey_dict):
-        lines = []
-        lines.append(u'memorykey.%s.line = %s' % (funckey_no, funckey_dict.get(u'line', 1)))
-        lines.append(u'memorykey.%s.value = %s' % (funckey_no, funckey_dict[u'value']))
-        lines.append(u'memorykey.%s.type = 13' % funckey_no)
-        lines.append(u'memorykey.%s.label = %s' % (funckey_no, funckey_dict.get(u'label', u'')))
-        return lines
-
-    def _format_funckey_call_park(self, funckey_no, funckey_dict):
-        lines = []
-        lines.append(u'memorykey.%s.line = %s' % (funckey_no, funckey_dict.get(u'line', 1)))
-        lines.append(u'memorykey.%s.value = %s' % (funckey_no, funckey_dict[u'value']))
-        lines.append(u'memorykey.%s.type = 10' % funckey_no)
-        lines.append(u'memorykey.%s.label = %s' % (funckey_no, funckey_dict.get(u'label', u'')))
-        return lines
-
-    def _format_funckey_blf(self, funckey_no, funckey_dict, exten_pickup_call=None):
-        # Be warned that blf works only for DSS keys.
-        lines = []
-        lines.append(u'memorykey.%s.line = %s' % (funckey_no, funckey_dict.get(u'line', 1) - 1))
-        value = funckey_dict[u'value']
-        lines.append(u'memorykey.%s.value = %s' % (funckey_no, value))
-        lines.append(u'memorykey.%s.label = %s' % (funckey_no, funckey_dict.get(u'label', u'')))
-        lines.append(u'memorykey.%s.sub_type = blf' % funckey_no)
-        if exten_pickup_call:
-            lines.append(u'memorykey.%s.pickup_value = %s' % (funckey_no, exten_pickup_call))
-        lines.append(u'memorykey.%s.type = 16' % funckey_no)
-        return lines
-
-    def _add_fkeys(self, raw_config, device):
-        # XXX maybe rework this, a bit ugly
-        lines = []
-        exten_pickup_call = raw_config.get('exten_pickup_call')
-        for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
-                                               key=itemgetter(0)):
-            keynum = int(funckey_no)
-            funckey_type = funckey_dict[u'type']
-            if funckey_type == u'speeddial':
-                lines.extend(self._format_funckey_speeddial(funckey_no, funckey_dict))
-            elif funckey_type == u'blf':
-                if keynum <= 10:
-                    lines.extend(self._format_funckey_blf(funckey_no, funckey_dict,
-                                                          exten_pickup_call))
-                else:
-                    logger.info('For Yealink, blf is only available on DSS keys')
-                    lines.extend(self._format_funckey_speeddial(funckey_no, funckey_dict))
-            elif funckey_type == u'park':
-                lines.extend(self._format_funckey_call_park(funckey_no, funckey_dict))
-            else:
-                logger.info('Unsupported funckey type: %s', funckey_type)
-                continue
-            lines.append(u'')
-        raw_config[u'XX_fkeys'] = u'\n'.join(lines)
+    def _add_fkeys(self, device, raw_config):
+        funckey_generator = BaseYealinkFunckeyGenerator(device, raw_config)
+        raw_config[u'XX_fkeys'] = funckey_generator.generate()
 
     def _add_country_and_lang(self, raw_config):
         locale = raw_config.get(u'locale')
@@ -305,7 +405,7 @@ class BaseYealinkPlugin(StandardPlugin):
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
-        self._add_fkeys(raw_config, device)
+        self._add_fkeys(device, raw_config)
         self._add_country_and_lang(raw_config)
         self._add_timezone(raw_config)
         self._update_sip_lines(raw_config)
