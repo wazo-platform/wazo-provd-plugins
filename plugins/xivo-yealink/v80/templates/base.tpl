@@ -125,3 +125,5 @@ directory_setting.url = http://{{ ip }}:{{ http_port }}/directory_setting.xml
 
 {{ XX_fkeys }}
 
+{% block model_specific_parameters -%}
+{% endblock %}
