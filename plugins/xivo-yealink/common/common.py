@@ -285,6 +285,24 @@ class BaseYealinkPlugin(StandardPlugin):
         u'RTP-out-of-band': u'1',
         u'SIP-INFO': u'2',
     }
+    _NB_SIP_ACCOUNTS = {
+        u'T19P': 1,
+        u'T19P_E2': 1,
+        u'T20P': 2,
+        u'T21P': 2,
+        u'T21P_E2': 2,
+        u'T22P': 3,
+        u'T26P': 3,
+        u'T28P': 6,
+        u'T32G': 3,
+        u'T38G': 6,
+        u'T41P': 6,
+        u'T42G': 12,
+        u'T46G': 16,
+        u'T48G': 16,
+        u'VP530P': 4,
+        u'W52P': 5,
+    }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -381,10 +399,7 @@ class BaseYealinkPlugin(StandardPlugin):
         raw_config[u'XX_sip_lines'] = xx_sip_lines
 
     def _get_sip_accounts(self, model):
-        # To be overridden in derived class. Return the number of SIP accounts
-        # the model supports (or anything that evaluates to False if no information
-        # about the model)
-        return None
+        return self._NB_SIP_ACCOUNTS.get(model)
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device

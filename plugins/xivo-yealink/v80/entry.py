@@ -15,12 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import logging
-
 common_globals = {}
 execfile_('common.py', common_globals)
-
-logger = logging.getLogger('plugin.xivo-yealink')
 
 MODEL_VERSIONS = {
     u'T19P_E2': u'53.80.0.60',
@@ -29,14 +25,6 @@ MODEL_VERSIONS = {
     u'T42G': u'29.80.0.60',
     u'T46G': u'28.80.0.60',
     u'T48G': u'35.80.0.60',
-}
-MODEL_SIP_ACCOUNTS = {
-    u'T19P_E2': 1,
-    u'T21P_E2': 2,
-    u'T41P': 6,
-    u'T42G': 12,
-    u'T46G': 16,
-    u'T48G': 16,
 }
 COMMON_FILES = [
     ('y000000000028.cfg', u'28.80.0.60.rom', 'model.tpl'),
@@ -56,6 +44,3 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     # Yealink plugin specific stuff
 
     _COMMON_FILES = COMMON_FILES
-
-    def _get_sip_accounts(self, model):
-        return MODEL_SIP_ACCOUNTS.get(model)

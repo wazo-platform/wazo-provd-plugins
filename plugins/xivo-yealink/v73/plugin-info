@@ -9,33 +9,33 @@
     "capabilities": {
         "Yealink, T20P, 9.73.0.50": {
             "sip.lines": 2,
-            "xivo.ha" : 1,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 1
+            "xivo.ha": 1,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
         },
         "Yealink, T22P, 7.73.0.50": {
             "sip.lines": 3,
-            "xivo.ha" : 1,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 1
+            "xivo.ha": 1,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
         },
         "Yealink, T26P, 6.73.0.50": {
             "sip.lines": 3,
-            "xivo.ha" : 1,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 1
+            "xivo.ha": 1,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
         },
         "Yealink, T28P, 2.73.0.50": {
             "sip.lines": 6,
-            "xivo.ha" : 1,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 1
+            "xivo.ha": 1,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
         },
         "Yealink, W52P, 25.73.0.40": {
             "sip.lines": 5,
-            "xivo.ha" : 1,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 1
+            "xivo.ha": 1,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
         }
     }
 }

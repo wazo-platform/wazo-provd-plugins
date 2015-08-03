@@ -8,16 +8,16 @@
     "vendor.official" : 1,
     "capabilities": {
         "Yealink, T19P, 31.72.0.75": {
-            "sip.lines": 2,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 1
+            "sip.lines": 1,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
         },
         "Yealink, T21P, 34.72.0.75": {
             "sip.lines": 2,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 1
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
         }
     }
 }
