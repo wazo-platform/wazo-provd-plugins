@@ -1,3 +1,10 @@
+[pkg_CP860-fw]
+description: Firmware for Yealink CP860 (unofficial support)
+description_fr: Micrologiciel pour Yealink CP860 (support non officiel)
+version: 37.72.0.10
+files: CP860-fw
+install: yealink-fw
+
 [pkg_T19P-fw]
 description: Firmware for Yealink T19P
 description_fr: Micrologiciel pour Yealink T19P
@@ -19,6 +26,11 @@ a-b: unzip $FILE1
 b-c: cp *.rom firmware/
 
 
+
+[file_CP860-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-7-4%2F6%2F18e6bfef-ad63-49af-932e-0100160cebe1%2FCP860-37.72.0.10.zip
+size: 8642612
+sha1sum: 1e08b41bf7eb74c8e8cc938f027f7db3430e09dc
 
 [file_T19P-fw]
 url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2F084baa4b-db58-40f9-870c-06ac8816186d%2F31.72.0.75.zip

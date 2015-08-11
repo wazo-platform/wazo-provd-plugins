@@ -36,6 +36,7 @@ logger = logging.getLogger('plugin.xivo-yealink')
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP-(\w+)\s+([\d.]+)\s+([\da-f:]{17})$'),
+        re.compile(r'^[yY]ealink\s+(CP860)\s+([\d.]+)\s+([\da-f:]{17})$'),
         re.compile(r'(VP530P?|W52P)\s+([\d.]+)\s+([\da-f:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
@@ -52,6 +53,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
 
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
+        #   "Yealink CP860 37.72.0.5 00:15:65:8a:37:86"
         #   "yealink SIP-T18 18.0.0.80 00:15:65:27:3e:05"
         #   "Yealink SIP-T19P_E2 53.80.0.3 00:15:65:4c:4c:26"
         #   "Yealink SIP-T20P 9.72.0.30 00:15:65:5e:16:7c"
@@ -195,6 +197,7 @@ class BaseYealinkFunckeyGenerator(object):
 class BaseYealinkFunckeyPrefixIterator(object):
 
     _NB_LINEKEY = {
+        u'CP860': 0,
         u'T19P': 0,
         u'T19P_E2': 0,
         u'T20P': 2,
@@ -212,6 +215,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'W52P': 0,
     }
     _NB_MEMORYKEY = {
+        u'CP860': 0,
         u'T19P': 0,
         u'T19P_E2': 0,
         u'T20P': 0,
@@ -286,6 +290,7 @@ class BaseYealinkPlugin(StandardPlugin):
         u'SIP-INFO': u'2',
     }
     _NB_SIP_ACCOUNTS = {
+        u'CP860': 1,
         u'T19P': 1,
         u'T19P_E2': 1,
         u'T20P': 2,
