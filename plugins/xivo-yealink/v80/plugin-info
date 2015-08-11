@@ -7,38 +7,38 @@
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
     "vendor.official" : 1,
     "capabilities": {
-        "Yealink, T19P_E2, 53.80.0.60": {
+        "Yealink, T19P_E2, 53.80.0.70": {
             "sip.lines": 1,
             "xivo.ha": 0,
             "tel.funckeys": 0,
             "xivo.tested": 1
         },
-        "Yealink, T21P_E2, 52.80.0.60": {
+        "Yealink, T21P_E2, 52.80.0.70": {
             "sip.lines": 2,
             "xivo.ha": 1,
             "tel.funckeys": 0,
             "xivo.tested": 1
         },
-        "Yealink, T41P, 36.80.0.60": {
+        "Yealink, T41P, 36.80.0.70": {
             "sip.lines": 6,
             "xivo.ha": 1,
             "tel.funckeys": 2,
             "xivo.tested": 1
         },
-        "Yealink, T42G, 29.80.0.60": {
+        "Yealink, T42G, 29.80.0.70": {
             "sip.lines": 12,
             "xivo.ha": 1,
             "tel.funckeys": 6,
             "xivo.tested": 1
         },
-        "Yealink, T46G, 28.80.0.60": {
+        "Yealink, T46G, 28.80.0.70": {
             "sip.lines": 16,
             "switchboard": true,
             "xivo.ha": 1,
             "tel.funckeys": 8,
             "xivo.tested": 1
         },
-        "Yealink, T48G, 35.80.0.60": {
+        "Yealink, T48G, 35.80.0.70": {
             "sip.lines": 16,
             "xivo.ha": 1,
             "tel.funckeys": 8,

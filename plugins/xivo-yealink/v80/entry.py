@@ -19,20 +19,20 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODEL_VERSIONS = {
-    u'T19P_E2': u'53.80.0.60',
-    u'T21P_E2': u'52.80.0.60',
-    u'T41P': u'36.80.0.60',
-    u'T42G': u'29.80.0.60',
-    u'T46G': u'28.80.0.60',
-    u'T48G': u'35.80.0.60',
+    u'T19P_E2': u'53.80.0.70',
+    u'T21P_E2': u'52.80.0.70',
+    u'T41P': u'36.80.0.70',
+    u'T42G': u'29.80.0.70',
+    u'T46G': u'28.80.0.70',
+    u'T48G': u'35.80.0.70',
 }
 COMMON_FILES = [
-    ('y000000000028.cfg', u'28.80.0.60.rom', 'model.tpl'),
-    ('y000000000029.cfg', u'29.80.0.60.rom', 'model.tpl'),
-    ('y000000000035.cfg', u'35.80.0.60.rom', 'model.tpl'),
-    ('y000000000036.cfg', u'36.80.0.60.rom', 'model.tpl'),
-    ('y000000000052.cfg', u'52.80.0.60.rom', 'model.tpl'),
-    ('y000000000053.cfg', u'53.80.0.60.rom', 'model.tpl'),
+    ('y000000000028.cfg', u'T46-28.80.0.70.rom', 'model.tpl'),
+    ('y000000000029.cfg', u'T42-29.80.0.70.rom', 'model.tpl'),
+    ('y000000000035.cfg', u'T48-35.80.0.70.rom', 'model.tpl'),
+    ('y000000000036.cfg', u'T41-36.80.0.70.rom', 'model.tpl'),
+    ('y000000000052.cfg', u'T21P_E2-52.80.0.70.rom', 'model.tpl'),
+    ('y000000000053.cfg', u'T19P_E2-53.80.0.70.rom', 'model.tpl'),
 ]
 
 
