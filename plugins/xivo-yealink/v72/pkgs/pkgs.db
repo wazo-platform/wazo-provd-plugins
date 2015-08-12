@@ -1,0 +1,43 @@
+[pkg_CP860-fw]
+description: Firmware for Yealink CP860 (unofficial support)
+description_fr: Micrologiciel pour Yealink CP860 (support non officiel)
+version: 37.72.0.10
+files: CP860-fw
+install: yealink-fw
+
+[pkg_T19P-fw]
+description: Firmware for Yealink T19P
+description_fr: Micrologiciel pour Yealink T19P
+version: 31.72.0.75
+files: T19P-fw
+install: yealink-fw
+
+[pkg_T21P-fw]
+description: Firmware for Yealink T21P
+description_fr: Micrologiciel pour Yealink T21P
+version: 34.72.0.75
+files: T21P-fw
+install: yealink-fw
+
+
+
+[install_yealink-fw]
+a-b: unzip $FILE1
+b-c: cp *.rom firmware/
+
+
+
+[file_CP860-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-7-4%2F6%2F18e6bfef-ad63-49af-932e-0100160cebe1%2FCP860-37.72.0.10.zip
+size: 8642612
+sha1sum: 1e08b41bf7eb74c8e8cc938f027f7db3430e09dc
+
+[file_T19P-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2F084baa4b-db58-40f9-870c-06ac8816186d%2F31.72.0.75.zip
+size: 7402851
+sha1sum: e6126804432b8789fe972edadd1b72237f5c1e99
+
+[file_T21P-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2Ff9d26a82-a5ab-48d4-b3cc-04762b4c86bf%2F34.72.0.75.zip
+size: 7637111
+sha1sum: 158029e78977829c73e71e5f8029cde2f2fa443a

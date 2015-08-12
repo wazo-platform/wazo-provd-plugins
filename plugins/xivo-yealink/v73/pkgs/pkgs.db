@@ -1,0 +1,79 @@
+[pkg_T20P-fw]
+description: Firmware for Yealink T20P
+description_fr: Micrologiciel pour Yealink T20P
+version: 9.73.0.50
+files: T20P-fw
+install: yealink-fw
+
+[pkg_T22P-fw]
+description: Firmware for Yealink T22P
+description_fr: Micrologiciel pour Yealink T22P
+version: 7.73.0.50
+files: T22P-fw
+install: yealink-fw
+
+[pkg_T26P-fw]
+description: Firmware for Yealink T26P
+description_fr: Micrologiciel pour Yealink T26P
+version: 6.73.0.50
+files: T26P-fw
+install: yealink-fw
+
+[pkg_T28P-fw]
+description: Firmware for Yealink T28P
+description_fr: Micrologiciel pour Yealink T28P
+version: 2.73.0.50
+files: T28P-fw
+install: yealink-fw
+
+[pkg_W52P-base-fw]
+description: Firmware for Yealink W52P base
+description_fr: Micrologiciel pour base Yealink W52P
+version: 25.73.0.40
+files: W52P-base-fw
+install: yealink-fw
+
+[pkg_W52P-handset-fw]
+description: Firmware for Yealink W52P handset
+description_fr: Micrologiciel pour combiné Yealink W52P
+version: 26.73.0.11
+files: W52P-handset-fw
+install: yealink-fw
+
+
+
+[install_yealink-fw]
+a-b: unzip $FILE1
+b-c: cp *.rom firmware/
+
+
+
+[file_T20P-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2F0365fb32-bb3d-4ed0-9942-377504796e0c%2F9.73.0.50.zip
+size: 7041783
+sha1sum: 6c487192f65ea28236232e055a59312efe2d7956
+
+[file_T22P-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2Fd1421521-6b1c-44de-8603-55a815a0a0ab%2F7.73.0.50.zip
+size: 7293360
+sha1sum: 72bf6c4049e6b711918697c49a23c39078cffd6d
+
+[file_T26P-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2F85947342-5fc7-46de-aa4d-204fac541843%2F6.73.0.50.zip
+size: 7310340
+sha1sum: c5dc9b15bfdb36cbe3ce02b12dc1f3ab44600357
+
+[file_T28P-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2F1cd942e1-2d1f-4cfb-b070-d92f77934423%2F2.73.0.50.zip
+size: 7330466
+sha1sum: 6941b009e97f44b791b3260c274f2e87e2288ace
+
+[file_W52P-base-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-7-4%2F6%2F5cadf3c1-5e00-4c37-9a04-aaa6693b933e%2F25.73.0.40.zip
+size: 7572794
+sha1sum: adcf68ced9578fdbeef5d91c4cb554b41f5d5773
+
+[file_W52P-handset-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2Fe24d43b9-ddc2-4a5e-8000-877af5b69da7%2F26.73.0.11.zip
+size: 1371425
+sha1sum: e78537c8f40039fbc9673ecc40cda75c34da4597

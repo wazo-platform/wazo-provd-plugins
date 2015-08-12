@@ -1,0 +1,29 @@
+{
+    "version": "1.22j",
+    "description": "Plugin for Yealink T32G, T38G and VP530P in version V70.",
+    "description_fr": "Greffon pour Yealink T32G, T38G and VP530P en version V70.",
+    "vendor" : "Yealink",
+    "vendor.url" : "http://www.yealink.com",
+    "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
+    "vendor.official" : 1,
+    "capabilities": {
+        "Yealink, T32G, 32.70.1.33": {
+            "sip.lines": 3,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 0
+        },
+        "Yealink, T38G, 38.70.1.33": {
+            "sip.lines": 6,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 0
+        },
+        "Yealink, VP530P, 23.70.0.40": {
+            "sip.lines": 4,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 0
+        }
+    }
+}

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,37 +21,37 @@
 from subprocess import check_call
 
 
-@target('2015-03', 'xivo-yealink-2015-03')
-def build_2015_03(path):
+@target('v70', 'xivo-yealink-v70')
+def build_v70(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '2015-03/', path])
+                'v70/', path])
 
 
-@target('25.73.0.20', 'xivo-yealink-25.73.0.20')
-def build_25_73_0_20(path):
+@target('v72', 'xivo-yealink-v72')
+def build_v72(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '25.73.0.20/', path])
+                'v72/', path])
 
 
-@target('70.0', 'xivo-yealink-70.0')
-def build_70_0(path):
+@target('v73', 'xivo-yealink-v73')
+def build_v73(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '70.0/', path])
+                'v73/', path])
 
 
-@target('72.0', 'xivo-yealink-72.0')
-def build_72_0(path):
+@target('v80', 'xivo-yealink-v80')
+def build_v80(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '72.0/', path])
+                'v80/', path])
