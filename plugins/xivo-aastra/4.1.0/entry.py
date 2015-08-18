@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,10 +24,10 @@ logger = logging.getLogger('plugin.xivo-aastra')
 
 
 MODEL_VERSIONS = {
-    u'6863i': u'4.0.0.2031',
-    u'6865i': u'4.0.0.2031',
-    u'6867i': u'4.0.0.2031',
-    u'6869i': u'4.0.0.2031',
+    u'6863i': u'4.1.0.128',
+    u'6865i': u'4.1.0.128',
+    u'6867i': u'4.1.0.128',
+    u'6869i': u'4.1.0.128',
 }
 
 
