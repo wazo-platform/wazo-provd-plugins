@@ -112,8 +112,8 @@ class BaseAastraPlugin(StandardPlugin):
         u'6757i': ([(10, u'topsoftkey'), (20, u'softkey')], 3),
         u'6863i': ([(3, u'prgkey')], 0),
         u'6865i': ([(8, u'prgkey')], 3),
-        u'6867i': ([(6, u'topsoftkey'), (4, u'softkey')], 3),
-        u'6869i': ([(12, u'topsoftkey'), (5, u'softkey')], 3),
+        u'6867i': ([(20, u'topsoftkey'), (18, u'softkey')], 3),
+        u'6869i': ([(44, u'topsoftkey'), (24, u'softkey')], 3),
         u'9143i': ([(7, u'prgkey')], 0),
         u'9480i': ([(6, u'softkey')], 0)
     }
