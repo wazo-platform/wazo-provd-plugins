@@ -350,7 +350,11 @@ class BaseAastraPlugin(StandardPlugin):
                 type_ = u'speeddial'
                 value = funckey_dict[u'value']
             elif funckey_type == u'blf':
-                type_ = u'blf'
+                if keytype.startswith(u'softkey') and model.startswith(u'68'):
+                    # 6800 series doesn't support the "blf" type on softkey
+                    type_ = u'speeddial'
+                else:
+                    type_ = u'blf'
                 value = funckey_dict[u'value']
             elif funckey_type == u'park':
                 type_ = u'park'
