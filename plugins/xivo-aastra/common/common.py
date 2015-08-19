@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2014 Avencall
+# Copyright (C) 2010-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -64,6 +64,7 @@ class BaseAastraHTTPDeviceInfoExtractor(object):
         #   "Aastra57i MAC:00-08-5D-19-E4-01 V:2.6.0.1008-SIP"
         #   "Aastra6735i MAC:00-08-5D-2E-A0-94 V:3.2.2.6038-SIP"
         #   "Aastra6737i MAC:00-08-5D-30-A6-CE V:3.2.2.6038-SIP"
+        #   "Aastra6863i MAC:00-08-5D-40-90-5F V:4.1.0.128-SIP"
         m = self._UA_REGEX.match(ua)
         if m:
             raw_model, raw_mac, raw_version = m.groups()
