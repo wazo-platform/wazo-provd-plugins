@@ -343,27 +343,27 @@ class BaseAastraPlugin(StandardPlugin):
             keytype = model_obj.get_keytype(int(funckey_no))
             if keytype is None:
                 logger.info('Function key %s is out of range for model %s', funckey_no, model)
+                continue
+            funckey_type = funckey_dict[u'type']
+            if funckey_type == u'speeddial':
+                type_ = u'speeddial'
+                value = funckey_dict[u'value']
+            elif funckey_type == u'blf':
+                type_ = u'blf'
+                value = funckey_dict[u'value']
+            elif funckey_type == u'park':
+                type_ = u'park'
+                # note that value for park is ignored for firmware 3.x
+                value = 'asterisk;%s' % funckey_dict[u'value']
             else:
-                funckey_type = funckey_dict[u'type']
-                if funckey_type == u'speeddial':
-                    type_ = u'speeddial'
-                    value = funckey_dict[u'value']
-                elif funckey_type == u'blf':
-                    type_ = u'blf'
-                    value = funckey_dict[u'value']
-                elif funckey_type == u'park':
-                    type_ = u'park'
-                    # note that value for park is ignored for firmware 3.x
-                    value = 'asterisk;%s' % funckey_dict[u'value']
-                else:
-                    logger.info('Unsupported funckey type: %s', funckey_type)
-                    continue
-                label = funckey_dict.get(u'label', value)
-                line = funckey_dict.get(u'line', u'1')
-                lines.append(u'%s type: %s' % (keytype, type_))
-                lines.append(u'%s value: %s' % (keytype, value))
-                lines.append(u'%s label: %s' % (keytype, label))
-                lines.append(u'%s line: %s' % (keytype, line))
+                logger.info('Unsupported funckey type: %s', funckey_type)
+                continue
+            label = funckey_dict.get(u'label', value)
+            line = funckey_dict.get(u'line', u'1')
+            lines.append(u'%s type: %s' % (keytype, type_))
+            lines.append(u'%s value: %s' % (keytype, value))
+            lines.append(u'%s label: %s' % (keytype, label))
+            lines.append(u'%s line: %s' % (keytype, line))
         raw_config[u'XX_fkeys'] = u'\n'.join(lines)
 
     def _update_sip_lines(self, raw_config):
