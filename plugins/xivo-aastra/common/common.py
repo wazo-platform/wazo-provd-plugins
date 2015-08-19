@@ -98,24 +98,103 @@ class BaseAastraPgAssociator(BasePgAssociator):
         return IMPROBABLE_SUPPORT
 
 
+class AastraModel(object):
+
+    def __init__(self, nb_prgkey=0, nb_topsoftkey=0, nb_softkey=0, nb_expmod=0, nb_expmodkey=0):
+        self.nb_prgkey = nb_prgkey
+        self.nb_topsoftkey = nb_topsoftkey
+        self.nb_softkey = nb_softkey
+        self.nb_expmod = nb_expmod
+        self.nb_expmodkey = nb_expmodkey
+
+    def get_keytype(self, funckey_no):
+        for keytype, nb_key in self._keytypes():
+            if funckey_no <= nb_key:
+                return keytype + unicode(funckey_no)
+            funckey_no -= nb_key
+        return None
+
+    def _keytypes(self):
+        yield (u'prgkey', self.nb_prgkey)
+        yield (u'topsoftkey', self.nb_topsoftkey)
+        yield (u'softkey', self.nb_softkey)
+        for expmod_num in xrange(1, self.nb_expmod + 1):
+            yield (u'expmod%s key' % expmod_num, self.nb_expmodkey)
+
+
 class BaseAastraPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
-    _KEYTYPE = {
-        # <model>: ([(<nb keys>, <keytype>), ...], <nb expansion modules>)
-        u'6730i': ([(8, u'prgkey')], 0),
-        u'6731i': ([(8, u'prgkey')], 0),
-        u'6735i': ([(6, u'prgkey'), (20, u'softkey')], 3),
-        u'6737i': ([(10, u'topsoftkey'), (20, u'softkey')], 3),
-        u'6739i': ([(55, u'softkey')], 3),
-        u'6753i': ([(6, u'prgkey')], 3),
-        u'6755i': ([(6, u'prgkey'), (20, u'softkey')], 3),
-        u'6757i': ([(10, u'topsoftkey'), (20, u'softkey')], 3),
-        u'6863i': ([(3, u'prgkey')], 0),
-        u'6865i': ([(8, u'prgkey')], 3),
-        u'6867i': ([(20, u'topsoftkey'), (18, u'softkey')], 3),
-        u'6869i': ([(44, u'topsoftkey'), (24, u'softkey')], 3),
-        u'9143i': ([(7, u'prgkey')], 0),
-        u'9480i': ([(6, u'softkey')], 0)
+    _M670_NB_KEY = 36
+    _M675_NB_KEY = 60
+    _M680_NB_KEY = 16
+    _M685_NB_KEY = 84
+    _MODELS = {
+        u'6730i': AastraModel(
+            nb_prgkey=8,
+        ),
+        u'6731i': AastraModel(
+            nb_prgkey=8,
+        ),
+        u'6735i': AastraModel(
+            nb_prgkey=6,
+            nb_softkey=20,
+            nb_expmod=3,
+            nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
+        ),
+        u'6737i': AastraModel(
+            nb_topsoftkey=10,
+            nb_softkey=20,
+            nb_expmod=3,
+            nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
+        ),
+        u'6739i': AastraModel(
+            nb_softkey=55,
+            nb_expmod=3,
+            nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
+        ),
+        u'6753i': AastraModel(
+            nb_prgkey=6,
+            nb_expmod=3,
+            nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
+        ),
+        u'6755i': AastraModel(
+            nb_prgkey=6,
+            nb_softkey=20,
+            nb_expmod=3,
+            nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
+        ),
+        u'6757i': AastraModel(
+            nb_topsoftkey=10,
+            nb_softkey=20,
+            nb_expmod=3,
+            nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
+        ),
+        u'6863i': AastraModel(
+            nb_prgkey=3,
+        ),
+        u'6865i': AastraModel(
+            nb_prgkey=8,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        u'6867i': AastraModel(
+            nb_topsoftkey=20,
+            nb_softkey=18,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        u'6869i': AastraModel(
+            nb_topsoftkey=44,
+            nb_softkey=24,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        u'9143i': AastraModel(
+            nb_prgkey=7,
+        ),
+        u'9480i': AastraModel(
+            nb_softkey=6,
+        ),
     }
     _TRUSTED_ROOT_CERTS_SUFFIX = '-ca_servers.crt'
     _LOCALE = {
@@ -253,42 +332,18 @@ class BaseAastraPlugin(StandardPlugin):
             else:
                 raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
 
-    def _get_keytype(self, model, keynum):
-        # Return a key type (i.e. prgkey, softkey, topsoftkey, etc..) from a
-        # model name and a key number (an integer).
-        assert model in self._KEYTYPE
-        keytype_list, nb_expmods = self._KEYTYPE[model]
-        keycount = 0
-        # check for non-expmod keytype
-        for nb_keys, keytype in keytype_list:
-            if keynum <= keycount + nb_keys:
-                return "%s%s" % (keytype, keynum - keycount)
-            else:
-                keycount += nb_keys
-        # check for expmod keytype
-        # Note that if you have 2 M670i expansion module (with 36 keys each)
-        # on a 53i for example, the first key of the second expansion module
-        # will be number 67 (6 + 60 + 1) and not 43 (6 + 36 + 1) because we
-        # are counting 60 keys per expansion module (nb of keys of the M675i),
-        # not 36.
-        expmod_keynum = keynum - keycount - 1
-        expmod_no = expmod_keynum // 60 + 1
-        if expmod_no > nb_expmods:
-            logger.info('Model %s has less than %s function keys', model, keynum)
-            return None
-        else:
-            expmod_key_no = expmod_keynum % 60 + 1
-            return u'expmod%s key%s' % (expmod_no, expmod_key_no)
-
     def _add_fkeys(self, raw_config, model):
-        if model not in self._KEYTYPE:
-            logger.warning(u'Unknown model or model with no funckeys: %s', model)
+        model_obj = self._MODELS.get(model)
+        if not model_obj:
+            logger.info('Unknown model %s; no function key will be configured', model)
             return
         lines = []
         for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
                                                key=itemgetter(0)):
-            keytype = self._get_keytype(model, int(funckey_no))
-            if keytype is not None:
+            keytype = model_obj.get_keytype(int(funckey_no))
+            if keytype is None:
+                logger.info('Function key %s is out of range for model %s', funckey_no, model)
+            else:
                 funckey_type = funckey_dict[u'type']
                 if funckey_type == u'speeddial':
                     type_ = u'speeddial'
