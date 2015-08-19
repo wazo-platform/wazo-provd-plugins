@@ -33,6 +33,7 @@ MODEL_VERSIONS = {
 
 class AastraPlugin(common['BaseAastraPlugin']):
     IS_PLUGIN = True
+    _LANGUAGE_PATH = 'Aastra/i18n/'
 
     pg_associator = common['BaseAastraPgAssociator'](MODEL_VERSIONS)
 
