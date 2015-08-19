@@ -1,3 +1,5 @@
+idle screen mode: 1
+
 topsoftkey1 type: directory
 
 {% if X_xivo_phonebook_ip -%}
