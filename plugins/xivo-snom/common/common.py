@@ -181,7 +181,7 @@ class BaseSnomPlugin(StandardPlugin):
                 type_ = u'speed'
                 suffix = ''
             elif funckey_type == u'park':
-                if model in ['710', '720', '715', '760']:
+                if model in [u'710', u'715', u'720', u'725', u'760', u'D765']:
                     type_ = u'orbit'
                     suffix = ''
                 else:
