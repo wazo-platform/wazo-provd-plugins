@@ -28,16 +28,19 @@ from subprocess import check_call
 @target('3.3.1-SP4', 'xivo-aastra-3.3.1-SP4')
 def build_3_3_1_sp4(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--exclude', '/templates/68*.tpl',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '3.3.1-SP4/', path])
 
 
-@target('4.0.0-SP2', 'xivo-aastra-4.0.0-SP2')
-def build_4_0_0_sp1(path):
+@target('4.1.0', 'xivo-aastra-4.1.0')
+def build_4_1_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--exclude', '/templates/67*',
+                '--exclude', '/templates/9*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '4.0.0-SP2/', path])
+                '4.1.0/', path])

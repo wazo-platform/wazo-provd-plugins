@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2014-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,26 +39,6 @@ MODEL_VERSIONS = {
 
 class AastraPlugin(common['BaseAastraPlugin']):
     IS_PLUGIN = True
+    _LANGUAGE_PATH = 'i18n/'
 
     pg_associator = common['BaseAastraPgAssociator'](MODEL_VERSIONS)
-
-    def _add_parking(self, raw_config):
-        # hack to set the per line parking config if a park function key is used
-        parking = None
-        is_parking_set = False
-        for funckey_no, funckey_dict in raw_config[u'funckeys'].iteritems():
-            if funckey_dict[u'type'] == u'park':
-                if is_parking_set:
-                    cur_parking = funckey_dict[u'value']
-                    if cur_parking != parking:
-                        logger.warning('Ignoring park value %s for function key %s: using %s',
-                                       cur_parking, funckey_no, parking)
-                else:
-                    parking = funckey_dict[u'value']
-                    is_parking_set = True
-                    self._do_add_parking(raw_config, parking)
-
-    def _do_add_parking(self, raw_config, parking):
-        raw_config[u'XX_parking'] = u'\n'.join(u'sip line%s park pickup config: %s;%s;asterisk' %
-                                               (line_no, parking, parking)
-                                               for line_no in raw_config[u'sip_lines'])

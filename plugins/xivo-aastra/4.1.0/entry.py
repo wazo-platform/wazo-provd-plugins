@@ -15,20 +15,24 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-# Depends on the following external programs:
-#  -rsync
+import logging
 
-from subprocess import check_call
+common = {}
+execfile_('common.py', common)
+
+logger = logging.getLogger('plugin.xivo-aastra')
 
 
-# target(<target_id>, <pg_id>)
-# any error raised will be considered a build error
-# Pre: pg_dir is initially empty
-# Pre: current directory is the one of the bplugin
-@target('4.0.0-SP1', 'xivo-mitel-4.0.0-SP1')
-def build_4_0_0_sp1(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
+MODEL_VERSIONS = {
+    u'6863i': u'4.1.0.128',
+    u'6865i': u'4.1.0.128',
+    u'6867i': u'4.1.0.128',
+    u'6869i': u'4.1.0.128',
+}
 
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '4.0.0-SP1/', path])
+
+class AastraPlugin(common['BaseAastraPlugin']):
+    IS_PLUGIN = True
+    _LANGUAGE_PATH = 'Aastra/i18n/'
+
+    pg_associator = common['BaseAastraPgAssociator'](MODEL_VERSIONS)

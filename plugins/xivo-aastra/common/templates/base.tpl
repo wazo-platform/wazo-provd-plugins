@@ -55,7 +55,7 @@ user password: {{ user_password }}
 
 {% if XX_locale -%}
 language: 1
-language 1: i18n/{{ XX_locale[0] }}
+language 1: {{ XX_language_path }}{{ XX_locale[0] }}
 tone set: {{ XX_locale[1] }}
 input language: {{ XX_locale[2] }}
 {% endif -%}
