@@ -45,7 +45,12 @@
  <idleTimeout>0</idleTimeout>
  <authenticationURL></authenticationURL>
  {% if X_xivo_phonebook_ip -%}
- <directoryURL>http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/menu</directoryURL>
+  {% if config_version|d(0) >= 1 -%}
+   <directoryURL>http://{{ X_xivo_phonebook_ip }}:{{ X_xivo_phonebook_port|d(9498) }}/0.1/directories/menu?vendor=cisco{{ '&amp;xivo_user_uuid={}'.format(X_xivo_user_uuid) if X_xivo_user_uuid }}</directoryURL>
+  {% else -%}
+   {# backward compatibility URL with XiVO 15.14 or earlier -#}
+   <directoryURL>http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/menu</directoryURL>
+  {% endif -%}
  {% else -%}
  <directoryURL></directoryURL>
  {% endif -%}
