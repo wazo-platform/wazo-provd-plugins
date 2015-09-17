@@ -22,6 +22,7 @@ import re
 import subprocess
 from operator import itemgetter
 from xml.sax.saxutils import escape
+from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
@@ -392,6 +393,17 @@ class BaseCiscoPlugin(StandardPlugin):
             locale = self._DEFAULT_LOCALE
         raw_config[u'XX_locale'] = self._LOCALE[locale]
 
+    if hasattr(plugins, 'add_xivo_phonebook_url'):
+        def _add_xivo_phonebook_url(self, raw_config):
+            plugins.add_xivo_phonebook_url(raw_config, u'cisco')
+
+    else:
+        # backward compatibility
+        def _add_xivo_phonebook_url(self, raw_config):
+            hostname = raw_config.get(u'X_xivo_phonebook_ip')
+            if hostname:
+                raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+
     def _dev_specific_filename(self, dev):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(dev[u'mac'], separator='')
@@ -417,6 +429,7 @@ class BaseCiscoPlugin(StandardPlugin):
         self._add_language(raw_config)
         self._add_directory_name(raw_config)
         self._add_locale(raw_config)
+        self._add_xivo_phonebook_url(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING, errors='replace')

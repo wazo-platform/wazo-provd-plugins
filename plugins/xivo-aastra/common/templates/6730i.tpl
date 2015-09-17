@@ -19,11 +19,9 @@ prgkey5 type: callers
 
 prgkey6 type: services
 
-{% if X_xivo_phonebook_ip -%}
+{% if XX_xivo_phonebook_url -%}
 prgkey7 type: xml
-prgkey7 value: http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
+prgkey7 value: {{ XX_xivo_phonebook_url }}
 {% endif -%}
 
-{# include must be at the end of the file to be able to override the function
-   keys defined above -#}
 {% include 'base.tpl' %}

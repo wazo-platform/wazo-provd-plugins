@@ -20,6 +20,7 @@ import re
 import os.path
 from operator import itemgetter
 from xml.sax.saxutils import escape
+from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
@@ -247,6 +248,17 @@ class BasePolycomPlugin(StandardPlugin):
         raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'),
                                                                   self._SIP_TRANSPORT_DEF)
 
+    if hasattr(plugins, 'add_xivo_phonebook_url'):
+        def _add_xivo_phonebook_url(self, raw_config):
+            plugins.add_xivo_phonebook_url(raw_config, u'polycom')
+
+    else:
+        # backward compatibility
+        def _add_xivo_phonebook_url(self, raw_config):
+            hostname = raw_config.get(u'X_xivo_phonebook_ip')
+            if hostname:
+                raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+
     def _update_sip_lines(self, raw_config):
         proxy_ip = raw_config.get(u'sip_proxy_ip')
         proxy_port = raw_config.get(u'sip_proxy_port', u'')
@@ -294,6 +306,7 @@ class BasePolycomPlugin(StandardPlugin):
         self._add_fkeys(raw_config, device.get(u'model'))
         self._add_syslog_level(raw_config)
         self._add_sip_transport(raw_config)
+        self._add_xivo_phonebook_url(raw_config)
         self._update_sip_lines(raw_config)
         raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
         raw_config[u'XX_options'] = device.get(u'options', {})

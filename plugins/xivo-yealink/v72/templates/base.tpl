@@ -61,8 +61,8 @@ local_time.time_zone_name = %NULL%
 local_time.summer_time = %NULL%
 {% endif %}
 
-{% if X_xivo_phonebook_ip -%}
-remote_phonebook.data.1.url = http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH
+{% if XX_xivo_phonebook_url -%}
+remote_phonebook.data.1.url = {{ XX_xivo_phonebook_url }}
 remote_phonebook.data.1.name = XiVO
 {% else -%}
 remote_phonebook.data.1.url = %NULL%

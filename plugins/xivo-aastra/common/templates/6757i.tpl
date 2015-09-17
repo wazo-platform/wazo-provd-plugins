@@ -31,9 +31,9 @@ topsoftkey7 value: {{ exten_pickup_call }}
 topsoftkey7 label: "{{ XX_dict['pickup_call'] }}"
 {% endif -%}
 
-{% if X_xivo_phonebook_ip -%}
+{% if XX_xivo_phonebook_url -%}
 softkey1 type: xml
-softkey1 value: http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
+softkey1 value: {{ XX_xivo_phonebook_url }}
 softkey1 label: "{{ XX_dict['remote_directory'] }}"
 {% endif -%}
 

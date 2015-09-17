@@ -61,15 +61,15 @@
 
     {% endfor -%}
 
-    {% if X_xivo_phonebook_ip -%}
-    <dkey_directory perm="R">url http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/</dkey_directory>
+    {% if XX_xivo_phonebook_url -%}
+    <dkey_directory perm="R">url {{ XX_xivo_phonebook_url|e }}</dkey_directory>
     {% block gui_fkey1 %}
     <gui_fkey1 perm="R">
         <initialization>
             <variable name="label" value="{{ XX_dict['remote_directory'] }}"/>
         </initialization>
         <action>
-            <url target="http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search" when="on press"/>
+            <url target="{{ XX_xivo_phonebook_url|e }}" when="on press"/>
         </action>
     </gui_fkey1>
     {% endblock %}
