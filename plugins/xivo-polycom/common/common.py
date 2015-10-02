@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2014 Avencall
+# Copyright (C) 2010-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -248,16 +248,16 @@ class BasePolycomPlugin(StandardPlugin):
         raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'),
                                                                   self._SIP_TRANSPORT_DEF)
 
-    if hasattr(plugins, 'add_xivo_phonebook_url'):
-        def _add_xivo_phonebook_url(self, raw_config):
+    def _add_xivo_phonebook_url(self, raw_config):
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
             plugins.add_xivo_phonebook_url(raw_config, u'polycom')
+        else:
+            self._add_xivo_phonebook_url_compat(raw_config)
 
-    else:
-        # backward compatibility
-        def _add_xivo_phonebook_url(self, raw_config):
-            hostname = raw_config.get(u'X_xivo_phonebook_ip')
-            if hostname:
-                raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+    def _add_xivo_phonebook_url_compat(self, raw_config):
+        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        if hostname:
+            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
 
     def _update_sip_lines(self, raw_config):
         proxy_ip = raw_config.get(u'sip_proxy_ip')

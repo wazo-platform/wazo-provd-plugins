@@ -455,16 +455,16 @@ class BaseAastraPlugin(StandardPlugin):
                                                (line_no, parking, parking)
                                                for line_no in raw_config[u'sip_lines'])
 
-    if hasattr(plugins, 'add_xivo_phonebook_url'):
-        def _add_xivo_phonebook_url(self, raw_config):
+    def _add_xivo_phonebook_url(self, raw_config):
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
             plugins.add_xivo_phonebook_url(raw_config, u'aastra')
+        else:
+            self._add_xivo_phonebook_url_compat(raw_config)
 
-    else:
-        # backward compatibility
-        def _add_xivo_phonebook_url(self, raw_config):
-            hostname = raw_config.get(u'X_xivo_phonebook_ip')
-            if hostname:
-                raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+    def _add_xivo_phonebook_url_compat(self, raw_config):
+        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        if hostname:
+            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device

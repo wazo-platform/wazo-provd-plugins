@@ -261,16 +261,16 @@ class BaseSnomPlugin(StandardPlugin):
                 msgs_blocked += ' Identity%02dIsNotRegistered' % backup_line_no
         raw_config['XX_msgs_blocked'] = msgs_blocked
 
-    if hasattr(plugins, 'add_xivo_phonebook_url'):
-        def _add_xivo_phonebook_url(self, raw_config):
+    def _add_xivo_phonebook_url(self, raw_config):
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
             plugins.add_xivo_phonebook_url(raw_config, u'snom')
+        else:
+            self._add_xivo_phonebook_url_compat(raw_config)
 
-    else:
-        # backward compatibility
-        def _add_xivo_phonebook_url(self, raw_config):
-            hostname = raw_config.get(u'X_xivo_phonebook_ip')
-            if hostname:
-                raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+    def _add_xivo_phonebook_url_compat(self, raw_config):
+        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        if hostname:
+            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
 
     def _gen_xx_dict(self, raw_config):
         xx_dict = self._XX_DICT[self._XX_DICT_DEF]

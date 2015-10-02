@@ -1,5 +1,5 @@
 {
-    "version": "1.24a",
+    "version": "1.24b",
     "description": "Plugin for Yealink T32G, T38G and VP530P in version V70.",
     "description_fr": "Greffon pour Yealink T32G, T38G and VP530P en version V70.",
     "vendor" : "Yealink",
