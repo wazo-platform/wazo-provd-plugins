@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2014 Avencall
+# Copyright (C) 2010-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 import logging
 import os
 import re
-from provd import synchronize
+from provd import plugins
 from provd import tzinform
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT, \
@@ -27,7 +27,7 @@ from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
     TemplatePluginHelper
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.xivo-cisco')
 
@@ -255,6 +255,17 @@ class BaseCiscoSccpPlugin(StandardPlugin):
             else:
                 raw_config[u'XX_timezone'] = self._tzinfo_to_value(tzinfo)
 
+    def _add_xivo_phonebook_url(self, raw_config):
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
+            plugins.add_xivo_phonebook_url(raw_config, u'cisco', entry_point=u'menu')
+        else:
+            self._add_xivo_phonebook_url_compat(raw_config)
+
+    def _add_xivo_phonebook_url_compat(self, raw_config):
+        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        if hostname:
+            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/menu/'.format(hostname=hostname)
+
     def _update_call_managers(self, raw_config):
         for priority, call_manager in raw_config[u'sccp_call_managers'].iteritems():
             call_manager[u'XX_priority'] = unicode(int(priority) - 1)
@@ -283,6 +294,7 @@ class BaseCiscoSccpPlugin(StandardPlugin):
         raw_config[u'XX_addons'] = ''
         self._add_locale(raw_config)
         self._add_timezone(raw_config)
+        self._add_xivo_phonebook_url(raw_config)
         self._update_call_managers(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)

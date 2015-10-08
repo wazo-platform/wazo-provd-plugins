@@ -19,6 +19,7 @@ import logging
 import re
 import os.path
 from operator import itemgetter
+from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
@@ -413,6 +414,17 @@ class BaseYealinkPlugin(StandardPlugin):
     def _get_sip_accounts(self, model):
         return self._NB_SIP_ACCOUNTS.get(model)
 
+    def _add_xivo_phonebook_url(self, raw_config):
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
+            plugins.add_xivo_phonebook_url(raw_config, u'yealink', entry_point=u'lookup', qs_suffix=u'term=#SEARCH')
+        else:
+            self._add_xivo_phonebook_url_compat(raw_config)
+
+    def _add_xivo_phonebook_url_compat(self, raw_config):
+        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        if hostname:
+            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(hostname=hostname)
+
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='')
@@ -437,6 +449,7 @@ class BaseYealinkPlugin(StandardPlugin):
         self._add_timezone(raw_config)
         self._update_sip_lines(raw_config)
         self._add_xx_sip_lines(device, raw_config)
+        self._add_xivo_phonebook_url(raw_config)
         raw_config[u'XX_options'] = device.get(u'options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)

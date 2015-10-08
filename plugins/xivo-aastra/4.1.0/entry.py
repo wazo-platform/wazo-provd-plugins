@@ -15,12 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import logging
-
 common = {}
 execfile_('common.py', common)
-
-logger = logging.getLogger('plugin.xivo-aastra')
 
 
 MODEL_VERSIONS = {

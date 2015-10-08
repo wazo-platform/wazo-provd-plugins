@@ -2,10 +2,10 @@ prgkey5 locked: 0
 
 prgkey6 locked: 0
 
-{% if X_xivo_phonebook_ip -%}
+{% if XX_xivo_phonebook_url -%}
 prgkey5 type: none
 prgkey6 type: none
-directory script: http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
+directory script: {{ XX_xivo_phonebook_url }}
 {% endif -%}
 
 {% include 'base.tpl' %}

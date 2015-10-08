@@ -85,9 +85,9 @@
 <Extended_Function_{{ line_no }}_></Extended_Function_{{ line_no }}_>
 {% endfor %}
 
-{% if X_xivo_phonebook_ip -%}
+{% if XX_xivo_phonebook_url -%}
 <XML_Directory_Service_Name>{{ XX_directory_name }}</XML_Directory_Service_Name>
-<XML_Directory_Service_URL>http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search</XML_Directory_Service_URL>
+<XML_Directory_Service_URL>{{ XX_xivo_phonebook_url|e }}</XML_Directory_Service_URL>
 {% endif -%}
 
 <!-- SPA100 and SPA200 specific settings -->

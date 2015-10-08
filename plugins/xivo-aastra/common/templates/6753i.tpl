@@ -10,9 +10,9 @@ prgkey2 value: {{ exten_fwd_unconditional }}
 
 prgkey3 type: callers
 
-{% if X_xivo_phonebook_ip -%}
+{% if XX_xivo_phonebook_url -%}
 prgkey4 type: xml
-prgkey4 value: http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
+prgkey4 value: {{ XX_xivo_phonebook_url }}
 {% endif -%}
 
 prgkey5 type: conf

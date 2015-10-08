@@ -20,6 +20,7 @@ import logging
 import re
 import os.path
 from operator import itemgetter
+from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
@@ -454,6 +455,17 @@ class BaseAastraPlugin(StandardPlugin):
                                                (line_no, parking, parking)
                                                for line_no in raw_config[u'sip_lines'])
 
+    def _add_xivo_phonebook_url(self, raw_config):
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
+            plugins.add_xivo_phonebook_url(raw_config, u'aastra')
+        else:
+            self._add_xivo_phonebook_url_compat(raw_config)
+
+    def _add_xivo_phonebook_url_compat(self, raw_config):
+        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        if hostname:
+            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
@@ -482,6 +494,7 @@ class BaseAastraPlugin(StandardPlugin):
         self._add_trusted_certificates(raw_config, device)
         self._update_sip_lines(raw_config)
         self._add_parking(raw_config)
+        self._add_xivo_phonebook_url(raw_config)
         raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
         raw_config[u'XX_options'] = device.get(u'options', {})
         raw_config[u'XX_language_path'] = self._LANGUAGE_PATH

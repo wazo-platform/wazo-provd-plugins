@@ -20,6 +20,7 @@ import os.path
 import re
 from operator import itemgetter
 from xml.sax.saxutils import escape
+from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
@@ -260,6 +261,17 @@ class BaseSnomPlugin(StandardPlugin):
                 msgs_blocked += ' Identity%02dIsNotRegistered' % backup_line_no
         raw_config['XX_msgs_blocked'] = msgs_blocked
 
+    def _add_xivo_phonebook_url(self, raw_config):
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
+            plugins.add_xivo_phonebook_url(raw_config, u'snom')
+        else:
+            self._add_xivo_phonebook_url_compat(raw_config)
+
+    def _add_xivo_phonebook_url_compat(self, raw_config):
+        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        if hostname:
+            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+
     def _gen_xx_dict(self, raw_config):
         xx_dict = self._XX_DICT[self._XX_DICT_DEF]
         if u'locale' in raw_config:
@@ -300,6 +312,7 @@ class BaseSnomPlugin(StandardPlugin):
         self._add_timezone(raw_config)
         self._add_user_dtmf_info(raw_config)
         self._add_msgs_blocked(raw_config)
+        self._add_xivo_phonebook_url(raw_config)
         raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
         raw_config[u'XX_options'] = device.get(u'options', {})
 

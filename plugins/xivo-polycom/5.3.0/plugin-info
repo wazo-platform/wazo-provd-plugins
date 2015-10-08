@@ -1,5 +1,5 @@
 {
-    "version": "1.4",
+    "version": "1.5b",
     "description": "Plugin for Polycom VVX300, VVX310, VVX400, VVX410, VVX500, VVX600 and VVX1500 in version 5.3.0",
     "description_fr": "Greffon pour Polycom VVX300, VVX310, VVX400, VVX410, VVX500, VVX600 and VVX1500 en version 5.3.0",
     "capabilities": {

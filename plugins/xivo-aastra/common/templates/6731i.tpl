@@ -24,9 +24,9 @@ prgkey6 type: none
 
 prgkey7 type: none
 
-{% if X_xivo_phonebook_ip -%}
+{% if XX_xivo_phonebook_url -%}
 prgkey8 type: xml
-prgkey8 value: http://{{ X_xivo_phonebook_ip }}/service/ipbx/web_services.php/phonebook/search/
+prgkey8 value: {{ XX_xivo_phonebook_url }}
 {% endif -%}
 
 {% include 'base.tpl' %}
