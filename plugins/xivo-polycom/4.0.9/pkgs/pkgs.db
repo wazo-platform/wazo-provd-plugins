@@ -1,14 +1,14 @@
 [pkg_software]
 description: UC software and language files
 description_fr: Logiciel UC et fichiers de langue
-version: 4.0.4.2906
+version: 4.0.9
 files: software
 install: polycom-software
 
 [pkg_updater]
 description: Updater for IP6000 and IP7000
 description_fr: Updater pour IP6000 et IP7000
-version: 5.0.3.1167
+version: 5.0.8
 files: updater
 install: polycom-updater
 
@@ -32,14 +32,14 @@ a-b: unzip $FILE1
 
 
 [file_software]
-url: http://downloads.polycom.com/voice/voip/uc/Polycom%20UC%20Software%204.0.4%20release%20sig%20split.zip
-size: 218353368
-sha1sum: 3ef02b647d634213878a9c8da3e9ca83b77e52d5
+url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_4_0_9_release_sig_split.zip
+size: 216201435
+sha1sum: 263449f664b0b06cd2d67b20d47f87baede952b4
 
 [file_updater]
-url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Updater_5_0_3_release_sig.zip
-size: 12964727
-sha1sum: 9d07a7b38fbd096faaed72a6c08a35f15ea24cc8
+url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Updater_5_0_8_release_sig.zip
+size: 13064515
+sha1sum: b63fe54195c9c5f63da214b7a819cb4e17ea46ea
 
 [file_upgrader]
 url: http://downloads.polycom.com/voice/voip/uc/SoundPoint_IP_BootROM_4_4_0B_Upgrader_release_sig.zip

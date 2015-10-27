@@ -1,7 +1,7 @@
 [pkg_software]
 description: UC software and language files
 description_fr: Logiciel UC et fichiers de langue
-version: 5.3.0
+version: 5.3.1
 files: software
 install: polycom-software
 
@@ -22,9 +22,9 @@ a-b: unzip $FILE1
 
 
 [file_software]
-url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_5_3_0_rts37_release_sig_split.zip
-size: 345354286
-sha1sum: 76db70b07f038688a908ed47989db22a9aadf06a
+url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_5_3_1_release_sig_split.zip
+size: 345640879
+sha1sum: f59ae989a4fc12a44345c6b93141564a181ba2d8
 
 [file_bootblock]
 url: http://downloads.polycom.com/voice/voip/sp_ss_bootrom/vvx1500_BootBlock_3_0_4_release_sig.zip

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2014-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,10 +27,9 @@ MODELS = [
     u'VVX600',
     u'VVX1500',
 ]
-VERSION = u'5.3.0'
 
 
 class PolycomPlugin(common_globals['BasePolycomPlugin']):
     IS_PLUGIN = True
 
-    pg_associator = common_globals['BasePolycomPgAssociator'](MODELS, VERSION)
+    pg_associator = common_globals['BasePolycomPgAssociator'](MODELS)
