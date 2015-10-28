@@ -23,10 +23,6 @@
     <http_pass perm="R">guest</http_pass>
     {% endif -%}
 
-    {% if dns_enabled -%}
-    <dns_server1 perm="R">{{ dns_ip }}</dns_server1>
-    {% endif -%}
-
     {% if ntp_enabled -%}
     <ntp_server perm="R">{{ ntp_ip }}</ntp_server>
     {% else -%}
