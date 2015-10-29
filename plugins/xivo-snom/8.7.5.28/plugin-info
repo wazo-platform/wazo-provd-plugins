@@ -1,5 +1,5 @@
 {
-    "version": "1.5e",
+    "version": "1.5.1",
     "description": "Plugin for Snom 710/D710, 715/D715, 720, D725, 760, D765 and 821 in version 8.7.5.28.",
     "description_fr": "Greffon pour Snom 710/D710, 715/D715, 720, D725, 760, D765 et 821 en version 8.7.5.28.",
     "capabilities": {
