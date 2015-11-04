@@ -90,16 +90,14 @@ class BasePolycomHTTPDeviceInfoExtractor(object):
 
 
 class BasePolycomPgAssociator(BasePgAssociator):
-    def __init__(self, models, version):
+
+    def __init__(self, models):
         BasePgAssociator.__init__(self)
         self._models = models
-        self._version = version
 
     def _do_associate(self, vendor, model, version):
         if vendor == u'Polycom':
             if model in self._models:
-                if version == self._version:
-                    return FULL_SUPPORT
                 return COMPLETE_SUPPORT
             return PROBABLE_SUPPORT
         return IMPROBABLE_SUPPORT

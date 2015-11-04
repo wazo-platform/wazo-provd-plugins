@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2014-2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,8 +21,8 @@
 from subprocess import check_call
 
 
-@target('4.0.4', 'xivo-polycom-4.0.4')
-def build_4_0_4(path):
+@target('4.0.9', 'xivo-polycom-4.0.9')
+def build_4_0_9(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '--include', '/templates/base.tpl',
                 '--include', '/templates/SPIP321.tpl',
@@ -40,11 +40,11 @@ def build_4_0_4(path):
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '4.0.4/', path])
+                '4.0.9/', path])
 
 
-@target('5.3.0', 'xivo-polycom-5.3.0')
-def build_5_3_0(path):
+@target('5.3.1', 'xivo-polycom-5.3.1')
+def build_5_3_1(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '--include', '/templates/base.tpl',
                 '--include', '/templates/VVX300.tpl',
@@ -58,4 +58,4 @@ def build_5_3_0(path):
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '5.3.0/', path])
+                '5.3.1/', path])
