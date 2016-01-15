@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2015 Avencall
+# Copyright (C) 2010-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -58,6 +58,7 @@ class BaseSnomHTTPDeviceInfoExtractor(object):
         #   "Mozilla/4.0 (compatible; snom320-SIP 7.3.30 1.1.3-u)"
         #   "Mozilla/4.0 (compatible; snom320-SIP 8.4.18 1.1.3-s)"
         #   "Mozilla/4.0 (compatible; snom710-SIP 8.7.3.19 1.1.5-IFX-05.01.12)"
+        #   "Mozilla/4.0 (compatible; snom710-SIP 8.7.5.35 1.1.5-IFX-05.01.12 000413741767)"
         #   "Mozilla/4.0 (compatible; snom760-SIP 8.7.3.19 2010.06)"
         #   "Mozilla/4.0 (compatible; snom820-SIP 8.4.35 1.1.4-IFX-26.11.09)"
         #   "Mozilla/4.0 (compatible; snom870-SIP 8.4.35 SPEAr300 SNOM 1.4)"

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014-2015 Avencall
+# Copyright (C) 2014-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,13 +19,20 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODELS = [
+    u'300',
+    u'320',
+    u'370',
     u'710',
     u'715',
     u'720',
     u'725',
     u'760',
     u'D765',
+    u'820',
     u'821',
+    u'870',
+    u'MP',
+    u'PA1',
 ]
 VERSION = u'8.7.5.35'
 

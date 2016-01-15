@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014-2015 Avencall
+# Copyright (C) 2014-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -118,26 +118,25 @@ def build_8_7_5_28(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '8.7.5.28/', path])
 
+
 @target('8.7.5.35', 'xivo-snom-8.7.5.35')
 def build_8_7_5_35(path):
-    MODELS = [('710', 'r'),
+    MODELS = [('300', 'f'),
+              ('320', 'f'),
+              ('370', 'f'),
+              ('710', 'r'),
               ('715', 'r'),
               ('720', 'r'),
               ('725', 'r'),
               ('760', 'r'),
               ('D765', 'r'),
-              ('821', 'r')]
+              ('820', 'r'),
+              ('821', 'r'),
+              ('870', 'r'),
+              ('MP', 'r'),
+              ('PA1', 'f')]
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '--include', '/templates/base.tpl',
-                '--include', '/templates/710.tpl',
-                '--include', '/templates/715.tpl',
-                '--include', '/templates/720.tpl',
-                '--include', '/templates/725.tpl',
-                '--include', '/templates/760.tpl',
-                '--include', '/templates/D765.tpl',
-                '--include', '/templates/821.tpl',
-                '--exclude', '/templates/*.tpl',
                 '--exclude', '*.btpl',
                 'common/', path])
 
