@@ -26,6 +26,8 @@ local_time.date_format = 2
 
 sip.notify_reboot_enable = 0
 
+transfer.dsskey_deal_type = 1
+
 {% if vlan_enabled -%}
 network.vlan.internet_port_enable = 1
 network.vlan.internet_port_vid = {{ vlan_id }}
