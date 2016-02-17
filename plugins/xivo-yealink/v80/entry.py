@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013-2015 Avencall
+# Copyright (C) 2013-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ MODEL_VERSIONS = {
     u'T42G': u'29.80.0.70',
     u'T46G': u'28.80.0.70',
     u'T48G': u'35.80.0.70',
+    u'T49G': u'51.80.0.75',
 }
 COMMON_FILES = [
     ('y000000000028.cfg', u'T46-28.80.0.70.rom', 'model.tpl'),
@@ -34,6 +35,7 @@ COMMON_FILES = [
     ('y000000000035.cfg', u'T48-35.80.0.70.rom', 'model.tpl'),
     ('y000000000036.cfg', u'T41-36.80.0.70.rom', 'model.tpl'),
     ('y000000000044.cfg', u'T23-44.80.0.70.rom', 'model.tpl'),
+    ('y000000000051.cfg', u'T49-51.80.0.75.rom', 'model.tpl'),
     ('y000000000052.cfg', u'T21P_E2-52.80.0.70.rom', 'model.tpl'),
     ('y000000000053.cfg', u'T19P_E2-53.80.0.70.rom', 'model.tpl'),
 ]

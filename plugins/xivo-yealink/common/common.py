@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2011-2015 Avencall
+# Copyright (C) 2011-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ logger = logging.getLogger('plugin.xivo-yealink')
 
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
-        re.compile(r'^[yY]ealink\s+SIP-(\w+)\s+([\d.]+)\s+([\da-f:]{17})$'),
+        re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-f:]{17})$'),
         re.compile(r'^[yY]ealink\s+(CP860)\s+([\d.]+)\s+([\da-f:]{17})$'),
         re.compile(r'(VP530P?|W52P)\s+([\d.]+)\s+([\da-f:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
@@ -69,6 +69,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink SIP-T42G 29.72.0.1 00:15:65:4c:3b:b0"
         #   "Yealink SIP-T46G 28.72.0.1 00:15:65:4a:a9:37"
         #   "Yealink SIP-T48G 35.72.0.6 00:15:65:5c:60:82"
+        #   "Yealink SIP VP-T49G 51.80.0.10 00:15:65:9b:5a:44"
         #   "Yealink SIP-W52P 25.73.0.20 00:15:65:40:ae:35"
         #   "W52P 25.30.0.2 00:15:65:44:b3:7c"
         #   "Yealink-T46G 28.71.0.81 28.1.0.128.0.0.0"
@@ -215,7 +216,8 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T41P': 15,
         u'T42G': 15,
         u'T46G': 27,
-        u'T48G': 27,
+        u'T48G': 29,
+        u'T49G': 29,
         u'W52P': 0,
     }
     _NB_MEMORYKEY = {
@@ -236,6 +238,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T42G': 0,
         u'T46G': 0,
         u'T48G': 0,
+        u'T49G': 0,
         u'W52P': 0,
     }
     _NB_EXPMODKEY = 40
@@ -313,6 +316,7 @@ class BaseYealinkPlugin(StandardPlugin):
         u'T42G': 12,
         u'T46G': 16,
         u'T48G': 16,
+        u'T49G': 16,
         u'VP530P': 4,
         u'W52P': 5,
     }
