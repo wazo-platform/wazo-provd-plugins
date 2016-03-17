@@ -1,21 +1,21 @@
 [pkg_T19P_E2-fw]
 description: Firmware for Yealink T19P E2
 description_fr: Micrologiciel pour Yealink T19P E2
-version: 53.80.0.70
+version: 53.80.0.95
 files: T19P_E2-fw
 install: yealink-fw
 
 [pkg_T21P_E2-fw]
 description: Firmware for Yealink T21P E2
 description_fr: Micrologiciel pour Yealink T21P E2
-version: 52.80.0.70
+version: 52.80.0.95
 files: T21P_E2-fw
 install: yealink-fw
 
 [pkg_T23-fw]
 description: Firmware for Yealink T23P and T23G
 description_fr: Micrologiciel pour Yealink T23P et T23G
-version: 44.80.0.70
+version: 44.80.0.95
 files: T23-fw
 install: yealink-fw
 
@@ -29,28 +29,28 @@ install: yealink-fw
 [pkg_T41P-fw]
 description: Firmware for Yealink T41P
 description_fr: Micrologiciel pour Yealink T41P
-version: 36.80.0.70
+version: 36.80.0.95
 files: T41P-fw
 install: yealink-fw
 
 [pkg_T42G-fw]
 description: Firmware for Yealink T42G
 description_fr: Micrologiciel pour Yealink T42G
-version: 29.80.0.70
+version: 29.80.0.95
 files: T42G-fw
 install: yealink-fw
 
 [pkg_T46G-fw]
 description: Firmware for Yealink T46G
 description_fr: Micrologiciel pour Yealink T46G
-version: 28.80.0.70
+version: 28.80.0.95
 files: T46G-fw
 install: yealink-fw
 
 [pkg_T48G-fw]
 description: Firmware for Yealink T48G
 description_fr: Micrologiciel pour Yealink T48G
-version: 35.80.0.70
+version: 35.80.0.95
 files: T48G-fw
 install: yealink-fw
 
@@ -70,19 +70,19 @@ b-c: cp *.rom firmware/
 
 
 [file_T19P_E2-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-8-7%2F6%2F218438cd-c001-46d3-95d3-a87aef2f13eb%2FT19P_E2-53.80.0.70.zip
-size: 7297631
-sha1sum: f6dd17eb3c14630b76e5118b0e832256cf541145
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2F6fbbb66c-c3a8-4e3b-9870-d77c8ac929eb%2FT19P_E2-53.80.0.95.zip
+size: 7390306
+sha1sum: 82933eb511c8056c986f78f8ebd6ea33d7f4b9dc
 
 [file_T21P_E2-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-8-7%2F6%2F369c6fda-c0f4-4816-a8ee-a6fe4d240f7b%2FT21P_E2-52.80.0.70.zip
-size: 7297878
-sha1sum: 8829287701d10557ecc5b207fadd82ffef0d7339
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2Fab4ec79c-3497-4d51-bf5b-39d77eecd8d6%2FT21P_E2-52.80.0.95.zip
+size: 7390517
+sha1sum: a4cffd3e0557376f5004bcfe6a63f8534f07c069
 
 [file_T23-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-8-7%2F6%2F9f9cd139-1829-4536-868f-e2e30e143382%2FT23-44.80.0.70.zip
-size: 7297960
-sha1sum: 6935a2e8eedd8aa648de68d6f701eea2b017d921
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2Fe40c6fce-b552-4877-886a-8fb9f8c53cc6%2FT23-44.80.0.95.zip
+size: 7453804
+sha1sum: 6b24659ac9afbb3ea84c4c2790d85363d4f48675
 
 [file_T40P-fw]
 url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2Fe195c540-7a4d-42fa-bbcd-c13e00719117%2FT40-54.80.0.95.zip
@@ -90,24 +90,24 @@ size: 7419388
 sha1sum: dce77cca2c6036731e9463449dd76a42f6185fd0
 
 [file_T41P-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-8-7%2F6%2F9c668315-8b11-4a86-a3d2-0c1689fdaec8%2FT41-36.80.0.70.zip
-size: 7196082
-sha1sum: 89202531d42840cc1280bc06ff9b76cb06c5f4b4
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2Fe7da9a0a-8dde-446f-8ac6-6a3127f2a4a6%2FT41-36.80.0.95.zip
+size: 7287883
+sha1sum: 15be6adb0471f773394e2e9ed1276f7c3d4f04ed
 
 [file_T42G-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-8-7%2F6%2F3f90659b-10b7-42d8-b7ec-66c4b6492df7%2FT42-29.80.0.70.zip
-size: 7195518
-sha1sum: c76317425e34cd805ac395a512011347dd069149
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2F8c610eac-582d-4387-a8f1-ddc1b9ff03e0%2FT42-29.80.0.95.zip
+size: 7290772
+sha1sum: be4769aef895cfb9975f2d6e5c5b08bd1ca1e5d6
 
 [file_T46G-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-8-7%2F6%2Fed7ac5ef-ba25-4d6e-8554-380055204a7f%2FT46-28.80.0.70.zip
-size: 21692981
-sha1sum: 06b96cddb537ab88cdc67914be54f2242af93b8f
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2Fbf98c97c-c253-4e67-a503-626522f0a354%2FT46-28.80.0.95.zip
+size: 22166657
+sha1sum: 80e590fca546b91b5a2d041e29df5827d9f2dfe0
 
 [file_T48G-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-8-7%2F6%2F6fd4cb37-b21d-41e7-a882-acadfdb0729a%2FT48-35.80.0.70.zip
-size: 22971826
-sha1sum: e5b8bad7c552648de3a5f84aeb6eac866b361bb0
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2Fd22cf743-067c-4e0f-b2b1-f3afe89e6d6e%2FT48-35.80.0.95.zip
+size: 24884769
+sha1sum: ca98d8fbe117cf2a5b94a21239124699a3f342ad
 
 [file_T49G-fw]
 url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-1%2F6%2F7dcdf0c7-190c-4d8c-8ed8-d07204333090%2FT49-51.80.0.75.zip
