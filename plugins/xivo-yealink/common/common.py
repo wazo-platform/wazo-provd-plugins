@@ -65,6 +65,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink SIP-T26P 6.72.0.30 00:15:65:4b:57:d2"
         #   "yealink SIP-T28P 2.70.0.140 00:15:65:13:ae:0b"
         #   "Yealink SIP-T38G  38.70.0.125 00:15:65:2f:c3:5e"
+        #   "Yealink SIP-T40P 54.80.0.10 00:15:65:94:86:64"
         #   "Yealink SIP-T41P 36.72.0.1 00:15:65:53:83:22"
         #   "Yealink SIP-T42G 29.72.0.1 00:15:65:4c:3b:b0"
         #   "Yealink SIP-T46G 28.72.0.1 00:15:65:4a:a9:37"
@@ -213,6 +214,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T28P': 6,
         u'T32G': 3,
         u'T38G': 6,
+        u'T40P': 3,
         u'T41P': 15,
         u'T42G': 15,
         u'T46G': 27,
@@ -234,6 +236,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T28P': 10,
         u'T32G': 0,
         u'T38G': 10,
+        u'T40P': 0,
         u'T41P': 0,
         u'T42G': 0,
         u'T46G': 0,
@@ -312,6 +315,7 @@ class BaseYealinkPlugin(StandardPlugin):
         u'T28P': 6,
         u'T32G': 3,
         u'T38G': 6,
+        u'T40P': 3,
         u'T41P': 6,
         u'T42G': 12,
         u'T46G': 16,

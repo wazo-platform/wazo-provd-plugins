@@ -19,6 +19,13 @@ version: 44.80.0.70
 files: T23-fw
 install: yealink-fw
 
+[pkg_T40P-fw]
+description: Firmware for Yealink T40P
+description_fr: Micrologiciel pour Yealink T40P
+version: 54.80.0.95
+files: T40P-fw
+install: yealink-fw
+
 [pkg_T41P-fw]
 description: Firmware for Yealink T41P
 description_fr: Micrologiciel pour Yealink T41P
@@ -76,6 +83,11 @@ sha1sum: 8829287701d10557ecc5b207fadd82ffef0d7339
 url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-8-7%2F6%2F9f9cd139-1829-4536-868f-e2e30e143382%2FT23-44.80.0.70.zip
 size: 7297960
 sha1sum: 6935a2e8eedd8aa648de68d6f701eea2b017d921
+
+[file_T40P-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2Fe195c540-7a4d-42fa-bbcd-c13e00719117%2FT40-54.80.0.95.zip
+size: 7419388
+sha1sum: dce77cca2c6036731e9463449dd76a42f6185fd0
 
 [file_T41P-fw]
 url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-8-7%2F6%2F9c668315-8b11-4a86-a3d2-0c1689fdaec8%2FT41-36.80.0.70.zip
