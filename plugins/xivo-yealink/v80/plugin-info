@@ -1,7 +1,7 @@
 {
     "version": "1.24.1",
-    "description": "Plugin for Yealink T19P E2, T21P E2, T23P, T23G, T40P, T41P, T42G, T46G, T48G and T49G in version V80.",
-    "description_fr": "Greffon pour Yealink T19P E2, T21P E2, T23P, T23G, T40P, T41P, T42G, T46G, T48G and T49G en version V80.",
+    "description": "Plugin for Yealink T19P E2, T21P E2, T40P, T41P, T42G, T46G and T48G in version V80.",
+    "description_fr": "Greffon pour Yealink T19P E2, T21P E2, T40P, T41P, T42G, T46G and T48G en version V80.",
     "vendor" : "Yealink",
     "vendor.url" : "http://www.yealink.com",
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
