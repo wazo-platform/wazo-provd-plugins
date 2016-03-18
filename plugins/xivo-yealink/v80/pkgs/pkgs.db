@@ -19,6 +19,20 @@ version: 44.80.0.95
 files: T23-fw
 install: yealink-fw
 
+[pkg_T27P-fw]
+description: Firmware for Yealink T27P
+description_fr: Micrologiciel pour Yealink T27P
+version: 45.80.0.95
+files: T27P-fw
+install: yealink-fw
+
+[pkg_T29G-fw]
+description: Firmware for Yealink T29G
+description_fr: Micrologiciel pour Yealink T29G
+version: 46.80.0.95
+files: T29G-fw
+install: yealink-fw
+
 [pkg_T40P-fw]
 description: Firmware for Yealink T40P
 description_fr: Micrologiciel pour Yealink T40P
@@ -83,6 +97,16 @@ sha1sum: a4cffd3e0557376f5004bcfe6a63f8534f07c069
 url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2Fe40c6fce-b552-4877-886a-8fb9f8c53cc6%2FT23-44.80.0.95.zip
 size: 7453804
 sha1sum: 6b24659ac9afbb3ea84c4c2790d85363d4f48675
+
+[file_T27P-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2Fadd49e59-bad0-4a86-acae-32bfa8b98535%2FT27-45.80.0.95.zip
+size: 7300264
+sha1sum: 705b583dc7db909a1515cf7485b008e249acb607
+
+[file_T29G-fw]
+url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2F01fcc569-65ba-4d96-9c14-8e9eeb54599e%2FT29-46.80.0.95.zip
+size: 18580909
+sha1sum: 8d2e034a8ca8b4a16091a4d07b987f3ead953119
 
 [file_T40P-fw]
 url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2Fe195c540-7a4d-42fa-bbcd-c13e00719117%2FT40-54.80.0.95.zip
