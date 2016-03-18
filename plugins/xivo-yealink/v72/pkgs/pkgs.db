@@ -1,6 +1,6 @@
 [pkg_CP860-fw]
-description: Firmware for Yealink CP860 (unofficial support)
-description_fr: Micrologiciel pour Yealink CP860 (support non officiel)
+description: Firmware for Yealink CP860
+description_fr: Micrologiciel pour Yealink CP860
 version: 37.72.0.10
 files: CP860-fw
 install: yealink-fw
