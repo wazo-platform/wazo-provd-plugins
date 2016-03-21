@@ -54,5 +54,7 @@
   <disableSpeaker>false</disableSpeaker>
   <disableSpeakerAndHeadset>false</disableSpeakerAndHeadset>
   <enableGroupListen>true</enableGroupListen>
+  <g722CodecSupport>2</g722CodecSupport>
  </vendorConfig>
+ <advertiseG722Codec>1</advertiseG722Codec>
 </device>
