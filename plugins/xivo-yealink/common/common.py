@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2011-2015 Avencall
+# Copyright (C) 2011-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ logger = logging.getLogger('plugin.xivo-yealink')
 
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
-        re.compile(r'^[yY]ealink\s+SIP-(\w+)\s+([\d.]+)\s+([\da-f:]{17})$'),
+        re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-f:]{17})$'),
         re.compile(r'^[yY]ealink\s+(CP860)\s+([\d.]+)\s+([\da-f:]{17})$'),
         re.compile(r'(VP530P?|W52P)\s+([\d.]+)\s+([\da-f:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
@@ -63,12 +63,15 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink SIP-T22P 7.72.0.30 00:15:65:39:31:fc"
         #   "Yealink SIP-T23G 44.80.0.60 00:15:65:93:70:f2"
         #   "Yealink SIP-T26P 6.72.0.30 00:15:65:4b:57:d2"
+        #   "Yealink SIP-T27P 45.80.0.25 00:15:65:8c:48:12"
         #   "yealink SIP-T28P 2.70.0.140 00:15:65:13:ae:0b"
         #   "Yealink SIP-T38G  38.70.0.125 00:15:65:2f:c3:5e"
+        #   "Yealink SIP-T40P 54.80.0.10 00:15:65:94:86:64"
         #   "Yealink SIP-T41P 36.72.0.1 00:15:65:53:83:22"
         #   "Yealink SIP-T42G 29.72.0.1 00:15:65:4c:3b:b0"
         #   "Yealink SIP-T46G 28.72.0.1 00:15:65:4a:a9:37"
         #   "Yealink SIP-T48G 35.72.0.6 00:15:65:5c:60:82"
+        #   "Yealink SIP VP-T49G 51.80.0.10 00:15:65:9b:5a:44"
         #   "Yealink SIP-W52P 25.73.0.20 00:15:65:40:ae:35"
         #   "W52P 25.30.0.2 00:15:65:44:b3:7c"
         #   "Yealink-T46G 28.71.0.81 28.1.0.128.0.0.0"
@@ -209,13 +212,17 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T23P': 3,
         u'T23G': 3,
         u'T26P': 3,
+        u'T27P': 21,
         u'T28P': 6,
+        u'T29G': 27,
         u'T32G': 3,
         u'T38G': 6,
+        u'T40P': 3,
         u'T41P': 15,
         u'T42G': 15,
         u'T46G': 27,
-        u'T48G': 27,
+        u'T48G': 29,
+        u'T49G': 29,
         u'W52P': 0,
     }
     _NB_MEMORYKEY = {
@@ -229,13 +236,17 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T23P': 0,
         u'T23G': 0,
         u'T26P': 10,
+        u'T27P': 0,
         u'T28P': 10,
+        u'T29G': 0,
         u'T32G': 0,
         u'T38G': 10,
+        u'T40P': 0,
         u'T41P': 0,
         u'T42G': 0,
         u'T46G': 0,
         u'T48G': 0,
+        u'T49G': 0,
         u'W52P': 0,
     }
     _NB_EXPMODKEY = 40
@@ -266,7 +277,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         return nb_memorykey
 
     def _nb_expmod_by_model(self, model):
-        if model in (u'T46G', u'T48G'):
+        if model in (u'T27P', u'T29G', u'T46G', u'T48G'):
             return 6
         else:
             return 0
@@ -306,13 +317,17 @@ class BaseYealinkPlugin(StandardPlugin):
         u'T23P': 3,
         u'T23G': 3,
         u'T26P': 3,
+        u'T27P': 6,
         u'T28P': 6,
+        u'T29G': 16,
         u'T32G': 3,
         u'T38G': 6,
+        u'T40P': 3,
         u'T41P': 6,
         u'T42G': 12,
         u'T46G': 16,
         u'T48G': 16,
+        u'T49G': 16,
         u'VP530P': 4,
         u'W52P': 5,
     }
