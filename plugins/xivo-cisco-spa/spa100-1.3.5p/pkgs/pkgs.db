@@ -1,7 +1,7 @@
 [pkg_spa100-fw]
 description: Firmware for Cisco SPA112 and SPA122
 description_fr: Micrologiciel pour Cisco SPA112 et SPA122
-version: 1.3.5p
+version: 1.4.1
 files: spa100fw
 install: cisco-zipfw
 
@@ -12,7 +12,7 @@ b-c: cp SPA112_SPA122*/*.bin firmware/
 
 
 [file_spa100fw]
-filename: SPA112_SPA122_1.3.5_p_FW.zip
-url: https://download.cisco.com/swc/esd/11/283998771/anon/SPA112_SPA122_1.3.5_p_FW.zip
+filename: SPA112-SPA122_1.4.1_FW.zip
+url:
 size: 10038076
 sha1sum: f960c2eff2eb93a6af342e64a61fc24d966102d5
