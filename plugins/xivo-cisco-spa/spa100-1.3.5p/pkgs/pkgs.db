@@ -14,5 +14,5 @@ b-c: cp SPA112_SPA122*/*.bin firmware/
 [file_spa100fw]
 filename: SPA112_SPA122_1.3.5_p_FW.zip
 url: https://download.cisco.com/swc/esd/11/283998771/anon/SPA112_SPA122_1.3.5_p_FW.zip
-size: 10287290
-sha1sum: 8ee35b95811ee420f86b0304700489c992cc24bb
+size: 10038076
+sha1sum: f960c2eff2eb93a6af342e64a61fc24d966102d5
