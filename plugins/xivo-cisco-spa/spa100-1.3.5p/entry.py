@@ -18,8 +18,8 @@
 common_globals = {}
 execfile_('common.py', common_globals)
 
-MODEL_VERSION = {u'SPA112': u'1.3.5p',
-                 u'SPA122': u'1.3.5p'}
+MODEL_VERSION = {u'SPA112': u'1.4.1',
+                 u'SPA122': u'1.4.1'}
 
 
 class CiscoPlugin(common_globals['BaseCiscoPlugin']):
