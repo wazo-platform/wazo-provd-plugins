@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014-2015 Avencall
+# Copyright (C) 2014-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -59,3 +59,23 @@ def build_5_3_1(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '5.3.1/', path])
+
+
+@target('5.4.3', 'xivo-polycom-5.4.3')
+def build_5_4_3(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--include', '/templates/base.tpl',
+                '--include', '/templates/VVX101.tpl',
+                '--include', '/templates/VVX201.tpl',
+                '--include', '/templates/VVX300.tpl',
+                '--include', '/templates/VVX310.tpl',
+                '--include', '/templates/VVX400.tpl',
+                '--include', '/templates/VVX410.tpl',
+                '--include', '/templates/VVX500.tpl',
+                '--include', '/templates/VVX600.tpl',
+                '--include', '/templates/VVX1500.tpl',
+                '--exclude', '/templates/*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '5.4.3/', path])

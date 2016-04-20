@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2015 Avencall
+# Copyright (C) 2010-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -68,6 +68,7 @@ class BasePolycomHTTPDeviceInfoExtractor(object):
         #   "FileTransport PolycomSoundStationIP-SSIP_6000-UA/4.0.4.2906 Type/Application"
         #   "FileTransport PolycomSoundStationIP-SSIP_6000-UA/5.0.3.1667 Type/Updater"
         #   "FileTransport PolycomVVX-VVX_400-UA/4.1.4.7430 Type/Application"
+        #   "FileTransport PolycomVVX-VVX_101-UA/5.4.3.1014 Type/Application"
         m = self._UA_REGEX.match(ua)
         if m:
             dev_info[u'vendor'] = u'Polycom'
