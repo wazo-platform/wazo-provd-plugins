@@ -103,6 +103,7 @@ call.directedCallPickupString="{{ exten_pickup_call }}"
 
 {{ XX_fkeys }}
 
+{% block remote_phonebook -%}
 {% if XX_xivo_phonebook_url -%}
 mb.main.home="{{ XX_xivo_phonebook_url|e }}"
 
@@ -111,6 +112,7 @@ softkey.1.action="{{ XX_xivo_phonebook_url|e }}"
 softkey.1.label="{{ XX_dict['remote_directory'] }}"
 softkey.1.use.idle="1"
 {% endif -%}
+{% endblock -%}
 
 {% if XX_options['switchboard'] -%}
 apps.push.messageType="5"

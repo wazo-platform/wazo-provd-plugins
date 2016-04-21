@@ -1,3 +1,4 @@
 {% extends 'base.tpl' -%}
-{% block model_specific_parameters -%}
+
+{% block remote_phonebook -%}
 {% endblock -%}
