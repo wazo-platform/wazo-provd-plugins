@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2015 Avencall
+# Copyright (C) 2010-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -404,6 +404,8 @@ class BaseCiscoPlugin(StandardPlugin):
         if hostname:
             raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
 
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.xml$')
+
     def _dev_specific_filename(self, dev):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(dev[u'mac'], separator='')
@@ -464,3 +466,6 @@ class BaseCiscoPlugin(StandardPlugin):
             return None
 
         return self._dev_specific_filename(device)
+
+    def is_sensitive_filename(self, filename):
+        return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))

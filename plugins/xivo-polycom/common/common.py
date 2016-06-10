@@ -281,6 +281,8 @@ class BasePolycomPlugin(StandardPlugin):
                 xx_dict = self._XX_DICT[lang]
         return xx_dict
 
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}-user\.cfg$')
+
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='')
@@ -343,3 +345,6 @@ class BasePolycomPlugin(StandardPlugin):
             return None
 
         return self._dev_specific_filename(device)
+
+    def is_sensitive_filename(self, filename):
+        return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))

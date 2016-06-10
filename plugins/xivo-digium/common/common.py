@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2014 Avencall
+# Copyright (C) 2010-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -172,6 +172,9 @@ class BaseDigiumPlugin(StandardPlugin):
 
         return self._dev_specific_filename(device)
 
+    def is_sensitive_filename(self, filename):
+        return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))
+
     def _check_device(self, device):
         if u'mac' not in device:
             raise Exception('MAC address needed to configure device')
@@ -184,8 +187,11 @@ class BaseDigiumPlugin(StandardPlugin):
         else:
             return raw_config[u'ip']
 
+
     def _format_mac(self, device):
          return format_mac(device[u'mac'], separator='', uppercase=False)
+
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg$')
 
     def _dev_specific_filename(self, device):
         filename = '%s.cfg' % self._format_mac(device)

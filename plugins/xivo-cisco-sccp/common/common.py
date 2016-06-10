@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2015 Avencall
+# Copyright (C) 2010-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -270,6 +270,8 @@ class BaseCiscoSccpPlugin(StandardPlugin):
         for priority, call_manager in raw_config[u'sccp_call_managers'].iteritems():
             call_manager[u'XX_priority'] = unicode(int(priority) - 1)
 
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^SEP[0-9A-F]{12}\.cnf\.xml$')
+
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
@@ -310,3 +312,6 @@ class BaseCiscoSccpPlugin(StandardPlugin):
 
     def synchronize(self, device, raw_config):
         return defer.fail(Exception('operation not supported'))
+
+    def is_sensitive_filename(self, filename):
+        return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))
