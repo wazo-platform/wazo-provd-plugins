@@ -282,6 +282,8 @@ class BaseSnomPlugin(StandardPlugin):
                 xx_dict = self._XX_DICT[lang]
         return xx_dict
 
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.xml')
+
     def _dev_specific_filenames(self, device):
         # Return a tuple (htm filename, xml filename)
         fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
@@ -359,3 +361,6 @@ class BaseSnomPlugin(StandardPlugin):
             return None
 
         return self._dev_specific_filenames(device)[1]
+
+    def is_sensitive_filename(self, filename):
+        return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))

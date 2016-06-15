@@ -440,6 +440,8 @@ class BaseYealinkPlugin(StandardPlugin):
         if hostname:
             raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(hostname=hostname)
 
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
+
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='')
@@ -501,3 +503,6 @@ class BaseYealinkPlugin(StandardPlugin):
             return None
 
         return self._dev_specific_filename(device)
+
+    def is_sensitive_filename(self, filename):
+        return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))
