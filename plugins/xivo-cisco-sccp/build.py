@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,6 +37,15 @@ def build_9_0_3(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '9.0.3/', path])
+
+
+@target('9.4', 'xivo-cisco-sccp-9.4')
+def build_9_4(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '9.4/', path])
 
 
 @target('cipc-2.1.2', 'xivo-cisco-sccp-cipc-2.1.2')

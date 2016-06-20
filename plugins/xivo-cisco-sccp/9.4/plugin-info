@@ -1,0 +1,28 @@
+{
+    "version": "1.1a",
+    "description": "Plugin for Cisco 7906G, 7911G, 7931G, 7941G, 7941G-GE, 7942G, 7961G and 7962G in version 9.4 of the SCCP software.<br/> Please see the documentation if you want to install Cisco firmwares.",
+    "description_fr": "Greffon pour Cisco 7906G, 7911G, 7931G, 7941G, 7941G-GE, 7942G, 7961G and 7962G en version 9.4 du logiciel SCCP.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
+    "capabilities": {
+        "Cisco, 7906G, 9.4.3/SCCP": {
+            "sccp.lines": 1
+        },
+        "Cisco, 7911G, 9.4.3/SCCP": {
+            "sccp.lines": 1
+        },
+        "Cisco, 7931G, 9.4.3/SCCP": {
+            "sccp.lines": 24
+        },
+        "Cisco, 7941G, 9.4.3/SCCP": {
+            "sccp.lines": 2
+        },
+        "Cisco, 7942G, 9.4.3/SCCP": {
+            "sccp.lines": 2
+        },
+        "Cisco, 7961G, 9.4.3/SCCP": {
+            "sccp.lines": 6
+        },
+        "Cisco, 7962G, 9.4.3/SCCP": {
+            "sccp.lines": 6
+        }
+    }
+}

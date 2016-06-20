@@ -22,7 +22,7 @@ install: cisco-bin
 [pkg_7940-7960-fw]
 description: Firmware for Cisco 7940G and 7960G
 description_fr: Micrologiciel pour Cisco 7940G et 7960G
-version: 8.1.2
+version: 8.1.2 SR2
 files: 7940-7960-fw
 install: cisco-unified-fw
 
@@ -100,10 +100,11 @@ size: 1155568
 sha1sum: 3e931a56e998f19b3623ad09b5a2f6a8e7492ce4
 
 [file_7940-7960-fw]
-; Released on August 2009
-url: http://download.cisco.com/swc/esd/05/268437897/guest/cmterm-7940-7960-sccp.8-1-2.zip
-size: 701384
-sha1sum: bdd4acc78d947ee0e50af88917d622b3fba3c545
+filename: cmterm-7940-7960-sccp.8-1-2SR2.zip
+url:
+size: 701868
+sha1sum: ed7e792a7faa5b3371f09cbdae6dcd0985fa133c
+
 
 [file_networklocale]
 url: http://download-sj.cisco.com/swc/esd/03/268437897/contract/po-locale-combined_network-9.0.2.1000-1.cop.sgn
