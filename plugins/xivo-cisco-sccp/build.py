@@ -30,15 +30,6 @@ def build_8_5_2(path):
                 '8.5.2/', path])
 
 
-@target('9.0.3', 'xivo-cisco-sccp-9.0.3')
-def build_9_0_3(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '9.0.3/', path])
-
-
 @target('9.4', 'xivo-cisco-sccp-9.4')
 def build_9_4(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
