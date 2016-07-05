@@ -29,28 +29,28 @@ install: cisco-unified-fw
 [pkg_networklocale]
 description: Network locale
 description_fr: Locale réseau
-version: 9.0.2
+version: 11.5.1
 files: networklocale
 install: cisco-networklocale
 
 [pkg_userlocale_de_DE]
 description: de_DE user locale
 description_fr: Locale utilisateur de_DE
-version: 9.0.2
+version: 11.5.1
 files: userlocale_de_DE
 install: cisco-userlocale
 
 [pkg_userlocale_es_ES]
 description: es_ES user locale
 description_fr: Locale utilisateur es_ES
-version: 9.0.2
+version: 11.5.1
 files: userlocale_es_ES
 install: cisco-userlocale
 
 [pkg_userlocale_fr_FR]
 description: fr_FR user locale
 description_fr: Locale utilisateur fr_FR
-version: 9.0.2
+version: 11.5.1
 files: userlocale_fr_FR
 install: cisco-userlocale
 
@@ -105,23 +105,26 @@ url:
 size: 701868
 sha1sum: ed7e792a7faa5b3371f09cbdae6dcd0985fa133c
 
-
 [file_networklocale]
-url: http://download-sj.cisco.com/swc/esd/03/268437897/contract/po-locale-combined_network-9.0.2.1000-1.cop.sgn
-size: 9351296
-sha1sum: f08e688de664d7e6d4fb19377cc057e5fc251d1d
+filename: po-locale-combined_network-k3-11.5.1.1000-1.cop.sgn
+url:
+size: 9428729
+sha1sum: bfc295dd1489259effee028a6890fa8eecd09078
 
 [file_userlocale_de_DE]
-url: http://download-sj.cisco.com/swc/esd/03/268437897/contract/po-locale-de_DE-9.0.2.1000-1.cop.sgn
-size: 3561211
-sha1sum: b5fb97239f7f3414557d7bc10606d66c2123ddff
+filename: po-locale-de_DE-k3-11.5.1.1000-1.cop.sgn
+url:
+size: 4896716
+sha1sum: 8b94e672a7ad6be34f627f1337ff6b463a117671
 
 [file_userlocale_es_ES]
-url: http://download-sj.cisco.com/swc/esd/03/268437897/contract/po-locale-es_ES-9.0.2.1000-1.cop.sgn
-size: 4306710
-sha1sum: 20a7a6e89a91c4df7119557423f533d207a1ee87
+filename: po-locale-es_ES-k3-11.5.1.1000-1.cop.sgn
+url:
+size: 5641975
+sha1sum: 5e5bf792932c7398f86ce0a7d9cb221f2638361d
 
 [file_userlocale_fr_FR]
-url: http://download-sj.cisco.com/swc/esd/03/268437897/contract/po-locale-fr_FR-9.0.2.1000-1.cop.sgn
-size: 4397839
-sha1sum: 326407685f6950e6d4b06c692a2243a218aaf62e
+filename: po-locale-fr_FR-k3-11.5.1.1000-1.cop.sgn
+url:
+size: 5732943
+sha1sum: ddcd00232389e35e405b1fe7a3f3cc738a717fd4
