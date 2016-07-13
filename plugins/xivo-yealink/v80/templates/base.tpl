@@ -91,8 +91,10 @@ account.{{ line_no }}.user_name = {{ line['username'] }}
 account.{{ line_no }}.password = {{ line['password'] }}
 account.{{ line_no }}.sip_server.1.address = {{ line['proxy_ip'] }}
 account.{{ line_no }}.sip_server.1.port = {{ line['proxy_port']|d('%NULL%') }}
+account.{{ line_no }}.sip_server.1.transport_type = {{ XX_sip_transport }}
 account.{{ line_no }}.sip_server.2.address = {{ line['backup_proxy_ip']|d('%NULL%') }}
 account.{{ line_no }}.sip_server.2.port = {{ line['backup_proxy_port']|d('%NULL%') }}
+account.{{ line_no }}.sip_server.2.transport_type = {{ XX_sip_transport }}
 account.{{ line_no }}.fallback.redundancy_type = 1
 account.{{ line_no }}.cid_source = 2
 account.{{ line_no }}.alert_info_url_enable = 0
@@ -109,8 +111,10 @@ account.{{ line_no }}.user_name = %NULL%
 account.{{ line_no }}.password = %NULL%
 account.{{ line_no }}.sip_server.1.address = %NULL%
 account.{{ line_no }}.sip_server.1.port = %NULL%
+account.{{ line_no }}.sip_server.1.transport_type = %NULL%
 account.{{ line_no }}.sip_server.2.address = %NULL%
 account.{{ line_no }}.sip_server.2.port = %NULL%
+account.{{ line_no }}.sip_server.2.transport_type = %NULL%
 voice_mail.number.{{ line_no }} = %NULL%
 {% endif %}
 {% endfor %}

@@ -306,6 +306,12 @@ class BaseYealinkPlugin(StandardPlugin):
         u'RTP-out-of-band': u'1',
         u'SIP-INFO': u'2',
     }
+    _SIP_TRANSPORT = {
+        u'udp': u'0',
+        u'tcp': u'1',
+        u'tls': u'2',
+    }
+    _SIP_TRANSPORT_DEF = u'0'
     _NB_SIP_ACCOUNTS = {
         u'CP860': 1,
         u'T19P': 1,
@@ -414,6 +420,10 @@ class BaseYealinkPlugin(StandardPlugin):
             else:
                 raw_config[u'XX_timezone'] = self._format_tz_info(tzinfo)
 
+    def _add_sip_transport(self, raw_config):
+        raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'),
+                                                                  self._SIP_TRANSPORT_DEF)
+
     def _add_xx_sip_lines(self, device, raw_config):
         sip_lines = raw_config[u'sip_lines']
         sip_accounts = self._get_sip_accounts(device.get(u'model'))
@@ -464,6 +474,7 @@ class BaseYealinkPlugin(StandardPlugin):
         self._add_fkeys(device, raw_config)
         self._add_country_and_lang(raw_config)
         self._add_timezone(raw_config)
+        self._add_sip_transport(raw_config)
         self._update_sip_lines(raw_config)
         self._add_xx_sip_lines(device, raw_config)
         self._add_xivo_phonebook_url(raw_config)
