@@ -68,3 +68,40 @@ def build_8_7_5_35(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '8.7.5.35/', path])
+
+
+@target('8.9.3.40', 'xivo-snom-8.9.3.40')
+def build_8_9_3_40(path):
+    MODELS = [('D745', 'r')]
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--include', '/templates/base.tpl',
+                '--include', '/templates/D745.tpl',
+                '--exclude', '/templates/*.tpl',
+                '--exclude', '*.btpl',
+                'common/', path])
+
+    for model, fw_suffix in MODELS:
+        # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
+        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s-firmware.xml.tpl' % model)
+        sed_script = 's/#FW_FILENAME#/snom%s-8.9.3.40-SIP-%s.bin/' % (model, fw_suffix)
+        with open(model_tpl, 'wb') as f:
+            check_call(['sed', sed_script, 'common/templates/common/snom-model-firmware.xml.tpl.btpl'],
+                       stdout=f)
+
+        # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
+        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s.htm.tpl' % model)
+        sed_script = 's/#MODEL#/%s/' % model
+        with open(model_tpl, 'wb') as f:
+            check_call(['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                       stdout=f)
+
+        # generate snom<model>.xml.tpl from snom-model.xml.mtpl
+        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s.xml.tpl' % model)
+        sed_script = 's/#MODEL#/%s/' % model
+        with open(model_tpl, 'wb') as f:
+            check_call(['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                       stdout=f)
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '8.9.3.40/', path])
