@@ -201,7 +201,7 @@ class BaseSnomPlugin(StandardPlugin):
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
             value = funckey_dict[u'value']
-            label = escape(funckey_dict.get(u'label', value))
+            label = escape(funckey_dict.get(u'label') or value)
             fkey_value = self._format_fkey_value(type_, value, suffix)
             lines.append(u'<fkey idx="%d" label="%s" context="active" perm="R">%s</fkey>' %
                         (int(funckey_no) - 1, label, fkey_value))

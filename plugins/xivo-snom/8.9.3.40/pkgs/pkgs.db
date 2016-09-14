@@ -1,0 +1,33 @@
+[pkg_745-fw]
+description: Firmware for Snom D745
+description_fr: Micrologiciel pour Snom D745
+version: 8.9.3.40
+files: 745-fw
+install: snom-fw
+
+[pkg_lang]
+description: Language files
+description_fr: Fichiers de langue
+version: 8.9.3
+files: lang
+install: snom-lang
+
+
+[install_snom-fw]
+a-b: cp $FILE1 firmware/
+
+[install_snom-lang]
+a-b: unzip $FILE1
+b-c: cp snomlang/* i18n/
+
+
+[file_745-fw]
+url: http://downloads.snom.com/fw/snomD745-8.9.3.40-SIP-r.bin
+size: 28240672
+sha1sum: e60c130bcee32c8727a014dec7c28519ce8415b7
+
+[file_lang]
+filename: snomlang_8.9.3.xivo.zip
+url:
+size: 898249
+sha1sum: e100c97afb64665b1bdda99c6f8506380f6cefcd
