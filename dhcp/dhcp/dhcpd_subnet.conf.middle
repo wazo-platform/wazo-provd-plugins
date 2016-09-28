@@ -80,6 +80,14 @@
         allow members of "Nortel-UNIStim";
         # Panasonic
         allow members of "Panasonic";
+        # Patton
+        allow members of "PattonSN4112";
+        allow members of "PattonSN4114";
+        allow members of "PattonSN4116";
+        allow members of "PattonSN4118";
+        allow members of "PattonSN4316";
+        allow members of "PattonSN4324";
+        allow members of "PattonSN4332";
         # Siemens
         allow members of "SiemensC470IP";
         allow members of "SiemensS675IP";

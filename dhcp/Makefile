@@ -5,7 +5,7 @@ TARFILE := dhcpd.tar.bz2
 
 
 $(TARFILE) : $(SRCFILES)
-	cd $(SRCDIR) && tar caf "$$OLDPWD/$(TARFILE)" *
+	cd $(SRCDIR) && tar caf "$$OLDPWD/$(TARFILE)" --exclude '.*' *
 
 
 .PHONY : upload
