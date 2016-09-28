@@ -146,7 +146,7 @@ class BaseDigiumPlugin(StandardPlugin):
             try:
                 os.remove(path)
             except OSError as e:
-                logger.info('error while removing file %s: %s', (path, e))
+                logger.info('error while removing file %s: %s', path, e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
         def synchronize(self, device, raw_config):
