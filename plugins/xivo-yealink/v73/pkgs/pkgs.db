@@ -36,7 +36,7 @@ install: yealink-fw
 [pkg_W52P-handset-fw]
 description: Firmware for Yealink W52P handset
 description_fr: Micrologiciel pour combiné Yealink W52P
-version: 26.73.0.11
+version: 26.73.0.30
 files: W52P-handset-fw
 install: yealink-fw
 
@@ -74,6 +74,6 @@ size: 7572794
 sha1sum: adcf68ced9578fdbeef5d91c4cb554b41f5d5773
 
 [file_W52P-handset-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2Fe24d43b9-ddc2-4a5e-8000-877af5b69da7%2F26.73.0.11.zip
-size: 1371425
-sha1sum: e78537c8f40039fbc9673ecc40cda75c34da4597
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2016-8-12%2F6%2F0ad8e3fd-9afb-43ac-9337-02b16a69a4a6%2FHandset-26.73.0.30.zip
+size: 1370587
+sha1sum: cbfd29e541d57250c45f1393b766027cb31430bf
