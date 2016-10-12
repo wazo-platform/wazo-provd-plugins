@@ -34,7 +34,7 @@ COMMON_FILES = [
     ('y000000000007.cfg', u'9.73.0.50.rom', 'model-M7+M1.tpl'),
 ]
 COMMON_FILES_DECT = [
-    ('y000000000025.cfg', u'25.73.0.40.rom', u'26.73.0.11.rom', 'W52P.tpl'),
+    ('y000000000025.cfg', u'25.73.0.40.rom', u'26.73.0.30.rom', 'W52P.tpl'),
 ]
 
 
