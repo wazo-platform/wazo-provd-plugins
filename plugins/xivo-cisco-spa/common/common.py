@@ -248,8 +248,8 @@ class BaseCiscoPlugin(StandardPlugin):
         u'fr_CA': u'fr-CA',
     }
     _DIRECTORY_NAME = {
-        u'en_US': u'XiVO Directory',
-        u'fr_FR': u'Répertoire XiVO',
+        u'en_US': u'Wazo Directory',
+        u'fr_FR': u'Répertoire Wazo',
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):

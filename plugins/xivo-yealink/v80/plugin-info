@@ -1,5 +1,5 @@
 {
-    "version": "1.28",
+    "version": "1.30",
     "description": "Plugin for Yealink T19P E2, T21P E2, T40P, T41P, T42G, T46G and T48G in version V80.",
     "description_fr": "Greffon pour Yealink T19P E2, T21P E2, T40P, T41P, T42G, T46G and T48G en version V80.",
     "vendor" : "Yealink",

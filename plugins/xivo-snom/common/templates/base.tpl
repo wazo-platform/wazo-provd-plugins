@@ -79,7 +79,7 @@
 
     {{ XX_timezone }}
 
-    <!-- hide the "identity not registered" msg when XiVO HA is enabled -->
+    <!-- hide the "identity not registered" msg when Wazo HA is enabled -->
     <status_msgs_that_are_blocked perm="R">PhoneHasVoiceMessages PhoneHasTextMessages{{ XX_msgs_blocked }}</status_msgs_that_are_blocked>
 
     <call_waiting perm="R">{{ 'off' if XX_options['switchboard'] else 'on' }}</call_waiting>

@@ -107,7 +107,7 @@ This file is only used by desk phone devices.
 <Default_Character_Encoding>UTF-8</Default_Character_Encoding>
 
 <Station_Name></Station_Name>
-<Text_Logo>XiVO</Text_Logo>
+<Text_Logo>Wazo</Text_Logo>
 <Screen_Saver_Enable>No</Screen_Saver_Enable>
 
 <Idle_Key_List>em_login|1;acd_login|1;acd_logout|1;avail|3;unavail|3;redial|5;resume|5;dir|6;cfwd|7;chkcfwd|7;dnd|8;chkdnd|8;lcr|9;pickup|10;gpickup|11;unpark|12;em_logout</Idle_Key_List>
