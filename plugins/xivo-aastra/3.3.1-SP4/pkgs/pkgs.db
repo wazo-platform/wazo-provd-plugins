@@ -1,77 +1,77 @@
 [pkg_6730i-fw]
 description: Firmware for Aastra 6730i
 description_fr: Micrologiciel pour Aastra 6730i
-version: 3.3.1.4322
+version: 3.3.1.4358
 files: 6730i-fw
 install: aastra-fw
 
 [pkg_6731i-fw]
 description: Firmware for Aastra 6731i
 description_fr: Micrologiciel pour Aastra 6731i
-version: 3.3.1.4322
+version: 3.3.1.4358
 files: 6731i-fw
 install: aastra-fw
 
 [pkg_6735i-fw]
 description: Firmware for Aastra 6735i
 description_fr: Micrologiciel pour Aastra 6735i
-version: 3.3.1.8154
+version: 3.3.1.8202
 files: 6735i-fw
 install: aastra-fw
 
 [pkg_6737i-fw]
 description: Firmware for Aastra 6737i
 description_fr: Micrologiciel pour Aastra 6737i
-version: 3.3.1.8154
+version: 3.3.1.8202
 files: 6737i-fw
 install: aastra-fw
 
 [pkg_6739i-fw]
 description: Firmware for Aastra 6739i
 description_fr: Micrologiciel pour Aastra 6739i
-version: 3.3.1.4322
+version: 3.3.1.4358
 files: 6739i-fw
 install: aastra-fw
 
 [pkg_6753i-fw]
 description: Firmware for Aastra 6753i
 description_fr: Micrologiciel pour Aastra 6753i
-version: 3.3.1.4322
+version: 3.3.1.4358
 files: 6753i-fw
 install: aastra-fw
 
 [pkg_6755i-fw]
 description: Firmware for Aastra 6755i
 description_fr: Micrologiciel pour Aastra 6755i
-version: 3.3.1.4322
+version: 3.3.1.4358
 files: 6755i-fw
 install: aastra-fw
 
 [pkg_6757i-fw]
 description: Firmware for Aastra 6757i
 description_fr: Micrologiciel pour Aastra 6757i
-version: 3.3.1.4322
+version: 3.3.1.4358
 files: 6757i-fw
 install: aastra-fw
 
 [pkg_9143i-fw]
 description: Firmware for Aastra 9143i
 description_fr: Micrologiciel pour Aastra 9143i
-version: 3.3.1.4295
+version: 3.3.1.4358
 files: 9143i-fw
 install: aastra-fw
 
 [pkg_9480i-fw]
 description: Firmware for Aastra 9480i
 description_fr: Micrologiciel pour Aastra 9480i
-version: 3.3.1.4295
+version: 3.3.1.4358
 files: 9480i-fw
 install: aastra-fw
 
 [pkg_lang]
 description: Language files
 description_fr: Fichiers de langue
-version: 4.0.0 SP1
+version: 4.2.0.1080
 files: lang
 install: aastra-lang
 
@@ -88,67 +88,67 @@ b-c: cp * i18n/
 
 
 [file_6730i-fw]
-filename: 6730i-fw.4322.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6167-18130-_P06_XML&dsproject=aastra&mtype=zip
-size: 2037914
-sha1sum: 23be9c8628ea02c76f0b612be953b0fd2dbcb0d2
+filename: 6730i-fw.4358.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6167-18613-_P06_XML&dsproject=aastra&mtype=zip
+size: 2041255
+sha1sum: 7ea9d5f9d3835eabc7b3eec9ebd15690bd2129aa
 
 [file_6731i-fw]
-filename: 6731i-fw.4322.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6274-18135-_P06_XML&dsproject=aastra&mtype=zip
-size: 2041598
-sha1sum: 2ef1de6085ab2fc9a28fba23cba50ee3e3c6d175
+filename: 6731i-fw.4358.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6274-18619-_P06_XML&dsproject=aastra&mtype=zip
+size: 2047183
+sha1sum: 2eab03a95087bcf958a945f5d745dca6b38769ae
 
 [file_6735i-fw]
-filename: 6735i-fw.8154.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=15256-18157-_P06_XML&dsproject=aastra&mtype=zip
-size: 11669395
-sha1sum: 8059c335a656be03e43b2df54492b97aa687a850
+filename: 6735i-fw.8202.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=15256-18591-_P06_XML&dsproject=aastra&mtype=zip
+size: 11674313
+sha1sum: cdf824cd20243fb92df2a5e73e6f4ebcc8c905e5
 
 [file_6737i-fw]
-filename: 6737i-fw.8154.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=15257-18159-_P06_XML&dsproject=aastra&mtype=zip
-size: 11895777
-sha1sum: c4b613a43a557a8e70671be2ee16f2d3525d630e
+filename: 6737i-fw.8202.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=15257-18585-_P06_XML&dsproject=aastra&mtype=zip
+size: 11899596
+sha1sum: 0ecf391fe949563d0452b8526b31b0469b0973a9
 
 [file_6739i-fw]
-filename: 6739i-fw.8154.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6354-18137-_P06_XML&dsproject=aastra&mtype=zip
-size: 5012939
-sha1sum: e707f2f09c413ba1040e5b99a411601be6b33660
+filename: 6739i-fw.4358.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6354-18621-_P06_XML&dsproject=aastra&mtype=zip
+size: 5019113
+sha1sum: 089995c5b50558f20e36e9337d4bb18bdc3fd5c8
 
 [file_6753i-fw]
-filename: 6753i-fw.4322.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6848-18139-_P06_XML&dsproject=aastra&mtype=zip
-size: 2853744
-sha1sum: 8ec52de3711d2304c7c5f9a0c4a2cf20a5ec50b9
+filename: 6753i-fw.4358.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6848-18623-_P06_XML&dsproject=aastra&mtype=zip
+size: 2854844
+sha1sum: 6d2dc2a720e2be6e58f91980f5164ff5656ac007
 
 [file_6755i-fw]
-filename: 6755i-fw.4322.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6950-18141-_P06_XML&dsproject=aastra&mtype=zip
-size: 2884204
-sha1sum: 0b7b94a6b2b689608c017ac083c0593b1c3805a9
+filename: 6755i-fw.4358.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6950-18625-_P06_XML&dsproject=aastra&mtype=zip
+size: 2886614
+sha1sum: 6e88cb99915fcb23612a5a25fb362ca6db40a62c
 
 [file_6757i-fw]
-filename: 6757i-fw.4322.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=7041-18143-_P06_XML&dsproject=aastra&mtype=zip
-size: 2884241
-sha1sum: ae5b2bfb89fbc5f441bbd9c48b0285593353c20d
+filename: 6757i-fw.4358.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=7041-18627-_P06_XML&dsproject=aastra&mtype=zip
+size: 2886083
+sha1sum: 43836a88e4b8fa13189e342fe2d072be58b2712b
 
 [file_9143i-fw]
-filename: 9143i-fw.4295.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6528-17964-_P06_XML&dsproject=aastra&mtype=zip
-size: 2794263
-sha1sum: 166cbc1a2c692fc2a607eca98258e37ecd91e2b4
+filename: 9143i-fw.4358.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6528-18629-_P06_XML&dsproject=aastra&mtype=zip
+size: 2799854
+sha1sum: c79fc1ccb13f2c381ed38cdaa686a3f0cbb91399
 
 [file_9480i-fw]
-filename: 9480i-fw.4295.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6622-17965-_P06_XML&dsproject=aastra&mtype=zip
-size: 2819720
-sha1sum: 2feb640afe819fb0817f5240bbb526fe4ac6ecc4
+filename: 9480i-fw.4358.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6622-18631-_P06_XML&dsproject=aastra&mtype=zip
+size: 2824901
+sha1sum: ad982e1fd426664280d424c8637eae7c0b0d9bb0
 
 [file_lang]
-filename: lang.4.0.0_SP1.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=15256-18062-_P06_XML&dsproject=aastra&mtype=zip
-size: 605900
-sha1sum: 380af18288d7c9983fbc1316b7af92baa6a78567
+filename: lang.4.2.0.1080.zip
+url: http://miteldocs.com/cps/rde/aareddownload?file_id=6528-18662-_P06_XML&dsproject=aastra&mtype=zip
+size: 2041255
+sha1sum: 7ea9d5f9d3835eabc7b3eec9ebd15690bd2129aa
