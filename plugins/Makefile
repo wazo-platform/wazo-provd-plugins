@@ -7,11 +7,11 @@ TESTING_PATH := $(BUILDDIR)/testing
 STABLE_PATH := $(BUILDDIR)/stable
 ARCHIVE_PATH := $(BUILDDIR)/archive
 
-REMOTE_HOST := provd.wazo.community
+REMOTE_HOST := webserver.wazo.community
 REMOTE_USER := root
-REMOTE_TESTING_PATH := /var/www/provd.wazo.community/plugins/1/testing
-REMOTE_STABLE_PATH := /var/www/provd.wazo.community/plugins/1/stable
-REMOTE_ARCHIVE_PATH := /var/www/provd.wazo.community/plugins/1/archive
+REMOTE_TESTING_PATH := /var/www/provd/plugins/1/testing
+REMOTE_STABLE_PATH := /var/www/provd/plugins/1/stable
+REMOTE_ARCHIVE_PATH := /var/www/provd/plugins/1/archive
 
 
 .PHONY : build
