@@ -71,7 +71,7 @@ install: aastra-fw
 [pkg_lang]
 description: Language files
 description_fr: Fichiers de langue
-version: 4.2.0.1080
+version: 4.2.0.1080-1
 files: lang
 install: aastra-lang
 
@@ -83,7 +83,7 @@ b-c: include *.st
 
 [install_aastra-lang]
 a-b: unzip $FILE1
-b-c: cp * i18n/
+b-c: cp */* i18n/
 
 
 
