@@ -76,8 +76,8 @@ files: T49G-fw
 install: yealink-fw
 
 [pkg_W52P_W56P-base-fw]
-description: Firmware for Yealink W52P base
-description_fr: Micrologiciel pour base Yealink W52P
+description: Firmware for Yealink W52P and W56P base
+description_fr: Micrologiciel pour base Yealink W52P et W56P
 version: 25.80.0.15
 files: W52P_W56P-base-fw
 install: yealink-fw
