@@ -75,6 +75,20 @@ version: 51.80.0.75
 files: T49G-fw
 install: yealink-fw
 
+[pkg_W52P_W56P-base-fw]
+description: Firmware for Yealink W52P base
+description_fr: Micrologiciel pour base Yealink W52P
+version: 25.80.0.15
+files: W52P_W56P-base-fw
+install: yealink-fw
+
+[pkg_W56P-handset-fw]
+description: Firmware for Yealink W56P handset
+description_fr: Micrologiciel pour combiné Yealink W56P
+version: 61.80.0.15
+files: W56P-handset-fw
+install: yealink-fw
+
 
 
 [install_yealink-fw]
@@ -137,3 +151,13 @@ sha1sum: ca98d8fbe117cf2a5b94a21239124699a3f342ad
 url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-1%2F6%2F7dcdf0c7-190c-4d8c-8ed8-d07204333090%2FT49-51.80.0.75.zip
 size: 66729185
 sha1sum: 0d9f54607e7a7ced4d40e05af4251530b5e0383f
+
+[file_W52P_W56P-base-fw]
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2016-7-14%2F6%2F982e354e-5822-4088-9e3c-c8550c415dc9%2FBase%20for%20W52P%26W56P-25.80.0.15.zip
+size: 6464252
+sha1sum: 3c4b36534c794641f099558831289bc86ce49d1f
+
+[file_W56P-handset-fw]
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2016-7-14%2F6%2F26158701-3527-4c1c-8d02-6216208c2199%2FW56H%20Handset-61.80.0.15.zip
+size: 1665282
+sha1sum: d14d21eb7bd8859eaafee6b0e2d8427eaaa7e496
