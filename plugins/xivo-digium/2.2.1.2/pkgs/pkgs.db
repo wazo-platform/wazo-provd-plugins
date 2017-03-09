@@ -1,0 +1,17 @@
+[pkg_firmware]
+description: Firmware for all Digium phones
+description_fr: Micrologiciel pour tous les téléphones Digium
+version: 2.2.1.2
+files: firmware
+install: digium-fw
+
+
+[install_digium-fw]
+a-b: untar $FILE1
+b-c: cp */*.eff Digium/firmware/
+
+
+[file_firmware]
+url: http://downloads.digium.com/pub/telephony/res_digium_phone/firmware/firmware_2_2_1_2_package.tar.gz
+size: 235644227
+sha1sum: dacd12b08e6e5a4b605d33cdcdf412981bd11873

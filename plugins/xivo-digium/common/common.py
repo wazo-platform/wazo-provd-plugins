@@ -79,7 +79,7 @@ class DigiumHTTPDeviceInfoExtractor(object):
 
 class DigiumPgAssociator(BasePgAssociator):
 
-    _MODELS = [u'D40', u'D50', u'D70']
+    _MODELS = [u'D40', u'D45', u'D50', u'D60', u'D62', u'D65', u'D70']
 
     def __init__(self, version):
         BasePgAssociator.__init__(self)

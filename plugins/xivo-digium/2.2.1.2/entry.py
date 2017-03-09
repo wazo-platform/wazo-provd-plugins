@@ -15,21 +15,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from subprocess import check_call
+common = {}
+execfile_('common.py', common)
 
 
-@target('1.4.0.0', 'xivo-digium-1.4.0.0')
-def build_1_4_0_0(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
+VERSION = u'2.2.1.2'
 
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '1.4.0.0/', path])
 
-@target('2.2.1.2', 'xivo-digium-2.2.1.2')
-def build_2_2_1_2(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
+class DigiumPlugin(common['BaseDigiumPlugin']):
+    IS_PLUGIN = True
 
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '2.2.1.2/', path])
+    pg_associator = common['DigiumPgAssociator'](VERSION)
