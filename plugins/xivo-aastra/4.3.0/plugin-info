@@ -1,0 +1,22 @@
+{
+    "version": "1.0",
+    "description": "Plugin for Aastra/Mitel 6863i, 6865i, 6867i, 6869i and 6873i in version 4.3.0.",
+    "description_fr": "Greffon pour Aastra/Mitel 6863i, 6865i, 6867i, 6869i et 6873i en version 4.3.0.",
+    "capabilities": {
+        "Aastra, 6863i, 4.3.0.1052": {
+            "sip.lines": 2
+        },
+        "Aastra, 6865i, 4.3.0.1052": {
+            "sip.lines": 24
+        },
+        "Aastra, 6867i, 4.3.0.1052": {
+            "sip.lines": 24
+        },
+        "Aastra, 6869i, 4.3.0.1052": {
+            "sip.lines": 24
+        },
+        "Aastra, 6873i, 4.3.0.1052": {
+            "sip.lines": 24
+        }
+    }
+}

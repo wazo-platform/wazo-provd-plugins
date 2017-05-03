@@ -191,6 +191,12 @@ class BaseAastraPlugin(StandardPlugin):
             nb_expmod=3,
             nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
         ),
+        u'6873i': AastraModel(
+            nb_topsoftkey=48,
+            nb_softkey=24,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
         u'9143i': AastraModel(
             nb_prgkey=7,
         ),

@@ -44,3 +44,13 @@ def build_4_1_0(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '4.1.0/', path])
+
+@target('4.3.0', 'xivo-aastra-4.3.0')
+def build_4_3_0(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--exclude', '/templates/67*',
+                '--exclude', '/templates/9*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '4.3.0/', path])
