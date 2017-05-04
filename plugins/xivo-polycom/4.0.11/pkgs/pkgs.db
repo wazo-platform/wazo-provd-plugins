@@ -1,7 +1,7 @@
 [pkg_software]
 description: UC software and language files
 description_fr: Logiciel UC et fichiers de langue
-version: 4.0.9
+version: 4.0.11
 files: software
 install: polycom-software
 
@@ -32,9 +32,9 @@ a-b: unzip $FILE1
 
 
 [file_software]
-url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Software_4_0_9_release_sig_split.zip
-size: 216201435
-sha1sum: 263449f664b0b06cd2d67b20d47f87baede952b4
+url: http://downloads.polycom.com/voice/voip/uc/Polycom-UC-Software-4-0-11-rts28-K-release-sig-split.zip
+size: 216168163
+sha1sum: aac5f7674164f140ead9021616131785c559fd4b
 
 [file_updater]
 url: http://downloads.polycom.com/voice/voip/uc/Polycom_UC_Updater_5_0_8_release_sig.zip
