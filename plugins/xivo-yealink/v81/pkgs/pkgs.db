@@ -59,7 +59,7 @@ description: Firmware for Yealink T41S
 description_fr: Micrologiciel pour Yealink T41S
 version: 68.81.0.110
 files: T41S-fw
-install: yealink-fw
+install: yealink-unrar-fw
 
 [pkg_T42G-fw]
 description: Firmware for Yealink T42G
@@ -73,7 +73,7 @@ description: Firmware for Yealink T42S
 description_fr: Micrologiciel pour Yealink T42S
 version: 67.81.0.110
 files: T42S-fw
-install: yealink-fw
+install: yealink-unrar-fw
 
 [pkg_T46G-fw]
 description: Firmware for Yealink T46G
@@ -87,7 +87,7 @@ description: Firmware for Yealink T46S
 description_fr: Micrologiciel pour Yealink T46S
 version: 66.81.0.110
 files: T46S-fw
-install: yealink-fw
+install: yealink-unrar-fw
 
 [pkg_T48G-fw]
 description: Firmware for Yealink T48G
@@ -101,7 +101,7 @@ description: Firmware for Yealink T48S
 description_fr: Micrologiciel pour Yealink T48S
 version: 65.81.0.110
 files: T48S-fw
-install: yealink-fw
+install: yealink-unrar-fw
 
 [pkg_T49G-fw]
 description: Firmware for Yealink T49G
@@ -115,7 +115,7 @@ install: yealink-fw
 a-b: unzip $FILE1
 b-c: cp *.rom firmware/
 
-[install_yealink-fw-unrar]
+[install_yealink-unrar-fw]
 a-b: unrar $FILE1
 b-c: cp *.rom firmware/
 
@@ -177,8 +177,8 @@ sha1sum: 04f6fbb368822ff57c8d4a399aae4ab23100b86d
 
 [file_T42S-fw]
 url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F6cb364e5-dd60-4ce9-ac94-c684868f8f7e%2FT42S-66.81.0.110.rar
-size: 07e74a9047c6b0e357b6be9564a0934c98244e35
-sha1sum: 25611345
+size: 25611345
+sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
 
 [file_T46G-fw]
 url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-23%2F6%2F1ef42da2-4a66-449e-b7a5-1626b1a56e66%2FT46-28.81.0.110.zip
