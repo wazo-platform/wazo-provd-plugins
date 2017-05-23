@@ -71,7 +71,7 @@ install: yealink-fw
 [pkg_T49G-fw]
 description: Firmware for Yealink T49G
 description_fr: Micrologiciel pour Yealink T49G
-version: 51.80.0.75
+version: 51.80.0.100
 files: T49G-fw
 install: yealink-fw
 
@@ -153,9 +153,9 @@ size: 24884769
 sha1sum: ca98d8fbe117cf2a5b94a21239124699a3f342ad
 
 [file_T49G-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-1%2F6%2F7dcdf0c7-190c-4d8c-8ed8-d07204333090%2FT49-51.80.0.75.zip
-size: 66729185
-sha1sum: 0d9f54607e7a7ced4d40e05af4251530b5e0383f
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2016-7-13%2F6%2Fd6ccb16b-06e2-4afd-b768-678719a69d8d%2FT49-51.80.0.100.zip
+size: 62493613
+sha1sum: 836cd3f49e55ee97e6f4693b197c00741e058163
 
 [file_CP860-fw]
 url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2016-12-15%2F6%2Fe2e952ee-aec8-41d9-b7b6-f900973a81fb%2FCP860-37.80.0.30.zip

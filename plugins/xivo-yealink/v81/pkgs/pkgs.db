@@ -103,13 +103,6 @@ version: 65.81.0.110
 files: T48S-fw
 install: yealink-unrar-48S-fw
 
-[pkg_T49G-fw]
-description: Firmware for Yealink T49G
-description_fr: Micrologiciel pour Yealink T49G
-version: 51.80.0.100
-files: T49G-fw
-install: yealink-fw
-
 
 [install_yealink-fw]
 a-b: unzip $FILE1
@@ -211,8 +204,3 @@ sha1sum: 0aad3152f18a8aba79ae9fe774aefc0c785783a4
 url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F31d40b64-395f-425c-9522-1c91c475a621%2FT48S-66.81.0.110.rar
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
-
-[file_T49G-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2016-7-13%2F6%2Fd6ccb16b-06e2-4afd-b768-678719a69d8d%2FT49-51.80.0.100.zip
-size: 62493613
-sha1sum: 836cd3f49e55ee97e6f4693b197c00741e058163
