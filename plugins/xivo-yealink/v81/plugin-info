@@ -1,80 +1,111 @@
 {
-    "version": "1.0",
-    "description": "Plugin for Yealink T19P E2, T21P E2, T23P, T23G, T27P, T29G, T40P, T41P, T42G, T46G, T48G and T49G in version V81.",
-    "description_fr": "Greffon pour Yealink T19P E2, T21P E2, T23P, T23G, T27P, T29G, T40P, T41P, T42G, T46G, T48G et T49G en version V81.",
+    "version": "1.1",
+    "description": "Plugin for Yealink for all T2X and T4X series in version V81.",
+    "description_fr": "Greffon pour Yealink toutes les séries T2X et T4X en version V81.",
     "vendor" : "Yealink",
     "vendor.url" : "http://www.yealink.com",
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
     "vendor.official" : 1,
     "capabilities": {
-        "Yealink, T19P_E2, 53.81.0.70": {
+        "Yealink, T19P_E2, 53.81.0.110": {
             "sip.lines": 1,
             "xivo.ha": 0,
             "tel.funckeys": 0,
             "xivo.tested": 1
         },
-        "Yealink, T21P_E2, 52.81.0.70": {
+        "Yealink, T21P_E2, 52.81.0.110": {
             "sip.lines": 2,
             "xivo.ha": 1,
             "tel.funckeys": 2,
             "xivo.tested": 1
         },
-        "Yealink, T23P, 44.81.0.70": {
+        "Yealink, T23P, 44.81.0.110": {
             "sip.lines": 3,
             "xivo.ha": 1,
             "tel.funckeys": 3,
             "xivo.tested": 1
         },
-        "Yealink, T23G, 44.81.0.70": {
+        "Yealink, T23G, 44.81.0.110": {
             "sip.lines": 3,
             "xivo.ha": 1,
             "tel.funckeys": 3,
             "xivo.tested": 1
         },
-        "Yealink, T27P, 45.81.0.70": {
+        "Yealink, T27P, 45.81.0.110": {
             "sip.lines": 6,
             "xivo.ha": 0,
             "tel.funckeys": 21,
             "xivo.tested": 0
         },
-        "Yealink, T29G, 46.81.0.70": {
+        "Yealink, T29G, 46.81.0.110": {
             "sip.lines": 16,
             "xivo.ha": 0,
             "tel.funckeys": 27,
             "xivo.tested": 0
         },
-        "Yealink, T40P, 54.81.0.70": {
+        "Yealink, T40P, 54.81.0.110": {
             "sip.lines": 3,
             "xivo.ha": 1,
             "tel.funckeys": 3,
             "xivo.tested": 1
         },
-        "Yealink, T41P, 36.81.0.70": {
+        "Yealink, T40G, 76.81.0.110": {
+            "sip.lines": 3,
+            "xivo.ha": 1,
+            "tel.funckeys": 3,
+            "xivo.tested": 1
+        },
+        "Yealink, T41P, 36.81.0.110": {
             "sip.lines": 6,
             "xivo.ha": 1,
             "tel.funckeys": 15,
             "xivo.tested": 1
         },
-        "Yealink, T42G, 29.81.0.70": {
+        "Yealink, T41S, 68.81.0.110": {
+            "sip.lines": 6,
+            "xivo.ha": 1,
+            "tel.funckeys": 15,
+            "xivo.tested": 1
+        },
+        "Yealink, T42G, 29.81.0.110": {
             "sip.lines": 12,
             "xivo.ha": 1,
             "tel.funckeys": 15,
             "xivo.tested": 1
         },
-        "Yealink, T46G, 28.81.0.70": {
+        "Yealink, T42S, 67.81.0.110": {
+            "sip.lines": 12,
+            "xivo.ha": 1,
+            "tel.funckeys": 15,
+            "xivo.tested": 1
+        },
+        "Yealink, T46G, 28.81.0.110": {
             "sip.lines": 16,
             "switchboard": true,
             "xivo.ha": 1,
             "tel.funckeys": 27,
             "xivo.tested": 1
         },
-        "Yealink, T48G, 35.81.0.70": {
+        "Yealink, T46S, 66.81.0.110": {
+            "sip.lines": 16,
+            "switchboard": true,
+            "xivo.ha": 1,
+            "tel.funckeys": 27,
+            "xivo.tested": 1
+        },
+        "Yealink, T48G, 35.81.0.110": {
             "sip.lines": 16,
             "xivo.ha": 1,
             "tel.funckeys": 29,
             "xivo.tested": 1
         },
-        "Yealink, T49G, 51.22.0.5": {
+        "Yealink, T48S, 65.81.0.100": {
+            "sip.lines": 16,
+            "xivo.ha": 1,
+            "tel.funckeys": 29,
+            "xivo.tested": 1
+        },
+        "Yealink, T49G, 51.81.0.100": {
             "sip.lines": 16,
             "xivo.ha": 1,
             "tel.funckeys": 29,

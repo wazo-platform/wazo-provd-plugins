@@ -21,35 +21,42 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODEL_VERSIONS = {
-    u'T19P_E2': u'53.81.0.70',
-    u'T21P_E2': u'52.81.0.70',
-    u'T23P': u'44.81.0.70',
-    u'T23G': u'44.81.0.70',
-    u'T27P': u'45.81.0.70',
-    u'T29G': u'46.81.0.70',
-    u'T40P': u'54.81.0.70',
-    u'T41P': u'36.81.0.70',
-    u'T42G': u'29.81.0.70',
-    u'T46G': u'28.81.0.70',
-    u'T48G': u'35.81.0.70',
-    u'T49G': u'51.22.0.5',
+    u'T19P_E2': u'53.81.0.110',
+    u'T21P_E2': u'52.81.0.110',
+    u'T23P': u'44.81.0.110',
+    u'T23G': u'44.81.0.110',
+    u'T27P': u'45.81.0.110',
+    u'T29G': u'46.81.0.110',
+    u'T40P': u'54.81.0.110',
+    u'T40G': u'76.81.0.110',
+    u'T41P': u'36.81.0.110',
+    u'T41S': u'66.81.0.110',
+    u'T42G': u'29.81.0.110',
+    u'T42S': u'66.81.0.110',
+    u'T46G': u'28.81.0.110',
+    u'T46S': u'66.81.0.110',
+    u'T48G': u'35.81.0.110',
+    u'T48S': u'66.81.0.110',
+    u'T49G': u'51.81.0.100',
 }
-COMMON_FILES = [
-    ('y000000000028.cfg', u'T46-28.80.0.95.rom', 'model.tpl'),
-    ('y000000000029.cfg', u'T42-29.81.0.70.rom', 'model.tpl'),
-    ('y000000000035.cfg', u'T48-35.80.0.95.rom', 'model.tpl'),
-    ('y000000000036.cfg', u'T41-36.80.0.95.rom', 'model.tpl'),
-    ('y000000000044.cfg', u'T23-44.81.0.70.rom', 'model.tpl'),
-    ('y000000000045.cfg', u'T27-45.80.0.95.rom', 'model.tpl'),
-    ('y000000000046.cfg', u'T29-46.81.0.70.rom', 'model.tpl'),
-    ('y000000000051.cfg', u'T49-51.80.0.75.rom', 'model.tpl'),
-    ('y000000000052.cfg', u'T21P_E2-52.81.0.70.rom', 'model.tpl'),
-    ('y000000000053.cfg', u'T19P_E2-53.80.0.95.rom', 'model.tpl'),
-    ('y000000000054.cfg', u'T40-54.80.0.95.rom', 'model.tpl'),
-]
 
-COMMON_FILES_DECT = [
-#    ('y000000000025.cfg', u'Base for W52P&W56P-25.80.0.15.rom', u'W56H-61.80.0.15.rom', 'W52P.tpl'),
+COMMON_FILES = [
+    ('y000000000028.cfg', u'T46-28.81.0.110.rom', 'model.tpl'),
+    ('y000000000029.cfg', u'T42-29.81.0.110.rom', 'model.tpl'),
+    ('y000000000035.cfg', u'T48-35.81.0.110.rom', 'model.tpl'),
+    ('y000000000036.cfg', u'T41-36.81.0.110.rom', 'model.tpl'),
+    ('y000000000044.cfg', u'T23-44.81.0.110.rom', 'model.tpl'),
+    ('y000000000045.cfg', u'T27-45.81.0.110.rom', 'model.tpl'),
+    ('y000000000046.cfg', u'T29-46.81.0.110.rom', 'model.tpl'),
+    ('y000000000051.cfg', u'T49-51.81.0.110.rom', 'model.tpl'),
+    ('y000000000052.cfg', u'T21P_E2-52.81.0.70.rom', 'model.tpl'),
+    ('y000000000053.cfg', u'T19P_E2-53.81.0.110.rom', 'model.tpl'),
+    ('y000000000054.cfg', u'T40-54.81.0.110.rom', 'model.tpl'),
+    ('y000000000076.cfg', u'T40G-76.81.0.110.rom', 'model.tpl'),
+    ('y000000000068.cfg', u'T41S-68.81.0.110.rom', 'model.tpl'),
+    ('y000000000067.cfg', u'T42S-67.81.0.110.rom', 'model.tpl'),
+    ('y000000000066.cfg', u'T46S-68.81.0.110.rom', 'model.tpl'),
+    ('y000000000065.cfg', u'T48S-65.81.0.110.rom', 'model.tpl'),
 ]
 
 
@@ -61,12 +68,3 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     # Yealink plugin specific stuff
 
     _COMMON_FILES = COMMON_FILES
-
-    def configure_common(self, raw_config):
-        super(YealinkPlugin, self).configure_common(raw_config)
-        for filename, fw_filename, fw_handset_filename, tpl_filename in COMMON_FILES_DECT:
-            tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
-            dst = os.path.join(self._tftpboot_dir, filename)
-            raw_config[u'XX_fw_filename'] = fw_filename
-            raw_config[u'XX_fw_handset_filename'] = fw_handset_filename
-            self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
