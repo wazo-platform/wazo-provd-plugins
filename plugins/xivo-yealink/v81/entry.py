@@ -55,7 +55,7 @@ COMMON_FILES = [
     ('y000000000076.cfg', u'T40G-76.81.0.110.rom', 'model.tpl'),
     ('y000000000068.cfg', u'T41S-68.81.0.110.rom', 'model.tpl'),
     ('y000000000067.cfg', u'T42S-67.81.0.110.rom', 'model.tpl'),
-    ('y000000000066.cfg', u'T46S-68.81.0.110.rom', 'model.tpl'),
+    ('y000000000066.cfg', u'T46S-66.81.0.110.rom', 'model.tpl'),
     ('y000000000065.cfg', u'T48S-65.81.0.110.rom', 'model.tpl'),
 ]
 

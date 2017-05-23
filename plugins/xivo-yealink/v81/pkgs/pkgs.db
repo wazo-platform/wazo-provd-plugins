@@ -59,7 +59,7 @@ description: Firmware for Yealink T41S
 description_fr: Micrologiciel pour Yealink T41S
 version: 68.81.0.110
 files: T41S-fw
-install: yealink-unrar-fw
+install: yealink-unrar-41S-fw
 
 [pkg_T42G-fw]
 description: Firmware for Yealink T42G
@@ -73,7 +73,7 @@ description: Firmware for Yealink T42S
 description_fr: Micrologiciel pour Yealink T42S
 version: 67.81.0.110
 files: T42S-fw
-install: yealink-unrar-fw
+install: yealink-unrar-42S-fw
 
 [pkg_T46G-fw]
 description: Firmware for Yealink T46G
@@ -87,7 +87,7 @@ description: Firmware for Yealink T46S
 description_fr: Micrologiciel pour Yealink T46S
 version: 66.81.0.110
 files: T46S-fw
-install: yealink-unrar-fw
+install: yealink-unrar-46S-fw
 
 [pkg_T48G-fw]
 description: Firmware for Yealink T48G
@@ -101,7 +101,7 @@ description: Firmware for Yealink T48S
 description_fr: Micrologiciel pour Yealink T48S
 version: 65.81.0.110
 files: T48S-fw
-install: yealink-unrar-fw
+install: yealink-unrar-48S-fw
 
 [pkg_T49G-fw]
 description: Firmware for Yealink T49G
@@ -115,9 +115,21 @@ install: yealink-fw
 a-b: unzip $FILE1
 b-c: cp *.rom firmware/
 
-[install_yealink-unrar-fw]
+[install_yealink-unrar-41S-fw]
 a-b: unrar $FILE1
-b-c: cp *.rom firmware/
+b-c: cp *.rom firmware/T41S-68.81.0.110.rom
+
+[install_yealink-unrar-42S-fw]
+a-b: unrar $FILE1
+b-c: cp *.rom firmware/T42S-67.81.0.110.rom
+
+[install_yealink-unrar-46S-fw]
+a-b: unrar $FILE1
+b-c: cp *.rom firmware/T46S-66.81.0.110.rom
+
+[install_yealink-unrar-48S-fw]
+a-b: unrar $FILE1
+b-c: cp *.rom firmware/T48S-65.81.0.110.rom
 
 
 [file_T19P_E2-fw]
