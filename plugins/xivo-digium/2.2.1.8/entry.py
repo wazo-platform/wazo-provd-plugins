@@ -19,7 +19,7 @@ common = {}
 execfile_('common.py', common)
 
 
-VERSION = u'2.2.1.2'
+VERSION = u'2.2.1.8'
 
 
 class DigiumPlugin(common['BaseDigiumPlugin']):
