@@ -288,7 +288,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         return nb_memorykey
 
     def _nb_expmod_by_model(self, model):
-        if model in (u'T27P', u'T29G', u'T46G', u'T48G'):
+        if model in (u'T27P', u'T27G', u'T29G', u'T46G', u'T46S', u'T48G', u'T48S'):
             return 6
         else:
             return 0
