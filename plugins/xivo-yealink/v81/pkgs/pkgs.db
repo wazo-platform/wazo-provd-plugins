@@ -26,6 +26,13 @@ version: 45.81.0.110
 files: T27P-fw
 install: yealink-fw
 
+[pkg_T27G-fw]
+description: Firmware for Yealink T27G
+description_fr: Micrologiciel pour Yealink T27G
+version: 69.81.0.110
+files: T27G-fw
+install: yealink-fw
+
 [pkg_T29G-fw]
 description: Firmware for Yealink T29G
 description_fr: Micrologiciel pour Yealink T29G
