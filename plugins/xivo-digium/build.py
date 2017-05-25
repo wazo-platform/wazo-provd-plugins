@@ -26,10 +26,10 @@ def build_1_4_0_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '1.4.0.0/', path])
 
-@target('2.2.1.2', 'xivo-digium-2.2.1.2')
-def build_2_2_1_2(path):
+@target('2.2.1.8', 'xivo-digium-2.2.1.8')
+def build_2_2_1_8(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '2.2.1.2/', path])
+                '2.2.1.8/', path])
