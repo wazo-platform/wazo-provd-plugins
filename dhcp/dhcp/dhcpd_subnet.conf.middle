@@ -43,6 +43,8 @@
         allow members of "CiscoCP-7970G";
         allow members of "CiscoCP-7971G-GE";
         allow members of "CiscoCP-7975G";
+        allow members of "CiscoCP-8941";
+        allow members of "CiscoCP-8945";
         allow members of "CiscoCP-8961";
         allow members of "CiscoCP-9951";
         # CiscoSMB
