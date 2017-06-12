@@ -19,6 +19,13 @@ version: 3.0.2
 files: 7920-fw
 install: cisco-bin
 
+[pkg_7937G-fw]
+description: Firmware for Cisco 7937G
+description_fr: Micrologiciel pour Cisco 7937G
+version: 1.4.5.7
+files: 7937G-fw
+install: cisco-unified-fw
+
 [pkg_7940-7960-fw]
 description: Firmware for Cisco 7940G and 7960G
 description_fr: Micrologiciel pour Cisco 7940G et 7960G
@@ -98,6 +105,12 @@ filename: cmterm_7920.4.0-03-02.bin
 url:
 size: 1155568
 sha1sum: 3e931a56e998f19b3623ad09b5a2f6a8e7492ce4
+
+[file_7937G-fw]
+filename: cmterm-7937-1-4-5-7-SCCP.zip
+url:
+size: 8238155
+sha1sum: f3ed059c1d5b2947527a5eb3a3c7ece7a8923565
 
 [file_7940-7960-fw]
 filename: cmterm-7940-7960-sccp.8-1-2SR2.zip
