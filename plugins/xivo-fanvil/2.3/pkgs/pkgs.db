@@ -1,0 +1,27 @@
+[pkg_C58-fw]
+description: Firmware for Fanvil C58
+description_fr: Micrologiciel pour Fanvil C58
+version: 2.3
+files: C58-fw
+install: fanvil-fw
+
+[pkg_C62-fw]
+description: Firmware for Fanvil C62
+description_fr: Micrologiciel pour Fanvil C62
+version: 2.3
+files: C62-fw
+install: fanvil-fw
+
+
+[install_fanvil-fw]
+a-b: cp $FILE1 firmware/
+
+[file_C58-fw]
+url: http://download.fanvil.com/Firmware/Release/C58/New/C58_V2_3_431_247T20140605184312.z
+size: 2900317
+sha1sum: 1096e129540a81cd52cbae2d2a06e22c56c4a26e
+
+[file_C62-fw]
+url: http://www.fanvil.com/UpFiles/Article/2012/7/6/2012070649327421.z
+size: 2866385
+sha1sum: a871aa16b93ba9b4d3188255e7f9465d4a4c4a74
