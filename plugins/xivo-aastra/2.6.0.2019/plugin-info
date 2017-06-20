@@ -1,0 +1,31 @@
+{
+    "version": "0.6",
+    "description": "Plugin for Aastra 6730i, 6731i, 6751i, 6753i, 6755i, 6757i, 6757i CT, 9143i, 9480i, 9480i CT in version 2.6.0.2019.",
+    "description_fr": "Greffon pour Aastra 6730i, 6731i, 6751i, 6753i, 6755i, 6757i, 6757i CT, 9143i, 9480i, 9480i CT en version 2.6.0.2019.",
+    "capabilities": {
+        "Aastra, 6730i, 2.6.0.2019": {
+            "sip.lines": 6
+        },
+        "Aastra, 6731i, 2.6.0.2019": {
+            "sip.lines": 6
+        },
+        "Aastra, 6751i, 2.6.0.2019": {
+            "sip.lines": 1
+        },
+        "Aastra, 6753i, 2.6.0.2019": {
+            "sip.lines": 9
+        },
+        "Aastra, 6755i, 2.6.0.2019": {
+            "sip.lines": 9
+        },
+        "Aastra, 6757i, 2.6.0.2019": {
+            "sip.lines": 9
+        },
+        "Aastra, 9143i, 2.6.0.2019": {
+            "sip.lines": 9
+        },
+        "Aastra, 9480i, 2.6.0.2019": {
+            "sip.lines": 9
+        }
+    }
+}

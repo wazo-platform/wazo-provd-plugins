@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Avencall
+# Copyright 2014-2017 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -54,3 +54,9 @@ def build_4_3_0(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '4.3.0/', path])
+
+
+@target('2.6.0.2019', 'xivo-aastra-2.6.0.2019')
+def build_2_6_0_2019(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '2.6.0.2019/', path])
