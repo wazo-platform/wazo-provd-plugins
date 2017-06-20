@@ -1,0 +1,41 @@
+WARNING: you SHOULD NOT use this plugin if your phones are using BootROM
+version 2.5.x or earlier.
+
+WARNING: you SHOULD NOT use this plugin if your VVX1500 phones are not using
+SIP Application 3.2.2 or later. See Polycom technical bulletin TB53522 for
+more information.
+
+WARNING: you SHOULD NOT use this plugin if your phones are not using the SIP
+Application 3.2.4.0267 AND you don't plan on upgrading your phone to this
+version.
+
+
+This plugin is targeting Polycom phones in version 3.2.4.0267, i.e. Polycom
+phones using the SIP Application 3.2.4B.
+
+SIP Application 3.2.4.0267 necessitate the following BootROM version:
+- 3.2.3B or later for IP320 and IP330
+- 4.1.3  or later for IP321 and IP331
+- 4.2.0B or later for IP335
+- 3.1.3  or later for IP430
+- 4.1.2  or later for IP450
+- 4.1.0  or later for IP550, IP560 and IP650
+- 4.1.1  or later for IP670 and IP6000
+- 4.2.2  or later for IP5000 and IP7000
+
+This is why this plugin is also targeting Polycom phones using BootROM in
+version 4.2.3.0003, which is the latest BootROM that all the targeted phones
+support.
+
+The problem is, it's not possible to upgrade the BootROM from version 2.5.x
+or earlier to version 4.2.3.0003.
+
+As for the VVX1500, see Polycom technical bulletin TB53522 for more
+information why you SHOULD NOT use this phone in version earlier than
+3.2.2 with this plugin.
+
+It's important to only use phones that are using the SIP Application 3.2.4.0267
+since the sip.cfg and phone1.cfg configuration file are strongly tied to a
+particular version of the SIP application. That's why you should either
+download the firmware files of this plugin or you should make sure your phones
+are using SIP Application 3.2.4.0267, or you might have incorrect behavior.
