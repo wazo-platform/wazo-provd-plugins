@@ -1,0 +1,7 @@
+WARNING: These models (at least the C590 on which some tests have been done
+here) have a tendency of not working correctly when you do not set a DNS
+server. There is no guarantee that the plugin will work in the case no DNS
+servers have been set, at least not as of firmware 025.
+
+The solution is to actually not buy these phones when you need reliable
+auto-provisioning support (IMO).

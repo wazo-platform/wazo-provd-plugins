@@ -1,0 +1,19 @@
+{
+    "version": "0.1.0",
+    "description": "Plugin for Gigaset (also known as Siemens) C470 IP, C475 IP, S675 IP and S685 IP in version 227.",
+    "description_fr": "Greffon pour Gigaset (aussi connu comme Siemens) C470 IP, C475 IP, S675 IP et S685 IP en version 227.",
+    "capabilities": {
+        "Gigaset, C470 IP, 227": {
+            "sip.lines": 6
+        },
+        "Gigaset, C475 IP, 227": {
+            "sip.lines": 6
+        },
+        "Gigaset, S675 IP, 227": {
+            "sip.lines": 6
+        },
+        "Gigaset, S685 IP, 227": {
+            "sip.lines": 6
+        }
+    }
+}
