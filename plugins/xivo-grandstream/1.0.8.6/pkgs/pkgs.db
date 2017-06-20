@@ -1,0 +1,71 @@
+[pkg_GXP1100-fw]
+description: Firmware for Grandstream GXP1100
+description_fr: Micrologiciel pour Grandstream GXP1100
+version: 1.0.8.6
+files: GXP110X-fw
+install: grandstream-fw
+
+[pkg_GXP1105-fw]
+description: Firmware for Grandstream GXP1105
+description_fr: Micrologiciel pour Grandstream GXP1105
+version: 1.0.8.6
+files: GXP110X-fw
+install: grandstream-fw 
+
+[pkg_GXP2100-fw]
+description: Firmware for Grandstream GXP2100
+description_fr: Micrologiciel pour Grandstream GXP2100
+version: 1.0.8.6
+files: GXP2100-fw
+install: grandstream-fw
+
+[pkg_GXP2110-fw]
+description: Firmware for Grandstream GXP2110
+description_fr: Micrologiciel pour Grandstream GXP2110
+version: 1.0.8.6
+files: GXP2110-fw
+install: grandstream-fw 
+
+[pkg_GXP2120-fw]
+description: Firmware for Grandstream GXP2120
+description_fr: Micrologiciel pour Grandstream GXP2120
+version: 1.0.8.6
+files: GXP2120-fw
+install: grandstream-fw
+
+[pkg_GXP2124-fw]
+description: Firmware for Grandstream GXP2124
+description_fr: Micrologiciel pour Grandstream GXP2124
+version: 1.0.8.6
+files: GXP2124-fw
+install: grandstream-fw 
+
+[install_grandstream-fw]
+a-b: unzip $FILE1
+
+
+[file_GXP110X-fw]
+url: http://www.grandstream.com/sites/default/files/Resources/Release_GXP110x_1.0.8.6.zip
+size: 6649891
+sha1sum: f3b99cc17becf14e0b4314706606a4cec8236c84
+
+[file_GXP2100-fw]
+url: http://www.grandstream.com/sites/default/files/Resources/Release_GXP2100_1.0.8.6.zip
+size: 7027132
+sha1sum: c0de55f88842c15187f54c28a42d267cb138e079
+
+[file_GXP2110-fw]
+url: http://www.grandstream.com/sites/default/files/Resources/Release_GXP2110_1.0.8.6.zip
+size: 7037371
+sha1sum: 0d6093ca0480288af4cc5aeebd5dffb9dd4c4f3f
+
+[file_GXP2120-fw]
+url: http://www.grandstream.com/sites/default/files/Resources/Release_GXP2120_1.0.8.6.zip
+size: 7037194
+sha1sum: 555169dbfe75d953bb8d4d706d41fbefcdf26f39
+
+[file_GXP2124-fw]
+url: http://www.grandstream.com/sites/default/files/Resources/Release_GXP2124_1.0.8.6.zip
+size: 7065756
+sha1sum: 3ad9dffb5f29a9ca1b24d52f55aaf93476a649d0
+

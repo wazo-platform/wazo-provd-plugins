@@ -1,0 +1,14 @@
+[pkg_GXP2200-fw]
+description: Firmware for Grandstream GXP2200
+description_fr: Micrologiciel pour Grandstream GXP2200
+version: 1.0.3.27
+files: GXP2200-fw
+install: grandstream-fw
+
+[install_grandstream-fw]
+a-b: unzip $FILE1
+
+[file_GXP2200-fw]
+url: http://www.grandstream.com/sites/default/files/Resources/Release_GXP2200_1.0.3.27.zip
+size: 73964236
+sha1sum: 143caa3d3422af5326bb6d3c555c31dbe3e42a8a

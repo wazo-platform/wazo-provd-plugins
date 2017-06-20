@@ -1,0 +1,17 @@
+{
+    "version": "0.2.44",
+    "description": "Plugin for Grandstream GXP2000 in version 1.2.5.3.",
+    "description_fr": "Greffon pour Grandstream GXP2000 en version 1.2.5.3.",
+    "vendor" : "Grandstream",
+    "vendor.url" : "http://www.grandstream.com",
+    "vendor.description" : "Grandstream Networks, Inc. is an award-winning designer and ISO 9001 certified manufacturer of next generation IP voice & video products for broadband networks. Grandstream’s products deliver superb sound and picture quality, rich telephony features, full compliance with industry standards, and broad interoperability with most service providers and 3rd party SIP based VoIP products.",
+    "vendor.official" : 0,
+    "capabilities": {
+        "Grandstream, GXP2000, 1.2.5.3": {
+            "sip.lines": 4,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 7,
+            "xivo.tested" : 0
+        }
+    }
+}
