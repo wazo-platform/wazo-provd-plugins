@@ -1,0 +1,31 @@
+# Note that some parameters need to be explicitly specified for the phone to
+# works, so you should not remove any parameters unless you have tested the
+# result.
+
+[dns]
+hostname=alcatel_phone
+
+
+[sip]
+option_timer=180
+register_expire=3600
+preferred_vocoder=8,0,4,18
+
+
+[init]
+application_mode=0
+
+
+[audio]
+tone_country=0
+
+
+[appl]
+supported_language=0
+
+
+[admin]
+# Note that 0 is not a valid polling timer value, i.e. it's not possible to
+# disable the polling, so we set it to once a week
+binary_polling_timer=10080
+config_polling_timer=10080
