@@ -1,0 +1,41 @@
+[pkg_KX-UT113-fw]
+description: Firmware for Panasonic KX-UT113
+description_fr: Micrologiciel pour Panasonic KX-UT113
+version: 01.133
+files: KX-UT11x12x-fw
+install: panasonic-fw KX-UT113
+
+[pkg_KX-UT123-fw]
+description: Firmware for Panasonic KX-UT123
+description_fr: Micrologiciel pour Panasonic KX-UT123
+version: 01.133
+files: KX-UT11x12x-fw
+install: panasonic-fw KX-UT123
+
+[pkg_KX-UT133-fw]
+description: Firmware for Panasonic KX-UT133
+description_fr: Micrologiciel pour Panasonic KX-UT133
+version: 01.133
+files: KX-UT13x-fw
+install: panasonic-fw KX-UT133
+
+[pkg_KX-UT136-fw]
+description: Firmware for Panasonic KX-UT136
+description_fr: Micrologiciel pour Panasonic KX-UT136
+version: 01.133
+files: KX-UT13x-fw
+install: panasonic-fw KX-UT136
+
+[install_panasonic-fw]
+a-b: cp $FILE1 firmware/
+
+
+[file_KX-UT11x12x-fw]
+url: http://fw-provi.e-connecting.net/firm/000/UT11x12x-01.133_HW1.fw
+size: 3970832
+sha1sum: 15be350975067403eadaef544c1de47aa7e0355f
+
+[file_KX-UT13x-fw]
+url: http://fw-provi.e-connecting.net/firm/000/UT13x-01.133_HW1.fw
+size: 4010496
+sha1sum: 5ac823f21c5871c86aa32417ed0dd3a9e8a2fd65
