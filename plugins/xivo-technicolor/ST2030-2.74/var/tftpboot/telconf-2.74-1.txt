@@ -1,0 +1,898 @@
+#VPD1020D49S_IAD_TELCFG
+;
+;
+;########################################################
+;#### Config Script For EVM3 running V8.3 on VxWorks ####
+;#### version : V-0517                               ####
+;########################################################
+;
+;###############################
+;####     Initialization    ####
+;###############################
+set coding clearall
+set ipp_prof clearall
+set ipp default
+;
+;###############################
+;####       ipp_prof        ####
+;###############################
+set ipp_prof 0 default hs
+set ipp_prof 1 default hes
+set ipp_prof 2 default hf
+set ipp_prof 3 default gl_hs
+set ipp_prof 4 default gl_hes
+set ipp_prof 5 default spk
+;
+set ipp_prof 0  usage hs enable
+set ipp_prof 1  usage hes enable
+set ipp_prof 2  usage hf enable
+set ipp_prof 3  usage gl_hs enable
+set ipp_prof 4  usage gl_hes enable
+set ipp_prof 5  usage spk enable
+;
+set ipp_prof 6   usage hs enable
+set ipp_prof 7   usage hes enable
+set ipp_prof 8   usage hf enable
+set ipp_prof 9   usage gl_hs enable
+set ipp_prof 10  usage gl_hes enable
+;
+set ipp_prof 15  usage hs enable
+set ipp_prof 16  usage hes enable
+set ipp_prof 17  usage hf enable
+set ipp_prof 18  usage gl_hs enable
+set ipp_prof 19  usage gl_hes enable
+;
+;=========================
+;==== Mode:  Handset  ====
+;=========================
+set ipp_prof 0 aer on
+set ipp_prof 0 aer_coeffts update
+set ipp_prof 0 aer_nlp enable
+set ipp_prof 0 aer_adapt_mute enable
+set ipp_prof 0 aer_half_duplex disable
+set ipp_prof 0 aer_tail 8
+set ipp_prof 0 aer_tx_dg   0
+set ipp_prof 0 tx_ag      53
+set ipp_prof 0 sidetone   0
+set ipp_prof 0 aer_tx_ag_chg_synch_delay       44
+set ipp_prof 0 aer_rx_ag_chg_synch_delay       26
+set ipp_prof 0 aer_tx_ag_chg_settling_period    4
+set ipp_prof 0 agc on
+set ipp_prof 0 agc_adaptive enable
+set ipp_prof 0 agc_sat_thresh 32767
+set ipp_prof 0 agc_sat_hangover 20
+set ipp_prof 0 aer_eq rx disable
+set ipp_prof 0 aer_rx_linear_threshold 32767
+set ipp_prof 0 aer_hlc enable
+set ipp_prof 0 aer_hlc_ramp_down_tc 10
+set ipp_prof 0 aer_hlc_ramp_up_tc 700
+set ipp_prof 0 aer_hlc_power_tc 1
+set ipp_prof 0 aer_hlc_max_siglevel -4
+;
+set ipp_prof 0 valid
+;
+; wide band w/ wide band codec
+set ipp_prof 6 copyof 0
+set ipp_prof 6 valid
+set ipp_prof 6 tx_ag                           36
+set ipp_prof 6 aer_tx_dg                       12
+set ipp_prof 6 sidetone                         0
+set ipp_prof 6 aer_tx_ag_chg_synch_delay       44
+set ipp_prof 6 aer_rx_ag_chg_synch_delay       26
+set ipp_prof 6 aer_tx_ag_chg_settling_period    4
+set ipp_prof 6 aer_rx_linear_threshold        32767
+set ipp_prof 6 aer_eq rx disable
+
+;  set ipp_prof 6 aer_eq rx enable
+;  maximum Rx equalizer gain = 4.04dB
+;  aer_eq_params update at 2007/05/15
+;  set ipp_prof 6 aer_eq_params rx 2048 -4052 5876 -5741 5001 -2678 1042 0 0 32767 -23879 24947 -9937 227 419 73 0 0 15552 -13790 -16086 18714 -3840 -1978 8099 907 -7577 0 0 0 0 0 0 0 0 0 0 0 -6 2 0 10 
+
+set ipp_prof  6 aer_hlc                enable
+set ipp_prof  6 aer_hlc_ramp_down_tc   10
+set ipp_prof  6 aer_hlc_ramp_up_tc    700
+set ipp_prof  6 aer_hlc_power_tc        1
+set ipp_prof  6 aer_hlc_max_siglevel   -4
+;  aer_hlc_max_siglevel is based on maximum Rx equalizer gain
+
+set ipp_prof 15 copyof 0
+set ipp_prof 15 valid
+;
+;=========================
+;==== Mode:  Headset  ====
+;=========================
+set ipp_prof 1 aer on
+set ipp_prof 1 aer_coeffts     update
+set ipp_prof 1 aer_nlp         enable
+set ipp_prof 1 aer_adapt_mute  enable
+set ipp_prof 1 aer_half_duplex disable
+set ipp_prof 1 aer_tail 20
+set ipp_prof 1 aer_tx_dg   0
+set ipp_prof 1 tx_ag      53
+;##  sidetone maybe -48
+set ipp_prof 1 sidetone  -40
+set ipp_prof 1 agc off
+set ipp_prof 1 agc_adaptive     enable
+set ipp_prof 1 agc_sat_thresh     32500
+set ipp_prof 1 agc_sat_hangover      20
+;
+set ipp_prof 1 valid
+;
+set ipp_prof 7 copyof 1
+set ipp_prof 7 valid
+set ipp_prof 16 copyof 1
+set ipp_prof 16 valid
+;
+;=========================
+;==== Mode: Handsfree ====
+;=========================
+set ipp_prof 2 aer_tx_dg 36
+set ipp_prof 2 tx_ag 58
+set ipp_prof 2 aer_rx_linear_threshold 30000
+set ipp_prof 2 hangover 100
+set ipp_prof 2 aer_rx_to_tx_hangover 30
+set ipp_prof 2 aer_tx_ag_chg_synch_delay         44
+set ipp_prof 2 aer_rx_ag_chg_synch_delay         26
+set ipp_prof 2 aer_tx_ag_chg_settling_period      4
+set ipp_prof 2 aer_hlc                enable
+set ipp_prof 2 aer_hlc_ramp_down_tc   10
+set ipp_prof 2 aer_hlc_ramp_up_tc     700
+set ipp_prof 2 aer_hlc_power_tc       1
+set ipp_prof 2 aer_hlc_max_siglevel   -21
+set ipp_prof 2 aer_rx_cng disable
+set ipp_prof 2 aer_tx_cng disable 
+set ipp_prof 2 aer_cng_rx_level -68
+set ipp_prof 2 aer_cng_tx_level -68
+set ipp_prof 2 aer_nlp_linattn_max_erle 18
+set ipp_prof 2 aer_nlp_clipper_max_erle 18
+set ipp_prof 2 aer_nlp_total_linattn_min 6
+set ipp_prof 2 aer_nlp_rx_linattn_min    0
+set ipp_prof 2 aer_nlp_rx_linattn_max   12
+set ipp_prof 2 aer_nlp_tx_linattn_min    0
+set ipp_prof 2 aer_nlp_tx_linattn_max   12
+set ipp_prof 2 aer_duplex_stabilizer disable
+set ipp_prof 2 aer_eq rx disable
+set ipp_prof 2 aer_eq tx disable
+
+;
+set ipp_prof 2 valid
+;
+;  wide band w/ wide band codec
+set ipp_prof 8 copyof 2
+set ipp_prof 8 valid
+set ipp_prof 8 tx_ag                             50
+set ipp_prof 8 aer_tx_dg                         28
+set ipp_prof 8 aer_tx_ag_chg_synch_delay         44
+set ipp_prof 8 aer_rx_ag_chg_synch_delay         26
+set ipp_prof 8 aer_tx_ag_chg_settling_period      4
+set ipp_prof 8 aer_rx_linear_threshold        30000
+              
+set ipp_prof 8 aer_hlc                enable
+set ipp_prof 8 aer_hlc_ramp_down_tc   10
+set ipp_prof 8 aer_hlc_ramp_up_tc     700
+set ipp_prof 8 aer_hlc_power_tc       1
+set ipp_prof 8 aer_hlc_max_siglevel   -21
+
+set ipp_prof 8 
+set ipp_prof 8 aer_rx_cng disable
+set ipp_prof 8 aer_tx_cng disable 
+set ipp_prof 8 aer_cng_rx_level -68
+set ipp_prof 8 aer_cng_tx_level -68
+set ipp_prof 8 aer_nlp_linattn_max_erle 18
+set ipp_prof 8 aer_nlp_clipper_max_erle 18
+set ipp_prof 8 aer_nlp_total_linattn_min 6
+set ipp_prof 8 aer_nlp_rx_linattn_min    0
+set ipp_prof 8 aer_nlp_rx_linattn_max   12
+set ipp_prof 8 aer_nlp_tx_linattn_min    0
+set ipp_prof 8 aer_nlp_tx_linattn_max   12
+set ipp_prof 8 aer_duplex_stabilizer enable
+; aer_eq_params update at 2007/05/17
+set ipp_prof  8 aer_eq rx disable
+;set ipp_prof  8 aer_eq_params rx 32767 -1 0 -1 0 0 0 0 0 32767 19749 21732 -9919 933 0 0 0 0 -1229 -13626 -32768 -6770 -10474 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -2 0 0 3 
+;
+set ipp_prof  8 aer_eq tx disable
+;set ipp_prof  8 aer_eq_params tx 32767 8385 21809 3109 4239 0 0 0 0 32767 -21333 10117 -3255 805 0 0 0 0 16875 -32768 9235 32767 -26112 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2 -3 1 0 5 
+
+
+set ipp_prof 17 copyof 2
+set ipp_prof 17 valid
+;
+;=========================
+;==== Mode:gl Handset ====
+;=========================
+set ipp_prof 3 aer on
+set ipp_prof 3 aer_coeffts update
+set ipp_prof 3 aer_nlp enable
+set ipp_prof 3 aer_adapt_mute enable
+set ipp_prof 3 aer_half_duplex disable
+set ipp_prof 3 aer_tail  60
+set ipp_prof 3 aer_tx_dg  0
+set ipp_prof 3 agc on
+set ipp_prof 3 agc_adaptive enable
+set ipp_prof 3 agc_sat_thresh 32767
+set ipp_prof 3 agc_sat_hangover 20
+set ipp_prof 3 tx_ag 53
+set ipp_prof 3 aer_rx_linear_threshold 32760
+;
+set ipp_prof 3 valid
+;
+set ipp_prof 9 copyof 3
+set ipp_prof 9 valid
+set ipp_prof 18 copyof 3
+set ipp_prof 18 valid
+;
+;=========================
+;==== Mode:gl Headset ====
+;=========================
+set ipp_prof 4 aer on
+set ipp_prof 4 aer_coeffts update
+set ipp_prof 4 aer_nlp enable
+set ipp_prof 4 aer_adapt_mute enable
+set ipp_prof 4 aer_half_duplex disable
+set ipp_prof 4 aer_tail 60
+set ipp_prof 4 aer_tx_dg 0
+set ipp_prof 4 agc on
+set ipp_prof 4 agc_adaptive enable
+set ipp_prof 4 agc_sat_thresh 32767
+set ipp_prof 4 agc_sat_hangover 20
+set ipp_prof 4 tx_ag 53
+set ipp_prof 4 aer_rx_linear_threshold 32760
+;
+set ipp_prof 4 valid
+;
+set ipp_prof 10 copyof 4
+set ipp_prof 10 valid
+set ipp_prof 19 copyof 4
+set ipp_prof 19 valid
+;
+;=========================
+;==== Mode:  Speaker  ====
+;=========================
+set ipp_prof 5 aer on
+set ipp_prof 5 aer_coeffts update
+set ipp_prof 5 aer_nlp enable
+set ipp_prof 5 aer_adapt_mute enable
+set ipp_prof 5 aer_half_duplex disable
+set ipp_prof 5 aer_tail  40
+set ipp_prof 5 aer_tx_dg  0
+set ipp_prof 5 agc on
+set ipp_prof 5 agc_adaptive disable
+set ipp_prof 5 agc_sat_thresh 32500
+set ipp_prof 5 agc_sat_hangover 20
+;
+set ipp_prof 5 valid
+;
+;
+;###############################
+;####       ipp_gains       ####
+;###############################
+;=========================
+;==== Mode:  Handset  ====
+;=========================
+set ipp_gains  0 num_rows 9
+set ipp_gains  0 default_row 4
+set ipp_gains  0 values  0  -50   0   3   32767 32767 3 0
+set ipp_gains  0 values  1  -42   0   3   32767 32767 3 0
+set ipp_gains  0 values  2  -34   0   3   32767 32767 3 0
+set ipp_gains  0 values  3  -26   0   3   32767 32767 3 0
+set ipp_gains  0 values  4  -20   0   3   32767 32767 3 0
+set ipp_gains  0 values  5  -18   6   3   32767 32767 3 6
+set ipp_gains  0 values  6  -16   12  3   32767 32767 3 6
+set ipp_gains  0 values  7  -14   18  3   32767 32767 3 6
+set ipp_gains  0 values  8  -12   24  3   32767 32767 3 6
+;
+; wide band w/ wide band codec
+set ipp_gains 6 num_rows     9
+set ipp_gains 6 default_row  4
+set ipp_gains 6 values 0 -56 0  3  32767   0  48
+set ipp_gains 6 values 1 -48 0  3  32767   0  48
+set ipp_gains 6 values 2 -40 0  3  32767   0  48
+set ipp_gains 6 values 3 -32 0  3  32767   0  48
+set ipp_gains 6 values 4 -26 0  3  32767   0  48
+set ipp_gains 6 values 5 -18 0  3  32767   0  48
+set ipp_gains 6 values 6 -10 0  4  32767   0  48
+set ipp_gains 6 values 7 -4  0  4  32767   0  48
+set ipp_gains 6 values 8  0  2  5  32767   0  48
+
+;
+set ipp_gains  15 num_rows 9
+set ipp_gains  15 default_row 4
+set ipp_gains  15 values  0  -50   0   3   32767 32767 3 0
+set ipp_gains  15 values  1  -42   0   3   32767 32767 3 0
+set ipp_gains  15 values  2  -34   0   3   32767 32767 3 0
+set ipp_gains  15 values  3  -26   0   3   32767 32767 3 0
+set ipp_gains  15 values  4  -20   0   3   32767 32767 3 0
+set ipp_gains  15 values  5  -18   6   3   32767 32767 3 6
+set ipp_gains  15 values  6  -16   12  3   32767 32767 3 6
+set ipp_gains  15 values  7  -14   18  3   32767 32767 3 6
+set ipp_gains  15 values  8  -12   24  3   32767 32767 3 6
+;
+;=========================
+;==== Mode:  Headset  ====
+;=========================
+set ipp_gains  1 num_rows 9
+set ipp_gains  1 default_row 4
+set ipp_gains  1 values  0  -50   0   3   32767 32767 3 0
+set ipp_gains  1 values  1  -42   0   3   32767 32767 3 0
+set ipp_gains  1 values  2  -34   0   3   32767 32767 3 0
+set ipp_gains  1 values  3  -26   0   3   32767 32767 3 0
+set ipp_gains  1 values  4  -20   0   3   32767 32767 3 0
+set ipp_gains  1 values  5  -18   6   3   32767 32767 3 6
+set ipp_gains  1 values  6  -16   12  3   32767 32767 3 6
+set ipp_gains  1 values  7  -14   18  3   32767 32767 3 6
+set ipp_gains  1 values  8  -12   24  3   32767 32767 3 6
+;
+set ipp_gains  7 num_rows 9
+set ipp_gains  7 default_row 4
+set ipp_gains  7 values  0  -58   0   3    32767 32767	3	0
+set ipp_gains  7 values  1  -50   0   3    32767 32767	3	0
+set ipp_gains  7 values  2  -42   0   3    32767 32767	3	0
+set ipp_gains  7 values  3  -34   0   3    32767 32767	3	0
+set ipp_gains  7 values  4  -28   0   3    32767 32767	3	0
+set ipp_gains  7 values  5  -26   6   3    32767 32767	3	6
+set ipp_gains  7 values  6  -24   12  3    32767 32767	3	6
+set ipp_gains  7 values  7  -22   18  3    32767 32767	3	6
+set ipp_gains  7 values  8  -20   24  3    32767 32767	3	6
+;
+set ipp_gains  16 num_rows 9
+set ipp_gains  16 default_row 4
+set ipp_gains  16 values  0  -58   0   3    32767 32767	3	0
+set ipp_gains  16 values  1  -50   0   3    32767 32767	3	0
+set ipp_gains  16 values  2  -42   0   3    32767 32767	3	0
+set ipp_gains  16 values  3  -34   0   3    32767 32767	3	0
+set ipp_gains  16 values  4  -28   0   3    32767 32767	3	0
+set ipp_gains  16 values  5  -26   6   3    32767 32767	3	6
+set ipp_gains  16 values  6  -24   12  3    32767 32767	3	6
+set ipp_gains  16 values  7  -22   18  3    32767 32767	3	6
+set ipp_gains  16 values  8  -20   24  3    32767 32767	3	6
+;
+;=========================
+;==== Mode:  Handsfree ====
+;=========================
+set ipp_gains  2 num_rows 9
+set ipp_gains  2 default_row 4
+set ipp_gains  2 values  0  -64   0   0   1000	 3   0
+set ipp_gains  2 values  1  -54   0   0   1000	 3   0
+set ipp_gains  2 values  2  -46   0   1   1000	 3   0
+set ipp_gains  2 values  3  -38   0   1   1000	 3   0
+set ipp_gains  2 values  4  -30   0   3   800	 8   0
+set ipp_gains  2 values  5  -24   0   4   700	 9   0
+set ipp_gains  2 values  6  -20   0   5   600	 10  0
+set ipp_gains  2 values  7  -16   0   5   500	 10  0
+set ipp_gains  2 values  8  -12   0   5   400	 10  0
+;
+; wide band w/ wide band codec
+set ipp_gains 8 num_rows    9
+set ipp_gains 8 default_row 4
+set ipp_gains 8 values 0  -56   0   2   1000   8   70
+set ipp_gains 8 values 1  -46   0   2   1000   8   70
+set ipp_gains 8 values 2  -38   0   2   1000   8   70
+set ipp_gains 8 values 3  -30   0   3   1000   8   70
+set ipp_gains 8 values 4  -22   0   3   1000   8   70
+set ipp_gains 8 values 5  -16   0   4   1000   8   70
+set ipp_gains 8 values 6  -12   0   4    800   8   70
+set ipp_gains 8 values 7  -8    0   4    600   8   70
+set ipp_gains 8 values 8  -4    0   4    500   8   70
+
+;
+set ipp_gains  17 num_rows 9
+set ipp_gains  17 default_row 4
+set ipp_gains  17 values  0  -56   0   0   800	 3	 0
+set ipp_gains  17 values  1  -46   0   0   800	 3	 0
+set ipp_gains  17 values  2  -38   0   0   800	 3	 0
+set ipp_gains  17 values  3  -30   0   0   800	 3	 0
+set ipp_gains  17 values  4  -22   0   0   900	 8	 0
+set ipp_gains  17 values  5  -16   0   1   825	 9	 0
+set ipp_gains  17 values  6  -8    0   4   700	 10	 0
+set ipp_gains  17 values  7   0    0   5   700	 10	 0
+set ipp_gains  17 values  8   0    8   5   600	 10	 0
+;
+;#############  gl Handset
+;
+;=========================
+;==== Mode:gl Handset ====
+;=========================
+set ipp_gains  3 num_rows 9
+set ipp_gains  3 default_row 4
+set ipp_gains  3 values  0  -64   0    10   5   5   10  0
+set ipp_gains  3 values  1  -54   0    10   5   5   10  0
+set ipp_gains  3 values  2  -46   0    10   5   5   10  0
+set ipp_gains  3 values  3  -38   0    10   5   5   10  0
+set ipp_gains  3 values  4  -30   0    10   5   5   10  0
+set ipp_gains  3 values  5  -28   4    10   5   5   10  4
+set ipp_gains  3 values  6  -24   8    10   5   5   10  6
+set ipp_gains  3 values  7  -20   12   10   5   5   10  6
+set ipp_gains  3 values  8  -16   16   10   5   5   10  6
+;
+set ipp_gains  9 num_rows 9
+set ipp_gains  9 default_row 4
+set ipp_gains  9 values  0  -64   0    10   5   5   10  0
+set ipp_gains  9 values  1  -54   0    10   5   5   10  0
+set ipp_gains  9 values  2  -46   0    10   5   5   10  0
+set ipp_gains  9 values  3  -38   0    10   5   5   10  0
+set ipp_gains  9 values  4  -30   0    10   5   5   10  0
+set ipp_gains  9 values  5  -28   4    10   5   5   10  0
+set ipp_gains  9 values  6  -24   8    10   5   5   10  0
+set ipp_gains  9 values  7  -20   12   10   5   5   10  0
+set ipp_gains  9 values  8  -16   16   10   5   5   10  0
+;
+set ipp_gains  18 num_rows 9
+set ipp_gains  18 default_row 4
+set ipp_gains  18 values  0  -64   0    10   5   5   10  0
+set ipp_gains  18 values  1  -54   0    10   5   5   10  0
+set ipp_gains  18 values  2  -46   0    10   5   5   10  0
+set ipp_gains  18 values  3  -38   0    10   5   5   10  0
+set ipp_gains  18 values  4  -30   0    10   5   5   10  0
+set ipp_gains  18 values  5  -28   4    10   5   5   10  0
+set ipp_gains  18 values  6  -24   8    10   5   5   10  0
+set ipp_gains  18 values  7  -20   12   10   5   5   10  0
+set ipp_gains  18 values  8  -16   16   10   5   5   10  0
+;
+;=========================
+;==== Mode:gl Headset ====
+;=========================
+set ipp_gains  4 num_rows 9
+set ipp_gains  4 default_row 4
+set ipp_gains  4 values  0  -64   0    10   5   5   10  0
+set ipp_gains  4 values  1  -54   0    10   5   5   10  0
+set ipp_gains  4 values  2  -46   0    10   5   5   10  0
+set ipp_gains  4 values  3  -38   0    10   5   5   10  0
+set ipp_gains  4 values  4  -30   0    10   5   5   10  0
+set ipp_gains  4 values  5  -28   4    10   5   5   10  0
+set ipp_gains  4 values  6  -24   8    10   5   5   10  0
+set ipp_gains  4 values  7  -20   12   10   5   5   10  0
+set ipp_gains  4 values  8  -16   16   10   5   5   10  0
+;
+set ipp_gains  10 num_rows 9
+set ipp_gains  10 default_row 4
+set ipp_gains  10 values  0  -64   0    10   5   5   10  0
+set ipp_gains  10 values  1  -54   0    10   5   5   10  0
+set ipp_gains  10 values  2  -46   0    10   5   5   10  0
+set ipp_gains  10 values  3  -38   0    10   5   5   10  0
+set ipp_gains  10 values  4  -30   0    10   5   5   10  0
+set ipp_gains  10 values  5  -28   4    10   5   5   10  0
+set ipp_gains  10 values  6  -24   8    10   5   5   10  0
+set ipp_gains  10 values  7  -20   12   10   5   5   10  0
+set ipp_gains  10 values  8  -16   16   10   5   5   10  0
+;
+set ipp_gains  19 num_rows 9
+set ipp_gains  19 default_row 4
+set ipp_gains  19 values  0  -64   0    10   5   5   10  0
+set ipp_gains  19 values  1  -54   0    10   5   5   10  0
+set ipp_gains  19 values  2  -46   0    10   5   5   10  0
+set ipp_gains  19 values  3  -38   0    10   5   5   10  0
+set ipp_gains  19 values  4  -30   0    10   5   5   10  0
+set ipp_gains  19 values  5  -28   4    10   5   5   10  0
+set ipp_gains  19 values  6  -24   8    10   5   5   10  0
+set ipp_gains  19 values  7  -20   12   10   5   5   10  0
+set ipp_gains  19 values  8  -16   16   10   5   5   10  0
+;
+;=========================
+;==== Mode:  Speaker  ====
+;=========================
+set ipp_gains  5 num_rows 9
+set ipp_gains  5 default_row 4
+set ipp_gains  5 values  0  -76   0   8   500	 3	0
+set ipp_gains  5 values  1  -64   0   8   500	 3	0
+set ipp_gains  5 values  2  -52   0   8   500	 3	0
+set ipp_gains  5 values  3  -40   0   8   500	 3	0
+set ipp_gains  5 values  4  -28   0   8   700	 8	0
+set ipp_gains  5 values  5  -22   0   6   250	 9	0
+set ipp_gains  5 values  6  -16   0   6   250	 10	0
+set ipp_gains  5 values  7  -10   0   6   250	 10	0
+set ipp_gains  5 values  8  -4    0   6   325	 10	0
+
+;
+;
+;###############################
+;####       coding          ####
+;###############################
+;=========================
+;==== 0:  G.711A      ====
+;=========================
+;# Coding Profile 0 == pcm_mu packet time ==> 10ms
+#g711_a => 8
+set coding 0 coding_type   tx     8
+set coding 0 coding_type   rx     8
+set coding 0 usage              fax off
+set coding 0 usage              voice on
+set coding 0 usage              modem off
+set coding 0 usage              data  off
+;
+;set coding 0 vif                640
+set coding 0 encap              rtp
+set coding 0 vad                on
+set coding 0 vad_thresh         32767
+;set coding 0 min_delay              20
+;set coding 0 nom_delay          	30
+;set coding 0 max_delay          	70
+set coding 0 dtmf_relay        off
+set coding 0 ec                 on
+set coding 0 ec_nl              on
+set coding 0 lec_tail            10
+set coding 0 lec_cn_config      	0
+set coding 0 silence_detect time    0
+set coding 0 silence_detect level -40
+set coding 0 vp_concealment 		G711A1
+;set coding 0 adaptive_playout       adj_immed
+;
+;
+;#set coding 0 aer_hf_tail        200
+;#set coding 0 aer_hf_nlp_gain   1036
+;#set coding 0 aer_hf_nlp_clip     -2
+;#set coding 0 aer_hf_pnlp_gain     1
+;#set coding 0 aer_gl_tail         40
+;#set coding 0 aer_gl_nlp_gain     50
+;#set coding 0 aer_gl_nlp_clip     -2
+;#set coding 0 aer_gl_pnlp_gain     1
+;
+set coding 0 rtp_digit_repetitions 1
+;
+set coding 0 valid
+;
+;=========================
+;==== 1:  G.711U      ====
+;=========================
+;# Coding Profile 1 == pcm_mu packet time ==> 10ms
+# g711_mu => 9
+set coding 1 coding_type   tx     9
+set coding 1 coding_type   rx     9
+set coding 1 usage              fax off
+set coding 1 usage              voice on
+set coding 1 usage              modem off
+set coding 1 usage              data  off
+;
+;set coding 1 vif                640
+set coding 1 encap              rtp
+set coding 1 vad                on
+set coding 1 vad_thresh         32767
+;set coding 1 min_delay              20
+;set coding 1 nom_delay          	30
+;set coding 1 max_delay          	70
+set coding 1 dtmf_relay        off
+set coding 1 ec                 on
+set coding 1 ec_nl              on
+set coding 1 lec_tail            10
+set coding 1 lec_cn_config      	0
+set coding 1 silence_detect time    0
+set coding 1 silence_detect level -40
+set coding 1 vp_concealment 		G711A1
+;set coding 1 adaptive_playout       adj_immed
+;
+;
+;#set coding 1 aer_hf_tail        200
+;#set coding 1 aer_hf_nlp_gain   1036
+;#set coding 1 aer_hf_nlp_clip     -2
+;#set coding 1 aer_hf_pnlp_gain     1
+;#set coding 1 aer_gl_tail         40
+;#set coding 1 aer_gl_nlp_gain     50
+;#set coding 1 aer_gl_nlp_clip     -2
+;#set coding 1 aer_gl_pnlp_gain     1
+;
+set coding 1 rtp_digit_repetitions 1
+;
+set coding 1 valid
+;
+;=========================
+;==== 2:  G.729AB     ====
+;=========================
+;# Coding Profile 2 == g729ab packet time ==> 10ms
+#g729ab = >68
+set coding 2 coding_type   tx     68
+set coding 2 coding_type   rx     68
+set coding 2 usage                   fax off
+set coding 2 usage                   voice on
+set coding 2 usage                   modem off
+set coding 2 usage                   data off
+;set coding 2 vif                     80
+set coding 2 encap                   rtp
+set coding 2 vad                     on
+set coding 2 vad_thresh              32767
+;set coding 2 min_delay               20
+;set coding 2 nom_delay               30
+;set coding 2 max_delay               70
+set coding 2 dtmf_relay        off
+set coding 2 ec                      on
+set coding 2 ec_tail                 8
+set coding 2 ec_nl                   on
+set coding 2 lec_tail                8
+set coding 2 lec_cn_config      	0
+set coding 2 modem_timeout           30
+set coding 2 silence_detect time     0
+set coding 2 silence_detect level    -40
+set coding 2 vp_concealment 		NONE
+;set coding 2 adaptive_playout       adj_immed
+;
+;
+;#set coding 2 aer_hf_tail        200
+;#set coding 2 aer_hf_nlp_gain   1036
+;#set coding 2 aer_hf_nlp_clip     -2
+;#set coding 2 aer_hf_pnlp_gain     1
+;#set coding 2 aer_gl_tail         40
+;#set coding 2 aer_gl_nlp_gain     50
+;#set coding 2 aer_gl_nlp_clip     -2
+;#set coding 2 aer_gl_pnlp_gain     1
+;
+set coding 2 rtp_digit_repetitions 1
+;
+set coding 2 valid
+;
+;=========================
+;==== 3:  G.723_63    ====
+;=========================
+;# Coding Profile 3 == G.723_63 packet time ==> 30ms
+
+set coding 3 coding_type   tx 	  g723_63
+set coding 3 coding_type   rx     g723_63
+set coding 3 usage fax                off
+set coding 3 usage voice              on
+set coding 3 usage modem              off
+set coding 3 usage data               off
+;set coding 3 vif                      192
+set coding 3 encap                    rtp
+set coding 3 vad                      on
+set coding 3 vad_thresh               32767
+;set coding 3 min_delay                60
+;set coding 3 nom_delay                90
+;set coding 3 max_delay                210
+set coding 3 dtmf_relay        off
+set coding 3 ec                       on
+set coding 3 ec_tail                  8
+set coding 3 ec_nl                   on
+set coding 3 lec_tail                 8
+set coding 3 lec_cn_config      	  0
+set coding 3 modem_timeout           30
+set coding 3 silence_detect time      0
+set coding 3 silence_detect level     -40
+set coding 3 vp_concealment 		NONE
+;set coding 3 adaptive_playout       adj_immed
+;
+;
+;#set coding 3 aer_hf_tail        200
+;#set coding 3 aer_hf_nlp_gain   1036
+;#set coding 3 aer_hf_nlp_clip     -2
+;#set coding 3 aer_hf_pnlp_gain     1
+;#set coding 3 aer_gl_tail         40
+;#set coding 3 aer_gl_nlp_gain     50
+;#set coding 3 aer_gl_nlp_clip     -2
+;#set coding 3 aer_gl_pnlp_gain     1
+;
+set coding 3 rtp_digit_repetitions 1
+
+set coding 3 valid
+;
+;
+;=========================
+;==== 4:  GSM_WBAMR   ====
+;=========================
+;# Coding Profile 4 == GSM_WBAMR packet time ==> 20 ms
+#gsm_wbamr =>100
+set coding 4 coding_type   tx     gsm_wbamr
+set coding 4 coding_type   rx     gsm_wbamr
+set coding 4 usage fax                off
+set coding 4 usage voice              on
+set coding 4 usage modem              off
+set coding 4 usage data               off
+;set coding 4 vif                      480
+set coding 4 codec_init_rate_idx      0
+set coding 4 codec_packing_option bw_efficient
+set coding 4 codec_payload_format rfc3267
+set coding 4 encap                    rtp
+set coding 4 vad                      on
+set coding 4 vad_thresh               32767
+;set coding 4 min_delay                40
+;set coding 4 nom_delay                60
+;set coding 4 max_delay                140
+set coding 4 dtmf_relay        off
+set coding 4 ec                       on
+;set coding 4 ec_tail                  8
+set coding 4 ec_nl                   on
+set coding 4 lec_tail                 10
+set coding 4 lec_cn_config      	  0
+set coding 4 modem_timeout           30
+set coding 4 silence_detect time      0
+set coding 4 silence_detect level     -40
+set coding 4 vp_concealment 		NONE
+;set coding 4 adaptive_playout       adj_immed
+; for Microtronix SIP User Agent
+set coding 4 codec_payload_format tx rfc3267
+set coding 4 codec_payload_format rx rfc3267
+set coding 4 codec_packing_option tx oct_aligned
+set coding 4 codec_packing_option rx oct_aligned
+
+;
+;
+;#set coding 4 aer_hf_tail        200
+;#set coding 4 aer_hf_nlp_gain   1036
+;#set coding 4 aer_hf_nlp_clip     -2
+;#set coding 4 aer_hf_pnlp_gain     1
+;#set coding 4 aer_gl_tail         40
+;#set coding 4 aer_gl_nlp_gain     50
+;#set coding 4 aer_gl_nlp_clip     -2
+;#set coding 4 aer_gl_pnlp_gain     1
+;
+
+set coding 4 rtp_digit_repetitions 1
+
+set coding 4 valid
+;
+
+;=========================
+;==== 5:  G.722_64K   ====
+;=========================
+;# Coding Profile 5 == G.722_64K packet time ==> 20 ms
+
+set coding 5 coding_type              g722_64
+set coding 5 usage fax                off
+set coding 5 usage voice              on
+set coding 5 usage modem              off
+set coding 5 usage data               off
+;set coding 5 vif                      1280
+set coding 5 encap                    rtp
+set coding 5 vad                      on
+set coding 5 vad_thresh               32767
+;set coding 5 min_delay                40
+;set coding 5 nom_delay                60
+;set coding 5 max_delay                140
+set coding 5 dtmf_relay               on inb
+set coding 5 ec                       on
+;set coding 5 ec_tail                  8
+set coding 5 ec_nl                   on
+set coding 5 lec_tail                 10
+set coding 5 lec_cn_config      	  0
+set coding 5 modem_timeout           30
+set coding 5 silence_detect time      0
+set coding 5 silence_detect level     -40
+set coding 5 vp_concealment 		NONE
+;set coding 5 adaptive_playout       adj_immed
+;
+;
+;#set coding 5 aer_hf_tail        200
+;#set coding 5 aer_hf_nlp_gain   1036
+;#set coding 5 aer_hf_nlp_clip     -2
+;#set coding 5 aer_hf_pnlp_gain     1
+;#set coding 5 aer_gl_tail         40
+;#set coding 5 aer_gl_nlp_gain     50
+;#set coding 5 aer_gl_nlp_clip     -2
+;#set coding 5 aer_gl_pnlp_gain     1
+;
+
+set coding 5 rtp_digit_repetitions 1
+
+set coding 5 valid
+
+;=========================
+;==== 6:  L16-256   ====
+;=========================
+;# Coding Profile 6 == l16pcm_256 packet time ==> 10 ms
+
+set coding 6 coding_type   tx     l16pcm_256       
+set coding 6 coding_type   rx     l16pcm_256       
+set coding 6 usage fax                off          
+set coding 6 usage voice              on           
+set coding 6 usage modem              off          
+set coding 6 usage data               off          
+;set coding 6 vif                      2560         
+set coding 6 codec_init_rate_idx      0           
+set coding 6 encap                    rtp          
+set coding 6 vad                      on          
+set coding 6 vad_thresh               32767        
+;set coding 6 min_delay                40           
+;set coding 6 nom_delay                60           
+;set coding 6 max_delay                140          
+set coding 6 dtmf_relay        off           
+set coding 6 ec                       on           
+;set coding 6 ec_tail                  8
+set coding 6 ec_nl                   on
+set coding 6 lec_tail                 10
+set coding 6 lec_cn_config      	  0
+set coding 6 modem_timeout           30
+set coding 6 silence_detect time      0
+set coding 6 silence_detect level     -40
+set coding 6 vp_concealment 		NONE
+;set coding 6 adaptive_playout       adj_immed
+;for Microtronix SIP User Agent
+set coding 6 codec_payload_format tx linear
+set coding 6 codec_payload_format rx linear
+set coding 6 codec_packing_option tx oct_aligned
+set coding 6 codec_packing_option rx oct_aligned
+
+;=========================
+;==== 7:  iLBC        ====
+;=========================
+;# Coding Profile 7 == ilbc packet time ==> 20 ms
+set coding 7  copyof              1
+set coding 7  coding_type         ilbc
+set coding 7  vif                 304
+set coding 7  nom_delay           60
+set coding 7  max_delay           120
+set coding 7  vad_noise_matching  NONE
+set coding 7  vad_noise_lp_order  0
+set coding 7  vp_concealment      NONE
+set coding 7  vp_noise_type       FIXED
+set coding 7  vp_noise_lp_order   0
+set coding 7  valid
+
+;=========================
+;==== 8:  iLBC133.3   ====
+;=========================
+;# Coding Profile 8 == ilbc packet time ==> 30 ms
+set coding 8 copyof               1
+set coding 8 coding_type          ilbc_133
+set coding 8 vif                  400
+set coding 8 nom_delay            60
+set coding 8 max_delay            120
+set coding 8 vad_noise_matching   NONE
+set coding 8 vad_noise_lp_order   0
+set coding 8 vp_concealment       NONE
+set coding 8 vp_noise_type        FIXED
+set coding 8 vp_noise_lp_order    0
+set coding 8 valid
+
+;
+;
+;#set coding 6 aer_hf_tail        200
+;#set coding 6 aer_hf_nlp_gain   1036
+;#set coding 6 aer_hf_nlp_clip     -2
+;#set coding 6 aer_hf_pnlp_gain     1
+;#set coding 6 aer_gl_tail         40
+;#set coding 6 aer_gl_nlp_gain     50
+;#set coding 6 aer_gl_nlp_clip     -2
+;#set coding 6 aer_gl_pnlp_gain     1
+;
+
+set coding 6 rtp_digit_repetitions 1
+
+set coding 6 valid
+
+;###############################
+;####         ipp           ####
+;###############################
+set ipp hs_prof     0 6 15
+set ipp hes_prof    1 7 16
+set ipp hf_prof     2 8 17
+set ipp gl_hs_prof  3 9 18
+set ipp gl_hes_prof 4 10 19
+set ipp spk_prof    5
+set ipp headset_port dedicated
+set ipp kpad_echo     off
+;
+;###############################
+;####   Secure: SRTP        ####
+;###############################
+set tcid 0 sec_prof 0
+set sec_prof 0 cipher aes_cm_128
+set sec_prof 0 mac hmac_sha1_32
+set sec_prof 0 priority 255
+set sec_prof 0 rtcp off
+set sec_prof 0 kdr_offer 24 
+;
+;###############################
+;####        tcid           ####
+;###############################
+set tcid 0 mode sw cas
+set tcid 0 prof_bit                 all 0
+set tcid 0 prof_bit                 0 1
+set tcid 0 prof_bit                 1 1
+set tcid 0 prof_bit                 2 1
+set tcid 0 prof_bit                 3 1
+;set tcid 0 prof_bit                 4 1
+;set tcid 0 prof_bit                 5 1
+;set tcid 0 prof_bit                 6 1
+
+#set tcid 0 voice_prof               0
+set tcid 0 rxgain                   0
+set tcid 0 txgain                   0
+set tcid 0 ec_config                 aes
+set tcid 0 proto                    ipp
+set tcid 0 idle_noise -6500
+set tcid 0 tone_out_power -60
+set tcid 0 tone_table_flags window mix_voice
+;#set tcid 0 state normal
+;
+
+; default codec using g711_a
+;sip set codec_pri 1 0 0 0 0 0 0
+
+;activate
+;commit

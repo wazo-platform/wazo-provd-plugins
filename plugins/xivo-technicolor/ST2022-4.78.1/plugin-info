@@ -1,0 +1,10 @@
+{
+    "version": "0.4",
+    "description": "Plugin for Technicolor (previously known as Thomson) ST2022 in version 4.78.1.",
+    "description_fr": "Greffon pour Technicolor (auparavant connu comme Thomson) ST2022 en version 4.78.1.",
+    "capabilities": {
+        "Technicolor, ST2022, 4.78.1": {
+            "sip.lines": 2
+        }
+    }
+}
