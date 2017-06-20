@@ -1,0 +1,32 @@
+[pkg_N510-fw]
+description: Firmware for Gigaset N510 IP PRO
+description_fr: Micrologiciel pour Gigaset N510 IP PRO
+version: 42.240
+files: N510-fw
+install: gigaset-n510-fw N510
+
+[pkg_N720-fw]
+description: Firmware for Gigaset N720 IP PRO
+description_fr: Micrologiciel pour Gigaset N720 IP PRO
+version: 108
+files: N720-fw
+install: gigaset-n720-fw N720
+
+
+[install_gigaset-n510-fw]
+a-b: cp $FILE1 Gigaset/
+
+[install_gigaset-n720-fw]
+a-b: unzip $FILE1
+b-c: cp */*.bin Gigaset/
+
+
+[file_N510-fw]
+url: https://teamwork.gigaset.com/gigawiki/download/attachments/516882526/merkur240.bin?version=1&modificationDate=1476780378000&api=v2&download=true
+size: 7169498
+sha1sum: 3a435a9a73ec939ab07826adf2cd4130cffa424a
+
+[file_N720-fw]
+url: https://teamwork.gigaset.com/gigawiki/download/attachments/598050518/N720_SW108.zip?version=1&modificationDate=1492062989000&api=v2&download=true
+size: 2081292
+sha1sum: 8bb919db705e2903aba8ba5648a753292efe4d36

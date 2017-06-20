@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013-2014 Avencall
+# Copyright 2013-2017 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ from subprocess import check_call
 def build_C470(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
-    
+
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'C470/', path])
 
@@ -34,6 +34,15 @@ def build_C470(path):
 def build_C590(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
-    
+
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'C590/', path])
+
+
+@target('NXX_IP_PRO', 'xivo-gigaset-NXX-IP-PRO')
+def build_NXX_IP_PRO(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'NXX_IP_PRO/', path])
