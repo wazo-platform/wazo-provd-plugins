@@ -4,7 +4,6 @@ description_fr: Micrologiciel pour Aastra 6863i
 version: 4.3.0.1052
 files: 6800i-fw
 install: 6863i-fw
-depends: aastra-fw
 
 [pkg_6865i-fw]
 description: Firmware for Aastra 6865i
@@ -12,7 +11,6 @@ description_fr: Micrologiciel pour Aastra 6865i
 version: 4.3.0.1052
 files: 6800i-fw
 install: 6865i-fw
-depends: aastra-fw
 
 [pkg_6867i-fw]
 description: Firmware for Aastra 6867i
@@ -20,7 +18,6 @@ description_fr: Micrologiciel pour Aastra 6867i
 version: 4.3.0.1052
 files: 6800i-fw
 install: 6867i-fw
-depends: aastra-fw
 
 [pkg_6869i-fw]
 description: Firmware for Aastra 6869i
@@ -28,7 +25,6 @@ description_fr: Micrologiciel pour Aastra 6869i
 version: 4.3.0.1052
 files: 6800i-fw
 install: 6869i-fw
-depends: aastra-fw
 
 [pkg_6873i-fw]
 description: Firmware for Aastra 6873i
@@ -36,7 +32,6 @@ description_fr: Micrologiciel pour Aastra 6873i
 version: 4.3.0.1052
 files: 6800i-fw
 install: 6873i-fw
-depends: aastra-fw
 
 [pkg_lang]
 description: Language files
@@ -50,24 +45,29 @@ install: aastra-lang
 a-b: unzip $FILE1
 
 [install_6863i-fw]
-a-b: unzip 58015039-REV02_4.3.0.1052_SP1_6863i.zip
-b-c: include *.st
+a-b: unzip $FILE1
+b-c: unzip 58015039-REV02_4.3.0.1052_SP1_6863i.zip
+c-d: include *.st
 
 [install_6865i-fw]
-a-b: unzip 58015040-REV02_4.3.0.1052_SP1_6865i.zip
-b-c: include *.st
+a-b: unzip $FILE1
+b-c: unzip 58015040-REV02_4.3.0.1052_SP1_6865i.zip
+c-d: include *.st
 
 [install_6867i-fw]
-a-b: unzip 58015041-REV02_4.3.0.1052_SP1_6867i.zip
-b-c: include *.st
+a-b: unzip $FILE1
+b-c: unzip 58015041-REV02_4.3.0.1052_SP1_6867i.zip
+c-d: include *.st
 
 [install_6869i-fw]
-a-b: unzip 58015042-REV02_4.3.0.1052_SP1_6869i.zip
-b-c: include *.st
+a-b: unzip $FILE1
+b-c: unzip 58015042-REV02_4.3.0.1052_SP1_6869i.zip
+c-d: include *.st
 
 [install_6873i-fw]
-a-b: unzip 58015043-REV02_4.3.0.1052_SP1_6873i.zip
-b-c: include *.st
+a-b: unzip $FILE1
+b-c: unzip 58015043-REV02_4.3.0.1052_SP1_6873i.zip
+c-d: include *.st
 
 [install_aastra-lang]
 a-b: unzip $FILE1
@@ -75,13 +75,13 @@ b-c: cp * i18n/
 
 
 [file_6800i-fw]
-filename: 6800i-fw.128.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=18521-18769-_P06_XML&dsproject=aastra&mtype=zip
+filename: 6800i-fw.1052.zip
+url: http://d3zs5oljjs68i.cloudfront.net/sites/default/files/Mitel_SIP_4_3_0_1052_SP1_GA_all_models_02_2017%20%281%29.zip
 size: 155610141
 sha1sum: 4e62a083a548c058261989e7cb2db67f8624fcf4
 
 [file_lang]
-filename: lang.128.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=17407-18773-_P06_XML&dsproject=aastra&mtype=zip
+filename: lang.1052.zip
+url: http://d3zs5oljjs68i.cloudfront.net/sites/default/files/5801456-REV01_LangPacks_4_3_0_SP1_0.zip
 size: 799471
 sha1sum: 1590c0069d7b374df07048eecdf74818591aaea9
