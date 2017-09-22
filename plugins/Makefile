@@ -14,6 +14,11 @@ REMOTE_STABLE_PATH := /var/www/provd/plugins/1/stable
 REMOTE_ARCHIVE_PATH := /var/www/provd/plugins/1/archive
 
 
+.PHONY : download
+download :
+	mkdir -p $(TESTING_PATH)
+	rsync -v -rt --delete $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_TESTING_PATH)/ $(TESTING_PATH)
+
 .PHONY : build
 build :
 	rm -rf $(PLUGINS_PATH) $(TESTING_PATH)
