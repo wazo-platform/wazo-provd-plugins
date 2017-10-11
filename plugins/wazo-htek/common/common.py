@@ -35,7 +35,7 @@ logger = logging.getLogger('plugin.wazo-htek')
 
 class BaseHtekHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
-        re.compile(r'^[hH]tek\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^Htek'),
     ]
 
     def extract(self, request, request_type):
@@ -50,7 +50,7 @@ class BaseHtekHTTPDeviceInfoExtractor(object):
 
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
-        #   "Htek"
+        #   "Htek UC903 2.0.4.2 00:1f:c1:1c:22:a9"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
