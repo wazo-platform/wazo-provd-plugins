@@ -22,10 +22,12 @@ execfile_('common.py', common_globals)
 
 MODEL_VERSIONS = {
     u'UC926': u'2.0.4.2.19',
+    u'UC903': u'2.0.4.2.19',
 }
 
 COMMON_FILES = [
     ('cfg0010.xml', u'fw926.rom', 'model.tpl'),
+    ('cfg0016.xml', u'fw903.rom', 'model.tpl'),
 ]
 
 

@@ -5,7 +5,7 @@ version: 2.0.4.2.19
 files: UC926-fw
 install: htek-fw
 
-[pkg_UC926-fw]
+[pkg_UC903-fw]
 description: Firmware for Htek UC903
 description_fr: Micrologiciel pour Htek UC903
 version: 2.0.4.2.19
