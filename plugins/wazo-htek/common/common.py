@@ -35,7 +35,7 @@ logger = logging.getLogger('plugin.wazo-htek')
 
 class BaseHtekHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
-        re.compile(r'^Htek'),
+        re.compile(r'^Htek ([^ ]+) ([^ ]+) ([^ ]+)$')
     ]
 
     def extract(self, request, request_type):
@@ -45,8 +45,6 @@ class BaseHtekHTTPDeviceInfoExtractor(object):
         ua = request.getHeader('User-Agent')
         if ua:
             return self._extract_from_ua(ua)
-        else:
-            return self._extract_from_path(request)
 
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
@@ -68,15 +66,6 @@ class BaseHtekHTTPDeviceInfoExtractor(object):
                             u'model': raw_model.decode('ascii'),
                             u'version': raw_version.decode('ascii'),
                             u'mac': mac}
-        return None
-
-    def _extract_from_path(self, request):
-        if request.path.startswith('/001565'):
-            raw_mac = path[1:-4]
-            try:
-                mac = norm_mac(raw_mac.decode('ascii'))
-            except ValueError as e:
-                logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
         return None
 
 
@@ -171,62 +160,10 @@ class BaseHtekFunckeyGenerator(object):
 class BaseHtekFunckeyPrefixIterator(object):
 
     _NB_LINEKEY = {
-        u'CP860': 0,
-        u'T19P': 0,
-        u'T19P_E2': 0,
-        u'T20P': 2,
-        u'T21P': 2,
-        u'T21P_E2': 2,
-        u'T22P': 3,
-        u'T23P': 3,
-        u'T23G': 3,
-        u'T26P': 3,
-        u'T27P': 21,
-        u'T27G': 21,
-        u'T28P': 6,
-        u'T29G': 27,
-        u'T32G': 3,
-        u'T38G': 6,
         u'T40P': 3,
-        u'T41P': 15,
-        u'T41S': 15,
-        u'T42G': 15,
-        u'T42S': 15,
-        u'T46G': 27,
-        u'T46S': 27,
-        u'T48G': 29,
-        u'T48S': 29,
-        u'T49G': 29,
-        u'W52P': 0,
     }
     _NB_MEMORYKEY = {
-        u'CP860': 0,
-        u'T19P': 0,
-        u'T19P_E2': 0,
-        u'T20P': 0,
-        u'T21P': 0,
-        u'T21P_E2': 0,
-        u'T22P': 0,
-        u'T23P': 0,
-        u'T23G': 0,
-        u'T26P': 10,
-        u'T27P': 0,
-        u'T27G': 0,
-        u'T28P': 10,
-        u'T29G': 0,
-        u'T32G': 0,
-        u'T38G': 10,
-        u'T40P': 0,
-        u'T41P': 0,
-        u'T41S': 0,
-        u'T42G': 0,
-        u'T42S': 0,
-        u'T46G': 0,
-        u'T46S': 0,
-        u'T48G': 0,
         u'T48S': 0,
-        u'T49G': 0,
-        u'W52P': 0,
     }
     _NB_EXPMODKEY = 40
 
@@ -292,34 +229,7 @@ class BaseHtekPlugin(StandardPlugin):
     }
     _SIP_TRANSPORT_DEF = u'0'
     _NB_SIP_ACCOUNTS = {
-        u'CP860': 1,
-        u'T19P': 1,
-        u'T19P_E2': 1,
-        u'T20P': 2,
-        u'T21P': 2,
-        u'T21P_E2': 2,
-        u'T22P': 3,
-        u'T23P': 3,
-        u'T23G': 3,
-        u'T26P': 3,
-        u'T27P': 6,
-        u'T27G': 6,
-        u'T28P': 6,
-        u'T29G': 16,
-        u'T32G': 3,
-        u'T38G': 6,
-        u'T40P': 3,
-        u'T41P': 6,
-        u'T41S': 6,
-        u'T42G': 12,
-        u'T42S': 12,
-        u'T46G': 16,
-        u'T46S': 16,
-        u'T48G': 16,
         u'T48S': 16,
-        u'T49G': 16,
-        u'VP530P': 4,
-        u'W52P': 5,
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
