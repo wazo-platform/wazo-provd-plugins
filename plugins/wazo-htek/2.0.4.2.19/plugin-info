@@ -1,0 +1,41 @@
+{
+    "version": "1.0",
+    "description": "Htek plugin for 9XX series in version 2.0.",
+    "description_fr": "Greffon Htek pour les séries 9XX en version 2.0.",
+    "vendor" : "Htek",
+    "vendor.url" : "http://www.htek.com",
+    "vendor.description" : "Companies choose Htek for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Htek, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
+    "vendor.official" : 1,
+    "capabilities": {
+        "Htek, UC926, 2.0.4.2.19": {
+            "sip.lines": 1,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
+        },
+        "Htek, UC924, 2.0.4.2.19": {
+            "sip.lines": 1,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
+        },
+        "Htek, UC923, 2.0.4.2.19": {
+            "sip.lines": 1,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
+        },
+        "Htek, UC902, 2.0.4.2.19": {
+            "sip.lines": 1,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
+        },
+        "Htek, UC901, 2.0.4.2.19": {
+            "sip.lines": 1,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 1
+        }
+    }
+}
