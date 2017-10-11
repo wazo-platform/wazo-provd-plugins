@@ -11,7 +11,7 @@
         <P4567 para="Account{{ line_no }}.PreferPrimaryServer">0</P4567>
         <P48 para="Account{{ line_no }}.OutboundProxy">{{ line['proxy_ip'] }}</P48>
         <P20047 para="Account{{ line_no }}.BackUpOutboundProxy" />
-        <P130 para="Account{{ line_no }}.SipTransport">1</P130>
+        <P130 para="Account{{ line_no }}.SipTransport">0</P130>
         <P52 para="Account{{ line_no }}.NatTraversal">2</P52>
         <P20000 para="Account{{ line_no }}.Label">{{ line['display_name'] }}</P20000>
         <P35 para="Account{{ line_no }}.SipUserId">{{ line['username'] }}</P35>
@@ -24,9 +24,9 @@
         <P81 para="Account{{ line_no }}.UnregisterOnReboot">0</P81>
         <P32 para="Account{{ line_no }}.RegisterExpiration">1</P32>
         <P109 para="Account{{ line_no }}.OutCallWithoutReg">0</P109>
-        <P40 para="Account{{ line_no }}.LocalSipPort">{{ line['proxy_port']|d('%NULL%') }}</P40>
+        <P40 para="Account{{ line_no }}.LocalSipPort">{{ line['proxy_port'] }}</P40>
         <P78 para="Account{{ line_no }}.UseRandomPort">0</P78>
-        <P33 para="Account{{ line_no }}.VoiceMailId">{{ line['voicemail']|d('%NULL%') }}</P33>
+        <P33 para="Account{{ line_no }}.VoiceMailId">{{ line['voicemail'] }}</P33>
         <P136 para="Account{{ line_no }}.RPort">cn</P136>
         <P1100 para="Account{{ line_no }}.RFC2543Hold">1</P1100>
         <P8775 para="Account{{ line_no }}.ConnectMode">0</P8775>
@@ -85,6 +85,8 @@
         <P4706 para="Account{{ line_no }}.GroupCallPickupCode" />
         <P20053 para="Account{{ line_no }}.SipSendMac">1</P20053>
         <P20157 para="Account{{ line_no }}.CallerDisplaySource">0</P20157>
+        {% endif -%}
+      {% endfor -%}
         <!--Network/Basic-->
         <P8 para="IPv4WanMode">0</P8>
         <P190 para="HttpAccess">1</P190>
