@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013-2016 Avencall
+# Copyright 2013-2017 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -49,7 +49,7 @@ COMMON_FILES = [
     ('y000000000045.cfg', u'T27-45.81.0.110.rom', 'model.tpl'),
     ('y000000000069.cfg', u'T27G-69.81.0.110.rom', 'model.tpl'),
     ('y000000000046.cfg', u'T29-46.81.0.110.rom', 'model.tpl'),
-    ('y000000000052.cfg', u'T21P_E2-52.81.0.70.rom', 'model.tpl'),
+    ('y000000000052.cfg', u'T21P_E2-52.81.0.110.rom', 'model.tpl'),
     ('y000000000053.cfg', u'T19P_E2-53.81.0.110.rom', 'model.tpl'),
     ('y000000000054.cfg', u'T40-54.81.0.110.rom', 'model.tpl'),
     ('y000000000076.cfg', u'T40G-76.81.0.110.rom', 'model.tpl'),
