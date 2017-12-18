@@ -86,6 +86,12 @@
             "tel.funckeys": 0,
             "xivo.tested": 0
         },
+        "Yealink, CP960, 73.80.0.35": {
+            "sip.lines": 1,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 0
+        },
         "Yealink, W52P, 25.80.0.15": {
             "sip.lines": 5,
             "xivo.ha": 1,
