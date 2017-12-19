@@ -87,4 +87,3 @@ account.{{ line_no }}.sip_server.2.port = %NULL%
 voice_mail.number.{{ line_no }} = %NULL%
 {% endif %}
 {% endfor %}
-
