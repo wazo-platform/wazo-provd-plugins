@@ -110,10 +110,35 @@ version: 65.81.0.110
 files: T48S-fw
 install: yealink-unrar-48S-fw
 
+[pkg_CP860-fw]
+description: Firmware for Yealink CP860
+description_fr: Micrologiciel pour Yealink CP860
+version: 37.81.0.10
+files: CP860-fw
+install: yealink-fw
+
+[pkg_W52P_W56P-base-fw]
+description: Firmware for Yealink W52P and W56P base
+description_fr: Micrologiciel pour base Yealink W52P et W56P
+version: 25.81.0.10
+files: W52P_W56P-base-fw
+install: yealink-cp-rom
+
+[pkg_W56P-handset-fw]
+description: Firmware for Yealink W56P handset
+description_fr: Micrologiciel pour combinÃ© Yealink W56P
+version: 61.81.0.30
+files: W56P-handset-fw
+install: yealink-cp-rom
+
 
 [install_yealink-fw]
 a-b: unzip $FILE1
 b-c: cp *.rom firmware/
+
+[install_yealink-cp-rom]
+a-b: cp *.rom firmware/
+
 
 [install_yealink-unrar-41S-fw]
 a-b: unrar $FILE1
@@ -211,3 +236,22 @@ sha1sum: 0aad3152f18a8aba79ae9fe774aefc0c785783a4
 url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F31d40b64-395f-425c-9522-1c91c475a621%2FT48S-66.81.0.110.rar
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
+
+[file_CP860-fw]
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-6-23%2F6%2F06b7c24e-7e79-4327-bbd2-0fd8db990ec7%2FCP860-37.81.0.10.zip
+size: 9106482
+sha1sum: 36ba04d0a95a512e6cc14276ec65a052fd414df7
+
+[file_W52P_W56P-base-fw]
+filename: Base-W52P-W56P-25.81.0.10.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-9-25%2F6%2F90f34f43-90a5-4b5d-88fe-fb326a33bc6c%2FBase%20for%20W52P%26W56P-25.81.0.10.rom
+size: 6763776
+sha1sum: 69ea05cd71ed7e5bdfd508cdae4782a9c94e353b
+
+[file_W56P-handset-fw]
+filename: W56H-61.81.0.30.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-10-24%2F6%2Fe55f08ca-14e5-4d73-b58d-d39c290e74a0%2FW56H-61.81.0.30.rom
+size: 4259808
+sha1sum: 197d100b0b6ec78eea698f37f06933c097e498dd
+
+
