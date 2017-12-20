@@ -63,7 +63,7 @@ COMMON_FILES = [
 ]
 
 COMMON_FILES_DECT = [
-    ('y000000000025.cfg', u'Base for W52P&W56P-25.81.0.10', u'W56H-61.81.0.30.rom', 'W52P.tpl'),
+    ('y000000000025.cfg', u'Base-W52P-W56P-25.81.0.10.rom', u'W56H-61.81.0.30.rom', 'W52P.tpl'),
 ]
 
 class YealinkPlugin(common_globals['BaseYealinkPlugin']):
