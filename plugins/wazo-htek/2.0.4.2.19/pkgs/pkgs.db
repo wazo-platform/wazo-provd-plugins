@@ -1,0 +1,66 @@
+[pkg_UC926-fw]
+description: Firmware for Htek UC926
+description_fr: Micrologiciel pour Htek UC926
+version: 2.0.4.2.19
+files: UC926-fw
+install: htek-fw
+
+[pkg_UC924-fw]
+description: Firmware for Htek UC924
+description_fr: Micrologiciel pour Htek UC924
+version: 2.0.4.2.19
+files: UC924-fw
+install: htek-fw
+
+[pkg_UC923-fw]
+description: Firmware for Htek UC923
+description_fr: Micrologiciel pour Htek UC923
+version: 2.0.4.2.19
+files: UC923-fw
+install: htek-fw
+
+[pkg_UC903-fw]
+description: Firmware for Htek UC903
+description_fr: Micrologiciel pour Htek UC903
+version: 2.0.4.2.19
+files: UC903-fw
+install: htek-fw
+
+[pkg_UC902-fw]
+description: Firmware for Htek UC902
+description_fr: Micrologiciel pour Htek UC902
+version: 2.0.4.2.19
+files: UC902-fw
+install: htek-fw
+
+
+[install_htek-fw]
+a-b: unrar $FILE1
+b-c: cp *.rom firmware/
+
+
+[file_UC926-fw]
+url: http://www.htek.com/download.php?id=400
+size: 8560474
+sha1sum: a00f193cd06ac4c9967adcc44af62fecdbf9cc3e
+
+[file_UC924-fw]
+url: http://www.htek.com/download.php?id=321
+size: 8622204
+sha1sum: 8a9672f8bb6ae9b055fb0be2d1bb34c74dc9c8cd
+
+[file_UC923-fw]
+url: http://www.htek.com/download.php?id=320
+size: 8379037
+sha1sum: 1d9b8db6915d0272b6e196c43cba035994d9451f
+
+[file_UC903-fw]
+url: http://www.htek.com/download.php?id=362
+size: 7808666
+sha1sum: 4b7e948d7fefbe53f0c3fdbb02d61f9a05f364a4
+
+[file_UC902-fw]
+url: http://www.htek.com/download.php?id=319
+size: 7802386
+sha1sum: 641a4e615be584c0bbd2fe7ae8cbe9807300402d
+
