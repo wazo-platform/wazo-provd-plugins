@@ -18,6 +18,48 @@
             "xivo.ha" : 0,
             "tel.funckeys" : 8,
             "xivo.tested" : 0
+        },
+        "Fanvil, X2, 2.3": {
+            "sip.lines": 1,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 0,
+            "xivo.tested" : 0
+        },
+        "Fanvil, X3, 2.3": {
+            "sip.lines": 2,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 0,
+            "xivo.tested" : 0
+        },
+        "Fanvil, X3S, 2.3": {
+            "sip.lines": 2,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 0,
+            "xivo.tested" : 0
+        },
+        "Fanvil, X4, 2.3": {
+            "sip.lines": 4,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 12,
+            "xivo.tested" : 0
+        },
+        "Fanvil, X5, 2.3": {
+            "sip.lines": 6,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 40,
+            "xivo.tested" : 0
+        },
+        "Fanvil, X5S, 2.3": {
+            "sip.lines": 6,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 40,
+            "xivo.tested" : 0
+        },
+        "Fanvil, X6, 2.3": {
+            "sip.lines": 6,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 60,
+            "xivo.tested" : 0
         }
     }
 }

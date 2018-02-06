@@ -13,7 +13,7 @@
 <ID>SIP1</ID>
 {% for line_no, line in sip_lines.iteritems() %}
 <Phone_Number>{{ line['username']}}</Phone_Number>
-<Display_Name>{{ line['username'] }}</Display_Name>
+<Display_Name>{{ line['display_name']|e }}</Display_Name>
 <Register_Addr>{{ line['proxy_ip'] }}</Register_Addr>
 <Register_Port>{{ line['proxy_port']|d(5060) }}</Register_Port>
 <Register_User>{{ line['username'] }}</Register_User>
