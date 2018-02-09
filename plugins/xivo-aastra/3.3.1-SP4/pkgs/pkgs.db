@@ -88,32 +88,32 @@ b-c: cp */* i18n/
 
 
 [file_6730i-fw]
-filename: 6730i-fw.4358.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6167-18613-_P06_XML&dsproject=aastra&mtype=zip
+filename: FC-001319-02-REV25_6730i_3_3_1_4358_SP4_HF8%20%281%29.zip
+url: http://www.mitel.com/sites/default/files/FC-001319-02-REV25_6730i_3_3_1_4358_SP4_HF8%20%281%29.zip
 size: 2041255
 sha1sum: 7ea9d5f9d3835eabc7b3eec9ebd15690bd2129aa
 
 [file_6731i-fw]
-filename: 6731i-fw.4358.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6274-18619-_P06_XML&dsproject=aastra&mtype=zip
+filename: FC-001318-02-REV25_6731i_3_3_1_4358_SP4_HF8.zip
+url: http://www.mitel.com/sites/default/files/FC-001318-02-REV25_6731i_3_3_1_4358_SP4_HF8.zip
 size: 2047183
 sha1sum: 2eab03a95087bcf958a945f5d745dca6b38769ae
 
 [file_6735i-fw]
-filename: 6735i-fw.8202.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=15256-18591-_P06_XML&dsproject=aastra&mtype=zip
+filename: FC-001362-01-REV13_6735i_3_3_1_8202_SP4_HF7.zip
+url: http://www.mitel.com/sites/default/files/FC-001362-01-REV13_6735i_3_3_1_8202_SP4_HF7.zip
 size: 11674313
 sha1sum: cdf824cd20243fb92df2a5e73e6f4ebcc8c905e5
 
 [file_6737i-fw]
-filename: 6737i-fw.8202.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=15257-18585-_P06_XML&dsproject=aastra&mtype=zip
+filename: FC-001363-01-REV13_6737i_3_3_1_8202_SP4_HF7.zip
+url: http://www.mitel.com/sites/default/files/FC-001363-01-REV13_6737i_3_3_1_8202_SP4_HF7.zip
 size: 11899596
 sha1sum: 0ecf391fe949563d0452b8526b31b0469b0973a9
 
 [file_6739i-fw]
 filename: 6739i-fw.4358.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6354-18621-_P06_XML&dsproject=aastra&mtype=zip
+url: http://www.mitel.com/sites/default/files/FC-001317-02-REV25_6739i_3_3_1_4358_SP4_HF8.zip
 size: 5019113
 sha1sum: 089995c5b50558f20e36e9337d4bb18bdc3fd5c8
 
@@ -124,14 +124,14 @@ size: 2854844
 sha1sum: 6d2dc2a720e2be6e58f91980f5164ff5656ac007
 
 [file_6755i-fw]
-filename: 6755i-fw.4358.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6950-18625-_P06_XML&dsproject=aastra&mtype=zip
+filename: FC-001322-02-REV25_6755i_3_3_1_4358_SP4_HF8.zip
+url: http://www.mitel.com/sites/default/files/FC-001322-02-REV25_6755i_3_3_1_4358_SP4_HF8.zip
 size: 2886614
 sha1sum: 6e88cb99915fcb23612a5a25fb362ca6db40a62c
 
 [file_6757i-fw]
-filename: 6757i-fw.4358.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=7041-18627-_P06_XML&dsproject=aastra&mtype=zip
+filename: FC-001323-02-REV25_6757i_3_3_1_4358_SP4_HF8.zip
+url: http://www.mitel.com/sites/default/files/FC-001323-02-REV25_6757i_3_3_1_4358_SP4_HF8.zip
 size: 2886083
 sha1sum: 43836a88e4b8fa13189e342fe2d072be58b2712b
 
@@ -148,7 +148,7 @@ size: 2824901
 sha1sum: ad982e1fd426664280d424c8637eae7c0b0d9bb0
 
 [file_lang]
-filename: lang.4.2.0.1080.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6528-18662-_P06_XML&dsproject=aastra&mtype=zip
+filename: 5801456-REV01_LangPacks_4_2_0_SP1_0.zip
+url: http://www.mitel.com/sites/default/files/5801456-REV01_LangPacks_4_2_0_SP1_0.zip
 size: 699938
 sha1sum: 5cd4344dde28b2ef61b3cfcf5f9a59e660abbb32
