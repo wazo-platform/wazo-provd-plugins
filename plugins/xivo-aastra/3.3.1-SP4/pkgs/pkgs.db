@@ -1,9 +1,72 @@
-[pkg_67XXi-fw]
-description: Firmware for Aastra 6730i, 6731i, 6735i, 6737i, 6739i, 6753i, 6755i, 6757i, 9143i and 9480i
-description_fr: Micrologiciel pour Aastra 6730i, 6731i, 6735i, 6737i, 6739i, 6753i, 6755i, 6757i, 9143i and 9480i
-version: 3.3.1.4365 / 3.3.1.8215
+[pkg_6730i-fw]
+description: Firmware for Aastra 6730i
+description_fr: Micrologiciel pour Aastra 6730i
+version: 3.3.1.4365
 files: 67XXi-fw
-install: aastra-fw
+install: 6730i-fw
+
+[pkg_6731i-fw]
+description: Firmware for Aastra 6731i
+description_fr: Micrologiciel pour Aastra 6731i
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6731i-fw
+
+[pkg_6735i-fw]
+description: Firmware for Aastra 6735i
+description_fr: Micrologiciel pour Aastra 6735i
+version: 3.3.1.8215
+files: 67XXi-fw
+install: 6735i-fw
+
+[pkg_6737i-fw]
+description: Firmware for Aastra 6737i
+description_fr: Micrologiciel pour Aastra 6737i
+version: 3.3.1.8215
+files: 67XXi-fw
+install: 6737i-fw
+
+[pkg_6739i-fw]
+description: Firmware for Aastra 6739i
+description_fr: Micrologiciel pour Aastra 6739i
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6739i-fw
+
+[pkg_6753i-fw]
+description: Firmware for Aastra 6753i
+description_fr: Micrologiciel pour Aastra 6753i
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6753i-fw
+
+[pkg_6755i-fw]
+description: Firmware for Aastra 6755i
+description_fr: Micrologiciel pour Aastra 6755i
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6755i-fw
+
+[pkg_6757i-fw]
+description: Firmware for Aastra 6757i
+description_fr: Micrologiciel pour Aastra 6757i
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6757i-fw
+
+[pkg_9143i-fw]
+description: Firmware for Aastra 9143i
+description_fr: Micrologiciel pour Aastra 9143i
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 9143i-fw
+
+[pkg_9480i-fw]
+description: Firmware for Aastra 9480i
+description_fr: Micrologiciel pour Aastra 9480i
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 9480i-fw
 
 [pkg_lang]
 description: Language files
@@ -13,9 +76,45 @@ files: lang
 install: aastra-lang
 
 
-[install_aastra-fw]
+[install_6730i-fw]
 a-b: unzip $FILE1
-b-c: include *.st
+b-c: include 6730i.st
+
+[install_6731i-fw]
+a-b: unzip $FILE1
+b-c: include 6731i.st
+
+[install_6735i-fw]
+a-b: unzip $FILE1
+b-c: include 6735i.st
+
+[install_6737i-fw]
+a-b: unzip $FILE1
+b-c: include 6737i.st
+
+[install_6739i-fw]
+a-b: unzip $FILE1
+b-c: include 6739i.st
+
+[install_9143i-fw]
+a-b: unzip $FILE1
+b-c: include 9143i.st
+
+[install_6753i-fw]
+a-b: unzip $FILE1
+b-c: include 53i.st
+
+[install_6755i-fw]
+a-b: unzip $FILE1
+b-c: include 55i.st
+
+[install_6757i-fw]
+a-b: unzip $FILE1
+b-c: include 57i.st
+
+[install_9480i-fw]
+a-b: unzip $FILE1
+b-c: include 9480i.st
 
 [install_aastra-lang]
 a-b: unzip $FILE1
