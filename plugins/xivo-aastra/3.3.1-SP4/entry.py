@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014-2015 Avencall
+# Copyright 2014-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,16 +20,16 @@ execfile_('common.py', common)
 
 
 MODEL_VERSIONS = {
-    u'6730i': u'3.3.1.4358',
-    u'6731i': u'3.3.1.4358',
-    u'6735i': u'3.3.1.8202',
-    u'6737i': u'3.3.1.8202',
-    u'6739i': u'3.3.1.4358',
-    u'6753i': u'3.3.1.4358',
-    u'6755i': u'3.3.1.4358',
-    u'6757i': u'3.3.1.4358',
-    u'9143i': u'3.3.1.4358',
-    u'9480i': u'3.3.1.4358',
+    u'6730i': u'3.3.1.4365',
+    u'6731i': u'3.3.1.4365',
+    u'6735i': u'3.3.1.8215',
+    u'6737i': u'3.3.1.8215',
+    u'6739i': u'3.3.1.4365',
+    u'6753i': u'3.3.1.4365',
+    u'6755i': u'3.3.1.4365',
+    u'6757i': u'3.3.1.4365',
+    u'9143i': u'3.3.1.4365',
+    u'9480i': u'3.3.1.4365',
 }
 
 
