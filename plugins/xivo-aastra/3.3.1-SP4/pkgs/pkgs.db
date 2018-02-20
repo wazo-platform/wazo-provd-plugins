@@ -1,154 +1,134 @@
 [pkg_6730i-fw]
 description: Firmware for Aastra 6730i
 description_fr: Micrologiciel pour Aastra 6730i
-version: 3.3.1.4358
-files: 6730i-fw
-install: aastra-fw
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6730i-fw
 
 [pkg_6731i-fw]
 description: Firmware for Aastra 6731i
 description_fr: Micrologiciel pour Aastra 6731i
-version: 3.3.1.4358
-files: 6731i-fw
-install: aastra-fw
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6731i-fw
 
 [pkg_6735i-fw]
 description: Firmware for Aastra 6735i
 description_fr: Micrologiciel pour Aastra 6735i
-version: 3.3.1.8202
-files: 6735i-fw
-install: aastra-fw
+version: 3.3.1.8215
+files: 67XXi-fw
+install: 6735i-fw
 
 [pkg_6737i-fw]
 description: Firmware for Aastra 6737i
 description_fr: Micrologiciel pour Aastra 6737i
-version: 3.3.1.8202
-files: 6737i-fw
-install: aastra-fw
+version: 3.3.1.8215
+files: 67XXi-fw
+install: 6737i-fw
 
 [pkg_6739i-fw]
 description: Firmware for Aastra 6739i
 description_fr: Micrologiciel pour Aastra 6739i
-version: 3.3.1.4358
-files: 6739i-fw
-install: aastra-fw
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6739i-fw
 
 [pkg_6753i-fw]
 description: Firmware for Aastra 6753i
 description_fr: Micrologiciel pour Aastra 6753i
-version: 3.3.1.4358
-files: 6753i-fw
-install: aastra-fw
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6753i-fw
 
 [pkg_6755i-fw]
 description: Firmware for Aastra 6755i
 description_fr: Micrologiciel pour Aastra 6755i
-version: 3.3.1.4358
-files: 6755i-fw
-install: aastra-fw
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6755i-fw
 
 [pkg_6757i-fw]
 description: Firmware for Aastra 6757i
 description_fr: Micrologiciel pour Aastra 6757i
-version: 3.3.1.4358
-files: 6757i-fw
-install: aastra-fw
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 6757i-fw
 
 [pkg_9143i-fw]
 description: Firmware for Aastra 9143i
 description_fr: Micrologiciel pour Aastra 9143i
-version: 3.3.1.4358
-files: 9143i-fw
-install: aastra-fw
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 9143i-fw
 
 [pkg_9480i-fw]
 description: Firmware for Aastra 9480i
 description_fr: Micrologiciel pour Aastra 9480i
-version: 3.3.1.4358
-files: 9480i-fw
-install: aastra-fw
+version: 3.3.1.4365
+files: 67XXi-fw
+install: 9480i-fw
 
 [pkg_lang]
 description: Language files
 description_fr: Fichiers de langue
-version: 4.2.0.1080-1
+version: 4.2.0 SP1
 files: lang
 install: aastra-lang
 
 
-
-[install_aastra-fw]
+[install_6730i-fw]
 a-b: unzip $FILE1
-b-c: include *.st
+b-c: include 6730i.st
+
+[install_6731i-fw]
+a-b: unzip $FILE1
+b-c: include 6731i.st
+
+[install_6735i-fw]
+a-b: unzip $FILE1
+b-c: include 6735i.st
+
+[install_6737i-fw]
+a-b: unzip $FILE1
+b-c: include 6737i.st
+
+[install_6739i-fw]
+a-b: unzip $FILE1
+b-c: include 6739i.st
+
+[install_9143i-fw]
+a-b: unzip $FILE1
+b-c: include 9143i.st
+
+[install_6753i-fw]
+a-b: unzip $FILE1
+b-c: include 53i.st
+
+[install_6755i-fw]
+a-b: unzip $FILE1
+b-c: include 55i.st
+
+[install_6757i-fw]
+a-b: unzip $FILE1
+b-c: include 57i.st
+
+[install_9480i-fw]
+a-b: unzip $FILE1
+b-c: include 9480i.st
 
 [install_aastra-lang]
 a-b: unzip $FILE1
 b-c: cp */* i18n/
 
 
-
-[file_6730i-fw]
-filename: FC-001319-02-REV25_6730i_3_3_1_4358_SP4_HF8%20%281%29.zip
-url: http://www.mitel.com/sites/default/files/FC-001319-02-REV25_6730i_3_3_1_4358_SP4_HF8%20%281%29.zip
-size: 2041255
-sha1sum: 7ea9d5f9d3835eabc7b3eec9ebd15690bd2129aa
-
-[file_6731i-fw]
-filename: FC-001318-02-REV25_6731i_3_3_1_4358_SP4_HF8.zip
-url: http://www.mitel.com/sites/default/files/FC-001318-02-REV25_6731i_3_3_1_4358_SP4_HF8.zip
-size: 2047183
-sha1sum: 2eab03a95087bcf958a945f5d745dca6b38769ae
-
-[file_6735i-fw]
-filename: FC-001362-01-REV13_6735i_3_3_1_8202_SP4_HF7.zip
-url: http://www.mitel.com/sites/default/files/FC-001362-01-REV13_6735i_3_3_1_8202_SP4_HF7.zip
-size: 11674313
-sha1sum: cdf824cd20243fb92df2a5e73e6f4ebcc8c905e5
-
-[file_6737i-fw]
-filename: FC-001363-01-REV13_6737i_3_3_1_8202_SP4_HF7.zip
-url: http://www.mitel.com/sites/default/files/FC-001363-01-REV13_6737i_3_3_1_8202_SP4_HF7.zip
-size: 11899596
-sha1sum: 0ecf391fe949563d0452b8526b31b0469b0973a9
-
-[file_6739i-fw]
-filename: 6739i-fw.4358.zip
-url: http://www.mitel.com/sites/default/files/FC-001317-02-REV25_6739i_3_3_1_4358_SP4_HF8.zip
-size: 5019113
-sha1sum: 089995c5b50558f20e36e9337d4bb18bdc3fd5c8
-
-[file_6753i-fw]
-filename: 6753i-fw.4358.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6848-18623-_P06_XML&dsproject=aastra&mtype=zip
-size: 2854844
-sha1sum: 6d2dc2a720e2be6e58f91980f5164ff5656ac007
-
-[file_6755i-fw]
-filename: FC-001322-02-REV25_6755i_3_3_1_4358_SP4_HF8.zip
-url: http://www.mitel.com/sites/default/files/FC-001322-02-REV25_6755i_3_3_1_4358_SP4_HF8.zip
-size: 2886614
-sha1sum: 6e88cb99915fcb23612a5a25fb362ca6db40a62c
-
-[file_6757i-fw]
-filename: FC-001323-02-REV25_6757i_3_3_1_4358_SP4_HF8.zip
-url: http://www.mitel.com/sites/default/files/FC-001323-02-REV25_6757i_3_3_1_4358_SP4_HF8.zip
-size: 2886083
-sha1sum: 43836a88e4b8fa13189e342fe2d072be58b2712b
-
-[file_9143i-fw]
-filename: 9143i-fw.4358.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6528-18629-_P06_XML&dsproject=aastra&mtype=zip
-size: 2799854
-sha1sum: c79fc1ccb13f2c381ed38cdaa686a3f0cbb91399
-
-[file_9480i-fw]
-filename: 9480i-fw.4358.zip
-url: http://miteldocs.com/cps/rde/aareddownload?file_id=6622-18631-_P06_XML&dsproject=aastra&mtype=zip
-size: 2824901
-sha1sum: ad982e1fd426664280d424c8637eae7c0b0d9bb0
+[file_67XXi-fw]
+filename: 67XXi-fw.4365-8215.zip
+url: http://www.mitel.com/sites/default/files/SIP_3_3_1_4365_8215_SP4_HF9_all_moddels_08_2016.zip
+size: 47398699
+sha1sum: ee7dc225c0d577088b0f32a0a5ebc231dc9608a8
 
 [file_lang]
-filename: 5801456-REV01_LangPacks_4_2_0_SP1_0.zip
-url: http://www.mitel.com/sites/default/files/5801456-REV01_LangPacks_4_2_0_SP1_0.zip
+filename: 5801456-REV01_LangPacks_4_2_0_SP1.zip
+url: http://www.mitel.com/sites/default/files/5801456-REV01_LangPacks_4_2_0_SP1.zip
 size: 699938
 sha1sum: 5cd4344dde28b2ef61b3cfcf5f9a59e660abbb32
