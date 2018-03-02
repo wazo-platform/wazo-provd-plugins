@@ -20,6 +20,48 @@
             "function_keys": 8,
             "expansion_modules": 0,
             "protocol": "sip"
+        },
+        "Fanvil, X2, 2.3": {
+            "lines": 1,
+            "high_availability" : false,
+            "function_keys" : 0,
+            "protocol": "sip"
+        },
+        "Fanvil, X3, 2.3": {
+            "lines": 2,
+            "high_availability" : false,
+            "function_keys" : 0,
+            "protocol": "sip"
+        },
+        "Fanvil, X3S, 2.3": {
+            "lines": 2,
+            "high_availability" : 0,
+            "function_keys" : 0,
+            "protocol" : "sip"
+        },
+        "Fanvil, X4, 2.3": {
+            "lines": 4,
+            "high_availability" : 0,
+            "function_keys" : 12,
+            "protocol" : "sip"
+        },
+        "Fanvil, X5, 2.3": {
+            "lines": 6,
+            "high_availability" : 0,
+            "function_keys" : 40,
+            "protocol" : "sip"
+        },
+        "Fanvil, X5S, 2.3": {
+            "lines": 6,
+            "high_availability" : 0,
+            "function_keys" : 40,
+            "protocol" : "sip"
+        },
+        "Fanvil, X6, 2.3": {
+            "lines": 6,
+            "high_availability" : 0,
+            "function_keys" : 60,
+            "protocol" : "sip"
         }
     }
 }

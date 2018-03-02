@@ -15,18 +15,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import errno
 import logging
 import re
 import os.path
-from operator import itemgetter
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
     TemplatePluginHelper
 from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, \
-    FULL_SUPPORT, BasePgAssociator, UNKNOWN_SUPPORT
+    BasePgAssociator, UNKNOWN_SUPPORT
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
@@ -71,19 +69,44 @@ TZ_INFO = {
     12: [(u'UCT_012', 72)],
 }
 
+
 class BaseFanvilHTTPDeviceInfoExtractor(object):
     _PATH_REGEX = re.compile(r'(\b00a859\w{6})\.cfg$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
-    
+
     def _do_extract(self, request):
         return self._extract_from_path(request)
- 
+
     def _extract_from_path(self, request):
-        if 'f0C00620000.cfg' in request.path:
+        if 'f0C00580000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'C58'}
+        elif 'f0C00620000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
                     u'model' : u'C62'}
+        elif 'F0V00X200000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X2'}
+        elif 'F0V00X300000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X3'}
+        elif 'f0X3shw1.100.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X3S'}
+        elif 'f0X4hw1.100.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X4'}
+        elif 'f0X5hw1.100.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X5'}
+        elif 'F0V0X5S00000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X5S'}
+        elif 'F0V0X6000000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X6'}
         m = self._PATH_REGEX.search(request.path)
         if m:
             raw_mac = m.group(1)
@@ -222,7 +245,7 @@ class BaseFanvilPlugin(StandardPlugin):
         utc_list = TZ_INFO[utc]
         for time_zone_name, time_zone in utc_list:
             lines.append(u'<Time_Zone>%s</Time_Zone>' % (time_zone))
-            lines.append(u'<Time_Zone_Name>%s</Time_Zone_Name>' % (time_zone_name))    
+            lines.append(u'<Time_Zone_Name>%s</Time_Zone_Name>' % (time_zone_name))
         if tzinfo['dst'] is None:
             lines.append(u'<Enable_DST>0</Enable_DST>')
         else:
@@ -242,8 +265,8 @@ class BaseFanvilPlugin(StandardPlugin):
                 raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
 
     def _add_locale(self, raw_config):
-       locale = raw_config.get(u'locale')
-       if locale in LOCALE:
+        locale = raw_config.get(u'locale')
+        if locale in LOCALE:
             raw_config[u'XX_locale'] = LOCALE[locale]
 
     def _format_funckey_speeddial(self, funckey_no, funckey_dict):
@@ -253,7 +276,7 @@ class BaseFanvilPlugin(StandardPlugin):
         lines.append(u'<Type>1</Type>')
         lines.append(u'<Value>%s@%s/f</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
         lines.append(u'<Title></Title>')
-        lines.append(u'</Function_Key_Entry>') 
+        lines.append(u'</Function_Key_Entry>')
         return lines
 
     def _format_funckey_blf(self, funckey_no, funckey_dict, exten_pickup_call=None):
@@ -302,4 +325,3 @@ class BaseFanvilPlugin(StandardPlugin):
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
         raw_config[u'XX_fkeys'] = u'\n'.join(lines)
-
