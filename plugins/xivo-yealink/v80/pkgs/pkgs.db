@@ -82,6 +82,13 @@ version: 37.80.0.30
 files: CP860-fw
 install: yealink-fw
 
+[pkg_CP960-fw]
+description: Firmware for Yealink CP960
+description_fr: Micrologiciel pour Yealink CP960
+version: 73.80.0.35
+files: CP960-fw
+install: yealink-fw
+
 [pkg_W52P_W56P-base-fw]
 description: Firmware for Yealink W52P and W56P base
 description_fr: Micrologiciel pour base Yealink W52P et W56P
@@ -161,6 +168,11 @@ sha1sum: 836cd3f49e55ee97e6f4693b197c00741e058163
 url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2016-12-15%2F6%2Fe2e952ee-aec8-41d9-b7b6-f900973a81fb%2FCP860-37.80.0.30.zip
 size: 9030829
 sha1sum: d599a04bf0fb00de8738d121fcaf73d777a5ff3d
+
+[file_CP960-fw]
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-11-30%2F6%2F12534533-779e-4158-baa4-92b66de0e6aa%2FCP960-73.80.0.35.rom
+size: 199325472
+sha1sum: 542d51ccbccf0b7c283d673114513fb62bcb27c0
 
 [file_W52P_W56P-base-fw]
 url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2016-7-14%2F6%2F982e354e-5822-4088-9e3c-c8550c415dc9%2FBase%20for%20W52P%26W56P-25.80.0.15.zip
