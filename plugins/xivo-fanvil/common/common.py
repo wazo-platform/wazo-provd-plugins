@@ -81,9 +81,33 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
         return self._extract_from_path(request)
  
     def _extract_from_path(self, request):
-        if 'f0C00620000.cfg' in request.path:
+        if 'f0C00580000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'C58'}
+        elif 'f0C00620000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
                     u'model' : u'C62'}
+        elif 'F0V00X200000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X2'}
+        elif 'F0V00X300000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X3'}
+        elif 'f0X3shw1.100.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X3S'}
+        elif 'f0X4hw1.100.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X4'}
+        elif 'f0X5hw1.100.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X5'}
+        elif 'F0V0X5S00000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X5S'}
+        elif 'F0V0X6000000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X6'}
         m = self._PATH_REGEX.search(request.path)
         if m:
             raw_mac = m.group(1)
