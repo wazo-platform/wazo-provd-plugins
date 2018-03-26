@@ -110,6 +110,12 @@ version: 65.81.0.110
 files: T48S-fw
 install: yealink-unrar-48S-fw
 
+[pkg_CP920-fw]
+description: Firmware for Yealink CP920
+description_fr: Micrologiciel pour Yealink CP920
+version: 78.81.0.15
+files: CP920-fw
+install: yealink-cp-rom
 
 [install_yealink-fw]
 a-b: unzip $FILE1
@@ -131,6 +137,8 @@ b-c: cp *.rom firmware/T46S-66.81.0.110.rom
 a-b: unrar $FILE1
 b-c: cp *.rom firmware/T48S-65.81.0.110.rom
 
+[install_yealink-cp-rom]
+a-b: cp *.rom firmware/
 
 [file_T19P_E2-fw]
 url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F4f6e9a6e-8ded-4f6b-a24f-db609851aaf5%2FT19P_E2-53.81.0.110.zip
@@ -211,3 +219,9 @@ sha1sum: 0aad3152f18a8aba79ae9fe774aefc0c785783a4
 url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F31d40b64-395f-425c-9522-1c91c475a621%2FT48S-66.81.0.110.rar
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
+
+[file_CP920-fw]
+filename: CP920-78.81.0.15.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-9-20%2F6%2F1a03de09-2783-423b-ab32-0465ccdcf229%2FCP920-78.81.0.15.rom
+size: 18948304
+sha1sum: 7bd04e6f92e94ff819f4694f502e63e6bc1079b1

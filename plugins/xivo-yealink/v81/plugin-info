@@ -110,6 +110,12 @@
             "xivo.ha": 1,
             "tel.funckeys": 29,
             "xivo.tested": 1
-        }
+        },
+        "Yealink, CP920, 78.81.0.15": {
+            "sip.lines": 1,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 0,
+        },
     }
 }
