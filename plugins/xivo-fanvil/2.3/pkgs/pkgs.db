@@ -12,16 +12,99 @@ version: 2.3
 files: C62-fw
 install: fanvil-fw
 
+[pkg_X2-fw]
+description: Firmware for Fanvil X2
+description_fr: Micrologiciel pour Fanvil X2
+version: 2.3
+files: X2-fw
+install: fanvil-fw
+
+[pkg_X3-fw]
+description: Firmware for Fanvil X3
+description_fr: Micrologiciel pour Fanvil X3
+version: 2.3
+files: X3-fw
+install: fanvil-fw
+
+[pkg_X3S-fw]
+description: Firmware for Fanvil X3S
+description_fr: Micrologiciel pour Fanvil X3S
+version: 2.3
+files: X3S-fw
+install: fanvil-fw
+
+[pkg_X4-fw]
+description: Firmware for Fanvil X4
+description_fr: Micrologiciel pour Fanvil X4
+version: 2.3
+files: X4-fw
+install: fanvil-fw
+
+[pkg_X5-fw]
+description: Firmware for Fanvil X5
+description_fr: Micrologiciel pour Fanvil X5
+version: 2.3
+files: X5-fw
+install: fanvil-fw
+
+[pkg_X5S-fw]
+description: Firmware for Fanvil X5S
+description_fr: Micrologiciel pour Fanvil X5S
+version: 2.3
+files: X5S-fw
+install: fanvil-fw
+
+[pkg_X6-fw]
+description: Firmware for Fanvil X6
+description_fr: Micrologiciel pour Fanvil X6
+version: 2.3
+files: X6-fw
+install: fanvil-fw
 
 [install_fanvil-fw]
 a-b: cp $FILE1 firmware/
 
 [file_C58-fw]
-url: http://download.fanvil.com/Firmware/Release/C58/New/C58_V2_3_431_247T20140605184312.z
-size: 2900317
-sha1sum: 1096e129540a81cd52cbae2d2a06e22c56c4a26e
+url: http://download.fanvil.com/Firmware/Release/C58/20170215/2c12MIMGV2_5_686_84T20170215103440.z
+size: 3108677
+sha1sum: 139dbd1ba548517c83c214d7d044f0c1c02cc795
 
 [file_C62-fw]
-url: http://www.fanvil.com/UpFiles/Article/2012/7/6/2012070649327421.z
-size: 2866385
-sha1sum: a871aa16b93ba9b4d3188255e7f9465d4a4c4a74
+url: http://download.fanvil.com/Firmware/Release/C62/20170616/2c10MIMGV2_5_787_97T20170616102925.z
+size: 3109025
+sha1sum: 750ca72714edb2ac2459783ee550fba1e2480c22
+
+[file_X2-fw]
+url: http://download.fanvil.com/Firmware/Release/X2/x22.3.2.4638T20171221091842.z
+size: 3869507
+sha1sum: a7d073d4a89bb7fe9f4c0843d43ece21465059a1
+
+[file_X3-fw]
+url: http://download.fanvil.com/Firmware/Release/X3/20170303/x31.4.0.2016T20170303152729.z
+size: 2674747
+sha1sum: 178e7dbc59c2fafd92de121fae51b3315bc2279c
+
+[file_X3S-fw]
+url: http://download.fanvil.com/Firmware/Release/X3S/20171221/x3s2.3.2.4638T20171221090439.z
+size: 3847108
+sha1sum: e99d1346c2accdbf9bb24ad5e3043d86e6d9a79a
+
+[file_X4-fw]
+url: http://download.fanvil.com/Firmware/Release/X4/20171221/x42.3.2.4638T20171221091314.z
+size: 3847201
+sha1sum: e22e4a260530e62fd71c7d52467e5ee1af55156f
+
+[file_X5-fw]
+url: http://download.fanvil.com/Firmware/Release/X5/20170303/x51.4.0.2016T20170303151233.z
+size: 2670683
+sha1sum: ea480d3592fa5929975aa0e3aff77dd544aef75f
+
+[file_X5S-fw]
+url: http://download.fanvil.com/Firmware/Release/X5S/20171214/x5s-6900-P0.10.4-1.2.4-2146T2017-12-12-15.21.01.z
+size: 35337020
+sha1sum: ddd55c6a1498adac69ddf6c3a6b02a22c2728ca0
+
+[file_X6-fw]
+url: http://download.fanvil.com/Firmware/Release/X6/20171214_128M/x6-6914-P0.10.4-1.2.4-2142T2017-12-11-19.13.38.z
+size: 36918088
+sha1sum: 7ae27aff8fc4597a14b83184a2459682b768f66e
