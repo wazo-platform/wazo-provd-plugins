@@ -108,6 +108,9 @@ install: yealink-fw
 a-b: unzip $FILE1
 b-c: cp *.rom firmware/
 
+[install_yealink-cp-rom]
+a-b: cp *.rom firmware/
+
 
 [file_T19P_E2-fw]
 url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2016-2-3%2F6%2F6fbbb66c-c3a8-4e3b-9870-d77c8ac929eb%2FT19P_E2-53.80.0.95.zip

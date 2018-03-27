@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2013-2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,6 +39,7 @@ MODEL_VERSIONS = {
     u'T48G': u'35.81.0.110',
     u'T48S': u'66.81.0.110',
     u'CP860': u'37.81.0.10',
+    u'CP920': u'78.81.0.15',
     u'W52P': u'25.81.0.10',
 }
 
@@ -60,6 +61,7 @@ COMMON_FILES = [
     ('y000000000066.cfg', u'T46S-66.81.0.110.rom', 'model.tpl'),
     ('y000000000065.cfg', u'T48S-65.81.0.110.rom', 'model.tpl'),
     ('y000000000037.cfg', u'CP860-37.81.0.10.rom', 'model.tpl'),
+    ('y000000000078.cfg', u'CP920-78.81.0.15.rom', 'model.tpl'),
 ]
 
 COMMON_FILES_DECT = [

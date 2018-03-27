@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2011-2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -203,6 +203,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
 
     _NB_LINEKEY = {
         u'CP860': 0,
+        u'CP920': 0,
         u'CP960': 0,
         u'T19P': 0,
         u'T19P_E2': 0,
@@ -233,6 +234,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
     }
     _NB_MEMORYKEY = {
         u'CP860': 0,
+        u'CP920': 0,
         u'CP960': 30,
         u'T19P': 0,
         u'T19P_E2': 0,
@@ -326,6 +328,7 @@ class BaseYealinkPlugin(StandardPlugin):
     _SIP_TRANSPORT_DEF = u'0'
     _NB_SIP_ACCOUNTS = {
         u'CP860': 1,
+        u'CP920': 1,
         u'CP960': 1,
         u'T19P': 1,
         u'T19P_E2': 1,
