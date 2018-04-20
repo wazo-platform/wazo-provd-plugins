@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2016 Avencall
+# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -118,6 +118,7 @@ class BasePolycomPlugin(StandardPlugin):
         u'VVX310': 261,
         u'VVX400': 266,
         u'VVX410': 266,
+        u'VVX500': 266,
         u'VVX500': 266,
         u'VVX600': 270,
         u'VVX1500': 6,

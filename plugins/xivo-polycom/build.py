@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2014-2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -74,6 +74,7 @@ def build_5_5_1(path):
                 '--include', '/templates/VVX400.tpl',
                 '--include', '/templates/VVX410.tpl',
                 '--include', '/templates/VVX500.tpl',
+                '--include', '/templates/VVX501.tpl',
                 '--include', '/templates/VVX600.tpl',
                 '--include', '/templates/VVX1500.tpl',
                 '--exclude', '/templates/*',

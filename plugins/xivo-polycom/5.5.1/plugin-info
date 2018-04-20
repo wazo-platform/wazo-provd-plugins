@@ -1,7 +1,7 @@
 {
-    "version": "1.9",
-    "description": "Plugin for Polycom VVX101, VVX201, VVX300, VVX310, VVX400, VVX410, VVX500, VVX600 and VVX1500 in version 5.5.1",
-    "description_fr": "Greffon pour Polycom VVX101, VVX201, VVX300, VVX310, VVX400, VVX410, VVX500, VVX600 and VVX1500 en version 5.5.1",
+    "version": "1.9.1",
+    "description": "Plugin for Polycom VVX101, VVX201, VVX300, VVX310, VVX400, VVX410, VVX500, VVX501, VVX600 and VVX1500 in version 5.5.1",
+    "description_fr": "Greffon pour Polycom VVX101, VVX201, VVX300, VVX310, VVX400, VVX410, VVX500, VVX501, VVX600 and VVX1500 en version 5.5.1",
     "capabilities": {
         "Polycom, VVX101, 5.5.1": {
             "sip.lines": 1
@@ -24,6 +24,9 @@
             "switchboard": true
         },
         "Polycom, VVX500, 5.5.1": {
+            "sip.lines": 12
+        },
+        "Polycom, VVX501, 5.5.1": {
             "sip.lines": 12
         },
         "Polycom, VVX600, 5.5.1": {

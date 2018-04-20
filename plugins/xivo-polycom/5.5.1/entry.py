@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014-2016 Avencall
+# Copyright 2014-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@ MODELS = [
     u'VVX400',
     u'VVX410',
     u'VVX500',
+    u'VVX501',
     u'VVX600',
     u'VVX1500',
 ]
