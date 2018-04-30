@@ -48,6 +48,12 @@
             "xivo.ha" : 0,
             "tel.funckeys" : 60,
             "xivo.tested" : 0
+        },
+        "Fanvil, X6V2, P0.11.7-1.4.1": {
+            "sip.lines": 6,
+            "xivo.ha" : 0,
+            "tel.funckeys" : 60,
+            "xivo.tested" : 0
         }
     }
 }
