@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013-2014 Avencall
-#
+# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
+# Contributor: Sébastien Le Moal <sebastien.calexium.com>
+# 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -25,7 +26,8 @@ MODELS = [
     u'X4',
     u'X5',
     u'X5S',
-    u'X6'
+    u'X6',
+    u'X6V2'
 ]
 
 COMMON_FILES = [
@@ -35,7 +37,8 @@ COMMON_FILES = [
     ('f0X4hw1.100.cfg', u'x42.4.0.5487T20180309151511.z', 'model.tpl'),
     ('f0X5hw1.100.cfg', u'x51.4.0.2016T20170303151233.z', 'model.tpl'),
     ('F0V00X5S0000.cfg', u'x5s-6900-P0.11.7-1.4.1-2303T2018-03-14-16.01.18.z', 'model.tpl'),
-    ('F0V00X600000.cfg', u'x6-6914-P0.11.7-1.4.1-2303T2018-03-14-17.46.14.z', 'model.tpl'),
+    ('F0V00X600000.cfg', u'x6-6904-P0.11.7-1.4.1-2303T2018-03-14-15.21.29.z', 'model.tpl'),
+    ('F0000X600000.cfg', u'x6-6914-P0.11.7-1.4.1-2303T2018-03-14-17.46.14.z', 'model.tpl'),
 ]
 
 

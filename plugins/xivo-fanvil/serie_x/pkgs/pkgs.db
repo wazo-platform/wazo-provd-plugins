@@ -41,10 +41,17 @@ files: X5S-fw
 install: fanvil-fw
 
 [pkg_X6-fw]
-description: Firmware for Fanvil X6
-description_fr: Micrologiciel pour Fanvil X6
+description: Firmware for Fanvil X6 1.1
+description_fr: Micrologiciel pour Fanvil X6 1.1
 version: P0.11.7-1.4.1
 files: X6-fw
+install: fanvil-fw
+
+[pkg_X6V2-fw]
+description: Firmware for Fanvil X6 1.2
+description_fr: Micrologiciel pour Fanvil X6 1.2
+version: P0.11.7-1.4.1
+files: X6V2-fw
 install: fanvil-fw
 
 [install_fanvil-fw]
@@ -81,6 +88,11 @@ size: 35337020
 sha1sum: 702a1fba1d254eac00682c0db838f889195c3e5f
 
 [file_X6-fw]
+url: http://download.fanvil.com/Firmware/Release/X6/20180314_64M/x6-6904-P0.11.7-1.4.1-2303T2018-03-14-15.21.29.z
+size: 36050804
+sha1sum: d7ebe8ab49d75371ba965ec815d73420c28bc8ae
+
+[file_X6V2-fw]
 url: http://download.fanvil.com/Firmware/Release/X6/20180314_128M/x6-6914-P0.11.7-1.4.1-2303T2018-03-14-17.46.14.z
 size: 39146320
 sha1sum: 1e7eaa50ff76433b42175a0923a4c1b2088daf46
