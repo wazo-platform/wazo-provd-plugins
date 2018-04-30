@@ -5,22 +5,9 @@
 <GLOBAL_CONFIG_MODULE>
 <SNTP_Server>{{ ntp_ip }}</SNTP_Server>
 <Enable_SNTP>1</Enable_SNTP>
-<Time_Zone>4</Time_Zone>
-<Location>10</Location>
-<Time_Zone_Name>UTC+1</Time_Zone_Name>
-<Language>4</Language>
-<Enable_DST>1</Enable_DST>
-<DST_Fixed_Type>2</DST_Fixed_Type>
 <SNTP_Timeout>60</SNTP_Timeout>
-<DST_Min_Offset>60</DST_Min_Offset>
-<DST_Start_Mon>3</DST_Start_Mon>
-<DST_Start_Week>-1</DST_Start_Week>
-<DST_Start_Wday>1</DST_Start_Wday>
-<DST_Start_Hour>1</DST_Start_Hour>
-<DST_End_Mon>10</DST_End_Mon>
-<DST_End_Week>-1</DST_End_Week>
-<DST_End_Wday>1</DST_End_Wday>
-<DST_End_Hour>1</DST_End_Hour>
+<Language>{{ XX_locale }}</Language>
+{{ XX_timezone }}
 </GLOBAL_CONFIG_MODULE>
 
 <SIP_CONFIG_MODULE>

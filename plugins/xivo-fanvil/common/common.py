@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-
-# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright (C) 2013-2014 Avencall
+# Contributor: Sébastien Le Moal <sebastien.calexium.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -43,6 +43,16 @@ LOCALE = {
     u'en_US': 'en'
 }
 
+LOCALE_SERIE_X = {
+    u'de_DE': '16',
+    u'es_ES': '10',
+    u'fr_FR': '4',
+    u'fr_CA': '4',
+    u'it_IT': '7',
+    u'nl_NL': '3',
+    u'en_US': '0'
+}
+
 TZ_INFO = {
     -12: [(u'UCT_-12', 0)],
     -11: [(u'UCT_-11', 1)],
@@ -69,6 +79,34 @@ TZ_INFO = {
     10: [(u'UCT_010', 66)],
     11: [(u'UCT_011', 71)],
     12: [(u'UCT_012', 72)],
+}
+
+TZ_INFO_SERIE_X = {
+    -12: [(u'UTC-12', -48)],
+    -11: [(u'UTC-11', -44)],
+    -10: [(u'UTC-10', -40)],
+    -9: [(u'UTC-09', -36)],
+    -8: [(u'UTC-08', -32)],
+    -7: [(u'UTC-07', -28)],
+    -6: [(u'UTC-06', -24)],
+    -5: [(u'UTC-05', -20)],
+    -4: [(u'UTC-04', -16)],
+    -3: [(u'UTC-03', -12)],
+    -2: [(u'UTC-02', -8)],
+    -1: [(u'UTC-01', -4)],
+    0: [(u'UCT', 0)],
+    1: [(u'UTC+1', 4)],
+    2: [(u'UTC+2', 8)],
+    3: [(u'UTC+3', 12)],
+    4: [(u'UTC+4', 16)],
+    5: [(u'UTC+5', 20)],
+    6: [(u'UTC+6', 24)],
+    7: [(u'UTC+7', 28)],
+    8: [(u'UTC+8', 32)],
+    9: [(u'UTC+9', 36)],
+    10: [(u'UTC+10', 40)],
+    11: [(u'UTC+11', 44)],
+    12: [(u'UTC+12', 48)],
 }
 
 class BaseFanvilHTTPDeviceInfoExtractor(object):
@@ -108,6 +146,10 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
         elif 'F0V00X600000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
                     u'model' : u'X6'}
+        elif 'F0000X600000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model' : u'X6V2'}
+					
         m = self._PATH_REGEX.search(request.path)
         if m:
             raw_mac = m.group(1)
@@ -169,8 +211,8 @@ class BaseFanvilPlugin(StandardPlugin):
         self._check_config(raw_config)
         self._check_device(device)
         self._check_lines_password(raw_config)
-        self._add_timezone(raw_config)
-        self._add_locale(raw_config)
+        self._add_timezone(device, raw_config)
+        self._add_locale(device, raw_config)
         self._add_fkeys(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
@@ -240,10 +282,13 @@ class BaseFanvilPlugin(StandardPlugin):
         lines.append(u'<DST_%s_Min>0</DST_%s_Min>' % (suffix, suffix))
         return lines
 
-    def _format_tzinfo(self, tzinfo):
+    def _format_tzinfo(self, device, tzinfo):
         lines = []
         utc = tzinfo['utcoffset'].as_hours
-        utc_list = TZ_INFO[utc]
+        if device[u'model'].startswith('X'):
+            utc_list = TZ_INFO_SERIE_X[utc]
+        else:
+            utc_list = TZ_INFO[utc]        
         for time_zone_name, time_zone in utc_list:
             lines.append(u'<Time_Zone>%s</Time_Zone>' % (time_zone))
             lines.append(u'<Time_Zone_Name>%s</Time_Zone_Name>' % (time_zone_name))    
@@ -256,20 +301,27 @@ class BaseFanvilPlugin(StandardPlugin):
             lines.extend(self._format_dst_change('End', tzinfo['dst']['end']))
         return u'\n'.join(lines)
 
-    def _add_timezone(self, raw_config):
+    def _add_timezone(self, device, raw_config):
         if u'timezone' in raw_config:
             try:
                 tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
             except tzinform.TimezoneNotFoundError, e:
                 logger.info('Unknown timezone: %s', e)
             else:
-                raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
+                raw_config[u'XX_timezone'] = self._format_tzinfo(device, tzinfo)
+			
+    def _add_locale(self, device, raw_config):
+        locale = raw_config.get(u'locale')
+        model_locales = self._get_locales(device)
+        if locale in model_locales:
+            raw_config[u'XX_locale'] = model_locales[locale]
 
-    def _add_locale(self, raw_config):
-       locale = raw_config.get(u'locale')
-       if locale in LOCALE:
-            raw_config[u'XX_locale'] = LOCALE[locale]
-
+    def _get_locales(self, device):		
+        if device[u'model'].startswith('X'):
+            return LOCALE_SERIE_X
+        else:
+            return LOCALE
+			
     def _format_funckey_speeddial(self, funckey_no, funckey_dict):
         lines = []
         lines.append(u'<Function_Key_Entry>')
