@@ -19,12 +19,23 @@ common = {}
 execfile_('common.py', common)
 
 MODELS = [
-    u'C58',
-    u'C62',
+    u'X2',
+    u'X3',
+    u'X3S',
+    u'X4',
+    u'X5',
+    u'X5S',
+    u'X6'
 ]
+
 COMMON_FILES = [
-    ('f0C00580000.cfg', u'C58_V2_3_431_247T20140605184312.z', 'model.tpl'),
-    ('f0C00620000.cfg', u'2012070649327421.z', 'model.tpl'),
+    ('F0V00X200000.cfg', u'x2R2.2.0.3753T20170803142949.z', 'model.tpl'),
+    ('F0V00X300000.cfg', u'x31.4.0.2016T20170303152729.z', 'model.tpl'),
+    ('f0X3shw1.100.cfg', u'x3s2.4.0.5487T20180309151655.z', 'model.tpl'),
+    ('f0X4hw1.100.cfg', u'x42.4.0.5487T20180309151511.z', 'model.tpl'),
+    ('f0X5hw1.100.cfg', u'x51.4.0.2016T20170303151233.z', 'model.tpl'),
+    ('F0V00X5S0000.cfg', u'x5s-6900-P0.11.7-1.4.1-2303T2018-03-14-16.01.18.z', 'model.tpl'),
+    ('F0V00X600000.cfg', u'x6-6914-P0.11.7-1.4.1-2303T2018-03-14-17.46.14.z', 'model.tpl'),
 ]
 
 

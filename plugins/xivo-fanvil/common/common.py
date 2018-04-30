@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2014 Avencall
+# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ TZ_INFO = {
 }
 
 class BaseFanvilHTTPDeviceInfoExtractor(object):
-    _PATH_REGEX = re.compile(r'(\b00a859\w{6})\.cfg$')
+    _PATH_REGEX = re.compile(r'\b([\da-f]{12})\.cfg$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -102,10 +102,10 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
         elif 'f0X5hw1.100.cfg' in request.path:
             return {u'vendor': u'Fanvil',
                     u'model' : u'X5'}
-        elif 'F0V0X5S00000.cfg' in request.path:
+        elif 'F0V00X5S0000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
                     u'model' : u'X5S'}
-        elif 'F0V0X6000000.cfg' in request.path:
+        elif 'F0V00X600000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
                     u'model' : u'X6'}
         m = self._PATH_REGEX.search(request.path)
@@ -273,7 +273,7 @@ class BaseFanvilPlugin(StandardPlugin):
     def _format_funckey_speeddial(self, funckey_no, funckey_dict):
         lines = []
         lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 7))
+        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
         lines.append(u'<Type>1</Type>')
         lines.append(u'<Value>%s@%s/f</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
         lines.append(u'<Title></Title>')
@@ -284,21 +284,21 @@ class BaseFanvilPlugin(StandardPlugin):
         # Be warned that blf works only for DSS keys.
         lines = []
         lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 7))
+        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
         lines.append(u'<Type>1</Type>')
         if exten_pickup_call:
-            lines.append(u'<Value>%s@%s/b%s%s</Value>' % (funckey_dict[u'value'], funckey_dict[u'line'],
+            lines.append(u'<Value>%s@%s/ba%s%s</Value>' % (funckey_dict[u'value'], funckey_dict[u'line'],
                                                         exten_pickup_call, funckey_dict[u'value']))
         else:
-            lines.append(u'<Value>%s@%s/b</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title></Title>')
+            lines.append(u'<Value>%s@%s/ba</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
+        lines.append(u'<Title>%s</Title>' % (funckey_dict[u'label']))
         lines.append(u'</Function_Key_Entry>')
         return lines
 
     def _format_funckey_call_park(self, funckey_no, funckey_dict):
         lines = []
         lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 7))
+        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
         lines.append(u'<Type>1</Type>')
         lines.append(u'<Value>%s@%s/c</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
         lines.append(u'<Title></Title>')
