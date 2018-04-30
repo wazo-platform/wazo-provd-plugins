@@ -276,7 +276,7 @@ class BaseFanvilPlugin(StandardPlugin):
         lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
         lines.append(u'<Type>1</Type>')
         lines.append(u'<Value>%s@%s/f</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title></Title>')
+        lines.append(u'<Title>%s</Title>' % (funckey_dict[u'label']))
         lines.append(u'</Function_Key_Entry>') 
         return lines
 
@@ -301,7 +301,7 @@ class BaseFanvilPlugin(StandardPlugin):
         lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
         lines.append(u'<Type>1</Type>')
         lines.append(u'<Value>%s@%s/c</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title></Title>')
+        lines.append(u'<Title>%s</Title>' % (funckey_dict[u'label']))
         lines.append(u'</Function_Key_Entry>')
         return lines
 
