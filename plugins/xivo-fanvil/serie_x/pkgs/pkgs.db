@@ -1,0 +1,86 @@
+[pkg_X2-fw]
+description: Firmware for Fanvil X2
+description_fr: Micrologiciel pour Fanvil X2
+version: 2.2.0.3753
+files: X2-fw
+install: fanvil-fw
+
+[pkg_X3-fw]
+description: Firmware for Fanvil X3
+description_fr: Micrologiciel pour Fanvil X3
+version: 1.4.0.2016
+files: X3-fw
+install: fanvil-fw
+
+[pkg_X3S-fw]
+description: Firmware for Fanvil X3S
+description_fr: Micrologiciel pour Fanvil X3S
+version: 2.4.0.5487
+files: X3S-fw
+install: fanvil-fw
+
+[pkg_X4-fw]
+description: Firmware for Fanvil X4
+description_fr: Micrologiciel pour Fanvil X4
+version: 2.4.0.5487
+files: X4-fw
+install: fanvil-fw
+
+[pkg_X5-fw]
+description: Firmware for Fanvil X5
+description_fr: Micrologiciel pour Fanvil X5
+version: 1.4.0.2016
+files: X5-fw
+install: fanvil-fw
+
+[pkg_X5S-fw]
+description: Firmware for Fanvil X5S
+description_fr: Micrologiciel pour Fanvil X5S
+version: P0.11.7-1.4.1
+files: X5S-fw
+install: fanvil-fw
+
+[pkg_X6-fw]
+description: Firmware for Fanvil X6
+description_fr: Micrologiciel pour Fanvil X6
+version: P0.11.7-1.4.1
+files: X6-fw
+install: fanvil-fw
+
+[install_fanvil-fw]
+a-b: cp $FILE1 firmware/
+
+[file_X2-fw]
+url: http://download.fanvil.com/Firmware/Release/X2/20170803/x2R2.2.0.3753T20170803142949.z
+size: 3691490
+sha1sum: ee349b0124cc2d0b00ab392e9f3132531f8525b
+
+[file_X3-fw]
+url: http://download.fanvil.com/Firmware/Release/X3/20170303/x31.4.0.2016T20170303152729.z
+size: 2674747
+sha1sum: 178e7dbc59c2fafd92de121fae51b3315bc2279c
+
+[file_X3S-fw]
+url: http://download.fanvil.com/Firmware/Release/X3S/20180322/x3s2.4.0.5487T20180309151655.z
+size: 3872531
+sha1sum: 319a11e6d7bd51f294259de6151f1eb7c2ba96d4
+
+[file_X4-fw]
+url: http://download.fanvil.com/Firmware/Release/X4/20180322/x42.4.0.5487T20180309151511.z	
+size: 3872701
+sha1sum: 1153308bb7848992930a9bde7013075134b3406b
+
+[file_X5-fw]
+url: http://download.fanvil.com/Firmware/Release/X5/20170303/x51.4.0.2016T20170303151233.z
+size: 35992460
+sha1sum: ea480d3592fa5929975aa0e3aff77dd544aef75f
+
+[file_X5S-fw]
+url: http://download.fanvil.com/Firmware/Release/X5S/20180314/x5s-6900-P0.11.7-1.4.1-2303T2018-03-14-16.01.18.z
+size: 35337020
+sha1sum: 702a1fba1d254eac00682c0db838f889195c3e5f
+
+[file_X6-fw]
+url: http://download.fanvil.com/Firmware/Release/X6/20180314_128M/x6-6914-P0.11.7-1.4.1-2303T2018-03-14-17.46.14.z
+size: 39146320
+sha1sum: 1e7eaa50ff76433b42175a0923a4c1b2088daf46
