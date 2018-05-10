@@ -46,5 +46,41 @@ class FanvilPlugin(common['BaseFanvilPlugin']):
     IS_PLUGIN = True
 
     _COMMON_FILES = COMMON_FILES
+    _LOCALE = {
+        u'de_DE': '16',
+        u'es_ES': '10',
+        u'fr_FR': '4',
+        u'fr_CA': '4',
+        u'it_IT': '7',
+        u'nl_NL': '3',
+        u'en_US': '0'
+    }
+    _TZ_INFO = {
+        -12: [(u'UTC-12', -48)],
+        -11: [(u'UTC-11', -44)],
+        -10: [(u'UTC-10', -40)],
+        -9: [(u'UTC-09', -36)],
+        -8: [(u'UTC-08', -32)],
+        -7: [(u'UTC-07', -28)],
+        -6: [(u'UTC-06', -24)],
+        -5: [(u'UTC-05', -20)],
+        -4: [(u'UTC-04', -16)],
+        -3: [(u'UTC-03', -12)],
+        -2: [(u'UTC-02', -8)],
+        -1: [(u'UTC-01', -4)],
+        0: [(u'UCT', 0)],
+        1: [(u'UTC+1', 4)],
+        2: [(u'UTC+2', 8)],
+        3: [(u'UTC+3', 12)],
+        4: [(u'UTC+4', 16)],
+        5: [(u'UTC+5', 20)],
+        6: [(u'UTC+6', 24)],
+        7: [(u'UTC+7', 28)],
+        8: [(u'UTC+8', 32)],
+        9: [(u'UTC+9', 36)],
+        10: [(u'UTC+10', 40)],
+        11: [(u'UTC+11', 44)],
+        12: [(u'UTC+12', 48)],
+    }
 
     pg_associator = common['BaseFanvilPgAssociator'](MODELS)
