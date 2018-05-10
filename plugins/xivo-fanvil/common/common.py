@@ -39,82 +39,6 @@ from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-fanvil')
 
-LOCALE = {
-    u'de_DE': 'de',
-    u'es_ES': 'es',
-    u'fr_FR': 'fr',
-    u'fr_CA': 'fr',
-    u'it_IT': 'it',
-    u'nl_NL': 'nl',
-    u'en_US': 'en'
-}
-
-LOCALE_SERIE_X = {
-    u'de_DE': '16',
-    u'es_ES': '10',
-    u'fr_FR': '4',
-    u'fr_CA': '4',
-    u'it_IT': '7',
-    u'nl_NL': '3',
-    u'en_US': '0'
-}
-
-TZ_INFO = {
-    -12: [(u'UCT_-12', 0)],
-    -11: [(u'UCT_-11', 1)],
-    -10: [(u'UCT_-10', 2)],
-    -9: [(u'UCT_-09', 3)],
-    -8: [(u'UCT_-08', 4)],
-    -7: [(u'UCT_-07', 5)],
-    -6: [(u'UCT_-06', 8)],
-    -5: [(u'UCT_-05', 12)],
-    -4: [(u'UCT_-04', 15)],
-    -3: [(u'UCT_-03', 19)],
-    -2: [(u'UCT_-02', 22)],
-    -1: [(u'UCT_-01', 23)],
-    0: [(u'UCT_000', 25)],
-    1: [(u'MET_001', 27)],
-    2: [(u'EET_002', 32)],
-    3: [(u'IST_003', 38)],
-    4: [(u'UCT_004', 43)],
-    5: [(u'UCT_005', 46)],
-    6: [(u'UCT_006', 50)],
-    7: [(u'UCT_007', 54)],
-    8: [(u'CST_008', 56)],
-    9: [(u'JST_009', 61)],
-    10: [(u'UCT_010', 66)],
-    11: [(u'UCT_011', 71)],
-    12: [(u'UCT_012', 72)],
-}
-
-TZ_INFO_SERIE_X = {
-    -12: [(u'UTC-12', -48)],
-    -11: [(u'UTC-11', -44)],
-    -10: [(u'UTC-10', -40)],
-    -9: [(u'UTC-09', -36)],
-    -8: [(u'UTC-08', -32)],
-    -7: [(u'UTC-07', -28)],
-    -6: [(u'UTC-06', -24)],
-    -5: [(u'UTC-05', -20)],
-    -4: [(u'UTC-04', -16)],
-    -3: [(u'UTC-03', -12)],
-    -2: [(u'UTC-02', -8)],
-    -1: [(u'UTC-01', -4)],
-    0: [(u'UCT', 0)],
-    1: [(u'UTC+1', 4)],
-    2: [(u'UTC+2', 8)],
-    3: [(u'UTC+3', 12)],
-    4: [(u'UTC+4', 16)],
-    5: [(u'UTC+5', 20)],
-    6: [(u'UTC+6', 24)],
-    7: [(u'UTC+7', 28)],
-    8: [(u'UTC+8', 32)],
-    9: [(u'UTC+9', 36)],
-    10: [(u'UTC+10', 40)],
-    11: [(u'UTC+11', 44)],
-    12: [(u'UTC+12', 48)],
-}
-
 
 class BaseFanvilHTTPDeviceInfoExtractor(object):
     _PATH_REGEX = re.compile(r'\b([\da-f]{12})\.cfg$')
@@ -182,6 +106,8 @@ class BaseFanvilPgAssociator(BasePgAssociator):
 
 class BaseFanvilPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
+    _LOCALE = {}
+    _TZ_INFO = {}
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -292,10 +218,7 @@ class BaseFanvilPlugin(StandardPlugin):
     def _format_tzinfo(self, device, tzinfo):
         lines = []
         utc = tzinfo['utcoffset'].as_hours
-        if device[u'model'].startswith('X'):
-            utc_list = TZ_INFO_SERIE_X[utc]
-        else:
-            utc_list = TZ_INFO[utc]
+        utc_list = self._TZ_INFO[utc]
         for time_zone_name, time_zone in utc_list:
             lines.append(u'<Time_Zone>%s</Time_Zone>' % (time_zone))
             lines.append(u'<Time_Zone_Name>%s</Time_Zone_Name>' % (time_zone_name))
@@ -319,15 +242,9 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def _add_locale(self, device, raw_config):
         locale = raw_config.get(u'locale')
-        model_locales = self._get_locales(device)
+        model_locales = self._LOCALE
         if locale in model_locales:
             raw_config[u'XX_locale'] = model_locales[locale]
-
-    def _get_locales(self, device):
-        if device[u'model'].startswith('X'):
-            return LOCALE_SERIE_X
-        else:
-            return LOCALE
 
     def _format_funckey_speeddial(self, funckey_no, funckey_dict):
         lines = []
