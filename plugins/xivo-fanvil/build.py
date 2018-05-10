@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013-2014 Avencall
+# Copyright 2013-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,11 +29,11 @@ def build_2_3(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '2.3/', path])
 
-@target('serie_x', 'wazo-fanvil-serie_X')
+@target('serie-x', 'wazo-fanvil-serie-x')
 def build_2_3(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                'serie_x/', path])
+                'serie-x/', path])
 				
