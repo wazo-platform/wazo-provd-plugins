@@ -16,15 +16,23 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import logging
-import re
 import os.path
+import re
+
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
+from provd.plugins import (
+    FetchfwPluginHelper,
+    StandardPlugin,
     TemplatePluginHelper
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, \
-    BasePgAssociator, UNKNOWN_SUPPORT
+)
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    COMPLETE_SUPPORT,
+    IMPROBABLE_SUPPORT,
+    UNKNOWN_SUPPORT
+)
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
@@ -120,34 +128,34 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
     def _extract_from_path(self, request):
         if 'f0C00580000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'C58'}
+                    u'model': u'C58'}
         elif 'f0C00620000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'C62'}
+                    u'model': u'C62'}
         elif 'F0V00X200000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X2'}
+                    u'model': u'X2'}
         elif 'F0V00X300000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X3'}
+                    u'model': u'X3'}
         elif 'f0X3shw1.100.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X3S'}
+                    u'model': u'X3S'}
         elif 'f0X4hw1.100.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X4'}
+                    u'model': u'X4'}
         elif 'f0X5hw1.100.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X5'}
+                    u'model': u'X5'}
         elif 'F0V00X5S0000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X5S'}
+                    u'model': u'X5S'}
         elif 'F0V00X600000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X6'}
+                    u'model': u'X6'}
         elif 'F0000X600000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X6V2'}
+                    u'model': u'X6V2'}
 
         m = self._PATH_REGEX.search(request.path)
         if m:
@@ -339,7 +347,7 @@ class BaseFanvilPlugin(StandardPlugin):
         lines.append(u'<Type>1</Type>')
         if exten_pickup_call:
             lines.append(u'<Value>%s@%s/ba%s%s</Value>' % (funckey_dict[u'value'], funckey_dict[u'line'],
-                                                        exten_pickup_call, funckey_dict[u'value']))
+                                                           exten_pickup_call, funckey_dict[u'value']))
         else:
             lines.append(u'<Value>%s@%s/ba</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
         lines.append(u'<Title>%s</Title>' % (funckey_dict[u'label']))
