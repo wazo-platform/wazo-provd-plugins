@@ -32,5 +32,41 @@ class FanvilPlugin(common['BaseFanvilPlugin']):
     IS_PLUGIN = True
 
     _COMMON_FILES = COMMON_FILES
+    _LOCALE = {
+        u'de_DE': 'de',
+        u'es_ES': 'es',
+        u'fr_FR': 'fr',
+        u'fr_CA': 'fr',
+        u'it_IT': 'it',
+        u'nl_NL': 'nl',
+        u'en_US': 'en'
+    }
+    _TZ_INFO = {
+        -12: [(u'UCT_-12', 0)],
+        -11: [(u'UCT_-11', 1)],
+        -10: [(u'UCT_-10', 2)],
+        -9: [(u'UCT_-09', 3)],
+        -8: [(u'UCT_-08', 4)],
+        -7: [(u'UCT_-07', 5)],
+        -6: [(u'UCT_-06', 8)],
+        -5: [(u'UCT_-05', 12)],
+        -4: [(u'UCT_-04', 15)],
+        -3: [(u'UCT_-03', 19)],
+        -2: [(u'UCT_-02', 22)],
+        -1: [(u'UCT_-01', 23)],
+        0: [(u'UCT_000', 25)],
+        1: [(u'MET_001', 27)],
+        2: [(u'EET_002', 32)],
+        3: [(u'IST_003', 38)],
+        4: [(u'UCT_004', 43)],
+        5: [(u'UCT_005', 46)],
+        6: [(u'UCT_006', 50)],
+        7: [(u'UCT_007', 54)],
+        8: [(u'CST_008', 56)],
+        9: [(u'JST_009', 61)],
+        10: [(u'UCT_010', 66)],
+        11: [(u'UCT_011', 71)],
+        12: [(u'UCT_012', 72)],
+    }
 
     pg_associator = common['BaseFanvilPgAssociator'](MODELS)
