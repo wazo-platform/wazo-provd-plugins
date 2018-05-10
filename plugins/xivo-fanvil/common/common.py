@@ -15,99 +15,72 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import errno
 import logging
-import re
 import os.path
-from operator import itemgetter
+import re
+
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
+from provd.plugins import (
+    FetchfwPluginHelper,
+    StandardPlugin,
     TemplatePluginHelper
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, \
-    FULL_SUPPORT, BasePgAssociator, UNKNOWN_SUPPORT
+)
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    COMPLETE_SUPPORT,
+    IMPROBABLE_SUPPORT,
+    UNKNOWN_SUPPORT
+)
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-fanvil')
 
-LOCALE = {
-    u'de_DE': 'de',
-    u'es_ES': 'es',
-    u'fr_FR': 'fr',
-    u'fr_CA': 'fr',
-    u'it_IT': 'it',
-    u'nl_NL': 'nl',
-    u'en_US': 'en'
-}
-
-TZ_INFO = {
-    -12: [(u'UCT_-12', 0)],
-    -11: [(u'UCT_-11', 1)],
-    -10: [(u'UCT_-10', 2)],
-    -9: [(u'UCT_-09', 3)],
-    -8: [(u'UCT_-08', 4)],
-    -7: [(u'UCT_-07', 5)],
-    -6: [(u'UCT_-06', 8)],
-    -5: [(u'UCT_-05', 12)],
-    -4: [(u'UCT_-04', 15)],
-    -3: [(u'UCT_-03', 19)],
-    -2: [(u'UCT_-02', 22)],
-    -1: [(u'UCT_-01', 23)],
-    0: [(u'UCT_000', 25)],
-    1: [(u'MET_001', 27)],
-    2: [(u'EET_002', 32)],
-    3: [(u'IST_003', 38)],
-    4: [(u'UCT_004', 43)],
-    5: [(u'UCT_005', 46)],
-    6: [(u'UCT_006', 50)],
-    7: [(u'UCT_007', 54)],
-    8: [(u'CST_008', 56)],
-    9: [(u'JST_009', 61)],
-    10: [(u'UCT_010', 66)],
-    11: [(u'UCT_011', 71)],
-    12: [(u'UCT_012', 72)],
-}
 
 class BaseFanvilHTTPDeviceInfoExtractor(object):
-    _PATH_REGEX = re.compile(r'(\b00a859\w{6})\.cfg$')
+    _PATH_REGEX = re.compile(r'\b([\da-f]{12})\.cfg$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
-    
+
     def _do_extract(self, request):
         return self._extract_from_path(request)
- 
+
     def _extract_from_path(self, request):
         if 'f0C00580000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'C58'}
+                    u'model': u'C58'}
         elif 'f0C00620000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'C62'}
+                    u'model': u'C62'}
         elif 'F0V00X200000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X2'}
+                    u'model': u'X2'}
         elif 'F0V00X300000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X3'}
+                    u'model': u'X3'}
         elif 'f0X3shw1.100.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X3S'}
+                    u'model': u'X3S'}
         elif 'f0X4hw1.100.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X4'}
+                    u'model': u'X4'}
         elif 'f0X5hw1.100.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X5'}
-        elif 'F0V0X5S00000.cfg' in request.path:
+                    u'model': u'X5'}
+        elif 'F0V00X5S0000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X5S'}
-        elif 'F0V0X6000000.cfg' in request.path:
+                    u'model': u'X5S'}
+        elif 'F0V00X600000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'X6'}
+                    u'model': u'X6'}
+        elif 'F0000X600000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model': u'X6V2'}
+
         m = self._PATH_REGEX.search(request.path)
         if m:
             raw_mac = m.group(1)
@@ -133,6 +106,8 @@ class BaseFanvilPgAssociator(BasePgAssociator):
 
 class BaseFanvilPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
+    _LOCALE = {}
+    _TZ_INFO = {}
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -169,8 +144,8 @@ class BaseFanvilPlugin(StandardPlugin):
         self._check_config(raw_config)
         self._check_device(device)
         self._check_lines_password(raw_config)
-        self._add_timezone(raw_config)
-        self._add_locale(raw_config)
+        self._add_timezone(device, raw_config)
+        self._add_locale(device, raw_config)
         self._add_fkeys(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
@@ -240,13 +215,13 @@ class BaseFanvilPlugin(StandardPlugin):
         lines.append(u'<DST_%s_Min>0</DST_%s_Min>' % (suffix, suffix))
         return lines
 
-    def _format_tzinfo(self, tzinfo):
+    def _format_tzinfo(self, device, tzinfo):
         lines = []
         utc = tzinfo['utcoffset'].as_hours
-        utc_list = TZ_INFO[utc]
+        utc_list = self._TZ_INFO[utc]
         for time_zone_name, time_zone in utc_list:
             lines.append(u'<Time_Zone>%s</Time_Zone>' % (time_zone))
-            lines.append(u'<Time_Zone_Name>%s</Time_Zone_Name>' % (time_zone_name))    
+            lines.append(u'<Time_Zone_Name>%s</Time_Zone_Name>' % (time_zone_name))
         if tzinfo['dst'] is None:
             lines.append(u'<Enable_DST>0</Enable_DST>')
         else:
@@ -256,52 +231,53 @@ class BaseFanvilPlugin(StandardPlugin):
             lines.extend(self._format_dst_change('End', tzinfo['dst']['end']))
         return u'\n'.join(lines)
 
-    def _add_timezone(self, raw_config):
+    def _add_timezone(self, device, raw_config):
         if u'timezone' in raw_config:
             try:
                 tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
             except tzinform.TimezoneNotFoundError, e:
                 logger.info('Unknown timezone: %s', e)
             else:
-                raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
+                raw_config[u'XX_timezone'] = self._format_tzinfo(device, tzinfo)
 
-    def _add_locale(self, raw_config):
-       locale = raw_config.get(u'locale')
-       if locale in LOCALE:
-            raw_config[u'XX_locale'] = LOCALE[locale]
+    def _add_locale(self, device, raw_config):
+        locale = raw_config.get(u'locale')
+        model_locales = self._LOCALE
+        if locale in model_locales:
+            raw_config[u'XX_locale'] = model_locales[locale]
 
     def _format_funckey_speeddial(self, funckey_no, funckey_dict):
         lines = []
         lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 7))
+        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
         lines.append(u'<Type>1</Type>')
         lines.append(u'<Value>%s@%s/f</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title></Title>')
-        lines.append(u'</Function_Key_Entry>') 
+        lines.append(u'<Title>%s</Title>' % (funckey_dict[u'label']))
+        lines.append(u'</Function_Key_Entry>')
         return lines
 
     def _format_funckey_blf(self, funckey_no, funckey_dict, exten_pickup_call=None):
         # Be warned that blf works only for DSS keys.
         lines = []
         lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 7))
+        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
         lines.append(u'<Type>1</Type>')
         if exten_pickup_call:
-            lines.append(u'<Value>%s@%s/b%s%s</Value>' % (funckey_dict[u'value'], funckey_dict[u'line'],
-                                                        exten_pickup_call, funckey_dict[u'value']))
+            lines.append(u'<Value>%s@%s/ba%s%s</Value>' % (funckey_dict[u'value'], funckey_dict[u'line'],
+                                                           exten_pickup_call, funckey_dict[u'value']))
         else:
-            lines.append(u'<Value>%s@%s/b</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title></Title>')
+            lines.append(u'<Value>%s@%s/ba</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
+        lines.append(u'<Title>%s</Title>' % (funckey_dict[u'label']))
         lines.append(u'</Function_Key_Entry>')
         return lines
 
     def _format_funckey_call_park(self, funckey_no, funckey_dict):
         lines = []
         lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 7))
+        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
         lines.append(u'<Type>1</Type>')
         lines.append(u'<Value>%s@%s/c</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title></Title>')
+        lines.append(u'<Title>%s</Title>' % (funckey_dict[u'label']))
         lines.append(u'</Function_Key_Entry>')
         return lines
 
@@ -326,4 +302,3 @@ class BaseFanvilPlugin(StandardPlugin):
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
         raw_config[u'XX_fkeys'] = u'\n'.join(lines)
-

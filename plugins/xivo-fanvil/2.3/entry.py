@@ -21,24 +21,10 @@ execfile_('common.py', common)
 MODELS = [
     u'C58',
     u'C62',
-    u'X2',
-    u'X3',
-    u'X3S',
-    u'X4',
-    u'X5',
-    u'X5S',
-    u'X6'
 ]
 COMMON_FILES = [
-    ('f0C00580000.cfg', u'2c12MIMGV2_5_686_84T20170215103440.z', 'model.tpl'),
-    ('f0C00620000.cfg', u'2c10MIMGV2_5_787_97T20170616102925.z', 'model.tpl'),
-    ('F0V00X200000.cfg', u'x22.3.2.4638T20171221091842.z', 'model.tpl'),
-    ('F0V00X300000.cfg', u'x31.4.0.2016T20170303152729.z', 'model.tpl'),
-    ('f0X3shw1.100.cfg', u'x3s2.3.2.4638T20171221090439.z', 'model.tpl'),
-    ('f0X4hw1.100.cfg', u'x42.3.2.4638T20171221091314.z', 'model.tpl'),
-    ('f0X5hw1.100.cfg', u'x51.4.0.2016T20170303151233.z', 'model.tpl'),
-    ('F0V0X5S00000.cfg', u'x5s-6900-P0.10.4-1.2.4-2146T2017-12-12-15.21.01.z', 'model.tpl'),
-    ('F0V0X6000000.cfg', u'x6-6914-P0.10.4-1.2.4-2142T2017-12-11-19.13.38.z', 'model.tpl'),
+    ('f0C00580000.cfg', u'C58_V2_3_431_247T20140605184312.z', 'model.tpl'),
+    ('f0C00620000.cfg', u'2012070649327421.z', 'model.tpl'),
 ]
 
 
@@ -46,5 +32,41 @@ class FanvilPlugin(common['BaseFanvilPlugin']):
     IS_PLUGIN = True
 
     _COMMON_FILES = COMMON_FILES
+    _LOCALE = {
+        u'de_DE': 'de',
+        u'es_ES': 'es',
+        u'fr_FR': 'fr',
+        u'fr_CA': 'fr',
+        u'it_IT': 'it',
+        u'nl_NL': 'nl',
+        u'en_US': 'en'
+    }
+    _TZ_INFO = {
+        -12: [(u'UCT_-12', 0)],
+        -11: [(u'UCT_-11', 1)],
+        -10: [(u'UCT_-10', 2)],
+        -9: [(u'UCT_-09', 3)],
+        -8: [(u'UCT_-08', 4)],
+        -7: [(u'UCT_-07', 5)],
+        -6: [(u'UCT_-06', 8)],
+        -5: [(u'UCT_-05', 12)],
+        -4: [(u'UCT_-04', 15)],
+        -3: [(u'UCT_-03', 19)],
+        -2: [(u'UCT_-02', 22)],
+        -1: [(u'UCT_-01', 23)],
+        0: [(u'UCT_000', 25)],
+        1: [(u'MET_001', 27)],
+        2: [(u'EET_002', 32)],
+        3: [(u'IST_003', 38)],
+        4: [(u'UCT_004', 43)],
+        5: [(u'UCT_005', 46)],
+        6: [(u'UCT_006', 50)],
+        7: [(u'UCT_007', 54)],
+        8: [(u'CST_008', 56)],
+        9: [(u'JST_009', 61)],
+        10: [(u'UCT_010', 66)],
+        11: [(u'UCT_011', 71)],
+        12: [(u'UCT_012', 72)],
+    }
 
     pg_associator = common['BaseFanvilPgAssociator'](MODELS)
