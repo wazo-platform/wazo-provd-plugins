@@ -20,7 +20,6 @@
             "xivo.tested": 1
         },
         "Patton, SN4114, 6.9": {
-        "Patton, SN4114, 6.9": {
             "sip.lines": 4,
             "xivo.ha": 1,
             "tel.funckeys": 0,
