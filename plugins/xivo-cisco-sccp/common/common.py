@@ -245,6 +245,21 @@ class BaseCiscoSccpPlugin(StandardPlugin):
                 dst_key = dst_map.keys()[0]
         return dst_map[dst_key]
 
+    def _add_addons(self, raw_config):
+        # Config is based on 'XX_addons' config :
+        # u'XX_addons': {
+        #   u'<idx>': { u'type': <model>}
+        # }
+        addons = raw_config.get(u'XX_addons', {})
+        for idx, addon in addons.iteritems():
+            if idx > 1:
+                # Only 2 maximum addons supported, let's ignore the surpluses
+                continue
+            # WIP : addon models and fimwares mapping needs to be exported
+            if addon[u'type'] == u'7914':
+                addon[u'idx'] = unicode(idx)
+                addon[u'loadInformation'] = u'S00105000400'
+
     def _add_timezone(self, raw_config):
         raw_config[u'XX_timezone'] = self._TZ_VALUE_DEF
         if u'timezone' in raw_config:
@@ -291,9 +306,7 @@ class BaseCiscoSccpPlugin(StandardPlugin):
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
-        # TODO check support for addons, and test what the addOnModules is
-        #      really doing...
-        raw_config[u'XX_addons'] = ''
+        self._add_addons(raw_config)
         self._add_locale(raw_config)
         self._add_timezone(raw_config)
         self._add_xivo_phonebook_url(raw_config)

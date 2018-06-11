@@ -32,7 +32,15 @@
  </devicePool>
  <versionStamp>{Dec 17 2010 16:03:58}</versionStamp>
  <loadInformation>{% block loadInformation %}{% endblock %}</loadInformation>
- <addOnModules>{{ XX_addons }}</addOnModules>
+ <addOnModules>
+ {% if XX_addons -%}
+ {% for addon in XX_addons.itervalues() -%}
+  <addOnModule idx="{{ addon['idx'] }}">
+    <loadInformation>{{ addon['loadInformation'] }}</loadInformation>
+  </addOnModule>
+ {% endfor -%}
+ {% endif -%}
+ </addOnModules>
 
  {% if XX_locale -%}
  <userLocale>
