@@ -123,12 +123,12 @@ b-c: cp */* i18n/
 
 [file_67XXi-fw]
 filename: 67XXi-fw.4365-8215.zip
-url: http://www.mitel.com/sites/default/files/SIP_3_3_1_4365_8215_SP4_HF9_all_moddels_08_2016.zip
+url: http://mitel.fr/sites/default/files/SIP_3_3_1_4365_8215_SP4_HF9_all_moddels_08_2016.zip
 size: 47398699
 sha1sum: ee7dc225c0d577088b0f32a0a5ebc231dc9608a8
 
 [file_lang]
 filename: 5801456-REV01_LangPacks_4_2_0_SP1.zip
-url: http://www.mitel.com/sites/default/files/5801456-REV01_LangPacks_4_2_0_SP1.zip
+url: http://mitel.fr/sites/default/files/5801456-REV01_LangPacks_4_2_0_SP1.zip
 size: 699938
 sha1sum: 5cd4344dde28b2ef61b3cfcf5f9a59e660abbb32
