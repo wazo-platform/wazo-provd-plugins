@@ -20,6 +20,7 @@ execfile_('common.py', common)
 
 MODELS = [
     u'SN4112',
+    u'SN4112S',
     u'SN4114',
     u'SN4116',
     u'SN4118',
