@@ -1,0 +1,42 @@
+{
+    "version": "1.9",
+    "description": "Plugin for Snom D375, D345, D315, D305, D765, D745, D725, 715/D715, 760, 720, 710/D710 in version 8.9.3.80.",
+    "description_fr": "Greffon pour Snom D375, D345, D315, D305, D765, D745, D725, 715/D715, 760, 720, 710/D710 en version 8.9.3.80.",
+    "capabilities": {
+         "Snom, D305, 8.9.3.80": {
+            "sip.lines": 4
+        },
+        "Snom, D315, 8.9.3.80": {
+            "sip.lines": 4
+        },
+        "Snom, D345, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, D375, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, D745, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, 710, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, 715, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, 720, 8.9.3.80": {
+            "sip.lines": 12,
+            "switchboard": true
+        },
+        "Snom, 725, 8.9.3.80": {
+            "sip.lines": 12,
+            "switchboard": true
+        },
+        "Snom, 760, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, D765, 8.9.3.80": {
+            "sip.lines": 12
+        }
+    }
+}
