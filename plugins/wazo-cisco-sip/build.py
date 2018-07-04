@@ -21,7 +21,7 @@
 from subprocess import check_call
 
 
-@target('9.4', 'xivo-cisco-sip-9.4')
+@target('9.4', 'wazo-cisco-sip-9.4')
 def build_9_4(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
