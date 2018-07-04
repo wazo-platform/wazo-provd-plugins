@@ -32,12 +32,12 @@
   </devicePool>
   <sipProfile>
     <sipProxies>
-      <backupProxy>{{ sip_lines[0]['backup_proxy_ip'] }}</backupProxy>
-      <backupProxyPort>{{ sip_lines[0]['backup_proxy_port'] }}</backupProxyPort>
+      <backupProxy>{{ sip_backup_proxy_ip }}</backupProxy>
+      <backupProxyPort>{{ sip_backup_proxy_port }}</backupProxyPort>
       <emergencyProxy></emergencyProxy>
       <emergencyProxyPort></emergencyProxyPort>
-      <outboundProxy></outboundProxy>
-      <outboundProxyPort></outboundProxyPort>
+      <outboundProxy>{{ sip_outbound_proxy_ip }}</outboundProxy>
+      <outboundProxyPort>{{ sip_outbound_proxy_port }}</outboundProxyPort>
       <registerWithProxy>true</registerWithProxy>
     </sipProxies>
     <sipCallFeatures>
