@@ -305,6 +305,28 @@ class BaseCiscoSipPlugin(StandardPlugin):
         for priority, call_manager in raw_config[u'sccp_call_managers'].iteritems():
             call_manager[u'XX_priority'] = unicode(int(priority) - 1)
 
+    def _update_sip_lines(self, raw_config):
+        proxy_ip = raw_config.get(u'sip_proxy_ip')
+        proxy_port = raw_config.get(u'sip_proxy_port', u'0')
+        backup_proxy_ip = raw_config.get(u'sip_backup_proxy_ip', u'0.0.0.0')
+        backup_proxy_port = raw_config.get(u'sip_backup_proxy_port', u'0')
+        registrar_ip = raw_config.get(u'sip_registrar_ip')
+        registrar_port = raw_config.get(u'sip_registrar_port', u'0')
+        backup_registrar_ip = raw_config.get(u'sip_backup_registrar_ip', u'0.0.0.0')
+        backup_registrar_port = raw_config.get(u'sip_backup_registrar_port', u'0')
+        voicemail = raw_config.get(u'exten_voicemail')
+        for line in raw_config[u'sip_lines'].itervalues():
+            line.setdefault(u'proxy_ip', proxy_ip)
+            line.setdefault(u'proxy_port', proxy_port)
+            line.setdefault(u'backup_proxy_ip', backup_proxy_ip)
+            line.setdefault(u'backup_proxy_port', backup_proxy_port)
+            line.setdefault(u'registrar_ip', registrar_ip)
+            line.setdefault(u'registrar_port', registrar_port)
+            line.setdefault(u'backup_registrar_ip', backup_registrar_ip)
+            line.setdefault(u'backup_registrar_port', backup_registrar_port)
+            if voicemail:
+                line.setdefault(u'voicemail', voicemail)
+
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^SEP[0-9A-F]{12}\.cnf\.xml$')
 
     def _dev_specific_filename(self, device):
@@ -333,6 +355,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
         self._add_timezone(raw_config)
         self._add_xivo_phonebook_url(raw_config)
         self._update_call_managers(raw_config)
+        self._update_sip_lines(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)

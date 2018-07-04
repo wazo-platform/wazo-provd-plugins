@@ -32,8 +32,8 @@
   </devicePool>
   <sipProfile>
     <sipProxies>
-      <backupProxy></backupProxy>
-      <backupProxyPort>5060</backupProxyPort>
+      <backupProxy>{{ sip_lines[0]['backup_proxy_ip'] }}</backupProxy>
+      <backupProxyPort>{{ sip_lines[0]['backup_proxy_port'] }}</backupProxyPort>
       <emergencyProxy></emergencyProxy>
       <emergencyProxyPort></emergencyProxyPort>
       <outboundProxy></outboundProxy>
@@ -89,25 +89,28 @@
     <silentPeriodBetweenCallWaitingBursts>10</silentPeriodBetweenCallWaitingBursts>
     <disableLocalSpeedDialConfig>false</disableLocalSpeedDialConfig>
     <sipLines>
-      <line button="1">
+    {% for line_no, line in sip_lines.iteritems() %}
+      <line button="{{ line_no }}">
         <featureID>9</featureID>
-        <featureLabel>1122</featureLabel>
-        <proxy>1122</proxy>
-        <port>5060</port>
-        <name>1122</name>
-        <displayName>1122</displayName>
+        <featureLabel>{{ line['number'] }}</featureLabel>
+        <proxy>{{ line['proxy_ip'] }}</proxy>
+        <port>{{ line['proxy_port'] }}</port>
+        <name>{{ line['display_name'] }}</name>
+        <displayName>{{ line['display_name'] }}</displayName>
         <autoAnswer>
           <autoAnswerEnabled>2</autoAnswerEnabled>
         </autoAnswer>
         <callWaiting>3</callWaiting>
-        <authName>1122</authName>
-        <authPassword></authPassword>
+        <authName>{{ line['username'] }}</authName>
+        <authPassword>{{ line['password'] }}</authPassword>
         <sharedLine>false</sharedLine>
         <messageWaitingLampPolicy>1</messageWaitingLampPolicy>
-        <messagesNumber>*97</messagesNumber>
+        {% if line['voicemail'] -%}
+        <messagesNumber>{{ line['voicemail'] }}</messagesNumber>
+        {% endif -%}
         <ringSettingIdle>4</ringSettingIdle>
         <ringSettingActive>5</ringSettingActive>
-        <contact>1122</contact>
+        <contact>{{ line['number'] }}</contact>
         <forwardCallInfoDisplay>
           <callerName>true</callerName>
           <callerNumber>false</callerNumber>
@@ -115,8 +118,9 @@
           <dialedNumber>true</dialedNumber>
         </forwardCallInfoDisplay>
       </line>
+    {% endfor -%}
     </sipLines>
-    <voipControlPort>5060</voipControlPort>
+    <voipControlPort>{{ line['proxy_port'] }}</voipControlPort>
     <startMediaPort>16348</startMediaPort>
     <stopMediaPort>20134</stopMediaPort>
     <dscpForAudio>184</dscpForAudio>
@@ -125,7 +129,9 @@
     <softKeyFile></softKeyFile>
   </sipProfile>
   <commonProfile>
-    <phonePassword></phonePassword>
+    {% if admin_password -%}
+    <phonePassword>{{ admin_password }}</phonePassword>
+    {% endif -%}
     <backgroundImageAccess>true</backgroundImageAccess>
     <callLogBlfEnabled>2</callLogBlfEnabled>
   </commonProfile>
@@ -136,7 +142,9 @@
     <pcPort>0</pcPort>
     <settingsAccess>1</settingsAccess>
     <garp>0</garp>
-    <voiceVlanAccess>0</voiceVlanAccess>
+    {% if vlan_enabled -%}
+    <voiceVlanAccess>{{ vlan_id }}</voiceVlanAccess>
+    {% endif -%}
     <videoCapability>0</videoCapability>
     <autoSelectLineEnable>0</autoSelectLineEnable>
     <webAccess>1</webAccess>
