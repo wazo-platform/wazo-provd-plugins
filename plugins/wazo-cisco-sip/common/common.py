@@ -351,6 +351,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
         # TODO check support for addons, and test what the addOnModules is
         #      really doing...
         raw_config[u'XX_addons'] = ''
+        raw_config[u'protocol'] = 'SIP'
         self._add_locale(raw_config)
         self._add_timezone(raw_config)
         self._add_xivo_phonebook_url(raw_config)

@@ -1,5 +1,7 @@
 <device>
   <deviceProtocol>SIP</deviceProtocol>
+  <sshUserId>admin</sshUserId>
+  <sshPassword>{{ admin_password }}</sshPassword>
   <devicePool>
     <dateTimeSetting>
       <dateTemplate>D-M-YA</dateTemplate>
@@ -90,18 +92,18 @@
     <disableLocalSpeedDialConfig>false</disableLocalSpeedDialConfig>
     <sipLines>
     {% for line_no, line in sip_lines.iteritems() %}
-      <line button="{{ line_no }}">
+      <line button="{{ line_no }}" lineIndex="{{ line_no }}">
         <featureID>9</featureID>
         <featureLabel>{{ line['number'] }}</featureLabel>
-        <proxy>{{ line['proxy_ip'] }}</proxy>
-        <port>{{ line['proxy_port'] }}</port>
-        <name>{{ line['display_name'] }}</name>
+        <proxy>USECALLMANAGER</proxy>
+        <port>{{ line['proxy_port']|d(5060) }}</port>
+        <name>{{ line['username'] }}</name>
         <displayName>{{ line['display_name'] }}</displayName>
         <autoAnswer>
           <autoAnswerEnabled>2</autoAnswerEnabled>
         </autoAnswer>
         <callWaiting>3</callWaiting>
-        <authName>{{ line['username'] }}</authName>
+        <authName>{{ line['auth_username'] }}</authName>
         <authPassword>{{ line['password'] }}</authPassword>
         <sharedLine>false</sharedLine>
         <messageWaitingLampPolicy>1</messageWaitingLampPolicy>
@@ -120,7 +122,7 @@
       </line>
     {% endfor -%}
     </sipLines>
-    <voipControlPort>{{ line['proxy_port'] }}</voipControlPort>
+    <voipControlPort>{{ sip_registrar_port }}</voipControlPort>
     <startMediaPort>16348</startMediaPort>
     <stopMediaPort>20134</stopMediaPort>
     <dscpForAudio>184</dscpForAudio>
@@ -179,7 +181,7 @@
   <dscpForSCCPPhoneConfig>96</dscpForSCCPPhoneConfig>
   <dscpForSCCPPhoneServices>0</dscpForSCCPPhoneServices>
   <dscpForCm2Dvce>96</dscpForCm2Dvce>
-  <transportLayerProtocol>4</transportLayerProtocol>
+  <transportLayerProtocol>2</transportLayerProtocol>
   <capfAuthMode>0</capfAuthMode>
   <capfList>
     <capf>
