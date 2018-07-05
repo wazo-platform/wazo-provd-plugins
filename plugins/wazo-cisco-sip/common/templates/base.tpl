@@ -179,7 +179,7 @@
   <dscpForSCCPPhoneConfig>96</dscpForSCCPPhoneConfig>
   <dscpForSCCPPhoneServices>0</dscpForSCCPPhoneServices>
   <dscpForCm2Dvce>96</dscpForCm2Dvce>
-  <transportLayerProtocol>2</transportLayerProtocol>
+  <transportLayerProtocol>1</transportLayerProtocol>
   <capfAuthMode>0</capfAuthMode>
   <capfList>
     <capf>
