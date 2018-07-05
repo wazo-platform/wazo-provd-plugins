@@ -17,18 +17,16 @@
     </dateTimeSetting>
     <callManagerGroup>
       <members>
-      {% for call_manager in sccp_call_managers.itervalues() -%}
-        <member priority="{{ call_manager['XX_priority'] }}">
+        <member priority="0">
           <callManager>
             <ports>
-              <ethernetPhonePort>{{ call_manager['port']|d('2000') }}</ethernetPhonePort>
-              <sipPort>5060</sipPort>
+              <ethernetPhonePort>2000</ethernetPhonePort>
+              <sipPort>{{ sip_proxy_port }}</sipPort>
               <securedSipPort>5061</securedSipPort>
             </ports>
-            <processNodeName>{{ call_manager['ip'] }}</processNodeName>
+            <processNodeName>{{ sip_proxy_ip }}</processNodeName>
           </callManager>
         </member>
-      {% endfor -%}
       </members>
     </callManagerGroup>
   </devicePool>

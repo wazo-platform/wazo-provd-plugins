@@ -306,26 +306,28 @@ class BaseCiscoSipPlugin(StandardPlugin):
             call_manager[u'XX_priority'] = unicode(int(priority) - 1)
 
     def _update_sip_lines(self, raw_config):
-        proxy_ip = raw_config.get(u'sip_proxy_ip')
-        proxy_port = raw_config.get(u'sip_proxy_port', u'0')
-        backup_proxy_ip = raw_config.get(u'sip_backup_proxy_ip', u'0.0.0.0')
-        backup_proxy_port = raw_config.get(u'sip_backup_proxy_port', u'0')
-        registrar_ip = raw_config.get(u'sip_registrar_ip')
-        registrar_port = raw_config.get(u'sip_registrar_port', u'0')
-        backup_registrar_ip = raw_config.get(u'sip_backup_registrar_ip', u'0.0.0.0')
-        backup_registrar_port = raw_config.get(u'sip_backup_registrar_port', u'0')
+        assert raw_config[u'sip_lines']
+        sip_lines_key = min(raw_config[u'sip_lines'])
+        sip_line = raw_config[u'sip_lines'][sip_lines_key]
+        proxy_port = raw_config.get(u'sip_proxy_port', u'5060')
         voicemail = raw_config.get(u'exten_voicemail')
         for line in raw_config[u'sip_lines'].itervalues():
-            line.setdefault(u'proxy_ip', proxy_ip)
             line.setdefault(u'proxy_port', proxy_port)
-            line.setdefault(u'backup_proxy_ip', backup_proxy_ip)
-            line.setdefault(u'backup_proxy_port', backup_proxy_port)
-            line.setdefault(u'registrar_ip', registrar_ip)
-            line.setdefault(u'registrar_port', registrar_port)
-            line.setdefault(u'backup_registrar_ip', backup_registrar_ip)
-            line.setdefault(u'backup_registrar_port', backup_registrar_port)
             if voicemail:
                 line.setdefault(u'voicemail', voicemail)
+        def set_if(line_id, id):
+            if line_id in sip_line:
+                raw_config[id] = sip_line[line_id]
+        set_if(u'proxy_ip', u'sip_proxy_ip')
+        set_if(u'proxy_port', u'sip_proxy_port')
+        set_if(u'backup_proxy_ip', u'sip_backup_proxy_ip')
+        set_if(u'backup_proxy_port', u'sip_backup_proxy_port')
+        set_if(u'outbound_proxy_ip', u'sip_outbound_proxy_ip')
+        set_if(u'outbound_proxy_port', u'sip_outbound_proxy_port')
+        set_if(u'registrar_ip', u'sip_registrar_ip')
+        set_if(u'registrar_port', u'sip_registrar_port')
+        set_if(u'backup_registrar_ip', u'sip_backup_registrar_ip')
+        set_if(u'backup_registrar_port', u'sip_backup_registrar_port')
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^SEP[0-9A-F]{12}\.cnf\.xml$')
 
