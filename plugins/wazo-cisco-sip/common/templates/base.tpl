@@ -145,7 +145,7 @@
     {% if vlan_enabled -%}
     <voiceVlanAccess>{{ vlan_id }}</voiceVlanAccess>
     {% endif -%}
-    <videoCapability>0</videoCapability>
+    <videoCapability>1</videoCapability>
     <autoSelectLineEnable>0</autoSelectLineEnable>
     <webAccess>1</webAccess>
     <daysDisplayNotActive>1,2,3,4,5,6,7</daysDisplayNotActive>
