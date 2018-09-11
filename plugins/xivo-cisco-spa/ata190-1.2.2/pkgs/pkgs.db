@@ -1,0 +1,16 @@
+[pkg_ata190-fw]
+description: Firmware for Cisco ATA190
+description_fr: Micrologiciel pour Cisco ATA190
+version: 1.2.2
+files: ata190fw
+install: cisco-fw
+
+
+[install_cisco-fw]
+a-b: cp cmterm-ata190*.sgn firmware/
+
+
+[file_ata190fw]
+url: cmterm-ata190.1-2-2-003.k3.cop.sgn
+size: 10328097
+sha1sum: 

@@ -18,17 +18,10 @@
 common = {}
 execfile_('common.py', common)
 
-MODELS = [
-    u'7905G',
-    u'7912G',
-    u'7920',
-    u'7937G',
-    u'7940G',
-    u'7960G'
-]
+MODEL_VERSION = {u'ATA190': u'1.2.2'}
 
 
-class CiscoSccpPlugin(common['BaseCiscoSccpPlugin']):
+class CiscoPlugin(common['BaseCiscoPlugin']):
     IS_PLUGIN = True
-
-    pg_associator = common['BaseCiscoPgAssociator'](MODELS)
+    _COMMON_FILENAMES = ['dialplan.xml']
+    pg_associator = common['BaseCiscoPgAssociator'](MODEL_VERSION)

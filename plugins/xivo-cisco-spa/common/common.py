@@ -68,6 +68,8 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
         #   "Cisco SPA525G" (SPA525G 7.4.7)
         #   "Cisco SPA525G2" (SPA525G2 7.4.5)
         #   "CISCO SPA122"
+        #   "CISCO ATA190"
+        logger.info('VDI to extract: %s', vdi)
         tokens = vdi.split()
         if len(tokens) == 2:
             raw_vendor, raw_model = tokens
@@ -150,14 +152,20 @@ class BaseCiscoHTTPDeviceInfoExtractor(object):
 class BaseCiscoTFTPDeviceInfoExtractor(object):
     _SEPFILE_REGEX = re.compile(r'^SEP([\dA-F]{12})\.cnf\.xml$')
     _SPAFILE_REGEX = re.compile(r'^/spa(.+?)\.cfg$')
+    _ATAFILE_REGEX = re.compile(r'^ATA([\dA-F]{12})\.cnf\.xml$')
+    _CTLSEPFILE_REGEX = re.compile(r'^CTLSEP([\dA-F]{12})\.tlv$')
+
+    def __init__(self):
+        self.first_line_configured_ATA = False
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
+        logger.info('Request: %s', request)
         packet = request['packet']
         filename = packet['filename']
-        for test_fun in [self._test_sepfile, self._test_spafile, self._test_init]:
+        for test_fun in [self._test_sepfile, self._test_ctlsepfile, self._test_spafile, self._test_init, self._test_atafile]: 
             dev_info = test_fun(filename)
             if dev_info:
                 dev_info[u'vendor'] = u'Cisco'
@@ -168,8 +176,19 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
         # Test if filename is "SEPMAC.cnf.xml".
         m = self._SEPFILE_REGEX.match(filename)
         if m:
-            raw_mac = m.group(1)
-            return {u'mac': norm_mac(raw_mac.decode('ascii'))}
+            # raw_mac = m.group(1)
+            # return {u'mac': norm_mac(raw_mac.decode('ascii'))}
+            return {u'model': 'ATA190'}
+        return None
+
+    def _test_ctlsepfile(self, filename):
+        # Test if filename is "CTLSEPMAC.tlv".
+        # Only the ATA190 requests this file using this plugin
+        m = self._CTLSEPFILE_REGEX.match(filename)
+        if m:
+            # raw_mac = m.group(1)
+            # return {u'mac': norm_mac(raw_mac.decode('ascii'))}
+            return {u'model': 'ATA190'}
         return None
 
     def _test_spafile(self, filename):
@@ -178,6 +197,14 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
         if m:
             raw_model = 'SPA' + m.group(1)
             return {u'model': _norm_model(raw_model)}
+        return None
+
+    def _test_atafile(self, filename):
+        # Test if filename is "ATAMAC.cnf.xml".
+        m = self._ATAFILE_REGEX.match(filename)
+        if m:
+            self.first_line_configured_ATA = True
+            return {u'model': 'ATA190'}
         return None
 
     def _test_init(self, filename):
@@ -193,6 +220,7 @@ class BaseCiscoPgAssociator(BasePgAssociator):
         self._model_version = model_version
 
     def _do_associate(self, vendor, model, version):
+        logger.info('BaseCiscoPgAssociator SPA: %s, %s, %s', vendor, model, version)
         if vendor == u'Cisco':
             if model in self._model_version:
                 if version == self._model_version[model]:
@@ -230,7 +258,8 @@ class BaseCiscoPlugin(StandardPlugin):
         u'SPA512G': (0, 2),
         u'SPA514G': (4, 2),
         u'SPA525G': (5, 2),
-        u'SPA525G2': (5, 2)
+        u'SPA525G2': (5, 2),
+        u'ATA190': (0,0),
     }
     _DEFAULT_LOCALE = u'en_US'
     _LANGUAGE = {
@@ -404,11 +433,15 @@ class BaseCiscoPlugin(StandardPlugin):
         if hostname:
             raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
 
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.xml$')
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^\w{,3}[0-9a-fA-F]{12}(?:\.cnf)?\.xml$')
 
     def _dev_specific_filename(self, dev):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(dev[u'mac'], separator='')
+
+        if dev[u'model'].startswith('ATA'):
+            fmted_mac = 'ATA%s.cnf' % fmted_mac.upper()
+        
         return fmted_mac + '.xml'
 
     def _check_config(self, raw_config):
@@ -433,6 +466,9 @@ class BaseCiscoPlugin(StandardPlugin):
         self._add_locale(raw_config)
         self._add_xivo_phonebook_url(raw_config)
 
+        if self.tftp_dev_info_extractor.first_line_configured_ATA:
+            raw_config['XX_second_line_ata'] = True
+        
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING, errors='replace')
 

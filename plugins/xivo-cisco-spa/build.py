@@ -91,3 +91,12 @@ def build_spa8800_6_1_7(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'spa8800-6.1.7/', path])
+
+
+@target('ata190-1.2.2', 'xivo-cisco-ata190-1.2.2')
+def build_ata190_1_2_2(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'ata190-1.2.2/', path])

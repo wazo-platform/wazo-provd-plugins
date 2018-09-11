@@ -45,6 +45,8 @@ class BaseCiscoPgAssociator(BasePgAssociator):
                 return PROBABLE_SUPPORT + 10
             if model.startswith(u'SPA'):
                 return NO_SUPPORT
+            if model.startswith(u'ATA'):
+                return NO_SUPPORT
             if model in self._models:
                 return COMPLETE_SUPPORT
             return PROBABLE_SUPPORT
@@ -137,11 +139,12 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
             m = regex.match(filename)
             if m:
                 dev_info = {u'vendor': u'Cisco'}
-                if m.lastindex == 1:
-                    try:
-                        dev_info[u'mac'] = norm_mac(m.group(1).decode('ascii'))
-                    except ValueError, e:
-                        logger.warning('Could not normalize MAC address: %s', e)
+                # XXX not really sure if that's the mac address
+                # if m.lastindex == 1:
+                #     try:
+                #         dev_info[u'mac'] = norm_mac(m.group(1).decode('ascii'))
+                #     except ValueError, e:
+                #         logger.warning('Could not normalize MAC address: %s', e)
                 return dev_info
 
 
