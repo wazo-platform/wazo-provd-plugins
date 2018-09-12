@@ -31,9 +31,13 @@
 		</srstInfo>
 	</devicePool>
 	<sipProfile>
-	{% if '1' in sip_lines %}
-		<phoneLabel>{{ sip_lines['1']['number'] }}</phoneLabel>
+	{% set line_nb = '1' %}
+	{% if XX_second_line_ata and '2' in sip_lines %}
+	{% set line_nb = '2' %}
 	{% endif %}
+
+		<phoneLabel>{{ sip_lines[line_nb]['number'] }}</phoneLabel>
+	
 		<sipCallFeatures>
 			<cnfJoinEnabled>true</cnfJoinEnabled>
 			<rfc2543Hold>false</rfc2543Hold>
@@ -69,7 +73,7 @@
 			<userInfo>Phone</userInfo>
 		</sipStack>
 		<sipLines>
-            {% for line_no, line in sip_lines.iteritems() %}
+            {% set line = sip_lines[line_nb] %}
 			<line>
 				<featureID>9</featureID>
 				<featureLabel>{{ line['display_name'] }}</featureLabel>
@@ -82,7 +86,6 @@
 				<authPassword>{{ line['password'] }}</authPassword>
 				<sharedLine>false</sharedLine>
 			</line>
-            {% endfor %}
 		</sipLines>
 		<dialTemplate>dialplan.xml</dialTemplate>
 		

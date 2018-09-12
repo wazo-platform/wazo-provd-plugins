@@ -139,7 +139,7 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
             m = regex.match(filename)
             if m:
                 dev_info = {u'vendor': u'Cisco'}
-                # XXX not really sure if that's the mac address
+                # XXX not 100% sure if that's the device's mac address
                 # if m.lastindex == 1:
                 #     try:
                 #         dev_info[u'mac'] = norm_mac(m.group(1).decode('ascii'))
@@ -147,6 +147,8 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
                 #         logger.warning('Could not normalize MAC address: %s', e)
                 return dev_info
 
+    def __repr__(self):
+        return object.__repr__(self) + "-SCCP"
 
 _ZONE_MAP = {
     'Etc/GMT+12': u'Dateline Standard Time',
