@@ -172,22 +172,6 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
 
     def __repr__(self):
         return object.__repr__(self) + "-SPA"
-    
-    # def _test_sepfile(self, filename):
-    #     # Test if filename is "SEPMAC.cnf.xml".
-    #     m = self._SEPFILE_REGEX.match(filename)
-    #     if m:
-    #         raw_mac = m.group(1)
-    #         return {u'mac': norm_mac(raw_mac.decode('ascii'))}
-    #     return None
-
-    # def _test_ctlsepfile(self, filename):
-    #     # Test if filename is "CTLSEPMAC.tlv".
-    #     m = self._CTLSEPFILE_REGEX.match(filename)
-    #     if m:
-    #         raw_mac = m.group(1)
-    #         return {u'mac': norm_mac(raw_mac.decode('ascii'))}
-    #     return None
 
     def _test_spafile(self, filename):
         # Test if filename is "/spa$PSN.cfg".
