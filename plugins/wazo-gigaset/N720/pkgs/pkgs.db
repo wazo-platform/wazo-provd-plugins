@@ -8,7 +8,7 @@ install: gigaset-fw
 [pkg_N720-fw]
 description: Firmware for Gigaset N720 IP PRO
 description_fr: Micrologiciel pour Gigaset N720 IP PRO
-version: 70.108
+version: 70.111
 files: N720-fw
 install: gigaset-fw
 
@@ -24,7 +24,7 @@ size: 5827549
 sha1sum: e85e2f80bf48022444f6e206c6062cc54fd64523
 
 [file_N720-fw]
-filename: N720_SW108.zip
-url: https://teamwork.gigaset.com/gigawiki/download/attachments/598050518/N720_SW108.zip?version=1&modificationDate=1492062989000&api=v2&download=true
-size: 2081292
-sha1sum: 8bb919db705e2903aba8ba5648a753292efe4d36
+filename: N720_SW111.zip
+url: https://teamwork.gigaset.com/gigawiki/download/attachments/759175882/N720_SW_111.zip?version=1&modificationDate=1523875534000&api=v2&download=true
+size: 2107221
+sha1sum: d1f4bfa552bf5abdf98f0eead1aeb3f34842e8c6
