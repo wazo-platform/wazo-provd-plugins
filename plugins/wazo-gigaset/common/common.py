@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 # Copyright 2011-2018 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
-"""Common code shared by the various wazo-gigaset plugins."""
 
+"""Common code shared by the various wazo-gigaset plugins."""
 
 import os
 import logging
 import re
 from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, UNKNOWN_SUPPORT
-from provd.plugins import StandardPlugin, TemplatePluginHelper
+    COMPLETE_SUPPORT, FULL_SUPPORT, UNKNOWN_SUPPORT
+from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.util import norm_mac
 from provd.servers.http import HTTPNoListingFileService
 from twisted.internet import defer, threads
@@ -51,29 +51,36 @@ class GigasetDHCPDeviceInfoExtractor(object):
 
 class GigasetHTTPDeviceInfoExtractor(object):
 
-    _UA_REGEX = re.compile(r'')
-    _PATH_REGEX = re.compile(r'')
+    _UA_REGEX = re.compile(r'^(Gigaset )?(?P<model>N\d{3} .+)\/(?P<version>\d{2,3}\.\d{2,3})\.(\d{2,3})\.(\d{2,3})\.(\d{2,3});?(?P<mac>[A-F0-9]{12})?$')
+    _PATH_REGEX = re.compile(r'^/\d{2}/\d{1}/(.+)$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
-        match = self._PATH_REGEX.match(request.path)
+        match = self._PATH_REGEX.search(request.path)
         if match:
             dev_info = {u'vendor': VENDOR}
-            
+            ua = request.getHeader('User-Agent')
+            if ua:
+                dev_info.update(self._extract_from_ua(ua))
             return dev_info
 
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
         # "Gigaset N720 DM PRO/70.089.00.000.000;7C2F80CA21E4"
+        # "Gigaset N720 DM PRO/70.108.00.000.000"
+        # "N510 IP PRO/42.242.00.000.000"
         m = self._UA_REGEX.search(ua)
+        dev_info = None
         if m:
-            raw_model, raw_version = m.groups()
-            return {u'vendor': VENDOR,
-                    u'model': raw_model.decode('ascii'),
-                    u'version': raw_version.decode('ascii')}
-        return None):
+            dev_info = {u'vendor': VENDOR,
+                    u'model': m.group('model').decode('ascii'),
+                    u'version': m.group('version').decode('ascii')}
+            if 'mac' in m.groupdict():
+                dev_info[u'mac'] = norm_mac(m.group('mac').decode('ascii'))
+        
+        return dev_info
         
 
 
@@ -84,6 +91,8 @@ class BaseGigasetPgAssociator(BasePgAssociator):
     def _do_associate(self, vendor, model, version):
         if vendor == VENDOR:
             if model in self._models:
+                if version == self._models[model]:
+                    return FULL_SUPPORT
                 return COMPLETE_SUPPORT
             else:
                 return UNKNOWN_SUPPORT
@@ -100,6 +109,11 @@ class BaseGigasetPlugin(StandardPlugin):
         self._app = app
         
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
+        downloaders = FetchfwPluginHelper.new_downloaders(gen_cfg.get('proxies'))
+        fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
+
+        self.services = fetchfw_helper.services()
+        self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
         
     dhcp_dev_info_extractor = GigasetDHCPDeviceInfoExtractor()
     http_dev_info_extractor = GigasetHTTPDeviceInfoExtractor()
@@ -110,14 +124,14 @@ class BaseGigasetPlugin(StandardPlugin):
     
     def configure(self, device, raw_config):
         self._check_device(device)
-        # nothing else to do
+        # XXX need to create XML config files
     
     def deconfigure(self, device):
-        # nothing to do
+        # XXX need to remove XML config files
         pass
     
     def _do_synchronize(self, device, raw_config):
-        
+        pass
     
     def synchronize(self, device, raw_config):
         assert u'ip' in device      # see self.configure() and plugin contract

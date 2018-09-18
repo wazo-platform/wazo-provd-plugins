@@ -8,7 +8,7 @@ install: gigaset-fw
 [pkg_N720-fw]
 description: Firmware for Gigaset N720 IP PRO
 description_fr: Micrologiciel pour Gigaset N720 IP PRO
-version: 108
+version: 70.108
 files: N720-fw
 install: gigaset-fw
 
