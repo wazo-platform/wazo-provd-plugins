@@ -59,7 +59,6 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
         #   "Cisco SPA525G2" (SPA525G2 7.4.5)
         #   "CISCO SPA122"
         #   "CISCO ATA190"
-        logger.info('VDI to extract: %s', vdi)
         tokens = vdi.split()
         if len(tokens) == 2:
             raw_vendor, raw_model = tokens
