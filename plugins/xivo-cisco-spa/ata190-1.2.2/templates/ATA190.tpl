@@ -22,6 +22,16 @@
 			<tftpDefault>true</tftpDefault>
 			<members>
 				<member>
+				{% if '1' in sip_lines %}
+				<callManager>
+					<name>{{ sip_lines['1']['proxy_ip'] }}</name>
+					<description></description>
+					<ports>
+					<sipPort>{{ sip_lines['1']['proxy_port']|d(5060) }}</sipPort>
+					</ports>
+					<processNodeName>{{ sip_lines['1']['proxy_ip'] }}</processNodeName>
+				</callManager>
+				{% endif %}
 				</member>
 			</members>
 		</callManagerGroup>
