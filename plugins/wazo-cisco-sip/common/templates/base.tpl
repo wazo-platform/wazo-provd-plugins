@@ -54,7 +54,7 @@
       <semiAttendedTransfer>true</semiAttendedTransfer>
       <anonymousCallBlock>2</anonymousCallBlock>
       <callerIdBlocking>2</callerIdBlocking>
-      <dndControl>0</dndControl>
+      <dndControl>1</dndControl>
       <remoteCcEnable>true</remoteCcEnable>
     </sipCallFeatures>
     <sipStack>
@@ -69,7 +69,7 @@
       <timerT1>500</timerT1>
       <timerT2>4000</timerT2>
       <maxRedirects>70</maxRedirects>
-      <remotePartyID>false</remotePartyID>
+      <remotePartyID>true</remotePartyID>
       <userInfo>None</userInfo>
     </sipStack>
     <autoAnswerTimer>1</autoAnswerTimer>
@@ -83,13 +83,13 @@
     <alwaysUsePrimeLine>false</alwaysUsePrimeLine>
     <alwaysUsePrimeLineVoiceMail>false</alwaysUsePrimeLineVoiceMail>
     <kpml>3</kpml>
-    <phoneLabel></phoneLabel>
+    <phoneLabel>{% if '1' in sip_lines %}{{ sip_lines['1']['display_name'] }}{% endif %}</phoneLabel>
     <stutterMsgWaiting>1</stutterMsgWaiting>
     <callStats>false</callStats>
     <silentPeriodBetweenCallWaitingBursts>10</silentPeriodBetweenCallWaitingBursts>
     <disableLocalSpeedDialConfig>false</disableLocalSpeedDialConfig>
     <sipLines>
-    {% for line_no, line in sip_lines.iteritems() %}
+    {% for line_no, line in sip_lines.iteritems() -%}
       <line button="{{ line_no }}" lineIndex="{{ line_no }}">
         <featureID>9</featureID>
         <featureLabel>{{ line['number'] }}</featureLabel>
@@ -119,19 +119,33 @@
         </forwardCallInfoDisplay>
       </line>
     {% endfor -%}
+    {%- if XX_fkeys %}
+    {%- for fk_no, fkey in XX_fkeys|dictsort %}
+      <line button="{{ fk_no }}" lineIndex="{{ fk_no }}">
+        <featureID>{{ fkey['feature_id'] }}</featureID>
+        <featureLabel>{{ fkey['label'] }}</featureLabel>
+        {%- if fkey['type'] in ['blf', 'speeddial'] %}
+        <speedDialNumber>{{ fkey['value'] }}</speedDialNumber>
+        <featureOptionMask>1</featureOptionMask>
+        {%- endif %}
+      </line>
+    {%- endfor %}
+    {%- endif %}
     </sipLines>
-    <voipControlPort>{{ sip_registrar_port }}</voipControlPort>
-    <startMediaPort>16348</startMediaPort>
-    <stopMediaPort>20134</stopMediaPort>
+    <voipControlPort>{% if '1' in sip_lines %}{{ sip_lines['1']['proxy_port']|d(5060) }}{% endif %}</voipControlPort>
+    <startMediaPort>10000</startMediaPort>
+    <stopMediaPort>20000</stopMediaPort>
     <dscpForAudio>184</dscpForAudio>
     <ringSettingBusyStationPolicy>0</ringSettingBusyStationPolicy>
     <dialTemplate>dialplan.xml</dialTemplate>
-    <softKeyFile></softKeyFile>
+    <softKeyFile>SoftKeys.xml</softKeyFile>
   </sipProfile>
   <commonProfile>
+    {#
     {% if admin_password -%}
     <phonePassword>{{ admin_password }}</phonePassword>
     {% endif -%}
+    #}
     <backgroundImageAccess>true</backgroundImageAccess>
     <callLogBlfEnabled>2</callLogBlfEnabled>
   </commonProfile>
@@ -147,7 +161,7 @@
     {% endif -%}
     <videoCapability>1</videoCapability>
     <autoSelectLineEnable>0</autoSelectLineEnable>
-    <webAccess>1</webAccess>
+    <webAccess>0</webAccess>
     <daysDisplayNotActive>1,2,3,4,5,6,7</daysDisplayNotActive>
     <displayOnTime>00:00</displayOnTime>
     <displayOnDuration>00:00</displayOnDuration>
@@ -179,7 +193,7 @@
   <dscpForSCCPPhoneConfig>96</dscpForSCCPPhoneConfig>
   <dscpForSCCPPhoneServices>0</dscpForSCCPPhoneServices>
   <dscpForCm2Dvce>96</dscpForCm2Dvce>
-  <transportLayerProtocol>1</transportLayerProtocol>
+  <transportLayerProtocol>2</transportLayerProtocol>
   <capfAuthMode>0</capfAuthMode>
   <capfList>
     <capf>

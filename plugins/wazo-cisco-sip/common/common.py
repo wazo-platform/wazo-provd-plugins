@@ -86,6 +86,7 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
                 else:
                     model_num = m.group(3)
                     dev_info[u'model'] = model_num.decode('ascii')
+                    logger.debug('Model: %s', dev_info[u'model'])
             return dev_info
 
 
@@ -137,11 +138,6 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
             m = regex.match(filename)
             if m:
                 dev_info = {u'vendor': u'Cisco'}
-                if m.lastindex == 1:
-                    try:
-                        dev_info[u'mac'] = norm_mac(m.group(1).decode('ascii'))
-                    except ValueError, e:
-                        logger.warning('Could not normalize MAC address: %s', e)
                 return dev_info
 
 
@@ -252,6 +248,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
 
     def _add_locale(self, raw_config):
         locale = raw_config.get(u'locale')
+        logger.debug('locale in raw_config: %s', locale)
         if locale in self._LOCALE:
             raw_config[u'XX_locale'] = self._LOCALE[locale]
 
@@ -329,6 +326,26 @@ class BaseCiscoSipPlugin(StandardPlugin):
         set_if(u'backup_registrar_ip', u'sip_backup_registrar_ip')
         set_if(u'backup_registrar_port', u'sip_backup_registrar_port')
 
+    def _add_fkeys(self, raw_config):
+        logger.debug('Func keys: %s', raw_config['funckeys'])
+
+        if raw_config['funckeys']:
+            fkeys_lines = [int(line) for line in raw_config['sip_lines']]
+            fkeys_start = max(fkeys_lines)
+
+            fkeys = {}
+            fkey_type = {
+                'blf': 21,
+                'speeddial': 2,
+                }
+            
+            for line_no, line_info in raw_config['funckeys'].iteritems():
+                line_id = str(fkeys_start + int(line_no))
+                fkeys[line_id] = raw_config['funckeys'][line_no]
+                fkeys[line_id]['feature_id'] = fkey_type[line_info['type']]
+            
+            raw_config['XX_fkeys'] = fkeys
+    
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^SEP[0-9A-F]{12}\.cnf\.xml$')
 
     def _dev_specific_filename(self, device):
@@ -359,6 +376,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
         self._add_xivo_phonebook_url(raw_config)
         self._update_call_managers(raw_config)
         self._update_sip_lines(raw_config)
+        self._add_fkeys(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
