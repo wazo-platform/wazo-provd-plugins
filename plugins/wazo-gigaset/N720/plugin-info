@@ -1,5 +1,5 @@
 {
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Plugin for Gigaset N510 IP / N720 IP/DM PRO.",
     "description_fr": "Greffon pour Gigaset N510 IP / N720 IP/DM PRO.",
     "capabilities": {

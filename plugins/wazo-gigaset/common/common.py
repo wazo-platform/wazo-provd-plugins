@@ -10,7 +10,8 @@ import re
 from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT,\
     COMPLETE_SUPPORT, FULL_SUPPORT, UNKNOWN_SUPPORT
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
-from provd.util import norm_mac
+from provd.util import norm_mac, format_mac
+from provd import synchronize
 from provd.servers.http import HTTPNoListingFileService
 from twisted.internet import defer, threads
 
@@ -122,16 +123,32 @@ class BaseGigasetPlugin(StandardPlugin):
         if u'ip' not in device:
             raise Exception('IP address needed for Gigaset configuration')
     
+    def _check_config(self, raw_config):
+        pass
+
+    def _dev_specific_filename(self, device):
+        # Return the device specific filename (not pathname) of device
+        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
+        return fmted_mac + '.xml'
+
     def configure(self, device, raw_config):
+        self._check_config(raw_config)
         self._check_device(device)
-        # XXX need to create XML config files
+        filename = self._dev_specific_filename(device)
+        tpl = self._tpl_helper.get_dev_template(filename, device)
+        
+        path = os.path.join(self._tftpboot_dir, filename)
+        self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
     
     def deconfigure(self, device):
-        # XXX need to remove XML config files
-        pass
-    
+        path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
+        try:
+            os.remove(path)
+        except OSError as e:
+            logger.info('error while removing configuration file: %s', e)
+
     def _do_synchronize(self, device, raw_config):
-        pass
+        return synchronize.standard_sip_synchronize(device)
     
     def synchronize(self, device, raw_config):
         assert u'ip' in device      # see self.configure() and plugin contract
