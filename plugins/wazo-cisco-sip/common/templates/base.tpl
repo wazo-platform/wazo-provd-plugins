@@ -75,7 +75,7 @@
     <autoAnswerTimer>1</autoAnswerTimer>
     <autoAnswerAltBehavior>false</autoAnswerAltBehavior>
     <autoAnswerOverride>true</autoAnswerOverride>
-    <transferOnhookEnabled>false</transferOnhookEnabled>
+    <transferOnhookEnabled>true</transferOnhookEnabled>
     <enableVad>false</enableVad>
     <dtmfAvtPayload>101</dtmfAvtPayload>
     <dtmfDbLevel>3</dtmfDbLevel>
@@ -162,10 +162,18 @@
     <videoCapability>1</videoCapability>
     <autoSelectLineEnable>0</autoSelectLineEnable>
     <webAccess>0</webAccess>
-    <daysDisplayNotActive>1,2,3,4,5,6,7</daysDisplayNotActive>
-    <displayOnTime>00:00</displayOnTime>
-    <displayOnDuration>00:00</displayOnDuration>
-    <displayIdleTimeout>00:00</displayIdleTimeout>
+    <daysDisplayNotActive>1,7</daysDisplayNotActive>
+    <displayOnTime>08:00</displayOnTime>
+    <displayOnDuration>10:00</displayOnDuration>
+    <displayIdleTimeout>00:10</displayIdleTimeout>
+    <displayOnWhenIncomingCall>1</displayOnWhenIncomingCall>
+    <displayRefreshRate>0</displayRefreshRate>
+    <daysBacklightNotActive>1,7</daysBacklightNotActive>
+    <backlightOnTime>08:00</backlightOnTime>
+    <backlightOnDuration>10:00</backlightOnDuration>
+    <backlightIdleTimeout>00:10</backlightIdleTimeout>
+    <backlightOnWhenIncomingCall>1</backlightOnWhenIncomingCall>
+    <joinAndDirectTransferPolicy>0</joinAndDirectTransferPolicy>
     <spanToPCPort>1</spanToPCPort>
     <loggingDisplay>1</loggingDisplay>
     <loadServer></loadServer>
