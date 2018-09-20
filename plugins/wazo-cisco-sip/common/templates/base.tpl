@@ -124,8 +124,8 @@
       <line button="{{ fk_no }}" lineIndex="{{ fk_no }}">
         <featureID>{{ fkey['feature_id'] }}</featureID>
         <featureLabel>{{ fkey['label'] }}</featureLabel>
-        {%- if fkey['type'] in ['blf', 'speeddial'] %}
         <speedDialNumber>{{ fkey['value'] }}</speedDialNumber>
+        {%- if fkey['type'] == 'blf' %}
         <featureOptionMask>1</featureOptionMask>
         {%- endif %}
       </line>
@@ -169,6 +169,12 @@
     <spanToPCPort>1</spanToPCPort>
     <loggingDisplay>1</loggingDisplay>
     <loadServer></loadServer>
+    <rtcp>1</rtcp>
+    <videoRtcp>1</videoRtcp>
+    <ciscoCamera>1</ciscoCamera>
+    <videoCapability>1</videoCapability>
+    <hideVideoByDefault>0</hideVideoByDefault>
+    <softKeyControl>0</softKeyControl>
   </vendorConfig>
   {% if XX_locale -%}
   <userLocale>
@@ -194,6 +200,9 @@
   <dscpForSCCPPhoneServices>0</dscpForSCCPPhoneServices>
   <dscpForCm2Dvce>96</dscpForCm2Dvce>
   <transportLayerProtocol>2</transportLayerProtocol>
+
+  <dndCallAlert>1</dndCallAlert>
+  <dndReminderTimer>5</dndReminderTimer>
   <capfAuthMode>0</capfAuthMode>
   <capfList>
     <capf>

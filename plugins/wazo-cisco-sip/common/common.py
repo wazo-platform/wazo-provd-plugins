@@ -27,6 +27,7 @@ from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
     TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
+from provd import synchronize
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer
 
@@ -44,6 +45,8 @@ class BaseCiscoPgAssociator(BasePgAssociator):
                 # xivo-cisco-spa plugins
                 return PROBABLE_SUPPORT + 10
             if model.startswith(u'SPA'):
+                return NO_SUPPORT
+            if model.startswith(u'ATA'):
                 return NO_SUPPORT
             if model in self._models:
                 return COMPLETE_SUPPORT
@@ -327,24 +330,25 @@ class BaseCiscoSipPlugin(StandardPlugin):
         set_if(u'backup_registrar_port', u'sip_backup_registrar_port')
 
     def _add_fkeys(self, raw_config):
-        logger.debug('Func keys: %s', raw_config['funckeys'])
+        assert raw_config[u'sip_lines']
+        logger.debug('Func keys: %s', raw_config[u'funckeys'])
 
-        if raw_config['funckeys']:
-            fkeys_lines = [int(line) for line in raw_config['sip_lines']]
+        if raw_config[u'funckeys']:
+            fkeys_lines = [int(line) for line in raw_config[u'sip_lines']]
             fkeys_start = max(fkeys_lines)
 
             fkeys = {}
             fkey_type = {
-                'blf': 21,
-                'speeddial': 2,
+                u'blf': 21,
+                u'speeddial': 2,
                 }
             
-            for line_no, line_info in raw_config['funckeys'].iteritems():
+            for line_no, line_info in raw_config[u'funckeys'].iteritems():
                 line_id = str(fkeys_start + int(line_no))
-                fkeys[line_id] = raw_config['funckeys'][line_no]
-                fkeys[line_id]['feature_id'] = fkey_type[line_info['type']]
+                fkeys[line_id] = raw_config[u'funckeys'][line_no]
+                fkeys[line_id][u'feature_id'] = fkey_type[line_info[u'type']]
             
-            raw_config['XX_fkeys'] = fkeys
+            raw_config[u'XX_fkeys'] = fkeys
     
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^SEP[0-9A-F]{12}\.cnf\.xml$')
 
@@ -390,7 +394,18 @@ class BaseCiscoSipPlugin(StandardPlugin):
             logger.info('error while removing file: %s', e)
 
     def synchronize(self, device, raw_config):
-        return defer.fail(Exception('operation not supported'))
+        try:
+            action = [
+                'Content-type=text/plain',
+                'Content=action=restart', # restart unregisters and redownloads config files from the server, reset unregisters and reboots the phone
+                'Content=RegisterCallId={}',
+                'Content=ConfigVersionStamp={0000000000000000}',
+                'Content=DialplanVersionStamp={0000000000000000}',
+                'Content=SoftkeyVersionStamp={0000000000000000}',
+            ]
+            return synchronize.standard_sip_synchronize(device, event='service-control', extra_vars=action)
+        except TypeError: # xivo-provd not up to date for extra_vars
+            return defer.fail(Exception('operation not supported, please update your xivo-provd'))
 
     def is_sensitive_filename(self, filename):
         return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))
