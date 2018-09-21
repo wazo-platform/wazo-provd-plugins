@@ -77,6 +77,7 @@
     <autoAnswerOverride>true</autoAnswerOverride>
     <transferOnhookEnabled>true</transferOnhookEnabled>
     <enableVad>false</enableVad>
+    <preferredCodec>none</preferredCodec>
     <dtmfAvtPayload>101</dtmfAvtPayload>
     <dtmfDbLevel>3</dtmfDbLevel>
     <dtmfOutofBand>avt</dtmfOutofBand>
@@ -159,7 +160,6 @@
     {% if vlan_enabled -%}
     <voiceVlanAccess>{{ vlan_id }}</voiceVlanAccess>
     {% endif -%}
-    <videoCapability>1</videoCapability>
     <autoSelectLineEnable>0</autoSelectLineEnable>
     <webAccess>0</webAccess>
     <daysDisplayNotActive>1,7</daysDisplayNotActive>
