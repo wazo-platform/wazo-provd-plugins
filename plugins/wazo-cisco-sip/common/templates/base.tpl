@@ -137,6 +137,7 @@
     <startMediaPort>10000</startMediaPort>
     <stopMediaPort>20000</stopMediaPort>
     <dscpForAudio>184</dscpForAudio>
+    <dscpVideo>136</dscpVideo>
     <ringSettingBusyStationPolicy>0</ringSettingBusyStationPolicy>
     <dialTemplate>dialplan.xml</dialTemplate>
     <softKeyFile>SoftKeys.xml</softKeyFile>
@@ -177,10 +178,10 @@
     <spanToPCPort>1</spanToPCPort>
     <loggingDisplay>1</loggingDisplay>
     <loadServer></loadServer>
+    <videoCapability>1</videoCapability>
     <rtcp>1</rtcp>
     <videoRtcp>1</videoRtcp>
     <ciscoCamera>1</ciscoCamera>
-    <videoCapability>1</videoCapability>
     <hideVideoByDefault>0</hideVideoByDefault>
     <softKeyControl>0</softKeyControl>
   </vendorConfig>
