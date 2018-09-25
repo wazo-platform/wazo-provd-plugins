@@ -196,12 +196,19 @@ class BaseGigasetPlugin(StandardPlugin):
 
         self._add_timezone_code(raw_config)
 
+    def _add_sip_info(self, raw_config):
+        if u'1' in raw_config[u'sip_lines']:
+            line = raw_config[u'sip_lines'][u'1']
+            raw_config[u'sip_proxy_ip'] = line[u'proxy_ip']
+            raw_config[u'sip_proxy_port'] = line.get(u'proxy_port', 5060)
+        
     def configure(self, device, raw_config):
         self._check_config(raw_config)
         self._check_device(device)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
+        self._add_sip_info(raw_config)
         self._add_xx_vars(device, raw_config)
         self._add_phonebook(raw_config)
 
