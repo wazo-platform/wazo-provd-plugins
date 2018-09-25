@@ -1,0 +1,284 @@
+#!/usr/bin/perl
+###################################################################################################
+#** Copyright (c) 2012
+#** Gigaset Communications GmbH
+#** Author: HJL / GC PD SD SA
+#
+#             This is a DEMO CGI script that shows how to interface
+#             the Gigaset application 'gigaset_profile_gen' inside 
+#             a CGI application written in Perl.
+#
+#      ** Redistribution and use in source and binary forms, with or without
+#      ** modification, are permitted provided that the following conditions
+#      ** are met:
+#
+#      ** 1. Redistributions of source code must retain the above copyright
+#      **    notice, this list of conditions and the following disclaimer.
+#      ** 2. Redistributions in binary form must reproduce the above copyright
+#      **    notice, this list of conditions and the following disclaimer in the
+#      **    documentation and/or other materials provided with the distribution.
+#      ** 
+#      ** THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+#      ** IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+#      ** OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+#      ** IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+#      ** INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+#      ** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+#      ** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+#      ** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+#      ** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+#      ** THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+###################################################################################################
+
+use CGI
+$q = new CGI();
+use File::Temp qw/  tempfile  /;
+use File::stat;
+
+###################################################################################################
+# 0. Change to 'shop' directory where actual processing takes place:
+###################################################################################################
+
+chdir './shop' or die "Can't cd to shop: $'\n";
+
+###################################################################################################
+# 1. Get the requesting device's MAC address or activation code
+###################################################################################################
+
+$MacAddress = $q->param(mac);
+$ActivationCode = $q->param(ac);
+
+if ($MacAddress eq '' and $ActivationCode eq '')
+{
+  # no parameter, assume MAC-method, just for testing 
+  $MacAddress = 'FF:FF:FF:FF:FF:FF';
+}
+
+###################################################################################################
+# 2. Associate a user profile depending on the provisioning method
+###################################################################################################
+
+if($ActivationCode ne '')
+{
+  ####################################################
+  # 2a. In case of Provisioning using Activation Code
+  ####################################################
+  #print("Activation Code method!!\n");
+
+  # Associate requestor's Activation Code with a user profile:
+
+  # Create a temporary xml file from the template:
+  ($InFileH, $TheXmlInputFile) = tempfile('TmpXXXXXX', '.xml');
+  close($InFileH);
+  if (&Customize_For_ActivationCode_Method('actc_template.xml', $TheXmlInputFile, $ActivationCode) != 0)
+  {
+    die "Customize Activation Code subroutine failed";
+  }
+}
+elsif ($MacAddress ne '')
+{
+  ####################################################
+  # 2b. In case of MAC Autoproviosioning
+  ####################################################  
+  #print("MAC method!!\n");
+  
+  # simple check for a valid MAC-address (with or without colons)
+  if(length($MacAddress) != 17)
+  {
+    if(length($MacAddress) != 12)
+    {
+      die "invalid MAC-format";
+    }
+    # convert a MAC-address without colons (e.g. 123456789012)
+    # to a MAC-address with colons (e.g. 12:34:56:78:90:12)
+    $MacAddress=~ s/..\B/$&:/gi
+  }
+  # Associate requestor's MAC address with a user profile:
+  # Create a temporary xml file from the template:
+  ($InFileH, $TheXmlInputFile) = tempfile('TmpXXXXXX', '.xml');
+  close($InFileH);
+  if (&Customize_For_MAC_Method('merkur_mac_template.xml', $TheXmlInputFile, $MacAddress) != 0)
+  {
+    die "Customize MAC subroutine failed";
+  }
+}
+
+###################################################################################################
+# 3. Check and Convert (Optional) the XML user profile created in 2a. or 2b.
+###################################################################################################
+
+# Create a temporary output file in the current directory
+($OutputFileH, $TheOutputFileName) = tempfile('TmpXXXXXX', '.bin');
+close($OutputFileH);
+
+# Important: call generator with the -s (silent) argument, so it won't output anything on stdout!
+# Moreover: 
+# '-noencrypt', if you need to generate a non encrypted autoprovisioning file, enter this option, as shown below: 
+# '-noconvert', forces the tool not to convert to binary  (transparent mode) but only to validate the input XML
+# '–novalidation' used for test purposes without validation of XML or to use the transparent mode also e.g. for binary files
+# Example: 
+# $ExitStatus = system ("./gigaset_profile_gen $TheXmlInputFile $TheOutputFileName -s -noencrypt");
+
+$ExitStatus = system ("./gigaset_profile_gen $TheXmlInputFile $TheOutputFileName -s");
+print  $ExitStatus
+unlink ($TheXmlInputFile);
+if ($ExitStatus != 0)
+{
+  die "Could not generate the binary profile";
+  unlink ($TheOutputFileName);
+}
+
+###################################################################################################
+# 4. Send the config file to the requesting device:
+###################################################################################################
+
+open (OUTFILE, $TheOutputFileName) or die "The bin file to output could not be found";
+print "Content-type: application binary\n\n";
+
+while (1)
+{
+  $ByteCnt = read (OUTFILE, $Bytes, 100);
+  print $Bytes;
+  if ($ByteCnt != 100)
+  {
+    last;
+  }
+}
+
+close OUTFILE;
+unlink ($TheOutputFileName);
+
+###################################################################################################
+### End of main routine ###########################################################################
+###################################################################################################
+
+###################################################################################################
+### Subroutine 2a to customize the XML template for Activation Code Provisioning method
+###################################################################################################
+
+sub Customize_For_ActivationCode_Method
+{
+  my($TemplateFileName, $OutputFileName, $ActCode) = @_;
+
+  # This subroutine is a *very* primitive example of how to customize
+  # the xml template file for a specific end customer.
+  # This examples assumes that there are only 4 end customers to
+  # service :-))
+  # In the real world, this subroutine would interface to a huge
+  # database of users who are identified by their Activation Code!                                   
+  #################################################################################################
+  ##### Customer "Database" for Activation code method ############################################
+  #################################################################################################
+  #                    Customer 1        Customer 2         Customer 3         Customer 4         #
+  my (@UserActCode) =('000133676069',    '000113676077',    '000754550284',    '57625625720'     );
+  my (@UserLoginId) =('6260854',         '1234567',         '1234568',         '0987654'         );
+  my (@UserPassword)=('dd1234',          'aa123456',        'bb123456',        'ff123456'        );
+  my (@UserId)      =('6260854',         '1234567',         '1234568',         '3215598'         );
+  my (@UserVersion) =('3011061455',      '3011061455',      '3011061455',      '3011061455'      );  
+  my (@UserProfName)=('d_default_de.bin','d_default_de.bin','d_default_de.bin','d_default_de.bin');
+  #################################################################################################
+  #################################################################################################
+  
+  # find user associated with given Activation Code:
+  my $UserIndex = 0;
+  while ($UserIndex <= $#UserActCode)
+  {
+    if (@UserActCode[$UserIndex] eq $ActCode)
+    {
+      last;
+    }
+    $UserIndex++
+  }
+  if ($UserIndex > $#UserActCode)
+  {
+    return -1;                # Failure: no match for Activation Code found
+  }
+
+  # load the whole template:
+  open (INFILE, $TemplateFileName) or die "Could not open $TemplateFileName";
+  my($st) = stat($TemplateFileName) or die "No file $!";
+  read (INFILE, my $Block, $st->size);
+  close(INFILE);
+
+  # substitute the place holders in the template with the
+  # actual values assigned to the end customer:
+  $Block =~ s/insert ACTIVATION_CODE here/@UserActCode[$UserIndex]/g;
+  $Block =~ s/insert VERSION here/@UserVersion[$UserIndex]/g;
+  $Block =~ s/insert PROFILE_NAME here/@UserProfName[$UserIndex]/g;
+  $Block =~ s/insert S_SIP_LOGIN_ID here/@UserLoginId[$UserIndex]/g;
+  $Block =~ s/insert S_SIP_PASSWORD here/@UserPassword[$UserIndex]/g;
+  $Block =~ s/insert S_SIP_USER_ID here/@UserId[$UserIndex]/g;
+  
+  # store the customized xml file:
+  open (OUTFILE, ">$OutputFileName") or die "Could not open $OutputFileName";
+  print OUTFILE $Block;
+  close(OUTFILE);
+  return 0;                   # Success
+}
+
+###################################################################################################
+### Subroutine 2b to customize the XML template for MAC-Autoprovisioning method
+###################################################################################################
+
+sub Customize_For_MAC_Method
+{
+  my($TemplateFileName, $OutputFileName, $MacAddr) = @_;
+
+  # This subroutine is a *very* primitive example of how to customize
+  # the xml template file for a specific end customer.
+  # This examples assumes that there are only 4 end customers to
+  # service :-))
+  # In the real world, this subroutine would interface to a huge
+  # database of users who are identified by their MAC address!
+  ####################################################################################################
+  ##### Customer "Database" for MAC method ###########################################################
+  ####################################################################################################
+  #                   Customer 1          Customer 2          Customer 3          Customer 4         #
+  my(@UserVersion) =('3011061455'       ,'3011061455',       '3011061455',       '3011061455'       );
+  my(@UserMacAddr) =('00:01:E3:75:F1:72','00:01:E3:67:60:77','00:0A:5E:55:02:8F','FF:FF:FF:FF:FF:FF');
+  my(@UserLoginId) =('1234567',          '1234567',          '1234568',          '1234567'          );
+  my(@UserPassword)=('abcdef',           'aa123456',         'bb123456',         'cc123456'         );
+  my(@UserId)      =('1234567',          '1234567',          '1234568',          '1234567'          );
+  my(@UserProfName)=('d_default_de.bin', 'd_default_de.bin', 'd_default_de.bin', 'd_default_de.bin' );  
+  ####################################################################################################
+  ####################################################################################################
+
+  # find user associated with given MAC address:
+  my $UserIndex = 0;
+  while ($UserIndex <= $#UserMacAddr)
+  {
+    if (@UserMacAddr[$UserIndex] eq $MacAddr)
+    {
+      last;
+    }
+    $UserIndex++
+  }
+  if ($UserIndex > $#UserMacAddr)
+  {
+    return -1;                # Failure: no match for MAC addr found
+  }
+
+  # load the whole template:
+  open (INFILE, $TemplateFileName) or die "Could not open $TemplateFileName";
+  my($st) = stat($TemplateFileName) or die "No file $!";
+  read (INFILE, my $Block, $st->size);
+  close(INFILE);
+
+  # substitute the place holders in the template with the
+  # actual values assigned to the end customer:
+  $Block =~ s/insert MAC_ADDRESS here/@UserMacAddr[$UserIndex]/g;
+  $Block =~ s/insert VERSION here/@UserVersion[$UserIndex]/g;
+  $Block =~ s/insert PROFILE_NAME here/@UserProfName[$UserIndex]/g;
+  $Block =~ s/insert S_SIP_LOGIN_ID here/@UserLoginId[$UserIndex]/g;
+  $Block =~ s/insert S_SIP_PASSWORD here/@UserPassword[$UserIndex]/g;
+  $Block =~ s/insert S_SIP_USER_ID here/@UserId[$UserIndex]/g;
+
+  # store the customized xml file:
+  open (OUTFILE, ">$OutputFileName") or die "Could not open $OutputFileName";
+  print OUTFILE $Block;
+  close(OUTFILE);
+  return 0;                   # Success
+}
+###################################################################################################
+### End of sub routines ###########################################################################
+###################################################################################################

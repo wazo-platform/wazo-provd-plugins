@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ProviderFrame">
+		<xs:annotation>
+			<xs:documentation>Config Parameters for One Provider</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Provider" type="ProviderType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ProviderType">
+		<xs:sequence>
+			<xs:element name="MAC_ADDRESS">
+				<xs:complexType>
+					<xs:attribute name="value" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:pattern value="(([a-fA-F0-9]{2})[:]){5}[a-fA-F0-9]{2}"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+                         <xs:element name="ACTIVATION_CODE">
+				<xs:complexType>
+					<xs:attribute name="value" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:pattern value="([0-9]{1,29})"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="VERSION">
+				<xs:complexType>
+					<xs:attribute name="value" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:length value="10"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PROFILE_NAME">
+				<xs:complexType>
+					<xs:attribute name="class" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="string"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="value" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="20"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SYMB_ITEM" type="SymbItemType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SymbItemType">
+		<xs:attribute name="ID" type="xs:string"  use="required"/>
+		<xs:attribute name="class" type="xs:string"  use="required"/>
+		<xs:attribute name="value" type="xs:string" use="required"/>
+	</xs:complexType>		
+</xs:schema>
