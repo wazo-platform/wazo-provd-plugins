@@ -7,11 +7,14 @@
 import os
 import logging
 import re
+import datetime
 from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT,\
     COMPLETE_SUPPORT, FULL_SUPPORT, UNKNOWN_SUPPORT
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.util import norm_mac, format_mac
 from provd import synchronize
+from provd import plugins
+from provd import tzinform
 from provd.servers.http import HTTPNoListingFileService
 from twisted.internet import defer, threads
 
@@ -101,10 +104,53 @@ class BaseGigasetPgAssociator(BasePgAssociator):
             return IMPROBABLE_SUPPORT
 
 
+class HTTPServiceWrapper(HTTPNoListingFileService):
+    
+    def path_preprocess(self, request):
+        logger.debug('Complete path: %s', request.path)
+        request.path = os.path.normpath(request.path)
+        request.postpath = request.path.split('/')[1:]
+        logger.debug('Preprocessed path: %s', request.path)
+
 
 class BaseGigasetPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
-    
+
+    _TZ_GIGASET = {
+        (-12, 0): 0x00,
+        (-11, 0): 0x01,
+        (-10, 0): 0x02,
+        (-9, 0): 0x03,
+        (-8, 0): 0x04,
+        (-7, 0): 0x07,
+        (-6, 0): 0x09,
+        (-5, 0): 0x0d,
+        (-4, 0): 0x10,
+        (-3, 0): 0x12,
+        (-3, 0): 0x14,
+        (-2, 0): 0x16,
+        (-1, 0): 0x18,
+        (0, 0): 0x1a,
+        (+1, 0): 0x1b,
+        (+2, 0): 0x20,
+        (+3, 0): 0x28,
+        (+4, 0): 0x2c,
+        (+4, 30): 0x2d,
+        (+5, 0): 0x2f,
+        (+5, 30): 0x30,
+        (+5, 45): 0x31,
+        (+6, 00): 0x33,
+        (+6, 30): 0x35,
+        (+7, 0): 0x36,
+        (+8, 0): 0x38,
+        (+9, 0): 0x3d,
+        (+9, 30): 0x40,
+        (+10, 0): 0x43,
+        (+11, 0): 0x47,
+        (+12, 0): 0x48,
+        (+13, 0): 0x50,
+    }
+        
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
         self._app = app
@@ -114,7 +160,7 @@ class BaseGigasetPlugin(StandardPlugin):
         fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
 
         self.services = fetchfw_helper.services()
-        self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
+        self.http_service = HTTPServiceWrapper(self._tftpboot_dir)
         
     dhcp_dev_info_extractor = GigasetDHCPDeviceInfoExtractor()
     http_dev_info_extractor = GigasetHTTPDeviceInfoExtractor()
@@ -128,15 +174,37 @@ class BaseGigasetPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
+        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
         return fmted_mac + '.xml'
+
+    def _add_phonebook(self, raw_config):
+        plugins.add_xivo_phonebook_url(raw_config, u'gigaset')
+
+    def _add_timezone_code(self, raw_config):
+        timezone = raw_config.get(u'timezone', 'Etc/UTC')
+        tz_db = tzinform.TextTimezoneInfoDB()
+        tz_info = tz_db.get_timezone_info(timezone)['utcoffset'].as_hms
+        offset_hour = tz_info[0]
+        offset_minutes = tz_info[1]
+        raw_config[u'XX_timezone_code'] = self._TZ_GIGASET[(offset_hour, offset_minutes)]
+
+    def _add_xx_vars(self, device, raw_config):
+        raw_config[u'XX_mac_addr'] = format_mac(device[u'mac'], separator='', uppercase=True)
+
+        cur_datetime = datetime.datetime.now()
+        raw_config[u'XX_version_date'] = cur_datetime.strftime('%d%m%y%H%M')
+
+        self._add_timezone_code(raw_config)
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
         self._check_device(device)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
-        
+
+        self._add_xx_vars(device, raw_config)
+        self._add_phonebook(raw_config)
+
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
     
@@ -147,10 +215,20 @@ class BaseGigasetPlugin(StandardPlugin):
         except OSError as e:
             logger.info('error while removing configuration file: %s', e)
 
-    def _do_synchronize(self, device, raw_config):
-        return synchronize.standard_sip_synchronize(device)
-    
+if hasattr(synchronize, 'standard_sip_synchronize'):
     def synchronize(self, device, raw_config):
-        assert u'ip' in device      # see self.configure() and plugin contract
-        
-        return threads.deferToThread(self._do_synchronize, device, raw_config)
+        return synchronize.standard_sip_synchronize(device)
+
+else:
+    # backward compatibility with older xivo-provd server
+    def synchronize(self, device, raw_config):
+        try:
+            ip = device[u'ip'].encode('ascii')
+        except KeyError:
+            return defer.fail(Exception('IP address needed for device synchronization'))
+        else:
+            sync_service = synchronize.get_sync_service()
+            if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
+                return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+            else:
+                return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
