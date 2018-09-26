@@ -15,24 +15,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-# Depends on the following external programs:
-#  -rsync
+common = {}
+execfile_('common.py', common)
 
-from subprocess import check_call
+MODELS = [
+    u'8941',
+    u'8945',
+]
 
 
-@target('9.4', 'wazo-cisco-sip-9.4')
-def build_9_4(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
+class CiscoSipPlugin(common['BaseCiscoSipPlugin']):
+    IS_PLUGIN = True
 
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '9.4/', path])
-
-@target('9.2', 'wazo-cisco-sip-9.2')
-def build_9_2(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '9.2/', path])
+    pg_associator = common['BaseCiscoPgAssociator'](MODELS)
