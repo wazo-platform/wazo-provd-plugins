@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ProviderFrame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="profile.xsd">
-<Provider>
-<MAC_ADDRESS value="insert MAC_ADDRESS here"/>
-<ACTIVATION_CODE value="insert ACTIVATION_CODE here"/>
-<VERSION value="insert VERSION here"/>
-<PROFILE_NAME class="string" value="7c2f80ca21e4"/>
-</Provider>
-</ProviderFrame>
