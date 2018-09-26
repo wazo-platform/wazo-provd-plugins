@@ -8,7 +8,10 @@
     -->
         <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
         <PROFILE_NAME class="string" value="N720"/>
-        
+    
+        <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/einsteiniwu111_70.bin"'/>
+
+        <S_SPECIAL_DATA_SRV_SAT class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/sat7111100000000.bin"'/>  
     <!-- NetDirectory settings -->
     {%- if XX_xivo_phonebook_url %}
         <SYMB_ITEM ID="BS_XML_Netdirs.aucAvailableNetdirs[%]" class="symb_item" value="0x14,0x15"/>
