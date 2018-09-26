@@ -222,20 +222,5 @@ class BaseGigasetPlugin(StandardPlugin):
         except OSError as e:
             logger.info('error while removing configuration file: %s', e)
 
-if hasattr(synchronize, 'standard_sip_synchronize'):
     def synchronize(self, device, raw_config):
         return synchronize.standard_sip_synchronize(device)
-
-else:
-    # backward compatibility with older xivo-provd server
-    def synchronize(self, device, raw_config):
-        try:
-            ip = device[u'ip'].encode('ascii')
-        except KeyError:
-            return defer.fail(Exception('IP address needed for device synchronization'))
-        else:
-            sync_service = synchronize.get_sync_service()
-            if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
-            else:
-                return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
