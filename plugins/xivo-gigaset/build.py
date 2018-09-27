@@ -37,12 +37,3 @@ def build_C590(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'C590/', path])
-
-
-@target('NXX_IP_PRO', 'xivo-gigaset-NXX-IP-PRO')
-def build_NXX_IP_PRO(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'NXX_IP_PRO/', path])
