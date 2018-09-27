@@ -14,7 +14,7 @@ install: gigasetn720-fw
 
 [install_gigasetn720-fw]
 a-b: unzip $FILE1
-b-c: cp */einsteiniwu111_70.bin Gigaset/server_einstein_iwu_111.bin
+b-c: cp */einsteiniwu111_70.bin Gigaset/server_einstein_iwu111.bin
 b-d: cp */sat*.bin Gigaset/
 
 [install_gigasetn510-fw]

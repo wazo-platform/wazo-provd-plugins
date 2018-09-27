@@ -9,7 +9,7 @@
         <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
         <PROFILE_NAME class="string" value="N720"/>
     {%- if http_port %}
-        <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/server_einstein_iwu_111.bin"'/>
+        <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/server_einstein_iwu111.bin"'/>
         <S_SPECIAL_DATA_SRV_SAT class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/sat7111100000000.bin"'/>  
     {%- endif %}
     <!-- NetDirectory settings -->
