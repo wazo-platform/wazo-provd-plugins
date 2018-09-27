@@ -21,22 +21,6 @@
 from subprocess import check_call
 
 
-@target('9.4', 'wazo-cisco-sip-9.4')
-def build_9_4(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '9.4/', path])
-
-@target('9.2', 'wazo-cisco-sip-9.2')
-def build_9_2(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '9.2/', path])
-
 @target('9.3', 'wazo-cisco-sip-9.3')
 def build_9_3(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
@@ -44,4 +28,3 @@ def build_9_3(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '9.3/', path])
-
