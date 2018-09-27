@@ -8,16 +8,16 @@
     -->
         <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
         <PROFILE_NAME class="string" value="N720"/>
-    
-        <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/einsteiniwu111_70.bin"'/>
-
+    {%- if http_port %}
+        <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/server_einstein_iwu_111.bin"'/>
         <S_SPECIAL_DATA_SRV_SAT class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/sat7111100000000.bin"'/>  
+    {%- endif %}
     <!-- NetDirectory settings -->
     {%- if XX_xivo_phonebook_url %}
         <SYMB_ITEM ID="BS_XML_Netdirs.aucAvailableNetdirs[%]" class="symb_item" value="0x14,0x15"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.aucActivatedNetdirs[%]" class="symb_item" value="0x14,0x15"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForDirectAccess[%]" class="symb_item" value="0"/>
-        <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForIntKey[%]" class="symb_item" value="0"/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForIntKey[%]" class="symb_item" value="0x14"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForAutoLookup[%]" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucProviderName[%]" class="symb_item" value='"WazoPBX"'/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucWhitePagesDirName[%]" class="symb_item" value='"Internal"'/>
@@ -37,28 +37,16 @@
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bSndMacAddress" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bEncryptPosts" class="symb_item" value="0"/>
     {%- endif %}
-        
-    <!-- LDAP settings
-        <SYMB_ITEM ID="BS_LDAP_Netdirs.astNetdirProvider[%].aucDirName[%]" class="symb_item" value='""'/>
-        <SYMB_ITEM ID="BS_LDAP_Netdirs.astNetdirProvider[%].aucUsername[%]" class="symb_item" value='""'/>
-        <SYMB_ITEM ID="BS_LDAP_Netdirs.astNetdirProvider[%].aucPassword[%]" class="symb_item" value='""'/>
-        <SYMB_ITEM ID="BS_LDAP_Netdirs.astNetdirProvider[%].aucServerURL[%]" class="symb_item" value='""'/>
-        <SYMB_ITEM ID="BS_LDAP_Netdirs.astNetdirProvider[%].uiServerPort" class="symb_item" value="389"/>
-        <SYMB_ITEM ID="BS_LDAP_Netdirs.astNetdirProvider[%].aucBaseDN[%]" class="symb_item" value='""'/>
-        <SYMB_ITEM ID="BS_LDAP_Netdirs.astNetdirProvider[%].uiMaxNrOfSessions" class="symb_item" value="30"/>
-        <SYMB_ITEM ID="BS_LDAP_Netdirs.astNetdirProvider[%].uiMaxNrOfSearchEntries" class="symb_item" value="50"/>
-        <SYMB_ITEM ID="BS_LDAP_Netdirs.astNetdirProvider[0].NameFilter[%]" class="symb_item" value='"(displayName=%)"'/>
-        <SYMB_ITEM ID="BS_LDAP_Netdirs.astNetdirProvider[0].NameAttributes[%]" class="symb_item" value='"displayName"'/>
-        -->
 
     <!-- Local settings - Data -->	
         <SYMB_ITEM ID="BS_IP_Data.aucS_NETWORK_DEVICENAME[%]" class="symb_item" value='"N720-DM-PRO-tests"'/>
     {%- if http_port %}
         <SYMB_ITEM ID="BS_IP_Data.aucS_DATA_SERVER[%]" class="symb_item" value='"http://{{ ip }}:{{ http_port }}"'/>
     {%- endif %}
-
+        <SYMB_ITEM ID="BS_AE_Subscriber.acIPUIRegistrationTimestamp[0]" class="symb_item" value='"{{ XX_version_date }}"'/>
+        <SYMB_ITEM ID="BS_AE_Subscriber.ulIPUIRegistrationDuration" class="symb_item" value="72000"/>
         <SYMB_ITEM ID="BS_CUSTOM.bit.UseRandomRegistrationPIN" class="symb_item" value="0"/>
-    	<SYMB_ITEM ID="BS_CUSTOM.aucKdsPin[%]" class="symb_item" value='"0000"'/>
+    	<SYMB_ITEM ID="BS_CUSTOM.aucKdsPin[%]" class="symb_item" value="0x00,0x00"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_USE_DHCP" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_IP_Data.ulI_IP" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_IP_Data.ulI_SUBNET_MASK" class="symb_item" value="0"/>
@@ -75,7 +63,7 @@
     {%- endif %}
         <SYMB_ITEM ID="BS_IP_Data.uiI_PAGE_MASK_ID" class="symb_item" value="0xf0ff"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_AUTO_UPDATE_FW" class="symb_item" value="1"/>
-        <SYMB_ITEM ID="BS_IP_Data.ucI_REMINDER_FW_UPDATE" class="symb_item" value="1"/>
+        <SYMB_ITEM ID="BS_IP_Data.ucI_REMINDER_FW_UPDATE" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_DO_CHECK_FOR_FIRMWARE_UPDATES" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_DO_CHECK_FOR_PROFILE_UPDATES" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_DO_CHECK_FOR_LANGUAGE_UPDATES" class="symb_item" value="1"/>
@@ -129,11 +117,32 @@
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[%].ucVoipProviderIndex" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].ucONESHOT_PROVISIONING_MODE_1" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].aucSIP_PROVIDER_NAME[%]" class="symb_item" value='"WazoPBX"'/>
-        
+        {%- if sip_proxy_ip %}
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].aucSIP_DOMAIN[%]" class="symb_item" value='"{{ sip_proxy_ip }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].aucSIP_SERVER[%]" class="symb_item" value='"{{ sip_proxy_ip }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].uiSIP_SERVER_PORT" class="symb_item" value="0x{{ "%x"|format(sip_proxy_port) }}"/>
+        {%- endif %}
         
+        {%- if exten_dnd %}
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeDND_ON[%]" class="symb_item" value='"{{ exten_dnd }}"'/>
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeDND_OFF[%]" class="symb_item" value='"{{ exten_dnd }}"'/>
+        {%- endif %}
+
+        {%- if exten_fwd_unconditional %}
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeCFU_ON[%]" class="symb_item" value='"{{ exten_fwd_unconditional }}"'/>
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeCFU_OFF[%]" class="symb_item" value='"{{ exten_fwd_unconditional }}"'/>
+        {%- endif %}
+
+        {%- if exten_fwd_busy %}
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeCFB_ON[%]" class="symb_item" value='"{{ exten_fwd_busy }}"'/>
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeCFB_OFF[%]" class="symb_item" value='"{{ exten_fwd_busy }}"'/>
+        {%- endif %}
+
+        {%- if exten_fwd_no_answer %}
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeCFNR_ON[%]" class="symb_item" value='"{{ exten_fwd_no_answer }}"'/>
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeCFNR_OFF[%]" class="symb_item" value='"{{ exten_fwd_no_answer }}"'/>
+        {%- endif %}
+
         {#
         {%- if sip_registrar_ip %}
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].aucSIP_REGISTRAR[%]" class="symb_item" value='"{{ sip_registrar_ip }}"'/>
@@ -183,9 +192,9 @@
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_PASSWORD[0]" class="symb_item" value='"{{ line['auth_password']|d(line['password']) }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_USER_ID[0]" class="symb_item" value='"{{ line['auth_username']|d(line['username']) }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].ucB_SIP_ACCOUNT_IS_ACTIVE_1" class="symb_item" value="1"/>
-        <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_ACCOUNT_NAME_1" class="symb_item" value='"{{ line['display_name'] }}"'/>
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_ACCOUNT_NAME_1[0]" class="symb_item" value='"{{ line['display_name'] }}"'/>
         {%- if exten_voicemail %}
-        <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_VOIP_NET_AM_NUMBER_1" class="symb_item" value='"{{ exten_voicemail }}"'/>
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_VOIP_NET_AM_NUMBER_1[%]" class="symb_item" value='"{{ exten_voicemail }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].ucB_VOIP_NET_AM_ENABLED_1" class="symb_item" value="1"/>
         {%- endif %}
 
