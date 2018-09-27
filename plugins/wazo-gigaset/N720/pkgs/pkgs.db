@@ -1,10 +1,3 @@
-[pkg_N510-fw]
-description: Firmware for Gigaset N510 IP PRO
-description_fr: Micrologiciel pour Gigaset N510 IP PRO
-version: 42.245
-files: N510-fw
-install: gigasetn510-fw
-
 [pkg_N720-fw]
 description: Firmware for Gigaset N720 IP PRO
 description_fr: Micrologiciel pour Gigaset N720 IP PRO
@@ -16,18 +9,6 @@ install: gigasetn720-fw
 a-b: unzip $FILE1
 b-c: cp */einsteiniwu111_70.bin Gigaset/server_einstein_iwu111.bin
 b-d: cp */sat*.bin Gigaset/
-
-[install_gigasetn510-fw]
-a-b: unzip $FILE1
-b-c: cp */einsteiniwu111_70.bin Gigaset/server_einstein_iwu111_70.bin
-b-d: cp */sat*.bin Gigaset/
-
-
-[file_N510-fw]
-filename: N510_SW_245.zip
-url: https://teamwork.gigaset.com/gigawiki/download/attachments/692093144/N510_SW_245.zip?version=1&modificationDate=1515416365000&api=v2&download=true
-size: 5827549
-sha1sum: e85e2f80bf48022444f6e206c6062cc54fd64523
 
 [file_N720-fw]
 filename: N720_SW111.zip

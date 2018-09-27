@@ -26,7 +26,6 @@ VENDOR = u'Gigaset'
 class GigasetDHCPDeviceInfoExtractor(object):
     _VDI = {
         'N720_DM_PRO':  u'N720 DM PRO',
-        'N720_IP_PRO': u'N720 IP PRO',
         'N510_IP_PRO':  u'N510 IP PRO',
     }
     
@@ -43,9 +42,16 @@ class GigasetDHCPDeviceInfoExtractor(object):
     def _extract_from_vdi(self, vdi):
         # Vendor class identifier:
         #   "Gigaset_N720_DM_PRO"
-        #   "Gigaset_N720_IP_PRO"
-        #   "Gigaset_N510_IP_PRO"
-        vdi_to_check = '_'.join(vdi.split('_')[1:])
+        #   "N510_IP_PRO"
+
+        vdi_to_check = ''
+        vdi_split = vdi.split('_')
+
+        if vdi.startswith(VENDOR):
+            vdi_to_check = '_'.join(vdi_split[1:])
+        else:
+            vdi_to_check = '_'.join(vdi_split)
+        
         if vdi_to_check in self._VDI:
             return {u'vendor': VENDOR,
                     u'model': self._VDI[vdi_to_check]}

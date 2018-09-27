@@ -15,3 +15,11 @@ def build_N720(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'N720/', path])
+
+@target('N510', 'wazo-gigaset-N510')
+def build_N510(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'N510/', path])

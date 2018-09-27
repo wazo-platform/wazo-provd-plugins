@@ -5,16 +5,16 @@
 	 Please enter a Profile name 
 	 If not correct, no setting will be done
 -->
-    <MAC_ADDRESS value="7C2F80FFFFFF"/>
+    <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
     <PROFILE_NAME class="string" value="N510"/>	
 
 <!-- Allow access from other networks. -->
     <SYMB_ITEM ID="BS_IP_Data1.ucB_ACCEPT_FOREIGN_SUBNET" class="symb_item" value="0x1"/>
     
 <!-- WEB-UI: Settings - Telephony - Connections - Connection Name or Number -->
-    <SYMB_ITEM ID="BS_Accounts.astAccounts[0].aucAccountName[0]" class="symb_item" value='"{{ line['display_name'] }}"'/>
     
 {% for line_no, line in sip_lines.iteritems() %}
+    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].aucAccountName[0]" class="symb_item" value='"{{ line['display_name'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_ACCOUNT_NAME_{{ line_no }}" class="symb_item" value='"{{ line['display_name'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_DISPLAYNAME_{{ line_no }}" class="symb_item" value='"{{ line['display_name'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data3.aucS_SIP_LOGIN_ID_{{ line_no }}" class="symb_item" value='"{{ line['username'] }}"'/>
@@ -34,48 +34,59 @@
     <SYMB_ITEM ID="BS_IP_Data1.uiI_OUTBOUND_PROXY_PORT_{{ line_no }}" class="symb_item" value="0x13c4"/>
     <SYMB_ITEM ID="BS_IP_Data1.uiI_RE_REGISTRATION_TIMER_{{ line_no }}" class="symb_item" value="0xb4"/>
     <SYMB_ITEM ID="BS_IP_Data1.uiI_RE_STUN_TIMER_{{ line_no }}" class="symb_item" value="0xf0"/>
+
+
+    <SYMB_ITEM ID="BS_IP_Data1.ucB_SIP_ACCOUNT_IS_ACTIVE_{{ line_no }}" class="symb_item" value="0x1"/>
+    <SYMB_ITEM ID="BS_AE_Subscriber.stMtDat[{{ line_no }}].aucTlnName[0]" class="symb_item" value='"{{ line['display_name'] }}"'/>
+
+    {%- if exten_voicemail %}
+    <SYMB_ITEM ID="BS_IP_Data1.aucS_VOIP_NET_AM_NUMBER_{{ line_no }}" class="symb_item" value='"{{ exten_voicemail }}"'/>
+    <SYMB_ITEM ID="BS_IP_Data1.ucB_VOIP_NET_AM_ENABLED_{{ line_no }}" class="symb_item" value="0x1"/>
+    {%- endif %}
 {% endfor -%}
 
 <!-- Auto Provisioning - Selected Codec settings 0x00(G.711ulaw),0x01(G.711alaw),0x02(G.726),0x03(G.729),0x05(G722) -->
     <SYMB_ITEM ID="BS_IP_Data1.ucI_CODEC_PREFERENCES" class="symb_item" value="0"/>
-    <SYMB_ITEM ID="BS_IP_Data1.ucI_SIP_PREFERRED_VOCODER" class="symb_item" value="0x05,0x01,0x00,0x02,0x03"/>   
-
+    <SYMB_ITEM ID="BS_IP_Data1.ucI_SIP_PREFERRED_VOCODER" class="symb_item" value="0x05,0x01,0x00,0x02,0x03"/>
+    
+    <SYMB_ITEM ID="BS_IP_Data.ucB_AUTO_UPDATE_PROFILE" class="symb_item" value="0x1"/>
+    <SYMB_ITEM ID="BS_IP_Data3.ucI_ONESHOT_PROVISIONING_MODE_1" class="symb_item" value="0x1"/> 
 <!-- WEB UI: Settings - Telephony - Connections - Active
      Enable the SIP account -->
-    <SYMB_ITEM ID="BS_IP_Data1.ucB_SIP_ACCOUNT_IS_ACTIVE_1" class="symb_item" value="0x1"/>  
+    <!-- <SYMB_ITEM ID="BS_IP_Data1.ucB_SIP_ACCOUNT_IS_ACTIVE_1" class="symb_item" value="0x1"/>   -->
 
 <!-- VoIP Account 2 example, Account 3-6 can be added copy account 2 data and increase the account number -->
 
 <!-- WEB-UI: Settings - Telephony - Connections - Connection Name or Number -->
-    <SYMB_ITEM ID="BS_Accounts.astAccounts[1].aucAccountName[0]" class="symb_item" value='"1023"'/>
+    <!-- <SYMB_ITEM ID="BS_Accounts.astAccounts[1].aucAccountName[0]" class="symb_item" value='"1023"'/> -->
     
 
 <!-- Auto Provisioning - Selected Codec settings 0x00(G.711ulaw),0x01(G.711alaw),0x02(G.726),0x03(G.729),0x05(G722) -->
-    <SYMB_ITEM ID="BS_IP_Data1.ucI_SIP_PREFERRED_VOCODER_2" class="symb_item" value="0x05,0x01,0x00,0x02,0x03"/> 
+    <!-- <SYMB_ITEM ID="BS_IP_Data1.ucI_SIP_PREFERRED_VOCODER_2" class="symb_item" value="0x05,0x01,0x00,0x02,0x03"/> -->
 
 <!-- WEB UI: Settings - Telephony - Connections - Active
      Enable the SIP account -->
-    <SYMB_ITEM ID="BS_IP_Data1.ucB_SIP_ACCOUNT_IS_ACTIVE_2" class="symb_item" value="0x1"/> 
-    
+    <!-- <SYMB_ITEM ID="BS_IP_Data1.ucB_SIP_ACCOUNT_IS_ACTIVE_2" class="symb_item" value="0x1"/>  -->
+     
 <!-- Autoprovisioning - Account - Label? Change the name of handset 1 -->	
-    <SYMB_ITEM ID="BS_AE_Subscriber.stMtDat[0].aucTlnName[0]" class="symb_item" value='"Handset1"'/>
+    <!-- <SYMB_ITEM ID="BS_AE_Subscriber.stMtDat[0].aucTlnName[0]" class="symb_item" value='"Handset1"'/> -->
     <!-- Example to change the name of Handset 2 	
     <SYMB_ITEM ID="BS_AE_Subscriber.stMtDat[1].aucTlnName[0]" class="symb_item" value='"Handset2"'/> -->
-        
+         -->
 <!-- Change DTMF to RFC2833 compatible with RFC4733 -->    
     <SYMB_ITEM ID="BS_IP_Data1.ucB_DTMF_TX_MODE_AUTO" class="symb_item" value="0"/>
     <SYMB_ITEM ID="BS_IP_Data1.ucI_DTMF_TX_MODE_BITS" class="symb_item" value="2"/>
     
 	
 <!-- Change the Voicemail number to *2 -->	
-    <SYMB_ITEM ID="BS_IP_Data1.aucS_VOIP_NET_AM_NUMBER_1" class="symb_item" value='"*2"'/>
-    <SYMB_ITEM ID="BS_IP_Data1.aucS_VOIP_NET_AM_NUMBER_2" class="symb_item" value='"*2"'/>
+    <!-- <SYMB_ITEM ID="BS_IP_Data1.aucS_VOIP_NET_AM_NUMBER_1" class="symb_item" value='"*2"'/> -->
+    <!-- <SYMB_ITEM ID="BS_IP_Data1.aucS_VOIP_NET_AM_NUMBER_2" class="symb_item" value='"*2"'/> -->
     
 <!-- Autoprovisioning - Features - Voicemail -->    
-    <SYMB_ITEM ID="BS_IP_Data1.ucB_VOIP_NET_AM_ENABLED_1" class="symb_item" value="0x1"/>
-    <SYMB_ITEM ID="BS_IP_Data1.ucB_VOIP_NET_AM_ENABLED_2" class="symb_item" value="0x1"/>
+    <!-- <SYMB_ITEM ID="BS_IP_Data1.ucB_VOIP_NET_AM_ENABLED_1" class="symb_item" value="0x1"/> -->
+    <!-- <SYMB_ITEM ID="BS_IP_Data1.ucB_VOIP_NET_AM_ENABLED_2" class="symb_item" value="0x1"/> -->
 
-<!-- Needed to enable Provisioning, After Reboot -->	
+<!-- Needed to enable Provisioning, After Reboot -->	 -->
     <SYMB_ITEM ID="BS_IP_Data.ucB_AUTO_UPDATE_PROFILE" class="symb_item" value="0x1"/>
     <SYMB_ITEM ID="BS_IP_Data3.ucI_ONESHOT_PROVISIONING_MODE_1" class="symb_item" value="0x1"/>
     
@@ -86,8 +97,10 @@
     <SYMB_ITEM ID="BS_LM_AppCfg.bit.bHasIdleTextInternalName" class="symb_item" value="1"/>
 
 <!-- WEB UI: Settings - Management - Firmware update - Data Server
-     Redirect device always to own provisioning Server so you are in control for example: Firmware updates 	
-    <SYMB_ITEM ID="BS_IP_Data1.aucS_DATA_SERVER[0]" class="symb_item" value='"192.168.178.101"'/> -->
+     Redirect device always to own provisioning Server so you are in control for example: Firmware updates 	-->
+     {%- if http_port %}
+    <SYMB_ITEM ID="BS_IP_Data1.aucS_DATA_SERVER[0]" class="symb_item" value='"{{ ip }}:{{ http_port }}"'/>
+    {%- endif %}
 
 <!-- WEB UI: Settings - Telephony - Advanced VoIP Settings - Transfer Call by On Hook
      Call Transfer by ending the call -->	
@@ -116,16 +129,18 @@
 <!-- Autoprovisioning - Preference - Time Zone: 
      0x00(GMT-12),0x01(GMT-11),0x02(GMT-10),0x03(GMT-9),0x04(GMT-8),0x07(GMT-7),0x09(GMT-6),0x0d(GMT-5),0x0f(GMT-4),0x15(GMT-3),0x16(GMT-2),
      0x18(GMT-1),0x1a(GMT),0x1b(GMT+1),0x20(GMT+2),0x28(GMT+3),0x2b(GMT+4),0x2e(GMT+5),0x33(GMT+6),0x37(GMT+7),0x3a(GMT+8),0x3d(GMT+9),0x43(GMT+10) -->    
-    <SYMB_ITEM ID="BS_IP_Data1.uiI_TIME_TIMEZONE" class="symb_item" value="0x1b"/>  
+    <SYMB_ITEM ID="BS_IP_Data1.uiI_TIME_TIMEZONE" class="symb_item" value="0x{{ "%x"|format(XX_timezone_code) }}"/>  
 
-<!-- Autoprovisioning - Preference - Primary NTP server -->    
-    <SYMB_ITEM ID="BS_IP_Data1.aucS_TIME_NTP_SERVER" class="symb_item" value='"cn.pool.ntp.org"'/>
+<!-- Autoprovisioning - Preference - Primary NTP server -->
+    {%- if ntp_enabled %}
+    <SYMB_ITEM ID="BS_IP_Data1.aucS_TIME_NTP_SERVER" class="symb_item" value='"{{ ntp_ip }}"'/>
+    {%- endif %}
     
 <!-- Autoprovisioning - Preference - Daylight Saving time: 0x1(enabled),0x0(Disabled) -->
     <SYMB_ITEM ID="BS_IP_Data1.ucB_TIME_USE_AUTOMATIC_DST" class="symb_item" value="0x1"/>      
 
 <!-- HS assignment Handset 1 connected to SIP account 1, Handset 2 connected to SIP account 2, .. -->
-    <SYMB_ITEM ID="BS_Accounts.astAccounts[0].uiSendMask" class="symb_item" value="0x1"/>
+    <!-- <SYMB_ITEM ID="BS_Accounts.astAccounts[0].uiSendMask" class="symb_item" value="0x1"/>
     <SYMB_ITEM ID="BS_Accounts.astAccounts[0].uiReceiveMask" class="symb_item" value="0x1"/>
     <SYMB_ITEM ID="BS_Accounts.astAccounts[0].ucState" class="symb_item" value="0x1"/>
     <SYMB_ITEM ID="BS_Accounts.astAccounts[1].uiSendMask" class="symb_item" value="0x2"/>
@@ -148,7 +163,7 @@
     <SYMB_ITEM ID="BS_Accounts.astAccounts[6].ucState" class="symb_item" value="0x1"/>    
     <SYMB_ITEM ID="BS_Accounts.astAccounts[7].uiSendMask" class="symb_item" value="0x0"/>
     <SYMB_ITEM ID="BS_Accounts.astAccounts[7].uiReceiveMask" class="symb_item" value="0x0"/>
-    <SYMB_ITEM ID="BS_Accounts.astAccounts[7].ucState" class="symb_item" value="0x1"/>    
+    <SYMB_ITEM ID="BS_Accounts.astAccounts[7].ucState" class="symb_item" value="0x1"/>     -->
 <!-- end -->
     
   </Provider>
