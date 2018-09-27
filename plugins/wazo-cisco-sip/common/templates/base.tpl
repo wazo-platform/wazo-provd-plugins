@@ -135,7 +135,7 @@
     </sipLines>
     <voipControlPort>{% if '1' in sip_lines %}{{ sip_lines['1']['proxy_port']|d(5060) }}{% endif %}</voipControlPort>
     <startMediaPort>10000</startMediaPort>
-    <stopMediaPort>20000</stopMediaPort>
+    <stopMediaPort>50000</stopMediaPort>
     <dscpForAudio>184</dscpForAudio>
     <dscpVideo>136</dscpVideo>
     <ringSettingBusyStationPolicy>0</ringSettingBusyStationPolicy>
@@ -143,11 +143,9 @@
     <softKeyFile>SoftKeys.xml</softKeyFile>
   </sipProfile>
   <commonProfile>
-    {#
     {% if admin_password -%}
     <phonePassword>{{ admin_password }}</phonePassword>
     {% endif -%}
-    #}
     <backgroundImageAccess>true</backgroundImageAccess>
     <callLogBlfEnabled>2</callLogBlfEnabled>
   </commonProfile>
@@ -183,7 +181,7 @@
     <videoRtcp>1</videoRtcp>
     <ciscoCamera>1</ciscoCamera>
     <hideVideoByDefault>0</hideVideoByDefault>
-    <softKeyControl>0</softKeyControl>
+    <softKeyControl>1</softKeyControl>
   </vendorConfig>
   {% if XX_locale -%}
   <userLocale>
@@ -198,13 +196,7 @@
     <version>1.0.0.0-1</version>
   </networkLocaleInfo>
   <deviceSecurityMode>1</deviceSecurityMode>
-  <authenticationURL></authenticationURL>
-  <directoryURL>{{ XX_xivo_phonebook_url|e }}</directoryURL>
-  <servicesURL></servicesURL>
-  <idleURL></idleURL>
-  <informationURL></informationURL>
-  <messagesURL></messagesURL>
-  <proxyServerURL></proxyServerURL>
+  <directoryURL>{{ XX_xivo_phonebook_url|e }}&amp;</directoryURL>
   <dscpForSCCPPhoneConfig>96</dscpForSCCPPhoneConfig>
   <dscpForSCCPPhoneServices>0</dscpForSCCPPhoneServices>
   <dscpForCm2Dvce>96</dscpForCm2Dvce>
