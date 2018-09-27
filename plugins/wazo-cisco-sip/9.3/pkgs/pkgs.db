@@ -1,0 +1,86 @@
+[pkg_894X-fw]
+description: Firmware for Cisco 8941 and 8945
+description_fr: Micrologiciel pour Cisco 8941 and 8945
+version: 9.3.1-18
+files: 8941-8945-fw
+install: cisco-unified-fw
+
+[pkg_networklocale]
+description: Network locale
+description_fr: Locale réseau
+version: 9.3.1.1000-1
+files: networklocale
+install: cisco-networklocale
+
+[pkg_userlocale_de_DE]
+description: de_DE user locale
+description_fr: Locale utilisateur de_DE
+version: 9.3.1.1000-1
+files: userlocale_de_DE
+install: cisco-userlocale
+
+[pkg_userlocale_es_ES]
+description: es_ES user locale
+description_fr: Locale utilisateur es_ES
+version: 9.3.1.1000-1
+files: userlocale_es_ES
+install: cisco-userlocale
+
+[pkg_userlocale_fr_FR]
+description: fr_FR user locale
+description_fr: Locale utilisateur fr_FR
+version: 9.3.1.1000-1
+files: userlocale_fr_FR
+install: cisco-userlocale
+
+
+
+[install_cisco-unified-fw]
+a-b: unzip $FILE1
+
+[install_cisco-networklocale]
+a-b: unsign $FILE1 f.tgz
+b-c: untar f.tgz
+c-d: untar *.tar
+d-e: cp usr/local/cm/tftp/canada
+        usr/local/cm/tftp/france
+        usr/local/cm/tftp/germany
+        usr/local/cm/tftp/spain
+        i18n/
+
+[install_cisco-userlocale]
+a-b: unsign $FILE1 f.tgz
+b-c: untar f.tgz
+c-d: untar *.tar
+d-e: cp usr/local/cm/tftp/* i18n/
+
+
+[file_8941-8945-fw]
+filename: cmterm-8941_8945-sip.9-3-1-18.zip
+url:
+size: 26485281
+sha1sum: 90eb192da7d84a109f8ba1257f72a79750d0da9c
+
+[file_networklocale]
+filename: po-locale-combined_network-9.3.1.1000-1.cop.sgn
+url:
+size: 9405197
+sha1sum: fbbbf3128df8477e2491d724c3ab17d74cf62791
+
+[file_userlocale_de_DE]
+filename: po-locale-de_DE-9.3.1.1000-1.cop.sgn
+url:
+size: 3789129
+sha1sum: 9d210cdb233874701f3e66b6acbe4c57111b1d46
+
+[file_userlocale_es_ES]
+filename: po-locale-es_ES-9.3.1.1000-1.cop.sgn
+url:
+size: 4535292
+sha1sum: 0693dff8765ef2df65c24cb1d3e5f14d60997494
+
+[file_userlocale_fr_FR]
+filename: po-locale-fr_FR-9.3.1.1000-1.cop.sgn
+url:
+size: 4624803
+sha1sum: c3d28df9d68003001a3fc3f7e936d95d506dde12
