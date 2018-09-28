@@ -1,25 +1,14 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2016 Avencall
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0+
 
 import errno
 import logging
 import os
 import re
 import subprocess
+from copy import deepcopy
 from operator import itemgetter
 from xml.sax.saxutils import escape
 from provd import plugins
@@ -52,6 +41,7 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
 
     def _do_extract(self, request):
         options = request[u'options']
+        logger.debug('_do_extract request: %s', request)
         if 60 in options:
             return self._extract_from_vdi(options[60])
         return None
@@ -68,6 +58,7 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
         #   "Cisco SPA525G" (SPA525G 7.4.7)
         #   "Cisco SPA525G2" (SPA525G2 7.4.5)
         #   "CISCO SPA122"
+        #   "CISCO ATA190"
         tokens = vdi.split()
         if len(tokens) == 2:
             raw_vendor, raw_model = tokens
@@ -150,6 +141,8 @@ class BaseCiscoHTTPDeviceInfoExtractor(object):
 class BaseCiscoTFTPDeviceInfoExtractor(object):
     _SEPFILE_REGEX = re.compile(r'^SEP([\dA-F]{12})\.cnf\.xml$')
     _SPAFILE_REGEX = re.compile(r'^/spa(.+?)\.cfg$')
+    _ATAFILE_REGEX = re.compile(r'^ATA([\dA-F]{12})\.cnf\.xml$')
+    _CTLSEPFILE_REGEX = re.compile(r'^CTLSEP([\dA-F]{12})\.tlv$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -157,20 +150,15 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
     def _do_extract(self, request):
         packet = request['packet']
         filename = packet['filename']
-        for test_fun in [self._test_sepfile, self._test_spafile, self._test_init]:
+        for test_fun in [self._test_spafile, self._test_init, self._test_atafile]: 
             dev_info = test_fun(filename)
             if dev_info:
                 dev_info[u'vendor'] = u'Cisco'
                 return dev_info
         return None
 
-    def _test_sepfile(self, filename):
-        # Test if filename is "SEPMAC.cnf.xml".
-        m = self._SEPFILE_REGEX.match(filename)
-        if m:
-            raw_mac = m.group(1)
-            return {u'mac': norm_mac(raw_mac.decode('ascii'))}
-        return None
+    def __repr__(self):
+        return object.__repr__(self) + "-SPA"
 
     def _test_spafile(self, filename):
         # Test if filename is "/spa$PSN.cfg".
@@ -178,6 +166,14 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
         if m:
             raw_model = 'SPA' + m.group(1)
             return {u'model': _norm_model(raw_model)}
+        return None
+
+    def _test_atafile(self, filename):
+        # Test if filename is "ATAMAC.cnf.xml".
+        # Only the ATA190 requests this file
+        m = self._ATAFILE_REGEX.match(filename)
+        if m:
+            return {u'model': 'ATA190'}
         return None
 
     def _test_init(self, filename):
@@ -230,7 +226,8 @@ class BaseCiscoPlugin(StandardPlugin):
         u'SPA512G': (0, 2),
         u'SPA514G': (4, 2),
         u'SPA525G': (5, 2),
-        u'SPA525G2': (5, 2)
+        u'SPA525G2': (5, 2),
+        u'ATA190': (0,0),
     }
     _DEFAULT_LOCALE = u'en_US'
     _LANGUAGE = {
@@ -404,12 +401,26 @@ class BaseCiscoPlugin(StandardPlugin):
         if hostname:
             raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
 
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.xml$')
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^\w{,3}[0-9a-fA-F]{12}(?:\.cnf)?\.xml$')
 
     def _dev_specific_filename(self, dev):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(dev[u'mac'], separator='')
+
+        if dev[u'model'].startswith('ATA'):
+            fmted_mac = 'ATA%s.cnf' % fmted_mac.upper()
+        
         return fmted_mac + '.xml'
+
+    def _dev_shifted_device(self, dev):
+        device2 = deepcopy(dev)
+        device2[u'mac'] = device2[u'mac'][3:] + ':01'
+        return device2
+
+    def _dev_shifted_specific_filename(self, dev):
+        '''Returns a device specific filename based on the shifted MAC address,
+        as required by the Cisco ATA190 for the second phone port.'''
+        return self._dev_specific_filename(self._dev_shifted_device(dev))
 
     def _check_config(self, raw_config):
         if u'http_port' not in raw_config:
@@ -436,8 +447,22 @@ class BaseCiscoPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING, errors='replace')
 
+        if len(raw_config[u'sip_lines']) >= 2 and device[u'model'].startswith('ATA'):
+            raw_config[u'XX_second_line_ata'] = True
+
+            filename = self._dev_shifted_specific_filename(device)
+            path = os.path.join(self._tftpboot_dir, filename)
+            self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING, errors='replace')
+
     def deconfigure(self, device):
         path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
+        
+        if device[u'model'].startswith('ATA'):
+            path2 = os.path.join(self._tftpboot_dir, self._dev_shifted_specific_filename(device))
+            try:
+                os.remove(path2)
+            except OSError as e:
+                logger.info('error while removing configuration file: %s', e)
         try:
             os.remove(path)
         except OSError as e:

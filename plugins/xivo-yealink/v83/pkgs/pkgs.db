@@ -1,0 +1,172 @@
+[pkg_T19P_E2-fw]
+description: Firmware for Yealink T19P E2
+description_fr: Micrologiciel pour Yealink T19P E2
+version: 53.83.0.35
+files: T19P_E2-fw
+install: yealink-fw
+
+[pkg_T21P_E2-fw]
+description: Firmware for Yealink T21P E2
+description_fr: Micrologiciel pour Yealink T21P E2
+version: 52.83.0.35
+files: T21P_E2-fw
+install: yealink-fw
+
+[pkg_T23-fw]
+description: Firmware for Yealink T23P and T23G
+description_fr: Micrologiciel pour Yealink T23P et T23G
+version: 44.83.0.35
+files: T23-fw
+install: yealink-fw
+
+[pkg_T27P-fw]
+description: Firmware for Yealink T27P
+description_fr: Micrologiciel pour Yealink T27P
+version: 45.83.0.35
+files: T27P-fw
+install: yealink-fw
+
+[pkg_T27G-fw]
+description: Firmware for Yealink T27G
+description_fr: Micrologiciel pour Yealink T27G
+version: 69.83.0.35
+files: T27G-fw
+install: yealink-fw
+
+[pkg_T29G-fw]
+description: Firmware for Yealink T29G
+description_fr: Micrologiciel pour Yealink T29G
+version: 46.83.0.35
+files: T29G-fw
+install: yealink-fw
+
+[pkg_T40P-fw]
+description: Firmware for Yealink T40P
+description_fr: Micrologiciel pour Yealink T40P
+version: 54.83.0.35
+files: T40P-fw
+install: yealink-fw
+
+[pkg_T40G-fw]
+description: Firmware for Yealink T40G
+description_fr: Micrologiciel pour Yealink T40G
+version: 76.83.0.35
+files: T40G-fw
+install: yealink-fw
+
+[pkg_T41P-fw]
+description: Firmware for Yealink T41P
+description_fr: Micrologiciel pour Yealink T41P
+version: 36.83.0.35
+files: T41P-fw
+install: yealink-fw
+
+[pkg_T46S_T48S_T42S_T41S-fw]
+description: Firmware for Yealink T46S T48S T42S T41S
+description_fr: Micrologiciel pour Yealink T46S T48S T42S T41S
+version: 66.83.0.35
+files: T46S_T48S_T42S_T41S-fw
+install: yealink-fw
+
+[pkg_T42G-fw]
+description: Firmware for Yealink T42G
+description_fr: Micrologiciel pour Yealink T42G
+version: 29.83.0.35
+files: T42G-fw
+install: yealink-fw
+
+[pkg_T46G-fw]
+description: Firmware for Yealink T46G
+description_fr: Micrologiciel pour Yealink T46G
+version: 28.83.0.35
+files: T46G-fw
+install: yealink-fw
+
+[pkg_T48G-fw]
+description: Firmware for Yealink T48G
+description_fr: Micrologiciel pour Yealink T48G
+version: 35.83.0.35
+files: T48G-fw
+install: yealink-fw
+
+
+[install_yealink-fw]
+a-b: cp *.rom firmware/
+
+[file_T19P_E2-fw]
+filename: T19P_E2-53.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2F26f9f9de-4035-4152-ae3c-880c59f03ade%2FT19P_E2-53.83.0.35.rom
+size: 7042688
+sha1sum: 0cefac64a48daa8d4453d907f30ae4e0e9a60551
+
+[file_T21P_E2-fw]
+filename: T21P_E2-52.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2Ff53e3c09-b4c7-42a4-9bfe-4a189c886585%2FT21P_E2-52.83.0.35.rom
+size: 7042688
+sha1sum: eb4e568a85d8eeac33cd03566789474cf9ad4614
+
+[file_T23-fw]
+filename: T23-44.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2F4259b30d-6476-4f5c-9f2c-288a143ba057%2FT23-44.83.0.35.rom
+size: 7108160
+sha1sum: 10b6871188a1333a14b57880c5c80822d4456e59
+
+[file_T27P-fw]
+filename: T27-45.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2F637c63de-d4ac-420b-a145-7270ffe1ecf5%2FT27-45.83.0.35.rom
+size: 7858656
+sha1sum: 7ccbab5fe25c5db0a81f1c4e2e88922425ed8eb3
+
+[file_T27G-fw]
+filename: T27G-69.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2Fdb9ff557-ce1c-4930-857b-4ce5434e6239%2FT27G-69.83.0.35.rom
+size: 12800016
+sha1sum: 3424c8f15c109b8c49d24015b789ab0c569be0fa
+
+[file_T29G-fw]
+filename: T29-46.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2F4ceaddb6-cce1-4594-87b5-296b307b74d8%2FT29-46.83.0.35.rom
+size: 21197616
+sha1sum: 51d311e712ccd0d54565073e785a94c7458d5212
+
+[file_T40P-fw]
+filename: T40-54.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2F13f01e09-1d97-4a2e-9cbd-81976d8e982e%2FT40-54.83.0.35.rom
+size: 7067264
+sha1sum: 35ee30896932ad167dc6e6d20d3c7c0d5f2afaff
+
+[file_T40G-fw]
+filename: T40G-76.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2F1aca8c15-8da4-458c-b98d-224998e93720%2FT40G-76.83.0.35.rom
+size: 8656560
+sha1sum: 111987a0fdc34a0e6ea7a4c80359a8768968555b
+
+[file_T41P-fw]
+filename: T41-36.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2F321859c1-ee6e-4a56-bddc-0950cb460065%2FT41-36.83.0.35.rom
+size: 7641536
+sha1sum: 32d48daa5f4b0d795e269ffb5e5b6a881327d4fb
+
+[file_T42G-fw]
+filename: T42-29.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2Fbc199ab5-8dfe-488d-8b4c-6b7309808249%2FT42-29.83.0.35.rom
+size: 7641536
+sha1sum: e062e2bc4dcae6b75b3920cb156fd5f932aa8067
+
+[file_T46G-fw]
+filename: T46-28.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2F89d2bd01-cba5-421d-aac8-14800fa92893%2FT46-28.83.0.35.rom
+size: 23590928
+sha1sum: f27f24888b2740e78455cbca22037f4d8bc35c68
+
+[file_T46S_T48S_T42S_T41S-fw]
+filename: T46S(T48S,T42S,T41S)-66.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2Fd44b595e-665f-439d-85c3-6d8cc186b80a%2FT46S%28T48S%2CT42S%2CT41S%29-66.83.0.35.rom
+size: 27306000
+sha1sum: 5fd4132195536911d43dae1c26e4ee46b947ced1
+
+[file_T48G-fw]
+filename: T48-35.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2Fe47c819e-605f-459c-89c0-e14211595e9e%2FT48-35.83.0.35.rom
+size: 22179024
+sha1sum: d1a965756cb0236dd1b3cc5a7098d7a250ce2133

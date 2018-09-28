@@ -1,19 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2016 Avencall
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0+
 
 import logging
 import os
@@ -44,6 +32,8 @@ class BaseCiscoPgAssociator(BasePgAssociator):
                 # xivo-cisco-spa plugins
                 return PROBABLE_SUPPORT + 10
             if model.startswith(u'SPA'):
+                return NO_SUPPORT
+            if model.startswith(u'ATA'):
                 return NO_SUPPORT
             if model in self._models:
                 return COMPLETE_SUPPORT
@@ -137,13 +127,10 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
             m = regex.match(filename)
             if m:
                 dev_info = {u'vendor': u'Cisco'}
-                if m.lastindex == 1:
-                    try:
-                        dev_info[u'mac'] = norm_mac(m.group(1).decode('ascii'))
-                    except ValueError, e:
-                        logger.warning('Could not normalize MAC address: %s', e)
                 return dev_info
 
+    def __repr__(self):
+        return object.__repr__(self) + "-SCCP"
 
 _ZONE_MAP = {
     'Etc/GMT+12': u'Dateline Standard Time',
