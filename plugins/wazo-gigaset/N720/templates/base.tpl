@@ -14,15 +14,15 @@
     {%- endif %}
     <!-- NetDirectory settings -->
     {%- if XX_xivo_phonebook_url %}
-        <SYMB_ITEM ID="BS_XML_Netdirs.aucAvailableNetdirs[%]" class="symb_item" value="0x14,0x15"/>
-        <SYMB_ITEM ID="BS_XML_Netdirs.aucActivatedNetdirs[%]" class="symb_item" value="0x14,0x15"/>
-        <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForDirectAccess[%]" class="symb_item" value="0"/>
-        <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForIntKey[%]" class="symb_item" value="0x14"/>
-        <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForAutoLookup[%]" class="symb_item" value="0"/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.aucAvailableNetdirs[%]" class="symb_item" value="0x2a"/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.aucActivatedNetdirs[%]" class="symb_item" value="0x2a"/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForDirectAccess[%]" class="symb_item" value="0x2a"/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForIntKey[%]" class="symb_item" value="0x2a"/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForAutoLookup[%]" class="symb_item" value="0x2a"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucProviderName[%]" class="symb_item" value='"WazoPBX"'/>
-        <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucWhitePagesDirName[%]" class="symb_item" value='"Internal"'/>
-        <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucYellowPagesDirName[%]" class="symb_item" value='"Global"'/>
-        <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucPrivatePagesDirName[%]" class="symb_item" value='""'/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucWhitePagesDirName[%]" class="symb_item" value='""'/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucYellowPagesDirName[%]" class="symb_item" value='""'/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucPrivatePagesDirName[%]" class="symb_item" value='"Contacts"'/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucUsername[%]" class="symb_item" value='""'/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucPassword[%]" class="symb_item" value='""'/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucServerURL[%]" class="symb_item" value='"{{ XX_xivo_phonebook_url }}"'/>
@@ -52,7 +52,7 @@
         <SYMB_ITEM ID="BS_IP_Data.ulI_SUBNET_MASK" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_IP_Data.ulI_DEFAULT_ROUTER" class="symb_item" value="0"/>
     {%- if dns_enabled %}
-        <SYMB_ITEM ID="BS_IP_Data.ulI_DNS_SERVER_1" class="symb_item" value="{{ dns_ip }}"/>
+        <SYMB_ITEM ID="BS_IP_Data.ulI_DNS_SERVER_1" class="symb_item" value="{{ XX_dns_ip_hex }}"/>
         <SYMB_ITEM ID="BS_IP_Data.ulI_DNS_SERVER_2" class="symb_item" value="0"/>
     {%- endif %}
         <SYMB_ITEM ID="BS_IP_Data.ulI_DHCP_ASSIGNED_IP" class="symb_item" value="0"/>

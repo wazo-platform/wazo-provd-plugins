@@ -11,7 +11,7 @@ import datetime
 from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT,\
     COMPLETE_SUPPORT, FULL_SUPPORT, UNKNOWN_SUPPORT
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
-from provd.util import norm_mac, format_mac
+from provd.util import norm_mac, format_mac, to_ip
 from provd import synchronize
 from provd import plugins
 from provd import tzinform
@@ -68,19 +68,20 @@ class GigasetHTTPDeviceInfoExtractor(object):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
-        match = self._PATH_REGEX.search(request.path)
-        if match:
-            dev_info = {u'vendor': VENDOR}
-            ua = request.getHeader('User-Agent')
-            if ua:
-                dev_info.update(self._extract_from_ua(ua))
-            return dev_info
+        dev_info = {}
+
+        ua = request.getHeader('User-Agent')
+        if ua:
+            dev_info.update(self._extract_from_ua(ua))
+           
+        return dev_info
 
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
         # "Gigaset N720 DM PRO/70.089.00.000.000;7C2F80CA21E4"
         # "Gigaset N720 DM PRO/70.108.00.000.000"
-        # "N510 IP PRO/42.242.00.000.000"
+        # "N510 IP PRO/42.245.00.000.000;7C2F804DF9A9"
+        # "N510 IP PRO/42.245.00.000.000"
         m = self._UA_REGEX.search(ua)
         dev_info = None
         if m:
@@ -184,7 +185,8 @@ class BaseGigasetPlugin(StandardPlugin):
         return fmted_mac + '.xml'
 
     def _add_phonebook(self, raw_config):
-        plugins.add_xivo_phonebook_url(raw_config, u'gigaset')
+        uuid_format = u'{scheme}://{hostname}:{port}/0.1/directories/lookup/{profile}/gigaset/{user_uuid}?'
+        plugins.add_xivo_phonebook_url_from_format(raw_config, uuid_format)
 
     def _add_timezone_code(self, raw_config):
         timezone = raw_config.get(u'timezone', 'Etc/UTC')
@@ -199,6 +201,11 @@ class BaseGigasetPlugin(StandardPlugin):
 
         cur_datetime = datetime.datetime.now()
         raw_config[u'XX_version_date'] = cur_datetime.strftime('%d%m%y%H%M')
+
+        if u'dns_enabled' in raw_config:
+            ip = raw_config[u'dns_ip']
+            ip_str = '0x' + ''.join(['%x' % int(p) for p in ip.split('.')])
+            raw_config[u'XX_dns_ip_hex'] = ip_str
 
         self._add_timezone_code(raw_config)
 
@@ -227,6 +234,11 @@ class BaseGigasetPlugin(StandardPlugin):
             os.remove(path)
         except OSError as e:
             logger.info('error while removing configuration file: %s', e)
+
+    def is_sensitive_filename(self, filename):
+        return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))
+    
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.xml$')
 
     def synchronize(self, device, raw_config):
         return synchronize.standard_sip_synchronize(device)
