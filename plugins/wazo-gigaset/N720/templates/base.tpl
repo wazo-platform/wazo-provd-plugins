@@ -43,8 +43,6 @@
     {%- if http_port %}
         <SYMB_ITEM ID="BS_IP_Data.aucS_DATA_SERVER[%]" class="symb_item" value='"http://{{ ip }}:{{ http_port }}"'/>
     {%- endif %}
-        <SYMB_ITEM ID="BS_AE_Subscriber.acIPUIRegistrationTimestamp[0]" class="symb_item" value='"{{ XX_version_date }}"'/>
-        <SYMB_ITEM ID="BS_AE_Subscriber.ulIPUIRegistrationDuration" class="symb_item" value="72000"/>
         <SYMB_ITEM ID="BS_CUSTOM.bit.UseRandomRegistrationPIN" class="symb_item" value="0"/>
     	<SYMB_ITEM ID="BS_CUSTOM.aucKdsPin[%]" class="symb_item" value="0x00,0x00"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_USE_DHCP" class="symb_item" value="1"/>
