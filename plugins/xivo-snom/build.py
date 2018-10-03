@@ -105,7 +105,7 @@ def build_8_9_3_40(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '8.9.3.40/', path])
-    
+
 @target('8.9.3.60', 'xivo-snom-8.9.3.60')
 def build_8_9_3_60(path):
     MODELS = [('D305', 'r'),
