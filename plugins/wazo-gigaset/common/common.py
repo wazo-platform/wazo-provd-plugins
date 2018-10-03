@@ -83,16 +83,15 @@ class GigasetHTTPDeviceInfoExtractor(object):
         # "N510 IP PRO/42.245.00.000.000;7C2F804DF9A9"
         # "N510 IP PRO/42.245.00.000.000"
         m = self._UA_REGEX.search(ua)
-        dev_info = None
+        dev_info = {}
         if m:
             dev_info = {u'vendor': VENDOR,
-                    u'model': m.group('model').decode('ascii'),
-                    u'version': m.group('version').decode('ascii')}
+                        u'model': m.group('model').decode('ascii'),
+                        u'version': m.group('version').decode('ascii')}
             if 'mac' in m.groupdict():
                 dev_info[u'mac'] = norm_mac(m.group('mac').decode('ascii'))
         
         return dev_info
-        
 
 
 class BaseGigasetPgAssociator(BasePgAssociator):
