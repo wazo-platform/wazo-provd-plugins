@@ -33,6 +33,13 @@ version: 8.9.3.80
 files: 710-fw
 install: snom-fw
 
+[pkg_712-fw]
+description: Firmware for Snom D712
+description_fr: Micrologiciel pour Snom D712
+version: 8.9.3.80
+files: 712-fw
+install: snom-fw
+
 [pkg_715-fw]
 description: Firmware for Snom 715/D715
 description_fr: Micrologiciel pour Snom 715/D715
@@ -87,7 +94,7 @@ a-b: cp $FILE1 firmware/
 
 [install_snom-lang]
 a-b: unzip $FILE1
-b-c: cp * i18n/
+b-c: cp snomlang/* i18n/
 
 [file_305-fw]
 url: http://downloads.snom.com/fw/snomD305-8.9.3.80-SIP-r.bin
@@ -113,6 +120,11 @@ sha1sum: 8043e526615ce1e66d545436742d965cb908bbf5
 url: http://downloads.snom.com/fw/snom710-8.9.3.80-SIP-r.bin
 size: 13490384
 sha1sum: 006e1fb64498a5c98d697cd5bce46be85b72a979
+
+[file_712-fw]
+url: http://downloads.snom.com/fw/snomD712-8.9.3.80-SIP-r.bin
+size: 21508432
+sha1sum: 3972978149f8fa9f6e6c0cdc8df4e516345561c0
 
 [file_715-fw]
 url: http://downloads.snom.com/fw/snom715-8.9.3.80-SIP-r.bin
