@@ -89,45 +89,47 @@ class BaseHtekPgAssociator(BasePgAssociator):
 class BaseHtekPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _LOCALE = {
-        u'de_DE': (u'German', u'Germany', u'2'),
-        u'en_US': (u'English', u'United States', u'0'),
-        u'es_ES': (u'Spanish', u'Spain', u'6'),
-        u'fr_FR': (u'French', u'France', u'1'),
-        u'fr_CA': (u'French', u'Canada', u'1'),
+        u'de_DE': (u'German', u'Germany'),
+        u'en_US': (u'English', u'United States'),
+        u'en_GB': (u'English', u'Great Britain'),
+        u'es_ES': (u'Spanish', u'Spain'),
+        u'fr_FR': (u'French', u'France'),
+        u'fr_CA': (u'French', u'United States'),
     }
 
-    _COUNTRIES = [
-        'Custom',
-        'Australia',
-        'Austria',
-        'Brazil',
-        'Belgium',
-        'China',
-        'Chile',
-        'Czech',
-        'Denmark',
-        'Finland',
-        'France',
-        'Germany',
-        'Great Britain',
-        'Greece',
-        'Hungary',
-        'Lithuania',
-        'India',
-        'Italy',
-        'Japan',
-        'Mexico',
-        'New Zealand',
-        'Netherlands',
-        'Norway',
-        'Portugal',
-        'Spain',
-        'Switzerland',
-        'Sweden',
-        'Russia',
-        'United States',
-    ]
-    
+    # Used for tone select
+    _COUNTRIES = {
+        'Custom': 0,
+        'Australia': 1,
+        'Austria': 2,
+        'Brazil': 3,
+        'Belgium': 4,
+        'China': 5,
+        'Chile': 6,
+        'Czech': 7,
+        'Denmark': 8,
+        'Finland': 9,
+        'France': 10,
+        'Germany': 11,
+        'Great Britain': 12,
+        'Greece': 13,
+        'Hungary': 14,
+        'Lithuania': 15,
+        'India': 16,
+        'Italy': 17,
+        'Japan': 18,
+        'Mexico': 19,
+        'New Zealand': 20,
+        'Netherlands': 21,
+        'Norway': 22,
+        'Portugal': 23,
+        'Spain': 24,
+        'Switzerland': 25,
+        'Sweden': 26,
+        'Russia': 27,
+        'United States': 28,
+    }
+
     _SIP_DTMF_MODE = {
         u'RTP-out-of-band': u'0',
         u'RTP-in-band': u'1',
@@ -203,7 +205,7 @@ class BaseHtekPlugin(StandardPlugin):
         for filename, fw_filename, tpl_filename in self._COMMON_FILES:
             tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
-            raw_config[u'XX_fw_filename'] = fw_filename
+            raw_config[u'XX_fw_filename'] = fw_filename  # not really used
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _update_sip_lines(self, raw_config):
@@ -231,7 +233,7 @@ class BaseHtekPlugin(StandardPlugin):
         be supported.'''
         param_nb = 0
         mode_nb = 0
-        line = int(line) + 1  # Start at the second line in config file
+        line = int(line) + 1  # start at the second line in config file
         if line < 5:
             param_nb = 41200 + line - 1 + 100 * offset
             mode_nb = 20600 + line - 1
@@ -244,7 +246,7 @@ class BaseHtekPlugin(StandardPlugin):
         return param_nb, mode_nb
 
     def _add_fkeys(self, device, raw_config):
-        # Setting up the line/funckey type
+        # Setting up the line/function keys
         complete_fkeys = {}
         fkeys = raw_config[u'funckeys']
         fkey_type_assoc = {u'': 0, u'speeddial': 2, u'blf': 3, u'park': 8}
@@ -266,9 +268,9 @@ class BaseHtekPlugin(StandardPlugin):
     def _add_country_and_lang(self, raw_config):
         locale = raw_config.get(u'locale')
         if locale in self._LOCALE:
+            (lang, country) = self._LOCALE[locale]
             (raw_config[u'XX_lang'],
-             raw_config[u'XX_country'],
-             raw_config[u'XX_handset_lang']) = self._LOCALE[locale]
+             raw_config[u'XX_country']) = (lang, self._COUNTRIES[country])
 
     def _add_timezone(self, raw_config):
         timezone = raw_config.get(u'timezone', 'Etc/UTC')
