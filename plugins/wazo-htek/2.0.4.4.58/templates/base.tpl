@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <hl_provision version="1">
     <config version="1">
-      {% for line_no, line in XX_sip_lines.iteritems() -%}
+      {% for line_no, line in sip_lines.iteritems() -%}
         {% if line -%}
         <!--Account{{ line_no }}/Basic-->
         <P271 para="Account{{ line_no }}.Active">1</P271>
@@ -10,7 +10,7 @@
         <P967 para="Account{{ line_no }}.FailoverSipserver">{{ line['backup_proxy_ip'] }}:{{ line['backup_proxy_port']|d('5060') }}</P967>
         {% endif -%}
         <P4567 para="Account{{ line_no }}.PreferPrimaryServer">0</P4567>
-        <P130 para="Account{{ line_no }}.SipTransport">0</P130>
+        <P130 para="Account{{ line_no }}.SipTransport">{{ XX_sip_transport }}</P130>
         <P52 para="Account{{ line_no }}.NatTraversal">2</P52>
         <P20000 para="Account{{ line_no }}.Label">{{ line['display_name'] }}</P20000>
         <P35 para="Account{{ line_no }}.SipUserId">{{ line['username'] }}</P35>
@@ -28,7 +28,7 @@
         <P1100 para="Account{{ line_no }}.RFC2543Hold">1</P1100>
         <!--Account{{ line_no }}/Advance-->
         <P79 para="Account{{ line_no }}.DtmfPayloadType">101</P79>
-        <P20166 para="Account{{ line_no }}.DtmfMode">0</P20166>
+        <P20166 para="Account{{ line_no }}.DtmfMode">{{ line['XX_dtmf_type'] }}</P20166>
         <P191 para="Account{{ line_no }}.EnableCallFeatures">0</P191>
         <P183 para="Account{{ line_no }}.SRtpMode">0</P183>
         <P50 para="Account{{ line_no }}.VAD">0</P50>
@@ -55,10 +55,51 @@
         <P5439 para="PackedInterval">120</P5439>
         <!--Network/Advance/Qos Set -->
         <P38 para="Layer3QoS">48</P38>
+        {# TODO, we have config for that #}
         <P51 para="Layer2QoS.802.1Q/VLANTag">0</P51>
         <P87 para="Layer2QoS.802.1pPriorityValue">0</P87>
         <P229 para="DataVLANTag">0</P229>
         <!--Network/Advance/NTP Server-->
         <P30 para="UrlOrIpAddress">{{ ntp_ip|d('pool.ntp.org') }}</P30>
+        <P64 para="Preference_TimeZone">{{ XX_timezone_code }}</P64>
+        <P143 para="Preference_DHCPTime">0</P143>
+        <P75 para="Preference_DaylightSavingTime">{{ XX_timezone_dst }}</P75>
+        <!--Setting/Features-->
+        {#
+        <P53100 para="ForwardAlways_OnOff">0</P53100>
+        <P53101 para="ForwardAlways_Target" />
+        <P53102 para="ForwardAlways_OnCode" />
+        <P53103 para="ForwardAlways_OffCode" />
+        <P53110 para="ForwardBusy_OnOff">0</P53110>
+        <P53111 para="ForwardBusy_Target" />
+        <P53112 para="ForwardBusy_OnCode" />
+        <P53113 para="ForwardBusy_OffCode" />
+        <P53120 para="ForwardNoAnswer_OnOff">0</P53120>
+        <P53124 para="ForwardNoAnswer_AfterRingTime">60</P53124>
+        <P53121 para="ForwardNoAnswer_Target" />
+        <P53122 para="ForwardNoAnswer_OnCode" />
+        <P53123 para="ForwardNoAnswer_OffCode" />
+        #}
+        {%- if exten_dnd %}
+        <P1301 para="DND_WorkType">1</P1301>
+        <P53200 para="DND_OnCode">{{ exten_dnd }}</P53200>
+        <P53201 para="DND_OffCode">{{ exten_dnd }}</P53201>
+        {%- else %}
+        <P1301 para="DND_WorkType">0</P1301>
+        <P53200 para="DND_OnCode" />
+        <P53201 para="DND_OffCode" />
+        {%- endif %}
+
+        {%- if XX_fkeys %}
+        <!--FunctionKeys/LineKeys-->
+        {%- for fnkey, value in XX_fkeys|dictsort(by='key') %}
+        <P{{ value['type']['p_nb'] }} para="LineKey{{ fnkey + 1 }}_Type">{{ value['type']['val'] }}</P{{ value['type']['p_nb'] }}>
+        <P{{ value['mode']['p_nb'] }} para="LineKey{{ fnkey + 1 }}_Mode">0</P{{ value['mode']['p_nb'] }}>
+        <P{{ value['value']['p_nb'] }} para="LineKey{{ fnkey + 1 }}_Value">{{ value['value']['val'] }}</P{{ value['value']['p_nb'] }}>
+        <P{{ value['label']['p_nb'] }} para="LineKey{{ fnkey + 1 }}_Label">{{ value['label']['val'] }}</P{{ value['label']['p_nb'] }}>
+        <P{{ value['account']['p_nb'] }} para="LineKey{{ fnkey + 1 }}_Account">255</P{{ value['account']['p_nb'] }}>
+        <P{{ value['extension']['p_nb'] }} para="LineKey{{ fnkey + 1 }}_Extension">{{ value['extension']['val'] }}</P{{ value['extension']['p_nb'] }}>
+        {%- endfor %}
+        {%- endif %}
     </config>
 </hl_provision>

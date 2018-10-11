@@ -1,0 +1,126 @@
+[pkg_UC926-fw]
+description: Firmware for Htek UC926
+description_fr: Micrologiciel pour Htek UC926
+version: 2.0.4.4.58
+files: UC926-fw
+install: htek-fw
+
+[pkg_UC926E-fw]
+description: Firmware for Htek UC926E
+description_fr: Micrologiciel pour Htek UC926E
+version: 2.0.4.4.58
+files: UC926E-fw
+install: htek-fw
+
+[pkg_UC924-fw]
+description: Firmware for Htek UC924
+description_fr: Micrologiciel pour Htek UC924
+version: 2.0.4.4.58
+files: UC924-fw
+install: htek-fw
+
+[pkg_UC924E-fw]
+description: Firmware for Htek UC924E
+description_fr: Micrologiciel pour Htek UC924E
+version: 2.0.4.4.58
+files: UC924E-fw
+install: htek-fw
+
+[pkg_UC923-fw]
+description: Firmware for Htek UC923
+description_fr: Micrologiciel pour Htek UC923
+version: 2.0.4.4.58
+files: UC923-fw
+install: htek-fw
+
+[pkg_UC912-fw]
+description: Firmware for Htek UC912
+description_fr: Micrologiciel pour Htek UC912
+version: 2.0.4.4.58
+files: UC912-fw
+install: htek-fw
+
+[pkg_UC912E-fw]
+description: Firmware for Htek UC912E
+description_fr: Micrologiciel pour Htek UC912E
+version: 2.0.4.4.58
+files: UC912E-fw
+install: htek-fw
+
+[pkg_UC912G-fw]
+description: Firmware for Htek UC912G
+description_fr: Micrologiciel pour Htek UC912G
+version: 2.0.4.4.58
+files: UC912G-fw
+install: htek-fw
+
+[pkg_UC903-fw]
+description: Firmware for Htek UC903
+description_fr: Micrologiciel pour Htek UC903
+version: 2.0.4.4.58
+files: UC903-fw
+install: htek-fw
+
+[pkg_UC902-fw]
+description: Firmware for Htek UC902
+description_fr: Micrologiciel pour Htek UC902
+version: 2.0.4.4.58
+files: UC902-fw
+install: htek-fw
+
+
+[install_htek-fw]
+a-b: unzip $FILE1
+b-c: cp *.rom firmware/
+
+
+[file_UC926-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC926_Firmware_2.0.4.4.58.zip
+size: 9654030
+sha1sum: 43d334260cea6a76b8c170ca96b1eb6d6fb5f3ac
+
+[file_UC926E-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC926E_Firmware_2.0.4.4.58.zip
+size: 11547933
+sha1sum: 5544adb31baa35d47f401c72774403f144c9ec1d
+
+[file_UC924-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC924_Firmware_2.0.4.4.58.zip
+size: 10017306
+sha1sum: 7c400384e7f4c2538c143c9f342ae0b02eeddb9c
+
+[file_UC924E-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC924E_Firmware_2.0.4.4.58.zip
+size: 11630475
+sha1sum: dae81a41ecc75e5bd06c54c25206d09732e0ea92
+
+[file_UC923-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC923_Firmware_2.0.4.4.58.zip
+size: 9561563
+sha1sum: 26f6429869a19feb1cf8175914b56274671b3ed8
+
+[file_UC912-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC912_Firmware_2.0.4.4.58.zip
+size: 8238887
+sha1sum: b1e5f27082cfcfacb72ee94e705dd5385247e5ec
+
+[file_UC912E-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC912E_Firmware_2.0.4.4.58.zip
+size: 10637642
+sha1sum: d410e8702de4253623543d0db90cf2cac7452af6
+
+[file_UC912G-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC912G_Firmware_2.0.4.4.58.zip
+size: 8239479
+sha1sum: a0d4e8a98c6223ab37c8a6132878a04d779cd6dc
+
+[file_UC903-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC903_Firmware_2.0.4.4.58.zip
+size: 9040055
+sha1sum: c99005ed15263fa90ef34dd0b948c41ab5858e44
+
+[file_UC902-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC902_Firmware_2.0.4.4.58.zip
+size: 17054736
+sha1sum: 575263ddf3dd6bdd5ca322950dcd8e08ac30c8e9
+

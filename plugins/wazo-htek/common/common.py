@@ -86,128 +86,6 @@ class BaseHtekPgAssociator(BasePgAssociator):
         return IMPROBABLE_SUPPORT
 
 
-class BaseHtekFunckeyGenerator(object):
-
-    def __init__(self, device, raw_config):
-        self._model = device.get(u'model')
-        self._exten_pickup_call = raw_config.get(u'exten_pickup_call')
-        self._funckeys = raw_config[u'funckeys']
-        self._lines = []
-
-    def generate(self):
-        prefixes = BaseHtekFunckeyPrefixIterator(self._model)
-        for funckey_no, prefix in enumerate(prefixes, start=1):
-            funckey = self._funckeys.get(unicode(funckey_no))
-            self._format_funckey(prefix, funckey_no, funckey)
-            self._lines.append(u'')
-
-        return u'\n'.join(self._lines)
-
-    def _format_funckey(self, prefix, funckey_no, funckey):
-        if funckey is None:
-            if funckey_no == 1 and self._model == u'T46G':
-                self._format_funckey_line(prefix)
-            else:
-                self._format_funckey_null(prefix)
-            return
-
-        funckey_type = funckey[u'type']
-        if funckey_type == u'speeddial':
-            self._format_funckey_speeddial(prefix, funckey)
-        elif funckey_type == u'blf':
-            self._format_funckey_blf(prefix, funckey)
-        elif funckey_type == u'park':
-            self._format_funckey_park(prefix, funckey)
-        else:
-            logger.info('Unsupported funckey type: %s', funckey_type)
-
-    def _format_funckey_null(self, prefix):
-        self._lines.append(u'%s.type = %%NULL%%' % prefix)
-        self._lines.append(u'%s.line = %%NULL%%' % prefix)
-        self._lines.append(u'%s.value = %%NULL%%' % prefix)
-        self._lines.append(u'%s.label = %%NULL%%' % prefix)
-
-    def _format_funckey_speeddial(self, prefix, funckey):
-        self._lines.append(u'%s.type = 13' % prefix)
-        self._lines.append(u'%s.line = %s' % (prefix, funckey.get(u'line', 1)))
-        self._lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
-        self._lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
-
-    def _format_funckey_park(self, prefix, funckey):
-        self._lines.append(u'%s.type = 10' % prefix)
-        self._lines.append(u'%s.line = %s' % (prefix, funckey.get(u'line', 1)))
-        self._lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
-        self._lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
-
-    def _format_funckey_blf(self, prefix, funckey):
-        line_no = funckey.get(u'line', 1)
-        if self._model in (u'T32G', u'T38G'):
-            line_no -= 1
-        self._lines.append(u'%s.type = 16' % prefix)
-        self._lines.append(u'%s.line = %s' % (prefix, line_no))
-        self._lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
-        self._lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
-        if self._exten_pickup_call:
-            self._lines.append(u'%s.pickup_value = %s' % (prefix, self._exten_pickup_call))
-
-    def _format_funckey_line(self, prefix):
-        self._lines.append(u'%s.type = 15' % prefix)
-        self._lines.append(u'%s.line = 1' % prefix)
-        self._lines.append(u'%s.value = %%NULL%%' % prefix)
-        self._lines.append(u'%s.label = %%NULL%%' % prefix)
-
-
-class BaseHtekFunckeyPrefixIterator(object):
-
-    _NB_LINEKEY = {
-        u'T40P': 3,
-    }
-    _NB_MEMORYKEY = {
-        u'T48S': 0,
-    }
-    _NB_EXPMODKEY = 40
-
-    def __init__(self, model):
-        self._nb_linekey = self._nb_linekey_by_model(model)
-        self._nb_memorykey = self._nb_memorykey_by_model(model)
-        self._nb_expmod = self._nb_expmod_by_model(model)
-
-    def _nb_linekey_by_model(self, model):
-        if model is None:
-            logger.info('No model information; no linekey will be configured')
-            return 0
-        nb_linekey = self._NB_LINEKEY.get(model)
-        if nb_linekey is None:
-            logger.info('Unknown model %s; no linekey will be configured', model)
-            return 0
-        return nb_linekey
-
-    def _nb_memorykey_by_model(self, model):
-        if model is None:
-            logger.info('No model information; no memorykey will be configured')
-            return 0
-        nb_memorykey = self._NB_MEMORYKEY.get(model)
-        if nb_memorykey is None:
-            logger.info('Unknown model %s; no memorykey will be configured', model)
-            return 0
-        return nb_memorykey
-
-    def _nb_expmod_by_model(self, model):
-        if model in (u'T27P', u'T27G', u'T29G', u'T46G', u'T46S', u'T48G', u'T48S'):
-            return 6
-        else:
-            return 0
-
-    def __iter__(self):
-        for linekey_no in xrange(1, self._nb_linekey + 1):
-            yield u'linekey.%s' % linekey_no
-        for memorykey_no in xrange(1, self._nb_memorykey + 1):
-            yield u'memorykey.%s' % memorykey_no
-        for expmod_no in xrange(1, self._nb_expmod + 1):
-            for expmodkey_no in xrange(1, self._NB_EXPMODKEY + 1):
-                yield u'expansion_module.%s.key.%s' % (expmod_no, expmodkey_no)
-
-
 class BaseHtekPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _LOCALE = {
@@ -215,11 +93,44 @@ class BaseHtekPlugin(StandardPlugin):
         u'en_US': (u'English', u'United States', u'0'),
         u'es_ES': (u'Spanish', u'Spain', u'6'),
         u'fr_FR': (u'French', u'France', u'1'),
-        u'fr_CA': (u'French', u'United States', u'1'),
+        u'fr_CA': (u'French', u'Canada', u'1'),
     }
+
+    _COUNTRIES = [
+        'Custom',
+        'Australia',
+        'Austria',
+        'Brazil',
+        'Belgium',
+        'China',
+        'Chile',
+        'Czech',
+        'Denmark',
+        'Finland',
+        'France',
+        'Germany',
+        'Great Britain',
+        'Greece',
+        'Hungary',
+        'Lithuania',
+        'India',
+        'Italy',
+        'Japan',
+        'Mexico',
+        'New Zealand',
+        'Netherlands',
+        'Norway',
+        'Portugal',
+        'Spain',
+        'Switzerland',
+        'Sweden',
+        'Russia',
+        'United States',
+    ]
+    
     _SIP_DTMF_MODE = {
-        u'RTP-in-band': u'0',
-        u'RTP-out-of-band': u'1',
+        u'RTP-out-of-band': u'0',
+        u'RTP-in-band': u'1',
         u'SIP-INFO': u'2',
     }
     _SIP_TRANSPORT = {
@@ -228,8 +139,51 @@ class BaseHtekPlugin(StandardPlugin):
         u'tls': u'2',
     }
     _SIP_TRANSPORT_DEF = u'0'
-    _NB_SIP_ACCOUNTS = {
-        u'T48S': 16,
+    _NB_LINEKEYS = {
+        u'UC926': 36,
+        u'UC926E': 36,
+        u'UC924': 28,
+        u'UC924E': 28,
+        u'UC923': 20,
+        u'UC912': 12,
+        u'UC912E': 12,
+        u'UC912G': 12,
+        u'UC903': 20,
+    }
+
+    _TZ_INFO = {
+        (-11, 00): 105,
+        (-10, 00): 2,
+        (-9, 00): 3,
+        (-8, 00): 6,
+        (-7, 00): 10,
+        (-6, 00): 14,
+        (-5, 00): 18,
+        (-4, 30): 19,
+        (-4, 00): 20,
+        (-3, 30): 26,
+        (-3, 00): 30,
+        (-2, 00): 31,
+        (-1, 00): 32,
+        (00, 00): 33,
+        (1, 00): 49,
+        (2, 00): 57,
+        (3, 00): 73,
+        (3, 30): 74,
+        (4, 00): 77,
+        (5, 00): 83,
+        (5, 30): 84,
+        (6, 00): 85,
+        (7, 00): 88,
+        (8, 00): 89,
+        (9, 00): 93,
+        (9, 30): 94,
+        (10, 00): 96,
+        (10, 30): 100,
+        (11, 00): 101,
+        (12, 00): 102,
+        (12, 45): 103,
+        (13, 00): 104,
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
@@ -270,9 +224,44 @@ class BaseHtekPlugin(StandardPlugin):
             if u'proxy_port' not in line and u'sip_proxy_port' in raw_config:
                 line[u'proxy_port'] = raw_config[u'sip_proxy_port']
 
+    def _gen_param_num(self, line, offset=0):
+        '''Method that generates line parameter numbers for the config file
+
+        There are several steps in the numbering of parameters that need to
+        be supported.'''
+        param_nb = 0
+        mode_nb = 0
+        line = int(line) + 1  # Start at the second line in config file
+        if line < 5:
+            param_nb = 41200 + line - 1 + 100 * offset
+            mode_nb = 20600 + line - 1
+        elif line >= 5 and line < 37:
+            param_nb = 20200 + offset + 5 * (line - 5)
+            mode_nb = 20600 + line - 1
+        else:
+            param_nb = 23000 + offset + 5 * (line - 37)
+            mode_nb = param_nb
+        return param_nb, mode_nb
+
     def _add_fkeys(self, device, raw_config):
-        funckey_generator = BaseHtekFunckeyGenerator(device, raw_config)
-        raw_config[u'XX_fkeys'] = funckey_generator.generate()
+        # Setting up the line/funckey type
+        complete_fkeys = {}
+        fkeys = raw_config[u'funckeys']
+        fkey_type_assoc = {u'': 0, u'speeddial': 2, u'blf': 3, u'park': 8}
+
+        if u'model' in device and device[u'model'] is not None and device[u'model'] in self._NB_LINEKEYS:
+            for key_nb in range(1, self._NB_LINEKEYS[device[u'model']] + 1):
+                val = fkeys.get(str(key_nb), {u'type': '', u'value': '', u'label': ''})
+                type_nb = fkey_type_assoc[val[u'type']]
+                complete_fkeys[key_nb] = {
+                    'type': {'p_nb': self._gen_param_num(key_nb)[0], 'val': str(type_nb)},
+                    'mode': {'p_nb': self._gen_param_num(key_nb)[1]},
+                    'value': {'p_nb': self._gen_param_num(key_nb, offset=1)[0], 'val': val[u'value']},
+                    'label': {'p_nb': self._gen_param_num(key_nb, offset=2)[0], 'val': val[u'label']},
+                    'account': {'p_nb': self._gen_param_num(key_nb, offset=3)[0]},
+                    'extension': {'p_nb': self._gen_param_num(key_nb, offset=4)[0], 'val': val[u'value']},
+                }
+            raw_config[u'XX_fkeys'] = complete_fkeys
 
     def _add_country_and_lang(self, raw_config):
         locale = raw_config.get(u'locale')
@@ -281,61 +270,30 @@ class BaseHtekPlugin(StandardPlugin):
              raw_config[u'XX_country'],
              raw_config[u'XX_handset_lang']) = self._LOCALE[locale]
 
-    def _format_dst_change(self, dst_change):
-        if dst_change['day'].startswith('D'):
-            return u'%02d/%02d/%02d' % (dst_change['month'], int(dst_change['day'][1:]), dst_change['time'].as_hours)
-        else:
-            week, weekday = map(int, dst_change['day'][1:].split('.'))
-            weekday = tzinform.week_start_on_monday(weekday)
-            return u'%d/%d/%d/%d' % (dst_change['month'], week, weekday, dst_change['time'].as_hours)
-
-    def _format_tz_info(self, tzinfo):
-        lines = []
-        lines.append(u'local_time.time_zone = %+d' % min(max(tzinfo['utcoffset'].as_hours, -11), 12))
-        if tzinfo['dst'] is None:
-            lines.append(u'local_time.summer_time = 0')
-        else:
-            lines.append(u'local_time.summer_time = 1')
-            if tzinfo['dst']['start']['day'].startswith('D'):
-                lines.append(u'local_time.dst_time_type = 0')
-            else:
-                lines.append(u'local_time.dst_time_type = 1')
-            lines.append(u'local_time.start_time = %s' % self._format_dst_change(tzinfo['dst']['start']))
-            lines.append(u'local_time.end_time = %s' % self._format_dst_change(tzinfo['dst']['end']))
-            lines.append(u'local_time.offset_time = %s' % tzinfo['dst']['save'].as_minutes)
-        return u'\n'.join(lines)
-
     def _add_timezone(self, raw_config):
-        if u'timezone' in raw_config:
-            try:
-                tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
-            except tzinform.TimezoneNotFoundError, e:
-                logger.warning('Unknown timezone: %s', e)
-            else:
-                raw_config[u'XX_timezone'] = self._format_tz_info(tzinfo)
+        timezone = raw_config.get(u'timezone', 'Etc/UTC')
+        tz_db = tzinform.TextTimezoneInfoDB()
+        tz_timezone_info = tz_db.get_timezone_info(timezone)
+        tz_info = tz_timezone_info['utcoffset'].as_hms
+        offset_hour = tz_info[0]
+        offset_minutes = tz_info[1]
+
+        dst = tz_timezone_info['dst']['save'].as_hms[0]
+        raw_config[u'XX_timezone_dst'] = dst
+
+        if (offset_hour, offset_minutes) in self._TZ_INFO:
+            raw_config[u'XX_timezone_code'] = self._TZ_INFO[(offset_hour, offset_minutes)]
+            
+        else:
+            raw_config[u'XX_timezone_code'] = self._TZ_INFO[(-5, 0)]
 
     def _add_sip_transport(self, raw_config):
         raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'),
                                                                   self._SIP_TRANSPORT_DEF)
 
-    def _add_xx_sip_lines(self, device, raw_config):
-        sip_lines = raw_config[u'sip_lines']
-        sip_accounts = self._get_sip_accounts(device.get(u'model'))
-        if not sip_accounts:
-            xx_sip_lines = dict(sip_lines)
-        else:
-            xx_sip_lines = {}
-            for line_no in xrange(1, sip_accounts + 1):
-                line_no = str(line_no)
-                xx_sip_lines[line_no] = sip_lines.get(line_no)
-        raw_config[u'XX_sip_lines'] = xx_sip_lines
-
-    def _get_sip_accounts(self, model):
-        return self._NB_SIP_ACCOUNTS.get(model)
-
     def _add_xivo_phonebook_url(self, raw_config):
         if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(raw_config, u'yealink', entry_point=u'lookup', qs_suffix=u'term=#SEARCH')
+            plugins.add_xivo_phonebook_url(raw_config, u'htek', entry_point=u'lookup')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
 
@@ -344,12 +302,12 @@ class BaseHtekPlugin(StandardPlugin):
         if hostname:
             raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(hostname=hostname)
 
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^cfg[0-9a-f]{12}\.xml')
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='')
-        return fmted_mac + '.cfg'
+        return 'cfg' + fmted_mac + '.xml'
 
     def _check_config(self, raw_config):
         if u'http_port' not in raw_config:
@@ -370,7 +328,6 @@ class BaseHtekPlugin(StandardPlugin):
         self._add_timezone(raw_config)
         self._add_sip_transport(raw_config)
         self._update_sip_lines(raw_config)
-        self._add_xx_sip_lines(device, raw_config)
         self._add_xivo_phonebook_url(raw_config)
         raw_config[u'XX_options'] = device.get(u'options', {})
 
