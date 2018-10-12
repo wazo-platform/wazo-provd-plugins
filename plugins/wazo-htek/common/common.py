@@ -151,6 +151,14 @@ class BaseHtekPlugin(StandardPlugin):
         u'UC912E': 12,
         u'UC912G': 12,
         u'UC903': 20,
+        u'UC862': 14,
+        u'UC860P': 14,
+        u'UC842': 4,
+        u'UC840P': 4,
+        u'UC806T': 4,
+        u'UC804T': 4,
+        u'UC803T': 0,
+        u'UC802T': 0,
     }
 
     _TZ_INFO = {
@@ -202,10 +210,9 @@ class BaseHtekPlugin(StandardPlugin):
     http_dev_info_extractor = BaseHtekHTTPDeviceInfoExtractor()
 
     def configure_common(self, raw_config):
-        for filename, fw_filename, tpl_filename in self._COMMON_FILES:
+        for filename, tpl_filename in self._COMMON_FILES:
             tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
-            raw_config[u'XX_fw_filename'] = fw_filename  # not really used
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _update_sip_lines(self, raw_config):
@@ -233,7 +240,7 @@ class BaseHtekPlugin(StandardPlugin):
         be supported.'''
         param_nb = 0
         mode_nb = 0
-        line = int(line) + 1  # start at the second line in config file
+        line = int(line)
         if line < 5:
             param_nb = 41200 + line - 1 + 100 * offset
             mode_nb = 20600 + line - 1
@@ -253,10 +260,14 @@ class BaseHtekPlugin(StandardPlugin):
 
         if u'model' in device and device[u'model'] is not None and device[u'model'] in self._NB_LINEKEYS:
             for key_nb in range(1, self._NB_LINEKEYS[device[u'model']] + 1):
-                val = fkeys.get(str(key_nb), {u'type': '', u'value': '', u'label': ''})
-                type_nb = fkey_type_assoc[val[u'type']]
+                if str(key_nb) in raw_config[u'sip_lines']:
+                    sip_line = raw_config[u'sip_lines'][str(key_nb)]
+                    val = {u'type': 1, u'value': '', u'label': sip_line['number']}
+                else:
+                    val = fkeys.get(str(key_nb), {u'type': '', u'value': '', u'label': ''})
+                    val[u'type'] = fkey_type_assoc[val[u'type']]
                 complete_fkeys[key_nb] = {
-                    'type': {'p_nb': self._gen_param_num(key_nb)[0], 'val': str(type_nb)},
+                    'type': {'p_nb': self._gen_param_num(key_nb)[0], 'val': val[u'type']},
                     'mode': {'p_nb': self._gen_param_num(key_nb)[1]},
                     'value': {'p_nb': self._gen_param_num(key_nb, offset=1)[0], 'val': val[u'value']},
                     'label': {'p_nb': self._gen_param_num(key_nb, offset=2)[0], 'val': val[u'label']},

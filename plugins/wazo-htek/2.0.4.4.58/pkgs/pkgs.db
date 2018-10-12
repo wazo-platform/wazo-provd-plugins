@@ -68,6 +68,62 @@ version: 2.0.4.4.58
 files: UC902-fw
 install: htek-fw
 
+[pkg_UC862-fw]
+description: Firmware for Htek UC862
+description_fr: Micrologiciel pour Htek UC862
+version: 2.0.4.4.58
+files: UC862-fw
+install: htek-fw
+
+[pkg_UC860P-fw]
+description: Firmware for Htek UC860P
+description_fr: Micrologiciel pour Htek UC860P
+version: 2.0.4.4.58
+files: UC860P-fw
+install: htek-fw
+
+[pkg_UC842-fw]
+description: Firmware for Htek UC842
+description_fr: Micrologiciel pour Htek UC842
+version: 2.0.4.4.58
+files: UC842-fw
+install: htek-fw
+
+[pkg_UC840P-fw]
+description: Firmware for Htek UC840P
+description_fr: Micrologiciel pour Htek UC840P
+version: 2.0.4.4.58
+files: UC840P-fw
+install: htek-fw
+
+[pkg_UC806T-fw]
+description: Firmware for Htek UC806T
+description_fr: Micrologiciel pour Htek UC806T
+version: 2.0.4.4.58
+files: UC806T-fw
+install: htek-fw
+
+[pkg_UC804T-fw]
+description: Firmware for Htek UC804T
+description_fr: Micrologiciel pour Htek UC804T
+version: 2.0.4.4.58
+files: UC804T-fw
+install: htek-fw
+
+[pkg_UC803T-fw]
+description: Firmware for Htek UC803T
+description_fr: Micrologiciel pour Htek UC803T
+version: 2.0.4.4.58
+files: UC803T-fw
+install: htek-fw
+
+[pkg_UC802T-fw]
+description: Firmware for Htek UC802T
+description_fr: Micrologiciel pour Htek UC802T
+version: 2.0.4.4.58
+files: UC802T-fw
+install: htek-fw
+
 
 [install_htek-fw]
 a-b: unzip $FILE1
@@ -124,3 +180,42 @@ url: http://www.htek.com/upfile/File/201809/29/Htek_UC902_Firmware_2.0.4.4.58.zi
 size: 17054736
 sha1sum: 575263ddf3dd6bdd5ca322950dcd8e08ac30c8e9
 
+[file_UC862-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC862_Firmware_2.0.4.4.58.zip
+size: 9733249
+sha1sum: e25e9ac567cd72be6ca5975aa63c119d0c47712a
+
+[file_UC860P-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC860_Firmware_2.0.4.4.58.zip
+size: 9734443
+sha1sum: 4e71a8f5e06c6410303f419ef13b34250f82b6f5
+
+[file_UC842-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC842_Firmware_2.0.4.4.58.zip
+size: 9733713
+sha1sum: 8da72e35049da41d45b566b0b6501c2676c3a773
+
+[file_UC840P-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC840_Firmware_2.0.4.4.58.zip
+size: 9734299
+sha1sum: a446c473d466802594dce55a1b7822fba336aa98
+
+[file_UC806T-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC806_Firmware_2.0.4.4.58.zip
+size: 26463860
+sha1sum: 1370fab3977abd1998a2c9c553ff4ee9aad83bbf
+
+[file_UC804T-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC804_Firmware_2.0.4.4.58.zip
+size: 26456324
+sha1sum: 06f72bfa119eb42adf707f4faaa90964dae51e38
+
+[file_UC803T-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC803_Firmware_2.0.4.4.58.zip
+size: 16468650
+sha1sum: d48e0abec20d3e69406d16df26302bdda23a72d0
+
+[file_UC802T-fw]
+url: http://www.htek.com/upfile/File/201809/29/Htek_UC802_Firmware_2.0.4.4.58.zip
+size: 16469532
+sha1sum: 4100ef8c00f02678ee5e8adbc6ea8473ad6ae49e

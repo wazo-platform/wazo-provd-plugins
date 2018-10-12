@@ -31,17 +31,37 @@ MODEL_VERSIONS = {
     u'UC912G': u'2.0.4.4.58',
     u'UC903': u'2.0.4.4.58',
     u'UC902': u'2.0.4.4.58',
+    u'UC862': u'2.0.4.4.58',
+    u'UC860P': u'2.0.4.4.58',
+    u'UC842': u'2.0.4.4.58',
+    u'UC840P': u'2.0.4.4.58',
+    u'UC806T': u'2.0.4.4.58',
+    u'UC804T': u'2.0.4.4.58',
+    u'UC803T': u'2.0.4.4.58',
+    u'UC802T': u'2.0.4.4.58',
 }
 
 COMMON_FILES = [
-    ('cfg0010.xml', u'fw926.rom', 'model.tpl'),
-    ('cfg0110.xml', u'fw926E.rom', 'model.tpl'),
-    ('cfg0012.xml', u'fw924.rom', 'model.tpl'),
-    ('cfg0112.xml', u'fw924E.rom', 'model.tpl'),
-    ('cfg0013.xml', u'fw923.rom', 'model.tpl'),
-    ('cfg0016.xml', u'fw903.rom', 'model.tpl'),
-    ('cfg0017.xml', u'fw902.rom', 'model.tpl'),
-    ('cfg0019.xml', u'fw912.rom', 'model.tpl'),
+    ('cfg0000.xml', 'model.tpl'),  # UC862
+    ('cfg0001.xml', 'model.tpl'),  # UC842
+    ('cfg0002.xml', 'model.tpl'),  # UC860
+    ('cfg0003.xml', 'model.tpl'),  # UC840
+    ('cfg0004.xml', 'model.tpl'),  # UC806
+    ('cfg0041.xml', 'model.tpl'),  # UC806T
+    ('cfg0042.xml', 'model.tpl'),  # UC806G
+    ('cfg0005.xml', 'model.tpl'),  # UC804
+    ('cfg0051.xml', 'model.tpl'),  # UC804T
+    ('cfg0052.xml', 'model.tpl'),  # UC804G
+    ('cfg0006.xml', 'model.tpl'),  # UC803 / UC803T
+    ('cfg0007.xml', 'model.tpl'),  # UC802 / UC802T
+    ('cfg0010.xml', 'model.tpl'),  # UC926
+    ('cfg0110.xml', 'model.tpl'),  # UC926E
+    ('cfg0012.xml', 'model.tpl'),  # UC924
+    ('cfg0112.xml', 'model.tpl'),  # UC924E
+    ('cfg0013.xml', 'model.tpl'),  # UC923
+    ('cfg0016.xml', 'model.tpl'),  # UC903
+    ('cfg0017.xml', 'model.tpl'),  # UC902
+    ('cfg0019.xml', 'model.tpl'),  # UC912 / UC912G / UC912E
 ]
 
 
