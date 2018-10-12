@@ -152,12 +152,18 @@ class BaseHtekPlugin(StandardPlugin):
         u'UC912G': 12,
         u'UC903': 20,
         u'UC862': 14,
+        u'UC860': 14,
         u'UC860P': 14,
         u'UC842': 4,
+        u'UC840': 4,
         u'UC840P': 4,
+        u'UC806': 4,
         u'UC806T': 4,
+        u'UC804': 4,
         u'UC804T': 4,
+        u'UC803': 0,
         u'UC803T': 0,
+        u'UC802': 0,
         u'UC802T': 0,
     }
 
