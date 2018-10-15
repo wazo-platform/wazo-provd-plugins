@@ -246,15 +246,21 @@ class BaseHtekPlugin(StandardPlugin):
         be supported.'''
         param_nb = 0
         mode_nb = 0
+        limit_step1 = 5
+        limit_step2 = 37
+        mode_base = 20600
+        param_step1_base = 41200
+        param_step2_base = 20200
+        param_step3_base = 23000
         line = int(line)
-        if line < 5:
-            param_nb = 41200 + line - 1 + 100 * offset
-            mode_nb = 20600 + line - 1
-        elif line >= 5 and line < 37:
-            param_nb = 20200 + offset + 5 * (line - 5)
-            mode_nb = 20600 + line - 1
+        if line < limit_step1:
+            param_nb = param_step1_base + line - 1 + 100 * offset
+            mode_nb = mode_base + line - 1
+        elif line >= limit_step1 and line < limit_step2:
+            param_nb = param_step2_base + offset + 5 * (line - limit_step1)
+            mode_nb = mode_base + line - 1
         else:
-            param_nb = 23000 + offset + 5 * (line - 37)
+            param_nb = param_step3_base + offset + 5 * (line - limit_step2)
             mode_nb = param_nb
         return param_nb, mode_nb
 
