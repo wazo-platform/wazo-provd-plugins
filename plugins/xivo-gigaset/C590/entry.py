@@ -24,7 +24,6 @@ The following Gigaset phones are supported:
 - C610A IP (not tested)
 - N300 IP (not tested)
 - N300A IP (not tested)
-- N510 IP PRO (not tested)
 
 """
 
@@ -38,7 +37,7 @@ logger = logging.getLogger('plugin.xivo-gigaset')
 
 
 MODELS = [u'C590 IP', u'C595 IP', u'C610 IP', u'C610A IP', u'N300 IP',
-          u'N300A IP', u'N510 IP PRO']
+          u'N300A IP']
 
 
 class GigasetRequestBroker(common_globals['BaseGigasetRequestBroker']):
