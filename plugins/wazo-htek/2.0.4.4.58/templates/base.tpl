@@ -247,7 +247,7 @@
         <P30 para="UrlOrIpAddress">{{ ntp_ip|d('pool.ntp.org') }}</P30>
         <P64 para="Preference_TimeZone">{{ XX_timezone_code }}</P64>
         <P143 para="Preference_DHCPTime">0</P143>
-        <P75 para="Preference_DaylightSavingTime">{{ XX_timezone_dst }}</P75>
+        <P75 para="Preference_DaylightSavingTime">2</P75>
         <!--Setting/Features-->
       {%- if vlan_enabled %}
         <P24053 para="Network_Advanced_Vlan_WANVlan">1</P24053>

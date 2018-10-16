@@ -303,12 +303,8 @@ class BaseHtekPlugin(StandardPlugin):
         offset_hour = tz_info[0]
         offset_minutes = tz_info[1]
 
-        dst = tz_timezone_info['dst']['save'].as_hms[0]
-        raw_config[u'XX_timezone_dst'] = dst
-
         if (offset_hour, offset_minutes) in self._TZ_INFO:
             raw_config[u'XX_timezone_code'] = self._TZ_INFO[(offset_hour, offset_minutes)]
-            
         else:
             raw_config[u'XX_timezone_code'] = self._TZ_INFO[(-5, 0)]
 
