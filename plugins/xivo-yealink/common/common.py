@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2011-2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -107,7 +107,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
                 return {u'mac': mac}
         if request.path.startswith('/y000000000025.cfg'):
             return {u'vendor': u'Yealink',
-                    u'model' : u'W52P'}
+                    u'model': u'W52P'}
         return None
 
 
@@ -134,6 +134,7 @@ class BaseYealinkFunckeyGenerator(object):
         self._model = device.get(u'model')
         self._exten_pickup_call = raw_config.get(u'exten_pickup_call')
         self._funckeys = raw_config[u'funckeys']
+        self._sip_lines = raw_config[u'sip_lines']
         self._lines = []
 
     def generate(self):
@@ -147,8 +148,8 @@ class BaseYealinkFunckeyGenerator(object):
 
     def _format_funckey(self, prefix, funckey_no, funckey):
         if funckey is None:
-            if funckey_no == 1 and self._model == u'T46G':
-                self._format_funckey_line(prefix)
+            if unicode(funckey_no) in self._sip_lines:
+                self._format_funckey_line(prefix, unicode(funckey_no))
             else:
                 self._format_funckey_null(prefix)
             return
@@ -164,7 +165,7 @@ class BaseYealinkFunckeyGenerator(object):
             logger.info('Unsupported funckey type: %s', funckey_type)
 
     def _format_funckey_null(self, prefix):
-        self._lines.append(u'%s.type = %%NULL%%' % prefix)
+        self._lines.append(u'%s.type = 0' % prefix)
         self._lines.append(u'%s.line = %%NULL%%' % prefix)
         self._lines.append(u'%s.value = %%NULL%%' % prefix)
         self._lines.append(u'%s.label = %%NULL%%' % prefix)
@@ -190,13 +191,13 @@ class BaseYealinkFunckeyGenerator(object):
         self._lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
         self._lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
         if self._exten_pickup_call:
-            self._lines.append(u'%s.pickup_value = %s' % (prefix, self._exten_pickup_call))
+            self._lines.append(u'%s.extension = %s' % (prefix, self._exten_pickup_call))
 
-    def _format_funckey_line(self, prefix):
+    def _format_funckey_line(self, prefix, line):
         self._lines.append(u'%s.type = 15' % prefix)
-        self._lines.append(u'%s.line = 1' % prefix)
-        self._lines.append(u'%s.value = %%NULL%%' % prefix)
-        self._lines.append(u'%s.label = %%NULL%%' % prefix)
+        self._lines.append(u'%s.line = %s' % (prefix, line))
+        self._lines.append(u'%s.value = %s' % (prefix, self._sip_lines[line]['number']))
+        self._lines.append(u'%s.label = %s' % (prefix, self._sip_lines[line]['number']))
 
 
 class BaseYealinkFunckeyPrefixIterator(object):

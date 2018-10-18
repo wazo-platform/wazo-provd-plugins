@@ -89,6 +89,33 @@ version: 35.83.0.35
 files: T48G-fw
 install: yealink-fw
 
+[pkg_T52S_T54S-fw]
+description: Firmware for Yealink T52S and T54S
+description_fr: Micrologiciel pour Yealink T52S et T54S
+version: 70.83.0.35
+files: T52S_T54S-fw
+install: yealink-fw
+
+[pkg_T58V_T56A-fw]
+description: Firmware for Yealink T58A/V and T56A
+description_fr: Micrologiciel pour Yealink T58A/V et T56A
+version: 58.83.0.5
+files: T58V_T56A-fw
+install: yealink-fw
+
+[pkg_W60B-fw]
+description: Firmware for Yealink W60B
+description_fr: Micrologiciel pour Yealink W60B
+version: 77.83.0.10
+files: W60B-fw
+install: yealink-fw
+
+[pkg_W56H-fw]
+description: Firmware for Yealink W56H handset
+description_fr: Micrologiciel pour le combiné Yealink W56H
+version: 61.83.0.10
+files: W56H-fw
+install: yealink-fw
 
 [install_yealink-fw]
 a-b: cp *.rom firmware/
@@ -170,3 +197,27 @@ filename: T48-35.83.0.35.rom
 url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2Fe47c819e-605f-459c-89c0-e14211595e9e%2FT48-35.83.0.35.rom
 size: 22179024
 sha1sum: d1a965756cb0236dd1b3cc5a7098d7a250ce2133
+
+[file_T52S_T54S-fw]
+filename: T54S(T52S)-70.83.0.35.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-5-18%2F6%2F5c96fa20-478e-437e-99fd-e3b70d4d0e85%2FT54S%28T52S%29-70.83.0.35.rom
+size: 25214304
+sha1sum: 784266b990e265b485ba35e29944d2343262e476
+
+[file_T58V_T56A-fw]
+filename: T58V(T56A)-58.83.0.5.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-9-10%2F6%2Fc7e39eb7-4c35-46e8-b38f-8e1f6378ab1d%2FT58V%28T56A%29-58.83.0.5.rom
+size: 224713136
+sha1sum: 9019aed5df2f3b0caa783e523002f2e2b5dacb7f
+
+[file_W60B-fw]
+filename: W60B-77.83.0.10.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-9-10%2F6%2F7ce6a721-b1c8-4b18-b765-8ba1fd0246aa%2FW60B-77.83.0.10.rom
+size: 9856720
+sha1sum: 97701015c2ef13126040c2877dba7300fd181757
+
+[file_W56H-fw]
+filename: W56H-61.83.0.10.rom
+url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2018-9-10%2F6%2F5c5980a6-29cf-49d1-9644-8d175317cc74%2FW56H-61.83.0.10.rom
+size: 4277904
+sha1sum: 5b3bb894fbd7796531762e41865cc7071863e184
