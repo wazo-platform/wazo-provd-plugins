@@ -6,7 +6,7 @@ files: 305-fw
 install: snom-fw
 
 [pkg_315-fw]
-description: Firmware for Snom D105
+description: Firmware for Snom D315
 description_fr: Micrologiciel pour Snom D315
 version: 8.9.3.80
 files: 315-fw
