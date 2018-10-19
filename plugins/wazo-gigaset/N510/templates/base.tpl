@@ -31,7 +31,7 @@
     {%- set line_suffix = '_' + line_no %}
     {%- endif %}
     <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].aucAccountName[0]" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
-    <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_ACCOUNT_NAME{{ line_suffix }}" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
+    <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_ACCOUNT_NAME_{{ line_no }}" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_DISPLAYNAME{{ line_suffix }}" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data3.aucS_SIP_LOGIN_ID{{ line_suffix }}" class="symb_item" value='"{{ line['auth_username']|d(line['username']) }}"'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_PASSWORD{{ line_suffix }}" class="symb_item" value='"{{ line['auth_password']|d(line['password']) }}"'/>
@@ -52,7 +52,7 @@
     <SYMB_ITEM ID="BS_IP_Data1.uiI_RE_STUN_TIMER{{ line_suffix }}" class="symb_item" value="0xf0"/>
 
 
-    <SYMB_ITEM ID="BS_IP_Data1.ucB_SIP_ACCOUNT_IS_ACTIVE{{ line_suffix }}" class="symb_item" value="0x1"/>
+    <SYMB_ITEM ID="BS_IP_Data1.ucB_SIP_ACCOUNT_IS_ACTIVE_{{ line_no }}" class="symb_item" value="0x1"/>
     <SYMB_ITEM ID="BS_AE_Subscriber.stMtDat[{{ line_no|int() - 1 }}].aucTlnName" class="symb_item" value='"{{ line['number'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data1.ucI_SIP_PREFERRED_VOCODER{{ line_suffix }}" class="symb_item" value="0x05,0x01,0x00,0x02,0x03"/>
 
