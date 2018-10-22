@@ -1,0 +1,45 @@
+{
+    "version": "0.2",
+    "description": "Plugin for Snom D3x5, D7x5, D7x0 series in version 8.9.3.80.",
+    "description_fr": "Greffon pour Snom séries D3x5; D7x5 et D7x0 en version 8.9.3.80.",
+    "capabilities": {
+        "Snom, D305, 8.9.3.80": {
+            "sip.lines": 4
+        },
+        "Snom, D315, 8.9.3.80": {
+            "sip.lines": 4
+        },
+        "Snom, D345, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, D375, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, 710, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, D712, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, 715, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, 720, 8.9.3.80": {
+            "sip.lines": 12,
+            "switchboard": true
+        },
+        "Snom, 725, 8.9.3.80": {
+            "sip.lines": 12,
+            "switchboard": true
+        },
+        "Snom, D745, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, 760, 8.9.3.80": {
+            "sip.lines": 12
+        },
+        "Snom, D765, 8.9.3.80": {
+            "sip.lines": 12
+        }
+    }
+}
