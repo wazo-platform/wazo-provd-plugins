@@ -191,6 +191,7 @@ class BaseYealinkFunckeyGenerator(object):
         self._lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
         self._lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
         if self._exten_pickup_call:
+            self._lines.append(u'%s.pickup_value = %s' % (prefix, self._exten_pickup_call))
             self._lines.append(u'%s.extension = %s' % (prefix, self._exten_pickup_call))
 
     def _format_funckey_line(self, prefix, line):
