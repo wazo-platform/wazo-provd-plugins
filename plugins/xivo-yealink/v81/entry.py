@@ -76,7 +76,7 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     # Yealink plugin specific stuff
 
     _COMMON_FILES = COMMON_FILES
-    
+
     def configure_common(self, raw_config):
         super(YealinkPlugin, self).configure_common(raw_config)
         for filename, fw_filename, fw_handset_filename, tpl_filename in COMMON_FILES_DECT:
@@ -85,4 +85,3 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
             raw_config[u'XX_fw_filename'] = fw_filename
             raw_config[u'XX_fw_handset_filename'] = fw_handset_filename
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
-
