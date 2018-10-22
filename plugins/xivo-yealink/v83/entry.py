@@ -61,9 +61,10 @@ COMMON_FILES = [
     ('y000000000076.cfg', u'T40G-76.83.0.35.rom', 'model.tpl'),
     ('y000000000066.cfg', u'T46S(T48S,T42S,T41S)-66.83.0.35.rom', 'model.tpl'),
     ('y000000000070.cfg', u'T54S(T52S)-70.83.0.35.rom', 'model.tpl'),
-    ('y000000000077.cfg', u'W60B-77.83.0.10.rom', 'model.tpl'),
 ]
-
+COMMON_FILES_DECT = [
+    ('y000000000077.cfg', u'W60B-77.83.0.10.rom', u'W53H-88.83.0.10.rom', u'W56H-61.83.0.10.rom', 'W60P_W53P.tpl'),
+]
 
 class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     IS_PLUGIN = True
@@ -73,3 +74,14 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     # Yealink plugin specific stuff
 
     _COMMON_FILES = COMMON_FILES
+
+    def configure_common(self, raw_config):
+        super(YealinkPlugin, self).configure_common(raw_config)
+        for filename, fw_filename, fw_w53h_handset_filename, fw_w56h_handset_filename, tpl_filename in COMMON_FILES_DECT:
+            tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
+            dst = os.path.join(self._tftpboot_dir, filename)
+            raw_config[u'XX_fw_filename'] = fw_filename
+            raw_config[u'XX_fw_w53h_handset_filename'] = fw_w53h_handset_filename
+            raw_config[u'XX_fw_w56h_handset_filename'] = fw_w56h_handset_filename
+            
+            self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
