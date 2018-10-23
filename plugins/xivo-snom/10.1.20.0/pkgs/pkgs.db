@@ -1,0 +1,16 @@
+[pkg_765-fw]
+description: Firmware for Snom D785
+description_fr: Micrologiciel pour Snom D785
+version: 10.1.20.0
+files: 785-fw
+install: snom-fw
+
+
+[install_snom-fw]
+a-b: cp $FILE1 firmware/
+
+
+[file_785-fw]
+url: http://downloads.snom.com/fw/snomD785-10.1.20.0-SIP-r.bin
+size: 29736608
+sha1sum: 158a3609737cd656742b49be2e1899ab97bf4a8b
