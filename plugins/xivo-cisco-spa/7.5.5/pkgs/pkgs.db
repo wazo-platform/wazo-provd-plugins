@@ -45,31 +45,31 @@ c-d: cp *.xml i18n/
 
 
 [file_spa50x-30x-fw]
-url: cisco:flowid=5301,mdfid=282724651,softwareid=282463651,release=7.5.5
+filename: SPA30x_SPA50x_7.5.5_FW.zip
+url:
 size: 12795894
 sha1sum: 49702745dc0fdf637a2cbbea616f745cf6ca556a
-downloader: cisco
 
 [file_spa50x-30x-fw-trans]
-url: cisco:flowid=5301,mdfid=282724651,softwareid=282463651,release=7.5.2b
+filename: SPA30x_SPA50x_7-5-2b_FW.zip
+url:
 size: 8434101
 sha1sum: b8ab481fdc8ae0a0cb27b6a3256c3c86bff8b023
-downloader: cisco
 
 [file_spa51x-fw]
-url: cisco:flowid=5301,mdfid=284274685,softwareid=282463651,release=7.5.5
+filename: SPA51x_7.5.5_FW.zip
+url:
 size: 14277156
 sha1sum: 97f8a1bf2e4f204abaeef2c0960a0e50063d76f2
-downloader: cisco
 
 [file_spa525-fw]
-url: cisco:flowid=5301,mdfid=282414147,softwareid=282463651,release=7.5.5
+filename: SPA525g_7.5.5_FW.zip
+url:
 size: 21907881
 sha1sum: b416fc8b02738a92744c250188c83ad0da0fe313
-downloader: cisco
 
 [file_lang]
-url: cisco:flowid=5301,mdfid=282724651,softwareid=282582477,release=7.5.5
+filename: SPA30x_SPA50x_SPA51x_SPA525G_7.5.5_Dicts.zip
+url:
 size: 1837445
 sha1sum: 97d141bb773abe759cc2b05b12254f9c59b23c76
-downloader: cisco
