@@ -49,31 +49,37 @@ b-c: cp *.rom firmware/
 
 
 [file_T20P-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2F0365fb32-bb3d-4ed0-9942-377504796e0c%2F9.73.0.50.zip
+filename: T20P-9.73.0.50.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGyppoY/fcvJPPAk5Om08fEcXJHplusSymbolySFGqHeuhRlDHITzQo63jqQaAonmYgRuy4TDqj5DWWdSYHWp7XIUEx8YjF8r1onHo505hplusSymbol75Q==
 size: 7041783
 sha1sum: 6c487192f65ea28236232e055a59312efe2d7956
 
 [file_T22P-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2Fd1421521-6b1c-44de-8603-55a815a0a0ab%2F7.73.0.50.zip
+filename: T22P-7.73.0.50.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGyppoY/fcvJPPARsvSiXJQGSXwkAplusSymbolQt/PRfjMRS1CexujBWThUIP8Zb1AkugjqSosMQNCFRc02DMcifVYtdJIQEFVHgIst0jk9tw==
 size: 7293360
 sha1sum: 72bf6c4049e6b711918697c49a23c39078cffd6d
 
 [file_T26P-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2F85947342-5fc7-46de-aa4d-204fac541843%2F6.73.0.50.zip
+filename: T26P-6.73.0.50.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGyppoY/fcvJPPAb1Lf1M0IySagEfueknVn/E4sFdARAyVqPA/m7TyFAY6FxdtP9MH0iig7cOEplusSymbolC17ltU7fqgwikHoKPgsTIkbplusSymbolvA==
 size: 7310340
 sha1sum: c5dc9b15bfdb36cbe3ce02b12dc1f3ab44600357
 
 [file_T28P-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-3-12%2F6%2F1cd942e1-2d1f-4cfb-b070-d92f77934423%2F2.73.0.50.zip
+filename: T28P-2.73.0.50.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGyppoY/fcvJPPAOlDsT8AcoUm3LFMwy92xplusSymbolZoUHFJq/3Fztd848xNCOnu/RGgOkT9/dfmvPvBSNZwd8Le0KVJRG5pkSGLrXGIFkg==
 size: 7330466
 sha1sum: 6941b009e97f44b791b3260c274f2e87e2288ace
 
 [file_W52P-base-fw]
-url: http://support.yealink.com/attachmentDownload/download?path=upload%2Fattachment%2F2015-7-4%2F6%2F5cadf3c1-5e00-4c37-9a04-aaa6693b933e%2F25.73.0.40.zip
-size: 7572794
-sha1sum: adcf68ced9578fdbeef5d91c4cb554b41f5d5773
+filename: Base-W52P-25.73.0.40.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypmgPiJ6yiP/Z9Q/M7XV7FJdDLDg/GfnWQFqfkXUpOY4yhtP63J3VuTXGq44VkkGkbxqhWDR7DTwlplusSymbolVADcn2StfUnUH93UBjZOg1Uc/eNfgFN
+size: 7572822
+sha1sum: e606008e71cc51a3f6110a898db7c189f9259bee
 
 [file_W52P-handset-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2016-8-12%2F6%2F0ad8e3fd-9afb-43ac-9337-02b16a69a4a6%2FHandset-26.73.0.30.zip
+filename: Handset-26.73.0.30.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGyptBV2wtycDNEyplusSymbolWEOplusSymbolcPK2k5mIDEplusSymbolvplusSymbolZKplusSymbolARLsRrrUoB17v8RqUMFZuZ0Q3sAO1dL49q56MU2W4/7o5Bjf10nTdulj3ENii7wplusSymbolppU3WSlTwX
 size: 1370587
 sha1sum: cbfd29e541d57250c45f1393b766027cb31430bf
