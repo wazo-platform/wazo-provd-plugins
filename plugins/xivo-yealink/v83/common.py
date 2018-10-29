@@ -36,8 +36,8 @@ logger = logging.getLogger('plugin.xivo-yealink')
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'^[yY]ealink\s+(CP860|W52P)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'(VP530P?|W52P)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^[yY]ealink\s+(CP860|W52P|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'(VP530P?|W52P|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
 
@@ -74,6 +74,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink SIP-W52P 25.73.0.20 00:15:65:40:ae:35"
         #   "W52P 25.30.0.2 00:15:65:44:b3:7c"
         #   "Yealink W52P 25.80.0.15 00:15:65:b8:60:05"
+        #   "Yealink W60B 77.81.0.35 80:5e:c0:09:ab:dc"
         #   "Yealink-T46G 28.71.0.81 28.1.0.128.0.0.0"
         #   "VP530P 23.70.0.40 00:15:65:31:4b:c0"
         #   "VP530 23.70.0.41 00:15:65:3d:58:e3"
