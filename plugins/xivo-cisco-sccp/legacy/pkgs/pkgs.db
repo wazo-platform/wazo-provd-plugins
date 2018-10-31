@@ -27,8 +27,8 @@ files: 7937G-fw
 install: cisco-unified-fw
 
 [pkg_7940-7960-fw]
-description: Firmware for Cisco 7940G and 7960G
-description_fr: Micrologiciel pour Cisco 7940G et 7960G
+description: Firmware for Cisco 7940(G) and 7960G
+description_fr: Micrologiciel pour Cisco 7940(G) et 7960G
 version: 8.1.2 SR2
 files: 7940-7960-fw
 install: cisco-unified-fw
@@ -89,13 +89,15 @@ d-e: cp usr/local/cm/tftp/* i18n/
 
 [file_7905-fw]
 ; Released on April 2007
-url: http://download-sj.cisco.com/swc/esd/02/273941556/contract/cmterm-7905G-sccp.8-0-3.zip
+filename: cmterm-7905G-sccp.8-0-3.zip
+url:
 size: 673168
 sha1sum: c68b1ddddc06ab7bc85eef2a5956d6a58844d700
 
 [file_7912-fw]
 ; Released on January 2008
-url: http://download-sj.cisco.com/swc/esd/02/278115698/contract/cmterm-7912G-sccp.8-0-4.zip
+filename: cmterm-7912G-sccp.8-0-4.zip
+url:
 size: 339004
 sha1sum: 5c93605519fb691690b3c1eefc67127e85497892
 
