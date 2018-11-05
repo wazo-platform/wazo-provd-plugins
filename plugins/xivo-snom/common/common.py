@@ -100,7 +100,7 @@ class BaseSnomPgAssociator(BasePgAssociator):
 
     def _is_incompatible_version(self, version):
         try:
-            maj_version = int(version[0])
+            maj_version = int(version.split('.')[0])
             if maj_version < 7:
                 return True
         except (IndexError, ValueError):
