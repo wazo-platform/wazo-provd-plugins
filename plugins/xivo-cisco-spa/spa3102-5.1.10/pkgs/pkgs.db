@@ -14,6 +14,7 @@ b-c: cp *.bin firmware/
 
 
 [file_spa3102fw]
+filename: SPA3102_5.1.10.zip
 url: http://download.cisco.com/swc/esd/03/282414112/anon/SPA3102_5.1.10.zip
 size: 2086224
 sha1sum: 3281b0adc7f4e1e86e16f3f76100df478ba221b0
