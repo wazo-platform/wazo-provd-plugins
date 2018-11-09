@@ -227,6 +227,12 @@ class BaseCiscoSipPlugin(StandardPlugin):
         u'fr_CA': (u'french_france', u'fr', u'canada')
     }
 
+    _SIP_TRANSPORT = {
+        u'tcp': u'1',
+        u'udp': u'2',
+        u'tls': u'3',
+    }
+
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
 
@@ -296,6 +302,11 @@ class BaseCiscoSipPlugin(StandardPlugin):
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
 
+    def _add_transport_proto(self, raw_config):
+        sip_transport = raw_config.get(u'sip_transport')
+        if sip_transport in self._SIP_TRANSPORT:
+            raw_config[u'XX_transport_proto'] = self._SIP_TRANSPORT[sip_transport]
+
     def _add_xivo_phonebook_url_compat(self, raw_config):
         hostname = raw_config.get(u'X_xivo_phonebook_ip')
         if hostname:
@@ -315,9 +326,11 @@ class BaseCiscoSipPlugin(StandardPlugin):
             line.setdefault(u'proxy_port', proxy_port)
             if voicemail:
                 line.setdefault(u'voicemail', voicemail)
+
         def set_if(line_id, id):
             if line_id in sip_line:
                 raw_config[id] = sip_line[line_id]
+
         set_if(u'proxy_ip', u'sip_proxy_ip')
         set_if(u'proxy_port', u'sip_proxy_port')
         set_if(u'backup_proxy_ip', u'sip_backup_proxy_ip')
@@ -378,6 +391,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
         self._add_locale(raw_config)
         self._add_timezone(raw_config)
         self._add_xivo_phonebook_url(raw_config)
+        self._add_transport_proto(raw_config)
         self._update_call_managers(raw_config)
         self._update_sip_lines(raw_config)
         self._add_fkeys(raw_config)

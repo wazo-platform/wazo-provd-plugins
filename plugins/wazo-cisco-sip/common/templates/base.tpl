@@ -1,4 +1,5 @@
 <device>
+  <fullConfig>true</fullConfig>
   <deviceProtocol>SIP</deviceProtocol>
   <sshUserId>admin</sshUserId>
   <sshPassword>{{ admin_password }}</sshPassword>
@@ -200,7 +201,7 @@
   <dscpForSCCPPhoneConfig>96</dscpForSCCPPhoneConfig>
   <dscpForSCCPPhoneServices>0</dscpForSCCPPhoneServices>
   <dscpForCm2Dvce>96</dscpForCm2Dvce>
-  <transportLayerProtocol>2</transportLayerProtocol>
+  <transportLayerProtocol>{{ XX_transport_proto|d(2) }}</transportLayerProtocol>
 
   <dndCallAlert>1</dndCallAlert>
   <dndReminderTimer>5</dndReminderTimer>
