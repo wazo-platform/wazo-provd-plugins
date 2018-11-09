@@ -26,6 +26,13 @@ version: 9.4.2 SR1
 files: 7942-7962-fw
 install: cisco-unified-fw
 
+[pkg_7970-7971-fw]
+description: Firmware for Cisco 7970G, 7971G and 7971G-GE
+description_fr: Micrologiciel pour Cisco 7970G, 7971G et 7971G-GE
+version: 9.4.2 SR1
+files: 7970-7971-fw
+install: cisco-unified-fw
+
 [pkg_networklocale]
 description: Network locale
 description_fr: Locale réseau
@@ -94,6 +101,12 @@ filename: cmterm-7941_7961-sccp.9-4-2SR1-1.zip
 url:
 size: 5317438
 sha1sum: f7b4d827092f94af1945c8219d52591aeb3dccfc
+
+[file_7970-7971-fw]
+filename: cmterm-7970_7971-sccp.9-4-2SR1-1.zip
+url:
+size: 5425546
+sha1sum: 5d88a4f85d5f1e89596692d6ac3151ae
 
 [file_7942-7962-fw]
 filename: cmterm-7942_7962-sccp.9-4-2SR1-1.zip
