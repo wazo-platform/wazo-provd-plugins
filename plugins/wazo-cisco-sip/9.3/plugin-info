@@ -1,5 +1,5 @@
 {
-    "version": "0.9.1",
+    "version": "0.9.2",
     "description": "Plugin for Cisco 8941 and 8945 in version 9.3 of the SIP software.<br/> Please see the documentation if you want to install Cisco firmwares.",
     "description_fr": "Greffon pour Cisco 8941 et 8945 en version 9.3 du logiciel SIP.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
     "capabilities": {

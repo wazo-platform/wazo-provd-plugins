@@ -75,8 +75,8 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
         #   "Cisco Systems, Inc. IP Phone CP-8961\x00" (Cisco 8961 9.1.2)
         #   "Cisco Systems, Inc. IP Phone CP-9951\x00" (Cisco 9951 9.1.2)
         #   "Cisco Systems Inc. Wireless Phone 7921"
-        if vdi.startswith('Cisco Systems'):
-            dev_info = {u'vendor':  u'Cisco'}
+        if vdi.startswith('Cisco System'):
+            dev_info = {u'vendor': u'Cisco'}
             m = self._VDI_REGEX.search(vdi)
             if m:
                 _7900_modelnum = m.group(1) or m.group(2)
