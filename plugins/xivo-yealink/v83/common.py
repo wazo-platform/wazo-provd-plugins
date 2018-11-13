@@ -36,8 +36,8 @@ logger = logging.getLogger('plugin.xivo-yealink')
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'^[yY]ealink\s+(CP860|W52P)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'(VP530P?|W52P)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^[yY]ealink\s+(CP860|W52P|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'(VP530P?|W52P|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
 
@@ -74,6 +74,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink SIP-W52P 25.73.0.20 00:15:65:40:ae:35"
         #   "W52P 25.30.0.2 00:15:65:44:b3:7c"
         #   "Yealink W52P 25.80.0.15 00:15:65:b8:60:05"
+        #   "Yealink W60B 77.81.0.35 80:5e:c0:09:ab:dc"
         #   "Yealink-T46G 28.71.0.81 28.1.0.128.0.0.0"
         #   "VP530P 23.70.0.40 00:15:65:31:4b:c0"
         #   "VP530 23.70.0.41 00:15:65:3d:58:e3"
@@ -107,7 +108,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
                 return {u'mac': mac}
         if request.path.startswith('/y000000000025.cfg'):
             return {u'vendor': u'Yealink',
-                    u'model' : u'W52P'}
+                    u'model': u'W52P'}
         return None
 
 
@@ -134,6 +135,7 @@ class BaseYealinkFunckeyGenerator(object):
         self._model = device.get(u'model')
         self._exten_pickup_call = raw_config.get(u'exten_pickup_call')
         self._funckeys = raw_config[u'funckeys']
+        self._sip_lines = raw_config[u'sip_lines']
         self._lines = []
 
     def generate(self):
@@ -147,8 +149,8 @@ class BaseYealinkFunckeyGenerator(object):
 
     def _format_funckey(self, prefix, funckey_no, funckey):
         if funckey is None:
-            if funckey_no == 1 and self._model == u'T46G':
-                self._format_funckey_line(prefix)
+            if unicode(funckey_no) in self._sip_lines:
+                self._format_funckey_line(prefix, unicode(funckey_no))
             else:
                 self._format_funckey_null(prefix)
             return
@@ -164,7 +166,7 @@ class BaseYealinkFunckeyGenerator(object):
             logger.info('Unsupported funckey type: %s', funckey_type)
 
     def _format_funckey_null(self, prefix):
-        self._lines.append(u'%s.type = %%NULL%%' % prefix)
+        self._lines.append(u'%s.type = 0' % prefix)
         self._lines.append(u'%s.line = %%NULL%%' % prefix)
         self._lines.append(u'%s.value = %%NULL%%' % prefix)
         self._lines.append(u'%s.label = %%NULL%%' % prefix)
@@ -190,13 +192,13 @@ class BaseYealinkFunckeyGenerator(object):
         self._lines.append(u'%s.value = %s' % (prefix, funckey[u'value']))
         self._lines.append(u'%s.label = %s' % (prefix, funckey.get(u'label', u'')))
         if self._exten_pickup_call:
-            self._lines.append(u'%s.pickup_value = %s' % (prefix, self._exten_pickup_call))
+            self._lines.append(u'%s.extension = %s' % (prefix, self._exten_pickup_call))
 
-    def _format_funckey_line(self, prefix):
+    def _format_funckey_line(self, prefix, line):
         self._lines.append(u'%s.type = 15' % prefix)
-        self._lines.append(u'%s.line = 1' % prefix)
-        self._lines.append(u'%s.value = %%NULL%%' % prefix)
-        self._lines.append(u'%s.label = %%NULL%%' % prefix)
+        self._lines.append(u'%s.line = %s' % (prefix, line))
+        self._lines.append(u'%s.value = %s' % (prefix, self._sip_lines[line]['number']))
+        self._lines.append(u'%s.label = %s' % (prefix, self._sip_lines[line]['number']))
 
 
 class BaseYealinkFunckeyPrefixIterator(object):
@@ -225,7 +227,12 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T48G': 29,
         u'T48S': 29,
         u'T49G': 29,
+        u'T52S': 21,
+        u'T54S': 27,
+        u'T56A': 27,
+        u'T58': 27,
         u'W52P': 0,
+        u'W60B': 0,
     }
     _NB_MEMORYKEY = {
         u'CP860': 0,
@@ -251,7 +258,12 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T48G': 0,
         u'T48S': 0,
         u'T49G': 0,
+        u'T52S': 0,
+        u'T54S': 0,
+        u'T56A': 0,
+        u'T58': 0,
         u'W52P': 0,
+        u'W60B': 0,
     }
     _NB_EXPMODKEY = 40
 
@@ -340,8 +352,13 @@ class BaseYealinkPlugin(StandardPlugin):
         u'T48G': 16,
         u'T48S': 16,
         u'T49G': 16,
+        u'T52S': 12,
+        u'T54S': 16,
+        u'T56A': 16,
+        u'T58': 16,
         u'VP530P': 4,
         u'W52P': 5,
+        u'W60B': 8,
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
