@@ -81,6 +81,8 @@ sip transport protocol: {{ XX_transport_proto }}
 sips trusted certificates: {{ XX_trusted_certificates }}
 {% endif -%}
 
+sips persistent tls: 0
+
 {# SIP per-line settings -#}
 {% for line_no, line in sip_lines.iteritems() %}
 sip line{{ line_no }} proxy ip: {{ line['proxy_ip'] }}
