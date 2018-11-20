@@ -111,6 +111,7 @@
         allow members of "Snom745";
         allow members of "Snom760";
         allow members of "Snom765";
+        allow members of "Snom785";
         allow members of "Snom820";
         allow members of "Snom821";
         allow members of "Snom870";
