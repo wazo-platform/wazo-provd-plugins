@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2014-2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -83,7 +83,7 @@ def build_5_5_1(path):
                 '5.5.1/', path])
 
 
-@target('5.8.3', 'xivo-polycom-5.8.2')
+@target('5.8.2', 'xivo-polycom-5.8.2')
 def build_5_8_2(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '--include', '/templates/base.tpl',
