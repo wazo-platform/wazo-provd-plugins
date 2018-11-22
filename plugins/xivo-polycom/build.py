@@ -83,6 +83,26 @@ def build_5_5_1(path):
                 '5.5.1/', path])
 
 
+@target('5.8.3', 'xivo-polycom-5.8.2')
+def build_5_8_2(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--include', '/templates/base.tpl',
+                '--include', '/templates/VVX101.tpl',
+                '--include', '/templates/VVX201.tpl',
+                '--include', '/templates/VVX300.tpl',
+                '--include', '/templates/VVX310.tpl',
+                '--include', '/templates/VVX400.tpl',
+                '--include', '/templates/VVX410.tpl',
+                '--include', '/templates/VVX500.tpl',
+                '--include', '/templates/VVX600.tpl',
+                '--include', '/templates/VVX1500.tpl',
+                '--exclude', '/templates/*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '5.8.2/', path])
+
+
 @target('3.2.4B', 'xivo-polycom-3.2.4B')
 def build_3_2_4B(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
