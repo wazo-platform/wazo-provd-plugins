@@ -12,6 +12,6 @@ b-c: cp *.ld VVXLocalization ./
 
 
 [file_software]
-url: https://downloads.polycom.com/voice/voip/uc/Polycom-UC-Software-5.8.2-rts68-release-sig-split.zip
+url: http://downloads.polycom.com/voice/voip/uc/Polycom-UC-Software-5.8.2-rts68-release-sig-split.zip
 size: 970717321
 sha1sum: 33b4bd5e6c413139e31631a0fe5d76c3caa281bd
