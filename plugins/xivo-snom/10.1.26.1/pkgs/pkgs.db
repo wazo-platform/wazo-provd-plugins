@@ -1,0 +1,16 @@
+[pkg_735-fw]
+description: Firmware for Snom D735
+description_fr: Micrologiciel pour Snom D735
+version: 10.1.26.1
+files: 735-fw
+install: snom-fw
+
+
+[install_snom-fw]
+a-b: cp $FILE1 firmware/
+
+
+[file_735-fw]
+url: http://downloads.snom.com/tmp/CO/snomD735-10.1.26.1-SIP-r.bin
+size: 29000432
+sha1sum: 71dfcec135f23898bccb789dbbfbd501633bdf3e
