@@ -107,4 +107,5 @@
         </userLocale>
         <networkLocale>i18n/{{ XX_locale[2] }}</networkLocale>
     {% endif -%}
+	<loadInformation>ATA190.1-2-2-003</loadInformation>
 </device>

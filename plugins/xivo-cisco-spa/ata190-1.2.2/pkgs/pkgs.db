@@ -7,10 +7,13 @@ install: cisco-fw
 
 
 [install_cisco-fw]
-a-b: cp cmterm-ata190*.sgn firmware/
++a-b: unzip $FILE1
++b-c: cp *.sgn firmware/
++b-d: cp *.loads firmware/
 
 
 [file_ata190fw]
-url: cmterm-ata190.1-2-2-003.k3.cop.sgn
-size: 10328097
-sha1sum: 
+filename: cmterm-ata190.1-2-2-003.zip
+url:
+size: 10326883
+sha1sum: ba165c923d0111b02b3d4cf8a08d0d4439a008e5

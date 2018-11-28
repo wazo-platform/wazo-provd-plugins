@@ -34,6 +34,7 @@ MODEL_VERSIONS = {
     u'T48G': u'35.80.0.95',
     u'T49G': u'51.80.0.100',
     u'CP860': u'37.80.0.30',
+    u'CP960': u'73.80.0.35',
     u'W52P': u'25.80.0.15',
 }
 COMMON_FILES = [
@@ -49,6 +50,7 @@ COMMON_FILES = [
     ('y000000000053.cfg', u'T19P_E2-53.80.0.95.rom', 'model.tpl'),
     ('y000000000054.cfg', u'T40-54.80.0.95.rom', 'model.tpl'),
     ('y000000000037.cfg', u'CP860-37.80.0.30.rom', 'model.tpl'),
+    ('y000000000073.cfg', u'CP960-73.80.0.35.rom', 'model.tpl'),
 ]
 
 COMMON_FILES_DECT = [
