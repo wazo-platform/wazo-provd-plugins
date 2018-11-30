@@ -114,7 +114,6 @@ class BasePolycomPlugin(StandardPlugin):
         u'SPIP560': 3,
         u'SPIP650': 47,
         u'SPIP670': 47,
-        u'VVX100': 2,
         u'VVX101': 2,
         u'VVX150': 2,
         u'VVX200': 2,
