@@ -1,19 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2016 Avencall
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0+
 
 import logging
 import os
@@ -25,6 +13,7 @@ from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT, \
     NO_SUPPORT, COMPLETE_SUPPORT, PROBABLE_SUPPORT
 from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
     TemplatePluginHelper
+from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer
@@ -43,6 +32,8 @@ class BaseCiscoPgAssociator(BasePgAssociator):
                 # xivo-cisco-spa plugins
                 return PROBABLE_SUPPORT + 10
             if model.startswith(u'SPA'):
+                return NO_SUPPORT
+            if model.startswith(u'ATA'):
                 return NO_SUPPORT
             if model in self._models:
                 return COMPLETE_SUPPORT
@@ -88,6 +79,33 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
             return dev_info
 
 
+class BaseCiscoHTTPDeviceInfoExtractor(object):
+    _CIPC_REGEX = re.compile(r'^/Communicator[/\\]')
+    _FILENAME_REGEXES = [
+        re.compile(r'^/SEP([\dA-F]{12})\.cnf\.xml$'),
+        re.compile(r'^/CTLSEP([\dA-F]{12})\.tlv$'),
+        re.compile(r'^/ITLSEP([\dA-F]{12})\.tlv$'),
+        re.compile(r'^/ITLFile\.tlv$'),
+    ]
+
+    def extract(self, request, request_type):
+        return defer.succeed(self._do_extract(request))
+
+    def _do_extract(self, request):
+        if self._CIPC_REGEX.match(request.path):
+            return {u'vendor': u'Cisco', u'model': u'CIPC'}
+        for regex in self._FILENAME_REGEXES:
+            m = regex.match(request.path)
+            if m:
+                dev_info = {u'vendor': u'Cisco'}
+                if m.lastindex == 1:
+                    try:
+                        dev_info[u'mac'] = norm_mac(m.group(1).decode('ascii'))
+                    except ValueError, e:
+                        logger.warning('Could not normalize MAC address: %s', e)
+                return dev_info
+
+
 class BaseCiscoTFTPDeviceInfoExtractor(object):
     _CIPC_REGEX = re.compile(r'^Communicator[/\\]')
     _FILENAME_REGEXES = [
@@ -109,13 +127,10 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
             m = regex.match(filename)
             if m:
                 dev_info = {u'vendor': u'Cisco'}
-                if m.lastindex == 1:
-                    try:
-                        dev_info[u'mac'] = norm_mac(m.group(1).decode('ascii'))
-                    except ValueError, e:
-                        logger.warning('Could not normalize MAC address: %s', e)
                 return dev_info
 
+    def __repr__(self):
+        return object.__repr__(self) + "-SCCP"
 
 _ZONE_MAP = {
     'Etc/GMT+12': u'Dateline Standard Time',
@@ -209,9 +224,16 @@ class BaseCiscoSccpPlugin(StandardPlugin):
         fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
 
         self.services = fetchfw_helper.services()
+
+        # Maybe find a way to bind to a specific port without changing the general http_port setting of xivo-provd ?
+        # At the moment, http_port 6970 must be set in /etc/xivo/provd/provd.conf
+        self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
+        
         self.tftp_service = TFTPFileService(self._tftpboot_dir)
 
     dhcp_dev_info_extractor = BaseCiscoDHCPDeviceInfoExtractor()
+
+    http_dev_info_extractor = BaseCiscoHTTPDeviceInfoExtractor()
 
     tftp_dev_info_extractor = BaseCiscoTFTPDeviceInfoExtractor()
 

@@ -1,0 +1,10 @@
+{
+    "version": "1.0.2",
+    "description": "Plugin for Cisco ATA190.<br/> Please see the documentation if you want to install Cisco firmwares.",
+    "description_fr": "Greffon pour Cisco ATA190.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
+    "capabilities": {
+        "Cisco, ATA190, 1.2.2": {
+            "sip.lines": 2
+        }
+    }
+}

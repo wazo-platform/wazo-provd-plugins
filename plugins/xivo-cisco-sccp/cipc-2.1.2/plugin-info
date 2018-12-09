@@ -1,5 +1,5 @@
 {
-    "version": "1.1",
+    "version": "1.1.1",
     "description": "Plugin for Cisco IP Communicator in version 2.1.2.",
     "description_fr": "Greffon pour Cisco IP Communicator en version 2.1.2.",
     "capabilities": {

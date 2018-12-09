@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2016 Avencall
+# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@ import logging
 import os.path
 import re
 from operator import itemgetter
+from pkg_resources import parse_version
 from xml.sax.saxutils import escape
 from provd import plugins
 from provd import tzinform
@@ -100,8 +101,8 @@ class BaseSnomPgAssociator(BasePgAssociator):
 
     def _is_incompatible_version(self, version):
         try:
-            maj_version = int(version[0])
-            if maj_version < 7:
+            maj_version = parse_version(version)
+            if maj_version < parse_version('7.0.0.0'):
                 return True
         except (IndexError, ValueError):
             pass

@@ -1,5 +1,5 @@
 {
-    "version": "1.43",
+    "version": "1.46",
     "description": "Plugin for Yealink for all T2X and T4X series, W52/56 and CP860 in version V81.",
     "description_fr": "Greffon pour Yealink toutes les sÃ©ries T2X et T4X, W52/56 et CP860 en version V81.",
     "vendor" : "Yealink",
@@ -112,6 +112,12 @@
             "xivo.tested": 1
         },
         "Yealink, CP860, 37.81.0.10": {
+            "sip.lines": 1,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 0
+        },
+        "Yealink, CP920, 78.81.0.15": {
             "sip.lines": 1,
             "xivo.ha": 0,
             "tel.funckeys": 0,

@@ -117,6 +117,13 @@ version: 37.81.0.10
 files: CP860-fw
 install: yealink-fw
 
+[pkg_CP920-fw]
+description: Firmware for Yealink CP920
+description_fr: Micrologiciel pour Yealink CP920
+version: 78.81.0.15
+files: CP920-fw
+install: yealink-cp-rom
+
 [pkg_W52P_W56P-base-fw]
 description: Firmware for Yealink W52P and W56P base
 description_fr: Micrologiciel pour base Yealink W52P et W56P
@@ -130,7 +137,6 @@ description_fr: Micrologiciel pour combinÃ© Yealink W56P
 version: 61.81.0.30
 files: W56P-handset-fw
 install: yealink-cp-rom
-
 
 [install_yealink-fw]
 a-b: unzip $FILE1
@@ -156,102 +162,125 @@ b-c: cp *.rom firmware/T46S-66.81.0.110.rom
 a-b: unrar $FILE1
 b-c: cp *.rom firmware/T48S-65.81.0.110.rom
 
+[install_yealink-cp-rom]
+a-b: cp *.rom firmware/
 
 [file_T19P_E2-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F4f6e9a6e-8ded-4f6b-a24f-db609851aaf5%2FT19P_E2-53.81.0.110.zip
+filename: T19P_E2-53.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPf6LwtZZ1V2sWkZaJEnS3OCgUqMrTKK3CaplusSymbolRdLIf2L1GMKn9ivNNdzhpM2c4jO/PEf2sQGNDR1bplusSymbol6i7R9AAMrwFBHplusSymbolg4IvGAVx
 size: 7545815
 sha1sum: d19af8e8eb8d4e2305d4a100af01032b203dabb0
 
 [file_T21P_E2-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F62d16dbf-701e-47d0-8c5d-25080778b59d%2FT21P_E2-52.81.0.110.zip
+filename: T21P_E2-52.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfaLZwSmvdjlwrOSQKWNz6SpV8OTXl/68qzUIvqTmdXPpmMO2tUqnIzcjV6bRmKU4RNUB5Sh0laI3RwRoqd5z1FzVd7vcL/ge9
 size: 7545839
 sha1sum: 82a3433cef54ce0551e14925a40980cd533101ab
 
 [file_T23-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2Fae1dad32-83b4-4833-bd43-8813154a11a9%2FT23-44.81.0.110.zip
+filename: T23-44.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfPqplusSymbolWgxwxblrDfExbV5xY8EXfX5AyM7LIruSMU6ZesJ6LkRSKt3OuUXi4SPajFAh5ysXmKfkng5WU6zvN60wvPQ==
 size: 7609550
 sha1sum: 2eed9bea77e3da9ef396e3c766dfb6bd668ce096
 
 [file_T27P-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F6ff2247b-32a4-4aee-a05c-c5318a411eb8%2FT27-45.81.0.110.zip
+filename: T27-45.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfms3BOFXiwSjbC0ZQBnQQJ3vr4FrplusSymboltGZsACAP/W0pY/rWzrJro6M9yCMRlbWeOvhcuC/6jSuKAcXliiJqzYK5mA==
 size: 7564067
 sha1sum: 408cedc8fe92f6df2146f8a71e2ff56b90bf89ae
 
 [file_T27G-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2Fc22f741b-aad3-42f7-9c06-e4af69f4286f%2FT27G-69.81.0.110.zip
+filename: T27G-69.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfPVNt/n9uWDinQneC1GGSP9TDy0ERI/SyUpJ26P1s9iYePAzJs1yoqWaplusSymboleomaVmFZTw7yMMm3FRZqFFZ43b0FKA==
 size: 12151304
 sha1sum: 2c7ebd85706edd79c1db7db08675687a27acc1e5
 
 [file_T29G-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2Fef172145-74ed-4e10-8d73-8ff6b084745f%2FT29-46.81.0.110.zip
+filename: T29-46.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPf/0uEpT23hmodjt3zmK9lAI7vGQcvVCFm3iTQlhMIFP7cMGqtBZKlTO8q9m/sLBrE4S1NwPDlizHEaVuGjvuQRA==
 size: 19953980
 sha1sum: 8d625598c078e938a1dff62f80cd95f8198c672f
 
 [file_T40P-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F65c8be0a-27df-4d10-a63b-a213d6822aec%2FT40-54.81.0.110.zip
+filename: T40-54.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfWkUwSyQvUu3DAjsW3ADxSj7bk1g4atzEEGxmBb9hON0G3w9pvIi9fTsDzqUU5Ep2eGHf0o4fhCrFUZHswfPpRA==
 size: 7576394
 sha1sum: 8878fa095f799d85384fe45ff720420a1ecb6c91
 
 [file_T40G-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2Fc432bb02-8cba-4901-be63-6cdd71fa1503%2FT40G-76.81.0.110.zip
+filename: T40G-76.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfzSPqPgipBUJNyEkTbaRkoAIoyZ6vxiw3RXNFt9RplusSymbolJC4MVkP9Jaj7p66nMCZRqj43LJYKwfL1G5RPsq529N7PVw==
 size: 8088255
 sha1sum: 8f67a549e4e28000df386f21810dc2cc342ff029
 
 [file_T41P-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F4255af81-f051-41ba-8549-b118541480e4%2FT41-36.81.0.110.zip
+filename: T41-36.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfnBPyJXqXBSKFLb/JbDtYq4fnlLxrfnkM3hpTolMorNeagxRC4lXXOTgTfT2wGlfWH0mplusSymboltxTNuQ8fIRKmNsr/SA==
 size: 7194114
 sha1sum: db530463e9b84fc5684c31b2a9844a27bae06a55
 
 [file_T41S-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F4cb82f67-ddbc-4015-b0e7-3c7087b8ad39%2FT41S-66.81.0.110.rar
+filename: T41S-66.81.0.110.rar
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPf6tgW150unUdnWD749VQtHSRKUe/c4GfkhJXxGJOLEkMjDGItrLZYWKsWvnmzNcUdgTVaW3kGDt/6wcfhB5Fb2Q==
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
 
 [file_T42G-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2Fcb48aea9-11b1-4b7b-a036-eba39bfcef27%2FT42-29.81.0.110.zip
+filename: T42-29.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfcoY97dlTcvWyEqErO/gUvanIWqX403V6zHMDsbvP8QH94QHdh32EnzmOdWoYX6GGYicesqlcLCGmytwplusSymboliiRsXw==
 size: 7194379
 sha1sum: 04f6fbb368822ff57c8d4a399aae4ab23100b86d
 
 [file_T42S-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F6cb364e5-dd60-4ce9-ac94-c684868f8f7e%2FT42S-66.81.0.110.rar
+filename: T42S-66.81.0.110.rar
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPf9ibD99lNL7oBlLarxXBmXzUnJXkc7VL9xQeTmplusSymbolDGMv0oaGUnj3plusSymbolx3bwfkhEFPiAo56U/3ClxIatul8bivqKgkA==
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
 
 [file_T46G-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-23%2F6%2F1ef42da2-4a66-449e-b7a5-1626b1a56e66%2FT46-28.81.0.110.zip
+filename: T46-28.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfdZnnbbkASqmYaXRS5X4K2nCpHveuyMTkGPkZBdiLFcOHVkN8GjtV47h9PhcbLAcatX4SNirgbyJVl9I1DQyq6A==
 size: 22998162
 sha1sum: 1371d7eb5869675c37ab0ae9239ac7698bb37e3e
 
 [file_T46S-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F39a31b75-e3fe-438e-b475-fdc2daef965f%2FT46S-66.81.0.110.rar
+filename: T46S-66.81.0.110.rar
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPf0cfcKmsjAI02c6wS/ssD81KpE94plusSymbolE3DtrgoNjzaGIeeAZZzogPlbqrL/aEtamZK6bIv589o3Vpyo4melpKaACw==
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
 
 [file_T48G-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F8a5369bb-7897-4211-b617-16d372f8d110%2FT48-35.81.0.110.zip
+filename: T48-35.81.0.110.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfqqn0PG9tKRX24jOnJtm3a4jlP2eCpplusSymbolJ19u/BOo9S6lp3sZK3O70zJpHsfu0GZYhmp5BrkkIdBoJXC8SArQjkplusSymbolw==
 size: 21110225
 sha1sum: 0aad3152f18a8aba79ae9fe774aefc0c785783a4
 
 [file_T48S-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-5-22%2F6%2F31d40b64-395f-425c-9522-1c91c475a621%2FT48S-66.81.0.110.rar
+filename: T48S-66.81.0.110.rar
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfxRZReCMoLu3BxbGYIXIZsd4UlSWlSXRplusSymbolpM/kTNjwvTRK6iNLnmqFyQOA54Erl1WNpe1CUVMJKIwEFhUvSQB1pA==
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
 
 [file_CP860-fw]
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-6-23%2F6%2F06b7c24e-7e79-4327-bbd2-0fd8db990ec7%2FCP860-37.81.0.10.zip
+filename: CP860-37.81.0.10.zip
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypoI9VcwQsqO8sHffVzo7plusSymbol6GvRjw8dGGGARD0dw1plusSymbolQ8RRUDkq0y1urQbDt7fbljWMCREJykg4UDv6FZieSyz4sUSzoB3e6KV9LQ==
 size: 9106482
 sha1sum: 36ba04d0a95a512e6cc14276ec65a052fd414df7
 
+[file_CP920-fw]
+filename: CP920-78.81.0.15.rom
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypsN1StLgAwqI4ECLv6qE5vE7IGQnEATut0giWWplusSymbolyYcx4ogPk9HZXVSPKictym32AplusSymbolGxQ2d3OSUsoh8RemtGoj8jhiLJKd5izKA==
+size: 18948304
+sha1sum: 7bd04e6f92e94ff819f4694f502e63e6bc1079b1
+
 [file_W52P_W56P-base-fw]
 filename: Base-W52P-W56P-25.81.0.10.rom
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-9-25%2F6%2F90f34f43-90a5-4b5d-88fe-fb326a33bc6c%2FBase%20for%20W52P%26W56P-25.81.0.10.rom
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypsN1StLgAwqIbXplusSymboleOhpPym/bPNc3lNFOcMcJBzGqUr/8syZXHHLlYcAGh9Mt9WObDk1QwXUClUp6U3PnQtJon0I5ET5BfqI8dRS8liplusSymbolyVEg29utctf2JmplusSymbol8=
 size: 6763776
 sha1sum: 69ea05cd71ed7e5bdfd508cdae4782a9c94e353b
 
 [file_W56P-handset-fw]
 filename: W56H-61.81.0.30.rom
-url: http://download.support.yealink.com/download?path=upload%2Fattachment%2F2017-10-24%2F6%2Fe55f08ca-14e5-4d73-b58d-d39c290e74a0%2FW56H-61.81.0.30.rom
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypiNdPZjJiENykplusSymbolifP/yGCIS72yIR5V09fHx/xYpL7ql5u38Nz2sv8XRq/aPplusSymbolLDl6D0Ryayt7TgBc4vdJHkbzFxF5R9PGzQTqLQ==
 size: 4259808
 sha1sum: 197d100b0b6ec78eea698f37f06933c097e498dd
-
-

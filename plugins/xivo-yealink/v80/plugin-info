@@ -1,5 +1,5 @@
 {
-    "version": "1.41",
+    "version": "1.47",
     "description": "Plugin for Yealink CP860, T19P E2, T21P E2, T40P, T41P, T42G, T46G, T48G and W52/6P in version V80.",
     "description_fr": "Greffon pour Yealink CP860, T19P E2, T21P E2, T40P, T41P, T42G, T46G, T48G et W52/6P en version V80.",
     "vendor" : "Yealink",
@@ -81,6 +81,12 @@
             "xivo.tested": 1
         },
         "Yealink, CP860, 37.80.0.30": {
+            "sip.lines": 1,
+            "xivo.ha": 0,
+            "tel.funckeys": 0,
+            "xivo.tested": 0
+        },
+        "Yealink, CP960, 73.80.0.35": {
             "sip.lines": 1,
             "xivo.ha": 0,
             "tel.funckeys": 0,

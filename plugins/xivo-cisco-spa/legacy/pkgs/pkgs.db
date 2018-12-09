@@ -50,26 +50,31 @@ b-f: cp fr*.xml i18n/frS.xml
 
 
 [file_spa901fw]
+filename: spa901--5.1.5.zip
 url: http://download.cisco.com/swc/esd/03/282414119/anon/spa901--5.1.5.zip
 size: 1607399
 sha1sum: 2cc6bfeb64812ca80a69cbe51296e3db2b68a491
 
 [file_spa921-941fw]
+filename: spa941-5.1.8.zip
 url: http://download.cisco.com/swc/esd/03/282414120/anon/spa941-5.1.8.zip
 size: 1548720
 sha1sum: fe3616d709599763fd27fc5afebd1c8f71a95b9c
 
 [file_spa922-942fw]
+filename: SPA942_6.1.5a.zip
 url: http://download.cisco.com/swc/esd/03/282414121/anon/SPA942_6.1.5a.zip
 size: 2030212
 sha1sum: 099c18f0cb28c0b0897eb13a04c00dbb6991319e
 
 [file_spa962fw]
+filename: SPA962_6.1.5a.zip
 url: http://download.cisco.com/swc/esd/04/crypto/3DES/282414125/anon/SPA962_6.1.5a.zip
 size: 2355809
 sha1sum: 5ef25e1c891832a6e87813ce1e534f1034688b06
 
 [file_spa9x2lang]
+filename: 22413-SPA9X2_Dictionaries_v615.zip
 url: https://supportforums.cisco.com/sites/default/files/legacy/3/1/4/22413-SPA9X2_Dictionaries_v615.zip
 size: 215186
 sha1sum: 5b4fcb2d822b2eea6743fa873894d54ed4ba713f

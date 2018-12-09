@@ -31,6 +31,7 @@
         allow members of "CiscoCP-7921G";
         allow members of "CiscoCP-7931G";
         allow members of "CiscoCP-7937G";
+        allow members of "CiscoCP-7940";
         allow members of "CiscoCP-7940G";
         allow members of "CiscoCP-7941G";
         allow members of "CiscoCP-7941G-GE";
@@ -60,6 +61,8 @@
         allow members of "CiscoSMBSPA525G2";
         allow members of "CiscoSMBSPA112";
         allow members of "CiscoSMBSPA122";
+        # CiscoATA
+        allow members of "CiscoATA190";
         # Digium
         allow members of "DigiumD40";
         allow members of "DigiumD50";
@@ -108,6 +111,7 @@
         allow members of "Snom745";
         allow members of "Snom760";
         allow members of "Snom765";
+        allow members of "Snom785";
         allow members of "Snom820";
         allow members of "Snom821";
         allow members of "Snom870";
