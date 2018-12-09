@@ -36,6 +36,8 @@
  {% if XX_addons -%}
  {% for addon in XX_addons.itervalues() -%}
   <addOnModule idx="{{ addon['idx'] }}">
+    <deviceType>{{ addon['type'] }}</deviceType>
+    <deviceLine>{{ addon['line'] }}</deviceLine>
     <loadInformation>{{ addon['loadInformation'] }}</loadInformation>
   </addOnModule>
  {% endfor -%}
