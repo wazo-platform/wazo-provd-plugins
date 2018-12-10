@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2016 Avencall
+# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -114,12 +114,25 @@ class BasePolycomPlugin(StandardPlugin):
         u'SPIP560': 3,
         u'SPIP650': 47,
         u'SPIP670': 47,
-        u'VVX300': 261,
-        u'VVX310': 261,
-        u'VVX400': 266,
-        u'VVX410': 266,
-        u'VVX500': 266,
-        u'VVX600': 270,
+        u'VVX101': 2,
+        u'VVX150': 2,
+        u'VVX200': 2,
+        u'VVX201': 2,
+        u'VVX250': 4,
+        u'VVX300': 6,
+        u'VVX301': 6,
+        u'VVX310': 6,
+        u'VVX311': 6,
+        u'VVX350': 6,
+        u'VVX400': 12,
+        u'VVX401': 12 + 3 * 40,  # Expansion modules
+        u'VVX410': 12 + 3 * 40,
+        u'VVX411': 12 + 3 * 40,
+        u'VVX450': 12 + 2 * 40,
+        u'VVX500': 12 + 3 * 40,
+        u'VVX501': 12 + 3 * 40,
+        u'VVX600': 16 + 3 * 40,
+        u'VVX601': 16 + 3 * 40,
         u'VVX1500': 6,
     }
     _LOCALE = {
