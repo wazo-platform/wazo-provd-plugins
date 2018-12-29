@@ -13,14 +13,14 @@
             "sccp.lines": 24
         },
         "Cisco, 7941G, 9.4.3/SCCP": {
-            "sccp.lines": 2,
-            "switchboard": true
+            "sccp.lines": 2
         },
         "Cisco, 7942G, 9.4.3/SCCP": {
             "sccp.lines": 2
         },
         "Cisco, 7961G, 9.4.3/SCCP": {
-            "sccp.lines": 6
+            "sccp.lines": 6,
+            "switchboard": true
         },
         "Cisco, 7962G, 9.4.3/SCCP": {
             "sccp.lines": 6

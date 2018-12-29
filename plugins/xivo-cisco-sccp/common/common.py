@@ -282,7 +282,7 @@ class BaseCiscoSccpPlugin(StandardPlugin):
                         continue
                     # WIP : addon models and fimwares mapping needs to be exported
                     addon[u'idx'] = unicode(idx)
-                    if addon[u'type'] == u'7914':                
+                    if addon[u'type'] == u'7914':
                         addon[u'loadInformation'] = u'S00105000400'
                     elif addon[u'type'] == u'7915':
                         addon[u'loadInformation'] = u'B015-1-0-4-2'
