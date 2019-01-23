@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -108,6 +108,7 @@ class BasePolycomPlugin(StandardPlugin):
     # Note that no TFTP support is included since Polycom phones are capable of
     # protocol selection via DHCP options.
     _ENCODING = 'UTF-8'
+    _EXPANSION = 3 * 40  # Expansion modules
     _NB_FKEY = {
         u'SPIP450': 2,
         u'SPIP550': 3,
@@ -119,20 +120,20 @@ class BasePolycomPlugin(StandardPlugin):
         u'VVX200': 2,
         u'VVX201': 2,
         u'VVX250': 4,
-        u'VVX300': 6,
-        u'VVX301': 6,
-        u'VVX310': 6,
-        u'VVX311': 6,
+        u'VVX300': 6 + _EXPANSION,
+        u'VVX301': 6 + _EXPANSION,
+        u'VVX310': 6 + _EXPANSION,
+        u'VVX311': 6 + _EXPANSION,
         u'VVX350': 6,
-        u'VVX400': 12,
-        u'VVX401': 12 + 3 * 40,  # Expansion modules
-        u'VVX410': 12 + 3 * 40,
-        u'VVX411': 12 + 3 * 40,
-        u'VVX450': 12 + 2 * 40,
-        u'VVX500': 12 + 3 * 40,
-        u'VVX501': 12 + 3 * 40,
-        u'VVX600': 16 + 3 * 40,
-        u'VVX601': 16 + 3 * 40,
+        u'VVX400': 12 + _EXPANSION,
+        u'VVX401': 12 + _EXPANSION,
+        u'VVX410': 12 + _EXPANSION,
+        u'VVX411': 12 + _EXPANSION,
+        u'VVX450': 12 + _EXPANSION,
+        u'VVX500': 12 + _EXPANSION,
+        u'VVX501': 12 + _EXPANSION,
+        u'VVX600': 16 + _EXPANSION,
+        u'VVX601': 16 + _EXPANSION,
         u'VVX1500': 6,
     }
     _LOCALE = {
