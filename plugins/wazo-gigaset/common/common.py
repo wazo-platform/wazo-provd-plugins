@@ -20,20 +20,20 @@ from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-gigaset')
 
-VENDOR = u'Gigaset'
+VENDOR = 'Gigaset'
 
 
 class GigasetDHCPDeviceInfoExtractor(object):
     _VDI = {
-        'N720_DM_PRO': u'N720 DM PRO',
-        'N510_IP_PRO': u'N510 IP PRO',
+        'N720_DM_PRO': 'N720 DM PRO',
+        'N510_IP_PRO': 'N510 IP PRO',
     }
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
-        options = request[u'options']
+        options = request['options']
         if 60 in options:
             return self._extract_from_vdi(options[60])
         else:
@@ -53,8 +53,8 @@ class GigasetDHCPDeviceInfoExtractor(object):
             vdi_to_check = '_'.join(vdi_split)
 
         if vdi_to_check in self._VDI:
-            return {u'vendor': VENDOR,
-                    u'model': self._VDI[vdi_to_check]}
+            return {'vendor': VENDOR,
+                    'model': self._VDI[vdi_to_check]}
         else:
             return None
 
@@ -88,11 +88,11 @@ class GigasetHTTPDeviceInfoExtractor(object):
         m = self._UA_REGEX.search(ua)
         dev_info = {}
         if m:
-            dev_info = {u'vendor': VENDOR,
-                        u'model': m.group('model').decode('ascii').replace('-', ' '),
-                        u'version': m.group('version').decode('ascii')}
+            dev_info = {'vendor': VENDOR,
+                        'model': m.group('model').decode('ascii'),
+                        'version': m.group('version').decode('ascii')}
             if m.groupdict().get('mac'):
-                dev_info[u'mac'] = norm_mac(m.group('mac').decode('ascii'))
+                dev_info['mac'] = norm_mac(m.group('mac').decode('ascii'))
 
         return dev_info
 
@@ -174,7 +174,7 @@ class BaseGigasetPlugin(StandardPlugin):
     http_dev_info_extractor = GigasetHTTPDeviceInfoExtractor()
 
     def _check_device(self, device):
-        if u'ip' not in device:
+        if 'ip' not in device:
             raise Exception('IP address needed for Gigaset configuration')
 
     def _check_config(self, raw_config):
@@ -182,7 +182,7 @@ class BaseGigasetPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
+        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return fmted_mac + '.xml'
 
     def _add_phonebook(self, raw_config):
@@ -190,33 +190,33 @@ class BaseGigasetPlugin(StandardPlugin):
         plugins.add_xivo_phonebook_url_from_format(raw_config, uuid_format)
 
     def _add_timezone_code(self, raw_config):
-        timezone = raw_config.get(u'timezone', 'Etc/UTC')
+        timezone = raw_config.get('timezone', 'Etc/UTC')
         tz_db = tzinform.TextTimezoneInfoDB()
         tz_info = tz_db.get_timezone_info(timezone)['utcoffset'].as_hms
         offset_hour = tz_info[0]
         offset_minutes = tz_info[1]
-        raw_config[u'XX_timezone_code'] = self._TZ_GIGASET[(offset_hour, offset_minutes)]
+        raw_config['XX_timezone_code'] = self._TZ_GIGASET[(offset_hour, offset_minutes)]
 
     def _add_xx_vars(self, device, raw_config):
-        raw_config[u'XX_mac_addr'] = format_mac(device[u'mac'], separator='', uppercase=True)
+        raw_config['XX_mac_addr'] = format_mac(device['mac'], separator='', uppercase=True)
 
         cur_datetime = datetime.datetime.now()
-        raw_config[u'XX_version_date'] = cur_datetime.strftime('%d%m%y%H%M')
+        raw_config['XX_version_date'] = cur_datetime.strftime('%d%m%y%H%M')
 
-        if u'dns_enabled' in raw_config:
-            ip = raw_config[u'dns_ip']
+        if 'dns_enabled' in raw_config:
+            ip = raw_config['dns_ip']
             ip_str = '0x' + ''.join(['%x' % int(p) for p in ip.split('.')])
-            raw_config[u'XX_dns_ip_hex'] = ip_str
+            raw_config['XX_dns_ip_hex'] = ip_str
 
         self._add_timezone_code(raw_config)
 
     def _add_sip_info(self, raw_config):
-        if u'1' in raw_config[u'sip_lines']:
-            line = raw_config[u'sip_lines'][u'1']
-            raw_config[u'sip_proxy_ip'] = line[u'proxy_ip']
-            raw_config[u'sip_proxy_port'] = line.get(u'proxy_port', 5060)
-            raw_config[u'sip_registrar_ip'] = line.get(u'registrar_ip')
-            raw_config[u'sip_registrar_port'] = line.get(u'registrar_port', 5060)
+        if '1' in raw_config['sip_lines']:
+            line = raw_config['sip_lines']['1']
+            raw_config['sip_proxy_ip'] = line['proxy_ip']
+            raw_config['sip_proxy_port'] = line.get('proxy_port', 5060)
+            raw_config['sip_registrar_ip'] = line.get('registrar_ip')
+            raw_config['sip_registrar_port'] = line.get('registrar_port', 5060)
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
