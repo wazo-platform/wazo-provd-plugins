@@ -1,0 +1,69 @@
+{
+    "version": "0.1",
+    "description": "Plugin for Polycom VVX101, VVX150, VVX201, VVX250, VVX300, VVX301, VVX310, VVX311, VVX350, VVX400, VVX401, VVX410, VVX411, VVX450, VVX500, VVX501, VVX600, VVX601 and VVX1500 in version 5.9.2",
+    "description_fr": "Greffon pour Polycom VVX101, VVX150, VVX201, VVX250, VVX300, VVX301, VVX310, VVX311, VVX350, VVX400, VVX401, VVX410, VVX411, VVX450, VVX500, VVX501, VVX600, VVX601 and VVX1500 en version 5.9.2",
+    "capabilities": {
+        "Polycom, VVX101, 5.9.2": {
+            "sip.lines": 1
+        },
+        "Polycom, VVX150, 5.9.2": {
+            "sip.lines": 2
+        },
+        "Polycom, VVX201, 5.9.2": {
+            "sip.lines": 2
+        },
+        "Polycom, VVX250, 5.9.2": {
+            "sip.lines": 4
+        },
+        "Polycom, VVX300, 5.9.2": {
+            "sip.lines": 6
+        },
+        "Polycom, VVX301, 5.9.2": {
+            "sip.lines": 6
+        },
+        "Polycom, VVX310, 5.9.2": {
+            "sip.lines": 6
+        },
+        "Polycom, VVX311, 5.9.2": {
+            "sip.lines": 6
+        },
+        "Polycom, VVX350, 5.9.2": {
+            "sip.lines": 6
+        },
+        "Polycom, VVX400, 5.9.2": {
+            "sip.lines": 12,
+            "switchboard": true
+        },
+        "Polycom, VVX401, 5.9.2": {
+            "sip.lines": 12,
+            "switchboard": true
+        },
+        "Polycom, VVX410, 5.9.2": {
+            "sip.lines": 12,
+            "switchboard": true
+        },
+        "Polycom, VVX411, 5.9.2": {
+            "sip.lines": 12,
+            "switchboard": true
+        },
+        "Polycom, VVX450, 5.9.2": {
+            "sip.lines": 12,
+            "switchboard": true
+        },
+        "Polycom, VVX500, 5.9.2": {
+            "sip.lines": 12
+        },
+        "Polycom, VVX501, 5.9.2": {
+            "sip.lines": 12
+        },
+        "Polycom, VVX600, 5.9.2": {
+            "sip.lines": 16
+        },
+        "Polycom, VVX601, 5.9.2": {
+            "sip.lines": 16
+        },
+        "Polycom, VVX1500, 5.9.2": {
+            "sip.lines": 6
+        }
+    }
+}
