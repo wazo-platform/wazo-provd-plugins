@@ -61,8 +61,10 @@ class GigasetDHCPDeviceInfoExtractor(object):
 
 class GigasetHTTPDeviceInfoExtractor(object):
 
-    _UA_REGEX = re.compile(r'^(Gigaset )?(?P<model>N\d{3}.+)\/(?P<version>\d{2,3}\.\d{2,3})\.(\d{2,3})\.(\d{2,3})\.(\d{2,3});?(?P<mac>[A-F0-9]{12})?$')
-    _PATH_REGEX = re.compile(r'^/\d{2}/\d{1}/(.+)$')
+    _UA_REGEXES = [
+        re.compile(r'^(Gigaset )?(?P<model>N\d{3}.+)\/(?P<version>\d{2,3}\.\d{2,3})\.(\d{2,3})\.(\d{2,3})\.(\d{2,3});?(?P<mac>[A-F0-9]{12})?'),
+        re.compile(r'^(?P<model>Maxwell\s.+)/(?P<version>[\d{1,2}.]+)(-?\w+)?;(?P<mac>[0-9A-F]{12})'),
+    ]
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -85,14 +87,17 @@ class GigasetHTTPDeviceInfoExtractor(object):
         # "N510 IP PRO/42.245.00.000.000"
         # "N510 IP PRO/42.250.00.000.000;7C2F806257D7"
         # "N510 IP PRO/42.250.00.000.000"
-        m = self._UA_REGEX.search(ua)
+        # "Maxwell 3 PRO/82.2.18.4-release;7C2F80E61AF4"
         dev_info = {}
-        if m:
-            dev_info = {u'vendor': VENDOR,
-                        u'model': m.group('model').decode('ascii').replace('-', ' '),
-                        u'version': m.group('version').decode('ascii')}
-            if m.groupdict().get('mac'):
-                dev_info[u'mac'] = norm_mac(m.group('mac').decode('ascii'))
+        for regex in self._UA_REGEXES:
+            m = regex.search(ua)
+            if m:
+                dev_info = {u'vendor': VENDOR,
+                            u'model': m.group('model').decode('ascii'),
+                            u'version': m.group('version').decode('ascii')}
+                if m.groupdict().get('mac'):
+                    dev_info[u'mac'] = norm_mac(m.group('mac').decode('ascii'))
+                break
 
         return dev_info
 
@@ -196,6 +201,12 @@ class BaseGigasetPlugin(StandardPlugin):
         offset_hour = tz_info[0]
         offset_minutes = tz_info[1]
         raw_config[u'XX_timezone_code'] = self._TZ_GIGASET[(offset_hour, offset_minutes)]
+
+    def _add_timezone_info(self, raw_config):
+        timezone = raw_config.get(u'timezone', 'Etc/UTC')
+        tz_db = tzinform.TextTimezoneInfoDB()
+        tz_info = tz_db.get_timezone_info(timezone)
+        # raw_config[u'XX_timezone_info'] =
 
     def _add_xx_vars(self, device, raw_config):
         raw_config[u'XX_mac_addr'] = format_mac(device[u'mac'], separator='', uppercase=True)
