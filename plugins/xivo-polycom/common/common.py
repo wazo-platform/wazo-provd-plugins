@@ -25,7 +25,7 @@ from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import IMPROBABLE_SUPPORT, PROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, FULL_SUPPORT, BasePgAssociator
+    COMPLETE_SUPPORT, BasePgAssociator
 from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
     TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
