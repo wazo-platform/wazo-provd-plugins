@@ -99,7 +99,7 @@ class BasePolycomPgAssociator(BasePgAssociator):
     def _do_associate(self, vendor, model, version):
         if vendor == u'Polycom':
             if model in self._models:
-                return COMPLETE_SUPPORT
+                return COMPLETE_SUPPORT + 1
             return PROBABLE_SUPPORT
         return IMPROBABLE_SUPPORT
 
