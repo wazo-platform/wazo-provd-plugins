@@ -25,7 +25,7 @@ from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import IMPROBABLE_SUPPORT, PROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, FULL_SUPPORT, BasePgAssociator
+    COMPLETE_SUPPORT, BasePgAssociator
 from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
     TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
@@ -99,7 +99,7 @@ class BasePolycomPgAssociator(BasePgAssociator):
     def _do_associate(self, vendor, model, version):
         if vendor == u'Polycom':
             if model in self._models:
-                return COMPLETE_SUPPORT
+                return COMPLETE_SUPPORT + 1
             return PROBABLE_SUPPORT
         return IMPROBABLE_SUPPORT
 
