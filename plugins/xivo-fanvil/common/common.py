@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ logger = logging.getLogger('plugin.xivo-fanvil')
 
 
 class BaseFanvilHTTPDeviceInfoExtractor(object):
-    _PATH_REGEX = re.compile(r'\b([\da-f]{12})\.cfg$')
+    _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -84,8 +84,7 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
         if m:
             raw_mac = m.group(1)
             mac = norm_mac(raw_mac.decode('ascii'))
-            return {u'vendor': u'Fanvil',
-                    u'mac': mac}
+            return {u'mac': mac}
         return None
 
 
