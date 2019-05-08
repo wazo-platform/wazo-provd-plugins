@@ -138,6 +138,8 @@ class BaseSnomPlugin(StandardPlugin):
         },
     }
 
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.xml')
+
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
 
@@ -209,7 +211,7 @@ class BaseSnomPlugin(StandardPlugin):
             label = escape(funckey_dict.get(u'label') or value)
             fkey_value = self._format_fkey_value(type_, value, suffix)
             lines.append(u'<fkey idx="%d" label="%s" context="active" perm="R">%s</fkey>' %
-                        (int(funckey_no) - 1, label, fkey_value))
+                         (int(funckey_no) - 1, label, fkey_value))
         raw_config[u'XX_fkeys'] = u'\n'.join(lines)
 
     def _format_fkey_value(self, fkey_type, value, suffix):
@@ -286,8 +288,6 @@ class BaseSnomPlugin(StandardPlugin):
             if lang in self._XX_DICT:
                 xx_dict = self._XX_DICT[lang]
         return xx_dict
-
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.xml')
 
     def _dev_specific_filenames(self, device):
         # Return a tuple (htm filename, xml filename)
