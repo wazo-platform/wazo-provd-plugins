@@ -194,9 +194,10 @@ class BaseSnomPlugin(StandardPlugin):
                     type_ = u'speed'
                     suffix = ''
             elif funckey_type == u'blf':
-                if u'exten_pickup_call' in raw_config:
+                exten_pickup_call = raw_config.get(u'exten_pickup_call')
+                if exten_pickup_call:
                     type_ = u'blf'
-                    suffix = '|%s' % raw_config[u'exten_pickup_call']
+                    suffix = '|%s' % exten_pickup_call
                 else:
                     logger.warning('Could not set funckey %s: no exten_pickup_call',
                                    funckey_no)
@@ -215,10 +216,9 @@ class BaseSnomPlugin(StandardPlugin):
         return '%s %s%s' % (fkey_type, value, suffix)
 
     def _add_lang(self, raw_config):
-        if u'locale' in raw_config:
-            locale = raw_config[u'locale']
-            if locale in self._LOCALE:
-                raw_config[u'XX_lang'] = self._LOCALE[locale]
+        locale = raw_config.get(u'locale')
+        if locale and locale in self._LOCALE:
+            raw_config[u'XX_lang'] = self._LOCALE[locale]
 
     def _format_dst_change(self, dst_change):
         fmted_time = u'%02d:%02d:%02d' % tuple(dst_change['time'].as_hms)
@@ -244,11 +244,12 @@ class BaseSnomPlugin(StandardPlugin):
         return u'\n'.join(lines)
 
     def _add_timezone(self, raw_config):
-        if u'timezone' in raw_config:
+        timezone = raw_config.get(u'timezone')
+        if timezone:
             try:
-                tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
+                tzinfo = tzinform.get_timezone_info(timezone)
             except tzinform.TimezoneNotFoundError, e:
-                logger.warning('Unknown timezone %s: %s', raw_config[u'timezone'], e)
+                logger.warning('Unknown timezone %s: %s', timezone, e)
             else:
                 raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
 
@@ -279,8 +280,8 @@ class BaseSnomPlugin(StandardPlugin):
 
     def _gen_xx_dict(self, raw_config):
         xx_dict = self._XX_DICT[self._XX_DICT_DEF]
-        if u'locale' in raw_config:
-            locale = raw_config[u'locale']
+        locale = raw_config.get(u'locale')
+        if locale:
             lang = locale.split('_', 1)[0]
             if lang in self._XX_DICT:
                 xx_dict = self._XX_DICT[lang]
