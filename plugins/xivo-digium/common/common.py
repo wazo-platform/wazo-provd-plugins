@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2016 Avencall
+# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -187,9 +187,8 @@ class BaseDigiumPlugin(StandardPlugin):
         else:
             return raw_config[u'ip']
 
-
     def _format_mac(self, device):
-         return format_mac(device[u'mac'], separator='', uppercase=False)
+        return format_mac(device[u'mac'], separator='', uppercase=False)
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg$')
 
