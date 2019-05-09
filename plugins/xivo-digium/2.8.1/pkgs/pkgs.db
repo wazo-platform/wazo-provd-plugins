@@ -1,0 +1,17 @@
+[pkg_firmware]
+description: Firmware for all Digium phones (except D80)
+description_fr: Micrologiciel pour tous les téléphones Digium (excepté D80)
+version: 2.8.1
+files: firmware
+install: digium-fw
+
+
+[install_digium-fw]
+a-b: untar $FILE1
+b-c: cp */*.eff Digium/firmware/
+
+
+[file_firmware]
+url: http://downloads.digium.com/pub/telephony/res_digium_phone/firmware/firmware_2_8_1_package.tar.gz
+size: 237648354
+sha1sum: 4ff1c6b7278c8408eacbf7c3ccf03349343c396b
