@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <provisioning version="1.1" productID="e2">
     <firmware>
-        <file version="2.14.0" url="http://192.168.178.200/firmware/n870/einstein-albert-V2.14.0+build.74f2b0e.update.bin" />
+    {%- if http_port %}
+        <file version="2.14.0" url="http://{{ ip }}:{{ http_port }}/einstein-albert-V2.14.0+build.74f2b0e.update.bin" />
+    {%- endif %}
     </firmware>
 
     <nvm>

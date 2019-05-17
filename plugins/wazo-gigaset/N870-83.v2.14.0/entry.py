@@ -7,7 +7,7 @@ execfile_('common.py', common)
 
 
 MODEL_VERSIONS = {
-    u'N870 IP PRO': u'83.V2.11.0',
+    u'N870 IP PRO': u'83.V2.14.0',
 }
 
 
