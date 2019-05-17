@@ -25,9 +25,11 @@
         <!-- Date and time -->
     {%- if ntp_enabled %}
         <param name="DmGlobal.0.NtpServer" value="{{ ntp_ip }},0.europe.pool.ntp.org,1.europe.pool.ntp.org,2.europe.pool.ntp.org,3.europe.pool.ntp.org"/>
-        <param name="DmGlobal.0.TimeZone" value="{{ XX_timezone }}"/>
     {%- endif %}
 
+    {%- if timezone %}
+        <param name="DmGlobal.0.TimeZone" value="{{ timezone }}"/>
+    {%- endif %}
 
 {%- if sip_lines %}
     {%- for line_no, line in sip_lines.iteritems() %}
