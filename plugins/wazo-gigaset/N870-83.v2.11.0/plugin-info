@@ -1,0 +1,11 @@
+{
+    "version": "0.1",
+    "description": "Plugin for Gigaset N870 IP PRO.",
+    "description_fr": "Greffon pour Gigaset N870 IP PRO.",
+    "capabilities": {
+        "Gigaset, N870 IP PRO, 83.V2.11.0": {
+            "sip.lines": 100
+        }
+    },
+    "plugin_iface_version_min": 0.2
+}
