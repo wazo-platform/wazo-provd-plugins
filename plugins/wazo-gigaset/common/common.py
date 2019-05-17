@@ -61,7 +61,7 @@ class GigasetDHCPDeviceInfoExtractor(object):
 
 class GigasetHTTPDeviceInfoExtractor(object):
 
-    _UA_REGEX = re.compile(r'^(Gigaset )?(?P<model>N\d{3}.+)\/(?P<version>\d{2,3}\.\d{2,3})\.(\d{2,3})\.(\d{2,3})\.(\d{2,3});?(?P<mac>[A-F0-9]{12})?$')
+    _UA_REGEX = re.compile(r'^(Gigaset )?(?P<model>[\w\s]+)\/(?P<version>(?:\w{2,3}\.){3,4}\w{1,3})(?:\+.+)?;(?P<mac>[0-9A-F]{12})?$')
     _PATH_REGEX = re.compile(r'^/\d{2}/\d{1}/(.+)$')
 
     def extract(self, request, request_type):
@@ -85,6 +85,7 @@ class GigasetHTTPDeviceInfoExtractor(object):
         # "N510 IP PRO/42.245.00.000.000"
         # "N510 IP PRO/42.258.00.000.000;7C2F806257D7"
         # "N510 IP PRO/42.258.00.000.000"
+        # "Gigaset N870 IP PRO/83.V2.11.0+build.a546b91;7C2F80E0D605"
         m = self._UA_REGEX.search(ua)
         dev_info = {}
         if m:
