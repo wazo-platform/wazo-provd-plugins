@@ -26,10 +26,7 @@ def build_N720(path):
                 'N720/', path])
 
 
-@target('N870', 'wazo-gigaset-N870-83.v2.14.0')
-def build_N870_83_v2_14_0(path):
+@target('N870', 'wazo-gigaset-N870-83.v2.17.2')
+def build_N870_83_v2_17_2(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
-
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'N870-83.v2.14.0/', path])
+                'N870-83.v2.17.2/', path])

@@ -1,0 +1,15 @@
+[pkg_N870-fw]
+description: Firmware for Gigaset N870 IP PRO
+description_fr: Micrologiciel pour Gigaset N870 IP PRO
+version: 83.V2.17.2
+files: N870-fw
+install: N870-fw
+
+[install_N870-fw]
+a-b: cp $FILE1 ./
+
+[file_N870-fw]
+filename: einstein-albert-V2.17.2+build.b14e3f1.update.bin
+url: https://teamwork.gigaset.com/gigawiki/download/attachments/890930007/einstein-albert-V2.17.2%2Bbuild.b14e3f1.update.bin?version=2&modificationDate=1556267177000&api=v2&download=true
+size: 34673024
+sha1sum: dacbb8d8166dd2488f33dfa5ff9826f44108347f
