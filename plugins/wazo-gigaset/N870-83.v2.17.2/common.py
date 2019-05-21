@@ -108,20 +108,26 @@ class BaseGigasetPlugin(StandardPlugin):
         raw_config[u'XX_epoch'] = int(time.time())
 
     def _add_voip_providers(self, raw_config):
-        voip_providers = []
+        voip_providers = dict()
+        provider_id = 0
         sip_lines = raw_config.get(u'sip_lines')
         if sip_lines:
             for line_id, line in sip_lines.iteritems():
-                provider_id = int(line_id) - 1  # line starts at 1, providers at 0
-                provider = {
-                    u'id': provider_id,
-                    u'sip_proxy_ip': line.get(u'proxy_ip'),
-                    u'sip_proxy_port': line.get(u'proxy_port', 5060),
-                }
-                line[u'provider_id'] = provider_id
-                voip_providers.append(provider)
+                proxy_ip = line.get(u'proxy_ip')
+                proxy_port = line.get(u'proxy_port', 5060)
+                if (proxy_ip, proxy_port) not in voip_providers:
+                    provider = {
+                        u'id': provider_id,
+                        u'sip_proxy_ip': proxy_ip,
+                        u'sip_proxy_port': proxy_port,
+                    }
+                    line[u'provider_id'] = provider_id
+                    voip_providers[(proxy_ip, proxy_port)] = provider
+                    provider_id += 1
+                else:
+                    line[u'provider_id'] = voip_providers[(proxy_ip, proxy_port)]['id']
 
-        raw_config[u'XX_voip_providers'] = voip_providers
+        raw_config[u'XX_voip_providers'] = voip_providers.values()
 
     def _add_ac_code(self, raw_config):
         sip_lines = raw_config.get(u'sip_lines')
