@@ -137,7 +137,7 @@ class BaseGigasetPlugin(StandardPlugin):
                 if number.startswith(u'auto'):
                     line[u'hs_code'] = '0000'
                 else:
-                    line[u'hs_code'] = number[-4:]
+                    line[u'hs_code'] = number[-4:].zfill(4)
 
     def configure(self, device, raw_config):
         self._check_device(device)
