@@ -112,7 +112,7 @@ class BaseGigasetPlugin(StandardPlugin):
         provider_id = 0
         sip_lines = raw_config.get(u'sip_lines')
         if sip_lines:
-            for line_id, line in sip_lines.iteritems():
+            for line in sip_lines.itervalues():
                 proxy_ip = line.get(u'proxy_ip')
                 proxy_port = line.get(u'proxy_port', 5060)
                 if (proxy_ip, proxy_port) not in voip_providers:
@@ -132,7 +132,7 @@ class BaseGigasetPlugin(StandardPlugin):
     def _add_ac_code(self, raw_config):
         sip_lines = raw_config.get(u'sip_lines')
         if sip_lines:
-            for line_id, line in sip_lines.iteritems():
+            for line in sip_lines.itervalues():
                 number = line[u'number']
                 if number.startswith(u'auto'):
                     line[u'hs_code'] = '0000'
