@@ -61,7 +61,7 @@ class GigasetDHCPDeviceInfoExtractor(object):
 
 class GigasetHTTPDeviceInfoExtractor(object):
 
-    _UA_REGEX = re.compile(r'^(Gigaset )?(?P<model>[\w\s]+)\/(?P<version>(?:\w{2,3}\.){3,4}\w{1,3})(?:\+.+)?;(?P<mac>[0-9A-F]{12})?$')
+    _UA_REGEX = re.compile(r'^(Gigaset )?(?P<model>N\d{3} .+)\/(?P<version>\d{2,3}\.\d{2,3})\.(\d{2,3})\.(\d{2,3})\.(\d{2,3});?(?P<mac>[A-F0-9]{12})?$')
     _PATH_REGEX = re.compile(r'^/\d{2}/\d{1}/(.+)$')
 
     def extract(self, request, request_type):
