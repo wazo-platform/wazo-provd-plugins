@@ -7,7 +7,6 @@
 import os
 import logging
 import re
-import datetime
 import time
 from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT,\
     COMPLETE_SUPPORT, FULL_SUPPORT, UNKNOWN_SUPPORT
@@ -116,11 +115,6 @@ class BaseGigasetPlugin(StandardPlugin):
         plugins.add_xivo_phonebook_url_from_format(raw_config, uuid_format)
 
     def _add_xx_vars(self, device, raw_config):
-        raw_config[u'XX_mac_addr'] = format_mac(device[u'mac'], separator='', uppercase=True)
-
-        cur_datetime = datetime.datetime.now()
-        raw_config[u'XX_version_date'] = cur_datetime.strftime('%d%m%y%H%M')
-
         raw_config[u'XX_epoch'] = int(time.time())
 
     def _add_voip_providers(self, raw_config):
