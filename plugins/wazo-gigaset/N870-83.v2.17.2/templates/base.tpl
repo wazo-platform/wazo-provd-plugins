@@ -39,7 +39,7 @@
             <param name="hs.RegStatus" value="ToReg"/>
         </oper>
 
-        <param name="hs.{{ handset_no }}.DECT_AC" value="{{ line['hs_code'] }}" />
+        <param name="hs.{{ handset_no }}.DECT_AC" value="{{ line['XX_hs_code'] }}"/>
         <param name="SipAccount.{{ handset_no }}.AuthName" value="{{ line['auth_username']|d(line['username']) }}" />
         <param name="SipAccount.{{ handset_no }}.AuthPassword" value="{{ line['auth_password']|d(line['password']) }}" />
         <param name="SipAccount.{{ handset_no }}.ProviderId" value="{{ line['provider_id'] }}" />
