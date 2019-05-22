@@ -157,11 +157,11 @@ class BaseGigasetPlugin(StandardPlugin):
         sip_lines = raw_config.get(u'sip_lines')
         if sip_lines:
             for line in sip_lines.itervalues():
-                number = line[u'number']
+                number = line.get(u'number')
                 if number.startswith(u'auto'):
-                    line[u'hs_code'] = '0000'
+                    line[u'XX_hs_code'] = '0000'
                 else:
-                    line[u'hs_code'] = number[-4:].zfill(4)
+                    line[u'XX_hs_code'] = number[-4:].zfill(4)
 
     def configure(self, device, raw_config):
         self._check_device(device)
