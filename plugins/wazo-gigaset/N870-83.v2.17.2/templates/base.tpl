@@ -2,7 +2,7 @@
 <provisioning version="1.1" productID="e2">
     <firmware>
     {%- if http_port %}
-        <file version="2.17.2" url="http://{{ ip }}:{{ http_port }}/einstein-albert-V2.17.2+build.b14e3f1.update.bin" />
+        <file version="2.17.2" url="http://{{ ip }}:{{ http_port }}/einstein-albert-V2.17.2+build.b14e3f1.update.bin"/>
     {%- endif %}
     </firmware>
 
@@ -40,16 +40,16 @@
         </oper>
 
         <param name="hs.{{ handset_no }}.DECT_AC" value="{{ line['XX_hs_code'] }}"/>
-        <param name="SipAccount.{{ handset_no }}.AuthName" value="{{ line['auth_username']|d(line['username']) }}" />
-        <param name="SipAccount.{{ handset_no }}.AuthPassword" value="{{ line['auth_password']|d(line['password']) }}" />
-        <param name="SipAccount.{{ handset_no }}.ProviderId" value="{{ line['provider_id'] }}" />
-        <param name="SipAccount.{{ handset_no }}.UserName" value="{{ line['auth_username']|d(line['username']) }}" />
-        <param name="SipAccount.{{ handset_no }}.DisplayName" value="{{ line['number'] }}" />
+        <param name="SipAccount.{{ handset_no }}.AuthName" value="{{ line['auth_username']|d(line['username']) }}"/>
+        <param name="SipAccount.{{ handset_no }}.AuthPassword" value="{{ line['auth_password']|d(line['password']) }}"/>
+        <param name="SipAccount.{{ handset_no }}.ProviderId" value="{{ line['provider_id'] }}"/>
+        <param name="SipAccount.{{ handset_no }}.UserName" value="{{ line['auth_username']|d(line['username']) }}"/>
+        <param name="SipAccount.{{ handset_no }}.DisplayName" value="{{ line['number'] }}"/>
         {%- if line['voicemail'] %}
-        <param name="SipAccount.{{ handset_no }}.VoiceMailMailbox" value="{{ line['voicemail'] }}" />
-        <param name="SipAccount.{{ handset_no }}.VoiceMailActive" value="1" />
+        <param name="SipAccount.{{ handset_no }}.VoiceMailMailbox" value="{{ line['voicemail'] }}"/>
+        <param name="SipAccount.{{ handset_no }}.VoiceMailActive" value="1"/>
         {%- endif %}
-        <param name="hs.{{ handset_no }}.DirectAccessDir" value="0" />
+        <param name="hs.{{ handset_no }}.DirectAccessDir" value="0"/>
 
     {%- endfor %}
 {%- endif %}
@@ -102,10 +102,10 @@
     {%- endif %}
         <param name="SipProvider.0.MWISubscription" value="{{ sip_subscribe_mwi|int|d(0) }}"/>
 
-        <oper name="update_dm" value="local" >
-            <param name="RegStart" value="{{ XX_epoch }}" />
-            <param name="RegDuration" value="900" />
-            <param name="DMPpasswd" value="Gigaset" />
+        <oper name="update_dm" value="local">
+            <param name="RegStart" value="{{ XX_epoch }}"/>
+            <param name="RegDuration" value="900"/>
+            <param name="DMPpasswd" value="Gigaset"/>
         </oper>
     </nvm>
 
