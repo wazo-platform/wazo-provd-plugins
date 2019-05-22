@@ -23,6 +23,7 @@
 
 
         <param name="DmGlobal.0.HSIdleDisplay" value="1"/>
+        <param name="DmGlobal.0.SystemRegDomain" value="EUR"/>
 
 
         <!-- Date and time -->
