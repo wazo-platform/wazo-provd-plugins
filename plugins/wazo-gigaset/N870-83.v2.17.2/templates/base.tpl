@@ -96,10 +96,12 @@
     {%- endif %}
 {%- endfor %}
 
+        <!-- Directory -->
         <param name="Netdir.1.Activated" value="1"/>
         <param name="XMLDir.1.ProviderName" value="Wazo"/>
         <param name="XMLDir.1.ServerURL" value="{{ XX_xivo_phonebook_url }}"/>
-
+        <param name="XMLDir.1.WhitePagesDirName" value="Directory"/>
+        <param name="XMLDir.1.StartWithListWP" value="1"/>
         <!-- Network data of your service provider -->
 
     {%- if sip_outbound_proxy_ip %}
