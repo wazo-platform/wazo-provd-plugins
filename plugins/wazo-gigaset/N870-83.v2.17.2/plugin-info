@@ -4,7 +4,11 @@
     "description_fr": "Greffon pour Gigaset N870 IP PRO.",
     "capabilities": {
         "Gigaset, N870 IP PRO, 83.V2.17.2": {
-            "sip.lines": 100
+            "lines": 250,
+            "ha": true,
+            "expansions": false,
+            "switchboard": false,
+            "proto": "sip"
         }
     }
 }
