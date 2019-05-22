@@ -50,6 +50,7 @@
         <param name="SipAccount.{{ handset_no }}.VoiceMailActive" value="1"/>
         {%- endif %}
         <param name="hs.{{ handset_no }}.DirectAccessDir" value="0"/>
+        <param name="hs.{{ handset_no }}.IntKeyDir" value="20"/>
 
     {%- endfor %}
 {%- endif %}
@@ -90,6 +91,10 @@
         <param name="SipProvider.{{ provider['id'] }}.FailoverServerEnabled" value="0"/>
     {%- endif %}
 {%- endfor %}
+
+        <param name="Netdir.1.Activated" value="1"/>
+        <param name="XMLDir.1.ProviderName" value="Wazo"/>
+        <param name="XMLDir.1.ServerURL" value="{{ XX_xivo_phonebook_url }}"/>
 
         <!-- Network data of your service provider -->
 
