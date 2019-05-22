@@ -73,6 +73,22 @@ class BaseGigasetPgAssociator(BasePgAssociator):
 class BaseGigasetPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
 
+    _SIP_DTMF_MODE = {
+        u'RTP-in-band': u'1',
+        u'RTP-out-of-band': u'2',
+        u'SIP-INFO': u'4',
+    }
+    _SIP_SRTP_MODE = {
+        u'disabled': u'0',
+        u'preferred': u'1',
+        u'required': u'1',
+    }
+    _SIP_TRANSPORT = {
+        u'udp': u'1',
+        u'tcp': u'2',
+        u'tls': u'3',
+    }
+
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
         self._app = app
@@ -111,15 +127,23 @@ class BaseGigasetPlugin(StandardPlugin):
         voip_providers = dict()
         provider_id = 0
         sip_lines = raw_config.get(u'sip_lines')
+        dtmf_mode = raw_config.get(u'sip_dtmf_mode', '1')
+        srtp_mode = raw_config.get(u'sip_srtp_mode', '0')
+        sip_transport = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport', '1'))
         if sip_lines:
             for line in sip_lines.itervalues():
                 proxy_ip = line.get(u'proxy_ip')
                 proxy_port = line.get(u'proxy_port', 5060)
+                line_dtmf_mode = self._SIP_DTMF_MODE.get(line.get(u'dtmf_mode', dtmf_mode))
+                line_srtp_mode = self._SIP_SRTP_MODE.get(line.get(u'strp_mode', srtp_mode))
                 if (proxy_ip, proxy_port) not in voip_providers:
                     provider = {
                         u'id': provider_id,
                         u'sip_proxy_ip': proxy_ip,
                         u'sip_proxy_port': proxy_port,
+                        u'dtmf_mode': line_dtmf_mode,
+                        u'srtp_mode': line_srtp_mode,
+                        u'sip_transport': sip_transport,
                     }
                     line[u'provider_id'] = provider_id
                     voip_providers[(proxy_ip, proxy_port)] = provider
