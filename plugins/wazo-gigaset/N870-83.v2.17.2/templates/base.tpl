@@ -8,7 +8,7 @@
 
     <nvm>
         <oper name="DeleteNotProvisionedHS"/>
-        <param name="Telephony.0.ToneScheme" value="Germany"/>
+        <param name="Telephony.0.ToneScheme" value="International"/>
 
     {%- if http_port %}
         <param name="Provisioning.global.ProvisioningServer" value="http://{{ ip }}:{{ http_port }}"/>
