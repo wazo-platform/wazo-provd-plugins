@@ -71,10 +71,11 @@
         <param name="SipProvider.{{ provider['id'] }}.RegServerPort" value="{{ sip_registrar_port|d(5060) }}"/>
     {%- endif %}
         <param name="SipProvider.{{ provider['id'] }}.RegServerRefreshTimer" value="180"/>
-        <param name="SipProvider.{{ provider['id'] }}.TransportProtocol" value="1"/>
+        <param name="SipProvider.{{ provider['id'] }}.TransportProtocol" value="{{ provider['sip_transport'] }}"/>
         <param name="SipProvider.{{ provider['id'] }}.UseSIPS" value="0"/>
-        <param name="SipProvider.{{ provider['id'] }}.SRTP_Enabled" value="0"/>
+        <param name="SipProvider.{{ provider['id'] }}.SRTP_Enabled" value="{{ provider['srtp_mode'] }}"/>
         <param name="SipProvider.{{ provider['id'] }}.AcceptNonSRTPCalls" value="0"/>
+        <param name="SipProvider.{{ provider['id'] }}.DTMFTransmission" value="{{ provider['dtmf_mode'] }}"/>
 
         <!-- Redundancy -->
 
@@ -96,10 +97,10 @@
         <param name="SipProvider.0.OutboundProxyMode" value="0"/>
         <param name="SipProvider.0.OutboundProxyAddress" value="{{ sip_outbound_proxy_ip }}"/>
         <param name="SipProvider.0.OutboundProxyPort" value="{{ sip_outbound_proxy_port|d(5060) }}"/>
-        <param name="SipProvider.0.MWISubscription" value="0"/>
     {%- else %}
         <param name="SipProvider.0.OutboundProxyMode" value="2"/>
     {%- endif %}
+        <param name="SipProvider.0.MWISubscription" value="{{ sip_subscribe_mwi|int|d(0) }}"/>
 
         <oper name="update_dm" value="local" >
             <param name="RegStart" value="{{ XX_epoch }}" />
