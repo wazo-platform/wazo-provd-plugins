@@ -8,6 +8,9 @@
 
     <nvm>
         <oper name="DeleteNotProvisionedHS"/>
+    {%- if admin_password %}
+        <param name="WebUIAccounts.1.Password" value="{{ admin_password }}"/>
+    {%- endif %}
         <param name="Telephony.0.ToneScheme" value="International"/>
 
     {%- if http_port %}
