@@ -21,9 +21,9 @@
     <ringtones>
         <alerts>
             <alert alert_info="normal" ringtone_id="Digium" ring_type="normal" />
-            <alert alert_info="ring-answer" ringtone_id="" ring_type="answer" />
+            <alert alert_info="answer" ringtone_id="" ring_type="answer" />
+            <alert alert_info="ring-answer" ringtone_id="Digium" ring_type="answer" />
             <alert alert_info="intercom" ringtone_id="" ring_type="answer" />
-            <alert Alert-Info="Intercom" ringtone_id="" ring_type="answer" />
             <alert alert_info="visual" ringtone_id="" ring_type="visual" />
         </alerts>
     </ringtones>
