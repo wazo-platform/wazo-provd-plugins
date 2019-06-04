@@ -135,12 +135,22 @@
             "expansion_modules": 0,
             "protocol": "sip"
         },
+        "Yealink, T53W, 70.83.0.35": {
+            "sip.lines": 12,
+            "tel.funckeys": 8,
+            "xivo.tested": 0
+        },
         "Yealink, T54S, 70.83.0.35": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 10,
             "expansion_modules": 0,
             "protocol": "sip"
+        },
+        "Yealink, T53W, 70.83.0.35": {
+            "sip.lines": 12,
+            "tel.funckeys": 8,
+            "xivo.tested": 0
         },
         "Yealink, T56A, 58.83.0.5": {
             "lines": 16,

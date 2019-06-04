@@ -18,7 +18,7 @@
 import os
 
 common_globals = {}
-execfile_('common.py', common_globals)
+execfile_('common.py', common_globals)  # noqa
 
 MODEL_VERSIONS = {
     u'T19P_E2': u'53.83.0.35',
@@ -39,7 +39,10 @@ MODEL_VERSIONS = {
     u'T48G': u'35.83.0.35',
     u'T48S': u'66.83.0.35',
     u'T52S': u'70.83.0.35',
+    u'T53W': u'70.83.0.35',
+    u'T53': u'70.83.0.35',
     u'T54S': u'70.83.0.35',
+    u'T54W': u'70.83.0.35',
     u'T56A': u'58.83.0.5',
     u'T58': u'58.83.0.5',
     u'W60B': u'77.83.0.10',
