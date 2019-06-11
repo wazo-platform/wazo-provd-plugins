@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2011-2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -265,12 +265,23 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'W52P': 0,
         u'W60B': 0,
     }
-    _NB_EXPMODKEY = 40
+
+    class NullExpansionModule(object):
+        key_count = 0
+        max_daisy_chain = 0
+
+    class EXP40ExpansionModule(NullExpansionModule):
+        key_count = 40
+        max_daisy_chain = 6
+
+    class EXP50ExpansionModule(NullExpansionModule):
+        key_count = 60
+        max_daisy_chain = 3
 
     def __init__(self, model):
         self._nb_linekey = self._nb_linekey_by_model(model)
         self._nb_memorykey = self._nb_memorykey_by_model(model)
-        self._nb_expmod = self._nb_expmod_by_model(model)
+        self._expmod = self._expmod_by_model(model)
 
     def _nb_linekey_by_model(self, model):
         if model is None:
@@ -292,19 +303,21 @@ class BaseYealinkFunckeyPrefixIterator(object):
             return 0
         return nb_memorykey
 
-    def _nb_expmod_by_model(self, model):
+    def _expmod_by_model(self, model):
         if model in (u'T27P', u'T27G', u'T29G', u'T46G', u'T46S', u'T48G', u'T48S'):
-            return 6
+            return self.EXP40ExpansionModule
+        elif model.startswith(u'T5'):
+            return self.EXP50ExpansionModule
         else:
-            return 0
+            return self.NullExpansionModule
 
     def __iter__(self):
         for linekey_no in xrange(1, self._nb_linekey + 1):
             yield u'linekey.%s' % linekey_no
         for memorykey_no in xrange(1, self._nb_memorykey + 1):
             yield u'memorykey.%s' % memorykey_no
-        for expmod_no in xrange(1, self._nb_expmod + 1):
-            for expmodkey_no in xrange(1, self._NB_EXPMODKEY + 1):
+        for expmod_no in xrange(1, self._expmod.max_daisy_chain + 1):
+            for expmodkey_no in xrange(1, self._expmod.key_count + 1):
                 yield u'expansion_module.%s.key.%s' % (expmod_no, expmodkey_no)
 
 

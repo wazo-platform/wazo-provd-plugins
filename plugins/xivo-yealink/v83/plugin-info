@@ -1,5 +1,5 @@
 {
-    "version": "1.1.12",
+    "version": "1.1.13",
     "description": "Plugin for Yealink for all T2X, T4X, T5X and W60 series in version V83.",
     "description_fr": "Greffon pour Yealink pour toutes les series T2X, T4X, T5X et W60 en version V83.",
     "vendor" : "Yealink",
