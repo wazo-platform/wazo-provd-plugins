@@ -8,13 +8,23 @@ import os
 import logging
 import re
 import time
-from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, FULL_SUPPORT, UNKNOWN_SUPPORT
+
+from provd import (
+    plugins,
+    synchronize,
+    tzinform,
+)
+
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    IMPROBABLE_SUPPORT,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    UNKNOWN_SUPPORT,
+)
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
-from provd.util import norm_mac, format_mac
-from provd import synchronize
-from provd import plugins
 from provd.servers.http import HTTPNoListingFileService
+from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-gigaset')
@@ -88,6 +98,113 @@ class BaseGigasetPlugin(StandardPlugin):
         u'tls': u'3',
     }
 
+    _VALID_TZ_GIGASET = set((
+        'Pacific/Honolulu',
+        'America/Anchorage',
+        'America/Los_Angeles',
+        'America/Denver',
+        'America/Chicago',
+        'America/New_York',
+        'America/Caracas',
+        'America/Sao_Paulo',
+        'Europe/Belfast',
+        'Europe/Dublin',
+        'Europe/Guernsey',
+        'Europe/Isle_of_Man',
+        'Europe/Jersey',
+        'Europe/Lisbon',
+        'Europe/London',
+        'Greenwich',
+        'Europe/Amsterdam',
+        'Europe/Andorra',
+        'Europe/Belgrade',
+        'Europe/Berlin',
+        'Europe/Bratislava',
+        'Europe/Brussels',
+        'Europe/Budapest',
+        'Europe/Busingen',
+        'Europe/Copenhagen',
+        'Europe/Gibraltar',
+        'Europe/Ljubljana',
+        'Europe/Luxembourg',
+        'Europe/Madrid',
+        'Europe/Malta',
+        'Europe/Monaco',
+        'Europe/Oslo',
+        'Europe/Paris',
+        'Europe/Podgorica',
+        'Europe/Prague',
+        'Europe/Rome',
+        'Europe/San_Marino',
+        'Europe/Sarajevo',
+        'Europe/Skopje',
+        'Europe/Stockholm',
+        'Europe/Tirane',
+        'Europe/Vaduz',
+        'Europe/Vatican',
+        'Europe/Vienna',
+        'Europe/Warsaw',
+        'Europe/Zagreb',
+        'Europe/Zurich',
+        'Africa/Cairo',
+        'Europe/Athens',
+        'Europe/Bucharest',
+        'Europe/Chisinau',
+        'Europe/Helsinki',
+        'Europe/Kaliningrad',
+        'Europe/Kiev',
+        'Europe/Mariehamn',
+        'Europe/Nicosia',
+        'Europe/Riga',
+        'Europe/Sofia',
+        'Europe/Tallinn',
+        'Europe/Tiraspol',
+        'Europe/Uzhgorod',
+        'Europe/Vilnius',
+        'Europe/Zaporozhye',
+        'Europe/Istanbul',
+        'Europe/Kirov',
+        'Europe/Minsk',
+        'Europe/Moscow',
+        'Europe/Simferopol',
+        'Europe/Volgograd',
+        'Asia/Dubai',
+        'Europe/Astrakhan',
+        'Europe/Samara',
+        'Europe/Ulyanovsk',
+        'Asia/Karachi',
+        'Asia/Dhaka',
+        'Asia/Hong_Kong',
+        'Asia/Tokyo',
+        'Australia/Adelaide',
+        'Australia/Darwin',
+        'Australia/Brisbane',
+        'Australia/Sydney',
+        'Pacific/Noumea',
+    ))
+
+    _FALLBACK_TZ = {
+        (-3, 0): 'America/Sao_Paulo',
+        (-4, 0): 'America/New_York',
+        (-5, 0): 'America/Chicago',
+        (-6, 0): 'America/Denver',
+        (-7, 0): 'America/Los_Angeles',
+        (-8, 0): 'America/Anchorage',
+        (-10, 0): 'Pacific/Honolulu',
+        (0, 0): 'Greenwich',
+        (1, 0): 'Europe/London',
+        (2, 0): 'Europe/Paris',
+        (3, 0): 'Europe/Moscow',
+        (4, 0): 'Asia/Dubai',
+        (5, 0): 'Asia/Karachi',
+        (6, 0): 'Asia/Dhaka',
+        (8, 0): 'Asia/Hong_Kong',
+        (9, 0): 'Asia/Tokyo',
+        (9, 3): 'Australia/Adelaide',
+        (10, 0): 'Australia/Sydney',
+        (11, 0): 'Pacific/Noumea',
+    }
+
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
         self._app = app
@@ -114,8 +231,18 @@ class BaseGigasetPlugin(StandardPlugin):
         uuid_format = u'{scheme}://{hostname}:{port}/0.1/directories/lookup/{profile}/gigaset/{user_uuid}?'
         plugins.add_xivo_phonebook_url_from_format(raw_config, uuid_format)
 
+    def _fix_timezone(self, raw_config):
+        timezone = raw_config.get(u'timezone', 'Greenwich')
+        if timezone not in self._VALID_TZ_GIGASET:
+            tz_db = tzinform.TextTimezoneInfoDB()
+            tz_info = tz_db.get_timezone_info(timezone)['utcoffset'].as_hms
+            offset_hour = tz_info[0]
+            offset_minutes = tz_info[1]
+            raw_config[u'timezone'] = self._FALLBACK_TZ[(offset_hour, offset_minutes)]
+
     def _add_xx_vars(self, device, raw_config):
         raw_config[u'XX_epoch'] = int(time.time())
+        self._fix_timezone(raw_config)
 
     def _add_voip_providers(self, raw_config):
         voip_providers = dict()
