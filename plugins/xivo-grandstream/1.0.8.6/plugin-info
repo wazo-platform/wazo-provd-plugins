@@ -8,40 +8,40 @@
     "vendor.official" : 0,
     "capabilities": {
         "Grandstream, GXP1100, 1.0.8.6": {
-            "sip.lines": 2,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 3,
-            "xivo.tested" : 0
+            "lines": 2,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Grandstream, GXP1105, 1.0.8.6": {
-            "sip.lines": 2,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 3,
-            "xivo.tested" : 0
+            "lines": 2,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Grandstream, GXP2100, 1.0.8.6": {
-            "sip.lines": 4,
-            "xivo.ha" : 1,
-            "tel.funckeys" : 7,
-            "xivo.tested" : 1
+            "lines": 4,
+            "function_keys": 7,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Grandstream, GXP2110, 1.0.8.6": {
-            "sip.lines": 1,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 0
+            "lines": 1,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Grandstream, GXP2120, 1.0.8.6": {
-            "sip.lines": 1,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 0
+            "lines": 1,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Grandstream, GXP2124, 1.0.8.6": {
-            "sip.lines": 1,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 0
+            "lines": 1,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         }
     }
 }
