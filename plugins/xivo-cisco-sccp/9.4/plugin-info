@@ -4,31 +4,58 @@
     "description_fr": "Greffon pour Cisco 7906G, 7911G, 7931G, 7941G, 7941G-GE, 7942G, 7961G, 7962G, 7970G, 7971G et 7971G-GE en version 9.4 du logiciel SCCP.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
     "capabilities": {
         "Cisco, 7906G, 9.4.3/SCCP": {
-            "sccp.lines": 1
+            "lines": 1,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
         },
         "Cisco, 7911G, 9.4.3/SCCP": {
-            "sccp.lines": 1
+            "lines": 1,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
         },
         "Cisco, 7931G, 9.4.3/SCCP": {
-            "sccp.lines": 24
+            "lines": 24,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
         },
         "Cisco, 7941G, 9.4.3/SCCP": {
-            "sccp.lines": 2
+            "lines": 2,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
         },
         "Cisco, 7942G, 9.4.3/SCCP": {
-            "sccp.lines": 2
+            "lines": 2,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
         },
         "Cisco, 7961G, 9.4.3/SCCP": {
-            "sccp.lines": 6
+            "lines": 6,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
         },
         "Cisco, 7962G, 9.4.3/SCCP": {
-            "sccp.lines": 6
+            "lines": 6,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
         },
         "Cisco, 7970G, 9.4.3/SCCP": {
-            "sccp.lines": 8
+            "lines": 8,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
         },
         "Cisco, 7971G, 9.4.3/SCCP": {
-            "sccp.lines": 8
+            "lines": 8,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
         }
     }
 }

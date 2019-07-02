@@ -1,6 +1,4 @@
-Warning: you SHOULD NOT use this plugin if your 7900 phones are using SCCP
-firmware version earlier than 8.3.3.
-
+# Limitations
 
 It's not possible to upgrade a phone with firmware earlier than 8.3.3 to
 firmware later than 8.5.2. The phone will usually reboot in loop in such
