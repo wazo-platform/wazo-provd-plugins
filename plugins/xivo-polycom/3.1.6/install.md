@@ -1,3 +1,5 @@
+# Installation
+
 WARNING: you SHOULD NOT use this plugin if your phones are using BootROM
 version 2.5.x or ealier.
 

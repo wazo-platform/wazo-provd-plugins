@@ -4,66 +4,156 @@
     "description_fr": "Greffon pour Polycom VVX101, VVX150, VVX201, VVX250, VVX300, VVX301, VVX310, VVX311, VVX350, VVX400, VVX401, VVX410, VVX411, VVX450, VVX500, VVX501, VVX600, VVX601 and VVX1500 en version 5.9.2",
     "capabilities": {
         "Polycom, VVX101, 5.9.2": {
-            "sip.lines": 1
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX150, 5.9.2": {
-            "sip.lines": 2
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX201, 5.9.2": {
-            "sip.lines": 2
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX250, 5.9.2": {
-            "sip.lines": 4
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX300, 5.9.2": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX301, 5.9.2": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX310, 5.9.2": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX311, 5.9.2": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX350, 5.9.2": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX400, 5.9.2": {
-            "sip.lines": 12,
-            "switchboard": true
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Polycom, VVX401, 5.9.2": {
-            "sip.lines": 12,
-            "switchboard": true
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Polycom, VVX410, 5.9.2": {
-            "sip.lines": 12,
-            "switchboard": true
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Polycom, VVX411, 5.9.2": {
-            "sip.lines": 12,
-            "switchboard": true
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Polycom, VVX450, 5.9.2": {
-            "sip.lines": 12,
-            "switchboard": true
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Polycom, VVX500, 5.9.2": {
-            "sip.lines": 12
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX501, 5.9.2": {
-            "sip.lines": 12
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX600, 5.9.2": {
-            "sip.lines": 16
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 16,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX601, 5.9.2": {
-            "sip.lines": 16
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 16,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, VVX1500, 5.9.2": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }

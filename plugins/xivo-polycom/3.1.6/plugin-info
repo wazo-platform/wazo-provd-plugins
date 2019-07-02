@@ -4,19 +4,44 @@
     "description_fr": "Greffon pour Polycom IP301, IP501, IP600, IP601 et IP4000 en version 3.1.6.0017.",
     "capabilities": {
         "Polycom, SPIP301, 3.1.6.0017": {
-            "sip.lines": 2
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, SPIP501, 3.1.6.0017": {
-            "sip.lines": 3
+            "lines": 3,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, SPIP600, 3.1.6.0017": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, SPIP601, 3.1.6.0017": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Polycom, SSIP4000, 3.1.6.0017": {
-            "sip.lines": 1
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }
