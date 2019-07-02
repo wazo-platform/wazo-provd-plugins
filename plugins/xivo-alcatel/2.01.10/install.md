@@ -1,8 +1,11 @@
+# Installation
+
 Note that the firmware is taken from a non-official source. If you do
 want to proceed with the installation, note that you need to have the '7zr'
 executable installed on your system.
 
+## Installing dependencies on Debian
 
-== Installing dependencies on Debian Squeeze ==
-
+```
 $ apt-get install p7zip python-pexpect telnet
+```
