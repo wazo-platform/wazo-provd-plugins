@@ -4,39 +4,84 @@
     "description_fr": "Greffon pour Aastra/Mitel 67XXi, 9143i et 9480i en version 3.3.1 SP4 HF9.",
     "capabilities": {
         "Aastra, 6730i, 3.3.1.4365": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Aastra, 6731i, 3.3.1.4365": {
-            "sip.lines": 6,
-            "switchboard": true
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Aastra, 6735i, 3.3.1.8215": {
-            "sip.lines": 9,
-            "switchboard": true
+            "lines": 9,
+            "high_availability": true,
+            "function_keys": 26,
+            "expansion_modules": 0,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Aastra, 6737i, 3.3.1.8215": {
-            "sip.lines": 9,
-            "switchboard": true
+            "lines": 9,
+            "high_availability": true,
+            "function_keys": 30,
+            "expansion_modules": 0,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Aastra, 6739i, 3.3.1.4365": {
-            "sip.lines": 9
+            "lines": 9,
+            "high_availability": true,
+            "function_keys": 55,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Aastra, 6753i, 3.3.1.4365": {
-            "sip.lines": 9
+            "lines": 9,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Aastra, 6755i, 3.3.1.4365": {
-            "sip.lines": 9,
-            "switchboard": true
+            "lines": 9,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Aastra, 6757i, 3.3.1.4365": {
-            "sip.lines": 9,
-            "switchboard": true
+            "lines": 9,
+            "high_availability": true,
+            "function_keys": 30,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Aastra, 9143i, 3.3.1.4365": {
-            "sip.lines": 9
+            "lines": 9,
+            "high_availability": true,
+            "function_keys": 7,
+            "expansion_modules": 0,
+            "switchboard": true,
+            "protocol": "sip"
         },
         "Aastra, 9480i, 3.3.1.4365": {
-            "sip.lines": 9
+            "lines": 9,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 0,
+            "switchboard": true,
+            "protocol": "sip"
         }
     }
 }

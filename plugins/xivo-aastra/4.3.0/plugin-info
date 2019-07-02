@@ -4,19 +4,44 @@
     "description_fr": "Greffon pour Aastra/Mitel 6863i, 6865i, 6867i, 6869i et 6873i en version 4.3.0. SP2",
     "capabilities": {
         "Aastra, 6863i, 4.3.0.2036": {
-            "sip.lines": 2
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Aastra, 6865i, 4.3.0.2036": {
-            "sip.lines": 24
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 8,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Aastra, 6867i, 4.3.0.2036": {
-            "sip.lines": 24
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 38,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Aastra, 6869i, 4.3.0.2036": {
-            "sip.lines": 24
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 68,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Aastra, 6873i, 4.3.0.2036": {
-            "sip.lines": 24
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 72,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }
