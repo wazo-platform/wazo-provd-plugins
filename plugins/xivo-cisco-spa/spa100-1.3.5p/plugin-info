@@ -4,10 +4,20 @@
     "description_fr": "Greffon pour Cisco SPA112 et SPA122 en version 1.3.5p.",
     "capabilities": {
         "Cisco, SPA112, 1.3.5p": {
-            "sip.lines": 2
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Cisco, SPA122, 1.3.5p": {
-            "sip.lines": 2
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }

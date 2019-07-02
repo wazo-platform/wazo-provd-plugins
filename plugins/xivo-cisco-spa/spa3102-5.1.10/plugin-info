@@ -4,7 +4,12 @@
     "description_fr": "Greffon pour Cisco SPA3102 en version 5.1.10.",
     "capabilities": {
         "Cisco, SPA3102, 5.1.10": {
-            "sip.lines": 1
+            "lines": 1,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }

@@ -4,7 +4,12 @@
     "description_fr": "Greffon pour Cisco ATA190.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
     "capabilities": {
         "Cisco, ATA190, 1.2.2": {
-            "sip.lines": 2
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }
