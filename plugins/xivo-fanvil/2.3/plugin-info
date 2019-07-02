@@ -8,16 +8,18 @@
     "vendor.official" : 0,
     "capabilities": {
         "Fanvil, C58, 2.3": {
-            "sip.lines": 2,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 2,
-            "xivo.tested" : 0
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Fanvil, C62, 2.3": {
-            "sip.lines": 4,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 8,
-            "xivo.tested" : 0
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "protocol": "sip"
         }
     }
 }
