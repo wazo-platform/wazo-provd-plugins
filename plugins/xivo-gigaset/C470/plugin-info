@@ -4,16 +4,36 @@
     "description_fr": "Greffon pour Gigaset (aussi connu comme Siemens) C470 IP, C475 IP, S675 IP et S685 IP en version 227.",
     "capabilities": {
         "Gigaset, C470 IP, 227": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Gigaset, C475 IP, 227": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Gigaset, S675 IP, 227": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Gigaset, S685 IP, 227": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }
