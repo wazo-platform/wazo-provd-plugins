@@ -3,7 +3,12 @@
     "description": "Plugin that offers no configuration service and serves TFTP/HTTP requests in its var/tftpboot directory.",
     "capabilities": {
         "*, *, *": {
-            "sip.lines": 0
+            "lines": 0,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }
