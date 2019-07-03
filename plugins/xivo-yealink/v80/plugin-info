@@ -8,95 +8,110 @@
     "vendor.official" : 1,
     "capabilities": {
         "Yealink, T19P_E2, 53.80.0.95": {
-            "sip.lines": 1,
-            "xivo.ha": 0,
-            "tel.funckeys": 0,
-            "xivo.tested": 1
+            "lines": 1,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, T21P_E2, 52.80.0.95": {
-            "sip.lines": 2,
-            "xivo.ha": 1,
-            "tel.funckeys": 2,
-            "xivo.tested": 1
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, T23P, 44.80.0.95": {
-            "sip.lines": 3,
-            "xivo.ha": 1,
-            "tel.funckeys": 3,
-            "xivo.tested": 1
+            "lines": 3,
+            "high_availability": true,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, T23G, 44.80.0.95": {
-            "sip.lines": 3,
-            "xivo.ha": 1,
-            "tel.funckeys": 3,
-            "xivo.tested": 1
+            "lines": 3,
+            "high_availability": true,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, T27P, 45.80.0.95": {
-            "sip.lines": 6,
-            "xivo.ha": 0,
-            "tel.funckeys": 21,
-            "xivo.tested": 0
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 21,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, T29G, 46.80.0.95": {
-            "sip.lines": 16,
-            "xivo.ha": 0,
-            "tel.funckeys": 27,
-            "xivo.tested": 0
+            "lines": 16,
+            "high_availability": false,
+            "function_keys": 27,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, T40P, 54.80.0.95": {
-            "sip.lines": 3,
-            "xivo.ha": 1,
-            "tel.funckeys": 3,
-            "xivo.tested": 1
+            "lines": 3,
+            "high_availability": true,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, T41P, 36.80.0.95": {
-            "sip.lines": 6,
-            "xivo.ha": 1,
-            "tel.funckeys": 15,
-            "xivo.tested": 1
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 15,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, T42G, 29.80.0.95": {
-            "sip.lines": 12,
-            "xivo.ha": 1,
-            "tel.funckeys": 15,
-            "xivo.tested": 1
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 15,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, T46G, 28.80.0.95": {
-            "sip.lines": 16,
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 27,
+            "expansion_modules": 0,
             "switchboard": true,
-            "xivo.ha": 1,
-            "tel.funckeys": 27,
-            "xivo.tested": 1
+            "protocol": "sip"
         },
         "Yealink, T48G, 35.80.0.95": {
-            "sip.lines": 16,
-            "xivo.ha": 1,
-            "tel.funckeys": 29,
-            "xivo.tested": 1
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 29,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, T49G, 51.80.0.100": {
-            "sip.lines": 16,
-            "xivo.ha": 1,
-            "tel.funckeys": 29,
-            "xivo.tested": 1
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 29,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, CP860, 37.80.0.30": {
-            "sip.lines": 1,
-            "xivo.ha": 0,
-            "tel.funckeys": 0,
-            "xivo.tested": 0
+            "lines": 1,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, CP960, 73.80.0.35": {
-            "sip.lines": 1,
-            "xivo.ha": 0,
-            "tel.funckeys": 0,
-            "xivo.tested": 0
+            "lines": 1,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Yealink, W52P, 25.80.0.15": {
-            "sip.lines": 5,
-            "xivo.ha": 1,
-            "tel.funckeys": 0,
-            "xivo.tested": 1
+            "lines": 5,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         }
     }
 }
