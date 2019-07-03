@@ -4,7 +4,12 @@
     "description_fr": "Greffon pour Gigaset N720 IP/DM PRO.",
     "capabilities": {
         "Gigaset, N720 IP/DM PRO, 70.111": {
-            "sip.lines": 100
+            "lines": 100,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     },
     "plugin_iface_version_min": 0.2

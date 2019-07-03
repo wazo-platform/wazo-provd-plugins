@@ -4,7 +4,12 @@
     "description_fr": "Greffon pour Gigaset N510 IP",
     "capabilities": {
         "Gigaset, N510 IP PRO, 42.247": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     },
     "plugin_iface_version_min": 0.2
