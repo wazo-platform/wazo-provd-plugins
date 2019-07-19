@@ -12,7 +12,25 @@ version: 1.0.9.135
 files: GXP2160-fw
 install: grandstream-fw
 
+[pkg_ringtone-pack]
+description: Sample ringtone pack
+description_fr: Pack avec les sonneries exemple
+version: 1.0.9.135
+files: ringtone-pack
+install: pack
+
+[pkg_language-pack]
+description: Language pack
+description_fr: Pack de langue
+version: 1.0.9.135
+files: language-pack
+install: pack
+
 [install_grandstream-fw]
+a-b: unzip $FILE1
+b-c: cp */*.bin ./
+
+[install_pack]
 a-b: unzip $FILE1
 
 [file_GXP2130-fw]
@@ -25,4 +43,12 @@ url: http://firmware.grandstream.com/Release_GXP2160_1.0.9.135.zip
 size: 42955648
 sha1sum: fe76f4d10252a6e241d7a2c75d694c42ca0edf1a
 
+[file_ringtone-pack]
+url: http://www.grandstream.com/sites/default/files/Resources/RingTone-pack.zip
+size: 120297
+sha1sum: 9742f6815956ffbb78db53395ff85551dc8f6344
 
+[file_language-pack]
+url: http://www.grandstream.com/sites/default/files/Resources/GXP_Language_Pack.zip
+size: 416433
+sha1sum: d6a8b609fd044338ff415528524628a99d58286c

@@ -35,8 +35,7 @@
             "sip.lines": 6,
             "xivo.ha" : 0,
             "tel.funckeys" : 8,
-            "xivo.tested" : 0,
-        },
-
+            "xivo.tested" : 0
+        }
     }
 }
