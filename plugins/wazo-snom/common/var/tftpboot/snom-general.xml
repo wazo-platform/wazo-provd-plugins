@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<settings>
+  <phone-settings>
+    <!-- auto_reboot must be at the top of the file to be effective -->
+    <auto_reboot_on_setting_change perm="R">on</auto_reboot_on_setting_change>
+
+    <provisioning_order perm="R">dhcp:stop</provisioning_order>
+
+    <!-- the "perm" attribute for admin_mode must be "RW", else the admin
+         can't enter admin mode on the phone because the admin_mode value
+         is read only -->
+    <admin_mode perm="RW">off</admin_mode>
+
+    <retry_after_failed_register perm="R">120</retry_after_failed_register>
+
+    <date_us_format perm="R">off</date_us_format>
+    <time_24_format perm="R">on</time_24_format>
+
+    <dialnumber_us_format perm="R">off</dialnumber_us_format>
+
+    <always_show_active_call perm="R">off</always_show_active_call>
+
+    <transfer_on_hangup perm="R">off</transfer_on_hangup>
+    <transfer_on_hangup_non_pots perm="R">off</transfer_on_hangup_non_pots>
+
+    <display_method perm="R">display_name_number</display_method>
+    <pnp_config perm="R">off</pnp_config>
+    <update_policy perm="R">auto_update</update_policy>
+    <!-- force subscription_delay to default value, for migration purpose only -->
+    <subscription_delay perm="R">0</subscription_delay>
+
+    <mwi_dialtone perm="R">normal</mwi_dialtone>
+    <cw_dialtone perm="R">off</cw_dialtone>
+
+    <network_id_port perm="R">5060</network_id_port>
+
+    <answer_after_policy perm="R">idle</answer_after_policy>
+
+    <led_call_indicator_usage perm="R">PhoneHasCallInStateRinging PhoneHasCall</led_call_indicator_usage>
+
+    <d7_state_format perm="R"></d7_state_format>
+
+    <user_active idx="1" perm="R">off</user_active>
+    <user_active idx="2" perm="R">off</user_active>
+    <user_active idx="3" perm="R">off</user_active>
+    <user_active idx="4" perm="R">off</user_active>
+    <user_active idx="5" perm="R">off</user_active>
+    <user_active idx="6" perm="R">off</user_active>
+    <user_active idx="7" perm="R">off</user_active>
+    <user_active idx="8" perm="R">off</user_active>
+    <user_active idx="9" perm="R">off</user_active>
+    <user_active idx="10" perm="R">off</user_active>
+    <user_active idx="11" perm="R">off</user_active>
+    <user_active idx="12" perm="R">off</user_active>
+
+    <!-- Set user_srtp to off until we have TLS/SRTP support in the plugin
+         since setting it to on seems to cause some compatibility issue with
+         asterisk 1.8. See http://forum.snom.com/index.php?showtopic=6665 -->
+    <user_srtp idx="1" perm="R">off</user_srtp>
+    <user_srtp idx="2" perm="R">off</user_srtp>
+    <user_srtp idx="3" perm="R">off</user_srtp>
+    <user_srtp idx="4" perm="R">off</user_srtp>
+    <user_srtp idx="5" perm="R">off</user_srtp>
+    <user_srtp idx="6" perm="R">off</user_srtp>
+    <user_srtp idx="7" perm="R">off</user_srtp>
+    <user_srtp idx="8" perm="R">off</user_srtp>
+    <user_srtp idx="9" perm="R">off</user_srtp>
+    <user_srtp idx="10" perm="R">off</user_srtp>
+    <user_srtp idx="11" perm="R">off</user_srtp>
+    <user_srtp idx="12" perm="R">off</user_srtp>
+
+    <!-- http://wiki.snom.com/Interoperability/PBX/Asterisk-->
+    <call_completion perm="R">off</call_completion>
+    <challenge_response perm="R">off</challenge_response>
+    <filter_registrar perm="R">off</filter_registrar>
+    <user_phone perm="R">off</user_phone>
+  </phone-settings>
+  <functionKeys>
+    <fkey idx="0" context="active" perm="R">line</fkey>
+    <fkey idx="1" context="active" perm="R">line</fkey>
+    <fkey idx="2" context="active" perm="R">line</fkey>
+    <fkey idx="3" context="active" perm="R">line</fkey>
+    <fkey idx="4" context="active" perm="R">line</fkey>
+    <fkey idx="5" context="active" perm="R">line</fkey>
+    <fkey idx="6" context="active" perm="R">line</fkey>
+    <fkey idx="7" context="active" perm="R">line</fkey>
+    <fkey idx="8" context="active" perm="R">line</fkey>
+    <fkey idx="9" context="active" perm="R">line</fkey>
+    <fkey idx="10" context="active" perm="R">line</fkey>
+    <fkey idx="11" context="active" perm="R">line</fkey>
+    <fkey idx="12" context="active" perm="R">line</fkey>
+    <fkey idx="13" context="active" perm="R">line</fkey>
+    <fkey idx="14" context="active" perm="R">line</fkey>
+    <fkey idx="15" context="active" perm="R">line</fkey>
+    <fkey idx="16" context="active" perm="R">line</fkey>
+    <fkey idx="17" context="active" perm="R">line</fkey>
+    <fkey idx="18" context="active" perm="R">line</fkey>
+    <fkey idx="19" context="active" perm="R">line</fkey>
+    <fkey idx="20" context="active" perm="R">line</fkey>
+    <fkey idx="21" context="active" perm="R">line</fkey>
+    <fkey idx="22" context="active" perm="R">line</fkey>
+    <fkey idx="23" context="active" perm="R">line</fkey>
+    <fkey idx="24" context="active" perm="R">line</fkey>
+    <fkey idx="25" context="active" perm="R">line</fkey>
+    <fkey idx="26" context="active" perm="R">line</fkey>
+    <fkey idx="27" context="active" perm="R">line</fkey>
+    <fkey idx="28" context="active" perm="R">line</fkey>
+    <fkey idx="29" context="active" perm="R">line</fkey>
+    <fkey idx="30" context="active" perm="R">line</fkey>
+    <fkey idx="31" context="active" perm="R">line</fkey>
+    <fkey idx="32" context="active" perm="R">line</fkey>
+    <fkey idx="33" context="active" perm="R">line</fkey>
+    <fkey idx="34" context="active" perm="R">line</fkey>
+    <fkey idx="35" context="active" perm="R">line</fkey>
+    <fkey idx="36" context="active" perm="R">line</fkey>
+    <fkey idx="37" context="active" perm="R">line</fkey>
+    <fkey idx="38" context="active" perm="R">line</fkey>
+    <fkey idx="39" context="active" perm="R">line</fkey>
+    <fkey idx="40" context="active" perm="R">line</fkey>
+    <fkey idx="41" context="active" perm="R">line</fkey>
+    <fkey idx="42" context="active" perm="R">line</fkey>
+    <fkey idx="43" context="active" perm="R">line</fkey>
+    <fkey idx="44" context="active" perm="R">line</fkey>
+    <fkey idx="45" context="active" perm="R">line</fkey>
+    <fkey idx="46" context="active" perm="R">line</fkey>
+    <fkey idx="47" context="active" perm="R">line</fkey>
+    <fkey idx="48" context="active" perm="R">line</fkey>
+    <fkey idx="49" context="active" perm="R">line</fkey>
+    <fkey idx="50" context="active" perm="R">line</fkey>
+    <fkey idx="51" context="active" perm="R">line</fkey>
+    <fkey idx="52" context="active" perm="R">line</fkey>
+    <fkey idx="53" context="active" perm="R">line</fkey>
+    <fkey idx="54" context="active" perm="R">line</fkey>
+    <fkey idx="55" context="active" perm="R">line</fkey>
+    <fkey idx="56" context="active" perm="R">line</fkey>
+    <fkey idx="57" context="active" perm="R">line</fkey>
+    <fkey idx="58" context="active" perm="R">line</fkey>
+    <fkey idx="59" context="active" perm="R">line</fkey>
+    <fkey idx="60" context="active" perm="R">line</fkey>
+    <fkey idx="61" context="active" perm="R">line</fkey>
+    <fkey idx="62" context="active" perm="R">line</fkey>
+    <fkey idx="63" context="active" perm="R">line</fkey>
+    <fkey idx="64" context="active" perm="R">line</fkey>
+    <fkey idx="65" context="active" perm="R">line</fkey>
+    <fkey idx="66" context="active" perm="R">line</fkey>
+    <fkey idx="67" context="active" perm="R">line</fkey>
+    <fkey idx="68" context="active" perm="R">line</fkey>
+    <fkey idx="69" context="active" perm="R">line</fkey>
+    <fkey idx="70" context="active" perm="R">line</fkey>
+    <fkey idx="71" context="active" perm="R">line</fkey>
+    <fkey idx="72" context="active" perm="R">line</fkey>
+    <fkey idx="73" context="active" perm="R">line</fkey>
+    <fkey idx="74" context="active" perm="R">line</fkey>
+    <fkey idx="75" context="active" perm="R">line</fkey>
+    <fkey idx="76" context="active" perm="R">line</fkey>
+    <fkey idx="77" context="active" perm="R">line</fkey>
+    <fkey idx="78" context="active" perm="R">line</fkey>
+    <fkey idx="79" context="active" perm="R">line</fkey>
+    <fkey idx="80" context="active" perm="R">line</fkey>
+    <fkey idx="81" context="active" perm="R">line</fkey>
+    <fkey idx="82" context="active" perm="R">line</fkey>
+    <fkey idx="83" context="active" perm="R">line</fkey>
+    <fkey idx="84" context="active" perm="R">line</fkey>
+    <fkey idx="85" context="active" perm="R">line</fkey>
+    <fkey idx="86" context="active" perm="R">line</fkey>
+    <fkey idx="87" context="active" perm="R">line</fkey>
+    <fkey idx="88" context="active" perm="R">line</fkey>
+    <fkey idx="89" context="active" perm="R">line</fkey>
+    <fkey idx="90" context="active" perm="R">line</fkey>
+    <fkey idx="91" context="active" perm="R">line</fkey>
+    <fkey idx="92" context="active" perm="R">line</fkey>
+    <fkey idx="93" context="active" perm="R">line</fkey>
+    <fkey idx="94" context="active" perm="R">line</fkey>
+    <fkey idx="95" context="active" perm="R">line</fkey>
+    <fkey idx="96" context="active" perm="R">line</fkey>
+    <fkey idx="97" context="active" perm="R">line</fkey>
+    <fkey idx="98" context="active" perm="R">line</fkey>
+    <fkey idx="99" context="active" perm="R">line</fkey>
+    <fkey idx="100" context="active" perm="R">line</fkey>
+    <fkey idx="101" context="active" perm="R">line</fkey>
+    <fkey idx="102" context="active" perm="R">line</fkey>
+    <fkey idx="103" context="active" perm="R">line</fkey>
+    <fkey idx="104" context="active" perm="R">line</fkey>
+    <fkey idx="105" context="active" perm="R">line</fkey>
+    <fkey idx="106" context="active" perm="R">line</fkey>
+    <fkey idx="107" context="active" perm="R">line</fkey>
+    <fkey idx="108" context="active" perm="R">line</fkey>
+    <fkey idx="109" context="active" perm="R">line</fkey>
+    <fkey idx="110" context="active" perm="R">line</fkey>
+    <fkey idx="111" context="active" perm="R">line</fkey>
+    <fkey idx="112" context="active" perm="R">line</fkey>
+    <fkey idx="113" context="active" perm="R">line</fkey>
+    <fkey idx="114" context="active" perm="R">line</fkey>
+    <fkey idx="115" context="active" perm="R">line</fkey>
+    <fkey idx="116" context="active" perm="R">line</fkey>
+    <fkey idx="117" context="active" perm="R">line</fkey>
+    <fkey idx="118" context="active" perm="R">line</fkey>
+    <fkey idx="119" context="active" perm="R">line</fkey>
+    <fkey idx="120" context="active" perm="R">line</fkey>
+    <fkey idx="121" context="active" perm="R">line</fkey>
+    <fkey idx="122" context="active" perm="R">line</fkey>
+    <fkey idx="123" context="active" perm="R">line</fkey>
+    <fkey idx="124" context="active" perm="R">line</fkey>
+    <fkey idx="125" context="active" perm="R">line</fkey>
+    <fkey idx="126" context="active" perm="R">line</fkey>
+    <fkey idx="127" context="active" perm="R">line</fkey>
+    <fkey idx="128" context="active" perm="R">line</fkey>
+    <fkey idx="129" context="active" perm="R">line</fkey>
+    <fkey idx="130" context="active" perm="R">line</fkey>
+    <fkey idx="131" context="active" perm="R">line</fkey>
+    <fkey idx="132" context="active" perm="R">line</fkey>
+    <fkey idx="133" context="active" perm="R">line</fkey>
+    <fkey idx="134" context="active" perm="R">line</fkey>
+    <fkey idx="135" context="active" perm="R">line</fkey>
+    <fkey idx="136" context="active" perm="R">line</fkey>
+    <fkey idx="137" context="active" perm="R">line</fkey>
+  </functionKeys>
+</settings>
