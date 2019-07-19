@@ -22,6 +22,16 @@
     <P298>1</P298>
     <P290>{ [*x]+ }</P290>
     <P81>1</P81>
+
+    {# Set Password -#}
+    {% if user_password -%}
+    <P196>{{ user_password|e }}</P196>
+    {% endif -%}
+
+    {% if admin_password -%}
+    <P2>{{ admin_password|e }}</P2>
+    {% endif -%}
+
 {# SIP per-line settings -#}
 {% for line_no, line in sip_lines.iteritems() %}
   {% if line_no == '1' %}

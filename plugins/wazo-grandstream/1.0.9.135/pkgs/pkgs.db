@@ -1,0 +1,28 @@
+[pkg_GXP2130-fw]
+description: Firmware for Grandstream GXP2130
+description_fr: Micrologiciel pour Grandstream GXP2130
+version: 1.0.9.135
+files: GXP2130-fw
+install: grandstream-fw
+
+[pkg_GXP2160-fw]
+description: Firmware for Grandstream GXP2160
+description_fr: Micrologiciel pour Grandstream GXP2160
+version: 1.0.9.135
+files: GXP2160-fw
+install: grandstream-fw
+
+[install_grandstream-fw]
+a-b: unzip $FILE1
+
+[file_GXP2130-fw]
+url: http://firmware.grandstream.com/Release_GXP2130_1.0.9.135.zip
+size: 42893569
+sha1sum: be7f158c2d010fc1620521bbcca67ed751eb91b7
+
+[file_GXP2160-fw]
+url: http://firmware.grandstream.com/Release_GXP2160_1.0.9.135.zip
+size: 42955648
+sha1sum: fe76f4d10252a6e241d7a2c75d694c42ca0edf1a
+
+
