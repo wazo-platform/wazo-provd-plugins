@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2014-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -88,19 +88,59 @@ def build_5_8_2(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '--include', '/templates/base.tpl',
                 '--include', '/templates/VVX101.tpl',
+                '--include', '/templates/VVX150.tpl',
                 '--include', '/templates/VVX201.tpl',
+                '--include', '/templates/VVX250.tpl',
                 '--include', '/templates/VVX300.tpl',
+                '--include', '/templates/VVX301.tpl',
                 '--include', '/templates/VVX310.tpl',
+                '--include', '/templates/VVX311.tpl',
+                '--include', '/templates/VVX350.tpl',
                 '--include', '/templates/VVX400.tpl',
+                '--include', '/templates/VVX401.tpl',
                 '--include', '/templates/VVX410.tpl',
+                '--include', '/templates/VVX411.tpl',
+                '--include', '/templates/VVX450.tpl',
                 '--include', '/templates/VVX500.tpl',
+                '--include', '/templates/VVX501.tpl',
                 '--include', '/templates/VVX600.tpl',
+                '--include', '/templates/VVX601.tpl',
                 '--include', '/templates/VVX1500.tpl',
                 '--exclude', '/templates/*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '5.8.2/', path])
+
+
+@target('5.9.2', 'wazo-polycom-5.9.2')
+def build_5_9_2(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--include', '/templates/base.tpl',
+                '--include', '/templates/VVX101.tpl',
+                '--include', '/templates/VVX150.tpl',
+                '--include', '/templates/VVX201.tpl',
+                '--include', '/templates/VVX250.tpl',
+                '--include', '/templates/VVX300.tpl',
+                '--include', '/templates/VVX301.tpl',
+                '--include', '/templates/VVX310.tpl',
+                '--include', '/templates/VVX311.tpl',
+                '--include', '/templates/VVX350.tpl',
+                '--include', '/templates/VVX400.tpl',
+                '--include', '/templates/VVX401.tpl',
+                '--include', '/templates/VVX410.tpl',
+                '--include', '/templates/VVX411.tpl',
+                '--include', '/templates/VVX450.tpl',
+                '--include', '/templates/VVX500.tpl',
+                '--include', '/templates/VVX501.tpl',
+                '--include', '/templates/VVX600.tpl',
+                '--include', '/templates/VVX601.tpl',
+                '--include', '/templates/VVX1500.tpl',
+                '--exclude', '/templates/*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '5.9.2/', path])
 
 
 @target('3.2.4B', 'xivo-polycom-3.2.4B')

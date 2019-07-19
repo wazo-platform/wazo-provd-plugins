@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -38,6 +38,7 @@ logger = logging.getLogger('plugin.xivo-snom')
 
 class BaseSnomHTTPDeviceInfoExtractor(object):
     _UA_REGEX = re.compile(r'\bsnom(\w+)-SIP ([\d.]+)')
+    _UA_REGEX_MAC = re.compile(r'\bsnom(\w+)-SIP\s([\d.]+)\s(.+)\s(?P<mac>[0-9A-F]+)')
     _PATH_REGEX = re.compile(r'\bsnom\w+-([\dA-F]{12})\.htm$')
 
     def extract(self, request, request_type):
@@ -64,6 +65,15 @@ class BaseSnomHTTPDeviceInfoExtractor(object):
         #   "Mozilla/4.0 (compatible; snom820-SIP 8.4.35 1.1.4-IFX-26.11.09)"
         #   "Mozilla/4.0 (compatible; snom870-SIP 8.4.35 SPEAr300 SNOM 1.4)"
         #   "Mozilla/4.0 (compatible; snomPA1-SIP 8.4.35 1.1.3-s)"
+        #   "Mozilla/4.0 (compatible; snomD785-SIP 10.1.33.33 2010.12-00004-g9ba52f5 000413922D24 SXM:0 UXM:0)"
+        m = self._UA_REGEX_MAC.search(ua)
+        if m:
+            raw_model, raw_version, _, raw_mac = m.groups()
+            return {u'vendor': u'Snom',
+                    u'model': raw_model.decode('ascii'),
+                    u'mac': norm_mac(raw_mac.decode('ascii')),
+                    u'version': raw_version.decode('ascii')}
+        # if the complete regex did not match, match a smaller one
         m = self._UA_REGEX.search(ua)
         if m:
             raw_model, raw_version = m.groups()

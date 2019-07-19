@@ -61,13 +61,10 @@ lcl.ml.lang="{{ XX_language }}"
 tone.dtmf.viaRtp="1"
 tone.dtmf.rfc2833Control="0"
 voIpProt.SIP.dtmfViaSignaling.rfc2976="0"
-{% elif sip_dtmf_mode == 'RTP-out-of-band' -%}
+{% else -%}
 tone.dtmf.viaRtp="1"
 tone.dtmf.rfc2833Control="1"
 voIpProt.SIP.dtmfViaSignaling.rfc2976="0"
-{% elif sip_dtmf_mode == 'SIP-INFO' -%}
-tone.dtmf.viaRtp="0"
-voIpProt.SIP.dtmfViaSignaling.rfc2976="1"
 {% endif -%}
 
 {% for line_no, line in sip_lines.iteritems() %}

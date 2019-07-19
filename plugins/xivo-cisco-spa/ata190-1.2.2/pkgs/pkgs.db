@@ -7,9 +7,7 @@ install: cisco-fw
 
 
 [install_cisco-fw]
-+a-b: unzip $FILE1
-+b-c: cp *.sgn firmware/
-+b-d: cp *.loads firmware/
+a-b: unzip $FILE1
 
 
 [file_ata190fw]

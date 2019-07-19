@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2016 Avencall
+# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import IMPROBABLE_SUPPORT, PROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, FULL_SUPPORT, BasePgAssociator
+    COMPLETE_SUPPORT, BasePgAssociator
 from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
     TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
@@ -99,7 +99,7 @@ class BasePolycomPgAssociator(BasePgAssociator):
     def _do_associate(self, vendor, model, version):
         if vendor == u'Polycom':
             if model in self._models:
-                return COMPLETE_SUPPORT
+                return COMPLETE_SUPPORT + 1
             return PROBABLE_SUPPORT
         return IMPROBABLE_SUPPORT
 
@@ -108,18 +108,32 @@ class BasePolycomPlugin(StandardPlugin):
     # Note that no TFTP support is included since Polycom phones are capable of
     # protocol selection via DHCP options.
     _ENCODING = 'UTF-8'
+    _EXPANSION = 3 * 40  # Expansion modules
     _NB_FKEY = {
         u'SPIP450': 2,
         u'SPIP550': 3,
         u'SPIP560': 3,
         u'SPIP650': 47,
         u'SPIP670': 47,
-        u'VVX300': 261,
-        u'VVX310': 261,
-        u'VVX400': 266,
-        u'VVX410': 266,
-        u'VVX500': 266,
-        u'VVX600': 270,
+        u'VVX101': 2,
+        u'VVX150': 2,
+        u'VVX200': 2,
+        u'VVX201': 2,
+        u'VVX250': 4,
+        u'VVX300': 6 + _EXPANSION,
+        u'VVX301': 6 + _EXPANSION,
+        u'VVX310': 6 + _EXPANSION,
+        u'VVX311': 6 + _EXPANSION,
+        u'VVX350': 6,
+        u'VVX400': 12 + _EXPANSION,
+        u'VVX401': 12 + _EXPANSION,
+        u'VVX410': 12 + _EXPANSION,
+        u'VVX411': 12 + _EXPANSION,
+        u'VVX450': 12 + _EXPANSION,
+        u'VVX500': 12 + _EXPANSION,
+        u'VVX501': 12 + _EXPANSION,
+        u'VVX600': 16 + _EXPANSION,
+        u'VVX601': 16 + _EXPANSION,
         u'VVX1500': 6,
     }
     _LOCALE = {
