@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<firmware-settings>
-  <firmware>http://{{ ip }}:{{ http_port }}/firmware/#FW_FILENAME#</firmware>
-</firmware-settings>

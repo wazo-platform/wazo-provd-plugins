@@ -1,26 +1,29 @@
 {
     "version": "0.2.0",
-    "description": "Plugin for Snom D3x5, D7x5 in version 10.1.39.11.",
-    "description_fr": "Greffon pour Snom Snom D3x5, D7x5 en version 10.1.39.11.",
+    "description": "Plugin for Snom D3x5, D717, D7x5 in version 10.1.39.11.",
+    "description_fr": "Greffon pour Snom Snom D3x5, D717, D7x5 en version 10.1.39.11.",
     "capabilities": {
         "Snom, D375, 10.1.39.11": {
             "sip.lines": 12
-        }
-        "Snom, D715, 10.1.39.11": {
+        },
+        "Snom, 715, 10.1.39.11": {
             "sip.lines": 12
-        }
-        "Snom, D725, 10.1.39.11": {
+        },
+        "Snom, D717, 10.1.39.11": {
             "sip.lines": 12
-        }
+        },
+        "Snom, 725, 10.1.39.11": {
+            "sip.lines": 12
+        },
         "Snom, D735, 10.1.39.11": {
             "sip.lines": 12
-        }
+        },
         "Snom, D745, 10.1.39.11": {
             "sip.lines": 12
-        }
+        },
         "Snom, D755, 10.1.39.11": {
             "sip.lines": 12
-        }
+        },
         "Snom, D785, 10.1.39.11": {
             "sip.lines": 12
         }
