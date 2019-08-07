@@ -7,7 +7,7 @@
 The plugin information files (`plugin-info`) contain metadata about plugins in JSON format.
 They include the supported phone models, firmware versions and features.
 
-Valid keys are described as follow:
+Valid keys are described as follows:
 
 * `lines` (integer): the number of lines
 * `high_availability` (boolean): high availability support
