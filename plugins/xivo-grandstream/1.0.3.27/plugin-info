@@ -8,10 +8,10 @@
     "vendor.official" : 0,
     "capabilities": {
         "Grandstream, GXP2200, 1.0.3.27": {
-            "sip.lines": 2,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 3,
-            "xivo.tested" : 0
+            "lines": 2,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "protocol": "sip"
         }
     }
 }

@@ -4,10 +4,20 @@
     "description_fr": "Greffon pour Avaya (auparavant connu comme Nortel) 1220 IP et 1230 IP deskphone en version 04.01.13.00.",
     "capabilities": {
         "Avaya, 1220IP, 04.01.13.00": {
-            "sip.lines": 1
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Avaya, 1230IP, 04.01.13.00": {
-            "sip.lines": 1
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }

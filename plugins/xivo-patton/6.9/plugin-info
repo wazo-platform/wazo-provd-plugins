@@ -8,52 +8,68 @@
     "vendor.official": 1,
     "capabilities": {
         "Patton, SN4112, 6.9": {
-            "sip.lines": 2,
-            "xivo.ha": 1,
-            "tel.funckeys": 0,
-            "xivo.tested": 1
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Patton, SN4112S, 6.9": {
-            "sip.lines": 2,
-            "xivo.ha": 1,
-            "tel.funckeys": 0,
-            "xivo.tested": 1
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Patton, SN4114, 6.9": {
-            "sip.lines": 4,
-            "xivo.ha": 1,
-            "tel.funckeys": 0,
-            "xivo.tested": 1
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Patton, SN4116, 6.9": {
-            "sip.lines": 4,
-            "xivo.ha": 1,
-            "tel.funckeys": 0,
-            "xivo.tested": 1
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Patton, SN4118, 6.9": {
-            "sip.lines": 8,
-            "xivo.ha": 1,
-            "tel.funckeys": 0,
-            "xivo.tested": 1
+            "lines": 8,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Patton, SN4316, 6.9": {
-            "sip.lines": 16,
-            "xivo.ha": 1,
-            "tel.funckeys": 0,
-            "xivo.tested": 1
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Patton, SN4324, 6.9": {
-            "sip.lines": 24,
-            "xivo.ha": 1,
-            "tel.funckeys": 0,
-            "xivo.tested": 1
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Patton, SN4332, 6.9": {
-            "sip.lines": 32,
-            "xivo.ha": 1,
-            "tel.funckeys": 0,
-            "xivo.tested": 1
+            "lines": 32,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }

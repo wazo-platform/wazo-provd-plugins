@@ -4,7 +4,11 @@
     "description_fr": "Greffon pour Technicolor (auparavant connu comme Thomson) ST2022 en version 4.78.1.",
     "capabilities": {
         "Technicolor, ST2022, 4.78.1": {
-            "sip.lines": 2
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 66,
+            "expansion_modules": 0,
+            "protocol": "sip"
         }
     }
 }

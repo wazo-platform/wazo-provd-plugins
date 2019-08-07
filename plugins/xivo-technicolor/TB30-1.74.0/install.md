@@ -1,3 +1,5 @@
+# Installation
+
 Note: for Technicolor plugin, the commonconf and the telconf files are taken
 from the 'Binary' folder of the firmware zip file available on Technicolor
 website.

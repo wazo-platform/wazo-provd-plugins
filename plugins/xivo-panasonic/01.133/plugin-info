@@ -5,15 +5,28 @@
     "capabilities": {
         "Panasonic, KX-UT113, 01.133": {
             "sip.lines": 1
+            "lines": 1,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Panasonic, KX-UT123, 01.133": {
-            "sip.lines": 2
+            "lines": 2,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Panasonic, KX-UT133, 01.133": {
-            "sip.lines": 3
+            "lines": 3,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         },
         "Panasonic, KX-UT136, 01.133": {
-            "sip.lines": 6
+            "lines": 6,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
         }
     }
 }

@@ -4,22 +4,52 @@
     "description_fr": "Greffon pour Cisco (auparavant connu comme Linksys) SPA901, 921, 922, 941, 942, 962 en versions variées.",
     "capabilities": {
         "Cisco, SPA901, 5.1.5": {
-            "sip.lines": 1
+            "lines": 1,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Cisco, SPA921, 5.1.8": {
-            "sip.lines": 1
+            "lines": 1,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Cisco, SPA922, 6.1.5(a)": {
-            "sip.lines": 1
+            "lines": 1,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Cisco, SPA941, 5.1.8": {
-            "sip.lines": 4
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Cisco, SPA942, 6.1.5(a)": {
-            "sip.lines": 4
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Cisco, SPA962, 6.1.5(a)": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }

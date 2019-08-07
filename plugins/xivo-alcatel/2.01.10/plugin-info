@@ -4,10 +4,20 @@
     "description_fr": "Greffon pour Alcatel IP Touch 4008 and 4018 \"extended edition\" en version SIP 2.01.10.",
     "capabilities": {
         "Alcatel, 4008, 2.01.10": {
-            "sip.lines": 1
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Alcatel, 4018, 2.01.10": {
-            "sip.lines": 1
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }

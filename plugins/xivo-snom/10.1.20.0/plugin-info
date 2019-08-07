@@ -4,7 +4,12 @@
     "description_fr": "Greffon pour Snom série D785 en version 10.1.20.0.",
     "capabilities": {
         "Snom, D785, 10.1.20.0": {
-            "sip.lines": 12
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 24,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }

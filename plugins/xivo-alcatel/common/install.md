@@ -1,3 +1,5 @@
+# Installation
+
 This plugin targets Alcatel IP Touch "extended edition" phones, i.e. the IP
 Touch phones which are capable of running in SIP standalone mode. This plugin
 can also be used to go from NOE to SIP mode. To be able to use SIP standalone

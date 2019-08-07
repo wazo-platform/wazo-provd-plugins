@@ -4,7 +4,10 @@
     "description_fr": "Greffon pour Cisco IP Communicator en version 2.1.2.",
     "capabilities": {
         "Cisco, CIPC, 2.1.2": {
-            "sccp.lines": 8
+            "lines": 8,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
         }
     }
 }
