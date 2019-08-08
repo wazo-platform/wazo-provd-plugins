@@ -1,6 +1,6 @@
-# xivo-provd-plugins
+# wazo-provd-plugins
 
-`xivo-provd-plugins` is the complete collection of phone provisioning plugins available for Wazo.
+`wazo-provd-plugins` is the complete collection of phone provisioning plugins available for Wazo.
 
 ## Plugin information files
 
