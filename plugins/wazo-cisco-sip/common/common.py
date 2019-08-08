@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2018 Wazo Authors
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -237,8 +237,8 @@ class BaseCiscoSipPlugin(StandardPlugin):
 
         self.services = fetchfw_helper.services()
 
-        # Maybe find a way to bind to a specific port without changing the general http_port setting of xivo-provd ?
-        # At the moment, http_port 6970 must be set in /etc/xivo/provd/provd.conf
+        # Maybe find a way to bind to a specific port without changing the general http_port setting of wazo-provd ?
+        # At the moment, http_port 6970 must be set in /etc/wazo-provd/config.yml
         self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
         
         self.tftp_service = TFTPFileService(self._tftpboot_dir)
@@ -404,8 +404,8 @@ class BaseCiscoSipPlugin(StandardPlugin):
                 'Content=SoftkeyVersionStamp={0000000000000000}',
             ]
             return synchronize.standard_sip_synchronize(device, event='service-control', extra_vars=action)
-        except TypeError: # xivo-provd not up to date for extra_vars
-            return defer.fail(Exception('operation not supported, please update your xivo-provd'))
+        except TypeError: # wazo-provd not up to date for extra_vars
+            return defer.fail(Exception('operation not supported, please update your wazo-provd'))
 
     def is_sensitive_filename(self, filename):
         return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))

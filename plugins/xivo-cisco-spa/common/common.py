@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import errno
@@ -473,7 +473,7 @@ class BaseCiscoPlugin(StandardPlugin):
             return synchronize.standard_sip_synchronize(device)
 
     else:
-        # backward compatibility with older xivo-provd server
+        # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
                 ip = device[u'ip'].encode('ascii')

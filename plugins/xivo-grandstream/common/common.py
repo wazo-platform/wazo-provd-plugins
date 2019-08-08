@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2016 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -166,7 +166,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
             return synchronize.standard_sip_synchronize(device)
 
     else:
-        # backward compatibility with older xivo-provd server
+        # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
                 ip = device[u'ip'].encode('ascii')

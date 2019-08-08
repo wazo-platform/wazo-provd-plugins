@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2014 Avencall
+# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -285,7 +285,7 @@ class BasePolycomPlugin(StandardPlugin):
             return synchronize.standard_sip_synchronize(device)
 
     else:
-        # backward compatibility with older xivo-provd server
+        # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
                 ip = device[u'ip'].encode('ascii')

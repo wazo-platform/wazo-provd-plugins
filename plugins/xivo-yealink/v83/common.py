@@ -532,7 +532,7 @@ class BaseYealinkPlugin(StandardPlugin):
             return synchronize.standard_sip_synchronize(device)
 
     else:
-        # backward compatibility with older xivo-provd server
+        # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
                 ip = device[u'ip'].encode('ascii')

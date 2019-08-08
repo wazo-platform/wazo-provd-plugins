@@ -354,7 +354,7 @@ class BaseSnomPlugin(StandardPlugin):
             return synchronize.standard_sip_synchronize(device, event='check-sync;reboot=true')
 
     else:
-        # backward compatibility with older xivo-provd server
+        # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
                 ip = device[u'ip'].encode('ascii')

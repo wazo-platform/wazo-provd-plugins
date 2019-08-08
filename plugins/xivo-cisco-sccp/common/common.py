@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import logging
@@ -225,7 +225,7 @@ class BaseCiscoSccpPlugin(StandardPlugin):
 
         self.services = fetchfw_helper.services()
 
-        # Maybe find a way to bind to a specific port without changing the general http_port setting of xivo-provd ?
+        # Maybe find a way to bind to a specific port without changing the general http_port setting of wazo-provd ?
         # At the moment, http_port 6970 must be set in /etc/xivo/provd/provd.conf
         self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
         
