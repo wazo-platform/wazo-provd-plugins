@@ -76,7 +76,7 @@
             "protocol": "sip"
         },
         "Snom, D745, 8.9.3.80": {
-            "lines": 12
+            "lines": 12,
             "high_availability": true,
             "function_keys": 32,
             "expansion_modules": 3,
