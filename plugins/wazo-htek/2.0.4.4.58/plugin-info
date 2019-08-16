@@ -106,7 +106,7 @@
             "protocol": "sip"
         },
         "Htek, UC806T, 2.0.4.4.58": {
-            ""lines": 4,
+            "lines": 4,
             "high_availability": false,
             "function_keys": 4,
             "expansion_modules": 0,
