@@ -4,7 +4,6 @@
     "description_fr": "Greffon pour Panasonic KX-UT1XX en version 01.133.",
     "capabilities": {
         "Panasonic, KX-UT113, 01.133": {
-            "sip.lines": 1
             "lines": 1,
             "function_keys": 0,
             "expansion_modules": 0,
