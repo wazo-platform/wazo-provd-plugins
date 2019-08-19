@@ -28,15 +28,22 @@
             <processNodeName>{{ sip_proxy_ip }}</processNodeName>
           </callManager>
         </member>
+      {% if sip_backup_proxy_ip -%}
+        <member priority="1">
+          <callManager>
+            <ports>
+              <ethernetPhonePort>2000</ethernetPhonePort>
+              <sipPort>{{ sip_backup_proxy_port }}</sipPort>
+              <securedSipPort>5061</securedSipPort>
+            </ports>
+            <processNodeName>{{ sip_backup_proxy_ip }}</processNodeName>
+          </callManager>
+      {% endif -%}
       </members>
     </callManagerGroup>
   </devicePool>
   <sipProfile>
     <sipProxies>
-      <backupProxy>{{ sip_backup_proxy_ip }}</backupProxy>
-      <backupProxyPort>{{ sip_backup_proxy_port }}</backupProxyPort>
-      <emergencyProxy></emergencyProxy>
-      <emergencyProxyPort></emergencyProxyPort>
       <outboundProxy>{{ sip_outbound_proxy_ip }}</outboundProxy>
       <outboundProxyPort>{{ sip_outbound_proxy_port }}</outboundProxyPort>
       <registerWithProxy>true</registerWithProxy>
