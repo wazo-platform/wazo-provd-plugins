@@ -126,6 +126,8 @@
           <redirectedNumber>false</redirectedNumber>
           <dialedNumber>true</dialedNumber>
         </forwardCallInfoDisplay>
+        <maxNumCalls>5</maxNumCalls>
+        <busyTrigger>5</busyTrigger>
       </line>
     {% endfor -%}
     {%- if XX_fkeys %}
