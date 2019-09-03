@@ -38,6 +38,7 @@
             </ports>
             <processNodeName>{{ sip_backup_proxy_ip }}</processNodeName>
           </callManager>
+        </member>
       {% endif -%}
       </members>
     </callManagerGroup>
