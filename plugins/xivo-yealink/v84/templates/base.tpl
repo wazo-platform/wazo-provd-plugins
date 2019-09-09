@@ -54,8 +54,8 @@ static.syslog.enable = 0
 static.syslog.server = %NULL%
 {% endif %}
 
-static.lang.wui = {{ XX_lang|d('%NULL%') }}
-static.lang.gui = {{ XX_lang|d('%NULL%') }}
+lang.wui = {{ XX_lang|d('%NULL%') }}
+lang.gui = {{ XX_lang|d('%NULL%') }}
 
 voice.tone.country = {{ XX_country|d('%NULL%') }}
 
