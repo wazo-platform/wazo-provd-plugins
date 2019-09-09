@@ -144,7 +144,10 @@
     {%- endfor %}
     {%- endif %}
     </sipLines>
-    <voipControlPort>{% if '1' in sip_lines %}{{ sip_lines['1']['proxy_port']|d(5060) }}{% endif %}</voipControlPort>
+    {% if '1' in sip_lines -%}
+    <externalNumberMask>{{ sip_lines['1']['number'] }}</externalNumberMask>
+    <voipControlPort>{{ sip_lines['1']['proxy_port']|d(5060) }}</voipControlPort>
+    {% endif -%}
     <startMediaPort>10000</startMediaPort>
     <stopMediaPort>50000</stopMediaPort>
     <dscpForAudio>184</dscpForAudio>
