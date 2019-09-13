@@ -150,7 +150,7 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
     def _do_extract(self, request):
         packet = request['packet']
         filename = packet['filename']
-        for test_fun in [self._test_spafile, self._test_init, self._test_atafile]: 
+        for test_fun in [self._test_spafile, self._test_init, self._test_atafile]:
             dev_info = test_fun(filename)
             if dev_info:
                 dev_info[u'vendor'] = u'Cisco'
@@ -407,9 +407,9 @@ class BaseCiscoPlugin(StandardPlugin):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(dev[u'mac'], separator='')
 
-        if dev[u'model'].startswith('ATA'):
+        if dev.get('model', '').startswith('ATA'):
             fmted_mac = 'ATA%s.cnf' % fmted_mac.upper()
-        
+
         return fmted_mac + '.xml'
 
     def _dev_shifted_device(self, dev):
@@ -436,7 +436,7 @@ class BaseCiscoPlugin(StandardPlugin):
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
-        self._add_fkeys(raw_config, device.get(u'model'))
+        self._add_fkeys(raw_config, device.get('model'))
         self._add_timezone(raw_config)
         self._add_proxies(raw_config)
         self._add_language(raw_config)
@@ -447,7 +447,7 @@ class BaseCiscoPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING, errors='replace')
 
-        if len(raw_config[u'sip_lines']) >= 2 and device[u'model'].startswith('ATA'):
+        if len(raw_config[u'sip_lines']) >= 2 and device.get('model', '').startswith('ATA'):
             raw_config[u'XX_second_line_ata'] = True
 
             filename = self._dev_shifted_specific_filename(device)
@@ -456,8 +456,8 @@ class BaseCiscoPlugin(StandardPlugin):
 
     def deconfigure(self, device):
         path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
-        
-        if device[u'model'].startswith('ATA'):
+
+        if device.get('model', '').startswith('ATA'):
             path2 = os.path.join(self._tftpboot_dir, self._dev_shifted_specific_filename(device))
             try:
                 os.remove(path2)
