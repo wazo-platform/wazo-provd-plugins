@@ -376,13 +376,13 @@ class BaseAastraPlugin(StandardPlugin):
 
     def _update_sip_lines(self, raw_config):
         proxy_ip = raw_config.get(u'sip_proxy_ip')
-        proxy_port = raw_config.get(u'sip_proxy_port', u'0')
+        proxy_port = raw_config.get(u'sip_proxy_port', u'5060')
         backup_proxy_ip = raw_config.get(u'sip_backup_proxy_ip', u'0.0.0.0')
-        backup_proxy_port = raw_config.get(u'sip_backup_proxy_port', u'0')
+        backup_proxy_port = raw_config.get(u'sip_backup_proxy_port', u'5060')
         registrar_ip = raw_config.get(u'sip_registrar_ip')
-        registrar_port = raw_config.get(u'sip_registrar_port', u'0')
+        registrar_port = raw_config.get(u'sip_registrar_port', u'5060')
         backup_registrar_ip = raw_config.get(u'sip_backup_registrar_ip', u'0.0.0.0')
-        backup_registrar_port = raw_config.get(u'sip_backup_registrar_port', u'0')
+        backup_registrar_port = raw_config.get(u'sip_backup_registrar_port', u'5060')
         dtmf_mode = raw_config.get(u'sip_dtmf_mode')
         srtp_mode = raw_config.get(u'sip_srtp_mode')
         voicemail = raw_config.get(u'exten_voicemail')
