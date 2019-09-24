@@ -1,19 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2013-2015 Avencall
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 # Depends on the following external programs:
 #  -rsync
@@ -47,7 +35,7 @@ def build_v81(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'v81/', path])
 
-    
+
 @target('v82', 'xivo-yealink-v82')
 def build_v82(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
@@ -56,7 +44,7 @@ def build_v82(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'v82/', path])
 
-    
+
 @target('v83', 'xivo-yealink-v83')
 def build_v83(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
@@ -64,3 +52,12 @@ def build_v83(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'v83/', path])
+
+
+@target('v84', 'wazo-yealink-v84')
+def build_v84(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'v84/', path])
