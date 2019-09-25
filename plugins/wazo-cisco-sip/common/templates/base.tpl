@@ -1,4 +1,5 @@
 <device>
+  <fullConfig>true</fullConfig>
   <deviceProtocol>SIP</deviceProtocol>
   <sshUserId>admin</sshUserId>
   <sshPassword>{{ admin_password }}</sshPassword>
@@ -27,15 +28,23 @@
             <processNodeName>{{ sip_proxy_ip }}</processNodeName>
           </callManager>
         </member>
+      {% if sip_backup_proxy_ip -%}
+        <member priority="1">
+          <callManager>
+            <ports>
+              <ethernetPhonePort>2000</ethernetPhonePort>
+              <sipPort>{{ sip_backup_proxy_port }}</sipPort>
+              <securedSipPort>5061</securedSipPort>
+            </ports>
+            <processNodeName>{{ sip_backup_proxy_ip }}</processNodeName>
+          </callManager>
+        </member>
+      {% endif -%}
       </members>
     </callManagerGroup>
   </devicePool>
   <sipProfile>
     <sipProxies>
-      <backupProxy>{{ sip_backup_proxy_ip }}</backupProxy>
-      <backupProxyPort>{{ sip_backup_proxy_port }}</backupProxyPort>
-      <emergencyProxy></emergencyProxy>
-      <emergencyProxyPort></emergencyProxyPort>
       <outboundProxy>{{ sip_outbound_proxy_ip }}</outboundProxy>
       <outboundProxyPort>{{ sip_outbound_proxy_port }}</outboundProxyPort>
       <registerWithProxy>true</registerWithProxy>
@@ -118,6 +127,8 @@
           <redirectedNumber>false</redirectedNumber>
           <dialedNumber>true</dialedNumber>
         </forwardCallInfoDisplay>
+        <maxNumCalls>5</maxNumCalls>
+        <busyTrigger>5</busyTrigger>
       </line>
     {% endfor -%}
     {%- if XX_fkeys %}
@@ -133,7 +144,10 @@
     {%- endfor %}
     {%- endif %}
     </sipLines>
-    <voipControlPort>{% if '1' in sip_lines %}{{ sip_lines['1']['proxy_port']|d(5060) }}{% endif %}</voipControlPort>
+    {% if '1' in sip_lines -%}
+    <externalNumberMask>{{ sip_lines['1']['number'] }}</externalNumberMask>
+    <voipControlPort>{{ sip_lines['1']['proxy_port']|d(5060) }}</voipControlPort>
+    {% endif -%}
     <startMediaPort>10000</startMediaPort>
     <stopMediaPort>50000</stopMediaPort>
     <dscpForAudio>184</dscpForAudio>
@@ -200,7 +214,7 @@
   <dscpForSCCPPhoneConfig>96</dscpForSCCPPhoneConfig>
   <dscpForSCCPPhoneServices>0</dscpForSCCPPhoneServices>
   <dscpForCm2Dvce>96</dscpForCm2Dvce>
-  <transportLayerProtocol>2</transportLayerProtocol>
+  <transportLayerProtocol>{{ XX_transport_proto|d(2) }}</transportLayerProtocol>
 
   <dndCallAlert>1</dndCallAlert>
   <dndReminderTimer>5</dndReminderTimer>
