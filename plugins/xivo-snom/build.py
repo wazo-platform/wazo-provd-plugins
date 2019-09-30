@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014-2016 Avencall
+# Copyright 2014-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -267,3 +267,67 @@ def build_10_1_26_1(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '10.1.26.1/', path])
+
+
+@target('10.1.42.14', 'wazo-snom-10.1.42.14')
+def build_10_1_42_14(path):
+    MODELS = [
+        ('715', 'r'),
+        ('725', 'r'),
+        ('D120', 'r'),
+        ('D305', 'r'),
+        ('D315', 'r'),
+        ('D345', 'r'),
+        ('D375', 'r'),
+        ('D385', 'r'),
+        ('D712', 'r'),
+        ('D717', 'r'),
+        ('D735', 'r'),
+        ('D745', 'r'),
+        ('D765', 'r'),
+        ('D785', 'r'),
+    ]
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--include', '/templates/base.tpl',
+                '--include', '/templates/715.tpl',
+                '--include', '/templates/725.tpl',
+                '--include', '/templates/D120.tpl',
+                '--include', '/templates/D305.tpl',
+                '--include', '/templates/D315.tpl',
+                '--include', '/templates/D345.tpl',
+                '--include', '/templates/D375.tpl',
+                '--include', '/templates/D385.tpl',
+                '--include', '/templates/D712.tpl',
+                '--include', '/templates/D717.tpl',
+                '--include', '/templates/D735.tpl',
+                '--include', '/templates/D745.tpl',
+                '--include', '/templates/D765.tpl',
+                '--include', '/templates/D785.tpl',
+                '--exclude', '/templates/*.tpl',
+                '--exclude', '*.btpl',
+                'common/', path])
+
+    for model, fw_suffix in MODELS:
+        # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
+        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s-firmware.xml.tpl' % model)
+        sed_script = 's/#FW_FILENAME#/snom%s-10.1.42.14-SIP-%s.bin/' % (model, fw_suffix)
+        with open(model_tpl, 'wb') as f:
+            check_call(['sed', sed_script, 'common/templates/common/snom-model-firmware.xml.tpl.btpl'],
+                       stdout=f)
+
+        # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
+        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s.htm.tpl' % model)
+        sed_script = 's/#MODEL#/%s/' % model
+        with open(model_tpl, 'wb') as f:
+            check_call(['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                       stdout=f)
+
+        # generate snom<model>.xml.tpl from snom-model.xml.mtpl
+        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s.xml.tpl' % model)
+        sed_script = 's/#MODEL#/%s/' % model
+        with open(model_tpl, 'wb') as f:
+            check_call(['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                       stdout=f)
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '10.1.42.14/', path])
