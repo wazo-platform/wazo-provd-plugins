@@ -96,9 +96,20 @@ version: 10.1.42.14
 files: D785-fw
 install: snom-fw
 
+[pkg_lang]
+description: User interface (Web and phone) language files
+description_fr: Fichiers de langue de l'interface utilisateur (Web et téléphone)
+version: 10.1.42.14
+files: lang
+install: snom-lang
+
 
 [install_snom-fw]
 a-b: cp $FILE1 firmware/
+
+[install_snom-lang]
+a-b: untar $FILE1
+b-c: cp snomlang/* i18n/
 
 
 [file_715-fw]
@@ -170,3 +181,8 @@ sha1sum: 4ec98126519d9f1670cecf8764ea2d7c51651824
 url: http://downloads.snom.com/fw/10.1.42.14/bin/snomD785-10.1.42.14-SIP-r.bin
 size: 30788608
 sha1sum: bf4464c695dbe17b6942433dcaba7ad806972fd6
+
+[file_lang]
+url: http://downloads.snom.com/fw/10.1.42.14/custom/snomD717-10.1.42.14-customizing.tar.gz
+size: 2503872
+sha1sum: 33bf8ddae7d7078ee88e966de0b717ca003b2eef
