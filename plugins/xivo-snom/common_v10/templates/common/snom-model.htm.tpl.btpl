@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<setting-files>
+  <file url="http://{{ ip }}:{{ http_port }}/snom-general.xml"/>
+  <file url="http://{{ ip }}:{{ http_port }}/snom#MODEL#.xml"/>
+  <file url="http://{{ ip }}:{{ http_port }}/gui_lang.xml"/>
+  <file url="http://{{ ip }}:{{ http_port }}/web_lang.xml"/>
+</setting-files>
