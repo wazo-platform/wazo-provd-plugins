@@ -118,6 +118,8 @@ class BaseSnomPlugin(StandardPlugin):
         u'fr_CA': (u'Français', u'USA'),
         u'it_IT': (u'Italiano', u'ITA'),
         u'nl_NL': (u'Dutch', u'NLD'),
+        u'ja_JP': (u'Japanese', u'JPN'),
+        u'sv_SE': (u'Svenska', u'SWE'),
     }
     _SIP_DTMF_MODE = {
         u'RTP-in-band': u'off',
@@ -131,6 +133,24 @@ class BaseSnomPlugin(StandardPlugin):
         },
         u'fr': {
             u'remote_directory': u'Annuaire',
+        },
+        u'es': {
+            u'remote_directory': u'Directorio',
+        },
+        u'it': {
+            u'remote_directory': u'Elenco',
+        },
+        u'jp': {
+            u'remote_directory': u'電話帳',
+        },
+        u'de': {
+            u'remote_directory': u'Telefonbuch',
+        },
+        u'nl': {
+            u'remote_directory': u'Telefoonboek',
+        },
+        u'sv': {
+            u'remote_directory': u'Telefonkatalog',
         },
     }
 
