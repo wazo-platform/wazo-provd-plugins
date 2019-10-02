@@ -177,7 +177,7 @@ class BaseSnomPlugin(StandardPlugin):
                 line.setdefault(u'voicemail', voicemail)
 
     def _add_fkeys(self, raw_config, model):
-        lines = []
+        fkeys = []
         for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
                                                key=itemgetter(0)):
             funckey_type = funckey_dict[u'type']
@@ -206,9 +206,12 @@ class BaseSnomPlugin(StandardPlugin):
             value = funckey_dict[u'value']
             label = escape(funckey_dict.get(u'label') or value)
             fkey_value = self._format_fkey_value(type_, value, suffix)
-            lines.append(u'<fkey idx="%d" label="%s" context="active" perm="R">%s</fkey>' %
-                         (int(funckey_no) - 1, label, fkey_value))
-        raw_config[u'XX_fkeys'] = u'\n'.join(lines)
+            fkeys.append({
+                u'idx': int(funckey_no) - 1,
+                u'label': label,
+                u'value': fkey_value
+            })
+        raw_config[u'XX_fkeys'] = fkeys
 
     def _format_fkey_value(self, fkey_type, value, suffix):
         return '%s %s%s' % (fkey_type, value, suffix)
