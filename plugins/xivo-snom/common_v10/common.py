@@ -228,17 +228,16 @@ class BaseSnomPlugin(StandardPlugin):
             return u'%02d.%02d.%02d %s' % (dst_change['month'], week, weekday, fmted_time)
 
     def _format_tzinfo(self, tzinfo):
-        lines = []
-        lines.append(u'<timezone perm="R"></timezone>')
-        lines.append(u'<utc_offset perm="R">%+d</utc_offset>' % tzinfo['utcoffset'].as_seconds)
-        if tzinfo['dst'] is None:
-            lines.append(u'<dst perm="R"></dst>')
-        else:
-            lines.append(u'<dst perm="R">%d %s %s</dst>' %
-                         (tzinfo['dst']['save'].as_seconds,
-                          self._format_dst_change(tzinfo['dst']['start']),
-                          self._format_dst_change(tzinfo['dst']['end'])))
-        return u'\n'.join(lines)
+        timezone = {}
+        timezone['utc_offset'] = u'%+d' % tzinfo['utcoffset'].as_seconds
+        timezone['dst'] = ''
+        if tzinfo['dst']:
+            timezone['dst'] = u'%d %s %s' % (
+                tzinfo['dst']['save'].as_seconds,
+                self._format_dst_change(tzinfo['dst']['start']),
+                self._format_dst_change(tzinfo['dst']['end'])
+            )
+        return timezone
 
     def _add_timezone(self, raw_config):
         timezone = raw_config.get(u'timezone')

@@ -78,7 +78,11 @@
     <tone_scheme perm="R">{{ XX_lang[1] }}</tone_scheme>
     {% endif -%}
 
-    {{ XX_timezone }}
+    {% if XX_timezone -%}
+    <timezone perm="R"></timezone>
+    <utc_offset perm="R">{{ XX_timezone['utc_offset'] }}</utc_offset>
+    <dst perm="R">{{ XX_timezone['dst'] }}</dst>
+    {% endif -%}
 
     <!-- hide the "identity not registered" msg when Wazo HA is enabled -->
     <status_msgs_that_are_blocked perm="R">PhoneHasVoiceMessages PhoneHasTextMessages{{ XX_msgs_blocked }}</status_msgs_that_are_blocked>
