@@ -140,37 +140,37 @@ sha1sum: 8d33bc15893933aa8a2bec35d65719f6a9aeb036
 [file_D345-fw]
 url: http://downloads.snom.com/fw/10.1.42.14/bin/snomD345-10.1.42.14-SIP-r.bin
 size: 26944512
-sha1sum: cb6c324c9cd2923b2d095975e9373a82ef1c3ba5
+sha1sum: 7bfc10540d8274e13e1ccc155bf64f4dfee63d31
 
 [file_D375-fw]
 url: http://downloads.snom.com/fw/10.1.42.14/bin/snomD375-10.1.42.14-SIP-r.bin
 size: 30738160
-sha1sum: 0cefc92cc58913ec0b3bce952bf2f919c41af487
+sha1sum: 26a24081eb4b7856b554a396a41d7ceaf1fb50e9
 
 [file_D385-fw]
 url: http://downloads.snom.com/fw/10.1.42.14/bin/snomD385-10.1.42.14-SIP-r.bin
 size: 30797504
-sha1sum: f0e6919ddce21bdf3082d65ce411f1edfd319b1e
+sha1sum: 78b95ae5ec96602f1b986914e287ded6d8d9ce82
 
 [file_D712-fw]
 url: http://downloads.snom.com/fw/10.1.42.14/bin/snomD712-10.1.42.14-SIP-r.bin
 size: 21214992
-sha1sum: 612c10d1c98df2634a26d86435bbd011b9aab96a
+sha1sum: 301e2076a1754d5b62c8c944a83ee48f71565398
 
 [file_D717-fw]
 url: http://downloads.snom.com/fw/10.1.42.14/bin/snomD717-10.1.42.14-SIP-r.bin
 size: 30924656
-sha1sum: 612c10d1c98df2634a26d86435bbd011b9aab96a
+sha1sum: ca6986f7dd129d1a70e308760c17dd82bdd43ba8
 
 [file_D735-fw]
 url: http://downloads.snom.com/fw/10.1.42.14/bin/snomD735-10.1.42.14-SIP-r.bin
 size: 30728384
-sha1sum: b2feb392af91235c6ceb891365e19ca2ffa5b66c
+sha1sum: a5e8dbbc38a719a7793463e02df300c7bf8ec604
 
 [file_D745-fw]
 url: http://downloads.snom.com/fw/10.1.42.14/bin/snomD745-10.1.42.14-SIP-r.bin
 size: 26937088
-sha1sum: f8df4f5e2f39dcc6d559057fa9def56f70749963
+sha1sum: 44de3655f8ee329ad66ea01694b0cff89f21b2b6
 
 [file_D765-fw]
 url: http://downloads.snom.com/fw/10.1.42.14/bin/snomD765-10.1.42.14-SIP-r.bin
@@ -180,7 +180,7 @@ sha1sum: 4ec98126519d9f1670cecf8764ea2d7c51651824
 [file_D785-fw]
 url: http://downloads.snom.com/fw/10.1.42.14/bin/snomD785-10.1.42.14-SIP-r.bin
 size: 30788608
-sha1sum: bf4464c695dbe17b6942433dcaba7ad806972fd6
+sha1sum: 906f645e629627cd7a32c104983607d047908329
 
 [file_lang]
 url: http://downloads.snom.com/fw/10.1.42.14/custom/snomD717-10.1.42.14-customizing.tar.gz
