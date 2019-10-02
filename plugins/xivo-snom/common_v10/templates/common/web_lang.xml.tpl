@@ -28,6 +28,6 @@
   <language url="http://{{ ip }}:{{ http_port }}/i18n/web_lang_SI.xml" name="Slovenščina"/>
   <language url="http://{{ ip }}:{{ http_port }}/i18n/web_lang_SV.xml" name="Svenska"/>
   <language url="http://{{ ip }}:{{ http_port }}/i18n/web_lang_TR.xml" name="Türkçe"/>
-  <language url="http://{{ ip }}:{{ http_port }}/i18n/web_lang_UK.xml" name="English (UK)"/>
+  <language url="http://{{ ip }}:{{ http_port }}/i18n/web_lang_UK.xml" name="English(UK)"/>
   <language url="http://{{ ip }}:{{ http_port }}/i18n/web_lang_ZH.xml" name="Simplified Chinese"/>
 </web-languages>

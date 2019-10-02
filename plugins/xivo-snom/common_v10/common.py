@@ -111,10 +111,11 @@ class BaseSnomPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _LOCALE = {
         u'de_DE': (u'Deutsch', u'GER'),
+        u'en_GB': (u'English', u'GBR'),
         u'en_US': (u'English', u'USA'),
-        u'es_ES': (u'Espanol', u'ESP'),
-        u'fr_FR': (u'Francais', u'FRA'),
-        u'fr_CA': (u'Francais', u'USA'),
+        u'es_ES': (u'Español', u'ESP'),
+        u'fr_FR': (u'Français', u'FRA'),
+        u'fr_CA': (u'Français', u'USA'),
         u'it_IT': (u'Italiano', u'ITA'),
         u'nl_NL': (u'Dutch', u'NLD'),
     }
