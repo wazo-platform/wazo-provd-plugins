@@ -58,7 +58,7 @@
     {% endfor -%}
 
     {% if XX_xivo_phonebook_url -%}
-    <dkey_directory perm="R">url {{ (XX_xivo_phonebook_url|e).replace(' ', '%20') }}</dkey_directory>
+    <dkey_directory perm="R">url {{ XX_xivo_phonebook_url|e }}</dkey_directory>
     {% block gui_fkey1 %}
     <gui_fkey1_icon_type perm="R">kIconTypeFkeyAdrBook</gui_fkey1_icon_type>
     <gui_fkey1 perm="R">
@@ -66,7 +66,7 @@
             <variable name="label" value="{{ XX_dict['remote_directory'] }}"/>
         </initialization>
         <action>
-            <url target="{{ (XX_xivo_phonebook_url|e).replace(' ', '%20') }}" when="on press"/>
+            <url target="{{ XX_xivo_phonebook_url|e }}" when="on press"/>
         </action>
     </gui_fkey1>
     {% endblock %}
