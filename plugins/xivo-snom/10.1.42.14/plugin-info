@@ -1,5 +1,5 @@
 {
-    "version": "0.1.8b",
+    "version": "0.1.8c",
     "description": "Plugin for Snom 715, 725, D120, D305, D315, D345, D375, D385, D712, D717, D735, D745, D765, D785 in version 10.1.42.14.",
     "description_fr": "Greffon pour Snom 715, 725, D120, D305, D315, D345, D375, D385, D712, D717, D735, D745, D765, D785 en version 10.1.42.14.",
     "capabilities": {
