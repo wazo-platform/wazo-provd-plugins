@@ -205,20 +205,15 @@ class BaseSnomPlugin(StandardPlugin):
                 type_ = u'speed'
                 suffix = ''
             elif funckey_type == u'park':
-                if model in [u'715', u'725', u'D765']:
-                    type_ = u'orbit'
-                    suffix = ''
-                else:
-                    type_ = u'speed'
-                    suffix = ''
+                type_ = u'orbit'
+                suffix = ''
             elif funckey_type == u'blf':
                 exten_pickup_call = raw_config.get(u'exten_pickup_call')
                 if exten_pickup_call:
                     type_ = u'blf'
                     suffix = '|%s' % exten_pickup_call
                 else:
-                    logger.warning('Could not set funckey %s: no exten_pickup_call',
-                                   funckey_no)
+                    logger.warning('Could not set funckey %s: no exten_pickup_call', funckey_no)
                     continue
             else:
                 logger.info('Unsupported funckey type: %s', funckey_type)
