@@ -220,10 +220,12 @@ class BaseSnomPlugin(StandardPlugin):
                 continue
             value = funckey_dict[u'value']
             label = escape(funckey_dict.get(u'label') or value)
+            short_label = label
             fkey_value = self._format_fkey_value(type_, value, suffix)
             fkeys.append({
                 u'idx': int(funckey_no) - 1,
                 u'label': label,
+                u'short_label': short_label,
                 u'value': fkey_value
             })
         raw_config[u'XX_fkeys'] = fkeys

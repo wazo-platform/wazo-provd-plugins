@@ -95,7 +95,7 @@
     {% block fkeys_prefix %}{% endblock %}
     {% if XX_fkeys -%}
     {% for fkey in XX_fkeys -%}
-    <fkey idx="{{ fkey['idx'] }}" label="{{ fkey['label'] }}" context="active" perm="R">{{ fkey['value'] }}</fkey>
+    <fkey idx="{{ fkey['idx'] }}" label="{{ fkey['label'] }}" short_label="{{ fkey['short_label'] }}" context="active" perm="R">{{ fkey['value'] }}</fkey>
     {% endfor -%}
     {% endif -%}
   </functionKeys>
