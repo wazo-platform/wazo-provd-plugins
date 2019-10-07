@@ -60,7 +60,7 @@
     {% if XX_xivo_phonebook_url -%}
     <dkey_directory perm="R">url {{ XX_xivo_phonebook_url|e }}</dkey_directory>
     {% block gui_fkey1 %}
-    <gui_fkey1_icon_type perm="R">kIconTypeFkeyAdrBook</gui_fkey1_icon_type>
+    <gui_fkey1_icon_type perm="R">kIconTypeFkeyDirSearch</gui_fkey1_icon_type>
     <gui_fkey1 perm="R">
         <initialization>
             <variable name="label" value="{{ XX_dict['remote_directory'] }}"/>
