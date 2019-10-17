@@ -8,52 +8,52 @@
     "vendor.official" : 0,
     "capabilities": {
         "Fanvil, X2, 2.2.0.3753": {
-            "sip.lines": 1,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 0
+            "lines": 1,
+            "high_availability": false,
+            "function_keys": 0,
+            "protocol": "sip"
         },
         "Fanvil, X3, 1.4.0.2016": {
-            "sip.lines": 2,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 0
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 0,
+            "protocol": "sip"
         },
         "Fanvil, X3S, 2.4.0.5487": {
-            "sip.lines": 2,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 0,
-            "xivo.tested" : 0
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 0,
+            "protocol": "sip"
         },
         "Fanvil, X4, 2.4.0.5487": {
-            "sip.lines": 4,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 12,
-            "xivo.tested" : 0
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 12,
+            "protocol": "sip"
         },
         "Fanvil, X5, 1.4.0.2016": {
-            "sip.lines": 6,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 40,
-            "xivo.tested" : 0
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 40,
+            "protocol": "sip"
         },
         "Fanvil, X5S, P0.11.7-1.4.1": {
-            "sip.lines": 6,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 40,
-            "xivo.tested" : 0
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 40,
+            "protocol": "sip"
         },
         "Fanvil, X6, P0.11.7-1.4.1": {
-            "sip.lines": 6,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 60,
-            "xivo.tested" : 0
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 60,
+            "protocol": "sip"
         },
         "Fanvil, X6V2, P0.11.7-1.4.1": {
-            "sip.lines": 6,
-            "xivo.ha" : 0,
-            "tel.funckeys" : 60,
-            "xivo.tested" : 0
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 60,
+            "protocol": "sip"
         }
     }
 }
