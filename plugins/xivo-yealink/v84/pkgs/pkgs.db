@@ -82,6 +82,13 @@ version: 97.84.0.95
 files: T57W-fw
 install: yealink-fw
 
+[pkg_T58A-fw]
+description: Firmware for Yealink T58A
+description_fr: Micrologiciel pour Yealink T58A
+version: 58.84.0.15
+files: T58A-fw
+install: yealink-fw
+
 
 [pkg_T27G_CP920-lang]
 description: Language pack for Yealink T27G et CP920
@@ -270,6 +277,12 @@ filename: T57W-97.84.0.95.rom
 url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypjZRKhDplusSymbolXJQ4KuKeRs9f5WG4gC2iW7C8IVf2SKJA8KAbekAJC7UUZ/lkruoZOVjqwbME7sPtdnZt6zAc4HOQoRkMsRTxcplusSymbolz7vA==
 size: 33496752
 sha1sum: f1e65505af9108b919a6266cf1a0f013cf77a233
+
+[file_T58A-fw]
+filename: T58-58.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypjZRKhDplusSymbolXJQ4RnPj7cJgsoI3LiplusSymbolVxvIw3B9y5mwn/Bn89EJXWoqkxlTrBxeMvto8wyaMCddtlikS7kTIplusSymbolVl6AFpf1ffgobzK3Q==
+size: 238208816
+sha1sum: 6b4d9cd5a067672eed3dc30f4d5b2649ad4722a2
 
 
 [file_T27G_CP920-lang]

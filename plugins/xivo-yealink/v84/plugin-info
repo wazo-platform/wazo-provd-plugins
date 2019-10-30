@@ -1,7 +1,7 @@
 {
-    "version": "1.0.7",
-    "description": "Plugin for Yealink for CP920, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W and T57(W) in version V84.",
-    "description_fr": "Greffon pour Yealink pour CP920, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W et T57(W) en version V84.",
+    "version": "1.0.8",
+    "description": "Plugin for Yealink for CP920, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W, T57(W) and T58A in version V84.",
+    "description_fr": "Greffon pour Yealink pour CP920, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W, T57(W) et T58A en version V84.",
     "vendor" : "Yealink",
     "vendor.url" : "http://www.yealink.com",
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
@@ -128,6 +128,13 @@
             "protocol": "sip"
         },
         "Yealink, T57W, 97.84.0.95": {
+            "lines": 16,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        },
+        "Yealink, T58A, 58.84.0.15": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 0,
