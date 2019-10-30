@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2013-2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -60,11 +60,13 @@ COMMON_FILES = [
     ('y000000000058.cfg', u'T58V(T56A)-58.83.0.5.rom', 'model.tpl'),
     ('y000000000076.cfg', u'T40G-76.83.0.35.rom', 'model.tpl'),
     ('y000000000066.cfg', u'T46S(T48S,T42S,T41S)-66.83.0.35.rom', 'model.tpl'),
+    ('y000000000068.cfg', u'T46S(T48S,T42S,T41S)-66.83.0.35.rom', 'model.tpl'),
     ('y000000000070.cfg', u'T54S(T52S)-70.83.0.35.rom', 'model.tpl'),
 ]
 COMMON_FILES_DECT = [
     ('y000000000077.cfg', u'W60B-77.83.0.10.rom', u'W53H-88.83.0.10.rom', u'W56H-61.83.0.10.rom', 'W60P_W53P.tpl'),
 ]
+
 
 class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     IS_PLUGIN = True
@@ -83,5 +85,5 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
             raw_config[u'XX_fw_filename'] = fw_filename
             raw_config[u'XX_fw_w53h_handset_filename'] = fw_w53h_handset_filename
             raw_config[u'XX_fw_w56h_handset_filename'] = fw_w56h_handset_filename
-            
+
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
