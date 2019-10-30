@@ -190,6 +190,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
 
     _NB_LINEKEY = {
         u'CP920': 0,
+        u'CP960': 0,
         u'T19P_E2': 0,
         u'T21P_E2': 2,
         u'T23P': 3,
@@ -211,6 +212,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
     }
     _NB_MEMORYKEY = {
         u'CP920': 0,
+        u'CP960': 0,
         u'T19P_E2': 0,
         u'T21P_E2': 0,
         u'T23P': 0,
@@ -308,6 +310,7 @@ class BaseYealinkPlugin(StandardPlugin):
     _SIP_TRANSPORT_DEF = u'0'
     _NB_SIP_ACCOUNTS = {
         u'CP920': 1,
+        u'CP960': 1,
         u'T19P_E2': 1,
         u'T21P_E2': 2,
         u'T23P': 3,

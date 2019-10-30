@@ -5,6 +5,13 @@ version: 78.84.0.90
 files: CP920-fw
 install: yealink-fw
 
+[pkg_CP960-fw]
+description: Firmware for Yealink CP960
+description_fr: Micrologiciel pour Yealink CP960
+version: 73.84.0.15
+files: CP960-fw
+install: yealink-fw
+
 [pkg_T19P_E2-fw]
 description: Firmware for Yealink T19P E2
 description_fr: Micrologiciel pour Yealink T19P E2
@@ -211,6 +218,12 @@ filename: CP920-78.84.0.90.rom
 url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypjZRKhDplusSymbolXJQ4C2CPrldcvTPQFK79iTmkYWiCATplusSymbolsJv9G3aX65TOmyOFnWCQhTVI7Ufr1gNnZBiDFz/Rp1rUkZUpM9uPDgpTWplusSymbolVtPqHb5yKnO
 size: 19864144
 sha1sum: 6322fe66c246cc9dd418e018c90671491f6a755b
+
+[file_CP960-fw]
+filename: CP960-73.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypjZRKhDplusSymbolXJQ4plusSymbolB8c101UX7NTYyPaO3EhhOSvplusSymbol8qS7OplusSymbolJWbLejqYfm8nLdSTtbiSmllk1r8LhJ1FAAvplusSymbolHVrABK9rNwwu0WY30dEc3RuhwSkSy
+size: 195913872
+sha1sum: 6a7d2a350a390ee8f5b1e35c1d5a08fc8181d482
 
 [file_T19P_E2-fw]
 filename: T19P_E2-53.84.0.15.rom

@@ -8,6 +8,7 @@ execfile_('common.py', common_globals)
 
 MODEL_VERSIONS = {
     u'CP920': u'78.84.0.90',
+    u'CP960': u'73.84.0.15',
     u'T19P_E2': u'53.84.0.15',  # 53.84.0.90 version does not support YDMP and YMCS
     u'T21P_E2': u'52.84.0.15',  # 52.84.0.90 version does not support YDMP and YMCS
     u'T23P': u'44.84.0.15',  # 44.84.0.90 version does not support YDMP and YMCS
@@ -45,6 +46,7 @@ COMMON_FILES = [
     ('y000000000097.cfg', u'T57W-97.84.0.95.rom', 'model.tpl'),
     ('y000000000058.cfg', u'T58-58.84.0.15.rom', 'model.tpl'),
     ('y000000000078.cfg', u'CP920-78.84.0.90.rom', 'model.tpl'),
+    ('y000000000073.cfg', u'CP960-73.84.0.15.rom', 'model.tpl'),
 ]
 
 
