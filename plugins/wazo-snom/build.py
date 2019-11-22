@@ -329,7 +329,7 @@ def build_10_1_46_16(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '--include', '/templates/base.tpl',
                 '--include', '/templates/D7*5.tpl',
-                '--include', '/templates/D375.tpl',
+                '--include', '/templates/D3*5.tpl',
                 '--include', '/templates/D717.tpl',
                 '--exclude', '/templates/*.tpl',
                 '--exclude', '*.btpl',
