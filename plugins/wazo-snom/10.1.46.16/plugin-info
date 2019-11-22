@@ -4,28 +4,76 @@
     "description_fr": "Greffon pour Snom Snom D3x5, D717, D7x5 en version 10.1.46.16",
     "capabilities": {
         "Snom, D375, 10.1.46.16": {
-            "sip.lines": 12
+            "lines": 12,
+			"high_availability": false,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+		"Snom, D385, 10.1.46.16": {
+            "lines": 12,
+			"high_availability": false,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Snom, 715, 10.1.46.16": {
-            "sip.lines": 12
+            "lines": 12,
+			"high_availability": false,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Snom, D717, 10.1.46.16": {
-            "sip.lines": 12
+            "lines": 12,
+			"high_availability": false,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Snom, 725, 10.1.46.16": {
-            "sip.lines": 12
+            "lines": 12,
+			"high_availability": false,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Snom, D735, 10.1.46.16": {
-            "sip.lines": 12
+            "lines": 12,
+			"high_availability": false,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Snom, D745, 10.1.46.16": {
-            "sip.lines": 12
+            "lines": 12,
+			"high_availability": false,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Snom, D755, 10.1.46.16": {
-            "sip.lines": 12
+             "lines": 12,
+			"high_availability": false,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         },
         "Snom, D785, 10.1.46.16": {
-            "sip.lines": 12
+			"lines": 12,
+			"high_availability": false,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }
