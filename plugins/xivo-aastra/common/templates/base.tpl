@@ -36,6 +36,9 @@ vlan id port 1: 4095
 tagging enabled: 0
 {% endif -%}
 
+tos sip: 46
+tos rtp: 46
+
 {# NTP settings -#}
 {% if ntp_enabled -%}
 time server disabled: 0
