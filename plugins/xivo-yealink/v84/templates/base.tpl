@@ -3,6 +3,9 @@
 static.auto_provision.pnp_enable = 0
 static.auto_provision.custom.protect = 1
 
+static.network.qos.audiotos 46
+static.network.qos.signaltos 46
+
 distinctive_ring_tones.alert_info.1.text = ring1
 distinctive_ring_tones.alert_info.2.text = ring2
 distinctive_ring_tones.alert_info.3.text = ring3
