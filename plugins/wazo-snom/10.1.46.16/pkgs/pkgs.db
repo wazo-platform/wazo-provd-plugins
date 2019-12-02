@@ -12,11 +12,11 @@ version: 10.1.46.16
 files: 385-fw
 install: snom-fw
 
-[pkg_d3-fw]
-description: Firmware for Snom D3
-description_fr: Micrologiciel pour Snom D3
+[pkg_uxm-fw]
+description: Firmware for Snom Extension USB Module UXM D3/D7
+description_fr: Micrologiciel pour module d'extension USB Snom UXM D3/D7
 version: 2.1.1
-files: d3-fw
+files: uxm-fw
 install: snom-fw
 
 [pkg_715-fw]
@@ -83,7 +83,7 @@ url: http://downloads.snom.com/fw/10.1.46.16/bin/snomD385-10.1.46.16-SIP-r.bin
 size: 31714736
 sha1sum:0e1daa561405222f7c4e3e0223331297275f3055 
 
-[file_d3-fw]
+[file_uxm-fw]
 url: http://downloads.snom.com/snomUXM-2.1.1.bin
 size: 96560
 sha1sum:9c4e07185ca6eb863858edf23147ab8576f94c4a
