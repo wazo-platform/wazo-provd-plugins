@@ -82,6 +82,8 @@ class GigasetHTTPDeviceInfoExtractor(object):
         # "Gigaset N720 DM PRO/70.108.00.000.000"
         # "N510 IP PRO/42.245.00.000.000;7C2F804DF9A9"
         # "N510 IP PRO/42.245.00.000.000"
+        # "N510 IP PRO/42.250.00.000.000;7C2F806257D7"
+        # "N510 IP PRO/42.250.00.000.000"
         m = self._UA_REGEX.search(ua)
         dev_info = {}
         if m:
@@ -184,7 +186,7 @@ class BaseGigasetPlugin(StandardPlugin):
         return fmted_mac + '.xml'
 
     def _add_phonebook(self, raw_config):
-        uuid_format = u'{scheme}://{hostname}:{port}/0.1/directories/lookup/{profile}/gigaset/{user_uuid}?'
+        uuid_format = u'{scheme}://{hostname}:{port}/0.1/directories/lookup/default/gigaset/{user_uuid}?'
         plugins.add_xivo_phonebook_url_from_format(raw_config, uuid_format)
 
     def _add_timezone_code(self, raw_config):
