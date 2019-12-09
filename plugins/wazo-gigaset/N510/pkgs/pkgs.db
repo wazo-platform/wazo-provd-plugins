@@ -13,4 +13,4 @@ b-c: cp */*.bin Gigaset/
 filename: N510_SW_250.zip
 url: https://teamwork.gigaset.com/gigawiki/download/attachments/926844154/N510_SW_250.zip?version=1&modificationDate=1561377527000&api=v2&download=true
 size: 5789114
-sha1sum: 1072d07336da81bbdf3fe5dbb2f1d44b4ccd1c88
+sha1sum: 3509432aac911b0010677a2bf90dd20a3d41f331
