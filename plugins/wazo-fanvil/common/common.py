@@ -41,12 +41,30 @@ logger = logging.getLogger('plugin.wazo-fanvil')
 
 class BaseFanvilHTTPDeviceInfoExtractor(object):
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
+    _UA_REGEX = re.compile(r'^Fanvil (?P<model>[X|C][0-9]{1,2}[S|G|V|U]?[0-9]?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
-        return self._extract_from_path(request)
+        dev_info = {}
+        dev_info.update(self._extract_from_path(request))
+        ua = request.getHeader('User-Agent')
+        if ua:
+            dev_info.update(self._extract_from_ua(ua))
+
+        return dev_info
+
+    def _extract_from_ua(self, ua):
+        # Fanvil X4 2.10.2.6887 0c383e07e16c
+        dev_info = {}
+        m = self._UA_REGEX.search(ua)
+        if m:
+            dev_info['vendor'] = 'Fanvil'
+            dev_info['model'] = m.group('model').decode('ascii')
+            dev_info['version'] = m.group('version').decode('ascii')
+            dev_info['mac'] = norm_mac(m.group('mac').decode('ascii'))
+        return dev_info
 
     def _extract_from_path(self, request):
         if 'f0C00580000.cfg' in request.path:
@@ -85,7 +103,7 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
             raw_mac = m.group(1)
             mac = norm_mac(raw_mac.decode('ascii'))
             return {u'mac': mac}
-        return None
+        return {}
 
 
 class BaseFanvilPgAssociator(BasePgAssociator):
