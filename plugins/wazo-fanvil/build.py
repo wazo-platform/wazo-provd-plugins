@@ -31,7 +31,7 @@ def build_2_3(path):
 
 
 @target('serie-x', 'wazo-fanvil-serie-x')
-def build_2_3(path):
+def build_x(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 

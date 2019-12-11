@@ -36,7 +36,7 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
-logger = logging.getLogger('plugin.xivo-fanvil')
+logger = logging.getLogger('plugin.wazo-fanvil')
 
 
 class BaseFanvilHTTPDeviceInfoExtractor(object):
