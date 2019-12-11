@@ -58,7 +58,11 @@
 <Enable_Reg>1</Enable_Reg>
 <Transport>{{ X_sip_transport_protocol }}</Transport>
 <DTMF_Mode>{{ line['XX_dtmf_mode'] }}</DTMF_Mode>
-<MWI_Num>*98</MWI_Num>
+{% if line['voicemail'] -%}
+<MWI_Num>{{ line['voicemail'] }}</MWI_Num>
+{% else -%}
+<MWI_Num></MWI_Num>
+{% endif -%}
 </SIP_Line_List_Entry>
 {% else -%}
 <SIP_Line_List_Entry>
