@@ -123,6 +123,11 @@ class BaseFanvilPlugin(StandardPlugin):
         u'RTP-out-of-band': u'1',
         u'SIP-INFO': u'2',
     }
+    _SIP_TRANSPORT = {
+        u'udp': u'0',
+        u'tcp': u'1',
+        u'tls': u'3',
+    }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -161,6 +166,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._check_lines_password(raw_config)
         self._add_timezone(device, raw_config)
         self._add_locale(device, raw_config)
+        self._add_sip_transport(raw_config)
         self._update_lines(raw_config)
         self._add_fkeys(raw_config)
         filename = self._dev_specific_filename(device)
@@ -266,6 +272,9 @@ class BaseFanvilPlugin(StandardPlugin):
         default_dtmf_mode = raw_config.get(u'sip_dtmf_mode', 'SIP-INFO')
         for line in raw_config[u'sip_lines'].itervalues():
             line['XX_dtmf_mode'] = self._SIP_DTMF_MODE[line.get(u'dtmf_mode', default_dtmf_mode)]
+
+    def _add_sip_transport(self, raw_config):
+        raw_config['X_sip_transport_protocol'] = self._SIP_TRANSPORT[raw_config.get(u'sip_transport', u'udp')]
 
     def _format_funckey_speeddial(self, funckey_no, funckey_dict):
         lines = []
