@@ -20,7 +20,7 @@ MODELS = [
 ]
 
 COMMON_FILES = [
-    ('F0V00X200000.cfg', u'x22.10.2.6887T20191115101133.z', 'model.tpl'),
+    ('f0X2hw1.100.cfg', u'x22.10.2.6887T20191115101133.z', 'model.tpl'),
     ('F0V00X300000.cfg', u'x31.4.0.2090T20180403152509.z', 'model.tpl'),
     ('f0X3shw1.100.cfg', u'x3s2.10.2.6887T20191115101938.z', 'model.tpl'),
     ('f0X4hw1.100.cfg', u'x42.10.2.6887T20191122095252.z', 'model.tpl'),
