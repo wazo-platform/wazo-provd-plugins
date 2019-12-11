@@ -56,6 +56,7 @@
 <Register_Pswd>{{ line['password'] }}</Register_Pswd>
 <Register_TTL>60</Register_TTL>
 <Enable_Reg>1</Enable_Reg>
+<Transport>{{ X_sip_transport_protocol }}</Transport>
 <DTMF_Mode>{{ line['XX_dtmf_mode'] }}</DTMF_Mode>
 <MWI_Num>*98</MWI_Num>
 </SIP_Line_List_Entry>
