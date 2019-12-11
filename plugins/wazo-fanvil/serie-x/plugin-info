@@ -8,7 +8,7 @@
     "vendor.official" : 0,
     "capabilities": {
         "Fanvil, X2, 2.10.2.6887": {
-            "lines": 1,
+            "lines": 2,
             "high_availability": false,
             "function_keys": 0,
             "protocol": "sip"
@@ -28,29 +28,29 @@
         "Fanvil, X4/G, 2.10.2.6887": {
             "lines": 4,
             "high_availability": false,
-            "function_keys": 12,
+            "function_keys": 30,
             "protocol": "sip"
         },
         "Fanvil, X5, 1.4.0.2016": {
-            "lines": 6,
+            "lines": 16,
             "high_availability": false,
             "function_keys": 40,
             "protocol": "sip"
         },
         "Fanvil, X5S, P0.16.5-1.12.2": {
-            "lines": 6,
+            "lines": 16,
             "high_availability": false,
             "function_keys": 40,
             "protocol": "sip"
         },
         "Fanvil, X6, P0.16.5-1.12.2": {
-            "lines": 6,
+            "lines": 20,
             "high_availability": false,
             "function_keys": 60,
             "protocol": "sip"
         },
         "Fanvil, X6V2, P0.16.5-1.12.2": {
-            "lines": 6,
+            "lines": 20,
             "high_availability": false,
             "function_keys": 60,
             "protocol": "sip"
