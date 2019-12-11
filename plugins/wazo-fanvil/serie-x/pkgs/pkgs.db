@@ -13,9 +13,9 @@ files: X3-fw
 install: fanvil-fw
 
 [pkg_X3S-fw]
-description: Firmware for Fanvil X3S
-description_fr: Micrologiciel pour Fanvil X3S
-version: 2.4.0.5487
+description: Firmware for Fanvil X3S/X3SP/G
+description_fr: Micrologiciel pour Fanvil X3S/X3SP/G
+version: 2.10.2.6887
 files: X3S-fw
 install: fanvil-fw
 
@@ -68,9 +68,9 @@ size: 2674747
 sha1sum: 178e7dbc59c2fafd92de121fae51b3315bc2279c
 
 [file_X3S-fw]
-url: http://download.fanvil.com/Firmware/Release/X3S/20180322/x3s2.4.0.5487T20180309151655.z
-size: 3872531
-sha1sum: 319a11e6d7bd51f294259de6151f1eb7c2ba96d4
+url: http://download.fanvil.com/Firmware/Release/X3S/20191210/x3s2.10.2.6887T20191115101938.z
+size: 3902427
+sha1sum: 9d16b8936ecf2b1ccd394aaf6e044faef7bb45f1
 
 [file_X4-fw]
 url: http://download.fanvil.com/Firmware/Release/X4/20191210/x42.10.2.6887T20191122095252.z

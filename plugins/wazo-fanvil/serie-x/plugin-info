@@ -19,7 +19,7 @@
             "function_keys": 0,
             "protocol": "sip"
         },
-        "Fanvil, X3S, 2.4.0.5487": {
+        "Fanvil, X3S/X3SP/G, 2.10.2.6887": {
             "lines": 2,
             "high_availability": false,
             "function_keys": 0,
