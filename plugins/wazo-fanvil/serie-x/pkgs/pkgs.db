@@ -36,7 +36,7 @@ install: fanvil-fw
 [pkg_X5S-fw]
 description: Firmware for Fanvil X5S
 description_fr: Micrologiciel pour Fanvil X5S
-version: P0.11.7-1.4.1
+version: P0.16.5-1.12.2
 files: X5S-fw
 install: fanvil-fw
 
@@ -83,9 +83,9 @@ size: 35992460
 sha1sum: ea480d3592fa5929975aa0e3aff77dd544aef75f
 
 [file_X5S-fw]
-url: http://download.fanvil.com/Firmware/Release/X5S/20180314/x5s-6900-P0.11.7-1.4.1-2303T2018-03-14-16.01.18.z
-size: 35337020
-sha1sum: 702a1fba1d254eac00682c0db838f889195c3e5f
+url: http://download.fanvil.com/Firmware/Release/X5S/20190729/x5s-6900-P0.16.5-1.12.2-3144T2019-07-23-14.20.37.z
+size: 38491164
+sha1sum: 059aed5ac70267c8a25c3c4ba6933607de2de7ab
 
 [file_X6-fw]
 url: http://download.fanvil.com/Firmware/Release/X6/20180314_64M/x6-6904-P0.11.7-1.4.1-2303T2018-03-14-15.21.29.z
