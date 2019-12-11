@@ -10,6 +10,33 @@
 {{ XX_timezone }}
 </GLOBAL_CONFIG_MODULE>
 
+<MMI_CONFIG_MODULE>
+<Web_Port>80</Web_Port>
+<Web_Server_Type>0</Web_Server_Type>
+<Https_Web_Port>443</Https_Web_Port>
+<Enable_MMI_Filter>0</Enable_MMI_Filter>
+<Web_Authentication>0</Web_Authentication>
+<Default_WEB_User>0</Default_WEB_User>
+<MMI_Account>
+{% if admin_password -%}
+<MMI_Account_Entry>
+<ID>Account1</ID>
+<Name>admin</Name>
+<Password>{{ admin_password }}</Password>
+<Level>10</Level>
+</MMI_Account_Entry>
+{% endif -%}
+{% if user_password -%}
+<MMI_Account_Entry>
+<ID>Account2</ID>
+<Name>guest</Name>
+<Password>{{ user_password }}</Password>
+<Level>5</Level>
+</MMI_Account_Entry>
+{% endif -%}
+</MMI_Account>
+</MMI_CONFIG_MODULE>
+
 <SIP_CONFIG_MODULE>
 <SIP__Port>5060</SIP__Port>
 <SIP_Line_List>
