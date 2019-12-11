@@ -41,7 +41,7 @@ logger = logging.getLogger('plugin.wazo-fanvil')
 
 class BaseFanvilHTTPDeviceInfoExtractor(object):
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
-    _UA_REGEX = re.compile(r'^Fanvil (?P<model>[X|C][0-9]{1,2}[S|G|V|U]?[0-9]?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$')
+    _UA_REGEX = re.compile(r'^Fanvil (?P<model>[X|C][0-9]{1,2}[S|G|V|U|C]?[0-9]?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -97,6 +97,12 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
         elif 'F0000X600000.cfg' in request.path:
             return {u'vendor': u'Fanvil',
                     u'model': u'X6V2'}
+        elif 'F0V00X700000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model': u'X7'}
+        elif 'F0V0X7C00000.cfg' in request.path:
+            return {u'vendor': u'Fanvil',
+                    u'model': u'X7C'}
 
         m = self._PATH_REGEX.search(request.path)
         if m:

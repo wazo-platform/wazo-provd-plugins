@@ -54,6 +54,20 @@ version: P0.16.5-1.12.2
 files: X6V2-fw
 install: fanvil-fw
 
+[pkg_X7-fw]
+description: Firmware for Fanvil X7
+description_fr: Micrologiciel pour Fanvil X7
+version: P0.17.0-1.12.5.1
+files: X7-fw
+install: fanvil-fw
+
+[pkg_X7C-fw]
+description: Firmware for Fanvil X7C
+description_fr: Micrologiciel pour Fanvil X7C
+version: P0.17.0-1.12.2.1
+files: X7C-fw
+install: fanvil-fw
+
 [install_fanvil-fw]
 a-b: cp $FILE1 firmware/
 
@@ -96,3 +110,13 @@ sha1sum: 90ac3fb29b026e8f346aecb1ced7e62840f33ca9
 url: http://download.fanvil.com/Firmware/Release/X6/20190729_128M/x6-6914-P0.16.5-1.12.2-3144T2019-07-23-14.20.41.z
 size: 41504096
 sha1sum: 6ba47b395ab3a6a35b9cd6b9a685e9677bf839d4
+
+[file_X7-fw]
+url: http://download.fanvil.com/Firmware/Release/X7/20190924/x7-6926-P0.17.0-1.12.5.1-3739T2019-11-07-18.19.52.z
+size: 41456968
+sha1sum: a188c9bfbb98403c6dce2c4ad08042811bc194d8
+
+[file_X7C-fw]
+url: http://download.fanvil.com/Firmware/Release/X7C/20190729/x7c-6925-P0.17.0-1.12.2.1-3739T2019-11-07-18.27.06.z
+size: 41232360
+sha1sum: ccdb26e859912bfed4d3ef8ff38fb21306dfdfdc
