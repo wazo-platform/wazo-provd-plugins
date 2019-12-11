@@ -43,13 +43,13 @@
             "function_keys": 40,
             "protocol": "sip"
         },
-        "Fanvil, X6, P0.11.7-1.4.1": {
+        "Fanvil, X6, P0.16.5-1.12.2": {
             "lines": 6,
             "high_availability": false,
             "function_keys": 60,
             "protocol": "sip"
         },
-        "Fanvil, X6V2, P0.11.7-1.4.1": {
+        "Fanvil, X6V2, P0.16.5-1.12.2": {
             "lines": 6,
             "high_availability": false,
             "function_keys": 60,
