@@ -3,9 +3,13 @@
 <version>2.0002</version>
 
 <GLOBAL_CONFIG_MODULE>
+{% if ntp_enabled -%}
 <SNTP_Server>{{ ntp_ip }}</SNTP_Server>
 <Enable_SNTP>1</Enable_SNTP>
 <SNTP_Timeout>60</SNTP_Timeout>
+{% else -%}
+<Enable_SNTP>0</Enable_SNTP>
+{% endif -%}
 <Language>{{ XX_locale }}</Language>
 {{ XX_timezone }}
 </GLOBAL_CONFIG_MODULE>
@@ -85,7 +89,26 @@
 {% endif %}
 </QOS_CONFIG_MODULE>
 
+{% if syslog_enabled -%}
+<AAA_CONFIG_MODULE>
+<Enable_Syslog>1</Enable_Syslog>
+<Syslog_address>{{ syslog_ip }}</Syslog_address>
+<Syslog_port>{{ syslog_port }}</Syslog_port>
+</AAA_CONFIG_MODULE>
+{% else -%}
+<AAA_CONFIG_MODULE>
+<Enable_Syslog>0</Enable_Syslog>
+<Syslog_address>0.0.0.0</Syslog_address>
+<Syslog_port>514</Syslog_port>
+</AAA_CONFIG_MODULE>
+{% endif -%}
+
 <PHONE_CONFIG_MODULE>
+{% if admin_password -%}
+<Menu_Password>{{ admin_password }}</Menu_Password>
+{% else -%}
+<Menu_Password>123</Menu_Password>
+{% endif -%}
 {% for line_no, line in sip_lines.iteritems() %}
 <LCD_Title>{{ line['display_name']|e }} {{ line['number'] }}</LCD_Title>
 {% endfor %}
