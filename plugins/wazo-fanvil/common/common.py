@@ -118,6 +118,11 @@ class BaseFanvilPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _LOCALE = {}
     _TZ_INFO = {}
+    _SIP_DTMF_MODE = {
+        u'RTP-in-band': u'0',
+        u'RTP-out-of-band': u'1',
+        u'SIP-INFO': u'2',
+    }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -156,6 +161,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._check_lines_password(raw_config)
         self._add_timezone(device, raw_config)
         self._add_locale(device, raw_config)
+        self._update_lines(raw_config)
         self._add_fkeys(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
@@ -255,6 +261,11 @@ class BaseFanvilPlugin(StandardPlugin):
         model_locales = self._LOCALE
         if locale in model_locales:
             raw_config[u'XX_locale'] = model_locales[locale]
+
+    def _update_lines(self, raw_config):
+        default_dtmf_mode = raw_config.get(u'sip_dtmf_mode', 'SIP-INFO')
+        for line in raw_config[u'sip_lines'].itervalues():
+            line['XX_dtmf_mode'] = self._SIP_DTMF_MODE[line.get(u'dtmf_mode', default_dtmf_mode)]
 
     def _format_funckey_speeddial(self, funckey_no, funckey_dict):
         lines = []
