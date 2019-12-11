@@ -7,7 +7,7 @@
     "vendor.description" : "",
     "vendor.official" : 0,
     "capabilities": {
-        "Fanvil, X2, 2.2.0.3753": {
+        "Fanvil, X2, 2.10.2.6887": {
             "lines": 1,
             "high_availability": false,
             "function_keys": 0,
