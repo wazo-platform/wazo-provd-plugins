@@ -58,9 +58,9 @@ install: fanvil-fw
 a-b: cp $FILE1 firmware/
 
 [file_X2-fw]
-url: http://download.fanvil.com/Firmware/Release/X2/20170803/x2R2.2.0.3753T20170803142949.z
-size: 3691490
-sha1sum: 8ee349b0124cc2d0b00ab392e9f3132531f8525b
+url: http://download.fanvil.com/Firmware/Release/X2/20191210/x22.10.2.6887T20191115101133.z
+size: 3894766
+sha1sum: e80165d5cc3fbdc967d13d136f4e69c61ee73ece
 
 [file_X3-fw]
 url: http://download.fanvil.com/Firmware/Release/X3/20170303/x31.4.0.2016T20170303152729.z
