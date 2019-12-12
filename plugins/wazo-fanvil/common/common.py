@@ -31,6 +31,9 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
     _UA_REGEX = re.compile(r'^Fanvil (?P<model>[X|C][0-9]{1,2}[S|G|V|U|C]?[0-9]?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$')
 
+    def __init__(self, common_files):
+        self._COMMON_FILES = common_files
+
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
 
@@ -55,42 +58,11 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
         return dev_info
 
     def _extract_from_path(self, request):
-        if 'f0C00580000.cfg' in request.path:
+        filename = os.path.basename(request.path)
+        device_info = self._COMMON_FILES.get(filename)
+        if device_info:
             return {u'vendor': u'Fanvil',
-                    u'model': u'C58'}
-        elif 'f0C00620000.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'C62'}
-        elif 'F0V00X200000.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'X2'}
-        elif 'F0V00X300000.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'X3'}
-        elif 'f0X3shw1.100.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'X3S'}
-        elif 'f0X4hw1.100.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'X4'}
-        elif 'f0X5hw1.100.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'X5'}
-        elif 'F0V00X5S0000.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'X5S'}
-        elif 'F0V00X600000.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'X6'}
-        elif 'F0000X600000.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'X6V2'}
-        elif 'F0V00X700000.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'X7'}
-        elif 'F0V0X7C00000.cfg' in request.path:
-            return {u'vendor': u'Fanvil',
-                    u'model': u'X7C'}
+                    u'model': device_info[0]}
 
         m = self._PATH_REGEX.search(request.path)
         if m:
@@ -145,8 +117,6 @@ class BaseFanvilPlugin(StandardPlugin):
         self.services = fetchfw_helper.services()
         self.http_service = HTTPNoListingFileService(self._base_tftpboot_dir)
 
-    http_dev_info_extractor = BaseFanvilHTTPDeviceInfoExtractor()
-
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
@@ -179,7 +149,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._remove_configuration_file(device)
 
     def configure_common(self, raw_config):
-        for filename, fw_filename, tpl_filename in self._COMMON_FILES:
+        for filename, (_, fw_filename, tpl_filename) in self._COMMON_FILES.iteritems():
             tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config[u'XX_fw_filename'] = fw_filename
