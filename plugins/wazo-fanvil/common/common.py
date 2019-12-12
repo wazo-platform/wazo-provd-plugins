@@ -246,59 +246,47 @@ class BaseFanvilPlugin(StandardPlugin):
     def _add_sip_transport(self, raw_config):
         raw_config['X_sip_transport_protocol'] = self._SIP_TRANSPORT[raw_config.get(u'sip_transport', u'udp')]
 
-    def _format_funckey_speeddial(self, funckey_no, funckey_dict):
-        lines = []
-        lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
-        lines.append(u'<Type>1</Type>')
-        lines.append(u'<Value>%s@%s/f</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title>%s</Title>' % (funckey_dict[u'label']))
-        lines.append(u'</Function_Key_Entry>')
-        return lines
+    def _format_funckey_speeddial(self, funckey_dict):
+        return u'{value}@{line}/f'.format(value=funckey_dict[u'value'], line=funckey_dict[u'line'])
 
-    def _format_funckey_blf(self, funckey_no, funckey_dict, exten_pickup_call=None):
+    def _format_funckey_blf(self, funckey_dict, exten_pickup_call=None):
         # Be warned that blf works only for DSS keys.
-        lines = []
-        lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
-        lines.append(u'<Type>1</Type>')
         if exten_pickup_call:
-            lines.append(u'<Value>%s@%s/ba%s%s</Value>' % (funckey_dict[u'value'], funckey_dict[u'line'],
-                                                           exten_pickup_call, funckey_dict[u'value']))
+            return u'{value}@{line}/ba{exten_pickup}{value}'.format(
+                value=funckey_dict[u'value'],
+                line=funckey_dict[u'line'],
+                exten_pickup=exten_pickup_call,
+            )
         else:
-            lines.append(u'<Value>%s@%s/ba</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title>%s</Title>' % (funckey_dict[u'label']))
-        lines.append(u'</Function_Key_Entry>')
-        return lines
+            return u'{value}@{line}/ba'.format(
+                value=funckey_dict[u'value'], line=funckey_dict[u'line']
+            )
 
-    def _format_funckey_call_park(self, funckey_no, funckey_dict):
-        lines = []
-        lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 1))
-        lines.append(u'<Type>1</Type>')
-        lines.append(u'<Value>%s@%s/c</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title>%s</Title>' % (funckey_dict[u'label']))
-        lines.append(u'</Function_Key_Entry>')
-        return lines
+    def _format_funckey_call_park(self, funckey_dict):
+        return '{value}@{line}/c'.format(value=funckey_dict[u'value'], line=funckey_dict[u'line'])
 
     def _add_fkeys(self, raw_config):
         lines = []
         exten_pickup_call = raw_config.get('exten_pickup_call')
         for funckey_no, funckey_dict in raw_config[u'funckeys'].iteritems():
+            fkey_line = {}
             keynum = int(funckey_no)
+            fkey_line[u'id'] = keynum + 1
+            fkey_line[u'title'] = funckey_dict[u'label']
             funckey_type = funckey_dict[u'type']
             if funckey_type == u'speeddial':
-                lines.extend(self._format_funckey_speeddial(funckey_no, funckey_dict))
+                fkey_line['value'] = self._format_funckey_speeddial(funckey_dict)
             elif funckey_type == u'blf':
                 if keynum <= 12:
-                    lines.extend(self._format_funckey_blf(funckey_no, funckey_dict,
-                                                          exten_pickup_call))
+                    fkey_line[u'value'] = self._format_funckey_blf(funckey_dict, exten_pickup_call)
                 else:
                     logger.info('For Fanvil, blf is only available on DSS keys')
-                    lines.extend(self._format_funckey_speeddial(funckey_no, funckey_dict))
+                    fkey_line[u'value'] = self._format_funckey_speeddial(funckey_no, funckey_dict)
             elif funckey_type == u'park':
-                lines.extend(self._format_funckey_call_park(funckey_no, funckey_dict))
+                fkey_line[u'value'] = self._format_funckey_call_park(funckey_dict)
             else:
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
-        raw_config[u'XX_fkeys'] = u'\n'.join(lines)
+
+            lines.append(fkey_line)
+        raw_config[u'XX_fkeys'] = lines

@@ -141,7 +141,14 @@
 <Date_Display_Style>2</Date_Display_Style>
 
 <Function_Key>
-{{ XX_fkeys }}
+{% for fkey in XX_fkeys -%}
+<Function_Key_Entry>
+<ID>Fkey{{ fkey['id'] }}</ID>
+<Type>1</Type>
+<Value>{{ fkey['value'] }}</Value>
+<Title>{{ fkey['title'] }}</Title>
+</Function_Key_Entry>
+{% endfor -%}
 </Function_Key>
 </PHONE_CONFIG_MODULE>
 </VOIP_CONFIG_FILE>
