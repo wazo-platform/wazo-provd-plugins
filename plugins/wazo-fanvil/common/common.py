@@ -191,37 +191,37 @@ class BaseFanvilPlugin(StandardPlugin):
             if line[u'password'] == u'autoprov':
                 line[u'password'] = u''
 
-    def _format_dst_change(self, suffix, dst_change):
-        lines = []
-        lines.append(u'<DST_%s_Mon>%d</DST_%s_Mon>' % (suffix, dst_change['month'], suffix))
-        lines.append(u'<DST_%s_Hour>%d</DST_%s_Hour>' % (suffix, min(dst_change['time'].as_hours, 23), suffix))
+    def _extract_dst_change(self, dst_change):
+        lines = {}
+        lines['month'] = dst_change['month']
+        lines['hour'] = min(dst_change['time'].as_hours, 23)
         if dst_change['day'].startswith('D'):
-            lines.append(u'<DST_%s_Wday>%s</DST_%s_Wday>' % (suffix, dst_change['day'][1:], suffix))
+            lines['dst_wday'] = dst_change['day'][1:]
         else:
             week, weekday = dst_change['day'][1:].split('.')
             if week == '5':
-                lines.append(u'<DST_%s_Week>-1</DST_%s_Week>' % (suffix, suffix))
+                lines['dst_week'] = -1
             else:
-                lines.append(u'<DST_%s_Week>%s</DST_%s_Week>' % (suffix, week, suffix))
-            lines.append(u'<DST_%s_Wday>%s</DST_%s_Wday>' % (suffix, weekday, suffix))
-        lines.append(u'<DST_%s_Min>0</DST_%s_Min>' % (suffix, suffix))
+                lines['dst_week'] = week
+            lines['dst_wday'] = weekday
         return lines
 
-    def _format_tzinfo(self, device, tzinfo):
-        lines = []
+    def _extract_tzinfo(self, device, tzinfo):
+        tz_all = {}
         utc = tzinfo['utcoffset'].as_hours
         utc_list = self._TZ_INFO[utc]
         for time_zone_name, time_zone in utc_list:
-            lines.append(u'<Time_Zone>%s</Time_Zone>' % (time_zone))
-            lines.append(u'<Time_Zone_Name>%s</Time_Zone_Name>' % (time_zone_name))
+            tz_all['time_zone'] = time_zone
+            tz_all['time_zone_name'] = time_zone_name
+
         if tzinfo['dst'] is None:
-            lines.append(u'<Enable_DST>0</Enable_DST>')
+            tz_all['enable_dst'] = False
         else:
-            lines.append(u'<Enable_DST>2</Enable_DST>')
-            lines.append(u'<DST_Min_Offset>%d</DST_Min_Offset>' % (min(tzinfo['dst']['save'].as_minutes, 60)))
-            lines.extend(self._format_dst_change('Start', tzinfo['dst']['start']))
-            lines.extend(self._format_dst_change('End', tzinfo['dst']['end']))
-        return u'\n'.join(lines)
+            tz_all['enable_dst'] = True
+            tz_all['dst_min_offset'] = min(tzinfo['dst']['save'].as_minutes, 60)
+            tz_all['dst_start'] = self._extract_dst_change(tzinfo['dst']['start'])
+            tz_all['dst_end'] = self._extract_dst_change(tzinfo['dst']['end'])
+        return tz_all
 
     def _add_timezone(self, device, raw_config):
         if u'timezone' in raw_config:
@@ -230,7 +230,7 @@ class BaseFanvilPlugin(StandardPlugin):
             except tzinform.TimezoneNotFoundError, e:
                 logger.info('Unknown timezone: %s', e)
             else:
-                raw_config[u'XX_timezone'] = self._format_tzinfo(device, tzinfo)
+                raw_config[u'XX_timezone'] = self._extract_tzinfo(device, tzinfo)
 
     def _add_locale(self, device, raw_config):
         locale = raw_config.get(u'locale')
