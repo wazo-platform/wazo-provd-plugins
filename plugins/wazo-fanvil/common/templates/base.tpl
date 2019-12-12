@@ -1,3 +1,12 @@
+{% macro dst_change(suffix, value) -%}
+<DST_{{ suffix }}_Mon>{{ value['month'] }}</DST_{{ suffix }}_Mon>
+<DST_{{ suffix }}_Hour>{{ value['hour'] }}</DST_{{ suffix }}_Hour>
+<DST_{{ suffix }}_Wday>{{ value['dst_wday'] }}</DST_{{ suffix }}_Wday>
+{% if value['dst_week'] -%}
+<DST_{{ suffix }}_Week>{{ value['dst_week'] }}</DST_{{ suffix }}_Week>
+{% endif -%}
+<DST_{{ suffix }}_Min>0</DST_{{ suffix }}_Min>
+{% endmacro -%}
 <?xml version="1.0" encoding="UTF-8" ?>
 <VOIP_CONFIG_FILE>
 <version>2.0002</version>
@@ -11,7 +20,18 @@
 <Enable_SNTP>0</Enable_SNTP>
 {% endif -%}
 <Language>{{ XX_locale }}</Language>
-{{ XX_timezone }}
+{% if XX_timezone -%}
+<Time_Zone>{{ XX_timezone['time_zone'] }}</Time_Zone>
+<Time_Zone_Name>{{ XX_timezone['time_zone_name'] }}</Time_Zone_Name>
+{% if not XX_timezone['enable_dst'] -%}
+<Enable_DST>0</Enable_DST>
+{% else -%}
+<Enable_DST>2</Enable_DST>
+<DST_Min_Offset>{{ XX_timezone['dst_min_offset'] }}</DST_Min_Offset>
+{{ dst_change('Start', XX_timezone['dst_start']) }}
+{{ dst_change('End', XX_timezone['dst_end']) }}
+{% endif -%}
+{% endif -%}
 </GLOBAL_CONFIG_MODULE>
 
 <MMI_CONFIG_MODULE>
