@@ -252,8 +252,8 @@ class BaseFanvilPlugin(StandardPlugin):
         default_dtmf_mode = raw_config.get(u'sip_dtmf_mode', 'SIP-INFO')
         for line in raw_config[u'sip_lines'].itervalues():
             line[u'XX_dtmf_mode'] = self._SIP_DTMF_MODE[line.get(u'dtmf_mode', default_dtmf_mode)]
-            line[u'backup_proxy_ip'] = line[u'backup_proxy_ip'] or raw_config[u'sip_backup_proxy_ip']
-            line[u'backup_proxy_port'] = line[u'backup_proxy_port'] or raw_config[u'sip_backup_proxy_port']
+            line[u'backup_proxy_ip'] = line.get(u'backup_proxy_ip') or raw_config.get(u'sip_backup_proxy_ip')
+            line[u'backup_proxy_port'] = line.get(u'backup_proxy_port') or raw_config.get(u'sip_backup_proxy_port')
 
     def _add_sip_transport(self, raw_config):
         raw_config['X_sip_transport_protocol'] = self._SIP_TRANSPORT[raw_config.get(u'sip_transport', u'udp')]
