@@ -138,12 +138,26 @@
 <Syslog_address>{{ syslog_ip }}</Syslog_address>
 <Syslog_port>{{ syslog_port }}</Syslog_port>
 </AAA_CONFIG_MODULE>
+<DEBUG_CONFIG_MODULE>
+<MGR_Trace_Level>{{ syslog_level }}</MGR_Trace_Level>
+<SIP_Trace_Level>{{ syslog_level }}</SIP_Trace_Level>
+<Trace_File_Info>0</Trace_File_Info>
+<Enable_Watch_Dog>1</Enable_Watch_Dog>
+<Enable_Memory_Info>0</Enable_Memory_Info>
+</DEBUG_CONFIG_MODULE>
 {% else -%}
 <AAA_CONFIG_MODULE>
 <Enable_Syslog>0</Enable_Syslog>
 <Syslog_address>0.0.0.0</Syslog_address>
 <Syslog_port>514</Syslog_port>
 </AAA_CONFIG_MODULE>
+<DEBUG_CONFIG_MODULE>
+<MGR_Trace_Level>0</MGR_Trace_Level>
+<SIP_Trace_Level>0</SIP_Trace_Level>
+<Trace_File_Info>0</Trace_File_Info>
+<Enable_Watch_Dog>1</Enable_Watch_Dog>
+<Enable_Memory_Info>0</Enable_Memory_Info>
+</DEBUG_CONFIG_MODULE>
 {% endif -%}
 
 <PHONE_CONFIG_MODULE>
