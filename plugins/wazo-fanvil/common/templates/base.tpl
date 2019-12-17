@@ -70,10 +70,15 @@
 <ID>SIP{{ line_no }}</ID>
 <Phone_Number>{{ line['username']}}</Phone_Number>
 <Display_Name>{{ line['number'] }} {{ line['display_name']|e }}</Display_Name>
-<Register_Addr>{{ line['proxy_ip'] }}</Register_Addr>
-<Register_Port>{{ line['proxy_port']|d(5060) }}</Register_Port>
+<Register_Addr>{{ line['registrar_ip'] }}</Register_Addr>
+<Register_Port>{{ line['registrar_port'] }}</Register_Port>
 <Register_User>{{ line['username'] }}</Register_User>
 <Register_Pswd>{{ line['password'] }}</Register_Pswd>
+<Register_TTL>60</Register_TTL>
+<Proxy_Addr>{{ line['proxy_ip'] }}</Proxy_Addr>
+<Proxy_Port>{{ line['proxy_port']|d(5060) }}</Proxy_Port>
+<Proxy_User>{{ line['username'] }}</Proxy_User>
+<Proxy_Pswd>{{ line['password'] }}</Proxy_Pswd>
 {% if line['backup_proxy_ip'] -%}
 <Backup_Addr>{{ line['backup_proxy_ip'] }}</Backup_Addr>
 <Backup_Port>{{ line['backup_proxy_port'] }}</Backup_Port>
@@ -117,8 +122,8 @@
 {% if vlan_enabled -%}
 <Enable_VLAN>1</Enable_VLAN>
 <VLAN_ID>{{ vlan_id }}</VLAN_ID>
-<Signalling_Priority>{{ vlan_priority|d('%NULL%') }}</Signalling_Priority>
-<Voice_Priority>{{ vlan_priority|d('%NULL%') }}</Voice_Priority>
+<Signalling_Priority>{{ vlan_priority|d('0') }}</Signalling_Priority>
+<Voice_Priority>{{ vlan_priority|d('0') }}</Voice_Priority>
 {% else -%}
 <Enable_VLAN>0</Enable_VLAN>
 <VLAN_ID>256</VLAN_ID>
