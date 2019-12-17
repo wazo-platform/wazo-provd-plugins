@@ -6,8 +6,9 @@ import logging
 import os.path
 import re
 
-from provd import tzinform
+from provd import plugins
 from provd import synchronize
+from provd import tzinform
 from provd.devices.config import RawConfigError
 from provd.plugins import (
     FetchfwPluginHelper,
@@ -100,6 +101,10 @@ class BaseFanvilPlugin(StandardPlugin):
         u'tcp': u'1',
         u'tls': u'3',
     }
+    _DIRECTORY_KEY = {
+        u'en': u'Directory',
+        u'fr': u'Annuaire',
+    }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -139,6 +144,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._add_sip_transport(raw_config)
         self._update_lines(raw_config)
         self._add_fkeys(raw_config)
+        self._add_phonebook_url(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
@@ -237,6 +243,10 @@ class BaseFanvilPlugin(StandardPlugin):
         model_locales = self._LOCALE
         if locale in model_locales:
             raw_config[u'XX_locale'] = model_locales[locale]
+        language = locale.split('_')[0]
+        directory_key_text = self._DIRECTORY_KEY.get(language, None)
+        if directory_key_text:
+            raw_config[u'XX_directory'] = directory_key_text
 
     def _update_lines(self, raw_config):
         default_dtmf_mode = raw_config.get(u'sip_dtmf_mode', 'SIP-INFO')
@@ -290,3 +300,7 @@ class BaseFanvilPlugin(StandardPlugin):
 
             lines.append(fkey_line)
         raw_config[u'XX_fkeys'] = lines
+
+    def _add_phonebook_url(self, raw_config):
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
+            plugins.add_xivo_phonebook_url(raw_config, u'fanvil')

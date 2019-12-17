@@ -150,5 +150,30 @@
 </Function_Key_Entry>
 {% endfor -%}
 </Function_Key>
+{% if XX_xivo_phonebook_url -%}
+<Soft_Dss_Key>
+<Soft_Dss_Key_Entry>
+<ID>SoftFkey1</ID>
+<Type>7</Type>
+<Value>{{ XX_xivo_phonebook_url }}</Value>
+<Title>{{ XX_directory }}</Title>
+</Soft_Dss_Key_Entry>
+</Soft_Dss_Key>
+{% endif -%}
 </PHONE_CONFIG_MODULE>
+{% if XX_xivo_phonebook_url -%}
+<SCREEN_KEY_CONFIG_MODULE>
+<Desktop_Softkey>history;dsskey1;;menu;</Desktop_Softkey>
+</SCREEN_KEY_CONFIG_MODULE>
+{% endif -%}
+
+<TELE_CONFIG_MODULE>
+<Port_Config>
+<Port_Config_Entry>
+<ID>P1</ID>
+<Auto_Onhook>1</Auto_Onhook>
+<Auto_Onhook_Time>0</Auto_Onhook_Time>
+</Port_Config_Entry>
+</Port_Config>
+</TELE_CONFIG_MODULE>
 </VOIP_CONFIG_FILE>
