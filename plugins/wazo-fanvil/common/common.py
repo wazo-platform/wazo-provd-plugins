@@ -285,9 +285,12 @@ class BaseFanvilPlugin(StandardPlugin):
             keynum = int(funckey_no)
             fkey_line[u'id'] = keynum + 1
             fkey_line[u'title'] = funckey_dict[u'label']
+            fkey_line[u'type'] = 1
             funckey_type = funckey_dict[u'type']
             if funckey_type == u'speeddial':
-                fkey_line['value'] = self._format_funckey_speeddial(funckey_dict)
+                fkey_line[u'value'] = self._format_funckey_speeddial(funckey_dict)
+                if funckey_dict[u'value'].startswith('*'):
+                    fkey_line[u'type'] = 4
             elif funckey_type == u'blf':
                 if keynum <= 12:
                     fkey_line[u'value'] = self._format_funckey_blf(funckey_dict, exten_pickup_call)
