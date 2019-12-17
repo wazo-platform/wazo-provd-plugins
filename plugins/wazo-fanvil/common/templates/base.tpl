@@ -74,6 +74,19 @@
 <Register_Port>{{ line['proxy_port']|d(5060) }}</Register_Port>
 <Register_User>{{ line['username'] }}</Register_User>
 <Register_Pswd>{{ line['password'] }}</Register_Pswd>
+{% if line['backup_proxy_ip'] -%}
+<Backup_Addr>{{ line['backup_proxy_ip'] }}</Backup_Addr>
+<Backup_Port>{{ line['backup_proxy_port'] }}</Backup_Port>
+<Backup_Transpo>{{ X_sip_transport_protocol }}</Backup_Transpo>
+<Backup_TTL>60</Backup_TTL>
+<Backup_Mode>0</Backup_Mode>
+{% else -%}
+<Backup_Addr></Backup_Addr>
+<Backup_Port></Backup_Port>
+<Backup_Transpo>0</Backup_Transpo>
+<Backup_TTL>3600</Backup_TTL>
+<Backup_Mode>0</Backup_Mode>
+{% endif -%}
 <Register_TTL>60</Register_TTL>
 <Enable_Reg>1</Enable_Reg>
 <Transport>{{ X_sip_transport_protocol }}</Transport>
