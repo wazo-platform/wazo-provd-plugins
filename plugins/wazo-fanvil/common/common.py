@@ -296,7 +296,7 @@ class BaseFanvilPlugin(StandardPlugin):
                     fkey_line[u'value'] = self._format_funckey_blf(funckey_dict, exten_pickup_call)
                 else:
                     logger.info('For Fanvil, blf is only available on DSS keys')
-                    fkey_line[u'value'] = self._format_funckey_speeddial(funckey_no, funckey_dict)
+                    fkey_line[u'value'] = self._format_funckey_speeddial(funckey_dict)
             elif funckey_type == u'park':
                 fkey_line[u'value'] = self._format_funckey_call_park(funckey_dict)
             else:
