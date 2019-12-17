@@ -157,7 +157,7 @@
 {% for fkey in XX_fkeys -%}
 <Function_Key_Entry>
 <ID>Fkey{{ fkey['id'] }}</ID>
-<Type>1</Type>
+<Type>{{ fkey['type'] }}</Type>
 <Value>{{ fkey['value'] }}</Value>
 <Title>{{ fkey['title'] }}</Title>
 </Function_Key_Entry>
