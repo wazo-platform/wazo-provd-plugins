@@ -1,5 +1,5 @@
 {
-    "version": "1.7.2",
+    "version": "1.7.3",
     "description": "Plugin for Snom D745 in version 8.9.3.40.",
     "description_fr": "Greffon pour Snom D745 en version 8.9.3.40.",
     "capabilities": {

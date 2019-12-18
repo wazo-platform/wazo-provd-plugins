@@ -1,5 +1,5 @@
 {
-    "version": "1.8.3",
+    "version": "1.8.4",
     "description": "Plugin for Snom 300, 320, 370, 710/D710, 715/D715, 720, D725, 760, D765, 820, 821, 870, MP and PA1 in version 8.7.5.35.",
     "description_fr": "Greffon pour Snom 300, 320, 370, 710/D710, 715/D715, 720, D725, 760, D765, 820, 821, 870, MP et PA1 en version 8.7.5.35.",
     "capabilities": {
