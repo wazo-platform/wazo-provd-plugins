@@ -1,5 +1,5 @@
 {
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Plugin for Snom D735 in version 10.1.26.1.",
     "description_fr": "Greffon pour Snom série D735 en version 10.1.26.1.",
     "capabilities": {

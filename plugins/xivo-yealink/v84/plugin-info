@@ -1,5 +1,5 @@
 {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Plugin for Yealink for CP920, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W and T57(W) in version V84.",
     "description_fr": "Greffon pour Yealink pour CP920, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W et T57(W) en version V84.",
     "vendor" : "Yealink",
