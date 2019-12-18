@@ -1,5 +1,5 @@
 {
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "Plugin for Snom D785 in version 10.1.20.0.",
     "description_fr": "Greffon pour Snom série D785 en version 10.1.20.0.",
     "capabilities": {

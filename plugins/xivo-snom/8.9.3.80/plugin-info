@@ -1,5 +1,5 @@
 {
-    "version": "0.2.2",
+    "version": "0.2.3",
     "description": "Plugin for Snom D3x5, D7x5, D7x0 series in version 8.9.3.80.",
     "description_fr": "Greffon pour Snom séries D3x5; D7x5 et D7x0 en version 8.9.3.80.",
     "capabilities": {
