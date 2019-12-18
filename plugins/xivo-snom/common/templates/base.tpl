@@ -8,6 +8,9 @@
     <vlan_id perm="R"></vlan_id>
     <vlan_qos perm="R"></vlan_qos>
     {% endif -%}
+    
+    <codec_tos perm="R">184</codec_tos> 
+    <signaling_tos perm="R">184</signaling_tos>
 
     {% if admin_username -%}
     <http_user perm="R">{{ admin_username|e }}</http_user>

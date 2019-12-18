@@ -1,5 +1,5 @@
 {
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Plugin for Snom D305, D315, D345 and D375 in version 8.9.3.60.",
     "description_fr": "Greffon pour Snom D305, D315, D345 and D375 en version 8.9.3.60.",
     "capabilities": {

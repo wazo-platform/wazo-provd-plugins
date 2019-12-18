@@ -11,6 +11,9 @@ device.net.vlanId="{{ vlan_id }}"
 device.net.vlanId=""
 {% endif -%}
 
+qos.ip.callControl.dscp EF
+qos.ip.rtp.dscp EF
+
 {# Syslog settings -#}
 device.syslog.serverName.set="1"
 device.syslog.transport.set="1"
