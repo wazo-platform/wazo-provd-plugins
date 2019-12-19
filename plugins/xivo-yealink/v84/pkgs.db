@@ -1,0 +1,265 @@
+[pkg_CP920-fw]
+description: Firmware for Yealink CP920
+description_fr: Micrologiciel pour Yealink CP920
+version: 78.84.0.15
+files: CP920-fw
+install: yealink-fw
+
+[pkg_T19P_E2-fw]
+description: Firmware for Yealink T19P E2
+description_fr: Micrologiciel pour Yealink T19P E2
+version: 53.84.0.15
+files: T19P_E2-fw
+install: yealink-fw
+
+[pkg_T21P_E2-fw]
+description: Firmware for Yealink T21P E2
+description_fr: Micrologiciel pour Yealink T21P E2
+version: 52.84.0.15
+files: T21P_E2-fw
+install: yealink-fw
+
+[pkg_T23-fw]
+description: Firmware for Yealink T23P and T23G
+description_fr: Micrologiciel pour Yealink T23P et T23G
+version: 44.84.0.15
+files: T23-fw
+install: yealink-fw
+
+[pkg_T27G-fw]
+description: Firmware for Yealink T27G
+description_fr: Micrologiciel pour Yealink T27G
+version: 69.84.0.15
+files: T27G-fw
+install: yealink-fw
+
+[pkg_T40P-fw]
+description: Firmware for Yealink T40P
+description_fr: Micrologiciel pour Yealink T40P
+version: 54.84.0.15
+files: T40P-fw
+install: yealink-fw
+
+[pkg_T40G-fw]
+description: Firmware for Yealink T40G
+description_fr: Micrologiciel pour Yealink T40G
+version: 76.84.0.15
+files: T40G-fw
+install: yealink-fw
+
+[pkg_T46S_T48S_T42S_T41S-fw]
+description: Firmware for Yealink T46S T48S T42S T41S
+description_fr: Micrologiciel pour Yealink T46S T48S T42S T41S
+version: 66.84.0.15
+files: T46S_T48S_T42S_T41S-fw
+install: yealink-fw
+
+[pkg_T52S_T54S-fw]
+description: Firmware for Yealink T52S and T54S
+description_fr: Micrologiciel pour Yealink T52S et T54S
+version: 70.84.0.15
+files: T52S_T54S-fw
+install: yealink-fw
+
+[pkg_T53W_T53-fw]
+description: Firmware for Yealink T53(W)
+description_fr: Micrologiciel pour Yealink T53(W)
+version: 95.84.0.30
+files: T53W_T53-fw
+install: yealink-fw
+
+[pkg_T54W-fw]
+description: Firmware for Yealink T54W
+description_fr: Micrologiciel pour Yealink T54W
+version: 96.84.0.30
+files: T54W-fw
+install: yealink-fw
+
+[pkg_T57W-fw]
+description: Firmware for Yealink T57W
+description_fr: Micrologiciel pour Yealink T57W
+version: 97.84.0.85
+files: T57W-fw
+install: yealink-fw
+
+[pkg_W52P_W56P-base-fw]
+description: Firmware for Yealink W52P-W56P
+description_fr: Micrologiciel pour Yealink W52P-W56P
+version: 25.81.0.30
+files: W52P_W56P-base-fw
+install: yealink-fw
+
+[pkg_W60B-fw]
+description: Firmware for Yealink W60B
+description_fr: Micrologiciel pour Yealink W60B
+version: 77.83.0.10
+files: W60B-fw
+install: yealink-fw
+
+[pkg_W80B-fw]
+description: Firmware for Yealink W80B
+description_fr: Micrologiciel pour Yealink W80B
+version: 103.83.0.50
+files: W80B-fw
+install: yealink-fw
+
+[pkg_W52H-fw]
+description: Firmware for Yealink W52H
+description_fr: Micrologiciel pour Yealink W52H
+version: 26.81.0.50
+files: W52H-fw
+install: yealink-fw
+
+[pkg_W53H-fw]
+description: Firmware for Yealink W53H
+description_fr: Micrologiciel pour Yealink W53H
+version: 88.83.0.10
+files: W53H-fw
+install: yealink-fw
+
+[pkg_W56H-fw]
+description: Firmware for Yealink W56H
+description_fr: Micrologiciel pour Yealink W56H
+version: 61.83.0.10
+files: W56H-fw
+install: yealink-fw
+
+[pkg_W53H_W80B-fw]
+description: Firmware for Yealink W53H(W80B)
+description_fr: Micrologiciel pour Yealink W53H(W80B)
+version: 88.83.0.80
+files: W53H_W80B-fw
+install: yealink-fw
+
+[pkg_W56H_W80B-fw]
+description: Firmware for Yealink W56H(W80B)
+description_fr: Micrologiciel pour Yealink W56H(W80B)
+version: 61.83.0.80
+files: W56H_W80B-fw
+install: yealink-fw
+
+[install_yealink-fw]
+a-b: cp *.rom firmware/
+
+
+[file_CP920-fw]
+filename: CP920-78.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/XzMYDmYsiplusSymbolPN0M7vXe7OjRTcGgtZthqhZ94vqhxn/VWd6GGIpbbyZjqOurrx2pYWSgplusSymbolYl/t34iihpospbwIo0lUGZagfQFglbL
+size: 18923040
+sha1sum: fce08e6761a80b138b2abbd5ca7c71c7d4555c3f
+
+[file_T19P_E2-fw]
+filename: T19P_E2-53.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/Xz0bFNplusSymbolWy3TplusSymbolW0UEEoc0C1sbJ9HcSuZ0jPHWqJTaVPhww//3BaLbatOtHEx29rvxwLsrmeAD/csAtrPmLqOz/SZ3MrddskxtplusSymbolG
+size: 7557392
+sha1sum: 5cf0473ab7bf23fda03d0e7de29beeb1fcbc5779
+
+[file_T21P_E2-fw]
+filename: T21P_E2-52.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/Xzb4cWMBPpnQuAgLtgyaX27OCbANWkTBLfh6nYYcXFHKSKUuGDU1nazuofBCyiQG2z9JQQYxIM8hBxTKWzFMFYCM8Ahkn1FA7u
+size: 7561488
+sha1sum: 026af526d3d67e695eea758e354124bd6137d89d
+
+[file_T23-fw]
+filename: T23-44.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/XzNrKTPdNrChnC2iD6bZIplusSymbol/fI/5kTN66gqM/ickg9H483ot6ANZ20A9Wo8kcqaFMYn4B50voNRvV6ncMQkUplusSymbol7toQ==
+size: 7626960
+sha1sum: 088a2172050f3c16d7f3f887e75fc30a8663118e
+
+[file_T27G-fw]
+filename: T27G-69.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/XzxV7ibFdllOKSMT5wvbVNP1vt/qlZ1CWw9bDPE5bavm6UASkqWId3TiSYN7MS12K4d6plusSymbolITUJgf5kwjil3HLoNQQ==
+size: 14999280
+sha1sum: ecb87b2cff8c8aaef66b5f906ec6d588862b7222
+
+[file_T40P-fw]
+filename: T40-54.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/Xzh9PJUbNeijofplusSymbolqMB1T1P1OVCdGYmYIXRePJ4oMov7w9vn1E2iG5NZfO9NkMBXhwEtjrF2gt8S1dtaIplusSymbolKnM225g==
+size: 7586064
+sha1sum: ffef423200e38789fe229772481b0b8095ebe707
+
+[file_T40G-fw]
+filename: T40G-76.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/Xz0bFNplusSymbolWy3TplusSymbolXLK6oo1Zds83rWzS96YUocKZlJjYN4cplusSymbolo1FUngplusSymbollRMgMJtGy3YMFApfb6uC4ErI/EdyPje/9tsbA==
+size: 9220368
+sha1sum: 0aeb2ec3f2dfe7e57fd4065647ea3e882510ce6b
+
+[file_T46S_T48S_T42S_T41S-fw]
+filename: T46S(T48S,T42S,T41S)-66.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/Xzb4cWMBPpnQtOOvlSLQwCQoJvMeDMH5m0NloJHy7e6EnNgBfbcv/Kdr19kxbd6EEm7oNEjX034Ox0u7pKAejplusSymboloKyjzv2cJlusi7IRWrd3EHY=
+size: 29196080
+sha1sum: 8bbfdee8758f1902885e2df6fa78b88e644a7278
+
+[file_T52S_T54S-fw]
+filename: T54S(T52S)-70.84.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/XzajHkg4Ws008dLHikaswbi/7xZ5YAHK4CIN/ut0CSDHfwflPRA4d6Yc/qB3CXSJ9XUTaivsoSDE9bPmBiO0ijDWa4fL6cUT4C
+size: 26485360
+sha1sum: 5272abec995b1e3e44c9297a1a58f1fae5960233
+
+[file_T53W_T53-fw]
+filename: T53W(T53)-95.84.0.30.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgdIaDU2LRMLrdKQD92CEU8yplusSymbolTlGzro5plusSymbolg2ppik4FElvYmPCuXpHkYbuplusSymboluMcq4qo0DJK2Gq/nSDBTVh/gol3QS7W8/5vBs64plusSymbolrhJbSo2QfylBNIhK6PlfSk=
+size: 28256768
+sha1sum: bee65051a6ed2dff91f4c7faf06916dcfaa0d0a4
+
+[file_T54W-fw]
+filename: T54W-96.84.0.30.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgdIaDU2LRMLWI5UFJ5plusSymboldPQJhplusSymbolkJcqEsI8KGDa2xpxFlnplusSymbolMugckXcjoSMFNsKpY62/9qfOneeEyCplusSymbol7XsmyV0/w3wxcXPkXXuAs60WWlJkVS0s3LaLXDiGDM=
+size: 27338400
+sha1sum: 7616f07ffccf13bd1d91018ca0d890504cfcece8
+
+[file_T57W-fw]
+filename: T57W-97.84.0.30.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgdIaDU2LRMLxHiudoyW5v12XgC2v5Q6mPJhpQ6xnNn1wYfhFhplusSymbolLJaeFpemPSMR2E6uPs6fLb3TFUTr3A4qLvQIqU2nlBMRrBYyWd0ZsTplusSymbolptET2AKLdjQgY=
+size: 34434960
+sha1sum: ba493dad1a97ea751cbfb507abb9d5d97fd8e0aa
+
+[file_W52P_W56P-base-fw]
+filename: Base-W52P-W56P-25.81.0.30.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyptRqysyHm94L4mgplusSymbolplusSymbolcww4rmpQjYEbelZXg7i5/CSWRn4ZQwgnPh7GyrwcNSnzoEcYawvZXIQ3quBAqI7lZ/nUsGVg0Nspxgfc1yCragRa4SMZ4cRpgqplusSymbolrjg=
+size: 6763776
+sha1sum: e3b34fc10cd4a7f4c30f0fdec85edcfb72862aac
+
+[file_W60B-fw]
+filename: W60B-77.83.0.10.rom
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGyptRqysyHm94LpGOSa3/yyl7XkwBS0MSo/w0jTuBR1Mp8BJAkzHargLdwGBUVKZMJb5YidoCt8P9IoAXq5plusSymbolHej6IplusSymbolvjsjxoLbgg==
+size: 9856720
+sha1sum: 97701015c2ef13126040c2877dba7300fd181757
+
+[file_W80B-fw]
+filename: W80B-103.83.0.50.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypjZRKhDplusSymbolXJQ4Z3bPDbLitvX4DqRISrFF1evQcrgBplusSymbolxAzfA/sKj0ZorUZEj5cHCcfc3CDRFJEplusSymbol9H/ZT//YC/ZvTxA4pkYGUlg5Q==
+size: 16704864
+sha1sum: 4e284912ce66d4f4985378c0cc08652d3ea46f15
+
+[file_W52H-fw]
+filename: W52H-26.81.0.50.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyprCOI72jWdmVGQPXyi/1Ww1zzBcCmU1cKq4XDutZ1h6U4iFtS1plusSymbolQd1DXBaZs/DBtRsOGPOrclzeVIXF/B3D2q4KKYr0c6Zb/yw==
+size: 2709088
+sha1sum: 9fb0800a06832f4f806445fb47762126034bb9a8
+
+[file_W53H-fw]
+filename: W53H-88.83.0.10.rom
+url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGyptRqysyHm94LYTzBmtIRvrReplusSymbolqrZc33rbpQgr5pbFDSFtCRDJuGfHsBYplusSymboll5F2ck4Uomh/c78gI5gW9uU5I4boKQ9tG5dbLvscA==
+size: 2469456
+sha1sum: 07f35d7df3a5ef9deb815ab0e0be4346c7ffdd62
+
+[file_W56H-fw]
+filename: W56H-61.83.0.10.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyptRqysyHm94LHfJJS/4dGfwUcqrXpVtpsWMDZ7ot4/uR88x7XE/QlLgV9IfIcmgevplusSymbolyF3plusSymbol/qeUB73A2gCHycVMUWpDRXEazc0Q==
+size: 4277904
+sha1sum: 5b3bb894fbd7796531762e41865cc7071863e184
+
+[file_W53H_W80B-fw]
+filename: W53H-88.83.0.80.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypjZRKhDplusSymbolXJQ4wgQw1Xpccg5tnwY2No/fsJomimKnf/j/MJFGIw/78oj4Qy1c1JXjpc0A7FJK9p5z6V4JRMU/fmP7/YkDzl8BOcuu64oTal21VrriB5plusSymboljAr8=
+size: 2539856
+sha1sum: 9115f6cb2340f543217ec396af1e16579ee3d7d9
+
+[file_W56H_W80B-fw]
+filename: W56H-61.83.0.80.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypjZRKhDplusSymbolXJQ47EJ/Agei3J3ANvSIVpXj9AZwBbr0akafK85PkE/6qMpG6CnkzuUplusSymbolEt/cLTQtT9ooJldHS1OA2y1BGq3Hj3VAP494eu4CAPQlhifksyWcSNQ=
+size: 4358576
+sha1sum: f17a70c5badd696fad506148841336cd6a0e007f
+
+
