@@ -10,13 +10,11 @@ handset.1.incoming_lines= 1
 handset.2.incoming_lines= 2
 handset.3.incoming_lines= 3
 handset.4.incoming_lines= 4
-handset.5.incoming_lines= 5
 
 handset.1.dial_out_lines= 1
 handset.2.dial_out_lines= 2
 handset.3.dial_out_lines= 3
 handset.4.dial_out_lines= 4
-handset.5.dial_out_lines= 5
 
 auto_provision.reboot_force.enable= 1
 custom.handset.language = {{ XX_handset_lang|d('%NULL%') }}
