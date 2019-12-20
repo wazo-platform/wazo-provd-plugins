@@ -1,7 +1,7 @@
 {
     "version": "1.0.2",
-    "description": "Plugin for Yealink for CP920, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W, T57(W),W52P, W56P, W60B, W80B, W52H, W53H and W56H in version V84.1",
-    "description_fr": "Greffon pour Yealink pour CP920, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W, T57(W), W52P, W56P, W60B, W80B, W52H, W53H et W56H en version V84.1",
+    "description": "Plugin for Yealink for CP920, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W, T57(W),W52P, W56P, W60B, W80B, W52H, W53H and W56H in version V84.",
+    "description_fr": "Greffon pour Yealink pour CP920, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W, T57(W), W52P, W56P, W60B, W80B, W52H, W53H et W56H en version V84.",
     "vendor" : "Yealink",
     "vendor.url" : "http://www.yealink.com",
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
