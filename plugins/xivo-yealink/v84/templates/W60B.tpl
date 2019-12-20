@@ -48,7 +48,7 @@ local_time.summer_time = %NULL%
 
 {% if XX_xivo_phonebook_url -%}
 remote_phonebook.data.1.url = {{ XX_xivo_phonebook_url }}
-remote_phonebook.data.1.name = Contacts
+remote_phonebook.data.1.name = Wazo
 {% else -%}
 remote_phonebook.data.1.url = %NULL%
 remote_phonebook.data.1.name = %NULL%
