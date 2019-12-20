@@ -1,6 +1,6 @@
 #!version:1.0.0.1
 
-#### AJOUT OMR DD10K
+#### DD10K
 local_time.date_format = 3
 ####
 
