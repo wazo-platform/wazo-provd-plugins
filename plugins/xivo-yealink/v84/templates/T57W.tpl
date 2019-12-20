@@ -3,7 +3,7 @@
 gui_lang.url = http://{{ ip }}:{{ http_port }}/lang/T54W-T57W/004.GUI.French.lang
 
 
-### Ajout OMR
+### DECT - DD10K
 
 custom.handset.date_format = 3
 handset.1.incoming_lines= 1
@@ -21,7 +21,7 @@ handset.5.dial_out_lines= 5
 auto_provision.reboot_force.enable= 1
 custom.handset.language = {{ XX_handset_lang|d('%NULL%') }}
 
-### Fin Ajout OMR
+### 
 
 static.auto_provision.pnp_enable = 0
 static.auto_provision.custom.protect = 1
