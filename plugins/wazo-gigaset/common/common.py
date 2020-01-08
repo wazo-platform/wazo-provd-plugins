@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2011-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 """Common code shared by the various wazo-gigaset plugins."""
 
@@ -89,7 +89,7 @@ class GigasetHTTPDeviceInfoExtractor(object):
         dev_info = {}
         if m:
             dev_info = {u'vendor': VENDOR,
-                        u'model': m.group('model').decode('ascii'),
+                        u'model': m.group('model').decode('ascii').replace('-', ' '),
                         u'version': m.group('version').decode('ascii')}
             if m.groupdict().get('mac'):
                 dev_info[u'mac'] = norm_mac(m.group('mac').decode('ascii'))
