@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <ProviderFrame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="N720_general.xsd">
 	<Provider>
-    <!-- Please enter the correct MAC Address example: 3E2F800E1234 
+    <!-- Please enter the correct MAC Address example: 3E2F800E1234
         Please enter correct Version value: DDMMYYHHMM example: 2811120928 Version Value field is optional and can be removed.
-        Please enter a Profile name 
+        Please enter a Profile name
         If not correct, no settings will be changed
     -->
         <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
         <PROFILE_NAME class="string" value="N720"/>
+    {# Disable firmware upgrade temporarily because of issues
     {%- if http_port %}
         <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/server_einstein_iwu111.bin"'/>
-        <S_SPECIAL_DATA_SRV_SAT class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/sat7111100000000.bin"'/>  
+        <S_SPECIAL_DATA_SRV_SAT class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/sat7111100000000.bin"'/>
     {%- endif %}
+    #}
+    <S_SPECIAL_DATA_SRV_IWU class="string" value=""/>
+    <S_SPECIAL_DATA_SRV_SAT class="string" value=""/>
     <!-- NetDirectory settings -->
     {%- if XX_xivo_phonebook_url %}
         <SYMB_ITEM ID="BS_XML_Netdirs.aucAvailableNetdirs[%]" class="symb_item" value="0x2a"/>
@@ -38,7 +42,7 @@
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bEncryptPosts" class="symb_item" value="0"/>
     {%- endif %}
 
-    <!-- Local settings - Data -->	
+    <!-- Local settings - Data -->
         <SYMB_ITEM ID="BS_IP_Data.aucS_NETWORK_DEVICENAME[%]" class="symb_item" value='"N720-DM-PRO-tests"'/>
     {%- if http_port %}
         <SYMB_ITEM ID="BS_IP_Data.aucS_DATA_SERVER[%]" class="symb_item" value='"http://{{ ip }}:{{ http_port }}"'/>
@@ -60,9 +64,9 @@
         <SYMB_ITEM ID="BS_IP_Data.uiI_VLAN_ID" class="symb_item" value="0x{{ "%x"|format(vlan_id) }}"/>
     {%- endif %}
         <SYMB_ITEM ID="BS_IP_Data.uiI_PAGE_MASK_ID" class="symb_item" value="0xf0ff"/>
-        <SYMB_ITEM ID="BS_IP_Data.ucB_AUTO_UPDATE_FW" class="symb_item" value="1"/>
+        <SYMB_ITEM ID="BS_IP_Data.ucB_AUTO_UPDATE_FW" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_IP_Data.ucI_REMINDER_FW_UPDATE" class="symb_item" value="0"/>
-        <SYMB_ITEM ID="BS_IP_Data.ucB_DO_CHECK_FOR_FIRMWARE_UPDATES" class="symb_item" value="1"/>
+        <SYMB_ITEM ID="BS_IP_Data.ucB_DO_CHECK_FOR_FIRMWARE_UPDATES" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_DO_CHECK_FOR_PROFILE_UPDATES" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_DO_CHECK_FOR_LANGUAGE_UPDATES" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_ACCEPT_FOREIGN_SUBNET" class="symb_item" value="0"/>
@@ -70,7 +74,7 @@
         <SYMB_ITEM ID="BS_IP_Data.aucS_HTTP_PROXY_URL[%]" class="symb_item" value='""'/>
         <SYMB_ITEM ID="BS_IP_Data.uiI_HTTP_PROXY_PORT" class="symb_item" value="8080"/>
         <SYMB_ITEM ID="BS_IP_Data.ucI_HTTPLANGUAGE" class="symb_item" value="1"/>
-    
+
     {%- if ntp_enabled %}
         <SYMB_ITEM ID="BS_IP_Data.aucS_TIME_NTP_SERVER[%]" class="symb_item" value='"{{ ntp_ip }}"'/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_TIME_USE_AUTOMATIC_NTP_SYN" class="symb_item" value="1"/>
@@ -94,11 +98,11 @@
         <SYMB_ITEM ID="BS_VOIP_Data.ucB_USE_R_KEY_FOR_CALL_TRANSFER" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_VOIP_Data.uiI_SIP_LOCAL_PORT_MAX" class="symb_item" value="6000"/>
         <SYMB_ITEM ID="BS_VOIP_Data.uiI_RTP_LOCAL_PORT_MAX" class="symb_item" value="5024"/>
-        
+
         {%- if sip_proxy_port %}
         <SYMB_ITEM ID="BS_VOIP_Data.uiI_SIP_LOCAL_PORT" class="symb_item" value="0x{{ "%x"|format(sip_proxy_port) }}"/>
         {%- endif %}
-        
+
         <SYMB_ITEM ID="BS_VOIP_Data.uiI_RTP_LOCAL_PORT" class="symb_item" value="0x138c"/>
         <SYMB_ITEM ID="BS_VOIP_Data.ucB_USE_RANDOM_PORT" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[%].ucB_CALL_MANAGER_SUPPORT" class="symb_item" value="0"/>
@@ -109,8 +113,8 @@
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[%].ucI_VOIP_CALLFORWARDING_WHEN" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[%].aucS_VOIP_CALLFORWARDING_NUMBER[%]" class="symb_item" value='""'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[%].aucS_VOIP_NET_AM_NUMBER_1[%]" class="symb_item" value='""'/>
-    
-    
+
+
     <!-- Genaral settings for 100 VoIP accounts-->
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[%].ucVoipProviderIndex" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].ucONESHOT_PROVISIONING_MODE_1" class="symb_item" value="1"/>
@@ -120,7 +124,7 @@
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].aucSIP_SERVER[%]" class="symb_item" value='"{{ sip_proxy_ip }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].uiSIP_SERVER_PORT" class="symb_item" value="0x{{ "%x"|format(sip_proxy_port) }}"/>
         {%- endif %}
-        
+
         {%- if exten_dnd %}
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeDND_ON[%]" class="symb_item" value='"{{ exten_dnd }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeDND_OFF[%]" class="symb_item" value='"{{ exten_dnd }}"'/>
@@ -169,7 +173,7 @@
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].ucSIP_PREFERRED_TRANSPORT_LAYER" class="symb_item" value="17"/> <!-- UDP -->
         <SYMB_ITEM ID="BS_VOIP_Data.ucI_DTMF_TX_RTP_PAYLOAD_TYPE" class="symb_item" value="0x65"/>
         <SYMB_ITEM ID="BS_VOIP_Data.ucB_DTMF_TX_MODE_AUTO" class="symb_item" value="1"/>
-        
+
     <!--Bit-Masks for I_DTMF_TX_MODE_BITS: Audio=1, RFC2833=2, SIP-INFO=4
             <SYMB_ITEM ID="BS_VOIP_Data.ucI_DTMF_TX_MODE_BITS" class="symb_item" value="1"/>
     -->
