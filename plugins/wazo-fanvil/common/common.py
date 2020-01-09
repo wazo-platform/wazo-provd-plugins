@@ -1,96 +1,76 @@
 # -*- coding: utf-8 -*-
+# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
-
-import errno
 import logging
-import re
 import os.path
-from operator import itemgetter
-from provd import tzinform
+import re
+
+from provd import plugins
 from provd import synchronize
+from provd import tzinform
 from provd.devices.config import RawConfigError
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
+from provd.plugins import (
+    FetchfwPluginHelper,
+    StandardPlugin,
     TemplatePluginHelper
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, \
-    FULL_SUPPORT, BasePgAssociator, UNKNOWN_SUPPORT
+)
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    COMPLETE_SUPPORT,
+    IMPROBABLE_SUPPORT,
+    UNKNOWN_SUPPORT
+)
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
-logger = logging.getLogger('plugin.xivo-fanvil')
+logger = logging.getLogger('plugin.wazo-fanvil')
 
-LOCALE = {
-    u'de_DE': 'de',
-    u'es_ES': 'es',
-    u'fr_FR': 'fr',
-    u'fr_CA': 'fr',
-    u'it_IT': 'it',
-    u'nl_NL': 'nl',
-    u'en_US': 'en'
-}
-
-TZ_INFO = {
-    -12: [(u'UCT_-12', 0)],
-    -11: [(u'UCT_-11', 1)],
-    -10: [(u'UCT_-10', 2)],
-    -9: [(u'UCT_-09', 3)],
-    -8: [(u'UCT_-08', 4)],
-    -7: [(u'UCT_-07', 5)],
-    -6: [(u'UCT_-06', 8)],
-    -5: [(u'UCT_-05', 12)],
-    -4: [(u'UCT_-04', 15)],
-    -3: [(u'UCT_-03', 19)],
-    -2: [(u'UCT_-02', 22)],
-    -1: [(u'UCT_-01', 23)],
-    0: [(u'UCT_000', 25)],
-    1: [(u'MET_001', 27)],
-    2: [(u'EET_002', 32)],
-    3: [(u'IST_003', 38)],
-    4: [(u'UCT_004', 43)],
-    5: [(u'UCT_005', 46)],
-    6: [(u'UCT_006', 50)],
-    7: [(u'UCT_007', 54)],
-    8: [(u'CST_008', 56)],
-    9: [(u'JST_009', 61)],
-    10: [(u'UCT_010', 66)],
-    11: [(u'UCT_011', 71)],
-    12: [(u'UCT_012', 72)],
-}
 
 class BaseFanvilHTTPDeviceInfoExtractor(object):
-    _PATH_REGEX = re.compile(r'(\b00a859\w{6})\.cfg$')
+    _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
+    _UA_REGEX = re.compile(r'^Fanvil (?P<model>[X|C][0-9]{1,2}[S|G|V|U|C]?[0-9]?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$')
+
+    def __init__(self, common_files):
+        self._COMMON_FILES = common_files
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
-    
+
     def _do_extract(self, request):
-        return self._extract_from_path(request)
- 
+        dev_info = {}
+        dev_info.update(self._extract_from_path(request))
+        ua = request.getHeader('User-Agent')
+        if ua:
+            dev_info.update(self._extract_from_ua(ua))
+
+        return dev_info
+
+    def _extract_from_ua(self, ua):
+        # Fanvil X4 2.10.2.6887 0c383e07e16c
+        dev_info = {}
+        m = self._UA_REGEX.search(ua)
+        if m:
+            dev_info['vendor'] = 'Fanvil'
+            dev_info['model'] = m.group('model').decode('ascii')
+            dev_info['version'] = m.group('version').decode('ascii')
+            dev_info['mac'] = norm_mac(m.group('mac').decode('ascii'))
+        return dev_info
+
     def _extract_from_path(self, request):
-        if 'f0C00620000.cfg' in request.path:
+        filename = os.path.basename(request.path)
+        device_info = self._COMMON_FILES.get(filename)
+        if device_info:
             return {u'vendor': u'Fanvil',
-                    u'model' : u'C62'}
+                    u'model': device_info[0]}
+
         m = self._PATH_REGEX.search(request.path)
         if m:
             raw_mac = m.group(1)
             mac = norm_mac(raw_mac.decode('ascii'))
-            return {u'vendor': u'Fanvil',
-                    u'mac': mac}
-        return None
+            return {u'mac': mac}
+        return {}
 
 
 class BaseFanvilPgAssociator(BasePgAssociator):
@@ -109,6 +89,22 @@ class BaseFanvilPgAssociator(BasePgAssociator):
 
 class BaseFanvilPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
+    _LOCALE = {}
+    _TZ_INFO = {}
+    _SIP_DTMF_MODE = {
+        u'RTP-in-band': u'0',
+        u'RTP-out-of-band': u'1',
+        u'SIP-INFO': u'2',
+    }
+    _SIP_TRANSPORT = {
+        u'udp': u'0',
+        u'tcp': u'1',
+        u'tls': u'3',
+    }
+    _DIRECTORY_KEY = {
+        u'en': u'Directory',
+        u'fr': u'Annuaire',
+    }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -125,8 +121,6 @@ class BaseFanvilPlugin(StandardPlugin):
 
         self.services = fetchfw_helper.services()
         self.http_service = HTTPNoListingFileService(self._base_tftpboot_dir)
-
-    http_dev_info_extractor = BaseFanvilHTTPDeviceInfoExtractor()
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
@@ -145,9 +139,12 @@ class BaseFanvilPlugin(StandardPlugin):
         self._check_config(raw_config)
         self._check_device(device)
         self._check_lines_password(raw_config)
-        self._add_timezone(raw_config)
-        self._add_locale(raw_config)
+        self._add_timezone(device, raw_config)
+        self._add_locale(device, raw_config)
+        self._add_sip_transport(raw_config)
+        self._update_lines(raw_config)
         self._add_fkeys(raw_config)
+        self._add_phonebook_url(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
@@ -158,7 +155,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._remove_configuration_file(device)
 
     def configure_common(self, raw_config):
-        for filename, fw_filename, tpl_filename in self._COMMON_FILES:
+        for filename, (_, fw_filename, tpl_filename) in self._COMMON_FILES.iteritems():
             tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config[u'XX_fw_filename'] = fw_filename
@@ -200,106 +197,115 @@ class BaseFanvilPlugin(StandardPlugin):
             if line[u'password'] == u'autoprov':
                 line[u'password'] = u''
 
-    def _format_dst_change(self, suffix, dst_change):
-        lines = []
-        lines.append(u'<DST_%s_Mon>%d</DST_%s_Mon>' % (suffix, dst_change['month'], suffix))
-        lines.append(u'<DST_%s_Hour>%d</DST_%s_Hour>' % (suffix, min(dst_change['time'].as_hours, 23), suffix))
+    def _extract_dst_change(self, dst_change):
+        lines = {}
+        lines['month'] = dst_change['month']
+        lines['hour'] = min(dst_change['time'].as_hours, 23)
         if dst_change['day'].startswith('D'):
-            lines.append(u'<DST_%s_Wday>%s</DST_%s_Wday>' % (suffix, dst_change['day'][1:], suffix))
+            lines['dst_wday'] = dst_change['day'][1:]
         else:
             week, weekday = dst_change['day'][1:].split('.')
             if week == '5':
-                lines.append(u'<DST_%s_Week>-1</DST_%s_Week>' % (suffix, suffix))
+                lines['dst_week'] = -1
             else:
-                lines.append(u'<DST_%s_Week>%s</DST_%s_Week>' % (suffix, week, suffix))
-            lines.append(u'<DST_%s_Wday>%s</DST_%s_Wday>' % (suffix, weekday, suffix))
-        lines.append(u'<DST_%s_Min>0</DST_%s_Min>' % (suffix, suffix))
+                lines['dst_week'] = week
+            lines['dst_wday'] = weekday
         return lines
 
-    def _format_tzinfo(self, tzinfo):
-        lines = []
+    def _extract_tzinfo(self, device, tzinfo):
+        tz_all = {}
         utc = tzinfo['utcoffset'].as_hours
-        utc_list = TZ_INFO[utc]
+        utc_list = self._TZ_INFO[utc]
         for time_zone_name, time_zone in utc_list:
-            lines.append(u'<Time_Zone>%s</Time_Zone>' % (time_zone))
-            lines.append(u'<Time_Zone_Name>%s</Time_Zone_Name>' % (time_zone_name))    
-        if tzinfo['dst'] is None:
-            lines.append(u'<Enable_DST>0</Enable_DST>')
-        else:
-            lines.append(u'<Enable_DST>2</Enable_DST>')
-            lines.append(u'<DST_Min_Offset>%d</DST_Min_Offset>' % (min(tzinfo['dst']['save'].as_minutes, 60)))
-            lines.extend(self._format_dst_change('Start', tzinfo['dst']['start']))
-            lines.extend(self._format_dst_change('End', tzinfo['dst']['end']))
-        return u'\n'.join(lines)
+            tz_all['time_zone'] = time_zone
+            tz_all['time_zone_name'] = time_zone_name
 
-    def _add_timezone(self, raw_config):
+        if tzinfo['dst'] is None:
+            tz_all['enable_dst'] = False
+        else:
+            tz_all['enable_dst'] = True
+            tz_all['dst_min_offset'] = min(tzinfo['dst']['save'].as_minutes, 60)
+            tz_all['dst_start'] = self._extract_dst_change(tzinfo['dst']['start'])
+            tz_all['dst_end'] = self._extract_dst_change(tzinfo['dst']['end'])
+        return tz_all
+
+    def _add_timezone(self, device, raw_config):
         if u'timezone' in raw_config:
             try:
                 tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
             except tzinform.TimezoneNotFoundError, e:
                 logger.info('Unknown timezone: %s', e)
             else:
-                raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
+                raw_config[u'XX_timezone'] = self._extract_tzinfo(device, tzinfo)
 
-    def _add_locale(self, raw_config):
-       locale = raw_config.get(u'locale')
-       if locale in LOCALE:
-            raw_config[u'XX_locale'] = LOCALE[locale]
+    def _add_locale(self, device, raw_config):
+        locale = raw_config.get(u'locale')
+        model_locales = self._LOCALE
+        if locale in model_locales:
+            raw_config[u'XX_locale'] = model_locales[locale]
+        language = locale.split('_')[0]
+        directory_key_text = self._DIRECTORY_KEY.get(language, None)
+        if directory_key_text:
+            raw_config[u'XX_directory'] = directory_key_text
 
-    def _format_funckey_speeddial(self, funckey_no, funckey_dict):
-        lines = []
-        lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 7))
-        lines.append(u'<Type>1</Type>')
-        lines.append(u'<Value>%s@%s/f</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title></Title>')
-        lines.append(u'</Function_Key_Entry>') 
-        return lines
+    def _update_lines(self, raw_config):
+        default_dtmf_mode = raw_config.get(u'sip_dtmf_mode', 'SIP-INFO')
+        for line in raw_config[u'sip_lines'].itervalues():
+            line[u'XX_dtmf_mode'] = self._SIP_DTMF_MODE[line.get(u'dtmf_mode', default_dtmf_mode)]
+            line[u'backup_proxy_ip'] = line.get(u'backup_proxy_ip') or raw_config.get(u'sip_backup_proxy_ip')
+            line[u'backup_proxy_port'] = line.get(u'backup_proxy_port') or raw_config.get(u'sip_backup_proxy_port')
 
-    def _format_funckey_blf(self, funckey_no, funckey_dict, exten_pickup_call=None):
+    def _add_sip_transport(self, raw_config):
+        raw_config['X_sip_transport_protocol'] = self._SIP_TRANSPORT[raw_config.get(u'sip_transport', u'udp')]
+
+    def _format_funckey_speeddial(self, funckey_dict):
+        return u'{value}@{line}/f'.format(value=funckey_dict[u'value'], line=funckey_dict[u'line'])
+
+    def _format_funckey_blf(self, funckey_dict, exten_pickup_call=None):
         # Be warned that blf works only for DSS keys.
-        lines = []
-        lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 7))
-        lines.append(u'<Type>1</Type>')
         if exten_pickup_call:
-            lines.append(u'<Value>%s@%s/b%s%s</Value>' % (funckey_dict[u'value'], funckey_dict[u'line'],
-                                                        exten_pickup_call, funckey_dict[u'value']))
+            return u'{value}@{line}/ba{exten_pickup}{value}'.format(
+                value=funckey_dict[u'value'],
+                line=funckey_dict[u'line'],
+                exten_pickup=exten_pickup_call,
+            )
         else:
-            lines.append(u'<Value>%s@%s/b</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title></Title>')
-        lines.append(u'</Function_Key_Entry>')
-        return lines
+            return u'{value}@{line}/ba'.format(
+                value=funckey_dict[u'value'], line=funckey_dict[u'line']
+            )
 
-    def _format_funckey_call_park(self, funckey_no, funckey_dict):
-        lines = []
-        lines.append(u'<Function_Key_Entry>')
-        lines.append(u'<ID>Fkey%d</ID>' % (int(funckey_no) + 7))
-        lines.append(u'<Type>1</Type>')
-        lines.append(u'<Value>%s@%s/c</Value>' % (funckey_dict[u'value'], funckey_dict[u'line']))
-        lines.append(u'<Title></Title>')
-        lines.append(u'</Function_Key_Entry>')
-        return lines
+    def _format_funckey_call_park(self, funckey_dict):
+        return '{value}@{line}/c'.format(value=funckey_dict[u'value'], line=funckey_dict[u'line'])
 
     def _add_fkeys(self, raw_config):
         lines = []
         exten_pickup_call = raw_config.get('exten_pickup_call')
         for funckey_no, funckey_dict in raw_config[u'funckeys'].iteritems():
+            fkey_line = {}
             keynum = int(funckey_no)
+            fkey_line[u'id'] = keynum + 1
+            fkey_line[u'title'] = funckey_dict[u'label']
+            fkey_line[u'type'] = 1
             funckey_type = funckey_dict[u'type']
             if funckey_type == u'speeddial':
-                lines.extend(self._format_funckey_speeddial(funckey_no, funckey_dict))
+                fkey_line[u'value'] = self._format_funckey_speeddial(funckey_dict)
+                if funckey_dict[u'value'].startswith('*'):
+                    fkey_line[u'type'] = 4
             elif funckey_type == u'blf':
                 if keynum <= 12:
-                    lines.extend(self._format_funckey_blf(funckey_no, funckey_dict,
-                                                          exten_pickup_call))
+                    fkey_line[u'value'] = self._format_funckey_blf(funckey_dict, exten_pickup_call)
                 else:
                     logger.info('For Fanvil, blf is only available on DSS keys')
-                    lines.extend(self._format_funckey_speeddial(funckey_no, funckey_dict))
+                    fkey_line[u'value'] = self._format_funckey_speeddial(funckey_dict)
             elif funckey_type == u'park':
-                lines.extend(self._format_funckey_call_park(funckey_no, funckey_dict))
+                fkey_line[u'value'] = self._format_funckey_call_park(funckey_dict)
             else:
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
-        raw_config[u'XX_fkeys'] = u'\n'.join(lines)
 
+            lines.append(fkey_line)
+        raw_config[u'XX_fkeys'] = lines
+
+    def _add_phonebook_url(self, raw_config):
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
+            plugins.add_xivo_phonebook_url(raw_config, u'fanvil')
