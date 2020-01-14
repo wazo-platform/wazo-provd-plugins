@@ -1,19 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2010-2020 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 import os.path
@@ -45,13 +33,18 @@ class BaseSnomHTTPDeviceInfoExtractor(object):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
+        device_info = {}
         ua = request.getHeader('User-Agent')
+        raw_mac = request.args.get('mac', [None])[0]
+        if raw_mac:
+            logger.debug('Got MAC from URL: %s', raw_mac)
+            device_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
         if ua:
-            dev_info = self._extract_from_ua(ua)
-            if dev_info:
-                self._extract_from_path(request.path, dev_info)
-                return dev_info
-        return None
+            info_from_ua = self._extract_from_ua(ua)
+            if info_from_ua:
+                device_info.update(info_from_ua)
+                self._extract_from_path(request.path, device_info)
+        return device_info
 
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
