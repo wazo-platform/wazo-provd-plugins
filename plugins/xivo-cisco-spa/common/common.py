@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import errno
@@ -85,6 +85,8 @@ class BaseCiscoHTTPDeviceInfoExtractor(object):
             if dev_info:
                 dev_info[u'vendor'] = u'Cisco'
                 if u'mac' not in dev_info:
+                    self._extract_from_args(request.args, dev_info)
+                if u'mac' not in dev_info:
                     self._extract_from_path(request.path, dev_info)
                 return dev_info
         return None
@@ -133,6 +135,17 @@ class BaseCiscoHTTPDeviceInfoExtractor(object):
             try:
                 mac = norm_mac(raw_mac.decode('ascii'))
             except ValueError, e:
+                logger.warning('Could not normalize MAC address: %s', e)
+            else:
+                dev_info[u'mac'] = mac
+
+    def _extract_from_args(self, params, dev_info):
+        raw_mac = params.get('mac', [None])[0]
+        if raw_mac:
+            try:
+                mac = norm_mac(raw_mac.decode('ascii'))
+                logger.debug('Got MAC from args: %s', mac)
+            except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
                 dev_info[u'mac'] = mac
