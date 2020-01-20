@@ -43,7 +43,7 @@
     {%- endif %}
 
     <!-- Local settings - Data -->
-        <SYMB_ITEM ID="BS_IP_Data.aucS_NETWORK_DEVICENAME[%]" class="symb_item" value='"N720-DM-PRO-tests"'/>
+        <SYMB_ITEM ID="BS_IP_Data.aucS_NETWORK_DEVICENAME[%]" class="symb_item" value='"N720-DM-PRO"'/>
     {%- if http_port %}
         <SYMB_ITEM ID="BS_IP_Data.aucS_DATA_SERVER[%]" class="symb_item" value='"http://{{ ip }}:{{ http_port }}"'/>
     {%- endif %}
