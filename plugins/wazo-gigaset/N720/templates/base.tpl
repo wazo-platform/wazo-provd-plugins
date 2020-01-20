@@ -22,7 +22,7 @@
         <SYMB_ITEM ID="BS_XML_Netdirs.aucActivatedNetdirs[%]" class="symb_item" value="0x2a"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForDirectAccess[%]" class="symb_item" value="0x2a"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForIntKey[%]" class="symb_item" value="0x2a"/>
-        <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForAutoLookup[%]" class="symb_item" value="0x2a"/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.aucNetdirSelForAutoLookup[%]" class="symb_item" value="0x0"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucProviderName[%]" class="symb_item" value='"WazoPBX"'/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucWhitePagesDirName[%]" class="symb_item" value='""'/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].aucYellowPagesDirName[%]" class="symb_item" value='""'/>
@@ -35,7 +35,7 @@
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bSearchPeopleCap" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bSearchBusinessCap" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bReverseSearchCap" class="symb_item" value="1"/>
-        <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bAutolookupCap" class="symb_item" value="1"/>
+        <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bAutolookupCap" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bPrivateDirectoryCap" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bPrivateDirectoryNicknameCap" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_XML_Netdirs.astNetdirProvider[0].bitfldCap.bSndMacAddress" class="symb_item" value="1"/>
