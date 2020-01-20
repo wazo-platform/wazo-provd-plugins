@@ -145,12 +145,11 @@
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[%].NetCodeCFNR_OFF[%]" class="symb_item" value='"{{ exten_fwd_no_answer }}"'/>
         {%- endif %}
 
-        {#
         {%- if sip_registrar_ip %}
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].aucSIP_REGISTRAR[%]" class="symb_item" value='"{{ sip_registrar_ip }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].uiSIP_REGISTRAR_PORT" class="symb_item" value="0x{{ "%x"|format(sip_registrar_port) }}"/>
         {%- endif %}
-        #}
+
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].uiRE_REGISTRATION_TIMER" class="symb_item" value="0x00B4"/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].ucSIP_USE_STUN" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].aucSTUN_SERVER[%]" class="symb_item" value='""'/>
@@ -158,12 +157,12 @@
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].uiRE_STUN_TIMER" class="symb_item" value="0x00F0"/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].uiNAT_REFRESH_TIME" class="symb_item" value="0x0014"/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].ucOUTBOUND_PROXY_MODE" class="symb_item" value="2"/>
-        {#
+
         {%- if sip_outbound_proxy_ip %}
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].aucOUTBOUND_PROXY[%]" class="symb_item" value='"{{ sip_outbound_proxy_ip }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].uiOUTBOUND_PROXY_PORT" class="symb_item" value="0x{{ "%x"|format(sip_outbound_proxy_port) }}"/>
         {%- endif %}
-        #}
+
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].aucCURRENT_PROFILE_NAME[0]" class="symb_item" value='"wazopbx"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].ulCURRENT_PROFILE_DATE" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].ucSH_SHOW_USER_NAME" class="symb_item" value="1"/>
