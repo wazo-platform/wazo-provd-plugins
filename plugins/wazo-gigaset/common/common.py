@@ -215,6 +215,8 @@ class BaseGigasetPlugin(StandardPlugin):
             line = raw_config[u'sip_lines'][u'1']
             raw_config[u'sip_proxy_ip'] = line[u'proxy_ip']
             raw_config[u'sip_proxy_port'] = line.get(u'proxy_port', 5060)
+            raw_config[u'sip_registrar_ip'] = line.get(u'registrar_ip')
+            raw_config[u'sip_registrar_port'] = line.get(u'registrar_port', 5060)
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
