@@ -188,12 +188,11 @@
     {%- if sip_lines %}
         {%- for line_no, line in sip_lines.iteritems() %}
         {%- set lnb = line_no|int() - 1 %}
-        <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_DISPLAYNAME[0]" class="symb_item" value='"{{ line['number'] }}"'/>
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_DISPLAYNAME[0]" class="symb_item" value='"{{ line['number'] }} | {{ line['display_name'] }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_LOGIN_ID[0]" class="symb_item" value='"{{ line['auth_username']|d(line['username']) }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_PASSWORD[0]" class="symb_item" value='"{{ line['auth_password']|d(line['password']) }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_USER_ID[0]" class="symb_item" value='"{{ line['auth_username']|d(line['username']) }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].ucB_SIP_ACCOUNT_IS_ACTIVE_1" class="symb_item" value="1"/>
-        <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_ACCOUNT_NAME_1[0]" class="symb_item" value='"{{ line['display_name'] }}"'/>
         {%- if exten_voicemail %}
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_VOIP_NET_AM_NUMBER_1[%]" class="symb_item" value='"{{ exten_voicemail }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].ucB_VOIP_NET_AM_ENABLED_1" class="symb_item" value="1"/>
