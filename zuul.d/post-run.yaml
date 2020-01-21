@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+    - name: Upload plugins
+      become: yes
+      synchronize:
+        src: '{{ zuul.project.src_dir }}/plugins/_build/testing/'
+        dest: '{{ zuul.executor.log_root }}/plugins/'
+        mode: pull
+        copy_links: true
+        verify_host: true
+        rsync_opts: []
