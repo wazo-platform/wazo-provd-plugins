@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2014-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 # Depends on the following external programs:
@@ -63,13 +63,13 @@ def build_spa3102_5_1_10(path):
                 'spa3102-5.1.10/', path])
 
 
-@target('spa8000-6.1.11', 'xivo-cisco-spa8000-6.1.11')
-def build_spa8000_6_1_11(path):
+@target('spa8000-6.1.12SR1', 'wazo-cisco-spa8000-6.1.12SR1')
+def build_spa8000_6_1_12SR1(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                'spa8000-6.1.11/', path])
+                'spa8000-6.1.12SR1/', path])
 
 
 @target('spa8800-6.1.7', 'xivo-cisco-spa8800-6.1.7')
