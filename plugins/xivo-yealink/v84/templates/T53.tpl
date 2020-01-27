@@ -1,5 +1,5 @@
 {% extends 'base.tpl' -%}
 
 {% block model_specific_parameters -%}
-gui_lang.url = http://{{ ip }}:{{ http_port }}/lang/T53/004.GUI.French.lang
+gui_lang.url = http://{{ ip }}:{{ http_port }}/lang/T53-T53W/004.GUI.French.lang
 {% endblock %}
