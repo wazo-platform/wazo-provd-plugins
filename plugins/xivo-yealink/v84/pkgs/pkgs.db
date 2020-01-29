@@ -167,6 +167,14 @@ version: 84.0.30
 files: T57W-lang
 install: yealink-T57W-lang
 
+[pkg_T58_CP960-lang]
+description: Language pack for Yealink T58A and CP960
+description_fr: Paquet de langues pour Yealink T58A et CP960
+version: 84.0.30
+files: T58_CP960-lang
+install: yealink-T57W-lang
+
+
 
 [install_yealink-fw]
 a-b: cp *.rom firmware/
@@ -211,6 +219,10 @@ b-c: cp */GUI/*.lang lang/T54W/
 [install_yealink-T57W-lang]
 a-b: unzip $FILE1
 b-c: cp */GUI/*.lang lang/T57W/
+
+[install_yealink-T58_CP960-lang]
+a-b: unzip $FILE1
+b-c: cp */GUI/*.lang lang/T58-CP960/
 
 
 [file_CP920-fw]
@@ -357,3 +369,9 @@ filename: Language_Packs_for_SIP-T57W.zip
 url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyps5ejdULu/plusSymbolnIMplusSymbol7Wj8uUGO3Kmh9vawNeqdac0EV9RHE7O8oU6AvHcadJfx0Xd7FdkftUTxTY6kvXj25LQOv2YcotsXLYu6DdRIxWjXwBHhb1kIKwQ3Ec7o=
 size: 860168
 sha1sum: f010633a2fc395153db9ee98183e35af48a55e5a
+
+[file_T58_CP960-lang]
+filename: Language_Packs_for_T58_CP960.zip
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyps5ejdULu/plusSymbolnIMplusSymbol7Wj8uUGO3Kmh9vawNeqdac0EV9RHE7O8oU6AvHcadJfx0Xd7FdkftUTxTY6kvXj25LQOv2YcotsXLYu6DdRIxWjXwBHhb1kIKwQ3Ec7o=
+size: 824936
+sha1sum: aa5017b7ee30a50c2902c20d3f6f7fb44f6c2cfc
