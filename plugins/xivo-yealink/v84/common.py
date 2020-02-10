@@ -190,6 +190,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
 
     _NB_LINEKEY = {
         u'CP920': 0,
+        u'CP960': 0,
         u'T19P_E2': 0,
         u'T21P_E2': 2,
         u'T23P': 3,
@@ -207,9 +208,11 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T54S': 27,
         u'T54W': 27,
         u'T57W': 29,
+        u'T58A': 27,
     }
     _NB_MEMORYKEY = {
         u'CP920': 0,
+        u'CP960': 0,
         u'T19P_E2': 0,
         u'T21P_E2': 0,
         u'T23P': 0,
@@ -227,6 +230,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T54S': 0,
         u'T54W': 0,
         u'T57W': 0,
+        u'T58A': 0,
     }
 
     class NullExpansionModule(object):
@@ -306,6 +310,7 @@ class BaseYealinkPlugin(StandardPlugin):
     _SIP_TRANSPORT_DEF = u'0'
     _NB_SIP_ACCOUNTS = {
         u'CP920': 1,
+        u'CP960': 1,
         u'T19P_E2': 1,
         u'T21P_E2': 2,
         u'T23P': 3,
@@ -323,6 +328,7 @@ class BaseYealinkPlugin(StandardPlugin):
         u'T54S': 16,
         u'T54W': 16,
         u'T57W': 16,
+        u'T58A': 16,
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
