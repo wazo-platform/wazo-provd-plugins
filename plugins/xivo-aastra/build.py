@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2014-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Depends on the following external programs:
@@ -31,12 +31,6 @@ def build_4_3_0(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '4.3.0/', path])
-
-
-@target('2.6.0.2019', 'xivo-aastra-2.6.0.2019')
-def build_2_6_0_2019(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '2.6.0.2019/', path])
 
 
 @target('4.2.0', 'wazo-aastra-4.2.0')
