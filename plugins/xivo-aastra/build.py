@@ -42,3 +42,14 @@ def build_4_2_0(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '4.2.0/', path])
+
+
+@target('5.0.0', 'wazo-aastra-5.0.0')
+def build_5_0_0(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--exclude', '/templates/67*',
+                '--exclude', '/templates/9*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '5.0.0/', path])
