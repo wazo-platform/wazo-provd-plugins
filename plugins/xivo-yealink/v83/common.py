@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2011-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2020 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,8 +36,8 @@ logger = logging.getLogger('plugin.xivo-yealink')
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'^[yY]ealink\s+(CP860|W52P|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'(VP530P?|W52P|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^[yY]ealink\s+(CP860|W52P|W60B|W80B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'(VP530P?|W52P|W60B|W80B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
 
@@ -78,6 +78,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink-T46G 28.71.0.81 28.1.0.128.0.0.0"
         #   "VP530P 23.70.0.40 00:15:65:31:4b:c0"
         #   "VP530 23.70.0.41 00:15:65:3d:58:e3"
+        #   "Yealink W80B 103.83.0.70 80:5e:c0:71:01:38"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
@@ -233,6 +234,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T58': 27,
         u'W52P': 0,
         u'W60B': 0,
+        u'W80B': 0,
     }
     _NB_MEMORYKEY = {
         u'CP860': 0,
@@ -264,6 +266,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T58': 0,
         u'W52P': 0,
         u'W60B': 0,
+        u'W80B': 0,
     }
 
     class NullExpansionModule(object):
@@ -372,6 +375,7 @@ class BaseYealinkPlugin(StandardPlugin):
         u'VP530P': 4,
         u'W52P': 5,
         u'W60B': 8,
+        u'W80B': 100,
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2020 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -43,6 +43,7 @@ MODEL_VERSIONS = {
     u'T56A': u'58.83.0.5',
     u'T58': u'58.83.0.5',
     u'W60B': u'77.83.0.10',
+    u'W80B': u'103.83.0.70',
 }
 
 COMMON_FILES = [
@@ -65,6 +66,7 @@ COMMON_FILES = [
 ]
 COMMON_FILES_DECT = [
     ('y000000000077.cfg', u'W60B-77.83.0.10.rom', u'W53H-88.83.0.10.rom', u'W56H-61.83.0.10.rom', 'W60P_W53P.tpl'),
+    ('y000000000103.cfg', u'W80B-103.93.0.70.rom', u'W53H-88.83.0.90.rom', u'W56H-61.83.0.90.rom', 'W80B.tpl'),
 ]
 
 
