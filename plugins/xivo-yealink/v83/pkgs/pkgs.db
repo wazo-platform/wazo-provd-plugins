@@ -124,6 +124,13 @@ version: 61.83.0.90
 files: W56H-fw
 install: yealink-fw
 
+[pkg_W80B-fw]
+description: Firmware for Yealink W80B
+description_fr: Micrologiciel pour Yealink W80B
+version: 103.83.0.70
+files: W80B-fw
+install: yealink-fw
+
 [install_yealink-fw]
 a-b: cp *.rom firmware/
 
@@ -234,3 +241,9 @@ filename: W56H-61.83.0.90.rom
 url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyphshNtpyhFJcPedL5LWg0FOFBbMt95NZcoBtFdBa4GQiDnSPKAt6Q2sqcqYi3ZucjlFSpemev5VvTy6WjIiDA4u4l78raocxBw==
 size: 4398576
 sha1sum: 04b9a905d2cf46a62a9dd02cc09deb01e7972c7a
+
+[file_W80B-fw]
+filename: W80B-103.83.0.70.rom
+url:
+size: 9856720
+sha1sum: 97701015c2ef13126040c2877dba7300fd181757
