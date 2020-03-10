@@ -54,6 +54,18 @@ static.security.user_name.admin = {{ admin_username|d('admin') }}
 static.security.user_password = {{ user_username|d('user') }}:{{ user_password|d('user') }}
 static.security.user_password = {{ admin_username|d('admin') }}:{{ admin_password|d('admin') }}
 
+{% for template in XX_templates.values() -%}
+template.{{ template['id'] }}.name = Wazo{{ template['id'] }}
+template.{{ template['id'] }}.sip_server.1.address = {{ template['proxy_ip'] }}
+template.{{ template['id'] }}.sip_server.1.port = {{ template['proxy_port']|d('%NULL%') }}
+template.{{ template['id'] }}.sip_server.1.transport_type = {{ XX_sip_transport }}
+{% if template['backup_proxy_ip'] -%}
+template.{{ template['id'] }}.sip_server.2.address = {{ template['backup_proxy_ip'] }}
+template.{{ template['id'] }}.sip_server.2.port = {{ template['backup_proxy_port']|d('%NULL%') }}
+template.{{ template['id'] }}.sip_server.2.transport_type = {{ XX_sip_transport }}
+{% endif -%}
+{% endfor -%}
+
 {% for line_no, line in XX_sip_lines.iteritems() -%}
 {% if line -%}
 account.{{ line_no }}.enable = 1
@@ -62,10 +74,7 @@ account.{{ line_no }}.display_name = {{ line['display_name'] }}
 account.{{ line_no }}.auth_name = {{ line['auth_username'] }}
 account.{{ line_no }}.user_name = {{ line['username'] }}
 account.{{ line_no }}.password = {{ line['password'] }}
-account.{{ line_no }}.sip_server.1.address = {{ line['proxy_ip'] }}
-account.{{ line_no }}.sip_server.1.port = {{ line['proxy_port']|d('%NULL%') }}
-account.{{ line_no }}.sip_server.2.address = {{ line['backup_proxy_ip']|d('%NULL%') }}
-account.{{ line_no }}.sip_server.2.port = {{ line['backup_proxy_port']|d('%NULL%') }}
+account.{{ line_no }}.sip_server.template = {{ line['XX_template_id'] }}
 account.{{ line_no }}.fallback.redundancy_type = 1
 account.{{ line_no }}.cid_source = 2
 account.{{ line_no }}.alert_info_url_enable = 0
@@ -80,10 +89,7 @@ account.{{ line_no }}.display_name = %NULL%
 account.{{ line_no }}.auth_name = %NULL%
 account.{{ line_no }}.user_name = %NULL%
 account.{{ line_no }}.password = %NULL%
-account.{{ line_no }}.sip_server.1.address = %NULL%
-account.{{ line_no }}.sip_server.1.port = %NULL%
-account.{{ line_no }}.sip_server.2.address = %NULL%
-account.{{ line_no }}.sip_server.2.port = %NULL%
+account.{{ line_no }}.sip_server.template = %NULL%
 voice_mail.number.{{ line_no }} = %NULL%
 {% endif %}
 {% endfor %}

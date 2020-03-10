@@ -415,6 +415,28 @@ class BaseYealinkPlugin(StandardPlugin):
             # set proxy_port
             if u'proxy_port' not in line and u'sip_proxy_port' in raw_config:
                 line[u'proxy_port'] = raw_config[u'sip_proxy_port']
+            # set SIP template to use
+            template_id = raw_config['XX_templates'].get((line[u'proxy_ip'], line[u'proxy_port']), {}).get('id')
+            line[u'XX_template_id'] = template_id or 1
+
+    def _add_sip_templates(self, raw_config):
+        templates = dict()
+        template_number = 1
+        for line_no, line in raw_config[u'sip_lines'].iteritems():
+            proxy_ip = line.get(u'proxy_ip') or raw_config.get(u'sip_proxy_ip')
+            proxy_port = line.get(u'proxy_port') or raw_config.get(u'sip_proxy_port')
+            backup_proxy_ip = line.get(u'backup_proxy_ip') or raw_config.get(u'sip_backup_proxy_ip')
+            backup_proxy_port = line.get(u'backup_proxy_port') or raw_config.get(u'sip_backup_proxy_port')
+            if (proxy_ip, proxy_port) not in templates:
+                templates[(proxy_ip, proxy_port)] = {
+                    u'id': template_number,
+                    u'proxy_ip': proxy_ip,
+                    u'proxy_port': proxy_port,
+                    u'backup_proxy_ip': backup_proxy_ip,
+                    u'backup_proxy_port': backup_proxy_port,
+                }
+            template_number += 1
+        raw_config[u'XX_templates'] = templates
 
     def _add_fkeys(self, device, raw_config):
         funckey_generator = BaseYealinkFunckeyGenerator(device, raw_config)
@@ -515,6 +537,7 @@ class BaseYealinkPlugin(StandardPlugin):
         self._add_country_and_lang(raw_config)
         self._add_timezone(raw_config)
         self._add_sip_transport(raw_config)
+        self._add_sip_templates(raw_config)
         self._update_sip_lines(raw_config)
         self._add_xx_sip_lines(device, raw_config)
         self._add_xivo_phonebook_url(raw_config)
