@@ -23,11 +23,11 @@ b-c: cp 3.x_4.x_Lang_Files_April_01_2016/* i18n/
 
 
 [file_6800series-fw]
-url: https://www.mitel.com/-/media/mitel_sip_4_2_0_2023_sp2_ga_all_models_07_2016-(3).zip
+url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/mitel_sip_4_2_0_2023_sp2_ga_all_models_07_2016-(3).zip
 size: 158628135
 sha1sum: 0083b2ebe543f09a106c050d3235cf21bff48ffa
 
 [file_lang]
-url: https://www.mitel.com/-/media/5801456-rev01_langpacks_4_2_0_sp1-(8).zip
+url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/5801456-rev01_langpacks_4_2_0_sp1-(8).zip
 size: 699938
 sha1sum: 5cd4344dde28b2ef61b3cfcf5f9a59e660abbb32
