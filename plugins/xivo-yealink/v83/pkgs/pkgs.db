@@ -113,15 +113,29 @@ install: yealink-fw
 [pkg_W53H-fw]
 description: Firmware for Yealink W53H handset
 description_fr: Micrologiciel pour le combiné Yealink W53H
-version: 88.83.0.10
+version: 88.83.0.90
 files: W53H-fw
 install: yealink-fw
 
 [pkg_W56H-fw]
 description: Firmware for Yealink W56H handset
 description_fr: Micrologiciel pour le combiné Yealink W56H
-version: 61.83.0.10
+version: 61.83.0.90
 files: W56H-fw
+install: yealink-fw
+
+[pkg_W80B-fw]
+description: Firmware for Yealink W80B
+description_fr: Micrologiciel pour Yealink W80B
+version: 103.83.0.70
+files: W80B-fw
+install: yealink-fw
+
+[pkg_CP930W-fw]
+description: Firmware for Yealink CP930W
+description_fr: Micrologiciel pour Yealink CP930W
+version: 87.83.0.60
+files: CP930W-fw
 install: yealink-fw
 
 [install_yealink-fw]
@@ -224,13 +238,25 @@ size: 9856720
 sha1sum: 97701015c2ef13126040c2877dba7300fd181757
 
 [file_W53H-fw]
-filename: W53H-88.83.0.10.rom
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGyptRqysyHm94LYTzBmtIRvrReplusSymbolqrZc33rbpQgr5pbFDSFtCRDJuGfHsBYplusSymboll5F2ck4Uomh/c78gI5gW9uU5I4boKQ9tG5dbLvscA==
-size: 2469456
-sha1sum: 07f35d7df3a5ef9deb815ab0e0be4346c7ffdd62
+filename: W53H-88.83.0.90.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyphshNtpyhFJck/PPOUmJ86kIu8kLMgriDoee9LfWmW0im5wQP7OIiaoplusSymbol7u0alDCdZ18hbwA9ZtEV/LO65Q6tosyF2Uj9dH2plusSymbolCQ==
+size: 2593056
+sha1sum: f05f49293820598bb3c50a2fdc25f63ca2092a13
 
 [file_W56H-fw]
-filename: W56H-61.83.0.10.rom
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGyptRqysyHm94LHfJJS/4dGfwUcqrXpVtpsWMDZ7ot4/uR88x7XE/QlLgV9IfIcmgevplusSymbolyF3plusSymbol/qeUB73A2gCHycVMUWpDRXEazc0Q==
-size: 4277904
-sha1sum: 5b3bb894fbd7796531762e41865cc7071863e184
+filename: W56H-61.83.0.90.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyphshNtpyhFJcPedL5LWg0FOFBbMt95NZcoBtFdBa4GQiDnSPKAt6Q2sqcqYi3ZucjlFSpemev5VvTy6WjIiDA4u4l78raocxBw==
+size: 4398576
+sha1sum: 04b9a905d2cf46a62a9dd02cc09deb01e7972c7a
+
+[file_W80B-fw]
+filename: W80B-103.83.0.70.rom
+url:
+size: 9856720
+sha1sum: 97701015c2ef13126040c2877dba7300fd181757
+
+[file_CP930W-fw]
+filename: CP930W-87.83.0.60.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyphshNtpyhFJcOXx1pDjIo0tQihcMzxvSk3mryXN8ygqArQBVe1fxYYG13ZplusSymbolocVlS3hu6Jp/A3LPpQplusSymbol/SaS6/bqYvplusSymbolOIjV9LMhdPLbrpAzLx0
+size: 4686880
+sha1sum: 3755723cf3268079a10ee1ecb3d528d3153df0cb

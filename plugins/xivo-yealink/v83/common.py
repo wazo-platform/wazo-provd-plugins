@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2011-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2020 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,8 +36,8 @@ logger = logging.getLogger('plugin.xivo-yealink')
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'^[yY]ealink\s+(CP860|W52P|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'(VP530P?|W52P|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^[yY]ealink\s+(CP860|W52P|W60B|W80B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'(VP530P?|W52P|W60B|W80B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
 
@@ -78,6 +78,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink-T46G 28.71.0.81 28.1.0.128.0.0.0"
         #   "VP530P 23.70.0.40 00:15:65:31:4b:c0"
         #   "VP530 23.70.0.41 00:15:65:3d:58:e3"
+        #   "Yealink W80B 103.83.0.70 80:5e:c0:71:01:38"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
@@ -233,6 +234,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T58': 27,
         u'W52P': 0,
         u'W60B': 0,
+        u'W80B': 0,
     }
     _NB_MEMORYKEY = {
         u'CP860': 0,
@@ -264,6 +266,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T58': 0,
         u'W52P': 0,
         u'W60B': 0,
+        u'W80B': 0,
     }
 
     class NullExpansionModule(object):
@@ -372,6 +375,7 @@ class BaseYealinkPlugin(StandardPlugin):
         u'VP530P': 4,
         u'W52P': 5,
         u'W60B': 8,
+        u'W80B': 100,
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
@@ -411,6 +415,28 @@ class BaseYealinkPlugin(StandardPlugin):
             # set proxy_port
             if u'proxy_port' not in line and u'sip_proxy_port' in raw_config:
                 line[u'proxy_port'] = raw_config[u'sip_proxy_port']
+            # set SIP template to use
+            template_id = raw_config['XX_templates'].get((line[u'proxy_ip'], line[u'proxy_port']), {}).get('id')
+            line[u'XX_template_id'] = template_id or 1
+
+    def _add_sip_templates(self, raw_config):
+        templates = dict()
+        template_number = 1
+        for line_no, line in raw_config[u'sip_lines'].iteritems():
+            proxy_ip = line.get(u'proxy_ip') or raw_config.get(u'sip_proxy_ip')
+            proxy_port = line.get(u'proxy_port') or raw_config.get(u'sip_proxy_port')
+            backup_proxy_ip = line.get(u'backup_proxy_ip') or raw_config.get(u'sip_backup_proxy_ip')
+            backup_proxy_port = line.get(u'backup_proxy_port') or raw_config.get(u'sip_backup_proxy_port')
+            if (proxy_ip, proxy_port) not in templates:
+                templates[(proxy_ip, proxy_port)] = {
+                    u'id': template_number,
+                    u'proxy_ip': proxy_ip,
+                    u'proxy_port': proxy_port,
+                    u'backup_proxy_ip': backup_proxy_ip,
+                    u'backup_proxy_port': backup_proxy_port,
+                }
+            template_number += 1
+        raw_config[u'XX_templates'] = templates
 
     def _add_fkeys(self, device, raw_config):
         funckey_generator = BaseYealinkFunckeyGenerator(device, raw_config)
@@ -511,6 +537,7 @@ class BaseYealinkPlugin(StandardPlugin):
         self._add_country_and_lang(raw_config)
         self._add_timezone(raw_config)
         self._add_sip_transport(raw_config)
+        self._add_sip_templates(raw_config)
         self._update_sip_lines(raw_config)
         self._add_xx_sip_lines(device, raw_config)
         self._add_xivo_phonebook_url(raw_config)

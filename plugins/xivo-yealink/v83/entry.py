@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2020 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -43,6 +43,7 @@ MODEL_VERSIONS = {
     u'T56A': u'58.83.0.5',
     u'T58': u'58.83.0.5',
     u'W60B': u'77.83.0.10',
+    u'W80B': u'103.83.0.70',
 }
 
 COMMON_FILES = [
@@ -64,7 +65,26 @@ COMMON_FILES = [
     ('y000000000070.cfg', u'T54S(T52S)-70.83.0.35.rom', 'model.tpl'),
 ]
 COMMON_FILES_DECT = [
-    ('y000000000077.cfg', u'W60B-77.83.0.10.rom', u'W53H-88.83.0.10.rom', u'W56H-61.83.0.10.rom', 'W60P_W53P.tpl'),
+    {
+        'filename': u'y000000000077.cfg',
+        'fw_filename': u'W60B-77.83.0.10.rom',
+        'handsets_fw': {
+            'w53h': u'W53H-88.83.0.90.rom',
+            'w56h': u'W56H-61.83.0.90.rom',
+            'cp930w': u'CP930W-87.83.0.60.rom',
+        },
+        'tpl_filename': u'dect_model.tpl',
+    },
+    {
+        'filename': u'y000000000103.cfg',
+        'fw_filename': u'W80B-103.93.0.70.rom',
+        'handsets_fw': {
+            'w53h': u'W53H-88.83.0.90.rom',
+            'w56h': u'W56H-61.83.0.90.rom',
+            'cp930w': u'CP930W-87.83.0.60.rom',
+        },
+        'tpl_filename': u'dect_model.tpl',
+    }
 ]
 
 
@@ -79,11 +99,10 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
 
     def configure_common(self, raw_config):
         super(YealinkPlugin, self).configure_common(raw_config)
-        for filename, fw_filename, fw_w53h_handset_filename, fw_w56h_handset_filename, tpl_filename in COMMON_FILES_DECT:
-            tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
-            dst = os.path.join(self._tftpboot_dir, filename)
-            raw_config[u'XX_fw_filename'] = fw_filename
-            raw_config[u'XX_fw_w53h_handset_filename'] = fw_w53h_handset_filename
-            raw_config[u'XX_fw_w56h_handset_filename'] = fw_w56h_handset_filename
+        for dect_info in COMMON_FILES_DECT:
+            tpl = self._tpl_helper.get_template('common/%s' % dect_info[u'tpl_filename'])
+            dst = os.path.join(self._tftpboot_dir, dect_info[u'filename'])
+            raw_config[u'XX_handsets_fw'] = dect_info[u'handsets_fw']
+            raw_config[u'XX_fw_filename'] = dect_info[u'fw_filename']
 
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
