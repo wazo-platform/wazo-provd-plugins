@@ -71,8 +71,6 @@
 {% else -%}
 <DTMF_Tx_Method_{{ line_no }}_>Auto</DTMF_Tx_Method_{{ line_no }}_>
 {% endif -%}
-<SIP_ToS/DiffServ_Value_{{ line_no }}_>0xb8<SIP_ToS/DiffServ_Value_{{ line_no }}_>
-<RTP_ToS/DiffServ_Value_{{ line_no }}_>0xb8<RTP_ToS/DiffServ_Value_{{ line_no }}_>
 {% endfor -%}
 
 {% block suffix %}{% endblock %}
