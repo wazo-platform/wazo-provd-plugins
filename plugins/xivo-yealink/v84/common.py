@@ -443,14 +443,13 @@ class BaseYealinkPlugin(StandardPlugin):
         if hostname:
             raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(hostname=hostname)
 
-    def _add_wazo_phoned_user_service_url(self, raw_config, service, destination=None):
+    def _add_wazo_phoned_user_service_url(self, raw_config, service):
         if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
-            plugins.add_wazo_phoned_user_service_url(
-                raw_config,
-                u'yealink',
-                service,
-                destination,
-            )
+            plugins.add_wazo_phoned_user_service_url(raw_config, u'yealink', service)
+
+    def _add_wazo_phoned_user_forward_url(self, raw_config, forward, destination=None):
+        if hasattr(plugins, 'add_wazo_phoned_user_forward_url'):
+            plugins.add_wazo_phoned_user_forward_url(raw_config, u'yealink', forward, destination)
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
 
@@ -481,9 +480,9 @@ class BaseYealinkPlugin(StandardPlugin):
         self._add_xx_sip_lines(device, raw_config)
         self._add_xivo_phonebook_url(raw_config)
         self._add_wazo_phoned_user_service_url(raw_config, u'dnd')
-        self._add_wazo_phoned_user_service_url(raw_config, u'forward_unconditional', destination=u'')
-        self._add_wazo_phoned_user_service_url(raw_config, u'forward_busy', destination=u'')
-        self._add_wazo_phoned_user_service_url(raw_config, u'forward_noanswer', destination=u'')
+        self._add_wazo_phoned_user_forward_url(raw_config, u'unconditional')
+        self._add_wazo_phoned_user_forward_url(raw_config, u'busy')
+        self._add_wazo_phoned_user_forward_url(raw_config, u'noanswer')
         raw_config[u'XX_options'] = device.get(u'options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)

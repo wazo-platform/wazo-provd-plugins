@@ -136,22 +136,22 @@ action_url.dnd_off = {{ XX_wazo_phoned_user_service_dnd_disabled_url }}
 
 forward.always.on_code = *21
 forward.always.off_code = *21
-{% if XX_wazo_phoned_user_service_forward_unconditional_disabled_url -%}
-action_url.always_fwd_off = {{ XX_wazo_phoned_user_service_forward_unconditional_disabled_url }}
+{% if XX_wazo_phoned_user_forward_unconditional_disabled_url -%}
+action_url.always_fwd_off = {{ XX_wazo_phoned_user_forward_unconditional_disabled_url }}
 {% endif -%}
 
 forward.busy.on_code = *23
 forward.busy.off_code = *23
 
-{% if XX_wazo_phoned_user_service_forward_busy_disabled_url -%}
-action_url.busy_fwd_off = {{ XX_wazo_phoned_user_service_forward_busy_disabled_url }}
+{% if XX_wazo_phoned_user_forward_busy_disabled_url -%}
+action_url.busy_fwd_off = {{ XX_wazo_phoned_user_forward_busy_disabled_url }}
 {% endif -%}
 
 forward.no_answer.on_code = *22
 forward.no_answer.off_code = *22
 
-{% if XX_wazo_phoned_user_service_forward_noanswer_disabled_url -%}
-action_url.no_answer_fwd_off = {{ XX_wazo_phoned_user_service_forward_noanswer_disabled_url }}
+{% if XX_wazo_phoned_user_forward_noanswer_disabled_url -%}
+action_url.no_answer_fwd_off = {{ XX_wazo_phoned_user_forward_noanswer_disabled_url }}
 {% endif -%}
 
 {{ XX_fkeys }}
