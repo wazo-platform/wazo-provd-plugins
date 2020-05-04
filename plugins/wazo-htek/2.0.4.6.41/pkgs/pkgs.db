@@ -1,0 +1,89 @@
+[pkg_UC926-fw]
+description: Firmware for Htek UC926
+description_fr: Micrologiciel pour Htek UC926
+version: 2.0.4.6.41
+files: UC926-fw
+install: htek-fw
+
+[pkg_UC924-fw]
+description: Firmware for Htek UC924
+description_fr: Micrologiciel pour Htek UC924
+version: 2.0.4.6.41
+files: UC924-fw
+install: htek-fw
+
+[pkg_UC923-fw]
+description: Firmware for Htek UC923
+description_fr: Micrologiciel pour Htek UC923
+version: 2.0.4.6.41
+files: UC923-fw
+install: htek-fw
+
+[pkg_UC912-fw]
+description: Firmware for Htek UC912
+description_fr: Micrologiciel pour Htek UC912
+version: 2.0.4.6.41
+files: UC912-fw
+install: htek-fw
+
+[pkg_UC912G-fw]
+description: Firmware for Htek UC912G
+description_fr: Micrologiciel pour Htek UC912G
+version: 2.0.4.6.41
+files: UC912G-fw
+install: htek-fw
+
+[pkg_UC903-fw]
+description: Firmware for Htek UC903
+description_fr: Micrologiciel pour Htek UC903
+version: 2.0.4.6.41
+files: UC903-fw
+install: htek-fw
+
+[pkg_UC902-fw]
+description: Firmware for Htek UC902
+description_fr: Micrologiciel pour Htek UC902
+version: 2.0.4.6.41
+files: UC902-fw
+install: htek-fw
+
+
+[install_htek-fw]
+a-b: unzip $FILE1
+b-c: cp *.rom firmware/
+
+
+[file_UC926-fw]
+url: http://fm.htek.com/rs/Firmware_Htek_2.0.4.6.41_20191104.zip
+size: 87997774
+sha1sum: e87d748bb24f38adb58952668855486429abf5cd
+
+[file_UC924-fw]
+url: http://fm.htek.com/rs/Firmware_Htek_2.0.4.6.41_20191104.zip
+size: 87997774
+sha1sum: e87d748bb24f38adb58952668855486429abf5cd
+
+[file_UC923-fw]
+url: http://fm.htek.com/rs/Firmware_Htek_2.0.4.6.41_20191104.zip
+size: 87997774
+sha1sum: e87d748bb24f38adb58952668855486429abf5cd
+
+[file_UC912-fw]
+url: http://fm.htek.com/rs/Firmware_Htek_2.0.4.6.41_20191104.zip
+size: 87997774
+sha1sum: e87d748bb24f38adb58952668855486429abf5cd
+
+[file_UC912G-fw]
+url: http://fm.htek.com/rs/Firmware_Htek_2.0.4.6.41_20191104.zip
+size: 87997774
+sha1sum: e87d748bb24f38adb58952668855486429abf5cd
+
+[file_UC903-fw]
+url: http://fm.htek.com/rs/Firmware_Htek_2.0.4.6.41_20191104.zip
+size: 87997774
+sha1sum: e87d748bb24f38adb58952668855486429abf5cd
+
+[file_UC902-fw]
+url: http://fm.htek.com/rs/Firmware_Htek_2.0.4.6.41_20191104.zip
+size: 87997774
+sha1sum: e87d748bb24f38adb58952668855486429abf5cd

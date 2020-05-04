@@ -1,0 +1,60 @@
+{
+    "version": "0.0.1",
+    "description": "Plugin for Htek for UC926 UC924 UC923 UC921 UC912G UC903 UC902 in version 2.0.4.6.41",
+    "description_fr": "Greffon Htek pour UC926 UC924 UC923 UC921 UC912G UC903 UC902 en version 2.0.4.6.41",
+    "vendor" : "Htek",
+    "vendor.url" : "http://www.htek.com",
+    "vendor.description" : "Companies choose Htek for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Htek, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
+    "vendor.official" : 1,
+    "capabilities": {
+        "Htek, UC926, 2.0.4.6.41": {
+            "lines": 16,
+            "high_availability": false,
+            "function_keys": 36,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        },
+        "Htek, UC924, 2.0.4.6.41": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 28,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        },
+        "Htek, UC923, 2.0.4.6.41": {
+            "lines": 8,
+            "high_availability": false,
+            "function_keys": 20,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        },
+        "Htek, UC912, 2.0.4.6.41": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 12,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        },
+        "Htek, UC912G, 2.0.4.6.41": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 12,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        },
+        "Htek, UC903, 2.0.4.6.41": {
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 20,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        },
+        "Htek, UC902, 2.0.4.6.41": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        }
+    }
+}
