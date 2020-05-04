@@ -3,8 +3,6 @@
 # Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import os
-
 common_globals = {}
 execfile_('common.py', common_globals)
 
