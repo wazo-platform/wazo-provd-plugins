@@ -130,6 +130,13 @@ call_waiting.enable = 1
 
 static.directory_setting.url = http://{{ ip }}:{{ http_port }}/directory_setting.xml
 
+{% if XX_wazo_phoned_user_service_dnd_enabled_url -%}
+action_url.dnd_on = {{ XX_wazo_phoned_user_service_dnd_enabled_url }}
+{% endif -%}
+{% if XX_wazo_phoned_user_service_dnd_disabled_url -%}
+action_url.dnd_off = {{ XX_wazo_phoned_user_service_dnd_disabled_url }}
+{% endif -%}
+
 {{ XX_fkeys }}
 
 {% block model_specific_parameters -%}
