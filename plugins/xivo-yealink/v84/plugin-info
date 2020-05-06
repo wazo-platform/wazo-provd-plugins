@@ -141,10 +141,10 @@
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T58A, 58.84.0.15": {
+        "Yealink, T58, 58.84.0.15": {
             "lines": 16,
             "high_availability": false,
-            "function_keys": 0,
+            "function_keys": 27,
             "expansion_modules": 0,
             "protocol": "sip"
         }
