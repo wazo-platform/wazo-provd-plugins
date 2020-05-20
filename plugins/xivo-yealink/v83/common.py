@@ -416,7 +416,9 @@ class BaseYealinkPlugin(StandardPlugin):
             if u'proxy_port' not in line and u'sip_proxy_port' in raw_config:
                 line[u'proxy_port'] = raw_config[u'sip_proxy_port']
             # set SIP template to use
-            template_id = raw_config['XX_templates'].get((line[u'proxy_ip'], line[u'proxy_port']), {}).get('id')
+            template_id = raw_config['XX_templates'].get(
+                (line.get(u'proxy_ip'), line.get(u'proxy_port', 5060)), {}
+            ).get('id')
             line[u'XX_template_id'] = template_id or 1
 
     def _add_sip_templates(self, raw_config):
