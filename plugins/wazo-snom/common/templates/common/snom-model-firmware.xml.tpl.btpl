@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<firmware-settings>
+<<<<<<< HEAD:plugins/wazo-snom/common/templates/common/snom-model-firmware.xml.tpl.btpl
+  <firmware>http://{{ ip }}:{{ http_port }}/firmware/#FW_FILENAME#</firmware>
+  <firmware_uxm>http://{{ ip }}:{{ http_port }}/firmware/snomUXM-2.1.1.bin</firmware_uxm>
+=======
+  <firmware>http://{{ ip }}:{{ http_port }}/firmware/#FW_FILENAME#?mac={mac}</firmware>
+>>>>>>> 834de57852780241151558ebd94e386367746e0f:plugins/xivo-snom/common/templates/common/snom-model-firmware.xml.tpl.btpl
+</firmware-settings>
