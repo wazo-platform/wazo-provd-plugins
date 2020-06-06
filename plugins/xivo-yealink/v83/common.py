@@ -416,7 +416,9 @@ class BaseYealinkPlugin(StandardPlugin):
             if u'proxy_port' not in line and u'sip_proxy_port' in raw_config:
                 line[u'proxy_port'] = raw_config[u'sip_proxy_port']
             # set SIP template to use
-            template_id = raw_config['XX_templates'].get((line[u'proxy_ip'], line[u'proxy_port']), {}).get('id')
+            template_id = raw_config['XX_templates'].get(
+                (line.get(u'proxy_ip'), line.get(u'proxy_port', 5060)), {}
+            ).get('id')
             line[u'XX_template_id'] = template_id or 1
 
     def _add_sip_templates(self, raw_config):
@@ -512,6 +514,10 @@ class BaseYealinkPlugin(StandardPlugin):
         if hostname:
             raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(hostname=hostname)
 
+    def _add_wazo_phoned_user_service_url(self, raw_config, service):
+        if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
+            plugins.add_wazo_phoned_user_service_url(raw_config, u'yealink', service)
+
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
 
     def _dev_specific_filename(self, device):
@@ -541,6 +547,7 @@ class BaseYealinkPlugin(StandardPlugin):
         self._update_sip_lines(raw_config)
         self._add_xx_sip_lines(device, raw_config)
         self._add_xivo_phonebook_url(raw_config)
+        self._add_wazo_phoned_user_service_url(raw_config, u'dnd')
         raw_config[u'XX_options'] = device.get(u'options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)
