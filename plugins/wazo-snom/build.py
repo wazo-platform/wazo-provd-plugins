@@ -416,7 +416,7 @@ def build_10_1_51_12(path):
 				
 @target('10.1.54.13', 'wazo-snom-10.1.54.13')
 def build_10_1_54_13(path):
-   MODELS = [
+    MODELS = [
 	    ('D120', 'r'),
         ('D305', 'r'),
         ('D315', 'r'),
@@ -432,7 +432,7 @@ def build_10_1_54_13(path):
         ('D745', 'r'),
         ('D765', 'r'),
         ('D785', 'r'),
-	]
+    ]
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '--include', '/templates/base.tpl',
                 '--include', '/templates/D7*5.tpl',
