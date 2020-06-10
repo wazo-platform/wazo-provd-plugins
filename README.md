@@ -14,6 +14,7 @@ Valid keys are described as follows:
 * `function_keys` (integer): maximum number of function keys
 * `expansion_modules` (integer): maximum number of expansion modules
 * `switchboard` (boolean): switchboard support
+* `protocol` (string): the protocol used by the phones, usually `sip` or `sccp`
 
 A key that is not present in a `plugin-info` file means that this information is unknown. This
 situation is possible when a new key is added and only some plugins support it, or when it was not
