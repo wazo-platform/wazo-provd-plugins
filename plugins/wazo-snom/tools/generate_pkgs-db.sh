@@ -17,19 +17,19 @@ echo "TMP FOLDER: $dir"
 cd $dir
 touch $dest_filename
 
-for i in "${snom_products[@]}" 
+for i in "${snom_products[@]}"
 do
- 	NAME=$i
-	if [[ ${i:0:1} == "D" ]]; then
-		NAME="${i:1}"
-	fi
-	echo "[pkg_$NAME-fw]" >> $dest_filename
-	echo "description: Firmware for Snom $i" >> $dest_filename
-	echo "description_fr: Firmware pour Snom $i" >> $dest_filename
-	echo "version: $1" >> $dest_filename
-	echo "files: $NAME-fw" >> $dest_filename
-	echo "install: snom-fw" >> $dest_filename
-	echo "" >> $dest_filename
+    NAME=$i
+    if [[ ${i:0:1} == "D" ]]; then
+        NAME="${i:1}"
+    fi
+    echo "[pkg_$NAME-fw]" >> $dest_filename
+    echo "description: Firmware for Snom $i" >> $dest_filename
+    echo "description_fr: Firmware pour Snom $i" >> $dest_filename
+    echo "version: $1" >> $dest_filename
+    echo "files: $NAME-fw" >> $dest_filename
+    echo "install: snom-fw" >> $dest_filename
+    echo "" >> $dest_filename
 done
 
 echo "[pkg_uxm-fw]" >> $dest_filename
@@ -50,25 +50,24 @@ echo "size: 96560" >> $dest_filename
 echo "sha1sum:9c4e07185ca6eb863858edf23147ab8576f94c4a" >> $dest_filename
 echo "" >> $dest_filename
 
-for i in "${snom_products[@]}" 
+for i in "${snom_products[@]}"
 do
-	NAME=$i
-	if [[ ${i:0:1} == "D" ]]; then
-		NAME="${i:1}"
-	fi
+    NAME=$i
+    if [[ ${i:0:1} == "D" ]]; then
+        NAME="${i:1}"
+    fi
 
-	FILE=snom$i-$1-SIP-r.bin
+    FILE=snom$i-$1-SIP-r.bin
     URL=http://downloads.snom.com/fw/$1/bin/$FILE
-	wget $URL
-	SIZE=$(stat -c "%s" "$FILE")
-	SHA1SUM=$(sha1sum "$FILE" | cut -f1 -d' ')
+    wget $URL
+    SIZE=$(stat -c "%s" "$FILE")
+    SHA1SUM=$(sha1sum "$FILE" | cut -f1 -d' ')
 
-	echo "[file_$NAME-fw]" >> $dest_filename
-	echo "url: $URL" >> $dest_filename
-	echo "size: $SIZE" >> $dest_filename
-	echo "sha1sum: $SHA1SUM" >> $dest_filename
-	echo "" >> $dest_filename
+    echo "[file_$NAME-fw]" >> $dest_filename
+    echo "url: $URL" >> $dest_filename
+    echo "size: $SIZE" >> $dest_filename
+    echo "sha1sum: $SHA1SUM" >> $dest_filename
+    echo "" >> $dest_filename
 done
 
 cp $dest_filename $current_dir
-
