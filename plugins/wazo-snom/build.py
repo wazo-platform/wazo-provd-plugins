@@ -1,19 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014-2016 Avencall
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2014-2020 The Wazo Authors (see AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 # Depends on the following external programs:
 #  - rsync
@@ -106,6 +94,7 @@ def build_8_9_3_40(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '8.9.3.40/', path])
 
+
 @target('8.9.3.60', 'xivo-snom-8.9.3.60')
 def build_8_9_3_60(path):
     MODELS = [('D305', 'r'),
@@ -145,6 +134,7 @@ def build_8_9_3_60(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '8.9.3.60/', path])
+
 
 @target('8.9.3.80', 'xivo-snom-8.9.3.80')
 def build_8_9_3_80(path):
@@ -194,6 +184,7 @@ def build_8_9_3_80(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '8.9.3.80/', path])
 
+
 @target('10.1.20.0', 'wazo-snom-10.1.20.0')
 def build_10_1_20_0(path):
     MODELS = [
@@ -231,6 +222,7 @@ def build_10_1_20_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '10.1.20.0/', path])
 
+
 @target('10.1.26.1', 'wazo-snom-10.1.26.1')
 def build_10_1_26_1(path):
     MODELS = [
@@ -267,6 +259,7 @@ def build_10_1_26_1(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '10.1.26.1/', path])
+
 
 @target('10.1.39.11', 'wazo-snom-10.1.39.11')
 def build_10_1_39_11(path):
@@ -313,7 +306,8 @@ def build_10_1_39_11(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '10.1.39.11/', path])
-                
+
+
 @target('10.1.46.16', 'wazo-snom-10.1.46.16')
 def build_10_1_46_16(path):
     MODELS = [
@@ -368,7 +362,7 @@ def build_10_1_46_16(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '10.1.46.16/', path])
 
-				
+
 @target('10.1.49.11', 'wazo-snom-10.1.49.11')
 def build_10_1_49_11(path):
     MODELS = [
@@ -423,6 +417,7 @@ def build_10_1_49_11(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '10.1.49.11/', path])
 
+
 @target('10.1.51.12', 'wazo-snom-10.1.51.12')
 def build_10_1_51_12(path):
     MODELS = [
@@ -475,7 +470,8 @@ def build_10_1_51_12(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '10.1.51.12/', path])
-				
+
+
 @target('10.1.54.13', 'wazo-snom-10.1.54.13')
 def build_10_1_54_13(path):
     MODELS = [

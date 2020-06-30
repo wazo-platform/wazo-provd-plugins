@@ -1,7 +1,7 @@
 {
     "version": "0.2.0",
     "description": "Plugin for Snom D3x5, D717, D7x5 in version 10.1.39.11.",
-    "description_fr": "Greffon pour Snom Snom D3x5, D717, D7x5 en version 10.1.39.11.",
+    "description_fr": "Greffon pour Snom D3x5, D717, D7x5 en version 10.1.39.11.",
     "capabilities": {
         "Snom, D375, 10.1.39.11": {
             "lines": 12,

@@ -7,14 +7,14 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODELS = [
-	u'D375',
-	u'715',
-	u'D717',
-	u'725',
-	u'D735',
-	u'D745',
-	u'D765',
-	u'D785',
+    u'D375',
+    u'715',
+    u'D717',
+    u'725',
+    u'D735',
+    u'D745',
+    u'D765',
+    u'D785',
 ]
 VERSION = u'10.1.39.11'
 

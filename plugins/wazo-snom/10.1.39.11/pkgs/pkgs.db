@@ -55,7 +55,7 @@ a-b: cp $FILE1 firmware/
 [file_375-fw]
 url: http://downloads.snom.com/fw/10.1.39.11/bin/snomD375-10.1.39.11-SIP-r.bin
 size: 30183392
-sha1sum:d3bb667896775e17eee65a29ea691f20983355a9 
+sha1sum:d3bb667896775e17eee65a29ea691f20983355a9
 
 [file_715-fw]
 url: http://downloads.snom.com/fw/10.1.39.11/bin/snom715-10.1.39.11-SIP-r.bin
@@ -86,4 +86,3 @@ sha1sum: 567dd5ffa3740f0bc6adac473eb725de878d8098
 url: http://downloads.snom.com/fw/10.1.39.11/bin/snomD785-10.1.39.11-SIP-r.bin
 size: 30196464
 sha1sum: 60605670ab72adb0b452b0aca1028eec76e5f3a8
-
