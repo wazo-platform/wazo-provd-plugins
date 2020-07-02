@@ -1,0 +1,88 @@
+[pkg_375-fw]
+description: Firmware for Snom D375
+description_fr: Micrologiciel pour Snom D375
+version: 10.1.39.11
+files: 375-fw
+install: snom-fw
+
+[pkg_715-fw]
+description: Firmware for Snom D715
+description_fr: Micrologiciel pour Snom D715
+version: 10.1.39.11
+files: 715-fw
+install: snom-fw
+
+[pkg_725-fw]
+description: Firmware for Snom D725
+description_fr: Micrologiciel pour Snom D725
+version: 10.1.39.11
+files: 725-fw
+install: snom-fw
+
+[pkg_735-fw]
+description: Firmware for Snom D735
+description_fr: Micrologiciel pour Snom D735
+version: 10.1.39.11
+files: 735-fw
+install: snom-fw
+
+[pkg_745-fw]
+description: Firmware for Snom D745
+description_fr: Micrologiciel pour Snom D745
+version: 10.1.39.11
+files: 745-fw
+install: snom-fw
+
+[pkg_765-fw]
+description: Firmware for Snom D765
+description_fr: Micrologiciel pour Snom D765
+version: 10.1.39.11
+files: 765-fw
+install: snom-fw
+
+[pkg_785-fw]
+description: Firmware for Snom D785
+description_fr: Micrologiciel pour Snom D785
+version: 10.1.39.11
+files: 785-fw
+install: snom-fw
+
+
+[install_snom-fw]
+a-b: cp $FILE1 firmware/
+
+
+[file_375-fw]
+url: http://downloads.snom.com/fw/10.1.39.11/bin/snomD375-10.1.39.11-SIP-r.bin
+size: 30183392
+sha1sum:d3bb667896775e17eee65a29ea691f20983355a9
+
+[file_715-fw]
+url: http://downloads.snom.com/fw/10.1.39.11/bin/snom715-10.1.39.11-SIP-r.bin
+size: 24223056
+sha1sum: 32f24192f7696ed4c0f6907a296c3953b8395094
+
+[file_725-fw]
+url: http://downloads.snom.com/fw/10.1.39.11/bin/snom725-10.1.39.11-SIP-r.bin
+size: 24225184
+sha1sum: b06af535ed648cc84afc3a9ac898121c944896cc
+
+[file_735-fw]
+url: http://downloads.snom.com/fw/10.1.39.11/bin/snomD735-10.1.39.11-SIP-r.bin
+size: 30188080
+sha1sum: 009ff8ce99abf2b0de7df20020713d2d2fd4bf10
+
+[file_745-fw]
+url: http://downloads.snom.com/fw/10.1.39.11/bin/snomD745-10.1.39.11-SIP-r.bin
+size: 26416544
+sha1sum: 5f31c3ba7ce2cd20bde133215c94186b4c5bef4e
+
+[file_765-fw]
+url: http://downloads.snom.com/fw/10.1.39.11/bin/snomD765-10.1.39.11-SIP-r.bin
+size: 29688256
+sha1sum: 567dd5ffa3740f0bc6adac473eb725de878d8098
+
+[file_785-fw]
+url: http://downloads.snom.com/fw/10.1.39.11/bin/snomD785-10.1.39.11-SIP-r.bin
+size: 30196464
+sha1sum: 60605670ab72adb0b452b0aca1028eec76e5f3a8

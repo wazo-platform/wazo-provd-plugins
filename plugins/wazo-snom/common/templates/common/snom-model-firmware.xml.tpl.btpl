@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <firmware-settings>
   <firmware>http://{{ ip }}:{{ http_port }}/firmware/#FW_FILENAME#?mac={mac}</firmware>
+  <firmware_uxm>http://{{ ip }}:{{ http_port }}/firmware/snomUXM-2.1.1.bin</firmware_uxm>
 </firmware-settings>

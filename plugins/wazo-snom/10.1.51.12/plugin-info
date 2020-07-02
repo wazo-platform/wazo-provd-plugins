@@ -1,0 +1,127 @@
+{
+    "version": "0.5.0",
+    "description": "Plugin for Snom D3x5, D717, D7x5 in version 10.1.51.12",
+    "description_fr": "Greffon pour Snom D3x5, D717, D7x5 en version 10.1.51.12",
+    "capabilities": {
+        "Snom, D120, 10.1.51.12": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D305, 10.1.51.12": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 5,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D315, 10.1.51.12": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 5,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D335, 10.1.51.12": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 32,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D345, 10.1.51.12": {
+            "lines": 12,
+	    "high_availability": false,
+            "function_keys": 48,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D375, 10.1.51.12": {
+            "lines": 12,
+	    "high_availability": false,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D385, 10.1.51.12": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 48,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D712, 10.1.51.12": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 5,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, 715, 10.1.51.12": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 5,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D717, 10.1.51.12": {
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 3,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, 725, 10.1.51.12": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 18,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D735, 10.1.51.12": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 32,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D745, 10.1.51.12": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 32,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D765, 10.1.51.12": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 16,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Snom, D785, 10.1.51.12": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 24,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        }
+    }
+}
