@@ -22,6 +22,11 @@
         allow members of "Alcatel-SIP";
         # Cisco
         allow members of "CiscoCP-unknown";
+        allow members of "CiscoCP-7811";
+        allow members of "CiscoCP-7821";
+        allow members of "CiscoCP-7832";
+        allow members of "CiscoCP-7841";
+        allow members of "CiscoCP-7861";
         allow members of "CiscoCP-7902G";
         allow members of "CiscoCP-7905G";
         allow members of "CiscoCP-7906G";
