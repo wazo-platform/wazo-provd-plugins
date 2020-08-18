@@ -1,5 +1,5 @@
 {
-    "version": "2.2.5",
+    "version": "2.2.6",
     "description": "Plugin for Aastra/Mitel 67XXi, 9143i and 9480i in version 3.3.1 SP4 HF9.",
     "description_fr": "Greffon pour Aastra/Mitel 67XXi, 9143i et 9480i en version 3.3.1 SP4 HF9.",
     "capabilities": {
