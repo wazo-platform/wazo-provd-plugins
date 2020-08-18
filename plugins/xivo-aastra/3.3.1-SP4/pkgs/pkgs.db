@@ -123,12 +123,12 @@ b-c: cp */* i18n/
 
 [file_67XXi-fw]
 filename: 67XXi-fw.4365-8215.zip
-url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/sip_3_3_1_4365_8215_sp4_hf9_all_moddels_08_2016-(13).zip
+url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/6735/sip_3_3_1_4365_8215_sp4_hf9_all_moddels_08_2016-(13).zip?modified=20180424185753
 size: 47398699
 sha1sum: ee7dc225c0d577088b0f32a0a5ebc231dc9608a8
 
 [file_lang]
 filename: 5801456-REV01_LangPacks_4_2_0_SP1.zip
-url: http://www.mitel.com/-/media/mitel/file/zip/open-solutions/5801456-rev01_langpacks_4_2_0_sp1-(3).zip
+url: https://www.mitel.com/-/media/mitel/file/pdf/open-solutions/6730/5801456-rev01_langpacks_4_2_0_sp1-(5).zip?modified=20180424172531
 size: 699938
 sha1sum: 5cd4344dde28b2ef61b3cfcf5f9a59e660abbb32
