@@ -1,0 +1,32 @@
+{
+    "version": "1.0.0",
+    "description": "Plugin for Yealink for T31, T30, T30P, T31G, T31P, T33P and T33G in version V85.",
+    "description_fr": "Greffon pour Yealink pour T31, T30, T30P, T31G, T31P, T33P and T33G en version V85.",
+    "vendor" : "Yealink",
+    "vendor.url" : "http://www.yealink.com",
+    "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
+    "vendor.official" : 1,
+    "capabilities": {
+        "Yealink, T30(P), 124.85.0.15": {
+            "lines": 1,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        },
+        "Yealink, T31(P)(G), 124.85.0.15": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        },
+        "Yealink, T33(P)(G), 124.85.0.15": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sip"
+        }
+    }
+}

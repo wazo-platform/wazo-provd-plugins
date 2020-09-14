@@ -1,0 +1,17 @@
+[pkg_T3X-fw]
+description: Firmware for Yealink T3X series
+description_fr: Micrologiciel pour Yealink série T3X
+version: 124.85.0.15
+files: T3X-fw
+install: yealink-fw
+
+
+[install_yealink-fw]
+a-b: cp *.rom firmware/
+
+
+[file_T3X-fw]
+filename: T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyps6JUOXOXzepzjndQWfdwPTNMcv/ryCJ7WRjs7B86H9mq6EECyVBLrnUjmVHaKW4TYognkJPqWASGa5VBplusSymbolVmj5KNFrtSTHudwRplusSymbolfoZ7ut1ZUgqXUu9fXK25NvmrOeTIv1sWcKiQb3u1/
+size: 11603584
+sha1sum: 9ea2ae5a60980ea9133b43f054b9faadb149a401
