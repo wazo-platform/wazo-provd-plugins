@@ -251,7 +251,7 @@ sha1sum: 04b9a905d2cf46a62a9dd02cc09deb01e7972c7a
 
 [file_W80B-fw]
 filename: W80B-103.83.0.70.rom
-url:
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypu1NZb3I38UcEavsauKR73vVeplusSymbolXdqV3j1PplusSymbolg2HKXEgCUCCaIagDUG1sso7286k3wQaOthmLtDWZ0P3vK2qplusSymbolQBIZafaAa6AZf5A==
 size: 9856720
 sha1sum: 97701015c2ef13126040c2877dba7300fd181757
 
