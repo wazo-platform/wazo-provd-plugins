@@ -1,0 +1,47 @@
+{
+    "version": "0.1.0-alpha.9",
+    "description": "Plugin for Cisco 7811, 7821, 7832, 7841 and 7861 in version 11.3.1 of the SIP software.<br/> Please see the documentation if you want to install Cisco firmwares.",
+    "description_fr": "Greffon pour Cisco 7811, 7821, 7832, 7841 et 7861 en version 11.3.1 du logiciel SIP.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
+    "capabilities": {
+        "Cisco, 7811, 11.3.1-msr2-6": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Cisco, 7821, 11.3.1-msr2-6": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Cisco, 7832, 11.3.1-msr2-6": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Cisco, 7841, 11.3.1-msr2-6": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Cisco, 7861, 11.3.1-msr2-6": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        }
+    }
+}

@@ -1,19 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2018 Wazo Authors
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2018-2020 The Wazo Authors (see AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 # Depends on the following external programs:
 #  -rsync
@@ -28,3 +16,9 @@ def build_9_3(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '9.3/', path])
+
+
+@target('11.3.1', 'wazo-cisco-sip-11.3.1')
+def build_11_3_1(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '11.3.1/', path])
