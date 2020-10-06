@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Depends on the following external programs:
@@ -61,3 +61,12 @@ def build_v84(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'v84/', path])
+
+
+@target('v85', 'wazo-yealink-v85')
+def build_v85(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'v85/', path])
