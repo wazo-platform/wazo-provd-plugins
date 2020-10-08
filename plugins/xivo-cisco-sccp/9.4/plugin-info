@@ -33,6 +33,12 @@
             "expansion_modules": 0,
             "protocol": "sccp"
         },
+        "Cisco, 7945G, 9.4.2SR3/SCCP": {
+            "lines": 2,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
+        },
         "Cisco, 7961G, 9.4.3/SCCP": {
             "lines": 6,
             "function_keys": 0,
@@ -41,6 +47,12 @@
         },
         "Cisco, 7962G, 9.4.3/SCCP": {
             "lines": 6,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "protocol": "sccp"
+        },
+        "Cisco, 7965G, 9.4.2SR3/SCCP": {
+            "lines": 2,
             "function_keys": 0,
             "expansion_modules": 0,
             "protocol": "sccp"
