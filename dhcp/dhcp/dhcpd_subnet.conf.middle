@@ -74,6 +74,8 @@
         allow members of "DigiumD70";
         # Doro
         allow members of "Doro-ip880-DECT";
+        # Grandstream
+        allow members of "GXW4200";
         # Kirk
         allow members of "KirkIP6000";
         # Linksys
