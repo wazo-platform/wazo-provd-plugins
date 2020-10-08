@@ -26,6 +26,13 @@ version: 9.4.2 SR1
 files: 7942-7962-fw
 install: cisco-unified-fw
 
+[pkg_7945-7965-fw]
+description: Firmware for Cisco 7945G and 7965G
+description_fr: Micrologiciel pour Cisco 7945G et 7965G
+version: 9.4.2 SR3
+files: 7945-7965-fw
+install: cisco-unified-fw
+
 [pkg_7970-7971-fw]
 description: Firmware for Cisco 7970G, 7971G and 7971G-GE
 description_fr: Micrologiciel pour Cisco 7970G, 7971G et 7971G-GE
@@ -113,6 +120,12 @@ filename: cmterm-7942_7962-sccp.9-4-2SR1-1.zip
 url:
 size: 5907663
 sha1sum: 80290835b9456bf3c093fb1f5b8fe09dcc3a1934
+
+[file_7945-7965-fw]
+filename: cmterm-7945_7965-sccp.9-4-2-1SR3-1.zip
+url:
+size: 6039989
+sha1sum: dd6fe0220df8678f23dc04cc56f1c959e31968df
 
 [file_networklocale]
 filename: po-locale-combined_network-k3-11.5.1.1000-1.cop.sgn
