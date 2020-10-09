@@ -18,12 +18,8 @@
 common = {}
 execfile_('common.py', common)
 
-MODELS = [
-    u'GXW4216',
-    u'GXW4224',
-    u'GXW4232',
-    u'GXW4248',	
-]
+MODELS = [u'GXW4200']
+
 VERSION = u'1.0.9.4'
 
 class GrandstreamPlugin(common['BaseGrandstreamPlugin']):

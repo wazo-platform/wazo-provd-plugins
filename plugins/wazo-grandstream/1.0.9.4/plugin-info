@@ -1,5 +1,5 @@
 {
-    "version": "0.0.2",
+    "version": "0.0.1",
     "description": "Plugin for Grandstream GXW42XX in version 1.0.9.4.",
     "description_fr": "Greffon pour Grandstream GXW42XX en version 1.0.9.4.",
     "vendor" : "Grandstream",
