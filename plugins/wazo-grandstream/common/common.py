@@ -16,6 +16,17 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import logging
+import re
+import os.path
+from operator import itemgetter
+from provd import tzinform
+from provd import synchronize
+from provd.devices.config import RawConfigError
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
+from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, FULL_SUPPORT, BasePgAssociator, UNKNOWN_SUPPORT
+from provd.servers.http import HTTPNoListingFileService
+from provd.util import norm_mac, format_mac
+from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-grandstream')
 
@@ -134,10 +145,15 @@ class BaseGrandstreamPlugin(StandardPlugin):
 
         return self._dev_specific_filename(device)
 
-    def is_sensitive_filename(self, filename):
-        return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))
-
     def _check_device(self, device):
         if u'mac' not in device:
             raise Exception('MAC address needed to configure device')
 
+    def _check_config(self, raw_config):
+        if u'http_port' not in raw_config:
+            raise RawConfigError('only support configuration via HTTP')
+
+    def _dev_specific_filename(self, device):
+        # Return the device specific filename (not pathname) of device
+        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
+        return 'cfg' + fmted_mac + '.xml'
