@@ -1,19 +1,6 @@
 # -*- coding: utf-8 -*-
-
-# Copyright 2013-2016 The Wazo Authors  (see the AUTHORS file)
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2013-2018 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0+
 
 # Depends on the following external programs:
 #  -rsync
@@ -21,13 +8,11 @@
 from subprocess import check_call
 
 
-@target('1.0.9.4', 'wazo-grandstream-1.0.9.4')
-def build_1_0_9_4(path):
+@target('GXW4200', 'wazo-grandstream-GXW4200')
+def build_GXW4200(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '--include', '/templates/*',
                 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                '1.0.9.4/', path])
-
+                'GXW4200/', path])
 
