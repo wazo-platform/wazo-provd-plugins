@@ -1,0 +1,67 @@
+[pkg_GXW4216-fw]
+description: Firmware for Grandstream GXW4216
+description_fr: Micrologiciel pour Grandstream GXW4216
+version: 1.0.9.4
+files: GXW4216-fw
+install: GXW4216-fw
+
+[pkg_GXW4224-fw]
+description: Firmware for Grandstream GXW4224
+description_fr: Micrologiciel pour Grandstream GXW4224
+version: 1.0.9.4
+files: GXW4224-fw
+install: GXW4224-fw
+
+[pkg_GXW4232-fw]
+description: Firmware for Grandstream GXW4232
+description_fr: Micrologiciel pour Grandstream GXW4232
+version: 1.0.9.4
+files: GXW4232-fw
+install: GXW4232-fw
+
+[pkg_GXW4248-fw]
+description: Firmware for Grandstream GXW4248
+description_fr: Micrologiciel pour Grandstream GXW4248
+version: 1.0.9.4
+files: GXW4248-fw
+install: GXW4248-fw
+
+[install_GXW4216-fw]
+a-b: unzip $FILE1
+b-c: mv Release_GXW4216_1.0.9.4/gxw4216fw.bin .
+c-d: rm -fr Release_GXW4216_1.0.9.4/
+
+[install_GXW4224-fw]
+a-b: unzip $FILE1
+b-c: mv Release_GXW4224_1.0.9.4/gxw4224fw.bin .
+c-d: rm -fr Release_GXW4224_1.0.9.4/
+
+[install_GXW4232-fw]
+a-b: unzip $FILE1
+b-c: mv Release_GXW4232_1.0.9.4/gxw4232fw.bin .
+c-d: rm -fr Release_GXW4232_1.0.9.4/
+
+[install_GXW4248-fw]
+a-b: unzip $FILE1
+b-c: mv Release_GXW4248_1.0.9.4/gxw4248fw.bin .
+c-d: rm -fr Release_GXW4248_1.0.9.4/
+
+[file_GXW4216-fw]
+url: http://firmware.grandstream.com/Release_GXW4216_1.0.9.4.zip
+size: 11879275
+sha1sum: 7d7bc2017998d47b230cdf66a4596308302f09bd
+
+[file_GXW4224-fw]
+url: http://firmware.grandstream.com/Release_GXW4224_1.0.9.4.zip
+size: 11880681
+sha1sum: 631d9c3d7a8d3a53525b134dc52310ba717acd56
+
+[file_GXW4232-fw]
+url: http://firmware.grandstream.com/Release_GXW4232_1.0.9.4.zip
+size: 11880667
+sha1sum: 2d8ed2c52346dba5a7dcad5a8c7f8d198548a795
+
+[file_GXW4248-fw]
+url: http://firmware.grandstream.com/Release_GXW4248_1.0.9.4.zip
+size: 11899327
+sha1sum: 06471dcfd86d4bd670ad0c6b5c63853f7073ec86

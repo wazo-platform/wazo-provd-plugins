@@ -24,10 +24,8 @@
     <P81>1</P81>
 {# SIP per-line settings -#}
 {% for line_no, line in sip_lines.iteritems() %}
-  {% set ref = line_no|int - 1 %}
-  {% if line_no|int <= 30 %}
-    {% set %}
-    <P{{ 4060 + ref  }}>1</P271>
+  {% if line_no == '1' %}
+    <P271>1</P271>
     <P270>{{ line['display_name'] }}</P270>
     <P47>{{ line['registrar_ip'] }}</P47>
     <P2312>{{ line['backup_registrar_ip'] }}</P2312>
@@ -41,6 +39,7 @@
     <P2303>1</P2303>
     <P191>0</P191>
   {% else -%}
+    {% set position = line_no|int + 2 %}
     <P{{ position }}01>1</P{{ position }}01>
     <P{{ position }}02>{{ line['registrar_ip'] }}</P{{ position }}02>
     <P{{ position }}04>{{ line['auth_username'] }}</P{{ position }}04>
