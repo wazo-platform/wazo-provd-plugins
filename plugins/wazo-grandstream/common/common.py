@@ -28,7 +28,20 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
-logger = logging.getLogger('plugin.wazo-grandstream')
+logger = logging.getLogger('plugin.wazo-grandstream-GXW4200')
+
+TZ_NAME = { 'Europe/Paris': 'CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00' }
+
+LOCALE = {
+        u'de_DE': 'de',
+        u'es_ES': 'es',
+        u'fr_FR': 'fr',
+        u'fr_CA': 'fr',
+        u'it_IT': 'it',
+        u'nl_NL': 'nl',
+        u'en_US': 'en'
+    }
+
 
 class GrandstreamHTTPDeviceInfoExtractor(object):
 
@@ -107,10 +120,11 @@ class BaseGrandstreamPlugin(StandardPlugin):
     def configure(self, device, raw_config):
         self._check_config(raw_config)
         self._check_device(device)
-        # self._check_lines_password(raw_config)
-        # self._add_timezone(raw_config)
-        # self._add_locale(raw_config)
-        # self._add_fkeys(raw_config)
+        self._add_timezone(raw_config)
+        self._add_locale(raw_config)
+        raw_config['XX_mac'] = self._format_mac(device)
+        raw_config['XX_main_proxy_ip'] = self._get_main_proxy_ip(raw_config)
+
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
@@ -160,3 +174,26 @@ class BaseGrandstreamPlugin(StandardPlugin):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
         return 'cfg' + fmted_mac + '.xml'
+
+    def _get_main_proxy_ip(self, raw_config):
+        if raw_config[u'sip_lines']:
+            line_no = min(int(x) for x in raw_config[u'sip_lines'].keys())
+            line_no = str(line_no)
+            return raw_config[u'sip_lines'][line_no][u'proxy_ip']
+        else:
+            return raw_config[u'ip']
+
+    def _format_mac(self, device):
+         return format_mac(device[u'mac'], separator='', uppercase=False)
+
+    def _add_timezone(self, raw_config):
+        if u'timezone' in raw_config and raw_config[u'timezone'] in TZ_NAME:
+            raw_config[u'XX_timezone'] = TZ_NAME[raw_config[u'timezone']]
+        else:
+            raw_config['timezone'] = TZ_NAME['Europe/Paris']
+
+    def _add_locale(self, raw_config):
+       locale = raw_config.get(u'locale')
+       if locale in LOCALE:
+            raw_config[u'XX_locale'] = LOCALE[locale]
+
