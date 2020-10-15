@@ -1,0 +1,1729 @@
+####################################################################
+## Change Log                                                     ##
+####################################################################
+
+#######################################################
+## P value be added since 1.0.7.7                    ##
+#######################################################
+
+# Enable Phonebook XML Download. 0 - Disabled, 1 - Enabled, use HTTP, 2 - Enabled, use TFTP, 3 - Enabled, use HTTPS. Default is 0
+# Number: 0, 1
+# Mandatory
+# P330 = 0
+
+# HTTP/HTTPS User Name. 
+# String
+# P6713 = 
+
+# HTTP/HTTPS Password
+# String
+# P6714 =
+
+# Phonebook XML Server Path
+# This is a string of up to 256 characters that should contain a path to the XML file. It MUST be in the host/path format.
+# For example: directory.grandstream.com/engineering
+# String
+# P331 =
+
+# Remove Manually-edited entries on Download. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P333 = 1
+
+# Phonebook Download Interval. When set to 0, automatic Phonebook download will be disabled. 
+# Number: 0, 5-720
+# Mandatory
+# P332 = 0
+
+# Disable Recovery on Blind Transfer. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P2384 = 1
+
+# Disable Recovery on Blind Transfer. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P2484 = 1
+
+#######################################################
+## P value removed since 1.0.7.7                     ##
+#######################################################
+# Default search mode. 0 - Quick match, 1 - Exact match. Default is 0
+# Number: 0, 1.
+# Mandatory
+# P2970 = 0
+
+#######################################################
+## P value be added since 1.0.1.1                    ##
+#######################################################
+# Dial Plan. Default value is { x+ | \+x+ | *x+ | *xx*x+ }
+# String
+# Mandatory
+P290 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+# Dial Plan. Default is { x+ | \+x+ | *x+ | *xx*x+ }
+# String
+# Mandatory
+P459 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+# Multicast Listening Address (Priority 1 ~ 10)
+# String
+P1569 =
+P1571 =
+P1573 =
+P1575 =
+P1577 =
+P1579 =
+P1581 =
+P1583 =
+P1585 =
+P1587 =
+
+# Multicast Listening Address Label (Priority 1 ~ 10)
+P1570 = 
+P1572 =
+P1574 =
+P1576 =
+P1580 =
+P1582 =
+P1584 =
+P1586 =
+P1588 =
+P1560 =
+
+#######################################################
+## P value be removed since 1.0.0.51                 ##
+#######################################################
+# Use SBC. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P26090 = 0
+
+# Use SBC. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P26190 = 0
+
+# Use X-Grandstream-PBX Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+P26054 = 1
+
+# Use X-Grandstream-PBX Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+P26154 = 1
+
+# Conference URI
+# String
+P2318 =
+
+# Music On Hold URI
+# String
+P2350 =
+
+# Allow Unsolicited REFER. 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P26023 = 0
+
+# Conference URI
+# String
+P2418 =
+
+# Music On Hold URI
+# String
+P2450 =
+
+# Allow Unsolicited REFER. 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P26123 = 0
+
+# Broadsoft
+# Broadsoft Call Center. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P2441 = 0
+
+# Hoteling Event. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P2442 = 0
+
+# Call Center Status. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P2443 = 0
+
+# Broadsoft Executive Assistant. 0 - Disabled, 1 - Enabled. Default is 0
+# Number: 0, 1
+# Mandatory
+P2464 = 0
+
+# Feature Key Synchronization. 0 - Disabled, 1 - Enabled. Default is 0.
+# Number: 0, 1
+# Mandatory
+P2425 = 0
+
+# Broadsoft Call Park. 0 - Disabled, 1 - Enabled. Default is 0.
+# Number: 0, 1
+# Mandatory
+P2488 = 0
+
+
+# DTMF Delay. Default is 250
+# Number: 100 - 250
+# Mandatory
+P26060 = 250
+
+# DTMF Delay. Default is 250
+# Number: 100 - 250 
+# Mandatory
+P26160 = 250
+
+# Early Dial (use "Yes" only if proxy supports 484 response). 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P29 = 0
+
+# Dial Plan Prefix
+# String 
+P66 =
+
+# Dial Plan. Default value is { x+ | \+x+ | *x+ | *xx*x+ }
+# String
+# Mandatory
+P290 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+# Bypass Dial Plan
+# String: contact,incoming,outgoing,dialing,api. Default is null
+P2382 = 
+
+# Transfer on Conference Hangup. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P2304 = 0
+
+# No Key Entry Timeout (in seconds). Default is 4
+# Number: 1 - 15
+# Mandatory
+P85 = 4
+
+# On Hold Reminder Tone. 0 - Disabled, 1 - Enable. Default is 1
+# Number: 0, 1
+# Mandatory
+P26006 = 1
+
+# Early Dial (use "Yes" only if proxy supports 484 response). 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P422 = 0
+
+# Dial Plan Prefix
+# String
+P419 = 
+
+# Dial Plan. Default is { x+ | \+x+ | *x+ | *xx*x+ }
+# String
+# Mandatory
+P459= { x+ | \+x+ | *x+ | *xx*x+ }
+
+# Bypass Dial Plan
+# String: contact,incoming,outgoing,dialing,api. Default is null
+P2482 = 
+
+# Transfer on Conference Hangup. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P2404 = 0
+
+# No Key Entry Timeout (in seconds). Default is 4
+# Number: 1 - 15
+# Mandatory
+P491 = 4
+
+# On Hold Reminder Tone. 0 - Disabled, 1 - Enable. Default is 1
+# Number: 0, 1
+# Mandatory
+P26106 = 1
+
+# Mute on answer Intercom call. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P26071 = 0
+
+# Play warning tone for Auto Answer Intercom. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+P26072 = 1
+
+# Mute on answer Intercom call. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P26171 = 0
+
+# Play warning tone for Auto Answer Intercom. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+P26172 = 1
+
+# Preferred Default Account. 
+# 0 - Account 1, 1 - Account 2
+# Number: 0, 1. Default is 0.
+# Mandatory
+P29612 = 0
+
+# Saved Local Call Recording Location. 0 - Internal Storage, 1 - USB.
+# Number: 0,1. Default is 0.
+# Mandatory
+P6761 = 0
+
+# Replace the oldest call record. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P8453=0
+
+# System Ringtone
+# String
+# Mandatory
+P345 = f1=440,f2=480,c=200/400;
+
+# Busy Tone
+# String
+# Mandatory
+P348 = f1=480,f2=620,c=50/50;
+
+# Reorder Tone
+# String
+# Mandatory
+P349 = f1=480,f2=620,c=25/25;
+
+# User Protection. 0 - Off, 1 - On. Default is Off
+# Number: 0, 1
+# Mandatory
+P9996 = 0
+
+# USB Console Log. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P2922 = 0
+
+# Web/Keypad/Restrict mode Lockout Duration (0-60 minutes). Default is 5
+# Number: 0-60
+P1683 = 5
+
+# Enable Phonebook XML Download. # 0 - Disabled, 1 - Enabled, use HTTP, 2 - Enabled, use TFTP, 3 - Enabled, use HTTPS. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+P330 = 0
+
+# HTTP/HTTPS User Name
+# String
+P6713 =
+
+# HTTP/HTTPS Password
+# String
+P6714 =
+
+# Phonebook XML Server Path
+# This is a string of up to 256 characters that should contain a path to the XML file. It MUST be in the host/path format.
+# For example: directory.grandstream.com/engineering
+# String
+P331 =
+
+# Remove Manually-edited entries on Download. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+P333 = 1
+
+
+#######################################################
+## P value be removed since 1.0.0.41                 ##
+#######################################################
+# Disable Recovery on Blind Transfer. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P2384 = 0
+
+# Disable Recovery on Blind Transfer. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P2484 = 0
+
+# Hiding Dialing Password
+# Prefix for dialing password
+# String
+P26149 = 
+
+# Password length. Default is 0
+# Number
+# Mandatory
+P26150 = 0
+
+# Hiding Dialing Password
+# Prefix for dialing password
+# String
+P26049 = 
+
+# Password length. Default is 0
+# Number
+# Mandatory
+P26050 = 0
+
+# Onhook Dial Barging. 0 - Disabled, 1 - Enabled. Default is 1
+# Number: 0, 1
+# Mandatory
+P8397 = 1
+
+# Off-hook Auto Dial
+# String
+P71 =
+
+# Off-hook Auto Dial Delay
+# Number: 0 - 10
+P8388 = 4
+
+# Off-hook Timeout (in seconds). Default is 30
+# Number: 10 - 60
+# Mandatory
+P1485 = 30
+
+# Disable Call Waiting Tone. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P186 = 0
+
+# Use Quick IP Call Mode. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P184 = 0
+
+# Disable in-call DTMF Display. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P338 = 0
+
+# Enable DND Feature. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+P8446 = 1
+
+# DND Override. 0 - Off, 1 - Allow All, 2 - Allow Only Contacts, 3 - Allow Only Favourites. Default is 0
+# Number: 0,1,2,3
+# Mandatory
+P8372 = 0
+
+# Disable Transfer. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P1341 = 0
+
+# Attended Transfer Mode. 0 - Static, 1 - Dynamic. Default is 1
+# Number: 0, 1
+# Mandatory
+P1376 = 1
+
+# Default call log type. 0 - Default, 1 - Broadsoft Call Log, 2 - Local Call Log.
+# Number: 0,1,2. Default is 0.
+# Mandatory
+P6765 = 0
+
+# Speaker Ring Volume
+# Number: 0-7. Default is 5.
+# Mandatory
+P8352 = 5
+
+# Notification Tone Volume
+# Number: 0-7. Default is 5.
+# Mandatory
+P8399 = 5
+
+# Lock Speaker Volume. 0 - No, 1 - Ring, 2 - Talk, 3 - Both. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+P8392 = 0
+
+###################################################################
+## Network/Basic Settings                                        ##
+###################################################################
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P1415 = 2
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P8 = 0
+
+##########################################
+# DHCP
+##########################################
+# Host name, DHCP option 12. Max length allowed is 64 characters
+# String
+P146 =
+
+# Vendor Class ID, DHCP option 60. Max length allowed is 64 characters
+# String
+P148 = Grandstream WP810
+
+##########################################
+# PPPoE
+##########################################
+# PPPoE Account ID
+# String
+P82 =
+
+# PPPoE Password
+# String
+# Cannot contain ` or "
+P83 =
+
+# PPPoE Service Name
+# String 
+P269 =
+
+##########################################
+# Statically Configured
+##########################################
+# IP Address. Ignore if DHCP or PPPoE is used
+# Number: 0 - 255
+P9 = 192
+
+# Number: 0 - 255
+P10 = 168
+
+# Number: 0 - 255
+P11 = 0
+
+# Number: 0 - 255
+P12 = 160
+
+# Subnet mask. Ignore if DHCP or PPPoE is used
+# Number: 0 - 255
+P13 = 255
+
+# Number: 0 - 255
+P14 = 255
+
+# Number: 0 - 255
+P15 = 0
+
+# Number: 0 - 255
+P16 = 0
+
+# Gateway. Ignore if DHCP or PPPoE is used
+# Number: 0 - 255
+P17 = 0
+
+# Number: 0 - 255
+P18 = 0
+
+# Number: 0 - 255
+P19 = 0
+
+# Number: 0 - 255
+P20 = 0
+
+# DNS 1 Server. Ignore if DHCP or PPPoE is used
+# Number: 0 - 255
+P21 = 0
+
+# Number: 0 - 255
+P22 = 0
+
+# Number: 0 - 255
+P23 = 0
+
+# Number: 0 - 255
+P24 = 0
+
+# DNS 2 Server. Ignore if DHCP or PPPoE is used
+# Number: 0 - 255
+P25 = 0
+
+# Number: 0 - 255
+P26 = 0
+
+# Number: 0 - 255
+P27 = 0
+
+# Number: 0 - 255
+P28 = 0
+
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P92 = 0
+
+# Number: 0 - 255
+P93 = 0
+
+# Number: 0 - 255
+P94 = 0
+
+# Number: 0 - 255
+P95 = 0
+
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P1419 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P1426 = 0
+
+# Full Static: Static IPv6 Address
+P1420 =
+
+# Full Static: IPv6 Prefix Length
+P1421 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P1422 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P1424 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P1425 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P1423 =
+
+##############################################################################
+## Network/Advanced Settings                                                ##
+##############################################################################
+
+# 802.1X Mode. 0 - Disable, 1 - EAP-MD5. 2 - EAP-TLS, 3 - EAP-PEAPv0/MSCHAPv2. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+P7901 = 0
+
+# 802.1X Identity. Max length allowed is 64 characters
+# String
+P7902 = 
+
+# MD5 Password. Max length allowed is 64 characters
+# String
+P7903 =
+
+# 3CX Auto Provision. 0 - No, 1 - Yes. Default is Yes
+# Number: 0, 1
+# Mandatory
+P1414 = 1
+
+# Firmware Upgrade Confirmation. 0 - No, 1 - Yes. Default is 1
+# Number: 0,1
+# Mandatory
+P8375 = 1
+
+# Phonebook Download Interval (in minutes)
+# Valid value range is 5-720. Default is 0 for disabled
+# Number: 0, 5-720; 
+P332 = 0
+
+# Import Group Method. 0 - Replace, 1 - Append. Default is 0
+# Number: 0, 1
+# Mandatory
+P8462 = 0
+
+# Sort Phonebook by. 0 - Last Name, 1 - First Name. Default is 0
+# Number: 0, 1
+# Mandatory
+P2914 = 0
+
+#######################################################
+## P value be added since 1.0.0.41                   ##
+#######################################################
+# Saved Local Call Recording Location. 0 - Internal Storage, 1 - USB.
+# Number: 0,1. Default is 0.
+# Mandatory
+P6761 = 0
+
+##############################################
+##  Settings/Preferences / Language
+##############################################
+# Display Language. 
+# auto - Auto, de - German, en - English, es - Spanish, fr - French
+# it - Italian, pt - Portuguese, ru - Russian, zh - Chinese
+P1362=auto
+
+##############################################################################
+## Network/Wi-Fi Settings                                                   ##
+##############################################################################
+###################################################################
+## Network/Basic Settings/SSID 1                                 ##
+###################################################################
+# SSID
+# String
+P83000 =
+
+# Enabled. 0 - Disabled, 1 - Enabled.
+# Number: 0, 1
+P83001 = 1
+
+# Hidden. 0 - No, 1 - Yes
+# Number: 0, 1
+P83050 = 0
+
+# Security Type. 0 - None, 1 - WEP, 4 - WPA PSK, 5 - WPA Enterprise
+# Number: 0, 1, 4, 5
+P83002 = 4
+
+# Password.
+P83003 =
+
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P83051 = 0
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P83052 = 0
+
+### IPv4 Address Static
+# IPv4 Address
+# Number: 0 - 255
+P83053 = 0
+P83054 = 0
+P83055 = 0
+P83056 = 0
+
+# Subnet Mask
+# Number: 0 - 255
+P83057 = 0
+P83058 = 0
+P83059 = 0
+P83060 = 0
+
+# Gateway
+# Number: 0 - 255
+P83061 = 0
+P83062 = 0
+P83063 = 0
+P83064 = 0
+
+# DNS Server 1
+# Number: 0 - 255
+P83065 = 0
+P83066 = 0
+P83067 = 0
+P83068 = 0
+
+# DNS Server 2
+# Number: 0 - 255
+P83069 = 0
+P83070 = 0
+P83071 = 0
+P83072 = 0
+
+### IPv4 Address DHCP
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P83073 = 0
+P83074 = 0
+P83075 = 0
+P83076 = 0
+
+### IPv6 Address
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P83077 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P83078 = 0
+
+# Full Static: Static IPv6 Address
+P83079 =
+
+# Full Static: IPv6 Prefix Length
+P83080 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P83081 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83082 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83083 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83084 =
+
+###################################################################
+## Network/Basic Settings/SSID 2                                 ##
+###################################################################
+# SSID
+# String
+P83100 =
+
+# Enabled. 0 - Disabled, 1 - Enabled.
+# Number: 0, 1
+P83101 = 0
+
+# Hidden. 0 - No, 1 - Yes
+# Number: 0, 1
+P83150 = 0
+
+# Security Type. 0 - None, 1 - WEP, 4 - WPA PSK, 5 - WPA Enterprise
+# Number: 0, 1, 4, 5
+P83102 = 0
+
+# Password.
+P83103 =
+
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P83151 = 2
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P83152 = 0
+
+### IPv4 Address Static
+# IPv4 Address
+# Number: 0 - 255
+P83153 = 0
+P83154 = 0
+P83155 = 0
+P83156 = 0
+
+# Subnet Mask
+# Number: 0 - 255
+P83157 = 0
+P83158 = 0
+P83159 = 0
+P83160 = 0
+
+# Gateway
+# Number: 0 - 255
+P83161 = 0
+P83162 = 0
+P83163 = 0
+P83164 = 0
+
+# DNS Server 1
+# Number: 0 - 255
+P83165 = 0
+P83166 = 0
+P83167 = 0
+P83168 = 0
+
+# DNS Server 2
+# Number: 0 - 255
+P83169 = 0
+P83170 = 0
+P83171 = 0
+P83172 = 0
+
+### IPv4 Address DHCP
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P83173 = 0
+P83174 = 0
+P83175 = 0
+P83176 = 0
+
+### IPv6 Address
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P83177 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P83178 = 0
+
+# Full Static: Static IPv6 Address
+P83179 =
+
+# Full Static: IPv6 Prefix Length
+P83180 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P83181 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83182 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83183 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83184 =
+
+###################################################################
+## Network/Basic Settings/SSID 3                                 ##
+###################################################################
+# SSID
+# String
+P83200 =
+
+# Enabled. 0 - Disabled, 1 - Enabled.
+# Number: 0, 1
+P83201 = 0
+
+# Hidden. 0 - No, 1 - Yes
+# Number: 0, 1
+P83250 = 0
+
+# Security Type. 0 - None, 1 - WEP, 4 - WPA PSK, 5 - WPA Enterprise
+# Number: 0, 1, 4, 5
+P83202 = 0
+
+# Password.
+P83203 =
+
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P83251 = 2
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P83252 = 0
+
+### IPv4 Address Static
+# IPv4 Address
+# Number: 0 - 255
+P83253 = 0
+P83254 = 0
+P83255 = 0
+P83256 = 0
+
+# Subnet Mask
+# Number: 0 - 255
+P83257 = 0
+P83258 = 0
+P83259 = 0
+P83260 = 0
+
+# Gateway
+# Number: 0 - 255
+P83261 = 0
+P83262 = 0
+P83263 = 0
+P83264 = 0
+
+# DNS Server 1
+# Number: 0 - 255
+P83265 = 0
+P83266 = 0
+P83267 = 0
+P83268 = 0
+
+# DNS Server 2
+# Number: 0 - 255
+P83269 = 0
+P83270 = 0
+P83271 = 0
+P83272 = 0
+
+### IPv4 Address DHCP
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P83273 = 0
+P83274 = 0
+P83275 = 0
+P83276 = 0
+
+### IPv6 Address
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P83277 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P83278 = 0
+
+# Full Static: Static IPv6 Address
+P83279 =
+
+# Full Static: IPv6 Prefix Length
+P83280 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P83281 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83282 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83283 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83284 =
+
+###################################################################
+## Network/Basic Settings/SSID 4                                 ##
+###################################################################
+# SSID
+# String
+P83300 =
+
+# Enabled. 0 - Disabled, 1 - Enabled.
+# Number: 0, 1
+P83301 = 0
+
+# Hidden. 0 - No, 1 - Yes
+# Number: 0, 1
+P83350 = 0
+
+# Security Type. 0 - None, 1 - WEP, 4 - WPA PSK, 5 - WPA Enterprise
+# Number: 0, 1, 4, 5
+P83302 = 0
+
+# Password.
+P83303 =
+
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P83351 = 2
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P83352 = 0
+
+### IPv4 Address Static
+# IPv4 Address
+# Number: 0 - 255
+P83353 = 0
+P83354 = 0
+P83355 = 0
+P83356 = 0
+
+# Subnet Mask
+# Number: 0 - 255
+P83357 = 0
+P83358 = 0
+P83359 = 0
+P83360 = 0
+
+# Gateway
+# Number: 0 - 255
+P83361 = 0
+P83362 = 0
+P83363 = 0
+P83364 = 0
+
+# DNS Server 1
+# Number: 0 - 255
+P83365 = 0
+P83366 = 0
+P83367 = 0
+P83368 = 0
+
+# DNS Server 2
+# Number: 0 - 255
+P83369 = 0
+P83370 = 0
+P83371 = 0
+P83372 = 0
+
+### IPv4 Address DHCP
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P83373 = 0
+P83374 = 0
+P83375 = 0
+P83376 = 0
+
+### IPv6 Address
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P83377 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P83378 = 0
+
+# Full Static: Static IPv6 Address
+P83379 =
+
+# Full Static: IPv6 Prefix Length
+P83380 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P83381 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83382 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83383 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83384 =
+
+###################################################################
+## Network/Basic Settings/SSID 5                                 ##
+###################################################################
+# SSID
+# String
+P83400 =
+
+# Enabled. 0 - Disabled, 1 - Enabled.
+# Number: 0, 1
+P83401 = 0
+
+# Hidden. 0 - No, 1 - Yes
+# Number: 0, 1
+P83450 = 0
+
+# Security Type. 0 - None, 1 - WEP, 4 - WPA PSK, 5 - WPA Enterprise
+# Number: 0, 1, 4, 5
+P83402 = 0
+
+# Password.
+P83403 =
+
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P83451 = 2
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P83452 = 0
+
+### IPv4 Address Static
+# IPv4 Address
+# Number: 0 - 255
+P83453 = 0
+P83454 = 0
+P83455 = 0
+P83456 = 0
+
+# Subnet Mask
+# Number: 0 - 255
+P83457 = 0
+P83458 = 0
+P83459 = 0
+P83460 = 0
+
+# Gateway
+# Number: 0 - 255
+P83461 = 0
+P83462 = 0
+P83463 = 0
+P83464 = 0
+
+# DNS Server 1
+# Number: 0 - 255
+P83465 = 0
+P83466 = 0
+P83467 = 0
+P83468 = 0
+
+# DNS Server 2
+# Number: 0 - 255
+P83469 = 0
+P83470 = 0
+P83471 = 0
+P83472 = 0
+
+### IPv4 Address DHCP
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P83473 = 0
+P83474 = 0
+P83475 = 0
+P83476 = 0
+
+### IPv6 Address
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P83477 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P83478 = 0
+
+# Full Static: Static IPv6 Address
+P83479 =
+
+# Full Static: IPv6 Prefix Length
+P83480 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P83481 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83482 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83483 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83484 =
+
+###################################################################
+## Network/Basic Settings/SSID 6                                 ##
+###################################################################
+# SSID
+# String
+P83500 =
+
+# Enabled. 0 - Disabled, 1 - Enabled.
+# Number: 0, 1
+P83501 = 0
+
+# Hidden. 0 - No, 1 - Yes
+# Number: 0, 1
+P83550 = 0
+
+# Security Type. 0 - None, 1 - WEP, 4 - WPA PSK, 5 - WPA Enterprise
+# Number: 0, 1, 4, 5
+P83502 = 0
+
+# Password.
+P83503 =
+
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P83551 = 2
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P83552 = 0
+
+### IPv4 Address Static
+# IPv4 Address
+# Number: 0 - 255
+P83553 = 0
+P83554 = 0
+P83555 = 0
+P83556 = 0
+
+# Subnet Mask
+# Number: 0 - 255
+P83557 = 0
+P83558 = 0
+P83559 = 0
+P83560 = 0
+
+# Gateway
+# Number: 0 - 255
+P83561 = 0
+P83562 = 0
+P83563 = 0
+P83564 = 0
+
+# DNS Server 1
+# Number: 0 - 255
+P83565 = 0
+P83566 = 0
+P83567 = 0
+P83568 = 0
+
+# DNS Server 2
+# Number: 0 - 255
+P83569 = 0
+P83570 = 0
+P83571 = 0
+P83572 = 0
+
+### IPv4 Address DHCP
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P83573 = 0
+P83574 = 0
+P83575 = 0
+P83576 = 0
+
+### IPv6 Address
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P83577 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P83578 = 0
+
+# Full Static: Static IPv6 Address
+P83579 =
+
+# Full Static: IPv6 Prefix Length
+P83580 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P83581 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83582 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83583 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83584 =
+
+###################################################################
+## Network/Basic Settings/SSID 7                                 ##
+###################################################################
+# SSID
+# String
+P83600 =
+
+# Enabled. 0 - Disabled, 1 - Enabled.
+# Number: 0, 1
+P83601 = 0
+
+# Hidden. 0 - No, 1 - Yes
+# Number: 0, 1
+P83650 = 0
+
+# Security Type. 0 - None, 1 - WEP, 4 - WPA PSK, 5 - WPA Enterprise
+# Number: 0, 1, 4, 5
+P83602 = 0
+
+# Password.
+P83603 =
+
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P83651 = 2
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P83652 = 0
+
+### IPv4 Address Static
+# IPv4 Address
+# Number: 0 - 255
+P83653 = 0
+P83654 = 0
+P83655 = 0
+P83656 = 0
+
+# Subnet Mask
+# Number: 0 - 255
+P83657 = 0
+P83658 = 0
+P83659 = 0
+P83660 = 0
+
+# Gateway
+# Number: 0 - 255
+P83661 = 0
+P83662 = 0
+P83663 = 0
+P83664 = 0
+
+# DNS Server 1
+# Number: 0 - 255
+P83665 = 0
+P83666 = 0
+P83667 = 0
+P83668 = 0
+
+# DNS Server 2
+# Number: 0 - 255
+P83669 = 0
+P83670 = 0
+P83671 = 0
+P83672 = 0
+
+### IPv4 Address DHCP
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P83673 = 0
+P83674 = 0
+P83675 = 0
+P83676 = 0
+
+### IPv6 Address
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P83677 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P83678 = 0
+
+# Full Static: Static IPv6 Address
+P83679 =
+
+# Full Static: IPv6 Prefix Length
+P83680 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P83681 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83682 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83683 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83684 =
+
+###################################################################
+## Network/Basic Settings/SSID 8                                 ##
+###################################################################
+# SSID
+# String
+P83700 =
+
+# Enabled. 0 - Disabled, 1 - Enabled.
+# Number: 0, 1
+P83701 = 0
+
+# Hidden. 0 - No, 1 - Yes
+# Number: 0, 1
+P83750 = 0
+
+# Security Type. 0 - None, 1 - WEP, 4 - WPA PSK, 5 - WPA Enterprise
+# Number: 0, 1, 4, 5
+P83702 = 0
+
+# Password.
+P83703 =
+
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P83751 = 2
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P83752 = 0
+
+### IPv4 Address Static
+# IPv4 Address
+# Number: 0 - 255
+P83753 = 0
+P83754 = 0
+P83755 = 0
+P83756 = 0
+
+# Subnet Mask
+# Number: 0 - 255
+P83757 = 0
+P83758 = 0
+P83759 = 0
+P83760 = 0
+
+# Gateway
+# Number: 0 - 255
+P83761 = 0
+P83762 = 0
+P83763 = 0
+P83764 = 0
+
+# DNS Server 1
+# Number: 0 - 255
+P83765 = 0
+P83766 = 0
+P83767 = 0
+P83768 = 0
+
+# DNS Server 2
+# Number: 0 - 255
+P83769 = 0
+P83770 = 0
+P83771 = 0
+P83772 = 0
+
+### IPv4 Address DHCP
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P83773 = 0
+P83774 = 0
+P83775 = 0
+P83776 = 0
+
+### IPv6 Address
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P83777 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P83778 = 0
+
+# Full Static: Static IPv6 Address
+P83779 =
+
+# Full Static: IPv6 Prefix Length
+P83780 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P83781 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83782 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83783 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83784 =
+
+###################################################################
+## Network/Basic Settings/SSID 9                                 ##
+###################################################################
+# SSID
+# String
+P83800 =
+
+# Enabled. 0 - Disabled, 1 - Enabled.
+# Number: 0, 1
+P83801 = 0
+
+# Hidden. 0 - No, 1 - Yes
+# Number: 0, 1
+P83850 = 0
+
+# Security Type. 0 - None, 1 - WEP, 4 - WPA PSK, 5 - WPA Enterprise
+# Number: 0, 1, 4, 5
+P83802 = 0
+
+# Password.
+P83803 =
+
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P83851 = 2
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P83852 = 0
+
+### IPv4 Address Static
+# IPv4 Address
+# Number: 0 - 255
+P83853 = 0
+P83854 = 0
+P83855 = 0
+P83856 = 0
+
+# Subnet Mask
+# Number: 0 - 255
+P83857 = 0
+P83858 = 0
+P83859 = 0
+P83860 = 0
+
+# Gateway
+# Number: 0 - 255
+P83861 = 0
+P83862 = 0
+P83863 = 0
+P83864 = 0
+
+# DNS Server 1
+# Number: 0 - 255
+P83865 = 0
+P83866 = 0
+P83867 = 0
+P83868 = 0
+
+# DNS Server 2
+# Number: 0 - 255
+P83869 = 0
+P83870 = 0
+P83871 = 0
+P83872 = 0
+
+### IPv4 Address DHCP
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P83873 = 0
+P83874 = 0
+P83875 = 0
+P83876 = 0
+
+### IPv6 Address
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P83877 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P83878 = 0
+
+# Full Static: Static IPv6 Address
+P83879 =
+
+# Full Static: IPv6 Prefix Length
+P83880 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P83881 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83882 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83883 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83884 =
+
+###################################################################
+## Network/Basic Settings/SSID 10                                 ##
+###################################################################
+# SSID
+# String
+P83900 =
+
+# Enabled. 0 - Disabled, 1 - Enabled.
+# Number: 0, 1
+P83901 = 0
+
+# Hidden. 0 - No, 1 - Yes
+# Number: 0, 1
+P83950 = 0
+
+# Security Type. 0 - None, 1 - WEP, 4 - WPA PSK, 5 - WPA Enterprise
+# Number: 0, 1, 4, 5
+P83902 = 0
+
+# Password.
+P83903 =
+
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2
+# Number: 0, 1, 2, 3
+# Mandatory
+P83951 = 2
+
+# IPv4 Address Type. 0 - DHCP, 1 - Static IP, 2 - PPPoE. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P83952 = 0
+
+### IPv4 Address Static
+# IPv4 Address
+# Number: 0 - 255
+P83953 = 0
+P83954 = 0
+P83955 = 0
+P83956 = 0
+
+# Subnet Mask
+# Number: 0 - 255
+P83957 = 0
+P83958 = 0
+P83959 = 0
+P83960 = 0
+
+# Gateway
+# Number: 0 - 255
+P83961 = 0
+P83962 = 0
+P83963 = 0
+P83964 = 0
+
+# DNS Server 1
+# Number: 0 - 255
+P83965 = 0
+P83966 = 0
+P83967 = 0
+P83968 = 0
+
+# DNS Server 2
+# Number: 0 - 255
+P83969 = 0
+P83970 = 0
+P83971 = 0
+P83972 = 0
+
+### IPv4 Address DHCP
+# Preferred DNS server.  (if specified).
+# Number: 0 - 255
+P83973 = 0
+P83974 = 0
+P83975 = 0
+P83976 = 0
+
+### IPv6 Address
+# IPv6 Address Type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P83977 = 0
+
+# IPv6 Static Mode: Statically configured. 0 - Full Static, 1 - Prefix Static. Default is 0.
+# Number: 0, 1
+P83978 = 0
+
+# Full Static: Static IPv6 Address
+P83979 =
+
+# Full Static: IPv6 Prefix Length
+P83980 =
+
+# Prefix Static: IPv6 Prefix (64bits)
+P83981 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83982 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83983 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+P83984 =

@@ -1,0 +1,1935 @@
+﻿###############################################################################################
+####         Configuration Template for GVC3210 Firmware Version 1.0.1.61                  ####
+###############################################################################################
+#######################################################################
+##  Contacts - Contacts                                              ##
+#######################################################################
+# Clear The Old List. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1435 = 0
+
+# Replace Duplicate Entries. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1436 = 0
+
+# Download Mode. 0 - OFF, 1 - TFTP, 2 - HTTP, 3 - HTTPS. Default value is 0
+# Number: 0, 1, 2, 3
+P330 = 2
+
+# File Encoding. GBK - GBK, UTF-8 - UTF-8, UTF-16 - UTF-16, UTF-32 - UTF-32, Big5 - Big5, Big5-HKSCS - Big5-HKSCS, Shift-JIS - Shift-JIS
+# ISO8859-1 - ISO8859-1, ISO8859-15 - ISO8859-15, Windows-1251 - Windows-1251, EUC-KR - EUC-KR
+# Default Value is UTF-8
+# String: GBK, UTF-8, UTF-16, UTF-32, Big5, Big5-HKSCS, Shift-JIS, ISO8859-1, ISO8859-15, Windows-1251, EUC-KR 
+P1681 = UTF-8
+
+# Download Interval. 0 - None, 120 - 2 Hours, 240 - 4 Hours, 360 - 6 Hours, 480 - 8 Hours, 720 - 12 Hours. Default is 0 for disabled.
+# Number: 0, 120, 240, 360, 480, 720
+P332 = 0
+
+# Download Server. It MUST be in the host/path format
+# For example: directory.grandstream.com/engineering
+# String
+P331 = 
+
+# HTTP/HTTPS Username for phonebook downloading
+# String
+P6713 =
+
+# HTTP/HTTPS Password for phonebook downloading
+# String
+P6714 =
+#######################################################################
+##  Contacts - LDAP                                                  ##
+#######################################################################
+# Connection Mode. 0 - LDAP, 1 - LDAPS. Default Value is 0
+# Number : 0, 1
+P8037 =0
+
+# Server Address
+# LDAP Server Address, up to 256 characters can be used. It can be IP address or Domain name
+# String
+P8020 =
+
+# Port
+# Number: 1 - 65535. Default value is 389
+P8021 = 389
+
+# Base DN. The LDAP search base refers to the location in the directory where the search is requested to begin
+# Example 1: dc=grandstream,dc=com
+# Example 2: ou=Boston, dc=grandstream,dc=com
+# String
+P8022 =
+
+# User Name. The bind "Username" for querying LDAP servers. Some LDAP servers allow anonymous binds in which case the setting can be left blank
+# String
+P8023 =
+
+# Password. The bind "Password" for querying LDAP servers. And the field can be left blank if the LDAP server allows anonymous binds
+# String
+P8024 =
+
+# LDAP Name Attributes. This setting specifies the "name" attributes of each record which are returned in the LDAP search result
+# The setting allows the users to configure multiple space separated name attributes
+# String
+P8028 =
+
+# LDAP Number Attributes. This setting specifies the "number" attributes of each record which are returned in the LDAP search result
+# The setting allows the users to configure multiple space separated number attributes
+# String
+P8029 =
+
+# LDAP Mail Attributes. This setting specifies the "mail" attributes of each record which are returned in the LDAP search result
+# The setting allows the users to configure multiple space separated mail attributes
+# String
+P8038 =
+
+# LDAP Name Filter
+# LDAP name filter is the filter used for name look ups. Please refer to usermanual for examples
+# String
+P8026 =
+
+# LDAP Number Filter
+# LDAP name filter is the filter used for number look ups. Please refer to usermanual for examples
+# String
+P8025 =
+
+# LDAP Mail Filter
+# LDAP mail filter is the filter used for mail look ups. Please refer to usermanual for examples
+# String
+P8039 =
+
+# LDAP Displaying Name Attributes. The entry information to be shown on phone LCD. Grandstream phones will display up to 3 fields
+# String
+P8030 =
+
+# Max Hits. The setting specifies the maximum number of results to be returned by the LDAP server
+# If the value is set to 0, server will return all search results. Default is 50
+# Number: 0 - 32000
+P8031 = 50
+
+# Search Timeout (ms). Default is 4000
+# The setting specifies how long the server should process the request and client waits for server to return
+# Number: 0 - 10000
+P8032 = 4000
+
+# LDAP Lookup When Dialing. 0 - No, 1 - Yes. Default is 0
+P8034 = 0
+
+# Search LDAP for Incoming Calls. 0 - No, 1 - Yes. Default is 0
+P8035 = 0
+#######################################################################
+##  Contacts - BroadSoft                                             ##
+#######################################################################
+# Authentication Type. 0 - SIP Credentials, 1 - LogIn Credentials.
+# Number: 0, 1
+P22054 = 0
+
+# Server. Broadsoft XSI server address with protocol.
+# String
+P1591 =
+
+# Port. Port of the Broadsoft XSI server.
+# String
+P1592 =
+
+# Action Path. Action Path for BroadSoft XSI server.
+# String
+P2937 = 
+
+# BroadWorks User ID. User IDfor Broadsoft XSI server.
+# String
+P22034 =
+
+# SIP Authentication ID. Username for Broadsoft XSI server.
+# String
+P1593 =
+
+# SIP Authentication Password. Password for Broadsoft XSI server.
+# String
+P1594 =
+
+# Group Directory. 0 - Disabled, 1 - Enabled. Default value is 1.
+# Number: 0, 1
+P2971 = 1
+
+# Group Directory Name.
+# String
+P2972 =
+
+# Enterprise Directory. 0 - Disabled, 1 - Enabled. Default value is 1.
+# Number: 0, 1
+P2973 = 1
+
+# Enterprise Directory Name.
+# String
+P2974 =
+
+# Group Common. 0 - Disabled, 1 - Enabled. Default value is 1.
+# Number: 0, 1
+P2975 = 1
+
+# Group Common Name.
+# String
+P2976 =
+
+# Enterprise Common. 0 - Disabled, 1 - Enabled. Default value is 1.
+# Number: 0, 1
+P2977 = 1
+
+# Enterprise Common Name.
+# String
+P2978 =
+
+# Personal Directory. 0 - Disabled, 1 - Enabled. Default value is 1.
+# Number: 0, 1
+P2979 = 1
+
+# Personal Directory Name.
+# String
+P2980 =
+
+# Missed Call Log. 0 - Disabled, 1 - Enabled. Default value is 1.
+# Number: 0, 1
+P2981 = 1
+
+# Missed Call Log Name.
+# String
+P2982 =
+
+# Placed Call Log. 0 - Disabled, 1 - Enabled. Default value is 1.
+# Number: 0, 1
+P2983 = 1
+
+# Placed Call Log Name.
+# String
+P2984 =
+
+# Received Call Log. 0 - Disabled, 1 - Enabled. Default value is 1.
+# Number: 0, 1
+P2985 = 1
+
+# Received Call Log Name.
+# String
+P2986 =
+
+# BS Directory Hits.
+# Number
+P22014 =
+#######################################################################
+##  Device Control - Audio Control                                   ##
+#######################################################################
+# Echo Delay. -2 - 40, -1 - 50, 0 - 60, 1 - 70, 2 - 80, 3 - 90, 4 - 100, 5 - 110, 6 - 120, 7 - 130, 8 - 140, 9 - 150. Default value is 0.
+# Number: -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+P22280 = 0
+
+# Audio Device. 0 - Auto, 1 - Bluetooth, 2 - USB, 3 - HDMI, 4 - Built-in Speaker, 5 - Gooseneck MIC. Default value is 0
+# Number: 0, 1, 2, 3, 4, 5
+P22050 = 0
+
+# Ring Back Tone
+P4001 = f1=440@-19,f2=480@-19,c=2000/4000;
+
+# Busy Tone
+P4002 = f1=480@-24,f2=620@-24,c=500/500;
+
+# Reorder Tone
+P4003 = f1=480@-24,f2=620@-24,c=250/250;
+
+# Confirmation Tone
+P4004 = f1=350@-11,f2=440@-11,c=100/100-100/100-100/100;
+
+# Call-Waiting Tone
+P4005 = f1=440@-13,c=300/2000-300/2000-0/0;
+
+# Call-Waiting Tone Gain. 0 - Low, 1 - Medium, 2 - High. Default value is 0
+# Number: 0, 1, 2
+P1555 = 0
+
+# Ring Cadence
+P4040 = c=2000/4000;
+#######################################################################
+##  Settings - SIP - General                                         ##
+#######################################################################
+# Account Active. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P271 = 1
+
+# Account Name
+P270 =
+
+# SIP Server
+P47 =
+
+# Secondary SIP Server
+P602 =
+
+# Tertiary SIP Server
+P1702 =
+
+# SIP User ID
+P35 =
+
+# SIP Authenticate ID
+P36 =
+
+# SIP Authentication Password
+P34 =
+
+# Voice Mail Access Number
+P33 =
+
+# Display Name (Display Name, e.g., John Doe)
+P3 =
+
+# Tel URI. 0 - Disable, 1 - User=Phone, 2 - Enabled. Default value is 0
+# Number: 0, 1, 2
+P63 = 0
+#######################################################################
+##  Settings - SIP - Network                                         ##
+#######################################################################
+# Outbound Proxy
+P48 =
+
+# Secondary Outbound Proxy
+P2333 =
+
+# DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV. Default value is 0
+# Number: 0, 1, 2
+P103 = 0
+
+# NAT Traversal. 0 - NAT No, 1 - STUN, 2 - Keep-alive, 3 - UPnP, 4 - Auto, 5 - VPN, 6 - TURN. Default value is 2
+# Number: 0, 1, 2, 3, 4, 5, 6
+P52 = 2
+
+# Proxy-Require
+P197 =
+#######################################################################
+##  Settings - SIP - SIP                                             ##
+#######################################################################
+# SIP Registration. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P31 = 1
+
+# Unregister Before New Registration. 0 - No, 1 - All, 2 -  Instance . Default value is 2
+# Number: 0, 1, 2
+P81 = 2
+
+# Register Expiration (m). In minutes. Default value is 60
+# Number: 0 - 64800
+P32 = 60
+
+# Subscribe Expiration (m). In minutes. Default value is 15
+# Number: 0 - 64800
+P26051 = 15
+
+# Wait Time Retry Registration(s). In seconds. Default value is 20
+# Number: 1 - 3600
+P138 = 20
+
+# Local SIP Port. Default value is 5060
+# Number: 5 - 65535
+P40 = 5060
+
+# SUBSCRIBE For MWI. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P99 = 0
+
+# Enable Session Timer/ Session Expiration(s).  In seconds. Default value is 180 seconds.
+# By default,  Session Timer is Enabled.  Session Timer is disabled if the value is 0.
+# Number: 0 or 90 - 64800
+P260 = 180
+
+# Min-SE (s). Default value is 90 seconds
+# Number: 90 - 64800
+P261 = 90
+
+# UAC Specify Refresher. 0 - Omit, 1 - UAC, 2 - UAS. Default value is 0
+# Number: 0, 1, 2
+P266 = 0
+
+# UAS Specify Refresher. 1 - UAC, 2 - UAS. Default value is 1
+# Number: 1, 2
+P267 = 1
+
+# Force INVITE. Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P265 = 0
+
+# Caller Request Timer. Request for timer when calling
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P262 = 0
+
+# Callee Request Timer
+# Request for timer when being called (i.e., if remote party supports timer but did not request for one)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P263 = 0
+
+# Force Timer. Still use timer when remote party does not support timer.
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P264 = 0
+
+# Enable 100rel. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P272 = 0
+
+# Caller ID Display. 0 - Auto, 1 - Disabled, 2 - From Header. Default value is 0
+# Number: 0, 1, 2
+P2324 = 0
+
+# Use Privacy Header
+# 0 - Default, 1 - No, 2 - Yes. Default is 0
+# Number: 0, 1, 2
+P2338 = 0
+
+# Use P-Preferred-Identity Header
+# 0 - Default, 1 - No, 2 - Yes. Default is 0
+# Number: 0, 1, 2
+P2339 = 0
+
+# Use MAC Header. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P26061 = 0
+
+# SIP Transport
+# 0 - UDP , 1 - TCP, 2 - TLS. Default value is 0
+# Number: 0, 1, 2
+P130 = 0
+
+# SIP URI Scheme When Using TLS
+# 0 -sip, 1 - sips. Default value is 0.
+# Number: 0, 1
+P2329 = 0
+
+# Use Actual Ephemeral Port in Contact with TCP/TLS
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2331 = 0
+
+# RFC2543 Hold
+# 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P26062 = 1
+
+# Symmetric RTP. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P291 = 0
+
+# RTP IP Filter. 0 - Disable, 1 - IP Only, 2- IP and Port. Default value is 0
+# Number: 0, 1, 2
+P26026 = 0
+
+# Support SIP Instance ID
+# 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P288 = 1
+
+# Validate Incoming SIP Messages
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2306 = 0
+
+# Check SIP User ID for Incoming INVITE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P258 = 0
+
+# Authenticate Incoming INVITE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2346 = 0
+
+# SIP Realm Used for Challenge INVITE & NOTIFY
+# String
+P26021 =
+
+# Only Accept SIP Requests from Known Servers
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2347 = 0
+
+# SIP T1 Timeout. RFC 3261 T1 value (RTT estimate)
+# 50 - 0.5 sec, 100 - 1 sec, 200 - 2 sec. Default value is 50
+# Number: 50, 100, 200
+P209 = 50
+
+# SIP T2 Interval. RFC 3261 T2 value
+# The maximum retransmit interval for non-INVITE requests and INVITE responses
+# 200 - 2 sec, 400 - 4 sec, 800 - 8 sec. Default value is 400
+# Number: 200, 400, 800.
+P250 = 400
+
+# Remove OBP from route
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2305 = 0
+
+# Check Domain Certificates
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2311 = 0
+
+# Validate certification chain
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2367 = 0
+#######################################################################
+##  Settings - SIP - Codec                                           ##
+#######################################################################
+# DTMF: in audio. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2301 = 0
+
+# DTMF: via RFC2833. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P2302 = 1
+
+# DTMF: via SIP INFO. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2303 = 0
+
+# DTMF Payload Type. Default value is 101
+# Number: 96 - 127
+P79 = 101
+
+# Preferred Vocoder
+# First codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 103 - G722.1C, 104 - G.722.1, 123 - Opus, 18 - G.729AB, 98 - iLBC. Default value is 0
+# Number: 0, 8, 9, 103, 104, 123, 18, 98
+P57 = 0
+
+# Second codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 103 - G722.1C, 104 - G.722.1, 123 - Opus, 18 - G.729AB, 98 - iLBC. Default value is 8
+# Number: 0, 8, 9, 103, 104, 123, 18, 98
+P58 = 8
+
+# Third codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 103 - G722.1C, 104 - G.722.1, 123 - Opus, 18 - G.729AB, 98 - iLBC. Default value is 9
+# Number: 0, 8, 9, 103, 104, 123, 18, 98
+P59 = 9
+
+# Forth codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 103 - G722.1C, 104 - G.722.1, 123 - Opus, 18 - G.729AB, 98 - iLBC. Default value is 104
+# Number: 0, 8, 9, 103, 104, 123, 18, 98
+P60 = 104
+
+# Fifth codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 103 - G722.1C, 104 - G.722.1, 123 - Opus, 18 - G.729AB, 98 - iLBC. Default value is 104
+# Number: 0, 8, 9, 103, 104, 123, 18, 98
+P61 = 104
+
+# Sixth codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 103 - G722.1C, 104 - G.722.1, 123 - Opus, 18 - G.729AB, 98 - iLBC. Default value is 104
+# Number: 0, 8, 9, 103, 104, 123, 18, 98
+P62 = 104
+
+# Codec Negotiation Priority.
+# 0 - Caller, 1 - Callee. Default value is 1
+P29061 = 1
+
+# Silence Suppression. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P50 = 0
+
+# Voice Frames Per TX. Default value is 2
+# Number: 1 - 64.
+P37 = 2
+
+# G.722.1 Rate. 0 - 24kbps encoding rate, 1 - 32kbps encoding rate. Default value is 0
+# Number: 0, 1
+P2373 = 0
+
+# G.722.1 Payload Type. Default value is 104
+# Number: 96 - 126
+P2374 = 104
+
+# G722.1C Rate. 0 - 24kbps encoding rate, 1 - 32kbps encoding rate, 2 - 48Kbps encoding rate. Default value is 0
+# Number: 0, 1, 2
+P26417 = 0
+
+# G.722.1C Payload Type. Default value is 103
+# Number: 96 - 126
+P26016 = 103
+
+# Opus Payload Type. Defaualt value is 123
+# Number: 96 - 126
+P2385 = 123
+
+# iLBC Frame Size. 0 - 20 ms, 1 - 30 ms. Default value is 1
+# Number: 0, 1
+P97 = 1
+
+# Use First Matching Vocoder in 200OK SDP
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2348 = 0
+
+# Enable Audio RED with FEC. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P26073 = 0
+
+# Audio FEC Payload Type. Default value is 121
+# Number: 96 - 127
+P26074 = 121
+
+# Audio RED Payload Type. Default value is 124
+# Number: 96 - 127
+P26075 = 124
+
+# Enable RFC5168 support. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P1331 = 1
+
+# Packet Retransmission. 0 - NACK, 1 - NACK+RTX(SSRC-GROUP), 2 - Close. Default value is 1
+# Number: 0, 1, 2
+P26085 = 1
+
+# Enable Video FEC. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P2393 = 1
+
+# Video FEC Mode. Default is 0
+# Number: 0, 1
+P26022 = 0
+
+# FEC Payload Type. Default value is 120
+# Number: 96 - 127
+P2394 = 120
+
+# Enable FECC. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P26004 = 1
+
+# FECC H.224 Payload Type. Default value is 125
+# Number: 96 - 127
+P26008 = 125
+
+# SDP Bandwidth Attribute. 0 - Standard, 1 - Media Level, 3 - None. Default value is Media Level
+# Number: 0, 1, 3
+P2360 = 1
+
+# Video Jitter Buffer Maximum (ms). Default value is 50
+# Number: 0 - 1000
+P2381 = 50
+
+# Enable Video Gradual Decoder Refresh Function. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25111 = 0
+
+# Preferred Video Codec
+# First codec. 99 - H.264, 114 - H.265. Default value is 99
+# Number: 99, 114
+P295 = 99
+
+# Second codec. 99 - H.264, 114 - H.265. Default value is 99
+# Number: 99, 114
+P296 = 99
+
+# Image Size. 11- 4K, 10 - 1080P, 9 - 720P, 4 - 4CIF, 7 - 4SIF, 1 - VGA. Default value is 10
+# Number: 11, 10, 9, 4, 7, 1
+P2307 = 10
+
+# Video Bit Rate.
+# 1024 - 1024 kbps, 1280 - 1280 kbps, 1536 - 1536 kbps, 1792 - 1792 kbps, 2048 - 2048 kbps, 2560 - 2560 kbps,
+# 3072 - 3072 kbps, 3584 - 3584 kbps, 4096 - 4096 kbps, 4608 - 4608 kbps, 5120 - 5120 kbps, 5632 - 5632 kbps,
+# 6144 - 6144 kbps, 6656 - 6656 kbps, 7168 - 7168 kbps, 7680 - 7680 kbps, 8192 - 8192 kbps. Default value is 2048.
+# Number: 1024, 1280, 1536, 1792, 2048, 2560, 3072, 3584, 4096, 4608, 5120, 5632, 6144, 6656, 7168, 7680, 8192
+P2315 = 2048
+
+# Video Frame Rate. 5 - 5 fps, 15 - 15 fps, 25 - 25 fps, 30 - 30 fps, 29 - VFR. Default value is 30
+# Number: 5, 15, 25, 30, 29
+P25004 = 30
+
+# Packetization-mode. 0 - 0, 1 - 1, 2 - Auto. Default is 1
+# Number: 0, 1, 2
+P26005 = 1
+
+# H.264 Payload Type. Default value is 99
+# Number: 96 - 127
+P293 = 99
+
+# H.264 Profile Type. 0 - Baseline Profile, 1 - Main Profile, 2 - High Profile, 3 - BP&MP&HP
+# Number: 0, 1, 2, 3. Default value is 3
+P2377 = 3
+
+# Use H.264 Constrained Profiles. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P26045 = 0
+
+# H.265 Payload Type. Default value is 114
+# Number: 96 - 127
+P26086 = 114
+
+# Disable BFCP. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P26001 = 0
+
+# Presentation H.264 Image Size. 10 - 1080P, 9 - 720P. Default is 10
+# Number: 10, 9
+P2376 = 10
+
+# Presentation H.264 Profile Type. 0 - Baseline Profile, 1 - Main Profile, 2 - High Profile, 3 - BP&MP&HP
+# Number: 0, 1, 2, 3. Default value is 3
+P2377 = 3
+
+# Presentation Video Bit Rate.
+# 512 - 512 kbps, 768 - 768 kbps, 1024 - 1024 kbps, 1280 - 1280 kbps, 1536 - 1536 kbps, 1792 - 1792 kbps, 2048 - 2048 kbps.
+# Default value is 1024 kbps.
+# Number: 512, 768, 1024, 1280, 1536, 1792, 2048
+P2378 = 1024
+
+# Presentation Video Frame Rate. Default value is 15.
+# 5 - 5 fps, 10 - 10 fps, 15 = 15 fps
+P26042 = 15
+
+# BFCP Transport Protocol. Default value is 1.
+# 0 - Audo, 1 - UDP, 2 - TCP
+P26041 = 1
+
+# SRTP Mode. Default value is 0. 0 - Disable, 1 - Enable but not forced, 2 - Enable and forced.
+# Number: 0, 1, 2
+P183 = 0
+
+# SRTP Key Length. Default value is 0. 0 - AES 128&256 bit, 1 - AES 128 bit, 2 - AES 256 bit.
+# Number: 0, 1, 2
+P2383 = 0
+#######################################################################
+##  Settings - SIP - Call                                            ##
+#######################################################################
+# Remote Video Request. 0 - Prompt, 1 - Accept, 2 - Deny. Default value is 0
+# Number: 0, 1, 2
+P2326 = 0
+
+# Common Layout Mode. 0 - Remote Mode, 1 - Average Mode, 2 - POP Mode, 3 - PIP Mode. Default value is 1.
+# Number: 0, 1, 2, 3
+P29070 = 1
+
+# Dial Plan Prefix
+# String
+P66 = 
+
+# Disable Dialplan. 1 - Dial Page, 2 - Contact, 4 - Incoming Call History, 8 - Outgoing Call History, 16 - Click2Dial. Default value is 0.
+# Number: This P value will count with the sum of the P values. For example, if the user checks all options, the P value is 1+2+4+8+16 = 31. 
+P2382 = 0
+
+# Dial Plan. Default value is { x+ | \+x+ | *x+ | *xx*x+ | x+*x+*x+*x+[#x]+ }
+P290 = { x+ | \+x+ | *x+ | *xx*x+ | x+*x+*x+*x+ | x+*x+*x+*x+#x+ }
+
+# Refer-To Use Target Contact. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P135 = 0
+
+# Auto Answer. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P90 = 0
+
+# Send Anonymous. 0 - No, 1 - Yes (caller ID will be blocked if set to Yes). Default value is 0
+# Number: 0, 1
+P65 = 0
+
+# Reject Anonymous Call. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P129 = 0
+
+# Call Log
+# 0 - Log All, 1 - Log Incoming/Outgoing only (Missed Calls Not Recorded), 2 - Disable Call log. Default value is 0
+# Number: 0, 1, 2
+P182 = 0
+
+# Special Feature. Default value is 100
+# 100 - Standard, 102 - Broadsoft, 108 - CBCOM, 109 - RNK, 113 - China Mobile
+# 114 - ZTE IMS, 115 - Mobotix, 116 - ZTE NGN, 117 - Huawei IMS
+# Number: 100, 102, 108, 109, 113, 114, 115, 116, 117
+P198 = 100
+
+# Feature Key Synchronization. 0 - Disable,  1 - Broadsoft. Default value is 0
+# Number: 0, 1
+P2325 = 0
+
+# Enable Call Features. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P191 = 0
+
+# Ring Timeout(s). Default value is 60
+# Number: 10 - 300
+P1328 = 60
+
+# Use # as Dial Key. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P72 = 1
+
+# Conference-URI
+# String
+P2318 =
+
+# Enable Local MOH. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2357 = 0
+
+# Account Ring Tone
+# String
+P104 = content://settings/system/ringtone
+
+# Call Forwarding - Others
+# No Answer Timeout(sec). Default value is 20
+# Number: 1 - 120
+P139 = 20
+
+# Matching Incoming Caller ID. Matching Rule 1
+# String
+P1488 =
+
+# Matching Rule 1 Distinctive Ringtone. See ring tone options and value in the Ring Tone Value Table below
+# String
+P1489 = content://settings/system/ringtone
+
+# Matching Incoming Caller ID. Matching Rule 2
+# String
+P1490 =
+
+# Matching Rule 2 Distinctive Ringtone. See ring tone options and value in the Ring Tone Value Table below
+# String
+P1491 = content://settings/system/ringtone
+
+# Matching Incoming Caller ID. Matching Rule 3
+# String
+P1492 =
+
+# Matching Rule 3 Distinctive Ringtone. See ring tone options and value in the Ring Tone Value Table below
+# String
+P1493 = content://settings/system/ringtone
+
+############            Ring Tone Value Table            ###############
+# Web GUI Option                            Value
+# Use System Ring tone                      content://settings/system/ringtone 
+# Silent                                    ringtone_silence
+# Andromeda									/system/media/audio/ringtones/Andromeda.ogg
+# Aquila									/system/media/audio/ringtones/Aquila.ogg
+# ArgoNavis									/system/media/audio/ringtones/ArgoNavis.ogg
+# Atria										/system/media/audio/ringtones/Atria.ogg
+# Backroad									/system/media/audio/ringtones/Backroad.ogg
+# BeatPlucker								/system/media/audio/ringtones/BeatPlucker.ogg
+# BentleyDubs								/system/media/audio/ringtones/BentleyDubs.ogg
+# Big_Easy                                  /system/media/audio/ringtones/Big_Easy.ogg
+# BirdLoop                                  /system/media/audio/ringtones/BirdLoop.ogg
+# Bollywood                                 /system/media/audio/ringtones/Bollywood.ogg
+# BussaMove                                 /system/media/audio/ringtones/BussaMove.ogg
+# CASSIOPEIA								/system/media/audio/ringtones/CASSIOPEIA.ogg
+# Cairo                                     /system/media/audio/ringtones/Cairo.ogg
+# Calypso_Steel                             /system/media/audio/ringtones/Calypso_Steel.ogg
+# CanisMajor								/system/media/audio/ringtones/CanisMajor.ogg
+# CaribbeanIce								/system/media/audio/ringtones/CaribbeanIce.ogg
+# Carina									/system/media/audio/ringtones/Carina.ogg
+# Centaurus									/system/media/audio/ringtones/Centaurus.ogg
+# Champagne_Edition							/system/media/audio/ringtones/Champagne_Edition.ogg
+# Club_Cubano                               /system/media/audio/ringtones/Club_Cubano.ogg
+# CrayonRock                                /system/media/audio/ringtones/CrayonRock.ogg
+# CrazyDream								/system/media/audio/ringtones/CrazyDream.ogg
+# CurveBall                                 /system/media/audio/ringtones/CurveBall.ogg
+# Cygnus									/system/media/audio/ringtones/Cygnus.ogg
+# DancinFool                                /system/media/audio/ringtones/DancinFool.ogg
+# Ding 										/system/media/audio/ringtones/Ding.ogg
+# DonMessWivlt                              /system/media/audio/ringtones/DonMessWivIt.ogg
+# Draco										/system/media/audio/ringtones/Draco.ogg
+# DreamTheme								/system/media/audio/ringtones/DreamTheme.ogg
+# Eastern_Sky                               /system/media/audio/ringtones/Eastern_Sky.ogg
+# Enter_the_Nexus                           /system/media/audio/ringtones/Enter_the_Nexus.ogg
+# Eridani									/system/media/audio/ringtones/Eridani.ogg
+# EtherShake								/system/media/audio/ringtones/EtherShake.ogg
+# FreeFlight								/system/media/audio/ringtones/FreeFlight.ogg
+# FriendlyGhost								/system/media/audio/ringtones/FriendlyGhost.ogg
+# Funk_Yall                                 /system/media/audio/ringtones/Funk_Yall.ogg
+# GameOverGuitar							/system/media/audio/ringtones/GameOverGuitar.ogg
+# Gimme_Mo_Town                             /system/media/audio/ringtones/Gimme_Mo_Town.ogg
+# Girtab									/system/media/audio/ringtones/Girtab.ogg
+# Glacial_Groove                      		/system/media/audio/ringtones/Glacial_Groove.ogg
+# Growl                                     /system/media/audio/ringtones/Growl.ogg
+# HalfwayHome								/system/media/audio/ringtones/HalfwayHome.ogg
+# InsertCoin								/system/media/audio/ringtones/InsertCoin.ogg
+# Kuma										/system/media/audio/ringtones/Kuma.ogg
+# LoopyLounge                               /system/media/audio/ringtones/LoopyLounge.ogg
+# LoveFlute                                 /system/media/audio/ringtones/LoveFlute.ogg
+# Lyra										/system/media/audio/ringtones/Lyra.ogg
+# Machina									/system/media/audio/ringtones/Machina.ogg
+# MidEvilJaunt                        		/system/media/audio/ringtones/MidEvilJaunt.ogg
+# MildlyAlarming							/system/media/audio/ringtones/MildlyAlarming.ogg
+# Nairobi                             		/system/media/audio/ringtones/Nairobi.ogg
+# Nassau                             		/system/media/audio/ringtones/Nassau.ogg
+# NewPlayer									/system/media/audio/ringtones/NewPlayer.ogg
+# No_Limits                                 /system/media/audio/ringtones/No_Limits.ogg
+# Noises1									/system/media/audio/ringtones/Noises1.ogg
+# Noises2									/system/media/audio/ringtones/Noises2.ogg
+# Noises3									/system/media/audio/ringtones/Noises3.ogg
+# OrganDub                            		/system/media/audio/ringtones/OrganDub.ogg
+# Orion										/system/media/audio/ringtones/Orion.ogg
+# Paradise_Island                     		/system/media/audio/ringtones/Paradise_Island.ogg
+# Pegasus									/system/media/audio/ringtones/Pegasus.ogg
+# Perseus									/system/media/audio/ringtones/Perseus.ogg
+# Playa                                     /system/media/audio/ringtones/Playa.ogg
+# Pyxis										/system/media/audio/ringtones/Pyxis.ogg
+# Rasalas									/system/media/audio/ringtones/Rasalas.ogg
+# Revelation								/system/media/audio/ringtones/Revelation.ogg
+# Rigel										/system/media/audio/ringtones/Rigel.ogg
+# Ring_Classic_02                           /system/media/audio/ringtones/Ring_Classic_02.ogg
+# Ring_Digital_02                           /system/media/audio/ringtones/Ring_Digital_02.ogg
+# Ring_Synth_02                             /system/media/audio/ringtones/Ring_Synth_02.ogg
+# Ring_Synth_04                             /system/media/audio/ringtones/Ring_Synth_04.ogg
+# Road_Trip                                 /system/media/audio/ringtones/Road_Trip.ogg
+# RomancingTheTone							/system/media/audio/ringtones/RomancingTheTone.ogg
+# Safari                                    /system/media/audio/ringtones/Safari.ogg
+# Savannah									/system/media/audio/ringtones/Savannah.ogg
+# Scarabaeus								/system/media/audio/ringtones/Scarabaeus.ogg
+# Sceptrum									/system/media/audio/ringtones/Sceptrum.ogg
+# Seville                                   /system/media/audio/ringtones/Seville.ogg
+# Shes_All_That                             /system/media/audio/ringtones/Shes_All_That.ogg
+# SilkyWay                                  /system/media/audio/ringtones/SilkyWay.ogg
+# SitarVsSitar								/system/media/audio/ringtones/SitarVsSitar.ogg
+# Solarium									/system/media/audio/ringtones/Solarium.ogg
+# SpringyJalopy								/system/media/audio/ringtones/SpringyJalopy.ogg
+# Steppin_Out                               /system/media/audio/ringtones/Steppin_Out.ogg
+# Terminated                                /system/media/audio/ringtones/Terminated.ogg
+# Testudo									/system/media/audio/ringtones/Testudo.ogg"
+# Themos									/system/media/audio/ringtones/Themos.ogg
+# Third_Eye                                 /system/media/audio/ringtones/Third_Eye.ogg
+# Thunderfoot								/system/media/audio/ringtones/Thunderfoot.ogg
+# TwirlAway                                 /system/media/audio/ringtones/TwirlAway.ogg
+# UrsaMinor									/system/media/audio/ringtones/UrsaMinor.ogg
+# VeryAlarmed								/system/media/audio/ringtones/VeryAlarmed.ogg
+# Vespa										/system/media/audio/ringtones/Vespa.ogg
+# World                                     /system/media/audio/ringtones/World.ogg
+# Zeta										/system/media/audio/ringtones/Zeta.ogg
+# bellcore-dr1                              /system/media/audio/ringtones/bellcore-dr1.ogg
+# bellcore-dr2                              /system/media/audio/ringtones/bellcore-dr2.ogg
+# bellcore-dr3                              /system/media/audio/ringtones/bellcore-dr3.ogg
+# bellcore-dr4                              /system/media/audio/ringtones/bellcore-dr4.ogg
+# bellcore-dr5                              /system/media/audio/ringtones/bellcore-dr5.ogg
+# hydra										/system/media/audio/ringtones/hydra.ogg
+# speaker									/system/media/audio/ringtones/speaker.wav
+##############################################################################
+##  Settings - IPVideoTalk - General                                        ##
+##############################################################################
+# Account active. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P7059 = 1
+
+# Display Name
+# String
+P407 =
+
+# SIP Transport. 1 - TCP, 2 - TLS. Default is 2
+# Number: 1, 2
+P448 = 2
+##############################################################################
+##  Settings - IPVideoTalk - Codec                                          ##
+##############################################################################
+# Preferred Video Codec
+# First codec. 99 - H.264, 114 - H.265. Default value is 99
+# Number: 99, 114
+P464 = 99
+
+# Second codec. 99 - H.264, 114 - H.265. Default value is 99
+# Number: 99, 114
+P465 = 99
+##############################################################################
+##  Settings - IPVideoTalk - Call                                           ##
+##############################################################################
+# Auto Answer When Idle. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P425 = 0
+
+# Common Layout Mode. 0 - Remote Mode, 1 - Average Mode, 2 - POP Mode, 3 - PIP Mode. Default value is 0.
+# Number: 0, 1, 2, 3
+P29170 = 0
+##############################################################################
+##  Settings - BlueJeans - General                                          ##
+##############################################################################
+# Account Active. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P501 = 1
+
+# Display Name. Default value is BlueJeans
+# String
+P507 = BlueJeans
+##############################################################################
+##  Settings - BlueJeans - Codec                                            ##
+##############################################################################
+# DTMF: in audio. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2501 = 0
+
+# DTMF: via RFC2833. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P2502 = 1
+
+# DTMF: via SIP INFO. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2503 = 0
+
+# DTMF Payload Type. Default value is 101
+# Number: 96 - 127
+P596 = 101
+
+# Preferred Vocoder
+# First codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 104 - G.722.1. Default value is 0
+# Number: 0, 8, 9, 2, 104
+P551 = 0
+
+# Second codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 104 - G.722.1. Default value is 8
+# Number: 0, 8, 9, 104
+P552 = 8
+
+# Third codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 104 - G.722.1. Default value is 9
+# Number: 0, 8, 9, 104
+P553 = 9
+
+# Forth codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 104 - G.722.1. Default value is 104
+# Number: 0, 8, 9, 104
+P554 = 104
+
+# Codec Negotiation Priority.
+# 0 - Caller, 1 - Callee. Default value is 1
+P29261 = 1
+
+# Silence Suppression. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P585 = 0
+
+# Voice Frames Per TX. Default value is 2
+# Number: 1 - 64.
+P586 = 2
+
+# G.722.1 Rate. 0 - 24kbps encoding rate, 1 - 32kbps encoding rate. Default value is 0
+# Number: 0, 1
+P2573 = 0
+
+# G.722.1 Payload Type. Default value is 104
+# Number: 96 - 126
+P2574 = 104
+
+# Use First Matching Vocoder in 200OK SDP
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2548 = 0
+
+# Enable Audio RED with FEC. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P26273 = 0
+
+# Audio FEC Payload Type. Default value is 121
+# Number: 96 - 127
+P26274 = 121
+
+# Audio RED Payload Type. Default value is 124
+# Number: 96 - 127
+P26275 = 124
+
+# Enable RFC5168 support. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P578 = 1
+
+# Packet Retransmission. 0 - NACK, 1 - NACK+RTX(SSRC-GROUP), 2 - Close. Default value is 1
+# Number: 0, 1, 2
+P26285 = 1
+
+# Enable Video FEC. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2593 = 0
+
+# FEC Payload Type. Default value is 120
+# Number: 96 - 127
+P2594 = 120
+
+# SDP Bandwidth Attribute. 0 - Standard, 1 - Media Level, 3 - None. Default value is Media Level
+# Number: 0, 1, 3
+P2560 = 1
+
+# Video Jitter Buffer Maximum (ms). Default value is 50
+# Number: 0 - 1000
+P2581 = 50
+
+# H.264 Image Size. 11- 4K, 10 - 1080P, 9 - 720P, 4 - 4CIF, 7 - 4SIF, 1 - VGA. Default value is 10
+# Number: 11, 10, 9, 4, 7, 1
+P2507 = 10
+
+# Video Bit Rate.
+# 1024 - 1024 kbps, 1280 - 1280 kbps, 1536 - 1536 kbps, 1792 - 1792 kbps, 2048 - 2048 kbps, 2560 - 2560 kbps,
+# 3072 - 3072 kbps, 3584 - 3584 kbps, 4096 - 4096 kbps. Default value is 2048.
+# Number: 1024, 1280, 1536, 1792, 2048, 2560, 3072, 3584, 4096
+P2515 = 2048
+
+# Video Frame Rate. 5 - 5 fps, 15 - 15 fps, 25 - 25 fps, 30 - 30 fps, 29 - VFR. Default value is 30
+# Number: 5, 15, 25, 30, 29
+P25006 = 30
+
+# Packetization-mode. 0 - 0, 1 - 1, 2 - Auto. Default is 1
+# Number: 0, 1, 2
+P26205 = 1
+
+# H.264 Payload Type. Default value is 99
+# Number: 96 - 127
+P562 = 99
+
+# H.264 Profile Type. 0 - Baseline Profile, 1 - Main Profile, 2 - High Profile, 3 - BP&MP&HP
+# Number: 0, 1, 2, 3. Default value is 3
+P2562 = 3
+
+# Use H.264 Constrained Profiles. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P26245 = 0
+
+# Disable BFCP. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P26201 = 0
+
+# Presentation H.264 Image Size. 10 - 1080P, 9 - 720P. Default is 10
+# Number: 10, 9
+P2576 = 10
+
+# Presentation H.264 Profile Type. 0 - Baseline Profile, 1 - Main Profile, 2 - High Profile, 3 - BP&MP&HP
+# Number: 0, 1, 2, 3. Default value is 3
+P2577 = 3
+
+# Presentation Video Bit Rate.
+# 512 - 512 kbps, 768 - 768 kbps, 1024 - 1024 kbps, 1280 - 1280 kbps, 1536 - 1536 kbps, 1792 - 1792 kbps, 2048 - 2048 kbps.
+# Default value is 1024 kbps.
+# Number: 512, 768, 1024, 1280, 1536, 1792, 2048
+P2578 = 1024
+
+# Presentation Video Frame Rate. Default value is 15.
+# 5 - 5 fps, 10 - 10 fps, 15 = 15 fps
+P26242 = 15
+##############################################################################
+##  Settings - BlueJeans - Call                                             ##
+##############################################################################
+# Call Log
+# 0 - Log All, 2 - Disable call log. Default value is 0
+# Number: 0, 2
+P542 = 0
+
+# Use # as Dial Key. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P592 = 1
+
+# Enable Local MOH. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2557 = 0
+
+# Common Layout Mode. 0 - Remote Mode, 1 - Average Mode, 2 - POP Mode, 3 - PIP Mode. Default value is 1.
+# Number: 0, 1, 2, 3
+P29270 = 1
+##############################################################################
+##  Settings - H.323 - General                                              ##
+##############################################################################
+# Account Active
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25059 = 0
+
+# Enable GK. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25032 = 0
+
+# Enable H.460. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25066 = 0
+
+# GK Discover Mode. 0 - Audo, 1 - Manual. Default value is 0
+# Number: 0, 1
+P25051 = 0
+
+# GK Address
+# String
+P25033 =
+
+# Site Number
+# String
+P25034 =
+
+# GK Authentication Username
+# String
+P25035 =
+
+# GK Authentication Password
+# String
+P25036 =
+
+# Voicemail Access Number
+# String
+P626 =
+
+# Register Expiration. In Minutes. Default value is 60
+# Number: 1 - 1440
+P25054 = 60
+
+# H.323 Local Port. Default value is 1720
+# TCP (local H.323 signal port): port 1720, UDP (H.225-RAS): port 4000 - 4100
+# TCP (H.225-CS H.245): port 4200 - 4300, UDP (RTP/RTCP): port 6004 - 6080
+# Number: 1720, 4000 - 4100, 4200 - 4300, 6004 - 6080
+P25068 = 1720
+
+# Symmetric RTP. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25067 = 0
+##############################################################################
+##  Settings - H.323 - Codec                                                ##
+##############################################################################
+# DTMF: 0 - In audio. 1 - RFC2833, 2 - H245 signal. Default value is 0
+# Number: 0, 1, 2
+P25049 = 0
+
+# Preferred Vocoder
+# First codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 104 - G.722.1. Default value is 0
+# Number: 0, 8, 9, 104
+P25037 = 0
+
+# Second codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 104 - G.722.1. Default value is 0
+# Number: 0, 8, 9, 104
+P25038 = 0
+
+# Third codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 104 - G.722.1. Default value is 0
+# Number: 0, 8, 9, 104
+P25039 = 0
+
+# Fourth codec. 0 - PCMU, 8 - PCMA, 9 - G.722, 104 - G.722.1. Default value is 0
+# Number: 0, 8, 9, 104
+P25040 = 0
+
+# H.264 payload type. Default value is 99
+P25064 = 99
+
+# H.264 image size. 10 - 1080P, 9 - 720P, 4 - 4CIF, 7 - 4SIF, 1 - VGA. Default value is 10
+# Number: 10, 9, 4, 7, 1
+P25061 = 10
+
+# Video Bit Rate.
+# 1024 - 1024 kbps, 1280 - 1280 kbps, 1536 - 1536 kbps, 1792 - 1792 kbps, 2048 - 2048 kbps, 2560 - 2560 kbps,
+# 3072 - 3072 kbps, 3584 - 3584 kbps, 4096 - 4096 kbps. Default value is 2048.
+# Number: 1024, 1280, 1536, 1792, 2048, 2560, 3072, 3584, 4096
+P25063 = 2048
+
+# Video frame rate. 5 - 5 fps, 15 - 15 fps, 25 - 25 fps, 30 - 30 fps, 29 - VFR
+# Default value is 30
+# Number: 5, 15, 25, 30, 29
+P25062 = 30
+
+# Packetization-mode. 0 - 0, 1 - 1, 2 - Auto. Default is 1
+# Number: 0, 1, 2
+P25072 = 0
+##############################################################################
+##  Settings - H.323 - Call                                                 ##
+##############################################################################
+# Auto Answer. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25048 = 0
+
+# Enable H255 Keep-alive. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25058 = 0
+
+# Enable H245 Keep-alive. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25057 = 0
+
+# Enable RTDR. 0 - 1, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25060 = 0
+
+# Common Layout Mode. 0 - Remote Mode, 1 - Average Mode, 2 - POP Mode, 3 - PIP Mode. Default value is 1.
+# Number: 0, 1, 2, 3
+P25073 = 1
+##############################################################################
+##  Settings - Network Settings                                             ##
+##############################################################################
+# Internet Protocol. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 0
+# Number: 0, 1
+# Mandatory
+P1415 = 0
+
+# Address Type. 0 - DHCP, 1 - Static, 2 - PPPoE. Default value is 0
+# Number: 0, 1, 2
+P8 = 0
+
+# DHCP VLAN override. 0 - Disable, 1 - DHCP Option 132 and DHCP Option 133, 2 - Encapsulated in DHCP Option 43
+# Number: 0, 1, 2. Default is 0
+# Mandatory
+P8300 = 0
+
+# Host name (DHCP option 12)
+P146 = 
+
+# Vendor Class ID (DHCP option 60). 
+# P148 = Grandstream GVC3210
+
+# DHCP Option 120 Override SIP Server. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P1411 = 1
+
+# Static IP. IP address
+#P9 = 192
+#P10 = 168
+#P11 = 0
+#P12 = 160
+
+# Static IP. Subnet Mask
+#P13 = 255
+#P14 = 255
+#P15 = 0
+#P16 = 0
+
+# Static IP. Default Gateway
+#P17 = 0
+#P18 = 0
+#P19 = 0
+#P20 = 0
+
+# Static IP. DNS Server 1. Ignore if DHCP or PPPoE is used
+#P21 = 0
+#P22 = 0
+#P23 = 0
+#P24 = 0
+
+# Static IP. DNS Server 2. Ignore if DHCP or PPPoE is used
+P25 = 0
+P26 = 0
+P27 = 0
+P28 = 0
+
+# PPPoE Account ID
+#P82 = 
+
+# PPPoE Password
+#P83 = 
+
+# 802.1x Mode. 0 - Close, 1 - EAP-MD5, 2 - EAP-TLS, 3-EAP-PEAP. Default is 0
+# Number: 0, 1, 2, 3
+P7901 = 0
+
+# 802.1x Identity
+#P7902 =
+
+# 802.1 Secret
+#P7903 =
+
+# Enable LLDP. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P1684 = 1
+
+# Enable CDP. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P22119 = 1
+
+# Layer 3 QoS for SIP. Default value is 48
+P1558 = 26
+
+# Layer 3 QoS for Audio. Default value is 48
+P1559 = 46
+
+# Layer 3 QoS for Video. Default is 48
+P1560 = 34
+
+# Layer 2 QoS 802.1Q/VLAN Tag. Default value is 0
+# Number: 0 - 4095
+P51 = 0
+
+# Layer 2 QoS 802.1p Priority. Default value is 0
+# Number: 0 - 7
+P87 = 0
+
+# HTTP/HTTPS Proxy Hostname and Port.
+# The default format is "hostname:port number". If the host name is "Grandstream", the port number is "123", the value should be "Grandstream:123".
+P1553 =
+
+# Bypass Proxy For
+# String
+P22011 =
+
+# Alternate DNS Server
+#P92 = 0
+#P93 = 0
+#P94 = 0
+#P95 = 0
+
+# Second Alternate DNS Server
+#P5026 =
+#P5027 =
+#P5028 =
+#P5029 =
+
+# HTTP/HTTPS User-Agent
+P1541 =
+
+# SIP User-Agent
+# For GVC3210, the value is Grandstream GVC3210 $version
+# P26027 =
+
+# IPv6 Address type. 0 - Auto Configured, 1 - Statically Configured. Default is 0.
+# Number: 0, 1
+# Mandatory
+P1419 = 0
+
+# Full Static: Static IPv6 Address
+# P1420 =
+
+# Full Static: IPv6 Prefix Length
+# P1421 =
+
+# DNS Server 1 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+# P1424 =
+
+# DNS Server 2 for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+# P1425 =
+
+# Preferred DNS Server for IPv6 Address
+# String: a-z, A-Z, 0-9, ".", ":", "[", "]"
+# P1423 =
+
+# OpenVPN Settings
+# Enable OpenVPN. 0 - 1, 1 - Yes. Default value is 0
+# Number: 0, 1
+P7050 = 0
+
+# Enable OpenVPN Comp-lzo. 0 - 1, 1 - Yes. Default value is 0
+# Number: 0, 1
+P8508 = 0
+
+# OpenVPN Server Address.
+# String.
+P7051 = 
+
+# OpenVPN Port.
+# String.
+P7052 = 1194
+
+# OpenVPN Transport. 0 - UDP, 1 - TCP. Default value is 0
+# Number: 0, 1
+P2912 = 0
+
+# OpenVPN Cipher Method. 0 - Blowfish, 1 - AES-128, 2 - AES-256, 3 - Triple-DES. Default value is 0
+# Number: 0, 1, 2, 3
+P8396 = 0
+
+# OpenVPN Username
+# String
+P8394 = 
+
+# OpenVPN Password
+# String
+P8395 = 
+##############################################################################
+##  Settings - Peripheral                                                   ##
+##############################################################################
+# Enable Presentation Automatically When HDMI/VGA Plugged. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+P25109 = 0
+
+# Move Speed. The move speed range is from 1 to 16.
+# Number: 1-16. Default value is 5
+P25029 = 5
+
+# Initial Position. 0 - System default positon, 100 - Position when power off, 1 - Preset 1, 2 - Preset 2, 3 - Preset 3,
+# 4 - Preset 4, 5 - Preset 5, 6 - - Preset 6, 7 - Preset 7, 8 - Preset 8, 9 - Preset 9, 10 - Preset 10,
+# 11 - Preset 11, 12 - Preset 12, 13 - Preset 13, 14 - Preset 14, 15 - Preset 15, 16 - Preset 16, 17 - Preset 17,
+# 18 - Preset 18, 19 - Preset 19, 20 - Preset 20, 21 - Preset 21, 22 - Preset 22, 23 - Preset 23, 24 - Preset 24
+# Default value is 0
+# Number: 0, 100, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
+P25030 = 0
+#######################################################################
+##  Settings - Call Features                                         ##
+#######################################################################
+# Start Video Automatically. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P25023 = 1
+
+# Filter Characters. Default is [()-]
+P22012 = [()-]
+
+# Disable Call-Waiting. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P91 = 0
+
+# Disable Call-Waiting Tone. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P186 = 0
+
+# Disable DND Reminder Ring. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1486 = 0
+
+# Disable Direct IP Call. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P277 = 0
+
+# Use Quick IP-Call Mode. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P184 = 0
+
+# Enable frame skipping in video decoder. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P22008 = 0
+
+# Video Display Mode. 0 - Original Proportion, 1 - Equal Proportional Cutting, 2 - Proportional Add Black Edge. Default value is 1
+# Number: 0, 1, 2
+P921 = 1
+
+# Escape '#' as %23 in SIP URI. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1406 = 0
+
+# Auto Mute on Entry. 0 - Disable, 1 - Auto mute on incoming call, 2 - Auto mute on outgoing call, 3 - Auto mute on incoming and outgoing call
+# Number： 0, 1, 2, 3. Default is 0
+# Mandatory
+P29607 = 0
+
+# Noise Shield. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25110 = 0
+#######################################################################
+##  Settings -> General Settings                                     ##
+#######################################################################
+# Fan Speed. 0 - Normal, 1 - Full Speed. Default is 0
+# Number: 0, 1
+P22049 = 0
+
+# Local RTP Port. Default value is 5004
+# Number: 1024 - 65535
+P39 = 5004
+
+# Use Random Port. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P78 = 0
+
+# Disable in-call DTMF display.  0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P338 = 0
+
+# Disable Remote Control App Connect. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P25022 = 0
+
+# Keep-alive Interval (s). Default value is 20 seconds
+# Number: 10 - 160
+P84 = 20
+
+# STUN/TURN Server
+P76 = stun.ipvideotalk.com
+
+# TURN Server Username
+# String
+P22042 = 
+
+# TURN Server Password
+# String
+P22043 = 
+
+# Use NAT IP. This will enable our SIP client to use this IP in the SIP message.
+# Example 64.3.153.50
+P101 = 
+#######################################################################
+##  Settings -> Security Settings                                    ##
+#######################################################################
+# Disable SSH. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P276 = 0
+
+# Access Method. 0 - HTTP, 1 - HTTPS. Default value is 0
+# Number: 0, 1
+P900 = 0
+
+# Port. HTTP default is 80, HTTPS default is 443
+# Number: 0 - 65535
+P901 = 80
+
+# SIP TLS Certificate
+# P280 =
+
+# SIP TLS Private Key
+# P279 = 
+
+# SIP TLS Private Key Password
+P281 = 
+
+# Minimum TLS Version. 10 - TLS1.0,  11 - TLS1.1,  12 - TLS1.2. Default value is 11.
+# Number: 10, 11, 12
+P22293 = 11
+
+# Maximum TLS Version. 10 - TLS1.0,  11 - TLS1.1,  12 - TLS1.2, 99 - No limit. Default value is 99.
+# Number: 10, 11, 12, 99
+P22294 = 99
+#######################################################################
+##  Maintenance - Upgrade                                            ##
+#######################################################################
+# Firmware Upgrade Mode.0 - TFTP, 1 - HTTP, 2 - HTTPS. Default value is 2
+# Number: 0, 1, 2
+P6767 = 2
+
+# Firmware HTTP/HTTPS Username
+P6768 =
+
+# Firmware HTTP/HTTPS Password
+P6769 =
+
+# Firmware Server Path
+P192 = fm.grandstream.com/gs
+
+# Firmware File Prefix
+P232 =
+
+# Firmware File Postfix
+P233 =
+
+# Config Upgrade Mode. 0 - TFTP, 1 - HTTP, 2 - HTTPS. Default value is 2
+# Number: 0, 1, 2
+P212 = 2
+
+# Config HTTP/HTTPS User Name
+P1360 =
+
+# Config HTTP/HTTPS Password
+P1361 =
+
+# Config Server Path
+P237 = fm.grandstream.com/gs
+
+# Config File Prefix
+P234 =
+
+# Config File Postfix
+P235 = 
+
+# XML Config File Password
+P1359 = 
+
+# Authenticate Conf File. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+P240 = 0
+
+# Always send HTTP Basic Authentication Information. 0 - No, 1 - Yes.
+# Number: 0, 1
+P20713 = 0
+
+# CUST File
+# GUI Customization File URL.
+# String
+P6774 = fm.grandstream.com/gs
+
+# CUST File
+# GUI Customization File Download Mode. 0 - TFTP, 1 - HTTP, 2 - HTTPS. Default value is 1.
+# Number: 0, 1, 2
+P6775 = 1
+
+# CUST File
+# GUI Customization File HTTP/HTTPS Username.
+P6776 =
+
+# CUST File
+# GUI Customization File HTTP/HTTPS Password.
+P6777 =
+
+# CUST File
+# Use Configurations of Config File Server. 0 - No, 1 - Yes. Default value is 0.
+# Number: 0, 1
+P6778 = 0
+
+# Automatic Upgrade. 0 - No, 1 - Check Every Day, 2 - Check Every Week, 3 - Check at a Period Time. Default value is 1
+# Number: 0, 1, 2, 3
+P194 = 1
+
+# Automatic Upgrade Check Interval (m). Minimum 60 minutes. Default value is 10080 (7 days)
+# Number: 60 - 5256000
+P193 = 10080
+
+# Hour of the day (0-23)
+# Number: 0 - 23
+P285 = 1
+
+# Day of the week (0-6)
+# Number: 0 - 6
+P286 = 1
+
+# Firmware Upgrade and configuration File Detection. Default value is 0
+# 0 - Always Check When Bootup
+# 1 - When F/W pre/suffix changes
+# 2 - Skip the Firmware Check
+# Number: 0, 1, 2
+P238 = 0
+
+# Auto Reboot to Upgrade Without Prompt. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P1549 = 1
+
+# Validate Server Certificate. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P22030 = 0
+
+# mDNS Override Server. 0 - Disable, 1 - Use Type A, 2 - Use Type SRV. Default value is 1
+# Number: 0, 1
+P1407 = 1
+
+# Allow DHCP Option 43 and option 66 Override server. 0 - No, 1 - Yes. Default value is 1
+# When set to Yes(1), it will override the configured provision path and method
+# Number: 0, 1
+P145 = 1
+
+# 3CX Auto Provision. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P1414 = 1
+
+# Disable SIP NOTIFY Authentication. 0 - No, 1 - Yes. Default Value is 0
+# Number : 0, 1
+P4428 = 0
+#######################################################################
+##  Maintenance - TR-069                                             ##
+#######################################################################
+# Enable TR-069. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1409 = 0
+
+# ACS URL
+P4503 =
+
+# ACS Username
+P4504 = 
+
+# ACS Password
+P4505 = 
+
+# Periodic Inform Enable. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P4506 = 0
+
+# Periodic Inform Interval (s). Default value is 86400
+# Number: 1 - 4294967295
+P4507 = 86400
+
+# Connection Request Username
+P4511 = 
+
+# Connection Request Password
+P4512 = 
+
+# Connection Request Port
+P4518 = 7547
+
+# CPE Cert File
+P8220 =
+
+# CPE Cert Key
+P8221 =
+#######################################################################
+##  Maintenance - Time & Language                                    ##
+#######################################################################
+# Assign NTP Server Address 1
+P30 = us.pool.ntp.org
+
+# Assign NTP Server Address 2
+P8333 =
+
+# Time Zone
+# Web GUI Option         			   							P Value
+# GMT-11:00(Midway Island)             							TZB+11
+# GMT-10:00(Hawaii)                    							HAW10
+# GMT-8:00(Alaska)                     							AKST9AKDT
+# GMT-7:00(Pacific Time)               							PST8PDT
+# GMT-7:00(Tijuana)                    							PST8PDT,M4.1.0,M10.5.0
+# GMT-7:00(Arizona)												MST7
+# GMT-6:00(Chihuahua)                  							MST7MDT,M4.1.0,M10.5.0
+# GMT-6:00(Mountain Time)										MST7MDT
+# GMT-6:00(Central America)            							CST+6
+# GMT-5:00(Central Time)               							CST6CDT     
+# GMT-5:00(Mexico City)                							CST6CDT,M4.1.0,M10.5.0
+# *GMT-6:00(Saskatchewan)
+# GMT-5:00(Bogota)												COT5
+# *GMT-5:00(Estern Time without daylight saving)                
+# GMT-4:00(Estern Time)                                         EST5EDT
+# GMT-4:30(Venezuela)											TZf+4:30
+# GMT-4:00(Atlantic Time(Barbados))   						    AST4ADT
+# GMT-4:00(Atlantic Time(Canada)) 								AST4ADT
+# GMT-4:00(Manaus)												AMT4
+# GMT-3:30(Newfoundland)                            			NST+3:30NDT+2:30,M3.2.0/00:01:00,M11.1.0/00:01:00
+# *GMT-3:00(Santiago)
+# *GMT-3:00(Recife)
+# GMT-3:00(Buenos Aires)										UTC+3
+# GMT-3:00(Greenland)                               			TZK+3
+# GMT-2:00(Brasilia) 											BRST+3BRDT+2,M10.3.0,M2.3.0
+# GMT-2:00(Montevideo)											UYT3UYST,M10.1.0,M3.2.0
+# GMT-2:00(Mid-Atlantic)                            			TZL+2
+# GMT-1:00(Azores)                                  			TZM+1
+# GMT-1:00(Cape Verde Islands)									CVT1
+# GMT+0:00(GMT)													GMT+0BST-1,M3.5.0/01:00:00,M10.5.0/02:00:00
+# GMT+0:00(Casablanca)                              			TZN+0
+# GMT+0:00(London)                                  			GMT+0BST-1,M3.5.0/01:00:00,M10.5.0/02:00:00
+# *GMT+1:00(Amsterdam,Berlin)
+# GMT+1:00(Belgrade)											CET-1CEST,M3.5.0,M10.5.0/3
+# GMT+1:00(Brussels)											TZO-1
+# GMT+1:00(Madrid)			                                    CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00
+# GMT+1:00(Sarajevo)											CET-1CEST,M3.5.0,M10.5.0/3
+# *GMT+1:00(W. Africa Time)
+# GMT+2:00(Windhoek)											WAT-1WAST,M9.1.0,M4.1.0
+# *GMT+2:00(Amman, Jordan)
+# GMT+2:00(Athens, Istanbul)									TZP-2
+# GMT+2:00(Istanbul)									        
+# GMT+2:00(Beirut, Lebanon)										EET-2EEST,M3.5.0/0,M10.5.0/0
+# GMT+2:00(Cairo)												TZP-2
+# GMT+2:00(Helsinki)	                                        EET-2EEST-3,M3.5.0/03:00:00,M10.5.0/04:00:00
+# GMT+2:00(Jerusalem)											TZP-2
+# GMT+2:00(Harare)												CAT-2
+# GMT+3:00(Minsk)												EET-2EEST,M3.5.0,M10.5.0/3
+# GMT+3:00(Baghdad)												AST-3
+# GMT+3:00(Moscow)												MST-3MDT,M3.5.0/2,M10.5.0/3
+# GMT+3:00(Kuwait)												TZQ-3
+# GMT+3:00(Nairobi)												TZQ-3
+# GMT+3:30(Tehran)												TZQ-3
+# GMT+4:00(Baku)												TZR-4
+# GMT+4:00(Tbilisi)												GET-4
+# GMT+4:00(Yerevan)												AMT-4AMST,M3.5.0,M10.5.0/3
+# GMT+4:00(Dubai)												GST-4
+# GMT+4:30(Kabul)												AFT-4:30
+# GMT+5:00(Islamabad, Karachi)									TZS-5
+# *GMT+5:00(Ural'sk)
+# GMT+5:00(Yekaterinburg)										YEKT-5YEKST,M3.5.0,M10.5.0/3
+# *GMT+5:30(Kolkata)
+# *GMT+5:30(Sri Lanka)										
+# GMT+5:45(Kathmandu)											TZU-5:45
+# GMT+6:00(Astana)												TZV-6
+# GMT+6:30(Yangon)												TZW-6:30
+# GMT+7:00(Krasnoyarsk)											TZX-7 
+# GMT+7:00(Bangkok)												TZX-7
+# GMT+7:00(Jakarta)												TZX-7
+# GMT+8:00(Beijing)												TZY-8
+# GMT+8:00(Hong Kong)											TZY-8
+# GMT+8:00(Irkutsk)												TZY-8
+# GMT+8:00(Kuala Lumpur)										TZY-8
+# GMT+8:00(Perth)												WST-8
+# GMT+8:00(Taipei)                                				TZY-8
+# GMT+9:00(Seoul)												TZZ-9
+# GMT+9:00(Tokyo, Osaka)										TZZ-9
+# GMT+9:00(Yakutsk)											    YAKT-9YAKST,M3.5.0,M10.5.0/3
+# GMT+9:30(Darwin)												CST-9:30
+# GMT+10:00(Brisbane)											EST-10
+# GMT+10:00(Vladivostok)										VLAT-10VLAST,M3.5.0,M10.5.0/3
+# GMT+10:00(Guam)												TZb-10
+# GMT+10:30(Adelaide)											CST-9:30CDT-10:30,M10.5.0/02:00:00,M3.5.0
+# GMT+11:00(Hobart)												EST-10EDT-11,M10.1.0/02:00:00,M3.5.0/03:00:00
+# GMT+11:00(Sydney, Canberra)									EST-10EDT-11,M10.5.0/02:00:00,M3.5.0/03:00:00
+# *GMT+11:00(Noumea, New Caledonia)
+# *GMT+12:00(Magadan)											MAGT-11MAGST,M3.5.0,M10.5.0/3			
+# *GMT+12:00(Marshall Islands)                                   
+# GMT+13:00(Auckland)											NZST-12NZDT-13,M10.1.0/02:00:00,M3.3.0/03:00:00
+# GMT+13:00(Fiji)												FJT-12
+# GMT+13:00(Tonga)                                              TZe-13
+P64 = EST5EDT
+
+# Use 24-hour Format. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P122 = 1
+
+# DHCP Option 42 override NTP server. 0 - No, 1 - Yes. Default value is 1
+# When set to Yes (1), it will override the configured NTP server
+# Number: 0, 1
+P144 = 1
+
+# DHCP Option 2 to Override Time Zone setting. 0 - No, 1 - Yes. Default value is 1
+# When set to Yes (1), it will override the configured Time Zone setting if available
+# Number: 0, 1
+P143 = 1
+
+# Date Display Format. Default value is 1
+# 0: YYYY-MM-DD
+# 1: MM-DD-YYYY
+# 2: DD-MM-YYYY
+# 3: Normal (M-D-YYYY)
+# Number: 0, 1, 2, 3
+P102 = 1
+
+# Language. Configure the language to be displayed on LCD
+# Note: for some languages that have 2 codes avaiable, both are working
+# ja_JP - 日本語
+# zh_TW - 中文 (繁體), or zh-tw - 中文 (繁體)
+# zh_CN - 中文 (简体), or zh - 中文 (简体)
+# zh_HK - 中文 (香港), or zh - 中文 (香港)
+# in_ID - Indonesian
+# ms_MY - Bahasa Melayu
+# af_ZA - Afrikaans
+# ca_ES - Català
+# cs_CZ - Ceština
+# da_DK - Dansk
+# de_DE - Deutsch
+# de_LI - Deutsch (Liechtenstein)
+# de_AT - Deutsch (Österreich)
+# de_CH - Deutsch (Schweiz)
+# en_AU - English (Australia)
+# en_CA - English (Canada)
+# en_NZ - English (New Zealand)
+# en_SG - English (Singapore)
+# en_GB - English (United Kingdom)
+# en_US - English (United States), en - English (United States)
+# es_ES - Español (España)
+# es_US - Español (Estados Unidos)
+# tl_PH - Filipino
+# fr_BE - Français (Belgique)
+# fr_CA - Français (Canada)
+# fr_FR - Français, fr - Français
+# fr_CH - Français (Suisse)
+# hr_HR - Hrvatski
+# zu_ZA - IsiZulu
+# it_IT - Italiano, or it - Italiano
+# it_CH - Italiano (Svizzera)
+# sw_TZ - Kiswahili
+# lv_LV - Latviešu
+# lt_LT - Lietuvių
+# hu_HU - Magyar, or hu - Magyar
+# nl_BE - Nederlands (België)
+# nl_NL - Nederlands, or nld - Nederlands
+# nb_NO - Norsk bokmål
+# pl_PL - Polski, or pl - Polski
+# pt_BR - Português (Brasil)
+# pt_PT - Português (Portugal)
+# ro_RO - Româna
+# rm_CH - Romansh
+# sk_SK - Slovencina
+# sl_SI - Slovenšcina
+# fi_FI - Suomi, or fi
+# sv_SE - Svenska, or sv - Svenska
+# vi_VN - Tiếng Việt
+# tr_TR - Türkçe, or tr - Türkçe
+# el_GR - Greek
+# bg_BG - Bulgarian
+# ru_RU - Russian, or ru - Russian
+# sr_RS - Serbian
+# uk_UA - Ukrainian
+# iw_IL - Hebrew
+# ar_EG - العربية
+# fa_IR - فارسی
+# am_ET - አማርኛ
+# hi_IN - हिन्दी
+# th_TH - ไทย
+# ko_KR - Korean
+# Customized - Custom Language
+P1362 = en_US
+#######################################################################
+##  Maintenance - Troubleshooting - Syslog                           ##
+#######################################################################
+# Syslog Protocol. 0 - UDP, 1 - SSL/TLS. Default value is 0.
+# Number: 0, 1
+P8402 = 0
+
+# Syslog Server Address. Name of the server
+# String
+P207 = log.ipvideotalk.com
+
+# Syslog Level
+# 0 - NONE, 1 - DEBUG, 2 - INFO, 3 - WARNING, 4 - ERROR. Default value is 0
+# Number: 0, 1, 2, 3, 4
+P208 = 0
+
+# Send SIP Log
+# 0 - No, 1- Yes. Default value is 0
+# Number: 0, 1
+P1387 = 0
+
+# Syslog Keyword Filter.
+# String
+P22129 = 
+
+# H.323 Syslog Level. Default value is 0
+# 0 - Off, 1 - 1, 2 - 2, 3 - 3, 4 - 4, 5 - 5, 6 - 6, 7 - 7, 8 - 8, 9 - 9, 10 - 10 
+P25055 = 0

@@ -1,0 +1,310 @@
+<!-- ############################################################################### -->
+<!-- ## 			                  Change Log                                  ## -->
+<!-- ############################################################################### -->
+<!-- #################################################################### -->
+<!-- ## 				Alias Added since 1.0.1.5                      ## -->
+<!-- #################################################################### -->
+No alias value added on firmware v.1.0.1.6
+
+<!-- #################################################################### -->
+<!-- ## 				Alias Removed since 1.0.1.5                    ## -->
+<!-- #################################################################### -->
+No alias value changed on firmware v.1.0.1.6
+
+
+<!-- #################################################################### -->
+<!-- ## 				Alias Added since 1.0.1.3                      ## -->
+<!-- #################################################################### -->
+	<!-- Incoming Call Rules -->
+	<!-- Block, SetPassword, Anwser, Ringing, Disable -->
+	<item name="account.{x}.call.incoming.rule">Disable</item>
+
+
+<!-- #################################################################### -->
+<!-- ## 				Alias Removed since 1.0.1.3                    ## -->
+<!-- #################################################################### -->
+	<!-- Enable Contact Full Indicator -->
+	<!-- Yes, No -->
+	<item name="ledControl.contactFull">Yes</item>
+
+
+<!-- #################################################################### -->
+<!-- ## 				Alias Added since 1.0.1.2                      ## -->
+<!-- #################################################################### -->
+<!-- ####################################################################### -->
+<!-- ##  Account 1-16 Network Settings                                       ## -->
+<!-- ####################################################################### -->
+	<!-- Register Before DNS SRV Fail-over -->
+	<!-- No, Yes -->
+	<item name="account.{x}.network.dnsSRVRegisterBeforeFailover">No</item> -->
+
+<!-- ####################################################################### -->
+<!-- ##  Phone Settings - Call Settings                                   ## -->
+<!-- ####################################################################### -->
+	<!-- Automatic Answer Ringing Time (s) -->
+	<!-- Number: 0 - 60 -->
+	<item name="call.autoAnswer.ringing.time">5</item>
+
+<!-- ###################################################################### -->
+<!-- ##  Network Settings - Bluetooth      								 ## -->
+<!-- ###################################################################### -->
+	<!-- Enabling Bluetooth -->
+	<!-- Off, On -->
+	<item name="bluetooth.power">On</item> -->
+
+	<!-- Bluetooth Visibility -->
+	<!-- No, Yes -->
+	<item name="bt.visible.enable">No</item>
+
+	<!-- Bluetooth visibility timeout -->
+	<!-- 0, 2, 5, 60 -->
+	<item name="bt.bisibility.timeout">2</item>
+
+<!-- ####################################################################### -->
+<!-- ##  Network Settings - Advanced Network Settings                     ## -->
+<!-- ####################################################################### -->
+	<!-- # HTTP/HTTPS Proxy Port -->
+	<!-- # String -->
+	<!-- <item name="network.proxy.httporhttps"></item> -->
+
+<!-- ############################################################################## -->
+<!-- ##  System Settings                                                         ## -->
+<!-- ############################################################################## -->
+<!-- ####################################################################### -->
+<!-- ##  System Settings - Time Settings                                  ## -->
+<!-- ####################################################################### -->
+	<!-- DHCP Option 42 Override NTP Server -->
+	<!-- When set to Yes, it will override the configured NTP server -->
+	<!-- Yes, No -->
+	<!-- Mandatory -->
+	<item name="dateTime.override.dhcp.allowOption42">Yes</item>
+	
+<!-- ############################################################################## -->
+<!-- ##  Applications        	                                                 ## -->
+<!-- ############################################################################## -->
+<!-- ####################################################################### -->
+<!-- ##  Applications - Music			                                  ## -->
+<!-- ####################################################################### -->
+	
+	<!-- Schedule 1 -->
+	<!-- String -->
+	<!-- Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file) -->
+	<!-- Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3 -->
+	<item name="rtsp.schedule.rule.1"></item>
+
+	<!-- Schedule 2 -->
+	<!-- String -->
+	<!-- Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file) -->
+	<!-- Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3 -->
+	<item name="rtsp.schedule.rule.2"></item>
+	
+	<!-- Schedule 3 -->
+	<!-- String -->
+	<!-- Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file) -->
+	<!-- Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3 -->
+	<item name="rtsp.schedule.rule.3"></item>
+	
+	<!-- Schedule 4 -->
+	<!-- String -->
+	<!-- Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file) -->
+	<!-- Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3 -->
+	<item name="rtsp.schedule.rule.4"></item>
+	
+	<!-- Schedule 5 -->
+	<!-- String -->
+	<!-- Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file) -->
+	<!-- Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3 -->
+	<item name="rtsp.schedule.rule.5"></item>
+	
+	<!-- Schedule 6 -->
+	<!-- String -->
+	<!-- Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file) -->
+	<!-- Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3 -->
+	<item name="rtsp.schedule.rule.6"></item>
+
+
+<!-- #################################################################### -->
+<!-- ## 				Alias Removed since 1.0.1.2                    ## -->
+<!-- #################################################################### -->
+<!-- ####################################################################### -->
+<!-- ##  Account 1 Advanced Settings                                      ## -->
+<!-- ####################################################################### -->
+	<!-- Feature Key Synchronization -->
+	<!-- No, Yes -->
+	<item name="account.{x}.broadsoft.syncFeatureKey">No</item>
+
+<!-- ####################################################################### -->
+<!-- ##  Phone Settings - Ring Tone                                       ## -->
+<!-- ####################################################################### -->
+	<!-- Dial Tone -->
+	<item name="audio.tone.dial">f1=350@-13,f2=440@-13,c=0/0;</item>
+	
+	<!-- Second Dial Tone -->
+	<item name="audio.tone.secondDial"></item>
+
+<!-- ####################################################################### -->
+<!-- ##  System Settings - Sensor setting                                 ## -->
+<!-- ####################################################################### -->
+		<!-- Play audio. 0 - Disable, 1 - Enable. Default value is 0 -->
+		<!-- Number: 0, 1 -->
+<!-- TBA <P22212>0</P22212> -->
+
+		<!-- Make call/Dial out extension. 0 - Disable, 1 - Enable. Default value is 0 -->
+		<!-- Number: 0, 1 -->
+<!-- TBA <P22213>0</P22213> -->
+
+		<!-- Recording. 0 - Disable, 1 - Enable. Default value is 0 -->
+		<!-- Nubmer: 0, 1 -->
+<!-- TBA <P22214>0</P22214> -->
+
+
+<!-- #################################################################### -->
+<!-- ## 				Alias Added since 1.0.1.1                      ## -->
+<!-- #################################################################### -->
+<!-- ############################################################## -->
+<!-- ##  Account 1 - 16 Settings                                 ## -->
+<!-- ############################################################## -->
+<!-- ######################################################## -->
+<!-- ##  Account 1 - 16 Call Settings                      ## -->
+<!-- ######################################################## -->
+	<!-- Mute on Answer Intercom Call -->
+	<!-- No, Yes -->
+	<!-- <item name="account.{x}.intercom.muteOnAnswerIntercom">No</item> -->
+
+	<!-- Account Ringtone -->
+	<item name="account.{x}.ring.ringtone">content://settings/system/ringtone</item>
+	
+	<!-- Ignore Alert-Info Header -->
+	<!-- No, Yes -->
+	<item name="account.{x}.ring.ignoreSipAlertInfo">No</item>
+	
+	<!-- Matching Incoming Caller ID. Matching Rule 1 -->
+	<item name="account.{x}.ring.match.1.callerId"></item>
+	
+	<!-- Matching Rule 1 Distinctve Ringtone -->
+	<item name="account.{x}.ring.match.1.ringtone">content://settings/system/ringtone</item>
+	
+	<!-- Matching Incoming Caller ID. Matching Rule 2 -->
+	<item name="account.{x}.ring.match.2.callerId"></item>
+	
+	<!-- Matching Rule 2 Distinctve Ringtone -->
+	<item name="account.{x}.ring.match.2.ringtone">content://settings/system/ringtone</item>	
+
+	<!-- Matching Incoming Caller ID. Matching Rule 3 -->
+	<item name="account.{x}.ring.match.3.callerId"></item>
+	
+	<!-- Matching Rule 3 Distinctve Ringtone -->
+	<item name="account.{x}.ring.match.3.ringtone">content://settings/system/ringtone</item>
+
+<!-- ######################################################## -->
+<!-- ##  Account 1 - 16 Advanced Settings                  ## -->
+<!-- ######################################################## -->
+	<!-- Enable Local MOH -->
+	<!-- No, Yes -->
+	<item name="account.{x}.call.moh.enable">No</item>
+
+<!-- ############################################################## -->
+<!-- ##  Calls 					                                 ## -->
+<!-- ############################################################## -->
+<!-- ######################################################## -->
+<!-- ##  Calls -> Blacklist/Whitelist Settings             ## -->
+<!-- ######################################################## -->
+	<!-- Whitelist -->
+	<item name="call.incomingcall.whitelist"></item>
+	
+	<!-- Blacklist -->
+	<item name="call.incomingcall.blacklist"></item>
+	
+<!-- ############################################################## -->
+<!-- ##  Phone Settings			                                 ## -->
+<!-- ############################################################## -->
+<!-- ######################################################## -->
+<!-- ##  Phone Settings -> Call Settings     	           ## -->
+<!-- ######################################################## -->	
+	<!-- Environment -->
+	<!-- SmallandMediumRoomOnDesk, LargeRoomOnEmptyArea -->
+	<item name="call.environment.mode">LargeRoomOnEmptyArea</item>
+
+<!-- ############################################################## -->
+<!-- ##  System Settings		                                 ## -->
+<!-- ############################################################## -->
+<!-- ######################################################## -->
+<!-- ##  System Settings -> Security Settings  	           ## -->
+<!-- ######################################################## -->
+	<!-- Allow Web Page Access -->
+	<!-- Yes, No -->
+	<item name="security.webAccess.enable">Yes</item>
+	
+<!-- ######################################################## -->
+<!-- ##  System Settings -> Volume Settings  	           ## -->
+<!-- ######################################################## -->	
+	<!-- Call Volume -->
+	<!-- Number: 0 - 8 -->
+	<item name="audio.volume.call">8</item>
+
+	<!-- Ringtone Volume -->
+	<!-- Number: 0 - 15 -->
+	<item name="audio.volume.ring">8</item>
+
+	<!-- Media Volume -->
+	<!-- Number: 0 - 15 -->
+	<item name="audio.volume.media">12</item>
+	
+<!-- ############################################################## -->
+<!-- ##  Maintenance			                                 ## -->
+<!-- ############################################################## -->
+<!-- ######################################################## -->
+<!-- ##  Maintenance -> Upgrade -> Advanced Settings       ## -->
+<!-- ######################################################## -->	
+	<!-- Allow AutoConfig Service Acces -->
+	<!-- No, Yes -->
+	<item name="services.autoLocation.enable">No</item>
+	
+<!-- ############################################################## -->
+<!-- ##  Applications			                                 ## -->
+<!-- ############################################################## -->
+<!-- ######################################################## -->
+<!-- ##  Applications - Music						       ## -->
+<!-- ######################################################## -->
+	<!-- Audio File Address -->
+	<!-- String -->
+	<item name="applications.music.rtspsServer"></item>
+	
+	<!-- Play Mode -->
+	<!-- String -->
+	<item name="applications.music.rtspPlayMode"></item>
+
+
+<!-- #################################################################### -->
+<!-- ## 				Alias Removed since 1.0.1.1                    ## -->
+<!-- #################################################################### -->
+<!-- ############################################################## -->
+<!-- ##  Account 1 - 16 Settings                                 ## -->
+<!-- ############################################################## -->
+<!-- ######################################################## -->
+<!-- ##  Account 1 - 16 Codec Settings                     ## -->
+<!-- ######################################################## -->
+	<!-- Jitter Buffer Type -->
+	<!-- Fixed, Adaptive -->
+	<item name="account.{x}.audio.jitterBufferType">Adaptive</item>
+
+<!-- #################################################################### -->
+<!-- ## 				Alias Added since 1.0.0.24                     ## -->
+<!-- #################################################################### -->
+<!-- ############################################################## -->
+<!-- ##  System Settings		                                 ## -->
+<!-- ############################################################## -->
+<!-- ######################################################## -->
+<!-- ##  System Settings - Security Settings - SIP TLS     ## -->
+<!-- ######################################################## -->
+	<!-- Minimum TLS Version -->
+	<!-- 10 - TLS1.0, 11 - TLS1.1, 12 - TLS1.2 -->
+	<!-- <item name="security.tls.minversion">11</item> -->
+
+	<!-- Maximum TLS Version -->
+	<!-- 10 - TLS1.0, 11 - TLS1.1, 12 - TLS1.2, 99 - NoLimit -->
+	<!-- <item name="security.tls.maxversion">99</item> -->
+
+<!-- ############################################################################### -->
+<!-- ## 			                Change Log End                                ## -->
+<!-- ############################################################################### -->

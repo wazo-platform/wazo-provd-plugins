@@ -1,0 +1,86 @@
+####################################################################
+## Change Log                                                     ##
+####################################################################
+
+#####################################
+# P values updated since 1.0.7.1   ##
+#####################################
+
+# DHCP domain name
+# String
+# P147 =  
+
+#####################################
+# P values updated since 1.0.5.2   ##
+#####################################
+
+# Load CA Certificates. 0 - Built-in trusted certificates, 1 - Custom trusted certificate, 2 - All trusted certificates
+# Number: 0, 1, 2 
+# Mandatory
+# P8502 = 0 
+
+#####################################
+# P values updated since 1.0.3.12  ##
+#####################################
+
+# Connection Request Port. Default is 7547
+# Number: 0 - 65535
+# Mandatory
+# P4518 = 7547
+
+# SIP User-Agent.
+# String
+# P29071= (FXS)
+# P29171= (FXO)
+
+# Increased Ring Timeout (P185, P816) range to 0-300, 0 means no timeout
+
+# Updated SIP User-Agent Header to SIP User-Agent Postfix
+
+#####################################
+# P values updated since 1.0.1.2   ##
+#####################################
+
+# Allow SIP Factory Reset. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# Mandatory
+# P26015 = 0 (FXS)
+# P26115 = 0 (FXO)
+
+# Pulse Dialing Standard. 0 - General Standard, 1 - Swedish Standard
+# Number: 0, 1
+# Mandatory 
+# P28165=0 (FXS)
+
+# RFC2833 Events Count.
+# Number: 2-10
+# Mandatory
+# P28173 = 8 (FXS)
+
+# RFC2833 End Events Count.
+# Number: 2-10
+# Mandatory
+# P28177 = 3 (FXS)
+
+# Disable Weak TLS Cipher Suites. 
+# 0 – Enable Weak TLS Ciphers Suites, 1 – Disable Symmetric Encryption RC4/DES/3DES, 2 - Disable Symmetric Encryption SEED, 3 - Disable All Of The Above Weak Symmetric Encryption, 4 - Disable Symmetric Authentication MD5, 5 - Disable All Of The Above Weak Symmetric Authentication, 6 - Disable Protocol Version SSLv2/SSLv3, 7 - Disable All Of The Above Weak Protocol Version, 8 - Disable All Of The Above Weak TLS Ciphers Suites
+# Number: 0-8 
+# Mandatory
+# P8536 = 0 
+
+# Minimum TLS Version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2
+# Number: 99, 10, 11, 12
+# Mandatory
+# P22293 = 99
+
+# Maximum TLS Version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2
+# Number: 99, 10, 11, 12
+# Mandatory
+# P22294 = 99
+
+# Update Automatic Upgrade Pvalue from P194 to P22296
+
+# Syslog Protocol. 0 – UDP, 1 – SSL/TLS. 
+# Number: 0, 1  
+# Mandatory
+# P8402 = 0 

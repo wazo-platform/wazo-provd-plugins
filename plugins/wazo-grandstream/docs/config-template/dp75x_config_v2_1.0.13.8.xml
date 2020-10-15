@@ -1,0 +1,4292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gs_provision version="1">
+    <config version="2">
+        <!-- Configuration Template for DP75x Firmware Version 1.0.13.0 -->
+        <!-- Instruction -->
+        <!-- Some alias are named in upper case letter and underscores, they will be convert to lower case and separated by dot in future firmware. -->
+
+        <!-- Configuration template for DP75x firmware version 1.0.13.0 -->
+
+        <!-- Profiles Settings -->
+
+        <!-- Profile 1 -->
+
+        <!-- Profile 1/General Settings -->
+
+        <!-- Profile Active.  0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.enable">1</item>
+
+        <!-- Profile Name. Used to identify profile uniquely. -->
+        <!-- Strings: maximum 32 characters. -->
+        <!-- Mandatory -->
+        <item name="profile.1.name">profile1</item>
+
+        <!-- Primary SIP Server -->
+        <!-- String: serveraddress -->
+        <item name="profile.1.sip.server.1.address"></item>
+
+        <!-- Failover SIP Server -->
+        <!-- String: serveraddress -->
+        <item name="profile.1.sip.server.2.address"></item>
+
+        <!-- Prefer Primary SIP Server. 0 - No, 1 - Yes. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.prefer_primary">0</item>
+
+        <!-- Outbound Proxy -->
+        <!-- String: serveraddress -->
+        <item name="profile.1.outbound_proxy.1.address"></item>
+
+        <!-- Backup Outbound Proxy -->
+        <!-- Secondary Outbound Proxy which will be used when the primary proxy cannot be connected -->
+        <!-- String -->
+
+        <!-- Voice Mail Access Number -->
+        <!-- String -->
+        <item name="profile.1.voicemail.number"></item>
+
+
+        <!-- Profile 1/Network Settings -->
+
+        <!-- Layer 3 QoS SIP Diff-Serv (default 40) -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.1.network.layer3_qos.sip_dscp">40.0</item>
+
+        <!-- Layer 3 QoS RTP Diff-Serv (default 46) -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.1.network.layer3_qos.rtp_dscp">46</item>
+
+        <!-- DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV, 3 - Use Configured IP . -->
+        <!-- Number: 0,1,2,3 -->
+        <!-- Mandatory -->
+        <item name="profile.1.network.dns.mode">0</item>
+
+        <!-- Primary IP -->
+        <!-- IP address -->
+        <item name="profile.1.network.dns.primary_ip"></item>
+
+        <!-- Backup IP 1 -->
+        <!-- IP address -->
+        <item name="profile.1.network.dns.backup_ip1"></item>
+
+        <!-- Backup IP 2 -->
+        <!-- IP address -->
+        <item name="profile.1.network.dns.backup_ip2"></item>
+
+        <!-- DNS SRV use Registered IP -->
+        <!-- In DNS SRV Mode, use registered IP instead of the first IP in the DNS table -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes. -->
+
+        <!-- NAT Traversal (STUN). 0 - No, 1 - STUN, 2 - No but send keep-alive, 3 - VPN -->
+        <!-- Number: 0,1,2,3 -->
+        <!-- Mandatory -->
+        <item name="profile.1.network.nat.traversal">0</item>
+
+        <!-- Use NAT IP.  This will enable our SIP client to use this IP in the SIP message. Example 64.3.153.50. -->
+        <!-- String: ipaddress -->
+        <item name="profile.1.network.nat.user_ip"></item>
+
+        <!-- Proxy-Require (A SIP extension to enable firewall penetration) -->
+        <!-- String: ipaddress -->
+        <item name="profile.1.network.nat.proxy-require"></item>
+
+        <!-- Use SBC -->
+        <!-- Indicate whether or not a SBC server is used. -->
+        <!-- Number: 0, 1. 0 - Disabled, 1 - Enabled. -->
+
+
+        <!-- Profile 1/SIP Settings/Basic Settings -->
+
+        <!-- SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.transport">0</item>
+
+        <!-- SIP URI Scheme When Using TLS. 0 - sip, 1- sips -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.uri_scheme_when_using_tls">1</item>
+
+        <!-- Use Actual Ephemeral Port in Contact with TCP/TLS. 0 - No, 1- Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.network.use_actual_ephemeral_port_in_contact_with_tcp/tls">0</item>
+
+        <!-- SIP Registration. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.registration">1</item>
+
+        <!-- Unregister On Reboot. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.unregister_on_reboot">1</item>
+
+        <!-- Add Auth Header On Initial REGISTER -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.header.auth_on_initial_register">0</item>
+
+        <!-- Outgoing call without Registration. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.enable_without_registration">1</item>
+
+        <!-- Register Expiration (in minutes. default 1 hour, max 45 days) -->
+        <!-- Number: 1 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.registration.expiration">60</item>
+
+        <!-- SIP Registration Failure Retry Wait Time (in seconds. Between 1-3600, default is 30) -->
+        <!-- Number: 1 to 3600 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.registration.failure_retry_wait_time">20</item>
+
+        <!-- SIP Registration Failure Retry Wait Time upon 403 Forbidden. 0 second means stop retry registration. Default is 1200 sec. -->
+        <!-- Number 0 to 3600 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.registration.403_retry_wait_time">1200</item>
+
+        <!-- Reregister before Expiration -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.registration.enable_before_expiration">0</item>
+
+        <!-- Local SIP port (default 5060) -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="profile.1.network.local_sip.port">5060</item>
+
+        <!-- Use Random RTP Port -->
+        <!-- Use a random port for SIP messages rather than the Local SIP Port. -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes, default is 0 - No -->
+        <!-- Alias: Pprofile.1.network.use_random_sip_port -->
+        <item name="profile.1.network.use_random_sip_port">0</item>
+
+        <!-- Local RTP Port (default 5004) -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="profile.1.network.local_rtp_port">5004</item>
+
+        <!-- SIP T1 Timeout. RFC 3261 T1 value. -->
+        <!-- 50 - 0.5 sec, 100 - 1 sec, 200 - 2 sec, 400 - 4 sec, 800 - 8 sec. Default 100. -->
+        <!-- Number: 50,100,200,400,800 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.timer.t1">50</item>
+
+        <!-- SIP T2 Timeout. RFC 3261 T2 value. -->
+        <!-- 200 - 2 sec, 400 - 4 sec, 800 - 8 sec, 1600 - 16 sec, 3200 - 32 sec. Default 400. -->
+        <!-- Number: 1600,3200,200,400,800 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.timer.t2">400</item>
+
+        <!-- SIP TIMER D. Config Timer D defined in RFC 3261. -->
+        <!-- Range 0-64 sec. Default 0 -->
+        <!-- Number: 0-64 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.timerd.interval">0</item>
+
+        <!-- Enable OPTIONS Keep Alive. Enable OPTIONS Keep Alive to check SIP server. -->
+        <!-- 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <item name="profile.1.sip.keep_alive.enable">0</item>
+
+        <!-- OPTIONS Keep Alive Interval. Time interval for OPTIONS Keep Alive feature in seconds. -->
+        <!-- Number: 1 - 64800 -->
+        <item name="profile.1.sip.keep_alive.interval">30</item>
+
+        <!-- OPTIONS Keep Alive Max Lost. Maximum number of lost packets for OPTIONS Keep Alive feature before the phone re-registration. -->
+        <!-- Number: 3 - 10 -->
+        <item name="profile.1.sip.keep_alive.max_lost">3</item>
+
+        <!-- Remove OBP from Route Header. 0 - no, 1 - yes -->
+        <!-- NUmber: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.route.remove_outbound_proxy">0</item>
+
+        <!-- Support SIP Instance ID. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.support_instance_id">1</item>
+
+        <!-- Hold Target Before Refer 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.hold_target_before_refer">0</item>
+
+        <!-- Refer-To Use Target Contact. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.refer-to_use_target_contact">0</item>
+
+        <!-- SUBSCRIBE for MWI. 0 - No, 1 - Yes. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.subscribe_for_mwi">0</item>
+
+        <!-- Enable 100rel. 0 - No, 1 - Yes -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.header.100rel">0</item>
+
+        <!-- Tel URI. 0 - Disabled, 1 - User=Phone, 2 - Enabled -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.tel_uri">0</item>
+
+        <!-- Do Not Escape '#' as %23 in SIP URI. 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.do_not_escape_pound">0</item>
+
+        <!-- Disable Multiple m Line in SDP. 0 - No, 1 - Yes -->
+        <item name="profile.1.sdp.disable_multiple_m_line">0</item>
+
+        <!-- Use Privacy Header. 0 - Default, 1 - No, 2 - Yes -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.header.privacy">0</item>
+
+        <!-- Use P-Preferred-Identity Header. 0 - Default, 1 - No, 2 - Yes -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.header.p-preferred-identity">0</item>
+
+        <!-- Ignore Alert-Info header. 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.ring.ignore_sip_alert_info">0</item>
+
+        <!-- Use MAC Header. (0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP). -->
+        <!-- If Yes except REGISTER, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP messages except REGISTER message will attach the MAC address to the User-Agent header; -->
+        <!-- If Yes to ALL, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP message including REGISTER will attach the MAC address to the User-Agent header; -->
+        <!-- If No, neither will the MAC header be included in the register or unregister message nor the MAC address be attached to the User-Agent header for any outgoing SIP message. -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.contains_mac"></item>
+
+        <!-- Caller ID Display. 0 - Auto, 1 - Disabled, 2 - From Header -->
+        <!-- When set to "Auto", the phone will look for the caller ID in the order of P-Asserted Identity Header, Remote-Party-ID Header and From Header in the incoming SIP INVITE. When set to "Disabled", all incoming calls are displayed with "Unavailable". -->
+        <item name="profile.1.sip.caller.id_display">0</item>
+
+        <!-- Profile 1/SIP Settings/Session Timer -->
+
+        <!-- Enable Session Timer. To enable/disable Session Timer support. -->
+        <!-- Number: 0, 1; 0 - No, 1 - Yes, default is 1. -->
+        <!-- Mandatory -->
+        <!-- Alias: profile.1.sip.enable_session_timer -->
+        <item name="profile.1.sip.enable_session_timer">1</item>
+
+
+        <!-- Session Expiration (in seconds. default 180 seconds. Allowed value: 90-65535) -->
+        <!-- Number: 90 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.session_timer.expiration">180</item>
+
+        <!-- Minimum SE (in seconds. default 90 seconds, must be lower than or equal to P260) -->
+        <!-- Number 90 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.session_timer.min_se">90</item>
+
+        <!-- Caller Request Timer (Request for timer when calling) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.session_timer.request_timer.caller">0</item>
+
+        <!-- Callee Request Timer (Request for timer when called. i.e. if remote party supports timer but did not request for one) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.session_timer.request_timer.callee">0</item>
+
+        <!-- Force Timer (Still use timer when remote party does not support timer) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.session_timer.force">0</item>
+
+        <!-- UAC Specify Refresher. 0 - omit, 1 - UAC, 2 - UAS -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.session_timer.refresher.uac_specify">0</item>
+
+        <!-- UAS Specify Refresher. 1 - UAC, 2 - UAS -->
+        <!-- Number: 1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.session_timer.refresher.uas_specify">1</item>
+
+        <!-- Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.session_timer.force_invite">0</item>
+
+
+        <!-- Profile 1/SIP Settings/Security Settings -->
+
+        <!-- Validate Incoming Messages. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.security.validate_message">0</item>
+
+        <!-- Check SIP User ID for Incoming INVITE. 0 - No, 1 - Yes (no direct IP calling if Yes) -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.security.validate_user_id_for_invite">0</item>
+
+        <!-- Allow Incoming SIP Messages from SIP Proxy Only -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.security.accept_from_proxy_only">0</item>
+
+        <!-- Authenticate incoming INVITE -->
+        <!-- Number: 0,1 -->
+        <item name="profile.1.sip.security.authenticate_incoming_invite">0</item>
+
+        <!-- Authenticate server certificate domain. 0 - No, 1 - Yes, default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.security.validate_domain_certificates">0</item>
+
+        <!-- Authenticate server certificate chain. 0 - No, 1 - Yes, default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.security.validate_certification_chain">0</item>
+
+        <!-- Trusted CA certificates. -->
+        <!-- String -->
+        <item name="profile.1.sip.security.trusted_ca"></item>
+
+
+        <!-- Profile 1/Audio Settings -->
+
+        <!-- DTMF Method - in-audio. Configure if use in-audio DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.dtmf.via_audio.enable">0</item>
+
+        <!-- DTMF Method - via RTP (RFC2833). Configure if use RFC2833 DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.dtmf.via_rfc2833.enable">1</item>
+
+        <!-- DTMF Method - via SIP INFO. Configure if use SIP INFO DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.dtmf.via_sip_info.enable">0</item>
+
+        <!-- Disable DTMF Negotiation. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.dtmf.disable_negotiate">0</item>
+
+        <!-- DTMF Payload Type -->
+        <!-- Number: 96 to 127 -->
+        <item name="profile.1.audio.dtmf.payload_type">101</item>
+
+        <!-- Preferred Vocoder -->
+        <!-- 0 - PCMU, 8 - PCMA, 4 - G.723, 18 - G.729, 2 - G.726-32, 100 - AAL2-G.726-16, -->
+        <!-- 102 - AAL2-G.726-24, 104 - AAL2-G726-32, 103 - AAL2-G.726-40, 98 - iLBC, 9 - G.722(wide band) -->
+        <!-- Choice 1. -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.choice.1">9</item>
+
+        <!-- Choice 2. -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.choice.2">0</item>
+
+        <!-- Choice 3. -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.choice.3">8</item>
+
+        <!-- Choice 4. -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.choice.4">4</item>
+
+        <!-- Choice 5. -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.choice.5">18</item>
+
+        <!-- Choice 6. -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.choice.6">2</item>
+
+        <!-- Choice 7. -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.choice.7">98</item>
+
+        <!-- Choice 8. -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.choice.8">125</item>
+
+        <!-- Voice Frame per TX. (Default 2, from 1 to 4 for G711/G726/G729) -->
+        <!-- Number: 1 to 4 -->
+        <item name="profile.1.audio.voice_frame_per_tx">2</item>
+
+        <!-- G723 rate. 0 - 6.3kbps encoding rate, 1 - 5.3kbps encoding rate -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.g723.rate">0</item>
+
+        <!-- G726-32 Packing Mode. 0 - ITU, 1 - IETF -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.g726.packing_mode">0</item>
+
+        <!-- iLBC Frame Size. 0 - 20ms(default), 1 - 30ms. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.ilbc.frame_size">0</item>
+
+        <!-- iLBC payload type. Between 96 and 127, default is 97. -->
+        <!-- Number: 96 to 127 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.ilbc.payload_type">97</item>
+
+        <!-- Disable OPUS stereo in SDP, default is 0. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.opus.disable_stereo">0</item>
+
+        <!-- OPUS Payload Type, default is 125. -->
+        <!-- Number: 96 to 127 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.opus.payload_type">125</item>
+
+        <!-- Use First Matching Vocoder in 200OK SDP. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.codec.use_first_match">0</item>
+
+        <!-- Callee codec negotiation priority. When callee, whose codecs are given priority in negotiation, local or remote ( Default is remote ). -->
+        <!-- Number: 0, 1. 0 - Remote, 1 - Local -->
+        <item name="profile.1.audio.callee_codec_negotiation_priority">0</item>
+
+        <!-- SRTP Mode -->
+        <!-- 0=Disabled -->
+        <!-- 1=Enabled but not forced -->
+        <!-- 2=Enabled and forced -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.srtp_mode">0</item>
+
+        <!-- Crypto Life Time -->
+        <!-- 0 = Disabled -->
+        <!-- 1 = Enabled -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.crypto_life_time">1</item>
+
+        <!-- Silence Suppression (VAD). 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.silence_suppression">0</item>
+
+        <!-- Jitter Buffer Type. 0 - Fixed, 1 - Adaptive -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.jitter_buffer.type">1</item>
+
+        <!-- Jitter Buffer Length. 0 - Low, 1 - Medium, 2 - High -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.jitter_buffer.length">1</item>
+
+        <!-- Enable RTCP. configure if enables RTCP statistics and control information. 0 - Disabled, 1- RTCP, 2 - RTCP-XR -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.1.audio.voice_monitoring.rtcp">1</item>
+
+
+        <!-- Profile 1/Call Settings -->
+
+        <!-- Early Dial. 0 - No, 1 - Yes (use "Yes" only if proxy supports 484 response). 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.early_dial">0</item>
+
+        <!-- Dial Plan Prefix.(this prefix string is added to each dialed number) -->
+        <!-- String Max Length: 32 -->
+        <item name="profile.1.call.dial_plan_prefix"></item>
+
+        <!-- Dial Plan -->
+        <!-- String Max Length: 1024 -->
+        <item name="profile.1.call.dial_plan">{ x+ | *x+ | *xx*x+ }</item>
+
+        <!-- Use #as Dial Key (if set to Yes, "#" will function as the "(Re-)Dial" key). 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.pound_as_dial">1</item>
+
+        <!-- On Hold Reminder Tone. 0 - Disabled, 1 - Enabled -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.on_hold_reminder_tone">1</item>
+
+        <!-- Match Incoming Caller ID. Specifies matching rules with number, pattern or Alert Info text to ring the selected ring tone. -->
+        <!-- Please refer to user manual for more details. -->
+        <!-- Number, pattern or Alert Info for matching Rule 1 -->
+        <item name="profile.1.ring.match.1.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 1. -->
+        <!-- 0 - System Ring Tone -->
+        <!-- 1 - Handset RingTone 1 -->
+        <!-- 2 - Handset RingTone 2 -->
+        <!-- 3 - Handset RingTone 3 -->
+        <!-- 4 - Handset RingTone 4 -->
+        <!-- 5 - Handset RingTone 5 -->
+        <!-- 6 - Handset RingTone 6 -->
+        <!-- 7 - Handset RingTone 7 -->
+        <!-- 8 - Handset RingTone 8 -->
+        <!-- 9 - Custom Ring Tone 1 -->
+        <!-- 10 - Bellcore Ring Tone 1 -->
+        <!-- 11 - Bellcore Ring Tone 2 -->
+        <!-- 12 - Bellcore Ring Tone 3 -->
+        <!-- 13 - Bellcore Ring Tone 4 -->
+        <!-- 14 - Bellcore Ring Tone 5 -->
+        <item name="profile.1.ring.match.1.tone">1</item>
+
+        <!-- Number, pattern or Alert Info for matching Rule 2 -->
+        <item name="profile.1.ring.match.2.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 2. -->
+        <item name="profile.1.ring.match.2.tone">1</item>
+
+        <!-- Number, pattern or Alert Info for matching Rule 3 -->
+        <item name="profile.1.ring.match.3.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 3. -->
+        <item name="profile.1.ring.match.3.tone">1</item>
+
+        <!-- Allow Auto Answer by Call-Info/Alert-Info. 0 - No, 1 - Yes. Default is 0 - No. -->
+        <!-- If set to "Yes", the phone will automatically turn on the speaker phone to answer incoming calls after a short reminding beep, based on the SIP Call-Info/Alert-Info header sent from the server/proxy. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.auto_answer.allow">0</item>
+
+        <!-- Custom Alert-Info for Auto Answer. -->
+        <!-- Used exclusively to match the contents of the Alert-Info header for auto answer. The default auto answer headers will not be matched if this is defined. -->
+        <!-- String Max Length: 20 -->
+        <item name="profile.1.call.auto_answer.custom_alert_info"></item>
+
+        <!-- No Key Entry Timeout. Default - 4 seconds. -->
+        <!-- Number: 1 to 15 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.no_key_entry_timeout">4</item>
+
+        <!-- Enable Call Features. 0 - No, 1 - Yes, 2 - Enable All -->
+        <item name="profile.1.call.features.enable">1</item>
+
+        <!-- Disable Call Waiting Caller ID. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.call_waiting.disable_id">0</item>
+
+        <!-- Enable Call Waiting in Parallel Mode. 0 - no, 1 - yes -->
+        <!-- Enables call waiting for accounts using this profile which are set to Parallel ring mode. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.call_waiting.enable_parallel">0</item>
+
+        <!-- Disable Visual MWI. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.disable.visual_mwi">0</item>
+
+        <!-- Transfer on Conference Hangup. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.transfer_on_conference_hangup">0</item>
+
+        <!-- Ring Timeout. (10-300, default is 60 seconds) -->
+        <!-- Number: 10 to 300 -->
+        <!-- Mandatory -->
+        <item name="profile.1.ring.timeout">60</item>
+
+        <!-- Hunting Group Ring Timeout. (5-300, default is 20 seconds) -->
+        <!-- Number: 5 to 300 -->
+        <!-- Mandatory -->
+        <item name="profile.1.ring.hunting_group_timeout">20</item>
+
+        <!-- Send Anonymous. 0 - no, 1 - yes (caller ID will be blocked if set to Yes). -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.send_anonymous">0</item>
+
+        <!-- Anonymous Call Rejection. 0 - No, 1 - Yes. -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.call.reject_anonymous">0</item>
+
+        <!-- Special Feature -->
+        <!-- 100 - Standard, 102 - BroadSoft, 108 - CBCOM, 109 - RNK, 111 - Huawei, 114 - ZTE IMS, 119 - PhonePower, 120 - TELKOM SA. -->
+        <!-- Number: 100, 102, 108, 109, 111, 114, 119, 120 -->
+        <!-- Mandatory -->
+        <item name="profile.1.sip.special_feature">100</item>
+
+        <!-- Music On Hold URI -->
+        <!-- Music On Hold URI to call when a call is on hold if server support it -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pprofile.1.sip.moh_uri -->
+        <item name="profile.1.sip.moh_uri"></item>
+
+        <!-- Allow Unsolicited REFER. -->
+        <!-- Allow unsolicited REFER to accomplish an outgoing call. -->
+        <!-- Number: 0, 2; 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth, default is 0. -->
+        <!-- Alias: profile.1.sip.allow_unsolicited_refer -->
+        <item name="profile.1.sip.allow_unsolicited_refer">0</item>
+
+        <!-- Feature Key Synchronization. 0 - Disabled, 1- Enabled -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.1.subscribe.feature_event">0</item>
+
+
+        <!-- Profile 2 -->
+
+        <!-- Profile 2/General Settings -->
+
+        <!-- Profile Active.  0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.enable">1</item>
+
+        <!-- Profile Name. Used to identify profile uniquely. -->
+        <!-- Strings: maximum 32 characters. -->
+        <!-- Mandatory -->
+        <item name="profile.2.name">profile2</item>
+
+        <!-- Primary SIP Server -->
+        <!-- String: serveraddress -->
+        <item name="profile.2.sip.server.1.address"></item>
+
+        <!-- Failover SIP Server -->
+        <!-- String: serveraddress -->
+        <item name="profile.2.sip.server.2.address"></item>
+
+        <!-- Prefer Primary SIP Server. 0 - No, 1 - Yes. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.prefer_primary">0</item>
+
+        <!-- Outbound Proxy -->
+        <!-- String: serveraddress -->
+        <item name="profile.2.outbound_proxy.1.address"></item>
+
+        <!-- Backup Outbound Proxy -->
+        <!-- Secondary Outbound Proxy which will be used when the primary proxy cannot be connected -->
+        <!-- String -->
+
+        <!-- Voice Mail Access Number -->
+        <!-- String -->
+        <item name="profile.2.voicemail.number"></item>
+
+
+        <!-- Profile 2/Network Settings -->
+
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.2.network.layer3_qos.sip_dscp">40.0</item>
+
+        <!-- Layer 3 QoS RTP Diff-Serv (default 46) -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.2.network.layer3_qos.rtp_dscp">46</item>
+
+        <!-- DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV, 3 - Use Configured IP . -->
+        <!-- Number: 0,1,2,3 -->
+        <!-- Mandatory -->
+        <item name="profile.2.network.dns.mode">0</item>
+
+        <!-- Primary IP -->
+        <!-- IP address -->
+        <item name="profile.2.network.dns.primary_ip"></item>
+
+        <!-- Backup IP 1 -->
+        <!-- IP address -->
+        <item name="profile.2.network.dns.backup_ip1"></item>
+
+        <!-- Backup IP 2 -->
+        <!-- IP address -->
+        <item name="profile.2.network.dns.backup_ip2"></item>
+
+        <!-- DNS SRV use Registered IP -->
+        <!-- In DNS SRV Mode, use registered IP instead of the first IP in the DNS table -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes. -->
+
+        <!-- NAT Traversal (STUN). 0 - No, 2 - No but send keep-alive, 1 - Yes -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.network.nat.traversal">0</item>
+
+        <!-- Use NAT IP.  This will enable our SIP client to use this IP in the SIP message. Example 64.3.153.50. -->
+        <!-- String: ipaddress -->
+        <item name="profile.2.network.nat.user_ip"></item>
+
+        <!-- Proxy-Require (A SIP extension to enable firewall penetration) -->
+        <!-- String: ipaddress -->
+        <item name="profile.2.network.nat.proxy-require"></item>
+
+        <!-- Use SBC -->
+        <!-- Indicate whether or not a SBC server is used. -->
+        <!-- Number: 0, 1. 0 - Disabled, 1 - Enabled. -->
+
+
+        <!-- Profile 2/SIP Settings/Basic Settings -->
+
+        <!-- SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.transport">0</item>
+
+        <!-- SIP URI Scheme When Using TLS. 0 - sip, 1- sips -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.uri_scheme_when_using_tls">1</item>
+
+        <!-- Use Actual Ephemeral Port in Contact with TCP/TLS. 0 - No, 1- Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.network.use_actual_ephemeral_port_in_contact_with_tcp/tls">0</item>
+
+        <!-- SIP Registration. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.registration">1</item>
+
+        <!-- Unregister On Reboot. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.unregister_on_reboot">1</item>
+
+        <!-- Add Auth Header On Initial REGISTER -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.header.auth_on_initial_register">0</item>
+
+        <!-- Outgoing call without Registration. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.enable_without_registration">1</item>
+
+        <!-- Register Expiration (in minutes. default 1 hour, max 45 days) -->
+        <!-- Number: 1 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.registration.expiration">60</item>
+
+        <!-- SIP Registration Failure Retry Wait Time (in seconds. Between 1-3600, default is 30) -->
+        <!-- Number: 1 to 3600 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.registration.failure_retry_wait_time">20</item>
+
+        <!-- SIP Registration Failure Retry Wait Time upon 403 Forbidden. 0 second means stop retry registration. Default is 1200 sec. -->
+        <!-- Number 0 to 3600 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.registration.403_retry_wait_time">1200</item>
+
+        <!-- Reregister before Expiration -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.registration.enable_before_expiration">0</item>
+
+        <!-- Local SIP port (default 5060) -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="profile.2.network.local_sip.port">6060</item>
+
+        <!-- Use Random RTP Port -->
+        <!-- Use a random port for SIP messages rather than the Local SIP Port. -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes, default is 0 - No -->
+        <!-- Alias: Pprofile.2.network.use_random_sip_port -->
+        <item name="profile.2.network.use_random_sip_port">0</item>
+
+        <!-- Local RTP Port (default 6004) -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="profile.2.network.local_rtp_port">6004</item>
+
+        <!-- SIP T1 Timeout. RFC 3261 T1 value. -->
+        <!-- 50 - 0.5 sec, 100 - 1 sec, 200 - 2 sec, 400 - 4 sec, 800 - 8 sec. Default 100. -->
+        <!-- Number: 50,100,200,400,800 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.timer.t1">50</item>
+
+        <!-- SIP T2 Timeout. RFC 3261 T2 value. -->
+        <!-- 200 - 2 sec, 400 - 4 sec, 800 - 8 sec, 1600 - 16 sec, 3200 - 32 sec. Default 400. -->
+        <!-- Number: 1600,3200,200,400,800 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.timer.t2">400</item>
+
+        <!-- SIP TIMER D. Config Timer D defined in RFC 3261. -->
+        <!-- Range 0-64 sec. Default 0 -->
+        <!-- Number: 0-64 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.timerd.interval">0</item>
+
+        <!-- Enable OPTIONS Keep Alive. Enable OPTIONS Keep Alive to check SIP server. -->
+        <!-- 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <item name="profile.2.sip.keep_alive.enable">0</item>
+
+        <!-- OPTIONS Keep Alive Interval. Time interval for OPTIONS Keep Alive feature in seconds. -->
+        <!-- Number: 1 - 64800 -->
+        <item name="profile.2.sip.keep_alive.interval">30</item>
+
+        <!-- OPTIONS Keep Alive Max Lost. Maximum number of lost packets for OPTIONS Keep Alive feature before the phone re-registration. -->
+        <!-- Number: 3 - 10 -->
+        <item name="profile.2.sip.keep_alive.max_lost">3</item>
+
+        <!-- Remove OBP from Route Header. 0 - no, 1 - yes -->
+        <!-- NUmber: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.route.remove_outbound_proxy">0</item>
+
+        <!-- Support SIP Instance ID. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.support_instance_id">1</item>
+
+        <!-- Hold Target Before Refer 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.hold_target_before_refer">0</item>
+
+        <!-- Refer-To Use Target Contact. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.refer-to_use_target_contact">0</item>
+
+        <!-- SUBSCRIBE for MWI. 0 - No, 1 - Yes. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.subscribe_for_mwi">0</item>
+
+        <!-- Enable 100rel. 0 - No, 1 - Yes -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.header.100rel">0</item>
+
+        <!-- Tel URI. 0 - Disabled, 1 - User=Phone, 2 - Enabled -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.tel_uri">0</item>
+
+        <!-- Do Not Escape '#' as %23 in SIP URI. 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.do_not_escape_pound">0</item>
+
+        <!-- Disable Multiple m Line in SDP. 0 - No, 1 - Yes -->
+        <item name="profile.2.sdp.disable_multiple_m_line">0</item>
+
+        <!-- Use Privacy Header. 0 - Default, 1 - No, 2 - Yes -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.header.privacy">0</item>
+
+        <!-- Use P-Preferred-Identity Header. 0 - Default, 1 - No, 2 - Yes -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.header.p-preferred-identity">0</item>
+
+        <!-- Ignore Alert-Info header. 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.ring.ignore_sip_alert_info">0</item>
+
+        <!-- Use MAC Header. (0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP). -->
+        <!-- If Yes except REGISTER, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP messages except REGISTER message will attach the MAC address to the User-Agent header; -->
+        <!-- If Yes to ALL, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP message including REGISTER will attach the MAC address to the User-Agent header; -->
+        <!-- If No, neither will the MAC header be included in the register or unregister message nor the MAC address be attached to the User-Agent header for any outgoing SIP message. -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.contains_mac"></item>
+
+        <!-- Caller ID Display. 0 - Auto, 1 - Disabled, 2 - From Header -->
+        <!-- When set to "Auto", the phone will look for the caller ID in the order of P-Asserted Identity Header, Remote-Party-ID Header and From Header in the incoming SIP INVITE. When set to "Disabled", all incoming calls are displayed with "Unavailable". -->
+        <item name="profile.2.sip.caller.id_display">0</item>
+
+
+        <!-- Profile 2/SIP Settings/Session Timer -->
+
+        <!-- Enable Session Timer. To enable/disable Session Timer support. -->
+        <!-- Number: 0, 1; 0 - No, 1 - Yes, default is 1. -->
+        <!-- Mandatory -->
+        <!-- Alias: profile.2.sip.enable_session_timer -->
+        <item name="profile.2.sip.enable_session_timer">1</item>
+
+        <!-- Session Expiration (in seconds. default 180 seconds. Allowed value: 90-65535) -->
+        <!-- Number: 90 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.session_timer.expiration">180</item>
+
+        <!-- Minimum SE (in seconds. default 90 seconds, must be lower than or equal to P260) -->
+        <!-- Number 90 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.session_timer.min_se">90</item>
+
+        <!-- Caller Request Timer (Request for timer when calling) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.session_timer.request_timer.caller">0</item>
+
+        <!-- Callee Request Timer (Request for timer when called. i.e. if remote party supports timer but did not request for one) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.session_timer.request_timer.callee">0</item>
+
+        <!-- Force Timer (Still use timer when remote party does not support timer) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.session_timer.force">0</item>
+
+        <!-- UAC Specify Refresher. 0 - omit, 1 - UAC, 2 - UAS -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.session_timer.refresher.uac_specify">0</item>
+
+        <!-- UAS Specify Refresher. 1 - UAC, 2 - UAS -->
+        <!-- Number: 1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.session_timer.refresher.uas_specify">1</item>
+
+        <!-- Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.session_timer.force_invite">0</item>
+
+
+        <!-- Profile 2/SIP Settings/Security Settings -->
+
+        <!-- Validate Incoming Messages. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.security.validate_message">0</item>
+
+        <!-- Check SIP User ID for Incoming INVITE. 0 - No, 1 - Yes (no direct IP calling if Yes) -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.security.validate_user_id_for_invite">0</item>
+
+        <!-- Allow Incoming SIP Messages from SIP Proxy Only -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.security.accept_from_proxy_only">0</item>
+
+        <!-- Authenticate incoming INVITE -->
+        <!-- Number: 0,1 -->
+        <item name="profile.2.sip.security.authenticate_incoming_invite">0</item>
+
+        <!-- Authenticate server certificate domain. 0 - No, 1 - Yes, default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.security.validate_domain_certificates">0</item>
+
+        <!-- Authenticate server certificate chain. 0 - No, 1 - Yes, default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.security.validate_certification_chain">0</item>
+
+        <!-- Trusted CA certificates. -->
+        <!-- String -->
+        <item name="profile.2.sip.security.trusted_ca"></item>
+
+
+        <!-- Profile 2/Audio Settings -->
+
+        <!-- DTMF Method - in-audio. Configure if use in-audio DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.dtmf.via_audio.enable">0</item>
+
+        <!-- DTMF Method - via RTP (RFC2833). Configure if use RFC2833 DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.dtmf.via_rfc2833.enable">1</item>
+
+        <!-- DTMF Method - via SIP INFO. Configure if use SIP INFO DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.dtmf.via_sip_info.enable">0</item>
+
+        <!-- Disable DTMF Negotiation. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.dtmf.disable_negotiate">0</item>
+
+        <!-- DTMF Payload Type -->
+        <!-- Number: 96 to 127 -->
+        <item name="profile.2.audio.dtmf.payload_type">101</item>
+
+        <!-- Preferred Vocoder -->
+        <!-- 0 - PCMU, 8 - PCMA, 4 - G.723, 18 - G.729, 2 - G.726-32, 100 - AAL2-G.726-16, -->
+        <!-- 102 - AAL2-G.726-24, 104 - AAL2-G726-32, 103 - AAL2-G.726-40, 98 - iLBC, 9 - G.722(wide band) -->
+        <!-- Choice 1. -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.choice.1">9</item>
+
+        <!-- Choice 2. -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.choice.2">0</item>
+
+        <!-- Choice 3. -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.choice.3">8</item>
+
+        <!-- Choice 4. -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.choice.4">4</item>
+
+        <!-- Choice 5. -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.choice.5">18</item>
+
+        <!-- Choice 6. -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.choice.6">2</item>
+
+        <!-- Choice 7. -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.choice.7">98</item>
+
+        <!-- Choice 8. -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.choice.8">125</item>
+
+        <!-- Voice Frame per TX. (Default 2, from 1 to 4 for G711/G726/G729) -->
+        <!-- Number: 1 to 4 -->
+        <item name="profile.2.audio.voice_frame_per_tx">2</item>
+
+        <!-- G723 rate. 0 - 6.3kbps encoding rate, 1 - 5.3kbps encoding rate -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.g723.rate">0</item>
+
+        <!-- G726-32 Packing Mode. 0 - ITU, 1 - IETF -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.g726.packing_mode">0</item>
+
+        <!-- iLBC Frame Size. 0 - 20ms(default), 1 - 30ms. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.ilbc.frame_size">0</item>
+
+        <!-- iLBC payload type. Between 96 and 127, default is 97. -->
+        <!-- Number: 96 to 127 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.ilbc.payload_type">97</item>
+
+        <!-- Disable OPUS stereo in SDP, default is 0. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.opus.disable_stereo">0</item>
+
+        <!-- OPUS Payload Type, default is 125. -->
+        <!-- Number: 96 to 127 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.opus.payload_type">125</item>
+
+        <!-- Use First Matching Vocoder in 200OK SDP. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.codec.use_first_match">0</item>
+
+        <!-- Callee codec negotiation priority. When callee, whose codecs are given priority in negotiation, local or remote ( Default is remote ). -->
+        <!-- Number: 0, 1. 0 - Remote, 1 - Local -->
+        <item name="profile.2.audio.callee_codec_negotiation_priority">0</item>
+
+        <!-- SRTP Mode -->
+        <!-- 0=Disabled -->
+        <!-- 1=Enabled but not forced -->
+        <!-- 2=Enabled and forced -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.srtp_mode">0</item>
+
+        <!-- Crypto Life Time -->
+        <!-- 0 = Disabled -->
+        <!-- 1 = Enabled -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.crypto_life_time">1</item>
+
+        <!-- Silence Suppression (VAD). 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.silence_suppression">0</item>
+
+        <!-- Jitter Buffer Type. 0 - Fixed, 1 - Adaptive -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.jitter_buffer.type">1</item>
+
+        <!-- Jitter Buffer Length. 0 - Low, 1 - Medium, 2 - High -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.jitter_buffer.length">1</item>
+
+        <!-- Enable RTCP. configure if enables RTCP statistics and control information. 0 - Disabled, 1- RTCP, 2 - RTCP-XR -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.2.audio.voice_monitoring.rtcp">1</item>
+
+
+        <!-- Profile 2/Call Settings -->
+
+        <!-- Early Dial. 0 - No, 1 - Yes (use "Yes" only if proxy supports 484 response). 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.early_dial">0</item>
+
+        <!-- Dial Plan Prefix.(this prefix string is added to each dialed number) -->
+        <!-- String Max Length: 32 -->
+        <item name="profile.2.call.dial_plan_prefix"></item>
+
+        <!-- Dial Plan -->
+        <!-- String Max Length: 1024 -->
+        <item name="profile.2.call.dial_plan">{ x+ | *x+ | *xx*x+ }</item>
+
+        <!-- Use #as Dial Key (if set to Yes, "#" will function as the "(Re-)Dial" key). 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.pound_as_dial">1</item>
+
+        <!-- On Hold Reminder Tone. 0 - Disabled, 1 - Enabled -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.on_hold_reminder_tone">1</item>
+
+        <!-- Match Incoming Caller ID. Specifies matching rules with number, pattern or Alert Info text to ring the selected ring tone. -->
+        <!-- Please refer to user manual for more details. -->
+        <!-- Number, pattern or Alert Info for matching Rule 1 -->
+        <item name="profile.2.ring.match.1.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 1. -->
+        <!-- 0 - System Ring Tone -->
+        <!-- 1 - Handset RingTone 1 -->
+        <!-- 2 - Handset RingTone 2 -->
+        <!-- 3 - Handset RingTone 3 -->
+        <!-- 4 - Handset RingTone 4 -->
+        <!-- 5 - Handset RingTone 5 -->
+        <!-- 6 - Handset RingTone 6 -->
+        <!-- 7 - Handset RingTone 7 -->
+        <!-- 8 - Handset RingTone 8 -->
+        <!-- 9 - Custom Ring Tone 1 -->
+        <!-- 10 - Bellcore Ring Tone 1 -->
+        <!-- 11 - Bellcore Ring Tone 2 -->
+        <!-- 12 - Bellcore Ring Tone 3 -->
+        <!-- 13 - Bellcore Ring Tone 4 -->
+        <!-- 14 - Bellcore Ring Tone 5 -->
+        <item name="profile.2.ring.match.1.tone">1</item>
+
+        <!-- Number, pattern or Alert Info for matching Rule 2 -->
+        <item name="profile.2.ring.match.2.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 2. -->
+        <item name="profile.2.ring.match.2.tone">1</item>
+
+        <!-- Number, pattern or Alert Info for matching Rule 3 -->
+        <item name="profile.2.ring.match.3.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 3. -->
+        <item name="profile.2.ring.match.3.tone">1</item>
+
+        <!-- Allow Auto Answer by Call-Info/Alert-Info. 0 - No, 1 - Yes. Default is 0 - No. -->
+        <!-- If set to "Yes", the phone will automatically turn on the speaker phone to answer incoming calls after a short reminding beep, based on the SIP Call-Info/Alert-Info header sent from the server/proxy. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.auto_answer.allow">0</item>
+
+        <!-- Custom Alert-Info for Auto Answer. -->
+        <!-- Used exclusively to match the contents of the Alert-Info header for auto answer. The default auto answer headers will not be matched if this is defined. -->
+        <!-- String Max Length: 20 -->
+        <item name="profile.2.call.auto_answer.custom_alert_info"></item>
+
+        <!-- No Key Entry Timeout. Default - 4 seconds. -->
+        <!-- Number: 1 to 15 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.no_key_entry_timeout">4</item>
+
+        <!-- Enable Call Features. 0 - No, 1 - Yes, 2 - Enable All -->
+        <item name="profile.2.call.features.enable">1</item>
+
+        <!-- Disable Call Waiting Caller ID. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.call_waiting.disable_id">0</item>
+
+        <!-- Enable Call Waiting in Parallel Mode. 0 - no, 1 - yes. Default is 0 - No. -->
+        <!-- Enables call waiting for accounts using this profile which are set to Parallel ring mode. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.call_waiting.enable_parallel">0</item>
+
+        <!-- Disable Visual MWI. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.disable.visual_mwi">0</item>
+
+        <!-- Transfer on Conference Hangup. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.transfer_on_conference_hangup">0</item>
+
+        <!-- Ring Timeout. (10-300, default is 60 seconds) -->
+        <!-- Number: 10 to 300 -->
+        <!-- Mandatory -->
+        <item name="profile.2.ring.timeout">60</item>
+
+        <!-- Hunting Group Ring Timeout. (5-300, default is 20 seconds) -->
+        <!-- Number: 5 to 300 -->
+        <!-- Mandatory -->
+        <item name="profile.2.ring.hunting_group_timeout">20</item>
+
+        <!-- Send Anonymous. 0 - no, 1 - yes (caller ID will be blocked if set to Yes). -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.send_anonymous">0</item>
+
+        <!-- Anonymous Call Rejection. 0 - No, 1 - Yes. -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.call.reject_anonymous">0</item>
+
+        <!-- Special Feature -->
+        <!-- 100 - Standard, 102 - BroadSoft, 108 - CBCOM, 109 - RNK, 111 - Huawei, 114 - ZTE IMS, 119 - PhonePower, 120 - TELKOM SA. -->
+        <!-- Number: 100, 102, 108, 109, 111, 114, 119, 120 -->
+        <!-- Mandatory -->
+        <item name="profile.2.sip.special_feature">100</item>
+
+        <!-- Music On Hold URI -->
+        <!-- Music On Hold URI to call when a call is on hold if server support it -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pprofile.2.sip.moh_uri -->
+        <item name="profile.2.sip.moh_uri"></item>
+
+        <!-- Allow Unsolicited REFER. -->
+        <!-- Allow unsolicited REFER to accomplish an outgoing call. -->
+        <!-- Number: 0, 2; 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth, default is 0. -->
+        <!-- Alias: profile.2.sip.allow_unsolicited_refer -->
+        <item name="profile.2.sip.allow_unsolicited_refer">0</item>
+
+        <!-- Feature Key Synchronization. 0 - Disabled, 1- Enabled -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.2.subscribe.feature_event">0</item>
+
+
+        <!-- Profile 3 -->
+
+        <!-- Profile 3/General Settings -->
+
+        <!-- Profile Active.  0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.enable">1</item>
+
+        <!-- Profile Name. Used to identify profile uniquely. -->
+        <!-- Strings: maximum 32 characters. -->
+        <!-- Mandatory -->
+        <item name="profile.3.name">profile3</item>
+
+        <!-- Primary SIP Server -->
+        <!-- String: serveraddress -->
+        <item name="profile.3.sip.server.1.address"></item>
+
+        <!-- Failover SIP Server -->
+        <!-- String: serveraddress -->
+        <item name="profile.3.sip.server.2.address"></item>
+
+        <!-- Prefer Primary SIP Server. 0 - No, 1 - Yes. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.prefer_primary">0</item>
+
+        <!-- Outbound Proxy -->
+        <!-- String: serveraddress -->
+        <item name="profile.3.outbound_proxy.1.address"></item>
+
+        <!-- Backup Outbound Proxy -->
+        <!-- Secondary Outbound Proxy which will be used when the primary proxy cannot be connected -->
+        <!-- String -->
+
+        <!-- Voice Mail Access Number -->
+        <!-- String -->
+        <item name="profile.3.voicemail.number"></item>
+
+
+        <!-- Profile 3/Network Settings -->
+
+        <!-- Layer 3 QoS SIP Diff-Serv (default 40) -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.3.network.layer3_qos.sip_dscp">40.0</item>
+
+        <!-- Layer 3 QoS RTP Diff-Serv (default 46) -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.3.network.layer3_qos.rtp_dscp">46</item>
+
+        <!-- DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV, 3 - Use Configured IP . -->
+        <!-- Number: 0,1,2,3 -->
+        <!-- Mandatory -->
+        <item name="profile.3.network.dns.mode">0</item>
+
+        <!-- Primary IP -->
+        <!-- IP address -->
+        <item name="profile.3.network.dns.primary_ip"></item>
+
+        <!-- Backup IP 1 -->
+        <!-- IP address -->
+        <item name="profile.3.network.dns.backup_ip1"></item>
+
+        <!-- Backup IP 2 -->
+        <!-- IP address -->
+        <item name="profile.3.network.dns.backup_ip2"></item>
+
+        <!-- DNS SRV use Registered IP -->
+        <!-- In DNS SRV Mode, use registered IP instead of the first IP in the DNS table -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes. -->
+
+        <!-- NAT Traversal (STUN). 0 - No, 2 - No but send keep-alive, 1 - Yes -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.network.nat.traversal">0</item>
+
+        <!-- Use NAT IP.  This will enable our SIP client to use this IP in the SIP message. Example 64.3.153.50. -->
+        <!-- String: ipaddress -->
+        <item name="profile.3.network.nat.user_ip"></item>
+
+        <!-- Proxy-Require (A SIP extension to enable firewall penetration) -->
+        <!-- String: ipaddress -->
+        <item name="profile.3.network.nat.proxy-require"></item>
+
+        <!-- Use SBC -->
+        <!-- Indicate whether or not a SBC server is used. -->
+        <!-- Number: 0, 1. 0 - Disabled, 1 - Enabled. -->
+
+
+        <!-- Profile 3/SIP Settings/Basic Settings -->
+
+        <!-- SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.transport">0</item>
+
+        <!-- SIP URI Scheme When Using TLS. 0 - sip, 1- sips -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.uri_scheme_when_using_tls">1</item>
+
+        <!-- Use Actual Ephemeral Port in Contact with TCP/TLS. 0 - No, 1- Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.network.use_actual_ephemeral_port_in_contact_with_tcp/tls">0</item>
+
+        <!-- SIP Registration. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.registration">1</item>
+
+        <!-- Unregister On Reboot. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.unregister_on_reboot">1</item>
+
+        <!-- Add Auth Header On Initial REGISTER -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.header.auth_on_initial_register">0</item>
+
+        <!-- Outgoing call without Registration. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.enable_without_registration">1</item>
+
+        <!-- Register Expiration (in minutes. default 1 hour, max 45 days) -->
+        <!-- Number: 1 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.registration.expiration">60</item>
+
+        <!-- SIP Registration Failure Retry Wait Time (in seconds. Between 1-3600, default is 30) -->
+        <!-- Number: 1 to 3600 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.registration.failure_retry_wait_time">20</item>
+
+        <!-- SIP Registration Failure Retry Wait Time upon 403 Forbidden. 0 second means stop retry registration. Default is 1200 sec. -->
+        <!-- Number 0 to 3600 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.registration.403_retry_wait_time">1200</item>
+
+        <!-- Reregister before Expiration -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.registration.enable_before_expiration">0</item>
+
+        <!-- Local SIP port (default 5060) -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="profile.3.network.local_sip.port">7060</item>
+
+        <!-- Use Random RTP Port -->
+        <!-- Use a random port for SIP messages rather than the Local SIP Port. -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes, default is 0 - No -->
+        <!-- Alias: Pprofile.3.network.use_random_sip_port -->
+        <item name="profile.3.network.use_random_sip_port"></item>
+
+        <!-- Local RTP Port (default 7004) -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="profile.3.network.local_rtp_port">7004</item>
+
+        <!-- SIP T1 Timeout. RFC 3261 T1 value. -->
+        <!-- 50 - 0.5 sec, 100 - 1 sec, 200 - 2 sec, 400 - 4 sec, 800 - 8 sec. Default 100. -->
+        <!-- Number: 50,100,200,400,800 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.timer.t1">50</item>
+
+        <!-- SIP T2 Timeout. RFC 3261 T2 value. -->
+        <!-- 200 - 2 sec, 400 - 4 sec, 800 - 8 sec, 1600 - 16 sec, 3200 - 32 sec. Default 400. -->
+        <!-- Number: 1600,3200,200,400,800 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.timer.t2">400</item>
+
+        <!-- SIP TIMER D. Config Timer D defined in RFC 3261. -->
+        <!-- Range 0-64 sec. Default 0 -->
+        <!-- Number: 0-64 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.timerd.interval">0</item>
+
+        <!-- Enable OPTIONS Keep Alive. Enable OPTIONS Keep Alive to check SIP server. -->
+        <!-- 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <item name="profile.3.sip.keep_alive.enable">0</item>
+
+        <!-- OPTIONS Keep Alive Interval. Time interval for OPTIONS Keep Alive feature in seconds. -->
+        <!-- Number: 1 - 64800 -->
+        <item name="profile.3.sip.keep_alive.interval">30</item>
+
+        <!-- OPTIONS Keep Alive Max Lost. Maximum number of lost packets for OPTIONS Keep Alive feature before the phone re-registration. -->
+        <!-- Number: 3 - 10 -->
+        <item name="profile.3.sip.keep_alive.max_lost">3</item>
+
+        <!-- Remove OBP from Route Header. 0 - no, 1 - yes -->
+        <!-- NUmber: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.route.remove_outbound_proxy">0</item>
+
+        <!-- Support SIP Instance ID. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.support_instance_id">1</item>
+
+        <!-- Hold Target Before Refer 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.hold_target_before_refer">0</item>
+
+        <!-- Refer-To Use Target Contact. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.refer-to_use_target_contact">0</item>
+
+        <!-- SUBSCRIBE for MWI. 0 - No, 1 - Yes. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.subscribe_for_mwi">0</item>
+
+        <!-- Enable 100rel. 0 - No, 1 - Yes -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.header.100rel">0</item>
+
+        <!-- Tel URI. 0 - Disabled, 1 - User=Phone, 2 - Enabled -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.tel_uri">0</item>
+
+        <!-- Do Not Escape '#' as %23 in SIP URI. 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.do_not_escape_pound">0</item>
+
+        <!-- Disable Multiple m Line in SDP. 0 - No, 1 - Yes -->
+        <item name="profile.3.sdp.disable_multiple_m_line">0</item>
+
+        <!-- Use Privacy Header. 0 - Default, 1 - No, 2 - Yes -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.header.privacy">0</item>
+
+        <!-- Use P-Preferred-Identity Header. 0 - Default, 1 - No, 2 - Yes -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.header.p-preferred-identity">0</item>
+
+        <!-- Ignore Alert-Info header. 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.ring.ignore_sip_alert_info">0</item>
+
+        <!-- Use MAC Header. (0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP). -->
+        <!-- If Yes except REGISTER, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP messages except REGISTER message will attach the MAC address to the User-Agent header; -->
+        <!-- If Yes to ALL, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP message including REGISTER will attach the MAC address to the User-Agent header; -->
+        <!-- If No, neither will the MAC header be included in the register or unregister message nor the MAC address be attached to the User-Agent header for any outgoing SIP message. -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.contains_mac"></item>
+
+        <!-- Caller ID Display. 0 - Auto, 1 - Disabled, 2 - From Header -->
+        <!-- When set to "Auto", the phone will look for the caller ID in the order of P-Asserted Identity Header, Remote-Party-ID Header and From Header in the incoming SIP INVITE. When set to "Disabled", all incoming calls are displayed with "Unavailable". -->
+        <item name="profile.3.sip.caller.id_display">0</item>
+
+        <!-- Profile 3/SIP Settings/Session Timer -->
+
+        <!-- Enable Session Timer. To enable/disable Session Timer support. -->
+        <!-- Number: 0, 1; 0 - No, 1 - Yes, default is 1. -->
+        <!-- Mandatory -->
+        <!-- Alias: profile.3.sip.enable_session_timer -->
+        <item name="profile.3.sip.enable_session_timer">1</item>
+
+        <!-- Session Expiration (in seconds. default 180 seconds. Allowed value: 90-65535) -->
+        <!-- Number: 90 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.session_timer.expiration">180</item>
+
+        <!-- Minimum SE (in seconds. default 90 seconds, must be lower than or equal to P260) -->
+        <!-- Number 90 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.session_timer.min_se">90</item>
+
+        <!-- Caller Request Timer (Request for timer when calling) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.session_timer.request_timer.caller">0</item>
+
+        <!-- Callee Request Timer (Request for timer when called. i.e. if remote party supports timer but did not request for one) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.session_timer.request_timer.callee">0</item>
+
+        <!-- Force Timer (Still use timer when remote party does not support timer) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.session_timer.force">0</item>
+
+        <!-- UAC Specify Refresher. 0 - omit, 1 - UAC, 2 - UAS -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.session_timer.refresher.uac_specify">0</item>
+
+        <!-- UAS Specify Refresher. 1 - UAC, 2 - UAS -->
+        <!-- Number: 1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.session_timer.refresher.uas_specify">1</item>
+
+        <!-- Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.session_timer.force_invite">0</item>
+
+
+        <!-- Profile 3/SIP Settings/Security Settings -->
+
+        <!-- Validate Incoming Messages. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.security.validate_message">0</item>
+
+        <!-- Check SIP User ID for Incoming INVITE. 0 - No, 1 - Yes (no direct IP calling if Yes) -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.security.validate_user_id_for_invite">0</item>
+
+        <!-- Allow Incoming SIP Messages from SIP Proxy Only -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.security.accept_from_proxy_only">0</item>
+
+        <!-- Authenticate incoming INVITE -->
+        <!-- Number: 0,1 -->
+        <item name="profile.3.sip.security.authenticate_incoming_invite">0</item>
+
+        <!-- Authenticate server certificate domain. 0 - No, 1 - Yes, default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.security.validate_domain_certificates">0</item>
+
+        <!-- Authenticate server certificate chain. 0 - No, 1 - Yes, default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.security.validate_certification_chain">0</item>
+
+        <!-- Trusted CA certificates. -->
+        <!-- String -->
+        <item name="profile.3.sip.security.trusted_ca"></item>
+
+
+        <!-- Profile 3/Audio Settings -->
+
+        <!-- DTMF Method - in-audio. Configure if use in-audio DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.dtmf.via_audio.enable">0</item>
+
+        <!-- DTMF Method - via RTP (RFC2833). Configure if use RFC2833 DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.dtmf.via_rfc2833.enable">1</item>
+
+        <!-- DTMF Method - via SIP INFO. Configure if use SIP INFO DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.dtmf.via_sip_info.enable">0</item>
+
+        <!-- Disable DTMF Negotiation. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.dtmf.disable_negotiate">0</item>
+
+        <!-- DTMF Payload Type -->
+        <!-- Number: 96 to 127 -->
+        <item name="profile.3.audio.dtmf.payload_type">101</item>
+
+        <!-- Preferred Vocoder -->
+        <!-- 0 - PCMU, 8 - PCMA, 4 - G.723, 18 - G.729, 2 - G.726-32, 100 - AAL2-G.726-16, -->
+        <!-- 102 - AAL2-G.726-24, 104 - AAL2-G726-32, 103 - AAL2-G.726-40, 98 - iLBC, 9 - G.722(wide band) -->
+        <!-- Choice 1. -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.choice.1">9</item>
+
+        <!-- Choice 2. -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.choice.2">0</item>
+
+        <!-- Choice 3. -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.choice.3">8</item>
+
+        <!-- Choice 4. -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.choice.4">4</item>
+
+        <!-- Choice 5. -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.choice.5">18</item>
+
+        <!-- Choice 6. -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.choice.6">2</item>
+
+        <!-- Choice 7. -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.choice.7">98</item>
+
+        <!-- Choice 8. -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.choice.8">125</item>
+
+        <!-- Voice Frame per TX. (Default 2, from 1 to 4 for G711/G726/G729) -->
+        <!-- Number: 1 to 4 -->
+        <item name="profile.3.audio.voice_frame_per_tx">2</item>
+
+        <!-- G723 rate. 0 - 6.3kbps encoding rate, 1 - 5.3kbps encoding rate -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.g723.rate">0</item>
+
+        <!-- G726-32 Packing Mode. 0 - ITU, 1 - IETF -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.g726.packing_mode">0</item>
+
+        <!-- iLBC Frame Size. 0 - 20ms(default), 1 - 30ms. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.ilbc.frame_size">0</item>
+
+        <!-- iLBC payload type. Between 96 and 127, default is 97. -->
+        <!-- Number: 96 to 127 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.ilbc.payload_type">97</item>
+
+        <!-- Disable OPUS stereo in SDP, default is 0. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.opus.disable_stereo">0</item>
+
+        <!-- OPUS Payload Type, default is 125. -->
+        <!-- Number: 96 to 127 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.opus.payload_type">125</item>
+
+        <!-- Use First Matching Vocoder in 200OK SDP. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.codec.use_first_match">0</item>
+
+        <!-- Callee codec negotiation priority. When callee, whose codecs are given priority in negotiation, local or remote ( Default is remote ). -->
+        <!-- Number: 0, 1. 0 - Remote, 1 - Local -->
+        <item name="profile.3.audio.callee_codec_negotiation_priority">0</item>
+
+        <!-- SRTP Mode -->
+        <!-- 0=Disabled -->
+        <!-- 1=Enabled but not forced -->
+        <!-- 2=Enabled and forced -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.srtp_mode">0</item>
+
+        <!-- Crypto Life Time -->
+        <!-- 0 = Disabled -->
+        <!-- 1 = Enabled -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.crypto_life_time">1</item>
+
+        <!-- Silence Suppression (VAD). 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.silence_suppression">0</item>
+
+        <!-- Jitter Buffer Type. 0 - Fixed, 1 - Adaptive -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.jitter_buffer.type">1</item>
+
+        <!-- Jitter Buffer Length. 0 - Low, 1 - Medium, 2 - High -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.jitter_buffer.length">1</item>
+
+        <!-- Enable RTCP. configure if enables RTCP statistics and control information. 0 - Disabled, 1- RTCP, 2 - RTCP-XR -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.3.audio.voice_monitoring.rtcp">1</item>
+
+
+        <!-- Profile 3/Call Settings -->
+
+        <!-- Early Dial. 0 - No, 1 - Yes (use "Yes" only if proxy supports 484 response). 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.early_dial">0</item>
+
+        <!-- Dial Plan Prefix.(this prefix string is added to each dialed number) -->
+        <!-- String Max Length: 32 -->
+        <item name="profile.3.call.dial_plan_prefix"></item>
+
+        <!-- Dial Plan -->
+        <!-- String Max Length: 1024 -->
+        <item name="profile.3.call.dial_plan">{ x+ | *x+ | *xx*x+ }</item>
+
+        <!-- Use #as Dial Key (if set to Yes, "#" will function as the "(Re-)Dial" key). 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.pound_as_dial">1</item>
+
+        <!-- On Hold Reminder Tone. 0 - Disabled, 1 - Enabled -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.on_hold_reminder_tone">1</item>
+
+        <!-- Match Incoming Caller ID. Specifies matching rules with number, pattern or Alert Info text to ring the selected ring tone. -->
+        <!-- Please refer to user manual for more details. -->
+        <!-- Number, pattern or Alert Info for matching Rule 1 -->
+        <item name="profile.3.ring.match.1.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 1. -->
+        <!-- 0 - System Ring Tone -->
+        <!-- 1 - Handset RingTone 1 -->
+        <!-- 2 - Handset RingTone 2 -->
+        <!-- 3 - Handset RingTone 3 -->
+        <!-- 4 - Handset RingTone 4 -->
+        <!-- 5 - Handset RingTone 5 -->
+        <!-- 6 - Handset RingTone 6 -->
+        <!-- 7 - Handset RingTone 7 -->
+        <!-- 8 - Handset RingTone 8 -->
+        <!-- 9 - Custom Ring Tone 1 -->
+        <!-- 10 - Bellcore Ring Tone 1 -->
+        <!-- 11 - Bellcore Ring Tone 2 -->
+        <!-- 12 - Bellcore Ring Tone 3 -->
+        <!-- 13 - Bellcore Ring Tone 4 -->
+        <!-- 14 - Bellcore Ring Tone 5 -->
+        <item name="profile.3.ring.match.1.tone">1</item>
+
+        <!-- Number, pattern or Alert Info for matching Rule 2 -->
+        <item name="profile.3.ring.match.2.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 2. -->
+        <item name="profile.3.ring.match.2.tone">1</item>
+
+        <!-- Number, pattern or Alert Info for matching Rule 3 -->
+        <item name="profile.3.ring.match.3.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 3. -->
+        <item name="profile.3.ring.match.3.tone">1</item>
+
+        <!-- Allow Auto Answer by Call-Info/Alert-Info. 0 - No, 1 - Yes. Default is 0 - No. -->
+        <!-- If set to "Yes", the phone will automatically turn on the speaker phone to answer incoming calls after a short reminding beep, based on the SIP Call-Info/Alert-Info header sent from the server/proxy. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.auto_answer.allow">0</item>
+
+        <!-- Custom Alert-Info for Auto Answer. -->
+        <!-- Used exclusively to match the contents of the Alert-Info header for auto answer. The default auto answer headers will not be matched if this is defined. -->
+        <!-- String Max Length: 20 -->
+        <item name="profile.3.call.auto_answer.custom_alert_info"></item>
+
+        <!-- No Key Entry Timeout. Default - 4 seconds. -->
+        <!-- Number: 1 to 15 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.no_key_entry_timeout">4</item>
+
+        <!-- Enable Call Features. 0 - No, 1 - Yes, 2 - Enable All -->
+        <item name="profile.3.call.features.enable">1</item>
+
+        <!-- Disable Call Waiting Caller ID. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.call_waiting.disable_id">0</item>
+
+        <!-- Enable Call Waiting in Parallel Mode. 0 - no, 1 - yes. Default is 0 - No. -->
+        <!-- Enables call waiting for accounts using this profile which are set to Parallel ring mode. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.call_waiting.enable_parallel">0</item>
+
+        <!-- Disable Visual MWI. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.disable.visual_mwi">0</item>
+
+        <!-- Transfer on Conference Hangup. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.transfer_on_conference_hangup">0</item>
+
+        <!-- Ring Timeout. (10-300, default is 60 seconds) -->
+        <!-- Number: 10 to 300 -->
+        <!-- Mandatory -->
+        <item name="profile.3.ring.timeout">60</item>
+
+        <!-- Hunting Group Ring Timeout. (5-300, default is 20 seconds) -->
+        <!-- Number: 5 to 300 -->
+        <!-- Mandatory -->
+        <item name="profile.3.ring.hunting_group_timeout">20</item>
+
+        <!-- Send Anonymous. 0 - no, 1 - yes (caller ID will be blocked if set to Yes). -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.send_anonymous">0</item>
+
+        <!-- Anonymous Call Rejection. 0 - No, 1 - Yes. -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.call.reject_anonymous">0</item>
+
+        <!-- Special Feature -->
+        <!-- 100 - Standard, 102 - BroadSoft, 108 - CBCOM, 109 - RNK, 111 - Huawei, 114 - ZTE IMS, 119 - PhonePower, 120 - TELKOM SA. -->
+        <!-- Number: 100, 102, 108, 109, 111, 114, 119, 120 -->
+        <!-- Mandatory -->
+        <item name="profile.3.sip.special_feature">100</item>
+
+        <!-- Music On Hold URI -->
+        <!-- Music On Hold URI to call when a call is on hold if server support it -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pprofile.3.sip.moh_uri -->
+        <item name="profile.3.sip.moh_uri"></item>
+
+        <!-- Allow Unsolicited REFER. -->
+        <!-- Allow unsolicited REFER to accomplish an outgoing call. -->
+        <!-- Number: 0, 2; 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth, default is 0. -->
+        <!-- Alias: profile.3.sip.allow_unsolicited_refer -->
+        <item name="profile.3.sip.allow_unsolicited_refer">0</item>
+
+        <!-- Feature Key Synchronization. 0 - Disabled, 1- Enabled -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.3.subscribe.feature_event">0</item>
+
+
+        <!-- Profile 4 -->
+
+        <!-- Profile 4/General Settings -->
+
+        <!-- Profile Active.  0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.enable">1</item>
+
+        <!-- Profile Name. Used to identify profile uniquely. -->
+        <!-- Strings: maximum 32 characters. -->
+        <!-- Mandatory -->
+        <item name="profile.4.name">profile4</item>
+
+        <!-- Primary SIP Server -->
+        <!-- String: serveraddress -->
+        <item name="profile.4.sip.server.1.address"></item>
+
+        <!-- Failover SIP Server -->
+        <!-- String: serveraddress -->
+        <item name="profile.4.sip.server.2.address"></item>
+
+        <!-- Prefer Primary SIP Server. 0 - No, 1 - Yes. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.prefer_primary">0</item>
+
+        <!-- Outbound Proxy -->
+        <!-- String: serveraddress -->
+        <item name="profile.4.outbound_proxy.1.address"></item>
+
+        <!-- Backup Outbound Proxy -->
+        <!-- Secondary Outbound Proxy which will be used when the primary proxy cannot be connected -->
+        <!-- String -->
+
+        <!-- Voice Mail Access Number -->
+        <!-- String -->
+        <item name="profile.4.voicemail.number"></item>
+
+
+        <!-- Profile 4/Network Settings -->
+
+        <!-- Layer 3 QoS SIP Diff-Serv (default 40) -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.4.network.layer3_qos.sip_dscp">40.0</item>
+
+        <!-- Layer 3 QoS RTP Diff-Serv (default 46) -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.4.network.layer3_qos.rtp_dscp">46</item>
+
+        <!-- DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV, 3 - Use Configured IP . -->
+        <!-- Number: 0,1,2,3 -->
+        <!-- Mandatory -->
+        <item name="profile.4.network.dns.mode">0</item>
+
+        <!-- Primary IP -->
+        <!-- IP address -->
+        <item name="profile.4.network.dns.primary_ip"></item>
+
+        <!-- Backup IP 1 -->
+        <!-- IP address -->
+        <item name="profile.4.network.dns.backup_ip1"></item>
+
+        <!-- Backup IP 2 -->
+        <!-- IP address -->
+        <item name="profile.4.network.dns.backup_ip2"></item>
+
+        <!-- DNS SRV use Registered IP -->
+        <!-- In DNS SRV Mode, use registered IP instead of the first IP in the DNS table -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes. -->
+
+        <!-- NAT Traversal (STUN). 0 - No, 2 - No but send keep-alive, 1 - Yes -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.network.nat.traversal">0</item>
+
+        <!-- Use NAT IP.  This will enable our SIP client to use this IP in the SIP message. Example 64.3.153.50. -->
+        <!-- String: ipaddress -->
+        <item name="profile.4.network.nat.user_ip"></item>
+
+        <!-- Proxy-Require (A SIP extension to enable firewall penetration) -->
+        <!-- String: ipaddress -->
+        <item name="profile.4.network.nat.proxy-require"></item>
+
+        <!-- Use SBC -->
+        <!-- Indicate whether or not a SBC server is used. -->
+        <!-- Number: 0, 1. 0 - Disabled, 1 - Enabled. -->
+
+
+        <!-- Profile 4/SIP Settings/Basic Settings -->
+
+        <!-- SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.transport">0</item>
+
+        <!-- SIP URI Scheme When Using TLS. 0 - sip, 1- sips -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.uri_scheme_when_using_tls">1</item>
+
+        <!-- Use Actual Ephemeral Port in Contact with TCP/TLS. 0 - No, 1- Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.network.use_actual_ephemeral_port_in_contact_with_tcp/tls">0</item>
+
+        <!-- SIP Registration. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.registration">1</item>
+
+        <!-- Unregister On Reboot. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.unregister_on_reboot">1.0</item>
+
+        <!-- Add Auth Header On Initial REGISTER -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.header.auth_on_initial_register">0</item>
+
+        <!-- Outgoing call without Registration. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.enable_without_registration">1</item>
+
+        <!-- Register Expiration (in minutes. default 1 hour, max 45 days) -->
+        <!-- Number: 1 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.registration.expiration">60</item>
+
+        <!-- SIP Registration Failure Retry Wait Time (in seconds. Between 1-3600, default is 30) -->
+        <!-- Number: 1 to 3600 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.registration.failure_retry_wait_time">20</item>
+
+        <!-- SIP Registration Failure Retry Wait Time upon 403 Forbidden. 0 second means stop retry registration. Default is 1200 sec. -->
+        <!-- Number 0 to 3600 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.registration.403_retry_wait_time">1200</item>
+
+        <!-- Reregister before Expiration -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.registration.enable_before_expiration">0</item>
+
+        <!-- Local SIP port (default 5060) -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="profile.4.network.local_sip.port">8060</item>
+
+        <!-- Use Random RTP Port -->
+        <!-- Use a random port for SIP messages rather than the Local SIP Port. -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes, default is 0 - No -->
+        <!-- Alias: Pprofile.4.network.use_random_sip_port -->
+        <item name="profile.4.network.use_random_sip_port"></item>
+
+        <!-- Local RTP Port (default 8004) -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="profile.4.network.local_rtp_port">8004</item>
+
+        <!-- SIP T1 Timeout. RFC 3261 T1 value. -->
+        <!-- 50 - 0.5 sec, 100 - 1 sec, 200 - 2 sec, 400 - 4 sec, 800 - 8 sec. Default 100. -->
+        <!-- Number: 50,100,200,400,800 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.timer.t1">50</item>
+
+        <!-- SIP T2 Timeout. RFC 3261 T2 value. -->
+        <!-- 200 - 2 sec, 400 - 4 sec, 800 - 8 sec, 1600 - 16 sec, 3200 - 32 sec. Default 400. -->
+        <!-- Number: 1600,3200,200,400,800 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.timer.t2">400</item>
+
+        <!-- SIP TIMER D. Config Timer D defined in RFC 3261. -->
+        <!-- Range 0-64 sec. Default 0 -->
+        <!-- Number: 0-64 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.timerd.interval">0</item>
+
+        <!-- Enable OPTIONS Keep Alive. Enable OPTIONS Keep Alive to check SIP server. -->
+        <!-- 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <item name="profile.4.sip.keep_alive.enable">0</item>
+
+        <!-- OPTIONS Keep Alive Interval. Time interval for OPTIONS Keep Alive feature in seconds. -->
+        <!-- Number: 1 - 64800 -->
+        <item name="profile.4.sip.keep_alive.interval">30</item>
+
+        <!-- OPTIONS Keep Alive Max Lost. Maximum number of lost packets for OPTIONS Keep Alive feature before the phone re-registration. -->
+        <!-- Number: 3 - 10 -->
+        <item name="profile.4.sip.keep_alive.max_lost">3</item>
+
+        <!-- Remove OBP from Route Header. 0 - no, 1 - yes -->
+        <!-- NUmber: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.route.remove_outbound_proxy">0</item>
+
+        <!-- Support SIP Instance ID. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.support_instance_id">1</item>
+
+        <!-- Hold Target Before Refer 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.hold_target_before_refer">0</item>
+
+        <!-- Refer-To Use Target Contact. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.refer-to_use_target_contact">0</item>
+
+        <!-- SUBSCRIBE for MWI. 0 - No, 1 - Yes. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.subscribe_for_mwi">0</item>
+
+        <!-- Enable 100rel. 0 - No, 1 - Yes -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.header.100rel">0</item>
+
+        <!-- Tel URI. 0 - Disabled, 1 - User=Phone, 2 - Enabled -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.tel_uri">0</item>
+
+        <!-- Do Not Escape '#' as %23 in SIP URI. 0 - No, 1 - Yes -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.do_not_escape_pound">0</item>
+
+        <!-- Disable Multiple m Line in SDP. 0 - No, 1 - Yes -->
+        <item name="profile.4.sdp.disable_multiple_m_line">0</item>
+
+        <!-- Use Privacy Header. 0 - Default, 1 - No, 2 - Yes -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.header.privacy">0</item>
+
+        <!-- Use P-Preferred-Identity Header. 0 - Default, 1 - No, 2 - Yes -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.header.p-preferred-identity">0</item>
+
+        <!-- Ignore Alert-Info header. 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.ring.ignore_sip_alert_info">0</item>
+
+        <!-- Use MAC Header. (0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP). -->
+        <!-- If Yes except REGISTER, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP messages except REGISTER message will attach the MAC address to the User-Agent header; -->
+        <!-- If Yes to ALL, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP message including REGISTER will attach the MAC address to the User-Agent header; -->
+        <!-- If No, neither will the MAC header be included in the register or unregister message nor the MAC address be attached to the User-Agent header for any outgoing SIP message. -->
+        <!-- Number: 0, 1, 2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.contains_mac"></item>
+		
+        <!-- Caller ID Display. 0 - Auto, 1 - Disabled, 2 - From Header -->
+        <!-- When set to "Auto", the phone will look for the caller ID in the order of P-Asserted Identity Header, Remote-Party-ID Header and From Header in the incoming SIP INVITE. When set to "Disabled", all incoming calls are displayed with "Unavailable". -->
+        <item name="profile.4.sip.caller.id_display">0</item>
+
+        <!-- Profile 4/SIP Settings/Session Timer -->
+
+        <!-- Enable Session Timer. To enable/disable Session Timer support. -->
+        <!-- Number: 0, 1; 0 - No, 1 - Yes, default is 1. -->
+        <!-- Mandatory -->
+        <!-- Alias: profile.4.sip.enable_session_timer -->
+        <item name="profile.4.sip.enable_session_timer">1</item>
+
+        <!-- Session Expiration (in seconds. default 180 seconds. Allowed value: 90-65535) -->
+        <!-- Number: 90 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.session_timer.expiration">180</item>
+
+        <!-- Minimum SE (in seconds. default 90 seconds, must be lower than or equal to P260) -->
+        <!-- Number 90 to 64800 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.session_timer.min_se">90</item>
+
+        <!-- Caller Request Timer (Request for timer when calling) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.session_timer.request_timer.caller">0</item>
+
+        <!-- Callee Request Timer (Request for timer when called. i.e. if remote party supports timer but did not request for one) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.session_timer.request_timer.callee">0</item>
+
+        <!-- Force Timer (Still use timer when remote party does not support timer) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.session_timer.force">0</item>
+
+        <!-- UAC Specify Refresher. 0 - omit, 1 - UAC, 2 - UAS -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.session_timer.refresher.uac_specify">0</item>
+
+        <!-- UAS Specify Refresher. 1 - UAC, 2 - UAS -->
+        <!-- Number: 1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.session_timer.refresher.uas_specify">1</item>
+
+        <!-- Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE) 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.session_timer.force_invite">0</item>
+
+
+        <!-- Profile 4/SIP Settings/Security Settings -->
+
+        <!-- Validate Incoming Messages. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.security.validate_message">0</item>
+
+        <!-- Check SIP User ID for Incoming INVITE. 0 - No, 1 - Yes (no direct IP calling if Yes) -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.security.validate_user_id_for_invite">0</item>
+
+        <!-- Allow Incoming SIP Messages from SIP Proxy Only -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.security.accept_from_proxy_only">0</item>
+
+        <!-- Authenticate incoming INVITE -->
+        <!-- Number: 0,1 -->
+        <item name="profile.4.sip.security.authenticate_incoming_invite">0</item>
+
+        <!-- Authenticate server certificate domain. 0 - No, 1 - Yes, default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.security.validate_domain_certificates">0</item>
+
+        <!-- Authenticate server certificate chain. 0 - No, 1 - Yes, default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.security.validate_certification_chain">0</item>
+
+        <!-- Trusted CA certificates. -->
+        <!-- String -->
+        <item name="profile.4.sip.security.trusted_ca"></item>
+
+
+        <!-- Profile 4/Audio Settings -->
+
+        <!-- DTMF Method - in-audio. Configure if use in-audio DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.dtmf.via_audio.enable">0</item>
+
+        <!-- DTMF Method - via RTP (RFC2833). Configure if use RFC2833 DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.dtmf.via_rfc2833.enable">1</item>
+
+        <!-- DTMF Method - via SIP INFO. Configure if use SIP INFO DTMF method, 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.dtmf.via_sip_info.enable">0</item>
+
+        <!-- Disable DTMF Negotiation. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.dtmf.disable_negotiate">0</item>
+
+        <!-- DTMF Payload Type -->
+        <!-- Number: 96 to 127 -->
+        <item name="profile.4.audio.dtmf.payload_type">101</item>
+
+        <!-- Preferred Vocoder -->
+        <!-- 0 - PCMU, 8 - PCMA, 4 - G.723, 18 - G.729, 2 - G.726-32, 100 - AAL2-G.726-16, -->
+        <!-- 102 - AAL2-G.726-24, 104 - AAL2-G726-32, 103 - AAL2-G.726-40, 98 - iLBC, 9 - G.722(wide band) -->
+        <!-- Choice 1. -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.choice.1">9</item>
+
+        <!-- Choice 2. -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.choice.2">0</item>
+
+        <!-- Choice 3. -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.choice.3">8</item>
+
+        <!-- Choice 4. -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.choice.4">4</item>
+
+        <!-- Choice 5. -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.choice.5">18</item>
+
+        <!-- Choice 6. -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.choice.6">2</item>
+
+        <!-- Choice 7. -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.choice.7">98</item>
+
+        <!-- Choice 8. -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.choice.8">125</item>
+
+        <!-- Voice Frame per TX. (Default 2, from 1 to 4 for G711/G726/G729) -->
+        <!-- Number: 1 to 4 -->
+        <item name="profile.4.audio.voice_frame_per_tx">2</item>
+
+        <!-- G723 rate. 0 - 6.3kbps encoding rate, 1 - 5.3kbps encoding rate -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.g723.rate">0</item>
+
+        <!-- G726-32 Packing Mode. 0 - ITU, 1 - IETF -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.g726.packing_mode">0</item>
+
+        <!-- iLBC Frame Size. 0 - 20ms(default), 1 - 30ms. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.ilbc.frame_size">0</item>
+
+        <!-- iLBC payload type. Between 96 and 127, default is 97. -->
+        <!-- Number: 96 to 127 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.ilbc.payload_type">97</item>
+
+        <!-- Disable OPUS stereo in SDP, default is 0. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.opus.disable_stereo">0</item>
+
+        <!-- OPUS Payload Type, default is 125. -->
+        <!-- Number: 96 to 127 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.opus.payload_type">125</item>
+
+        <!-- Use First Matching Vocoder in 200OK SDP. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.codec.use_first_match">0</item>
+
+        <!-- Callee codec negotiation priority. When callee, whose codecs are given priority in negotiation, local or remote ( Default is remote ). -->
+        <!-- Number: 0, 1. 0 - Remote, 1 - Local -->
+        <item name="profile.4.audio.callee_codec_negotiation_priority">0</item>
+
+        <!-- SRTP Mode -->
+        <!-- 0=Disabled -->
+        <!-- 1=Enabled but not forced -->
+        <!-- 2=Enabled and forced -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.srtp_mode">0</item>
+
+        <!-- Crypto Life Time -->
+        <!-- 0 = Disabled -->
+        <!-- 1 = Enabled -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.crypto_life_time">1</item>
+
+        <!-- Silence Suppression (VAD). 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.silence_suppression">0</item>
+
+        <!-- Jitter Buffer Type. 0 - Fixed, 1 - Adaptive -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.jitter_buffer.type">1</item>
+
+        <!-- Jitter Buffer Length. 0 - Low, 1 - Medium, 2 - High -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.jitter_buffer.length">1</item>
+
+        <!-- Enable RTCP. configure if enables RTCP statistics and control information. 0 - Disabled, 1- RTCP, 2 - RTCP-XR -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="profile.4.audio.voice_monitoring.rtcp">1</item>
+
+
+        <!-- Profile 4/Call Settings -->
+
+        <!-- Early Dial. 0 - No, 1 - Yes (use "Yes" only if proxy supports 484 response). 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.early_dial">0</item>
+
+        <!-- Dial Plan Prefix.(this prefix string is added to each dialed number) -->
+        <!-- String Max Length: 32 -->
+        <item name="profile.4.call.dial_plan_prefix"></item>
+
+        <!-- Dial Plan -->
+        <!-- String Max Length: 1024 -->
+        <item name="profile.4.call.dial_plan">{ x+ | *x+ | *xx*x+ }</item>
+
+        <!-- Use #as Dial Key (if set to Yes, "#" will function as the "(Re-)Dial" key). 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.pound_as_dial">1</item>
+
+        <!-- On Hold Reminder Tone. 0 - Disabled, 1 - Enabled -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.on_hold_reminder_tone">1</item>
+
+        <!-- Match Incoming Caller ID. Specifies matching rules with number, pattern or Alert Info text to ring the selected ring tone. -->
+        <!-- Please refer to user manual for more details. -->
+        <!-- Number, pattern or Alert Info for matching Rule 1 -->
+        <item name="profile.4.ring.match.1.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 1. -->
+        <!-- 0 - System Ring Tone -->
+        <!-- 1 - Handset RingTone 1 -->
+        <!-- 2 - Handset RingTone 2 -->
+        <!-- 3 - Handset RingTone 3 -->
+        <!-- 4 - Handset RingTone 4 -->
+        <!-- 5 - Handset RingTone 5 -->
+        <!-- 6 - Handset RingTone 6 -->
+        <!-- 7 - Handset RingTone 7 -->
+        <!-- 8 - Handset RingTone 8 -->
+        <!-- 9 - Custom Ring Tone 1 -->
+        <!-- 10 - Bellcore Ring Tone 1 -->
+        <!-- 11 - Bellcore Ring Tone 2 -->
+        <!-- 12 - Bellcore Ring Tone 3 -->
+        <!-- 13 - Bellcore Ring Tone 4 -->
+        <!-- 14 - Bellcore Ring Tone 5 -->
+        <item name="profile.4.ring.match.1.tone">1</item>
+
+        <!-- Number, pattern or Alert Info for matching Rule 2 -->
+        <item name="profile.4.ring.match.2.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 2. -->
+        <item name="profile.4.ring.match.2.tone">1</item>
+
+        <!-- Number, pattern or Alert Info for matching Rule 3 -->
+        <item name="profile.4.ring.match.3.caller_id"></item>
+
+        <!-- Ringtone for incoming caller id that matches Rule 3. -->
+        <item name="profile.4.ring.match.3.tone">1</item>
+
+        <!-- Allow Auto Answer by Call-Info/Alert-Info. 0 - No, 1 - Yes. Default is 0 - No. -->
+        <!-- If set to "Yes", the phone will automatically turn on the speaker phone to answer incoming calls after a short reminding beep, based on the SIP Call-Info/Alert-Info header sent from the server/proxy. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.auto_answer.allow">0</item>
+
+        <!-- Custom Alert-Info for Auto Answer. -->
+        <!-- Used exclusively to match the contents of the Alert-Info header for auto answer. The default auto answer headers will not be matched if this is defined. -->
+        <!-- String Max Length: 20 -->
+        <item name="profile.4.call.auto_answer.custom_alert_info"></item>
+
+        <!-- Enable Call Features. 0 - No, 1 - Yes, 2 - Enable All -->
+        <item name="profile.4.call.features.enable">1</item>
+
+        <!-- Disable Call Waiting Caller ID. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.call_waiting.disable_id">0</item>
+
+        <!-- Enable Call Waiting in Parallel Mode. 0 - no, 1 - yes. Default is 0 - No. -->
+        <!-- Enables call waiting for accounts using this profile which are set to Parallel ring mode. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.call_waiting.enable_parallel">0</item>
+
+        <!-- Disable Visual MWI. 0 - No, 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.disable.visual_mwi">0</item>
+
+        <!-- Transfer on Conference Hangup. 0 - no, 1 - yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.transfer_on_conference_hangup">0</item>
+
+        <!-- Ring Timeout. (10-300, default is 60 seconds) -->
+        <!-- Number: 10 to 300 -->
+        <!-- Mandatory -->
+        <item name="profile.4.ring.timeout">60</item>
+
+        <!-- Hunting Group Ring Timeout. (5-300, default is 20 seconds) -->
+        <!-- Number: 5 to 300 -->
+        <!-- Mandatory -->
+        <item name="profile.4.ring.hunting_group_timeout">20</item>
+
+        <!-- Send Anonymous. 0 - no, 1 - yes (caller ID will be blocked if set to Yes). -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.send_anonymous">0</item>
+
+        <!-- Anonymous Call Rejection. 0 - No, 1 - Yes. -->
+        <!-- Number: 0 to 1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.call.reject_anonymous">0</item>
+
+        <!-- Special Feature -->
+        <!-- 100 - Standard, 102 - BroadSoft, 108 - CBCOM, 109 - RNK, 111 - Huawei, 114 - ZTE IMS, 119 - PhonePower, 120 - TELKOM SA. -->
+        <!-- Number: 100, 102, 108, 109, 111, 114, 119, 120 -->
+        <!-- Mandatory -->
+        <item name="profile.4.sip.special_feature">100</item>
+
+        <!-- Music On Hold URI -->
+        <!-- Music On Hold URI to call when a call is on hold if server support it -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pprofile.4.sip.moh_uri -->
+        <item name="profile.4.sip.moh_uri"></item>
+
+        <!-- Allow Unsolicited REFER. -->
+        <!-- Allow unsolicited REFER to accomplish an outgoing call. -->
+        <!-- Number: 0, 2; 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth, default is 0. -->
+        <item name="profile.4.sip.allow_unsolicited_refer">0</item>
+
+        <!-- Feature Key Synchronization. 0 - Disabled, 1- Enabled -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="profile.4.subscribe.feature_event">0</item>
+
+
+        <!-- DECT -->
+
+        <!-- DECT/General Settings -->
+
+        <!-- Base Station Name. Sets the display name of this base station -->
+        <!-- String -->
+        <item name="device.name">DP7XX</item>
+
+        <!-- Admin PIN Code. Sets the admin PIN code for authentication, default is 0000. -->
+        <!-- Number: 4 digit number -->
+        <!-- Mandatory -->
+        <item name="base.pin_code.1">0000</item>
+
+        <!-- Enable Repeater Mode. 0 - No, 1 - Yes. Default is 0 - No. Enable repeater mode to allow repeater pair with DP750. Need reboot to take effect. -->
+        <!-- To pair with repeater, need enable DP750 subscription first. User can do it by Clicking "Subscribe" button at Web -> Status Page -> DECT Status Page or the physical Page button on device back side. -->
+        <!-- Then power up repeater to scan for base and auto pair. -->
+        <!-- Repeater mode only support Europe region in 1.0.2.16. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <!-- Reboot required -->
+        <item name="base.repeater.enable"></item>
+
+        <!-- Enable Repeater Management. 0 - No, 1 - Yes. Default is 0 - No. -->
+        <!-- Enables base station network management of discovered and paired repeaters. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <!-- Reboot required -->
+        <item name="base.repeater.manage.enable"></item>
+
+        <!-- DECT PTT Silence Timer.Sets timeout for PTT call (in minutes) if no handset unmutes. -->
+        <!-- If set to 0, this timer will be disabled. -->
+        <!-- Number: 0 - 60, default is 2 -->
+        <!-- Alias: Pbase.ptt.silence_timer -->
+        <item name="base.ptt.silence_timer">2.0</item>
+
+        <!-- Handset name. Displaying in handset screen. -->
+        <!-- Strings: maximum 10 characters. -->
+        <!-- Mandatory -->
+        <item name="handset.1.name">HS1</item>
+        <item name="handset.2.name">HS2</item>
+        <item name="handset.3.name">HS3</item>
+        <item name="handset.4.name">HS4</item>
+        <item name="handset.5.name">HS5</item>
+
+        <!-- Handset Phonebook. 1 - PB1, 2 - PB2, 3 - PB3, 4 - PB4, 5 - PB5 -->
+        <!-- Mandatory -->
+        <item name="handset.1.phonebook.private">1</item>
+        <item name="handset.2.phonebook.private">2</item>
+        <item name="handset.3.phonebook.private">3</item>
+        <item name="handset.4.phonebook.private">4</item>
+        <item name="handset.5.phonebook.private">5</item>
+
+        <!-- Offhook Auto-dial destination number. If configure this, the handset will auto-dial when offhook. -->
+        <item name="handset.1.call.offhook_auto_dial.number"></item>
+        <item name="handset.2.call.offhook_auto_dial.number"></item>
+        <item name="handset.3.call.offhook_auto_dial.number"></item>
+        <item name="handset.4.call.offhook_auto_dial.number"></item>
+        <item name="handset.5.call.offhook_auto_dial.number"></item>
+
+
+        <!-- DECT/SIP Account Settings -->
+
+        <!-- SIP User ID for SIP account 1 - 10. -->
+        <item name="account.1.sip.user_id"></item>
+        <item name="account.2.sip.user_id"></item>
+        <item name="account.3.sip.user_id"></item>
+        <item name="account.4.sip.user_id"></item>
+        <item name="account.5.sip.user_id"></item>
+        <item name="account.6.sip.user_id"></item>
+        <item name="account.7.sip.user_id"></item>
+        <item name="account.8.sip.user_id"></item>
+        <item name="account.9.sip.user_id"></item>
+        <item name="account.10.sip.user_id"></item>
+
+        <!-- Authenticate ID for SIP account 1 - 10. -->
+        <item name="account.1.sip.subscriber.user_id"></item>
+        <item name="account.2.sip.subscriber.user_id"></item>
+        <item name="account.3.sip.subscriber.user_id"></item>
+        <item name="account.4.sip.subscriber.user_id"></item>
+        <item name="account.5.sip.subscriber.user_id"></item>
+        <item name="account.6.sip.subscriber.user_id"></item>
+        <item name="account.7.sip.subscriber.user_id"></item>
+        <item name="account.8.sip.subscriber.user_id"></item>
+        <item name="account.9.sip.subscriber.user_id"></item>
+        <item name="account.10.sip.subscriber.user_id"></item>
+
+        <!-- Password for SIP account 1 - 10 -->
+        <item name="account.1.sip.subscriber.password"></item>
+        <item name="account.2.sip.subscriber.password"></item>
+        <item name="account.3.sip.subscriber.password"></item>
+        <item name="account.4.sip.subscriber.password"></item>
+        <item name="account.5.sip.subscriber.password"></item>
+        <item name="account.6.sip.subscriber.password"></item>
+        <item name="account.7.sip.subscriber.password"></item>
+        <item name="account.8.sip.subscriber.password"></item>
+        <item name="account.9.sip.subscriber.password"></item>
+        <item name="account.10.sip.subscriber.password"></item>
+
+        <!-- SIP Name for SIP account 1 - 10 -->
+        <!-- String, maximum length is 256 -->
+        <item name="account.1.sip.subscriber.name"></item>
+        <item name="account.2.sip.subscriber.name"></item>
+        <item name="account.3.sip.subscriber.name"></item>
+        <item name="account.4.sip.subscriber.name"></item>
+        <item name="account.5.sip.subscriber.name"></item>
+        <item name="account.6.sip.subscriber.name"></item>
+        <item name="account.7.sip.subscriber.name"></item>
+        <item name="account.8.sip.subscriber.name"></item>
+        <item name="account.9.sip.subscriber.name"></item>
+        <item name="account.10.sip.subscriber.name"></item>
+
+        <!-- Profile Settings for SIP account 1 - 10. -->
+        <!-- Number: 0 - 3. 0 - Profile 1, 1 - Profile 2, 2 - Profile 3, 3 - Profile 4. Default is 0. -->
+        <!-- Mandatory -->
+        <item name="account.1.sip.profile_id">0</item>
+        <item name="account.2.sip.profile_id">0</item>
+        <item name="account.3.sip.profile_id">0</item>
+        <item name="account.4.sip.profile_id">0</item>
+        <item name="account.5.sip.profile_id">0</item>
+        <item name="account.6.sip.profile_id">0</item>
+        <item name="account.7.sip.profile_id">0</item>
+        <item name="account.8.sip.profile_id">0</item>
+        <item name="account.9.sip.profile_id">0</item>
+        <item name="account.10.sip.profile_id">0</item>
+
+        <!-- HS Mode. Set the hanging group mode for handset, set 1 - 5 to non-hanging group mode. -->
+        <!-- Number: 1 - 5; 101 - 104. 1 - HS1, 2 - HS2, 3 - HS3, 4 - HS4, 5 - HS5; 101 - Circular, 102 - Linear, 103 - Parallel, 104 - Shared. Default is 101. -->
+        <!-- Mandatory -->
+        <item name="account.1.ring.mode">1</item>
+        <item name="account.2.ring.mode">101</item>
+        <item name="account.3.ring.mode">101</item>
+        <item name="account.4.ring.mode">101</item>
+        <item name="account.5.ring.mode">101</item>
+        <item name="account.6.ring.mode">101</item>
+        <item name="account.7.ring.mode">101</item>
+        <item name="account.8.ring.mode">101</item>
+        <item name="account.9.ring.mode">101</item>
+        <item name="account.10.ring.mode">101</item>
+
+        <!-- Active. Configure if the account is active or disabled. 0 - Disabled, 1 - Active. -->
+        <!-- Number: 0, 1. Default is 1. -->
+        <item name="account.1.enable">1</item>
+        <item name="account.2.enable">1</item>
+        <item name="account.3.enable">1</item>
+        <item name="account.4.enable">1</item>
+        <item name="account.5.enable">1</item>
+        <item name="account.6.enable">1</item>
+        <item name="account.7.enable">1</item>
+        <item name="account.8.enable">1</item>
+        <item name="account.9.enable">1</item>
+        <item name="account.10.enable">1</item>
+
+
+        <!-- DECT/Handset Line Settings -->
+
+        <!-- Handset Line Settings -->
+        <!-- HS 1 Line Settings -->
+        <!-- Number: 0 - 10, according with None and account 1 - 10. First line Default is 1 (account 1), other line have default is 0 - NULL. -->
+        <item name="handset.1.line.1.sip.account">1</item>
+        <item name="handset.1.line.2.sip.account">0</item>
+        <item name="handset.1.line.3.sip.account">0</item>
+        <item name="handset.1.line.4.sip.account">0</item>
+        <item name="handset.1.line.5.sip.account">0</item>
+        <item name="handset.1.line.6.sip.account">0</item>
+        <item name="handset.1.line.7.sip.account">0</item>
+        <item name="handset.1.line.8.sip.account">0</item>
+        <item name="handset.1.line.9.sip.account">0</item>
+        <item name="handset.1.line.10.sip.account">0</item>
+
+        <!-- HS 2 Line Settings -->
+        <!-- Number: 0 - 10, according with None and account 1 - 10. First line Default is 1 (account 1), other line have default is 0 - NULL. -->
+        <item name="handset.2.line.1.sip.account"></item>
+        <item name="handset.2.line.2.sip.account"></item>
+        <item name="handset.2.line.3.sip.account"></item>
+        <item name="handset.2.line.4.sip.account"></item>
+        <item name="handset.2.line.5.sip.account"></item>
+        <item name="handset.2.line.6.sip.account"></item>
+        <item name="handset.2.line.7.sip.account"></item>
+        <item name="handset.2.line.8.sip.account"></item>
+        <item name="handset.2.line.9.sip.account"></item>
+        <item name="handset.2.line.10.sip.account"></item>
+
+        <!-- HS 3 Line Settings -->
+        <!-- Number: 0 - 10, according with None and account 1 - 10. First line Default is 1 (account 1), other line have default is 0 - NULL. -->
+        <item name="handset.3.line.1.sip.account"></item>
+        <item name="handset.3.line.2.sip.account"></item>
+        <item name="handset.3.line.3.sip.account"></item>
+        <item name="handset.3.line.4.sip.account"></item>
+        <item name="handset.3.line.5.sip.account"></item>
+        <item name="handset.3.line.6.sip.account"></item>
+        <item name="handset.3.line.7.sip.account"></item>
+        <item name="handset.3.line.8.sip.account"></item>
+        <item name="handset.3.line.9.sip.account"></item>
+        <item name="handset.3.line.10.sip.account"></item>
+
+        <!-- HS 4 Line Settings -->
+        <!-- Number: 0 - 10, according with None and account 1 - 10. First line Default is 1 (account 1), other line have default is 0 - NULL. -->
+        <item name="handset.4.line.1.sip.account"></item>
+        <item name="handset.4.line.2.sip.account"></item>
+        <item name="handset.4.line.3.sip.account"></item>
+        <item name="handset.4.line.4.sip.account"></item>
+        <item name="handset.4.line.5.sip.account"></item>
+        <item name="handset.4.line.6.sip.account"></item>
+        <item name="handset.4.line.7.sip.account"></item>
+        <item name="handset.4.line.8.sip.account"></item>
+        <item name="handset.4.line.9.sip.account"></item>
+        <item name="handset.4.line.10.sip.account"></item>
+
+        <!-- HS 5 Line Settings -->
+        <!-- Number: 0 - 10, according with None and account 1 - 10. First line Default is 1 (account 1), other line have default is 0 - NULL. -->
+        <item name="handset.5.line.1.sip.account"></item>
+        <item name="handset.5.line.2.sip.account"></item>
+        <item name="handset.5.line.3.sip.account"></item>
+        <item name="handset.5.line.4.sip.account"></item>
+        <item name="handset.5.line.5.sip.account"></item>
+        <item name="handset.5.line.6.sip.account"></item>
+        <item name="handset.5.line.7.sip.account"></item>
+        <item name="handset.5.line.8.sip.account"></item>
+        <item name="handset.5.line.9.sip.account"></item>
+        <item name="handset.5.line.10.sip.account"></item>
+
+
+        <!-- DECT/Handset Settings -->
+
+        <!-- Disable Private Phonebook. Disables private phonebook access on this handset. 0 - No, 1 - Yes, default is 0 - No. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <!-- Below 5 P values are used for handset 1 to handset 5. -->
+        <item name="handset.1.phonebook.private.disable">0</item>
+        <item name="handset.2.phonebook.private.disable">0</item>
+        <item name="handset.3.phonebook.private.disable">0</item>
+        <item name="handset.4.phonebook.private.disable">0</item>
+        <item name="handset.5.phonebook.private.disable">0</item>
+
+        <!-- Enable Auto Answer. Enable Auto Answer. 0 - No, 1 - Yes, default is 0 - No. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <!-- Below 5 P values are used for handset 1 to handset 5. -->
+        <item name="handset.1.call.auto_answer.enable">0</item>
+        <item name="handset.2.call.auto_answer.enable">0</item>
+        <item name="handset.3.call.auto_answer.enable">0</item>
+        <item name="handset.4.call.auto_answer.enable">0</item>
+        <item name="handset.5.call.auto_answer.enable">0</item>
+
+        <!-- Enable Offhook on Cradle Pickup. Enables offhook of handset when picked up from cradle.  0 - No, 1 - Yes, default is 0 - No. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <!-- Below 5 P values are used for handset 1 to handset 5. -->
+        <item name="handset.1.call.cradle.answer.enable">0</item>
+        <item name="handset.2.call.cradle.answer.enable">0</item>
+        <item name="handset.3.call.cradle.answer.enable">0</item>
+        <item name="handset.4.call.cradle.answer.enable">0</item>
+        <item name="handset.5.call.cradle.answer.enable">0</item>
+
+        <!-- Enable Onhook on Cradle Reposition. Enables onhook of handset when repositioned on cradle.   0 - No, 1 - Yes, default is 0 - No. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <!-- Below 5 P values are used for handset 1 to handset 5. -->
+        <item name="handset.1.call.cradle.hangup.enable">0</item>
+        <item name="handset.2.call.cradle.hangup.enable">0</item>
+        <item name="handset.3.call.cradle.hangup.enable">0</item>
+        <item name="handset.4.call.cradle.hangup.enable">0</item>
+        <item name="handset.5.call.cradle.hangup.enable">0</item>
+
+        <!-- Disable Conference. Disables the conference option on this handset.   0 - No, 1 - Yes, default is 0 - No. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <!-- Below 5 P values are used for handset 1 to handset 5. -->
+        <item name="handset.1.call.conference.disable">0</item>
+        <item name="handset.2.call.conference.disable">0</item>
+        <item name="handset.3.call.conference.disable">0</item>
+        <item name="handset.4.call.conference.disable">0</item>
+        <item name="handset.5.call.conference.disable">0</item>
+
+        <!-- Disable Transfer. Disables the transfer option on this handset.   0 - No, 1 - Yes, default is 0 - No. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <!-- Below 5 P values are used for handset 1 to handset 5. -->
+        <item name="handset.1.call.transfer.disable">0</item>
+        <item name="handset.2.call.transfer.disable">0</item>
+        <item name="handset.3.call.transfer.disable">0</item>
+        <item name="handset.4.call.transfer.disable">0</item>
+        <item name="handset.5.call.transfer.disable">0</item>
+
+        <!-- Disable Busy Tone on Remote Disconnect. Disable the busy tone heard in the handset when call is disconnected remotely. 0 - No, 1 - Yes, default is 0 - No. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <!-- Below 5 P values are used for handset 1 to handset 5. -->
+        <item name="handset.1.tone.remote_disconnect.disable">0</item>
+        <item name="handset.2.tone.remote_disconnect.disable">0</item>
+        <item name="handset.3.tone.remote_disconnect.disable">0</item>
+        <item name="handset.4.tone.remote_disconnect.disable">0</item>
+        <item name="handset.5.tone.remote_disconnect.disable">0</item>
+
+        <!-- Disable Call Waiting Tone. 0 - No, 1 - Yes, default is 0 - No. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <!-- Below 5 P values are used for handset 1 to handset 5. -->
+        <item name="handset.1.tone.call_waiting.disable">0</item>
+        <item name="handset.2.tone.call_waiting.disable">0</item>
+        <item name="handset.3.tone.call_waiting.disable">0</item>
+        <item name="handset.4.tone.call_waiting.disable">0</item>
+        <item name="handset.5.tone.call_waiting.disable">0</item>
+
+        <!-- Custom Ringtone. Specifies a custom ringtone for this handset from the ringtones available on this base station. -->
+        <!-- Number: 0,10. 0 - Disabled. 1 - 10 means used custom ring 1 - 10. Default is 0 - Disabled. -->
+        <!-- Mandatory -->
+        <!-- Below 5 P values are used for handset 1 to handset 5. -->
+        <item name="HS_CONFIG_CUSTOM_RINGTONE_HS01">0</item>
+        <item name="HS_CONFIG_CUSTOM_RINGTONE_HS02">0</item>
+        <item name="HS_CONFIG_CUSTOM_RINGTONE_HS03">0</item>
+        <item name="HS_CONFIG_CUSTOM_RINGTONE_HS04">0</item>
+        <item name="HS_CONFIG_CUSTOM_RINGTONE_HS05">0</item>
+
+        <!-- Time Format. Specifies the format for displaying the time on the handset. -->
+        <!-- Number: 0,1. 0 - 12hr, 1 - 24hr -->
+        <item name="handset.1.date_time.time_format">0</item>
+        <item name="handset.2.date_time.time_format">0</item>
+        <item name="handset.3.date_time.time_format">0</item>
+        <item name="handset.4.date_time.time_format">0</item>
+        <item name="handset.5.date_time.time_format">0</item>
+
+        <!-- Date Format. Specifies the format for displaying the date on the handset. -->
+        <!-- Number: 0,1,2. 0 - DD-MM-YYYY, 1 - MM-DD-YYYY, 2 - YYYY-MM-DD -->
+        <item name="handset.1.date_time.date_format">0</item>
+        <item name="handset.2.date_time.date_format">0</item>
+        <item name="handset.3.date_time.date_format">0</item>
+        <item name="handset.4.date_time.date_format">0</item>
+        <item name="handset.5.date_time.date_format">0</item>
+
+
+        <!-- Settings -->
+
+        <!-- Settings/Network Settings -->
+
+        <!-- Settings/Network Settings/Basic Settings -->
+
+        <!-- IP Address Mode. 0 - DHCP, 1 - Static IP, 2 - PPPoE -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <!-- Reboot required -->
+        <item name="network.type"></item>
+
+        <!-- Preferred DNS server -->
+        <!-- Mandatory -->
+        <item name="network.dns.preferred.ip.octet1"></item>
+        <item name="network.dns.preferred.ip.octet2"></item>
+        <item name="network.dns.preferred.ip.octet3"></item>
+        <item name="network.dns.preferred.ip.octet4"></item>
+
+        <!-- Host name (Option 12). Max length allowed is 32 bytes. -->
+        <!-- String: address -->
+        <item name="network.dhcp.host_name"></item>
+
+        <!-- Vendor Class ID (Option 60). Max length allowed is 32 bytes. -->
+        <!-- String Max Length: 32 -->
+        <item name="network.dhcp.vendor_id"></item>
+
+        <!-- PPPoE account ID -->
+        <!-- P82= -->
+
+        <!-- PPPoE password -->
+        <!-- P83= -->
+
+        <!-- PPPoE Service Name -->
+        <!-- String Max Length: 64 -->
+        <!-- Reboot required -->
+        <item name="network.pppoe.service_name"></item>
+
+        <!-- IP Address. Ignore if DHCP or PPPoE is used -->
+        <!-- P9=192 -->
+        <!-- P10=168 -->
+        <!-- P11=0 -->
+        <!-- P12=160 -->
+
+        <!-- Subnet mask. Ignore if DHCP or PPPoE is used -->
+        <!-- P13=255 -->
+        <!-- P14=255 -->
+        <!-- P15=0 -->
+        <!-- P16=0 -->
+
+        <!-- Gateway. Ignore if DHCP or PPPoE is used -->
+        <!-- P17=0 -->
+        <!-- P18=0 -->
+        <!-- P19=0 -->
+        <!-- P20=0 -->
+
+        <!-- DNS server 1. Ignore if DHCP or PPPoE is used -->
+        <!-- P21=0 -->
+        <!-- P22=0 -->
+        <!-- P23=0 -->
+        <!-- P24=0 -->
+
+        <!-- DNS server 2. Ignore if DHCP or PPPoE is used -->
+        <!-- P25=0 -->
+        <!-- P26=0 -->
+        <!-- P27=0 -->
+        <!-- P28=0 -->
+
+
+        <!-- Settings/Network Settings/Advanced Settings -->
+
+        <!-- 802.1X Mode. Enables/disables 802.1X mode. To enable 802.1X mode, this field should be set to EAP-MD5 -->
+        <!-- 0 - Close, 1 - EAP-MD5, 2 - EAP-TLS, 3-EAP-PEAP. Default is 0 -->
+        <!-- Number: 0, 1, 2, 3 -->
+        <!-- Mandatory -->
+        <item name="network.802_1x.mode"></item>
+
+        <!-- 802.1X Identity. The Identity for the 802.1X mode. -->
+        <!-- String Max Length: 64 -->
+        <item name="network.802_1x.identity"></item>
+
+        <!-- MD5 Password. 802.1X mode MD5 Password. -->
+        <!-- String Max Length: 64 -->
+        <item name="network.802_1x.md5_password"></item>
+
+        <!-- Enable LLDP. 0 - Disable, 1 - Enable -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="network.lldp.enable"></item>
+
+        <!-- Enable VLAN。 Config to enable or disable virtual LAN. 0 - Disabled, 1 - Enabled. Default is 0 - disabled. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="network.vlan.enable"></item>
+
+        <!-- Layer 2 QoS 802.1Q/VLAN Tag -->
+        <!-- Number -->
+        <!-- Mandatory -->
+        <item name="network.vlan.layer2_qos.tag"></item>
+
+        <!-- Layer 2 QoS 802.1p Priority Value for SIP signaling -->
+        <!-- Number: 0 to 7 -->
+        <!-- Mandatory -->
+        <item name="network.layer2_qos.sip.priority"></item>
+
+        <!-- Layer 2 QoS 802.1p Priority Value for RTP media -->
+        <!-- Number: 0 to 7 -->
+        <!-- Mandatory -->
+        <item name="network.layer2_qos.rtp.priority"></item>
+
+        <!-- Use STUN to detect network connectivity. 0 - No, 1 - Yes. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="network.stun.use"></item>
+
+        <!-- STUN server -->
+        <!-- String: serveraddress -->
+        <item name="network.stun.server"></item>
+
+        <!-- Number of STUN Response Misses Allowed -->
+        <!-- Number: 3 to 15 -->
+        <!-- Mandatory -->
+        <item name="network.stun.misses">3.0</item>
+
+        <!-- Keep-alive interval (in seconds. default 20 seconds) -->
+        <!-- Number: 10 to 160 -->
+        <!-- Mandatory -->
+        <item name="network.sip.keep_alive_interval">20.0</item>
+
+        <!-- Enable UPnP discovery. 0 - No, 1 - Yes. Default is 1 - Yes -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="network.upnp.discovery.enable">1.0</item>
+
+        <!-- UPnP discovery notify interval. Specifies in seconds the interval to send out SSDP Notifies -->
+        <!-- Number: 15 - 86400 (seconds), default is 30 seconds. -->
+        <!-- Mandatory -->
+        <item name="network.upnp.discovery.notify_interval">30.0</item>
+
+
+        <!-- Settings/Network Settings/Management Interface Settings -->
+
+        <!-- Enable Management Interface -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes. -->
+
+        <!-- Management Access -->
+        <!-- Number: 0, 1. 0 - Management Interface Only, 1 - Both Service and Management Interfaces. -->
+
+        <!-- Layer 2 QoS 802.1Q/VLAN Tag -->
+        <!-- Number: 0~4095 -->
+
+        <!-- Layer 2 QoS 802.1p Priority Value -->
+
+        <!-- IP Address Mode -->
+
+        <!-- Static IP Settings -->
+        <!-- Static IP Address -->
+
+        <!-- Subnet Mask -->
+
+        <!-- Gateway -->
+
+        <!-- DNS Server 1 -->
+
+        <!-- DNS Server 2 -->
+
+
+        <!-- Settings/Network Settings/OpenVPN® Settings -->
+
+        <!-- OpenVPN Enable. 0 - No, 1 - Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="network.openvpn.enable"></item>
+
+        <!-- OpenVPN® Server Address -->
+        <!-- String -->
+        <item name="network.openvpn.server"></item>
+
+        <!-- OpenVPN® Port -->
+        <!-- Number: 1 - 65535 -->
+        <item name="network.openvpn.port">1194.0</item>
+
+        <!-- OpenVPN® Transport. Determines network protocol used for OpenVPN® -->
+        <!-- Number: 0, 1 -->
+        <!-- 0 - UDP, 1 - TCP. default is 0 -->
+        <item name="network.openvpn.transport"></item>
+
+        <!-- OpenVPN® Cipher Method. Must be the same cipher method used by the OpenVPN® server. -->
+        <!-- Number: 0, 1, 2, 3 -->
+        <!-- 0 - Blowfish, 1 - AES-128, 2 - AES-256, 3 - Triple-DES, default is -. -->
+        <item name="network.openvpn.cipher_method"></item>
+
+        <!-- OpenVPN® Username. OpenVPN® authentication username (optional) -->
+        <!-- String -->
+        <item name="network.openvpn.username"></item>
+
+        <!-- OpenVPN® Password. OpenVPN® authentication password (optional) -->
+        <!-- String -->
+        <item name="network.openvpn.password"></item>
+
+
+        <!-- Settings/Network Settings/SNMP Settings -->
+
+        <!-- Enable SNMP -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes. -->
+
+        <!-- Version. (SNMP version) -->
+        <!-- Number: 1, 2, 3. 1 - Version 1, 2 - Version 2, 3 - Version 3 -->
+
+        <!-- SNMP port -->
+        <!-- Number: 161, 1025 ~ 65535 -->
+
+        <!-- Trap Community. Name of SNMP trap community -->
+        <!-- String -->
+
+        <!-- SNMP Trap Version -->
+        <!-- Number: 1, 2, 3. 1 - Version 1, 2 - Version 2, 3 - Version 3 -->
+
+        <!-- SNMP Trap IP -->
+
+        <!-- SNMP Trap Port -->
+        <!-- Number: 162, 1025 ~ 65535 -->
+
+        <!-- SNMP Trap Interval -->
+        <!-- Number: 1 ~ 1440 -->
+
+        <!-- SNMP Username -->
+        <!-- String -->
+
+        <!-- Security Level -->
+        <!-- Number: 0, 1, 2. 0 - noAuthUser, 1 - authUser, 2 - privUser -->
+
+        <!-- Authentication Protocol. Authentication Protocol for SNMPv3 -->
+        <!-- Number: 0, 1, 2. 0 - None, 1 - MD5, 2 - SHA -->
+
+        <!-- Privacy Protocol. Privacy Protocol for SNMPv3 -->
+        <!-- Number: 0, 1, 2. 0 - None, 1 - DES, 2 - AES -->
+
+        <!-- Authentication Key -->
+        <!-- String -->
+
+        <!-- Privacy Key -->
+        <!-- String -->
+
+        <!-- SNMP Trap Username -->
+        <!-- String -->
+
+        <!-- Trap Security Level, Security Level for SNMPv3 Trap -->
+        <!-- Number: 0, 1, 2. 0 - noAuthUser, 1 - authUser, 2 - privUser -->
+
+        <!-- Trap Authentication Protocol, Authentication Protocol for SNMPv3 Trap -->
+        <!-- Number: 0, 1, 2. 0 - None, 1 - MD5, 2 - SHA -->
+
+        <!-- Trap Privacy Protocol -->
+        <!-- Number: 0, 1, 2. 0 - None, 1 - DES, 2 - AES -->
+
+        <!-- Trap Authentication Key -->
+        <!-- String -->
+
+        <!-- Trap Privacy Key -->
+        <!-- String -->
+
+
+        <!-- Settings/Network Settings/External Service -->
+
+        <!-- External service 1 Service Type -->
+        <!-- Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None. -->
+        <!-- Alias: Pexternal_service.type.1 -->
+        <item name="external_service.type.1">-1.0</item>
+
+        <!-- External service 2 Service Type -->
+        <!-- Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None. -->
+        <!-- Alias: Pexternal_service.type.2 -->
+        <item name="external_service.type.2">-1.0</item>
+
+        <!-- External service 3 Service Type -->
+        <!-- Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None. -->
+        <!-- Alias: Pexternal_service.type.3 -->
+        <item name="external_service.type.3">-1.0</item>
+
+        <!-- External service 4 Service Type -->
+        <!-- Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None. -->
+        <!-- Alias: Pexternal_service.type.4 -->
+        <item name="external_service.type.4">-1.0</item>
+
+        <!-- External service 5 Service Type -->
+        <!-- Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None. -->
+        <!-- Alias: Pexternal_service.type.5 -->
+        <item name="external_service.type.5">-1.0</item>
+
+        <!-- External service 6 Service Type -->
+        <!-- Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None. -->
+        <!-- Alias: Pexternal_service.type.6 -->
+        <item name="external_service.type.6">-1.0</item>
+
+        <!-- External service 7 Service Type -->
+        <!-- Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None. -->
+        <!-- Alias: Pexternal_service.type.7 -->
+        <item name="external_service.type.7">-1.0</item>
+
+        <!-- External service 8 Service Type -->
+        <!-- Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None. -->
+        <!-- Alias: Pexternal_service.type.8 -->
+        <item name="external_service.type.8">-1.0</item>
+
+        <!-- External service 9 Service Type -->
+        <!-- Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None. -->
+        <!-- Alias: Pexternal_service.type.9 -->
+        <item name="external_service.type.9">-1.0</item>
+
+        <!-- External service 10 Service Type -->
+        <!-- Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None. -->
+        <!-- Alias: Pexternal_service.type.10 -->
+        <item name="external_service.type.10">-1.0</item>
+
+        <!-- External service 1 Account -->
+        <!-- Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1 -->
+        <!-- Alias: Pexternal_service.account.index.1 -->
+        <item name="external_service.account.index.1"></item>
+
+        <!-- External service 2 Account -->
+        <!-- Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1 -->
+        <!-- Alias: Pexternal_service.account.index.2 -->
+        <item name="external_service.account.index.2"></item>
+
+        <!-- External service 3 Account -->
+        <!-- Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1 -->
+        <!-- Alias: Pexternal_service.account.index.3 -->
+        <item name="external_service.account.index.3"></item>
+
+        <!-- External service 4 Account -->
+        <!-- Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1 -->
+        <!-- Alias: Pexternal_service.account.index.4 -->
+        <item name="external_service.account.index.4"></item>
+
+        <!-- External service 5 Account -->
+        <!-- Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1 -->
+        <!-- Alias: Pexternal_service.account.index.5 -->
+        <item name="external_service.account.index.5"></item>
+
+        <!-- External service 6 Account -->
+        <!-- Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1 -->
+        <!-- Alias: Pexternal_service.account.index.6 -->
+        <item name="external_service.account.index.6"></item>
+
+        <!-- External service 7 Account -->
+        <!-- Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1 -->
+        <!-- Alias: Pexternal_service.account.index.7 -->
+        <item name="external_service.account.index.7"></item>
+
+        <!-- External service 8 Account -->
+        <!-- Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1 -->
+        <!-- Alias: Pexternal_service.account.index.8 -->
+        <item name="external_service.account.index.8"></item>
+
+        <!-- External service 9 Account -->
+        <!-- Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1 -->
+        <!-- Alias: Pexternal_service.account.index.9 -->
+        <item name="external_service.account.index.9"></item>
+
+        <!-- External service 10 Account -->
+        <!-- Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1 -->
+        <!-- Alias: Pexternal_service.account.index.10 -->
+        <item name="external_service.account.index.10"></item>
+
+        <!-- External service 1 System Identification -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.id.1 -->
+        <item name="external_service.system.id.1"></item>
+
+        <!-- External service 2 System Identification -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.id.2 -->
+        <item name="external_service.system.id.2"></item>
+
+        <!-- External service 3 System Identification -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.id.3 -->
+        <item name="external_service.system.id.3"></item>
+
+        <!-- External service 4 System Identification -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.id.4 -->
+        <item name="external_service.system.id.4"></item>
+
+        <!-- External service 5 System Identification -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.id.5 -->
+        <item name="external_service.system.id.5"></item>
+
+        <!-- External service 6 System Identification -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.id.6 -->
+        <item name="external_service.system.id.6"></item>
+
+        <!-- External service 7 System Identification -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.id.7 -->
+        <item name="external_service.system.id.7"></item>
+
+        <!-- External service 8 System Identification -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.id.8 -->
+        <item name="external_service.system.id.8"></item>
+
+        <!-- External service 9 System Identification -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.id.9 -->
+        <item name="external_service.system.id.9"></item>
+
+        <!-- External service 10 System Identification -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.id.10 -->
+        <item name="external_service.system.id.10"></item>
+
+        <!-- External service 1 System Number -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.number.1 -->
+        <item name="external_service.system.number.1"></item>
+
+        <!-- External service 2 System Number -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.number.2 -->
+        <item name="external_service.system.number.2"></item>
+
+        <!-- External service 3 System Number -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.number.3 -->
+        <item name="external_service.system.number.3"></item>
+
+        <!-- External service 4 System Number -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.number.4 -->
+        <item name="external_service.system.number.4"></item>
+
+        <!-- External service 5 System Number -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.number.5 -->
+        <item name="external_service.system.number.5"></item>
+
+        <!-- External service 6 System Number -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.number.6 -->
+        <item name="external_service.system.number.6"></item>
+
+        <!-- External service 7 System Number -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.number.7 -->
+        <item name="external_service.system.number.7"></item>
+
+        <!-- External service 8 System Number -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.number.8 -->
+        <item name="external_service.system.number.8"></item>
+
+        <!-- External service 9 System Number -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.number.9 -->
+        <item name="external_service.system.number.9"></item>
+
+        <!-- External service 10 System Number -->
+        <!-- Strings, default is null -->
+        <!-- Alias: Pexternal_service.system.number.10 -->
+        <item name="external_service.system.number.10"></item>
+
+        <!-- External service 1 Access Password -->
+        <!-- Password, default is null -->
+        <!-- Alias: Pexternal_service.password.1 -->
+        <item name="external_service.password.1"></item>
+
+        <!-- External service 2 Access Password -->
+        <!-- Password, default is null -->
+        <!-- Alias: Pexternal_service.password.2 -->
+        <item name="external_service.password.2"></item>
+
+        <!-- External service 3 Access Password -->
+        <!-- Password, default is null -->
+        <!-- Alias: Pexternal_service.password.3 -->
+        <item name="external_service.password.3"></item>
+
+        <!-- External service 4 Access Password -->
+        <!-- Password, default is null -->
+        <!-- Alias: Pexternal_service.password.4 -->
+        <item name="external_service.password.4"></item>
+
+        <!-- External service 5 Access Password -->
+        <!-- Password, default is null -->
+        <!-- Alias: Pexternal_service.password.5 -->
+        <item name="external_service.password.5"></item>
+
+        <!-- External service 6 Access Password -->
+        <!-- Password, default is null -->
+        <!-- Alias: Pexternal_service.password.6 -->
+        <item name="external_service.password.6"></item>
+
+        <!-- External service 7 Access Password -->
+        <!-- Password, default is null -->
+        <!-- Alias: Pexternal_service.password.7 -->
+        <item name="external_service.password.7"></item>
+
+        <!-- External service 8 Access Password -->
+        <!-- Password, default is null -->
+        <!-- Alias: Pexternal_service.password.8 -->
+        <item name="external_service.password.8"></item>
+
+        <!-- External service 9 Access Password -->
+        <!-- Password, default is null -->
+        <!-- Alias: Pexternal_service.password.9 -->
+        <item name="external_service.password.9"></item>
+
+        <!-- External service 10 Access Password -->
+        <!-- Password, default is null -->
+        <!-- Alias: Pexternal_service.password.10 -->
+        <item name="external_service.password.10"></item>
+
+
+
+        <!-- Settings/Ring Tones -->
+
+        <!-- System Ring Cadence -->
+        <!-- Syntax: c=on1/ off1[- on2/ off2[- on3/ off3]](Cadence on and off are in 10 ms units) -->
+        <!-- String Max Length: 256 -->
+        <item name="base.tone.system_ring_cadence">c=2000/4000;</item>
+
+        <!-- Call Progress Tones -->
+        <!-- Syntax: f1=val, f2=val[, c=on1/ off1[- on2/ off2[- on3/ off3]]](Frequencies are in Hz and cadence on and off are in 10 ms units) -->
+
+        <!-- Dial Tone -->
+        <!-- String Max Length: 256 -->
+        <item name="base.tone.dial">f1=350@-17,f2=440@-17,c=0/0;</item>
+
+        <!-- Ringback Tone -->
+        <!-- String Max Length: 256 -->
+        <item name="base.tone.ringback">f1=440@-17,f2=480@-17,c=2000/4000;</item>
+
+        <!-- Busy Tone -->
+        <!-- String Max Length: 256 -->
+        <item name="base.tone.busy">f1=480@-21,f2=620@-21,c=500/500;</item>
+
+        <!-- Call Waiting tone -->
+        <!-- String Max Length: 256 -->
+        <item name="base.tone.call_waiting">f1=440@-13,c=300/300-300/10000;</item>
+
+
+        <!-- Settings/System Features -->
+
+        <!-- Disable Direct IP Call. 0 - No, 1 - Yes. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="base.call.ip_call.disable"></item>
+
+        <!-- User-Agent Prefix. Configure the prefix in the User-Agent header. -->
+        <!-- String -->
+        <item name="base.device.user_agent.prefix"></item>
+
+
+        <!-- Maintenance -->
+
+        <!-- Maintenance/Firmware Upgrade -->
+
+        <!-- Firmware Upgrade -->
+        <!-- Use firmware pre/postfix to determine if f/w is required -->
+        <!-- 0=Always Check for New Firmware -->
+        <!-- 1=Check New Firmware only when F/W pre/suffix changes -->
+        <!-- 2=Always Skip the Firmware Check -->
+        <!-- For Firmware only. -->
+        <!-- Number: 0,1,2 -->
+        <!-- Mandatory -->
+        <item name="upgrade.check_condition"></item>
+
+        <!-- HTTP/HTTPS User Name for firmware server -->
+        <!-- String Max Length: 40; between ascii values 33 and 126 -->
+        <item name="upgrade.http.username"></item>
+
+        <!-- HTTP/HTTPS Password for firmware server -->
+        <!-- String Max Length: 40; between ascii values 33 and 126 -->
+        <!-- Mandatory -->
+        <item name="upgrade.http.password"></item>
+
+        <!-- Always send HTTP Basic Authentication Information. 0 - No, 1- Yes. -->
+        <!-- Number: 0,1. Default is 0 -->
+        <!-- Mandatory -->
+        <item name="upgrade.http.send_basic_authentication"></item>
+
+        <!-- Verify host when using HTTPS. 0 - No, 1- Yes. -->
+        <!-- Number: 0,1. Default is 1 -->
+        <!-- Mandatory -->
+        <item name="upgrade.https.verify_host">1.0</item>
+
+        <!-- Upgrade via. 0 - TFTP Upgrade, 1 - HTTP Upgrade, 2 - HTTPS Upgrade. -->
+        <!-- Number: 0 to 2 -->
+        <!-- Mandatory -->
+        <item name="upgrade.protocol">1.0</item>
+
+        <!-- Firmware Server Path -->
+        <!-- String: serveraddress -->
+        <item name="upgrade.server_path">fm.grandstream.com/gs</item>
+
+        <!-- Firmware File Prefix -->
+        <!-- String Max Length: 32; between ascii values 33 and 126 -->
+        <item name="upgrade.file_prefix"></item>
+
+        <!-- Firmware File Postfix -->
+        <!-- String Max Length: 32; between ascii values 33 and 126 -->
+        <item name="upgrade.file_postfix"></item>
+
+        <!-- Allow DHCP Option 43 and Option 66 to override server. 0 - No, 1 - Yes. Default is 1 -->
+        <!-- When set to Yes(1), it will override the configured provision path and method -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="upgrade.override.dhcp.allow_common_options">1.0</item>
+
+        <!-- Automatic Upgrade. 0 - No, 1 - Check daily, 2 - Check weekly, 3 - Check every () minutes. 4 - check for upgrade at random time. Default is No. -->
+        <!-- Number: 0,1,2,3,4 -->
+        <!-- Mandatory -->
+        <item name="upgrade.auto.mode"></item>
+
+        <!-- Automatic Upgrade. Check for new firmware/config file every () minutes, unit is in minute, minimum 60 minutes, default is 7 days. P20721=3 -->
+        <!-- Number: 60 to 5256000 -->
+        <!-- Mandatory -->
+        <item name="upgrade.auto.minutes">10080.0</item>
+
+        <!-- Automatic Upgrade. check for provisioning at random every, unit is in day, minimum 1 day, default is 1 day. Require P20721=4 -->
+        <!-- Number: 1 to 3650 -->
+        <!-- Mandatory -->
+        <item name="upgrade.auto.random.days">1.0</item>
+
+        <!-- Automatic Upgrade. Daily at hour(0-23). Defines the hour of the day to check the HTTP/TFTP server for firmware upgrades. Default is 1. -->
+        <!-- Number: 0 to 23 -->
+        <!-- Mandatory -->
+        <item name="upgrade.auto.hour">1.0</item>
+
+        <!-- Automatic Upgrade. Weekly on day (0-6). 0 - Sunday, 1 - Monday. Defines the day of the week to check HTTP/TFTP server for firmware upgrades. Defalt is 1. -->
+        <!-- Number: 0 to 6 -->
+        <!-- Mandatory -->
+        <item name="upgrade.auto.day">1.0</item>
+
+        <!-- Random Interval Start Time - Hour. Require P20721=4 to take effect. -->
+        <!-- 0-23 -->
+        <item name="upgrade.auto.random.start.hour">1.0</item>
+
+        <!-- Random Interval Start Time - Minutes. Require P20721=4 to take effect. -->
+        <!-- 0-59 -->
+        <item name="upgrade.auto.random.start.minute">1.0</item>
+
+        <!-- Random Interval Stop Time - Hour. Require P20721=4 to take effect. -->
+        <!-- 0-23 -->
+        <item name="upgrade.auto.random.stop.hour">1.0</item>
+
+        <!-- Random Interval Stop Time - Minutes. Require P20721=4 to take effect. -->
+        <!-- 0-59 -->
+        <item name="upgrade.auto.random.stop.minute">1.0</item>
+
+        <!-- Firmware Key (AES 128, in Hexadecimal Representation) -->
+        <!-- String Max Length: 32 0-9,A-Z,a-z -->
+        <item name="upgrade.firmware_key"></item>
+
+        <!-- Automatic Upgrade handset firmware. -->
+        <!-- Number: 0 - No, 1 - Yes. Default is 0 - No. -->
+        <!-- Mandatory -->
+        <item name="upgrade.handset.auto.enable">1.0</item>
+
+
+        <!-- Maintenance/Provisioning -->
+
+        <!-- XML Config File Password -->
+        <!-- String Max Length: 40 -->
+        <!-- Mandatory; between ascii values 33 and 126 -->
+        <item name="provisioning.file_password"></item>
+
+        <!-- HTTP/HTTPS User Name for config server -->
+        <!-- String Max Length: 40; between ascii values 33 and 126 -->
+        <item name="provisioning.username"></item>
+
+        <!-- HTTP/HTTPS Password for config server -->
+        <!-- String Max Length: 40; between ascii values 33 and 126 -->
+        <!-- Mandatory -->
+        <item name="provisioning.password"></item>
+
+        <!-- Always send HTTP Basic Authentication Information. 0 - No, 1- Yes. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="provisioning.always_authenticate_before_challenge"></item>
+
+        <!-- Verify host when using HTTPS. Verify host name in server certificate when using HTTPS. 0 - No, 1 - Yes. -->
+        <!-- Mandatory -->
+        <item name="provisioning.validate_cerfication_chain.enable">1.0</item>
+
+        <!-- Provisioning via. 0 - TFTP Upgrade, 1 - HTTP Upgrade, 2 - HTTPS Upgrade. -->
+        <!-- Number: 0 to 2 -->
+        <!-- Mandatory -->
+        <item name="provisioning.protocol">1.0</item>
+
+        <!-- Config Server Path -->
+        <!-- String: serveraddress -->
+        <item name="provisioning.server_path">fm.grandstream.com/gs</item>
+
+        <!-- Config File Prefix -->
+        <!-- String Max Length: 32; between ascii values 33 and 126 -->
+        <item name="provisioning.file_prefix"></item>
+
+        <!-- Config File Postfix -->
+        <!-- String Max Length: 32; between ascii values 33 and 126 -->
+        <item name="provisioning.file_postfix"></item>
+
+        <!-- Enable Handset Config Upgrade. Enable handset provisioning by IPEI file feature. 0 - No, 1 - Yes. Default is 0 - No. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <!-- Reboot Require -->
+        <item name="provisioning.handset.enable"></item>
+
+        <!-- Handset Config File Prefix. -->
+        <!-- If configured, only the handset configuration file with the matching encrypted prefix will be downloaded and flashed into the device. -->
+        <!-- If the file is located in a subdirectory on the provisioning server, the directory should be included here; for example "handset/ipei_". -->
+        <!-- String Max Length: 32 -->
+        <item name="provisioning.handset.file_prefix">ipei_</item>
+
+        <!-- Handset Config File Prefix. -->
+        <!-- If configured, only the handset configuration file with the matching encrypted postfix will be downloaded and flashed into the device. -->
+        <!-- String Max Length: 32 -->
+        <item name="provisioning.handset.file_postfix"></item>
+
+        <!-- Allow DHCP Option 66 to override server. 0 - No, 1 - Yes. Default is Yes. -->
+        <!-- When set to Yes(1), it will override the configured provision path and method. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <!-- Reboot required -->
+        <item name="provisioning.override.dhcp.allow_common_options">1.0</item>
+
+        <!-- Allow DHCP Option 120 to Override SIP Server -->
+        <!-- 0 - No, 1 - Yes. Default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="provisioning.override.dhcp.allow_option120"></item>
+
+        <!-- 3CX Auto Provision. 0 - No, 1 - Yes. Default is 1 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="provisioning.3cx.auto_provision.enable">1.0</item>
+
+        <!-- Automatic Provisioning. -->
+        <!-- 0 - No, -->
+        <!-- 1 - Yes, check for provisioning based on minute(s) setting, -->
+        <!-- 2 - Yes, check for provisioning based on Hour of Day setting, -->
+        <!-- 3 - Yes, check for provisioning based on Day of Week setting, -->
+        <!-- 4 - Yes, check for provisioning at random every certain days. -->
+        <!-- Default is No. -->
+        <!-- Number: 0, 1, 2, 3, 4 -->
+        <!-- Mandatory -->
+        <item name="provisioning.auto.mode"></item>
+
+        <!-- Automatic Upgrade. check for provisioning at random every, unit is in day, minimum 1 day, default is 1 day. Require P194=4 -->
+        <!-- Number: 1 to 3650 -->
+        <!-- Mandatory -->
+        <item name="provisioning.auto.random.days">1.0</item>
+
+        <!-- Automatic Provisioning. Check for new config file every () minutes. Default is 7 days. -->
+        <!-- Number: 60-86400 -->
+        <!-- Mandatory -->
+        <item name="provisioning.auto.minutes">10080.0</item>
+
+        <!-- Automatic Provisioning. Hour of the Day (0-23). Defines the hour of the day to check the HTTP/TFTP server for configuration file changes. Default is 1. -->
+        <!-- Number: 0 - 23 -->
+        <item name="provisioning.auto.hour">1.0</item>
+
+        <!-- Automatic Provisioning. Day of the Week (0-6). Defines the day of the week to check HTTP/TFTP server for configuration file changes. Default is 1. -->
+        <!-- Number: 0-6 -->
+        <item name="provisioning.auto.day">1.0</item>
+
+        <!-- Random Interval Start Time - Hour. Require P194=4 to take effect. -->
+        <!-- 0-23 -->
+        <item name="provisioning.auto.random.start.hour">1.0</item>
+
+        <!-- Random Interval Start Time - Minutes. Require P194=4 to take effect. -->
+        <!-- 0-59 -->
+        <item name="provisioning.auto.random.start.minute">1.0</item>
+
+        <!-- Random Interval Stop Time - Hour. Require P194=4 to take effect. -->
+        <!-- 0-23 -->
+        <item name="provisioning.auto.random.stop.hour">1.0</item>
+
+        <!-- Random Interval Stop Time - Minutes. Require P194=4 to take effect. -->
+        <!-- 0-59 -->
+        <item name="maintenance.date_time.manual_time_day">1.0</item>
+
+        <!-- Authenticate Conf File. 0 - No, 1 - Yes. Default is No -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="provisioning.authenticate_file"></item>
+
+        <!-- Download and Process ALL Available Config Files. 0 - No, 1 - Yes. Default is No -->
+        <!-- By default, device will provision the first available config in the order of cfgMAC, cfgMAC.xml, -->
+        <!-- cfgMODEL.xml, and cfg.xml (corresponding to device specific, model specific, and global configs). -->
+        <!-- If set to Yes, device will download and apply (overwrite) all available configs in the same order. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="provisioning.use_all_available_files"></item>
+
+
+        <!-- Maintenance/Web/SSH Access -->
+
+        <!-- User Password -->
+        <!-- P196=123 -->
+
+        <!-- Admin password -->
+        <!-- String Max Length: 30; between ascii values 33 and 126 -->
+        <!-- Mandatory -->
+        <!-- P2=admin -->
+
+        <!-- White list for WAN side. Only the IP address in white list can access Web and Telnet. -->
+        <!-- String ipaddress -->
+        <item name="web_ui.acl.whitelist"></item>
+
+        <!-- Black list for WAN side. The IP address in black list can not access Web or Telnet -->
+        <!-- String ipaddress -->
+        <item name="web_ui.acl.whitelist"></item>
+
+
+        <!-- Maintenance/TR - 069 -->
+
+        <!-- Enable TR-069. 0 - No, 1 - Yes. Default is 0. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="maintenance.tr069.enable"></item>
+
+        <!-- ACS URL. URL of the TR-069 Auto Configuration Servers (e.g., http://acs.mycompany.com, or IP address). -->
+        <!-- String -->
+        <!-- P4503= -->
+
+        <!-- ACS Username. ACS username for TR-069. -->
+        <!-- String -->
+        <item name="maintenance.tr069.username"></item>
+
+        <!-- ACS Password. ACS password for TR-069. -->
+        <!-- String -->
+        <item name="maintenance.tr069.password"></item>
+
+        <!-- Periodic Inform Enable. 0 - No, 1 - Yes. Default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="maintenance.tr069.periodic_inform.enable"></item>
+
+        <!-- Periodic Inform Interval. Default is 300. -->
+        <!-- Number -->
+        <item name="maintenance.tr069.periodic_inform.interval">300.0</item>
+
+        <!-- Connection Request Username -->
+        <!-- String: a-z, A-Z, 0-9 -->
+        <item name="maintenance.tr069.connection_request.username"></item>
+
+        <!-- Connection Request Password -->
+        <!-- String: a-z, A-Z, 0-9 -->
+        <item name="maintenance.tr069.connection_request.password"></item>
+
+
+        <!-- Maintenance/Security Settings/Web/SSH Settings -->
+
+        <!-- HTTP Web Port. Default HTTP port is 80. -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <!-- Reboot required -->
+        <item name="maintenance.security.web_access.http.port">80.0</item>
+
+        <!-- HTTPS Web Port. Default HTTPS port is 443. -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <!-- Reboot required -->
+        <item name="maintenance.security.web_access.https.port">443.0</item>
+
+        <!-- Web Access Mode. 0 - HTTPS, 1 - HTTP. Default is 1 - HTTP. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <!-- Reboot required -->
+        <item name="maintenance.security.web_access.mode">1.0</item>
+
+        <!-- Disable SSH. 0 - No, 1 - Yes. Default is 0. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="maintenance.security.ssh.disable"></item>
+
+        <!-- SSH Port. Port for SSH access. Default is 22. -->
+        <!-- Number: -->
+        <item name="maintenance.security.ssh.port">22.0</item>
+
+        <!-- SSH Idle Timeout. SSH Idle Timeout in seconds(1-86400). Default is 60 seconds. -->
+        <!-- Number: 1-86400 -->
+        <item name="maintenance.security.ssh.timeout">60.0</item>
+
+
+        <!-- Maintenance/Security Settings/SIP TLS -->
+
+        <!-- SIP TLS Certificate -->
+        <!-- String -->
+        <!-- P280= -->
+
+        <!-- SIP TLS Private Key -->
+        <!-- String -->
+        <!-- P279= -->
+
+        <!-- SIP TLS Private Key Password -->
+        <!-- String -->
+        <!-- Max Length: 64 characters -->
+        <item name="maintenance.security.ssl.password"></item>
+
+
+        <!-- Maintenance/Security Settings/Radius -->
+
+        <!-- Primary RADIUS Server -->
+        <!-- P4550= -->
+
+        <!-- Primary RADIUS Auth Port (default 1812). -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="maintenance.security.radius.1.authentication_port">1812.0</item>
+
+        <!-- Primary RADIUS Acct Port (default 1813). -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="maintenance.security.radius.1.account_port">1813.0</item>
+
+        <!-- Primary RADIUS Server Secret -->
+        <!-- String Max Length: 32 -->
+        <!-- Mandatory -->
+        <item name="maintenance.security.radius.1.secret"></item>
+
+        <!-- Secondary RADIUS Server -->
+        <!-- P4554= -->
+
+        <!-- Secondary RADIUS Auth Port (default 1812). -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="maintenance.security.radius.2.authentication_port">1812.0</item>
+
+        <!-- Secondary RADIUS Acct Port (default 1813). -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="maintenance.security.radius.2.account_port">1813.0</item>
+
+        <!-- Secondary RADIUS Server Secret -->
+        <!-- String Max Length: 32 -->
+        <!-- Mandatory -->
+        <item name="maintenance.security.radius.2.secret"></item>
+
+        <!-- RADIUS Timeout (default 2). -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="maintenance.security.radius.timeout">2.0</item>
+
+        <!-- RADIUS Retry (default 3). -->
+        <!-- Number: 1 to 65535 -->
+        <!-- Mandatory -->
+        <item name="maintenance.security.radius.retry">3.0</item>
+
+
+        <!-- Maintenance/Security Settings/Device Custom Certificate Settings -->
+
+        <!-- Device Custom Certificate. Certificate used by device during provisioning and web access, default is null -->
+        <!-- Strings: maximum length 2048 -->
+        <item name="maintenance.security.device.ssl_certificate"></item>
+
+        <!-- Device Custom Private Key. Key used by device during provisioning and web access, default is null -->
+        <!-- Strings: maximum length 2048 -->
+        <item name="maintenance.security.device.ssl_key"></item>
+
+        <!-- Enable Device Custom Certificate. 0 - no, 1 - yes. Default value is 0 - no. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="maintenance.security.device.custom_certificate.enable"></item>
+
+
+        <!-- Maintenance/Security Settings/Security -->
+
+        <!-- Validate Server Certificates. -->
+        <!-- Number: 0, 1. 0 - No, 1 - Yes. Default is 0 - No. -->
+        <!-- P8463=0 -->
+
+        <!-- Trusted CA Certificates. Customer can upload the CA from web UI directly, or set the CA content as the P values to provision. -->
+        <!-- String -->
+        <!-- Certificate 1 - 6: -->
+        <!-- P8433= -->
+        <!-- P8434= -->
+        <!-- P8435= -->
+        <!-- P8436= -->
+        <!-- P8437= -->
+        <!-- P8438= -->
+
+        <!-- Load CA Certificates. Configure what type of CA will the device used to verify the server certificate. -->
+        <!-- Number: 0, 1, 2. 0 - Default Certificates, 1 - Custom Certificate, 2 - All Certificate. Default is 2 - All Certificate -->
+        <!-- P8502=2 -->
+
+        <!-- SSH Idle Timeout. SSH Idle Timeout in seconds(1-86400). Default is 60 seconds. -->
+        <!-- Number: 1-86400 -->
+        <!-- P28163=60 -->
+
+
+        <!-- Maintenance/Date and Time -->
+
+        <!-- NTP Server -->
+        <!-- String: serveraddress -->
+        <item name="maintenance.date_time.ntp.server.1">pool.ntp.org</item>
+
+        <!-- NTP Update Interval in minutes(5-1440)(Default is set to 60 minutes) -->
+        <!-- Number: 5 to 1440 -->
+        <!-- Mandatory -->
+        <item name="maintenance.date_time.ntp.update_interval">60.0</item>
+
+        <!-- Allow DHCP Option 42 to NTP Server. (If DHCP Option 42 is enabled, the NTP server can be changed.) -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="maintenance.date_time.override.dhcp.allow_option42"></item>
+
+        <!-- Time Zone. Offset in minutes to GMT -->
+        <!-- <value="TZA+12"> GMT-12:00 </option> -->
+        <!-- <value="TZB+11"> GMT-11:00 </option> -->
+        <!-- <value="TZC+10"> GMT-10:00 </option> -->
+        <!-- <value="TZD+9"> GMT-09:00 </option> -->
+        <!-- <value="TZE+8"> GMT-08:00 </option> -->
+        <!-- <value="TZF+7"> GMT-07:00 </option> -->
+        <!-- <value="TZG+6"> GMT-06:00 </option> -->
+        <!-- <value="TZH+5"> GMT-05:00 </option> -->
+        <!-- <value="TZf+4:30"> GMT-04:30 </option> -->
+        <!-- <value="TZI+4"> GMT-04:00 </option> -->
+        <!-- <value="TZJ+3:30"> GMT-03:30 </option> -->
+        <!-- <value="TZK+3"> GMT-03:00 </option> -->
+        <!-- <value="TZL+2"> GMT-02:00 </option> -->
+        <!-- <value="TZM+1"> GMT-01:00 </option> -->
+        <!-- <value="TZN+0"> GMT </option> -->
+        <!-- <value="TZO-1"> GMT+01:00 </option> -->
+        <!-- <value="TZP-2"> GMT+02:00 </option> -->
+        <!-- <value="TZQ-3"> GMT+03:00 </option> -->
+        <!-- <value="TZR-4"> GMT+04:00 </option> -->
+        <!-- <value="TZS-5"> GMT+05:00 </option> -->
+        <!-- <value="TZT-5:30"> GMT+05:30 </option> -->
+        <!-- <value="TZU-5:45"> GMT+05:45 </option> -->
+        <!-- <value="TZV-6"> GMT+06:00 </option> -->
+        <!-- <value="TZW-6:30"> GMT+06:30 </option> -->
+        <!-- <value="TZX-7"> GMT+07:00 </option> -->
+        <!-- <value="TZY-8"> GMT+08:00 </option> -->
+        <!-- <value="TZZ-9"> GMT+09:00 </option> -->
+        <!-- <value="TZa-9:30"> GMT+09:30 </option> -->
+        <!-- <value="TZb-10"> GMT+10:00 </option> -->
+        <!-- <value="TZc-11"> GMT+11:00 </option> -->
+        <!-- <value="TZd-12"> GMT+12:00 </option> -->
+        <!-- <value="TZe-13"> GMT+13:00 </option> -->
+        <!-- <value="customize"> Self-Defined Time Zone </option> -->
+        <!-- Mandatory Category: string Max Length: 9 Range0: Min=a Max=z Range1: Min=A Max=Z Range2: Min=+ Max=: -->
+        <item name="maintenance.date_time.timezone">customize</item>
+
+        <!-- Self-Defined Time Zone -->
+        <!-- String Max Length: 32 a-z, A-Z, +,: -->
+        <item name="maintenance.date_time.timezone.custom">MTZ+6MDT+5,M3.2.0,M11.1.0</item>
+
+        <!-- Allow DHCP Option 2 to override time zone (If DHCP Option 2 is enabled, the timezone can be offset.) -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="maintenance.date_time.override.dhcp.allow_option2"></item>
+
+
+        <!-- Maintenance/Date and Time/Custom Time Zone Settings -->
+
+        <!-- Custom Time Zones. Enable/Disable Custom Time Zones -->
+        <!-- Number: 0, 1. 0 - Disabled, 1 - Enabled -->
+        <!-- Mandatory -->
+        <item name="maintenance.date_time.enable_time_zone"></item>
+
+        <!-- UTC Offset. Offset is negative for time zone (by week) following UTC and positive for time zone leading UTC(-12 to +14) -->
+        <!-- Number: -12 to +14 -->
+        <item name="maintenance.date_time.time_zone_offset"></item>
+
+        <!-- Second Offset. Offset for second time zone (by day). Offset is negative for time zone following UTC and positive for time zone leading UTC(-12 to +14) -->
+        <item name="maintenance.date_time.second_time_zone_offset"></item>
+
+        <!-- DST Type. Set Daylight Savings Time by day or by week -->
+        <!-- Number: 0, 1. 0 - by week, 1 - by day -->
+        <item name="maintenance.date_time.time_zone_day_week"></item>
+
+        <!-- Start & End Times for the time zone. -->
+        <!-- Start Hour -->
+        <item name="maintenance.date_time.time_zone_hour">2.0</item>
+        <!-- Start Minute -->
+        <item name="maintenance.date_time.time_zone_minute"></item>
+
+        <!-- End Hour -->
+        <item name="maintenance.date_time.second_time_zone_hour">2.0</item>
+        <!-- End Minute -->
+        <item name="maintenance.date_time.second_time_zone_minute"></item>
+
+        <!-- Time zone settings by week -->
+        <!-- Start & End Months -->
+        <!-- Number: 1-12 -->
+        <item name="maintenance.date_time.time_zone_month">4.0</item>
+        <item name="maintenance.date_time.second_time_zone_month">9.0</item>
+
+        <!-- Start & End settings by week -->
+        <!-- Number: -->
+        <!-- Start Weekday -->
+        <item name="maintenance.date_time.time_zone_day_of_week"></item>
+        <!-- Start Week -->
+        <item name="maintenance.date_time.time_zone_week">1.0</item>
+
+        <!-- End Weekday -->
+        <item name="maintenance.date_time.second_time_zone_day_of_week"></item>
+        <!-- End Week -->
+        <item name="maintenance.date_time.second_time_zone_week">1.0</item>
+
+        <!-- Time zone settings by day -->
+        <!-- Start settings by day -->
+        <item name="maintenance.date_time.time_zone_day_of_year">1.0</item>
+        <!-- End settings by day -->
+        <item name="maintenance.date_time.second_time_zone_day_of_year">1.0</item>
+
+
+        <!-- Maintenance/Date and Time/Manual Time Settings -->
+
+        <!-- Manual Time -->
+        <!-- Number: 0, 1; 0 - Disabled, 1 - Enabled, default is 0. -->
+        <!-- Alias: maintenance.date_time.enable_manual_time -->
+        <item name="maintenance.date_time.enable_manual_time"></item>
+
+        <!-- Year. -->
+        <!-- Number: 2016-2037 -->
+        <!-- Alias: maintenance.date_time.manual_time_year -->
+        <item name="maintenance.date_time.manual_time_year">2019.0</item>
+
+        <!-- Month. -->
+        <!-- Number: 1-12 -->
+        <!-- Alias: maintenance.date_time.manual_time_month -->
+        <item name="maintenance.date_time.manual_time_month">1.0</item>
+
+        <!-- Day. -->
+        <!-- Number: 1-31 -->
+        <!-- Alias: maintenance.date_time.manual_time_day -->
+        <item name="maintenance.date_time.manual_time_day">1.0</item>
+
+        <!-- Hour. -->
+        <!-- Number: 0-23 -->
+        <!-- Alias: maintenance.date_time.manual_time_hour -->
+        <!-- P27826=0 -->
+
+        <!-- Minute. -->
+        <!-- Number: 0-59 -->
+        <!-- Alias: maintenance.date_time.manual_time_minute -->
+        <item name="maintenance.date_time.manual_time_minute"></item>
+
+
+        <!-- Maintenance/Syslog -->
+
+        <!-- Syslog Protocol. (0 - UDP, 1 - SSL/TLS. Default is UDP). Allow sending syslog throught secured TLS protocol to syslog server. Note: CA verification is required. -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="maintenance.syslog.protocol"></item>
+
+        <!-- Syslog Server (name of the server, max length is 64 charactors) -->
+        <!-- String: serveraddress -->
+        <item name="maintenance.syslog.server"></item>
+
+        <!-- Syslog Level (Default setting is NONE) -->
+        <!-- 0 - NONE, 1 - DEBUG, 2 - INFO, 3 - WARNING, 4 - ERROR, 5 - EXTRA DEBUG -->
+        <!-- Number: 0,1,2,3,4,5 -->
+        <!-- Mandatory -->
+        <item name="maintenance.syslog.level"></item>
+
+        <!-- Syslog Keyword Filtering. -->
+        <!-- Syslog will be filtered based on keywords provided. If you enter multiple keywords, it should be separated by ','. Please Note: no spaces allowed. -->
+        <!-- String -->
+        <item name="maintenance.syslog.keyword_filtering"></item>
+
+        <!-- Send SIP Log (0 - No, 1 - Yes, Default set to No) -->
+        <!-- Number: 0,1 -->
+        <item name="maintenance.syslog.send_sip_log"></item>
+
+
+        <!-- Maintenance/Packet Capture -->
+
+        <!-- With RTP Packets. 0 - No, 1 - Yes. Default is 0 -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="maintenance.packet_capture.include_rtp"></item>
+
+
+        <!-- Maintenance/Factory Reset -->
+
+        <!-- Web UI Reset Button reset type. -->
+        <!-- Number:0,3,4 -->
+        <!-- Mandatory -->
+        <!-- 0 - Full Factory Reset: This will reset all the settings. -->
+        <!-- 3 - NVRAM Settings Only: This will reset all the settings except subscription information. -->
+        <!-- 4 - DECT Settings Only: This will reset only the subscription but keep all the other settings. -->
+        <item name="maintenance.reset.web_ui.type"></item>
+
+        <!-- Hardware Reset Button reset type. -->
+        <!-- Number:0,3,4,1 -->
+        <!-- Mandatory -->
+        <!-- 0 - Full Factory Reset: This will reset all the settings. -->
+        <!-- 3 - NVRAM Settings Only: This will reset all the settings except subscription information. -->
+        <!-- 4 - DECT Settings Only: This will reset only the subscription but keep all the other settings. -->
+        <!-- 1 - Disabled: This will disable the hardware reset button. -->
+        <item name="maintenance.reset.hardware.type"></item>
+
+
+
+
+        <!-- Maintenance/Support/Debug Tools -->
+
+        <!-- Agree to Terms? -->
+        <!-- Check to agree with the Terms & Conditions to submit core dump files to Grandstream. -->
+        <!-- Number: 0, 1.   0 - No, 1 - Yes, allow sending of crash logs to Grandstream. -->
+        <!-- P27751=0 -->
+
+        <!-- Contact email address for core dump files -->
+        <!-- Strings of email address -->
+        <!-- P27774= -->
+
+        <!-- Prompt Handsets After Recovery? 0 - No, 1 - Yes. Default is 0 -->
+        <!-- Enables handset notification of debug file availability after recovery. -->
+        <!-- Number: 0, 1 -->
+        <!-- Mandatory -->
+        <item name="maintenance.debug.core_collection.handset_notification.enable"></item>
+
+
+        <!-- Phonebook -->
+
+        <!-- Phonebook/Global Phonebook Type -->
+
+        <!-- Global Phonebook Type. Select type of global phonebook to use. XML is stored locally on the base station, LDAP is stored remotely. 0 - XML, 1 - LDAP. Default is 0 - XML. -->
+        <!-- The Global Phonebook XML Settings and Phonebook/Global Phonebook LDAP Settings are depend on this settings. -->
+        <!-- If this is set to XML, then all Global Phonebook XML Settings will take effect while all the LDAP settings will be ignored. -->
+        <!-- If this is set to LDAP, then all the Global Phonebook LDAP Settings will take effect while all the XML settings will be ignored. -->
+        <!-- Number: 0, 1 -->
+        <item name="phonebook.global.type"></item>
+
+
+        <!-- Phonebook/Global Phonebook XML Settings -->
+
+        <!-- Enable Phonebook XML Download. # 0 - No, 1 - YES, HTTP, 2 - YES, TFTP, 3 - Yes, HTTPS. Default is 0 -->
+        <!-- Number: 0, 1, 2, 3 -->
+        <!-- Mandatory -->
+        <item name="phonebook.global.xml.auto.enable"></item>
+
+        <!-- HTTP/HTTPS User Name -->
+        <!-- String -->
+        <item name="phonebook.global.xml.auto.username"></item>
+
+        <!-- HTTP/HTTPS Password -->
+        <!-- String -->
+        <item name="phonebook.global.xml.auto.password"></item>
+
+        <!-- Phonebook XML Server Path -->
+        <!-- This is a string of up to 256 characters that should contain a path to the XML file. It MUST be in the host/path format. -->
+        <!-- For example: directory.grandstream.com/engineering -->
+        <!-- String -->
+        <item name="phonebook.global.xml.auto.server"></item>
+
+        <!-- Phonebook Download Interval (in minutes) -->
+        <!-- Valid value range is 5-720. Default is 0 for disabled -->
+        <!-- Number: 0, 5-720; -->
+        <item name="phonebook.global.xml.auto.internval">60.0</item>
+
+
+        <!-- Phonebook/Global Phonebook LDAP Settings -->
+
+        <!-- LDAP protocol. 0 - LDAP, 1 - LDAPS -->
+        <!-- Number: 0,1 -->
+        <!-- Mandatory -->
+        <item name="phonebook.global.ldap.protocol"></item>
+
+        <!-- LDAP Server Address, up to 256 characters can be used. It can be IP address or Domain name -->
+        <!-- String -->
+        <item name="phonebook.global.ldap.server"></item>
+
+        <!-- LDAP Server Port. Default is 389. -->
+        <!-- Number: 1 - 65535 -->
+        <item name="phonebook.global.ldap.port">389.0</item>
+
+        <!-- Base. The LDAP search base refers to the location in the directory where the search is requested to begin -->
+        <!-- Example 1: dc=grandstream,dc=com -->
+        <!-- Example 2: ou=Boston, dc=grandstream,dc=com -->
+        <!-- String -->
+        <item name="phonebook.global.ldap.base"></item>
+
+        <!-- User name. The bind "Username" for querying LDAP servers. Some LDAP servers allow anonymous binds in which case the setting can be left blank -->
+        <!-- String -->
+        <item name="phonebook.global.ldap.user"></item>
+
+        <!-- Password. The bind "Password" for querying LDAP servers. And the field can be left blank if the LDAP server allows anonymous binds -->
+        <!-- String -->
+        <item name="phonebook.global.ldap.password"></item>
+
+        <!-- LDAP Number Filter -->
+        <!-- LDAP name filter is the filter used for name look ups. Please refer to user manual for examples -->
+        <!-- String -->
+        <item name="phonebook.global.ldap.filter"></item>
+
+        <!-- LDAP Version. Protocol version for the phone when send the bind requests -->
+        <!-- 2 - version 2, 3 - version 3. Default is 3 -->
+        <!-- Mandatory -->
+        <item name="phonebook.global.ldap.version">3.0</item>
+
+        <!-- First Name Attribute. Specifies which LDAP attribute represents the contact's first name. Must be in name attributes on LDAP server. -->
+        <!-- String -->
+        <item name="phonebook.global.ldap.tag.first_name"></item>
+
+        <!-- Last Name Attribute. Specifies which LDAP attribute represents the contact's last name. Must be in name attributes on LDAP server. -->
+        <!-- String -->
+        <item name="phonebook.global.ldap.tag.last_name"></item>
+
+        <!-- Work Number Attribute. Specifies which LDAP attribute represents the contact's work number. Must be in number attributes on LDAP server. -->
+        <!-- String -->
+        <item name="phonebook.global.ldap.tag.work_number"></item>
+
+        <!-- Home Number Attribute. Specifies which LDAP attribute represents the contact's home number. Must be in number attributes on LDAP server. -->
+        <!-- String -->
+        <item name="phonebook.global.ldap.tag.home_number"></item>
+
+        <!-- Mobile Number Attribute. Specifies which LDAP attribute represents the contact's mobile number. Must be in number attributes on LDAP server. -->
+        <!-- String -->
+        <item name="phonebook.global.ldap.tag.mobile_number"></item>
+
+        <!-- Max Hits. The setting specifies the maximum number of results to be returned by the LDAP server -->
+        <!-- If the value is set to 0, server will return all search results. Default is 500 -->
+        <!-- Number: 0 - 32000 -->
+        <!-- Mandatory -->
+        <item name="phonebook.global.ldap.search.size_limit">500.0</item>
+
+        <!-- Search Timeout (in seconds). Default is 30 -->
+        <!-- The setting specifies how long the server should process the request and client waits for server to return -->
+        <!-- Number: 0 - 180 -->
+        <!-- Mandatory -->
+        <item name="phonebook.global.ldap.search.timeout">30.0</item>
+
+
+        <!-- Phonebook/Global Phonebook Broadsoft XSI Settings -->
+
+        <!-- Global Phonebook Type (Added option 2 - XSI) -->
+        <!-- Number: 0, 1, 2. 0 - XML, 1 - LDAP, 2 - XSI -->
+        <item name="phonebook.global.type"></item>
+
+        <!-- XSI Server. Broadsoft XSI Server address with protocol. -->
+        <!-- String -->
+
+        <!-- XSI Port. Port of the Broadsoft XSI server -->
+        <!-- Number: 1 - 65535 -->
+
+        <!-- XSI Actions Path. If it is empty, the path "com.broadsoft.xsi-actions" will be used -->
+        <!-- String -->
+
+        <!-- XSI Authentication Type -->
+
+        <!-- Login Username -->
+        <!-- String -->
+
+        <!-- Login Password -->
+        <!-- String -->
+
+        <!-- SIP User Name -->
+        <!-- String -->
+
+        <!-- SIP User ID -->
+        <!-- String -->
+
+        <!-- SIP Password -->
+        <!-- String -->
+        <!-- P6773= -->
+
+
+        <!-- Enable or disable Group Directory -->
+        <!-- Number: 0, 1. 0 - Disabled, 1 - Enabled. -->
+
+        <!-- Name of Group Directory -->
+        <!-- String -->
+
+        <!-- Enable or disable Enterprise Directory -->
+        <!-- Number: 0, 1. 0 - Disabled, 1 - Enabled. -->
+
+        <!-- Name of Enterprise Directory -->
+        <!-- String -->
+
+        <!-- Enable or disable Group Common -->
+        <!-- Number: 0, 1. 0 - Disabled, 1 - Enabled. -->
+
+        <!-- Name of Group Common -->
+        <!-- String -->
+
+        <!-- Enable or disable Enterprise Common -->
+        <!-- Number: 0, 1. 0 - Disabled, 1 - Enabled. -->
+
+        <!-- Name of Enterprise Common -->
+        <!-- String -->
+
+        <!-- Enable or disable Personal Directory -->
+        <!-- Number: 0, 1. 0 - Disabled, 1 - Enabled. -->
+
+        <!-- Name of Personal Directory -->
+        <!-- String -->
+
+
+        <!-- Phonebook/Private Phonebook Settings -->
+
+        <!-- Phonebook 1 Name. Default is PB1 -->
+        <!-- String -->
+        <item name="phonebook.private.1.name">PB1</item>
+
+        <!-- Phonebook 2 Name. Default is PB2 -->
+        <!-- String -->
+        <item name="phonebook.private.2.name">PB2</item>
+
+        <!-- Phonebook 3 Name. Default is PB3 -->
+        <!-- String -->
+        <item name="phonebook.private.3.name">PB3</item>
+
+        <!-- Phonebook 4 Name. Default is PB4 -->
+        <!-- String -->
+        <item name="phonebook.private.4.name">PB4</item>
+
+        <!-- Phonebook 5 Name. Default is PB5 -->
+        <!-- String -->
+        <item name="phonebook.private.5.name">PB5</item>
+    </config>
+</gs_provision>

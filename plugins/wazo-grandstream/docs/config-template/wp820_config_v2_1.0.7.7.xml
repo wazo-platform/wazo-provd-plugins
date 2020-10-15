@@ -1,0 +1,3001 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gs_provision version="1">
+	<config version="2">
+
+	<!-- Instruction -->
+	<!-- This template uses alias name to represent the device configuration options on the web UI. -->
+	<!-- Example: The setting "Tel URI" for Account 1 is represented as "<item name="account.1.sip.telUri"></item>." -->
+	<!-- The values for this setting can also use alias names e.g. "Disabled, UserIsPhone, Enabled".  -->
+	<!-- To update this setting to "User=Phone" modify the value between <item></item> tags  -->
+	<!-- Example: <item name="account.1.sip.telUri">UserIsPhone</item> -->
+	<!-- The P value style numerical values could also be used to represent the alias item value. -->
+	<!-- Example: <item name="account.1.sip.telUri">1</item>  -->
+	<!-- End of Instruction -->
+		
+	<!-- Account 1/General Settings -->
+		
+		<!-- Account Active -->
+		<!-- Yes, No -->
+		<item name="account.1.enable">Yes</item>
+		
+		<!-- Account Name -->
+		<item name="account.1.name"></item>
+		
+		<!-- SIP Server -->
+		<item name="account.1.sip.server.1.address"></item>
+		
+		<!-- Secondary SIP Server -->
+		<!-- String -->
+		<item name="account.1.sip.server.2.address"></item>
+		<item name="account.1.sip.server.3.address"></item>
+		<item name="account.1.sip.server.4.address"></item>
+		<item name="account.1.sip.server.5.address"></item>
+		
+		<!-- SIP User ID -->
+		<item name="account.1.sip.userid"></item>
+		
+		<!-- SIP Authentication ID -->
+		<item name="account.1.sip.subscriber.userId"></item>
+		
+		<!-- SIP Authentication Password -->
+		<item name="account.1.sip.subscriber.password"></item>
+		
+		<!-- Voice Mail Access Number -->
+		<item name="account.1.sip.voicemail.number"></item>
+		
+		<!-- Display Name -->
+		<item name="account.1.sip.subscriber.name"></item>
+		
+		<!-- Tel URI -->
+		<!-- Disabled, UserIsPhone, Enabled -->
+		<item name="account.1.sip.telUri">Disabled</item>
+
+	<!-- Account 1/Network Settings -->
+		
+		<!-- Outbound Proxy -->
+		<item name="account.1.sip.outboundProxy.1.address"></item>
+		
+		<!-- Secondary Outbound Proxy -->
+		<item name="account.1.sip.outboundProxy.2.address"></item>
+		
+		<!-- DNS Mode -->
+		<!-- ARecord, SRV, NaptrOrSrv -->
+		<item name="account.1.network.dnsMode">ARecord</item>
+		
+		<!-- DNS SRV Fail-over Mode -->
+		<!-- Default, SavedOneUntilDNSTTL, SavedOneUntilNoResponse -->
+		<item name="account.1.network.dnsSRVFailoverMode">Default</item>
+		
+		<!-- NAT Traversal -->
+		<!-- No, STUN, KeepAlive, UPnP, Auto, VPN -->
+		<item name="account.1.network.natTraversal">No</item>
+		
+		<!-- Proxy-Require -->
+		<item name="account.1.network.proxyRequire"></item>
+
+	<!-- Account 1/SIP Settings -->
+		
+		<!-- SIP Registration -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.registration">Yes</item>
+		
+		<!-- Unregister Before New Registration -->
+		<!-- No, Yes - All, Instance -->
+		<item name="account.1.sip.unregisterOnReboot">Instance</item>
+		
+		<!-- Register Expiration (m) -->
+		<!-- Number: 1-64800 -->
+		<item name="account.1.sip.registerExpiration">60</item>
+		
+		<!-- Subscribe Expiration (in minutes) -->
+		<!-- Number: 1 - 64800 -->
+		<item name="account.1.sip.subscribe.expiration"></item>	
+		
+		<!-- Re-register before Expiration (s)  -->
+		<!-- Number: 0-64800 -->
+		<item name="account.1.sip.registerBeforeExpiration">0</item>
+		
+		<!-- Registration Retry Wait Time (s) -->
+		<!-- Number: 1-3600 -->
+		<item name="account.1.sip.registrationFailureRetryWaitTime">20</item>
+		
+		<!-- Add Auth Header On RE-REGISTER  -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.header.authOnInitialRegister">No</item>
+		
+		<!-- Enable SIP OPTIONS Keep Alive -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.keepAlive.enable">No</item>
+		
+		<!-- SIP OPTIONS Keep Alive Interval (s)  -->
+		<!-- Number: 1-64800 -->
+		<item name="account.1.sip.keepAlive.interval">30</item>
+		
+		<!-- SIP OPTIONS Keep Alive Maximum Tries -->
+		<!-- Number: 3-10 -->
+		<item name="account.1.sip.keepAlive.maxLost">3</item>
+		
+		<!-- Subscribe for MWI -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.subscribe.forMwi">No</item>
+		
+		<!-- Use Privacy Header -->
+		<!-- Default, No, Yes -->
+		<item name="account.1.sip.header.privacy">Default</item>
+		
+		<!-- Use P-Preferred-Identity Header  -->
+		<!-- Default, No, Yes -->
+		<item name="account.1.sip.header.ppi">Default</item>
+		
+		<!-- Use P-Access-Network-Info Header -->
+		<!-- Yes, No -->
+		<!-- TBA -->
+
+		<!-- Use P-Emergency-Info header -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.header.pei">No</item>
+		
+		<!-- Use MAC Header -->
+		<!-- No, YesForRegisterOnly, YesToAllSip -->
+		<item name="account.1.sip.header.mac">No</item>
+		
+		<!-- Add MAC in User-Agent -->
+		<!-- No, YesExceptRegister, YesToAllSip -->
+		<item name="account.1.sip.useragent.mac">No</item>
+		
+		<!-- SIP Transport -->
+		<!-- UDP, TCP, TlsOrTcp -->
+		<item name="account.1.sip.transport">UDP</item>
+		
+		<!-- Local SIP Port -->
+		<!-- Number: 0-65535 -->
+		<item name="account.1.sip.localPort">5060</item>
+		
+		<!-- SIP URI Scheme When Using TLS -->
+		<!-- sip, sips -->
+		<item name="account.1.sip.uriSchemeWhenUsingTls">sip</item>
+		
+		<!-- Use Actual Ephemeral Port in Contact with TCP/TLS -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.useActualEphemeralPortInContactWithTcpTls">No</item>
+		
+		<!-- Support SIP Instance ID -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.supportInstanceId">Yes</item>
+		
+		<!-- SIP T1 Timeout -->
+		<!-- 0.5 sec - 0_5sec, 1 sec - 1sec, 2 sec - 2sec -->
+		<item name="account.1.sip.timer.t1">0_5sec</item>
+		
+		<!-- SIP T2 Interval -->
+		<!-- 2 sec - 2sec, 4 sec - 4sec, 8 sec - 8sec -->
+		<item name="account.1.sip.timer.t2">4sec</item>
+		
+		<!-- SIP Timer D Interval (Seconds) -->
+		<!-- Number: 0-64 -->
+		<item name="account.1.sip.timerd.interval">0</item>
+		
+		<!-- Remove OBP from Route -->
+		<!-- Disable - InRoute, Enable - NotInRoute, Always - AlwaysSentTo -->
+		<item name="account.1.sip.outboundProxy.mode">InRoute</item>
+		
+		<!-- Enable 100rel -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.header.100rel">No</item>
+		
+		<!-- Enable Session Timer/Session Expiration (s) -->
+		<!-- Number: 90-64800 -->
+		<!-- Session Timer is disabled if the value is 0 -->
+		<item name="account.1.sip.sessionTimer.expiration">180</item>
+		
+		<!-- Min-SE(s) -->
+		<!-- Number: 90-64800 -->
+		<item name="account.1.sip.minimumSE">90</item>
+		
+		<!-- UAC Specify Refresher -->
+		<!-- Omit, UAC, UAS -->
+		<item name="account.1.sip.sessionTimer.refresher.uacSpecify">Omit</item>
+		
+		<!-- UAS Specify Refresher -->
+		<!--UAC, UAS -->
+		<item name="account.1.sip.sessionTimer.refresher.uasSpecify">UAC</item>
+		
+		<!-- Caller Request Timer -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.sessionTimer.requestTimer.caller">No</item>
+		
+		<!-- Callee Request Timer -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.sessionTimer.requestTimer.callee">No</item>
+		
+		<!-- Force Timer -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.sessionTimer.force">No</item>
+		
+		<!-- Force INVITE -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.sessionTimer.forceInvite">No</item>
+
+	<!-- Account 1/Codec Settings -->
+	
+		<!-- Preferred Vocoder -->
+		<!-- PCMU, PCMA, G_722, G_729AOrB, iLBC, OPUS -->
+		<item name="account.1.codec.choice.1">PCMU</item>
+		<item name="account.1.codec.choice.2">PCMA</item>
+		<item name="account.1.codec.choice.3">G_722</item>
+		<item name="account.1.codec.choice.4">PCMU</item>
+		<item name="account.1.codec.choice.5">PCMU</item>
+		<item name="account.1.codec.choice.6">PCMU</item>
+		<item name="account.1.codec.choice.7">PCMU</item>
+		<item name="account.1.codec.choice.8">PCMU</item>
+		
+		<!-- Codec Negotiation Priority -->
+		<!-- Caller, Callee -->
+		<item name="account.1.codec.negotiatePriority">Callee</item>
+		
+		<!-- Use First Matching Vocoder in 200OK SDP -->
+		<!-- Yes, No -->
+		<item name="account.1.codec.useFirstMatch">No</item>
+		
+		<!-- iLBC Frame Size -->
+		<!-- 20ms, 30ms -->
+		<item name="account.1.codec.iLBC.frameSize">30ms</item>
+
+		<!-- Opus Payload Type -->
+		<!-- Number: 96-126 -->
+		<item name="account.1.codec.payloadType.opus">123</item>
+
+		<!-- DTMF -->
+		<!-- Yes, No -->
+		<item name="account.1.dtmf.sendInAudio">No</item>
+		<item name="account.1.dtmf.sendInRtp">Yes</item>
+		<item name="account.1.dtmf.sendInSip">No</item>
+		
+		<!-- DTMF Payload Type -->
+		<!-- Number: 96-126 -->
+		<item name="account.1.codec.payloadType.dtmf">101</item>
+		
+		<!-- Enable Audio RED with FEC -->
+		<!-- Yes, No -->
+		<item name="account.1.audio.fec.enable">No</item>
+		
+		<!-- Audio FEC Payload Type -->
+		<!-- Number: 96-126 -->
+		<item name="account.1.codec.payloadType.fec.audio">121</item>
+		
+		<!-- Audio RED Payload Type -->
+		<!-- Number: 96-126 -->
+		<item name="account.1.codec.payloadType.red">124</item>
+		
+		<!-- Silence Suppression -->
+		<!-- Yes, No -->
+		<item name="account.1.audio.silenceSuppression">No</item>
+		
+		<!-- Voice Frames Per TX -->
+		<!-- Number: 1-64 -->
+		<item name="account.1.audio.voiceFramePerTX">2</item>
+		
+		<!-- Preferred Video Codec -->
+		
+		<!-- Preferred Video Codec  -->
+		<!-- Number: 99 -->
+		<item name="account.1.codec.video.choice.1">99</item>	
+	
+		<!-- Enable Video FEC -->
+		<!-- Yes, No -->
+		<item name="account.1.video.fec.enable">Yes</item>	
+
+		<!-- Enable RFC5168 Support -->
+		<!-- Yes, No -->
+		<item name="account.1.codec.rfc5168.enable">Yes</item>	
+
+		<!-- FEC Payload Type. Default value is 10. -->
+		<!-- Number: 96 - 126 -->
+		<item name="account.1.codec.payloadType.fec.video">120</item>
+
+		<!-- H.264 Image Size -->
+		<!-- QVGA, VGA, 4CIF, CIF, QCIF, 720P-->
+		<item name="account.1.video.h264.imagesize">720P</item>
+
+		<!-- Video Bit Rate-->
+		<!-- Number: 32,64,96,128,160,192,210,256,384,512,640,768,1024,1280,1536,2048 -->
+		<item name="account.1.video.bitRate">2048</item>
+
+		<!-- SDP Bandwidth Attribute -->
+		<!-- Standard, MediaLevel, SessionLevel, None -->
+		<item name="account.1.codec.SDPBandwidthAttr">MediaLevel</item>
+		
+		<!-- RTP Settings -->
+
+		<!-- SRTP Mode -->
+		<!-- Disabled, EnabledButNotForced, EnabledAndForced -->
+		<item name="account.1.audio.srtpMode">Disabled</item>
+		
+		<!-- SRTP Key Length -->
+		<!-- AES128And256Bit, AES128Bit, AES256Bit -->
+		<item name="account.1.audio.srtpKeyLength">AES128And256Bit</item>
+		
+		<!-- Enable SRTP Key Life Time -->
+		<!-- Yes, No -->
+		<item name="account.1.audio.cryptoLifeTime">Yes</item>
+		
+		<!-- RTCP Destination -->
+		<item name="account.1.rtcp.destination"></item>
+		
+		<!-- Symmetric RTP -->
+		<!-- Yes, No -->
+		<item name="account.1.audio.symmetricRTP">No</item>
+		
+		<!-- RTP IP Filter -->
+		<!-- Disable, IPOnly, IPandPort -->
+		<item name="account.1.rtp.filter">Disable</item>
+		
+		<!-- RTP Timeout (in seconds)
+		Number: 0 - 600 -->
+		<item name="account.1.rtp.timeout">30</item>
+
+	<!-- Account 1/Call Settings -->
+
+		<!-- Start Video Automatically -->
+		<!-- Yes, No -->
+		<item name="account.1.video.startAuto.enable">Yes</item>
+
+		<!-- Auto Answer -->
+		<!-- No, Yes, EnableIntercom/Paging -->
+		<item name="account.1.call.autoAnswer">No</item>
+
+		<!-- Play Warning Tone for Auto Answer Intercom  -->
+		<!-- Yes, No -->
+		<item name="account.1.intercom.playWarningToneForAutoAnswer">Yes</item>
+		
+		<!-- Intercom Barging -->
+		<!-- Yes, No -->
+		<item name="account.1.intercom.allowBargingByCallInfo">No</item>
+
+		<!-- Send Anonymous -->
+		<!-- Yes, No -->
+		<item name="account.1.call.sendAnonymous">No</item>
+		
+		<!-- Anonymous Call Rejection -->
+		<!-- Yes, No -->
+		<item name="account.1.call.rejectAnonymousCall">No</item>
+		
+		<!-- Call Log -->
+		<!-- All, IncomingAndOutgoing, Disable, DonotPromptMissedCall -->
+		<item name="account.1.call.callLog">All</item>
+
+		<!-- Enable Call Features -->
+		<!-- Yes, No -->
+		<item name="account.1.featureCodes.callFeatures">No</item>
+		
+		<!-- Mute on Answer Intercom Call -->
+		<!-- Yes, No -->
+		<item name="account.1.intercom.muteOnAnswerIntercom">No</item>
+
+		<!-- Transfer on 3 Way Conference Hangup -->
+		<!-- Yes, No -->
+		<item name="account.1.call.transferOnConferenceHangup">No</item>
+		
+		<!-- Use # As Dial Key -->
+		<!-- Disabled, Pound -->
+		<!-- Mandatory -->
+		<item name="account.1.call.keyAsSend">Pound</item>	
+
+		<!-- DND Call Feature On -->
+		<item name="account.1.featureCodes.dndOn"></item>
+		
+		<!-- DND Call Feature Off  -->
+		<item name="account.1.featureCodes.dndOff"></item>
+		
+		<!-- No Key Entry Timeout (s) -->
+		<!-- Number: 4 - 15 -->
+		<item name="account.1.call.noKeyEntryTimeout">4</item>
+		
+		<!-- Ring Timeout -->
+		<!-- Number: 10 - 300 -->
+		<item name="account.1.ring.timeout">60</item>
+		
+		<!-- Refer-To Use Target Contact -->
+		<!-- Yes, No -->
+		<item name="account.1.call.referToUseTargetContact">No</item>
+		
+		<!-- RFC2543 Hold -->
+		<!-- Yes, No -->
+		<item name="account.1.call.rfc2543Hold.enable">No</item>
+		
+		<!-- Call Forward Type -->
+		<!-- TBA -->
+
+		<!-- Dial Plan Prefix -->
+		<item name="account.1.call.dialplanPrefix"></item>
+		
+		<!-- Disable DialPlan -->
+		<!-- 0 - No Selection, 1 - Dial Page, 2 - Contact, 4 - Incoming Call History, 8 -  Outgoing Call History, 16 - MPK & Click2Dial.  -->
+		<!-- If need to check multiple selections, add the specific values for each selections together -->
+		<item name="account.1.call.dialplan.disableMode">0</item>
+		
+		<!-- DialPlan -->
+		<item name="account.1.call.dialplan">{ x+ | \+x+ | *x+ | *xx*x+ | x+*x+*x+*x+ | x+*x+*x+*x+#x+ }</item>
+		
+		<!-- Caller ID Display -->
+		<!-- Auto, Disabled, Header -->
+		<!-- [Note] PAI Header is not supported yet -->
+		<item name="account.1.sip.callerIdDisplay">Auto</item>
+		
+		<!-- ############Ringtone Value Table###############
+		Default						content://settings/system/ringtone
+		Silent						ringtone_silence
+		Andromeda					/system/media/audio/ringtones/ANDROMEDA.ogg
+		Aquila						/system/media/audio/ringtones/Aquila.ogg
+		Argo Navis					/system/media/audio/ringtones/ArgoNavis.ogg
+		Atria						/system/media/audio/ringtones/Atria.ogg
+		Backroad					/system/media/audio/ringtones/Backroad.ogg
+		Beat Plucker				/system/media/audio/ringtones/BeatPlucker.ogg
+		Bell Phone					/system/media/audio/ringtones/Ring_Classic_02.ogg
+		Bentley Dubs				/system/media/audio/ringtones/BentleyDubs.ogg
+		Big Easy					/system/media/audio/ringtones/Big_Easy.ogg
+		Bird Loop					/system/media/audio/ringtones/BirdLoop.ogg
+		Bollywood					/system/media/audio/ringtones/Bollywood.ogg
+		BoÃ¶tes						/system/media/audio/ringtones/BOOTES.ogg
+		Bus' a Move					/system/media/audio/ringtones/BussaMove.ogg
+		Cairo						/system/media/audio/ringtones/Cairo.ogg
+		Calypso Steel				/system/media/audio/ringtones/Calypso_Steel.ogg
+		Canis Major					/system/media/audio/ringtones/CANISMAJOR.ogg
+		Caribbean Ice				/system/media/audio/ringtones/CaribbeanIce.ogg
+		Carina						/system/media/audio/ringtones/Carina.ogg
+		Cassiopeia					/system/media/audio/ringtones/CASSIOPEIA.ogg
+		Centaurus					/system/media/audio/ringtones/Centaurus.ogg
+		Champagne Edition			/system/media/audio/ringtones/Champagne_Edition.ogg
+		Chimey Phone				/system/media/audio/ringtones/Ring_Synth_02.ogg
+		Club Cubano					/system/media/audio/ringtones/Club_Cubano.ogg
+		Crayon Rock					/system/media/audio/ringtones/CrayonRock.ogg
+		Crazy Dream					/system/media/audio/ringtones/CrazyDream.ogg
+		Curve Ball Blend			/system/media/audio/ringtones/CurveBall.ogg
+		Cygnus						/system/media/audio/ringtones/Cygnus.ogg
+		Dancin' Fool				/system/media/audio/ringtones/DancinFool.ogg
+		Digital Phone				/system/media/audio/ringtones/Ring_Digital_02.ogg
+		Ding						/system/media/audio/ringtones/Ding.ogg
+		DingDong					/system/media/audio/ringtones/DingDong.wav
+		Don' Mess Wiv It			/system/media/audio/ringtones/DonMessWivIt.ogg
+		Draco						/system/media/audio/ringtones/Draco.ogg
+		Dream Theme					/system/media/audio/ringtones/DreamTheme.ogg
+		Eastern Sky					/system/media/audio/ringtones/Eastern_Sky.ogg
+		Enter the Nexus				/system/media/audio/ringtones/Enter_the_Nexus.ogg
+		Eridani						/system/media/audio/ringtones/Eridani.ogg
+		Ether Shake					/system/media/audio/ringtones/EtherShake.ogg
+		Flutey Phone				/system/media/audio/ringtones/Ring_Synth_04.ogg
+		Free Flight					/system/media/audio/ringtones/FreeFlight.ogg
+		Friendly Ghost				/system/media/audio/ringtones/FriendlyGhost.ogg
+		Funk Y'all					/system/media/audio/ringtones/Funk_Yall.ogg
+		Game Over Guitar			/system/media/audio/ringtones/GameOverGuitar.ogg
+		Gimme Mo' Town				/system/media/audio/ringtones/Gimme_Mo_Town.ogg
+		Girtab						/system/media/audio/ringtones/Girtab.ogg
+		Glacial Groove				/system/media/audio/ringtones/Glacial_Groove.ogg
+		Growl						/system/media/audio/ringtones/Growl.ogg
+		Halfway Home				/system/media/audio/ringtones/HalfwayHome.ogg
+		Hydra						/system/media/audio/ringtones/Hydra.ogg
+		Insert Coin					/system/media/audio/ringtones/InsertCoin.ogg
+		Kuma						/system/media/audio/ringtones/Kuma.ogg
+		Loopy Lounge				/system/media/audio/ringtones/LoopyLounge.ogg
+		Love Flute					/system/media/audio/ringtones/LoveFlute.ogg
+		Lyra						/system/media/audio/ringtones/Lyra.ogg
+		Machina						/system/media/audio/ringtones/Machina.ogg
+		Medieval Jaunt				/system/media/audio/ringtones/MidEvilJaunt.ogg
+		Mildly Alarming				/system/media/audio/ringtones/MildlyAlarming.ogg
+		Nairobi						/system/media/audio/ringtones/Nairobi.ogg
+		Nassau						/system/media/audio/ringtones/Nassau.ogg
+		New Player					/system/media/audio/ringtones/NewPlayer.ogg
+		No Limits					/system/media/audio/ringtones/No_Limits.ogg
+		Noisey One					/system/media/audio/ringtones/Noises1.ogg
+		Organ Dub					/system/media/audio/ringtones/OrganDub.ogg
+		Orion						/system/media/audio/ringtones/Orion.ogg
+		Paradise Island				/system/media/audio/ringtones/Paradise_Island.ogg
+		Pegasus						/system/media/audio/ringtones/Pegasus.ogg
+		Perseus						/system/media/audio/ringtones/PERSEUS.ogg
+		Playa						/system/media/audio/ringtones/Playa.ogg
+		Pyxis						/system/media/audio/ringtones/Pyxis.ogg
+		Rasalas						/system/media/audio/ringtones/Rasalas.ogg
+		Revelation					/system/media/audio/ringtones/Revelation.ogg
+		Rigel						/system/media/audio/ringtones/Rigel.ogg
+		Road Trip					/system/media/audio/ringtones/Road_Trip.ogg
+		Romancing The Tone			/system/media/audio/ringtones/RomancingTheTone.ogg
+		Safari						/system/media/audio/ringtones/Safari.ogg
+		Savannah					/system/media/audio/ringtones/Savannah.ogg
+		Scarabaeus					/system/media/audio/ringtones/Scarabaeus.ogg
+		Sceptrum					/system/media/audio/ringtones/Sceptrum.ogg
+		Seville						/system/media/audio/ringtones/Seville.ogg
+		She's All That				/system/media/audio/ringtones/Shes_All_That.ogg
+		Silky Way					/system/media/audio/ringtones/SilkyWay.ogg
+		Sitar Versus Sitar			/system/media/audio/ringtones/SitarVsSitar.ogg
+		Solarium					/system/media/audio/ringtones/Solarium.ogg
+		Springy Jalopy				/system/media/audio/ringtones/SpringyJalopy.ogg
+		Steppin' Out				/system/media/audio/ringtones/Steppin_Out.ogg
+		Terminated					/system/media/audio/ringtones/Terminated.ogg
+		Terrible Twos				/system/media/audio/ringtones/Noises2.ogg
+		Testudo						/system/media/audio/ringtones/Testudo.ogg
+		Themos						/system/media/audio/ringtones/Themos.ogg
+		Third Eye					/system/media/audio/ringtones/Third_Eye.ogg
+		Thriller Three				/system/media/audio/ringtones/Noises3.ogg
+		Thunderfoot					/system/media/audio/ringtones/Thunderfoot.ogg
+		Twirl Away					/system/media/audio/ringtones/TwirlAway.ogg
+		Ursa Minor					/system/media/audio/ringtones/URSAMINOR.ogg
+		UrsaMinor					/system/media/audio/ringtones/UrsaMinor.ogg
+		Very Alarmed				/system/media/audio/ringtones/VeryAlarmed.ogg
+		Vespa						/system/media/audio/ringtones/Vespa.ogg
+		World						/system/media/audio/ringtones/World.ogg
+		Zeta						/system/media/audio/ringtones/Zeta.ogg
+		bellcore-dr1				/system/media/audio/ringtones/bellcore-dr1.ogg
+		bellcore-dr2				/system/media/audio/ringtones/bellcore-dr2.ogg
+		bellcore-dr3				/system/media/audio/ringtones/bellcore-dr3.ogg
+		bellcore-dr4				/system/media/audio/ringtones/bellcore-dr4.ogg
+		bellcore-dr5				/system/media/audio/ringtones/bellcore-dr5.ogg
+		speaker						/system/media/audio/ringtones/speaker.wav -->
+		
+		<!-- Account Ring Tone -->
+		<item name="account.1.ring.ringtone">content://settings/system/ringtone</item>
+		
+		<!-- Ignore Alert-Info Header -->
+		<!-- Yes, No -->
+		<item name="account.1.ring.ignoreSipAlertInfo">No</item>
+		
+		<!-- Match Incoming Caller ID Rule 1 -->
+		<!-- String -->
+		<item name="account.1.ring.match.1.callerId"></item>
+		
+		<!-- Distinctive Ringtone Rule 1 -->
+		<!-- String -->
+		<item name="account.1.ring.match.1.ringtone">content://settings/system/ringtone</item>
+		
+		<!-- Match Incoming Caller ID Rule 2 -->
+		<!-- String -->
+		<item name="account.1.ring.match.2.callerId"></item>
+		
+		<!-- Distinctive Ringtone Rule 2 -->
+		<!-- String -->
+		<item name="account.1.ring.match.2.ringtone">content://settings/system/ringtone</item>
+		
+		<!-- Match Incoming Caller ID Rule 3 -->
+		<!-- String -->
+		<item name="account.1.ring.match.3.callerId"></item>
+		
+		<!-- Distinctive Ringtone Rule 3 -->
+		<!-- String -->
+		<item name="account.1.ring.match.3.ringtone">content://settings/system/ringtone</item>
+		
+		<!-- Match Incoming Caller ID Rule 4 -->
+		<!-- String -->
+		<item name="account.1.ring.match.4.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 4 -->
+		<!-- String -->
+		<item name="account.1.ring.match.4.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 5 -->
+		<!-- String -->
+		<item name="account.1.ring.match.5.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 5 -->
+		<!-- String -->
+		<item name="account.1.ring.match.5.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 6 -->
+		<!-- String -->
+		<item name="account.1.ring.match.6.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 6 -->
+		<!-- String -->
+		<item name="account.1.ring.match.6.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 7 -->
+		<!-- String -->
+		<item name="account.1.ring.match.7.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 7  -->
+		<!-- String -->
+		<item name="account.1.ring.match.7.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 8 -->
+		<!-- String -->
+		<item name="account.1.ring.match.8.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 8  -->
+		<!-- String -->
+		<item name="account.1.ring.match.8.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 9 -->
+		<!-- String -->
+		<item name="account.1.ring.match.9.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 9 -->
+		<!-- String -->
+		<item name="account.1.ring.match.9.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 10 -->
+		<!-- String -->
+		<item name="account.1.ring.match.10.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 10  -->
+		<!-- String -->
+		<item name="account.1.ring.match.10.ringtone">content://settings/system/ringtone</item>
+
+	<!-- Account 1/Advanced Settings -->
+
+		<!-- Check Domain Certificates -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.validate.domainCertificates">No</item>
+		
+		<!-- Validate Certification Chain -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.validate.certificationChain">No</item>
+		
+		<!-- Validate Incoming SIP Messages -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.validate.incomingMessage">No</item>
+		
+		<!-- Allow Unsolicited REFER -->
+		<!-- Disabled, Enabled, EnabledOrForceAuth -->
+		<item name="account.1.sip.allowUnsolicitedRefer">Disabled</item>
+		
+		<!-- Only Accept SIP Requests from Known Servers -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.validate.incomingServer">No</item>
+		
+		<!-- Check SIP User ID for Incoming INVITE  -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.validate.userIdforInvite">No</item>
+		
+		<!-- Allow SIP Reset  -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.allowSipReset">No</item>
+		
+		<!-- Authenticate Incoming INVITE -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.authenticateIncomingInvite">No</item>
+		
+		<!-- SIP Realm Used for Challenge INVITE & NOTIFY -->
+		<item name="account.1.sipRealmForChallengeINVITE"></item>
+		
+		<!-- Enable Local MOH -->
+		<!-- Yes, No -->
+		<item name="account.1.localMOH.enable">No</item>	
+
+		<!-- Special Feature -->
+		<!-- 100 - Standard, 102 - Broadsoft, 113 - China Mobile, 114 - ZTE IMS, 115 - Mobotix, 116 - ZTE NGN, 117 - Huawei IMS, 122 - Metaswitch, 123 - NEC, 125 - Worldstone -->
+		<item name="account.1.sip.specialFeature">100</item>
+
+		<!-- Feature Key Synchronization -->
+		<!-- Yes, No -->
+		<item name="account.1.broadsoft.syncFeatureKey">No</item>
+
+		<!-- Allow Sync Phonebook via SIP Notify -->
+		<!-- Yes, No -->
+		<item name="account.1.sip.notify.phonebook">Yes</item>
+
+	<!-- Account 2/General Settings -->
+		
+		<!-- Account Active -->
+		<!-- Yes, No -->
+		<item name="account.2.enable">Yes</item>
+		
+		<!-- Account Name -->
+		<item name="account.2.name"></item>
+		
+		<!-- SIP Server -->
+		<item name="account.2.sip.server.1.address"></item>
+		
+		<!-- Secondary SIP Server -->
+		<!-- String -->
+		<item name="account.2.sip.server.2.address"></item>
+		<item name="account.2.sip.server.3.address"></item>
+		<item name="account.2.sip.server.4.address"></item>
+		<item name="account.2.sip.server.5.address"></item>
+		
+		<!-- SIP User ID -->
+		<item name="account.2.sip.userid"></item>
+		
+		<!-- SIP Authentication ID -->
+		<item name="account.2.sip.subscriber.userId"></item>
+		
+		<!-- SIP Authentication Password -->
+		<item name="account.2.sip.subscriber.password"></item>
+		
+		<!-- Display Name -->
+		<item name="account.2.sip.subscriber.name"></item>
+		
+		<!-- Tel URI -->
+		<!-- Disabled, UserIsPhone, Enabled -->
+		<item name="account.2.sip.telUri">Disabled</item>
+		
+		<!-- Voice Mail Access Number -->
+		<item name="account.2.sip.voicemail.number"></item>
+
+		<!-- Network Settings -->
+		
+		<!-- Outbound Proxy -->
+		<item name="account.2.sip.outboundProxy.1.address"></item>
+		
+		<!-- Secondary Outbound Proxy -->
+		<item name="account.2.sip.outboundProxy.2.address"></item>
+		
+		<!-- DNS Mode -->
+		<!-- ARecord, SRV, NaptrOrSrv -->
+		<item name="account.2.network.dnsMode">ARecord</item>
+		
+		<!-- DNS SRV Fail-over Mode -->
+		<!-- Default, SavedOneUntilDNSTTL, SavedOneUntilNoResponse -->
+		<item name="account.2.network.dnsSRVFailoverMode">Default</item>
+		
+		<!-- NAT Traversal -->
+		<!-- No, STUN, KeepAlive, UPnP, Auto, VPN -->
+		<item name="account.2.network.natTraversal">No</item>
+		
+		<!-- Proxy-Require -->
+		<item name="account.2.network.proxyRequire"></item>
+
+	<!-- Account 2/SIP Settings -->
+		
+		<!-- SIP Registration -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.registration">Yes</item>
+		
+		<!-- Unregister Before New Registration -->
+		<!-- No, Yes - All, Instance -->
+		<item name="account.2.sip.unregisterOnReboot">Instance</item>
+		
+		<!-- Register Expiration (m) -->
+		<!-- Number: 1-64800 -->
+		<item name="account.2.sip.registerExpiration">60</item>
+		
+		<!-- Subscribe Expiration (in minutes) -->
+		<!-- Number: 1 - 64800 -->
+		<item name="account.2.sip.subscribe.expiration"></item>	
+		
+		<!-- Re-register before Expiration (s)  -->
+		<!-- Number: 0-64800 -->
+		<item name="account.2.sip.registerBeforeExpiration">0</item>
+		
+		<!-- Registration Retry Wait Time (s) -->
+		<!-- Number: 1-3600 -->
+		<item name="account.2.sip.registrationFailureRetryWaitTime">20</item>
+		
+		<!-- Add Auth Header On RE-REGISTER  -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.header.authOnInitialRegister">No</item>
+		
+		<!-- Enable SIP OPTIONS Keep Alive -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.keepAlive.enable">No</item>
+		
+		<!-- SIP OPTIONS Keep Alive Interval (s)  -->
+		<!-- Number: 1-64800 -->
+		<item name="account.2.sip.keepAlive.interval">30</item>
+		
+		<!-- SIP OPTIONS Keep Alive Maximum Tries -->
+		<!-- Number: 3-10 -->
+		<item name="account.2.sip.keepAlive.maxLost">3</item>
+		
+		<!-- Subscribe for MWI -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.subscribe.forMwi">No</item>
+		
+		<!-- Use Privacy Header -->
+		<!-- Default, No, Yes -->
+		<item name="account.2.sip.header.privacy">Default</item>
+		
+		<!-- Use P-Preferred-Identity Header  -->
+		<!-- Default, No, Yes -->
+		<item name="account.2.sip.header.ppi">Default</item>
+		
+		<!-- Use P-Access-Network-Info Header -->
+		<!-- Yes, No -->
+		<!-- TBA -->
+
+		<!-- Use P-Emergency-Info header -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.header.pei">No</item>
+		
+		<!-- Use MAC Header -->
+		<!-- No, YesForRegisterOnly, YesToAllSip -->
+		<item name="account.2.sip.header.mac">No</item>
+		
+		<!-- Add MAC in User-Agent -->
+		<!-- No, YesExceptRegister, YesToAllSip -->
+		<item name="account.2.sip.useragent.mac">No</item>
+	
+		<!-- SIP Transport -->
+		<!-- UDP, TCP, TlsOrTcp -->
+		<item name="account.2.sip.transport">UDP</item>
+		
+		<!-- Local SIP Port -->
+		<!-- Number: 0-65535 -->
+		<item name="account.2.sip.localPort">5062</item>
+		
+		<!-- SIP URI Scheme When Using TLS -->
+		<!-- sip, sips -->
+		<item name="account.2.sip.uriSchemeWhenUsingTls">sip</item>
+		
+		<!-- Use Actual Ephemeral Port in Contact with TCP/TLS -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.useActualEphemeralPortInContactWithTcpTls">No</item>
+		
+		<!-- Support SIP Instance ID -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.supportInstanceId">Yes</item>
+		
+		<!-- SIP T1 Timeout -->
+		<!-- 0.5 sec - 0_5sec, 1 sec - 1sec, 2 sec - 2sec -->
+		<item name="account.2.sip.timer.t1">0_5sec</item>
+		
+		<!-- SIP T2 Interval -->
+		<!-- 2 sec - 2sec, 4 sec - 4sec, 8 sec - 8sec -->
+		<item name="account.2.sip.timer.t2">4sec</item>
+		
+		<!-- SIP Timer D Interval (Seconds) -->
+		<!-- Number: 0-64 -->
+		<item name="account.2.sip.timerd.interval">0</item>
+		
+		<!-- Remove OBP from Route -->
+		<!-- Disable - InRoute, Enable - NotInRoute, Always - AlwaysSentTo -->
+		<item name="account.2.sip.outboundProxy.mode">InRoute</item>
+		
+		<!-- Enable 100rel -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.header.100rel">No</item>
+		
+		<!-- Enable Session Timer/Session Expiration (s) -->
+		<!-- Number: 90-64800 -->
+		<!-- Session Timer is disabled if the value is 0 -->
+		<item name="account.2.sip.sessionTimer.expiration">180</item>
+		
+		<!-- Min-SE(s) -->
+		<item name="account.2.sip.minimumSE">90</item>
+		
+		<!-- UAC Specify Refresher -->
+		<!-- Omit, UAC, UAS -->
+		<item name="account.2.sip.sessionTimer.refresher.uacSpecify">Omit</item>
+		
+		<!-- UAS Specify Refresher -->
+		<!--UAC, UAS -->
+		<item name="account.2.sip.sessionTimer.refresher.uasSpecify">UAC</item>
+		
+		<!-- Caller Request Timer -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.sessionTimer.requestTimer.caller">No</item>
+		
+		<!-- Callee Request Timer -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.sessionTimer.requestTimer.callee">No</item>
+		
+		<!-- Force Timer -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.sessionTimer.force">No</item>
+		
+		<!-- Force INVITE -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.sessionTimer.forceInvite">No</item>
+
+	<!-- Account 2/Codec Settings -->
+	
+		<!-- Preferred Vocoder -->
+		<!-- PCMU, PCMA, G_722, G_729AOrB, iLBC, OPUS -->
+		<item name="account.2.codec.choice.1">PCMU</item>
+		<item name="account.2.codec.choice.2">PCMA</item>
+		<item name="account.2.codec.choice.3">G_722</item>
+		<item name="account.2.codec.choice.4">PCMU</item>
+		<item name="account.2.codec.choice.5">PCMU</item>
+		<item name="account.2.codec.choice.6">PCMU</item>
+		<item name="account.2.codec.choice.7">PCMU</item>
+		<item name="account.2.codec.choice.8">PCMU</item>
+		
+		<!-- Codec Negotiation Priority -->
+		<!-- Caller, Callee -->
+		<item name="account.2.codec.negotiatePriority">Callee</item>
+		
+		<!-- Use First Matching Vocoder in 200OK SDP -->
+		<!-- Yes, No -->
+		<item name="account.2.codec.useFirstMatch">No</item>
+		
+		<!-- iLBC Frame Size -->
+		<!-- 20ms, 30ms -->
+		<item name="account.2.codec.iLBC.frameSize">30ms</item>
+
+		<!-- Opus Payload Type -->
+		<!-- Number: 96-126 -->
+		<item name="account.2.codec.payloadType.opus">123</item>
+
+		<!-- DTMF -->
+		<!-- Yes, No -->
+		<item name="account.2.dtmf.sendInAudio">No</item>
+		<item name="account.2.dtmf.sendInRtp">Yes</item>
+		<item name="account.2.dtmf.sendInSip">No</item>
+		
+		<!-- DTMF Payload Type -->
+		<!-- Number: 96-126 -->
+		<item name="account.2.codec.payloadType.dtmf">101</item>
+		
+		<!-- Enable Audio RED with FEC -->
+		<!-- Yes, No -->
+		<item name="account.2.audio.fec.enable">No</item>
+		
+		<!-- Audio FEC Payload Type -->
+		<!-- Number: 96-126 -->
+		<item name="account.2.codec.payloadType.fec.audio">121</item>
+		
+		<!-- Audio RED Payload Type -->
+		<!-- Number: 96-126 -->
+		<item name="account.2.codec.payloadType.red">124</item>
+		
+		<!-- Silence Suppression -->
+		<!-- Yes, No -->
+		<item name="account.2.audio.silenceSuppression">No</item>
+		
+		<!-- Voice Frames Per TX -->
+		<!-- Number: 1-64 -->
+		<item name="account.2.audio.voiceFramePerTX">2</item>
+
+		<!-- Preferred Video Codec -->
+		
+		<!-- Preferred Video Codec  -->
+		<!-- Number: 99 -->
+		<item name="account.2.codec.video.choice.1">99</item>	
+		
+		<!-- Enable Video FEC -->
+		<!-- Yes, No -->
+		<item name="account.2.video.fec.enable">Yes</item>
+
+		<!-- Enable RFC5168 support -->
+		<!-- Yes, No -->
+		<item name="account.2.codec.rfc5168.enable">Yes</item>
+
+		<!-- FEC Payload Type -->
+		<!-- Number: 96 - 126 -->
+		<item name="account.2.codec.payloadType.fec.video">120</item>
+
+		<!-- H.264 Image Size -->
+		<!-- QVGA,VGA,4CIF,CIF,QCIF,720P -->
+		<item name="account.2.video.h264.imagesize">720P</item>
+
+		<!-- Video Bit Rate-->
+		<!-- Number: 32,64,96,128,160,192,210,256,384,512,640,768,1024,1280,1536,2048 -->
+		<item name="account.2.video.bitRate">2048</item>
+
+		<!-- SDP Bandwidth Attribute -->
+		<!-- Standard, MediaLevel, SessionLevel, None -->
+		<item name="account.2.codec.SDPBandwidthAttr">MediaLevel</item>	
+
+		<!-- RTP Settings -->
+
+		<!-- SRTP Mode -->
+		<!-- Disabled, EnabledButNotForced, EnabledAndForced -->
+		<item name="account.2.audio.srtpMode">Disabled</item>
+		
+		<!-- SRTP Key Length -->
+		<!-- AES128And256Bit, AES128Bit, AES256Bit -->
+		<item name="account.2.audio.srtpKeyLength">AES128And256Bit</item>
+		
+		<!-- Enable SRTP Key Life Time -->
+		<!-- Yes, No -->
+		<item name="account.2.audio.cryptoLifeTime">Yes</item>
+		
+		<!-- RTCP Destination -->
+		<item name="account.2.rtcp.destination"></item>
+		
+		<!-- Symmetric RTP -->
+		<!-- Yes, No -->
+		<item name="account.2.audio.symmetricRTP">No</item>
+		
+		<!-- RTP IP Filter -->
+		<!-- Disable, IPOnly, IPandPort -->
+		<item name="account.2.rtp.filter">Disable</item>
+		
+		<!-- RTP Timeout (in seconds) -->
+		<!-- Number: 0 - 600 -->
+		<item name="account.2.rtp.timeout">30</item>
+
+	<!-- Account 2/Call Settings -->
+
+		<!-- Start Video Automatically -->
+		<!-- Yes, No -->
+		<item name="account.2.video.startAuto.enable">Yes</item>
+
+		<!-- Auto Answer -->
+		<!-- No, Yes, EnableIntercom/Paging -->
+		<item name="account.2.call.autoAnswer">No</item>
+
+		<!-- Play Warning Tone for Auto Answer Intercom  -->
+		<!-- Yes, No -->
+		<item name="account.2.intercom.playWarningToneForAutoAnswer">Yes</item>
+		
+		<!-- Intercom Barging -->
+		<!-- Yes, No -->
+		<item name="account.2.intercom.allowBargingByCallInfo">No</item>
+
+		<!-- Send Anonymous -->
+		<!-- Yes, No -->
+		<item name="account.2.call.sendAnonymous">No</item>
+		
+		<!-- Anonymous Call Rejection -->
+		<!-- Yes, No -->
+		<item name="account.2.call.rejectAnonymousCall">No</item>
+		
+		<!-- Call Log -->
+		<!-- All, IncomingAndOutgoing, Disable, DonotPromptMissedCall -->
+		<item name="account.2.call.callLog">All</item>
+
+		<!-- Enable Call Features -->
+		<!-- Yes, No -->
+		<item name="account.2.featureCodes.callFeatures">No</item>
+		
+		<!-- Mute on Answer Intercom Call -->
+		<!-- Yes, No -->
+		<item name="account.2.intercom.muteOnAnswerIntercom">No</item>
+
+		<!-- Transfer on 3 Way Conference Hangup -->
+		<!-- Yes, No -->
+		<item name="account.2.call.transferOnConferenceHangup">No</item>
+		
+		<!-- Use # As Dial Key -->
+		<!-- Disabled, Pound -->
+		<!-- Mandatory -->
+		<item name="account.2.call.keyAsSend">Pound</item>
+
+		<!-- DND Call Feature On -->
+		<item name="account.2.featureCodes.dndOn"></item>
+		
+		<!-- DND Call Feature Off  -->
+		<item name="account.2.featureCodes.dndOff"></item>
+		
+		<!-- No Key Entry Timeout (s) -->
+		<!-- Number: 4 - 15 -->
+		<item name="account.2.call.noKeyEntryTimeout">4</item>
+		
+		<!-- Ring Timeout -->
+		<!-- Number: 10 - 300 -->
+		<item name="account.2.ring.timeout">60</item>
+		
+		<!-- Refer-To Use Target Contact -->
+		<!-- Yes, No -->
+		<item name="account.2.call.referToUseTargetContact">No</item>
+		
+		<!-- RFC2543 Hold -->
+		<!-- Yes, No -->
+		<item name="account.1.call.rfc2543Hold.enable">No</item>
+		
+		<!-- Call Forward Type -->
+		<!-- TBA -->
+
+		<!-- Dial Plan Prefix -->
+		<item name="account.2.call.dialplanPrefix"></item>
+		
+		<!-- Disable DialPlan -->
+		<!-- 0 - No Selection, 1 - Dial Page, 2 - Contact, 4 - Incoming Call History, 8 -  Outgoing Call History, 16 - MPK & Click2Dial.  -->
+		<!-- If need to check multiple selections, add the specific values for each selections together -->
+		<item name="account.2.call.dialplan.disableMode">0</item>
+		
+		<!-- DialPlan -->
+		<item name="account.2.call.dialplan">{ x+ | \+x+ | *x+ | *xx*x+ | x+*x+*x+*x+ | x+*x+*x+*x+#x+ }</item>
+		
+		<!-- Caller ID Display -->
+		<!-- Auto, Disabled, Header -->
+		<!-- [Note] PAI Header is not supported yet -->
+		<item name="account.2.sip.callerIdDisplay">Auto</item>
+		
+		<!-- ############Ringtone Value Table###############
+		Default						content://settings/system/ringtone
+		Silent						ringtone_silence
+		Andromeda					/system/media/audio/ringtones/ANDROMEDA.ogg
+		Aquila						/system/media/audio/ringtones/Aquila.ogg
+		Argo Navis					/system/media/audio/ringtones/ArgoNavis.ogg
+		Atria						/system/media/audio/ringtones/Atria.ogg
+		Backroad					/system/media/audio/ringtones/Backroad.ogg
+		Beat Plucker				/system/media/audio/ringtones/BeatPlucker.ogg
+		Bell Phone					/system/media/audio/ringtones/Ring_Classic_02.ogg
+		Bentley Dubs				/system/media/audio/ringtones/BentleyDubs.ogg
+		Big Easy					/system/media/audio/ringtones/Big_Easy.ogg
+		Bird Loop					/system/media/audio/ringtones/BirdLoop.ogg
+		Bollywood					/system/media/audio/ringtones/Bollywood.ogg
+		BoÃ¶tes						/system/media/audio/ringtones/BOOTES.ogg
+		Bus' a Move					/system/media/audio/ringtones/BussaMove.ogg
+		Cairo						/system/media/audio/ringtones/Cairo.ogg
+		Calypso Steel				/system/media/audio/ringtones/Calypso_Steel.ogg
+		Canis Major					/system/media/audio/ringtones/CANISMAJOR.ogg
+		Caribbean Ice				/system/media/audio/ringtones/CaribbeanIce.ogg
+		Carina						/system/media/audio/ringtones/Carina.ogg
+		Cassiopeia					/system/media/audio/ringtones/CASSIOPEIA.ogg
+		Centaurus					/system/media/audio/ringtones/Centaurus.ogg
+		Champagne Edition			/system/media/audio/ringtones/Champagne_Edition.ogg
+		Chimey Phone				/system/media/audio/ringtones/Ring_Synth_02.ogg
+		Club Cubano					/system/media/audio/ringtones/Club_Cubano.ogg
+		Crayon Rock					/system/media/audio/ringtones/CrayonRock.ogg
+		Crazy Dream					/system/media/audio/ringtones/CrazyDream.ogg
+		Curve Ball Blend			/system/media/audio/ringtones/CurveBall.ogg
+		Cygnus						/system/media/audio/ringtones/Cygnus.ogg
+		Dancin' Fool				/system/media/audio/ringtones/DancinFool.ogg
+		Digital Phone				/system/media/audio/ringtones/Ring_Digital_02.ogg
+		Ding						/system/media/audio/ringtones/Ding.ogg
+		DingDong					/system/media/audio/ringtones/DingDong.wav
+		Don' Mess Wiv It			/system/media/audio/ringtones/DonMessWivIt.ogg
+		Draco						/system/media/audio/ringtones/Draco.ogg
+		Dream Theme					/system/media/audio/ringtones/DreamTheme.ogg
+		Eastern Sky					/system/media/audio/ringtones/Eastern_Sky.ogg
+		Enter the Nexus				/system/media/audio/ringtones/Enter_the_Nexus.ogg
+		Eridani						/system/media/audio/ringtones/Eridani.ogg
+		Ether Shake					/system/media/audio/ringtones/EtherShake.ogg
+		Flutey Phone				/system/media/audio/ringtones/Ring_Synth_04.ogg
+		Free Flight					/system/media/audio/ringtones/FreeFlight.ogg
+		Friendly Ghost				/system/media/audio/ringtones/FriendlyGhost.ogg
+		Funk Y'all					/system/media/audio/ringtones/Funk_Yall.ogg
+		Game Over Guitar			/system/media/audio/ringtones/GameOverGuitar.ogg
+		Gimme Mo' Town				/system/media/audio/ringtones/Gimme_Mo_Town.ogg
+		Girtab						/system/media/audio/ringtones/Girtab.ogg
+		Glacial Groove				/system/media/audio/ringtones/Glacial_Groove.ogg
+		Growl						/system/media/audio/ringtones/Growl.ogg
+		Halfway Home				/system/media/audio/ringtones/HalfwayHome.ogg
+		Hydra						/system/media/audio/ringtones/Hydra.ogg
+		Insert Coin					/system/media/audio/ringtones/InsertCoin.ogg
+		Kuma						/system/media/audio/ringtones/Kuma.ogg
+		Loopy Lounge				/system/media/audio/ringtones/LoopyLounge.ogg
+		Love Flute					/system/media/audio/ringtones/LoveFlute.ogg
+		Lyra						/system/media/audio/ringtones/Lyra.ogg
+		Machina						/system/media/audio/ringtones/Machina.ogg
+		Medieval Jaunt				/system/media/audio/ringtones/MidEvilJaunt.ogg
+		Mildly Alarming				/system/media/audio/ringtones/MildlyAlarming.ogg
+		Nairobi						/system/media/audio/ringtones/Nairobi.ogg
+		Nassau						/system/media/audio/ringtones/Nassau.ogg
+		New Player					/system/media/audio/ringtones/NewPlayer.ogg
+		No Limits					/system/media/audio/ringtones/No_Limits.ogg
+		Noisey One					/system/media/audio/ringtones/Noises1.ogg
+		Organ Dub					/system/media/audio/ringtones/OrganDub.ogg
+		Orion						/system/media/audio/ringtones/Orion.ogg
+		Paradise Island				/system/media/audio/ringtones/Paradise_Island.ogg
+		Pegasus						/system/media/audio/ringtones/Pegasus.ogg
+		Perseus						/system/media/audio/ringtones/PERSEUS.ogg
+		Playa						/system/media/audio/ringtones/Playa.ogg
+		Pyxis						/system/media/audio/ringtones/Pyxis.ogg
+		Rasalas						/system/media/audio/ringtones/Rasalas.ogg
+		Revelation					/system/media/audio/ringtones/Revelation.ogg
+		Rigel						/system/media/audio/ringtones/Rigel.ogg
+		Road Trip					/system/media/audio/ringtones/Road_Trip.ogg
+		Romancing The Tone			/system/media/audio/ringtones/RomancingTheTone.ogg
+		Safari						/system/media/audio/ringtones/Safari.ogg
+		Savannah					/system/media/audio/ringtones/Savannah.ogg
+		Scarabaeus					/system/media/audio/ringtones/Scarabaeus.ogg
+		Sceptrum					/system/media/audio/ringtones/Sceptrum.ogg
+		Seville						/system/media/audio/ringtones/Seville.ogg
+		She's All That				/system/media/audio/ringtones/Shes_All_That.ogg
+		Silky Way					/system/media/audio/ringtones/SilkyWay.ogg
+		Sitar Versus Sitar			/system/media/audio/ringtones/SitarVsSitar.ogg
+		Solarium					/system/media/audio/ringtones/Solarium.ogg
+		Springy Jalopy				/system/media/audio/ringtones/SpringyJalopy.ogg
+		Steppin' Out				/system/media/audio/ringtones/Steppin_Out.ogg
+		Terminated					/system/media/audio/ringtones/Terminated.ogg
+		Terrible Twos				/system/media/audio/ringtones/Noises2.ogg
+		Testudo						/system/media/audio/ringtones/Testudo.ogg
+		Themos						/system/media/audio/ringtones/Themos.ogg
+		Third Eye					/system/media/audio/ringtones/Third_Eye.ogg
+		Thriller Three				/system/media/audio/ringtones/Noises3.ogg
+		Thunderfoot					/system/media/audio/ringtones/Thunderfoot.ogg
+		Twirl Away					/system/media/audio/ringtones/TwirlAway.ogg
+		Ursa Minor					/system/media/audio/ringtones/URSAMINOR.ogg
+		UrsaMinor					/system/media/audio/ringtones/UrsaMinor.ogg
+		Very Alarmed				/system/media/audio/ringtones/VeryAlarmed.ogg
+		Vespa						/system/media/audio/ringtones/Vespa.ogg
+		World						/system/media/audio/ringtones/World.ogg
+		Zeta						/system/media/audio/ringtones/Zeta.ogg
+		bellcore-dr1				/system/media/audio/ringtones/bellcore-dr1.ogg
+		bellcore-dr2				/system/media/audio/ringtones/bellcore-dr2.ogg
+		bellcore-dr3				/system/media/audio/ringtones/bellcore-dr3.ogg
+		bellcore-dr4				/system/media/audio/ringtones/bellcore-dr4.ogg
+		bellcore-dr5				/system/media/audio/ringtones/bellcore-dr5.ogg
+		speaker						/system/media/audio/ringtones/speaker.wav -->
+		
+		<!-- Account Ring Tone -->
+		<item name="account.2.ring.ringtone">content://settings/system/ringtone</item>
+		
+		<!-- Ignore Alert-Info Header -->
+		<!-- Yes, No -->
+		<item name="account.2.ring.ignoreSipAlertInfo">No</item>
+		
+		<!-- Match Incoming Caller ID. Matching Rule 1 -->
+		<item name="account.2.ring.match.1.callerId"></item>
+		
+		<!-- Matching Rule 1 Distinctive Ringtone  -->
+		<item name="account.2.ring.match.1.ringtone">content://settings/system/ringtone</item>
+		
+		<!-- Matching Incoming Caller ID. Matching Rule 2 -->
+		<item name="account.2.ring.match.2.callerId"></item>
+		
+		<!-- Matching Rule 2 Distinctive Ringtone  -->
+		<item name="account.2.ring.match.2.ringtone">content://settings/system/ringtone</item>
+		
+		<!-- Matching Incoming Caller ID. Matching Rule 3 -->
+		<item name="account.2.ring.match.3.callerId"></item>
+		
+		<!-- Matching Rule 3 Distinctive Ringtone  -->
+		<item name="account.2.ring.match.3.ringtone">content://settings/system/ringtone</item>
+		
+		<!-- Match Incoming Caller ID Rule 4 -->
+		<!-- String -->
+		<item name="account.2.ring.match.4.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 4 -->
+		<!-- String -->
+		<item name="account.2.ring.match.4.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 5 -->
+		<!-- String -->
+		<item name="account.2.ring.match.5.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 5 -->
+		<!-- String -->
+		<item name="account.2.ring.match.5.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 6 -->
+		<!-- String -->
+		<item name="account.2.ring.match.6.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 6  -->
+		<!-- String -->
+		<item name="account.2.ring.match.6.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 7 -->
+		<!-- String -->
+		<item name="account.2.ring.match.7.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 7 -->
+		<!-- String -->
+		<item name="account.2.ring.match.7.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 8 -->
+		<!-- String -->
+		<item name="account.2.ring.match.8.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 8 -->
+		<!-- String -->
+		<item name="account.2.ring.match.8.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 9 -->
+		<!-- String -->
+		<item name="account.2.ring.match.9.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 9 -->
+		<!-- String -->
+		<item name="account.2.ring.match.9.ringtone">content://settings/system/ringtone</item>
+
+		<!-- Match Incoming Caller ID Rule 10 -->
+		<!-- String -->
+		<item name="account.2.ring.match.10.callerId"></item>
+
+		<!-- Distinctive Ringtone Rule 10 -->
+		<!-- String -->
+		<item name="account.2.ring.match.10.ringtone">content://settings/system/ringtone</item>
+
+	<!-- Account 2/Advanced Settings -->
+
+		<!-- Check Domain Certificates -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.validate.domainCertificates">No</item>
+		
+		<!-- Validate Certification Chain -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.validate.certificationChain">No</item>
+		
+		<!-- Validate Incoming SIP Messages -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.validate.incomingMessage">No</item>
+		
+		<!-- Allow Unsolicited REFER -->
+		<!-- Disabled, Enabled, EnabledOrForceAuth -->
+		<item name="account.2.sip.allowUnsolicitedRefer">Disabled</item>
+		
+		<!-- Only Accept SIP Requests from Known Servers -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.validate.incomingServer">No</item>
+		
+		<!-- Check SIP User ID for Incoming INVITE  -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.validate.userIdforInvite">No</item>
+		
+		<!-- Allow SIP Reset  -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.allowSipReset">No</item>
+		
+		<!-- Authenticate Incoming INVITE -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.authenticateIncomingInvite">No</item>
+		
+		<!-- SIP Realm Used for Challenge INVITE & NOTIFY -->
+		<item name="account.2.sipRealmForChallengeINVITE"></item>
+		
+		<!-- Enable Local MOH -->
+		<!-- Yes, No -->
+		<item name="account.2.localMOH.enable">No</item>	
+
+		<!-- Special Feature -->
+		<!-- 100 - Standard, 102 - Broadsoft, 113 - China Mobile, 114 - ZTE IMS, 115 - Mobotix, 116 - ZTE NGN, 117 - Huawei IMS, 122 - Metaswitch, 123 - NEC, 125 - Worldstone -->
+		<item name="account.2.sip.specialFeature">100</item>
+		
+		<!-- Feature Key Synchronization -->
+		<!-- Yes, No -->
+		<item name="account.2.broadsoft.syncFeatureKey">No</item>
+
+		<!-- Allow Sync Phonebook via SIP Notify -->
+		<!-- Yes, No -->
+		<item name="account.2.sip.notify.phonebook">Yes</item>
+
+	<!-- Phone Settings/General Settings/Basic Settings -->
+
+		<!-- Local RTP Port -->
+		<!-- Number: 50040 - 65535 -->
+		<item name="network.rtp.local.port">50040</item>
+		
+		<!-- Use Random Port -->
+		<!-- Yes, No -->
+		<item name="network.rtp.useRandomPort">No</item>
+		
+		<!-- Disable In-call DTMF Display -->
+		<!-- Yes, No -->
+		<item name="call.display.dtmfInCall">No</item>
+
+		<!-- Keep-alive Interval (s) -->
+		<!-- Number: 10 - 160 -->
+		<item name="sip.keepAliveInterval">20</item>
+		
+		<!-- STUN Server -->
+		<item name="network.stunServer">stun.ipvideotalk.com</item>
+
+		<!-- Use NAT IP -->
+		<item name="sip.userNatIp"></item>
+		
+	<!-- Phone Settings/General Settings/Guest Features -->
+	
+		<!-- Guest Login -->
+		<!-- Yes, No -->
+		<!-- Mandatory -->
+		<item name="guestLogin.enable">No</item>
+
+		<!-- Guest Login Timeout -->
+		<!-- Number: 0, 60, 120, 240, 480. Default is 0. -->
+		<item name="guestlogin.timeout">0</item>
+
+		<!-- Guest Login PIN Code -->
+		<!-- String -->
+		<item name="guestLogin.pinCode"></item>
+
+		<!-- SIP Domain -->
+		<!-- Server Alias / Server List -->
+		<!-- String -->
+		<!-- The value should be json format string like this: {"alias":"aa","servers":["192.168.130.11","192.168.130.145"]};{"alias":"bb","servers":["192.168.130.123"]} -->
+		<item name="guestlogin.sipserver.list"></item>
+
+	<!-- Phone Settings/Call Settings -->
+	
+		<!-- Enable Video Call -->
+		<!-- Yes - checked, No - unchecked -->
+		<item name="call.video.enable">Yes</item>
+		
+		<!-- Default Video Zoom Area -->
+		<!-- Number: 0 - 9 -->
+		<item name="video.zoom.default">0</item>
+	
+		<!-- Enable Call-Waiting -->
+		<!-- Yes - checked, No - unchecked -->
+		<item name="call.callWaiting.enable">Yes</item>
+		
+		<!-- Enable Call-Waiting Tone -->
+		<!-- Yes - checked, No - unchecked -->
+		<item name="call.callWaiting.enableTone">Yes</item>
+		
+		<!-- Enable DND Reminder Ring -->
+		<!-- Yes - checked, No - unchecked -->
+		<item name="call.dnd.reminder.enable">Yes</item>
+		
+		<!-- Enable Transfer -->
+		<!-- Yes - checked, No - unchecked -->
+		<item name="call.transfer.enable">Yes</item>
+		
+		<!-- Hold Call Before Completing Transfer -->
+		<item name="call.holdBeforeTransfer">Yes</item>
+
+		<!-- Enable Conference -->
+		<!-- Yes - checked, No - unchecked -->
+		<item name="call.conference.enable">Yes</item>
+
+		<!-- Auto Mute on Entry -->
+		<!-- Disable, Incoming, Outgoing, IncomingOutgoing -->
+		<item name="call.automute.mode">Disable</item>
+
+		<!-- Always Ring Speaker -->
+		<!-- Yes, No -->
+		<item name="audio.alwaysRingSpeaker">No</item>
+		
+		<!-- Default Ringtone -->
+		<!-- TBA -->
+
+		<!-- Notification Tone -->
+		<!-- TBA -->		
+		
+		<!-- Offhook Auto Dial -->
+		<item name="call.dial.offhook.autoDial.number"></item>
+		
+		<!-- Offhook Auto Dial Delay (s) -->
+		<!-- Number: 0 - 60 -->
+		<item name="call.dial.offhook.autoDial.delay"></item>
+		
+		<!-- Offhook/Onhook Timeout (s) -->
+		<!-- Number: 10 - 60 -->
+		<item name="call.dial.offhook.timeout">30</item>
+
+		<!-- Off-cradle Pickup -->
+		<!-- Yes, No -->
+		<item name="gradle.pickup.autoanswer.enable">No</item>
+
+		<!-- On-cradle Hangup -->
+		<!-- Yes, No -->
+		<item name="gradle.reposition.autohang.enable">No</item>
+
+		<!-- Number Of Accounts The Virtual Account Group Register -->
+		<!-- Number: 1-5 -->
+		<item name="call.virtualgroup.mainregister.number">2</item>
+
+		<!-- Filter Characters -->
+		<item name="call.filter.character">[()-]</item>
+		
+		<!-- Escape '#' as %23 in SIP URI -->
+		<!-- Yes, No -->
+		<item name="sip.escapeUrl">No</item>
+		
+		<!-- Enable Noise Shield -->
+		<!-- Yes, No  -->
+		<item name="call.settings.noiseshield.enable">No</item>
+		
+		<!-- Rejected Call Notification -->
+		<!-- Yes, No -->
+		<item name="features.history.missedCallNotification">No</item>
+		
+		<!-- Enable In-call Recording -->
+		<!-- Yes, No -->
+		<item name="call.record.enable">Yes</item>
+
+	<!-- Phone Settings/Ring Tone -->
+
+		<!-- Auto Config CPT by Region -->
+		<!-- Yes, No -->
+		<item name="audio.tone.autoCPTbyRegion">No</item>
+		
+		<!-- Dial Tone -->
+		<item name="audio.tone.dial">f1=350,f2=440,c=0/0;</item>
+		
+		<!-- Second Dial Tone -->
+		<item name="audio.tone.secondDial">f1=350,f2=440,c=0/0;</item>
+		
+		<!-- Ring Back Tone -->
+		<item name="audio.tone.ringBack">f1=440,f2=480,c=2000/4000;</item>
+		
+		<!-- Busy Tone -->
+		<item name="audio.tone.busy">f1=480,f2=620,c=500/500;</item>
+		
+		<!-- Reorder Tone -->
+		<item name="audio.tone.reorder">f1=480,f2=620,c=250/250;</item>
+		
+		<!-- Confirmation Tone -->
+		<item name="audio.tone.confirmation">f1=350,f2=440,c=100/100-100/100-100/100;</item>
+		
+		<!-- Call-Waiting Tone -->
+		<item name="audio.tone.callWaiting">f1=440,c=300/2000-300/2000-0/0;</item>
+		
+		<!-- Call-Waiting Tone Gain -->
+		<!-- Low, Medium, High -->
+		<item name="audio.tone.callWaiting.gain">Low</item>
+		
+		<!-- Default Ring Cadence -->
+		<item name="audio.tone.defaultRingCadence">c=2000/4000;</item>
+
+	<!-- Phone Settings/Video Settings -->
+
+		<!-- Video Frame Rate -->
+		<!-- Number: 5, 15, 25, 29, 30 -->
+		<item name="video.frameRate">15</item>
+
+		<!-- Video Display Mode -->
+		<!-- OriginalProportion, EqualProportionalCutting, ProportionalAddBlackEdge-->
+		<item name="video.displayMode">EqualProportionalCutting</item>
+
+		<!-- Enable Frame Skipping in Video Decoder -->
+		<!-- Yes, No -->
+		<item name="video.frameSkipping.enable">Yes</item>
+	
+	<!-- Phone Settings/Multicast/PTT Setting -->
+	
+		<!-- General Settings -->
+
+		<!-- Allow PTT/Paging When Lock Screen Status -->
+		<!-- Yes, No -->
+		<item name="ptt.allowwhenlock.enable">No</item>
+
+		<!-- IGMP keep-alive internal -->
+		<!-- Number: 0 - 120 -->
+		<item name="spectralink.ptt.igmpkeepaliveinterval">30</item>
+
+		<!-- PTT/Group Paging -->
+		
+		<!-- (Spectralink) multicast address and port -->
+		<item name="spectralink.multicast.address">224.0.1.116:5001</item>
+		
+		<!-- Emergency PTT/Paging Volume -->
+		<!-- 1-8 -->
+		<item name="spectralink.emergency.volume">8</item>
+		
+		<!-- PTT Config -->
+		
+		<!-- Enable/Disable PTT -->
+		<!-- Yes, No -->
+		<item name="spectralink.ptt.function.enable">No</item>
+		
+		<!-- PTT channel default -->
+		<!-- Number: 1-25 -->
+		<item name="spectralink.ptt.default.channel.id">1</item>			
+
+		<!-- PTT channel priority -->
+		<!-- Number: 1-25 -->
+ 		<item name="spectralink.ptt.priority.channel.id">24</item>
+		
+		<!-- PTT channel emergency -->
+		<!-- Number: 1-25 -->
+ 		<item name="spectralink.ptt.emergency.channel.id">25</item>
+
+		<!-- PTT accept when busy -->
+		<!-- Yes, No -->
+		<item name="spectralink.ptt.acceptbusy.enable">No</item>
+		
+		<!-- PTT caller ID -->
+		<item name="spectralink.ptt.caller.id">channel(*)</item>
+		
+		<!-- PTT payload size (ms) -->
+		<!-- 10, 20, 30, 40, 50, 60 -->
+		<item name="spectralink.ptt.ptime">30</item>
+
+		<!-- PTT audio codecs -->
+		<!-- G711, G722, Opus -->
+		<item name="spectralink.ptt.audio.codec">G711</item>
+
+		<!-- PTT channel available -->
+		<!-- Example: 1100000000000000000000011 means Channels 0,1,24,25 (each digit is a channel, 0 means disable, 1 means enable) -->
+ 		<item name="spectralink.ptt.channels.available.enable">1100000000000000000000011</item>
+
+		<!-- PTT channel transmittable -->
+		<!-- Example: 1100000000000000000000011 means Channels 0,1,24,25 (each digit is a channel, 0 means disable, 1 means enable) -->
+ 		<item name="spectralink.ptt.channels.transmittable.enable">1111111111111111111111111</item>
+
+		<!-- PTT channel subscribe -->
+		<!-- Example: 1100000000000000000000011 means Channels 0,1,24,25 (each digit is a channel, 0 means disable, 1 means enable) -->
+ 		<item name="spectralink.ptt.channels.subscribe.enable">1111111111111111111111111</item>
+		
+		<!-- PTT channel join group -->
+		<!-- Example: 1100000000000000000000011 means Channels 0,1,24,25 (each digit is a channel, 0 means disable, 1 means enable) -->
+ 		<item name="spectralink.ptt.channels.joinable.enable">1100000000000000000000011</item>
+
+		<!-- PTT channel label -->
+		<!-- Usage: Use ^ to separate the channel labels. E.g. Label1^Label2^Label3 -->
+ 		<item name="spectralink.ptt.channels.label"></item>
+		
+		<!-- Paging default mode -->
+		<!-- 0 - Multicast paging, 1 - Spectralink PTT, 2 - Spectralink Paging  -->
+  		<item name="paging.default.mode">0</item>
+
+		<!-- Paging Config -->
+		
+		<!-- Enable/Disable paging (Spectralink) -->
+		<!-- Yes, No -->
+ 		<item name="spectralink.paging.function.enable">No</item>
+		
+		<!-- Default Group -->
+		<!-- Number: 26-50 -->
+	 	<item name="spectralink.paging.default.channel.id">26</item>			
+
+		<!-- Priority Group -->
+		<!-- Number: 26-50 -->
+	 	<item name="spectralink.paging.priority.channel.id">49</item>			
+
+		<!-- Emergency Group  -->
+		<!-- Number: 26-50 -->
+	 	<item name="spectralink.paging.emergency.channel.id">50</item>
+		
+		<!-- Paging accept when busy -->
+		<!-- Yes, No -->
+ 		<item name="spectralink.paging.acceptbusy.enable">No</item>		
+		
+		<!-- Paging caller ID -->
+	 	<item name="spectralink.paging.caller.id">channel(*)</item>	
+
+		<!-- Paging payload size (ms) -->
+		<!-- 10, 20, 30, 40, 50, 60 -->
+ 		<item name="spectralink.paging.ptime">30</item>		
+
+		<!-- Paging audio codecs -->
+		<!-- G711, G722, Opus -->
+ 		<item name="spectralink.paging.audio.codec">G711</item>			
+
+		<!-- Paging channel available -->
+		<!-- Example: 1100000000000000000000011 means Channels 0,1,24,25 (each digit is a channel, 0 means disable, 1 means enable) -->
+	 	<item name="spectralink.paging.channels.available.enable">1100000000000000000000011</item>
+
+		<!-- Paging channel join group -->
+		<!-- Example: 1100000000000000000000011 means Channels 0,1,24,25 (each digit is a channel, 0 means disable, 1 means enable) -->
+	 	<item name="spectralink.paging.channels.joinable.enable">1100000000000000000000011</item>
+ 
+		<!-- Paging channel transmittable -->
+		<!-- Example: 1100000000000000000000011 means Channels 0,1,24,25 (each digit is a channel, 0 means disable, 1 means enable) -->
+	 	<item name="spectralink.paging.channels.transmittable.enable">1111111111111111111111111</item>
+
+		<!-- Paging channel subscribe -->
+		<!-- Example: 1100000000000000000000011 means Channels 0,1,24,25 (each digit is a channel, 0 means disable, 1 means enable) -->
+	 	<item name="spectralink.paging.channels.subscribe.enable">1111111111111111111111111</item>
+
+		<!-- Paging channel label -->
+		<!-- Usage: Use ^ to separate the channel labels. E.g. Label1^Label2^Label3 -->
+	 	<item name="spectralink.paging.channels.label"></item>
+
+	<!-- Multicast paging -->
+
+		<!-- Paging Priority Active -->
+		<!-- Yes, No -->
+  	 	<item name="multicast.pagingPriorityActive">No</item>
+		
+		<!-- Paging Barge. 0 - Disable, 1 - priority 1, 2 - priority 2, 3 - priority 3, 
+		4 - priority 4, 5 - priority 5, 6 - priority 6, 7 - priority 7, 8 - priority 8,
+		9 - priority 9, 10 - priority 10 -->
+ 	 	<item name="multicast.paginBarge">0</item>
+
+		<!-- Multicast Paging Codec -->
+		<!-- PCMU, PCMA, G_726_32, G_722, G_729AOrB, iLBC, OPUS -->
+   	 	<item name="multicast.multicastPagingCodec"></item>
+
+		<!-- Enable/Disable Multicast paging -->
+		<!-- Yes, No -->
+    	<item name="multicast.paging.function.enable">No</item>
+
+		<!-- Priority 1 -->
+		<!-- Listening Address and Port -->
+    	<item name="multicast.listening.1.address"></item>
+
+		<!-- Label -->
+     	<item name="multicast.listening.1.label"></item>
+
+		<!-- Priority 2 -->
+		<!-- Listening Address and Port -->
+     	<item name="multicast.listening.2.address"></item>
+
+		<!-- Label -->
+     	<item name="multicast.listening.2.label"></item>
+
+		<!-- Priority 3 -->
+		<!-- Listening Address and Port -->
+     	<item name="multicast.listening.3.address"></item>
+
+		<!-- Label -->
+     	<item name="multicast.listening.3.label"></item>
+
+		<!-- Priority 4 -->
+		<!-- Listening Address and Port -->
+    	<item name="multicast.listening.4.address"></item>
+
+		<!-- Label -->
+     	<item name="multicast.listening.4.label"></item>
+
+		<!-- Priority 5 -->
+		<!-- Listening Address and Port -->
+     	<item name="multicast.listening.5.address"></item>
+
+		<!-- Label -->
+     	<item name="multicast.listening.5.label"></item>
+
+		<!-- Priority 6 -->
+		<!-- Listening Address and Port -->
+    	<item name="multicast.listening.6.address"></item>
+
+		<!-- Label -->
+     	<item name="multicast.listening.6.label"></item>
+
+		<!-- Priority 7 -->
+		<!-- Listening Address and Port -->
+    	<item name="multicast.listening.7.address"></item>
+
+		<!-- Label -->
+     	<item name="multicast.listening.7.label"></item>
+
+		<!-- Priority 8 -->
+		<!-- Listening Address and Port -->
+    	<item name="multicast.listening.8.address"></item>
+
+		<!-- Label -->
+     	<item name="multicast.listening.8.label"></item>
+
+		<!-- Priority 9 -->
+		<!-- Listening Address and Port -->
+    	<item name="multicast.listening.9.address"></item>
+
+		<!-- Label -->
+     	<item name="multicast.listening.9.label"></item>
+
+		<!-- Priority 10 -->
+		<!-- Listening Address and Port -->
+     	<item name="multicast.listening.10.address"></item>
+
+		<!-- Label -->
+     	<item name="multicast.listening.10.label"></item>
+
+	<!-- Network Settings/Bluetooth -->
+
+		<!-- Device Name -->
+		<!-- String -->
+		<!-- TBA -->
+
+		<!-- Bluetooth Headset Mode -->
+		<!-- TBA -->
+
+		<!-- Bluetooth Function -->
+		<!-- TBA -->
+
+	<!-- Network Settings/Wi-Fi Settings/Wi-Fi Basics -->
+		<!-- Network settings are deliberately commented out to prevent unintended configuration -->
+		<!-- Please remove the comments to set the value -->
+	
+		<!-- IP mode -->
+		<!-- BothAndPreferIPv4, BothAndPreferIPv6, IPv4Only, IPv6Only -->
+		<!-- <item name="wifi.internetProtocol">IPv4Only</item> -->
+		
+		<!-- Wi-Fi Signal Warning -->
+		<!-- 0 - Disable, 1 - Level 1, 2 - Level 2, 3 - Level 3, 4 - Level 4, 5 - Level 5 -->
+		<!-- <item name="wifi.signal.warning.level">3</item> -->		
+		
+		<!-- Wi-Fi Function -->
+		<!-- Yes, No -->
+		<!-- <item name="wifi.enable">No</item> -->
+		
+		<!-- WiFi Band. 2.4G  -->
+		<!-- Yes, No -->
+		<!-- <item name="wifi.24G.enable">Yes</item> -->
+		
+		<!-- WiFi Band. 5G  -->
+		<!-- Yes, No -->
+		<!-- <item name="wifi.5G.enable">Yes</item> -->
+
+	<!-- Network Settings/Wi-Fi Settings/Wi-Fi Security -->
+
+		<!-- ESSID -->
+		<!-- String -->
+		<!-- <item name="wifi.essidname">wp_master</item> -->
+
+		<!-- Password -->
+		<!-- String -->
+		<!-- <item name="wifi.essidpassword">wp!987@dmin</item> -->
+
+		<!-- Security Mode for Hidden SSID. 0 - None, 1 - WEP, 2 - WPA/WPA2_PSK.  Default value is 2. -->
+		<!-- Number: None, WEP, WPA/WPA2_PSK -->
+		<!-- <item name="wifi.hiddenessid.securitymode">WPA/WPA2_PSK</item> -->
+		
+	<!-- Network Settings/Wi-Fi Settings/Advanced Settings -->
+		<!-- Country Code -->
+		<!-- World version device only. Locked device cannot change country code -->
+		<!-- <item name="wifi.countrycode">US</item> -->
+
+		<!-- Host Name(Option 12) -->
+		<!-- <item name="network.dhcp.hostName"></item> -->
+		
+		<!-- Vendor Class ID(Option 60) -->
+		<!-- <item name="network.dhcp.vendorID">Grandstream WP820</item> -->
+		
+		<!-- Channel Mode -->
+		<!-- 2.4G: Channel 1 - 2412, Channel 2 - 2417, Channel 3 - 2422, Channel 4 - 2427, Channel 5 - 2432, Channel 6 - 2437, -->
+		<!-- Channel 7 - 2442, Channel 8 - 2447, Channel 9 - 2452, Channel 10 - 2457, Channel 11 - 2462 -->
+		<!-- 5G: Channel 36 - 5180, Channel 40 - 5200, Channel 44 - 5220, Channel 48 - 5240, Channel 52 - 5260, Channel 56 - 5280, -->
+		<!-- Channel 60 - 5300, Channel 64 - 5320, Channel 100 - 5340, Channel 104 - 5360, Channel 108 - 5380, Channel 112 - 5400, -->
+		<!-- Channel 116 - 5420, Channel 120 - 5440, Channel 124 - 5460, Channel 128 - 5480, Channel 132 - 5500, Channel 136 - 5520, -->
+		<!-- Channel 140 - 5540, Channel 144 - 5560, Channel 149 - 5580, Channel 153 - 5600, Channel 157 - 5620, Channel 161 - 5640, -->
+		<!-- Channel 165 - 5660. -->
+		<!-- Separate channel values by comma e.g "2412,2417,5180,5200" -->
+		<!-- <item name="wifi.custom.channels"></item> -->
+
+	<!-- Network Settings/Wi-Fi Settings/Wi-Fi Roaming -->
+
+		<!-- Roaming signal threshold -->
+		<!-- Number: -100 - -30 -->
+		<!-- <item name="wifi.roaming.threshold">-70</item> -->
+		
+		<!-- Good Signal Scanning Interval -->
+		<!-- Number: 1 - 65535 -->
+		<!-- <item name="wifi.roaming.goodscaninterval">600</item> -->
+
+		<!-- Poor Signal Scanning Interval -->
+		<!-- Number: 1 - 65535 -->
+		<!-- <item name="wifi.roaming.poorscaninterval">5</item> -->
+
+	<!-- Network Settings/OpenVPN® Settings -->
+		<!-- OpenVPN Enable -->
+		<!-- Yes, No -->
+		<!-- <item name="network.openvpn.enable">No</item> -->
+
+		<!-- OpenVPN Mode -->
+		<!-- Simple, Professional -->
+		<!-- <item name="network.openvpn.mode">Simple</item> -->
+		
+		<!-- Enable OpenVPN® Comp-lzo -->
+		<!-- Yes, No -->
+		<!-- <item name="network.openvpn.complzo.enable">No</item> -->
+		
+		<!-- OpenVPN® Server Address -->
+		<!-- <item name="network.openvpn.server"></item> -->
+		
+		<!-- OpenVPN® Port -->
+		<!-- <item name="network.openvpn.port">1194</item> -->
+		
+		<!-- OpenVPN® Transport -->
+		<!-- UDP, TCP -->
+		<!-- <item name="network.openvpn.transport">UDP</item> -->
+		
+		<!-- OpenVPN® CA -->
+		<!-- <item name="network.openvpn.ca"></item> -->
+
+		<!-- OpenVPN® Client Certificate -->
+		<!-- <item name="network.openvpn.cert"></item> -->
+
+		<!-- OpenVPN® Client Key -->
+		<!-- <item name="network.openvpn.clientKey"></item> -->
+
+		<!-- OpenVPN® Cipher Method -->
+		<!-- Blowfish, AES128, AES256, TripleDES -->
+		<!-- <item name="network.openvpn.ciperMethod">Blowfish</item> -->
+		
+		<!-- OpenVPN® Username -->
+		<!-- <item name="network.openvpn.username"></item> -->
+		
+		<!-- OpenVPN® Password -->
+		<!-- <item name="network.openvpn.password"></item> -->
+
+	<!-- Network Settings/Advanced Network Settings -->
+
+		<!-- Preferred DNS Server 1-->
+		<!-- <item name="network.dns.preferred.ip.1"></item> -->
+		<!-- <item name="network.dns.preferred.ip.2"></item> -->
+		<!-- <item name="network.dns.preferred.ip.3"></item> -->
+		<!-- <item name="network.dns.preferred.ip.4"></item> -->
+		
+		<!-- Preferred DNS Server 2 -->
+		<!-- <item name="network.dns.second.preferred.ip.1"></item> -->
+		<!-- <item name="network.dns.second.preferred.ip.2"></item> -->
+		<!-- <item name="network.dns.second.preferred.ip.3"></item> -->
+		<!-- <item name="network.dns.second.preferred.ip.4"></item> -->
+
+		<!-- Layer 3 QoS for SIP -->
+		<!-- <item name="network.qos.forSip">26</item> -->
+		
+		<!-- Layer 3 QoS for Audio -->
+		<!-- <item name="network.qos.forRtp">46</item> -->
+
+		<!-- HTTP/HTTPS User-Agent -->
+		<!-- <item name="network.useragent.httporhttps"></item> -->
+		
+		<!-- SIP User-Agent -->
+		<!-- <item name="network.useragent.sip">Grandstream WP820 $version</item> -->
+
+		<!-- Proxy -->
+		
+		<!-- HTTP/HTTPS Proxy Hostname -->
+		<!-- Must include port number -->
+		<!-- <item name="network.proxy.httporhttps"></item> -->
+
+		<!-- Bypass Proxy For -->
+		<!-- <item name="network.proxy.bypassAddress"></item> -->
+
+		<!-- CSTA Control -->
+		<!-- Yes, No -->
+		<!-- <item name="remoteControl.csta.enable">No</item>	 -->
+
+	<!-- System Settings/Time and Language/Time Settings -->    
+
+		<!-- Assign NTP Server Address -->
+		<item name="dateTime.ntp.server.1">pool.ntp.org</item>
+		
+		<!-- DHCP Option 42 Override NTP Server -->
+		<!-- Yes, No -->
+		<item name="dateTime.override.dhcp.allowOption42">Yes</item>
+		
+		<!-- DHCP Option 2 to Override Time Zone Setting -->
+		<!-- Yes, No -->
+		<item name="dateTime.override.dhcp.allowOption2">Yes</item>
+
+		<!-- Time Zone -->
+		<!-- # Web GUI Option       			   						P Value            							
+		# GMT-11:00(Midway Island)             							TZB+11
+		# GMT-10:00(Hawaii)                    							HAW10
+		# GMT-8:00(Alaska)                     							AKST9AKDT
+		# GMT-8:00(Pacific Time)               							PST8PDT
+		# GMT-8:00(Tijuana)                    							PST8PDT,M4.1.0,M10.5.0
+		# GMT-7:00(Arizona)												MST7
+		# GMT-7:00(Chihuahua)                  							MST7MDT,M4.1.0,M10.5.0
+		# GMT-7:00(Mountain Time)										MST7MDT
+		# GMT-6:00(Central America)            							CST+6
+		# GMT-6:00(Central Time)               							CST6CDT     
+		# GMT-6:00(Mexico City)              							CST6CDT,M4.1.0,M10.5.0
+		# GMT-6:00(Saskatchewan)										CST6CDT,M3.2.0,M11.1.0	
+		# GMT-5:00(Bogota)												COT5
+		# GMT-5:00(Eastern Time)                                        EST5EDT
+		# GMT-4:00(Venezuela)											VET+4
+		# GMT-4:00(Atlantic Time (Barbados))                           	AST4
+		# GMT-4:00(Atlantic Time (Canada))                           	AST4ADT
+		# GMT-4:00(Manaus)												AMT4
+		# GMT-3:30(Newfoundland)                            			NST+3:30NDT+2:30,M3.2.0/02:00:00,M11.1.0/02:00:00
+		# *GMT-4:00(Santiago
+		# GMT-3:00(Recife)  
+		# GMT-3:00(Buenos Aires)										UTC+3
+		# GMT-3:00(Greenland)                               			TZK+3
+		# GMT-3:00(Montevideo)											UYT3
+		# GMT-3:00(Brasilia)                                			BRST+3BRDT+2,M11.1.0/24:00:00,M2.3.0/24:00:00
+		# GMT-2:00(Mid-Atlantic)                            			TZL+2
+		# GMT-1:00(Cape Verde Islands)									CVT1
+		# GMT+0:00(Azores)                                  			TZM+1TZN+0,M3.5.0/24:00:00,M10.5.0/1:00:00
+		# GMT+0:00(GMT)
+		# GMT+0:00(London)                                  			GMT+0BST-1,M3.5.0/01:00:00,M10.5.0/02:00:00
+		# GMT+1:00(Casablanca)                              			CET-1
+		# GMT+1:00(Amsterdam)											CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00
+		# GMT+1:00(Belgrade)											CET-1CEST,M3.5.0,M10.5.0/3
+		# GMT+1:00(Brussels)											TZO-1
+		# GMT+1:00(Madrid)												CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00
+		# GMT+1:00(Sarajevo)											CET-1CEST,M3.5.0,M10.5.0/3
+		# *GMT+1:00(W. Africa Time)										WAT-1
+		# GMT+2:00(Windhoek)											CAT-2
+		# *GMT+2:00(Amman, Jordan)
+		# GMT+2:00(Helsinki, Athens, Tallinn, Eastern European Time)	EET-2EEST-3,M3.5.0/03:00:00,M10.5.0/04:00:00
+		# GMT+2:00(Beirut, Lebanon)										EET-2EEST,M3.5.0/0,M10.5.0/0
+		# GMT+2:00(Cairo)												TZP-2
+		# GMT+2:00(Jerusalem)											IST-2IDT-3,M3.4.5/02:00:00,M10.5.0/02:00:00
+		# GMT+2:00(Harare)												CAT-2
+		# GMT+3:00(Istanbul)											TZQ-3
+		# GMT+3:00(Minsk)												MSK-3
+		# GMT+3:00(Baghdad)												AST-3
+		# GMT+3:00(Moscow)												MST-3MDT,M3.5.0/2,M10.5.0/3
+		# GMT+3:00(Kuwait)												TZQ-3
+		# GMT+3:00(Nairobi)												TZQ-3
+		# GMT+3:30(Tehran)												IRST-3:30IRDT-4:30,M3.4.5/24:00:00,M9.4.0/24:00:00
+		# GMT+4:00(Baku)												TZR-4
+		# GMT+4:00(Tbilisi)												GET-4
+		# GMT+4:00(Yerevan)												AMT-4
+		# GMT+4:00(Dubai)												GST-4
+		# GMT+4:30(Kabul)												AFT-4:30
+		# GMT+5:00(Islamabad, Karachi)									TZS-5
+		# GMT+5:00(Ural'sk)												ORAT-5
+		# GMT+5:00(Yekaterinburg)										YEKT-5Y
+		# GMT+5:30(Kolkata)												IST-5:30
+		# *GMT+5:30(Sri Lanka)											TZT-5:30
+		# GMT+5:45(Kathmandu)											TZU-5:45
+		# GMT+6:00(Astana)												TZV-6
+		# GMT+6:30(Yangon)												TZW-6:30
+		# GMT+7:00(Krasnoyarsk)											KRAT-7
+		# GMT+7:00(Bangkok)												TZX-7
+		# GMT+7:00(Jakarta)												WIB-7
+		# GMT+8:00(Beijing)												TZY-8
+		# GMT+8:00(Hong Kong)											TZY-8
+		# GMT+8:00(Irkutsk)												IRKT-8
+		# GMT+8:00(Kuala Lumpur)										MYT-8
+		# GMT+8:00(Perth)												WST-8
+		# GMT+8:00(Taipei)                                				TZY-8
+		# GMT+9:00(Seoul)												TZZ-9
+		# GMT+9:00(Tokyo, Osaka)										TZZ-9
+		# GMT+9:00(Yakutsk)												TZZ-9
+		# GMT+9:30(Darwin)												CST-9:30
+		# GMT+9:30(Adelaide)											CST-9:30CDT-10:30,M10.1.0/02:00:00,M4.1.0/03:00:00
+		# GMT+10:00(Brisbane)											EST-10
+		# GMT+10:00(Vladivostok)										VLAT-10
+		# GMT+10:00(Guam)												TZb-10
+		# GMT+10:00(Hobart)												EST-10EDT-11,M10.1.0/02:00:00,M4.1.0/03:00:00
+		# GMT+10:00(Sydney, Canberra)									EST-10EDT-11,M10.1.0/02:00:00,M4.1.0/03:00:00
+		# GMT+11:00(Magadan)											TZc-11
+		# GMT+11:00(Noumea, New Caledonia)								TZc-11
+		# GMT+12:00(Majuro, Marshall Islands)                           MHT-12
+		# GMT+12:00(Auckland)											NZST-12NZDT-13,M10.1.0/02:00:00,M3.3.0/03:00:00
+		# GMT+12:00(Fiji)												TZd-12
+		# GMT+13:00(Tonga)                                              TZe-13
+		# Time zone with * are TBA -->
+		<item name="dateTime.timezone">PST8PDT</item>
+
+		<!-- Time Display Format -->
+		<!-- 12Hour, 24Hour -->
+		<item name="dateTime.format.time">24Hour</item>
+		
+		<!-- Date Display Format -->
+		<!-- yyyy-mm-dd, mm-dd-yyyy, dd-mm-yyyy, Normal -->
+		<item name="dateTime.format.date">Normal</item>
+
+	<!-- System Settings/Time and Language/Language -->
+
+		<!-- # Language -->
+		<!-- # Configure the language to be displayed on LCD -->
+		<!-- # Note: for some languages that have 2 codes avaiable, both are working -->
+		<!-- # ja_JP - 日本語 -->
+		<!-- # zh_TW - 中文 (繁體), or zh-tw - 中文 (繁體) -->
+		<!-- # zh_CN - 中文 (简体), or zh - 中文 (简体) -->
+		<!-- # de_DE - Deutsch -->
+		<!-- # en_US - English (United States), en - English (United States) -->
+		<!-- # es_ES - Español (España) -->
+		<!-- # fr_FR - Français, fr - Français -->
+		<!-- # it_IT - Italiano, or it - Italiano -->
+		<!-- # nl_NL - Nederlands, or nld - Nederlands -->
+		<!-- # pl_PL - Polski, or pl - Polski -->
+		<!-- # pt_PT - Português (Portugal) -->
+		<!-- # sl_SI - Slovenšcina -->
+		<!-- # tr_TR - Türkçe, or tr - Türkçe -->
+		<!-- # ru_RU - Russian, or ru - Russian -->
+		<!-- # uk_UA - Ukrainian -->
+		<!-- # iw_IL - Hebrew -->
+		<!-- # ar_EG - العربية -->
+		<!-- # Customized - Custom Language -->
+		<item name="language.gui">en_US</item>
+
+	<!-- System Settings/Security Settings/Web/SSH Access -->
+
+		<!-- Enable SSH -->
+		<!-- Yes - Unchecked, No - Checked -->
+		<item name="security.ssh">No</item>
+		
+		<!-- SSH Port -->
+		<!-- Number 1 - 65535 -->
+		<item name="security.ssh.port">22</item>	
+		
+		<!-- Access Method -->
+		<!-- HTTP, HTTPS -->
+		<item name="security.webAccessMode">HTTP</item>
+		
+		<!-- Port -->
+		<!-- By default, HTTP uses port 80 and HTTPS uses port 443. This field is for customizing the web port -->
+		<item name="security.webAccess.port">80</item>
+		
+		<!-- Configuration via Keypad Menu -->
+		<!-- Unrestricted, BasicSettingsOnly, LockedMode, ConstraintMode -->
+		<item name="security.configurationViaKeypadMenu">Unrestricted</item>
+		
+		<!-- User Login Timeout (in minutes) -->
+		<!-- Number: 0 - 60 -->
+		<item name="web.access.logintimeout">15</item>
+
+	<!-- System Settings/Security Settings/User Info Management -->
+
+		<!-- Admin Password -->
+		<!-- <item name="users.admin.password">admin</item> -->
+		
+		<!-- User Password -->
+		<!-- <item name="users.user.password">123</item> -->
+
+	<!-- System Settings/Security Settings/TLS -->
+
+		<!-- Minimum TLS Version -->
+		<!-- TLS1.0, TLS1.1, TLS1.2 -->
+		<item name="security.tls.minversion">TLS1.1</item>
+
+		<!-- Maximum TLS Version -->
+		<!-- TLS1.0, TLS1.1, TLS1.2, NoLimit -->
+		<item name="security.tls.maxversion">NoLimit</item>
+
+		<!-- SIP TLS -->
+		
+		<!-- SIP TLS Certificate -->
+		<!-- <item name="security.certificate"></item> -->
+		
+		<!-- SIP TLS Private Key  -->
+		<!-- <item name="security.key"></item> -->
+		
+		<!-- SIP TLS Private Key Password -->
+		<!-- <item name="security.password"></item> -->
+
+	<!-- System Settings/Security Settings/Certificate Management -->
+
+		<!-- Trusted CA Certificate 1 -->
+		<!-- String -->
+		<!-- <item name="CACertificates.1"></item> -->
+		
+		<!-- Trusted CA Certificate 2 -->
+		<!-- String -->
+		<!-- <item name="CACertificates.2"></item> -->
+		
+		<!-- Trusted CA Certificate 3 -->
+		<!-- String -->
+		<!-- <item name="CACertificates.3"></item> -->
+		
+		<!-- Trusted CA Certificate 4 -->
+		<!-- String -->
+		<!-- <item name="CACertificates.4"></item> -->
+		
+		<!-- Trusted CA Certificate 5 -->
+		<!-- String -->
+		<!-- <item name="CACertificates.5"></item> -->
+		
+		<!-- Trusted CA Certificate 6 -->
+		<!-- String -->
+		<!-- <item name="CACertificates.6"></item> -->
+		
+		<!-- User Certificate -->
+		<!-- (P value TBA) -->
+
+		<!-- Custom Certificate -->
+		<!-- String -->
+		<!-- <item name="security.customcertificate"></item> -->
+		
+	<!-- System Settings/Security Settings/Lock Screen Settings -->
+
+		<!-- Screen Lock Function -->
+		<!-- Yes, No -->
+		<!-- <item name="screen.lock.enable">No</item> -->
+
+		<!-- Screen Lock Password -->
+		<!-- String -->
+		<!-- <item name="screen.lock.password"></item> -->
+
+	<!-- System Settings->Preferences->Sound -->
+
+		<!-- Silent Mode -->
+		<!-- Yes, No -->
+		<item name="device.silencemode.enable">No</item>
+
+		<!-- Vibrate Mode -->
+		<!-- Yes, No -->
+		<item name="device.vibration.enable">No</item>
+
+		<!-- Charging tone -->
+		<!-- Yes, No -->
+		<item name="charging.tone.enable">No</item>
+
+		<!-- Low Battery Warning Tone -->
+		<!-- Yes, No -->
+		<item name="tone.lowbat.enable">Yes</item>
+
+		<!-- Voicemail Notification Tone -->
+		<!-- Yes, No -->
+		<item name="tone.vmnotification.enable">Yes</item>
+
+		<!-- Ringtone Volume -->
+		<!-- TBA -->
+
+		<!-- Media Volume -->
+		<!-- TBA -->
+
+		<!-- Alarm Volume -->
+		<!-- TBA -->
+		
+		<!-- Default Ringtone -->
+		<!-- TBA -->
+
+		<!-- Notification Tone -->
+		<!-- TBA -->
+
+	<!-- System Settings/Preferences/LCD & LED Management -->
+
+		<!-- Missed Call Indicator -->
+		<!-- No - Unchecked, Yes - Checked -->
+		<item name="ledControl.missedCall">Yes</item>
+
+		<!-- MWI Indicator -->
+		<!-- No - Unchecked, Yes - Checked -->
+		<item name="ledControl.mwi">Yes</item>
+
+		<!-- New Message Indicator -->
+		<!-- No - Unchecked, Yes - Checked -->
+		<item name="ledControl.newMessage">Yes</item>
+
+		<!-- Enable Keypad Backlight -->
+		<!-- No - Unchecked, Yes - Checked -->
+		<item name="key.backlight.enable">No</item>
+		
+		<!-- Brightness -->
+		<!-- Number: 1 - 255 -->
+		<item name="lcd.brightness">182</item>
+
+		<!-- Timeout -->
+		<!-- Number: 0, 15, 30, 60, 120, 300, 600, 1800 -->
+		<item name="lcd.blacklight.activeTimeout.sec">60</item>
+		
+		<!-- Font Size -->
+		<!-- Small, Default, Large -->
+		<item name="lcd.font.size">Default</item>
+		
+	<!-- System Settings/Preferences/Gesture Control -->
+	
+		<!-- Flip phone  -->
+
+		<!-- Reject incoming call -->
+		<!-- RejectCall, RejectCallWithMsg, Disable -->
+		<item name="gesture.flip.type">Disable</item>
+
+		<!-- Reply content -->
+		<!-- not_convenient, call_later, in_metting, in_a_call, customize -->
+		<item name="gesture.rejectmessage">not_convenient</item>
+
+		<!-- Customize -->
+		<!-- String -->
+		<item name="gsensor_flip_reply_sms_customer"></item>
+
+		<!-- Pick up the phone -->
+
+		<!-- Ringtone -->
+		<!-- Silent - Mute, ReduceVol - Ringing Down, Disable - Off -->
+		<item name="gesture.ringingpickup.type">Disable</item>
+
+		<!-- Alarm Ringtone -->
+		<!-- Silent - Mute, ReduceVol - Ringing Down, Disable - Off -->
+		<item name="gesture.alarmpickup.type">Disable</item>
+		
+	<!-- System Settings/Preferences/Button Customization -->
+	
+		<!-- WP8xx main screen left softkey -->
+		<!-- Callhistory,Menu,Settings,Contacts,Voicemail,DND -->
+		<item name="custom.softkey.main.screen.left">Callhistory</item>
+
+		<!-- WP8xx main screen center softkey -->
+		<!-- Callhistory,Menu,Settings,Contacts,Voicemail,DND -->
+		<item name="custom.softkey.main.screen.center">Menu</item>
+
+		<!-- WP8xx main screen right softkey -->
+		<!-- Callhistory,Menu,Settings,Contacts,Voicemail,DND -->
+		<item name="custom.softkey.main.screen.right">Settings</item>
+
+		<!-- WP8xx call screen left softkey -->
+		<!-- Optional, Transfer, Hold, Mute, NewCall, Conference, Record -->
+		<item name="custom.softkey.call.screen.left">Optional</item>
+
+		<!-- WP8xx call screen center softkey -->
+		<!-- Optional, Transfer, Hold, Mute, NewCall, Conference, Record -->
+		<item name="custom.softkey.call.screen.center">Transfer</item>
+
+		<!-- WP8xx call screen right softkey  -->
+		<!-- Optional, Transfer, Hold, Mute, NewCall, Conference, Record -->
+		<item name="custom.softkey.call.screen.right">Hold</item>
+
+		<!-- Multi-function button customization -->
+		<!-- PTT - PTT/Paging, DND - Mute, Panic Call, SpeedDial -->
+		<item name="custom.pttbtn.multi.functions">PTT</item>
+		
+		<!-- Multi-function Button - Speed dial account -->
+		<!-- Number: 0, 1 -->
+		<item name="ptt.key.speeddial.account">0</item>
+
+		<!-- Multi-function Button - Speed dial number -->
+		<!-- String -->
+		<!-- <item name="ptt.key.speeddial.number"></item> -->
+
+	<!-- System Settings/TR069 -->
+
+		<!-- Enable TR-069 -->
+		<!-- Yes, No -->
+		<!-- <item name="tr069.enable">No</item> -->
+		
+		<!-- ACS URL -->
+		<!-- <item name="tr069.url"></item> -->
+		
+		<!-- ACS Username -->
+		<!-- <item name="tr069.username"></item> -->
+		
+		<!-- ACS Password -->
+		<!-- <item name="tr069.password"></item> -->
+		
+		<!-- Periodic Inform Enable -->
+		<!-- Yes, No -->
+		<!-- <item name="tr069.periodicInform">No</item> -->
+		
+		<!-- Periodic Inform Interval (s) -->
+		<!-- <item name="tr069.periodicInformInterval">86400</item> -->
+		
+		<!-- Connection Request Username -->
+		<!-- <item name="tr069.connectionRequestUsername"></item> -->
+		
+		<!-- Connection Request Password -->
+		<!-- <item name="tr069.connectionRequestPassword"></item> -->
+		
+		<!-- Connection Request Port -->
+		<!-- <item name="tr069.connectionRequestPort"></item> -->
+		
+		<!-- CPE Cert File -->
+		<!-- <item name="tr069.ssl.certificate"></item> -->
+		
+		<!-- CPE Cert Key -->
+		<!-- <item name="tr069.ssl.privateKey"></item> -->
+
+	<!-- Maintenance/Upgrade/Firmware -->
+		<!-- Complete Upgrade -->
+		<!-- 0 - Unchecked, 1 - Checked -->
+		<item name="upgradeall">0</item>
+		
+		<!-- Firmware Upgrade Mode -->
+		<!-- TFTP, HTTP, HTTPS -->
+		<item name="provisioning.firmware.protocol">HTTPS</item>
+		
+		<!-- Firmware Server Path -->
+		<item name="provisioning.firmware.serverPath">fm.grandstream.com/gs</item>
+		
+		<!-- HTTP/HTTPS User Name -->
+		<item name="provisioning.firmware.username"></item>
+		
+		<!-- HTTP/HTTPS Password -->
+		<item name="provisioning.firmware.password"></item>
+		
+		<!-- Firmware File Prefix -->
+		<item name="provisioning.firmware.filePrefix"></item>
+		
+		<!-- Firmware File Postfix -->
+		<item name="provisioning.firmware.filePostfix"></item>
+
+	<!--  Maintenance/Upgrade/Config File -->
+
+		<!-- TFTP, HTTP, HTTPS -->
+		<item name="provisioning.config.protocol">HTTPS</item>
+		
+		<!-- Config Server Path -->
+		<item name="provisioning.config.serverPath">fm.grandstream.com/gs</item>
+		
+		<!-- HTTP/HTTPS User Name -->
+		<item name="provisioning.config.username"></item>
+		
+		<!-- HTTP/HTTPS Password -->
+		<item name="provisioning.config.password"></item>
+		
+		<!-- Always send HTTP Basic Authentication Information -->
+		<!-- Yes, No -->
+		<item name="provisioning.alwaysAuthenticateBeforeChallenge"></item>		
+		
+		<!-- Config File Prefix -->
+		<item name="provisioning.config.filePrefix"></item>
+		
+		<!-- Config File Postfix -->
+		<item name="provisioning.config.filePostfix"></item>
+		
+		<!-- Authenticate Conf File -->
+		<!-- Yes, No -->
+		<item name="provisioning.config.authenticateFile">No</item>
+		
+		<!-- XML Config File Password -->
+		<item name="provisioning.config.filePassword"></item>
+
+	<!-- Maintenance/Upgrade/Provision -->
+
+		<!-- Automatic Upgrade -->
+		
+		<!-- Automatic Upgrade -->		
+		<!-- No, CheckEveryDay, CheckEveryWeek, CheckbyPeriod -->
+		<item name="provisioning.auto.mode">No</item>
+		
+		<!-- Enable Randomized Automatic Upgrade -->
+		<!-- Yes, No -->
+		<item name="provisioning.randomized.enable">No</item>
+		
+		<!-- Automatic Upgrade Check Interval (m). Minimum 60 minutes. Default value is 10080 (7 days) -->
+		<!-- Number: 60 - 5256000 -->
+		<item name="provisioning.auto.minute">10080</item>
+
+		<!-- Starting/Ending Hour of the Day(0-23) -->
+		<!-- Number: 0 - 23 -->
+		<item name="provisioning.auto.hour">1</item>
+		<item name="provisioning.auto.endHour"></item>
+		
+		<!-- Day of the Week (0-6) -->
+		<item name="provisioning.auto.day">1</item>
+
+		<!-- Firmware Upgrade and Provisioning -->
+		<!-- AlwaysCheck, CheckWhenChange, SkipCheck -->
+		<item name="provisioning.firmware.checkCondition">AlwaysCheck</item>
+
+		<!-- Upgrade With Prompt -->
+		<!-- Yes - Unchecked, No - Checked -->
+		<item name="provisioning.prompt.enable">No</item>
+		
+		<!-- Allow DHCP Option 43, 160 and 66 Override Server -->
+		<!-- No, Yes, Prefer -->
+		<item name="provisioning.override.dhcp.allowCommonOptions">Yes</item>
+
+		<!-- Allow DHCP Option 120 to Override SIP Server -->
+		<!-- Yes/No -->
+		<item name="sip.override.dhcp.allowOption120">Yes</item>
+
+		<!-- Allow DHCP Option 242 (Avaya IP Phones). 0 - Disabled, 1 - Enabled -->
+		<!-- Yes/No -->
+		<item name="provisioning.override.dhcp.allowOptions242">Yes</item>
+
+		<!-- Download and Process All Available Config Files -->
+		<!-- If set to 1, WP820 will only download all the XML config files for provisioning: cfg.xml, cfg${max}.xml and cfgwp820.xml.   -->
+		<!-- This has higher priority than provisioning.config.order -->
+		<!-- Yes, No -->
+		<item name="provisioning.config.processAll.enable">No</item>
+		
+		<!-- Config Provision -->
+		<!-- List config file name in the preferred order sepa
+		rated by “;”. For example: -->
+		<!-- cfg$mac;cfg$mac.xml;cfg$product.xml;cfg.xml -->
+		<!-- String -->
+		<item name="provisioning.config.order">cfg$mac;cfg$mac.xml;cfg$product.xml;cfg.xml</item>
+
+		<!-- PNP (3CX) Auto Provision -->
+		<!-- Yes, No -->
+		<item name="provisioning.3cxAutoProvision">Yes</item>
+
+	<!-- Maintenance/Upgrade/Advanced Settings -->
+
+		<!-- Enable SIP NOTIFY Authentication -->
+		<!-- 1 - Uncheck, 0 - Checked -->
+		<item name="sip.notify.challenge">1</item>
+
+		<!-- Validate Server Certificates -->
+		<!-- Yes, No -->
+		<item name="provisioning.validateCertificationChain.enable">No</item>
+
+		<!-- mDNS Override Server -->
+		<!-- Disable, UseTypeA, UseTypeSRV -->
+		<item name="provisioning.mDNSOverride.type">UseTypeA</item>
+
+	<!-- Maintenance/System Diagnosis/Syslog -->
+
+		<!-- Syslog Protocol -->
+		<!-- UDP, SSL_TLS -->
+		<item name="maintain.syslog.protocol">UDP</item>
+		
+		<!-- Syslog Server -->
+		<item name="maintain.syslog.server">log.ipvideotalk.com</item>
+		
+		<!-- Syslog Level -->
+		<!-- None, Debug, Info, Warning, Error -->
+		<item name="maintain.syslog.level">None</item>
+		
+		<!-- Syslog Keyword Filter -->
+		<item name="maintain.syslog.keywordFiltering"></item>
+
+	<!-- Maintenance/System Diagnosis/Debug -->
+	
+		<!-- Core Dump -->
+		<!-- Enable Core Dump Generation -->
+		<!-- Yes, No -->
+		<item name="debug.coredump.enable">No</item>
+
+	<!-- Applications/Contacts -->
+	
+		<!-- Sort Phonebook by -->
+		<!-- LastName, FirstName -->
+		<item name="phonebook.sortBy">LastName</item>
+
+	<!-- Application/Contacts/Download Contacts -->
+
+		<!-- Clear The Old List -->
+		<!-- Yes, No -->
+		<!-- 0,  'Clear The Old List' is disabled.
+			 1,  'Clear The Old List' is enabled and 'Clear Old History Mode' is 'Clear all'.
+			 2,  'Clear The Old List' is enabled and 'Clear Old History Mode' is 'Keep Local Contacts'. -->
+		<item name="phonebook.clearOld.enable">No</item>
+
+		<!-- Replace Duplicate Items -->
+		<!-- Yes, No -->
+		<!-- 0,  'Replace Duplicate Items' is disabled.
+			 1,  'Replace Duplicate Items' is enabled and 'Replace Duplicate Entries Mode' is 'Replace by name'.
+			 2,  'Replace Duplicate Items' is enabled and 'Replace Duplicate Entries Mode' is 'Replace by number'. -->
+		<item name="phonebook.removeDuplicate.enable">Yes</item>
+
+		<!-- Download Mode -->
+		<!-- Disabled, EnabledUseHTTP, EnabledUseTFTP, EnabledUseHTTPS -->
+		<!-- EnabledUseHTTP, EnabledUseTFTP - Not Working correctly -->
+		<!-- <item name="phonebook.download.mode">Disabled</item> -->
+
+		<!-- File Encoding -->
+		<!-- GBK, UTF-8, UTF-16, UTF-32, Big5, Big5-HKSCS,  Shift-JIS, ISO 2022-JP, KOI8-R, ISO8859-1, ISO8859-15, Windows-1251, EUC-KR  -->
+		<item name="phonebook.download.encode">UTF</item>
+		
+		<!-- Download Server -->
+		<item name="phonebook.download.server"></item>
+		
+		<!-- HTTP/HTTPS User Name  -->
+		<item name="phonebook.download.username"></item>
+		
+		<!-- HTTP/HTTPS Password  -->
+		<item name="phonebook.download.password"></item>
+		
+		<!-- Automatic Download Interval -->
+		<!-- 0 - None, 5 - 5 min, 30 - 30 min, 60 - 1 Hour, 120 - 2 Hours, 240 - 4 Hours, 360 - 6 Hours, 480 - 8 Hours, 720 - 12 Hours -->
+		<!-- Mandatory -->
+		<item name="phonebook.download.interval">0</item>
+
+	<!-- Application/LDAP Phonebook -->
+		
+		<!-- Connection Mode-->
+		<!-- LDAP, LDAPS-->
+		<item name="ldap.protocol">LDAP</item>
+
+		<!-- Server Address -->
+		<!-- LDAP Server Address, up to 256 characters can be used. It can be IP address or Domain name -->
+		<!-- String -->
+		<item name="ldap.server"></item>
+
+		<!-- Port -->
+		<!-- Number: 1 - 65535. Default value is 389 -->
+		<item name="ldap.port">389</item>
+
+		<!-- Base DN. The LDAP search base refers to the location in the directory where the search is requested to begin -->
+		<!-- Example 1: dc=grandstream,dc=com -->
+		<!-- Example 2: ou=Boston,dc=grandstream,dc=com -->
+		<!-- String -->
+		<item name="ldap.base"></item>
+
+		<!-- User Name. The bind "Username" for querying LDAP servers. Some LDAP servers allow anonymous binds in which case the setting can be left blank -->
+		<!-- String -->
+		<item name="ldap.username"></item>
+
+		<!-- Password. The bind "Password" for querying LDAP servers. And the field can be left blank if the LDAP server allows anonymous binds -->
+		<!-- String -->
+		<item name="ldap.password"></item>
+
+		<!-- LDAP Name Attributes. This setting specifies the "name" attributes of each record which are returned in the LDAP search result -->
+		<!-- The setting allows the users to configure multiple space separated name attributes -->
+		<!-- String -->
+		<item name="ldap.ldapNameAttributes"></item>
+
+		<!-- LDAP Number Attributes. This setting specifies the "number" attributes of each record which are returned in the LDAP search result -->
+		<!-- The setting allows the users to configure multiple space separated number attributes -->
+		<!-- String -->
+		<item name="ldap.ldapNumberAttributes"></item>
+
+		<!-- LDAP Name Filter -->
+		<!-- LDAP name filter is the filter used for name look ups. Please refer to usermanual for examples -->
+		<!-- String -->
+		<item name="ldap.ldapNameFilter"></item>
+
+		<!-- LDAP Number Filter -->
+		<!-- LDAP name filter is the filter used for number look ups. Please refer to usermanual for examples -->
+		<!-- String -->
+		<item name="ldap.ldapNumberFilter"></item>
+
+		<!-- Search Field Filter -->
+		<!-- All Filter,Name Filter,Number Filter,Mail Filter -->
+		<item name="ldap.searchFieldFilter">All Filter</item>
+
+		<!-- LDAP Displaying Name Attributes. The entry information to be shown on phone LCD. Grandstream phones will display up to 3 fields -->
+		<!-- String -->
+		<item name="ldap.ldapDisplayName"></item>
+
+		<!-- Max Hits. The setting specifies the maximum number of results to be returned by the LDAP server -->
+		<!-- If the value is set to 0, server will return all search results. Default is 50 -->
+		<!-- Number: 0 - 32000 -->
+		<item name="ldap.maxHits">50</item>
+
+		<!-- Search Timeout (in seconds). Default is 4 -->
+		<!-- The setting specifies how long the server should process the request and client waits for server to return -->
+		<!-- Number: 0 - 180 -->
+		<item name="ldap.searchTimeout">4</item>
+
+		<!-- LDAP Lookup For Dial -->
+		<!-- Yes, No -->
+		<item name="ldap.outgoingCalls">No</item>
+
+		<!-- LDAP Lookup For Incoming Calls-->
+		<!-- Yes, No -->
+		<item name="ldap.ldapLookup">No</item>
+
+		<!-- LDAP Dialing Default Account -->
+		<!-- Default, Account1, Account2 -->
+		<item name="ldap.defalutAccount">Default</item>
+
+	<!-- Value-added Service/Door System  -->
+
+		<!-- 10 GDS entries are supported -->
+		
+		<!-- Door System Type -->
+		<!-- 0 - GDS, 1 - Others -->
+		<item name="externalService.1.account">0</item>
+		<item name="externalService.2.account">0</item>
+		<item name="externalService.3.account">0</item>
+		<item name="externalService.4.account">0</item>
+		<item name="externalService.5.account">0</item>
+		<item name="externalService.6.account">0</item>
+		<item name="externalService.7.account">0</item>
+		<item name="externalService.8.account">0</item>
+		<item name="externalService.9.account">0</item>
+		<item name="externalService.10.account">0</item>	
+		
+		<!-- Door System Name -->
+		<!-- String -->
+		<item name="externalService.1.systemId"></item>
+		<item name="externalService.2.systemId"></item>
+		<item name="externalService.3.systemId"></item>
+		<item name="externalService.4.systemId"></item>
+		<item name="externalService.5.systemId"></item>
+		<item name="externalService.6.systemId"></item>
+		<item name="externalService.7.systemId"></item>
+		<item name="externalService.8.systemId"></item>
+		<item name="externalService.9.systemId"></item>
+		<item name="externalService.10.systemId"></item>
+		
+		<!-- System Number -->
+		<!-- Number -->
+		<item name="externalService.1.systemNumber"></item>
+		<item name="externalService.2.systemNumber"></item>
+		<item name="externalService.3.systemNumber"></item>
+		<item name="externalService.4.systemNumber"></item>
+		<item name="externalService.5.systemNumber"></item>
+		<item name="externalService.6.systemNumber"></item>
+		<item name="externalService.7.systemNumber"></item>
+		<item name="externalService.8.systemNumber"></item>
+		<item name="externalService.9.systemNumber"></item>
+		<item name="externalService.10.systemNumber"></item>
+		
+		<!-- Access Password -->
+		<item name="externalService.1.password"></item>
+		<item name="externalService.2.password"></item>
+		<item name="externalService.3.password"></item>
+		<item name="externalService.4.password"></item>
+		<item name="externalService.5.password"></item>
+		<item name="externalService.6.password"></item>
+		<item name="externalService.7.password"></item>
+		<item name="externalService.8.password"></item>
+		<item name="externalService.9.password"></item>
+		<item name="externalService.10.password"></item>
+
+		<!-- System Ringtone (see ringtone value table). -->
+		<!-- String -->
+		<item name="externalService.1.ringtone">/system/media/audio/ringtones/DingDong</item>
+		<item name="externalService.2.ringtone">/system/media/audio/ringtones/DingDong</item>
+		<item name="externalService.3.ringtone">/system/media/audio/ringtones/DingDong</item>
+		<item name="externalService.4.ringtone">/system/media/audio/ringtones/DingDong</item>
+		<item name="externalService.5.ringtone">/system/media/audio/ringtones/DingDong</item>
+		<item name="externalService.6.ringtone">/system/media/audio/ringtones/DingDong</item>
+		<item name="externalService.7.ringtone">/system/media/audio/ringtones/DingDong</item>
+		<item name="externalService.8.ringtone">/system/media/audio/ringtones/DingDong</item>
+		<item name="externalService.9.ringtone">/system/media/audio/ringtones/DingDong</item>
+		<item name="externalService.10.ringtone">/system/media/audio/ringtones/DingDong</item>
+		
+	<!-- Value-added Service->BroadSoft Directories -->
+	
+		<!-- Authentication Type -->
+		<!-- SIPCredentials - SIP Credentials, LoginCredentials - Login Credentials -->
+		<item name="broadsoftXsi.authenticationType">LoginCredentials</item>
+
+		<!-- Server -->
+		<!-- String -->
+		<item name="broadsoftXsi.server"></item>
+
+		<!-- Port -->
+		<!-- Number: 0 - 65535 -->
+		<item name="broadsoftXsi.port">80</item>
+
+		<!-- Action Path -->
+		<!-- String -->
+		<item name="broadsoftXsi.actionsPath"></item>
+
+		<!-- BroadWorks User ID -->
+		<!-- String -->
+		<item name="broadsoftXsi.sip.userId"></item>
+
+		<!-- BroadWorks Authentication ID -->
+		<!-- String -->
+		<item name="broadsoftXsi.credential.username"></item>
+
+		<!-- BroadWorks Authentication Password -->
+		<!-- String -->
+		<item name="broadsoftXsi.credential.password"></item>
+
+		<!-- Login Password -->
+		<!-- String -->
+		<item name="broadsoftXsi.login.password"></item>
+
+		<!-- Broadsoft Directory & Call Logs Update Interval -->
+		<!-- Number: 60 - 2147483647 -->
+		<!-- TBA -->
+
+		<!-- BroadSoft Directory Hits -->
+		<!-- Number: 1 - 1000 -->
+		<item name="broadsoftXsi.directory.maxHits"></item>
+
+		<!-- Associated Broadsoft Account -->
+		<!-- Number: 0, 1 -->
+		<!-- TBA -->
+
+		<!-- BroadSoft Directory Order -->
+		<!-- TBA -->
+
+	<!-- Value-added Service/BroadSoft Directories/Network Directories -->
+
+		<!-- Group Directory -->
+		<!-- Yes, No -->
+		<item name="broadsoftXsi.directory.groupDirectory">Yes</item>
+
+		<!-- Name -->
+		<!-- String -->
+		<item name="broadsoftXsi.directory.groupDirectoryName"></item>
+
+		<!-- Enterprise Directory -->
+		<!-- Yes, No -->
+		<item name="broadsoftXsi.directory.enterpriseDirectory">Yes</item>
+
+		<!-- Name -->
+		<!-- String -->
+		<item name="broadsoftXsi.directory.enterpriseDirectoryName"></item>
+
+		<!-- Group Common -->
+		<!-- Yes, No -->
+		<item name="broadsoftXsi.directory.groupCommon">Yes</item>
+
+		<!-- Name -->
+		<!-- String -->
+		<item name="broadsoftXsi.directory.groupCommonName"></item>
+
+		<!-- Enterprise Common -->
+		<!-- Yes, No -->
+		<item name="broadsoftXsi.directory.enterpriseCommon">Yes</item>
+
+		<!-- Common Name -->
+		<!-- String -->
+		<item name="broadsoftXsi.directory.enterpriseCommonName"></item>
+
+		<!-- Personal Directory -->
+		<!-- Yes, No -->
+		<item name="broadsoftXsi.directory.personalDirectory">Yes</item>
+
+		<!-- Name -->
+		<!-- String -->
+		<item name="broadsoftXsi.directory.personalDirectoryName"></item>
+
+		<!-- Missed Call Log -->
+		<!-- Yes, No -->
+		<item name="broadsoftXsi.directory.missedCallLog">Yes</item>
+
+		<!-- Name -->
+		<!-- String -->
+		<item name="broadsoftXsi.directory.missedCallLogName"></item>
+
+		<!-- Placed Call Log -->
+		<!-- Yes, No -->
+		<item name="broadsoftXsi.directory.placedCallLog">Yes</item>
+
+		<!-- Name -->
+		<!-- String -->
+		<item name="broadsoftXsi.directory.placedCallLogName"></item>
+
+		<!-- Received Call Log -->
+		<!-- Yes, No -->
+		<item name="broadsoftXsi.directory.receivedCallLog">Yes</item>
+
+		<!-- Name -->
+		<!-- String -->
+		<item name="broadsoftXsi.directory.receivedCallLogName"></item>
+
+	<!-- Value-added Service/SAFE/Panic Call -->
+	
+		<!-- WP8xx safety monitoring -->
+		<!-- On, Off -->
+		<!-- <item name="safepanic.monitoring.enable">Off</item> -->
+
+		<!-- WP8xx no-movement sensitivity. 0 - Disable, 1 - Level 1 (lowest), 2 - Level 2, 3 - Level 3, 4 - Level 4, 5 - Level 5, 6 - Level 6, 7 - Level 7 (highest). Default 0.   -->
+		<!-- Number: 0 - 7 -->
+		<!-- <item name="safepanic.nomovement.sensitivity">0</item> -->
+
+		<!-- WP8xx no-movement timeout. Default is 5.   -->
+		<!-- Number: 5 - 300 -->
+		<!-- <item name="safepanic.nomovement.timeout">5</item> -->
+
+		<!-- WP8xx tilt sensitivity. 0 - Disable, 1 - Level 1 (lowest), 2 - Level 2, 3 - Level 3, 4 - Level 4, 5 - Level 5, 6 - Level 6, 7 - Level 7 (highest). Default 0. -->
+		<!-- Number: 0 - 7 -->
+		<!-- <item name="safepanic.tilt.sensitivity"></item> -->
+
+		<!-- WP8xx tilt timeout  -->
+		<!-- Number: 5 - 300 -->
+		<!-- <item name="safepanic.tilt.timeout">5</item> -->
+
+		<!-- WP8xx running sensitivity. 0 - Disable, 1 - Level 1 (lowest), 2 - Level 2, 3 - Level 3, 4 - Level 4, 5 - Level 5, 6 - Level 6, 7 - Level 7 (highest). Default 0. -->
+		<!-- Number: 0 - 7 -->
+		<!-- <item name="safepanic.running.sensitivity"></item> -->
+
+		<!-- WP8xx running timeout  -->
+		<!-- Number: 5 - 300 -->
+		<!-- <item name="safepanic.running.timeout">5</item> -->
+
+		<!-- WP8xx snooze timeout  -->
+		<!-- Number: 0 - 300 -->
+		<!-- <item name="safepanic.snooze.timeout">0</item> -->
+
+		<!-- WP8xx warning timeout  -->
+		<!-- Numnber: 5 - 60 -->
+		<!-- <item name="safepanic.warning.timeout">5</item> -->
+
+		<!-- WP8xx panic call silent alarm -->
+		<!-- Off, On -->
+		<!-- <item name="safepanic.silence.alarm.enable">On</item> -->
+
+		<!-- WP8xx emergency call -->
+		<!-- Off, On -->
+		<!-- <item name="safepanic.emergency.call.enable">On</item> -->
+		
+		<!-- Associated Account -->
+		<!-- Number: 0 - Account 1, 1 - Account 2 -->
+		<!-- <item name="safepanic.emergency.call.account">0</item> -->
+
+		<!-- Emergency Dial Force Speaker -->
+		<!-- On, Off -->
+		<!-- <item name="safepanic.forceuse.speaker.enable">Off</item> -->
+
+		<!-- WP8xx emergency call number -->
+		<!-- String -->
+		<!-- <item name="safepanic.emergency.call.number"></item> -->
+
+		<!-- ################################Warning Tone Value Table################################
+		Web GUI Option                      Value
+		Adara								/system/media/audio/notifications/Adara.ogg
+		Aldebaran							/system/media/audio/notifications/Aldebaran.ogg
+		Altair								/system/media/audio/notifications/Altair.ogg
+		Alya								/system/media/audio/notifications/Alya.ogg
+		Antares								/system/media/audio/notifications/Antares.ogg
+		Antimony							/system/media/audio/notifications/Antimony.ogg
+		Arcturus							/system/media/audio/notifications/Arcturus.ogg
+		Argon								/system/media/audio/notifications/Argon.ogg
+		Beat Box Android					/system/media/audio/notifications/Beat_Box_Android.ogg
+		Bellatrix							/system/media/audio/notifications/Bellatrix.ogg
+		Beryllium							/system/media/audio/notifications/Beryllium.ogg
+		Betegeuse							/system/media/audio/notifications/Betegeuse.ogg
+		Caffeinated Rattlesnake				/system/media/audio/notifications/CaffeineSnake.ogg
+		Canopus								/system/media/audio/notifications/Canopus.ogg
+		Capella								/system/media/audio/notifications/Capella.ogg
+		Captain's Log						/system/media/audio/notifications/F1_New_MMS.ogg
+		Castor								/system/media/audio/notifications/Castor.ogg
+		Ceti Alpha							/system/media/audio/notifications/CetiAlpha.ogg
+		Cobalt								/system/media/audio/notifications/Cobalt.ogg
+		Cricket								/system/media/audio/notifications/Cricket.ogg
+		Dear Deer							/system/media/audio/notifications/DearDeer.ogg
+		Deneb								/system/media/audio/notifications/Deneb.ogg
+		Doink								/system/media/audio/notifications/Doink.ogg
+		Don't Panic							/system/media/audio/notifications/DontPanic.ogg
+		Drip								/system/media/audio/notifications/Drip.ogg
+		Electra								/system/media/audio/notifications/Electra.ogg
+		Fluorine							/system/media/audio/notifications/Fluorine.ogg
+		Fomalhaut							/system/media/audio/notifications/Fomalhaut.ogg
+		Gallium								/system/media/audio/notifications/Gallium.ogg
+		Heaven								/system/media/audio/notifications/Heaven.ogg
+		Helium								/system/media/audio/notifications/Helium.ogg
+		Highwire							/system/media/audio/notifications/Highwire.ogg
+		Hojus								/system/media/audio/notifications/Hojus.ogg
+		Iridium								/system/media/audio/notifications/Iridium.ogg
+		Krypton								/system/media/audio/notifications/Krypton.ogg
+		Kzurb Sonar							/system/media/audio/notifications/KzurbSonar.ogg
+		Lalande								/system/media/audio/notifications/Lalande.ogg
+		Look At Me							/system/media/audio/notifications/F1_New_SMS.ogg
+		Merope								/system/media/audio/notifications/Merope.ogg
+		Mira								/system/media/audio/notifications/Mira.ogg
+		Missed It							/system/media/audio/notifications/F1_MissedCall.ogg
+		Moonbeam							/system/media/audio/notifications/moonbeam.ogg
+		On The Hunt							/system/media/audio/notifications/OnTheHunt.ogg
+		Palladium							/system/media/audio/notifications/Palladium.ogg
+		Pixie Dust							/system/media/audio/notifications/pixiedust.ogg
+		Pizzicato							/system/media/audio/notifications/pizzicato.ogg
+		Plastic Pipe 						/system/media/audio/notifications/Plastic_Pipe.ogg
+		Polaris								/system/media/audio/notifications/Polaris.ogg
+		Pollux								/system/media/audio/notifications/Pollux.ogg
+		Procyon								/system/media/audio/notifications/Procyon.ogg
+		Proxima								/system/media/audio/notifications/Proxima.ogg
+		Radon								/system/media/audio/notifications/Radon.ogg
+		Regulus								/system/media/audio/notifications/regulus.ogg
+		Rubidiu								/system/media/audio/notifications/Rubidium.ogg
+		Selenium							/system/media/audio/notifications/Selenium.ogg
+		Shaula								/system/media/audio/notifications/Shaula.ogg
+		Sirius								/system/media/audio/notifications/sirius.ogg
+		Sirrah								/system/media/audio/notifications/Sirrah.ogg
+		Space Seed							/system/media/audio/notifications/SpaceSeed.ogg
+		Spica								/system/media/audio/notifications/Spica.ogg
+		Strontium							/system/media/audio/notifications/Strontium.ogg
+		Syrma								/system/media/audio/notifications/Syrma.ogg
+		Ta Da								/system/media/audio/notifications/TaDa.ogg
+		Talitha								/system/media/audio/notifications/Talitha.ogg
+		Tejat								/system/media/audio/notifications/Tejat.ogg
+		Thallium							/system/media/audio/notifications/Thallium.ogg
+		Thinkerbell							/system/media/audio/notifications/Tinkerbell.ogg
+		Tweeters							/system/media/audio/notifications/tweeters.ogg
+		Upsilon								/system/media/audio/notifications/Upsilon.ogg
+		Vega								/system/media/audio/notifications/vega.ogg
+		Voila								/system/media/audio/notifications/Voila.ogg
+		Xenon								/system/media/audio/notifications/Xenon.ogg
+		Zirconium							/system/media/audio/notifications/Zirconium.ogg -->
+
+		<!-- WP8xx warning tone -->
+		<!-- <item name="safepanic.warning.tone"></item> -->
+
+
+		<!-- ################################Alarm Tone Value Table################################
+		Web GUI Option                      Value
+		Argon								/system/media/audio/alarms/Argon.ogg
+		Barium								/system/media/audio/alarms/Barium.ogg
+		BeeBeep Alarm						/system/media/audio/alarms/Alarm_Beep_02.ogg
+		Beep-Beep-Beep Alarm				/system/media/audio/alarms/Alarm_Beep_03.ogg
+		Buzzer Alarm						/system/media/audio/alarms/Alarm_Buzzer.ogg
+		Carbon								/system/media/audio/alarms/Carbon.ogg
+		Cesium								/system/media/audio/alarms/Alarm_Classic.ogg
+		Fermium								/system/media/audio/alarms/Fermium.ogg
+		Hassium								/system/media/audio/alarms/Hassium.ogg
+		Hellium								/system/media/audio/alarms/Helium.ogg
+		Krypton								/system/media/audio/alarms/Krypton.ogg
+		Neon								/system/media/audio/alarms/Neon.ogg
+		Neptunium							/system/media/audio/alarms/Neptunium.ogg
+		Nobelium							/system/media/audio/alarms/Nobelium.ogg
+		Osmium								/system/media/audio/alarms/Osmium.ogg
+		Oxygen								/system/media/audio/alarms/Oxygen.ogg
+		Piezo Alarm							/system/media/audio/alarms/Alarm_Beep_01.ogg
+		Platinum							/system/media/audio/alarms/Platinum.ogg
+		Plutonium							/system/media/audio/alarms/Plutonium.ogg
+		Rooster Alarm						/system/media/audio/alarms/Alarm_Rooster_02.ogg
+		Scandium							/system/media/audio/alarms/Scandium.ogg -->
+
+		<!-- WP8xx alarm tone  -->
+		<!-- <item name="safepanic.alarm.tone"></item> -->
+		
+	<!-- Handset/Speed Dial -->
+
+		<!-- Key 0 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0.  -->
+		<!-- Number: 0, 1 -->
+		<!-- <item name="pks.mpk.1.account">0</item> -->
+
+		<!-- Key 0 SpeedDial Number -->
+		<!-- String -->
+		<!-- <item name="pks.mpk.1.value"></item> -->
+
+		<!-- Key 2 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0. -->
+		<!-- Number: 0, 1 -->
+		<!-- <item name="pks.mpk.3.account">0</item> -->
+
+		<!-- Key 2 SpeedDial Number -->
+		<!-- String -->
+		<!-- <item name="pks.mpk.3.value"></item> -->
+
+		<!-- Key 3 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0. -->
+		<!-- Number: 0, 1 -->
+		<!-- <item name="pks.mpk.4.account">0</item> -->
+
+		<!-- Key 3 SpeedDial Number -->
+		<!-- String -->
+		<!-- <item name="pks.mpk.4.value"></item> -->
+
+		<!-- Key 4 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0. -->
+		<!-- Number: 0, 1 -->
+		<!-- <item name="pks.mpk.5.account">0</item> -->
+
+		<!-- Key 4 SpeedDial Number -->
+		<!-- String -->
+		<!-- <item name="pks.mpk.5.value"></item> -->
+
+		<!-- Key 5 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0. -->
+		<!-- Number: 0, 1 -->
+		<!-- <item name="pks.mpk.6.account">0</item> -->
+
+		<!-- Key 5 SpeedDial Number -->
+		<!-- String -->
+		<!-- <item name="pks.mpk.6.value"></item> -->
+
+		<!-- Key 6 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0. -->
+		<!-- Number: 0, 1 -->
+		<!-- <item name="pks.mpk.7.account">0</item> -->
+
+		<!-- Key 6 SpeedDial Number -->
+		<!-- String -->
+		<!-- <item name="pks.mpk.7.value"></item> -->
+
+		<!-- Key 7 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0. -->
+		<!-- Number: 0, 1 -->
+		<!-- <item name="pks.mpk.8.account">0</item> -->
+
+		<!-- Key 7 SpeedDial Number -->
+		<!-- String -->
+		<!-- <item name="pks.mpk.8.value"></item> -->
+
+		<!-- Key 8 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0. -->
+		<!-- Number: 0, 1 -->
+		<!-- <item name="pks.mpk.9.account">0</item> -->
+
+		<!-- Key 8 SpeedDial Number -->
+		<!-- String -->
+		<!-- <item name="pks.mpk.9.value"></item> -->
+
+		<!-- Key 9 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0. -->
+		<!-- Number: 0, 1 -->
+		<!-- <item name="pks.mpk.10.account">0</item> -->
+
+		<!-- Key 9 SpeedDial Number -->
+		<!-- String -->
+		<!-- <item name="pks.mpk.10.value"></item>	 -->
+		
+		</config>
+</gs_provision>

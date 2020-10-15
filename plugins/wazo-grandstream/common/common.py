@@ -36,11 +36,12 @@ class GrandstreamHTTPDeviceInfoExtractor(object):
     # Grandstream Model HW GXP2200 V2.2A SW 1.0.1.33 DevId 000b82462d97
     # Grandstream Model HW GXV3240 V1.6B SW 1.0.1.27 DevId 000b82632815
     # Grandstream GXP2000 (gxp2000e.bin:1.2.5.3/boot55e.bin:1.1.6.9) DevId 000b822726c8
+    # Grandstream Model HW GXW4248  V1.2A SW 1.0.9.4 DevId c074ad18429b
     # Grandstream GXW4248 (DevId c074ad18429a / c074ad18429b)
     # Grandstream GXW4216 (DevId c074ad1e8bc6)
 
     _UA_REGEX_LIST = [
-        re.compile(r'^Grandstream Model HW (\w+)(?: V[^ ]+)? SW ([^ ]+) DevId ([^ ]+)'),
+        re.compile(r'^Grandstream Model HW (\w+)(?:  V[^ ]+)? SW ([^ ]+) DevId ([^ ]+)'),
     ]
 
     def extract(self, request, request_type):
@@ -56,7 +57,9 @@ class GrandstreamHTTPDeviceInfoExtractor(object):
     def _extract_from_ua(self, ua):
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
+            logger.debug('m: %s',m)
             if m:
+                logger.debug('match regex')
                 raw_model, raw_version, raw_mac = m.groups()
                 logger.debug('model: %s, version: %s', raw_model, raw_version)
                 try:

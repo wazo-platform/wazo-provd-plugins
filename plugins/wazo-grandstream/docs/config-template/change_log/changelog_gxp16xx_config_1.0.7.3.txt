@@ -1,0 +1,2320 @@
+################################################################################################
+## GXP16xx Change Log                                                                         ##
+################################################################################################
+################################################################################################
+# P value added since 1.0.5.3                                                                 ##
+################################################################################################
+# Account 1 - Auto Answer Numbers
+# String
+# P29064 = 
+
+# Account 2 - Auto Answer Numbers
+# String
+# P29164 = 
+
+# Account 3 - Auto Answer Numbers
+# String
+# P29264 = 
+
+################################################################################################
+# P value added since 1.0.4.152                                                               ##
+################################################################################################
+##############################################################################
+##  Maintenance/Security Settings/Security                                  ##
+##############################################################################
+# Minimum TLS Version. 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2. Default is 11.
+# Number: 10, 11, 12
+# Mandatory
+# P22293 = 11
+
+# Maximum TLS Version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2. Default is 99
+# Number: 99, 10, 11, 12
+# Mandatory
+# P22294 = 99
+
+# Enable/Disable Weak Ciphers. Default is 0
+# 0 - Enable Weak TLS Ciphers Suites
+# 1 - Disable Symmetric Encryption RC4/DES/3DES
+# 2 - Disable Symmetric Encryption SEED
+# 3 - Disable All Weak Symmetric Encryption
+# 4 - Disable Symmetric Authentication MD5
+# 5 - Disable All Weak TLS Cipher Suites
+# Number: 0 - 5
+# P8536 = 0
+
+################################################################################################
+# P value added since 1.0.4.140                                                               ##
+################################################################################################
+# Account 1 - Add Auth Header On Initial REGISTER
+# 0 - No, 1 - Yes. Default is 0
+# Number 0,1
+# Mandatory
+# P2359 = 0 
+
+# Account 2 - Add Auth Header On Initial REGISTER
+# 0 - No, 1 - Yes. Default is 0
+# Number 0,1
+# Mandatory
+# P2459 = 0 
+
+# Account 3 - Add Auth Header On Initial REGISTER
+# 0 - No, 1 - Yes. Default is 0
+# Number 0,1
+# Mandatory
+# P2559 = 0 
+
+################################################################################################
+# P value added since 1.0.4.132                                                               ##
+################################################################################################
+# Account 1 - Switch Backup Proxy on No Response. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P26092 = 0
+
+# Account 1 - Use MAC Header. 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P26061 = 0
+
+# Account 1 - Force BLF Call-pickup by prefix. For GXP1630/1628 only. 0 - No, 1 - Yes. Default is 0 
+# Number: 0, 1
+# Mandatory
+# P6752 = 0
+
+# Account 1 - Blind Transfer Wait Timeout, in seconds. Default is 30
+# Number: 30 to 300
+# P26070 = 30
+
+# Account 1 - Call Forward Unconditionally (All) ON
+# String
+# P26013 =
+
+# Account 1 - Call Forward Unconditionally (All) - OFF
+# String
+# P26014 =
+
+# Account 1 - Call Forward Busy - ON
+# String
+# P26009 =
+
+# Account 1 - Call Forward Busy - OFF
+# String
+# P26010 =
+
+# Account 1 - Call Forward Delayed (No Answer) - ON
+# String
+# P26011 =
+
+# Account 1 - Call Forward Delayed (No Answer) - OFF
+# String
+# P26012 =
+
+# Account 1 - Callee ID Display. 0 - Auto, 1 - Disabled, 2 - To Header. Default is 0
+# Number: 0, 1, 2
+# Mandatory 
+# P26025 = 0
+
+# Account 2 - Switch Backup Proxy on No Response. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P26192 = 0
+
+# Account 2 - Force BLF Call-pickup by prefix. For GXP1630/1628 only. 0 - No, 1 - Yes. Default is 0 
+# Number: 0, 1
+# Mandatory
+# P6753 = 0
+
+# Account 2 - Blind Transfer Wait Timeout, in seconds. Default is 30
+# Number: 30 to 300
+# P26170 = 30
+
+# Account 2 - Call Forward Unconditionally (All) ON
+# String
+# P26113 =
+
+# Account 2 - Call Forward Unconditionally (All) - OFF
+# String
+# P26114 =
+
+# Account 2 - Call Forward Busy - ON
+# String
+# P26109 =
+
+# Account 2 - Call Forward Busy - OFF
+# String
+# P26110 =
+
+# Account 2 - Call Forward Delayed (No Answer) - ON
+# String
+# P26111 =
+
+# Account 2 - Call Forward Delayed (No Answer) - OFF
+# String
+# P26112 =
+
+# Account 2 - Callee ID Display. 0 - Auto, 1 - Disabled, 2 - To Header. Default is 0
+# Number: 0, 1, 2
+# Mandatory 
+# P26125 = 0
+
+# Account 3 - Force BLF Call-pickup by prefix. For GXP1630/1628 only. 0 - No, 1 - Yes. Default is 0 
+# Number: 0, 1
+# Mandatory
+# P6754 = 0
+
+# Account 3 - Changed the webUI option name "Use # as Dial Key" to "Key as Send". 0 - Disable, 1 - Pound (#). Default is 1
+# Number: 0, 1
+# Mandatory
+# P592 = 1
+
+# Network/Advanced Settings
+# Enable Manual VLAN Configuration. 0 - Disable, 1 - Enable. Default is 1
+# Number: 0, 1
+# Mandatory
+# P22174 = 1
+
+# Network/OpenVPN Settings. OpenVPN Comp-lzo. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P8508 = 1
+
+# Network/OpenVPN Settings. Additional Options
+# String
+# P8460 =
+
+# Network/OpenVPN Settings. Version. 1 - Version 1, 2 - Version 2, 3 - Version 3. Default is 3
+# Number: 1, 2, 3
+# Mandatory
+# P21904 = 3
+
+# Network/OpenVPN Settings. Port
+# Number
+# P21903 = 161
+
+# Network/SNMP Settings. SNMP Trap Version
+# Number: 1 - Version 1, 2 - Version 2, 3 - Version 3. Default is 2
+# Mandatory
+# P21899 = 2
+
+# Network/SNMP Settings. Community
+# String
+# P21902 =
+
+# Network/SNMP Settings. SNMP Trap Community
+# String
+# P21900 =
+
+# Network/SNMP Settings. SNMP Username
+# String
+# P21905 =
+
+# Network/SNMP Settings. Security Level. 0 - noAuthUser, 1 - authUser, 2 - privUser. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P21910 = 0
+
+# Network/SNMP Settings. Authentication Protocol. 0 - None, 1 - MD5, 2 - SHA. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P21906 = 0
+
+# Network/SNMP Settings. Privacy Protocol. 0 - None, 1 - DES, 2 - AES. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P21907 = 0
+
+# Network/SNMP Settings. Authentication Key
+# String
+# P21908 =
+
+# Network/SNMP Settings. Private Key
+# String
+# P21909 =
+
+# Network/SNMP Settings. SNMP Trap Username
+# String
+# P21911 =
+
+# Network/SNMP Settings. Trap Security Level. 0 - noAuthUser, 1 - authUser, 2 - privUser. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P21916 = 0
+
+# Network/SNMP Settings. Trap Authentication Protocol. 0 - None, 1 - MD5, 2 - SHA. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P21912 = 0
+
+# Network/SNMP Settings. Trap Privacy Protocol. 0 - None, 1 - DES, 2 - AES. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P21913 = 0
+
+# Network/SNMP Settings. Trap Authentication Key
+# String
+# P21914 =
+
+# Network/SNMP Settings. Trap Private Key
+# String
+# P21915 =
+
+# Maintenance/Upgrade and Provisioning
+# Randomized Automatic Upgrade. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8458 = 0
+
+# Maintenance/Action URL. Register Failed
+# String
+# P8307 =
+
+# Maintenance/Action URL. Answered Call
+# String
+# P22171 =
+
+# Maintenance/Action URL. Rejected Call
+# String
+# P8315 =
+
+# Maintenance/Action URL. Forwarded Call
+# String
+# P22172 =
+
+# Maintenance/Action URL. Open Unconditional Forward
+# String
+# P22164 = 
+
+# Maintenance/Action URL. Close Unconditional Forward
+# String
+# P22165 = 
+
+# Maintenance/Action URL. Open Busy Forward
+# String
+# P22166 = 
+
+# Maintenance/Action URL. Close Busy Forward
+# String
+# P22167 = 
+
+# Maintenance/Action URL. Open No Answer Forward
+# String
+# P22168 = 
+
+# Maintenance/Action URL. Close No Answer Forward
+# String
+# P22169 = 
+
+# Maintenance/Action URL. IP Change
+# String
+# P22170 =
+
+# Maintenance/Action URL. Auto-Provision Finish
+# String
+# P8332 =
+
+# Maintenance/Security Settings/Security. Keypad Lock Type. 0 - Full, 1 - Functional. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8383 = 0
+
+# Maintenance/Security Settings/Security. Emergency Numbers
+# String
+# P8385 = 
+
+# Maintenance/Security Settings/Security. Keypad Lock Timer
+# Number: 0 - 3600
+# P8384 = 
+
+# Maintenance/Security Settings/Trusted CA Certificate. Load CA Certificates. 
+# 0 - Default Certificates, 1 - Custom Certificates, 2- All Certificates. Default is 2
+# Number: 0, 1, 2
+# P8502 = 2
+
+# Settings/General Settings. DNS Cache Refresh Time, in minutes. Default is 30
+# Number: 5 - 1440
+# P4208 =
+
+# Settings/Call Features. Use Pound # For Redial. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P8504 = 1
+
+# Settings/Call Features. Show On Hold Duration. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8503 = 0
+
+# Settings/Call Features. Hide/Disable Reject Key. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8511 = 0
+
+# Settings/Call Features. Enable Diversion Information Display. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P22237 = 1
+
+# Settings/Call Features. Disable Busy Tone on Remote Disconnect. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P6762 = 0
+
+# Settings/Multicast Paging. Multicast Channel Number. 0 - 50. Default is 0
+# Number
+# Mandatory
+# P8454 = 0
+
+# Settings/Multicast Paging. Multicast Sender ID
+# String
+# P8455 =
+
+# Settings/Preferences/Ringtone. Default Ringtone
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3, 4 - Silent, 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8, 11 - Custom Ringtone 9, 12 - Custom Ringtone 10
+# Number: 0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12. Default is 0
+# P8398 = 0
+
+# Settings/Preferences/Ringtone. Total Number of Custom Ringtone Update Default is 3
+# Number: 1 - 10
+# P8509 = 3
+
+# Settings/Broadsoft/Broadsoft Directories: Sort Phonebook by. 0 - Last Name, 1 - First Name. Default is 0
+# Number: 0, 1
+# Mandatory
+# P22131 = 0
+
+################################################################################################
+# P value removed since 1.0.4.132                                                               ##
+################################################################################################
+# Removed "Hide System Softkeys on Main Page" in Settings->Preferences->LCD display
+# String: Missed,ForwardAll,Redial,Forward
+# P8348 = 
+
+################################################################################################
+# Other changes since 1.0.4.132                                                               ##
+################################################################################################
+# Account 1 - Changed webUI name for "Use # as Dial Key" to "Key as Send". 
+# 0 - Disable, 1 - Pound (#). Default is 1
+# Number: 0, 1
+# Mandatory
+# P72 = 1
+
+# Account 1 - Added more custom ringtone choices for "Account Ring Tone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3, 6 - Custom Ringtone 4, 
+# 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 5
+# Number: 0 - 12
+# Mandatory
+# P104 = 5
+
+# Account 1 - Added more custom ringtone choices for "Matching Rule 1 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P1489 = 0
+
+# Account 1 - Added more custom ringtone choices for "Matching Rule 2 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P1491 = 0
+
+# Account 1 - Added more custom ringtone choices for "Matching Rule 3 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P1493 = 0
+
+# Account 1 - Added more custom ringtone choices for "Matching Rule 4 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P6717 = 0
+
+# Account 1 - Added more custom ringtone choices for "Matching Rule 5 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P6719 = 0
+
+# Account 1 - Added more custom ringtone choices for "Matching Rule 6 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P6721 = 0
+
+# Account 1 - Added more custom ringtone choices for "Matching Rule 7 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26065 = 0
+
+# Account 1 - Added more custom ringtone choices for "Matching Rule 8 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26067 = 0
+
+# Account 1 - Added more custom ringtone choices for "Matching Rule 9 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26069 = 0
+
+# Account 1 - Added more custom ringtone choices for "Matching Rule 10 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26097 = 0
+
+# Account 2 - Changed webUI option name "Use # as Dial Key" to "Key as Send". 0 - Disable, 1 - Pound (#). Default is 1
+# Number: 0, 1
+# Mandatory
+# P72 = 1
+
+# Account 2 - Added more custom ringtone choices for "Account Ring Tone". 
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 5
+# Number: 0 - 12
+# P423 = 5
+
+# Account 2 - Added more custom ringtone choices for "Matching Rule 1 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P1495 = 0
+
+# Account 2 - Added more custom ringtone choices for "Matching Rule 2 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P1497 = 0
+
+# Account 2 - Added more custom ringtone choices for "Matching Rule 3 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P1499 = 0
+
+# Account 2 - Added more custom ringtone choices for "Matching Rule 4 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P6723 = 0
+
+# Account 2 - Added more custom ringtone choices for "Matching Rule 5 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P6725 = 0
+
+# Account 2 - Added more custom ringtone choices for "Matching Rule 6 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P6727 = 0
+
+# Account 2 - Added more custom ringtone choices for "Matching Rule 7 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26165 = 0
+
+# Account 2 - Added more custom ringtone choices for "Matching Rule 8 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26167= 0
+
+# Account 2 - Added more custom ringtone choices for "Matching Rule 9 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26169 = 0
+
+# Account 2 - Added more custom ringtone choices for "Matching Rule 10 Distinctive Ringtone"
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26197 = 0
+
+# Account 3 - Added more custom ringtone options for "Account Ring Tone". 
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 5
+# Number: 0 - 12
+# P523 = 5
+
+# Account 3 - Added more custom ringtone options for "Matching Rule 1 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P1501 = 0
+
+# Account 3 - Added more custom ringtone options for "Matching Rule 2 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P1503 = 0
+
+# Account 3 - Added more custom ringtone options for "Matching Rule 3 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P1505 = 0
+
+# Account 3 - Added more custom ringtone options for "Matching Rule 4 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P6729 = 0
+
+# Account 3 - Added more custom ringtone options for "Matching Rule 5 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P6731 = 0
+
+# Account 3 - Added more custom ringtone options for "Matching Rule 6 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P6733 = 0
+
+# Account 3 - Added more custom ringtone options for "Matching Rule 7 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26265 = 0
+
+# Account 3 - Added more custom ringtone options for "Matching Rule 8 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26267 = 0
+
+# Account 3 - Added more custom ringtone options for "Matching Rule 9 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26269 = 0
+
+# Account 3 - Added more custom ringtone options for "Matching Rule 10 Distinctive Ringtone".
+# 0 - System Ringtone, 1 - Custom Ringtone 1, 2 - Custom Ringtone 2, 3 - Custom Ringtone 3
+# 6 - Custom Ringtone 4, 7 - Custom Ringtone 5, 8 - Custom Ringtone 6, 9 - Custom Ringtone 7, 10 - Custom Ringtone 8
+# 11 - Custom Ringtone 9, 12 - Custom Ringtone 10, 4 - Silent, 5 - Default Ringtone
+# Default is 0
+# Number: 0 - 12
+# Mandatory
+# P26297 = 0
+
+################################################################################################
+# P value added since 1.0.4.106                                                               ##
+################################################################################################
+###############################################################
+# Account 1/2/3 Call Settings
+###############################################################
+# Matching Incoming Caller ID. Matching Rule 4
+# String
+# P6716/P6722/P6728 = 
+
+# Matching Rule 4 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P6717/P6723/P6729 = 0
+
+# Matching Incoming Caller ID. Matching Rule 5
+# String
+# P6718/P6724/P6730 = 
+
+# Matching Rule 5 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P6719/P6725/P6731 = 0
+
+# Matching Incoming Caller ID. Matching Rule 6
+# String
+# P6720/P6726/P6732 = 
+
+# Matching Rule 6 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P6721/P6727/P6733 = 0
+
+# Matching Incoming Caller ID. Matching Rule 7
+# String
+# P26064/P26164/P26264 = 
+
+# Matching Rule 7 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P26065/P26165/P26265 = 0
+
+# Matching Incoming Caller ID. Matching Rule 8
+# String
+# P26066/P26166/P26266 =
+
+# Matching Rule 8 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P26067/P26167/P26267 = 0
+
+# Matching Incoming Caller ID. Matching Rule 9
+# String
+# P26068/P26168/P26268 =
+
+# Matching Rule 9 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P26069/P26169/P26269 = 0
+
+# Matching Incoming Caller ID. Matching Rule 10
+# String
+# P26096/P26196/P26296 =
+
+# Matching Rule 10 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P26097/P26197/P26297 = 0
+
+# On Hold Reminder Tone. 0 - Disabled, 1 - Enable. Default is 0
+# Number: 0, 1
+# Mandatory
+# P26006/P26106/P26206 = 0
+
+##########################################
+# Account 1/2/3 Audio Settings
+##########################################
+# Codec Negotiation Priority. 0 - Caller, 1 - Callee. Default is 1
+# Number: 0, 1
+# Mandatory
+#P29061 / P29161 / P29261 = 1
+
+##########################################
+##  Maintenance/Security Settings/Security
+##########################################
+# Web Session Timeout. Default is 10.
+# Number: 2-60
+# Mandatory
+#P28116 = 10
+
+# Web Access Attempt Limit. Default is 5.
+# Number: 1-10
+# Mandatory
+#P28117 = 5
+
+##########################################
+# Account 1/2/3 Call Settings
+##########################################
+# Bypass Dial Plan. Default is Mpk
+# String: Contact, Call History Incoming Call, Call History Outgoing Call, Dialing Page, Mpk, Api
+# P2382 / P2482 / P2582 = Mpk
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Enable Live DialPad.
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P8350 = 0
+
+# Live DialPad Expire Time
+# Number: 2 - 15. Default is 5.
+# Mandatory
+# P8351 = 5
+
+# Onhook Dial Barging. Default is 1
+# Number: 0 - Disabled, 1 - Enabled.
+# Mandatory
+# P8397 = 1
+
+# Off-hook Auto Dial Delay
+# Number: 0 - 30
+# Mandatory
+# P8388 = 0
+
+# Auto Answer Delay. Default is 0.
+# Number: 0 - 4.
+# Mandatory
+# P8486 = 0
+
+# Enable Enhanced Acoustic Echo Canceller. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P22175 = 1
+
+##############################################################################
+##  Maintenance/TR-069
+##############################################################################
+# Randomized TR069 Startup. 0 - Disabled, 1 - Enabled. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8487 = 0
+
+##############################################################################
+##  Settings/Preferences/Audio Control
+##############################################################################
+# Grouop Listen with Speaker. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P22163 = 0
+
+##############################################################################
+##  Settings/XML Applications
+##############################################################################
+# Server Path
+# String
+# P337 = 
+
+# Softkey Label
+# String
+# P352 = 
+
+################################################################################################
+# P value added since 1.0.4.100                                                               ##
+################################################################################################
+###############################################################
+# Account 1/2/3/Intercom Settings
+###############################################################
+# Mute on answer Intercom call. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P26071/P26171/P26271 = 0
+
+# Play warning tone for Auto Answer Intercom. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P26072/P26172/P26272 = 0
+
+################################################################################################
+# P value added since 1.0.4.88                                                                ##
+################################################################################################
+##############################################################################
+##  Settings/Programmable Keys/Multi-Purpose Keys Settings
+##############################################################################
+# Call Screen Settings
+# Transfer Mode via VPK. 0 - Blind Transfer, 1 - Attended Transfer, 2 - New Call. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+#P8390 = 0
+
+# Enable transfer via non-Transfer MPK. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P22162 = 0
+
+
+##############################################################################
+
+##  Settings/Preferences/LCD Display
+
+##############################################################################
+# Active Backlight Timeout. Default is 1
+# Number: 1 - 90
+# Mandatory
+# P8356 = 1
+
+# Disable Missed Call Backlight. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P351 = 0
+
+##############################################################################
+##  Network/Remote Control
+##############################################################################
+# CSTA Control. 0 - Disabled, 1 - Enabled
+# Number: 0, 1. Default is 0
+# Mandatory
+#P32053 = 0
+
+##############################################################################
+##  Maintenance/Security Settings/Security   ##
+##############################################################################
+# Validate Server Certificates. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8463 = 0
+
+# Enable User Web Access. 0 - Disabled, 1 - Enabled. Default is 1
+# Number: 0, 1
+# Mandatory
+# P8469 = 1
+
+##############################################################################
+##  Settings/General Settings
+##############################################################################
+# Test Password Strength. Default is 0.
+# Number: 0, 1. 0 - No, 1 - Yes. 
+#P8468 = 0
+
+###############################################################
+# Account x/SIP Settings/Custom SIP Headers
+###############################################################
+# Use MAC Header
+# 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P26061/P26161/P26261 = 0
+
+
+##############################################################################
+## Network/Advanced Settings                                                ##
+##############################################################################
+# Enable CDP.   0 - Disabled, 1 - Enabled. Default is 0
+# Number: 0, 1
+# Mandatory
+# P22119 = 0
+
+##############################################################################
+##  Phonebook/Phonebook Management
+##############################################################################
+
+# Import Group Method. 0 - Replace, 1 - Append. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8462 = 0
+
+###############################################################
+# Account 1/2/3 Network Settings
+###############################################################
+# Use SBC. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P26090/P26190/P26290 = 0
+
+################################################################################################
+# P value added since 1.0.4.67                                                                ##
+################################################################################################
+
+#####################################################
+# Account/General Settings
+#####################################################
+
+# Account Display
+# Number: 0 - User Name, 1 - User ID. Default is 0.
+# Mandatory
+# P2380/P2480/P2580 
+
+# BLF Server
+# String
+# P2375/P2475/P2575
+
+#####################################################
+# Account/SIP Settings/Advanced Features
+#####################################################
+
+# Enable User Presence Subscription
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P2353/P2453/P2553
+
+# Hide Login Soft Key On Auto User Presence Subscription
+# Number: 0 - No, 1 - Yes. Default is 1.
+# Mandatory
+# P2354/P2454/P2554
+
+# Auto User Presence ID
+# String
+# P2351/P2451/P2551
+
+# Auto User Presence Password
+# String
+# P2352/P2452/P2552
+
+#####################################################
+# Account/Feature Codes
+#####################################################
+
+# Call Forward Unconditionally (All)
+# String
+# forward_0/forward_1/forward_2
+
+# Call Forward Busy
+# String
+# busyForward_0/busyForward_1/busyForward_2
+
+# Call Forward Delayed (No Answer)
+# String
+# delayedForward_0/delayedForward_1/delayedForward_2
+
+# Delayed Call Forward Wait Time
+# Number: 1 - 120. Default is 20. 
+# Mandatory
+# P139/P470/P570
+
+#####################################################
+# Settings/Preferences/LED control
+#####################################################
+
+# Disable VM/MSG power light flash
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P8371
+
+#####################################################
+# Settings/Call Features
+#####################################################
+
+# Ring For Call Waiting
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P22102
+
+# Attended Transfer Mode
+# Number: 0 - Static, 1 - Dynamic. Default is 0.
+# Mandatory
+# P1376
+
+# Enable Automatic Redial
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P8353
+
+# Automatic Redial Times
+# Number: 1 - 100. Default is 10. 
+# Mandatory
+# P8354
+
+# Automatic Redial Interval
+# Number: 1 - 360. Default is 20.
+# Mandatory
+# P8355
+
+# Disable Hook Switch
+# Number: 0 - No, 1 - Yes, 2 - For Answering Call. Default is 0.
+# Mandatory
+# P6763
+
+#####################################################
+# Settings/Preferences/Ring Tone
+#####################################################
+
+# Notification Tone Volume
+# Number: 0 - 7. Default is 4.
+# Mandatory
+# P8399
+
+#####################################################
+# Network/SNMP Settings
+#####################################################
+
+# Enable SNMP
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P21896
+
+# SNMP Trap Community
+# String
+# P21900
+
+# SNMP Trap IP
+# String
+# P21897
+
+# SNMP Trap Port
+# Number: 1025 - 65535. Default is 162.
+# Mandatory
+# P21898
+
+# SNMP Trap Version
+# Number: 0 - Version 1, 1 - Version 2. Default is 0.
+# Mandatory
+# P21899
+
+# SNMP Trap Interval
+# Number: 1 - 1440. Default is 5.
+# Mandatory
+# P21901
+
+################################################################################################
+# P value added since 1.0.4.56                                                                ##
+################################################################################################
+#####################################################
+##  Maintenance/Syslog
+#####################################################
+
+# Syslog Protocol
+# 0 - UDP, 1 - SSL/TLS. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8402
+
+#####################################################
+##  Maintenance/Security settings/Security
+#####################################################
+
+# Trusted CA Certificate
+# String
+# P8433/P8434/P8435/P8436/P8437/P8438
+
+#####################################################
+# Account/Call Settings
+#####################################################
+
+# Remote Info Display
+# 0 - Name and Number, 1 - Number, 2 - Name. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P26076/P26176/P26276
+
+#####################################################
+## Network/Basic Settings                                                   
+#####################################################
+
+# Internet Protocol. 
+# Number: 0 - Both, Prefer IPv4, 1 - Both, Prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 0
+# Mandatory
+# P1415 = 0
+
+#####################################################
+##  Settings/External Service/Grandstream Door System
+#####################################################
+
+# Service Type
+# Number: -1 - None, 0 - GDS. Default is 0.
+# Mandatory
+# P32000/P32005/P32010/P32015/P32020/P32025/P32030/P32035/P32040/P32045 = 0
+
+# Account
+# Number: 0 - Account 1, 1 - Account 2, 2 - Account 3. Default is 0. 
+# Mandatory
+# P32001/P32006/P32011/P32016/P32021/P32026/P32031/P32036/P32041/P32046 = 0
+
+# System Identification
+# String
+# P32002/P32007/P32012/P32017/P32022/P32027/P32032/P32037/P32042/P32047
+
+# System Number
+# String
+# P32003/P32008/P32013/P32018/P32023/P32028/P32033/P32038/P32043/P32048
+
+# Access Password
+# String
+# P32004/P32009/P32014/P32019/P32024/P32029/P32034/P32039/P32044/P32049
+
+#####################################################
+## Network/OpenVPN Settings
+#####################################################
+
+# OpenVPN Username
+# String
+# P8394
+
+# OpenVPN Password
+# String
+# P8395
+
+# OpenVPN Cipher Method
+# Number: 0 - Blowfish, 1 - AES-128, 2 - AES-256, 3 - Triple-DES. Default is 0.  
+# P8396
+
+#####################################################
+##  Settings/Call Features
+#####################################################
+
+# Busy Tone Expiration
+# Number: 0 - 60. Default is 30.
+# P8443
+
+#####################################################
+##  Settings/General Settings
+#####################################################
+
+# Local RTP port range
+# Number: 48 - 10000. Default is 200.
+# P29610
+
+# Enable Fix For RTP Timestamp Jump
+# Number: 0 - No, 1 - Yes. Default is 0. 
+# P8389
+
+
+################################################################################################
+# P value added since 1.0.4.50                                                                ##
+################################################################################################
+###########################################
+##  Settings/Ring Tone
+###########################################
+
+# Lock Volume
+# 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# P8392
+
+###########################################
+##  Settings/Broadsoft XSI
+###########################################
+
+# XSI Actions Path
+# String
+# P2937
+
+# Sort Phonebook by
+# 0 - Last Name, 1 - First Name. Default is 0
+# P2914
+
+###########################################
+##  Phonebook/Phonebook Management
+###########################################
+
+# HTTP/HTTPS User name
+# String
+# P6713
+
+# HTTP/HTTPS Password
+# String
+# P6714
+
+################################################################################################
+# P value added since 1.0.4.46                                                               ##
+################################################################################################
+###########################################
+##  Settings/Date and Time
+###########################################
+
+# NTP Server
+# P30 default value changed to pool.ntp.org
+
+
+################################################################################################
+# P value added since 1.0.4.33                                                                ##
+################################################################################################
+############################################
+##  Maintenance/Security
+############################################
+
+# Web Access Mode.
+# P1650 added Value = 2 for Disabled option.
+
+##########################################
+# Account 1/Call Settings
+##########################################
+
+# Prefix for Dialing Password.
+# P26049
+
+# Password Length.
+# P26050
+
+##########################################
+# Account 2/Call Settings
+##########################################
+
+# Prefix for Dialing Password.
+# P26149
+
+# Password Length.
+# P26150
+
+
+#####################################################
+# Account 2/Feature Codes
+#####################################################
+
+# Delayed Call Forward Wait Time
+# Number: 1 - 120. Default is 20. 
+# Mandatory
+# P470 = 20
+
+##########################################
+# Account 3/Call Settings
+##########################################
+
+# Prefix for Dialing Password.
+# P26249
+
+# Password Length.
+# P26250
+
+
+#####################################################
+# Account 3/Feature Codes
+#####################################################
+
+# Delayed Call Forward Wait Time
+# Number: 1 - 120. Default is 20.
+# Mandatory
+# P570 = 20
+
+
+##############################################################################
+##  Phonebook/LDAP
+##############################################################################
+
+# LDAP Protocol.
+# P8370
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Show SIP Error Response.
+# P8376
+
+################################################################################################
+# P value added since 1.0.4.22                                                                ##
+################################################################################################
+##########################################
+# Account 1/SIP Settings/Custom SIP Headers
+##########################################
+# Use X-Grandstream-PBX Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P26054 = 1
+
+# Use P-Access-Network-Info Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P26058 = 1
+
+# Use P-Emergency-Info Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P26059 = 1
+
+##########################################
+# Account 2/SIP Settings/Custom SIP Headers
+##########################################
+# Use X-Grandstream-PBX Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P26154 = 1
+
+
+# Use P-Access-Network-Info Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P26158 = 1
+
+
+# Use P-Emergency-Info Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P26159 = 1
+
+
+##########################################
+# Account 3/SIP Settings/Custom SIP Headers
+##########################################
+
+
+# Use X-Grandstream-PBX Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P26254 = 1
+
+
+# Use P-Access-Network-Info Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P26258 = 1
+
+
+# Use P-Emergency-Info Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P26259 = 1
+
+
+##############################################################################
+## Network/Advanced Settings
+##############################################################################
+# OpenVPN Enable. 0 - No, 1 - Yes, default is 0
+# Number
+# Mandatory
+#P7050 = 0
+
+# OpenVPN Server Address
+# String
+#P7051 = 
+
+# OpenVPN Port. Default is 1194
+# Number
+# Mandatory
+#P7052 = 1194
+
+# OpenVPN Transport.  0 - UDP, 1 - TCP Default is 0
+# Number: 0, 1 
+# Mandatory
+#P2912 = 0
+
+# OpenVPN CA
+# String
+#P9902 = 
+
+# OpenVPN Certificate
+# String
+#P9903 = 
+
+# OpengVPN Client Key
+# String
+#P9904 = 
+
+
+##############################################################################
+##  Maintenance/Upgrade and Provisioning
+##############################################################################
+# Check for new firmware every () minutes. Default is 7 days.
+# Number: 60-86400
+# Mandatory
+#P193 = 10080
+
+# Firmware Upgrade Confirmation. 0 - No, 1 - Yes. Default is 1.
+# Number: 0, 1
+# Mandatory
+#P8375 = 1
+
+##############################################################################
+##  Maintenance/Syslog
+##############################################################################
+# Syslog Keyword Filtering
+# String
+#P22129 = 
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+
+# Intercom Key Mode. 0 - Intercom, 1 - Multicast Paging. Default is 0.
+# Number: 0, 1
+# Mandatory
+#P22123 = 0
+
+# Intercom Multicast Paging Address
+# String
+#P22124 = 
+
+# Intercom Multicast Paging Label
+# String
+#P22125 = 
+
+################################################################################################
+# P value added since 1.0.4.17                                                                ##
+################################################################################################
+# Enable DHCP VLAN
+# P8300
+
+# Layer 3 QoS for SIP
+# P1558
+
+# Layer 3 QoS for RTP
+# P1559
+
+# Speaker Ring Volume
+# P8352
+
+# HTTP Web Port
+# P22120
+
+# HTTPS Web Port
+# P22121
+
+# Account 1: Call Recording ON
+# P26028
+
+# Account 1: Call Recording OFF
+# P26029
+
+################################################################################################
+# P value added since 1.0.4.6                                                                ##
+################################################################################################
+
+# Account 1 - Subscribe Expiration
+# P26051
+
+# Maximum TRansmission Unit (MTU)
+# P244
+
+# Predictive Dialing Feature
+# P22126
+
+# Wide Idle Screen View
+# P8346
+
+# Enable IPVideoTalk changed to Use Auto Location Service
+# P8338
+
+################################################################################################
+# P value added since 1.0.3.28                                                                ##
+################################################################################################
+
+# Account 1 - Hide Vocodec
+# P26047
+
+# User-Agent Prefix
+# P8358
+
+# Hide System Softkeys on Main Page
+# P8348
+
+# Customizable Softkey
+# P2987, P2988, P2989, P2990
+
+################################################################################################
+# P value added since 1.0.2.27                                                                ##
+################################################################################################
+
+# Predictive Dialing Feature
+# 0 - Disabled, 1 - Enabled. Default is 1
+# P22126 = 1
+# Account 1 - Disable Recovery on Blind Transfer 
+# P2384
+
+# Account 1 - Call Pick-up Barge-in Code
+# P26046
+
+# Account 1 - iLBC Freme Size 
+# P97
+
+# Account 1 - iLBC Payload Type
+# P96
+
+# Account 1 - Hide Remote User ID - Call Type
+# P26043
+
+# Account 1 - Hide Remote User ID - Length
+# P26044
+
+# Broadsoft Contact Download Interval
+# P8362
+
+# Account 1 - Preferred Vocoder choice 6
+# P62
+
+# Account 1 - Preferred Vocoder choice 7
+# P46
+
+# Account 1 - G723 Rate
+# P49
+
+# Account 2 - Vocoder choice 6
+# P556
+
+# Account 2 - Vocoder choice 7
+# P557
+
+# Account 2 - G723 Rate
+# P493
+
+# Setup competed 
+# P8304
+
+# Registered 
+# P8305
+
+# Unregistered 
+# P8306
+
+# Offhook 
+# P8308
+
+# Onhook 
+# P8309
+
+# Incoming call 
+# P8310
+
+# Outgoing call 
+# P8311
+
+# Missed call 
+# P8312
+
+# Established call 
+# P8313
+
+# Terminated call 
+# P8314
+
+# Open DND 
+# P8316
+
+# Close DND 
+# P8317
+
+# Open forward 
+# P8318
+
+# Close forward 
+# P8319
+
+# Blind transfer 
+# P8320
+
+# Attended transfer 
+# P8321
+
+# Hold call 
+# P8324
+
+# Unhold call 
+# P8325
+
+# Open syslog 
+# P8330
+
+# Close syslog 
+# P8331
+
+# Enable Group Listening 
+# P22100
+
+# Enable IPVideoTalk 
+# P8338
+
+# XSI Authentication Type 
+# P22054
+
+# SIP Username 
+# P6772
+
+# SIP User ID 
+# P22034
+
+# SIP Password 
+# P6773
+
+# Sort Phonebook by
+# 0 - Last Name, 1 - First Name. Default is 0
+# P2914 = 0
+
+
+################################################################################################
+# P value added since 1.0.0.38                                                                ##
+################################################################################################
+# Additional Override DHCP Option
+# P8337
+
+# Multicast Paging Codec
+# P1568
+
+# Broadsoft Directories
+# P1591 - P1594, P2971 - P2986
+
+# Enable Sending DTMF via Specific MPKs
+# P1339
+
+# Backup Outbound Proxy
+# P2333
+
+# Enable OPTIONS Keep Alive. 0 - No, 1 - Yes
+# P2397
+
+# OPTIONS Keep Alive Interval
+# P2398
+
+# OPTIONS Keep Alive Max Lost
+# P2399
+
+# Line-seize Timeout
+# P2313
+
+# Auto Provision Eventlist BLFs
+# P2389
+
+# BLF Call-pickup Prefix
+# P1347
+
+# PUBLISH for Presence
+# P188
+
+# Ignore Alert-Info Header
+# P26018
+
+# Validate Certification Chain
+# P2367
+
+# Bypass Dial Plan through Call History and Directories
+# P6758
+
+# Broadsoft Call Park
+# P2388
+
+# Config Upgrade Via (former Upgrade Via)
+# P212
+
+# Config HTTP/HTTPS User Name (former HTTP/HTTPS User Name)
+# P1360
+
+# Config HTTP/HTTPS Password (former HTTP/HTTPS Password)
+# P1361
+
+# Firmware Upgrade Via  (former Upgrade via)
+# P6767
+
+# Firmware HTTP/HTTPS User Name (former HTTP/HTTPS User Name)
+# P6768
+
+# Firmware HTTP/HTTPS Password (former HTTP/HTTPS Password)
+# P6769
+
+################################################################################################
+# P value changed since 1.0.0.38                                                              ##
+################################################################################################
+
+# IPv6 Address type
+# P1426 
+
+# Phonebook Key Function
+# P1526
+
+# Description
+# P1465 =
+
+# Value
+# P1466 = 
+
+################################################################################################
+# GXP1620/1625  													                          ##
+################################################################################################
+# P value added since 1.0.4.17                                                                 ##
+################################################################################################
+# Account 2: Call Recording ON
+# P26128
+
+# Account 2: Call Recording OFF
+# P26129
+
+################################################################################################
+# P value added since 1.0.4.6                                                                 ##
+################################################################################################
+# Account 2 - Subscribe Expiration
+# P26151
+
+################################################################################################
+# P value added since 1.0.3.28                                                                ##
+################################################################################################
+# Account 2 - Hide Vocodec
+# P26147
+
+################################################################################################
+# P value added since 1.0.3.6                                                                ##
+################################################################################################
+# Account 1 - Disable Recovery on Blind Transfer 
+# P2484
+
+# Account 1 - Call Pick-up Barge-in Code
+# P26146
+
+# Account 1 - iLBC Freme Size 
+# P495
+
+# Account 1 - iLBC Payload Type
+# P494
+
+# Account 1 - Hide Remote User ID - Call Type
+# P26143
+
+# Account 1 - Hide Remote User ID - Length
+# P26144
+
+################################################################################################
+# P value added since 1.0.2.27                                                               ##
+################################################################################################
+# Same as GXP1610
+
+################################################################################################
+# P value added since 1.0.0.38                                                                ##
+################################################################################################
+# Additional from GXP1610
+# Backlight Brightness : Active
+# P334
+
+# Backup Outbound Proxy
+# P2433
+
+# Enable OPTIONS Keep Alive. 0 - No, 1 - Yes
+# P2497
+
+# OPTIONS Keep Alive Interval
+# P2498
+
+# OPTIONS Keep Alive Max Lost
+# P2499
+
+# Line-seize Timeout
+# P2413
+
+# Auto Provision Eventlist BLFs
+# P2489
+
+# BLF Call-pickup Prefix
+# P481
+
+# PUBLISH for Presence
+# P488
+
+# Ignore Alert-Info Header
+# P26118
+
+# Validate Certification Chain
+# P2467
+
+# Broadsoft Call Park
+# P2488
+
+################################################################################################
+# P value changed since 1.0.0.38                                                              ##
+################################################################################################
+# Same as GXP1610
+
+# LCD Contrast
+# P6771
+
+################################################################################################
+# GXP1628 
+################################################################################################
+# P value added since 1.0.4.6                                                                ##
+################################################################################################
+# Account 2 - Subscribe Expiration
+# P26151
+
+################################################################################################
+# P value added since 1.0.3.6                                                                ##
+################################################################################################
+# Same as GXP1620/1625
+
+################################################################################################
+# P value added since 1.0.2.27                                                                ##
+################################################################################################
+# Same as GXP1620/1625
+
+################################################################################################
+# P value added since 1.0.0.38                                                                ##
+################################################################################################
+
+# Additional from GXP1610/1620/1625
+# MPKs configuration
+# MPK 1 - 8
+# P323-329, P301-321, P353-356
+
+################################################################################################
+# GXP1630                                                                                     ##         
+################################################################################################
+# P value added since 1.0.4.17                                                                 ##
+################################################################################################
+
+# Account 3: Call Recording ON
+# P26228
+
+# Account 3: Call Recording OFF
+# P26229
+
+################################################################################################
+# P value added since 1.0.4.6                                                                ##
+################################################################################################
+
+# Account 3 - Subscribe Expiration
+# P26251
+
+################################################################################################
+# P value added since 1.0.3.28                                                                ##
+################################################################################################
+# Account 2 - Hide Vocodec
+# P26247
+
+################################################################################################
+# P value added since 1.0.3.6                                                                ##
+################################################################################################
+
+# Account 1 - Disable Recovery on Blind Transfer 
+# P2584
+
+# Account 1 - Call Pick-up Barge-in Code
+# P26246
+
+# Account 1 - iLBC Freme Size 
+# P595
+
+# Account 1 - iLBC Payload Type
+# P594
+
+# Account 1 - Hide Remote User ID - Call Type
+# P26243
+
+# Account 1 - Hide Remote User ID - Length
+# P26244
+
+################################################################################################
+# P value added since 1.0.2.27                                                                ##
+################################################################################################
+
+# Account 3 - Vocoder choice 6
+# P556
+
+# Account 3 - Vocoder choice 6
+# P557
+
+# Account 3 - G723 Rate
+# P593
+
+################################################################################################
+# P value added since 1.0.0.38                                                               ##
+################################################################################################
+
+###################################
+# Account 3                      ##
+###################################
+# Account Active
+# P501
+
+# Account Name
+# P517 
+
+# SIP Server
+# P502
+
+# Secondary SIP Server
+# P2512
+
+# Outbound Proxy
+# P503
+
+# Backup Outbound Proxy
+# P2533
+
+# SIP User ID
+# P504
+
+# Authenticate ID
+# P505
+
+# Authenticate Password
+# P506
+
+# Name
+# P507
+
+# Voice Mail Access Number
+# P526
+
+# DNS Mode
+# P508
+
+# Primary IP. Maximum 15 characters
+# P2508
+
+# Backup IP 1
+# P2509
+
+# Backup IP 2
+# P2510
+
+# NAT Traversal
+# P514
+
+# Proxy-Require
+# P518
+
+# TEL URI
+# P509
+
+# SIP Registration
+# P510
+
+# Unregister On Reboot
+# P511
+
+# Register Expiration
+# P512
+
+# Reregister Before Expiration
+# P2530
+
+# Enable OPTIONS Keep Alive
+# P2597
+
+# OPTIONS Keep Alive Interval (in seconds)
+# P2598
+
+# OPTIONS Keep Alive Max Lost
+# P2599
+
+# Local SIP Port. Default is 5064
+# P513
+
+# SIP Registration Failure Retry Wait Time
+# P571
+
+# SIP T1 Timeout
+# P540
+
+# SIP T2 Timeout. RFC 3261 T2 value
+# P541
+
+# SIP Transport
+# P548
+
+# SIP URI Scheme when using TLS
+# P2529
+
+# Use Actual Ephemeral Port in Contact with TCP/TLS
+# P2531
+
+# Remove OBP from Route
+# P2505
+
+# Support SIP Instace ID
+# P589
+
+# SUBSCRIBE for MWI
+# P515
+
+# SUBSCRIBE for Registration
+# P2519
+
+# Enable 100rel
+# P535
+
+# Caller ID Display
+# P2524
+
+# Use Privacy Header
+# P2538
+
+# Use P-Preferred-Identity Header
+# P2539
+
+
+# Ignore Alert-Info header
+# P26218
+
+# Line-seize Timeout
+# P2513
+
+# Eventlist BLF URI
+# P544
+
+# Auto Provision Eventlist BLFs
+# P2589
+
+# Conference URI
+# P2518
+
+
+
+# Music On Hold URI
+# P2550
+
+# BLF Call-pickup Prefix
+# P581
+
+# PUBLISH for Presence
+# P588
+
+# Special Feature
+# P524
+
+# Broadsoft Call Center
+# P2541
+
+# Hoteling Event
+# P2542
+
+# Call Center Status
+# P2543
+
+# Feature Key Synchronization
+# P2525
+
+# Broadsoft Call Park
+# P2588
+
+# Enable Session Timer
+# P2595
+
+# Session Expiration
+# P534
+
+# Minimum SE
+# P527
+
+# Caller Request Timer
+# P528
+
+# Callee Request Timer
+# P529
+
+# Force Timer
+# P530
+
+# UAC Specify Refresher
+# P532
+
+# UAS Specify Refresher
+# P533
+
+# Force INVITE
+# P531
+
+# Check Domain Certificates
+# P2511
+
+# Validate Certification Chain
+# P2567
+
+# Validate Incoming Messages
+# P2506
+
+# Check SIP User ID for incoming INVITE
+# P549
+
+# Accept Incoming SIP from Proxy Only
+# P2547
+
+# Authenticate Incoming INVITE
+# P2546
+
+# Send DTMF: In-audio
+# P2501
+
+# Send DTMF
+# P2502
+
+# Send DTMF: Via SIP INFO
+# P2503
+
+# DTMF Payload Type
+# P596
+
+# Preferred Vocoder
+# choice 1
+# P551
+
+# choice 2
+# P552 
+
+# choice 3
+# P553
+
+# choice 4
+# P554
+
+# choice 5
+# P555
+
+# Use First Matching Vocoder in 200OK SDP
+# P2548
+
+# Disable Multiple m line in SDP
+# P587
+
+# SRTP Mode
+# P543
+
+# Symmetric RTP
+# P560
+
+# Silence Suppression
+# P585
+
+# Voice Frames per TX
+# P586
+
+# G.726-32 Packing Mode
+# P2523
+
+# Jitter Buffer Type
+# P598
+
+# Jitter Buffer Length
+# P597 
+
+# Early Dial
+# P522
+
+# Dial Plan Prefix
+# P519
+
+# Dial Plan
+# P559
+
+# Delayed Call Forward Wait Time
+# P570
+
+# Enable Call Features
+# P520
+
+# Call Log
+# P542
+
+# Account Ring Tone
+# P523
+
+# Matching Incoming Caller ID. Matching Rule 1
+# P1500 
+
+# Matching Rule 1 Distinctive Ringtone
+# P1501
+
+# Matching Incoming Caller ID. Matching Rule 2
+# P1502
+
+# Matching Rule 2 Distinctive Ringtone
+# P1503
+
+# Matching Incoming Caller ID. Matching Rule 3
+# P1504
+
+# Matching Rule 3 Distinctive Ringtone
+# P1505
+
+# Ring Timeout (in seconds). Default is 60
+# P576
+
+# Send Anonymous (caller ID will be blocked if set to Yes). 0 - No, 1 - Yes. Default is 0
+# P521
+
+# Anonymous Call Rejection. 0 - No, 1 - Yes. Default is 0
+# P546
+
+# Auto Answer. 0 - No, 1 - Yes. Default is 0
+# P525
+
+# Allow Auto Answer by Call-Info. 0 - No, 1 - Yes. Default is 0
+# P538
+
+# Custom Call-info for Auto Answer. 
+# P2556
+
+# Refer-To Use Target Contact. 0 - No, 1 - Yes. Default is 0
+# P569
+
+# Transfer on conference Hang-Up. 0 - No, 1 - Yes. Default is 0
+# P2504
+
+# No Key Entry Timeout (in seconds). Default is 4
+# P591
+
+# Use # as Dial Key. 0 - No, 1 - Yes. Default is 1
+# P592
+
+# DND Call Feature ON
+# P2544
+
+# DND Call Feature OFF
+# P2545
+
+###################################
+# Programmable Line Key (3rd line) #
+###################################
+# Mode
+# P1367
+
+# Account
+# P1368
+
+# Description
+# P1469
+
+# Value
+# P1470
+################################### Change Log End ######################################################
+
+
+

@@ -1,0 +1,171 @@
+####################################################################
+##  GVC320X Change Log                                            ##
+####################################################################
+########################################################################
+##  Change Log                                                        ##
+########################################################################
+#######################################################################
+# P values added/updated since 1.0.3.64                              ##
+#######################################################################
+# Minimum TLS Version.
+# P22293
+# Maximum TLS Version.
+# P22294
+#######################################################################
+# P values added/updated since 1.0.3.62                              ##
+#######################################################################
+#######################################################################
+# P values added/updated since 1.0.3.51                              ##
+#######################################################################
+#######################################################################
+# P values added/updated since 1.0.3.49                              ##
+#######################################################################
+#######################################################################
+# P values added/updated since 1.0.3.46                              ##
+#######################################################################
+#######################################################################
+# P values added/updated since 1.0.3.24                              ##
+#######################################################################
+# Added Sixth codec P62 = 104 for SIP account codec settings.
+# Added Presentation H.264 Image Size P25071 for H.323 codec settings.
+# Added Presentation Video Bit Rate P25070 for H.323 codec settings.
+# Added Presentation Video Frame Rate P25069 for H.323 codec settings.
+# Updated Layer 3 QoS for SIP P1558 default value to 26 for Network settings.
+# Updated Layer 3 QoS for Audio P1559 default value to 46 for Network settings.
+# Updated Layer 3 QoS for Video P1560 default value to 34 for Network settings.
+# Added Syslog Protocol P8402 for Maintenance Syslog settings.
+# Added Syslog Keyword Filter P22129 for Maintenance Syslog settings.
+# Added Enable TR-069 P1409 for TR-069 settings.
+# Added ACS URL P4503 for TR-069 settings.
+# Added ACS Username P4504 for TR-069 settings.
+# Added ACS Password P4505 for TR-069 settings.
+# Added Enable Periodic Inform P4506 for TR-069 settings.
+# Added Periodic Inform Interval (s) P4507 for TR-069 settings.
+# Added Connection Request Username P4511 for TR-069 settings.
+# Added Connection Request Password P4512 for TR-069 settings.
+# Added Connection Request Port P4518 for TR-069 settings.
+# Added CPE Cert File P8220 for TR-069 settings.
+# Added CPE Cert Key P8221 for TR-069 settings.
+# Added G722.1C as Preferred Vocoder for SIP account 
+# Added P26417 G722.1C Rate and P26016 G.722.1C Payload Type for SIP account
+# Removed Opus as Preferred Vocoder for BlueJeans account
+# Removed P2585 Opus Payload Type for BlueJeans account
+
+#######################################################################
+# P values added/updated since 1.0.3.16                              ##
+#######################################################################
+# Added P22128 Enable Enterprise Contacts Backend Matching
+
+#######################################################################
+# P values added/updated since 1.0.3.8                               ##
+#######################################################################
+# Added P25107 USB External Sound Card TX gain(db)
+# Added P25108 USB External Sound Card RX gain(db)
+# Added P25109 Enable Presentation Automatically When HDMI/VGA Plugged
+# Added P29611 Enable Core Dump Generation
+# Updated default value of P143 DHCP Option 2 to Override Time Zone setting
+# Updated description of P145 Allow DHCP Option 43 and option 66 Override server
+# Removed P470 No Answer Timeout(sec.)
+
+#######################################################################
+# P values added/updated since 1.0.1.74                              ##
+#######################################################################
+# Added IPv6 related P values: P1415, P1419, P1420, P1421, P1423, P1424, P1425
+# Added P29607 Auto mute on entry
+# Added P8300 DHCP VLAN override
+# Removed Domain Certificate P2386
+# Added packetization mode for SIP account P26005 and BlueJeans account P26205
+# Added validate certification chain P2367
+# Added CUST file related P values: P6774, P6775, P6776, P6777, P6778
+# Added HDMI 2 out resolution P25105
+
+#######################################################################
+# P values added/updated since 1.0.1.65                              ##
+#######################################################################
+# Added a new option TURN of NAT traversal: P52 for SIP account
+# Updated default value of Firmware Upgrade Mode: P6767 and Config Upgrade Mode: P212 in Maintenance Upgrade setting
+# Updated default value of Presentation Video Bit Rate: P2378 for SIP account and P2578 for BlueJeans account
+# Updated default value of Video Bit Rate: P2315 for SIP account, P2515 for BlueJeans account and P25063 for H.323 account
+# Updated default value of Remote video request: P2326 for SIP account
+# Updated default value of Dial Plan: P290 for SIP account
+# Updated default value of Enable Video FEC: P2593 for BlueJeans account
+# Removed Admin password: P2 and User password: P196 in Security Settings
+
+#######################################################################
+# P values added/updated since 1.0.1.58                              ##
+#######################################################################
+# Added Enable frame skipping option: P22008 in Call feature setting
+# Added Account active option: P7059 for IPVideoTalk account
+# Added H.323 related P values in Account setting and Syslog setting
+# Added Preset position options: P25030 in Peripheral setting
+# Added Support to lock SD card, USB and WiFi functions
+
+#######################################################################
+# P values added/updated since 1.0.1.49                              ##
+#######################################################################
+# Added H.323 related P values in Account setting and Syslog setting
+
+#######################################################################
+# P values options modified since 1.0.1.49                           ##
+#######################################################################
+# Time zone option for GMT-3:30(Newfoundland) is updated to NST+3:30NDT+2:30,M3.2.0/00:01:00,M11.1.0/00:01:00
+
+#######################################################################
+# P values removed since 1.0.1.49                                    ##
+#######################################################################
+# Removed FEC RED Payload Type P value P26007 for SIP account and P26207 for BlueJeans account
+
+#######################################################################
+# P values added/updated since 1.0.1.18                              ##
+#######################################################################
+# Added Contacts - LDAP section P values
+# Added Secondary SIP Server for SIP account: P602
+# Added Tertiary SIP Server for SIP acount: P1702
+# Added fifth codec: P61 for SIP account and P555 for BlueJeans account
+# Opus codec value 123 added to all codec options for SIP account and BlueJeans account
+# Added Opus Payload type: P2385 for SIP account and P2585 for BlueJeans account
+# Added Use First Matching Vocoder in 200OK SDP: P2348 for SIP account and P2548 for BlueJeans account
+# Added Presentation Video Frame Rate: P26042 for SIP account and P26242 for BlueJeans account
+# Added BFCP Transport Protocol: P26041 for SIP account
+# Added Codec Negotiation Priority: P29061 for SIP account and P29261 for BlueJeans account
+# Separated Firmware upgrading and config provisioning P values. Added P6767, P6768, P6769 and updated P212
+# Added Assign NTP Server Address 2: P8333
+# Added Send SIP Log: P1387
+# Added RTP IP Filter P26026 = 0
+
+#######################################################################
+# P values options modified since 1.0.1.18                           ##
+#######################################################################
+# Enable Session Timer/ Session Expiration: P260=180
+
+#######################################################################
+# P values removed since 1.0.1.18                                    ##
+#######################################################################
+# Most of the IPVideotalk account settings are removed to be consistent with webUI options
+
+#######################################################################
+# P values removed since 1.0.1.14                                    ##
+#######################################################################
+# HTTP/HTTPS Proxy Hostname P1552
+# HTTP/HTTPS Proxy Port P1553
+
+#######################################################################
+# P Values Added since 1.0.1.5                                       ##
+#######################################################################
+# HTTP/HTTPS Username for phonebook downloading P6713
+# HTTP/HTTPS Password for phonebook downloading P6714
+# Audio Device P22050
+# Video FEC Mode P26022
+# SIP User-Agent P26027
+# Filter Characters P22012
+
+#######################################################################
+# P Values Removed since 1.0.1.5                                     ##
+#######################################################################
+# Audio Jitter Buffer Length P132
+
+# SRTP Key Length for BlueJeans account P2583
+
+#######################################################################
+##  Change Log End                                                   ##
+#######################################################################

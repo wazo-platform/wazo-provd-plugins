@@ -1,0 +1,180 @@
+####################################################################
+## GXV3380 Change Log                                             ##
+####################################################################
+####################################################################
+# P Values Added since 1.0.3.19                                   ##
+####################################################################
+# Added Echo Delay
+# Alias: audio.HDMI.echoDelay
+####################################################################
+# P Values Added since 1.0.3.9                                   ##
+####################################################################
+# (None)
+####################################################################
+# P Values Added since 1.0.1.19                                   ##
+####################################################################
+# Added Account -> General Setting -> Register Before DNS SRV Fail-over
+# P29095,29195,29295,29395,29495,29595,53695,53795,53895,53995,54095,54195,54295,54395,54495,54595
+# Alias: <item name="account.1.network.dnsSRVRegisterBeforeFailover">No</item>
+
+# Updated Account -> SIP Settings -> Add MAC in User-Agent and Use MAC Header options
+
+# Updated Account -> SIP Settings -> Add MAC in User-Agent and Use MAC Header options
+
+# Added Account -> Call Settings -> Enable Video Call.
+P60343, 60143,60243,60343,60443,60543,60643,60743,60843,60943,61043,61143,61243,61343,61443, 61543
+# Alias: <item name="account.1.call.video.enable">Default</item>
+
+# Added Account -> Call Settings -> Enable Call Waiting
+# P26063,26163,26263,26363,26463,26563,52663,52763,52863,52963,53063,53163,53263,53363,53463,53563
+# Alias: <item name="account.1.call.callWaiting">Default</item>
+
+# Added options to Account -> Advanced Settings -> Special Features
+# 122 - Metaswitch, 129 - Telefonica Spain
+
+# Added Phone Settings -> Call Settings -> Default Phone APP
+# P22289
+
+# Phone Settings -> Call Settings -> Quickly Launch Specified APP.
+# P22276
+# Alias: <item name="call.thirddialer.packagename"></item>
+
+# Added Group Listen with Speaker. 0 - No, 1 - Yes. Default is 0.
+# P22163
+# Alias: <item name="call.grouplistenwithspeaker.enable">No</item>
+
+# Added DNS Refresh Time (m). Default 0.
+# P4208
+# Alias: <item name="network.dns.refreshTime">0</item>
+
+# DNS Failure Cache Duration (m).  Default 0.
+# P28160
+# Alias: <item name="network.dns.failureCacheDuration">0</item>
+
+# Added Action URI Support. 0 - No, 1 - Yes. Default is 1
+# P32050
+# Alias: <item name="remoteControl.enable">Yes</item>
+
+# Added Remote Control Pop up Window Support. 0 - No, 1 - Yes. Default is 1
+# P32051
+# Alias: <item name="remoteControl.confirmWindow.enable">Yes</item>
+
+# Added Action URI Allow IP List
+# P32052
+# Alias: <item name="remoteControl.allowList"></item>
+
+# Added Ringtone volume
+# P8352
+# Alias: <item name="audio.volume.ring">7</item>
+
+# Added Media volume
+# P43025
+# Alias: <item name="audio.volume.media">7</item>
+
+# Added Alarm volume
+# P22332
+# Alias: <item name="audio.volume.alarm">7</item>
+
+# Added Call volume
+# P22317
+# Alias: <item name="audio.volume.call">4</item>
+
+# Added Plug in RJ9/EHS headset
+# P1375
+# Alias: <item name="audio.headset.ehs.enable">No</item>
+
+# Added Display Open Door Button when Calling
+# P22316=0
+# Alias: <item name="externalService.general.doorButton.display">Yes</item>
+
+# Added Enable Preview
+# P22357=1
+# Alias: <item name="externalService.general.preview.enable">Yes</item>
+
+# Removed Video FEC Mode
+####################################################################
+# P Values Added since 1.0.1.14                                   ##
+####################################################################
+# Removed Use Quick IP-Call Mode.
+# P184 = 0
+
+# Added Return Code When Refusing Incoming Call.
+# P8360=0
+
+# Added Return Code When Enable DND
+# P8361=0
+
+# Adde Advanced Network Settings -> Advanced Network Settings -> CSTA Control.
+# P32053=0
+
+# Adde System Settings -> Security Settings -> TLS -> Minimum TLS Version
+# P22293
+
+# System Settings - Security Settings - TLS - Maximum TLS Version
+# P22294
+
+# System Settings - Security Settings - TLS - Enable Weak TLS Cipher Suites
+# P8536
+
+# alias template:
+<!-- Added Use P-Access-Network-Info Header -->
+<item name="account.1.sip.header.pani">Yes</item>
+		
+<!-- Added Use P-Emergency-Info Header -->
+<item name="account.1.sip.header.pei">Yes</item>
+
+<!-- Added Add MAC in User-Agent -->
+<item name="account.1.sip.useragent.mac">No</item>
+
+<!-- Added Enable Function for Incoming Call -->
+<item name="call.incomingcall.function">None</item>
+
+<!-- Added Enable Auto Record When Call Established -->
+<item name="call.autoRecording.enable">No</item>
+
+<!-- Added CSTA Control -->
+<item name="remoteControl.csta.enable">No</item>
+####################################################################
+# P Values Added since initial firmware                           ##
+####################################################################
+# Added Different Network for Data and VOIP Calls.
+# P22104
+
+# Added Address Type.
+#P22105 = 0
+
+# Added IP Address.
+#P22106 =
+
+# Added Subnet Mask.
+#P22107 =
+
+# Added Default Gateway.
+#P22108 =
+
+# Added DNS Server 1.
+#P22109 =
+
+# Added DNS Server 2.
+#P22110 =
+
+# Added Layer 2 QoS. 802.1Q/VLAN Tag(Ethernet) for VOIP Calls.
+#P22111 = 0
+
+# Added Layer 2 QoS. 802.1p priority value(Ethernet) for VOIP Calls.
+#P22112 = 0
+
+# Added Enable Auto Record When Call Established.
+#P22295 = 0
+
+# Minimum TLS Version
+# P22293= 0
+
+# Maximum TLS Version
+# P22294 = 99
+
+# Enable Weak TLS Cipher Suites
+# P8536 = 1
+####################################################################
+## Change Log End                                                 ##
+####################################################################

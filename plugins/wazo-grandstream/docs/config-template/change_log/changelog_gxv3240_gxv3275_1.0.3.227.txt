@@ -1,0 +1,876 @@
+#################################################################
+## GXV3240/GXV3275 Change Log                                  ##
+#################################################################
+###############################################################
+# P Values Added since 1.0.3.227                             ##
+###############################################################
+# Added up to 10 Match Incoming Caller ID and Distinctive Ringtone
+# Match Incoming Caller ID 1 - 10: 
+# Account 1: P1488, 1490, 1492, 6716, 6718, 6720, 26064, 26066, 26068, 26096
+# Account 2: P1494, 1496, 1498, 6722, 6724, 6726, 26164, 26166, 26168, 26196
+# Account 3: P1500, 1502, 1504, 6728, 6730, 6732, 26264, 26266, 26268, 26296
+# Account 4: P1506, 1508, 1510, 6734, 6736, 6738, 26364, 26366, 26368, 26396
+# Account 5: P1512, 1514, 1516, 6740, 6742, 6744, 26464, 26466, 26468, 26496
+# Account 6: P1518, 1520, 1522, 6746, 6748, 6750, 26564, 26566, 26568, 26596
+# Distinctive Ringtone 1 - 10:
+# Account 1: P1489, 1491, 1493, 6717, 6719, 6721, 26065, 26067, 26069, 26097
+# Account 2: P1495, 1497, 1499, 6723, 6725, 6727, 26165, 26167, 26169, 26197
+# Account 3: P1501, 1503, 1505, 6729, 6731, 6733, 26265, 26267, 26269, 26297
+# Account 4: P1507, 1509, 1511, 6735, 6737, 6739, 26365, 26367, 26369, 26397
+# Account 5: P1513, 1515, 1517, 6741, 6743, 6745, 26465, 26467, 26469, 26497
+# Account 6: P1519, 1521, 1523, 6747, 6749, 6751, 26565, 26567, 26569, 26597
+###############################################################
+# P Values Added since 1.0.3.225                             ##
+###############################################################
+# Support 2 GDS password settings：
+# Use ',' to separate the GDS Related Display Name and Access Password
+# Example, P32002=gds1000,gds1001 provision to web UI:
+# Related Display Name1: gds1000   and   Related Display Name2: gds1001
+# P32004=pass1,pass2 means pass1 is for GDS1 and pass2 for GDS2.
+# Access Password must be numeric digits.
+###############################################################
+# P Values Added since 1.0.3.224                             ##
+###############################################################
+###############################################################
+# P Values Added since 1.0.3.219                             ##
+###############################################################
+# 55099, 80001 - 80099 Door system enable preview for account 1
+# 55199, 80101 - 80199 Door system enable preview for account 2
+# 55299, 80201 - 80299 Door system enable preview for account 3
+# 55399, 80301 - 80399 Door system enable preview for account 4
+# 55499, 80401 - 80499 Door system enable preview for account 5
+# 55599, 80501 - 80599 Door system enable preview for account 6
+###############################################################
+# P Values Added since 1.0.3.210                             ##
+###############################################################
+# Added Advanced Settings -> Call Features -> Enable transfer via non-Transfer Programmable Key
+# P22162
+
+# Added Account -> SIP Settings -> RTP Timeout Timer (s)
+# P29068, 29168, 29268, 29368, 29468, 29568
+
+# Added Account -> SIP Settings -> Allow Sync Phonebook via SIP Notify.
+# P26099, 26199, 26299, 26399, 26499, 26599
+####################################################################
+# P Values Added since 1.0.3.207                                  ##
+####################################################################
+# Added Advanced Settings -> Tone Generator -> Lock Volume
+# P8392
+
+# Added Advanced Settings -> Call Features -> Enable Diversion Info Display
+# P22237
+####################################################################
+# P Values Added since 1.0.3.198                                  ##
+####################################################################
+####################################################################
+# P Values Added since 1.0.3.193                                  ##
+####################################################################
+# Account -> Call Settings -> No Key Entry Timeout is disabled when set to 0.
+####################################################################
+# P Values Added since 1.0.3.187                                  ##
+####################################################################
+# Added Maintenance - Syslog - Syslog protocol
+# P8402
+
+# Updated Account -> Codec Settings -> Packetization mode. 0 - Single NAL Unit Mode, 1 - Non-Interleaved Mode, 10 - Prefer Non-Interleaved
+
+# Added Advanced Settings -> General Settings -> Custom Certificate
+# P8472
+
+# Added Account -> SIP Settings -> Use P-Access-Network-Info Header
+# P26058, 26158, 26258, 26358, 26458, 26558
+
+# Added Account -> SIP Settings -> Use P-Emergency-Info Header
+# P26059, 26159, 26259, 26359, 26459, 26559
+
+# Added Account -> Call Settings -> Auto Preview
+# P29062, 29162, 29262, 29362, 29462, 29562
+
+# Added Advanced Settings -> Multicast Paging -> Allow Multicast in DND Mode
+# P8381. 0 - No, 1 - Yes
+
+# Added services control
+# 1402, Weather service update. 0 - disabled, 1 - enabled.
+# 7070, IP2Location service update. 0 - disabled, 1 - enabled.
+# 22173, GMS service update. 1 - disabled, 0 - enabled.
+####################################################################
+# P Values Added since 1.0.3.186                                  ##
+####################################################################
+# Added Advanced Settings -> Call Features -> Hold Call Before Completing Transfer
+
+####################################################################
+# P Values Added since 1.0.3.180                                  ##
+####################################################################
+# Added Maintenance -> Upgrade -> Enable Randomized Automatic Upgrade
+# P8458. 0 - No, 1 - Yes
+
+# Updated Maintenance -> Upgrade -> Hour of the day (0-23) to Starting Hour of the Day(0-23)
+# P285
+
+# Added Maintenance -> Upgrade -> Ending Hour of the Day(0-23)
+# P8459
+
+# Added Account -> Call settings -> Play warning tone for Auto Answer Intercom
+# P26072, 26172, 26272, 26372, 26472, 26572.
+####################################################################
+# P Values Added since 1.0.3.177                                  ##
+####################################################################
+# Added Account -> SIP Settings -> Add Auth Header On RE-REGISTER
+# P2359, 2459, 2559, 2659, 2759, 2859
+####################################################################
+# P Values Added since 1.0.3.171                                  ##
+####################################################################
+# Added Account -> Network Settings -> DNS SRV Fail-over Mode
+# P26040, 26140, 26240, 26340, 26440, 26540
+
+# Added Advanced Settings -> GDS Settings.
+# P32000-32049 for External Service Accounts.
+# Every five pvalues is a group, 10 groups in total. A group example is:
+# P32000 Service Account Type
+# P32001 Account Index
+# P32002 Name
+# P32003 User ID
+# P32004 Password
+# For GDS Settings, Service Account Type and Account Index are set to 0 as default.
+
+# Added web UI -> Advanced Settings -> Call features -> Mute Key Functions While Idle
+# P1565
+
+# Removed Maintenance -> Device Manager: Enable 3.5mm Headset Control
+# P22113
+####################################################################
+# P Values Added since 1.0.3.162                                  ##
+####################################################################
+# Added Account -> Call settings -> Custom Alert-Info for Auto Answer
+# P2356,2456,2556,2656,2756,2856
+
+# Added Advanced settings -> Record Mode
+# P6760
+
+# Updated Advanced Settings -> General Settings: SIP Domains template
+# P22017
+
+# Added Advanced settings -> MPK LCD settings -> Display Format. 0 - Name, 1 - User ID, 2 - Name(User ID)
+# P22127
+
+# Added LCD -> MPK settings -> MPK Icon Display Size. 0 - Large, 1 - Small
+# P22090
+
+# Added Programmable Keys
+# KeyMode: 0 - Speed Dial, 1 - BLF, 4 - Speed Dial via Active Account, 5 - Dial DTMF, 8 - CAll Transfer, 9 - Call Park, 13 - Multicast Paging.
+# P323, 324, 325, 326, 327, 218
+# Account: account 1 - 0,  account 2 - 1, account 3 - 2, account 4 - 3, account 5 - 4, account 6 - 5
+# P301, 304, 307, 310, 313, 316
+# Name: 
+# P302, 305, 308, 311, 314, 317
+# User ID
+# P303, 306, 309, 312, 315, 318
+####################################################################
+# P Values Added since 1.0.3.158                                  ##
+####################################################################
+# Added Account -> SIP Settings: Ignore Alert-Info header
+# P26018, 26118 , 26218, 26318, 26418, 26518
+
+# Added Advanced Settings -> Call Features : Virtual Account Group Concurrence Register
+# P22133
+
+# Added Maintenance -> Device Manager: Disable RJ9 Headset Auto Detect
+# P22132
+
+# Added Maintenance -> Device Manager: Enable 3.5mm Headset Control
+# P22113
+####################################################################
+# P Values Added since 1.0.3.144                                  ##
+####################################################################
+
+# Intercom Barging.
+# P26019, P26119, P26219, P26319, P26419, P26519
+
+# Added "1001 - GDS Door System" to Special Feature.
+
+# Added "2 - Constaint Mode" to Configuration via Keypad Menu.
+
+# Action Path.
+# P2937
+
+####################################################################
+# P Values Removed since 1.0.3.131                                ##
+####################################################################
+
+# Removed Account -> Call settings -> SIP Compact Header.
+# P289, P472, P572, P672, P1772, P1872
+
+# Removed Advanced settings -> Video settings -> Display Video Information.
+# P22001
+####################################################################
+# P Values Added since 1.0.3.131                                  ##
+####################################################################
+# Removed Account settings -> Codec Settings: Jitter Buffer Maximums (ms)
+# P2381, P2481, P2581, P2681, P2781, P2881
+
+# Added Advanced Settings -> General Settings -> Enable Enterprise Contacts Timeout Auto Search
+# P22128
+
+# Added Maintenance -> Syslog: Syslog Keyword Filter 
+# P22129
+
+# Updated LDAP Search Timeout (s). Unit is changed to second; Default setting is 4
+# P8032
+####################################################################
+# P Values Added since 1.0.3.92                                   ##
+####################################################################
+
+# First Preferred Video Codec.
+# P295, P464, P564, P664, P1764, P1864
+
+# Second Preferred Video Codec.
+# P1307, P475, P575, P675, P1775, P1875
+
+# Enable Video FEC.
+# P2393, P2493, P2593, P2693, P2793, P2893
+
+# Video FEC Mode.
+# P26022, P26122, P26222, P26322, P26422, P26522
+
+# FEC Payload Type.
+# P2394, P2494, P2594, P2694, P2794, P2894
+
+# H.263 Encoder Resolution.
+# P1330, P477, P577, P677, P1777, P1877
+
+# Auto Unhold When Press the Line Key.
+# P29067
+
+# Preferred Internet Protocol.
+# P1415
+
+# Different Network for Data and VOIP Calls.
+# P22104
+
+# Network Configuration of Data
+# DHCP VLAN Override.
+# P8300
+
+# Network Configuration of VOIP Calls
+# Address Type.
+# P22105
+
+# IP Address.
+# P22106
+
+# Subnet Mask.
+# P22107
+
+# Default Gateway.
+# P22108
+
+# DNS Server 1.
+# P22109
+
+# DNS Server 2.
+# P22110
+
+# LLDP TX Interval(s).
+# P22122
+
+# Enable CDP.
+# P22119
+
+# Layer 2 QoS. 802.1Q/VLAN Tag(Ethernet) for VOIP Calls.
+# P22111
+
+# Layer 2 QoS. 802.1p priority value(Ethernet) for VOIP Calls.
+# P22112
+
+# IPv6
+# IPv6 Address.
+# P1419
+
+# Static IPv6 Address.
+# P1420
+
+# IPv6 Prefix Length.
+# P1421
+
+# IPv6 DNS Server 1.
+# P1424
+
+# IPv6 DNS Server 2.
+# P1425
+
+# IPv6 Preferred DNS Server.
+# P1423
+
+# Disable Web GUI.
+# P29605
+
+# CUST File
+# GUI Customization File Download Mode.
+# P6775
+
+# GUI Customization File URL.
+# P6774
+
+# GUI Customization File HTTP/HTTPS Username.
+# P6776
+
+# GUI Customization File HTTP/HTTPS Password.
+# P6777
+
+# Use Configurations of Config File Server.
+# P6778
+
+# Polycom Phonebook.
+# P8343
+
+# Polycome Phonebook Name.
+# P8344
+
+# Enable MPK Auto Arrangement.
+# P22118
+
+# Show Dial DTMF Softkey.
+# P26052, P26152, P26252, P26352, P26452, P26552
+
+# CID to Show Dial DTMF Softkey.
+# P26053, P26153, P26253, P26353, P26453, P26553
+
+# Security Mode for Hidden SSID.
+# P7814
+
+# Added P value option "15 - Quick Conference" for all MPK Key Mode.
+
+####################################################################
+# P Values Changed since 1.0.3.92                                 ##
+####################################################################
+
+# Permission to Install/Uninstall Apps.
+# P value P29064 has been changed to P29604
+
+####################################################################
+# P Values Added since 1.0.3.75                                   ##
+####################################################################
+
+# Use First Matching Vocoder in 200OK SDP.
+# P2348, P2448, P2548, P2648, P2748, P2848
+
+# Permission to Install/Uninstall Apps.
+# P29064
+
+####################################################################
+# P Values Changed since 1.0.3.75                                 ##
+####################################################################
+# Config Upgrade Via.
+# P212 default value changes to "2 - HTTPS".
+####################################################################
+# P Values Added since 1.0.3.62                                   ##
+####################################################################
+
+# Sixth Codec.
+# P62, P456, p556, p656, P1756, P1856
+
+# Seventh Codec.
+# P46, P457, P557, P657, P1757, P1857
+
+# Eigth Codec.
+# P98, P458, P558, P658, P1758, P1858
+
+# Codec Negotiation Priority.
+# P29061, P29161, P29261, P29361, P29461, P29561
+
+# Video Display Mode.
+# P921
+
+# Phonebook Key Function.
+# P1526
+
+# Maintenance - Upgrade
+# Firmware Upgrade Via.
+# P6767
+
+# Firmware HTTP/HTTPS User Name
+# P6768
+
+# Firmware HTTP/HTTPS Password
+# P6769
+
+####################################################################
+# P Values Changed since 1.0.3.62                                 ##
+####################################################################
+
+# SIP User-Agent
+# P26027 changes to "Grandstream GXV3240 1.0.3.75"
+
+####################################################################
+# P Values Added since 1.0.3.55                                   ##
+####################################################################
+
+# Disable Video Call Feature.
+# P22091
+
+# HTTP/HTTPS User-Agent.
+# P1541
+
+# SIP User-Agent.
+# P26027
+
+####################################################################
+# P Values Changed since 1.0.3.55                                 ##
+####################################################################
+
+# Remove OBP from Route.
+# P2305 added a new option 2 - Always 
+
+####################################################################
+# P Values Added since 1.0.3.37                                   ##
+####################################################################
+
+# Use H.264 Constrained Profiles.
+# P26045, 26145, 26245, 26345, 26445, 26545
+
+# SIP Domain.
+# P22017
+
+# Disable Active MPK.
+# P6764
+
+# Allow DHCP Option 242 (Avaya IP Phones).
+# P22053
+
+# XSI Authentication Type.
+# P22054
+
+####################################################################
+# P Values Changed since 1.0.3.37                                 ##
+####################################################################
+
+# Enable RFC5168 Support.
+# The default P value is changed from 0 to 1.
+
+####################################################################
+# P Values Added since 1.0.3.30                                   ##
+####################################################################
+
+# RTP IP Filter
+# 26026, 26126, 26226, 26326, 26426, 26526
+
+# Call Log
+# P182 added a new option - Don't Prompt Missed Call
+
+# Default Transfer Mode
+# P1685 added a new option - Attended Transfer Only
+
+# Layer 2 QoS. 802.1Q/VLAN Tag(Wi-Fi)
+# P22047
+
+# Layer 2 QoS. 802.1p priority value(Wi-Fi)
+# P22048
+
+# Unregister Before New Registration
+# P81 changed the default P value from 0 to 2
+
+####################################################################
+# P Values Added since 1.0.3.22                                   ##
+####################################################################
+
+# Handset TX Gain (dB), Handset RX Gain (dB) 
+#P1464, P2906
+
+# Send SIP Log
+#P1387 
+
+# Validate Certification Chain
+#P22030 
+
+# Enable PNP Feature
+#P22032
+
+# PNP URL
+#P22033 
+
+# Allow Unsolicited REFER for 6 accounts
+#P26023, 26123, 26223, 26323, 26423, 26523
+
+# Allow SIP Reset for 6 accounts
+#P26015, 26115, 26215, 26315, 26415, 26515
+
+# Validate Certification Chain for 6 accounts
+#P2367, 2467, 2567, 2667, 2767, 2867
+
+# Opus Payload Type for 6 accounts
+#P2385, 2485, 2585, 2685, 2785, 2885
+
+# Enable DHCP VLAN
+#P8300
+
+# SIP Domain
+#P22017
+
+# LogIn Credentials Server, port
+#P6006, P6005
+
+####################################################################
+# P Values Added since 1.0.3.15                                   ##
+####################################################################
+
+# Enable BroadSoft Call Features.
+#P2388, 2488, 2588, 2688, 2788, 2888
+
+# Disable Presentation.
+#P26001, P26101, P26201, P26301, P26401, P26501
+
+# Enable OPTIONS Keep Alive.
+#P2397, P2497, P2597, P2697, P2797, P2897
+
+# OPTIONS Keep Alive Interval(s).
+#P2398, P2498, P2598, P2698, P2798, P2898
+
+# OPTIONS Keep Alive Maximum Tries.
+#P2399, P2499, P2599, P2699, P2799, P2899
+
+# Account Force BLF Call-pickup by Prefix.
+#P6752, P6753, P6754, P6755, P6756, P6757
+
+# HTTP/HTTPS Proxy Hostname
+#P1552
+
+# HTTP/HTTPS Proxy Port
+#P1553
+
+# Bypass Proxy For
+#P22011
+
+# Auto Config CPT by Region.
+#P22041
+
+# The Desktop Menu as On Hook Dial.
+#P22040
+
+# Enable SRTP Key Lift Time.
+#P2363, P2463, P2563, P2663, P2763, P2863,
+
+# Packetization mode.
+#P26005, P26105, P26205, P26305, P26405, P26505
+
+####################################################################
+# P Values Added since 1.0.3.6                                    ##
+####################################################################
+# Broadsoft Xsi User ID
+#P22034
+
+####################################################################
+# P Values changed since 1.0.3.6                                  ##
+####################################################################
+
+# The P values for the MPK LCD Settings and MPK EXT Settings are unified.
+# The original P value ranged from 301 to 396, and 6001 to 6712 are no longer used.
+# The valid P values are ranged from 23000 to 23798. 
+
+####################################################################
+# P Values Added since 1.0.3.3                                    ##
+####################################################################
+
+# Show Account Name Only
+#P2380, P2480, P2580, P2680, P2780, P2880
+
+# Preferred Vocoder
+#P57, P58, P59, P60, P61, P451, P452, P453, P454, P455, P551, P552, P553, P554, P555
+#P651, P652, P653, P654, P655, P1751, P1752, P1753, P1754, P1755, P1851, P1852, P1853
+#P1854, P1855
+
+# Register before Expiration (s)
+#P2330, P2430, P2530, P2630, P2730, P2830
+
+# RTCP Destination
+#P2390, P2490, P2590, P2690, P2790, P2890
+
+#Virtual Account Group
+#P2391, P2491, P2591, P2691, P2791, P2891
+
+# Guest Login. 
+#P22015
+
+# Guest Login Timeout (m)
+#P22016
+
+# Guest Login PIN Code
+#P22019
+
+# Mute Key Function While Idle
+#P1565 
+
+# Second Dial Tone
+#P2909 
+
+# Paging BargeIn
+#P1566 
+
+# Paging Priority Active
+#P1567 
+
+# Multicast Paging Codec
+#P1568 
+
+# Enable Multicast Paging Video
+#P22031 
+
+# Multicast Paging Video Codec
+#P22024 
+
+# Multicast Paging Image Size
+#P22025 
+
+# Multicast Paging Video Bit Rate
+#P22026 
+
+# Multicast Paging Video Frame Rate
+#P22027 
+
+# Multicast Paging H.264 Profile Type
+#P22028 
+
+# Multicast Paging H.264 Payload Type
+#P22029 
+
+# Multicast Listening Address 
+#P1569, P1571, P1573, P1575, P1577, P1579, P1581, P1583, P1585, P1587
+
+# Multicast Listening Label
+#P1570, P1572, P1574, P1576, P1578, P1580, P1582, P1584, P1586, P1588
+
+#Auto Provision Eventlist BLFs
+#P2389, P2489, P2589, P2689, P2789, P2889
+
+# 802.1x Mode
+#P22020
+
+# 802.1x Identity
+#P22021
+
+# 802.1x Secret
+#P22022
+
+# Disable SIP NOTIFY Authentication
+#P4428
+
+# Sort Phonebook by
+#P2914
+
+# Emergency Call Numbers
+#P25675
+
+# Connection Mode
+#P8037
+
+# Username
+#P2966
+
+# Password
+#P2967
+
+# Enable Broadsoft IM&P
+#P2964
+
+# Associated Broadsoft Account
+#P2965
+
+# Auto Login
+#P2968
+
+# Display Non XMPP Contacts
+#P2969
+
+####################################################################
+# P Values deleted since 1.0.2.15                                 ##
+####################################################################
+
+#Accept Call and Speaker Dial in RJ9 Headset Automatically.
+#P1547
+
+# Handset TX Gain (dB). 
+#P1464
+
+# Handset RX Gain (dB).
+#P2906
+
+####################################################################
+# P Values changed since 1.0.1.54                                 ##
+####################################################################
+
+# Language.Add some languages
+# P1362
+
+# LDAP Search Timeout (ms). Unit is changed to millisecond; Default setting is 4000
+# P8032 = 4000
+
+####################################################################
+# P Values Added since 1.0.1.50                                   ##
+####################################################################
+
+# SIP Timer D Interval (Seconds)
+# P2387, P2487, P2587, P2687, P2787, P2887
+
+# Domain Certificate
+# P2386, P2486, P2586, P2686, P2786, P2886
+
+# Added Opus codec with P value 123
+
+# Jitter Buffer Maximums (ms)
+# P2381, P2481, P2581, P2681, P2781, P2881
+
+# Disable DialPlan
+# P2382, P2482, P2582, P2682, P2782, P2882
+
+# Added NEC special feature with P value 123
+
+# Filter characters
+# P22012
+
+# BS Contact Hits
+# P22014
+
+# Remove Disable DialPlan
+# P1687
+
+####################################################################
+# P Values Added since 1.0.1.37                                   ##
+####################################################################
+
+# SIP Compact Header.
+# P289, P472, P572, P672, P1772, P1872
+
+# Caller ID Display.
+# P2324, P2424, P2524, P2624, P2724, P2824
+
+####################################################################
+# P Values Changed since 1.0.1.37                                 ##
+####################################################################
+
+# iLBC codec P value changed from 97 to 98.
+
+####################################################################
+# P Values Added since 1.0.1.6                                    ##
+####################################################################
+
+# SRTP Encryption Bit.
+# P2383, P2483, P2583, P2683, P2783, P2883
+
+# Start Video Call Fullscreen.
+# P2332, P2432, P2532, P2632, P2732, P2832
+
+# DND Call Feature On.
+# P2344, P2444, P2544, P2644, P2744, P2844
+
+# DND Call Feature Off.
+# P2345, P2445, P2545, P2645, P2745, P2845
+
+# Added Broadsoft section under Maintenance.
+# XSI Server.
+# P1591
+
+# Port.
+# P1592
+
+# Username.
+# P1593
+
+# Password.
+# P1594
+
+# Group Directory.
+# P2971
+
+# Group Directory Name.
+# P2972
+
+# Enterprise Directory.
+# P2973
+
+# Enterprise Directory Name.
+# P2974
+
+# Group Common.
+# P2975
+
+# Group Common Name.
+# P2976
+
+# Enterprise Common.
+# P2977
+
+# Enterprise Common Name.
+# P2978
+
+# Personal Directory.
+# P2979
+
+# Personal Directory Name.
+# P2980
+
+# Missed Call Log.
+# P2981
+
+# Missed Call Log Name.
+# P2982
+
+# Placed Call Log.
+# P2983
+
+# Placed Call Log Name.
+# P2984
+
+# Received Call Log.
+# P2985
+
+# Received Call Log Name.
+# P2986
+
+####################################################################
+# P Values Added since 1.0.1.1                                    ##
+####################################################################
+
+# Headset Type. (Add one extra option for Jabra EHS)
+# P1487
+
+# Wi-Fi Function. 
+# P7800
+
+# ESSID. 
+# P7812
+
+# WEP Default Key, MaxLength 64. 
+# P7830
+
+# Enable Frame Skipping in Video Decoder. 
+# P22008
+
+# SRTP Mode. (For each account)
+# P183, P443, P543, P643, P1743, P1843
+
+# PC Port VLAN Tag
+# P229
+
+# PC port Priority Value
+# P230
+
+# PC port Mode
+# P1348
+
+# Check SIP User ID for Incoming INVITE
+# P258, P449, P549, P649, P1749, P1849
+
+# Only Accept SIP Requests from Known Servers
+# P2347, P2447, P2547, P2647, P2747, P2847
+
+# Always send HTTP Basic Authentication Information.
+# P20713
+
+# Handset TX Gain (dB)
+# P1464
+
+# Handset TX Gain (dB)
+# P2906
+
+####################################################################
+## Change Log End                                                 ##
+####################################################################

@@ -1,0 +1,2293 @@
+######################################################################################
+## gxp2130_40_60_70_35 Change Log                                                   ##
+######################################################################################
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.11.10
+###############################################################
+##############################################################################
+##  Maintenance/Security Settings/Security                                  ##
+##############################################################################
+# Minimum TLS Version. 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2. Default is 11.
+# Number: 10, 11, 12
+# Mandatory
+# P22293 = 11
+
+# Maximum TLS Version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2. Default is 99
+# Number: 99, 10, 11, 12
+# Mandatory
+# P22294 = 99
+
+# Enable/Disable Weak Ciphers. Default is 0
+# 0 - Enable Weak TLS Ciphers Suites
+# 1 - Disable Symmetric Encryption RC4/DES/3DES
+# 2 - Disable Symmetric Encryption SEED
+# 3 - Disable All Weak Symmetric Encryption
+# 4 - Disable Symmetric Authentication MD5
+# 5 - Disable All Weak TLS Cipher Suites
+# Number: 0 - 5
+# P8536 = 0
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.9.135
+###############################################################
+###############################################################
+##  Settings/XML Applications
+###############################################################
+# Enable XML Application Auto Launch. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8533 = 0
+
+##############################################################################
+##  Settings/Preferences / Ring Tone
+##############################################################################
+# Lock Speaker Volume. 0 - No, 1 - Ring, 2 - Talk, 3 - Both. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P8392 = 0
+
+##############################################################################
+##  Maintenance/Security Settings/Trusted CA Certificates   ##
+##############################################################################
+# Load CA Certificates. 0 - Default Certificates, 1 - Custom Certificates, 2 - All Certificates. Default is 2
+# Number: 0, 1, 2
+# Mandatory
+# P8502 = 2
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.9.127
+###############################################################
+###############################################################
+# Settings/Call Features
+###############################################################
+# Disable Hook Switch. 0 - No, 1 - Yes, 2 - For Answering Call
+# Number: 0, 1, 2. Default is 0
+# Mandatory
+# P6763 = 0
+###############################################################
+# Settings/Preference/Ringtone
+###############################################################
+# Total Number of Custom Ringtone Update.
+# Number: 0, 1, 2, 3. Default is 3
+# Mandatory
+# P8509 = 3
+###############################################################
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.9.108
+###############################################################
+###############################################################
+# Account 1/2/3/4/5/6 SIP Settings/Basic Settings
+###############################################################
+# Switch Backup Proxy on No Response. 0 - No, 1 - Yes. Default is 0
+# Number: 0,1
+# Mandatory
+# P26092/P26192/P26292/P26392/P26492/P26592 = 0
+
+# BLF Call-pickup. 0 - Auto, 1 - Force BLF Call-pickup by prefix, 2 - Disabled. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P6752 = 0
+
+##############################################################################
+## Network/Advanced Settings                                                ##
+##############################################################################
+# Enable Manual VLAN Configuration. 0 - Disable, 1 - Enable. Default is 0.
+# Number: 0,1
+# Mandatory
+# P22174 = 0
+
+# Enable IEEE 802.3az EEE (Energy Efficient Ethernet). 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8499 = 0 
+
+##############################################################################
+## Network/OpenVPN Settings                     ##
+##############################################################################
+# Additional Options
+# String
+# P8460 = 
+
+##############################################################################
+## Network/SNMP Settings                     ##
+##############################################################################
+# Version. 1 - Version 1, 2 - Version 2, 3 - Version 3. Default is 3
+# Number: 1, 2, 3
+# Mandatory
+# P21904 = 3
+
+# Port
+# Number. Default is 161.
+# Mandatory
+# P21903 = 161
+
+# Community
+# String
+# P21902 =
+
+# SNMP Username
+# Strings
+# P21905 = 
+
+# Security Level
+# Number: 0 - noAuthUser, 1 - authUser, 2 - privUser. Default is 0
+# Mandatory
+# P21910 = 0
+
+# Authentication Protocol
+# Number: 0 - None, 1 - MD5, 2 - SHA. Default is 0
+# Mandatory
+# P21906 = 0
+
+# Privacy Portocol
+# Number: 0 - None, 1 - DES, 2 - AES. Default is 0
+# Mandatory
+# P21907 = 0
+
+# Authentication Key
+# String
+# P21908 = 
+
+# Privacy Key
+# String 
+# P21909 = 
+
+# SNMP Trap Username
+# String
+# P21911 = 
+
+# Trap Security Level
+# Number: 0 - noAuthUser, 1 - authUser, 2 - privUser. Default is 0
+# Mandatory
+# P21916 = 0
+
+# Trap Authentication Protocol
+# Number: 0 - None, 1 - MD5, 2 - SHA. Default is 0
+# Mandatory
+# P21912 = 0
+
+# Trap Privacy Protocol
+# Number: 0 - None, 1 - DES, 2 - AES. Default is 0
+# Mandatory
+# P21913 = 0
+
+# Trap Authentication Key
+# String
+# P21914 = 
+
+# Trap Privacy Key
+# String
+# P21915 = 
+
+##############################################################################
+##  Maintenance/Upgrade and Provisioning
+##############################################################################
+# Firmware Upgrade Confirmation. 0 - No, 1 - Yes. Default is 1
+# Number: 0,1
+# Mandatory
+# P8375 = 1
+
+##############################################################################
+##  Phonebook/LDAP
+##############################################################################
+# Exact Match Search. . 0 - No, 1 - Yes. Default is 0
+# Mandatory
+# P8505 = 0
+
+##############################################################################
+##  Settings/General Settings
+##############################################################################
+# Enable Fix For RTP Timestamp Jump. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8389 = 0
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Only Same Account in Conference. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8506 = 0
+
+# Show On Hold Duration. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8503 = 0
+
+# Enable diversion information display. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P22237 = 1
+
+##############################################################################
+##  Settings/Outbound Notification
+##############################################################################
+######################################################################################
+# Action URL
+######################################################################################
+# Register Failed.
+# String
+# P8307 = 
+
+# Answered Call
+# String
+# P22171 = 
+
+# Rejected Call
+# String
+# P8315 = 
+
+# Forwarded Call
+# String
+# P22172 = 
+
+# Idle to Busy
+# String
+# P8328 = 
+
+# Busy to Idle
+# String
+# P8329 = 
+
+##############################################################################
+##  Settings/Preferences / LCD Display
+##############################################################################
+# Disable Missed Call Backlight. 0 - No, 1 - Yes, 2 - Yes, but flash MWI LED. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P351 = 0
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.9.69
+###############################################################
+###############################################################
+# Account 1/2/3/4/5/6 Call Settings
+###############################################################
+# Bypass Dial Plan
+# String: contact,incoming,outgoing,dialing,mpk,api. Default is mpk
+# P2382/P2482/P2582/P2682/P2782/P2882 = mpk
+
+# Matching Incoming Caller ID. Matching Rule 4
+# String
+# P6716/P6722/P6728/P6734/P6740/P6746 = 
+
+# Matching Rule 4 Distinctive Ringtone
+# -1 - No Ringtone, 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3, 4 - silent, 5 - Default Ringtone. Default is 5.
+# Number: -1, 0, 1, 2, 3, 4, 5
+# Mandatory
+# P6717/P6723/P6729/P6735/P6741/P6747 = 5
+
+# Matching Incoming Caller ID. Matching Rule 5
+# String
+# P6718/P6724/P6730/P6736/P6742/P6748 = 
+
+# Matching Rule 5 Distinctive Ringtone
+# -1 - No Ringtone, 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3, 4 - silent, 5 - Default Ringtone. Default is 5.
+# Number: -1, 0, 1, 2, 3, 4, 5
+# Mandatory
+# P6719/P6725/P6731/P6737/P6743/P6749 = 5
+
+# Matching Incoming Caller ID. Matching Rule 6
+# String
+# P6720/P6726/P6732/P6738/P6744/P6750 = 
+
+# Matching Rule 6 Distinctive Ringtone
+# -1 - No Ringtone, 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3, 4 - silent, 5 - Default Ringtone. Default is 5.
+# Number: -1, 0, 1, 2, 3, 4, 5
+# Mandatory
+# P6721/P6727/P6733/P6739/P6745/P6751 = 5
+
+# Matching Incoming Caller ID. Matching Rule 7
+# String
+# P26064/P26164/P26264/P26364/P26464/P26564 = 
+
+# Matching Rule 7 Distinctive Ringtone
+# -1 - No Ringtone, 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3, 4 - silent, 5 - Default Ringtone. Default is 5.
+# Number: -1, 0, 1, 2, 3, 4, 5
+# Mandatory
+# P26065/P26165/P26265/P26365/P26465/P26565 = 5
+
+# Matching Incoming Caller ID. Matching Rule 8
+# String
+# P26066/P26166/P26266/P26366/P26466/P26566 = 
+
+# Matching Rule 8 Distinctive Ringtone
+# -1 - No Ringtone, 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3, 4 - silent, 5 - Default Ringtone. Default is 5.
+# Number: -1, 0, 1, 2, 3, 4, 5
+# Mandatory
+# P26067/P26167/P26267/P26367/P26467/P26567 = 5
+
+# Matching Incoming Caller ID. Matching Rule 9
+# String
+# P26068/P26168/P26268/P26368/P26468/P26568 = 
+
+# Matching Rule 9 Distinctive Ringtone
+# -1 - No Ringtone, 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3, 4 - silent, 5 - Default Ringtone. Default is 5.
+# Number: -1, 0, 1, 2, 3, 4, 5
+# Mandatory
+# P26069/P26169/P26269/P26369/P26469/P26569 = 5
+
+# Matching Incoming Caller ID. Matching Rule 10
+# String
+# P26096/P26196/P26296/P26396/P26496/P26596 = 
+
+# Matching Rule 10 Distinctive Ringtone
+# -1 - No Ringtone, 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3, 4 - silent, 5 - Default Ringtone. Default is 5.
+# Number: -1, 0, 1, 2, 3, 4, 5
+# Mandatory
+# P26097/P26197/P26297/P26397/P26497/P26597 = 5
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Enable Enhanced Acoustic Echo Canceller. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P22175 = 1
+
+##############################################################################
+##  Maintenance/TR-069
+##############################################################################
+# Randomized TR069 Startup. 0 - Disabled, 1 - Enabled. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8487 = 0
+
+# Open Unconditional Forward
+# String
+# P22164 = 
+
+# Close Unconditional Forward
+# String
+# P22165 = 
+
+# Open Busy Forward
+# String
+# P22166 = 
+
+# Close Busy Forward
+# String
+# P22167 = 
+
+# Open No Answer Forward
+# String
+# P22168 = 
+
+# Close No Answer Forward
+# String
+# P22169 = 
+
+# Transfer Finished
+# String
+# P8322 = 
+
+# Transfer Failed
+# String
+# P8323 = 
+
+# Mute Call
+# String
+# P8326 = 
+
+# UnMute Call
+# String
+# P8327 = 
+
+# IP Change
+# String
+# P22170 = 
+
+# Auto-Provision Finish
+# String
+# P8332 = 
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Enable IM Popup Timeout. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P8474 = 1
+
+##############################################################################
+##  Settings/Broadsoft
+##############################################################################
+# Broadsoft Contacts Download Limitation
+# Number: 0 - 2000. Default is 100
+# P8464 = 100
+
+# Broadsoft Contacts Search Limitation
+# Number: 0 - 2000. Default is 100
+# P8465 = 100
+
+##############################################################################
+##  Settings/Programmable Keys / Virtual Multi-Purpose Keys Settings
+##############################################################################
+# Show VPK shared line display description (This only can be done with provisioning)
+# Number: 0, 1. 0 - No, 1 - Yes. Default is 1
+# Mandatory
+# P8484 = 1
+
+##############################################################################
+##  Settings/Preferences / Audio Control
+##############################################################################
+# Group Listen with Speaker. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P22163 = 0
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.9.63
+###############################################################
+##############################################################################
+##  Phonebook/Phonebook Management
+##############################################################################
+# Import Group Method. 0 - Replace, 1 - Append. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8462 = 0
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.9.26
+###############################################################
+###############################################################
+# Account 1/2/3/4/5/6 General Settings
+###############################################################
+# Account Display
+# Number: 0, 1. 0 - User Name, 1 - User ID. Default is 0
+# Mandatory
+#P2380/P2480/P2580/P2680/P2780/P2880 = 0
+
+###############################################################
+# Account 1/2/3/4/5/6 Network Settings
+###############################################################
+# Use SBC. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P26090/P26190/P26290/P26390/P26490/P26590 = 0
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Predictive Dialing Source
+# String: CallHistory,LocalPhonebook,RemotePhonebook,FeatureCode
+#P8442 = CallHistory,LocalPhonebook,RemotePhonebook,FeatureCode
+
+##############################################################################
+##  Network/Remote Control
+##############################################################################
+# CSTA Control. 0 - Disabled, 1 - Enabled
+# Number: 0, 1. Default is 0
+# Mandatory
+#P32053 = 0
+
+##############################################################################
+## Network/SNMP Settings                     ##
+##############################################################################
+# Enable SNMP. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P21896 = 0
+
+# Snmp Trap Community
+# String
+# P21900 = 
+
+# SNMP Trap IP
+# String
+# P21897 = 
+
+# SNMP Trap Port
+# Number: 1025 - 65535. Default is 162
+# P21898 = 162
+
+# SNMP Trap Version
+# Number: 1, 2. 1 - Version 1, 2 - Version 2, 3 - Version 3. Default is 1
+# P21899 = 1
+
+# SNMP Trap Interval
+# Number: 1 - 1440. Default is 5
+# P21901 = 5
+
+##############################################################################
+##  Maintenance/Upgrade and Provisioning
+##############################################################################
+# Download and Process ALL Available Config Files. 0 - No, 1 - Yes. Default is No
+# Number: 0, 1
+# Mandatory
+# P8467 = 0
+
+##############################################################################
+##  Maintenance/Upgrade and Provisioning
+##############################################################################
+# Radomized Automitic Upgrade. 0 - No, 1 - Yes. Default is No
+# Number: 0, 1
+# Mandatory
+# P8458 = 0
+
+# Hour of the Day--End (-1, 0-23). Default is 0
+# Number: -1, 0 - 23
+# P8459 = 0
+
+##############################################################################
+##  Maintenance/Security Settings/Security   ##
+##############################################################################
+# Validate Server Certificates. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8463 = 0
+
+# Enable User Web Access. 0 - Disabled, 1 - Enabled. Default is 1
+# Number: 0, 1
+# Mandatory
+# P8469 = 1
+
+# Web Session Timeout(in minutes)
+# Number: 2 - 60. Default is 10
+# P28116 = 10
+
+# Web Session Attempt Limit
+# Number: 1 - 10. Default is 5
+# P28117 = 5
+
+##############################################################################
+##  Settings/General Settings
+##############################################################################
+# Public Mode Username Prefix
+# String
+#P8470 = 
+
+# Public Mode Username Suffix
+# String
+#P8471 = 
+
+# Test Password Strength. Default is 0.
+# Number: 0, 1. 0 - No, 1 - Yes. 
+#P8468 = 0
+
+# Enable Active VPK Page. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P22134 = 0
+
+DELETE:
+# Transfer Mode Via VPK. 0 - Blind Transfer, 1 - Attended Transfer, 2 - New Call. Default is 0
+# Number: 0, 1
+# Mandatory
+#P8390 = 0
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Allow Incoming Call Before Ringing.  0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P29609 = 0
+
+# Enable Incoming Call Popup. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P8401 = 1
+
+##############################################################################
+##  Settings/Multicast Paging
+##############################################################################
+# Multicase Channel Number
+# Number: 0 - 50 (0 for normal RTP packets, 1-50 for Polycom multicast format packets). Default is 0
+#P8454 = 0
+
+# Multicast Sender ID
+# Strings
+#P8455 = 
+
+##############################################################################
+##  Settings/Programmable Keys / Virtual Multi-Purpose Keys Settings
+##############################################################################
+# Transfer Mode via VPK. 0 - Blind Transfer, 1 - Attended Transfer, 2 - New Call. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+#P8390 = 0
+
+# Enable transfer via non-Transfer MPK. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P22162 = 0
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.9.25
+###############################################################
+##############################################################################
+##  Network/Remote Control
+##############################################################################
+# Action URI Support. 0 - Disabled, 1 - Enabled
+# Number: 0, 1. Default is 1
+# Mandatory
+# P32050 = 1
+
+# Remote Control Pop up Window Support. 0 - Disabled, 1 - Enabled
+# Number: 0, 1. Default is 1
+# Mandatory
+# P32051 = 1
+
+# Action URI Allowed IP List
+# String
+# P32052 = 
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.8.50
+###############################################################
+##############################################################################
+## Network/Advanced Settings                                                ##
+##############################################################################
+# Enable CDP.   0 - Disabled, 1 - Enabled. Default is 1
+# Number: 0, 1
+# Mandatory
+# P22119 = 1
+
+# Maximum Transmission Unit(MTU). Default is 1500
+# Number: 576 - 1500
+# Mandatory
+# P244 = 1500
+
+##############################################################################
+##  Maintenance/Security Settings/Keypad Lock                               ##
+##############################################################################
+# Enable Keypad Locking. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P1382 = 0
+
+# Keypad Lock Type. 0 - All Keys, 1 - Functional Keys. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8383 = 0
+
+# Password to Lock/Unlock
+# String
+# P1383 = 
+
+# Keypad Lock Timer. Default is 0
+# Number
+# Mandatory
+# P8384 = 0
+
+# Emergency
+# String
+# P8385 = 
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Off-hook Auto Dial Delay
+# Number: 0 - 10
+# P8388 = 0
+
+# Transfer Mode Via VPK. 0 - Blind Transfer, 1 - Attended Transfer, 2 - New Call. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8390 = 0
+
+# Enable Call Completion Service. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8391 = 0
+
+##############################################################################
+##  Settings/Multicast Paging
+##############################################################################
+# Allowed in DND Mode. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8381 = 0
+
+##############################################################################
+##  Settings/Preferences / LCD Display
+##############################################################################
+# Show Date and Time. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P8441 = 0
+
+##############################################################################
+##  Settings/Preferences / Ring Tone
+##############################################################################
+# Default Ringtone
+# Default Ringtone. 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3, 4 - silent. Default is 0
+# Number: 0, 1, 2, 3, 4
+# Mandatory
+# P8398 = 0
+
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.8.47
+###############################################################
+##############################################################################
+##  Settings/Preferences / Date and Time
+##############################################################################
+# Show Date On Status Bar. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8387 = 0
+
+##############################################################################
+##  Maintenance/Syslog
+##############################################################################
+# Syslog Protocol. 0 - UDP, 1 - SSL/TLS. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8402 = 0
+
+###############################################################
+# Account 1/2/3/4/5/6/ Call Settings
+###############################################################
+# Disable Call Waiting. 0 - Default, 1 - No, 2 - Yes. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P26063/P26163/P26263/P26363/P26463/P26563 = 0
+
+##############################################################################
+##  Settings/Preferences / Ring Tone
+##############################################################################
+# Lock Volumne. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8392 = 0
+
+# Notification Tone Volume
+# Number: 0-7. Default is 5.
+# Mandatory
+# P8399 = 5
+
+##############################################################################
+##  Maintenance/Security Settings/Trusted CA Certificates   
+##############################################################################
+# Trusted CA Certificate 1
+# String
+# P8433 =
+
+# Trusted CA Certificate 2
+# String
+# P8434 =
+
+# Trusted CA Certificate 3
+# String
+# P8435 =
+
+# Trusted CA Certificate 4
+# String
+# P8436 =
+
+# Trusted CA Certificate 5
+# String
+# P8437 =
+
+# Trusted CA Certificate 6
+# String
+# P8438 =
+
+##############################################################################
+## Network/Advanced Settings                     
+##############################################################################
+# 802.1X CA Certificate
+# String
+# P8439 =
+
+# 802.1X Client Certificate
+# String
+# P8440 =
+
+###############################################################
+# Account 1/2/3/4/5/6 Audio Settings
+###############################################################
+# SRTP Key Length. 0 - AES 128&256 bit, 1 - AES 128 bit, 2 - AES 256 bit. Default is 0
+# Default is 0
+# Number: 0,1
+# Mandatory
+# P2383/P2483/P2583/P2683/P2783/P2883 = 0
+
+##############################################################################
+##  Settings/External Service
+##############################################################################
+##  Grandstream Door System
+##  Order 1/2/3/4/5/6/7/8/9/10
+# Service Type. -1 - None, 0 - GDS. Default is -1.
+# Number: -1, 0
+# Mandatory: -1
+# P32000/P32005/P32010/P32015/P32020/P32025/P32030/P32035/P32040/P32045 = -1
+
+# Account
+# 0 - Account 1, 1 - Account 2, 2 - Account 3, 3 - Account 4(For GXP2140/2160/2170 only), 4 - Account 5(For GXP2160/2170 only), 5 - Account 6(For GXP2160/2170 only). 
+# Number: 0, 1, 2, 3, 4, 5. Default is 0.
+# Mandatory
+# P32001/P32006/P32011/P32016/P32021/P32026/P32031/P32036/P32041/P32046 = 0
+
+# System Identification
+# String
+# P32002/P32007/P32012/P32017/P32022/P32027/P32032/P32037/P32042/P32047 = 
+
+# System Number
+# String
+# P32003/P32008/P32013/P32018/P32023/P32028/P32033/P32038/P32043/P32048 = 
+
+# Access Password
+# String
+# P32004/P32009/P32014/P32019/P32024/P32029/P32034/P32039/P32044/P32049 = 
+
+##############################################################################
+## Network/OpenVPN Settings                     
+##############################################################################
+# OpenVPN Cipher Method. 0 - Blowfish, 1 - AES-128, 2 - AES-256, 3 - Triple-DES. Default is 0
+# Number: 0, 1, 2, 3 
+# Mandatory
+# P8396 = 0
+
+# OpenVPN Username
+# String
+# P8394 =
+
+# OpenVPN CA
+# String
+# P8395 =
+
+##############################################################################
+##  Settings/Broadsoft/Broadsoft XSI
+##############################################################################
+# Sort Phonebook by. 0 - Last Name, 1 - First Name. Defaut is 0.
+# Number: 0, 1
+# Mandatory
+# P22131 = 0
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Onhook Dial Barging. 0 - Disabled, 1 - Enabled. Default is 1
+# Number: 0, 1
+# Mandatory
+# P8397 = 1
+
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.8.46
+###############################################################
+##############################################################################
+##  Settings/Broadsoft
+##############################################################################
+###################################################################
+# Broadsoft XSI
+###################################################################
+# XSI Actions Path
+# String
+# P2937 = 
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.7.97
+###############################################################
+###############################################################
+# Account x/SIP Settings/Basic Settings
+###############################################################
+
+# Enable OPTIONS Keep Alive. 0 - No, 1 - Yes. Default is 0
+# Number: 0,1
+# Mandatory
+#P2397/P2497/P2597/P2697/P2797/P2897 = 0
+
+# OPTIONS Keep Alive Interval. Default is 30
+# Number
+# Mandatory
+#P2398/P2498/P2598/P2698/P2798/P2898 = 30
+
+# OPTIONS Keep Alive Max Lost. Default is 3
+# Number
+# Mandatory
+#P2399/P2499/P2599/P2699/P2799/P2899 = 30
+
+# Callee ID Display. 0 - Auto, 1 - Disabled, 2 - From Header. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+#P26025/P26125/P26225/P26325/P26425/P26525 = 0
+
+###############################################################
+# Account x/SIP Settings/Custom SIP Headers
+###############################################################
+# Use MAC Header
+# 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+#P26061/P26161/P26261/P26361/P26461/P26561 = 0
+
+###############################################################
+# Account x/SIP Settings/Advanced Features
+###############################################################
+# Allow Unsolicited REFER. 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+#P26023/P26123/P26223/P26323/P26423/P26523 = 0
+
+###############################################################
+# Account x/Audio Settings 
+###############################################################
+# Codec Negotiation Priority. 0 - Caller, 1 - Callee. Default is 1
+# Number: 0, 1
+# Mandatory
+#P29061/P29161/P29261/P29361/P29461/P29561 = 1
+
+###############################################################
+# Account x/Call Settings
+###############################################################
+# Blind Transfer Wait Timeout. Default is 30
+# Number: 30 - 300
+# Mandatory
+#P26070/P26170/P26270/P26370/P26470 = 30
+
+# RFC2543 Hold. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1, 2
+# Mandatory
+#P26062/P26162/P26262/P26362/P26462/P26562= 1
+
+# Hiding Dialing Password
+# Prefix for dialing password
+# String
+#P26049/P26149/P26249/P26349/P26449/P26549 = 
+
+# Password length. Default is 0
+# Number
+# Mandatory
+#P26050/P26150/P26250/P26350/P26450/P26550 = 0
+
+###############################################################
+# Account x/Intercom Settings
+###############################################################
+# Mute on answer Intercom call. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P26071/P26171/P26271/P26371/P26471/P2571 = 0
+
+# Play warning tone for Auto Answer Intercom. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P26072/P26172/P26272/P26372/P26472/P26572 = 0
+
+##############################################################################
+## Network/Advanced Settings                                                ##
+##############################################################################
+# Bypass Proxy For
+# String
+#P22011 = 
+
+##############################################################################
+## Network/OpenVPN Settings                                                 ##
+##############################################################################
+# OpenVPN CA
+# String
+#P9902 = 
+
+# OpenVPN Certificate
+# String
+#P9903 = 
+
+# OpenVPN Client Key
+# String
+#P9904 = 
+
+##############################################################################
+##  Network/Affinity Settings
+##############################################################################
+# Affinity Support. 0 - Disabled, 1 - Enabled
+# Number: 0, 1. Default is 1
+# 0 - No, 1 - Yes
+# Mandatory
+#P8344 = 1
+
+# Preferred Account. 0 - Account 1, 1 - Account 2, 2 - Account 3, 3 - Account 4, 4 - Account 5, 5 - Account 6
+# Number: 0 - 5. Default is 0
+# Mandatory
+#P8335 = 0
+
+##############################################################################
+##  Maintenance/Upgrade and Provisioning
+##############################################################################
+# Firmware Upgrade Via. 0 - TFTP,  1 - HTTP, 2 - HTTPS. Default is 1
+# Number: 0, 1, 2
+# Mandatory
+#P6767 = 1
+
+# Firmware HTTP/HTTPS User Name
+# String
+#P6768 = 
+
+# Firmware HTTP/HTTPS Password
+# String
+#P6769 = 
+
+##############################################################################
+##  Maintenance/Syslog
+##############################################################################
+# Syslog Keyword Filtering
+# String
+#P22129 = 
+
+# USB Console Log. 0 - No, 1 - Yes. Default is 0 (for GXP2140/2160/2170 only)
+# Number: 0, 1
+# Mandatory
+#P2922 = 0
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Preferred Default Account. 
+# 0 - Account 1, 1 - Account 2, 2 - Account 3, 3 - Account 4(For GXP2140/2160/2170 only), 4 - Account 5(For GXP2160/2170 only), 5 - Account 6(For GXP2160/2170 only). 
+# Number: 0, 1, 2, 3, 4, 5. Default is 0.
+# Mandatory
+#P29612 = 0
+
+# Predictive Dialing Feature. 0 - Disabled, 1 - Enabled. Default is 0
+# Number: 0, 1
+# Mandatory
+#P22126 = 0
+
+# Enable Live DialPad. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P8350 = 0
+
+# Live DialPad Expire Time. Default is 5
+# Number: 2 - 15. 
+# Mandatory
+#P8351 = 5
+
+# Enable Automatic Redial. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P8353 = 0
+
+# Automatic Redial Times. Default is 10
+# Number
+# Mandatory
+#P8354 = 10
+
+# Automatic Redial Interval. Default is 20
+# Number
+# Mandatory
+#P8355 = 20
+
+# Attended Transfer Mode. 0 - Static, 1 - Dynamic. Default is 0
+# Number: 0, 1
+# Mandatory
+#P1376 = 0
+
+# DND Override. 0 - Off, 1 - Allow All, 2 - Allow Only Contacts, 3 - Allow Only Favourites. Default is 0
+# Number: 0,1,2,3
+# Mandatory
+#P8372 = 0
+
+# Hide BLF Remote Status. 0 - No, 1 - Yes. Default is 0-11
+# Number: 0, 1
+# Mandatory
+#P8374 = 0
+
+# Show SIP Error Response. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+#P8376 = 1
+
+# Enable Missed Call Notification. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P8393 = 0
+
+##############################################################################
+##  Settings/Softkeys
+##############################################################################
+# More Softkey Display Mode
+# Number: 0, 1. Default is 0
+# 0 - Menu, 1 - Toggle
+# Mandatory
+#P2934 = 0
+
+# Show Target Softkey
+# Number: 0, 1. Default is 1
+# 0 - No, 1 - Yes
+# Mandatory
+#P8377 = 1
+
+# Softkey Layout
+# Custom Softkey Layout. 0 - Disabled, 1 - Enabled. Default is 0
+# Number: 0, 1
+# Mandatory
+#P2923 = 0
+
+# Enforce Softkey Layout Position. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P2924 = 0
+
+##############################################################################
+##  Settings/Programmable Keys / Virtual Multi-Purpose Keys Settings
+##############################################################################
+# Show VPK Icon. 0 - No, 1 - Yes. Default is 0 (For GXP2140/2160/2170 only)
+# Number: 0, 1
+# Mandatory
+#P2936 = 0
+ 
+# Show Keys Label. 1 - Show, 2 - Hide, 0 - Toggle. Default is 0
+# Number: 1, 2
+# Mandatory
+#P8386 = 0
+
+########################################################################
+##           Settings/Extension Boards/EXT Setting
+########################################################################
+# One Page Display Mode. 0 - No, 1 - Yes.
+# Number: 0, 1. Default is 0
+# Mandatory
+#P8357 = 0
+
+# Sync Backlight with LCD. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P8400 = 0
+
+##############################################################################
+##  Settings/Programmable Keys/Virtual Multi-Purpose Keys
+##############################################################################
+Lock mode:
+# Locked: 0 - uncheck, 1 - check. Default is 0
+# Mandatory
+# Number: 0, 1
+# P23968--P23989 = 0
+
+##############################################################################
+##  Settings/Softkeys
+##############################################################################
+## Custom Call Screen Softkey Layout ##
+# Softkey layout in dialing state
+# String: BTPhonebook,BTOnOff,EndCall,ReConf,ConfRoom,Redial,Dial,Backspace,PickUp,Target 
+#P2925 = BTPhonebook,BTOnOff,EndCall,ReConf,ConfRoom,Redial,Dial,Backspace,PickUp,Target
+
+# Softkey layout in onhook dialing state
+# String: BTPhonebook,DirectIP,Onhook,Cancel,Dial,Backspace,Target,
+#P2935 = BTPhonebook,DirectIP,Onhook,Cancel,Dial,Backspace,Target
+
+# Softkey layout in ringing state
+# String: Answer, Reject, Forward, ReConf,Custom-Silence 
+#P2926 = Answer,Reject,Forward,ReConf
+
+# Softkey layout in calling state
+# String: BTOnOff,EndCall,ReConf,ConfRoom,ConfCall 
+#P2927 = BTOnOff,EndCall,ReConf,ConfRoom,ConfCall
+
+# Softkey layout in Call connected state 
+# String: BTPhonebook,BTOnOff,EndCall,ReConf,ConfRoom,ConfCall,Cancel,NewCall,Swap,Transfer,Trnf>VM,DialDTMF,BSCCenter,URecord,Record,UCallPark,PrivateHold,CallPark,
+# Custom-Hold,Custom-Conference,Custom-Mute
+#P2928 =  BTPhonebook,BTOnOff,EndCall,ReConf,ConfRoom,ConfCall,Cancel,NewCall,Swap,Transfer,Trnf>VM,DialDTMF,BSCCenter,URecord,Record,UCallPark,PrivateHold,CallPark
+
+# Softkey layout In conference connected state
+# String: BTOnOff,EndCall,Kick,NewCall,Trnf>VM,DialDTMF,BSCCenter,URecord,Record,ConfRoom,Add,Custom-Hold,Custom-Split,Custom-Mute
+#P2933 = BTOnOff,EndCall,Kick,NewCall,Trnf>VM,DialDTMF,BSCCenter,URecord,Record,ConfRoom,Add
+
+# Softkey layout in onhold state
+# String: ReConf,Resume,HoldTrnf,ConfCall,Add,Custom-NewCall,Custom-EndCall
+#P2929 = ReConf,Resume,HoldTrnf,ConfCall,Add
+
+# Softkey layout in call failed state
+# String: EndCall,ReCOnf,ConfRoom,Custom-NewCall
+#P2930 = EndCall,ReConf,ConfRoom
+
+# Softkey layout in call transfer state
+# String: BTOnOff,Cancel,BlindTrnf,AttTrnf,Backspace,Target
+#P2931 = BTOnOff,Cancel,BlindTrnf,AttTrnf,Backspace,Target
+
+# Softkey layout in conference 
+# String:BTOnOff,Cancel,Dial,Backspace,Target
+#P2932 = BTOnOff,Cancel,Dial,Backspace,Target
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.7.81
+###############################################################
+###############################################################
+# Account 1/2/3/4/5/6 Audio Settings
+###############################################################
+# DTMF Delay. Default is 250
+# Number: 100 - 250 
+# Mandatory
+#P26060/P26160/P26260/P26360/P26460/P26560 = 250
+
+###############################################################
+# Account 1/2/3/4/5/6 SIP Settings/Custom Headers
+###############################################################
+# Use X-Grandstream-PBX Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P26054/P26154/P26254/P26354/P26454/P26554 = 1
+
+# Use P-Access-Network-Info Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P26058/P26158/P26258/P26358/P26458/P26558 = 1
+
+# Use P-Emergency-Info Header
+# 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P26059/P26159/P26259/P26359/P26459/P26559 = 1
+
+###############################################################
+# Account 1/2/3/4/5/6/Call Settings
+###############################################################
+# Key As Send. 0 - Disabled, 1 - Pound(#), 2 -  Star(*). Default is 1
+# Number: 0, 1, 2
+# Mandatory
+# P72/P492/P592/P692/P792/P892 = 1
+
+##############################################################################
+##  Settings/General Settings
+##############################################################################
+# Max Local RTP Port. Default is 5204.
+# Number: 1024 - 65400.
+# Mandatory
+# P29608 = 5204
+
+# Delay Registration. Default is 0.
+# Number: 0 - 90
+# Mandatory
+# P8359 = 0
+
+# Local RTP port range. Default is 200
+# Number: 48 - 10000
+# Mandatory
+# P29610 = 200
+
+##############################################################################
+##  Settings/Audio Control
+##############################################################################
+# Headset Type. 0 - Normal, 1 - Plantronics EHS. Default is 0
+# Number: 0, 1
+# Mandatory
+#P6779 = 0
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Instant Message Popup Timeout
+# Number
+# Mandatory
+# P26055 = 10
+
+# Play Tone On Receiving IM. 0 - Disable, 1 - Enable. Default is 0
+# Number: 0, 1
+# Mandatory
+# P26056 = 0
+
+# Return Code When Refusing Incoming Call. Default is 0
+# Number: 0,1,2,3. 0 - Busy, 1 - Temporarily Unavailable, 2 - Not Found(404), 3 - Decline(603).
+# Mandatory
+#P8360 = 0
+
+# Return Code When Enable DND. Default is 0
+# Number: 0,1,2,3. 0 - Busy, 1 - Temporarily Unavailable, 2 - Not Found(404), 3 - Decline(603).
+# Mandatory
+#P8361 = 0
+
+# Enable BLF Pickup Sound List. 0 - Except List, 1 - Only List. Default is 0
+# Number: 0, 1
+# Mandatory
+#P9907 = 0
+
+# BLF Pickup Sound Except List. 
+# String
+#P9908 = 
+
+# BLF Pickup Sound Only List.
+# String
+#P9909 = 
+
+##############################################################################
+##  Settings/LCD Display
+##############################################################################
+# Screensaver Server Path.
+# String
+# P934 = 
+
+Screensaver XML Download Interval
+# Number: 5 - 720. Default is 0 (disable auto downloading)
+# Mandatory
+#P935= 0
+
+##############################################################################
+##  Settings/LED Control
+##############################################################################
+# Disable VM/MSG power light flash. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+#P8371 = 0
+
+##############################################################################
+##  Settings/Bluetooth
+##############################################################################
+# Bluetooth Power. Default is 0.
+# 0 - Off, 1 - On, 2 - Off & Hide Menu From LCD
+# Mandatory
+#P2910= 0
+
+# Handsfree Mode. Default is 0.
+# 0 - Off, 1 - On
+# Mandatory
+#P2911 = 0
+
+# Bluetooth Name.
+# String
+#P8364 =gxp21xx_[mac]-0
+
+##############################################################################
+## Network/Advanced Settings                                                ##
+##############################################################################
+# Enable DHCP VLAN. 0 - Disable, 1 - Enable. Default is 0.
+# Number: 0,1
+# Mandatory
+#P8300 = 0
+
+##############################################################################
+##  Maintenance/Security Settings/Security   								##
+##############################################################################
+# HTTP Web Port. Default is 80
+# Number
+# Mandatory
+# P22120 = 80
+
+# HTTPS Web Port. Default is 443
+# Number
+# Mandatory
+# P22121 = 443
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.7.25      
+###############################################################
+####################################################################
+# Account Settings                                                ##
+####################################################################
+####################################################################
+# Account 1/2/3/4/5/6                                             ##
+####################################################################
+###############################################################
+# Account 1/2/3/4/5/6/SIP Settings/Basic Settings
+###############################################################
+# Subscribe Expiration. Default is 60. Max about 45 days
+# Number: 1 - 64800
+# Mandatory
+# P26051/P26151/P26251/P26351/P26451/P26551= 60
+
+###############################################################
+# Account 1/2/3/4/5/6/Audio Settings
+###############################################################
+# Preferred Vocoder
+# 0 - PCMU, 2 - G.726-32, 8 - PCMA, 9 - G.722, 18 - G.729A/B, 4 - G.723.1, 98 - iLBC, 123 - OPUS
+# choice 8. Default is 123
+# Number: 0, 2, 4, 8, 9, 18, 98, 123 
+# Mandatory
+# P98/P458/P558/P658/P1758/P1858 =123
+
+# OPUS Payload Type. Default is 123
+# Number: 96 - 127
+# Mandatory
+# P2385/P2485/P2585/P2685/P2785/P2885 = 123
+
+##############################################################################
+## Network/Advanced Settings                                                ##
+##############################################################################
+# LLDP TX Interval. Default is 30 
+# Number: 1 - 3600
+# Mandatory
+# P22122 = 30
+
+##############################################################################
+##  Settings/LCD Display
+##############################################################################
+# Virtual Multi-Purpose Keys
+# Key Mode. 1 - Line Mode, 2 - Account Mode. Default is 1
+# Number: 1, 2
+# Mandatory
+# P8369 = 0
+
+##############################################################################
+##  Maintenance/Syslog
+##############################################################################
+# Show Internet Down Nessage. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8370 = 0
+
+##############################################################################
+##  Settings/XML Applications
+##############################################################################
+# Default Background Color
+# String
+# P8367 = 
+
+# Block Call Screen. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8368 = 0
+
+##############################################################################
+##  Settings/Broadsoft
+##############################################################################
+###################################################################
+# Broadsoft XSI
+###################################################################
+# Broadsoft Contact Download Interval. Default is 4320. If set to 0, automatic download will be disabled. Valid range is 5 to 4320. 
+# Number: 5 - 720
+# Mandatory
+# P8362 = 4320
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.7.15       
+###############################################################
+###############################################################
+# Account 1/2/3/4/5/6/Network Settings
+###############################################################
+# DNS SRV Fail-over Mode. 0 - Default, 1 - Saved one until DNS TTL, 2 - Saved one until no response. Default is 0
+# Number: 0,1,2
+# Mandatory
+# P26040/P26140/P26240/P26340/P26440/P26540 = 0
+
+###############################################################
+# Account 1/2/3/4/5/6/SIP Settings/Basic Settings
+###############################################################
+# SIP Listening Mode. 
+# 0 - Transport Only, 1 - Dual, 2 - Dual (BLF Enforced), 3 - Dual (Secured). Default is 0
+# Number: 0,1,2,3
+# Mandatory
+# P26024, P26124,P26224, P26324, P26424, P26524
+
+###############################################################
+# Account 1/2/3/4/5/6/SIP Settings/Advanced Features
+###############################################################
+# Call Pickup Barge-In Code
+# String
+# P26046/P26146/P26246/P26346/P26446/P26546  = 
+
+###############################################################
+# Account 1/2/3/4/5/6/Audio Settings
+###############################################################
+# Hide Vocoder. 0 - No, 1 - Yes. Default is 0
+# Default is 0
+# Number: 0,1-
+# Mandatory
+# P26047/P26147/P26247/P26347/P26447/P26547 = 0
+
+###############################################################
+# Account 1/2/3/4/5/6/Call Settings
+###############################################################
+# Dial Plan. Default value is { x+ | \+x+ | *x+ | *xx*x+ }
+# String
+# Mandatory
+# P290/P459/P559/P659/P1759/P1859 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+##############################################################################
+##  Maintenance/Upgrade and Provisioning
+##############################################################################
+# Upgrade Via. 0 - TFTP,  1 - HTTP, 2 - HTTPS. Default is 2
+# Number: 0, 1, 2
+# Mandatory
+# P212 = 2
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Enable BLF Pickup Screen.  0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P9905 = 0
+
+# Enable BLF Pickup Sound.  0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P9906 = 0
+
+# User-Agent Prefix
+# String
+# P8358 = 
+
+##############################################################################
+##  Settings/Ring Tone
+##############################################################################
+# Speaker Ring Volume
+# Number: 0-7. Default is 5.
+# Mandatory
+# P8352 = 5
+
+##############################################################################
+##  Settings/Date and Time
+##############################################################################
+# Secondary NTP Server
+# String
+# P8333 = 
+
+##############################################################################
+##  Settings/Web Service
+##############################################################################
+# Weather Update
+# Use Auto Location Service. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P8338 = 1
+
+##############################################################################
+##  Settings/Broadsoft
+##############################################################################
+###################################################################
+# Broadsoft XSI
+###################################################################
+# XSI Authentication Type. 0 - Login Credentials, 1 - SIP Credentials, 2 - Account 1, 3 - Account 2, 4 - Account 3, 5 - Account 4, 6 - Account 5, 7 - Account 6. Default is 0.
+# Number: 0,1,2,3,4,5,6,7.
+# Mandatory
+# P22054 = 0
+
+# SIP Credentials
+# SIP UserName 
+# String
+# P6772 = 
+
+# SIP User ID
+# String
+# P22034 = 
+
+# SIP Password 
+# String
+# P6773 = 
+
+###############################################################
+# P values added since GXP2130/2140/2160/2170/2135 1.0.6.9       
+###############################################################
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Ring for Call Waiting. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P22102 = 0
+
+# Enable Sending DTMF via specific MPKs. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P1339= 0
+
+##############################################################################
+##  Settings/LCD Display
+##############################################################################
+# Active Backlight Timeout. Default is 1
+# Number: 1 - 90
+# Mandatory
+# P8356 = 1
+
+# Color Background. Default is #000000.
+# String
+# P2921 = #000000
+
+###############################################################
+# Initial Version Firmware GXP2135 1.0.6.9       
+###############################################################
+
+###############################################################
+# P values added since GXP2170 1.0.6.5       
+###############################################################
+####################################################################
+# Account Settings                                                ##
+####################################################################
+####################################################################
+# Account 1/2/3/4/5/6                                             ##
+####################################################################
+###############################################################
+# Account 1/2/3/4/5/6 General Settings
+###############################################################
+# Backup Outbound Proxy
+# String
+# P2333/P2433/P2533/P2633/P2733/P2833 = 
+
+###############################################################
+# Account 1/SIP Settings/Session Timer
+###############################################################
+# Enable Session Timer. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P2395/P2495/P2595/P2695/P2795/P2895 = 1
+
+###############################################################
+# Account 1/Audio Settings
+###############################################################
+# choice 6. Default is 98
+# Number: 0, 2, 4, 8, 9, 18, 98 
+# Mandatory
+# P62/P456/P556/P656/P1756/P1856 = 98
+
+# choice 7. Default is 2
+# Number: 0, 2, 4, 8, 9, 18, 98 
+# Mandatory
+# P46/P457/P557/P657/P1757/P1857 = 2
+
+# G723 Rate. 0 - 6.3kbps encoding rate, 1 - 5.3kbps encoding rate. Default is 1
+# Number: 0, 1
+# Mandatory
+# P49/P493/P593/P693/P1793/P1893 = 1
+
+# iLBC Frame Size. 0 - 20ms, 1 - 30ms. Default is 1
+# Number: 0, 1
+# Mandatory
+# P97/P495/P595/P695/P1795/P1895 = 1
+
+# iLBC Payload Type. Default is 97
+# Number: 96 - 127
+# Mandatory
+# P96/P494/P594/P694/P1794/P1894 = 97
+
+###############################################################
+# Account 1/Call Settings
+###############################################################
+# Dial Plan. Default value is { x+ | \+x+ | *x+ | *xx*x+ }
+# String
+# Mandatory
+# P290 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+##############################################################################
+## Network/Advanced Settings                     ##
+##############################################################################
+# OpenVPN Enable.  0 - No, 1 - Yes. Default is 0
+#Number: 0, 1 
+#Mandatory
+# P7050 = 0
+
+# OpenVPN Server Address
+# String
+# P7051 =
+
+# OpenVPN Port. Default is 1194
+# Number
+# Mandatory
+# P7052 = 1194
+
+# OpenVPN Transport.  0 - UDP, 1 - TCP Default is 0
+#Number: 0, 1 
+#Mandatory
+# P2912 = 0
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+#Disable Active MPK Page. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P6764 = 0
+
+# Auto Provision List Starting Point. 0 - Extension Boards, 1 - VPK. Default is 0 (For GXP2140/GXP2170)
+# Number: 0, 1
+# Mandatory
+# P8349 = 0
+
+# Auto Provision List Starting Point. 1 - VPK, 2 - MPK. Default is 1 (For GXP2130/GXP2160)
+# Number: 1, 2
+# Mandatory
+# P8349 = 1
+
+##############################################################################
+##  Settings/LCD Display
+##############################################################################
+# Softkeys
+# Hide System Softkey on Main Page. Next, History, ForwardAll, Redial
+# String
+# P8348 = 
+
+# Virtual Multi-Purpose Keys
+# Show Label Background. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8345 = 0
+
+# Use Long Label. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8346 = 0
+
+##############################################################################
+##  Settings/Outbound Notification
+##############################################################################
+######################################################################################
+# Action URL
+######################################################################################
+# Setup Completed. 
+# String
+# P8304 = 
+
+# Registered.
+# String
+# P8305 = 
+
+# Unregistered.
+# String
+# P8306 = 
+
+# Off Hook.
+# String
+# P8308 = 
+
+# On Hook.
+# String
+# P8309 = 
+
+# Incoming Call.
+# String
+# P8310 = 
+
+# Outgoing Call
+# String
+# P8311 = 
+
+# Missed Call
+# String
+# P8312 = 
+
+# Established Call
+# String 
+# P8313 = 
+
+# Terminated Call
+# String
+# P8314 = 
+
+# Open DND
+# String
+# P8316 = 
+
+# Close DND
+# String
+# P8317 = 
+
+# Open Forward
+# String
+# P8318 = 
+
+# Close Forward
+# String
+# P8319 = 
+
+# Blind Transfer
+# String
+# P8320 = 
+
+# Attended Transfer
+# String
+# P8321 =  
+
+# Hold Call
+# String
+# P8324 = 
+
+# UnHold Call
+# String
+# P8325 = 
+
+######################################################################################
+# VPK modes change since GXP2170 1.0.6.2
+######################################################################################
+###################################################################################### 
+# VPK 7-12--fixed VPK
+######################################################################################
+# Key Mode.
+# -1 - None, 0 - Line, 1 - shared line,10 - Speed Dial, 11 - BLF, 12 - Presence Watcher, 13 - Eventlist BLF, 14 - Speed Dial via active account, 15 - DialDTMF,  
+# 16 - Voicemail, 17 - CallReturn, 18 - Transfer, 19 - CallPark, 20 - Intercom, 21 - LDAP Search, 23 - Multicast Paging, 24 - Record, 25 - Call Log
+# 26 - Monitored Call Park, 27 - Menu
+# Number: -1, 0,1,10-21,23-27
+
+###############################################################
+# Initial Version Firmware GXP2170 1.0.6.2        
+###############################################################
+
+######################################################################################
+# P value added since GXP2130/2140/2160 1.0.5.23
+######################################################################################
+####################################################################
+# Account Settings                                                ##
+####################################################################
+####################################################################
+# Account 1/2/3/4/5/6                                             ##
+####################################################################
+###############################################################
+# Account 1/2/3/4/5/6 General Settings
+###############################################################
+# Backup Outbound Proxy
+# String
+# P2333/P2433/P2533/P2633/P2733/P2833 = 
+
+###############################################################
+# Account 1/2/3/4/5/6 SIP Settings/Basic Settings
+###############################################################
+# Ignore Alert-Info header
+# 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P26018/P26118/P26218/P26318/P26418/P26518 = 0
+
+###############################################################
+# Account 1/2/3/4/5/6 SIP Settings/Advanced Features
+###############################################################
+# Call Pickup Barge-In Code
+# String
+# Mandatory
+# P26046/P26146/P26246/P26346/P26446/P26546  =
+
+##############################################################################
+##  Maintenance/Upgrade and Provisioning
+##############################################################################
+# Additional Override DHCP Option. 0 - None,  1 - Option 150,  2 - Option 160. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P8337 = 0
+
+##############################################################################
+##  Settings/Web Service
+##############################################################################
+# Enable IPVideo Talk.  0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P8338 = 1
+
+##############################################################################
+##  Settings/Broadsoft/Broadsoft XSI
+##############################################################################
+# XSI Authentication Type
+# 0 - Login Credentials, 1 - SIP Credentials, 2 - Account 1, 3 - Account 2, 4 - Account 3, 5 - Account 4, 6 - Account 5, 7 - Account 6.
+# Number: 0 - 7. Default is 0
+# Mandatory
+# P22054 = 0
+
+###################################################################
+# SIP Credentials
+###################################################################
+# SIP Username
+# String
+# P6772 = 
+
+# SIP User ID
+# String
+# P22034 = 
+
+# SIP Password
+# String
+# P6773 = 
+
+######################################################################################
+# P value added since GXP2130/2140/2160 1.0.5.18  
+######################################################################################
+
+######################################################################################
+# P value added since GXP2130/2140/2160 1.0.4.23   
+######################################################################################
+##########################################
+# Account X/SIP Settings/Basic Features
+##########################################
+# Allow SIP Reset
+# 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P26015/P26115/P26215/P26315/P26415/P26515: Account 1/2/3/4/5/6
+
+##########################################
+# Account X/Audio Settings
+##########################################
+# Disable Multiple m line in SDP
+# 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P137/P487/P587/P687/P1787/P1887: Account 1/2/3/4/5/6
+
+##########################################
+# Account X/Call Settings
+##########################################
+# Allow Barging by Call-Info. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P26019/P26119/P26219/P26319/P26419/P26519  : Account 1/2/3/4/5/6
+
+# Disable Recovery on Blind Transfer. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P2384/P2484/P2584/P2684/P2784/P2884  : Account 1/2/3/4/5/6
+
+# On Hold Reminder Tone. 0 - Disabled, 1 - Enable. Default is 0
+# Number: 0, 1
+# Mandatory
+# P26006/P26106/P26206/P26306/P26406/P26506  : Account 1/2/3/4/5/6
+
+##########################################
+# Account X/Feature Codes
+##########################################
+# Call Forward Unconditionally (All) - On
+# String
+# P26013/P26113/P26213/P26313/P26413/P26513 : Account 1/2/3/4/5/6 
+
+# Call Forward Unconditionally (All)- Off
+# String
+# P26014/P26114/P26214/P26314/P26414/P26514 : Account 1/2/3/4/5/6 
+
+# Call Forward Busy - On
+# String
+# P26009/P26109/P26209/P26309: Account 1/2/3/4
+
+# Call Forward Busy - Off
+# String
+# P26010/P26110/P26210/P26310/P26410/P26510 : Account 1/2/3/4/5/6 
+
+# Call Forward Delayed (No Answer) - On
+# String
+# P26011/P26111/P26211/P26311 /P26411/P26511 : Account 1/2/3/4/5/6 
+
+# Call Forward Delayed (No Answer) - Off
+# String
+# P26012/P26112/P26212/P26312 /P26412/P26512 : Account 1/2/3/4/5/6 
+
+##########################################
+## Network/Advanced Settings
+##########################################
+# PC Port VLAN Tag. Default is 0 
+# Number: 0 - 4094
+# Mandatory
+# P229 = 0
+
+# PC Port Priority Value. Default is 0 
+# Number: 0 - 7
+# Mandatory
+# P230 = 0
+
+##########################################
+##  Maintenance/Upgrade and Provisioning
+##########################################
+# Disable SIP NOTIFY Authentication. 0 - No, 1 - Yes. Default is 0
+# Mandatory
+# P4428 = 0
+
+##########################################
+##  Maintenance/Language
+##########################################
+# Auto language download . 0 - No, 1 - Yes. Default is 0
+# Mandatory
+# Number: 0,1
+# P2961 =
+
+##########################################
+##  Settings/Call Features
+##########################################
+# Default call log type. 0 - Default, 1 - Broadsoft Call Log, 2 - Local Call Log.
+# Number: 0,1,2. Default is 0.
+# Mandatory
+# P6765 = 0
+
+# Local Call Recording Feature. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P6760 = 0
+
+# Saved Local Call Recording Location. 0 - Internal Storage 1 - USB. Default is 0
+# Number: 0, 1
+# Mandatory
+# P6761 = 0
+
+##########################################
+##  Settings/LCD Display
+##########################################
+# Screensaver Source.  0 - Default, 1 - USB. Default is 0
+# Mandatory
+# P6759 = 0
+
+##########################################
+##  Settings/LCD Control
+##########################################
+# BLF LED Pattern. 0 - Default, 1 - Analog, 2 - Directional, 3 - Reserved(Red), 4 - Reserved(Green), 5 - Inverse. Default is 0
+# Number: 0 - 5 
+# Mandatory
+# P6766 = 0
+
+######################################################################################
+# P value added since GXP2130/2140/2160 1.0.4.17       
+######################################################################################
+# Crypto Life Time
+# 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P2363/P2463/P2563/P2663/P2763/P2863: Account 1/2/3/4/5/6
+
+#Auto Provision Eventlist BLFs. 0-Disabled, 1-Enabled. Default is 0
+#Number:0,1
+#Mandatory
+#P2389 = 0
+
+#Auto Provision Eventlist BLFs. 0-Disabled, 1-Enabled. Default is 0
+#Number:0,1
+#Mandatory
+#P2489 = 0
+
+#Auto Provision Eventlist BLFs. 0-Disabled, 1-Enabled. Default is 0
+#Number:0,1
+#Mandatory
+#P2589 = 0
+
+#Auto Provision Eventlist BLFs. 0-Disabled, 1-Enabled. Default is 0
+#Number:0,1
+#Mandatory
+#P2689 = 0
+
+#Auto Provision Eventlist BLFs. 0-Disabled, 1-Enabled. Default is 0
+#Number:0,1
+#Mandatory
+#P2789 = 0
+
+#Auto Provision Eventlist BLFs. 0-Disabled, 1-Enabled. Default is 0
+#Number:0,1
+#Mandatory
+#P2889 = 0
+
+#Layer 3 QoS for SIP
+#Number:0 - 63
+#Mandatory
+#P1558 = 26 
+
+#Layer 3 QoS for RTP
+#Number:0 - 63
+#Mandatory
+#P1559 = 46 
+
+# NTP Update Interval
+# String
+# Number: 5 - 1440o< Default is 1440 
+# P5005 = 1440
+
+######################################################################################
+# P value added since GXP2130/2140/2160 1.0.4.10       
+######################################################################################
+# Force BLF Call-pickup by prefix. 0 - No, 1 - Yes. Default is 0.
+# P6752, P6753, P6754, P6755, P6756, P6757: Account 1 - Account 6.
+
+# Broadsoft Call Park. 0 - Disabled, 1 - Enabled. Default is 0.
+# P2388, P2488, P2588, P2688, P2788, P2888: Account 1 - Account 6.
+
+# Always Authenticate Before Challenge. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P20713 = 0
+
+# Phonebook Management
+# HTTP/HTTPS User Name.
+# String
+# P6713 =
+
+# HTTP/HTTPS Password.
+# String
+# P6714 =
+
+# Bypass Dial Plan Through Call History and Directories. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P6758 = 0
+
+# Disable Busy Tone on Remote Disconnect. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P6762 = 0
+
+# XML Applications
+# Server Path
+# String
+# P337 =
+
+# Softkey Label
+# String
+# P352 = XMLApp
+
+######################################################################################
+# P value added since GXP2130/2140/2160 1.0.3.9        
+######################################################################################
+# Show Account Name Only. (for GXP2130/GXP2140 Only)
+# 0 - No, 1 - Yes. Default is 0. 
+# Number: 0, 1. 
+# Mandatory
+# P2380/P2480/P2580/P2680: Account 1/2/3/4.
+
+# Add Auth Header On Initial REGISTER
+# 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P2359 = 0 
+
+# Language XML URL
+# String
+# P2962 =
+
+# Auto language download. 0 - Yes, 1 - No. Default is 0
+# Number: 0, 1
+# Mandatory
+# P2961 = 
+
+# Validate Certification Chain. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P2367 = 0
+
+# Capture Location. 0 - Internal Storage, 1 - USB. Default is 0
+# Number: 0, 1.
+# Mandatory
+# P2999 = 0
+
+# With RTP Packets. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P6007 = 0
+
+# USB Filename
+# String
+# P6008 =
+
+# Sort Phonebook by. 0 - Last Name, 1 - First Name. Default is 0
+# Number: 0, 1
+# Mandatory
+# P2914 = 0
+
+# Public Mode. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P1345 = 0
+
+# Multicast Paging options 
+# P1566 - P1588
+
+# Second Dial Tone
+# String
+# Mandatory
+# P2909 = f1=350,f2=440;
+
+# Programmable Keys/Softkeys 
+# P2987 - P2998
+
+# Broadsoft IM&P Server. 
+# String
+# P6006 = 
+
+# Broadsoft IM&P Port. 
+# String
+# P6005 =
+
+# Broadsoft Network Directories
+# P2971 - P2986
+
+######################################################################################
+# The value of P value changed since GXP2130/2140/2160 1.0.2.9      
+######################################################################################
+# Special Feature. 100 - Standard, 101 - Nortel MCS, 102- Broadsoft, 108 - CBCOM, 
+# 109 - RNK, 110 - Sylantro, 117 - Huawei IMS, 119 - Phonepower
+# Default is 100
+# Number: 100, 101, 102, 108, 109, 110, 117, 119
+# Mandatory
+# P198 = 100
+
+######################################################################################
+# P value added since GXP2130/2140/2160 1.0.2.9        
+######################################################################################
+# HTTP Proxy
+# String
+# P1552 = 
+
+# HTTPS Proxy
+# String
+# P1553 = 
+
+# BLF Server 
+# String
+# P2375/P2475/P2575/P2675/P2775/P2875 : Account 1/2/3/4/5/6
+
+# Broadsoft Executive Assistant. 0 - Disabled, 1 - Enabled. Default is 0
+# Number: 0, 1
+# Mandatory
+# P2364/P2464/P2564/P2664/P2764/P2864 : Account 1/2/3/4/5/6
+
+# Default Input Selection. Default is Multi-Tap.
+# 0 - Multi-Tap, 1 - Shiftable
+# P2920 = 0
+
+# Broadsoft IM&P. Default is 0.
+# 0 - Disabled, 1 - Enabled
+# Mandatory
+# P2964 = 0
+
+# Associated Broadsoft Account. Default is 0.
+# 0 - 5 : Account 1 - Account 6
+# Mandatory
+# P2965 = 0
+
+# Username. 
+# String
+# P2966 = 
+
+# Password. 
+# String
+# P2967 = 
+
+# Auto Login. Default is 1.
+# 0 - Yes, 1 - No
+# Mandatory
+# P2968 = 1
+
+# Display Non XMPP Contacts. Default is 1.
+# 0 - Yes, 1 - No
+# Mandatory
+# P2969 = 1
+
+# Default search mode. 0 - Quick match, 1 - Exact match. Default is 0
+# Number: 0, 1.
+# Mandatory
+# P2970 = 0
+
+######################################################################################
+# The value of P value changed since GXP2140/2160 1.0.1.14 or GXP2130 1.0.1.19        
+######################################################################################
+# Mute Key Functions While Idle. 0 - DND, 1 - Idle Mute, 2 - Disabled. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P1565 = 0
+
+######################################################################################
+# P values added since GXP2140/2160 1.0.1.14 or GXP2130 1.0.1.19        
+######################################################################################
+# Wallpaper Settings
+# Wallpaper Source. O - Default, 1 - Download, 2 - USB, 3 - Uploaded
+# Mandatory
+# P2916 = 0
+
+# Wallpaper Server Path
+# String 
+# P2917 = 
+
+# Screensaver Settings
+# Screensaver. 0 - No, 1 - Yes. Default is 1
+# Mandatory
+# P2918 = 1
+
+# Screensaver Timeout. Minutes.
+# Number: 3 - 60
+# P2919 = 
+
+###############################################################
+# Initial Version Firmware GXP2130 1.0.1.19         
+###############################################################
+
+###############################################################
+# P values added since GXP2140/2160 1.0.0.17         
+###############################################################
+# Broadsoft Phonebook configurations
+# P1590 - P1649. 
+
+###############################################################
+# Initial Version Firmware GXP2140/2160 1.0.0.17          
+###############################################################
+
+################################### Change Log End ######################################################

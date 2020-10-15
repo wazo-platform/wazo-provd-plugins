@@ -1,0 +1,333 @@
+####################################################################
+## GXV3370 Change Log                                             ##
+####################################################################
+####################################################################
+# P Values Added since 1.0.3.9       	                          ##
+####################################################################
+# Account -> General Setting -> Register Before DNS SRV Fail-over
+# P29095,P29195,P29295,P29395,P29495,P29595,P53695,P53795,P53895,P53995,P54095,P54195,P54295,P54395,P54495,P54595
+
+# Account -> Call Settings -> Enable Video Call.
+# P60343,P60143,P60243,P60343,P60443,P60543,P60643,P60743,P60843,P60943,P61043,P61143,P61243,P61343,P61443,P61543
+
+# Phone Settings->Call Settings->Group Listen with Speaker. 0 - No, 1 - Yes. Default is 0.
+# P22163
+
+# Phone Settings -> Call Settings -> Default Phone APP. 
+# P22289
+
+# Phone Settings -> Call Settings -> Quickly Launch Specified APP.
+# P22276
+
+# Network Settings -> Advanced Network Settings -> Action URI Support. 0 - No, 1 - Yes. Default value is 1
+# P32050=1
+
+# Network Settings -> Advanced Network Settings -> Remote Control Pop up Window Support. 0 - No, 1 - Yes. Default value is 1
+# P32051=1
+
+# Network Settings -> Advanced Network Settings -> Action URI Allow IP List
+# String
+# P32052=
+
+# Network Settings -> Advanced Network Settings -> DNS Refresh Time (m). Default 0.
+# Number 0 - 1440
+# P4208=0
+
+# Network Settings -> Advanced Network Settings -> DNS Failure Cache Duration (m).  Default 0.
+# Number 0 - 1440
+# P28160=0
+
+
+# Alias template:
+<!-- Added Register Before DNS SRV Fail-over -->
+<item name="account.{x}.network.dnsSRVRegisterBeforeFailover">No</item>
+
+<!-- Added Enable Video Call -->
+<item name="account.{x}.call.video.enable">Default</item>
+
+<!-- Added Group Listen with Speaker -->
+<item name="call.grouplistenwithspeaker.enable">No</item>
+
+<!-- Added Quickly Launch Specified APP -->
+<item name="call.thirddialer.packagename"></item>
+
+<!-- Added Action URI Support -->
+<item name="remoteControl.enable">Yes</item>
+
+<!-- Added Remote Control Pop up Window Support -->
+<item name="remoteControl.confirmWindow.enable">Yes</item>
+
+<!-- Added Action URI Allow IP List -->
+<item name="remoteControl.allowList"></item>
+
+<!-- Added DNS Refresh Time (m) -->
+<item name="network.dns.refreshTime">0</item>
+
+<!-- Added DNS Failure Cache Duration (m) -->
+<item name="network.dns.failureCacheDuration">0</item>
+
+####################################################################
+# P Values Added since 1.0.3.8       	                          ##
+####################################################################
+# Accounts-->Account x-->Call Settings
+# Added Enable Call Waiting
+# Account 1-6: P26063-P26563 = 0
+# Account 7-16: P52663-P53563 = 0
+
+# Value-added Service-->General Settings
+# Added Enable Preview
+# P22357 = 1
+
+# Alias template: 
+<!-- Added Enable Call Waiting -->
+<item name="account.{x}.call.callWaiting">0</item>
+
+<!--Added Enable Preview -->
+<item name="externalService.general.preview.enable">1</item>
+####################################################################
+# P Values Added since 1.0.3.3       	                          ##
+####################################################################
+# Under System Settings->Preferences->Audio Control. 
+# Added Ringtone volume 
+#P8352
+
+#Added Media volume
+#P43025
+
+#Added Alarm volume 
+#P22332
+
+# Alias template:
+<!--Added Ringtone Volume-->
+<item name="audio.volume.ring">8</item>
+
+<!--Added Media Volume-->
+<item name="audio.volume.media">8</item>
+
+<!--Added Alarm Volume-->
+<item name="audio.volume.alarm">8</item>
+
+####################################################################
+# P Values Added since 1.0.1.55                                   ##
+####################################################################
+# Removed Use Quick IP-Call Mode.
+# P184 = 0
+
+# Added Return Code When Refusing Incoming Call.
+# P8360=0
+
+# Added Return Code When Enable DND
+# P8361=0
+
+# Adde Advanced Network Settings -> Advanced Network Settings -> CSTA Control.
+# P32053=0
+
+# Adde System Settings -> Security Settings -> TLS -> Minimum TLS Version
+# P22293
+
+# System Settings - Security Settings - TLS - Maximum TLS Version
+# P22294
+
+# System Settings - Security Settings - TLS - Enable Weak TLS Cipher Suites
+# P8536
+
+# alias template:
+<!-- Added Use P-Access-Network-Info Header -->
+<item name="account.1.sip.header.pani">Yes</item>
+		
+<!-- Added Use P-Emergency-Info Header -->
+<item name="account.1.sip.header.pei">Yes</item>
+
+<!-- Added Add MAC in User-Agent -->
+<item name="account.1.sip.useragent.mac">No</item>
+
+<!-- Added Enable Function for Incoming Call -->
+<item name="call.incomingcall.function">None</item>
+
+<!-- Added Enable Auto Record When Call Established -->
+<item name="call.autoRecording.enable">No</item>
+
+<!--Added Return Code When Refusing Incoming Call-->
+<item name="sip.returnCode.callReject">Busy</item>
+
+<!--Added Return Code When Enable DND-->
+<item name="sip.returnCode.dnd">Busy</item>
+
+<!-- Added CSTA Control -->
+<item name="remoteControl.csta.enable">No</item>
+
+<!-- Added Minimum TLS Version -->
+<item name="security.tls.minversion">TLS1.2</item> 
+	
+<!-- Added Maximum TLS Version -->
+<item name="security.tls.maxversion">NoLimit</item> 
+		
+<!-- Added Enable Weak TLS Cipher Suites -->
+<item name="security.tls.weeksiphersuites">Disable_RC4/DES/3DES</item>
+####################################################################
+# P Values Added since 1.0.1.43                                   ##
+####################################################################
+# Support 2 GDS password settings：
+# Use ',' to separate the GDS Related Display Name and Access Password
+# Example, P32002=gds1000,gds1001 provision to web UI:
+# Related Display Name1: gds1000   and   Related Display Name2: gds1001
+# Access Password must be numeric digits.
+
+# Added Download and Process All Available Config Files. 0 - No, 1 - Yes. Default value is 0
+# P8467
+
+# Added Config Provision
+# P8501
+# There are 24 orders below: put the order string in the P-value:
+# cfg.xml;cfg$mac;cfg$mac.xml;cfg$product.xml
+# cfg.xml;cfg$mac;cfg$product.xml;cfg$mac.xml
+# cfg.xml;cfg$mac.xml;cfg.xml;cfg$product.xml
+# cfg.xml;cfg$mac.xml;cfg$product.xml;cfg.xml
+# cfg.xml;cfg$product.xml;cfg.xml;cfg$mac.xml
+# cfg.xml;cfg$product.xml;cfg$mac.xml;cfg.xml
+# cfg$mac;cfg.xml;cfg$mac.xml;cfg$product.xml
+# cfg$mac;cfg.xml;cfg$product.xml;cfg$mac.xml
+# cfg$mac;cfg$mac.xml;cfg.xml;cfg$product.xml
+# cfg$mac;cfg$mac.xml;cfg$product.xml;cfg.xml
+# cfg$mac;cfg$product.xml;cfg$mac.xml;cfg.xml
+# cfg$mac;cfg$product.xml;cfg.xml;cfg$mac.xml
+# cfg$mac.xml;cfg.xml;cfg$mac;cfg$product.xml
+# cfg$mac.xml;cfg.xml;cfg$product.xml;cfg$mac
+# cfg$mac.xml;cfg$mac;cfg.xml;cfg$product.xml
+# cfg$mac.xml;cfg$mac;cfg$product.xml;cfg.xml
+# cfg$mac.xml;cfg$product.xml;cfg$mac;cfg.xml
+# cfg$mac.xml;cfg$product.xml;cfg.xml;cfg$mac
+# cfg$product.xml;cfg.xml;cfg$mac;cfg$mac.xml
+# cfg$product.xml;cfg.xml;cfg$mac.xml;cfg$mac
+# cfg$product.xml;cfg$mac;cfg.xml;cfg$mac.xml
+# cfg$product.xml;cfg$mac;cfg$mac.xml;cfg.xml
+# cfg$product.xml;cfg$mac.xml;cfg$mac;cfg.xml
+# cfg$product.xml;cfg$mac.xml;cfg.xml;cfg$mac
+
+####################################################################
+# P Values Added since 1.0.1.33                                   ##
+####################################################################
+# Added Account -> Call Settings -> Use # as Redial Key
+# P29069,29169,29269,29369,29469,29569,53669,53769,53869,53969,54069,54169,54269,54369,54469,54569
+
+# Added LCD -> Display -> Font size
+# P22275
+
+# Removed System Settings - Preferences - Peripherals Interface Management
+# P915
+
+# Added Maintenance -> Upgrade -> Advanced Settings -> Enable EEE Mode
+# P8499
+
+# Added Network Settings -> OpenVPN® Settings -> OpenEnable OpenVPN® Comp-lzo
+# P8508
+
+# Added LCD -> Sound -> Enable HDMI audio
+# P22279
+
+# Added Maintenance -> System Diagnosis -> Debug -> Enable Core Dump Generation
+# P29611
+
+# Added Maintenance -> Upgrade ->  Provision -> Download and Process All Available Config Files
+# P8467
+
+# Added Account -> SIP Settings -> Use P-Access-Network-Info Header
+# P26058,26158,﻿26258,﻿26358,﻿26458,﻿26558,﻿52658,﻿52758,﻿52858,﻿52958,﻿53058,﻿53158, 53258, 53358, 53458, 53558 
+
+# Added Account -> SIP Settings -> Use P-Emergency-Info Header
+# P26059,﻿26159,﻿26259,﻿26359,﻿26459,﻿26559,﻿52659,﻿52759,﻿52859,﻿52959,﻿53059,﻿53159,﻿53259,﻿53359,﻿53459,﻿53559
+
+# Added Account -> SIP Settings -> Use MAC Header
+# P26061, 26161, 26261, 26361, 26461, 26561, 52661, 52761, 52861, 52961, 53061, 53161, 53261, 53361, 53461, 53561
+
+# Added Account ->Call Settings -> Video Layout
+# P2332, 2432, 2532, 2632, 2732, 2832, 51632, 51732, 51832, 51932, 52032, 52132, 52232, 52332, 52432, 52532
+
+# Added Account -> Advanced Settings ->Enable Local MOH
+# P2357, 2457, 2557, 2657, 2757, 2857, 51657, 51757, 51857, 51957, 52057, 52157, 52257, 52357, 52457, 52557
+
+# Added Phone Settings -> Call Settings -> Enable Function for Incoming Call
+# P29762
+
+# Added Phone Settings -> Call Settings -> Rejected Call Notification
+# P8393
+
+# Added Wi-Fi band (combination)
+# P25420, P25421
+
+# Added Network Settings -> Advanced Network Settings -> PC Port VLAN Tag, PC Port Priority Value
+# P229, P230
+
+# Added Maintenance -> System Diagnosis -> Send SIP Log
+# P1387
+
+# Added Account -> Codec Settings-> Preferred Video Codec
+# P295, 464, 564, 664, 1764, 1864, 50664, 50764, 50864, 50964,51064,51164,51264,51364,51464,51564
+
+# Added BroadSoft Directories P-values
+
+# Updated Automatic Upgrade alias option strings
+# No - No (default), Check Every Day - CheckEveryDay, Check Every Week - CheckEveryWeek, Check at a Period Time - CheckbyPeriod
+
+Alias template:
+<!-- 1. Added Use # as Redial Key alias -->
+<!-- 2. Added font size alias -->
+<!-- 3. Removed Camera AE Mode alias -->
+<!-- 4. Added Enable EEE Mode alias -->
+<!-- 5. Added Enable OpenVPN® Comp-lzo alias -->
+<!-- 6. Added Enable HDMI audio alias  -->
+<!-- 7. Added Enable Core Dump Generation alias -->
+####################################################################
+# P Values Added since 1.0.1.28                                   ##
+####################################################################
+# Improved the P-values for GDS Settings, including Service Type, Door System Type, System Ringtone
+# Added Service Type. P32000, 32005, 32010, 32015, 32020, 32025, 32030, 32035, 32040, 32045
+# Added Door System Type. P32001, 32006, 32011, 32016, 32021, 32026, 32031, 32036, 32041, 32046
+# Added System Ringtone. P22241, 22242, 22243, 22244, 22245, 22246, 22247, 22248, 22249, 22250
+
+# Removed Jitter buffer type
+
+# Added Phone Settings -> Call Settings -> Enable transfer via non-Transfer Programmable Key
+# P22162
+
+# Added Account -> Codec settings -> RTP Timeout (s)
+# P29068, 29168,29268,29368,29468,29568,53668,53768,53868,53968,54068,54168,54268,54368,54468,54568
+
+# Added Account -> Call settings -> Mute on Answer Intercom Call
+# P26071, 26171, 26271, 26371, 26471, 26571, 52671, 52771, 52871, 52971, 53071, 53171, 53271, 53371, 53471, 53571
+
+# Added Account -> Advanced Settings -> Allow Sync Phonebook via SIP Notify
+# P26099, 26199, 26299, 26399, 26499, 26599, 52699, 52799, 52899, 52999, 53099, 53199, 53299, 53399, 53499, 53599
+
+# Added Account -> SIP Settings -> Subscribe Expiration (m)
+# P26051, 26151, 26251, 26351, 26451, 26551, 52651, 52751, 52851, 52951, 53051, 53151, 53251, 53351, 53451, 53551
+
+Alias:
+<!-- 1. Add Subscribe Expiration (m) alias "account.{x}.sip.subscribe.expiration" -->
+<!-- 2. Add RTP Timeout (s) alias "account.{x}.rtp.timeout" -->
+<!-- 3. Add Mute on Answer Intercom Call alias "account.{x}.intercom.muteOnAnswerIntercom" -->
+<!-- 4. Add Allow Sync Phonebook via SIP Notify alias "account.{x}.sip.notify.phonebook" -->
+<!-- 5. Adde Value-added Service related alias for GDS Settings -->
+####################################################################
+# P Values Added since 1.0.1.12                                   ##
+####################################################################
+# Added System Settings -> Security Settings -> SSH Port
+# P27006
+
+Alias template:
+<!-- 1. Fixed some default values to match factory reset -->
+####################################################################
+# P Values Added since initial firmware                           ##
+####################################################################
+# Removed Account -> Call Settings -> Caller ID Display option: PAI Header
+# Removed Account -> Codec Settings -> Packetization Mode option: Prefer Non-Interleaved Mode
+
+Alias template
+<!-- 1. Update account.{x}.network.proxyRquire to account.{x}.network.proxyRequire -->
+<!-- 2. Supported Phone Settings -> Call settings -> Offhook/Onhook Timeout (s) -->
+<!-- 3. Caller ID Display: Hide PAI Header because it is temporarily not supported; Header results in Auto -->
+<!-- 4. Packetization mode: Hide Prefer Non-Interleaved Mode because it is temporarily not supported -->
+<!-- 5. Added alias for “Ending Hour of the Day” -->
+####################################################################
+## Change Log End                                                 ##
+####################################################################

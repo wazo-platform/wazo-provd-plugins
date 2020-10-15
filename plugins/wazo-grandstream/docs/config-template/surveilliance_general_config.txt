@@ -1,0 +1,1350 @@
+################################################################################################
+## General Configuration Template for ALL Grandstream IP Video Surveillance Products          ##
+################################################################################################
+
+################################################################################################
+##                              Basic Settings                                                ##
+################################################################################################
+
+#######################################################################
+##  Encode & Decode switch                                           ##
+#######################################################################
+# Encode & Decode switch. 0:encode  1:decode
+P15511 = 0
+
+################################################################################################
+##                          Basic Settings - System                                           ##
+################################################################################################
+##### TimeZone #####
+
+				"GMT-12", -- 0
+				"GMT-11", -- 1	
+				"GMT-10", -- 2	
+				"GMT-09", -- 3	
+				"GMT-08", -- 4	
+				"GMT-07", -- 5	
+				"GMT-06", -- 6	
+				"GMT-05", -- 7	
+				"GMT-05", -- 8	
+				"GMT-04", -- 9	
+				"GMT-04", -- 10	
+				"GMT-04", -- 11
+				"GMT-04:30", -- 12 
+				"GMT-03", 	-- 13
+				"GMT-02", 	-- 14
+				"GMT-01", 	-- 15
+				"GMT+00",	-- 16
+				"GMT+01", 	-- 17
+				"GMT+02", 	-- 18
+				"GMT+02", 	-- 19
+				"GMT+02", 	-- 20
+				"GMT+02", 	-- 21
+				"GMT+02", 	-- 22
+				"GMT+03", 	-- 23
+				"GMT+03", 	-- 24
+				"GMT+03:30", -- 25
+				"GMT+04",  	-- 26
+				"GMT+04:30",  	-- 27
+				"GMT+05",     	-- 28
+				"GMT+05:30",  	-- 29
+				"GMT+06",     	--30
+				"GMT+07",     	-- 31
+				"GMT+08",     	-- 32
+				"GMT+09",     	-- 33
+				"GMT+09:30",  	-- 34
+				"GMT+10", 		-- 35
+				"GMT+10", 	  -- 36
+				"GMT+11", 	  -- 37
+				"GMT+12", 		-- 38
+				"GMT+13"		-- 39
+		
+			
+#		
+P64 = 32
+
+##### Enable NTP Server #####
+# Range:	1- enable 0- disable
+P5006 = 1
+
+##### NTP Server #####
+# Example: P30 = time.nist.gov
+P30 = time.nist.gov
+
+##### Enable DST #####
+# Range:	1- enable 0- disable  
+P10004	= 0
+
+#------------------------------------------------------------------------------------------------
+##### DST string #####
+P10005
+
+# Example:
+# GMT-08:00MDT-09:00,M4.1.2/11:00:00,M5.4.3/11:00:00
+# Format: current zone -- Head with "GMT-"  DST zone -- Head with "MDT-"
+# String must start with GMT, followed by time zone of DST, default 1 hour difference. 
+# M4.1.2/11:00:00,M5.4.3/11:00:00 
+#
+# DST Start/End time
+# M4.1.2/11:00:00   -- Start 1st Tuesday of April at 11:00pm 
+# M5.4.3/11:00:00   -- End 4th Wednesday of May at 11:00pm 
+#
+# Start and End has to be in different Month. 
+#--------------------------------------------------------------------------------------------------
+
+###### OSD date format. #####
+# Range:	1- Y_M_D, 2- M_D_Y, 3- D_M_Y
+# Y -- Year
+# M -- Month
+# D -- Day 
+P10001 = 1
+
+##### Turn off the LED Indicator ,only valid for GXV3615 Series #####
+# Range:	0- On 1- Off
+P10003 = 0
+
+##### Device name (Advise the name of the device here), e.g.: GXV3610_FHD #####
+P10000 = 
+
+# Disable Web Access
+P15473 = 0
+
+##### Alarm output/input setting ##### 
+# Range:   0-open   1-close
+P10010 = 0
+
+##### output #####
+# Range:	0-open   1-close 
+P10011 = 1
+
+###### output time #####
+# Range:	0:always,5,15,30,60,180,300,600,900,1800 second
+P10012 = 1600
+
+# Alarm Out Pattern (s) (value:0/1/2/3)
+P15510=
+
+##### input #####
+P10013 = 1
+
+# Expansion Port Mode Select ##### 
+# Range:	0- PTZ(via RS485) Mode ,1-DI/DO Mode, Only valid for supported models. 
+P10002 = 0
+
+
+###################################################################################################################
+##                                   Basic Settings/Video & Audio	                			                 ##
+###################################################################################################################
+# Channel Number 0-3 for Primary Stream Settings, and 4-7 for Secondary Stream Settings. 
+# Only GXV3504 has more than 2 channels, most products ONLY have two channels, 0 (1st stream) and 4 (2nd stream). 
+##### Video encode type #####  
+# 26 = MJPEG    96 = H264
+
+# Primary
+P12306 = 96
+
+# 2nd Stream
+P12706 = 26
+		
+##### Video Resolution #####
+# Resolution =  
+# {2560,1920}- 1027
+# {2048,1536}- 1026
+# {1920,1088}- 1025
+# {1600,1200}- 1024
+# {1280,960}-  1023
+# {1280,720}-  1022
+# {1024,768}-  1021
+# {800,592}-   1020
+# {800,480}-   1019
+# {720,576}-   1018
+# {720,480}-   1017
+# {704,576}-   1016
+# {704,480}-   1015
+# {704,288}-   1014
+# {704,240}-   1013
+# {640,480}-   VGA - 1(but can be automatically adjusted to follow phone)
+# {640,368}-   1012
+# {480,368}-   1011
+# {480,272}-   1010
+# {352,288}-   1009
+# {352,240}-   1008
+# {320,240}-   QVGA,EPTZ -0 (but can be automatically adjusted to follow phone)
+# {320,239}-   1007 
+# {320,176}-   1006
+# {256,192}-   1005
+# {256,144}-   1004
+# {176,144}-   1003
+# {176,112}-   1002
+# {160,144}-   1001
+# {160,112}-   1000
+
+# GXV3500 
+
+##### Primary Stream #####
+P2307 = 1021
+##### 2nd stream #####
+P2707 = 0
+
+##### Video Bit Rate #####
+# Range:	16,32,64,128,256,384,512,768,1024,1280,1536,1792,2048
+##### Primary Stream ##### 
+P2315  = 1024
+##### 2nd Stream #####
+P12708 = 256
+
+######## Video Frame Rate ########
+# Range:	1,2,3,4,5,10,13,15,20,25,30
+# Primary Stream
+P904 = 30
+# 2nd Stream
+P12709 = 10
+
+##### Video Bit Rate Control #####
+# Range:	1 = CBR (Constant Bit Rate);  0 = VBR (Variable Bit Rate)
+# Primary Stream
+P924 = 1
+# 2nd Stream
+P12710 = 1
+		
+##### Video Image Quality for VBR if chosen #####
+# Range:	0 - very high;  1 - high;  2 - normal; 3 - low; 4 - very low. 
+## Primary Stream
+P12311 = 3
+## 2nd Stream
+P12711 = 1
+
+##### Video I-Frame Interval #####
+# Range:	0-100 (in Frame number)
+# Primary Stream
+P12312 = 60
+# 2nd Stream
+P12712 = 30
+
+##### H. 264 Profile #####
+# Range:	0 - Baseline;  1 - Main Profile; 2 - High Profile
+# Primary Stream
+P12313 = 0
+# 2nd Stream
+P12713 = 0
+
+##### Light Condition via Power Frequency #####
+# Range:  0 - Indoor 50Hz (Europe, China, etc.); 1 - Indoor 60 (US, Japan, etc.); 2 - Outdoor
+P12314 = 0
+
+##### Audio Codec Type #####
+# Range:  0 - PCMU;  1 - PCMA;  2- G.726 (for supported models only); 3 - Disabled
+P14000 = 0
+
+##### Audio Bit Rate (G.726 only) #####
+# Range:   16,24,32,40
+# P14001 = 32
+
+##### Audio_Mic_Volume Range (for supported models only) #####
+# Range:  HIS: 1-10;  TI: 1-5
+P14002 = 5
+
+##### Audio_Speaker_Volume Range (for supported models only) #####
+# Range: HIS: 1-10; TI: 0-31
+P14003 = 10
+
+##### Audio Line-In Mode (for supported models only, e.g.: GXV3611IR_HD) #####
+# Range:  0 - inside (microphone);  1 - outside (line-in, external microphone)
+P14004 = 0
+
+##### Audio Line-Out Mode (for supported models only, e.g.: GXV3611IR_HD) #####
+# Range: 0 - inside (built-in speaker);  1 - outside (line-out, external amplified speaker)
+P14005 = 0
+		
+##### OSD (On Screen Display) Text ##### 
+P10040 = CHN1
+
+##### OSD Position #####
+# Range:  0 - top;   1 - bottom
+P10041 = 0
+
+##### OSD Transparency (for supported models only) #####
+# Example:  20 = 20%
+# P10042 = 20
+
+##### OSD Color (for supported model/HIS only) #####
+# P10043 = 0xFFFFFF
+
+##### OSD Time(watermark) Display #####
+# Range:  0 - disable;  1 - show
+P10044 = 1
+		
+##### OSD Text(watermark) Display #####
+# Range:  0 - disable;  1 - show 
+P10045 = 1
+
+##################### 4 D1 option (GXV3504 Only) ####################################################	
+# 1:H264 4*704*480, 2048kbps@15fps + no secondary stream
+# 2:H264 4*704*480, 1536kbps@19fps + no secondary stream
+# 3:H264 4*704*480, 1536kbps@15fps + secondary stream 4*QCIF     (176*112) 128kbps@10fps
+# 4:H264 4*704*576, 2048kbps@13fps + no secondary stream
+# 5:H264 4*704*576, 1536kbps@16fps + no secondary stream
+# 6:H264 4*704*576, 1536kbps@10fps + secondary stream 4*QCIF (176*144) 128kbps@10fps
+# 7:MJPEG 4*704*480, 4096kbps@15fps + no secondary stream
+# 8:MJPEG 4*704*576, 4096kbps@13fps + no secondary stream
+# P10030 = 1
+
+# 4 D1 enable option (GXV3504 Only):  0 - disable;  1 - enable
+# P10031 = 0
+
+
+####################################################################################################
+##                               Basic Settings/CMOS setting                                      ##
+####################################################################################################
+##### Flip #####
+# Range: 0 -- NONE	1 -- Horizontal&Vertical	2 -- Horizontal		3 -- Vertical 	    
+P10500 = 0
+
+##### Smart IR (Only B2 Model Supported: GXV3611IR_HD; GXV3610_FHD; GXV3674_FHD)#####
+# Range: 0 -- Off	1 -- On    
+P10574 = 
+
+##### Iris Setting(For Supported Models Only) #####
+# Range:  0 - Mechanic/Manual; 1 - DC Auto;  2 - DC Manual
+# P10501 = 0
+
+##### Iris Open(For Supported Models Only) #####
+# Range:  0 - 100%;  2 - 80%;  3 - 60%;  4 - 40%;  5 -20%
+# P10502 = 0
+
+##### Shutter Speed  (for GXV3662_HD/FHD, GXV3651_FHD,GXV3610/3672/3674/3611IR_HD) #####
+# Range: 0 - Auto;  30 - 1/30; 60 - 1/60; 125 - 1/125; 250 - 1/250; 500 - 1/500; 1000 - 1/1000; 2000 - 1/2000; 5000 - 1/5000; 10000- 1/10000
+P10503 = 0
+
+##### IR CUT Setting #####
+# Range:  0 - Manual;   1 - Automatic(IR sensor control);   2- Time Schedule Mode 
+P10504 = 1
+
+##### Settings if "P10504 = 2" is chosen.  "start" and "end" should be different. 
+##### Daytime start
+# P10570 = 00:00
+##### Daytime end 
+# P10571 = 00:00
+
+############### For Supported Models Only ################
+##### Daytime/Night Mode (for supported models only) #####
+# Range: 0 - Daytime;  1 - Night
+# P10505 = 0
+
+##### Color Mode #####
+# Range: 0 - Color;  1 - B/W;   2- Auto
+P10506 = 2
+
+##### IR CUT Sensitivity #####
+# Range: 1,2,3,4,5
+P10507 = 3
+
+# Up Bias  (for supported models only) #####
+P10508 = 8160
+
+# Down Bias
+P10509 = 8150
+
+# Daytime start 
+P10570 = 00:00
+
+# Daytime end 
+P10571 = 00:00
+
+
+####################################################################################################
+##                               Basic Settings/Networking                                        ##
+####################################################################################################
+##### IP Type #####
+# Range: 0 - DHCP, 1 - Static IP
+P8 = 0
+
+##### DNS Configuration #####
+# Range:  0 - Obtain DNS Server Address Automatically;  1 - Use the Following DNS Server Address
+P10107 = 1
+
+##### Static IP. IP address, Ignore if DHCP is used #####
+# Format: 	P9.P10.P11.P12
+			 |   |  |   |
+# Example:	192.168.10.111
+P9 = 192
+P10 = 168
+P11 = 1
+P12 = 168
+
+##### Subnet Mask of Static IP Setting, Ignore if DHCP is used #####
+# Format: 	P13.P14.P15.P16
+			 |   |   |   |
+# Example: 	255.255.255.0
+P13 = 255
+P14 = 255
+P15 = 255
+P16 = 0
+		
+##### Default Gateway of Static IP Setting, Ignore if DHCP is used #####
+# Format: 	P17.P18.P19.P20
+			 |   |   |   |
+# Example: 	192.168.123.1																			                       #													
+P17 = 192
+P18 = 168
+P19 = 1
+P20 = 168
+
+# Static IP. DNS Server 1, Ignore if DHCP is used
+P21 = 0
+P22 = 0
+P23 = 0
+P24 = 0	
+		
+# Static IP. DNS Server 2 , Ignore if DHCP is used 
+P25 = 0
+P26 = 0
+P27 = 0
+P28 = 0
+
+# Web Access Mode (0:HTTP  1:HTTPS)
+P12054=0
+
+# HTTP port
+P901 = 0
+
+# Enable LLDP (0:Disable  1:Enable)
+P1684=0
+
+# Layer 2 QoS 802.1Q/VLAN Tag (value: 0 -- 4094)
+P51=0
+
+# Layer 2 QoS 802.1p Priority Value (value: 0 -- 7)
+P87=0
+
+# HTTP port
+P901 = 0
+
+#######################################################################
+##  Basic Settings/PPPoE                                             ##
+#######################################################################
+# PPPoE Account ID
+P82 = 
+# PPPoE Password
+P83 = 
+
+#######################################################################
+##  Basic Settings/Wifi                                      	     ##
+#######################################################################
+# Wifi webs value : p_value value
+# Authentication Mode: 0-open,1-share,2-wepauto,3-wpa psk,4-wpa2 psk,5-wpa none
+# Encryption    : 0-none,1-wep,2-tkip,3-aes
+# IE SELECT           p_value Authentication Mode       p_value  Encryption
+# 0(NONE)                           0                        0
+# 1(WEP/Shared)                     1                        1
+# 2(WEP/Open)                       0                        1
+# 3(WPA PSK TKIP)                   3                        2
+# 4(WPA PSK AES)                    3                        3
+# 5(WPA2 PSK TKIP)                  4                        2
+# 6(WPA2 PSK AES)                   4                        3
+
+# Enable wifi: 0-disenabled, 1-enabled 
+P7800 = 0
+
+# SSID
+P7812 = 
+
+############################################################################################################################
+#	Authentication Mode, Range: 0-NOME、1-WEP/Share、2-WEP/Open、3-WPAPSKTPIP、4-WPAPSKAES、5-WPA2PSKTKIP、6-WPA2PSKAESE   #
+#   P7814 = 														                                                       #
+#																                                                           #
+#	##### Encryption #####																								   #
+#	# Range: 0- None, 1- WEP, 2- TKIP, 3- AES 										                                       #
+#	P7815 = 
+#	
+#  ------------------------------------------------------------------------------------------------------------------------------
+#  P7814 = |Authenticatio|   0	  |     1	     |     0        |     3	        |     3	      |	    4	       |	 4	        |
+#  ------------------------------------------------------------------------------------------------------------------------------
+#  P7815 = |Encryption   |   0	  |     1	     |	   1        |     2	        |     3	      |	    2	       |	 3	        |
+#  ------------------------------------------------------------------------------------------------------------------------------
+#  |	result           | 0-NOME |  1-WEP/Share |  2-WEP/Open  | 3-WPAPSK TPIP | 4-WPAPSK AES| 5-WPA2PSK TKIP | 6-WPA2PSK AESE |
+#  ------------------------------------------------------------------------------------------------------------------------------
+##################################################################################################################################
+
+##### WEP KEY INDEX #####
+# Range: 0 - Not Selected; 1 - Selected; Only one out of the four selected. If more than one selected, only the first one will be in effect
+# P7821 = 
+# P7822 = 
+# P7823 = 
+# P7824 = 
+
+##### Key(For SSID password) ##### 
+P7829 = 
+
+#######################################################################
+##  Basic Settings - DDNS                                     	     ##
+#######################################################################
+##### Enable DDNS #####
+# Range: 0 - disabled;  1 - enabled 
+P10100 = 0
+
+##### DDNS ISP Type #####
+# Range: 0 - dyndns.org;  1 - noip.com; 2 - ActiveDNS; 3 - cn99.com; 4 - ipkan.net; 5 - ipkan.cn; 6 - ipkan.com.cn 
+P10101 = 0
+
+##### Self-Define DDNS Address #####
+P10102 = 
+
+##### Site Name #####
+P10103 = 
+
+##### DDNS Account ##### 
+P10104 = 
+
+##### DDNS Password #####
+P10105 = 
+
+##### STUN Server #####
+P10106 = 
+
+
+#######################################################################
+##  Basic Settings/SIP                                       	     ##
+#######################################################################
+##### SIP Registration Status #####
+# Status:  0 - Offline;   1 - Online
+P271 = 0
+
+##### SIP enable/disable on reboot #####
+# Range:  0 - disabled;    1 - enable 
+P81 = 0
+
+##### SIP Account Name #####
+P270 = 
+
+##### SIP Server ##### 
+P47 = 
+
+##### SIP Proxy Server #####
+P48 = 
+
+##### SIP Password #####
+P34 = 
+
+##### SIP User ID #####
+P35 = 
+
+##### SIP Authenticate ID ##### 
+P36 = 
+
+##### SIP TEL URI #####
+# Range:   0 - disable; 1 - user=phone; 2 - enable
+# P63 =
+
+##### SIP STUN Server ##### 
+P76 = 
+
+##### SIP Stream #####
+# Range:   1 - Primary;    0 - Second
+P10450 = 
+
+##### SIP Preferred Vocoder Inherit from SIP Phone (GXV3000 phone) #####
+# SIP preferred Vocoder
+# 0 - PCMU, 2 - G.726-32, 3 - GSM, 4 - G.723.1, 8 - PCMA, 
+# 9 - G.722, 18 - G.729A/B, 98 - L16-256
+P57 = 0
+
+# SIP preferred Vocoder 2
+# 0 - PCMU, 2 - G.726-32, 3 - GSM, 4 - G.723.1, 8 - PCMA, 
+# 9 - G.722, 18 - G.729A/B, 98 - L16-256
+# Inherit sip phone(3000 phone)
+P58 = 0
+
+# Voice Frames Per TX   [1,64]   default 2 
+P486 = 
+
+##### SIP Register Expiration #####
+# Range:  [60,64800]   default 3600 
+P32 = 
+
+# Re-register before Expiration(s)   [0,64800]   default 0 
+P2430 = 
+
+# Special Feature  100:Standard  102:Broadsoft  129:Telefonica Spain
+P424 = 
+
+# NAT Traversal (0:No  1:STUN  2:Keep Alive  3:UPnP  4:Auto)
+P414 = 
+
+##### SIP Local Port #####
+P40 = 
+
+##### SIP Local RTP port #####
+# Range:  [1024,29999] && ! = 6789;    Default = 5004
+P39 = 
+
+# Use Random Port (0:Disable  1:Enable)
+P78=
+
+##### SIP Auto On-Hook Timer #####
+# Range:   [0, 65535], Default = 300 seconds (or 5 minutes)
+P10451 =
+
+##### SIP Disable Audio in SIP Call #####
+P10452 =
+
+###### SIP Enable Keep Alive #####
+P1309 =
+
+##### SIP Accept Direct IP Call #####
+P10453 =
+
+##### SIP Enable WhiteList/Number Filter #####
+P10454 =
+
+##### SIP Enable Two-Way SIP Calling #####
+# Range:  0 - Disable;    1 - Enable;  
+P10455 = 
+
+##### SIP Proxy Compatibility Mode #####
+# Range:  0 - Disable;   1 - Enable;  (Enabled will increase bandwidth usage) 	
+P10461 = 0 
+
+##### SIP Transport(For Supported Models Only) #####
+# Range:    0 - UDP;   1 - TCP;   2 - TLS/TCP
+# P60000 = 0 
+
+##### SIP TLS Certificate #####  
+P280 = 
+
+##### SIP TLS Private Key ##### 
+P279 =
+
+##### SIP TLS Private Key Password #####
+P281 =
+
+##### SIP Open Door #####
+# Range:	0 - Disable;     1 - Enable 
+P10456 = 
+
+##### SIP Open Door Key/Password, Length = (4 ~ 8) (must be digits) #####
+P10457 = 
+
+##### SIP Locker (Restore) Delay Timer #####
+# Range:   1  2  3  4  5  10  15  20  25 30  40  50  60  (in second)
+P10458 = 
+
+##### Phone List for Alarm Out #####
+# Format: PhoneNumber@RemarkName  Using "," to separate when more than one. 
+# Example: P10459 = 13788888888@liming,13788888888@liming1,13788888888@liming2
+P10459 =
+
+# White List:  Must be digits; Multiple phone number allowed and separated by ","; 
+# Every number maximum length = 63
+# Just 10 phone number are effective if more than 10 number.
+# Example: P10460 = 13788888888,13788888889,13788888810
+P10460 =
+
+# sip proxy compatibility mode :default:0, 1 
+P10461 = 0 
+
+# Answer Mode:    0,  1
+P14580 =
+
+# Ring Timeout(s): Value -  15	20	25	30	35	40	45	50	55	60
+P14847 =
+
+# Answer Mode:    0  1  2
+P408 =
+
+#######################################################################
+##         Advanced Settings - User Management                       ##
+#######################################################################
+
+##### admin password #####
+P2 =
+
+##### Allow Anonymous Viewing #####
+# Range:  0 - disable;    1- enable;     Default = 1 
+P10111 = 
+
+
+#######################################################################
+##  Advanced Settings - Maintenance                                  ##
+#######################################################################
+
+##*************************** UPGRADE ****************************** ##
+##### Upgrade via #####
+# Range: 0- TFTP, 1- HTTP, 2- HTTPS,  (Default = 1) 
+P212 = 1
+
+##### Firmware Server Path #####
+# Example: P192 =fm.grandstream.com/gs
+		   P192 =192.168.123.123
+P192 = fm.grandstream.com/gs
+
+##### Config Server Path #####
+# Example: P192 =fm.grandstream.com/gs
+		   P192 =192.168.123.123
+P237 =
+
+##### XML Config File Password ##### 
+P1359 = 
+
+# Validate Server Certificates (0:Disable  1:Enable)
+P8463 =
+
+##### 3CX Auto Provision #####
+# 3CX Auto Provision:     0- disabled, 1- enabled
+P1414 =
+
+##### Automatic Upgrade Interval(Minutes) #####
+# Range:  60-525600 
+P193 = 1080
+
+##### Automatic Upgrade #####
+# Automatic Upgrade:  0- No, 1- Yes, check for every xx minute  2:Yes, check for every day  3:Yes, check for every week 
+P194 = 1
+
+# Randomized Automatic Upgrade: 0- disabled, 1- enabled 
+P8458 = 0
+
+# Hour of the Day Start  (0 - 23)
+P285 = 0
+
+# Hour of the Day End  (0 - 23)
+P8459 = 0
+
+# Day of the Week  (0 - 6)
+P286 = 0
+
+##### DHCP Option 66 Override Server #####
+# Range:     0 - disable;  1 - enable
+P145 = 
+
+##### Disable Telnet #####
+# Range:    1 - disable;    0 - enable;   (Default = 0) 
+P12052 = 0 
+
+##### Enable UPnP Discovery #####
+# Range:  	0 - disable;    1 - enable  (Default = 1) 
+P12053 = 1 
+
+#######################################################################
+##  Certificates                                            	     ##
+#######################################################################
+
+#Trusted CA Certificate 1
+P8433=
+
+#Trusted CA Certificate 2
+P8434=
+
+#Trusted CA Certificate 3
+P8435=
+
+#Trusted CA Certificate 4
+P8436=
+
+#Trusted CA Certificate 5
+P8437=
+
+#Trusted CA Certificate 6
+P8438=
+
+#Custom Certificate
+P8475=
+
+#######################################################################
+##  Advanced Settings - SMTP                                     	 ##
+#######################################################################
+# Enable SMTP:  0 - disable;    1 - enable 
+P10120 = 0
+
+##### SMTP Server #####
+P10121 = 
+
+##### SMTP Server Port #####
+P10122 = 
+
+##### From E-Mail address #####
+P10123 = 
+
+##### To E-Mail address 1 ##### 
+P10124 = 
+
+##### To E-Mail address 2 #####
+P10125 = 
+
+##### To E-Mail address 3 #####
+P10126 = 
+
+##### User Name (Email Account User ID) #####
+P10127 = 
+
+##### Password (Email Account Password) #####
+P10128 = 
+
+##### SSL. #####
+# Range:  0 - disable;   1 - enable
+P10129 = 
+
+##### Email Subject (The Subject of Alarm Email Sending Out) #####
+P10131 =
+
+# Email Content (The Content of Alarm Email Sending Out)
+P10132 =
+
+
+#######################################################################
+##           Advanced Settings - FTP                           	     ##
+#######################################################################
+##### Enable FTP #####
+# Range:  0 - disable;  1 - enable 
+P10140 = 0
+
+##### FTP Server #####
+P10141 = 
+
+##### FTP Server Port #####
+P10142 = 
+
+##### User Name (User ID of the FTP account) #####
+P10143 = 
+
+##### Password (Password of the FTP account) #####
+P10144 = 
+
+##### FTP Path (The file path the FTP file stored) #####
+P10145 = 
+
+
+#######################################################################
+##  Advanced Settings - PTZ  (For Supported Models Only)       	     ##
+#######################################################################
+############### PTZ procotol ######################
+# Range:  0 - Pelco-P;  1 - Pelco-D
+P10150 = 0
+
+##### PTZ Baud Rate #####
+# Range: 2400/4800/9600/19200 
+P10151 = 4800
+
+
+#######################################################################
+##         Advanced Settings - Alarm Servers                         ##
+#######################################################################
+##### Server Name #####
+P10160 = 
+
+##### URL #####
+P10161 = 
+
+##### User Name #####
+P10162 = 
+
+##### Password #####
+P10163 = 
+
+
+#######################################################################
+##  	Advanced Settings - Alarm Event                              ##
+#######################################################################
+###############################################################
+##  		      Alarm Event             	                 ##
+###############################################################
+## Alarm Action ##
+##### Record Video time ####
+# Format: pre_time@end_time 
+# Example: 0@15   
+P10170 = 0@15
+
+# Enable alarm storage 0- disable 1:enable //SD Card 2:USBDisk //  3:HardDisk
+# P10171 = 0
+
+##### Voice Alarm to SIP Phone #####
+# Range:   1 - enable;  0 - disable
+P10172 = 0
+
+##### Alarm Output #####
+# Range:  1 - enable;  0 - disable
+P10173 = 0
+
+##### Upload to Alarm Center #####
+# Range:   1 - enable;   0 - disable
+P10174 = 1
+
+##### Upload to Alarm HTTP Server #####
+# Range:  1 - enable;  0 - disable
+P10175 = 0
+
+##### Record Video and Upload to FTP Server #####
+# Range:  1 - enable;  0 - disable
+P10176 = 0
+
+##### Email and FTP upload JPEG and Store it to SD drive #####
+# Range:   1 - enable;  0 - disable
+P10177 = 0
+
+## Alarm Event Time Schedule ##
+# Probe chn1 alarm time week@start_time@end_time week(0-7 7=everyday)
+# time(00:00)
+# For example: W@B@E
+# W -- week   such as Monday/Tuesday ...   value range : 0 - 7
+# S -- Start of Motion Detection effective time . Format: 09:59 .
+# E -- End of Motion Detection effective time . Format: 23:59 . 
+# Special note, it is means all day when the 'W' = 7 .
+P10180 = 1@07:24@09:55;7@10:24@13:55;2@13:24@16:55
+
+
+#######################################################################
+##                Time Lapse Photography                             ##
+#######################################################################
+######## Enable Time Lapse Photography ########
+# Range:     1 - enable;  0 - disable
+P10580 = 1 
+
+##### Trigger period, in minute  Default = 1 #####    
+# P10581 = 1 
+
+##### Store it to USB card or SD driver #####
+# Range:  1 - enable;  0 - disable
+# P10582 =
+
+##### FTP Upload #####
+# Range:  1 - enable;  0 - disable
+# P10583 = 
+
+##### SMTP Upload #####
+# Range:  1 - enable;  0 - disable 
+# P10584 =
+
+
+#######################################################################
+##  Advanced Settings/Motion Detection                               ##
+#######################################################################
+###############################################################
+##  		        Motion Detection        	             ##
+###############################################################
+## Motion Detection Region Settings ##
+##### Enable Motion Detection #####
+# Range:    0 - disable;    1 - enable
+P10250 = 1
+
+##### Region1 coordinate and sensitivity. #####
+# Format:	start_coordinate(x1*y1)@end_coordinate(x2*y2)@sensitivity(0-100)
+# x1 y1 :	Top left coordinates of alarm region 1.
+# x2 y2 :	Bottom right coordinates of alarm region 1.
+# Range:	 X1(0~704) * Y1(0~576)		
+# Example: P10251 = 0*0@704*576@50 
+# (0, 0) is the top left coordinate and (704, 576) is the bottom right \
+# coordinate. The sensitivity value is 50 .
+# And the same with others regions .
+P10251 = 0*0@704*576@50
+
+##### Region2 coordinate and sensitivity #####
+P10252 = 
+
+##### Region3 coordinate and sensitivity #####
+P10253 = 
+
+##### Region4 coordinate and sensitivity #####
+P10254 = 
+
+##### Region5 coordinate and sensitivity #####
+P10255 = 
+
+##### Region6 coordinate and sensitivity #####
+P10256 = 
+
+##### Region7 coordinate and sensitivity #####
+P10257 = 
+
+##### Region8 coordinate and sensitivity #####
+P10258 = 
+
+##### Region9 coordinate and sensitivity #####
+P10259 = 
+
+##### Region10 coordinate and sensitivity #####
+P10260 = 
+
+##### Region11 coordinate and sensitivity #####
+P10261 =
+ 
+##### Region12 coordinate and sensitivity #####
+P10262 = 
+
+##### Region13 coordinate and sensitivity #####
+P10263 = 
+
+##### Region14 coordinate and sensitivity #####
+P10264 = 
+
+##### Region15 coordinate and sensitivity #####
+P10265 =
+ 
+##### Region16 coordinate and sensitivity #####
+P10266 = 
+
+
+#################### Alarm Action ################################################
+##### Minimum duration required by motion detection triggers #####
+# Range:  Auto, 1 ~ 5  (in second)
+P10267 = Auto 
+
+##### Minimum interval of different motion detection events #####
+# Range:   1 ~ 60 (in second) 
+P10268 = 1
+
+##### Record Video time #####
+# Format:	pre_time@end_time
+# pre_time: The seconds before alarm trigger
+# end_time: The seconds after alarm trigger
+# Example:	P10270 = 10@15	The record video will be 10s before alarm trigger point and continue 15s.	
+P10270 = 
+
+##### Record Video #####
+# Range:   0 - disable;   1 - enable 
+P10271 = 0 
+
+##### Voice Alarm to SIP Phone #####
+# Range:   1 - enable;  0 - disable
+P10272 = 0
+
+##### Alarm Output #####
+# Range:   1 - enable;  0 - disable
+P10273 = 0
+
+##### Upload to Alarm Center #####
+# Range:   1 - enable;  0 - disable
+P10274 = 1
+
+##### Upload to Alarm HTTP Server #####
+# Range:  1 - enable;  0 - disable
+P10275 = 0
+
+##### Record Video and Upload to FTP Server #####
+# Range:    1 - enable;   0 - disable
+P10276 = 0
+
+##### Email and FTP upload JPEG and Store it to SD drive #####
+# Range:   1 - enable;   0 - disable
+P10277 = 0
+
+###### Motion Detection Time Schedule ######
+# Motion Detection Alarm Time Schedule Configuration:  
+# Format:week@start_time@end_time week(0-7 7=everyday) time(00:00)
+
+##### Region1 alarm time #####
+P10280 = 7@02:30@16:25
+
+##### Region2 alarm time #####
+P10281 =
+ 
+##### Region3 alarm time #####
+P10282 = 
+
+##### Region4 alarm time #####
+P10283 =
+ 
+##### Region5 alarm time #####
+P10284 = 
+
+##### Region6 alarm time #####
+P10285 =
+ 
+##### Region7 alarm time #####
+P10286 = 
+
+##### Region8 alarm time #####
+P10287 = 
+
+##### Region9 alarm time #####
+P10288 = 
+
+##### Region10 alarm time #####
+P10289 = 
+
+##### Region11 alarm time #####
+P10290 = 
+
+##### Region12 alarm time #####
+P10291 = 
+
+##### Region13 alarm time #####
+P10292 = 
+
+##### Region14 alarm time #####
+P10293 = 
+
+##### Region15 alarm time #####
+P10294 = 
+
+##### Region16 alarm time #####
+P10295 = 
+
+
+#######################################################################
+##  Advanced Settings - Syslog                               	     ##
+#######################################################################
+##### Syslog Server, IP address or domain name ##### 
+P207 = 
+
+##### Syslog Level #####
+# Range:  0 - None; 1 - Debug; 2 - Info; 3 - Warning; 4 - Error 
+P208 = 0
+
+
+#######################################################################
+##  Advanced Settings - Record                              	     ##
+#######################################################################
+##### Enable Record Schedule (for local storage) #####
+# Range:  0 - disable; 1 - enable
+P10480 = 1
+
+##### Record Schedule Table #####
+# Format: week1@start_tm1@end_tm1;week2@start_tm2@end_tm2;...; 
+P10481 = 
+
+
+#######################################################################
+##  Advanced  Settings - Live Storage                                ##
+#######################################################################
+##### Action when Disk Full #####   
+# Range:
+# 		 1 - Delete the earliest video or image files;  
+# 		 2 - Stop storing video and image files
+P10490 = 1		
+
+
+#######################################################################
+#######################################################################
+##  GXV3500 Decode Mode Administration Interface                     ##
+#######################################################################		
+##### Decoder Settings #####	
+# Range:  0 - RTSP; 1 - SIP Phone; 2 - HTTP 
+P11080 = 0			
+
+##### Default Stream, video channel #####
+# Range: 1/2/3/4/5/6/7/8 
+P11081 = 1
+
+##### Enable Patrol #####
+# Range:  0 - disable;   1 - enable
+P11082 = 0
+
+##### Video Output Type #####
+# Range: 0 - Auto or NTSC; 1 - Auto or PAL; 2 - NTSC; 3 - PAL
+P11083 = 0
+
+##### Real Size #####
+# Range:   0 - No;  1 - Yes
+P11084 = 
+
+######  Video channel-1 setting  ######
+##### Host Address #####
+P11000 =
+
+##### Port   [1,65535] #####
+P11001 =
+
+##### Channel  [1,65535] #####
+P11002 =
+
+##### User Name  #####
+P11003 =
+
+##### Password #####
+P11004 =
+
+##### Patrol #####
+# Rang: 0- disable , 1- enable
+P11005 =
+
+##### Description  #####
+P11006 =
+
+##### Time(s) #####
+P11007 =
+
+######  Video channel-2 setting ######
+##### Host Address #####
+P11010 =
+
+##### Port  #####
+P11011 =
+
+##### Channel #####
+P11012 =
+
+##### User Name  #####
+P11013 =
+
+##### Password #####
+P11014 =
+
+##### Patrol #####
+# Rang: 0- disable , 1- enable
+P11015 =
+
+##### Description  #####
+P11016 =
+
+##### Time(s) #####
+P11017 =
+
+###### Video channel-3 setting  ######
+##### Host Address #####
+P11020 =
+
+##### Port  #####
+P11021 =
+
+##### Channel #####
+P11022 =
+
+##### User Name  #####
+P11023 =
+
+##### Password #####
+P11024 =
+
+##### Patrol #####
+# Rang: 0- disable , 1- enable
+P11025 =
+
+##### Description  #####
+P11026 =
+
+##### Time(s) #####
+P11027 =
+
+######  Video channel-4 setting ######
+##### Host Address #####
+P11030 =
+
+##### Port  #####
+P11031 =
+
+##### Channel #####
+P11032 =
+
+##### User Name  #####
+P11033 =
+
+##### Password #####
+P11034 =
+
+##### Patrol #####
+# Rang: 0- disable , 1- enable
+P11035 =
+
+##### Description  #####
+P11036 =
+
+##### Time(s) #####
+P11037 =
+
+###### Video channel-5 setting ######
+##### Host Address #####
+P11040 =
+
+##### Port  #####
+P11041 =
+
+##### Channel #####
+P11042 =
+
+##### User Name ##### 
+P11043 =
+
+##### Password #####
+P11044 =
+
+##### Patrol #####
+# Rang: 0- disable , 1- enable
+P11045 =
+
+##### Description  #####
+P11046 =
+
+##### Time(s) #####
+P11047 =
+
+###### Video channel-6 setting ######
+##### Host Address #####
+P11050 =
+
+##### Port  #####
+P11051 =
+
+##### Channel #####
+P11052 =
+
+##### User Name  #####
+P11053 =
+
+##### Password #####
+P11054 =
+
+##### Patrol #####
+# Rang: 0- disable , 1- enable
+P11055 =
+
+##### Description  #####
+P11056 =
+
+##### Time(s) #####
+P11057 =
+
+###### Video channel-7 setting ######
+##### Host Address #####
+P11060 =
+
+##### Port  #####
+P11061 =
+
+##### Channel #####
+P11062 =
+
+##### User Name  #####
+P11063 =
+
+##### Password #####
+P11064 =
+
+##### Patrol #####
+# Range: 0- disable , 1- enable
+P11065 =
+
+##### Description  #####
+P11066 =
+
+##### Time(s) #####
+P11067 =
+
+###### Video channel-8 setting  ######
+##### Host Address #####
+P11070 =
+
+##### Port  #####
+P11071 =
+
+##### Channel #####
+P11072 =
+
+##### User Name  #####
+P11073 =
+
+##### Password #####
+P11074 =
+
+##### Patrol #####
+# Range: 0- disable , 1- enable
+P11075 =
+
+##### Description #####
+P11076 =
+
+##### Time(s) #####
+P11077 =
+
+######################################################################
+#######################       END    #################################
+
+

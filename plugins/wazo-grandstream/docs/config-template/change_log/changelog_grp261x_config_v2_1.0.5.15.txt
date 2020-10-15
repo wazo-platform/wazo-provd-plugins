@@ -1,0 +1,285 @@
+######################################################################################
+## GRP261x Change Log                                                               ##
+######################################################################################
+
+###############################################################
+# P values added since 1.0.3.6
+###############################################################
+<!-- # Enable EDRC Feature. -->
+<!-- No - 0, Yes - 1 -->
+<item name="audio.ERDCFeature.enable">Yes</item>
+		
+<!-- # Line LED Color Scheme -->
+<!-- Default-0, Light up-1 -->
+<item name="ledControl.lineLedColorScheme">Default</item>
+
+<!-- # Call Tone Volume -->
+<!-- # Number: (-15)-15. Default is 0. -->
+<!-- # Mandatory -->
+<item name="audio.volume.tone">0</item>
+		
+<!-- # Total Number of Custom Ringtone Update -->
+<!-- # Number: 0-10. Default is 3. -->
+<!-- # Mandatory -->
+<item name="audio.ring.numberOfRingtone">3</item>
+
+<!-- # OpenVPN CA -->
+<!-- # String -->
+<!-- <item name="network.openvpn.ca"></item> -->
+
+<!-- # OpenVPN Certificate -->
+<!-- # String -->
+<!-- <item name="network.openvpn.cert"></item> -->
+
+<!-- # OpenVPN Client Key -->
+<!-- # String -->
+<!-- <item name="network.openvpn.clientKey"></item> -->
+
+<!-- # USB Console Log. Yes or No -->
+<item name="maintain.usbConsoleLog">No</item>
+
+<!-- Minimum TLS Version -->
+<!-- UNLIMITED, TLS_1_0, TLS_1_1, TLS_1_2 -->
+<item name="security.minimum.TLS.version">UNLIMITED</item>
+
+<!-- Maximum TLS Version -->
+<!-- UNLIMITED, TLS_1_0, TLS_1_1, TLS_1_2 -->
+<item name="security.maximum.TLS.version">UNLIMITED</item>
+
+<!-- # Capture Location. InternalStorage, USB -->
+<item name="packetCapture.captureLocation">InternalStorage</item>
+		
+<!-- # USB Filename -->
+<!-- # String -->
+<item name="packetCapture.usbFilename">0</item>
+		
+
+###############################################################
+# P values added since 1.0.1.23
+###############################################################
+
+###############################################################
+# Updated outdated time zone DST values
+###############################################################
+
+<!-- Account 1 Network Settings -->
+<!-- DNS SRV Fail-over Mode -->
+<!-- Default, SavedOneUntilDNSTTL, SavedOneUntilNoResponse -->
+<item name="account.1.network.dnsSRVFailoverMode">Default</item>
+
+<!-- Account 2 Network Settings -->
+<!-- DNS SRV Fail-over Mode -->
+<!-- Default, SavedOneUntilDNSTTL, SavedOneUntilNoResponse -->
+<item name="account.2.network.dnsSRVFailoverMode">Default</item>
+
+<!-- Account 3 Network Settings -->
+<!-- DNS SRV Fail-over Mode -->
+<!-- Default, SavedOneUntilDNSTTL, SavedOneUntilNoResponse -->
+<item name="account.3.network.dnsSRVFailoverMode">Default</item>
+
+<!-- Account 4 Network Settings -->
+<!-- DNS SRV Fail-over Mode -->
+<!-- Default, SavedOneUntilDNSTTL, SavedOneUntilNoResponse -->
+<item name="account.4.network.dnsSRVFailoverMode">Default</item>
+
+<!-- Account 5 Network Settings -->
+<!-- DNS SRV Fail-over Mode -->
+<!-- Default, SavedOneUntilDNSTTL, SavedOneUntilNoResponse -->
+<item name="account.5.network.dnsSRVFailoverMode">Default</item>
+
+<!-- Account 6 Network Settings -->
+<!-- DNS SRV Fail-over Mode -->
+<!-- Default, SavedOneUntilDNSTTL, SavedOneUntilNoResponse -->
+<item name="account.6.network.dnsSRVFailoverMode">Default</item>
+
+<!-- ############################################################################## -->
+<!-- ##  Directory/LDAP -->
+<!-- ############################################################################## -->
+<!-- # Exact Match Search -->
+<!-- # Yes or No -->
+<item name="ldap.exactSearch.enable">No</item>
+
+<!-- ###################################################################################### -->
+<!-- ## Programmable Keys/EXT Setting -->
+<!-- ###################################################################################### -->
+<!-- # One Page Display Mode. Yes or No -->
+<!-- # Mandatory -->
+<item name="pks.ext.onePageDisplayMode">No</item>
+
+<!-- # Sync Backlight with LCD. Yes or No -->
+<!-- # Mandatory -->
+<item name="pks.ext.syncBacklightWithLCD">No</item>
+
+<!-- ###################################################################################### -->
+<!-- ## Programmable Keys/EXT 1 -->
+<!-- ###################################################################################### -->
+<!-- ###################################################################################### -->
+<!-- ## Programmable Keys/EXT 2 -->
+<!-- ###################################################################################### -->
+<!-- ###################################################################################### -->
+<!-- ## Programmable Keys/EXT 3 -->
+<!-- ###################################################################################### -->
+<!-- ###################################################################################### -->
+<!-- ## Programmable Keys/EXT 4 -->
+<!-- ###################################################################################### -->
+
+###############################################################
+# P values added since 1.0.1.17
+###############################################################
+
+<!-- ############################################################################## -->
+<!-- ##  Settings/Programmable Keys/Virtual Multi-Purpose Keys -->
+<!-- ############################################################################## -->
+<!-- ###################################################################################### -->
+<!-- # Added "Phonebook(30)" as a Key Mode for all VPKs and MPKs
+<!-- ###################################################################################### -->
+
+###############################################################
+# P values added since 1.0.1.7
+###############################################################
+
+<!-- Enabled Certain Account 5/6 Settings -->
+
+<!-- ############################################################### -->
+<!-- # Account 5/General Settings -->
+<!-- ############################################################### -->
+<!-- Account Display -->
+<!-- User Name, User ID-->
+<item name="account.5.sip.accountDisplay">User Name</item>
+
+<!-- account.5 SIP Settings -->
+<!-- account.5 Advanced Features -->	
+<!-- Eventlist BLF URI -->
+<item name="account.5.sip.blf.eventlist.uri"></item>
+
+<!-- ############################################################### -->
+<!-- # account.5/Feature Codes -->
+<!-- ############################################################### -->
+<!-- #Call Forward Unconditionally (All) - Target -->
+<!-- # String -->
+<item name="account.5.featureCodes.callForwardUnconditionallyTarget"></item>
+
+<!-- #Call Forward Busy - Target -->
+<!-- # String -->
+<item name="account.5.featureCodes.callForwardBusyTarget"></item>
+
+<!-- #Call Forward Delayed (No Answer) - Target -->
+<!-- #String -->
+<item name="account.5.featureCodes.callForwardDelayedTarget"></item>
+
+<!-- Account 1 SIP Settings -->
+<!-- Account 1 Custom SIP Headers -->
+<!-- Use MAC Header -->
+<!-- No - No, Yes for REGISTER only - RegisterOnly, Yes to all SIP - YesToAllSIP -->
+<item name="account.1.sip.header.macHeader">No</item>	
+
+<!-- Add MAC in User-Agent -->
+<!-- No - No, Yes for all except REGISTER - YesExceptRegister, Yes to all Sip - YesToAllSip -->
+<item name="account.1.sip.header.mac">No</item>	
+
+<!-- Account 2 SIP Settings -->
+<!-- Account 2 Custom SIP Headers -->
+<!-- Use MAC Header -->
+<!-- No - No, Yes for REGISTER only - RegisterOnly, Yes to all SIP - YesToAllSIP -->
+<item name="account.2.sip.header.macHeader">No</item>	
+
+<!-- Add MAC in User-Agent -->
+<!-- No - No, Yes for all except REGISTER - YesExceptRegister, Yes to all Sip - YesToAllSip -->
+<item name="account.2.sip.header.mac">No</item>	
+
+<!-- Account 3 SIP Settings -->
+<!-- Account 3 Custom SIP Headers -->
+<!-- Use MAC Header -->
+<!-- No - No, Yes for REGISTER only - RegisterOnly, Yes to all SIP - YesToAllSIP -->
+<item name="account.3.sip.header.macHeader">No</item>	
+
+<!-- Add MAC in User-Agent -->
+<!-- No - No, Yes for all except REGISTER - YesExceptRegister, Yes to all Sip - YesToAllSip -->
+<item name="account.3.sip.header.mac">No</item>	
+
+<!-- Account 4 SIP Settings -->
+<!-- Account 4 Custom SIP Headers -->
+<!-- Use MAC Header -->
+<!-- No - No, Yes for REGISTER only - RegisterOnly, Yes to all SIP - YesToAllSIP -->
+<item name="account.4.sip.header.macHeader">No</item>	
+
+<!-- Add MAC in User-Agent -->
+<!-- No - No, Yes for all except REGISTER - YesExceptRegister, Yes to all Sip - YesToAllSip -->
+<item name="account.4.sip.header.mac">No</item>	
+
+<!-- Account 5 SIP Settings -->
+<!-- Account 5 Custom SIP Headers -->
+<!-- Use MAC Header -->
+<!-- No - No, Yes for REGISTER only - RegisterOnly, Yes to all SIP - YesToAllSIP -->
+<item name="account.5.sip.header.macHeader">No</item>	
+
+<!-- Add MAC in User-Agent -->
+<!-- No - No, Yes for all except REGISTER - YesExceptRegister, Yes to all Sip - YesToAllSip -->
+<item name="account.5.sip.header.mac">No</item>	
+
+<!-- Account 6 SIP Settings -->
+<!-- Account 6 Custom SIP Headers -->
+<!-- Use MAC Header -->
+<!-- No - No, Yes for REGISTER only - RegisterOnly, Yes to all SIP - YesToAllSIP -->
+<item name="account.6.sip.header.macHeader">No</item>	
+
+<!-- Add MAC in User-Agent -->
+<!-- No - No, Yes for all except REGISTER - YesExceptRegister, Yes to all Sip - YesToAllSip -->
+<item name="account.6.sip.header.mac">No</item>	
+
+<!-- Account 1 SIP Settings -->
+<!-- Account 1 Basic Settings -->
+<!-- Subscription Retry Wait Time (s) -->
+<item name="account.1.sip.subscribeFailureRetryWaitTime">1</item>
+
+<!-- Account 2 SIP Settings -->
+<!-- Account 2 Basic Settings -->
+<!-- Subscription Retry Wait Time (s) -->
+<item name="account.2.sip.subscribeFailureRetryWaitTime">1</item>
+
+<!-- Account 3 SIP Settings -->
+<!-- Account 3 Basic Settings -->
+<!-- Subscription Retry Wait Time (s) -->
+<item name="account.3.sip.subscribeFailureRetryWaitTime">1</item>
+
+<!-- Account 4 SIP Settings -->
+<!-- Account 4 Basic Settings -->
+<!-- Subscription Retry Wait Time (s) -->
+<item name="account.4.sip.subscribeFailureRetryWaitTime">1</item>
+
+<!-- Account 5 SIP Settings -->
+<!-- Account 5 Basic Settings -->
+<!-- Subscription Retry Wait Time (s) -->
+<item name="account.5.sip.subscribeFailureRetryWaitTime">1</item>
+
+<!-- Account 6 SIP Settings -->
+<!-- Account 6 Basic Settings -->
+<!-- Subscription Retry Wait Time (s) -->
+<item name="account.6.sip.subscribeFailureRetryWaitTime">1</item>
+		
+<!-- #################################################################### -->
+<!-- # Account 6  	GRP2616 only  -->
+<!-- #################################################################### -->
+<!-- Account 6 Added for GRPR2616 -->
+<!-- ############################################################################## -->
+<!-- ##  Settings/Preferences / Date and Time -->
+<!-- ############################################################################## -->
+<!-- # Time Zone -->
+<!-- # GMT-04:00 (Santiago, Chile)							CLT4CLST,M9.1.6/24:00,M4.1.6/24:00 -->
+<!-- ############################################################################## -->
+<!-- ##  Settings/Programmable Keys/Virtual Multi-Purpose Keys -->
+<!-- ############################################################################## -->
+<!-- ###################################################################################### -->
+<!-- # Virtual Multi-Purpose Keys (VPKs) -->
+<!-- # Note: 1. Fixed VPKs can only be edited. Adding or deleting Fixed VPK is not allowed. -->
+<!-- #       2. Even if a Dynamic VPK has mode set to None, it should be added in sequence. Skipping one will remove everything after that VPK.  -->
+<!-- ###################################################################################### -->
+<!-- ###################################################################################### -->
+<!-- # all instances of AutoBLF(30) removed from fixed VPK's as an option  -->
+<!-- ###################################################################################### -->
+<!-- ###################################################################################### -->
+<!-- ############################ For GRP2615   ########################################### -->
+<!-- ###################################################################################### -->
+<!-- # VPK 6-10 changed to fixed VPK  -->
+<!-- ###################################################################################### -->
+################################### Change Log End ######################################################

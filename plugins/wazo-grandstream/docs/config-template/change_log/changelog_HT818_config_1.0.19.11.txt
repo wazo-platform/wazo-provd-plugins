@@ -1,0 +1,771 @@
+####################################################################
+## Change Log                                                     ##
+####################################################################
+
+#####################################
+# P values updated since 1.0.19.8  ##
+#####################################
+
+#Increased “SIP TLS Certificate” and “SIP TLS Private Key” supported maximum length from 2048 to 4096.
+
+# SIP TLS Certificate
+# String
+# Maximum Length: 4096
+# P280=
+
+# SIP TLS Private Key
+# String
+# Maximum Length: 4096
+# P279=
+
+#####################################
+# P values updated since 1.0.19.1  ##
+#####################################
+
+# Disable User Level Web Access. 0 - No, 1 - Yes
+# Number: 0, 1  
+# Mandatory
+# P28158 = 0 
+
+# Disable Viewer Level Web Access. 0 - No, 1 - Yes
+# Number: 0, 1  
+# Mandatory
+# P28159 = 0 
+
+# Use P-Asserted-Identity Header. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P29098 = 0 (Profile1)
+# P29198 = 0 (Profile2)
+
+# Load CA Certificates. 0 - Built-in trusted certificates, 1 - Custom trusted certificate, 2 - All trusted certificates
+# Number: 0, 1  
+# Mandatory
+# P8502 = 0 
+
+# Connection Request Port. Default is 7547
+# Number: 0 - 65535
+# Mandatory
+# P4518 = 7547
+
+# DNS Cache Refresh Time. 1 - 1440 minutes, defualt is 30 minutes. Configurable from cfg file only, need to reboot to take effect. 
+# Number: 1 - 1440
+# Mandatory
+# P4208 = 30
+
+# DNS Cache Duration. 1 - 1440 minutes, defualt is 0 - Disabled. Configurable from cfg file only, need to reboot to take effect. 
+# Number: 0 - 1440
+# Mandatory
+# P28160 = 0
+
+# Web Access Privilege Pattern. 1 - Telefonica Spain, 0 - Default. Defualt is 0. Configurable from cfg file or SSH. If set to 1, User Level can only see the Status page. Under the Status page, CDR/SIP log and GR909 page will not shown. 
+# Number: 0, 1
+# Mandatory
+# P28152 = 0
+
+# Trusted CA Certificates C
+# String
+# P2586 = 
+
+# Trusted CA Certificates D
+# String
+# P2686 = 
+
+# Added “Disable” option for “Web Access Mode”
+# Web Access Mode. 0 - HTTPS, 1 - HTTP, 2 - Disabled.
+# Number: 0, 1, 2
+# Mandatory
+# P1650 = 1 
+
+# Added “New Zealand Standard” option for “Pulse Dialing Standard”
+# Pulse Dialing Standard. 0 - General Standard, 1 - Swedish Standard, 2 - New Zealand Standard 
+# Number: 0, 1, 2
+# Mandatory 
+# P28165=0 (Profile1)
+# P28166=0 (Profile2)
+
+# Added "Russian" option for "Language"
+# Language. 0 - English, 4 - Chinese, 7 - Traditional Chinese, 6 - Russian, 10 - Spanish
+# Number: 0, 4, 7, 6, 10
+# Mandatory
+# P342=0
+
+# Increased Ring Timeout (P185, P816) range to 0-300, 0 means no timeout
+
+# Moved “Trusted CA certificates” from Profile1/Profie2 to Advanced Settings and renamed as Trusted CA Certificates A (P2386) and Trusted CA Certificates B (P2486).
+
+
+#####################################
+# P values updated since 1.0.17.5  ##
+#####################################
+
+# Disable Telnet. 0 - No, 1 - Yes. Default is 1.
+# Number: 0, 1
+# Mandatory
+# P28120 = 1
+
+# Telnet Port. Default Telnet port is 23. This should be different from SSH port. 
+# String Max Length: 5
+# Mandatory
+# P28128 = 23
+
+# Added Value 132 = Oi_BR for Special Feature (P767, P198)
+
+#####################################
+# P values updated since 1.0.15.4  ##
+#####################################
+
+# Minimum TLS Version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2
+# Number: 99, 10, 11, 12
+# Mandatory
+# P22293 = 99
+
+# Maximum TLS Version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2
+# Number: 99, 10, 11, 12
+# Mandatory
+# P22294 = 99
+
+
+#####################################
+# P values updated since 1.0.13.7  ##
+#####################################
+
+# Update Automatic Upgrade Pvalue from P194 to P22296
+
+# Syslog Protocol. 0 – UDP, 1 – SSL/TLS. 
+# Number: 0, 1  
+# Mandatory
+# P8402 = 0 
+
+# Distinctive Call Waiting Tone. Call Waiting Tone Choice 1 to Choice 3
+# Number: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+# 0 - Call Waiting Tone 1, 1- Call Waiting Tone 2, 2 - Call Waiting Tone 3, 3 - Call Waiting Tone 4, 4  - Call Waiting Tone 5, 5  - Call Waiting Tone 6, 6  - Call Waiting Tone 7, 8  - Call Waiting Tone 9, 9  - Call Waiting Tone 10     
+# Mandatory
+# P29074 = 0 (Profile 1)
+# P29075 = 0 (Profile 1)
+# P29076 = 0 (Profile 1)
+# P29174 = 0 (Profile 2)
+# P29175 = 0 (Profile 2)
+# P29176 = 0 (Profile 2)
+
+# Used if incoming caller ID is. The caller ID to match the call waiting tone. 
+# String Max Length: 64
+# P29077 =  (Profile 1)
+# P29078 =  (Profile 1)
+# P29079 =  (Profile 1)
+# P29177 =  (Profile2)
+# P29178 =  (Profile2)
+# P29179 =  (Profile2)
+
+# Call Waiting Tone. Call Waiting Tone 1-10
+# String Max Length: 64
+# Mandatory
+# P29080 = f1=440@-13,c=300/10000; (Profile 1)
+# P29081 = f1=440@-13,c=300/10000; (Profile 1)
+# P29082 = f1=440@-13,c=300/10000; (Profile 1)
+# P29083 = f1=440@-13,c=300/10000; (Profile 1)
+# P29084 = f1=440@-13,c=300/10000; (Profile 1)
+# P29085 = f1=440@-13,c=300/10000; (Profile 1)
+# P29086 = f1=440@-13,c=300/10000; (Profile 1)
+# P29087 = f1=440@-13,c=300/10000; (Profile 1)
+# P29088 = f1=440@-13,c=300/10000; (Profile 1)
+# P29089 = f1=440@-13,c=300/10000; (Profile 1)
+# P29180 = f1=440@-13,c=300/10000; (Profile 2)
+# P29181 = f1=440@-13,c=300/10000; (Profile 2)
+# P29182 = f1=440@-13,c=300/10000; (Profile 2)
+# P29183 = f1=440@-13,c=300/10000; (Profile 2)
+# P29184 = f1=440@-13,c=300/10000; (Profile 2)
+# P29185 = f1=440@-13,c=300/10000; (Profile 2)
+# P29186 = f1=440@-13,c=300/10000; (Profile 2)
+# P29187 = f1=440@-13,c=300/10000; (Profile 2)
+# P29188 = f1=440@-13,c=300/10000; (Profile 2)
+# P29189 = f1=440@-13,c=300/10000; (Profile 2)
+
+# Disable Weak TLS Cipher Suites. 
+# 0 – Enable Weak TLS Ciphers Suites, 1 – Disable Symmetric Encryption RC4/DES/3DES, 2 - Disable Symmetric Encryption SEED, 3 - Disable All Of The Above Weak Symmetric Encryption, 4 - Disable Symmetric Authentication MD5, 5 - Disable All Of The Above Weak Symmetric Authentication, 6 - Disable Protocol Version SSLv2/SSLv3, 7 - Disable All Of The Above Weak Protocol Version, 8 - Disable All Of The Above Weak TLS Ciphers Suites
+# Number: 0-8 
+# Mandatory
+# P8536 = 0 
+
+###################################
+# P values added since 1.0.11.7  ##
+###################################
+
+# Reset Call Features. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24199 = 0 (Profile 1)
+# P24399 = 0 (Profile 2)
+
+# SRTP Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24060 = 1 (Profile 1)
+# P24260 = 1 (Profile 2)
+
+# Enable SRTP. 
+# Number
+# Mandatory
+# P24001 = 16 (Profile 1)
+# P24201 = 16 (Profile 2)
+
+# Disable SRTP.
+# Number
+# Mandatory
+# P24002 = 17 (Profile 1)
+# P24202 = 17 (Profile 2)
+
+# SRTP per call Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24061 = 1 (Profile 1)
+# P24261 = 1 (Profile 2)
+
+# Enable SRTP per call. 
+# Number
+# Mandatory
+# P24003 = 18 (Profile 1)
+# P24203 = 18 (Profile 2)
+
+# Disable SRTP per call.
+# Number
+# Mandatory
+# P24004 = 19 (Profile 1)
+# P24204 = 19 (Profile 2)
+
+# CID Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24062 = 1 (Profile 1)
+# P24262 = 1 (Profile 2)
+
+# Enable CID. 
+# Number
+# Mandatory
+# P24006 = 31 (Profile 1)
+# P24206 = 31 (Profile 2)
+
+# Disable CID.
+# Number
+# Mandatory
+# P24005 = 30 (Profile 1)
+# P24205 = 30 (Profile 2)
+
+# CID per call Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24065 = 1 (Profile 1)
+# P24265 = 1 (Profile 2)
+
+# Enable CID per call. 
+# Number
+# Mandatory
+# P24019 = 82 (Profile 1)
+# P24219 = 82 (Profile 2)
+
+# Disable CID per call.
+# Number
+# Mandatory
+# P24010 = 67 (Profile 1)
+# P24210 = 67 (Profile 2)
+
+# Direct IP Calling Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24063 = 1 (Profile 1)
+# P24263 = 1 (Profile 2)
+
+# Direct IP Calling. 
+# Number
+# Mandatory
+# P24007 = 47 (Profile 1)
+# P24207 = 47 (Profile 2)
+
+# CW Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24064 = 1 (Profile 1)
+# P24264 = 1 (Profile 2)
+
+# Enable CW. 
+# Number
+# Mandatory
+# P24009 = 51 (Profile 1)
+# P24209 = 51 (Profile 2)
+
+# Disable CW.
+# Number
+# Mandatory
+# P24008 = 50 (Profile 1)
+# P24208 = 50 (Profile 2)
+
+# CW per call Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24067 = 1 (Profile 1)
+# P24267 = 1 (Profile 2)
+
+# Enable CW per call. 
+# Number
+# Mandatory
+# P24013 = 71 (Profile 1)
+# P24213 = 71 (Profile 2)
+
+# Disable CW per call.
+# Number
+# Mandatory
+# P24012 = 70 (Profile 1)
+# P24212 = 70 (Profile 2)
+
+# Call Return Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24066 = 1 (Profile 1)
+# P24266 = 1 (Profile 2)
+
+# Call Return. 
+# Number
+# Mandatory
+# P24011 = 69 (Profile 1)
+# P24211 = 69 (Profile 2)
+
+# Unconditional Forward Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24068 = 1 (Profile 1)
+# P24268 = 1 (Profile 2)
+
+# Enable Unconditional Forward. 
+# Number
+# Mandatory
+# P24014 = 72 (Profile 1)
+# P24214 = 72 (Profile 2)
+
+# Disable Unconditional Forward.
+# Number
+# Mandatory
+# P24015 = 73 (Profile 1)
+# P24215 = 73 (Profile 2)
+
+# Busy Forward Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24072 = 1 (Profile 1)
+# P24272 = 1 (Profile 2)
+
+# Enable Busy Forward. 
+# Number
+# Mandatory
+# P24021 = 90 (Profile 1)
+# P24221 = 90 (Profile 2)
+
+# Disable Busy Forward.
+# Number
+# Mandatory
+# P24022 = 91 (Profile 1)
+# P24222 = 91 (Profile 2)
+
+# Delayed Forward Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24073 = 1 (Profile 1)
+# P24273 = 1 (Profile 2)
+
+# Enable Delayed Forward. 
+# Number
+# Mandatory
+# P24023 = 92 (Profile 1)
+# P24223 = 92 (Profile 2)
+
+# Disable Delayed Forward.
+# Number
+# Mandatory
+# P24024 = 93 (Profile 1)
+# P24224 = 93 (Profile 2)
+
+# Paging Feature. 0 - No, 1 - Yes
+# Number
+# Mandatory
+# P24069 = 1 (Profile1)
+# P24269 = 1 (Profile2)
+
+# Paging
+# Number
+# Mandatory
+# P24016 = 74 (Profile1)
+# P24216 = 74 (Profile2)
+
+# DND Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24070 = 1 (Profile 1)
+# P24270 = 1 (Profile 2)
+
+# Enable DND. 
+# Number
+# Mandatory
+# P24017 = 78 (Profile 1)
+# P24217 = 78 (Profile 2)
+
+# Disable DND.
+# Number
+# Mandatory
+# P24018 = 79 (Profile 1)
+# P24218 = 79 (Profile 2)
+
+# Blind Transfer Feature. 0 – No, 1 – Yes. 
+# Number: 0, 1  
+# Mandatory
+# P24071 = 1 (Profile 1)
+# P24271 = 1 (Profile 2)
+
+# Enable Blind Transfer. 
+# Number
+# Mandatory
+# P24020 = 87 (Profile 1)
+# P24220 = 87 (Profile 2)
+
+# Disable LEC per call Feature. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P24074 = 1 (Profile 1)
+# P24274 = 1 (Profile 2)
+
+# Disable LEC per call.
+# Number
+# Mandatory
+# P24025 = 03 (Profile 1)
+# P24225 = 03 (Profile 2)
+
+# Star Code 3WC Feature. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P24075 = 1 (Profile 1)
+# P24275 = 1 (Profile 2)
+
+# Star Code 3WC.
+# Number
+# Mandatory
+# P24026 = 23 (Profile 1)
+# P24226 = 23 (Profile 2)
+
+# Forced Codec Feature. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P24059 = 1 (Profile 1)
+# P24259 = 1 (Profile 2)
+
+# Forced Codec.
+# Number
+# Mandatory
+# P24000 = 02 (Profile 1)
+# P24200 = 02 (Profile 2)
+
+# PCMU Codec Feature. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P24076 = 1 (Profile 1)
+# P24276 = 1 (Profile 2)
+
+# PCMU Codec.
+# Number
+# Mandatory
+# P24027 = 7110 (Profile 1)
+# P24227 = 7110 (Profile 2)
+
+# PCMA Codec Feature. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P24077 = 1 (Profile 1)
+# P24277 = 1 (Profile 2)
+
+# PCMA Codec.
+# Number
+# Mandatory
+# P24028 = 7111 (Profile 1)
+# P24228 = 7111 (Profile 2)
+
+# G723 Codec Feature. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P24078 = 1 (Profile 1)
+# P24278 = 1 (Profile 2)
+
+# G723 Codec.
+# Number
+# Mandatory
+# P24029 = 723 (Profile 1)
+# P24229 = 723 (Profile 2)
+
+# G729 Codec Feature. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P24079 = 1 (Profile 1)
+# P24279 = 1 (Profile 2)
+
+# G729 Codec.
+# Number
+# Mandatory
+# P24030 = 729 (Profile 1)
+# P24230 = 729 (Profile 2)
+
+# iLBC Codec Feature. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P24084 = 1 (Profile 1)
+# P24284 = 1 (Profile 2)
+
+# iLBC Codec.
+# Number
+# Mandatory
+# P24035 = 7201 (Profile 1)
+# P24235 = 7201 (Profile 2)
+
+# G722 Codec Feature. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P24085 = 1 (Profile 1)
+# P24285 = 1 (Profile 2)
+
+# G722 Codec.
+# Number
+# Mandatory
+# P24036 = 722 (Profile 1)
+# P24236 = 722 (Profile 2)
+
+# SIP User-Agent.
+# String
+# P29071= (Profile 1)
+# P29171= (Profile 2)
+
+# Disable Reminder Ring for DND. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory 
+# P29072=0 (Profile 1)
+# P29172=0 (Profile 2)
+
+# CDR File Option. 0 - Keep, 1 - Override
+# Number: 0, 1
+# Mandatory 
+# P8534=0
+
+# SIP File Option. 0 - Keep, 1 - Override
+# Number: 0, 1
+# Mandatory 
+# P8535=0
+
+# Disable Week TLS Cipher Suites 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory 
+# P8536=0
+
+# Pulse Dialing Standard. 0 - General Standard, 1 - Swedish Standard
+# Number: 0, 1
+# Mandatory 
+# P28165=0 (Profile 1)
+# P28166=0 (Profile 2)
+
+# Callee Flash to 3WC. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P28169 = 0 (Profile 1)
+# P28170 = 0 (Profile 2)
+
+# RFC2833 Events Count.
+# Number: 2-10
+# Mandatory
+# P28173 = 8 (Profile 1)
+# P28174 = 8 (Profile 2)
+
+# RFC2833 End Events Count.
+# Number: 2-10
+# Mandatory
+# P28177 = 3 (Profile 1)
+# P28178 = 3 (Profile 2)
+
+# Replace Begining '+' with 00 in Caller ID. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P29073 = 0 (Profile 1)
+# P29173 = 0 (Profile 2)
+
+###################################
+# P values added since 1.0.11.6  ##
+###################################
+
+# Use ARP to detect network connectivity. 0 - NO, 1 - Yes. Default is 1.
+# Number: 0, 1
+# Mandatory
+# P8512 = 1
+
+###################################
+# P values added since 1.0.10.6  ##
+###################################
+
+# RFC2543 Hold. 0 - No, 1 - Yes. Default is 1.
+# Number: 0, 1
+# Mandatory
+# P26062 = 1 (Profile1)
+# P26162 = 1 (Profile2)
+
+# Idle Call Setup Action 1. 0 - Continue, 1 - Busy Tone, 2 - Howler Tone, 3 - CPC (disconnect), 4 - Reorder Tone, 5 - Silence, 6 - Stop Sequence.
+# Number: 0, 1, 2, 3, 4, 5, 6
+# Mandatory
+# P28000 = 0 (Profile1)
+# P28001 = 0 (Profile2)
+
+# Duration of Idle Call Setup Action 1. Default is 60 seconds.
+# Number:  1 - 3600. In seconds.
+# Mandatory
+# P28004 = 60 (Profile1)
+# P28005 = 60 (Profile2)
+
+# Idle Call Setup Action 2. 0 - Continue, 1 - Busy Tone, 2 - Howler Tone, 3 - CPC (disconnect), 4 - Reorder Tone, 5 - Silence, 6 - Stop Sequence.
+# Number: 0, 1, 2, 3, 4, 5, 6
+# Mandatory
+# P28016 = 2 (Profile1)
+# P28017 = 2 (Profile2)
+
+# Duration of Idle Call Setup Action 2. Default is 30 seconds.
+# Number:  1 - 3600. In seconds.
+# Mandatory
+# P28020 = 30 (Profile1)
+# P28021 = 30 (Profile2)
+
+# Idle Call Setup Action 3. 0 - Continue, 1 - Busy Tone, 2 - Howler Tone, 3 - CPC (disconnect), 4 - Reorder Tone, 5 - Silence, 6 - Stop Sequence.
+# Number: 0, 1, 2, 3, 4, 5, 6
+# Mandatory
+# P28032 = 6 (Profile1)
+# P28033 = 6 (Profile2)
+
+# Duration of Idle Call Setup Action 3. Default is 1 seconds.
+# Number:  1 - 3600. In seconds.
+# Mandatory
+# P28036 = 1 (Profile1)
+# P28037 = 1 (Profile2)
+
+###################################
+# P values added since 1.0.9.3   ##
+###################################
+
+# Visual MWI Type. 1 - FSK, 2 - NEON. Default is 1.
+# Number: 1, 2
+# Mandatory
+# P4371 = 1 (Profile1)
+# P4372 = 1 (Profile2)
+
+# Disable Unknown Caller ID. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# Mandatory
+# P28153 = 0 (Profile1)
+# P28154 = 0 (Profile2)
+
+# Disable # as Redial Key. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# Mandatory
+# P28147 = 0 (Profile1)
+# P28148 = 0 (Profile2)
+
+# Ring Frequency. 20 - 20Hz default, 25 - 25Hz. Default is 20.
+# Number: 20, 25
+# Mandatory
+# P4429 = 20 (Profile1)
+# P4430 = 20 (Profile2)
+
+# Allow SIP Factory Reset. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# Mandatory
+# P26015 = 0 (Profile1)
+# P26115 = 0 (Profile2)
+
+# Virtual Network Interface.
+# Network Setting For Management Interface
+#
+# Enable Management Interface. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P28161 = 0
+
+# Management Access. 0- Management Interface Only, 1 - Both Services and Management Interfaces
+# Number： 0， 1
+# Mandatory
+# P28162 = 0
+
+# Voice VLAN Type. 0 - dynamically assigned via DHCP, 1 - statically configured as
+# Number: 0, 1
+# Mandatory = 0
+# P22105 = 0
+
+# Static IP Settings
+#
+# IP Address.
+# ipaddress
+# P22106 = 192.168.100.100
+
+# Subnet Mask. 
+# ipaddress
+# P22107 = 255.255.255.0
+
+# Default Router.
+# ipaddress
+# P22108 = 192.168.100.1
+
+# DNS Server 1
+# ipaddress
+# P22109 = 0.0.0.0
+
+# DNS Server 2
+# ipaddress
+# P22110 = 0.0.0.0
+
+# Management Interface IPv4 Address:802.1Q/VLAN Tag
+# Number: 0-4094
+# P22111 = 0
+
+# Management Interface IPv4 Address: 802.1p priority value
+# Number: 0-7
+# P22112 = 0
+
+###################################
+# P values added since 1.0.8.7   ##
+###################################
+
+# Conference Party Hangup Tone. Syntax: f1=val[,f2=val[,c=on1/off1[-on2/off2[-on3/off3]]]]; (Frequencies are in (300, 3400) Hz and cadence on and off are in (0, 64000) ms)
+# String
+# P28133 = f1=425@-15,c=600/600;
+
+###################################
+# P values added since 1.0.5.18  ##
+###################################
+
+# Custom Certificate. (Private Key + Certificate)
+# String
+# P8472 = 
+
+# Use P-Access-Network-Info Header. 0 - No, 1 - Yes. Default is 1.
+# Number: 0, 1
+# Mandatory
+# P26058 = 1
+# P26158 = 1
+
+# Use P-Emergency-Info Header. 0 - No, 1 - Yes. Default is 1.
+# Number: 0, 1
+# Mandatory
+# P26059 = 1
+# P26159 = 1
+
+# Blacklist For Incoming Calls. Allow users to block incoming calls from specific list of numbers.Max allowed SIP numbers: 10, separated by a comma (',') 
+# String: 0-9, *, #, +, comma (','), a-z, A-Z
+# P28127 =
+
+# Play busy/reorder tone before Loop Current Disconnect. 0 - No, 1 - Yes. Default is 0. 
+# Number: 0, 1
+# Mandatory
+# P21925 = 0 (Profile1)
+# P21926 = 0 (Profile2)
+
+
+
+###################################################################
+##            Change Log End                                      ##
+###################################################################

@@ -1,0 +1,4429 @@
+#########################################################################################
+##  Configuration template for DP75x firmware version 1.0.13.8                         ##
+#########################################################################################
+
+#########################
+##  Profiles Settings  ##
+#########################
+
+#################
+##  Profile 1  ##
+#################
+
+##################################
+##  Profile 1/General Settings  ##
+##################################
+
+#Profile Active.  0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P271=1
+
+#Profile Name. Used to identify profile uniquely.
+#Strings: maximum 32 characters.
+#Mandatory
+P27762=profile1
+
+#Primary SIP Server
+#String: serveraddress
+P47=
+
+#Failover SIP Server
+#String: serveraddress
+P967=
+
+#Prefer Primary SIP Server. 0 - No, 1 - Yes.
+#Number: 0,1
+#Mandatory
+P4567=0
+
+#Outbound Proxy
+#String: serveraddress
+P48=
+
+#Backup Outbound Proxy
+#Secondary Outbound Proxy which will be used when the primary proxy cannot be connected
+#String
+P2333=
+
+#Voice Mail Access Number
+#String
+P27680=
+
+##################################
+##  Profile 1/Network Settings  ##
+##################################
+
+#Layer 3 QoS SIP Diff-Serv (default 40)
+#Number
+#Mandatory
+P5046=40
+
+#Layer 3 QoS RTP Diff-Serv (default 46)
+#Number
+#Mandatory
+P5050=46
+
+#DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV, 3 - Use Configured IP .
+#Number: 0,1,2,3
+#Mandatory
+P103=0
+
+#Primary IP
+#IP address
+P2308=
+
+#Backup IP 1
+#IP address
+P2309=
+
+#Backup IP 2
+#IP address
+P2310=
+
+#DNS SRV use Registered IP
+#In DNS SRV Mode, use registered IP instead of the first IP in the DNS table
+#Number: 0, 1. 0 - No, 1 - Yes.
+P28092=0
+
+#NAT Traversal (STUN). 0 - No, 1 - STUN, 2 - No but send keep-alive, 3 - VPN
+#Number: 0,1,2,3
+#Mandatory
+P52=0
+
+#Use NAT IP.  This will enable our SIP client to use this IP in the SIP message. Example 64.3.153.50.
+#String: ipaddress
+P101=
+
+#Proxy-Require (A SIP extension to enable firewall penetration)
+#String: ipaddress
+P197=
+
+#Use SBC
+#Indicate whether or not a SBC server is used.
+#Number: 0, 1. 0 - Disabled, 1 - Enabled.
+P26090=0
+
+#############################################
+##  Profile 1/SIP Settings/Basic Settings  ##
+#############################################
+
+#SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS
+#Number: 0,1,2
+#Mandatory
+P130=0
+
+#SIP URI Scheme When Using TLS. 0 - sip, 1- sips
+#Number: 0,1
+#Mandatory
+P2329=1
+
+#Use Actual Ephemeral Port in Contact with TCP/TLS. 0 - No, 1- Yes
+#Number: 0,1
+#Mandatory
+P2331=0
+
+#SIP Registration. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P31=1
+
+#Unregister On Reboot. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P81=0
+
+#Add Auth Header On Initial REGISTER
+#Number: 0,1
+#Mandatory
+P2359=0
+
+#Outgoing call without Registration. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P109=1
+
+#Register Expiration (in minutes. default 1 hour, max 45 days)
+#Number: 1 to 64800
+#Mandatory
+P32=60
+
+#SIP Registration Failure Retry Wait Time (in seconds. Between 1-3600, default is 30)
+#Number: 1 to 3600
+#Mandatory
+P138=30
+
+#SIP Registration Failure Retry Wait Time upon 403 Forbidden. 0 second means stop retry registration. Default is 1200 sec.
+#Number 0 to 3600
+#Mandatory
+P26002=1200
+
+#Reregister before Expiration
+#Number
+#Mandatory
+P2330=0
+
+#Local SIP port (default 5060)
+#Number: 1 to 65535
+#Mandatory
+P40=5060
+
+#Use Random RTP Port
+#Use a random port for SIP messages rather than the Local SIP Port.
+#Number: 0, 1. 0 - No, 1 - Yes, default is 0 - No
+#Alias: Pprofile.1.network.use_random_sip_port
+P20501=0
+
+#Local RTP Port (default 5004)
+#Number: 1 to 65535
+#Mandatory
+P39=5004
+
+#SIP T1 Timeout. RFC 3261 T1 value.
+#50 - 0.5 sec, 100 - 1 sec, 200 - 2 sec, 400 - 4 sec, 800 - 8 sec. Default 100.
+#Number: 50,100,200,400,800
+#Mandatory
+P209=50
+
+#SIP T2 Timeout. RFC 3261 T2 value.
+#200 - 2 sec, 400 - 4 sec, 800 - 8 sec, 1600 - 16 sec, 3200 - 32 sec. Default 400.
+#Number: 1600,3200,200,400,800
+#Mandatory
+P250=400
+
+#SIP TIMER D. Config Timer D defined in RFC 3261.
+#Range 0-64 sec. Default 0
+#Number: 0-64
+#Mandatory
+P2387=0
+
+#Enable OPTIONS Keep Alive. Enable OPTIONS Keep Alive to check SIP server.
+#0 - No, 1 - Yes
+#Number: 0, 1
+P2397=0
+
+#OPTIONS Keep Alive Interval. Time interval for OPTIONS Keep Alive feature in seconds.
+#Number: 1 - 64800
+P2398=30
+
+#OPTIONS Keep Alive Max Lost. Maximum number of lost packets for OPTIONS Keep Alive feature before the phone re-registration.
+#Number: 3 - 10
+P2399=3
+
+#Remove OBP from Route Header. 0 - no, 1 - yes
+#NUmber: 0,1
+#Mandatory
+P4562=0
+
+#Support SIP Instance ID. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P288=1
+
+#Hold Target Before Refer 0 - No, 1 - Yes
+#Number: 0, 1
+#Mandatory
+P26003=1
+
+#Refer-To Use Target Contact. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P135=
+
+#SUBSCRIBE for MWI. 0 - No, 1 - Yes.
+#Number: 0,1
+#Mandatory
+P99=0
+
+#Enable 100rel. 0 - No, 1 - Yes
+#Number: 0 to 1
+#Mandatory
+P272=0
+
+#Tel URI. 0 - Disabled, 1 - User=Phone, 2 - Enabled
+#Number: 0,1,2
+#Mandatory
+P63=0
+
+#Do Not Escape '#' as %23 in SIP URI. 0 - No, 1 - Yes
+#Number: 0, 1
+#Mandatory
+P1406= 0
+
+#Disable Multiple m Line in SDP. 0 - No, 1 - Yes
+P137= 0
+
+#Use Privacy Header. 0 - Default, 1 - No, 2 - Yes
+#Number: 0, 1, 2
+#Mandatory
+P2338= 0
+
+#Use P-Preferred-Identity Header. 0 - Default, 1 - No, 2 - Yes
+#Number: 0, 1, 2
+#Mandatory
+P2339= 0
+
+#Ignore Alert-Info header. 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P26018=0
+
+#Use MAC Header. (0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP).
+#If Yes except REGISTER, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP messages except REGISTER message will attach the MAC address to the User-Agent header;
+#If Yes to ALL, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP message including REGISTER will attach the MAC address to the User-Agent header;
+#If No, neither will the MAC header be included in the register or unregister message nor the MAC address be attached to the User-Agent header for any outgoing SIP message.
+#Number: 0, 1, 2
+#Mandatory
+P26061=0
+
+#Caller ID Display. 0 - Auto, 1 - Disabled, 2 - From Header
+#When set to "Auto", the phone will look for the caller ID in the order of P-Asserted Identity Header, Remote-Party-ID Header and From Header in the incoming SIP INVITE. When set to "Disabled", all incoming calls are displayed with "Unavailable".
+P2324=0
+
+############################################
+##  Profile 1/SIP Settings/Session Timer  ##
+############################################
+
+#Enable Session Timer. To enable/disable Session Timer support.
+#Number: 0, 1; 0 - No, 1 - Yes, default is 1.
+#Mandatory
+#Alias: profile.1.sip.enable_session_timer
+P2395=1
+
+
+#Session Expiration (in seconds. default 180 seconds. Allowed value: 90-65535)
+#Number: 90 to 64800
+#Mandatory
+P260=180
+
+#Minimum SE (in seconds. default 90 seconds, must be lower than or equal to P260)
+#Number 90 to 64800
+#Mandatory
+P261=90
+
+#Caller Request Timer (Request for timer when calling) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P262=0
+
+#Callee Request Timer (Request for timer when called. i.e. if remote party supports timer but did not request for one) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P263=0
+
+#Force Timer (Still use timer when remote party does not support timer) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P264=0
+
+#UAC Specify Refresher. 0 - omit, 1 - UAC, 2 - UAS
+#Number: 0,1,2
+#Mandatory
+P266=0
+
+#UAS Specify Refresher. 1 - UAC, 2 - UAS
+#Number: 1,2
+#Mandatory
+P267=1
+
+#Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P265=0
+
+################################################
+##  Profile 1/SIP Settings/Security Settings  ##
+################################################
+
+#Validate Incoming Messages. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P4340=0
+
+#Check SIP User ID for Incoming INVITE. 0 - No, 1 - Yes (no direct IP calling if Yes)
+#Number: 0,1
+#Mandatory
+P258=0
+
+#Allow Incoming SIP Messages from SIP Proxy Only
+#Number: 0,1
+#Mandatory
+P243=0
+
+#Authenticate incoming INVITE
+#Number: 0,1
+P2346=0
+
+#Authenticate server certificate domain. 0 - No, 1 - Yes, default is 0
+#Number: 0, 1
+#Mandatory
+P2311=0
+
+#Authenticate server certificate chain. 0 - No, 1 - Yes, default is 0
+#Number: 0, 1
+#Mandatory
+P2367=0
+
+#Trusted CA certificates.
+#String
+P2386=
+
+################################
+##  Profile 1/Audio Settings  ##
+################################
+
+#DTMF Method - in-audio. Configure if use in-audio DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2301=0
+
+#DTMF Method - via RTP (RFC2833). Configure if use RFC2833 DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2302=1
+
+#DTMF Method - via SIP INFO. Configure if use SIP INFO DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2303=0
+
+#Disable DTMF Negotiation. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4825=0
+
+#DTMF Payload Type
+#Number: 96 to 127
+P79=101
+
+#Preferred Vocoder
+#0 - PCMU, 8 - PCMA, 4 - G.723, 18 - G.729, 2 - G.726-32, 100 - AAL2-G.726-16,
+#102 - AAL2-G.726-24, 104 - AAL2-G726-32, 103 - AAL2-G.726-40, 98 - iLBC, 9 - G.722(wide band)
+#Choice 1.
+#Mandatory
+P57=0
+
+#Choice 2.
+#Mandatory
+P58=8
+
+#Choice 3.
+#Mandatory
+P59=4
+
+#Choice 4.
+#Mandatory
+P60=18
+
+#Choice 5.
+#Mandatory
+P61=2
+
+#Choice 6.
+#Mandatory
+P62=98
+
+#Choice 7.
+#Mandatory
+P46=104
+
+#Choice 8.
+#Mandatory
+P98=100
+
+#Voice Frame per TX. (Default 2, from 1 to 4 for G711/G726/G729)
+#Number: 1 to 4
+P37=2
+
+#G723 rate. 0 - 6.3kbps encoding rate, 1 - 5.3kbps encoding rate
+#Number: 0,1
+#Mandatory
+P49=0
+
+#G726-32 Packing Mode. 0 - ITU, 1 - IETF
+#Number: 0,1
+#Mandatory
+P2323=0
+
+#iLBC Frame Size. 0 - 20ms(default), 1 - 30ms.
+#Number: 0,1
+#Mandatory
+P97=0
+
+#iLBC payload type. Between 96 and 127, default is 97.
+#Number: 96 to 127
+#Mandatory
+P96=97
+
+#Disable OPUS stereo in SDP, default is 0.
+#Number: 0,1
+#Mandatory
+P20529=
+
+#OPUS Payload Type, default is 125.
+#Number: 96 to 127
+#Mandatory
+P2385=
+
+#Use First Matching Vocoder in 200OK SDP. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P4363=0
+
+#Callee codec negotiation priority. When callee, whose codecs are given priority in negotiation, local or remote ( Default is remote ).
+#Number: 0, 1. 0 - Remote, 1 - Local
+P29061=0
+
+#SRTP Mode
+#0=Disabled
+#1=Enabled but not forced
+#2=Enabled and forced
+#Number: 0,1,2
+#Mandatory
+P183=0
+
+#Crypto Life Time
+#0 = Disabled
+#1 = Enabled
+#Number: 0, 1
+#Mandatory
+P2363=1
+
+#Silence Suppression (VAD). 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P50=0
+
+#Jitter Buffer Type. 0 - Fixed, 1 - Adaptive
+#Number: 0,1
+#Mandatory
+P133= 1
+
+#Jitter Buffer Length. 0 - Low, 1 - Medium, 2 - High
+#Number: 0,1,2
+#Mandatory
+P132=1
+
+#Enable RTCP. configure if enables RTCP statistics and control information. 0 - Disabled, 1- RTCP, 2 - RTCP-XR
+#Number: 0,1,2
+#Mandatory
+P2392=1
+
+###############################
+##  Profile 1/Call Settings  ##
+###############################
+
+#Early Dial. 0 - No, 1 - Yes (use "Yes" only if proxy supports 484 response). 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P29=0
+
+#Dial Plan Prefix.(this prefix string is added to each dialed number)
+#String Max Length: 32
+P66=
+
+#Dial Plan
+#String Max Length: 1024
+P4200={ x+ | *x+ | *xx*x+ }
+
+#Use # as Dial Key (if set to Yes, "#" will function as the "(Re-)Dial" key). 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P72=1
+
+#On Hold Reminder Tone. 0 - Disabled, 1 - Enabled
+#Number: 0,1
+#Mandatory
+P26006=1
+
+#Match Incoming Caller ID. Specifies matching rules with number, pattern or Alert Info text to ring the selected ring tone.
+#Please refer to user manual for more details.
+#Number, pattern or Alert Info for matching Rule 1
+P1488=
+
+#Ringtone for incoming caller id that matches Rule 1.
+#0 - System Ring Tone
+#1 - Handset RingTone 1
+#2 - Handset RingTone 2
+#3 - Handset RingTone 3
+#4 - Handset RingTone 4
+#5 - Handset RingTone 5
+#6 - Handset RingTone 6
+#7 - Handset RingTone 7
+#8 - Handset RingTone 8
+#9 - Custom Ring Tone 1
+#10 - Bellcore Ring Tone 1
+#11 - Bellcore Ring Tone 2
+#12 - Bellcore Ring Tone 3
+#13 - Bellcore Ring Tone 4
+#14 - Bellcore Ring Tone 5
+P1489=0
+
+#Number, pattern or Alert Info for matching Rule 2
+P1490=
+
+#Ringtone for incoming caller id that matches Rule 2.
+P1491=0
+
+#Number, pattern or Alert Info for matching Rule 3
+P1492=
+
+#Ringtone for incoming caller id that matches Rule 3.
+P1493=0
+
+#Allow Auto Answer by Call-Info/Alert-Info. 0 - No, 1 - Yes. Default is 0 - No.
+#If set to "Yes", the phone will automatically turn on the speaker phone to answer incoming calls after a short reminding beep, based on the SIP Call-Info/Alert-Info header sent from the server/proxy.
+#Number: 0, 1
+#Mandatory
+P298=0
+
+#Custom Alert-Info for Auto Answer.
+#Used exclusively to match the contents of the Alert-Info header for auto answer. The default auto answer headers will not be matched if this is defined.
+#String Max Length: 20
+P2356=
+
+#No Key Entry Timeout. Default - 4 seconds.
+#Number: 1 to 15
+#Mandatory
+P85=4
+
+#Enable Call Features. 0 - No, 1 - Yes, 2 - Enable All
+P191=1
+
+#Disable Call Waiting Caller ID. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P714=0
+
+#Enable Call Waiting in Parallel Mode. 0 - no, 1 - yes
+#Enables call waiting for accounts using this profile which are set to Parallel ring mode.
+#Number: 0,1
+#Mandatory
+P27767=0
+
+#Disable Visual MWI. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P855=0
+
+#Transfer on Conference Hangup. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4560=0
+
+#Ring Timeout. (10-300, default is 60 seconds)
+#Number: 10 to 300
+#Mandatory
+P185=60
+
+#Hunting Group Ring Timeout. (5-300, default is 20 seconds)
+#Number: 5 to 300
+#Mandatory
+P4330=20
+
+#Send Anonymous. 0 - no, 1 - yes (caller ID will be blocked if set to Yes).
+#Number: 0 to 1
+#Mandatory
+P65=0
+
+#Anonymous Call Rejection. 0 - No, 1 - Yes.
+#Number: 0 to 1
+#Mandatory
+P129=0
+
+#Special Feature
+#100 - Standard, 102 - BroadSoft, 108 - CBCOM, 109 - RNK, 111 - Huawei, 114 - ZTE IMS, 119 - PhonePower, 120 - TELKOM SA.
+#Number: 100, 102, 108, 109, 111, 114, 119, 120
+#Mandatory
+P198=100
+
+#Music On Hold URI
+#Music On Hold URI to call when a call is on hold if server support it
+#Strings, default is null
+#Alias: Pprofile.1.sip.moh_uri
+P2350=
+
+#Allow Unsolicited REFER.
+#Allow unsolicited REFER to accomplish an outgoing call.
+#Number: 0, 2; 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth, default is 0.
+#Alias: profile.1.sip.allow_unsolicited_refer
+P26023=0
+
+#Feature Key Synchronization. 0 - Disabled, 1- Enabled
+#Number: 0,1
+#Mandatory
+P2325=0
+
+#################
+##  Profile 2  ##
+#################
+
+##################################
+##  Profile 2/General Settings  ##
+##################################
+
+#Profile Active.  0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P401=1
+
+#Profile Name. Used to identify profile uniquely.
+#Strings: maximum 32 characters.
+#Mandatory
+P27763=profile2
+
+#Primary SIP Server
+#String: serveraddress
+P747=
+
+#Failover SIP Server
+#String: serveraddress
+P987=
+
+#Prefer Primary SIP Server. 0 - No, 1 - Yes.
+#Number: 0,1
+#Mandatory
+P4568=0
+
+#Outbound Proxy
+#String: serveraddress
+P748=
+
+#Backup Outbound Proxy
+#Secondary Outbound Proxy which will be used when the primary proxy cannot be connected
+#String
+P2433=
+
+#Voice Mail Access Number
+#String
+P27681=
+
+##################################
+##  Profile 2/Network Settings  ##
+##################################
+
+Layer 3 QoS SIP Diff-Serv (default 24)
+#Number
+#Mandatory
+P5047=40
+
+#Layer 3 QoS RTP Diff-Serv (default 46)
+#Number
+#Mandatory
+P5051=46
+
+#DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV, 3 - Use Configured IP .
+#Number: 0,1,2,3
+#Mandatory
+P702=0
+
+#Primary IP
+#IP address
+P2408=
+
+#Backup IP 1
+#IP address
+P2409=
+
+#Backup IP 2
+#IP address
+P2410=
+
+#DNS SRV use Registered IP
+#In DNS SRV Mode, use registered IP instead of the first IP in the DNS table
+#Number: 0, 1. 0 - No, 1 - Yes.
+P28093=0
+
+#NAT Traversal (STUN). 0 - No, 2 - No but send keep-alive, 1 - Yes
+#Number: 0,1,2
+#Mandatory
+P730=0
+
+#Use NAT IP.  This will enable our SIP client to use this IP in the SIP message. Example 64.3.153.50.
+#String: ipaddress
+P866=
+
+#Proxy-Require (A SIP extension to enable firewall penetration)
+#String: ipaddress
+P792=
+
+#Use SBC
+#Indicate whether or not a SBC server is used.
+#Number: 0, 1. 0 - Disabled, 1 - Enabled.
+P26190=0
+
+#############################################
+##  Profile 2/SIP Settings/Basic Settings  ##
+#############################################
+
+#SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS
+#Number: 0,1,2
+#Mandatory
+P830=0
+
+#SIP URI Scheme When Using TLS. 0 - sip, 1- sips
+#Number: 0,1
+#Mandatory
+P2429=1
+
+#Use Actual Ephemeral Port in Contact with TCP/TLS. 0 - No, 1- Yes
+#Number: 0,1
+#Mandatory
+P2431=0
+
+#SIP Registration. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P731=1
+
+#Unregister On Reboot. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P752=0
+
+#Add Auth Header On Initial REGISTER
+#Number: 0,1
+#Mandatory
+P2459=0
+
+#Outgoing call without Registration. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P813=1
+
+#Register Expiration (in minutes. default 1 hour, max 45 days)
+#Number: 1 to 64800
+#Mandatory
+P732=60
+
+#SIP Registration Failure Retry Wait Time (in seconds. Between 1-3600, default is 30)
+#Number: 1 to 3600
+#Mandatory
+P471=30
+
+#SIP Registration Failure Retry Wait Time upon 403 Forbidden. 0 second means stop retry registration. Default is 1200 sec.
+#Number 0 to 3600
+#Mandatory
+P26102=1200
+
+#Reregister before Expiration
+#Number
+#Mandatory
+P2430=0
+
+#Local SIP port (default 5060)
+#Number: 1 to 65535
+#Mandatory
+P740=5060
+
+#Use Random RTP Port
+#Use a random port for SIP messages rather than the Local SIP Port.
+#Number: 0, 1. 0 - No, 1 - Yes, default is 0 - No
+#Alias: Pprofile.2.network.use_random_sip_port
+P20502=0
+
+#Local RTP Port (default 6004)
+#Number: 1 to 65535
+#Mandatory
+P739=6004
+
+#SIP T1 Timeout. RFC 3261 T1 value.
+#50 - 0.5 sec, 100 - 1 sec, 200 - 2 sec, 400 - 4 sec, 800 - 8 sec. Default 100.
+#Number: 50,100,200,400,800
+#Mandatory
+P440=50
+
+#SIP T2 Timeout. RFC 3261 T2 value.
+#200 - 2 sec, 400 - 4 sec, 800 - 8 sec, 1600 - 16 sec, 3200 - 32 sec. Default 400.
+#Number: 1600,3200,200,400,800
+#Mandatory
+P441=400
+
+#SIP TIMER D. Config Timer D defined in RFC 3261.
+#Range 0-64 sec. Default 0
+#Number: 0-64
+#Mandatory
+P2487=0
+
+#Enable OPTIONS Keep Alive. Enable OPTIONS Keep Alive to check SIP server.
+#0 - No, 1 - Yes
+#Number: 0, 1
+P2497=0
+
+#OPTIONS Keep Alive Interval. Time interval for OPTIONS Keep Alive feature in seconds.
+#Number: 1 - 64800
+P2498=30
+
+#OPTIONS Keep Alive Max Lost. Maximum number of lost packets for OPTIONS Keep Alive feature before the phone re-registration.
+#Number: 3 - 10
+P2499=3
+
+#Remove OBP from Route Header. 0 - no, 1 - yes
+#NUmber: 0,1
+#Mandatory
+P4563=0
+
+#Support SIP Instance ID. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P489=1
+
+#Hold Target Before Refer 0 - No, 1 - Yes
+#Number: 0, 1
+#Mandatory
+P26103=1
+
+#Refer-To Use Target Contact. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P469=
+
+#SUBSCRIBE for MWI. 0 - No, 1 - Yes.
+#Number: 0,1
+#Mandatory
+P709=0
+
+#Enable 100rel. 0 - No, 1 - Yes
+#Number: 0 to 1
+#Mandatory
+P435=0
+
+#Tel URI. 0 - Disabled, 1 - User=Phone, 2 - Enabled
+#Number: 0,1,2
+#Mandatory
+P763=0
+
+#Do Not Escape '#' as %23 in SIP URI. 0 - No, 1 - Yes
+#Number: 0, 1
+#Mandatory
+P4895=0
+
+#Disable Multiple m Line in SDP. 0 - No, 1 - Yes
+P487=0
+
+#Use Privacy Header. 0 - Default, 1 - No, 2 - Yes
+#Number: 0, 1, 2
+#Mandatory
+P2438=0
+
+#Use P-Preferred-Identity Header. 0 - Default, 1 - No, 2 - Yes
+#Number: 0, 1, 2
+#Mandatory
+P2439=0
+
+#Ignore Alert-Info header. 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P26118=0
+
+#Use MAC Header. (0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP).
+#If Yes except REGISTER, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP messages except REGISTER message will attach the MAC address to the User-Agent header;
+#If Yes to ALL, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP message including REGISTER will attach the MAC address to the User-Agent header;
+#If No, neither will the MAC header be included in the register or unregister message nor the MAC address be attached to the User-Agent header for any outgoing SIP message.
+#Number: 0, 1, 2
+#Mandatory
+P26161=0
+
+#Caller ID Display. 0 - Auto, 1 - Disabled, 2 - From Header
+#When set to "Auto", the phone will look for the caller ID in the order of P-Asserted Identity Header, Remote-Party-ID Header and From Header in the incoming SIP INVITE. When set to "Disabled", all incoming calls are displayed with "Unavailable".
+P2424=0
+
+############################################
+##  Profile 2/SIP Settings/Session Timer  ##
+############################################
+
+#Enable Session Timer. To enable/disable Session Timer support.
+#Number: 0, 1; 0 - No, 1 - Yes, default is 1.
+#Mandatory
+#Alias: profile.2.sip.enable_session_timer
+P2495=1
+
+#Session Expiration (in seconds. default 180 seconds. Allowed value: 90-65535)
+#Number: 90 to 64800
+#Mandatory
+P434=180
+
+#Minimum SE (in seconds. default 90 seconds, must be lower than or equal to P260)
+#Number 90 to 64800
+#Mandatory
+P427=90
+
+#Caller Request Timer (Request for timer when calling) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P428=0
+
+#Callee Request Timer (Request for timer when called. i.e. if remote party supports timer but did not request for one) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P429=0
+
+#Force Timer (Still use timer when remote party does not support timer) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P430=0
+
+#UAC Specify Refresher. 0 - omit, 1 - UAC, 2 - UAS
+#Number: 0,1,2
+#Mandatory
+P432=0
+
+#UAS Specify Refresher. 1 - UAC, 2 - UAS
+#Number: 1,2
+#Mandatory
+P433=1
+
+#Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P431=0
+
+################################################
+##  Profile 2/SIP Settings/Security Settings  ##
+################################################
+
+#Validate Incoming Messages. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P4341=0
+
+#Check SIP User ID for Incoming INVITE. 0 - No, 1 - Yes (no direct IP calling if Yes)
+#Number: 0,1
+#Mandatory
+P449=0
+
+#Allow Incoming SIP Messages from SIP Proxy Only
+#Number: 0,1
+#Mandatory
+P743=0
+
+#Authenticate incoming INVITE
+#Number: 0,1
+P2446=0
+
+#Authenticate server certificate domain. 0 - No, 1 - Yes, default is 0
+#Number: 0, 1
+#Mandatory
+P2411=0
+
+#Authenticate server certificate chain. 0 - No, 1 - Yes, default is 0
+#Number: 0, 1
+#Mandatory
+P2467=0
+
+#Trusted CA certificates.
+#String
+P2486=
+
+################################
+##  Profile 2/Audio Settings  ##
+################################
+
+#DTMF Method - in-audio. Configure if use in-audio DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2401=0
+
+#DTMF Method - via RTP (RFC2833). Configure if use RFC2833 DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2402=1
+
+#DTMF Method - via SIP INFO. Configure if use SIP INFO DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2403=0
+
+#Disable DTMF Negotiation. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4826=0
+
+#DTMF Payload Type
+#Number: 96 to 127
+P779=101
+
+#Preferred Vocoder
+#0 - PCMU, 8 - PCMA, 4 - G.723, 18 - G.729, 2 - G.726-32, 100 - AAL2-G.726-16,
+#102 - AAL2-G.726-24, 104 - AAL2-G726-32, 103 - AAL2-G.726-40, 98 - iLBC, 9 - G.722(wide band)
+#Choice 1.
+#Mandatory
+P757=0
+
+#Choice 2.
+#Mandatory
+P758=8
+
+#Choice 3.
+#Mandatory
+P759=4
+
+#Choice 4.
+#Mandatory
+P760=18
+
+#Choice 5.
+#Mandatory
+P761=2
+
+#Choice 6.
+#Mandatory
+P762=98
+
+#Choice 7.
+#Mandatory
+P814=104
+
+#Choice 8.
+#Mandatory
+P815=100
+
+#Voice Frame per TX. (Default 2, from 1 to 4 for G711/G726/G729)
+#Number: 1 to 4
+P737=2
+
+#G723 rate. 0 - 6.3kbps encoding rate, 1 - 5.3kbps encoding rate
+#Number: 0,1
+#Mandatory
+P749=0
+
+#G726-32 Packing Mode. 0 - ITU, 1 - IETF
+#Number: 0,1
+#Mandatory
+P2423=0
+
+#iLBC Frame Size. 0 - 20ms(default), 1 - 30ms.
+#Number: 0,1
+#Mandatory
+P705=0
+
+#iLBC payload type. Between 96 and 127, default is 97.
+#Number: 96 to 127
+#Mandatory
+P704=97
+
+#Disable OPUS stereo in SDP, default is 0.
+#Number: 0,1
+#Mandatory
+P20530=
+
+#OPUS Payload Type, default is 125.
+#Number: 96 to 127
+#Mandatory
+P2485=
+
+#Use First Matching Vocoder in 200OK SDP. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P4364=0
+
+#Callee codec negotiation priority. When callee, whose codecs are given priority in negotiation, local or remote ( Default is remote ).
+#Number: 0, 1. 0 - Remote, 1 - Local
+P29161=0
+
+#SRTP Mode
+#0=Disabled
+#1=Enabled but not forced
+#2=Enabled and forced
+#Number: 0,1,2
+#Mandatory
+P443=0
+
+#Crypto Life Time
+#0 = Disabled
+#1 = Enabled
+#Number: 0, 1
+#Mandatory
+P2463=1
+
+#Silence Suppression (VAD). 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P750=0
+
+#Jitter Buffer Type. 0 - Fixed, 1 - Adaptive
+#Number: 0,1
+#Mandatory
+P831= 1
+
+#Jitter Buffer Length. 0 - Low, 1 - Medium, 2 - High
+#Number: 0,1,2
+#Mandatory
+P832=1
+
+#Enable RTCP. configure if enables RTCP statistics and control information. 0 - Disabled, 1- RTCP, 2 - RTCP-XR
+#Number: 0,1,2
+#Mandatory
+P2492=1
+
+###############################
+##  Profile 2/Call Settings  ##
+###############################
+
+#Early Dial. 0 - No, 1 - Yes (use "Yes" only if proxy supports 484 response). 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P729=0
+
+#Dial Plan Prefix.(this prefix string is added to each dialed number)
+#String Max Length: 32
+P766=
+
+#Dial Plan
+#String Max Length: 1024
+P4201={ x+ | *x+ | *xx*x+ }
+
+#Use #as Dial Key (if set to Yes, "#" will function as the "(Re-)Dial" key). 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P772=1
+
+#On Hold Reminder Tone. 0 - Disabled, 1 - Enabled
+#Number: 0,1
+#Mandatory
+P26106=1
+
+#Match Incoming Caller ID. Specifies matching rules with number, pattern or Alert Info text to ring the selected ring tone.
+#Please refer to user manual for more details.
+#Number, pattern or Alert Info for matching Rule 1
+P1494=
+
+#Ringtone for incoming caller id that matches Rule 1.
+#0 - System Ring Tone
+#1 - Handset RingTone 1
+#2 - Handset RingTone 2
+#3 - Handset RingTone 3
+#4 - Handset RingTone 4
+#5 - Handset RingTone 5
+#6 - Handset RingTone 6
+#7 - Handset RingTone 7
+#8 - Handset RingTone 8
+#9 - Custom Ring Tone 1
+#10 - Bellcore Ring Tone 1
+#11 - Bellcore Ring Tone 2
+#12 - Bellcore Ring Tone 3
+#13 - Bellcore Ring Tone 4
+#14 - Bellcore Ring Tone 5
+P1495=0
+
+#Number, pattern or Alert Info for matching Rule 2
+P1496=
+
+#Ringtone for incoming caller id that matches Rule 2.
+P1497=0
+
+#Number, pattern or Alert Info for matching Rule 3
+P1498=
+
+#Ringtone for incoming caller id that matches Rule 3.
+P1499=0
+
+#Allow Auto Answer by Call-Info/Alert-Info. 0 - No, 1 - Yes. Default is 0 - No.
+#If set to "Yes", the phone will automatically turn on the speaker phone to answer incoming calls after a short reminding beep, based on the SIP Call-Info/Alert-Info header sent from the server/proxy.
+#Number: 0, 1
+#Mandatory
+P438=0
+
+#Custom Alert-Info for Auto Answer.
+#Used exclusively to match the contents of the Alert-Info header for auto answer. The default auto answer headers will not be matched if this is defined.
+#String Max Length: 20
+P2456=
+
+#No Key Entry Timeout. Default - 4 seconds.
+#Number: 1 to 15
+#Mandatory
+P292=4
+
+#Enable Call Features. 0 - No, 1 - Yes, 2 - Enable All
+P751=1
+
+#Disable Call Waiting Caller ID. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P823=0
+
+#Enable Call Waiting in Parallel Mode. 0 - no, 1 - yes. Default is 0 - No.
+#Enables call waiting for accounts using this profile which are set to Parallel ring mode.
+#Number: 0,1
+#Mandatory
+P27768=0
+
+#Disable Visual MWI. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P869=0
+
+#Transfer on Conference Hangup. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4561=0
+
+#Ring Timeout. (10-300, default is 60 seconds)
+#Number: 10 to 300
+#Mandatory
+P816=60
+
+#Hunting Group Ring Timeout. (5-300, default is 20 seconds)
+#Number: 5 to 300
+#Mandatory
+P4331=20
+
+#Send Anonymous. 0 - no, 1 - yes (caller ID will be blocked if set to Yes).
+#Number: 0 to 1
+#Mandatory
+P765=0
+
+#Anonymous Call Rejection. 0 - No, 1 - Yes.
+#Number: 0 to 1
+#Mandatory
+P446=0
+
+#Special Feature
+#100 - Standard, 102 - BroadSoft, 108 - CBCOM, 109 - RNK, 111 - Huawei, 114 - ZTE IMS, 119 - PhonePower, 120 - TELKOM SA.
+#Number: 100, 102, 108, 109, 111, 114, 119, 120
+#Mandatory
+P767=100
+
+#Music On Hold URI
+#Music On Hold URI to call when a call is on hold if server support it
+#Strings, default is null
+#Alias: Pprofile.2.sip.moh_uri
+P2450=
+
+#Allow Unsolicited REFER.
+#Allow unsolicited REFER to accomplish an outgoing call.
+#Number: 0, 2; 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth, default is 0.
+#Alias: profile.2.sip.allow_unsolicited_refer
+P26123=0
+
+#Feature Key Synchronization. 0 - Disabled, 1- Enabled
+#Number: 0,1
+#Mandatory
+P2425=0
+
+##################
+##  Profile 3   ##
+##################
+
+##################################
+##  Profile 3/General Settings  ##
+##################################
+
+#Profile Active.  0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P501=1
+
+#Profile Name. Used to identify profile uniquely.
+#Strings: maximum 32 characters.
+#Mandatory
+P27764=profile3
+
+#Primary SIP Server
+#String: serveraddress
+P547=
+
+#Failover SIP Server
+#String: serveraddress
+P997=
+
+#Prefer Primary SIP Server. 0 - No, 1 - Yes.
+#Number: 0,1
+#Mandatory
+P4569=0
+
+#Outbound Proxy
+#String: serveraddress
+P548=
+
+#Backup Outbound Proxy
+#Secondary Outbound Proxy which will be used when the primary proxy cannot be connected
+#String
+P2533=
+
+#Voice Mail Access Number
+#String
+P27682=
+
+##################################
+##  Profile 3/Network Settings  ##
+##################################
+
+#Layer 3 QoS SIP Diff-Serv (default 40)
+#Number
+#Mandatory
+P5048=40
+
+#Layer 3 QoS RTP Diff-Serv (default 46)
+#Number
+#Mandatory
+P5052=46
+
+#DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV, 3 - Use Configured IP .
+#Number: 0,1,2,3
+#Mandatory
+P502=0
+
+#Primary IP
+#IP address
+P2508=
+
+#Backup IP 1
+#IP address
+P2509=
+
+#Backup IP 2
+#IP address
+P2510=
+
+#DNS SRV use Registered IP
+#In DNS SRV Mode, use registered IP instead of the first IP in the DNS table
+#Number: 0, 1. 0 - No, 1 - Yes.
+P28094=0
+
+#NAT Traversal (STUN). 0 - No, 2 - No but send keep-alive, 1 - Yes
+#Number: 0,1,2
+#Mandatory
+P630=0
+
+#Use NAT IP.  This will enable our SIP client to use this IP in the SIP message. Example 64.3.153.50.
+#String: ipaddress
+P566=
+
+#Proxy-Require (A SIP extension to enable firewall penetration)
+#String: ipaddress
+P592=
+
+#Use SBC
+#Indicate whether or not a SBC server is used.
+#Number: 0, 1. 0 - Disabled, 1 - Enabled.
+P26290=0
+
+#############################################
+##  Profile 3/SIP Settings/Basic Settings  ##
+#############################################
+
+#SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS
+#Number: 0,1,2
+#Mandatory
+P530=0
+
+#SIP URI Scheme When Using TLS. 0 - sip, 1- sips
+#Number: 0,1
+#Mandatory
+P2529=1
+
+#Use Actual Ephemeral Port in Contact with TCP/TLS. 0 - No, 1- Yes
+#Number: 0,1
+#Mandatory
+P2531=0
+
+#SIP Registration. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P531=1
+
+#Unregister On Reboot. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P552=0
+
+#Add Auth Header On Initial REGISTER
+#Number: 0,1
+#Mandatory
+P2559=0
+
+#Outgoing call without Registration. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P513=1
+
+#Register Expiration (in minutes. default 1 hour, max 45 days)
+#Number: 1 to 64800
+#Mandatory
+P532=60
+
+#SIP Registration Failure Retry Wait Time (in seconds. Between 1-3600, default is 30)
+#Number: 1 to 3600
+#Mandatory
+P571=30
+
+#SIP Registration Failure Retry Wait Time upon 403 Forbidden. 0 second means stop retry registration. Default is 1200 sec.
+#Number 0 to 3600
+#Mandatory
+P26202=1200
+
+#Reregister before Expiration
+#Number
+#Mandatory
+P2530=0
+
+#Local SIP port (default 5060)
+#Number: 1 to 65535
+#Mandatory
+P640=5060
+
+#Use Random RTP Port
+#Use a random port for SIP messages rather than the Local SIP Port.
+#Number: 0, 1. 0 - No, 1 - Yes, default is 0 - No
+#Alias: Pprofile.3.network.use_random_sip_port
+P20503=0
+
+#Local RTP Port (default 7004)
+#Number: 1 to 65535
+#Mandatory
+P539=7004
+
+#SIP T1 Timeout. RFC 3261 T1 value.
+#50 - 0.5 sec, 100 - 1 sec, 200 - 2 sec, 400 - 4 sec, 800 - 8 sec. Default 100.
+#Number: 50,100,200,400,800
+#Mandatory
+P540=50
+
+#SIP T2 Timeout. RFC 3261 T2 value.
+#200 - 2 sec, 400 - 4 sec, 800 - 8 sec, 1600 - 16 sec, 3200 - 32 sec. Default 400.
+#Number: 1600,3200,200,400,800
+#Mandatory
+P541=400
+
+#SIP TIMER D. Config Timer D defined in RFC 3261.
+#Range 0-64 sec. Default 0
+#Number: 0-64
+#Mandatory
+P2587=0
+
+#Enable OPTIONS Keep Alive. Enable OPTIONS Keep Alive to check SIP server.
+#0 - No, 1 - Yes
+#Number: 0, 1
+P2597=0
+
+#OPTIONS Keep Alive Interval. Time interval for OPTIONS Keep Alive feature in seconds.
+#Number: 1 - 64800
+P2598=30
+
+#OPTIONS Keep Alive Max Lost. Maximum number of lost packets for OPTIONS Keep Alive feature before the phone re-registration.
+#Number: 3 - 10
+P2599=3
+
+#Remove OBP from Route Header. 0 - no, 1 - yes
+#NUmber: 0,1
+#Mandatory
+P4564=0
+
+#Support SIP Instance ID. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P589=1
+
+#Hold Target Before Refer 0 - No, 1 - Yes
+#Number: 0, 1
+#Mandatory
+P26203=1
+
+#Refer-To Use Target Contact. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P569=
+
+#SUBSCRIBE for MWI. 0 - No, 1 - Yes.
+#Number: 0,1
+#Mandatory
+P509=0
+
+#Enable 100rel. 0 - No, 1 - Yes
+#Number: 0 to 1
+#Mandatory
+P535=0
+
+#Tel URI. 0 - Disabled, 1 - User=Phone, 2 - Enabled
+#Number: 0,1,2
+#Mandatory
+P563=0
+
+#Do Not Escape '#' as %23 in SIP URI. 0 - No, 1 - Yes
+#Number: 0, 1
+#Mandatory
+P4896= 0
+
+#Disable Multiple m Line in SDP. 0 - No, 1 - Yes
+P587= 0
+
+#Use Privacy Header. 0 - Default, 1 - No, 2 - Yes
+#Number: 0, 1, 2
+#Mandatory
+P2538= 0
+
+#Use P-Preferred-Identity Header. 0 - Default, 1 - No, 2 - Yes
+#Number: 0, 1, 2
+#Mandatory
+P2539= 0
+
+#Ignore Alert-Info header. 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P26218=0
+
+#Use MAC Header. (0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP).
+#If Yes except REGISTER, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP messages except REGISTER message will attach the MAC address to the User-Agent header;
+#If Yes to ALL, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP message including REGISTER will attach the MAC address to the User-Agent header;
+#If No, neither will the MAC header be included in the register or unregister message nor the MAC address be attached to the User-Agent header for any outgoing SIP message.
+#Number: 0, 1, 2
+#Mandatory
+P26261=0
+
+#Caller ID Display. 0 - Auto, 1 - Disabled, 2 - From Header
+#When set to "Auto", the phone will look for the caller ID in the order of P-Asserted Identity Header, Remote-Party-ID Header and From Header in the incoming SIP INVITE. When set to "Disabled", all incoming calls are displayed with "Unavailable".
+P2524=0
+
+############################################
+##  Profile 3/SIP Settings/Session Timer  ##
+############################################
+
+#Enable Session Timer. To enable/disable Session Timer support.
+#Number: 0, 1; 0 - No, 1 - Yes, default is 1.
+#Mandatory
+#Alias: profile.3.sip.enable_session_timer
+P2595=1
+
+#Session Expiration (in seconds. default 180 seconds. Allowed value: 90-65535)
+#Number: 90 to 64800
+#Mandatory
+P534=180
+
+#Minimum SE (in seconds. default 90 seconds, must be lower than or equal to P260)
+#Number 90 to 64800
+#Mandatory
+P527=90
+
+#Caller Request Timer (Request for timer when calling) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P528=0
+
+#Callee Request Timer (Request for timer when called. i.e. if remote party supports timer but did not request for one) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P629=0
+
+#Force Timer (Still use timer when remote party does not support timer) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P664=0
+
+#UAC Specify Refresher. 0 - omit, 1 - UAC, 2 - UAS
+#Number: 0,1,2
+#Mandatory
+P632=0
+
+#UAS Specify Refresher. 1 - UAC, 2 - UAS
+#Number: 1,2
+#Mandatory
+P533=1
+
+#Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P365=0
+
+################################################
+##  Profile 3/SIP Settings/Security Settings  ##
+################################################
+
+#Validate Incoming Messages. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P4342=0
+
+#Check SIP User ID for Incoming INVITE. 0 - No, 1 - Yes (no direct IP calling if Yes)
+#Number: 0,1
+#Mandatory
+P549=0
+
+#Allow Incoming SIP Messages from SIP Proxy Only
+#Number: 0,1
+#Mandatory
+P4043=0
+
+#Authenticate incoming INVITE
+#Number: 0,1
+P2546=0
+
+#Authenticate server certificate domain. 0 - No, 1 - Yes, default is 0
+#Number: 0, 1
+#Mandatory
+P2511=0
+
+#Authenticate server certificate chain. 0 - No, 1 - Yes, default is 0
+#Number: 0, 1
+#Mandatory
+P2567=0
+
+#Trusted CA certificates.
+#String
+P2586=
+
+################################
+##  Profile 3/Audio Settings  ##
+################################
+
+#DTMF Method - in-audio. Configure if use in-audio DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2501=0
+
+#DTMF Method - via RTP (RFC2833). Configure if use RFC2833 DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2502=1
+
+#DTMF Method - via SIP INFO. Configure if use SIP INFO DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2503=0
+
+#Disable DTMF Negotiation. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4827=0
+
+#DTMF Payload Type
+#Number: 96 to 127
+P579=101
+
+#Preferred Vocoder
+#0 - PCMU, 8 - PCMA, 4 - G.723, 18 - G.729, 2 - G.726-32, 100 - AAL2-G.726-16,
+#102 - AAL2-G.726-24, 104 - AAL2-G726-32, 103 - AAL2-G.726-40, 98 - iLBC, 9 - G.722(wide band)
+#Choice 1.
+#Mandatory
+P557=0
+
+#Choice 2.
+#Mandatory
+P558=8
+
+#Choice 3.
+#Mandatory
+P559=4
+
+#Choice 4.
+#Mandatory
+P660=18
+
+#Choice 5.
+#Mandatory
+P661=2
+
+#Choice 6.
+#Mandatory
+P662=98
+
+#Choice 7.
+#Mandatory
+P514=104
+
+#Choice 8.
+#Mandatory
+P515=100
+
+#Voice Frame per TX. (Default 2, from 1 to 4 for G711/G726/G729)
+#Number: 1 to 4
+P4593=2
+
+#G723 rate. 0 - 6.3kbps encoding rate, 1 - 5.3kbps encoding rate
+#Number: 0,1
+#Mandatory
+P4350=0
+
+#G726-32 Packing Mode. 0 - ITU, 1 - IETF
+#Number: 0,1
+#Mandatory
+P2523=0
+
+#iLBC Frame Size. 0 - 20ms(default), 1 - 30ms.
+#Number: 0,1
+#Mandatory
+P505=0
+
+#iLBC payload type. Between 96 and 127, default is 97.
+#Number: 96 to 127
+#Mandatory
+P504=97
+
+#Disable OPUS stereo in SDP, default is 0.
+#Number: 0,1
+#Mandatory
+P20531=
+
+#OPUS Payload Type, default is 125.
+#Number: 96 to 127
+#Mandatory
+P2585=
+
+#Use First Matching Vocoder in 200OK SDP. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P4365=0
+
+#Callee codec negotiation priority. When callee, whose codecs are given priority in negotiation, local or remote ( Default is remote ).
+#Number: 0, 1. 0 - Remote, 1 - Local
+P29261=0
+
+#SRTP Mode
+#0=Disabled
+#1=Enabled but not forced
+#2=Enabled and forced
+#Number: 0,1,2
+#Mandatory
+P543=0
+
+#Crypto Life Time
+#0 = Disabled
+#1 = Enabled
+#Number: 0, 1
+#Mandatory
+P2563=1
+
+#Silence Suppression (VAD). 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P550=0
+
+#Jitter Buffer Type. 0 - Fixed, 1 - Adaptive
+#Number: 0,1
+#Mandatory
+P631= 1
+
+#Jitter Buffer Length. 0 - Low, 1 - Medium, 2 - High
+#Number: 0,1,2
+#Mandatory
+P835=1
+
+#Enable RTCP. configure if enables RTCP statistics and control information. 0 - Disabled, 1- RTCP, 2 - RTCP-XR
+#Number: 0,1,2
+#Mandatory
+P2592=1
+
+###############################
+##  Profile 3/Call Settings  ##
+###############################
+
+#Early Dial. 0 - No, 1 - Yes (use "Yes" only if proxy supports 484 response). 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P529=0
+
+#Dial Plan Prefix.(this prefix string is added to each dialed number)
+#String Max Length: 32
+P666=
+
+#Dial Plan
+#String Max Length: 1024
+P4202={ x+ | *x+ | *xx*x+ }
+
+#Use #as Dial Key (if set to Yes, "#" will function as the "(Re-)Dial" key). 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P572=1
+
+#On Hold Reminder Tone. 0 - Disabled, 1 - Enabled
+#Number: 0,1
+#Mandatory
+P26206=1
+
+#Match Incoming Caller ID. Specifies matching rules with number, pattern or Alert Info text to ring the selected ring tone.
+#Please refer to user manual for more details.
+#Number, pattern or Alert Info for matching Rule 1
+P1500=
+
+#Ringtone for incoming caller id that matches Rule 1.
+#0 - System Ring Tone
+#1 - Handset RingTone 1
+#2 - Handset RingTone 2
+#3 - Handset RingTone 3
+#4 - Handset RingTone 4
+#5 - Handset RingTone 5
+#6 - Handset RingTone 6
+#7 - Handset RingTone 7
+#8 - Handset RingTone 8
+#9 - Custom Ring Tone 1
+#10 - Bellcore Ring Tone 1
+#11 - Bellcore Ring Tone 2
+#12 - Bellcore Ring Tone 3
+#13 - Bellcore Ring Tone 4
+#14 - Bellcore Ring Tone 5
+P1501=0
+
+#Number, pattern or Alert Info for matching Rule 2
+P1502=
+
+#Ringtone for incoming caller id that matches Rule 2.
+P1503=0
+
+#Number, pattern or Alert Info for matching Rule 3
+P1504=
+
+#Ringtone for incoming caller id that matches Rule 3.
+P1505=0
+
+#Allow Auto Answer by Call-Info/Alert-Info. 0 - No, 1 - Yes. Default is 0 - No.
+#If set to "Yes", the phone will automatically turn on the speaker phone to answer incoming calls after a short reminding beep, based on the SIP Call-Info/Alert-Info header sent from the server/proxy.
+#Number: 0, 1
+#Mandatory
+P538=0
+
+#Custom Alert-Info for Auto Answer.
+#Used exclusively to match the contents of the Alert-Info header for auto answer. The default auto answer headers will not be matched if this is defined.
+#String Max Length: 20
+P2556=
+
+#No Key Entry Timeout. Default - 4 seconds.
+#Number: 1 to 15
+#Mandatory
+P492=4
+
+#Enable Call Features. 0 - No, 1 - Yes, 2 - Enable All
+P551=1
+
+#Disable Call Waiting Caller ID. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P523=0
+
+#Enable Call Waiting in Parallel Mode. 0 - no, 1 - yes. Default is 0 - No.
+#Enables call waiting for accounts using this profile which are set to Parallel ring mode.
+#Number: 0,1
+#Mandatory
+P27769=0
+
+#Disable Visual MWI. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P669=0
+
+#Transfer on Conference Hangup. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4565=0
+
+#Ring Timeout. (10-300, default is 60 seconds)
+#Number: 10 to 300
+#Mandatory
+P516=60
+
+#Hunting Group Ring Timeout. (5-300, default is 20 seconds)
+#Number: 5 to 300
+#Mandatory
+P4332=20
+
+#Send Anonymous. 0 - no, 1 - yes (caller ID will be blocked if set to Yes).
+#Number: 0 to 1
+#Mandatory
+P565=0
+
+#Anonymous Call Rejection. 0 - No, 1 - Yes.
+#Number: 0 to 1
+#Mandatory
+P546=0
+
+#Special Feature
+#100 - Standard, 102 - BroadSoft, 108 - CBCOM, 109 - RNK, 111 - Huawei, 114 - ZTE IMS, 119 - PhonePower, 120 - TELKOM SA.
+#Number: 100, 102, 108, 109, 111, 114, 119, 120
+#Mandatory
+P567=100
+
+#Music On Hold URI
+#Music On Hold URI to call when a call is on hold if server support it
+#Strings, default is null
+#Alias: Pprofile.3.sip.moh_uri
+P2550=
+
+#Allow Unsolicited REFER.
+#Allow unsolicited REFER to accomplish an outgoing call.
+#Number: 0, 2; 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth, default is 0.
+#Alias: profile.3.sip.allow_unsolicited_refer
+P26223=0
+
+#Feature Key Synchronization. 0 - Disabled, 1- Enabled
+#Number: 0,1
+#Mandatory
+P2525=0
+
+#################
+##  Profile 4  ##
+#################
+
+##################################
+##  Profile 4/General Settings  ##
+##################################
+
+#Profile Active.  0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P601=1
+
+#Profile Name. Used to identify profile uniquely.
+#Strings: maximum 32 characters.
+#Mandatory
+P27765=profile4
+
+#Primary SIP Server
+#String: serveraddress
+P602=
+
+#Failover SIP Server
+#String: serveraddress
+P998=
+
+#Prefer Primary SIP Server. 0 - No, 1 - Yes.
+#Number: 0,1
+#Mandatory
+P4570=0
+
+#Outbound Proxy
+#String: serveraddress
+P603=
+
+#Backup Outbound Proxy
+#Secondary Outbound Proxy which will be used when the primary proxy cannot be connected
+#String
+P2633=
+
+#Voice Mail Access Number
+#String
+P27683=
+
+##################################
+##  Profile 4/Network Settings  ##
+##################################
+
+#Layer 3 QoS SIP Diff-Serv (default 40)
+#Number
+#Mandatory
+P5049=40
+
+#Layer 3 QoS RTP Diff-Serv (default 46)
+#Number
+#Mandatory
+P5053=46
+
+#DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV, 3 - Use Configured IP .
+#Number: 0,1,2,3
+#Mandatory
+P608=0
+
+#Primary IP
+#IP address
+P2608=
+
+#Backup IP 1
+#IP address
+P2609=
+
+#Backup IP 2
+#IP address
+P2610=
+
+#DNS SRV use Registered IP
+#In DNS SRV Mode, use registered IP instead of the first IP in the DNS table
+#Number: 0, 1. 0 - No, 1 - Yes.
+P28095=0
+
+#NAT Traversal (STUN). 0 - No, 2 - No but send keep-alive, 1 - Yes
+#Number: 0,1,2
+#Mandatory
+P614=0
+
+#Use NAT IP.  This will enable our SIP client to use this IP in the SIP message. Example 64.3.153.50.
+#String: ipaddress
+P4576=
+
+#Proxy-Require (A SIP extension to enable firewall penetration)
+#String: ipaddress
+P618=
+
+#Use SBC
+#Indicate whether or not a SBC server is used.
+#Number: 0, 1. 0 - Disabled, 1 - Enabled.
+P26390=0
+
+#############################################
+##  Profile 4/SIP Settings/Basic Settings  ##
+#############################################
+
+#SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS
+#Number: 0,1,2
+#Mandatory
+P4648=0
+
+#SIP URI Scheme When Using TLS. 0 - sip, 1- sips
+#Number: 0,1
+#Mandatory
+P2629=1
+
+#Use Actual Ephemeral Port in Contact with TCP/TLS. 0 - No, 1- Yes
+#Number: 0,1
+#Mandatory
+P2631=0
+
+#SIP Registration. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P610=1
+
+#Unregister On Reboot. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P611=0
+
+#Add Auth Header On Initial REGISTER
+#Number: 0,1
+#Mandatory
+P2659=0
+
+#Outgoing call without Registration. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4378=1
+
+#Register Expiration (in minutes. default 1 hour, max 45 days)
+#Number: 1 to 64800
+#Mandatory
+P612=60
+
+#SIP Registration Failure Retry Wait Time (in seconds. Between 1-3600, default is 30)
+#Number: 1 to 3600
+#Mandatory
+P671=30
+
+#SIP Registration Failure Retry Wait Time upon 403 Forbidden. 0 second means stop retry registration. Default is 1200 sec.
+#Number 0 to 3600
+#Mandatory
+P26302=1200
+
+#Reregister before Expiration
+#Number
+#Mandatory
+P2630=0
+
+#Local SIP port (default 5060)
+#Number: 1 to 65535
+#Mandatory
+P613=5060
+
+#Use Random RTP Port
+#Use a random port for SIP messages rather than the Local SIP Port.
+#Number: 0, 1. 0 - No, 1 - Yes, default is 0 - No
+#Alias: Pprofile.4.network.use_random_sip_port
+P20504=0
+
+#Local RTP Port (default 8004)
+#Number: 1 to 65535
+#Mandatory
+P4573=8004
+
+#SIP T1 Timeout. RFC 3261 T1 value.
+#50 - 0.5 sec, 100 - 1 sec, 200 - 2 sec, 400 - 4 sec, 800 - 8 sec. Default 100.
+#Number: 50,100,200,400,800
+#Mandatory
+P4640=50
+
+#SIP T2 Timeout. RFC 3261 T2 value.
+#200 - 2 sec, 400 - 4 sec, 800 - 8 sec, 1600 - 16 sec, 3200 - 32 sec. Default 400.
+#Number: 1600,3200,200,400,800
+#Mandatory
+P641=400
+
+#SIP TIMER D. Config Timer D defined in RFC 3261.
+#Range 0-64 sec. Default 0
+#Number: 0-64
+#Mandatory
+P2687=
+
+#Enable OPTIONS Keep Alive. Enable OPTIONS Keep Alive to check SIP server.
+#0 - No, 1 - Yes
+#Number: 0, 1
+P2697=0
+
+#OPTIONS Keep Alive Interval. Time interval for OPTIONS Keep Alive feature in seconds.
+#Number: 1 - 64800
+P2698=30
+
+#OPTIONS Keep Alive Max Lost. Maximum number of lost packets for OPTIONS Keep Alive feature before the phone re-registration.
+#Number: 3 - 10
+P2699=3
+
+#Remove OBP from Route Header. 0 - no, 1 - yes
+#NUmber: 0,1
+#Mandatory
+P4790=0
+
+#Support SIP Instance ID. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P689=1
+
+#Hold Target Before Refer 0 - No, 1 - Yes
+#Number: 0, 1
+#Mandatory
+P26303=1
+
+#Refer-To Use Target Contact. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4649=
+
+#SUBSCRIBE for MWI. 0 - No, 1 - Yes.
+#Number: 0,1
+#Mandatory
+P615=0
+
+#Enable 100rel. 0 - No, 1 - Yes
+#Number: 0 to 1
+#Mandatory
+P635=0
+
+#Tel URI. 0 - Disabled, 1 - User=Phone, 2 - Enabled
+#Number: 0,1,2
+#Mandatory
+P609=0
+
+#Do Not Escape '#' as %23 in SIP URI. 0 - No, 1 - Yes
+#Number: 0, 1
+#Mandatory
+P4897= 0
+
+#Disable Multiple m Line in SDP. 0 - No, 1 - Yes
+P687= 0
+
+#Use Privacy Header. 0 - Default, 1 - No, 2 - Yes
+#Number: 0, 1, 2
+#Mandatory
+P2638= 0
+
+#Use P-Preferred-Identity Header. 0 - Default, 1 - No, 2 - Yes
+#Number: 0, 1, 2
+#Mandatory
+P2639= 0
+
+#Ignore Alert-Info header. 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P26318=0
+
+#Use MAC Header. (0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP).
+#If Yes except REGISTER, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP messages except REGISTER message will attach the MAC address to the User-Agent header;
+#If Yes to ALL, the sip message for register or unregister will contains MAC address in the header, and all the outgoing SIP message including REGISTER will attach the MAC address to the User-Agent header;
+#If No, neither will the MAC header be included in the register or unregister message nor the MAC address be attached to the User-Agent header for any outgoing SIP message.
+#Number: 0, 1, 2
+#Mandatory
+P26361=0
+
+#Caller ID Display. 0 - Auto, 1 - Disabled, 2 - From Header
+#When set to "Auto", the phone will look for the caller ID in the order of P-Asserted Identity Header, Remote-Party-ID Header and From Header in the incoming SIP INVITE. When set to "Disabled", all incoming calls are displayed with "Unavailable".
+P2624=0
+
+############################################
+##  Profile 4/SIP Settings/Session Timer  ##
+############################################
+
+#Enable Session Timer. To enable/disable Session Timer support.
+#Number: 0, 1; 0 - No, 1 - Yes, default is 1.
+#Mandatory
+#Alias: profile.4.sip.enable_session_timer
+P2695=1
+
+#Session Expiration (in seconds. default 180 seconds. Allowed value: 90-65535)
+#Number: 90 to 64800
+#Mandatory
+P4634=180
+
+#Minimum SE (in seconds. default 90 seconds, must be lower than or equal to P260)
+#Number 90 to 64800
+#Mandatory
+P627=90
+
+#Caller Request Timer (Request for timer when calling) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P628=0
+
+#Callee Request Timer (Request for timer when called. i.e. if remote party supports timer but did not request for one) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4629=0
+
+#Force Timer (Still use timer when remote party does not support timer) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4630=0
+
+#UAC Specify Refresher. 0 - omit, 1 - UAC, 2 - UAS
+#Number: 0,1,2
+#Mandatory
+P4632=0
+
+#UAS Specify Refresher. 1 - UAC, 2 - UAS
+#Number: 1,2
+#Mandatory
+P633=1
+
+#Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE) 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4631=0
+
+################################################
+##  Profile 4/SIP Settings/Security Settings  ##
+################################################
+
+#Validate Incoming Messages. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P4343=0
+
+#Check SIP User ID for Incoming INVITE. 0 - No, 1 - Yes (no direct IP calling if Yes)
+#Number: 0,1
+#Mandatory
+P649=0
+
+#Allow Incoming SIP Messages from SIP Proxy Only
+#Number: 0,1
+#Mandatory
+P4044=0
+
+#Authenticate incoming INVITE
+#Number: 0,1
+P2646=0
+
+#Authenticate server certificate domain. 0 - No, 1 - Yes, default is 0
+#Number: 0, 1
+#Mandatory
+P2611=0
+
+#Authenticate server certificate chain. 0 - No, 1 - Yes, default is 0
+#Number: 0, 1
+#Mandatory
+P2667=0
+
+#Trusted CA certificates.
+#String
+P2686=
+
+################################
+##  Profile 4/Audio Settings  ##
+################################
+
+#DTMF Method - in-audio. Configure if use in-audio DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2601=0
+
+#DTMF Method - via RTP (RFC2833). Configure if use RFC2833 DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2602=1
+
+#DTMF Method - via SIP INFO. Configure if use SIP INFO DTMF method, 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P2603=0
+
+#Disable DTMF Negotiation. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4828=0
+
+#DTMF Payload Type
+#Number: 96 to 127
+P4574=101
+
+#Preferred Vocoder
+#0 - PCMU, 8 - PCMA, 4 - G.723, 18 - G.729, 2 - G.726-32, 100 - AAL2-G.726-16,
+#102 - AAL2-G.726-24, 104 - AAL2-G726-32, 103 - AAL2-G.726-40, 98 - iLBC, 9 - G.722(wide band)
+#Choice 1.
+#Mandatory
+P651=0
+
+#Choice 2.
+#Mandatory
+P652=8
+
+#Choice 3.
+#Mandatory
+P653=4
+
+#Choice 4.
+#Mandatory
+P654=18
+
+#Choice 5.
+#Mandatory
+P655=2
+
+#Choice 6.
+#Mandatory
+P656=98
+
+#Choice 7.
+#Mandatory
+P4657=104
+
+#Choice 8.
+#Mandatory
+P658=100
+
+#Voice Frame per TX. (Default 2, from 1 to 4 for G711/G726/G729)
+#Number: 1 to 4
+P4594=2
+
+#G723 rate. 0 - 6.3kbps encoding rate, 1 - 5.3kbps encoding rate
+#Number: 0,1
+#Mandatory
+P4349=0
+
+#G726-32 Packing Mode. 0 - ITU, 1 - IETF
+#Number: 0,1
+#Mandatory
+P2623=0
+
+#iLBC Frame Size. 0 - 20ms(default), 1 - 30ms.
+#Number: 0,1
+#Mandatory
+P695=0
+
+#iLBC payload type. Between 96 and 127, default is 97.
+#Number: 96 to 127
+#Mandatory
+P694=97
+
+#Disable OPUS stereo in SDP, default is 0.
+#Number: 0,1
+#Mandatory
+P20532=
+
+#OPUS Payload Type, default is 125.
+#Number: 96 to 127
+#Mandatory
+P2685=
+
+#Use First Matching Vocoder in 200OK SDP. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P4791=0
+
+#Callee codec negotiation priority. When callee, whose codecs are given priority in negotiation, local or remote ( Default is remote ).
+#Number: 0, 1. 0 - Remote, 1 - Local
+P29361=0
+
+#SRTP Mode
+#0=Disabled
+#1=Enabled but not forced
+#2=Enabled and forced
+#Number: 0,1,2
+#Mandatory
+P643=0
+
+#Crypto Life Time
+#0 = Disabled
+#1 = Enabled
+#Number: 0, 1
+#Mandatory
+P2663=1
+
+#Silence Suppression (VAD). 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P685=0
+
+#Jitter Buffer Type. 0 - Fixed, 1 - Adaptive
+#Number: 0,1
+#Mandatory
+P698= 1
+
+#Jitter Buffer Length. 0 - Low, 1 - Medium, 2 - High
+#Number: 0,1,2
+#Mandatory
+P697=1
+
+#Enable RTCP. configure if enables RTCP statistics and control information. 0 - Disabled, 1- RTCP, 2 - RTCP-XR
+#Number: 0,1,2
+#Mandatory
+P2692=1
+
+###############################
+##  Profile 4/Call Settings  ##
+###############################
+
+#Early Dial. 0 - No, 1 - Yes (use "Yes" only if proxy supports 484 response). 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P622=0
+
+#Dial Plan Prefix.(this prefix string is added to each dialed number)
+#String Max Length: 32
+P619=
+
+#Dial Plan
+#String Max Length: 1024
+P4203={ x+ | *x+ | *xx*x+ }
+
+#Use #as Dial Key (if set to Yes, "#" will function as the "(Re-)Dial" key). 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P692=1
+
+#On Hold Reminder Tone. 0 - Disabled, 1 - Enabled
+#Number: 0,1
+#Mandatory
+P26306=1
+
+#Match Incoming Caller ID. Specifies matching rules with number, pattern or Alert Info text to ring the selected ring tone.
+#Please refer to user manual for more details.
+#Number, pattern or Alert Info for matching Rule 1
+P1506=
+
+#Ringtone for incoming caller id that matches Rule 1.
+#0 - System Ring Tone
+#1 - Handset RingTone 1
+#2 - Handset RingTone 2
+#3 - Handset RingTone 3
+#4 - Handset RingTone 4
+#5 - Handset RingTone 5
+#6 - Handset RingTone 6
+#7 - Handset RingTone 7
+#8 - Handset RingTone 8
+#9 - Custom Ring Tone 1
+#10 - Bellcore Ring Tone 1
+#11 - Bellcore Ring Tone 2
+#12 - Bellcore Ring Tone 3
+#13 - Bellcore Ring Tone 4
+#14 - Bellcore Ring Tone 5
+P1507=0
+
+#Number, pattern or Alert Info for matching Rule 2
+P1508=
+
+#Ringtone for incoming caller id that matches Rule 2.
+P1509=0
+
+#Number, pattern or Alert Info for matching Rule 3
+P1510=
+
+#Ringtone for incoming caller id that matches Rule 3.
+P1511=0
+
+#Allow Auto Answer by Call-Info/Alert-Info. 0 - No, 1 - Yes. Default is 0 - No.
+#If set to "Yes", the phone will automatically turn on the speaker phone to answer incoming calls after a short reminding beep, based on the SIP Call-Info/Alert-Info header sent from the server/proxy.
+#Number: 0, 1
+#Mandatory
+P638=0
+
+#Custom Alert-Info for Auto Answer.
+#Used exclusively to match the contents of the Alert-Info header for auto answer. The default auto answer headers will not be matched if this is defined.
+#String Max Length: 20
+P2656=
+
+#Enable Call Features. 0 - No, 1 - Yes, 2 - Enable All
+P620=1
+
+#Disable Call Waiting Caller ID. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4578=0
+
+#Enable Call Waiting in Parallel Mode. 0 - no, 1 - yes. Default is 0 - No.
+#Enables call waiting for accounts using this profile which are set to Parallel ring mode.
+#Number: 0,1
+#Mandatory
+P27770=0
+
+#Disable Visual MWI. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+P4375=0
+
+#Transfer on Conference Hangup. 0 - no, 1 - yes
+#Number: 0,1
+#Mandatory
+P4566=0
+
+#Ring Timeout. (10-300, default is 60 seconds)
+#Number: 10 to 300
+#Mandatory
+P676=60
+
+#Hunting Group Ring Timeout. (5-300, default is 20 seconds)
+#Number: 5 to 300
+#Mandatory
+P4333=20
+
+#Send Anonymous. 0 - no, 1 - yes (caller ID will be blocked if set to Yes).
+#Number: 0 to 1
+#Mandatory
+P621=0
+
+#Anonymous Call Rejection. 0 - No, 1 - Yes.
+#Number: 0 to 1
+#Mandatory
+P646=0
+
+#Special Feature
+#100 - Standard, 102 - BroadSoft, 108 - CBCOM, 109 - RNK, 111 - Huawei, 114 - ZTE IMS, 119 - PhonePower, 120 - TELKOM SA.
+#Number: 100, 102, 108, 109, 111, 114, 119, 120
+#Mandatory
+P624=100
+
+#Music On Hold URI
+#Music On Hold URI to call when a call is on hold if server support it
+#Strings, default is null
+#Alias: Pprofile.4.sip.moh_uri
+P2650=
+
+#Allow Unsolicited REFER.
+#Allow unsolicited REFER to accomplish an outgoing call.
+#Number: 0, 2; 0 - Disabled, 1 - Enabled, 2 - Enabled/Force Auth, default is 0.
+Alias: profile.4.sip.allow_unsolicited_refer
+P26323=0
+
+#Feature Key Synchronization. 0 - Disabled, 1- Enabled
+#Number: 0,1
+#Mandatory
+P2625=0
+
+############
+##  DECT  ##
+############
+
+#############################
+##  DECT/General Settings  ##
+#############################
+
+#Base Station Name. Sets the display name of this base station
+#String
+P27001=DP750
+
+#Admin PIN Code. Sets the admin PIN code for authentication, default is 0000.
+#Number: 4 digit number
+#Mandatory
+P27008=0000
+
+#Enable Repeater Mode. 0 - No, 1 - Yes. Default is 0 - No. Enable repeater mode to allow repeater pair with DP750. Need reboot to take effect.
+#To pair with repeater, need enable DP750 subscription first. User can do it by Clicking "Subscribe" button at Web -> Status Page -> DECT Status Page or the physical Page button on device back side.
+#Then power up repeater to scan for base and auto pair.
+#Repeater mode only support Europe region in 1.0.2.16.
+#Number: 0, 1
+#Mandatory
+#Reboot required
+P20002=0
+
+#Enable Repeater Management. 0 - No, 1 - Yes. Default is 0 - No.
+#Enables base station network management of discovered and paired repeaters.
+#Number: 0, 1
+#Mandatory
+#Reboot required
+P27019=0
+
+#DECT PTT Silence Timer.Sets timeout for PTT call (in minutes) if no handset unmutes.
+#If set to 0, this timer will be disabled.
+#Number: 0 - 60, default is 2
+#Alias: Pbase.ptt.silence_timer
+P27778=2
+
+#Handset name. Displaying in handset screen.
+#Strings: maximum 10 characters.
+#Mandatory
+P27020=DECT 1
+P27021=DECT 2
+P27022=DECT 3
+P27023=DECT 4
+P27024=DECT 5
+
+#Handset Phonebook. 1 - PB1, 2 - PB2, 3 - PB3, 4 - PB4, 5 - PB5
+#Mandatory
+P27040=PB1
+P27041=PB2
+P27042=PB3
+P27043=PB4
+P27044=PB5
+
+#Offhook Auto-dial destination number. If configure this, the handset will auto-dial when offhook.
+P4210=
+P4211=
+P4212=
+P4213=
+P4214=
+
+#################################
+##  DECT/SIP Account Settings  ##
+#################################
+
+#SIP User ID for SIP account 1 - 10.
+P4060=
+P4061=
+P4062=
+P4063=
+P4064=
+P4065=
+P4066=
+P4067=
+P4068=
+P4069=
+
+#Authenticate ID for SIP account 1 - 10.
+P4090=
+P4091=
+P4092=
+P4093=
+P4094=
+P4095=
+P4096=
+P4097=
+P4098=
+P4099=
+
+#Password for SIP account 1 - 10
+P4120=
+P4121=
+P4122=
+P4123=
+P4124=
+P4125=
+P4126=
+P4127=
+P4128=
+P4129=
+
+#SIP Name for SIP account 1 - 10
+#String, maximum length is 256 
+P4180=
+P4181=
+P4182=
+P4183=
+P4184=
+P4185=
+P4186=
+P4187=
+P4188=
+P4189=
+
+#Profile Settings for SIP account 1 - 10.
+#Number: 0 - 3. 0 - Profile 1, 1 - Profile 2, 2 - Profile 3, 3 - Profile 4. Default is 0.
+#Mandatory
+P4150=0
+P4151=0
+P4152=0
+P4153=0
+P4154=0
+P4155=0
+P4156=0
+P4157=0
+P4158=0
+P4159=0
+
+#HS Mode. Set the hanging group mode for handset, set 1 - 5 to non-hanging group mode.
+#Number: 1 - 5; 101 - 104. 1 - HS1, 2 - HS2, 3 - HS3, 4 - HS4, 5 - HS5; 101 - Circular, 102 - Linear, 103 - Parallel, 104 - Shared. Default is 101.
+#Mandatory
+P27080=1
+P27081=101
+P27082=101
+P27083=101
+P27084=101
+P27085=101
+P27086=101
+P27087=101
+P27088=101
+P27089=101
+
+#Active. Configure if the account is active or disabled. 0 - Disabled, 1 - Active.
+#Number: 0, 1. Default is 1.
+P4595=1
+P4596=1
+P4597=1
+P4598=1
+P4599=1
+P4600=1
+P4601=1
+P4602=1
+P4603=1
+P4604=1
+
+##################################
+##  DECT/Handset Line Settings  ##
+##################################
+
+#Handset Line Settings
+#HS 1 Line Settings
+#Number: 0 - 10, according with None and account 1 - 10. First line Default is 1 (account 1), other line have default is 0 - NULL.
+P4300=1
+P4301=0
+P4302=0
+P4303=0
+P4304=0
+P4305=0
+P4306=0
+P4307=0
+P4308=0
+P4309=0
+
+#HS 2 Line Settings
+#Number: 0 - 10, according with None and account 1 - 10. First line Default is 1 (account 1), other line have default is 0 - NULL.
+P4310=1
+P4311=0
+P4312=0
+P4313=0
+P4314=0
+P4315=0
+P4316=0
+P4317=0
+P4318=0
+P4319=0
+
+#HS 3 Line Settings
+#Number: 0 - 10, according with None and account 1 - 10. First line Default is 1 (account 1), other line have default is 0 - NULL.
+P4320=1
+P4321=0
+P4322=0
+P4323=0
+P4324=0
+P4325=0
+P4326=0
+P4327=0
+P4328=0
+P4329=0
+
+#HS 4 Line Settings
+#Number: 0 - 10, according with None and account 1 - 10. First line Default is 1 (account 1), other line have default is 0 - NULL.
+P4250=1
+P4251=0
+P21320=0
+P21321=0
+P21322=0
+P21323=0
+P21324=0
+P21325=0
+P21326=0
+P21327=0
+
+#HS 5 Line Settings
+#Number: 0 - 10, according with None and account 1 - 10. First line Default is 1 (account 1), other line have default is 0 - NULL.
+P21328=1
+P21329=0
+P21330=0
+P21331=0
+P21332=0
+P21333=0
+P21334=0
+P21335=0
+P21336=0
+P21337=0
+
+#############################
+##  DECT/Handset Settings  ##
+#############################
+
+#Disable Private Phonebook. Disables private phonebook access on this handset. 0 - No, 1 - Yes, default is 0 - No.
+#Number: 0,1
+#Mandatory
+#Below 5 P values are used for handset 1 to handset 5.
+P30020=0
+P30021=0
+P30022=0
+P30023=0
+P30024=0
+
+#Enable Auto Answer. Enable Auto Answer. 0 - No, 1 - Yes, default is 0 - No.
+#Number: 0,1
+#Mandatory
+#Below 5 P values are used for handset 1 to handset 5.
+P30100=0
+P30101=0
+P30102=0
+P30103=0
+P30104=0
+
+#Enable Offhook on Cradle Pickup. Enables offhook of handset when picked up from cradle.  0 - No, 1 - Yes, default is 0 - No.
+#Number: 0,1
+#Mandatory
+#Below 5 P values are used for handset 1 to handset 5.
+P30120=0
+P30121=0
+P30122=0
+P30123=0
+P30124=0
+
+#Enable Onhook on Cradle Reposition. Enables onhook of handset when repositioned on cradle.   0 - No, 1 - Yes, default is 0 - No.
+#Number: 0,1
+#Mandatory
+#Below 5 P values are used for handset 1 to handset 5.
+P30140=0
+P30141=0
+P30142=0
+P30143=0
+P30144=0
+
+#Disable Conference. Disables the conference option on this handset.   0 - No, 1 - Yes, default is 0 - No.
+#Number: 0,1
+#Mandatory
+#Below 5 P values are used for handset 1 to handset 5.
+P30160=0
+P30161=0
+P30162=0
+P30163=0
+P30164=0
+
+#Disable Transfer. Disables the transfer option on this handset.   0 - No, 1 - Yes, default is 0 - No.
+#Number: 0,1
+#Mandatory
+#Below 5 P values are used for handset 1 to handset 5.
+P30180=0
+P30181=0
+P30182=0
+P30183=0
+P30184=0
+
+#Disable Busy Tone on Remote Disconnect. Disable the busy tone heard in the handset when call is disconnected remotely. 0 - No, 1 - Yes, default is 0 - No.
+#Number: 0,1
+#Mandatory
+#Below 5 P values are used for handset 1 to handset 5.
+P30220=0
+P30221=0
+P30222=0
+P30223=0
+P30224=0
+
+#Disable Call Waiting Tone. 0 - No, 1 - Yes, default is 0 - No.
+#Number: 0,1
+#Mandatory
+#Below 5 P values are used for handset 1 to handset 5.
+P30240=0
+P30241=0
+P30242=0
+P30243=0
+P30244=0
+
+#Custom Ringtone. Specifies a custom ringtone for this handset from the ringtones available on this base station.
+#Number: 0,10. 0 - Disabled. 1 - 10 means used custom ring 1 - 10. Default is 0 - Disabled.
+#Mandatory
+#Below 5 P values are used for handset 1 to handset 5.
+P30700=0
+P30701=0
+P30702=0
+P30703=0
+P30704=0
+
+#Time Format. Specifies the format for displaying the time on the handset.
+#Number: 0,1. 0 - 12hr, 1 - 24hr
+P30080=0
+P30081=0
+P30082=0
+P30083=0
+P30084=0
+
+#Date Format. Specifies the format for displaying the date on the handset.
+#Number: 0,1,2. 0 - DD-MM-YYYY, 1 - MM-DD-YYYY, 2 - YYYY-MM-DD
+P30060=0
+P30061=0
+P30062=0
+P30063=0
+P30064=0
+
+################
+##  Settings  ##
+################
+
+#################################
+##  Settings/Network Settings  ##
+#################################
+
+################################################
+##  Settings/Network Settings/Basic Settings  ##
+################################################
+
+#IP Address Mode. 0 - DHCP, 1 - Static IP, 2 - PPPoE
+#Number: 0,1,2
+#Mandatory
+#Reboot required
+P8=0
+
+#Preferred DNS server
+#Mandatory
+P92=0
+P93=0
+P94=0
+P95=0
+
+#Host name (Option 12). Max length allowed is 32 bytes.
+#String: address
+P146=
+
+#Vendor Class ID (Option 60). Max length allowed is 32 bytes.
+#String Max Length: 32
+P148=DP7XX
+
+#PPPoE account ID
+#P82=
+
+#PPPoE password
+#P83=
+
+#PPPoE Service Name
+#String Max Length: 64
+#Reboot required
+P269=
+
+#IP Address. Ignore if DHCP or PPPoE is used
+#P9=192
+#P10=168
+#P11=0
+#P12=160
+
+#Subnet mask. Ignore if DHCP or PPPoE is used
+#P13=255
+#P14=255
+#P15=0
+#P16=0
+
+#Gateway. Ignore if DHCP or PPPoE is used
+#P17=0
+#P18=0
+#P19=0
+#P20=0
+
+#DNS server 1. Ignore if DHCP or PPPoE is used
+#P21=0
+#P22=0
+#P23=0
+#P24=0
+
+#DNS server 2. Ignore if DHCP or PPPoE is used
+#P25=0
+#P26=0
+#P27=0
+#P28=0
+
+###################################################
+##  Settings/Network Settings/Advanced Settings  ##
+###################################################
+
+#802.1X Mode. Enables/disables 802.1X mode. To enable 802.1X mode, this field should be set to EAP-MD5
+#0 - Close, 1 - EAP-MD5, 2 - EAP-TLS, 3-EAP-PEAP. Default is 0
+#Number: 0, 1, 2, 3
+#Mandatory
+P7901=0
+
+#802.1X Identity. The Identity for the 802.1X mode.
+#String Max Length: 64
+P7902=
+
+#MD5 Password. 802.1X mode MD5 Password.
+#String Max Length: 64
+P7903=
+
+#Enable LLDP. 0 - Disable, 1 - Enable
+#Number: 0, 1
+#Mandatory
+P1684=1
+
+#Enable VLAN。 Config to enable or disable virtual LAN. 0 - Disabled, 1 - Enabled. Default is 0 - disabled.
+#Number: 0, 1
+#Mandatory
+P27004=0
+
+#Layer 2 QoS 802.1Q/VLAN Tag
+#Number
+#Mandatory
+P51=0
+
+#Layer 2 QoS 802.1p Priority Value for SIP signaling
+#Number: 0 to 7
+#Mandatory
+P5038=0
+
+#Layer 2 QoS 802.1p Priority Value for RTP media
+#Number: 0 to 7
+#Mandatory
+P5042=0
+
+#Use STUN to detect network connectivity. 0 - No, 1 - Yes.
+#Number: 0,1
+#Mandatory
+P474=0
+
+#STUN server
+#String: serveraddress
+P76=
+
+#Number of STUN Response Misses Allowed
+#Number: 3 to 15
+#Mandatory
+P475=3
+
+#Keep-alive interval (in seconds. default 20 seconds)
+#Number: 10 to 160
+#Mandatory
+P84=20
+
+#Enable UPnP discovery. 0 - No, 1 - Yes. Default is 1 - Yes
+#Number: 0,1
+#Mandatory
+P27756=1
+
+#UPnP discovery notify interval. Specifies in seconds the interval to send out SSDP Notifies
+#Number: 15 - 86400 (seconds), default is 30 seconds.
+#Mandatory
+P27757=30
+
+###############################################################
+##  Settings/Network Settings/Management Interface Settings  ##
+###############################################################
+#Enable Management Interface
+#Number: 0, 1. 0 - No, 1 - Yes.
+P28161=0
+
+#Management Access
+#Number: 0, 1. 0 - Management Interface Only, 1 - Both Service and Management Interfaces.
+P28162=0
+
+#Layer 2 QoS 802.1Q/VLAN Tag
+#Number: 0~4095
+P22111=0
+
+#Layer 2 QoS 802.1p Priority Value
+Number: 0~7
+P22112=0
+
+#IP Address Mode
+P22105=
+
+##Static IP Settings
+#Static IP Address
+P22106=192.168.100.100
+
+#Subnet Mask
+P22107=255.255.255.0
+
+#Gateway
+P22108=192.168.100.1
+
+#DNS Server 1
+P22109=0.0.0.0
+
+#DNS Server 2
+P221010=0.0.0.0
+
+###################################################
+##  Settings/Network Settings/OpenVPN® Settings  ##
+###################################################
+
+#OpenVPN Enable. 0 - No, 1 - Yes.
+#Number: 0, 1
+#Mandatory
+P7050=0
+
+#OpenVPN® Server Address
+#String
+P7051=
+
+#OpenVPN® Port
+#Number: 1 - 65535
+P7052=1194
+
+#OpenVPN® Transport. Determines network protocol used for OpenVPN®
+#Number: 0, 1
+#0 - UDP, 1 - TCP. default is 0
+P2912=0
+
+#OpenVPN® Cipher Method. Must be the same cipher method used by the OpenVPN® server.
+#Number: 0, 1, 2, 3
+#0 - Blowfish, 1 - AES-128, 2 - AES-256, 3 - Triple-DES, default is -.
+P8396=0
+
+#OpenVPN® Username. OpenVPN® authentication username (optional)
+#String
+P8394=
+
+#OpenVPN® Password. OpenVPN® authentication password (optional)
+#String
+P8395=
+
+###############################################
+##  Settings/Network Settings/SNMP Settings  ##
+###############################################
+#Enable SNMP
+#Number: 0, 1. 0 - No, 1 - Yes.
+P21896=0
+
+#Version. (SNMP version)
+#Number: 1, 2, 3. 1 - Version 1, 2 - Version 2, 3 - Version 3
+P21904=3
+
+#SNMP port
+#Number: 161, 1025 ~ 65535
+P21903=161
+
+#Trap Community. Name of SNMP trap community
+#String
+P21902=
+
+#SNMP Trap Version
+#Number: 1, 2, 3. 1 - Version 1, 2 - Version 2, 3 - Version 3
+P21899=3
+
+#SNMP Trap IP
+P21897=
+
+#SNMP Trap Port
+#Number: 162, 1025 ~ 65535
+P21898=162
+
+#SNMP Trap Interval
+#Number: 1 ~ 1440
+P21901=60
+
+#SNMP Username
+#String
+P21905=
+
+#Security Level
+#Number: 0, 1, 2. 0 - noAuthUser, 1 - authUser, 2 - privUser
+P21910=0
+
+#Authentication Protocol. Authentication Protocol for SNMPv3
+#Number: 0, 1, 2. 0 - None, 1 - MD5, 2 - SHA
+P21906=0
+
+#Privacy Protocol. Privacy Protocol for SNMPv3
+#Number: 0, 1, 2. 0 - None, 1 - DES, 2 - AES
+P21907=0
+
+#Authentication Key
+#String
+P21908=
+
+#Privacy Key
+#String
+P21909=
+
+#SNMP Trap Username
+#String
+P21911=
+
+#Trap Security Level, Security Level for SNMPv3 Trap
+#Number: 0, 1, 2. 0 - noAuthUser, 1 - authUser, 2 - privUser
+P21916=0
+
+#Trap Authentication Protocol, Authentication Protocol for SNMPv3 Trap
+#Number: 0, 1, 2. 0 - None, 1 - MD5, 2 - SHA
+P21912=0
+
+#Trap Privacy Protocol
+#Number: 0, 1, 2. 0 - None, 1 - DES, 2 - AES
+P21913=0
+
+#Trap Authentication Key
+#String
+P21914=
+
+#Trap Privacy Key
+#String
+P21915=
+
+###################################################
+##  Settings/Network Settings/External Service   ##
+###################################################
+
+#External service 1 Service Type
+#Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None.
+#Alias: Pexternal_service.type.1
+P32000=
+
+#External service 2 Service Type
+#Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None.
+#Alias: Pexternal_service.type.2
+P32005=
+
+#External service 3 Service Type
+#Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None.
+#Alias: Pexternal_service.type.3
+P32010=
+
+#External service 4 Service Type
+#Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None.
+#Alias: Pexternal_service.type.4
+P32015=
+
+#External service 5 Service Type
+#Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None.
+#Alias: Pexternal_service.type.5
+P32020=
+
+#External service 6 Service Type
+#Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None.
+#Alias: Pexternal_service.type.6
+P32025=
+
+#External service 7 Service Type
+#Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None.
+#Alias: Pexternal_service.type.7
+P32030=
+
+#External service 8 Service Type
+#Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None.
+#Alias: Pexternal_service.type.8
+P32035=
+
+#External service 9 Service Type
+#Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None.
+#Alias: Pexternal_service.type.9
+P32040=
+
+#External service 10 Service Type
+#Number: -1, 0; -1 - None, 0 - GDS, default is -1 - None.
+#Alias: Pexternal_service.type.10
+P32045=
+
+#External service 1 Account
+#Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1
+#Alias: Pexternal_service.account.index.1
+P32001=
+
+#External service 2 Account
+#Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1
+#Alias: Pexternal_service.account.index.2
+P32006=
+
+#External service 3 Account
+#Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1
+#Alias: Pexternal_service.account.index.3
+P32011=
+
+#External service 4 Account
+#Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1
+#Alias: Pexternal_service.account.index.4
+P32016=
+
+#External service 5 Account
+#Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1
+#Alias: Pexternal_service.account.index.5
+P32021=
+
+#External service 6 Account
+#Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1
+#Alias: Pexternal_service.account.index.6
+P32026=
+
+#External service 7 Account
+#Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1
+#Alias: Pexternal_service.account.index.7
+P32031=
+
+#External service 8 Account
+#Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1
+#Alias: Pexternal_service.account.index.8
+P32036=
+
+#External service 9 Account
+#Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1
+#Alias: Pexternal_service.account.index.9
+P32041=
+
+#External service 10 Account
+#Number: 0 - 9. Values 0 - 9 stand for Account 1 - Account 10, default is 0 - Account 1
+#Alias: Pexternal_service.account.index.10
+P32046=
+
+#External service 1 System Identification
+#Strings, default is null
+#Alias: Pexternal_service.system.id.1
+P32002=
+
+#External service 2 System Identification
+#Strings, default is null
+#Alias: Pexternal_service.system.id.2
+P32007=
+
+#External service 3 System Identification
+#Strings, default is null
+#Alias: Pexternal_service.system.id.3
+P32012=
+
+#External service 4 System Identification
+#Strings, default is null
+#Alias: Pexternal_service.system.id.4
+P32017=
+
+#External service 5 System Identification
+#Strings, default is null
+#Alias: Pexternal_service.system.id.5
+P32022=
+
+#External service 6 System Identification
+#Strings, default is null
+#Alias: Pexternal_service.system.id.6
+P32027=
+
+#External service 7 System Identification
+#Strings, default is null
+#Alias: Pexternal_service.system.id.7
+P32032=
+
+#External service 8 System Identification
+#Strings, default is null
+#Alias: Pexternal_service.system.id.8
+P32037=
+
+#External service 9 System Identification
+#Strings, default is null
+#Alias: Pexternal_service.system.id.9
+P32042=
+
+#External service 10 System Identification
+#Strings, default is null
+#Alias: Pexternal_service.system.id.10
+P32047=
+
+#External service 1 System Number
+#Strings, default is null
+#Alias: Pexternal_service.system.number.1
+P32003=
+
+#External service 2 System Number
+#Strings, default is null
+#Alias: Pexternal_service.system.number.2
+P32008=
+
+#External service 3 System Number
+#Strings, default is null
+#Alias: Pexternal_service.system.number.3
+P32013=
+
+#External service 4 System Number
+#Strings, default is null
+#Alias: Pexternal_service.system.number.4
+P32018=
+
+#External service 5 System Number
+#Strings, default is null
+#Alias: Pexternal_service.system.number.5
+P32023=
+
+#External service 6 System Number
+#Strings, default is null
+#Alias: Pexternal_service.system.number.6
+P32028=
+
+#External service 7 System Number
+#Strings, default is null
+#Alias: Pexternal_service.system.number.7
+P32033=
+
+#External service 8 System Number
+#Strings, default is null
+#Alias: Pexternal_service.system.number.8
+P32038=
+
+#External service 9 System Number
+#Strings, default is null
+#Alias: Pexternal_service.system.number.9
+P32043=
+
+#External service 10 System Number
+#Strings, default is null
+#Alias: Pexternal_service.system.number.10
+P32048=
+
+#External service 1 Access Password
+#Password, default is null
+#Alias: Pexternal_service.password.1
+P32004=
+
+#External service 2 Access Password
+#Password, default is null
+#Alias: Pexternal_service.password.2
+P32009=
+
+#External service 3 Access Password
+#Password, default is null
+#Alias: Pexternal_service.password.3
+P32014=
+
+#External service 4 Access Password
+#Password, default is null
+#Alias: Pexternal_service.password.4
+P32019=
+
+#External service 5 Access Password
+#Password, default is null
+#Alias: Pexternal_service.password.5
+P32024=
+
+#External service 6 Access Password
+#Password, default is null
+#Alias: Pexternal_service.password.6
+P32029=
+
+#External service 7 Access Password
+#Password, default is null
+#Alias: Pexternal_service.password.7
+P32034=
+
+#External service 8 Access Password
+#Password, default is null
+#Alias: Pexternal_service.password.8
+P32039=
+
+#External service 9 Access Password
+#Password, default is null
+#Alias: Pexternal_service.password.9
+P32044=
+
+#External service 10 Access Password
+#Password, default is null
+#Alias: Pexternal_service.password.10
+P32049=
+
+
+###########################
+##  Settings/Ring Tones  ##
+###########################
+
+#System Ring Cadence
+#Syntax: c=on1/ off1[- on2/ off2[- on3/ off3]](Cadence on and off are in 10 ms units)
+#String Max Length: 256
+P4040=c=2000/4000;
+
+#Call Progress Tones
+#Syntax: f1=val, f2=val[, c=on1/ off1[- on2/ off2[- on3/ off3]]](Frequencies are in Hz and cadence on and off are in 10 ms units)
+
+#Dial Tone
+#String Max Length: 256
+P4000=f1=350@-17,f2=440@-17,c=0/0;
+
+#Ringback Tone
+#String Max Length: 256
+P4001=f1=440@-17,f2=480@-17,c=2000/4000;
+
+#Busy Tone
+#String Max Length: 256
+P4002=f1=480@-21,f2=620@-21,c=500/500;
+
+#Call Waiting tone
+#String Max Length: 256
+P4005=f1=440@-13,c=300/300-300/10000;
+
+################################
+##  Settings/System Features  ##
+################################
+
+#Disable Direct IP Call. 0 - No, 1 - Yes.
+#Number: 0,1
+#Mandatory
+P277=0
+
+#User-Agent Prefix. Configure the prefix in the User-Agent header.
+#String
+P8358=
+
+###################
+##  Maintenance  ##
+###################
+
+####################################
+##  Maintenance/Firmware Upgrade  ##
+####################################
+#Firmware Upgrade
+#Use firmware pre/postfix to determine if f/w is required
+#0=Always Check for New Firmware
+#1=Check New Firmware only when F/W pre/suffix changes
+#2=Always Skip the Firmware Check
+#For Firmware only.
+#Number: 0,1,2
+#Mandatory
+P238=0
+
+#HTTP/HTTPS User Name for firmware server
+#String Max Length: 40; between ascii values 33 and 126
+P6768=
+
+#HTTP/HTTPS Password for firmware server
+#String Max Length: 40; between ascii values 33 and 126
+#Mandatory
+P6769=
+
+#Always send HTTP Basic Authentication Information. 0 - No, 1- Yes.
+#Number: 0,1. Default is 0
+#Mandatory
+P20718=0
+
+#Verify host when using HTTPS. 0 - No, 1- Yes.
+#Number: 0,1. Default is 1
+#Mandatory
+P20724=1
+
+#Upgrade via. 0 - TFTP Upgrade, 1 - HTTP Upgrade, 2 - HTTPS Upgrade.
+#Number: 0 to 2
+#Mandatory
+P6767=1
+
+#Firmware Server Path
+#String: serveraddress
+P192=fm.grandstream.com/gs
+
+#Firmware File Prefix
+#String Max Length: 32; between ascii values 33 and 126
+P232=
+
+#Firmware File Postfix
+#String Max Length: 32; between ascii values 33 and 126
+P233=
+
+#Allow DHCP Option 43 and Option 66 to override server. 0 - No, 1 - Yes. Default is 1
+#When set to Yes(1), it will override the configured provision path and method
+#Number: 0, 1
+#Mandatory
+P20719=1
+
+#Automatic Upgrade. 0 - No, 1 - Check daily, 2 - Check weekly, 3 - Check every () minutes. 4 - check for upgrade at random time. Default is No.
+#Number: 0,1,2,3,4
+#Mandatory
+P20721=0
+
+#Automatic Upgrade. Check for new firmware/config file every () minutes, unit is in minute, minimum 60 minutes, default is 7 days. P20721=3
+#Number: 60 to 5256000
+#Mandatory
+P20720=10080
+
+#Automatic Upgrade. check for provisioning at random every, unit is in day, minimum 1 day, default is 1 day. Require P20721=4
+#Number: 1 to 3650
+#Mandatory
+P27816=1
+
+#Automatic Upgrade. Daily at hour(0-23). Defines the hour of the day to check the HTTP/TFTP server for firmware upgrades. Default is 1.
+#Number: 0 to 23
+#Mandatory
+P20722=1
+
+#Automatic Upgrade. Weekly on day (0-6). 0 - Sunday, 1 - Monday. Defines the day of the week to check HTTP/TFTP server for firmware upgrades. Defalt is 1.
+#Number: 0 to 6
+#Mandatory
+P20723=1
+
+#Random Interval Start Time - Hour. Require P20721=4 to take effect.
+#0-23
+P27817=1
+
+#Random Interval Start Time - Minutes. Require P20721=4 to take effect.
+#0-59
+P27818=1
+
+#Random Interval Stop Time - Hour. Require P20721=4 to take effect.
+#0-23
+P27819=1
+
+#Random Interval Stop Time - Minutes. Require P20721=4 to take effect.
+#0-59
+P27820=1
+
+#Firmware Key (AES 128, in Hexadecimal Representation)
+#String Max Length: 32 0-9,A-Z,a-z
+P242=
+
+#Automatic Upgrade handset firmware.
+#Number: 0 - No, 1 - Yes. Default is 0 - No.
+#Mandatory
+P27740=0
+
+################################
+##  Maintenance/Provisioning  ##
+################################
+
+#XML Config File Password
+#String Max Length: 40
+#Mandatory; between ascii values 33 and 126
+P1359=
+
+#HTTP/HTTPS User Name for config server
+#String Max Length: 40; between ascii values 33 and 126
+P1360=
+
+#HTTP/HTTPS Password for config server
+#String Max Length: 40; between ascii values 33 and 126
+#Mandatory
+P1361=
+
+#Always send HTTP Basic Authentication Information. 0 - No, 1- Yes.
+#Number: 0, 1
+#Mandatory
+P20713=0
+
+#Verify host when using HTTPS. Verify host name in server certificate when using HTTPS. 0 - No, 1 - Yes.
+Number: 0, 1
+#Mandatory
+P22030=0
+
+#Provisioning via. 0 - TFTP Upgrade, 1 - HTTP Upgrade, 2 - HTTPS Upgrade.
+#Number: 0 to 2
+#Mandatory
+P212=1
+
+#Config Server Path
+#String: serveraddress
+P237=fm.grandstream.com/gs
+
+#Config File Prefix
+#String Max Length: 32; between ascii values 33 and 126
+P234=
+
+#Config File Postfix
+#String Max Length: 32; between ascii values 33 and 126
+P235=
+
+#Enable Handset Config Upgrade. Enable handset provisioning by IPEI file feature. 0 - No, 1 - Yes. Default is 0 - No.
+#Number: 0,1
+#Mandatory
+#Reboot Require
+P27014=0
+
+#Handset Config File Prefix.
+#If configured, only the handset configuration file with the matching encrypted prefix will be downloaded and flashed into the device.
+#If the file is located in a subdirectory on the provisioning server, the directory should be included here; for example "handset/ipei_".
+#String Max Length: 32
+P27015=ipei_
+
+#Handset Config File Prefix.
+#If configured, only the handset configuration file with the matching encrypted postfix will be downloaded and flashed into the device.
+#String Max Length: 32
+P27016=
+
+#Allow DHCP Option 66 to override server. 0 - No, 1 - Yes. Default is Yes.
+#When set to Yes(1), it will override the configured provision path and method.
+#Number: 0,1
+#Mandatory
+#Reboot required
+P145=1
+
+#Allow DHCP Option 120 to Override SIP Server
+#0 - No, 1 - Yes. Default is 0
+#Number: 0, 1
+#Mandatory
+P1411=0
+
+#3CX Auto Provision. 0 - No, 1 - Yes. Default is 1
+#Number: 0, 1
+#Mandatory
+P1414=1
+
+#Automatic Provisioning.
+#0 - No,
+#1 - Yes, check for provisioning based on minute(s) setting,
+#2 - Yes, check for provisioning based on Hour of Day setting,
+#3 - Yes, check for provisioning based on Day of Week setting,
+#4 - Yes, check for provisioning at random every certain days.
+#Default is No.
+#Number: 0, 1, 2, 3, 4
+#Mandatory
+P194=0
+
+#Automatic Upgrade. check for provisioning at random every, unit is in day, minimum 1 day, default is 1 day. Require P194=4
+#Number: 1 to 3650
+#Mandatory
+P27811=1
+
+#Automatic Provisioning. Check for new config file every () minutes. Default is 7 days.
+#Number: 60-86400
+#Mandatory
+P193=10080
+
+#Automatic Provisioning. Hour of the Day (0-23). Defines the hour of the day to check the HTTP/TFTP server for configuration file changes. Default is 1.
+#Number: 0 - 23
+P285=1
+
+#Automatic Provisioning. Day of the Week (0-6). Defines the day of the week to check HTTP/TFTP server for configuration file changes. Default is 1.
+#Number: 0-6
+P286=1
+
+#Random Interval Start Time - Hour. Require P194=4 to take effect.
+#0-23
+P27812=1
+
+#Random Interval Start Time - Minutes. Require P194=4 to take effect.
+#0-59
+P27813=1
+
+#Random Interval Stop Time - Hour. Require P194=4 to take effect.
+#0-23
+P27814=1
+
+#Random Interval Stop Time - Minutes. Require P194=4 to take effect.
+#0-59
+P27825=1
+
+#Authenticate Conf File. 0 - No, 1 - Yes. Default is No
+#Number: 0, 1
+#Mandatory
+P240=0
+
+#Download and Process ALL Available Config Files. 0 - No, 1 - Yes. Default is No
+#By default, device will provision the first available config in the order of cfgMAC, cfgMAC.xml,
+#cfgMODEL.xml, and cfg.xml (corresponding to device specific, model specific, and global configs).
+#If set to Yes, device will download and apply (overwrite) all available configs in the same order.
+#Number: 0, 1
+#Mandatory
+P8467=0
+
+##################################
+##  Maintenance/Web/SSH Access  ##
+##################################
+
+#User Password
+#P196=123
+
+#Admin password
+#String Max Length: 30; between ascii values 33 and 126
+#Mandatory
+#P2=admin
+
+#White list for WAN side. Only the IP address in white list can access Web and Telnet.
+#String ipaddress
+P20701=
+
+#Black list for WAN side. The IP address in black list can not access Web or Telnet
+#String ipaddress
+P20701=
+
+############################
+##  Maintenance/TR - 069  ##
+############################
+
+#Enable TR-069. 0 - No, 1 - Yes. Default is 0.
+#Number: 0, 1
+#Mandatory
+P1409=0
+
+#ACS URL. URL of the TR-069 Auto Configuration Servers (e.g., http://acs.mycompany.com, or IP address).
+#String
+#P4503=
+
+#ACS Username. ACS username for TR-069.
+#String
+P4504=
+
+#ACS Password. ACS password for TR-069.
+#String
+P4505=
+
+#Periodic Inform Enable. 0 - No, 1 - Yes. Default is 0
+#Number: 0, 1
+#Mandatory
+P4506=0
+
+#Periodic Inform Interval. Default is 300.
+#Number
+P4507=300
+
+#Connection Request Username
+#String: a-z, A-Z, 0-9
+P4511=
+
+#Connection Request Password
+#String: a-z, A-Z, 0-9
+P4512 =
+
+######################################################
+##  Maintenance/Security Settings/Web/SSH Settings  ##
+######################################################
+
+#HTTP Web Port. Default HTTP port is 80.
+#Number: 1 to 65535
+#Mandatory
+#Reboot required
+P901=80
+
+#HTTPS Web Port. Default HTTPS port is 443.
+#Number: 1 to 65535
+#Mandatory
+#Reboot required
+P27010=443
+
+#Web Access Mode. 0 - HTTPS, 1 - HTTP. Default is 1 - HTTP.
+#Number: 0, 1
+#Mandatory
+#Reboot required
+P1650=1
+
+#Disable SSH. 0 - No, 1 - Yes. Default is 0.
+#Number: 0,1
+#Mandatory
+P276=0
+
+#SSH Port. Port for SSH access. Default is 22.
+#Number:
+P27006=22
+
+#SSH Idle Timeout. SSH Idle Timeout in seconds(1-86400). Default is 60 seconds.
+#Number: 1-86400
+P28163=60
+
+#############################################
+##  Maintenance/Security Settings/SIP TLS  ##
+#############################################
+
+#SIP TLS Certificate
+#String
+#P280=
+
+#SIP TLS Private Key
+#String
+#P279=
+
+#SIP TLS Private Key Password
+#String
+#Max Length: 64 characters
+P281= s1pphone
+
+############################################
+##  Maintenance/Security Settings/Radius  ##
+############################################
+
+#Primary RADIUS Server
+#P4550=
+
+#Primary RADIUS Auth Port (default 1812).
+#Number: 1 to 65535
+#Mandatory
+P4551=1812
+
+#Primary RADIUS Acct Port (default 1813).
+#Number: 1 to 65535
+#Mandatory
+P4552=1813
+
+#Primary RADIUS Server Secret
+#String Max Length: 32
+#Mandatory
+P4553=
+
+#Secondary RADIUS Server
+#P4554=
+
+#Secondary RADIUS Auth Port (default 1812).
+#Number: 1 to 65535
+#Mandatory
+P4555=1812
+
+#Secondary RADIUS Acct Port (default 1813).
+#Number: 1 to 65535
+#Mandatory
+P4556=1813
+
+#Secondary RADIUS Server Secret
+#String Max Length: 32
+#Mandatory
+P4557=
+
+#RADIUS Timeout (default 2).
+#Number: 1 to 65535
+#Mandatory
+P4558=2
+
+#RADIUS Retry (default 3).
+#Number: 1 to 65535
+#Mandatory
+P4559=3
+
+########################################################################
+##  Maintenance/Security Settings/Device Custom Certificate Settings  ##
+########################################################################
+
+#Device Custom Certificate. Certificate used by device during provisioning and web access, default is null
+#Strings: maximum length 2048
+P27776=
+
+#Device Custom Private Key. Key used by device during provisioning and web access, default is null
+#Strings: maximum length 2048
+P27775=
+
+#Enable Device Custom Certificate. 0 - no, 1 - yes. Default value is 0 - no.
+#Number: 0,1
+#Mandatory
+P27777=0
+
+##############################################
+##  Maintenance/Security Settings/Security  ##
+##############################################
+
+#Validate Server Certificates. 
+#Number: 0, 1. 0 - No, 1 - Yes. Default is 0 - No.
+#P8463=0
+
+#Trusted CA Certificates. Customer can upload the CA from web UI directly, or set the CA content as the P values to provision.
+#String
+#Certificate 1 - 6:
+#P8433=
+#P8434=
+#P8435=
+#P8436=
+#P8437=
+#P8438=
+
+#Load CA Certificates. Configure what type of CA will the device used to verify the server certificate.
+#Number: 0, 1, 2. 0 - Default Certificates, 1 - Custom Certificate, 2 - All Certificate. Default is 2 - All Certificate
+#P8502=2
+
+#SSH Idle Timeout. SSH Idle Timeout in seconds(1-86400). Default is 60 seconds.
+#Number: 1-86400
+#P28163=60
+
+#################################
+##  Maintenance/Date and Time  ##
+#################################
+
+#NTP Server
+#String: serveraddress
+P30=us.pool.ntp.org
+
+#NTP Update Interval in minutes(5-1440)(Default is set to 60 minutes)
+#Number: 5 to 1440
+#Mandatory
+P5005=60
+
+#Allow DHCP Option 42 to NTP Server. (If DHCP Option 42 is enabled, the NTP server can be changed.)
+#Number: 0, 1
+#Mandatory
+P144=1
+
+#Time Zone. Offset in minutes to GMT
+#<value="TZA+12"> GMT-12:00 </option>
+#<value="TZB+11"> GMT-11:00 </option>
+#<value="TZC+10"> GMT-10:00 </option>
+#<value="TZD+9"> GMT-09:00 </option>
+#<value="TZE+8"> GMT-08:00 </option>
+#<value="TZF+7"> GMT-07:00 </option>
+#<value="TZG+6"> GMT-06:00 </option>
+#<value="TZH+5"> GMT-05:00 </option>
+#<value="TZf+4:30"> GMT-04:30 </option>
+#<value="TZI+4"> GMT-04:00 </option>
+#<value="TZJ+3:30"> GMT-03:30 </option>
+#<value="TZK+3"> GMT-03:00 </option>
+#<value="TZL+2"> GMT-02:00 </option>
+#<value="TZM+1"> GMT-01:00 </option>
+#<value="TZN+0"> GMT </option>
+#<value="TZO-1"> GMT+01:00 </option>
+#<value="TZP-2"> GMT+02:00 </option>
+#<value="TZQ-3"> GMT+03:00 </option>
+#<value="TZR-4"> GMT+04:00 </option>
+#<value="TZS-5"> GMT+05:00 </option>
+#<value="TZT-5:30"> GMT+05:30 </option>
+#<value="TZU-5:45"> GMT+05:45 </option>
+#<value="TZV-6"> GMT+06:00 </option>
+#<value="TZW-6:30"> GMT+06:30 </option>
+#<value="TZX-7"> GMT+07:00 </option>
+#<value="TZY-8"> GMT+08:00 </option>
+#<value="TZZ-9"> GMT+09:00 </option>
+#<value="TZa-9:30"> GMT+09:30 </option>
+#<value="TZb-10"> GMT+10:00 </option>
+#<value="TZc-11"> GMT+11:00 </option>
+#<value="TZd-12"> GMT+12:00 </option>
+#<value="TZe-13"> GMT+13:00 </option>
+#<value="customize"> Self-Defined Time Zone </option>
+#Mandatory Category: string Max Length: 9 Range0: Min=a Max=z Range1: Min=A Max=Z Range2: Min=+ Max=:
+P64=customize
+
+#Self-Defined Time Zone
+#String Max Length: 32 a-z, A-Z, +,:
+P246=MTZ+6MDT+5,M3.2.0,M11.1.0
+
+#Allow DHCP Option 2 to override time zone (If DHCP Option 2 is enabled, the timezone can be offset.)
+#Number: 0, 1
+#Mandatory
+P143=1
+
+###########################################################
+##  Maintenance/Date and Time/Custom Time Zone Settings  ##
+###########################################################
+
+#Custom Time Zones. Enable/Disable Custom Time Zones
+#Number: 0, 1. 0 - Disabled, 1 - Enabled
+#Mandatory
+P27828=0
+
+#UTC Offset. Offset is negative for time zone (by week) following UTC and positive for time zone leading UTC(-12 to +14)
+#Number: -12 to +14
+P27830=0
+
+#Second Offset. Offset for second time zone (by day). Offset is negative for time zone following UTC and positive for time zone leading UTC(-12 to +14)
+P27837=0
+
+#DST Type. Set Daylight Savings Time by day or by week
+#Number: 0, 1. 0 - by week, 1 - by day
+P27829=0
+
+#Start & End Times for the time zone.
+#Start Hour
+P27832=2
+#Start Minute
+P27833=0
+
+#End Hour
+P27839=2
+#End Minute
+P27840=0
+
+###Time zone settings by week
+#Start & End Months
+#Number: 1-12
+P27831=4
+P27838=9
+
+#Start & End settings by week
+#Number:
+#Start Weekday
+P27834=0
+#Start Week
+P27835=1
+
+#End Weekday
+P27841=0
+#End Week
+P27842=1
+
+##Time zone settings by day
+#Start settings by day
+P27836=1
+#End settings by day
+P27843=1
+
+######################################################
+##  Maintenance/Date and Time/Manual Time Settings  ##
+######################################################
+#Manual Time
+#Number: 0, 1; 0 - Disabled, 1 - Enabled, default is 0.
+#Alias: maintenance.date_time.enable_manual_time
+P27821=0
+
+#Year.
+#Number: 2016-2037
+#Alias: maintenance.date_time.manual_time_year
+P27823=2019
+
+#Month.
+#Number: 1-12
+#Alias: maintenance.date_time.manual_time_month
+P27824=1
+
+#Day.
+#Number: 1-31
+#Alias: maintenance.date_time.manual_time_day
+P27825=1
+
+#Hour.
+#Number: 0-23
+#Alias: maintenance.date_time.manual_time_hour
+#P27826=0
+
+#Minute.
+#Number: 0-59
+#Alias: maintenance.date_time.manual_time_minute
+P27827=0
+
+##########################
+##  Maintenance/Syslog  ##
+##########################
+
+#Syslog Protocol. (0 - UDP, 1 - SSL/TLS. Default is UDP). Allow sending syslog throught secured TLS protocol to syslog server. Note: CA verification is required.
+#Number: 0,1
+#Mandatory
+P8402=0
+
+#Syslog Server (name of the server, max length is 64 charactors)
+#String: serveraddress
+P207=
+
+#Syslog Level (Default setting is NONE)
+#0 - NONE, 1 - DEBUG, 2 - INFO, 3 - WARNING, 4 - ERROR, 5 - EXTRA DEBUG
+#Number: 0,1,2,3,4,5
+#Mandatory
+P208=0
+
+#Syslog Keyword Filtering.
+#Syslog will be filtered based on keywords provided. If you enter multiple keywords, it should be separated by ','. Please Note: no spaces allowed.
+#String
+P22129=
+
+#Send SIP Log (0 - No, 1 - Yes, Default set to No)
+#Number: 0,1
+P1387=0
+
+##################################
+##  Maintenance/Packet Capture  ##
+##################################
+
+#With RTP Packets. 0 - No, 1 - Yes. Default is 0
+#Number: 0, 1
+#Mandatory
+P6007=0
+
+#################################
+##  Maintenance/Factory Reset  ##
+#################################
+
+#Web UI Reset Button reset type.
+#Number:0,3,4
+#Mandatory
+# 0 - Full Factory Reset: This will reset all the settings.
+# 3 - NVRAM Settings Only: This will reset all the settings except subscription information.
+# 4 - DECT Settings Only: This will reset only the subscription but keep all the other settings.
+P27766=0
+
+#Hardware Reset Button reset type.
+#Number:0,3,4,1
+#Mandatory
+# 0 - Full Factory Reset: This will reset all the settings.
+# 3 - NVRAM Settings Only: This will reset all the settings except subscription information.
+# 4 - DECT Settings Only: This will reset only the subscription but keep all the other settings.
+# 1 - Disabled: This will disable the hardware reset button.
+P88=0
+
+
+
+#######################################
+##  Maintenance/Support/Debug Tools  ##
+#######################################
+
+#Agree to Terms?
+#Check to agree with the Terms & Conditions to submit core dump files to Grandstream.
+#Number: 0, 1.   0 - No, 1 - Yes, allow sending of crash logs to Grandstream.
+#P27751=0
+
+#Contact email address for core dump files
+#Strings of email address
+#P27774=
+
+#Prompt Handsets After Recovery? 0 - No, 1 - Yes. Default is 0
+#Enables handset notification of debug file availability after recovery.
+#Number: 0, 1
+#Mandatory
+P27753=0
+
+#################
+##  Phonebook  ##
+#################
+
+#######################################
+##  Phonebook/Global Phonebook Type  ##
+#######################################
+
+#Global Phonebook Type. Select type of global phonebook to use. XML is stored locally on the base station, LDAP is stored remotely. 0 - XML, 1 - LDAP. Default is 0 - XML.
+#The Global Phonebook XML Settings and Phonebook/Global Phonebook LDAP Settings are depend on this settings.
+#If this is set to XML, then all Global Phonebook XML Settings will take effect while all the LDAP settings will be ignored.
+#If this is set to LDAP, then all the Global Phonebook LDAP Settings will take effect while all the XML settings will be ignored.
+#Number: 0, 1
+P27002=0
+
+###############################################
+##  Phonebook/Global Phonebook XML Settings  ##
+###############################################
+
+#Enable Phonebook XML Download. # 0 - No, 1 - YES, HTTP, 2 - YES, TFTP, 3 - Yes, HTTPS. Default is 0
+#Number: 0, 1, 2, 3
+#Mandatory
+P330=0
+
+#HTTP/HTTPS User Name
+#String
+P6713
+
+#HTTP/HTTPS Password
+#String
+P6714
+
+#Phonebook XML Server Path
+#This is a string of up to 256 characters that should contain a path to the XML file. It MUST be in the host/path format.
+#For example: directory.grandstream.com/engineering
+#String
+P331=
+
+#Phonebook Download Interval (in minutes)
+#Valid value range is 5-720. Default is 0 for disabled
+#Number: 0, 5-720; 
+P332=0
+
+################################################
+##  Phonebook/Global Phonebook LDAP Settings  ##
+################################################
+
+#LDAP protocol. 0 - LDAP, 1 - LDAPS
+#Number: 0,1
+#Mandatory
+P8037 = 0
+
+#LDAP Server Address, up to 256 characters can be used. It can be IP address or Domain name
+#String
+P8020= 
+
+#LDAP Server Port. Default is 389.
+#Number: 1 - 65535
+P8021=389
+
+#Base. The LDAP search base refers to the location in the directory where the search is requested to begin
+#Example 1: dc=grandstream,dc=com
+#Example 2: ou=Boston, dc=grandstream,dc=com
+#String
+P8022=
+
+#User name. The bind "Username" for querying LDAP servers. Some LDAP servers allow anonymous binds in which case the setting can be left blank
+#String
+P8023=
+
+#Password. The bind "Password" for querying LDAP servers. And the field can be left blank if the LDAP server allows anonymous binds
+#String
+P8024=
+
+#LDAP Number Filter
+#LDAP name filter is the filter used for name look ups. Please refer to user manual for examples
+#String
+P27806=
+
+#LDAP Version. Protocol version for the phone when send the bind requests
+#2 - version 2, 3 - version 3. Default is 3
+#Mandatory
+P8027= 3
+
+#First Name Attribute. Specifies which LDAP attribute represents the contact's first name. Must be in name attributes on LDAP server.
+#String
+P27800=
+
+#Last Name Attribute. Specifies which LDAP attribute represents the contact's last name. Must be in name attributes on LDAP server.
+#String
+P27801=
+
+#Work Number Attribute. Specifies which LDAP attribute represents the contact's work number. Must be in number attributes on LDAP server.
+#String
+P27803=
+
+#Home Number Attribute. Specifies which LDAP attribute represents the contact's home number. Must be in number attributes on LDAP server.
+#String
+P27804=
+
+#Mobile Number Attribute. Specifies which LDAP attribute represents the contact's mobile number. Must be in number attributes on LDAP server.
+#String
+P27805=
+
+#Max Hits. The setting specifies the maximum number of results to be returned by the LDAP server
+#If the value is set to 0, server will return all search results. Default is 500
+#Number: 0 - 32000
+#Mandatory
+P8031=500
+
+#Search Timeout (in seconds). Default is 30
+#The setting specifies how long the server should process the request and client waits for server to return
+#Number: 0 - 180
+#Mandatory
+P8032=30
+
+#########################################################
+##  Phonebook/Global Phonebook Broadsoft XSI Settings  ##
+#########################################################
+#Global Phonebook Type (Added option 2 - XSI)
+#Number: 0, 1, 2. 0 - XML, 1 - LDAP, 2 - XSI
+P27002=0
+
+#XSI Server. Broadsoft XSI Server address with protocol.
+#String
+P1591=
+
+#XSI Port. Port of the Broadsoft XSI server
+#Number: 1 - 65535
+P1591=80
+
+#XSI Actions Path. If it is empty, the path "com.broadsoft.xsi-actions" will be used
+#String
+P2937=
+
+#XSI Authentication Type
+P22054
+
+#Login Username
+#String
+P1593=
+
+#Login Password
+#String
+P1594=
+
+#SIP User Name
+#String
+P6772=
+
+#SIP User ID
+#String
+P22034=
+
+#SIP Password
+#String
+#P6773=
+
+
+#Enable or disable Group Directory
+#Number: 0, 1. 0 - Disabled, 1 - Enabled.
+P2971=0
+
+##Name of Group Directory
+#String
+P2972=
+
+#Enable or disable Enterprise Directory
+#Number: 0, 1. 0 - Disabled, 1 - Enabled.
+P2973=0
+
+#Name of Enterprise Directory
+#String
+P2974=
+
+#Enable or disable Group Common
+#Number: 0, 1. 0 - Disabled, 1 - Enabled.
+P2975=0
+
+#Name of Group Common
+#String
+P2976=
+
+#Enable or disable Enterprise Common
+#Number: 0, 1. 0 - Disabled, 1 - Enabled.
+P2977=0
+
+#Name of Enterprise Common
+#String
+P2978=
+
+#Enable or disable Personal Directory
+#Number: 0, 1. 0 - Disabled, 1 - Enabled.
+P2979=0
+
+#Name of Personal Directory
+#String
+P2980=
+
+############################################
+##  Phonebook/Private Phonebook Settings  ##
+############################################
+
+#Phonebook 1 Name. Default is PB1
+#String
+P27060=PB1
+
+#Phonebook 2 Name. Default is PB2
+#String
+P27061=PB2
+
+#Phonebook 3 Name. Default is PB3
+#String
+P27062=PB3
+
+#Phonebook 4 Name. Default is PB4
+#String
+P27063=PB4
+
+#Phonebook 5 Name. Default is PB5
+#String
+P27064=PB5

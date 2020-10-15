@@ -1,0 +1,105 @@
+####################################################################
+## GXV3350 Change Log                                             ##
+####################################################################
+####################################################################
+# P Values Added since 1.0.3.17                                   ##
+####################################################################
+# Added Account -> General Setting -> Register Before DNS SRV Fail-over
+# P29095,29195,29295,29395,29495,29595,53695,53795,53895,53995,54095,54195,54295,54395,54495,54595
+# Alias: <item name="account.1.network.dnsSRVRegisterBeforeFailover">No</item>
+
+# Updated Account -> SIP Settings -> Add MAC in User-Agent and Use MAC Header options
+
+# Added Account -> Call Settings -> Enable Video Call.
+P60343, 60143,60243,60343,60443,60543,60643,60743,60843,60943,61043,61143,61243,61343,61443, 61543
+# Alias: <item name="account.1.call.video.enable">Default</item>
+
+# Added Account -> Call Settings -> Enable Call Waiting
+# P26063,26163,26263,26363,26463,26563,52663,52763,52863,52963,53063,53163,53263,53363,53463,53563
+# Alias: <item name="account.1.call.callWaiting">Default</item>
+
+# Added options to Account -> Advanced Settings -> Special Features
+# 122 - Metaswitch, 129 - Telefonica Spain
+
+# Added Phone Settings -> Call Settings -> Attended Conference
+# P22346
+# Alias: <item name="call.attendedconf.enable">No</item>
+
+# Added Phone Settings -> Call Settings -> Default Phone APP
+# P22289
+
+# Phone Settings -> Call Settings -> Quickly Launch Specified APP.
+# P22276
+# Alias: <item name="call.thirddialer.packagename"></item>
+
+# Added Return Code When Refusing Incoming Call. 0 - Busy, 1 - TemporarilyUnavailable, 2 - NotFound, 3 - Declined. Default is 0
+# P8360
+# Alias: <item name="sip.returnCode.callReject">Busy</item>
+
+# Added Return Code When Enable DND. 0 - Busy, 1 - TemporarilyUnavailable, 2 - NotFound, 3 - Declined. Default is 0
+# P8361
+# Alias: <item name="sip.returnCode.dnd">Busy</item>
+
+# Added Group Listen with Speaker. 0 - No, 1 - Yes. Default is 0.
+# P22163
+# Alias: <item name="call.grouplistenwithspeaker.enable">No</item>
+
+# Added DNS Refresh Time (m). Default 0.
+# P4208
+# Alias: <item name="network.dns.refreshTime">0</item>
+
+# DNS Failure Cache Duration (m).  Default 0.
+# P28160
+# Alias: <item name="network.dns.failureCacheDuration">0</item>
+
+# Added Action URI Support. 0 - No, 1 - Yes. Default is 1
+# P32050
+# Alias: <item name="remoteControl.enable">Yes</item>
+
+# Added Remote Control Pop up Window Support. 0 - No, 1 - Yes. Default is 1
+# P32051
+# Alias: <item name="remoteControl.confirmWindow.enable">Yes</item>
+
+# Added Action URI Allow IP List
+# P32052
+# Alias: <item name="remoteControl.allowList"></item>
+
+# Added Ringtone volume
+# P8352
+# Alias: <item name="audio.volume.ring">7</item>
+
+# Added Media volume
+# P43025
+# Alias: <item name="audio.volume.media">7</item>
+
+# Added Alarm volume
+# P22332
+# Alias: <item name="audio.volume.alarm">7</item>
+
+# Added Call volume
+# P22317
+# Alias: <item name="audio.volume.call">4</item>
+
+# Added Display Open Door Button when Calling
+# P22316=0
+# Alias: <item name="externalService.general.doorButton.display">Yes</item>
+
+# Added Enable Preview
+# P22357=1
+# Alias: <item name="externalService.general.preview.enable">Yes</item>
+
+####################################################################
+# P Values Added since 1.0.3.13                                   ##
+####################################################################
+# Updated RTP timeout (s) valid range to 0 or 6 to 600.
+####################################################################
+# P Values Added since 1.0.1.8                                    ##
+####################################################################
+# Updated Record Mode. 0 - Locally, 1 - on PortaOne, 2 - on UCM, 3 - on Broadsoft, 4, Disabled. Default is 0.
+
+# Added Country Code. Default is US.
+# String
+# P7831=US
+# Alias: <item name="wifi.countrycode">US</item>
+
+# Broadsoft IM&P and Directories page settings are temporarily unavailable.

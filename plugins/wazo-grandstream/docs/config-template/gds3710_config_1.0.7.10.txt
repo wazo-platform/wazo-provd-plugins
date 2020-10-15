@@ -1,0 +1,1909 @@
+################################################################################################
+##                General Configuration Template for GDS3710 Door System         			  ##
+##                        (Firmware Version:   1.0.7.10)                                      ##
+################################################################################################
+
+################################################################################################
+##                              Door System Settings                                          ##
+################################################################################################
+
+	##### ALMOUT1 Feature #####
+	## P15450
+	## value: 0/1 (0:Alarm Output  1:Open Door)
+	
+	##### ALMOUT1 Status #####
+	## P15470
+	## value: 0/1 (0:Normal Close	1:Normal Open)
+	
+	##### Control Options #####
+	## P15467
+	## value: 0/1/2/3 (0:Door 1  1:Door 2  2:Door 1 & Door 2  3:None)
+	
+	##### Wiegand Control Options #####
+	## P15468
+	## value: 0/1/2/3 (0:Door 1  1:Door 2  2:Door 1 & Door 2  3:None)
+	
+	##### Delay before Unlock(s) #####
+	## P14100
+	## value: 0 - 20 (Integer)
+	
+	##### Delay before Unlock(s) (For the second door)#####
+	## P15465
+	## value: 0 - 20 (Integer)
+	
+	##### Unlock Holding Time(s) #####
+	## P14101
+	## value: 1 - 1800 (Integer)
+	
+	##### Unlock Holding Time(s) (For the second door)#####
+	## P15466
+	## value: 1 - 1800 (Integer)
+	
+	##### Min. Interval of Swiping Card(ms) #####
+	## P14829
+	## value: 0 - 2000 (Integer)
+	
+	##### Number of Snapshots when Door Opened #####
+	## P15474
+	## value: 0 - 4 and no more than 'Unlock Action Holding Time' value (Integer)
+	
+	##### Number of Snapshots when Door Opened (For the second door) #####
+	## P15475
+	## value: 0 - 4 and no more than 'Unlock Action Holding Time (For the second door)' value (Integer)
+	
+	##### Snapshot when Door Opened -- via FTP  #####
+	## P14103
+	## value: 0/1 (0:Disable  1:Enable)
+	
+	##### Snapshot when Door Opened -- via Enail  #####
+	## P15471
+	## value: 0/1 (0:Disable  1:Enable)
+	
+	##### Snapshot when Doorbell Pressed -- via FTP #####
+	## P15420
+	## value: 0/1 (0:Disable  1:Enable)
+	
+	##### Snapshot when Doorbell Pressed -- via Email #####
+	## P15409
+	## value: 0/1 (0:Disable  1:Enable)
+	
+	##### Call Mode #####
+	## P14856
+	## value: 0/1 (0:Virtual Number 1:SIP Number)
+	
+	##### Doorbell Mode #####
+	## P14827
+	## value: 0/1/2 (0:Call Doorbell Number 1:Control Doorbell Output 2:Both of the above)
+	
+	##### Door Bell Call Mode #####
+	## P15434
+	## value: 0/1 (0:Serial Hunting 1:Parallel Hunting)
+
+	##### Number Called When Door Bell Pressed #####
+	## P10462
+	## value: A pure digital string. Example: 6688
+	
+	##### Maximum Number of Dialed Digits #####
+	## P15419
+	## value: 0 - 20 (Integer)	Default 0
+	
+	##### No Key Input Timeout(s) #####
+	## P15436
+	## value: 1 - 15  (Integer)
+	
+	##### Press Doorbell Schedule #####
+	## P15418
+	## value: 0 - 10 profile. (Integer) Default 0
+	
+	##### Remote PIN to Open the Door #####
+	## P10457
+	## value: A pure digital string, MAX length is 8. Example: 6688
+	
+	##### Remote PIN to Open the Door (For the second door)#####
+	## P15460
+	## value: A pure digital string, MAX length is 8. Example: 6688
+	
+	##### Local PIN Type #####
+	## P10464
+	## value: 0/1/2 (0:Private Card PIN  1:Unified PIN  2:Card + Private PIN)
+	
+	##### Unified PIN Open Door Options #####
+	## P15461
+	## value: 0/1/2/3 (0:Door 1  1:Door 2  2:Door 1 & Door 2  3:None)
+	
+	##### Local PIN to Open the Door #####
+	## P10463
+	## value: A pure digital string, MAX length is 8. Example: 6688
+	
+	##### Enable Guest PIN #####
+	## P14850
+	## value: 0/1 (0:Disable  1:Enable)
+
+	##### Guest PIN #####
+	## P14851
+	## value: A pure digital string, MAX length is 8. Example: 6688
+	
+	##### Guest PIN Open Door Options #####
+	## P15462
+	## value: 0/1/2/3 (0:Door 1  1:Door 2  2:Door 1 & Door 2  3:None)
+	
+	##### Guest PIN Duration Start Time #####
+	## P14852
+	## value: A pure digital string, Example: 2017/02/28 02:31:56 value:20170228023156
+	
+	##### Guest PIN Duration End Time #####
+	## P14853
+	## value: A pure digital string, Example: 2017/02/28 02:31:56 value:20170228023156
+	
+	##### Disable Auto Answer #####
+	## P14580
+	## value: 0/1 	(0:Disable  1:Enable)
+	
+	##### Enable Doorbell Button to Hang Up Call #####
+	## P14582
+	## value: 0/1 	(0:Disable  1:Enable)
+	
+	##### Disable Keypad (except Doorbell Button) #####
+	## P15421
+	## value: 0/1 	(0:Disable  1:Enable)
+	
+	##### Enable On Hook After Remote Unlock #####
+	## P15422
+	## value: 0/1 	(0:Disable  1:Enable)
+	
+	##### Enable HTTP API Remote Open Door #####
+	## P15424
+	## value: 0/1 	(0:Disable  1:Enable  default 0)
+	
+	##### Open Door IDCode Valid Time #####
+	## P15428
+	## value: 5 - 300 (s) . (Integer)  Default 30
+	
+	##### Enable DTMF Open Door #####
+	## P14858
+	## value: 0/1 	(0:Disable  1:Enable)
+	
+	##### Card Issuing Mode Effective Time #####
+	## P15423
+	## value: 1 - 1440 (Integer)
+	
+	##### Enable Key Blue Light #####
+	## P14800
+	## value: 0/1 	(0:Disable  1:Enable)
+	
+	##### Enable Background Light #####
+	## P14801
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Enable Blue Doorbell Light #####
+	## P14562
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Blue Doorbell Light Lighting Start Time #####
+	## P14560
+	## value: A pure digital string, MAX length is 6. Example: 125900 -> 12:59:00
+	
+	##### Blue Doorbell Light Lighting End Time #####
+	## P14561
+	## value: A pure digital string, MAX length is 6. Example: 125900 -> 12:59:00
+	
+	##### Enable Blue Keypad Light #####
+	## P15500
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Blue Keypad Light Lighting Start Time #####
+	## P15501
+	## value: A pure digital string, MAX length is 6. Example: 125900 -> 12:59:00
+	
+	##### Blue Keypad Light Lighting End Time #####
+	## P15502
+	## value: A pure digital string, MAX length is 6. Example: 125900 -> 12:59:00
+	
+	##### Central Mode #####
+	## P15301
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Key Tone Type #####
+	## P14340
+	## value: 0/1/2	(0:Default 1:DTMF 2:Mute)
+
+	##### Wiegand Input Enable #####
+	## P14120
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Wiegand Output #####
+	## P14121
+	## value: 0/1/2	(0:Disabled  1:Relay and  Local Authentication  2:Relay and Bypass Local)
+	
+	######################################  Keep Door Open   ######################################
+	##### Keep Door Open #####
+	## P15429
+	## value: 0: Disable  1:Immediate Open Door  2:Schedule Open Door
+	
+	##### Emergency PIN to Disable Keep Door Open #####
+	## P15435
+	## value: Digital string. Max.Length=8
+	
+	##### Length(m) to Keep Door Open #####
+	## P15430
+	## value: 5 - 480	(Integer)
+	
+	##### Schedule Start Time #####
+	## P15211
+	## value: Digital string. Example:20180516000000
+	
+	##### Schedule End Time #####
+	## P15212
+	## value: Digital string. Example:20180516000000
+	
+	##### Holiday Mode #####
+	## P15506
+	## value: 0 - 10
+	
+	##### Schedule Table #####
+	## P15213
+	## value: string. Format:door_sch,0@start_time@end_time,  Example:door_sch,0@0000@2359,
+	
+	
+	##### Keep Door Open (For the second door)#####
+	## P15455
+	## value: 0: Disable  1:Immediate Open Door  2:Schedule Open Door
+	
+	##### Emergency PIN to Disable Keep Door Open (For the second door) #####
+	## P15472
+	## value: Digital string. Max.Length=8
+	
+	##### Length(m) to Keep Door Open(min) (For the second door)#####
+	## P15456
+	## value: 5 - 480	(Integer)
+	
+	##### Schedule Start Time (For the second door)#####
+	## P15457
+	## value: Digital string. Example:20180516000000
+	
+	##### Schedule End Time (For the second door)#####
+	## P15458
+	## value: Digital string. Example:20180516000000
+	
+	##### Holiday Mode #####
+	## P15507
+	## value: 0 - 10
+	
+	##### Schedule Table (For the second door)#####
+	## P15459
+	## value: string. Format:door_sch,0@start_time@end_time,  Example:door_sch,0@0000@2359,
+
+	######################################  Group Settings   ######################################
+	##### Group string #####
+	## P15300
+	## value: Format:index@scheduleX@name. Example:1@1@info,2@1@test,
+	
+	
+	######################################  Schedule Settings   ######################################
+	##### Schedule string 0 #####
+	## P15200
+	## value: Format: name@holiday_mode,weekday@start_time@end_time,weekday@start_time@end_time,
+	## Example: rest@0,0@1200@1300,
+	
+	##### Schedule string 1 #####
+	## P15201
+	## value: Format: name@holiday_mode,weekday@start_time@end_time,weekday@start_time@end_time,
+	## Example: rest@0,0@1200@1300,
+	
+	##### Schedule string 2 #####
+	## P15202
+	## value: Format: name@holiday_mode,weekday@start_time@end_time,weekday@start_time@end_time,
+	## Example: rest@0,0@1200@1300,
+	
+	##### Schedule string 3 #####
+	## P15203
+	## value: Format: name@holiday_mode,weekday@start_time@end_time,weekday@start_time@end_time,
+	## Example: rest@0,0@1200@1300,
+	
+	##### Schedule string 4 #####
+	## P15204
+	## value: Format: name@holiday_mode,weekday@start_time@end_time,weekday@start_time@end_time,
+	## Example: rest@0,0@1200@1300,
+	
+	##### Schedule string 5 #####
+	## P15205
+	## value: Format: name@holiday_mode,weekday@start_time@end_time,weekday@start_time@end_time,
+	## Example: rest@0,0@1200@1300,
+	
+	##### Schedule string 6 #####
+	## P15206
+	## value: Format: name@holiday_mode,weekday@start_time@end_time,weekday@start_time@end_time,
+	## Example: rest@0,0@1200@1300,
+	
+	##### Schedule string 7 #####
+	## P15207
+	## value: Format: name@holiday_mode,weekday@start_time@end_time,weekday@start_time@end_time,
+	## Example: rest@0,0@1200@1300,
+	
+	##### Schedule string 8 #####
+	## P15208
+	## value: Format: name@holiday_mode,weekday@start_time@end_time,weekday@start_time@end_time,
+	## Example: rest@0,0@1200@1300,
+	
+	##### Schedule string 9 #####
+	## P15209
+	## value: Format: name@holiday_mode,weekday@start_time@end_time,weekday@start_time@end_time,
+	## Example: rest@0,0@1200@1300,
+	
+	
+	######################################  Holiday Settings   ######################################
+	##### Holiday string 1 #####
+	## P15250
+	## value: Format: name,start_date@end_date, Example: hahaha,20170708@20170910,
+	
+	##### Holiday string 2 #####
+	## P15251
+	## value: Format: name,start_date@end_date, Example: hahaha,20170708@20170910,
+	
+	##### Holiday string 3 #####
+	## P15252
+	## value: Format: name,start_date@end_date, Example: hahaha,20170708@20170910,
+	
+	##### Holiday string 4 #####
+	## P15253
+	## value: Format: name,start_date@end_date, Example: hahaha,20170708@20170910,
+	
+	##### Holiday string 5 #####
+	## P15254
+	## value: Format: name,start_date@end_date, Example: hahaha,20170708@20170910,
+	
+	##### Holiday string 6 #####
+	## P15255
+	## value: Format: name,start_date@end_date, Example: hahaha,20170708@20170910,
+	
+	##### Holiday string 7 #####
+	## P15256
+	## value: Format: name,start_date@end_date, Example: hahaha,20170708@20170910,
+	
+	##### Holiday string 8 #####
+	## P15257
+	## value: Format: name,start_date@end_date, Example: hahaha,20170708@20170910,
+	
+	##### Holiday string 9 #####
+	## P15258
+	## value: Format: name,start_date@end_date, Example: hahaha,20170708@20170910,
+	
+	##### Holiday string 10 #####
+	## P15259
+	## value: Format: name,start_date@end_date, Example: hahaha,20170708@20170910,
+	
+################################################################################################
+##                              System Settings                                               ##
+################################################################################################	
+
+######			    			  Date & Time 											  ######
+
+# TimeZone
+# 1  --GMT-12 		(Eniwetok, Kwajalein)
+# 2  --GMT-11 		(Midway Isl., Samoa)
+# 3  --GMT-10 		(Hawaii, Aleutian Isl.)
+# 4  --GMT-09  		(Alaska)
+# 5  --GMT-08  		(Las Vegas, San Francisco, Vancouver)
+# 6  --GMT-07  		(Calgary, Denver, Salt Lake City)
+# 7  --GMT-06  		(Chicago, Dallas, Mexico City)
+# 8  --GMT-05  		(Cuba)
+# 9  --GMT-05  		(New York, Toronto, Washington DC)
+# 10 --GMT-04  		(Paraguay)
+# 11 --GMT-04  		(Chile)
+# 12 --GMT-04  		(Charlottetown, Manaus)
+# 55 --GMT-04  		(Charlottetown, Manaus)
+# 13 --GMT-03  		(Brazilia, Sao Paulo)
+# 14 --GMT-02  		(Noronha, Mid-Atlantic)
+# 15 --GMT-01  		(Azores, Cap Verde Isl.)
+# 16 --GMT-00  		(Dublin, Lisbon, London, Reykjavik)
+# 17 --GMT+01  		(Amsterdam, Berlin, Rome, Stockholm)
+# 18 --GMT+02  		(Athens, Helsinki, Istanbul, Riga)
+# 19 --GMT+02  		(Egypt)
+# 20 --GMT+02  		(Israel)
+# 21 --GMT+02  		(Lebanon)
+# 22 --GMT+02  		(Syria)
+# 23 --GMT+03  		(Moscow, Riyadh)
+# 24 --GMT+03  		(Iraq)
+# 25 --GMT+03:30  	(Iran)
+# 26 --GMT+04  		(Abu Dubai, Baku)
+# 27 --GMT+04:30  	(Kabul)
+# 28 --GMT+05  		(Islamabad, Karachi, Tashkent)
+# 29 --GMT+05:30  	(Bombay, Calcutta, New Delhi)
+# 30 --GMT+06  		(Novosibirsk, Omsk)
+# 31 --GMT+07  		(Bangkok, Hanoi, Jakarta)
+# 32 --GMT+08  		(Beijing, Hong Kong, Shanghai, Taipei, Taiwan)
+# 33 --GMT+09  		(Osaka, Sapporo, Tokyo)
+# 34 --GMT+09:30  	(Adelaide, Darwin)
+# 35 --GMT+10 		(Hobart)
+# 36 --GMT+10 		(Canberra, Melbourne, Sydney)
+# 37 --GMT+11 		(Solomon Isl.)
+# 38 --GMT+12 		(Auckland, Wellington)
+# 56 --GMT+13 		(Auckland, Wellington)
+
+	
+	##### Allow DHCP Option 42 to override NTP server #####
+	## P144
+	## value: 0:Disable  1:Enable
+	
+	##### Time Zone #####
+	## P64
+	## value: TimeZone option	(Integer)
+	
+	##### Enable Daylight Saving Time #####
+	## P10004
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Daylight Saving Time String #####
+	## P10005
+	## example:
+	## GMT-08:00MDT-09:00,M4.1.2/11:00:00,M5.4.3/11:00:00
+	## Format: current zone -- Head with "GMT-"  DST zone -- Head with "MDT-"
+	
+	##### Enable NTP #####
+	## P5006
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### NTP Server #####
+	## P30
+	## value: String and MAX length is 255 .
+	
+	##### DST #####
+	## P10005
+	## value: DST string.
+	
+	##### Update Interval(m) #####
+	## P10006
+	## value: 60 - 1440 (Integer)
+
+######			    			  Network Settings 									  ######	
+
+	##### IP Address Mode #####
+	## P8
+	## value: 0/1 (0:DHCP  1:Static IP)
+	
+	##### IP Address segment1 #####
+	## P9
+	## value: 0 - 255 (Integer)
+	
+	##### IP Address segment2 #####
+	## P10
+	## value: 0 - 255 (Integer)
+	
+	##### IP Address segment3 #####
+	## P11
+	## value: 0 - 255 (Integer)
+	
+	##### IP Address segment4 #####
+	## P12
+	## value: 0 - 255 (Integer)
+	
+	##### Subnet Mask segment1 #####
+	## P13
+	## value: 0 - 255 (Integer)
+	
+	##### Subnet Mask segment2 #####
+	## P14
+	## value: 0 - 255 (Integer)
+	
+	##### Subnet Mask segment3 #####
+	## P15
+	## value: 0 - 255 (Integer)
+	
+	##### Subnet Mask segment4 #####
+	## P16
+	## value: 0 - 255 (Integer)
+
+	##### Gateway segment1 #####
+	## P17
+	## value: 0 - 255 (Integer)
+	
+	##### Gateway segment2 #####
+	## P18
+	## value: 0 - 255 (Integer)
+	
+	##### Gateway segment3 #####
+	## P19
+	## value: 0 - 255 (Integer)
+	
+	##### Gateway segment4 #####
+	## P20
+	## value: 0 - 255 (Integer)
+
+	##### DNS Address Type #####
+	## P10107
+	## value: 0/1	(0:Dynamic  1:Static DNS)
+
+	##### DNS Server 1 segment1 #####
+	## P21
+	## value: 0 - 255 (Integer)
+	
+	##### DNS Server 1 segment2 #####
+	## P22
+	## value: 0 - 255 (Integer)
+	
+	##### DNS Server 1 segment3 #####
+	## P23
+	## value: 0 - 255 (Integer)
+	
+	##### DNS Server 1 segment4 #####
+	## P24
+	## value: 0 - 255 (Integer)
+	
+	##### DNS Server 2 segment1 #####
+	## P25
+	## value: 0 - 255 (Integer)
+	
+	##### DNS Server 2 segment2 #####
+	## P26
+	## value: 0 - 255 (Integer)
+	
+	##### DNS Server 2 segment3 #####
+	## P27
+	## value: 0 - 255 (Integer)
+	
+	##### DNS Server 2 segment4 #####
+	## P28
+	## value: 0 - 255 (Integer)
+	
+	##### LLDP Enable #####
+	## P1684
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Layer 2 QoS 802.1Q/VLAN Tag #####
+	## P51
+	## value: 0 - 4094 (Integer)
+	
+	##### Layer 2 QoS 802.1Q p Priority Value #####
+	## P87
+	## value: 0 - 7 (Integer)
+	
+######			 			Access Settings 					######
+
+	##### Web Connection Mode #####
+	## P12054
+	## value: 0/1	(0:HTTP  1:HTTPS)
+	
+	##### Web Access Port #####
+	## P901
+	## value: 80 - 65535	(Integer)
+	
+	##### RTSP Port #####
+	## P903
+	## value: 554 - 65535 & no equal Web Access Port. (Integer)
+	
+	##### User Login Timeout(min) #####
+	## P12056
+	## value: 3 - 60 (Integer)
+	
+	##### Max Times Consecutively Login Error #####
+	## P14832
+	## value: 3 - 10 (Integer)
+	
+	##### Login Error Lock Time (min) #####
+	## P14834
+	## value: 3 - 10 (Integer)
+
+	##### Disable Web Access #####
+	## P15473
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Enable UPnP Discovery #####
+	## P12053
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Enable Anonymous LiveView #####
+	## P15469
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Enable SSH  #####
+	## P276 
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### SSH Port   #####
+	## P27006
+	## value: 22 or 444-65535, default 22	(Integer)
+	
+	##### GDSManager Configuration Password   #####
+	## P15505
+	## value: String & MIN length is 1, MAX length is 32
+	
+	##### RTSP Password   #####
+	## P15512
+	## value: String & MIN length is 1, MAX length is 32
+	
+	
+######			 			User Management 					######
+	##### admin PW  #####
+	## P2
+	## value: String (Rule: [^!#%(-*,.0-9=@-Z_-z|~&*]) Max.length=32
+	
+################################################################################################
+##                                 SIP Settings                                               ##
+################################################################################################	
+
+######			 				          Account 1 		       						  ######
+	
+	##### Account Active #####
+	## P271
+	## value: 0/1  (0:Disable  1:Enable)
+	
+	##### Account Name #####
+	## P3
+	## value: String & MAX length is 64
+	
+	##### SIP Server #####
+	## P47
+	## value: String & MAX length is 255
+	
+	##### Outbound Proxy #####
+	## P48
+	## value: String & MAX length is 255
+	
+	##### Backup Outbound Proxy #####
+	## P2333
+	## value: String & MAX length is 255
+	
+	##### DNS Mode #####
+	## P103
+	## value: 0/1/2  (0: A Record  1: SRV  2: NAPTR/SRV)
+	
+	##### SIP User ID #####
+	## P35
+	## value: String & MAX length is 255
+	
+	##### Authenticate ID #####
+	## P36
+	## value: String & MAX length is 255
+	
+	##### Password #####
+	## P34
+	## value: String & MAX length is 255
+	
+	##### TEL URI #####
+	## P63
+	## value: 0/1/2	(0:Disabled  1:User=phone  2:Enabled)
+	
+	
+	##### Registration Expiration(m) #####
+	## P32
+	## value: 1 - 64800. Default 60.
+	
+	##### Re-register before Expiration (s)  #####
+	## P2330
+	## value: 1 - 64800. Default 0.
+	
+	##### Local SIP Port #####
+	## P40
+	## value: 81 - 65535. Default 5062.
+	
+	##### SIP Transport #####
+	## P130
+	## value: 0/1/2  (0: UDP  1: TCP  2: TLS/TCP)
+	
+	##### Stream #####
+	## P15480
+	## value: 0/1/2  (0: Stream 1  1: Stream 2  2: Stream 3)
+	
+	##### Enable DTMF RFC2833 #####
+	## P2302
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### Enable DTMF SIP_INFO #####
+	## P2303
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### DTMF Payload Type #####
+	## P79
+	## value: 96 - 127 default 101
+	
+	##### Unregister On Reboot #####
+	## P81
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### NAT Traversal #####
+	## P52
+	## value: 0/1/2/3/4   (0: No  1: STUN  2: Keep Alive  3: UPnP  4: Auto)
+	
+	##### Enable SRTP #####
+	## P183
+	## value: 0/1   (0: Disable  1: Enable but No Forced  2: Enable and Forced)
+	
+	##### Special Feature #####
+	## P100
+	## value: 100/102/129   (100: Standard  102: Broadsoft  129: Telefonica Spain)
+	
+	##### Outbound Proxy Mode #####
+	## P2305
+	## value: 0/1/2		(0: In Route  1: Not In Route  2: Always Send To)
+	
+	##### Enable RTCP #####
+	## P2492
+	## value: 0/1/2   (0: Disable  1: RTCP  2: RTCP-XR)
+	
+	##### H.264 Payload Type #####
+	## P462
+	## value: 96 - 127 and no include 101
+
+	##### Accept Incoming SIP from Proxy Only #####
+	## P2447
+	## value: 0/1/2   (0: Disable  1: Enable)
+	
+	##### Preferred Vocoder 1 #####
+	## P57
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 2 #####
+	## P58
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 3 #####
+	## P59
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 4 #####
+	## P60
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Voice Frames Per TX #####
+	## P37
+	## value: 1 - 64
+	
+
+######			 				          Account 2 		       						  ######
+
+	##### Account Active #####
+	## P401
+	## value: 0/1  (0:Disable  1:Enable)
+	
+	##### Account Name #####
+	## P407
+	## value: String & MAX length is 64
+	
+	##### SIP Server #####
+	## P402
+	## value: String & MAX length is 255
+	
+	##### Outbound Proxy #####
+	## P403
+	## value: String & MAX length is 255
+	
+	##### Backup Outbound Proxy #####
+	## P2433
+	## value: String & MAX length is 255
+	
+	##### DNS Mode #####
+	## P408
+	## value: 0/1/2  (0: A Record  1: SRV  2: NAPTR/SRV)
+	
+	##### SIP User ID #####
+	## P404
+	## value: String & MAX length is 255
+	
+	##### Authenticate ID #####
+	## P405
+	## value: String & MAX length is 255
+	
+	##### Password #####
+	## P406
+	## value: String & MAX length is 255
+	
+	##### TEL URI #####
+	## P409
+	## value: 0/1/2	(0:Disabled  1:User=phone  2:Enabled)
+	
+	
+	
+	##### Registration Expiration(m) #####
+	## P412
+	## value: 1 - 64800. Default 60.
+	
+	##### Re-register before Expiration (s)  #####
+	## P2430
+	## value: 1 - 64800. Default 0.
+	
+	##### Local SIP Port #####
+	## P413
+	## value: 81 - 65535. Default 5062.
+	
+	##### SIP Transport #####
+	## P448
+	## value: 0/1/2  (0: UDP  1: TCP  2: TLS/TCP)
+	
+	##### Stream #####
+	## P8000
+	## value: 0/1/2  (0: Stream 1  1: Stream 2  2: Stream 3)
+	
+	##### Enable DTMF RFC2833 #####
+	## P2402
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### Enable DTMF SIP_INFO #####
+	## P2403
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### DTMF Payload Type #####
+	## P496
+	## value: 96 - 127 default 101
+	
+	##### Unregister On Reboot #####
+	## P411
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### NAT Traversal #####
+	## P414
+	## value: 0/1/2/3/4   (0: No  1: STUN  2: Keep Alive  3: UPnP  4: Auto)
+	
+	##### Enable SRTP #####
+	## P443
+	## value: 0/1   (0: Disable  1: Enable but No Forced  2: Enable and Forced)
+	
+	##### Special Feature #####
+	## P424
+	## value: 100/102   (100: Standard  1: Broadsoft)
+	
+	##### Outbound Proxy Mode #####
+	## P2405
+	## value: 0/1/2		(0: In Route  1: Not In Route  2: Always Send To)
+	
+	##### Enable RTCP #####
+	## P2392
+	## value: 0/1/2   (0: Disable  1: RTCP  2: RTCP-XR)
+	
+	##### H.264 Payload Type #####
+	## P293
+	## value: 96 - 127 and no include 101
+	
+	##### Accept Incoming SIP from Proxy Only #####
+	## P2347
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### Preferred Vocoder 1 #####
+	## P451
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 2 #####
+	## P452
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 3 #####
+	## P453
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 3 #####
+	## P454
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Voice Frames Per TX #####
+	## P486
+	## value: 1 - 64
+	
+	
+######			 				   Account 3 		       					  ######
+	
+	##### Account Active #####
+	## P501
+	## value: 0/1  (0:Disable  1:Enable)
+	
+	##### Account Name #####
+	## P507
+	## value: String & MAX length is 64
+	
+	##### SIP Server #####
+	## P502
+	## value: String & MAX length is 255
+	
+	##### Outbound Proxy #####
+	## P503
+	## value: String & MAX length is 255
+	
+	##### Backup Outbound Proxy #####
+	## P2533
+	## value: String & MAX length is 255
+	
+	##### DNS Mode #####
+	## P508
+	## value: 0/1/2  (0: A Record  1: SRV  2: NAPTR/SRV)
+	
+	##### SIP User ID #####
+	## P504
+	## value: String & MAX length is 255
+	
+	##### Authenticate ID #####
+	## P505
+	## value: String & MAX length is 255
+	
+	##### Password #####
+	## P506
+	## value: String & MAX length is 255
+	
+	##### TEL URI #####
+	## P509
+	## value: 0/1/2	(0:Disabled  1:User=phone  2:Enabled)
+	
+	
+	
+	##### Registration Expiration(m) #####
+	## P512
+	## value: 1 - 64800. Default 60.
+	
+	##### Re-register before Expiration (s)  #####
+	## P2530
+	## value: 1 - 64800. Default 0.
+	
+	##### Local SIP Port #####
+	## P513
+	## value: 81 - 65535. Default 5062.
+	
+	##### SIP Transport #####
+	## P548
+	## value: 0/1/2  (0: UDP  1: TCP  2: TLS/TCP)
+	
+	##### Stream #####
+	## P5481
+	## value: 0/1/2  (0: Stream 1  1: Stream 2  2: Stream 3)
+	
+	##### Enable DTMF RFC2833 #####
+	## P2502
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### Enable DTMF SIP_INFO #####
+	## P2503
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### DTMF Payload Type #####
+	## P596
+	## value: 96 - 127 default 101
+	
+	##### Unregister On Reboot #####
+	## P511
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### NAT Traversal #####
+	## P514
+	## value: 0/1/2/3/4   (0: No  1: STUN  2: Keep Alive  3: UPnP  4: Auto)
+	
+	##### Enable SRTP #####
+	## P543
+	## value: 0/1   (0: Disable  1: Enable but No Forced  2: Enable and Forced)
+	
+	##### Special Feature #####
+	## P524
+	## value: 100/102   (100: Standard  1: Broadsoft)
+	
+	##### Outbound Proxy Mode #####
+	## P2505
+	## value: 0/1/2		(0: In Route  1: Not In Route  2: Always Send To)
+	
+	##### Enable RTCP #####
+	## P2592
+	## value: 0/1/2   (0: Disable  1: RTCP  2: RTCP-XR)
+	
+	##### H.264 Payload Type #####
+	## P562
+	## value: 96 - 127 and no include 101
+	
+	##### Accept Incoming SIP from Proxy Only #####
+	## P2547
+	## value: 0/1/2   (0: Disable  1: Enable)
+	
+	##### Preferred Vocoder 1 #####
+	## P551
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 2 #####
+	## P552
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 3 #####
+	## P553
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 4 #####
+	## P554
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Voice Frames Per TX #####
+	## P586
+	## value: 1 - 64
+
+
+######			 				   Account 4 		       					  ######
+
+	##### Account Active #####
+	## P601
+	## value: 0/1  (0:Disable  1:Enable)
+	
+	##### Account Name #####
+	## P607
+	## value: String & MAX length is 64
+	
+	##### SIP Server #####
+	## P602
+	## value: String & MAX length is 255
+	
+	##### Outbound Proxy #####
+	## P603
+	## value: String & MAX length is 255
+	
+	##### Backup Outbound Proxy #####
+	## P2633
+	## value: String & MAX length is 255
+	
+	##### DNS Mode #####
+	## P608
+	## value: 0/1/2  (0: A Record  1: SRV  2: NAPTR/SRV)
+	
+	##### SIP User ID #####
+	## P604
+	## value: String & MAX length is 255
+	
+	##### Authenticate ID #####
+	## P605
+	## value: String & MAX length is 255
+	
+	##### Password #####
+	## P606
+	## value: String & MAX length is 255
+	
+	##### TEL URI #####
+	## P609
+	## value: 0/1/2	(0:Disabled  1:User=phone  2:Enabled)
+	
+	
+	
+	##### Registration Expiration(m) #####
+	## P612
+	## value: 1 - 64800. Default 60.
+	
+	##### Re-register before Expiration (s)  #####
+	## P2630
+	## value: 1 - 64800. Default 0.
+	
+	##### Local SIP Port #####
+	## P613
+	## value: 81 - 65535. Default 5062.
+	
+	##### SIP Transport #####
+	## P648
+	## value: 0/1/2  (0: UDP  1: TCP  2: TLS/TCP)
+	
+	##### Stream #####
+	## P15482
+	## value: 0/1/2  (0: Stream 1  1: Stream 2  2: Stream 3)
+	
+	##### Enable DTMF RFC2833 #####
+	## P2602
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### Enable DTMF SIP_INFO #####
+	## P2603
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### DTMF Payload Type #####
+	## P696
+	## value: 96 - 127 default 101
+	
+	##### Unregister On Reboot #####
+	## P611
+	## value: 0/1   (0: Disable  1: Enable)
+	
+	##### NAT Traversal #####
+	## P614
+	## value: 0/1/2/3/4   (0: No  1: STUN  2: Keep Alive  3: UPnP  4: Auto)
+	
+	##### Enable SRTP #####
+	## P643
+	## value: 0/1   (0: Disable  1: Enable but No Forced  2: Enable and Forced)
+	
+	##### Special Feature #####
+	## P624
+	## value: 100/102   (100: Standard  1: Broadsoft)
+	
+	##### Outbound Proxy Mode #####
+	## P2605
+	## value: 0/1/2		(0: In Route  1: Not In Route  2: Always Send To)
+	
+	##### Enable RTCP #####
+	## P2692
+	## value: 0/1/2   (0: Disable  1: RTCP  2: RTCP-XR)
+	
+	##### H.264 Payload Type #####
+	## P662
+	## value: 96 - 127 and no include 101
+	
+	##### Accept Incoming SIP from Proxy Only #####
+	## P2647
+	## value: 0/1/2   (0: Disable  1: Enable)
+	
+	##### Preferred Vocoder 1 #####
+	## P651
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 2 #####
+	## P652
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 3 #####
+	## P653
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Preferred Vocoder 4 #####
+	## P654
+	## value: 0:PCMU  8:PCMA  9:G.722  18:G.729A/B
+	
+	##### Voice Frames Per TX #####
+	## P686
+	## value: 1 - 64
+	
+	
+######			 				   Phone Settings		       					  ######
+	
+	##### STUN Server #####
+	## P76
+	## value: String & MAX length is 255
+	
+	##### Local RTP Port #####
+	## P39
+	## value: 1 - 65535 & no equal 6789 (Integer).
+	
+	##### User Random Port #####
+	## P78
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Auto On-Hook Timer(second) #####
+	## P10451
+	## value: 0 - 65535  (Integer).
+	
+	##### Ring Timeout(second) #####
+	## P14847
+	## value: 0 - 90  (Integer).
+	
+	##### SIP TLS Certificate #####
+	## P280
+	## value: String
+	
+	##### SIP TLS Private Key #####
+	## P279
+	## value: String
+	
+	##### Enable Direct IP Call #####
+	## P10453
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Enable two-way SIP Calling #####
+	## P8001
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### SIP Proxy Compatibility Mode #####
+	## P8003
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### SIP Packetization Compatibility Mode #####
+	## P957
+	## value: 0/1	(1:Disable  0:Enable)
+	
+	##### Enable Multi-channel Call Mode #####
+	## P15427
+	## value: 0/1	(0:Disable default  1:Enable)
+	
+	##### Allow Reset via SIP NOTIFY #####
+	## P15476
+	## value: 0/1	(0:Disable default  1:Enable)
+	
+	##### Enable Session Timer #####
+	## P2495
+	## value: 0/1	(0: Disable  1: Enable)
+	
+
+######			 				   Account 1 White List 		 		       						  ######
+
+	##### Enable White Number List #####
+	## P10410
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Phone Number #####
+	## P10411
+	## value: String. (Format:123,4567,)
+	
+######			 				   Account 2 White List 		 		       						  ######
+
+	##### Enable White Number List #####
+	## P10454
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Phone Number #####
+	## P10460
+	## value: String. (Format:123,4567,)
+	
+######			 				   Account 3 White List 		 		       						  ######
+
+	##### Enable White Number List #####
+	## P10420
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Phone Number #####
+	## P10421
+	## value: String. (Format:123,4567,)
+	
+######			 				   Account 4 White List 		 		       						  ######
+
+	##### Enable White Number List #####
+	## P10430
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Phone Number #####
+	## P10431
+	## value: String. (Format:123,4567,)
+	
+################################################################################################
+##                            Video & Audio Settings                                          ##
+################################################################################################
+
+######			 				  Video Settings	 		       						  ######
+	
+	##### Stream 1 Preferred Video Codec #####
+	## P12306
+	## value: 96/26	(96:H264  26:MJPEG)
+	
+	##### Stream 1 Profile #####
+	## P12313
+	## value: 0/1/2	(0:Baseline 1:Main Profile 2:Hight Profile)
+	
+	##### Stream 1 Resolution #####
+	## P12307
+	## value: 1025/1022	(1025:1920*1080 1022:1280*720)
+	
+	##### Stream 1 Bit Rate(kbps) #####
+	## P12315
+	## value: 1024/2048/4096
+	
+	##### Stream 1 Frame Rate(fps) #####
+	## P12904
+	## value: 5/10/15(If CMOS is Low Hight). 5/10/15/20/25/30(Others))
+	
+	##### Stream 1 Bit Rate Control #####
+	## P12924
+	## value: 0/1	(0:CBR 1:VBR)
+	
+	##### Stream 1 Image Quality #####
+	## P12311
+	## value: 
+	
+	##### Stream 1 I-frame Interval #####
+	## P12312
+	## value: 1 - 100	(Integer)
+	
+################################################################################################
+	
+	##### Stream 2 Preferred Video Codec #####
+	## P12706
+	## value: 96/26	(96:H264  26:MJPEG)
+	
+	##### Stream 2 Profile #####
+	## P12713
+	## value: 0/1/2	(0:Baseline 1:Main Profile 2:Hight Profile)
+	
+	##### Stream 2 Resolution #####
+	## P12707
+	## value: 1022/1/1010	(1022:1280*720 1:640*480 1010:480*272)
+	
+	##### Stream 2 Bit Rate(kbps) #####
+	## P12708
+	## value: 256/512/1024
+	
+	##### Stream 2 Frame Rate(fps) #####
+	## P12709
+	## value: 5/10/15(If CMOS is Low Hight). 5/10/15/20/25/30(Others))
+	
+	##### Stream 2 Bit Rate Control #####
+	## P12710
+	## value: 0/1	(0:CBR 1:VBR)
+	
+	##### Stream 2 Image Quality #####
+	## P12711
+	## value: 
+	
+	##### Stream 2 I-frame Interval #####
+	## P12712
+	## value: 1 - 100	(Integer)
+	
+################################################################################################
+
+	##### Stream 3 Preferred Video Codec #####
+	## P13106
+	## value: 96/26	(96:H264  26:MJPEG)
+	
+	##### Stream 3 Profile #####
+	## P13113
+	## value: 0/1/2	(0:Baseline 1:Main Profile 2:Hight Profile)
+	
+	##### Stream 3 Resolution #####
+	## P13107
+	## value: 1008/0	(1008:352*240 0:320*240)
+	
+	##### Stream 3 Bit Rate(kbps) #####
+	## P13108
+	## value: 128/256/512
+	
+	##### Stream 3 Frame Rate(fps) #####
+	## P13109
+	## value: 5/10/15(If CMOS is Low Hight). 5/10/15/20/25/30(Others))
+	
+	##### Stream 3 Bit Rate Control #####
+	## P13110
+	## value: 0/1	(0:CBR 1:VBR)
+	
+	##### Stream 3 Image Quality #####
+	## P13111
+	## value: 
+	
+	##### Stream 3 I-frame Interval #####
+	## P13112
+	## value: 1 - 100	(Integer)
+	
+######			 				  OSD Settings	 		       						  ######
+
+	##### Enable Display Time #####
+	## P10044
+	## value: 0/1 	(0:Disable  1:Enable)
+	
+	##### Enable Display Text #####
+	## P10045
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### OSD Date Format #####
+	## P10001
+	## value: 0/1/2	(0:YYY-MM-DD 1:MM/DD/YYYY 2:DD MM YYYY)
+	
+	##### OSD Time Format #####
+	## P10007
+	## value: 0/1	(0:24H 1:12H)
+	
+	##### OSD Text #####
+	## P10040
+	## value: String & Max length is 32
+	
+	##### OSD Date/Time Position #####
+	## P10041
+	## value: 0/1/2/3	(0:Top Left 1:Bottom Left 2:Top Right 3:Bottom Right)
+	
+	##### OSD Text Position #####
+	## P10046
+	## value: 0/1/2/3	(0:Top Left 1:Bottom Left 2:Top Right 3:Bottom Right)
+	
+######			 				  CMOS Settings	 		       						  ######
+	
+	##### CMOS Mode #####
+	## P10572
+	## value: 1/2/3	(1:Normal 2:Low Light 3:WDR)
+	
+	##### CMOS LDC #####
+	## P10573
+	## value: 0/1	(0:OFF 1:ON)
+	
+	##### LDC Rate #####
+	## P14565
+	## value: 7: 0.7,  8: 0.8,  9: 0.9,  10: 1.0,  11: 1.1,  12: 1.2,  13: 1.3
+	
+	##### CMOS Power Frequency #####
+	## P12314
+	## value: 0/1	(0:50HZ 1:60HZ)
+	
+	##### CMOS Shutter Speed #####
+	## P10503
+	## value: 0/30/60/125/250/500/1000/2000/10000	(0:auto 30:1/30 60:1/60 125:1/125 250:1/250 500:1/500 1000:1/1000 2000:1/2000 10000:1/10000)
+	
+	
+######			 				  Audio Settings	        						 ######
+
+	##### Preferred Audio Codec #####
+	## P14000
+	## value: 1/2/4	(1:PCMU 2:PCMA 4:G722)
+	
+	##### System Volume #####
+	## P14003
+	## value:  
+	## 		If Preferred Audio Codec is not G722 -- 0/1/2/3/4/5/6	(0:0 1:68 2:73 3:78 4:83 5:87 6:93)
+	## 		If Preferred Audio Codec is G722 -- 0/1/2/3/4/5/6		(0:0 1:82 2:86 3:89 4:92 5:94 6:96)
+	
+	##### Doorbell Volume #####
+	## P14835
+	## value:  
+	## 		If Preferred Audio Codec is not G722 -- 0/1/2/3/4/5/6	(0:0 1:68 2:73 3:78 4:83 5:87 6:93)
+	## 		If Preferred Audio Codec is G722 -- 0/1/2/3/4/5/6		(0:0 1:82 2:86 3:89 4:92 5:94 6:96)
+	
+	##### Enable Custom Doorbell Ringtone #####
+	## P15499
+	## value: 0/1	(0:Disable  1:Enable)
+	
+######			 				  Privacy Masks    	 		       						      ######
+	##### Privacy Mask Region #####
+	## P14225
+	## Format: (Enable/Disable@x1,y1,x2,y2; 0<=x1<=x2<=704 & 0<=y1<=y2<=576 
+	## Example: 0@0,0,10,10;0@20,20,40,40;1@80,80,100,100;1@120,120,150,150;
+	
+
+###   P VALUE MISSING HERE, PLEASE ADD THEM !!!
+
+################################################################################################
+##                            Alarm Config                                                    ##
+################################################################################################
+
+######			 			  Alarm Events Config     		       						  ######
+
+	##### Enable Motion Detection #####
+	## P10250
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Alarm Sensitivity #####
+	## P14223
+	## value: 0 - 100	(Integer)
+	
+	##### Select Alarm Schedule #####
+	## P14221
+	## value: 0 - 10	(Integer)
+	
+	##### Select Alarm Action Profile #####
+	## P14222
+	## value: 0 - 10	(Integer)
+	
+	##### MD regions #####
+	## P14224
+	## Format: [X0,Y0,X1,Y1] 0 <= X0 <= 32  0 <= Y0 <= 24  0 <= X1 <= 32  0 <= Y1 <= 24  X0 < X1  Y0 < Y1
+	## Example: [0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]
+	
+	##### Digital Input 1 #####
+	## P14320
+	## value: 0/1/2/3		(0:Disable 1:Alarm Input 2:Open Door 3:Abnormal Door Control)
+	
+	##### Digit Input 1 Open Door Options #####
+	## P15451
+	## value: 0/1/2/3 (0:Door 1  1:Door 2  2:Door 1 & Door 2  3:None)
+	
+	##### Digit Input 1 Abnormal Door Control Options #####
+	## P15508
+	## value: 0/1 (0:Door 1  1:Door 2)
+	
+	##### Digit Input 1 Status #####
+	## P15431
+	## value: 0/1	(0:Normal Open	1:Normal Close)
+
+	##### Digital Input 1 -> Select Alarm Schedule 1 #####
+	## P14321
+	## value: 0 - 10	(Integer)
+	
+	##### Digital Input 1 -> Select Alarm Action Profile 1 #####
+	## P14322
+	## value: 1 - 10	(Integer)
+	
+	##### Digital Input 2 #####
+	## P14325
+	## value: 0/1/2/3		(0:Disable 1:Alarm Input 2:Open Door 3:Abnormal Door Control)
+	
+	##### Digit Input 2 Open Door Options #####
+	## P15452
+	## value: 0/1/2/3 (0:Door 1  1:Door 2  2:Door 1 & Door 2  3:None)
+	
+	#### Digit Input 2 Abnormal Door Control Options #####
+	## P15509
+	## value: 0/1 (0:Door 1  1:Door 2)
+	
+	##### Digit Input 2 Status #####
+	## P15432
+	## value: 0/1	(0:Normal Open	1:Normal Close)
+
+	##### Digital Input 2 -> Select Alarm Schedule 2 #####
+	## P14326
+	## value: 0 - 10	(Integer)
+	
+	##### Digital Input 2 -> Select Alarm Action Profile 2 #####
+	## P14327
+	## value: 1 - 10	(Integer)
+	
+	##### Alarm Output Duration(s) #####
+	## P14341
+	## value: 5/15/30/60/180/300	(Integer)
+	
+	##### Enable Silently Alarm Mode #####
+	## P14568
+	## Format:enable@DI@MD@Tamper@Passwd_Err   Exmaple: 0@1@1@0@1)
+	
+	##### Enable Hostage Code #####
+	## P10467
+	## value: 0/1	(0:Disable  1:Enable)
+
+	##### Hostage Code #####
+	## P10466
+	## value: A pure digital string, MAX length is 8. Example: 6688
+	
+	##### Hostage Code Alarm Action Profile #####
+	## P10468
+	## value: 1 - 10	(Integer)
+	
+	##### Enable Tamper Alarm #####
+	## P14350
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Tamper Alarm Action Profile #####
+	## P14355
+	## value: 1 - 10	(Integer)
+	
+	##### Enable Keypad Input Error Alarm #####
+	## P14825
+	## value: 0/1	(0:Disable  1:Enable  Define:1)
+	
+	##### Keypad Input Error Alarm profile #####
+	## P14826
+	## value: 1 - 10	(Integer)
+	
+	##### Enable Non-scheduled Access Alarm #####
+	## P15407
+	## value: 0/1	(0:Disable  1:Enable  Define:1)
+	
+	##### Non-scheduled Access Alarm profile #####
+	## P15408
+	## value: 1 - 10	(Integer)
+
+######			 				  Alarm Schedule	 		       						  ######
+
+	##### schedule 1 #####
+	## P14200
+	## value: String  (Format:name,Date@start_time@end_time. example:schedule1,0@0000@1011,0@1100@2300)
+	
+	##### schedule 2 #####
+	## P14201
+	## value: String  (Format:name,Date@start_time@end_time. example:schedule1,0@0000@1011,0@1100@2300)
+	
+	##### schedule 3 #####
+	## P14202
+	## value: String  (Format:name,Date@start_time@end_time. example:schedule1,0@0000@1011,0@1100@2300)
+	
+	##### schedule 4 #####
+	## P14203
+	## value: String  (Format:name,Date@start_time@end_time. example:schedule1,0@0000@1011,0@1100@2300)
+	
+	##### schedule 5 #####
+	## P14204
+	## value: String  (Format:name,Date@start_time@end_time. example:schedule1,0@0000@1011,0@1100@2300)
+	
+	##### schedule 6 #####
+	## P14205
+	## value: String  (Format:name,Date@start_time@end_time. example:schedule1,0@0000@1011,0@1100@2300)
+	
+	##### schedule 7 #####
+	## P14206
+	## value: String  (Format:name,Date@start_time@end_time. example:schedule1,0@0000@1011,0@1100@2300)
+	
+	##### schedule 8 #####
+	## P14207
+	## value: String  (Format:name,Date@start_time@end_time. example:schedule1,0@0000@1011,0@1100@2300)
+	
+	##### schedule 9 #####
+	## P14208
+	## value: String  (Format:name,Date@start_time@end_time. example:schedule1,0@0000@1011,0@1100@2300)
+	
+	##### schedule 10 #####
+	## P14209
+	## value: String  (Format:name,Date@start_time@end_time. example:schedule1,0@0000@1011,0@1100@2300)
+	
+######			 				  Alarm Action	 		       						   ######
+
+	##### Alarm Action Profile 1 #####
+	## P14300
+	## value: String  (Format:profileName@Alarm-Center,Sound,Sip,Output,Email,JPEG, example:night@1,1,1,0,1,0,)
+	
+	##### Alarm Action Profile 2 #####
+	## P14301
+	## value: String  (Format:profileName@Alarm-Center,Sound,Sip,Output,Email,JPEG, example:night@1,1,1,0,1,0,)
+	
+	##### Alarm Action Profile 3 #####
+	## P14302
+	## value: String  (Format:profileName@Alarm-Center,Sound,Sip,Output,Email,JPEG, example:night@1,1,1,0,1,0,)
+	
+	##### Alarm Action Profile 4 #####
+	## P14303
+	## value: String  (Format:profileName@Alarm-Center,Sound,Sip,Output,Email,JPEG, example:night@1,1,1,0,1,0,)
+	
+	##### Alarm Action Profile 5 #####
+	## P14304
+	## value: String  (Format:profileName@Alarm-Center,Sound,Sip,Output,Email,JPEG, example:night@1,1,1,0,1,0,)
+	
+	##### Alarm Action Profile 6 #####
+	## P14305
+	## value: String  (Format:profileName@Alarm-Center,Sound,Sip,Output,Email,JPEG, example:night@1,1,1,0,1,0,)
+	
+	##### Alarm Action Profile 7 #####
+	## P14306
+	## value: String  (Format:profileName@Alarm-Center,Sound,Sip,Output,Email,JPEG, example:night@1,1,1,0,1,0,)
+	
+	##### Alarm Action Profile 8 #####
+	## P14307
+	## value: String  (Format:profileName@Alarm-Center,Sound,Sip,Output,Email,JPEG, example:night@1,1,1,0,1,0,)
+	
+	##### Alarm Action Profile 9 #####
+	## P14308
+	## value: String  (Format:profileName@Alarm-Center,Sound,Sip,Output,Email,JPEG, example:night@1,1,1,0,1,0,)
+	
+	##### Alarm Action Profile 10 #####
+	## P14309
+	## value: String  (Format:profileName@Alarm-Center,Sound,Sip,Output,Email,JPEG, example:night@1,1,1,0,1,0,)
+	
+######			 				  Alarm Phone List 	 		       						  ######
+
+	##### Alarm Phone List #####
+	## P10471
+	## value: 0/1/2/3/4  (0: Auto  1: Account 1  2: Account 2  3: Account 3  4: Account 4 )
+	
+	##### Alarm Phone List #####
+	## P10459
+	## value: String  (Example:1122,3344,5566, Don't forget the last ',')
+	
+################################################################################################
+##                           Email & FTP Settings                                             ##
+################################################################################################
+	
+######			 			 Email Settings     	 		       						  ######
+	
+	############### Email Settings ###############
+	##### SMTP Server #####
+	## P10121
+	## value: String  (Example: smtp.google.com)
+	
+	##### SMTP Server Port #####
+	## P10122
+	## value: 0 - 65535  (Integer)
+	
+	##### From E-Mail Address #####
+	## P10123
+	## value: A valid email address (String)
+	
+	##### Sender User Name #####
+	## P10127
+	## value: String. Max length 63.
+	
+	##### Sender Password #####
+	## P10128
+	## value: String. Max length 63.
+	
+	##### Password Recovery Email #####
+	## P10124
+	## value: A valid email address (String)
+	
+	##### Alarm Receive Email 1 #####
+	## P14348
+	## value: A valid email address (String)
+	
+	##### Alarm Receive Email 2 #####
+	## P14349
+	## value: A valid email address (String)
+	
+	##### SSL #####
+	## P10129
+	## value: 0/1	(0:Disable  1:Enable)
+	
+######			 			 FTP & Central Storage	         						  ######
+	
+	##### Storage Server Type #####
+	## P14113
+	## value: 0/1	(0:FTP 1:Central Storage)
+	
+	##### FTP Server #####
+	## P14114
+	## value: String (Example: 192.168.0.160)
+	
+	##### FTP Server Port #####
+	## P14115
+	## value: 0 - 65535 (Integer)
+	
+	##### FTP User Name #####
+	## P14116
+	## value: String. Max length is 63.
+	
+	##### FTP Path #####
+	## P14118
+	## value: A valid path	(String)
+
+################################################################################################
+##                           Maintenance                                                      ##
+################################################################################################
+
+######			 		     Upgrade      	       						                  ######
+	##### Firmware Upgrade Via #####
+	## P6767
+	## value: 0/1/2		(0:TFTP  1:HTTP  2:HTTPS)
+	
+	##### Firmware Server Path #####
+	## P192
+	## value: (String)
+	
+	##### Firmware HTTP/HTTS User Name #####
+	## P6768
+	## value: (String)
+	
+	##### Firmware HTTP/HTTS Password #####
+	## P6769
+	## value: (String)
+	
+	##### Firmware Upgrade File Prefix #####
+	## P232
+	## value: (String)
+	
+	##### Firmware Upgrade File Postfix #####
+	## P233
+	## value: (String)
+		
+	##### Config Upgrade Via #####
+	## P212
+	## value: 0/1/2		(0:TFTP  1:HTTP  2:HTTPS)
+	
+	##### Config Server Path #####
+	## P237
+	## value: (String)
+	
+	##### Config HTTP/HTTS User Name #####
+	## P1360
+	## value: (String)
+	
+	##### Config HTTP/HTTS Password #####
+	## P1361
+	## value: (String)
+	
+	##### Config Upgrade File Prefix #####
+	## P234
+	## value: (String)
+	
+	##### Config Upgrade File Postfix #####
+	## P235
+	## value: (String)
+	
+	##### XML Config File Password #####
+	## P1359
+	## value: String.
+	
+	##### Validate Server Certificates #####
+	## P8463
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### DHCP Option 66 Override Server #####
+	## P145
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Zero Config #####
+	## P1414
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Enable DHCP Option 120 Override SIP Server #####
+	## P1411
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Automatic Upgrade #####
+	## P194
+	## value: 0/1	(0:No  1:Yes,check for upgrade periodic  2:Yes,check for upgrade every day  3:Yes,check for upgrade every week)
+	
+	##### Automatic Upgrade Interval(minutes) #####
+	## P193
+	## value: 60 - 525600	(Integer)
+	
+	##### Randomized Automatic Upgrade #####
+	## P8458
+	## value: 0/1  (0:Disable  1:Enable)
+	
+	##### Hour of the Day  – Start Time #####
+	## P285
+	## value: 0 -- 23  (Integer)
+	
+	##### Hour of the Day – End Time #####
+	## P8459
+	## value: 0 -- 23  (Integer)
+	
+	##### Day of the Week  – Week #####
+	## P286
+	## value: 0 -- 6  (Integer)
+	
+	
+	
+	
+	
+	
+######			 		   Debug Log   	       						                  ######
+
+	##### Debug Log Server #####
+	## P207
+	## value: A valid server path	(String)
+	
+	##### Debug Log Level #####
+	## P208
+	## value: 0/1/2/3/4	(0:None 1:Debug 2:Info 3:Warning 4:Error)
+	
+	
+	
+######						System Health Alert													######
+	
+	##### Enable System Health Alert ####
+	## P15490
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### Delivery Method ####
+	## P15491
+	## value: 0/1	(0:Real-time  1:Periodic)
+	
+	##### Alert Interval(m) ####
+	## P15492
+	## value: 1 - 10080
+	
+	##### Email Title ####
+	## P15496
+	## value: string  MAX Length 256
+	
+	##### SIP Registration Status ####
+	## P15493
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### System Running Status ####
+	## P15494
+	## value: 0/1	(0:Disable  1:Enable)
+	
+	##### System Temperature ####
+	## P15495
+	## value: 0/1	(0:Disable  1:Enable)
+	
+######			 		   Event Notification   	       						                  ######
+	##### Enable Event Notification #####
+	## P15410
+	## value: 0: Disable  1: Enable
+	
+	##### Event Notification Type #####
+	## P15417
+	## value: 1:HTTP 2:HTTPS
+	
+	##### HTTP Server URL #####
+	## P15413
+	## value: string Max.length=256. Format http://ip:port/path. Such as http://192.100.10.10:80/
+	
+	##### HTTP Server Username #####
+	## P15414
+	## value: string Max.length=128 . 
+	
+	##### HTTP Server Password #####
+	## P15415
+	## value: string Max.length=128 . 
+	
+	##### URL Template #####
+	## P15416
+	## value: string Max.length=1024 . Example:{"mac":"${MAC}","content":"${WARNING_MSG}"}
+	
+	######
+	
+######			 		   Trusted CA Cerificates   	       						      ######
+	##### Trusted CA Cerificates 1 #####
+	## P8433
+	## value: string max.length=4096
+	
+	##### Trusted CA Cerificates 2 #####
+	## P8434
+	## value: string max.length=4096
+	
+	##### Trusted CA Cerificates 3 #####
+	## P8435
+	## value: string max.length=4096
+	
+	##### Trusted CA Cerificates 4 #####
+	## P8436
+	## value: string max.length=4096
+	
+	##### Trusted CA Cerificates 5 #####
+	## P8437
+	## value: string max.length=4096
+	
+	##### Trusted CA Cerificates 6 #####
+	## P8438
+	## value: string max.length=4096
+	
+	##### Custom Certificate  #####
+	## P8475
+	## value: string max.length=4096
+
+################################################################################################
+##                End of the Configuration Template for GDS3710 Door System        			  ##
+##                           (Firmware Version:   1.0.7.10)                                   ##
+################################################################################################

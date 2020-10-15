@@ -1,0 +1,191 @@
+####################################################################
+##  GVC3210 Change Log                                            ##
+####################################################################
+####################################################################
+# P values added/updated since 1.0.1.59                           ##
+####################################################################
+####################################################################
+# P Values Added since initial firmware                           ##
+####################################################################
+# Echo Delay
+# P22280
+
+# SIP - Common Layout Mode
+# P29070
+
+# IPVideoTalk - Common Layout Mode
+# P29170
+
+# BlueJeans - Common Layout Mode
+# P29270
+
+# H.323 - Common Layout Mode
+# P25073
+
+# Minimum TLS Version
+# P22293
+
+# Maximum TLS Version
+# P22294
+
+# Contacts - BroadSoft
+# Authentication Type
+# P22054
+
+# Server
+# P1591
+
+# Port
+# P1592
+
+# Action Path
+# P2937
+
+# BroadWorks User ID
+# P22034
+
+# SIP Authentication ID
+# P1593
+
+# SIP Authentication Password
+# P1594
+
+# Group Directory
+# P2971
+
+# Group Directory Name
+# P2972
+
+# Enterprise Directory
+# P2973
+
+# Enterprise Directory Name
+# P2974
+
+# Group Common
+# P2975
+
+# Group Common Name
+# P2976
+
+# Enterprise Common
+# P2977
+
+# Enterprise Common Name
+# P2978
+
+# Personal Directory
+# P2979
+
+# Personal Directory Name
+# P2980
+
+# Missed Call Log
+# P2981
+
+# Missed Call Log Name
+# P2982
+
+# Placed Call Log
+# P2983
+
+# Placed Call Log Name
+# P2984
+
+# Received Call Log
+# P2985
+
+# Received Call Log Name
+# P2986
+
+# BS Directory Hits
+# P22014
+
+# Subscribe Expiration (m)
+# P26051
+
+# Use MAC Header
+# P26061
+
+# RFC2543 Hold
+# P26062
+
+# Settings - IPVideoTalk - Codec
+# Preferred Video Codec
+# P464
+
+# Second codec
+# P465
+
+# H.323 - General
+# Voicemail Access Number
+# P626
+
+# BlueJeans - Codec
+# Packetization-mode
+# P26205
+
+# Enable CDP
+# P22119
+
+# OpenVPN Settings
+# Enable OpenVPN
+# P7050
+
+# Enable OpenVPN Comp-lzo
+# P8508
+
+# OpenVPN Server Address
+# P7051
+
+# OpenVPN Port
+# P7052
+
+# OpenVPN Transport
+# P2912
+
+# OpenVPN Cipher Method
+# P8396
+
+# OpenVPN Username
+# P8394
+
+# OpenVPN Password
+# P8395
+
+# Maintenance - TR-069
+# Enable TR-069
+# P1409
+
+# ACS URL
+# P4503
+
+# ACS Username
+# P4504 
+
+# ACS Password
+# P4505 
+
+# Periodic Inform Enable
+# P4506
+
+# Periodic Inform Interval (s)
+# P4507
+
+# Connection Request Username
+# P4511
+
+# Connection Request Password
+# P4512 
+
+# Connection Request Port
+# P4518
+
+# CPE Cert File
+# P8220
+
+# CPE Cert Key
+# P8221
+####################################################################
+##  Change Log End                                                ##
+####################################################################

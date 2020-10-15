@@ -1,0 +1,431 @@
+######################################################################################
+## GRP261x Change Log                                                               ##
+######################################################################################
+
+###############################################################
+# P values added since 1.0.3.6
+###############################################################
+
+###############################################################
+# Added Custom Ringtones 4-10
+###############################################################
+
+# Enable EDRC Feature. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+P8538 = 1
+
+# Use Programmable Keys in Screensaver. 0 - No, 1 - Yes.
+# Number: 0, 1
+# Mandatory
+P22363 = 0
+
+# Line LED Color Scheme. 0 - Default, 1 - Light up. Default is 0
+# Number: 0, 1
+# Mandatory
+P22362 = 0
+
+# Call Tone Volume
+# Number: (-15)-15. Default is 0.
+# Mandatory
+P22370 = 0
+
+# Total Number of Custom Ringtone Update
+# Number: 0-10. Default is 3.
+# Mandatory
+P8509 = 5
+
+# OpenVPN CA
+# String
+#P9902 =
+
+# OpenVPN Certificate
+# String
+#P9903 =
+
+# OpenVPN Client Key
+# String
+#P9904 =
+
+# USB Console Log. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P2922 = 0
+
+# Minimum TLS Version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2. Default is 99
+# Number: 0, 1, 2, 3
+P22293 = 99
+
+# Maximum TLS Version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2. Default is 99
+# Number: 0, 1, 2, 3
+P22294 = 99
+
+# Capture Location. 0 - Internal Storage, 1 - USB. Default is 0
+# Number: 0, 1
+# Mandatory
+P2999 = 0
+
+# USB Filename
+# String
+P6008 = 0
+
+###############################################################
+# P values added since 1.0.1.23
+###############################################################
+
+###############################################################
+# Updated outdated time zone DST values
+###############################################################
+
+###############################################################
+# Account 1/Network Settings
+###############################################################
+# Register Before DNS SRV Failover. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P29095 = 0
+###############################################################
+# Account 2/Network Settings
+###############################################################
+# Register Before DNS SRV Failover. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P29195 = 0
+###############################################################
+# Account 3/Network Settings
+###############################################################
+# Register Before DNS SRV Failover. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P29295 = 0
+###############################################################
+# Account 4/Network Settings
+###############################################################
+# Register Before DNS SRV Failover. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P29395 = 0
+###############################################################
+# Account 5/Network Settings
+###############################################################
+# Register Before DNS SRV Failover. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P29495 = 0
+###############################################################
+# Account 6/Network Settings
+###############################################################
+# Register Before DNS SRV Failover. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P29595 = 0
+
+##############################################################################
+##  Directory/LDAP
+##############################################################################
+# Exact Match Search. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P8505 = 0
+
+######################################################################################
+## Programmable Keys/EXT Setting
+######################################################################################
+# One Page Display Mode. 0 - No, 1 - Yes.
+# Number: 0, 1. Default is 0
+# Mandatory
+P8357 = 0
+
+# Sync Backlight with LCD. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+P8400 = 0
+
+######################################################################################
+# Extension Boards/EXT 1
+######################################################################################
+######################################################################################
+# Extension Boards/EXT 2
+######################################################################################
+######################################################################################
+# Extension Boards/EXT 3
+######################################################################################
+######################################################################################
+# Extension Boards/EXT 4
+######################################################################################
+
+###############################################################
+# P values added since 1.0.1.17
+###############################################################
+###############################################################
+##############################################################################
+##  Settings/Programmable Keys/Virtual Multi-Purpose Keys
+##############################################################################
+####################################################################
+# mode option strings for VPKs
+# - Added 'shared' and 'line' as mode option strings for Fixed VPKs
+# - Removed all instances of 'default' as a mode option string
+# - Added 'none' as a mode option string for Dynamic VPKs
+# - Added 'Phonebook(30)' as a Key Mode for all VPKs and MPKs
+# - Added 'phonebook' as a mode option string for all VPKs and MPKs
+####################################################################
+
+###############################################################
+# P values added since 1.0.1.7
+###############################################################
+
+###############################################################
+# Account 1/Feature Codes
+###############################################################
+#Call Forward Unconditionally (All) - Target
+# String
+P29092 = 
+#Call Forward Busy - Target
+# String
+P29093 = 
+#Call Forward Delayed (No Answer) - Target
+#String
+P29094 = 
+###############################################################
+# Account 2/Feature Codes
+###############################################################
+#Call Forward Unconditionally (All) - Target
+# String
+P29192 = 
+#Call Forward Busy - Target
+# String
+P29193 =
+#Call Forward Delayed (No Answer) - Target
+#String
+P29194 = 
+##########################################
+# Account 3/Feature Codes
+##########################################
+#Call Forward Unconditionally (All) - Target
+# String
+P29292 = 
+#Call Forward Busy - Target
+# String
+P29293 = 
+#Call Forward Delayed (No Answer) - Target
+#String
+P29294 = 
+##########################################
+# Account 4/Feature Codes
+##########################################
+#Call Forward Unconditionally (All) - Target
+# String
+P29392 = 
+#Call Forward Busy - Target
+# String
+P29393 = 
+#Call Forward Delayed (No Answer) - Target
+#String
+P29394 = 
+##########################################
+# Account 5/Feature Codes
+##########################################
+#Call Forward Unconditionally (All) - Target
+# String
+P29492 = 
+#Call Forward Busy - Target
+# String
+P29493 = 
+#Call Forward Delayed (No Answer) - Target
+#String
+P29494 = 
+##########################################
+# Account 6/Feature Codes
+##########################################
+#Call Forward Unconditionally (All) - Target
+# String
+P29592 =
+#Call Forward Busy - Target
+# String
+P29593 =
+#Call Forward Delayed (No Answer) - Target
+#String
+P29594 =
+###############################################################
+# Account 1/SIP Settings/Custom SIP Headers
+###############################################################
+# Use MAC Header
+# 0 - No, 1 - Only for REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P29090 = 0
+
+# Add MAC in User-Agent
+# 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P26061 = 0
+###############################################################
+# Account 2/SIP Settings/Custom SIP Headers
+###############################################################
+# Use MAC Header
+# 0 - No, 1 - Only for REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P29190 = 0
+
+# Add MAC in User-Agent
+# 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P26161 = 0
+###############################################################
+# Account 3/SIP Settings/Custom SIP Headers
+###############################################################
+# Use MAC Header
+# 0 - No, 1 - Only for REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P29290 = 0
+
+# Add MAC in User-Agent
+# 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P26261 = 0
+###############################################################
+# Account 4/SIP Settings/Custom SIP Headers
+###############################################################
+# Use MAC Header
+# 0 - No, 1 - Only for REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P29390 = 0
+
+# Add MAC in User-Agent
+# 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P26361 = 0
+###############################################################
+# Account 5/SIP Settings/Custom SIP Headers
+###############################################################
+# Use MAC Header
+# 0 - No, 1 - Only for REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P29490 = 0
+
+# Add MAC in User-Agent
+# 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P26461 = 0
+###############################################################
+# Account 6/SIP Settings/Custom SIP Headers
+###############################################################
+# Use MAC Header
+# 0 - No, 1 - Only for REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P29590 = 0
+
+# Add MAC in User-Agent
+# 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+P26561 = 0
+###############################################################
+# Account 1/SIP Settings/Basic Settings
+###############################################################
+# SIP Subscribe Failure Retry Wait Time (in seconds). Default is 1
+# Number: 1 - 3600
+# Mandatory
+P29091 = 1
+###############################################################
+# Account 2/SIP Settings/Basic Settings
+###############################################################
+# SIP Subscribe Failure Retry Wait Time (in seconds). Default is 1
+# Number: 1 - 3600
+# Mandatory
+P29191 = 1
+###############################################################
+# Account 3/SIP Settings/Basic Settings
+###############################################################
+# SIP Subscribe Failure Retry Wait Time (in seconds). Default is 1
+# Number: 1 - 3600
+# Mandatory
+P29291 = 1
+###############################################################
+# Account 4/SIP Settings/Basic Settings
+###############################################################
+# SIP Subscribe Failure Retry Wait Time (in seconds). Default is 1
+# Number: 1 - 3600
+# Mandatory
+P29391 = 1
+###############################################################
+# Account 5/SIP Settings/Basic Settings
+###############################################################
+# SIP Subscribe Failure Retry Wait Time (in seconds). Default is 1
+# Number: 1 - 3600
+# Mandatory
+P29491 = 1
+###############################################################
+# Account 6/SIP Settings/Basic Settings
+###############################################################
+# SIP Subscribe Failure Retry Wait Time (in seconds). Default is 1
+# Number: 1 - 3600
+# Mandatory
+P29591 = 1
+######################################################################################
+## Programmable Keys/Idle Screen Settings
+######################################################################################
+# Softkey 3 For GRP2615/16
+######################################################################################
+# Key Mode.
+# -1 - Default, 0 - Speed Dial, 4 - Speed Dial via active account, 6 - Voicemail, 
+# 7 - CallReturn, 10 - Intercom, 11 - LDAP Search, 15 - Call Log, 17 - Menu, 19 - Information, 20 - Message
+# Number: 0,4,6,7,10,11,15,17,19,20
+# Please note string format is also accepted, here is the full list for the mode options strings, the string for the mode is case-insensitive. 
+# none, speeddial, speeddialaa, voicemail, callreturn, intercom, ldapsearch, calllog, menu, information, message
+P2995 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3, 3 - Account 4, 4 - Account 5, 5 - Account 6
+# Number: 0, 1, 2, 3
+# Mandatory
+P2996 = 0
+
+# Description. 
+# String. 
+# P2997 = 
+
+# Value.
+# String.
+# P2998 =
+
+####################################################################
+# Account Settings                                                ##
+####################################################################
+####################################################################
+# Account 6                                                       ##
+####################################################################
+# Account 6 added for GRP2616 support
+##############################################################################
+##  Settings/Preferences / Date and Time
+##############################################################################
+# Time Zone
+# GMT-04:00 (Santiago, Chile)							CLT4CLST,M9.1.6/24:00,M4.1.6/24:00
+######################################################################################
+######################################################################################
+##  Settings/Programmable Keys/Virtual Multi-Purpose Keys
+######################################################################################
+######################################################################################
+# Virtual Multi-Purpose Keys (VPKs)
+# Note: 1. Fixed VPKs can only be edited. Adding or deleting Fixed VPK is not allowed.
+#       2. Even if a Dynamic VPK has mode set to None, it should be added in sequence. Skipping one will remove everything after that VPK. 
+######################################################################################
+######################################################################################
+# all instances of AutoBLF(30) removed from fixed VPK's as an option
+######################################################################################
+######################################################################################
+############################ For GRP2615       #######################################
+######################################################################################
+# VPK 6-10 changed to fixed VPK
+######################################################################################
+
+################################### Change Log End ######################################################

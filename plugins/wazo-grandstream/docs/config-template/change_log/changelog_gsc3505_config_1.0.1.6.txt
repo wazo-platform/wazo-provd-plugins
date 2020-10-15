@@ -1,0 +1,371 @@
+###############################################################################################
+##                                        Change Log                                         ##
+###############################################################################################
+#####################################################################################
+## 			        		P-Values added since 1.0.1.5                           ##
+#####################################################################################
+No P-Values added on firmware v.1.0.1.6
+
+
+#####################################################################################
+## 			        		P-Values removed since 1.0.1.5                         ##
+#####################################################################################
+No P-Values removed on firmware v.1.0.1.6
+
+
+#####################################################################################
+## 			        		P-Values added since 1.0.1.3                           ##
+#####################################################################################
+#######################################################################
+##  Account -> Account 1 - 16 Call Settings                          ##
+#######################################################################
+# Incoming Call Rules. 0 - Block, 1 - Set Password, 2 - Auto Answer, 3 - Ringing, 4 - Disable. Default value is 4.
+# Number: 0, 1, 2 ,3 ,4
+P60044,P60144,P60244,P60344,P60444,P60544,P60644,P60744,P60844,P60944,P61044,P61144,P61244,P61344,P61444,P61544
+
+# Set Password Rules. 
+# Numbers
+P60045,P60145,P60245,P60345,P60445,P60545,P60645,P60745,P60845,P60945,P61045,P61145,P61245,P61345,P61445,P61545
+
+# Account Ringtone. Default value is content://settings/system/ringtone
+# String
+P104, P423, P532, P623, P1723, P1832, P50623, P50723, P50823, P50923, P51023, P51123, P51223, P51323, P51423, P51523
+
+# Ignore Alert-Info Header. 0 - No, 1 - Yes. Default value is 0.
+# Number: 0, 1
+P26018, P26118, P26218, P26318, P26418, P26518, P52618, P52718, P52818, P52918, P53018, P53118, P53218, P53318, P53418, P53518
+
+# Matching Incoming Caller ID. Matching Rule 1
+# String
+P1488, P1494, P1500, P1506, P1512, P1518, P52677, P52777, P52877, P52977, P53077, P53177, P53277, P53377, P53477, P53577
+
+# Matching Rule 1 Distinctive Ringtone. Default value is content://settings/system/ringtone
+# String
+P1489, P1495, P1501, P1507, P1513, P1519, P52678, P52778, P52878, P52978, P53078, P53178, P53278, P53378, P53478, P53578
+
+# Matching Incoming Caller ID. Matching Rule 2.
+# String
+P1490, P1496, P1502, P1508, P1514, P1520, P52679, P52779, P52879, P52979, P53079, P53179, P53279, P53379, P53479, P53579
+
+# Matching Rule 2 Distinctive Ringtone. Default value is content://settings/system/ringtone
+# String
+P1491, P1497, P1503, P1509, P1515, P1521, P52680, P52780, P52880, P52980, P53080, P53180, P53280, P53380, P53480, P53580
+
+# Matching Incoming Caller ID. Matching Rule 3.
+# String
+P1492, P1498, P1504, P1510, P1516, P1522, P52681, P52781, P52881, P52981, P53081, P53181, P53281, P53381, P53481, P53581
+
+# Matching Rule 3 Distinctive Ringtone. Default value is content://settings/system/ringtone
+# String
+P1493, P1499, P1505, P1511, P1517, P1523, P52682, P52782, P52882, P52982, P53082, P53182, P53282, P53382, P53482, P53582
+
+##############################################################################
+##  Phone Settings                                                          ##
+##############################################################################
+#######################################################################
+##  Phone Settings -> General Settings                               ##
+#######################################################################
+# Local RTP Port. Default value is 50040
+# Number: 1024 - 65535
+P39 = 50040
+
+# Use Random Port. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P78 = 0
+
+# Keep-alive Interval (s). Default value is 20 seconds
+# Number: 10 - 160
+P84 = 20
+
+# STUN Server
+P76 = stun.ipvideotalk.com
+
+# TURN Server Username
+P22042 = 
+
+# TURN Server Password
+P22043 = 
+
+# Use NAT IP. This will enable our SIP client to use this IP in the SIP message.
+# Example 64.3.153.50
+P101 =
+
+#######################################################################
+##  Phone Settings - Call Settings                                   ##
+#######################################################################
+# Enable Call-Waiting. 0 - Yes, 1 - No. Default value is 0
+# Number: 0, 1
+P91 = 0
+
+# Enable Call-Waiting Tone. 0 - Yes, 1 - No. Default value is 0
+# Number: 0, 1
+P186 = 0
+
+# Automatic answer ringing time (s). Default value is 5 seconds.
+# Number: 0 - 60
+P8486 = 5
+
+# Virtual Account Group Avaya Mode. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P22018 = 0
+
+# Record Mode. 0 - Locally, 1 - on PortaOne, 2 - on UCM. Default value is 0.
+# Number: 0, 1, 2
+P6760 = 0
+
+# Environment. 0 - Small and medium size room & used on desk,  1 - Large room & used on empty area. Default value is 1. 
+# Number: 0, 1
+P22093 = 1
+
+#######################################################################
+##  Phone Settings - Ring Tone                                       ##
+#######################################################################
+# Auto Config CPT by Region. 0 - No, 1 - Yes. Default value is 1
+# Number : 0, 1
+P22041 = 0
+
+# Call-Waiting Tone
+P4005 = f1=440@-13,c=300/10000-300/10000-0/0;
+
+# Call-Waiting Tone Gain. 0 - Low, 1 - Medium, 2 - High. Default value is 0
+P1555 = 0
+
+#####################################################################################
+## 			        		P-Values removed since 1.0.1.3                         ##
+#####################################################################################
+#######################################################################
+##  System Settings - Preferences - LCD&LED Management               ##
+#######################################################################
+# Enable Contact Full Indicator. 0 - Yes, 1 - No. Default value is 0
+# Number: 0, 1
+P1694 = 0
+
+#####################################################################################
+## 			        		P-Values added since 1.0.1.2                           ##
+#####################################################################################
+##############################################################################
+##  Account 			                                                    ##
+##############################################################################
+#######################################################################
+##  Account -> Account 1 - 16 Network Settings                       ##
+#######################################################################
+# Register Before DNS SRV Fail-over. 0 - No, 1 - Yes. Default Value is 0.
+# Number: 0, 1
+P29095,P29195,P29295,P29325,P29425,P29525,P53695,P53795,P53895,P53995,P54095,P54195,P54295,P54395,P54495,P54595
+
+#######################################################################
+##  Account -> Account 1 - 16 Advanced Settings                      ##
+#######################################################################
+# Special Feature. Default value is 100
+# 100 - Standard, 102 - Broadsoft, 113 - China Mobile, 114 - ZTE IMS, 115 - Mobotix
+# 116 - ZTE NGN, 117 - Huawei IMS, 123 - NEC, 125 - WorldStone, 129 - Telefonica Spain
+# Number: 100, 102, 113, 114, 115, 116, 117, 123, 125, 129
+# Added new value 129 for Telefonica Spain
+
+##############################################################################
+##  Network Settings                                                        ##
+##############################################################################
+#######################################################################
+##  Network Settings -> Bluetooth           		                 ##
+#######################################################################
+# Enabling Bluetooth. 0 - No, 1 - Yes. Default value is 0.
+# Number: 0, 1
+P2910 = 0
+
+#######################################################################
+##  Network Settings - Advanced Network Settings                     ##
+#######################################################################
+# HTTP/HTTPS Proxy Port
+# String
+P1552 =
+# Old value was P1553 and change to P1552
+
+##############################################################################
+##  Applications                                                            ##
+##############################################################################
+#######################################################################
+##  Applications -> Music						  		             ##
+#######################################################################
+
+# Schedule 1.
+# String
+# Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file)
+# Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3
+P22336
+
+# Schedule 2.
+# String
+# Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file)
+# Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3
+P22337
+
+# Schedule 3.
+# String
+# Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file)
+# Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3
+P22338
+
+# Schedule 4.
+# String
+# Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file)
+# Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3
+P22339
+
+# Schedule 5.
+# String
+# Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file)
+# Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3
+P22340
+
+# Schedule 6.
+# String
+# Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file)
+# Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3
+P22341
+
+# Schedule 7.
+# String
+# Format: FREQ=WEEKLY;byday=(MO,TU,WE,TH,FR,SA,SU);ByPeriod=(0000-2359);Action={voice=(RTSP file)
+# Example: FREQ=WEEKLY;byday=TU,TH,SA;ByPeriod=0730-0735,1245-1300;Action={voice=rtsp://192.168.160.124/LadyAntebellumNeedYouNow.mp3
+P22342
+
+
+#####################################################################################
+## 			        		P-Values removed since 1.0.1.2                         ##
+#####################################################################################
+
+
+#####################################################################################
+## 			        		P-Values added since 1.0.1.1                           ##
+#####################################################################################
+##############################################################################
+##  Account 			                                                    ##
+##############################################################################
+#######################################################################
+##  Account -> Account 1 - 16 General Settings                       ##
+#######################################################################
+# DNS SRV Fail-over Mode. 0 - Default, 1 - Saved one until DNS TTL, 2 - Saved one until no response, 3 - Register first when  the invite fail-over. 
+# Default value is 0
+# Number
+# P26040 = 0
+
+##############################################################################
+##  Calls                   		                                        ##
+##############################################################################
+#######################################################################
+##  Calls -> Blacklist/Whitelist Settings     	                     ##
+#######################################################################
+# Whitelist
+# Format is numbers, name. Example: 123, John Doe.
+P22313 = 
+
+# Blacklist
+# Format is numbers, name. Example: 123, John Doe.
+P28127 =
+
+##############################################################################
+##  Network Settings                                                        ##
+##############################################################################
+#######################################################################
+##  Network Settings -> Bluetooth           		                 ##
+#######################################################################
+# Bluetooth  visibility. 0 - Disable, 1 - Enable. Default value is 0.
+# Number: 0, 1
+# P22330 = 0
+
+# Bluetooth visibility timeout. 0 - Never, 2 - 2mins, 5 - 5mins, 60 - 1hr. Default value is 2.
+# Number: 0, 2, 5, 60
+# P22331 = 5
+
+##############################################################################
+##  System Setting                                                          ##
+##############################################################################
+#######################################################################
+##  System Settings -> Security Settings -> Web/SSH Access           ##
+#######################################################################
+# Allow Web Page Access. 0 - Yes, 1 - No. Default value is 0.
+# Number: 0, 1
+# P29605 = 0
+
+#######################################################################
+##  System Settings -> Preferences -> Volume Settings                ##
+#######################################################################
+# Call Volume. Default Value is 8.
+# Number: 0 - 8
+# P22317 = 8
+
+# Ringtone Volume. Default Value is 8.
+# Number: 0 - 15
+# P8352 = 8
+
+# Ringtone Volume. Default Value is 12.
+# Number: 0 - 15
+# P43025 = 12
+
+##############################################################################
+##  Maintenance                                                             ##
+##############################################################################
+#######################################################################
+##  Maintenance -> Upgrade -> Advanced Settings  		             ##
+#######################################################################
+# Allow AutoConfig Service Access. 0 - No, 1 - Yes. Default value is 1.
+# Number: 0, 1
+# P7070 = 1
+
+##############################################################################
+##  Applications                                                            ##
+##############################################################################
+#######################################################################
+##  Applications -> Music						  		             ##
+#######################################################################
+# Audio File Address.
+# String
+# P953 = 
+
+# Play Mode. 0 - Manual, 1 - Auto. Default value is 0.
+# Number: 0, 1
+# P22328: 0
+
+#####################################################################################
+## 			        		P-Values removed since 1.0.1.1                         ##
+#####################################################################################
+##############################################################################
+##  Account 			                                                    ##
+##############################################################################
+#######################################################################
+##  Account -> Account 1 - 16 General Settings                       ##
+#######################################################################
+# Jitter Buffer Type. 0 - Fixed, 1 - Adaptive. Default value is 1
+# Number: 0, 1
+# P133, P498, P598, P698, P1798, P1898, P50698, P50798, P50898, P50998, P51098, P51198, P51298, P51398, P51498, P51598
+
+#####################################################################################
+## 			        		P-Values added since 1.0.0.24                          ##
+#####################################################################################
+##############################################################################
+##  System Settings                                                         ##
+##############################################################################
+#######################################################################
+##  System Settings -> Security Settings -> TLS 		             ##
+#######################################################################
+# Minimum TLS Version. 10 - 1.0, 11 - 1.1, 12 - 1.2. Default value is 11
+# Number: 10, 11, 12
+# P22293: 11
+
+# Maximum TLS Version. 10 - 1.0, 11 - 1.1, 12 - 1.2, 99 - No Limit. Default value is 99
+# Number: 10, 11, 12 , 99
+# P22294: 99
+
+##############################################################################
+##  Maintenance                                                             ##
+##############################################################################
+#######################################################################
+##  Maintenance -> Upgrade -> Provision         		             ##
+#######################################################################
+# Automatic Upgrade. 0 - No, 1 - Check Every Day, 2 - Check Every Week, 3 - Check at a Period Time. Default value is 0
+# Number: 0, 1, 2, 3
+# P22296 = 0
+
+################################################################################################
+## 			               				Change Log End                                        ##
+################################################################################################

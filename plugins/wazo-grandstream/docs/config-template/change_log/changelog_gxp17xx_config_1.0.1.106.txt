@@ -1,0 +1,1335 @@
+################################################################################################
+## GXP17xx Change Log                                                                         ##
+################################################################################################
+################################################################################################
+# P values changed since 1.0.1.98                                                             ##
+################################################################################################
+##############################################################################
+##  Maintenance/Security Settings/Security                                  ##
+##############################################################################
+# Minimum TLS Version. 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2. Default is 11.
+# Number: 10, 11, 12
+# Mandatory
+# P22293 = 11
+
+# Maximum TLS Version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2. Default is 99
+# Number: 99, 10, 11, 12
+# Mandatory
+# P22294 = 99
+
+# Enable/Disable Weak Ciphers. Default is 0
+# 0 - Enable Weak TLS Ciphers Suites
+# 1 - Disable Symmetric Encryption RC4/DES/3DES
+# 2 - Disable Symmetric Encryption SEED
+# 3 - Disable All Weak Symmetric Encryption
+# 4 - Disable Symmetric Authentication MD5
+# 5 - Disable All Weak TLS Cipher Suites
+# Number: 0 - 5
+# P8536 = 0
+
+################################################################################################
+# P values changed since 1.0.1.89                                                             ##
+################################################################################################
+###############################################################
+# Account 1/2/3/4 SIP Settings/Basic Settings
+###############################################################
+# Callee ID Display. 0 - Auto, 1 - Disabled, 2 - To Header. Default is 0
+# Number: 0, 1, 2
+# Mandatory
+# P26025/P26125/P26225/P26325= 0
+
+# Add Auth Header On Initial REGISTER. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P2359/P2459/P2559/P2659 = 0
+
+##############################################################################
+##  Maintenance/Security Settings/Trusted CA Certificates   ##
+##############################################################################
+# Load CA Certificates. 0 - Default Certificates, 1 - Custom Certificates, 2 - All Certificates. Default is 2
+# Number: 0, 1, 2
+# Mandatory
+# P8502 = 2
+
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Use Pound (#) For Redial. . 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P8504 = 1
+
+# Enable Diversion Information Display. 0 - No, 1 - Yes. Default is 1
+# Number: 0, 1
+# Mandatory
+# P22237 = 1
+
+##############################################################################
+# Settings/Programmable Keys/Virtual Multi-Purpose Keys Settings
+##############################################################################
+# Use Long Label. 0 - No, 1 - Yes, 2 - Maximum Length. Default is 0.
+# Number: 0, 1, 2
+# Mandatory
+# P8346 = 0
+
+# Show Keys Label. 1 - Show, 2 - Hide. Default is 1.
+# Number: 1, 2
+# Mandatory
+# P8386 = 1
+
+################################################################################################
+# P values changed since 1.0.1.64                                                             ##
+################################################################################################
+##############################################################################
+##  Settings/Call Features
+##############################################################################
+# Enable Automatic Redial. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8353 = 0
+
+# Automatic Redial Times. Default is 10.
+# Number: 1 - 100
+# Mandatory
+# P8354 = 10
+
+# Automatic Redial Interval. Default is 20.
+# Number: 1 - 360
+# Mandatory
+# P8355 = 20
+
+######################################################################################
+# VPK -- fixed VPK 
+######################################################################################
+# Key Mode for line VPK.
+# Number: -1, 0, 1, 10 -- 20, 21, 23-27, 29, 30, 38
+# -1 - None, 0 - Line, 1 - shared line, 10 - Speed Dial, 11 - BLF, 12 - Presence Watcher
+# 13 - Eventlist BLF, 14 - Speed Dial via active account, 15 - DialDTMF
+# 16 - Voicemail, 17 - Call Return, 18 - Transfer, 19 - CallPark, 20 - Intercom
+# 21 - LDAP Search, 23 - Multicast Paging, 24 - Record, 25 - Call Log
+# 26 - Monitored Call Park, 27 - Menu ,29-Information, 30-Message, 38-Provision
+# Mandatory
+
+###################################################################################### 
+# VPK --Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 11, 13 - 17, 19, 20, 28
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu, 19 - Information, 20 - Message, 28 - Provision
+# Mandatory
+
+##############################################################################
+##  Phonebook/Phonebook Management
+##############################################################################
+# Import Group Method. 0 - Replace, 1 - Append. Default is 0
+# Number: 0, 1
+# Mandatory
+# P8462 = 0
+
+##############################################################################
+##  Maintenance/Security Settings/Security                                  ##
+##############################################################################
+# Custom Certificate
+# String
+# P8472 =
+
+###############################################################
+# Account 1/2/3/4 Call Settings
+###############################################################
+# Matching Incoming Caller ID. Matching Rule 4
+# String
+# P6716/P6722/P6728/P6734 = 
+
+# Matching Rule 4 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P6717/P6723/P6729/P6735 = 0
+
+# Matching Incoming Caller ID. Matching Rule 5
+# String
+# P6718/P6724/P6730/P6736= 
+
+# Matching Rule 5 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P6719/P6725/P6731/P6737 = 0
+
+# Matching Incoming Caller ID. Matching Rule 6
+# String
+# P6720/P6726/P6732/P6738 = 
+
+# Matching Rule 6 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P6721/P6727/P6733/P6739 = 0
+
+# Matching Incoming Caller ID. Matching Rule 7
+# String
+# P26064/P26164/P26264/P26364 = 
+
+# Matching Rule 7 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P26065/P26165/P26265/P26365 = 0
+
+# Matching Incoming Caller ID. Matching Rule 8
+# String
+# P26066/P26166/P26266/P26366 =
+
+# Matching Rule 8 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P26067/P26167/P26267/P26367 = 0
+
+# Matching Incoming Caller ID. Matching Rule 9
+# String
+# P26068/P26168/P26268/P26368 =
+
+# Matching Rule 9 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P26069/P26169/P26269/P26369 = 0
+
+# Matching Incoming Caller ID. Matching Rule 10
+# String
+# P26096/P26196/P26296/P26396 =
+
+# Matching Rule 10 Distinctive Ringtone
+# 0 - system ring tone, 1 - custom ring tone 1, 2 - custom ring tone 2, 3 - custom ring tone 3. Default is 0
+# Number: 0, 1, 2, 3
+# Mandatory
+# P26097/P26197/P26297/P26397 = 0
+
+####################################################################
+# P values changed since 1.0.1.30                                  #
+####################################################################
+
+####################################################################
+# P values added 						                           #
+####################################################################
+
+###############################################################
+# Account 1/2/3/4 Network Settings
+###############################################################
+# Use SBC. 0 - No, 1 - Yes. Default is 0
+# Number: 0, 1
+# Mandatory
+# P26090/P26190/P26290/P26390 = 0
+
+###############################################################
+# Maintenance/Security Settings/Security
+###############################################################
+
+# Validate Server Certificates
+# Number: 0 - No, 1 - Yes. Default is 1. 
+# Mandatory
+# P8463
+
+# Web Access Mode
+# Number: 0 - HTTPS, 1 - HTTP, 2 - Disabled, 3 - Both HTTP and HTTPS. Default is 1.
+# Mandatory
+# P1650
+
+###############################################################
+# Network/Remote Control
+###############################################################
+
+# CSTA Control
+# Number: 0 - Disabled, 1 - Enabled. Default is 0.
+# Mandatory
+# P32053
+
+###############################################################
+# Network/WiFi Settings （Only for GXP1760W)
+###############################################################
+# Country. Default is AL. (US Model does not have this option.)
+# String: (Country codes)
+# Mandatory
+# P7831 = AL
+
+###############################################################
+# Settings/LED Control
+###############################################################
+
+# Disable VM/MSG power light flash
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P8371
+
+###############################################################
+# Settings/LCD Display
+###############################################################
+
+# Active Backlight Timeout
+# Number: 1-90, 0 - Disabled. Default is 1. 
+# Mandatory
+# P8356
+
+###############################################################
+# Account/General Settings
+###############################################################
+
+# Account Display
+# Number: 0 - User Name, 1 - User Identification. Default is 0.
+# Mandatory
+# P2380, P2480, P2580, P2680
+
+###############################################################
+# Settings/Programmable Keys/Virtual Multi-Purpose Keys
+###############################################################
+
+# Transfer Mode via VPK
+# Number: 0 - Blind Transfer, 1 - Attended Transfer, 2 - New Call. Default is 0.
+# Mandatory
+# P8390
+
+# Enable transfer via non-Transfer MPK
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P22162
+
+###############################################################
+# Maintenance/Upgrade and Provisioning
+###############################################################
+
+# Randomize Automatic Upgrade
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P8458
+
+###############################################################
+# Settings/General Settings
+###############################################################
+
+# Test Password Strength
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P8468
+
+###############################################################
+# Settings/Call Features
+###############################################################
+
+# Ring For Call Waiting
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P22102
+
+###############################################################
+# Account/SIP Settings/Custom SIP Headers
+###############################################################
+
+# Use MAC Header
+# Number: 0 - No, 1 - Yes. Default is 0.
+# Mandatory
+# P26061/P26101/P26261/P26361
+
+####################################################################
+# P values changed since 1.0.1.28                                  #
+####################################################################
+
+####################################################################
+# P values added 						                           #
+####################################################################
+
+###############################################################
+# Network/WiFi Settings
+###############################################################
+# Enable / Disable Wifi. Default is 0. 
+# Number: 0, 1
+# Mandatory
+# P7800
+
+## Access Point 1
+
+# SSID
+# String
+# P8403
+
+# Password
+# String
+# P8404
+
+# Security Type. Default is 0.
+# Number: 0, 1, 4, 5, 8
+# Mandatory
+# P8405
+
+## Access Point 2
+
+# SSID
+# String
+# P8406
+
+# Password
+# String
+# P8407
+
+# Security Type. Default is 0.
+# Number: 0, 1, 4, 5, 8
+# Mandatory
+# P8408
+
+## Access Point 3
+
+# SSID
+# String
+# P8409
+
+# Password
+# String
+# P8410
+
+# Security Type. Default is 0.
+# Number: 0, 1, 4, 5, 8
+# Mandatory
+# P8411
+
+## Access Point 4
+
+# SSID
+# String
+# P8412
+
+# Password
+# String
+# P8413
+
+# Security Type. Default is 0.
+# Number: 0, 1, 4, 5, 8
+# Mandatory
+# P8414
+
+## Access Point 5
+
+# SSID
+# String
+# P8415
+
+# Password
+# String
+# P8416
+
+# Security Type. Default is 0.
+# Number: 0, 1, 4, 5, 8
+# Mandatory
+# P8417
+
+## Access Point 6
+
+# SSID
+# String
+# P8418
+
+# Password
+# String
+# P8419
+
+# Security Type. Default is 0.
+# Number: 0, 1, 4, 5, 8
+# Mandatory
+# P8420
+
+## Access Point 7
+
+# SSID
+# String
+# P8421
+
+# Password
+# String
+# P8422
+
+# Security Type. Default is 0.
+# Number: 0, 1, 4, 5, 8
+# Mandatory
+# P8423
+
+## Access Point 8
+
+# SSID
+# String
+# P8424
+
+# Password
+# String
+# P8425
+
+# Security Type. Default is 0.
+# Number: 0, 1, 4, 5, 8
+# Mandatory
+# P8426
+
+## Access Point 9
+
+# SSID
+# String
+# P8427
+
+# Password
+# String
+# P8428
+
+# Security Type. Default is 0.
+# Number: 0, 1, 4, 5, 8
+# Mandatory
+# P8429
+
+## Access Point 10
+
+# SSID
+# String
+# P8430
+
+# Password
+# String
+# P8431
+
+# Security Type. Default is 0.
+# Number: 0, 1, 4, 5, 8
+# Mandatory
+# P8432
+
+####################################################################
+# P values changed since 1.0.1.8                                   #
+####################################################################
+
+####################################################################
+# P values added 						                           #
+####################################################################
+
+###############################################################
+# Account 1,2,3,4/Call Settings
+###############################################################
+# On Hold Reminder Tone. 0 - Disabled, 1 - Enabled. Default is 0.
+# Number: 0, 1
+# Mandatory
+# P26006/P26106/P26206/P26306 = 0
+
+###############################################################
+# Settings/Ring Tone
+###############################################################
+# Notification Tone Volume. Default is 7.
+# Number: 0 - 7
+# Mandatory
+# P8399 = 7
+
+###############################################################
+# Settings/External Service
+###############################################################
+# Grandstream Door System. 
+
+# Service Type
+# Number: -1 - None, 0 - GDS. Default is 0.
+# Mandatory
+# P32000/P32005/P32010/P32015/P32020/P32025/P32030/P32035/P32040/P32045 = 0
+
+# Account
+# Number: 0 - Account 1, 1 - Account 2, 2 - Account 3, 3 - Account 4(GXP1780/1782 only). Default is 0. 
+# Mandatory
+# P32001/P32006/P32011/P32016/P32021/P32026/P32031/P32036/P32041/P32046 = 0
+
+# System Identification
+# String
+# P32002/P32007/P32012/P32017/P32022/P32027/P32032/P32037/P32042/P32047
+
+# System Number
+# String
+# P32003/P32008/P32013/P32018/P32023/P32028/P32033/P32038/P32043/P32048
+
+# Access Password
+# String
+# P32004/P32009/P32014/P32019/P32024/P32029/P32034/P32039/P32044/P32049
+
+###############################################################
+# Settings/Call Features
+###############################################################
+# Onhook Dial Barging. 0 - Disabled, 1 - Enabled. Default is 1
+# Number: 0, 1
+# Mandatory
+#P8397 = 1
+
+# Attended Transfer Mode. 0 - Static, 1 - Dynamic. Default is 0
+# Number: 0, 1
+# Mandatory
+#P1376 = 0
+
+###############################################################
+# Maintenance/Security Settings/Security                  
+###############################################################
+# Web Access Mode. 0 - HTTPS, 1 - HTTP, 2 - Disabled. Default is 1
+# Number: 0, 1, 2
+# Mandatory
+#P1650 = 1
+
+####################################################################
+# P values changed since 1.0.0.48                                  #
+####################################################################
+
+####################################################################
+# P values added 						                           #
+####################################################################
+
+################################################################
+# Settings/Programmable Keys/Virtual Multi-Purpose Keys Settings
+################################################################
+# Account Mode. 0 - Line Mode, 1 - Account Mode. Default is 0.
+# Number 0, 1 
+# Mandatory
+# P8369 = 0
+
+###############################################################
+# Account 1,2,3,4/SIP Settings/Basic Settings
+###############################################################
+# Subscribe Expiration. Default is 60. 
+# Number: 1-64800 
+# Mandatory
+# P26051/P26151/P26251/P26351 = 60
+
+###############################################################
+# Account 1,2,3,4/SIP Settings/Custom SIP Headers
+###############################################################
+# Use X-Grandstream-PBX Header. Default is 1.
+# Number 0, 1
+# Mandatory
+# P26054/P26154/P26254/P26354 = 1
+
+# Use P-Access-Network-Info Header. 0 - No, 1 - Yes. Default is 1.
+# Number 0, 1
+# Mandatory
+# P26058/P26158/P26258/P26358 = 1
+
+# Use P-Emergency-Info Header. 0 - No, 1 - Yes. Default is 1.
+# Number 0, 1
+# Mandatory
+# P26059/P26159/P26259/P26359 = 1
+
+################################################################
+##  Maintenance/Security Settings/Trusted CA Certificates       
+################################################################
+# Trust CA Certificate
+# String
+# P8433/P8434/P8435/P8436/P8437/P8438
+
+####################################################################
+# P values changed since 1.0.0.38                                  #
+####################################################################
+
+####################################################################
+# P values removed 						                           #
+####################################################################
+
+####################################################################
+# Network/Basic Settings	                           
+####################################################################
+# Internet Protocol. 0 - Both IPv4 and IPv6, 1 - IPv6 Only, 2 - IPv4 Only. Default is 2.
+# Number: 0, 1, 2
+# Mandatory
+# P1430 = 2
+
+####################################################################
+# P values added 						                           #
+####################################################################
+
+####################################################################
+# Settings/Call Features					                       #
+####################################################################
+# Predictive Dialing Feature. 0 - disabled, 1 - enabled. Default is 1
+# Number: 0, 1
+# Mandatory
+# P22126 = 1
+
+###################################################################################### 
+# VPK 7--fixed VPK
+######################################################################################
+# Key Mode for line VPK. Default  is -1.
+# Number: -1, 0, 10 -- 30
+# -1 - None, 0 - Line, 1 - shared line,10 - Speed Dial, 11 - BLF, 12 - Presence Watcher
+# 13 - Eventlist BLF, 14 - Speed Dial via active account, 15 - DialDTMF
+# 16 - Voicemail, 17 - Call Return, 18 - Transfer, 19 - CallPark, 20 - Intercom
+# 21 - LDAP Search, 22 - Conference, 23 - Multicast Paging, 24 - Record, 25 - Call Log
+# 26 - Monitored Call Park, 27 - Menu 28-XML Application,29-Information, 30-Message
+# Mandatory
+# P23800 = 30
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. Default is 0.
+# Mandatory
+# P23801 = 0
+
+# Description. 
+# String. 
+# P23802 = 
+
+# Value.
+# String.
+# P23803 =
+
+##################################################################################### 
+# VPK 8--fixed VPK
+######################################################################################
+# Key Mode for line VPK. Default  is -1.
+# Number: -1, 0, 10 -- 30
+# -1 - None, 0 - Line, 1 - shared line,10 - Speed Dial, 11 - BLF, 12 - Presence Watcher
+# 13 - Eventlist BLF, 14 - Speed Dial via active account, 15 - DialDTMF
+# 16 - Voicemail, 17 - Call Return, 18 - Transfer, 19 - CallPark, 20 - Intercom
+# 21 - LDAP Search, 22 - Conference, 23 - Multicast Paging, 24 - Record, 25 - Call Log
+# 26 - Monitored Call Park, 27 - Menu 28-XML Application,29-Information, 30-Message
+# Mandatory
+# P23804 = 27
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. Default is 0.
+# Mandatory
+# P23805 = 0
+
+# Description. 
+# String. 
+# P23806 = 
+
+# Value.
+# String.
+# P23807 =
+
+###################################################################################### 
+# VPK 9--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23808 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. Default is 0.
+# Mandatory
+# P23809 = 0
+
+# Description. 
+# String. 
+# P23810 = 
+
+# Value.
+# String.
+# P23811 =
+
+###################################################################################### 
+# VPK 10--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23812 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. Default is 0.
+# Mandatory
+# P23813 = 0
+
+# Description. 
+# String. 
+# P23814 = 
+
+# Value.
+# String.
+# P23815 =
+
+###################################################################################### 
+# VPK 11--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23816 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. Default is 0.
+# Mandatory
+# P23817 = 0
+
+# Description. 
+# String. 
+# P23818 = 
+
+# Value.
+# String.
+# P23819 =
+
+###################################################################################### 
+# VPK 12--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23820 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. Default is 0.
+# Mandatory
+# P23821 = 0
+
+# Description. 
+# String. 
+# P23822 = 
+
+# Value.
+# String.
+# P23823 =
+
+###################################################################################### 
+# VPK 13--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23824 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23825 = 0
+
+# Description. 
+# String. 
+# P23826 = 
+
+# Value.
+# String.
+# P23827 =
+
+###################################################################################### 
+# VPK 14--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23828 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23829 = 0
+
+# Description. 
+# String. 
+# P23830 = 
+
+# Value.
+# String.
+# P23831 =
+
+###################################################################################### 
+# VPK 15--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23832 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23833 = 0
+
+# Description. 
+# String. 
+# P23834 = 
+
+# Value.
+# String.
+# P23835 =
+
+##################################################################################### 
+# VPK 16--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23836 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23837 = 0
+
+# Description. 
+# String. 
+# P23838 = 
+
+# Value.
+# String.
+# P23839 =
+
+##################################################################################### 
+# VPK 17--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23840 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23841 = 0
+
+# Description. 
+# String. 
+# P23842 = 
+
+# Value.
+# String.
+# P23843 =
+
+##################################################################################### 
+# VPK 18--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23844 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23845 = 0
+
+# Description. 
+# String. 
+# P23846 = 
+
+# Value.
+# String.
+# P23847 =
+
+##################################################################################### 
+# VPK 19--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23848 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23849 = 0
+
+# Description. 
+# String. 
+# P23850 = 
+
+# Value.
+# String.
+# P23851 =
+
+##################################################################################### 
+# VPK 20--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23852 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23853 = 0
+
+# Description. 
+# String. 
+# P23854 = 
+
+# Value.
+# String.
+# P23855 =
+
+##################################################################################### 
+# VPK 21--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23856 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23857 = 0
+
+# Description. 
+# String. 
+# P23858 = 
+
+# Value.
+# String.
+# P23859 =
+
+##################################################################################### 
+# VPK 22--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23860 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23861 = 0
+
+# Description. 
+# String. 
+# P23862 = 
+
+# Value.
+# String.
+# P23863 =
+
+##################################################################################### 
+# VPK 23--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23864 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23865 = 0
+
+# Description. 
+# String. 
+# P23866 = 
+
+# Value.
+# String.
+# P23867 =
+
+##################################################################################### 
+# VPK 24--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23868 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23869 = 0
+
+# Description. 
+# String. 
+# P23870 = 
+
+# Value.
+# String.
+# P23871 =
+
+##################################################################################### 
+# VPK 25--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23872 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23873 = 0
+
+# Description. 
+# String. 
+# P23874 = 
+
+# Value.
+# String.
+# P23875 =
+
+##################################################################################### 
+# VPK 26--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23876 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23877 = 0
+
+# Description. 
+# String. 
+# P23878 = 
+
+# Value.
+# String.
+# P23879 =
+
+##################################################################################### 
+# VPK 27--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23880 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23881 = 0
+
+# Description. 
+# String. 
+# P23882 = 
+
+# Value.
+# String.
+# P23883 =
+
+##################################################################################### 
+# VPK 28--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23884 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23885 = 0
+
+# Description. 
+# String. 
+# P23886 = 
+
+# Value.
+# String.
+# P23887 =
+
+##################################################################################### 
+# VPK 29--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK.
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23888 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23889 = 0
+
+# Description. 
+# String. 
+# P23890 = 
+
+# Value.
+# String.
+# P23891 =
+
+##################################################################################### 
+# VPK 30--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK.
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23892 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23893 = 0
+
+# Description. 
+# String. 
+# P23894 = 
+
+# Value.
+# String.
+# P23895 =
+
+##################################################################################### 
+# VPK 31--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23896 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23897 = 0
+
+# Description. 
+# String. 
+# P23898 = 
+
+# Value.
+# String.
+# P23899 =
+
+##################################################################################### 
+# VPK 32--Dynamic VPK
+######################################################################################
+# Key Mode for Dynamic VPK. 
+# Number: -1 -- 20
+# -1 - None, 0 - Speed Dial, 1 - BLF, 2 - Presence Watcher
+# 3 - Eventlist BLF, 4 - Speed Dial via active account, 5 - DialDTMF
+# 6 - Voice Mail, 7 - Call Return, 8 - Transfer, 9 - Call Park, 10 - Intercom
+# 11 - LDAP Search, 12 - Conference, 13 - Multicast Paging, 14 - Record, 15 - Call Log
+# 16 - Monitored Call Park, 17 - Menu 18- XML Application,19 - Information, 20 - Message
+# Mandatory
+# P23900 = -1
+
+# Account. 0 - Account 1, 1 - Account 2, 2 - Account 3 
+# Number: 0, 1, 2. 
+# Mandatory
+# P23901 = 0
+
+# Description. 
+# String. 
+# P23902 = 
+
+# Value.
+# String.
+# P23903 =
+####################################################################
+## P values updated for Network/Basic Settings                     #                  
+####################################################################
+# Internet Protocol. 0 - Both IPv4 and IPv6, 1 - Both, prefer IPv6 , 2 - IPv4 Only, 3 - IPv6 Only. Default is 2.
+# Number: 0, 1, 2, 3
+# Mandatory
+# P1415 = 0
+
+################################### Change Log End ######################################################

@@ -1,0 +1,1441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gs_provision version="1">
+    <mac>${DEVMAC}</mac>
+    <config version="1">
+	<!-- To specify a config server path, use the following parameter and value format -->
+    <!-- Example: 
+		<P237>http://192.168.129.66:8080/gxw.xml</P237>
+		If file name is not specified (gxw.xml in the example above), the device will attempt to locate "cfg<macaddress>.xml" in the specified folder path. 
+    -->
+
+<!--CHANGELOG for 1.0.0.32
+DOD settings
+Outbound Route>Enable Filter on Source Caller ID & Custom Dynamic Route
+Inbound Route>Set CallerID Info (CallerID Name & Number)
+Interface Settings->Tone Region
+SNMP
+DDNS
+Login Whitelist
+Alert Events List
+Register Trunk options: From User, Send PPI Header, PPI Mode
+Peer Trunk options: Send PPI Header, PPI Mode
+
+NOT SUPPORTED
+Interface Settings->MFC/R2 custom options
+Email template
+-->
+<!-- For Trunks -->
+      <trunk>
+            <digital_trunks>
+                <Digital_1>
+                    <TrunkName>Digital_1</TrunkName>
+                    <Port>1</Port>
+                    <HideCallerID>no</HideCallerID>
+                    <!-- this field is required,cannot be blank   -->
+                    <KeepTrunkCID>no</KeepTrunkCID>
+                    <CallerIDNumber></CallerIDNumber>
+                    <CallerIDName></CallerIDName>
+                    <DAHDIOUTLineSelection>ascend</DAHDIOUTLineSelection>
+                    <!--the support option：ascend，poll，descend  -->
+                    <FaxGateway>yes</FaxGateway>
+                    <DOD>
+                    <!--To configure DOD for the trunk, use the following format. If a DOD has multiple numbers, separate them with commas (,)-->
+                    <!--
+                       <dod_1>
+                         <DODNumber>4001400</DODNumber>
+                         <DODName>test</DODName>
+                         <AddExtension>no</AddExtension>
+                         <Number>26001400,26001401,26001401</Number>
+                       </dod_1>
+                      <dod_2>
+                        <DODNumber>21433211</DODNumber>
+                        <DODName>fk43dhwsf</DODName>
+                        <AddExtension>yes</AddExtension>
+                        <Number>324,32,32,543</Number>
+                        </dod_2>
+                        .......
+                        -->
+                    </DOD>					
+                </Digital_1>
+                <!--To add more digital trunks for GXW4502/4504, please use the following format -->
+                <!--
+                 <Digital_2>
+                    <TrunkName>Digital_2</TrunkName>
+                    <Port>2</Port>
+                    <HideCallerID>no</HideCallerID>
+                    <KeepTrunkCID>no</KeepTrunkCID>
+                    <CallerIDNumber></CallerIDNumber>
+                    <CallerIDName></CallerIDName>
+                    <DAHDIOUTLineSelection>ascend</DAHDIOUTLineSelection>
+                    <FaxGateway>yes</FaxGateway>
+                </Digital_2>
+                ........
+                -->
+            </digital_trunks>
+            
+            <voip_trunks>
+			<!--Example Peer Trunk-->
+               <Voip_trunk_name_1>
+                  <ProviderName>peer_test</ProviderName>
+                  <!-- Provider Name,this filed is required --> 
+                  <TrunkType>peer</TrunkType>  
+                  <!--ProviderName represents trunk type here,this filed is required,the value as follows:
+                        Peer SIP Trunk       : peer
+                        Register SIP Trunk   : register
+                     -->                   
+                  <HostName>192.168.89.135</HostName>  
+                  <!-- this filed is required,please enter a valid host name format --> 
+                  <KeepOriginalCID>yes</KeepOriginalCID>
+                  <KeepTrunkCID>no</KeepTrunkCID>                  
+                  <NAT>no</NAT>     
+                  <DisableThisTrunk>no</DisableThisTrunk> 
+                  <TELURL>disabled</TELURL>  
+                  <!--
+                         Disable       : disabled
+                         User=phone    : user_phone
+                         Enabled       : enabled
+                    -->
+                  <CallerID></CallerID>
+                  <CallerIDName></CallerIDName>
+                  <FromDomain></FromDomain> 
+                  <!-- Please enter a valid From Domain format  -->  
+                  <Transport>udp</Transport>  
+                  <!-- Supported options: 'udp','tcp','tls' -->  
+                  <CodecPreference>ulaw,alaw,g726,g729,ilbc</CodecPreference>  
+                  <!--
+                         PCMU            : ulaw
+                         PCMA            : alaw
+                         G.726           : g726
+                         G.729           : g729
+                         iLBC            : ilbc
+                         G.722           : g722
+                         AAL2-G.726-32   : g726aal2
+                         G.723           : g723
+                         OPUS            : opus
+                     please select 1 codec at least -->
+                  <SendPPIHeader>no</SendPPIHeader>
+                  <PPIMode>yes</PPIMode>
+                  <!--Default:yes 
+                        OriginalCID: CID is used for PPI header
+                        DODNumber: DOD number will be used for PPI header -->                  
+				  <SendPAIHeader>no</SendPAIHeader>
+                  <PAIHeaderName></PAIHeaderName>
+				  <PAIHeaderNumber></PAIHeaderNumber>
+                  <!--if null ,use the CID according to the priority -->
+                  <PassthoughPAIHeader>no</PassthoughPAIHeader>
+                  <DIDMode>request-line</DIDMode>  
+                  <!-- Supported options: 'request-line','to-header' -->  
+                  <DTMFMode>rfc2833</DTMFMode>  
+                  <!--  Supported options: 'rfc2833','info','inband','auto';
+                     if remove DTMFMode item,DTMF Mode will be Default
+                     -->  
+                  <EnableHeartbeatDetection>no</EnableHeartbeatDetection>  
+                  <!--
+                         Disable       : no
+                         Enabled       : yes
+                     -->  
+                  <HeartbeatFrequency>60</HeartbeatFrequency>  
+                  <!--  Please enter a value between 1 to 3600,and when enable heartbeat detection,this filed is required -->  
+                  <TheMaximumNumberofCallLines>0</TheMaximumNumberofCallLines>  
+                  <!--  Please enter a value between 0 to 999,0 means no limit -->  
+                  <SRTP>no</SRTP>  
+                  <!--
+                         Disable                  : no
+                         Enable but not forced    : support
+                         Enable and forced        : yes
+                     --> 
+              </Voip_trunk_name_1> 
+              
+              <Voip_trunk_name_2>
+                  <ProviderName>register_test</ProviderName>
+                  <TrunkType>register</TrunkType>
+                  <!--ProviderName represents trunk type here,this filed is required,the value as follows:
+                        Peer SIP Trunk       : peer
+                        Register SIP Trunk   : register
+                     -->                    
+                  <HostName>192.168.84.22</HostName>
+                  <KeepOriginalCID>no</KeepOriginalCID>
+                  <KeepTrunkCID>yes</KeepTrunkCID> 
+                  <NAT>no</NAT>
+                  <DisableThisTrunk>no</DisableThisTrunk>
+                  <TELURL>disabled</TELURL>
+                  <!--
+                         Disable       : disabled
+                         User=phone    : user_phone
+                         Enabled       : enabled
+                     -->
+                  <CallerIDName></CallerIDName>
+                  <FromDomain></FromDomain>
+				  <FromUser></FromUser>
+                  <Transport>udp</Transport> 
+                  <!-- Supported options: 'udp','tcp','tls' -->
+                  <NeedRegistration>yes</NeedRegistration>  
+                  <!--
+                         Disable       : no
+                         Enabled       : yes
+                     -->
+                  <Allowoutgoingcallsifregistrationfails>yes</Allowoutgoingcallsifregistrationfails>  
+                  <!--
+                         Disable       : no
+                         Enabled       : yes
+                      -->
+                  <Username>2087</Username> 
+                  <!-- this filed is required,please use numbers,letters and special characters +*#-_.only -->  
+                  <Password>s1ptest</Password>  
+                  <!-- this filed is required,please use English input method from you keyboard without space -->  
+                  <AuthID></AuthID> 
+                  <!-- Please use English input method from you keyboard without space,;: ?'&"()<>,\/[]={}-->                   
+                  <CodecPreference>ulaw,alaw,g726,g729,ilbc</CodecPreference>
+                  <!--
+                         PCMU            : ulaw
+                         PCMA            : alaw
+                         G.726           : g726
+                         G.729           : g729
+                         iLBC            : ilbc
+                         G.722           : g722
+                         AAL2-G.726-32   : g726aal2
+                         G.723           : g723
+                         OPUS            : opus
+                     please select 1 codec at least -->
+                  <SendPPIHeader>no</SendPPIHeader>
+                  <PPIMode>yes</PPIMode>
+                  <!--Default:yes
+                        OriginalCID: CID is used for PPI header
+                        DODNumber: DOD number will be used for PPI header -->                  
+				  <SendPAIHeader>no</SendPAIHeader>
+                  <PAIHeaderName></PAIHeaderName>
+				  <PAIHeaderNumber></PAIHeaderNumber>
+                  <!--if null ,use the CID according to the priority -->
+                  <PassthoughPAIHeader>yes</PassthoughPAIHeader>
+                  <OutboundProxy></OutboundProxy>  
+                  <!--
+                         if disable Outbound Proxy Support, set OutboundProxy empty or remove it
+                     -->  
+                  <RemoveOBPfromRoute>no</RemoveOBPfromRoute> 
+                  <!--
+                         Disable       : no
+                         Enabled       : yes
+                     --> 
+                  <DIDMode>request-line</DIDMode>
+                  <!-- Supported options: 'request-line','to-header' --> 
+                  <DTMFMode>rfc2833</DTMFMode>
+                  <!--  Supported options: 'rfc2833','info','inband','auto';
+                     if remove DTMFMode item,DTMF Mode will be Default
+                     -->                  
+                  <EnableHeartbeatDetection>no</EnableHeartbeatDetection>  
+                  <HeartbeatFrequency>60</HeartbeatFrequency>  
+                  <TheMaximumNumberofCallLines>0</TheMaximumNumberofCallLines>  
+                  <SRTP>no</SRTP>
+                  <!--
+                         Disable                  : no
+                         Enable but not forced    : support
+                         Enable and forced        : yes
+                      --> 
+                  <DOD>
+                    <!--To configure DOD for the trunk, use the following format. If a DOD has multiple numbers, separate them with commas (,)-->
+                    <!--
+                       <dod_1>
+                         <DODNumber>4001400</DODNumber>
+                         <DODName>test</DODName>
+                         <AddExtension>no</AddExtension>
+                         <Number>26001400,26001401,26001401</Number>
+                       </dod_1>
+                      <dod_2>
+                        <DODNumber>21433211</DODNumber>
+                        <DODName>fk43dhwsf</DODName>
+                        <AddExtension>yes</AddExtension>
+                        <Number>324,32,32,543</Number>
+                        </dod_2>
+                        .......
+                        -->
+					</DOD>
+              </Voip_trunk_name_2> 
+           </voip_trunks> 
+           
+           <outbound_routes>
+              <outbound_route_name1>
+                  <CallingRuleName>outbound_peer</CallingRuleName>
+                  <Pattern>_XXX,_6.,_4xxx</Pattern>
+                  <!--Use commas (,) to separate multiple patterns-->
+                  <MainTrunkTrunk>peer_test</MainTrunkTrunk>
+                  <!-- This should be the name of an existing trunk -->
+				  <EnableFilteronSourceCallerID>no</EnableFilteronSourceCallerID>
+                  <!--
+                        no: Disabled
+                        yes: Enabled
+                     -->
+                  <CustomDynamicRoute></CustomDynamicRoute>
+                  <!--Multiple patterns are supported and should be separated with commas(e.g."_XXX,_XXXX")-->
+                  <MainTrunkStrip></MainTrunkStrip>
+				  <!--Set to blank if no stripping is needed-->
+                  <MainTrunkPrepend></MainTrunkPrepend>
+                  <!-- Set to blank if no prepending is needed-->
+                  <FailoverTrunk>
+                      <FailoverTrunkSquence>
+                          <FailoverTrunkTrunk></FailoverTrunkTrunk>
+                          <!-- This should be the name of an existing trunk -->
+                          <FailoverTrunkStrip>0</FailoverTrunkStrip>
+                          <FailoverTrunkPrepend>1</FailoverTrunkPrepend>
+                          <!--
+                              if you doesn't use prepend，you should remove FailoverTrunkPrepend item，the item can not set blank
+                               -->
+                       </FailoverTrunkSquence>
+                  </FailoverTrunk>
+                  <TimeConditionMode>0</TimeConditionMode>
+                  <!-- Time Condition Mode
+                     0: Use Main Trunk or Failover Trunk
+                     1: Use Specific Trunks
+                     -->		                  
+				  
+                  <UseMainTrunkorFailoverTrunk>
+                     <TimeCondition_1>
+                         <TimeCondition>1</TimeCondition>
+                         <!-- 
+                             TimeCondition:
+                             Office Time                              : 1
+                             Out of Office Time                       : 2
+                             Holiday                                  : 3
+                             Out of Holiday                           : 4
+                             Out of Office Time or Holiday            : 5
+                             Specific Time (Disable Excluing Holiday) : 6
+                             Specific Time (Enable Excluing Holiday)  : 7
+                         -->
+                     </TimeCondition_1>
+                     <TimeCondition_2>
+                         <TimeCondition>6</TimeCondition>
+                         <StartTime>09:00</StartTime>
+                         <EndTime>18:00</EndTime>
+                         <Frequency>byWeek</Frequency>
+                         <WeekDay>mon,tue</WeekDay>
+                        </TimeCondition_2>
+                     </UseMainTrunkorFailoverTrunk>
+					 
+                     <!--Example of "Use Specific Trunks"
+                     <TimeConditionMode>1</TimeConditionMode>
+                     <UseSpecificTrunks>
+                       <TimeCondition_1>
+                            <Trunk>Digital_1</Trunk>
+                            <TimeCondition>1</TimeCondition>
+                       </TimeCondition_1>
+                       <TimeCondition_2>
+                            <Trunk>register_test</Trunk>
+                            <TimeCondition>6</TimeCondition>
+                            <StartTime>09:00</StartTime>
+                            <EndTime>18:00</EndTime>
+                            <Frequency>byDay</Frequency>
+                            <Month>apr,may</Month>
+                            <Day>5,7</Day>
+                        </TimeCondition_2>
+                     </UseSpecificTrunks> 
+                         -->                  
+						 
+              </outbound_route_name1>   
+              <outbound_route_name2>
+                  <CallingRuleName>outbound_digital</CallingRuleName>
+                  <Pattern>_8.</Pattern>
+                  <!--
+                         pattern is separated by ,
+                     -->
+                  <MainTrunkTrunk>Digital_1</MainTrunkTrunk>
+                  <!-- This should be the name of ane existing trunk -->
+				  <EnableFilteronSourceCallerID>no</EnableFilteronSourceCallerID>
+                  <!--
+                        no: Disabled
+                        yes: Enabled
+                     -->
+                  <CustomDynamicRoute></CustomDynamicRoute>
+                  <!--Multiple patterns are supported and should be separated with commas(e.g."_XXX,_XXXX")-->
+                  <MainTrunkStrip></MainTrunkStrip>
+				  <!--Set to blank if no stripping is needed-->
+                  <MainTrunkPrepend></MainTrunkPrepend>
+                  <!-- Set to blank if no prepending is needed-->
+                  <TimeConditionMode>0</TimeConditionMode>
+				  <!--
+                     0: Use Main Trunk or Failover Trunk
+                     1: Use Specific Trunks
+                     -->
+                  <FailoverTrunk>
+                      <FailoverTrunkSquence>
+                          <FailoverTrunkTrunk></FailoverTrunkTrunk>
+                          <!-- This should be the name of an existing trunk -->
+                          <FailoverTrunkStrip>0</FailoverTrunkStrip>
+						  <!--Set to blank if no stripping is needed-->
+                          <FailoverTrunkPrepend>1</FailoverTrunkPrepend>
+                          <!-- Set to blank if no prepending is needed-->
+                       </FailoverTrunkSquence>
+                  </FailoverTrunk>
+                  <TimeCondition></TimeCondition>
+              </outbound_route_name2>
+          </outbound_routes>
+          
+          <inbound_routes>
+              <route_name1>
+              <!--inbound rule name -->
+                  <TrunkName>peer_test</TrunkName>
+                  <!-- This should be the name of an existing trunk -->
+                  <Pattern>_8.,_4xxx</Pattern>
+                  <!--Cannot be blank. Multiple patterns are supported and should be separated with commas(e.g."_XXX,_XXXX")-->
+                  <CallerIDPattern>_.</CallerIDPattern>
+                  <!-- 
+                    Default is blank. Multiple patterns are supported and should be separated with commas(e.g."_XXX,_XXXX")
+					-->
+                <SetCallerIDInfo>no</SetCallerIDInfo>
+                <!--
+                    no: Disabled
+                    yes: Enabled
+					Default is no					
+                     -->
+                <CallerIDName>${CALLERID(name)}</CallerIDName>
+                <!--Use the following format to customize the callerID name of incoming callers.
+					Examples:
+					${CALLERID(name)}: Default value which indicates the name of an incoming caller.
+					A${CALLERID(name)}B: Prepends the character "A" and appends the character "B" to ${CALLERID(name)}.
+					Using a string instead of the pattern-matching syntax will set a fixed name to incoming callers.
+				-->
+                <CallerIDNumber>${CALLERID(num)}</CallerIDNumber>
+				<!--Use the following format to manipulate the numbers of incoming callers or to set a fixed callerID number for calls that go through this inbound route.
+					Examples:
+					${CALLERID(num)}: Default value which indicates the number of an incoming caller (CID). The CID will not be modified.
+					${CALLERID(num):n}: Skips the first n characters of a CID number, where n is a number.
+					${CALLERID(num):-n}: Takes the last n characters of a CID number, where n is a number.
+					${CALLERID(num):s:n}: Takes n characters of a CID number starting from s+1, where n is a number and s is a character position (e.g. ${CALLERID(num):2:7} takes 7 characters after the second character of a CID number).
+					n${CALLERID(num)}: Prepends n to a CID number, where n is a number.
+				-->
+				
+              </route_name1>
+              <route_name2>
+              <!--inbound rule name -->
+                  <TrunkName>Digital_1</TrunkName>
+                  <!-- This should be the name of an existing trunk -->
+                  <Pattern>_.</Pattern>
+                  <!--Cannot be blank. Multiple patterns are supported and should be separated with commas(e.g."_XXX,_XXXX")-->
+                  <CallerIDPattern></CallerIDPattern>
+                    <!--Default is blank. Multiple patterns are supported and should be separated with commas(e.g."_XXX,_XXXX")-->
+                <SetCallerIDInfo>no</SetCallerIDInfo>
+                <!--
+                    no: Disabled
+                    yes: Enabled
+					Default is no					
+                     -->
+                <CallerIDName>${CALLERID(name)}</CallerIDName>
+                <!--Use the following format to customize the callerID name of incoming callers.
+					Examples:
+					${CALLERID(name)}: Default value which indicates the name of an incoming caller.
+					A${CALLERID(name)}B: Prepends the character "A" and appends the character "B" to ${CALLERID(name)}.
+					Using a string instead of the pattern-matching syntax will set a fixed name to incoming callers.
+				-->
+                <CallerIDNumber>${CALLERID(num)}</CallerIDNumber>
+				<!--Use the following format to manipulate the numbers of incoming callers or to set a fixed callerID number for calls that go through this inbound route.
+					Examples:
+					${CALLERID(num)}: Default value which indicates the number of an incoming caller (CID). The CID will not be modified.
+					${CALLERID(num):n}: Skips the first n characters of a CID number, where n is a number.
+					${CALLERID(num):-n}: Takes the last n characters of a CID number, where n is a number.
+					${CALLERID(num):s:n}: Takes n characters of a CID number starting from s+1, where n is a number and s is a character position (e.g. ${CALLERID(num):2:7} takes 7 characters after the second character of a CID number).
+					n${CALLERID(num)}: Prepends n to a CID number, where n is a number.
+				-->
+	              
+			  </route_name2>
+          </inbound_routes>
+       </trunk> 		
+<!--For Gateway Settings-->
+       <gateway_settings>  
+           <sip_settings>
+                <general>
+                    <BindUDPPort>5060</BindUDPPort>
+                    <!--Enter a value between 1 and 65535. Default is 5060 -->
+                    <Enable486toFailoverTrunk>no</Enable486toFailoverTrunk>
+                    <Enable600toFailoverTrunk>no</Enable600toFailoverTrunk>
+                    <BroadSoftMode>no</BroadSoftMode>
+                    <!-- no=disabled, yes=enabled. Default for the above 3 options is no -->
+                </general>
+                
+                <misc>
+                    <RegisterTimeout>20</RegisterTimeout>
+                    <!--Enter a value between 10 and 100. Default is 20 -->
+                    <RegisterAttempts>0</RegisterAttempts>
+                    <!--Enter a vaule between 0 and 10. Default is 0 -->
+                    <DNSmode>A&amp;AAAA</DNSmode>
+                    <!--The following options are supported: ('A', 'AAAA', 'A&amp;AAAA'). Default is A&amp;AAAA -->                    
+                </misc>
+                
+                <session_timer>
+                    <SessionTimers>yes</SessionTimers>
+                     <!--always=force session timer, yes=use session timer, no=disable session timer. Default is yes-->
+                     <SessionExpire>1800</SessionExpire>
+                    <!--Enter only numbers between 90 and 86400. Session Expire value cannot be lower than Min SE value. Default is 1800 -->
+                    <MinSE>90</MinSE>
+                    <!--Enter only numbers between 90 and 86400. MinSE value cannot be higher than Session Expire value. Default is 90 -->
+                 </session_timer>
+                 
+                <tcptls>
+                    <TCPEnable>no</TCPEnable>
+                    <!-- no=disabled, yes=enabled. Default is no -->
+                    <TCPBindIPv4Address>0.0.0.0:5060</TCPBindIPv4Address>
+                    <!--Enter a valid IPv4 address and port between 1 to 65535 to bind to (e.g., 192.168.1.1:5062). Default valaue is "0.0.0.0:5060", which means to bind to any IPv4 address -->
+                    <TCPBindIPv6Address>[::]:5060</TCPBindIPv6Address>
+                    <!--Enter a valid IPv6 address to bind to (e.g., [2001:0DB8:0000:0000:0000:0000:1428:0000]:5060). Default value is "[::]:5060", which means to bind to any IPv6 address.  -->
+                    <TLSEnable>no</TLSEnable>
+                    <!-- no=disabled, yes=enabled. Default is no -->
+                    <TLSBindIPv4Address>0.0.0.0:5061</TLSBindIPv4Address>
+                    <!--Enter a valid IPv4 address and port between 1 to 65535 to bind to (e.g., 192.168.1.1:5062). Default value is "0.0.0.0:5061", which means to bind to any IPv4 address -->
+                    <TLSBindIPv6Address>[::]:5061</TLSBindIPv6Address>
+                    <!--Enter a valid IPv6 address to bind to (e.g., [2001:0DB8:0000:0000:0000:0000:1428:0000]:5060). Default value is "[::]:5061", which means to bind to any IPv6 address. -->
+                    <TLSDoNotVerify>yes</TLSDoNotVerify>
+                    <!-- no=disabled, yes=enabled. Default is yes -->
+                </tcptls>
+                
+                <nat>
+                    <ExternalHost></ExternalHost>
+                    <!--Enter a valid host format-->
+                    <UseIPaddressinSDP>1</UseIPaddressinSDP>
+                    <!--1=enabled, 0=disabled. Default is 1-->
+                    <ExternalUDPPort>5060</ExternalUDPPort>
+                    <!--Enter only numbers. Default is 5060-->
+                    <ExternalTCPPort>5060</ExternalTCPPort>
+                    <!--Enter only numbers. Default is 5060-->
+                    <ExternalTLSPort>5061</ExternalTLSPort>
+                    <!--Enter only numbers. Default is 5061-->
+                    <LocalNetworkAddress1></LocalNetworkAddress1>
+                    <LocalNetworkAddress2></LocalNetworkAddress2>
+                    <!--Enter a valid IPv4 address with subnet mask value between 1 to 32 (e.g., 192.168.1.0/24). Subnet mask default value is 24.-->
+                </nat> 
+                
+                <tos>
+                    <ToSforSIP>none</ToSforSIP>
+                    <ToSforRTPAudio>none</ToSforRTPAudio>
+                    <!--For ToSforSIP/ToSforRTPAudio, the following values are supported:('none','ef','CS0','CS1','CS2','CS3','CS4','CS5','CS6','CS7','AF11','AF12','AF13','AF21','AF22','AF23','AF31','AF32','AF33','AF41','AF42','AF43'). Default is none-->
+                    <SendCompactSIPHeaders>no</SendCompactSIPHeaders>
+                    <!-- no=disabled, yes=enabled. Default is no -->
+                    <EnableRelaxedDTMF>no</EnableRelaxedDTMF>
+                    <!-- no=disabled, yes=enabled. Default is no -->
+                    <DTMFMode>rfc2833</DTMFMode>
+                    <!--The following DTMF types are supported: ('rfc2833','info','inband','auto'). Default is rfc2833-->
+                    <RTPTimeout>90</RTPTimeout>
+					<!--Default is 90-->
+                    <RTPHoldTimeout>100</RTPHoldTimeout>
+                    <!--RTP Hold Timeout value cannot be lower than RTP Timeout. Default is 100-->
+                    <RTPKeepAlive>0</RTPKeepAlive>
+                    <!-- Please enter a value between 0 and 3600. Default is 0 -->
+                    <tos100rel>yes</tos100rel>
+                    <!-- no=disabled, yes=enabled. Default is yes -->
+                    <TrustRemotePartyID>no</TrustRemotePartyID>
+                    <!-- no=disabled, yes=enabled. Default is no -->
+                    <SendRemotePartyID>no</SendRemotePartyID>
+                    <!-- no=disabled, yes=enabled. Default is no -->
+                    <GenerateIn-bandRinging>never</GenerateIn-bandRinging>
+                    <!-- The following values are supported: ('no', 'yes', 'never'). Default is never-->
+                    <ServerUserAgent></ServerUserAgent>
+                    <!--All English characters are supported except for unsupported xml characters < > & -->
+                    <DefaultRegistrationTime>120</DefaultRegistrationTime>
+                    <!-- Enter a value between 90 and 3600. Default is 120 -->          
+                </tos>
+                
+           </sip_settings>
+
+                     
+           <rtp_settings>
+                <rtp_settings>
+                   <RTPStart>10000</RTPStart>
+                   <!--Enter a number between 1024 and 65535. RTP Start's value cannot be higher than RTP End's value. Default is 10000-->
+                   <RTPEnd>20000</RTPEnd>  
+                   <!--Enter a number between 1024 and 65535. RTP Start's value cannot be lower than RTP End's value. Default is 20000-->  
+                   <StrictRTP>no</StrictRTP>  
+                   <RTPChecksums>no</RTPChecksums>
+                   <!-- StrictRTP and RTPChecksums set enable: yes, disable: no. Default for both is no-->
+                </rtp_settings>
+                
+                <payload_settings> 
+                   <AAL2-G.726>112</AAL2-G.726>
+				   <!--Default is 112--> 
+                   <DTMF>101</DTMF> 
+				   <!--Default is 101-->
+                   <G.721Compatible>yes</G.721Compatible>
+				   <!--Default is yes-->
+                   <G.726>2</G.726>
+				   <!--Cannot be changed if G.721Compatible is enabled. Default is 2--> 
+                   <ILBC>97</ILBC>
+				   <!--Default is 97--> 
+                   <OPUS>123</OPUS>  
+				   <!--Default is 123-->
+                   <!--For all payload settings, enter numbers between 96 and 127. You cannot use the same value for different payload settings--> 
+                 </payload_settings> 
+                 
+           </rtp_settings>
+                      
+           <voice_prompt>
+                <Language>en</Language>
+                <!--Enter the abbreviation for the desired language(e.g., en for English, es_ca for Catalan Spanish, etc.). Voice prompt language packs must be downloaded or manually uploaded to the UCM first before this can be configured. Default is en-->
+           </voice_prompt>
+            
+           <jitter_buffer>
+                <EnableJitterBuffer>no</EnableJitterBuffer>
+                <!-- 
+					yes: Enable
+					no: Disable
+					Default is no
+				-->
+                <JitterBufferSize>100</JitterBufferSize>
+                <!-- Please enter only digits between 100 and 1000. Default is 100 -->
+                <Implementation>fixed</Implementation>
+                <!--The following options are supported: ('fixed', 'adaptive'). Default is fixed-->
+                <MaxJitterBuffer>100</MaxJitterBuffer>
+                <!--Enter a number between 100 and 1000. Max Jitter Buffer's value cannot be lower than Jitter Buffer Size's value. Default is 100-->
+            </jitter_buffer>
+            <interface_settings span_type='E1' ToneRegion='us'>
+            <!--regarding to ToneRegion configure:
+                "Australia", country: "au"
+                "Austria", country: "at"
+                "Belgium", country: "be"
+                "Brazil", country: "br"
+                "Bulgaria", country: "bg"
+                "Chile", country: "cl"
+                "China", country: "cn"
+                "Czech Republic", country: "cz"
+                "Denmark", country: "dk"
+                "Estonia", country: "ee"
+                "Finland", country: "fi"
+                "France", country: "fr"
+                "Germany", country: "de"
+                "Greece", country: "gr"
+                "Hungary", country: "hu"
+                "India", country: "in"
+                "Israel", country: "il"
+                "Italy", country: "it"
+                "Japan", country: "jp"
+                "Lithuania", country: "lt"
+                "Malaysia", country: "my"
+                "Mexico", country: "mx"
+                "Morocco", country: "ma"
+                "Netherlands", country: "nl"
+                "New Zealand", country: "nz"
+                "Norway", country: "no"
+                "Philippines", country: "ph"
+                "Poland", country: "pl"
+                "Portugal", country: "pt"
+                "Russian Federation / ex Soviet Union", country: "ru"
+                "Singapore", country: "sg"
+                "South Africa", country: "za"
+                "Spain", country: "es"
+                "Sweden", country: "se"
+                "Switzerland", country: "ch"
+                "Taiwan", country: "tw"
+                "Thailand", country: "th"
+                "United Kingdom", country: "uk"
+                "United States / North America", country: "us"
+                "United States Circa 1950/ North America", country: "us-old"
+                "Venezuela / South America", country: "ve"
+			-->
+                <span1>
+                    <!-- PRI_CPE -->                   
+                    <Clock>0</Clock>
+                    <!-- master:0, slave: 1-->
+                    <Signaling>pri_net</Signaling>
+                    <!--E1/T1/J1:pri_cpe or pri_net, Default is pri_cpe-->
+                    <Datachannel>16</Datachannel>
+                    <!-- E1:1-31, J1/T1:1-24 -->
+                    <LBO>0</LBO>
+                    <!--default is 0,The values of 0-7 correspond to "0 db (CSU) /0-133feet(DSX-1)、133-266 feet(DSX-1)、266-399 feet(DSX-1)、399-533 feet(DSX-1)、533-655feet(DSX-1)、-7.5db(CSU)、-15db(CSU)、-22.5db(CSU)" -->
+                    <Coding>hdb3</Coding>
+                    <!--E1:hdb3 or ami,default is hdb3; T1/J1:b8zs or ami,default is b8zs-->
+                    <RXGain>0</RXGain>
+                    <!--Default is 0,Selectable values are 12、9、6、3、0、-3、-6、-9、-12、-15、-18、-21、-24 -->
+                    <TXGain>0</TXGain>
+                    <!--Default is 0,Selectable values are 12、9、6、3、0、-3、-6、-9、-12、-15、-18、-21、-24 -->
+                    <Codec>default</Codec>
+                    <!--E1:default means alaw,T1/J1:default means ulaw. Selectable values are default、alam、ulam-->
+                    <Framing>ccs</Framing>
+                    <!--E1:only ccs，T1:only esf, J1:esf or d4,default is esf-->
+                    <CRCValidation>crc4</CRCValidation>
+                    <!--CRCVAlidation only on E1,default is crc4,Selectable values are crc4 and none-->
+                    <Switchtype>euroisdn</Switchtype>
+                    <!--Default is euroisdn,Selectable values are ‘euroisdn’,'national(NI2)','dms100','4ess','5ess','ni1','qsig(Q.SIG)'-->
+                    <PRIDialPlan>unknown</PRIDialPlan>
+                    <!--Default is unknown,Selectable values are 'unknown'、'private'、'local'、'national'、'international'、'dynamic'、'redundant'-->
+                    <PRILocalDialPlan>national</PRILocalDialPlan>
+                    <!--Default is national，Selectable values are 'unknown'、'private'、'local'、'national'、'international'、'dynamic'、'redundant'-->
+                    <InternationalPrefix></InternationalPrefix>
+                    <!--Only numbers and +*# are allowed to be entered, and the length is no more than 10 chacracters-->
+                    <NationalPrefix></NationalPrefix>
+                    <!--Only numbers and +*# are allowed to be entered, and the length is no more than 10 chacracters-->
+                    <LocalPrefix></LocalPrefix>
+                    <!--Only numbers and +*# are allowed to be entered, and the length is no more than 20 chacracters-->
+                    <PrivatePrefix></PrivatePrefix>
+                    <!--Only numbers and +*# are allowed to be entered, and the length is no more than 20 chacracters-->
+                    <UnknownPrefix></UnknownPrefix>
+                    <!--Only numbers and +*# are allowed to be entered, and the length is no more than 20 chacracters-->
+                    <PRIT310>10</PRIT310>
+                    <!--Default is 10,Value range:8-60-->
+                    <PRIIndication>inband</PRIIndication>
+                    <!--Default is inband,Selectable values are inband、outofband-->
+                    <ResetInterval>never</ResetInterval>
+                    <!--Default is never,Selectable values are never、300、1800、3600、7200-->
+                    <PRIExclusive>yes</PRIExclusive>
+                    <!--yes or no,default is yes-->
+                    <FacilityEnable>yes</FacilityEnable>
+                    <!--yes or no,default is yes-->
+                    <SETUPACK>yes</SETUPACK>
+                    <!--yes or no,default is yes-->
+                    <OverlapDial>incoming</OverlapDial>
+                    <!--Default is incoming,Selectable values are no、incoming、outgoing、both-->
+                    <NSF>none</NSF>
+                    <!--Default is none,Selectable values are none、sdn、megacom、tollfreemegacom、accunet-->
+                </span1>
+                
+                
+                <!-- For example SS7 signal,SLC value range:0-15 >
+                  <span2>
+                      <Clock>0</Clock>
+                      <Signaling>ss7</Signaling>
+                      <Datachannel>16</Datachannel>
+                      <SS7Variant>ansi</SS7Variant>
+                      <OriginatingPointCode>777</OriginatingPointCode>
+                      <DestinationPointCode>888</DestinationPointCode>
+                      <BearerSignalingPointCode>888</BearerSignalingPointCode>
+                      <FirstCIC>1</FirstCIC>
+                      <AssignCICToDatachannel>1</AssignCICToDatachannel>
+                      <NetworkIndicator>international_spare</NetworkIndicator>
+                      <SLC>0</SLC>
+                      <LBO>0</LBO>
+                      <Coding>ami</Coding>
+                      <RXGain>0</RXGain>
+                      <TXGain>0</TXGain>
+                      <Codec>ulaw</Codec>
+                      <Framing>ccs</Framing>
+                      <CRCValidation>none</CRCValidation>
+                      <CalledNatureofAddressIndicator>subscriber</CalledNatureofAddressIndicator>
+                      <CallingNatureofAddressIndicator>national</CallingNatureofAddressIndicator>
+                      <InternationalPrefix></InternationalPrefix>
+                      <NationalPrefix></NationalPrefix>
+                      <SubscriberPrefix></SubscriberPrefix>
+                      <UnknownPrefix></UnknownPrefix>
+                </span2>
+                -->
+                
+              <!-- For example MFC/R2 signal，the variant item：Argentina:'ar',Brazil:'br',China:'cn',Czech Republic:'cz',Colombia:'co',Ecuador:'ec',Indonesia:'id',ITU:'itu',Mexico:'mx',The Philippines:'ph',Venezuela:'ve' > 
+                <span3>
+                    <Clock>1</Clock>
+                    <Signaling>mfcr2</Signaling> 
+                    <Variant>itu</Variant>
+                    <ForcedRelease>yes</ForcedRelease> 
+					ForcedRelease is only applicable when br is selected for the Variant parameter
+                    <Category>national_subscriber</Category>
+                    <GetANIFirst>no</GetANIFirst>
+                    <LBO>0</LBO>
+                    <Coding>hdb3</Coding>
+                    <RXGain>0</RXGain>
+                    <TXGain>0</TXGain>
+                    <Framing>cas</Framing> 
+                    <CRCValidation>none</CRCValidation>
+                    <MFBackTimeout>-1</MFBackTimeout>
+                    <MeteringPulseTimeout>-1</MeteringPulseTimeout>
+                    <AllowCollectCalls>no</AllowCollectCalls>
+                    <DoubleAnswer>no</DoubleAnswer>
+                    <DoubleAnswerTimeout>200</DoubleAnswerTimeout>
+                    <AcceptOnOffer>yes</AcceptOnOffer>
+                    <SkipCategory>no</SkipCategory>
+                    <ChargeCalls>yes</ChargeCalls>
+                </span3>
+                -->				
+            </interface_settings>
+        </gateway_settings>
+        
+<!--For system settings -->
+       <system_settings>
+                 <http_server>
+                     <RedirectFromPort80>1</RedirectFromPort80>
+                     <!-- 1=enabled, 0=disabled. Default is 1 -->
+                     <ProtocolType>1</ProtocolType>  
+                     <!--1=https, 0=http. Default is 1 -->
+                     <Port>8089</Port>
+                     <!--Enter a number between 1 and 65535-->
+                     <EnableIPAddressWhitelist>no</EnableIPAddressWhitelist>
+                     <!-- yes=enabled, no=disabled. Default is no-->
+                     <PermittedIP1></PermittedIP1>
+                     <PermittedIP2></PermittedIP2>
+                     <!--Enter a list of IP addresses with subnet masks that can access this device (e.g., 192.168.129.66/255.255.255.255, 2001:db8:1:2:4637:e6ff:feeb:c83d/64, etc.)-->
+                 </http_server>
+                 
+                 <network_settings>
+                   <basic_settings>
+                      <Method>0</Method>
+                       <!-- 0=Router, 1=Switch. Default is 0 -->
+                       <MTU>1492</MTU>
+                       <!-- Valid range is 1280-1492. Default is 1492 -->  
+                       <PreferredDNSServer></PreferredDNSServer>
+                       <!-- ipv4 configurations-->
+                       <IPMethod>0</IPMethod>
+                       <!--DHCP:0, Static:1, PPPoE: 2. Default is 0-->
+                       <Username></Username>
+                       <Password></Password>
+					   <!--PPOE only-->
+                       <IPAddress></IPAddress>
+                       <SubnetMask></SubnetMask>
+                       <GatewayIP></GatewayIP>
+                       <DNSServer1></DNSServer1>
+                       <DNSServer2></DNSServer2>
+					   <!--Static IP Address settings-->
+                       <Layer2QoSTag>0</Layer2QoSTag>
+                       <Layer2QoSPriority>0</Layer2QoSPriority>
+                       <!-- Valid range is 0-7. Default for both is 0-->
+                       <DHCPIPAddress>192.168.2.1</DHCPIPAddress>
+                       <!-- DHCP server on LAN port. Default is 192.168.2.1-->
+                       <DHCPSubnetMask>255.255.255.0</DHCPSubnetMask>
+					   <!-- Default is 255.255.255.0-->
+                       <DHCPServerEnable>1</DHCPServerEnable>
+                       <!-- 1=enabled, 0=disabled. Default is 1-->
+                       <DHCPDNSServer1>8.8.8.8</DHCPDNSServer1>
+					   <!--Default is 8.8.8.8-->
+                       <DHCPDNSServer2>208.67.222.222</DHCPDNSServer2>
+					   <!--Default is 208.67.222.222-->
+                       <DHCPAllowIPAddressFrom>192.168.2.100</DHCPAllowIPAddressFrom>
+					   <!--Default is 192.168.2.100-->
+                       <DHCPAllowIPAddressTo>192.168.2.254</DHCPAllowIPAddressTo>
+					   <!--Default is 192.168.42.2.254-->
+                       <DHCPDefaultGateway>192.168.2.1</DHCPDefaultGateway>
+					   <!--Default is 192.168.42.2.1-->
+                       <DHCPDefaultIPLeaseTime>43200</DHCPDefaultIPLeaseTime>
+					   <!--Default is 43200-->
+                       <DHCPLayer2QoSTag>0</DHCPLayer2QoSTag>
+                       <DHCPLayer2QoSPriority>0</DHCPLayer2QoSPriority>
+					   <!--Default for both is 0-->
+                       <!-- ipv6 configurations-->
+                       <IP6Method>0</IP6Method>
+                       <!--0=DHCP, 1=Static. Default is 0-->
+                       <!-- if IP6Method is set to 1, configure the following fields:
+                          <IP6Address></IP6Address>
+                          <IP6Prefixlen></IP6Prefixlen>
+                          <IP6Gateway></IP6Gateway>
+                          <IP6DNSServer1></IP6DNSServer1>
+                          <IP6DNSServer2></IP6DNSServer2>
+                          -->
+                       <IP6DHCPServer>0</IP6DHCPServer>
+                       <!-- 0=disabled, 1=Auto, 2=DHCPv6. Default is 0 -->
+                       <!-- 
+                          <IP6DHCPPrefix>2001:db8:2:2::</IP6DHCPPrefix>
+                          <IP6DHCPPrefixlen>64</IP6DHCPPrefixlen>
+                          <IP6DHCPDNSServer1>2001:4860:4860::8888</IP6DHCPDNSServer1>
+                          <IP6DHCPDNSServer2>2001:4860:4860::8844</IP6DHCPDNSServer2>
+                          <IP6DHCPAllowIPAddressFrom>2001:db8:2:2::3000</IP6DHCPAllowIPAddressFrom>
+                          <IP6DHCPAllowIPAddressTo>2001:db8:2:2::4000</IP6DHCPAllowIPAddressTo>
+                          <IP6DHCPDefaultIPLeaseTime>43200</IP6DHCPDefaultIPLeaseTime> 
+						  -->
+
+                   </basic_settings>
+                   <!-- DHCP Client List example -->
+                   <!--
+                   <dhcp_client>
+                         <MAC_1>
+                             <MAC>000123000Abb</MAC>
+                             <IP>1.2.3.4</IP>
+                         </MAC_1>
+                         <MAC_2>
+                             <MAC>000123000AcC</MAC>
+                             <IP>1.2.3.3</IP>
+                         </MAC_2>               
+                   </dhcp_client>
+                   -->
+				   
+                   <net_8021x_settings> 
+                     <Mode>0</Mode>
+                     <!-- 0=disabled, 1=EAP-MD5, 2=EAP-TLS, 3=EAP-PEAPv0/MSCHAPv2. Default is 0 -->
+                     <Identity></Identity>
+                     <MD5Password></MD5Password>
+                   </net_8021x_settings>
+				   
+                   <!--
+                   <static_routes>                  
+                       <IP4_1>
+                        <Destination>192.168.19.1</Destination>
+                        <SubnetMask>255.255.255.0</SubnetMask>
+                        <Gateway></Gateway>
+                        <Interface>0</Interface>
+                       </IP4_1>
+                       <IP6_1>
+                        <Destination>2001::</Destination>
+                        <Gateway></Gateway>
+                        <Interface>0</Interface>
+                       </IP6_1>
+                   </static_routes>
+				   -->
+			        <!-- Interface 0: LAN, 1:WAN-->
+
+                   <!--<port_forwarding>
+				    
+                     <WAN_1>
+                        <WANPort>65500</WANPort>
+                        <LANIP>192.168.2.77</LANIP>
+                        <LANPort>65500</LANPort>
+                        <ProtocolType>1</ProtocolType>
+                     </WAN_1>
+                     <WAN_2>
+                        <WANPort>1135-1137</WANPort>
+                        <LANIP>192.168.2.78</LANIP>
+                        <LANPort>1135-1137</LANPort>
+                        <ProtocolType>0</ProtocolType>
+                     </WAN_2>
+
+                    </port_forwarding>-->
+					     <!-- ProtocolType 0=UDP, 1=TCP, 2=UDP/TCP-->
+                 
+					</network_settings> 
+                      
+                 <openvpn>
+                    <OpenVPNEnable>0</OpenVPNEnable>
+                    <!--1=enabled, 0=disabled-->
+                    <ConfigurationMethod>0</ConfigurationMethod>
+                    <!--0=Manual Configuration, 1=Upload Configuration File. Default is 0-->
+					<!--The following settings are for Manual Configuration--> 
+                    <OpenVPNServerAddress></OpenVPNServerAddress>
+                    <!--Required field. Enter a valid server address-->
+                    <OpenVPNServerProtocol>udp</OpenVPNServerProtocol>
+                    <!--Required field. Enter udp or tcp-->
+                    <OpenVPNDevicemode>tun</OpenVPNDevicemode>
+                    <!--Required field. Enter tap or tun-->
+                    <OpenVPNUseCompression>yes</OpenVPNUseCompression>
+                    <!--yes=enabled, no=disabled-->
+                    <OpenVPNEncryptionAlgorithm>bf-cbc</OpenVPNEncryptionAlgorithm>
+                    <!--Required field. Enter a cryptographic cipher. Use the same setting as the server's encryption alogorithm. Default is bf-cbc-->
+                 </openvpn>
+				 
+                <ddns_settings>
+                    <EnableDDNS>no</EnableDDNS>
+                    <DDNSServer>oray.net</DDNSServer>
+                    <Username></Username>
+                    <Password></Password>
+                    <HostName></HostName>
+                    <Hash></Hash>
+                 </ddns_settings>   
+				 
+                 <security_settings>
+                   <!--Example:
+                     <static_defense>
+                         <CustomFirewallRule_1>
+                          <RuleName>test1</RuleName>
+                          <Action>accept</Action>
+                          <Type>out</Type>
+                          <Interface>Both</Interface>
+                          <Service>custom</Service>
+                          <SourceIPAddress>Anywhere</SourceIPAddress>
+                          <SourceIPPort>5068</SourceIPPort>
+                          <DestinationIPAddress>Anywhere</DestinationIPAddress>
+                          <DestinationIPPort>5066</DestinationIPPort>
+                          <Protocol>tcp</Protocol>
+                         </CustomFirewallRule_1>
+                         <CustomFirewallRule_2>
+                          <RuleName>test2</RuleName>
+                          <Action>accept</Action>
+                          <Type>in</Type>
+                          <Interface>Both</Interface>
+                          <Service>custom</Service>
+                          <SourceIPAddress>Anywhere</SourceIPAddress>
+                          <SourceIPPort></SourceIPPort>
+                          <DestinationIPAddress>Anywhere</DestinationIPAddress>
+                          <DestinationIPPort>8066</DestinationIPPort>
+                          <Protocol>tcp</Protocol>
+                         </CustomFirewallRule_2>
+                         <PingDefenseEnable>WAN,LAN</PingDefenseEnable>
+                         <SynFloodDefenseEnable>WAN,LAN</SynFloodDefenseEnable>
+                         <PingofDeathDefenseEnable>WAN,LAN</PingofDeathDefenseEnable>
+                         <RejectRules>yes</RejectRules>     
+                    </static_defense>  
+					-->					 
+						 
+                    <dynamic_defense>
+                       <DynamicDefenseEnable>no</DynamicDefenseEnable>
+                       <!--yes=enabled, no=disabled. Default is no-->
+                       <BlacklistUpdateInterval>120</BlacklistUpdateInterval>
+                       <!--Required field. Enter a number between 120-86399. Default is 120-->
+                       <ConnectionThreshold>100</ConnectionThreshold>
+                       <!--Required field. Enter a number between 5-1000. Default is 100-->
+                       <DynamicDefenseWhitelist></DynamicDefenseWhitelist>
+                       <!--Allowed IP addresses and port ranges (e.g. 192.168.2.104-192.168.2.110, 1000:9999, etc). Multiple entries are supported and must be separated by new lines (e.g., 15.8.5.6\n192.168.89.129\n192.168.84.55)-->
+                    </dynamic_defense>
+                    
+                    <fail2ban>
+                       <EnableFail2Ban>0</EnableFail2Ban>
+                       <!--1=enabled, 0=disabled. Default is 0-->
+                       <BannedDuration>600</BannedDuration>
+                       <!--Required field. Enter a number between 0-999999999. 0 indicates a permanent ban. Default is 600-->
+                       <MaxRetryDuration>600</MaxRetryDuration>
+                       <!--Required field. Enter a number between 1-999999999. Default is 600-->
+                       <MaxRetry>5</MaxRetry>
+                       <!--Required field. Enter a number between 1-999999999. Default is 5-->
+                       <Fail2banWhitelist></Fail2banWhitelist>
+                       <!--Add an IP address, CIDR mask, or DNS host to the whitelist (e.g., 1.1.1.1/24, dns3.congwang.com, 192.168.93.252)-->
+                       <AsteriskService>no</AsteriskService>
+                       <!--yes=enabled, no=disabled. Fail2ban for SIP requests. Default is no-->
+                       <LoginAttackDefense>no</LoginAttackDefense>
+                       <!--yes=enabled, no=disabled. Fail2ban for logins. Default is no-->
+                       <AsteriskServiceMaxRetry>5</AsteriskServiceMaxRetry>
+					   <!--Default is 5-->
+                       <LoginAttackDefenseMaxRetry>5</LoginAttackDefenseMaxRetry>
+					   <!--Default is 5-->
+                    </fail2ban>
+                    
+                    <ssh_access>
+                       <EnableSSHAccess>no</EnableSSHAccess>
+                       <!--yes=enabled, no=disabled. Default is no-->
+                    </ssh_access> 
+                    
+                  </security_settings>
+                  
+                  
+                  <time_settings>
+                    <auto_date_and_time>
+                    <RemoteNTPServer>ntp.ipvideotalk.com</RemoteNTPServer>
+                    <!-- Enter a valid host format. Default is ntp.ipvideotalk.com -->
+                    <EnableDHCPOption2>1</EnableDHCPOption2>
+                    <!--1=enabled, 0=disabled. Default is 1 -->
+                    <EnableDHCPOption42>1</EnableDHCPOption42>
+                    <!--1=enabled, 0=disabled. Default is 1 -->
+                    <TimeZone>TZY-8</TimeZone>
+                    <!--
+                            time_zone: TZA+12(International Date Line West)
+                            TZB+11(Midway Island，Samoa)
+                            HAW10（US Hawaiian Time）
+                            AKST9AKDT(US Alaska Time)
+                            PST8PDT(US Pacific Time,Los Angeles)
+                            PST8PDT,M4.1.0,M10.5.0（Baja California）
+                            MST7MDT（US Mountain Time,Denver）
+                            MST7（Mountain Time（Arizona,no DST））
+                            MST7MDT,M4.1.0,M10.5.0（Chihuahua,la Paz,Mazatlan）
+                            CST6CDT（Central Time）
+                            CST+6（Central American）
+                            CST6CDT,M4.1.0,M10.5.0（Guadalajara,Mexico City,Monterey）
+                            EST5EDT（Eastern Time）
+                            TZf+4:30(Caracas)
+                            AST4ADT（Atlantic Time）
+                            AST4ADT,M4.1.0/00:01:00,M10.5.0/00:01:00（Atlantic Time（New Brunswick））
+                            NST+3:30NDT+2:30,M4.1.0/00:01:00,M10.5.0/00:01:00（Newfoundland Time）
+                            TZK+3（Greenland）
+                            BRST+3BRDT+2,M10.3.0,M2.3.0（Brazil,Sao Paulo）
+                            UTC+3(Argentina,Uruguay Time)
+                            UTC+2(Uruguay daylight saving time)
+                            TZL+2(Mid-Atlantic)
+                            TZM+1（Azores,Cape Verde ls.）
+                            TZN+0(Edinburgh,Casablanca,Monrovia)
+                            GMT+0BST-1,M3.5.0/01:00:00,M10.5.0/02:00:00（London,Great Britain）
+                            WET-0WEST-1,M3.5.0/01:00:00,M10.5.0/02:00:00（Lisbon,Portugal）
+                            GMT+0IST-1,M3.5.0/01:00:00,M10.5.0/02:00:00（Dublin,Ireland）
+                            CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00（Brussels,Vienna,Warsaw）
+                            TZP-2(Israel,Cairo,Athena,Istanbul,Bucharest)
+                            EET-2EEST-3,M3.5.0/03:00:00,M10.5.0/04:00:00（Helsinki,Athens,Tallinn）
+                            EET-2EEST,M3.5.0/3,M10.5.0/4(Kyiv,Ukraine)
+                            TZQ-3（kuwait,Baghdad,Tehran,Nairobi）
+                            MSK-3（Moscow,Russia）
+                            MST-3（St.Petersburg,Russia）
+                            TZR-4（Abu Dhabi,Baku）
+                            TZS-5(Islamabad,Ekaterinburg,Karachi,Tashkent)
+                            TZT-5:30(Chennai,New Delhi,Mumbai)
+                            TZU-5:45（Kathmandu）
+                            TZV-6（Almaty,Astana,Dhaka,Novosibirsk）
+                            TZW-6:30(Rangoon)
+                            TZX-7(Bankok,Hanoi,Krasnoyarsk)
+                            WIB-7(Jakarta)
+                            TZY-8（Beijing,Taipei,KualaLumpur,lrkutsk）
+                            SGT-8(Singapore)
+                            ULAT-8（Ulaanbaatar,Mongolia）
+                            WST-8（Perth）
+                            TZZ-9（Japan,Korea,Yakutsk）
+                            CST-9:30CDT-10:30,M10.5.0/02:00:00,M3.5.0/03:00:00(Adelaide,Darwin,Guam)
+                            EST-10EDT-11,M10.1.0/02:00:00,M3.5.0/03:00:00（Hobart,Sydney,Melbourne,Canberra,Brisbane,Magadan,Solomon ls.,New Caledonia）
+                            NZST-12NZDT-13,M9.5.0/02:00:00,M4.1.0/03:00:00（Auckland,Wellington,Fiji,Nuku`alofa）
+                            customize(Self-defined Time Zone)
+                            -->
+                     <Self-definedTimeZone>MTZ+6MDT+5,M4.1.0,M11.1.0</Self-definedTimeZone>
+                     <!--Required field. Enter characters whthout space "`| or ^. Default is MTZ+6MDT+5,M4.1.0,M11.1.0 -->
+                    </auto_date_and_time>
+                    
+                     <set_date_and_time>
+                      <CurrentDateandTime></CurrentDateandTime>
+                      <!--Example: 2019-07-11 18:00:00
+					  This is applied before Time Zone if both fields are provisioned at the same time-->
+                      <DateFormat>yyyy-mm-dd</DateFormat>
+                      <!-- The following formats are supported: ('yyyy-mm-dd', 'mm-dd-yyyy', 'dd-mm-yyyy'. Default is yyyy-mm-dd  -->
+                      <TimeFormat>no</TimeFormat>
+                      <!-- no=24-hour format, yes=12-hour format. Default is no-->
+                     </set_date_and_time>
+                     
+                    <ntp_server>
+                    <EnableNTPServer>no</EnableNTPServer>
+                    <!-- yes=enabled, no=disabled. Default is no -->
+                    </ntp_server>
+                    
+                    <!-- For example: office_time
+                      <office_time>
+                    
+                       <office_1>
+                        <StartHour>08</StartHour>
+                        <StartMin>00</StartMin>
+                        <EndHour>11</EndHour>
+                        <EndMin>00</EndMin>
+                        <WeekDay>tue&amp;mon</WeekDay>
+                        <Month>jan&amp;mar</Month>
+                        <Day>1&amp;2</Day>
+                       </office_1>
+                       <office_2>
+                        <StartHour>13</StartHour>
+                        <StartMin>30</StartMin>
+                        <EndHour>18</EndHour>
+                        <EndMin>00</EndMin>
+                        <WeekDay>tue&amp;mon</WeekDay>
+                        <Month>*</Month>
+                        <Day>*</Day>
+                       </office_2>
+                      
+                      </office_time>
+                       -->
+					   
+                    <!-- for example:holiday
+                      <holiday>
+                       <holiday_1>
+                        <Name>hello1</Name>
+                        <Memo>memo1</Memo>
+                        <WeekDay>*</WeekDay>
+                        <Month>jan&amp;mar</Month>
+                        <Day>1&amp;2</Day>
+                       </holiday_1>
+                       <holiday_2>
+                        <Name>hello2</Name>
+                        <Memo>memo2</Memo>
+                        <WeekDay>tue&amp;mon</WeekDay>
+                        <Month>jan&amp;mar</Month>
+                        <Day>1&amp;2</Day>
+                        </holiday_2>
+                        
+                     </holiday>
+                       -->
+					   
+                  </time_settings>
+                  
+                  <email_settings> 
+                   <email_settings> 
+                     <TLSEnable>yes</TLSEnable>  
+                     <!-- yes=enabled, no=disabled. Default is yes-->  
+                     <Type>mta</Type>  
+                     <!-- mta=MTA, client=Client. Default is mta-->  
+                     <EmailTemplateSendingFormat>html</EmailTemplateSendingFormat>  
+                     <!-- html=HTML, txt=Plain Text. Default is html-->  
+                     <SMTPServer></SMTPServer>  
+                     <!--Enter an SMTP server address-->  
+                     <EnableSASLAuthentication>yes</EnableSASLAuthentication>  
+                     <!-- yes=enabled, no=disabled. Default is yes-->  
+                     <Username></Username>  
+                     <!--Enter the account username or email address.-->  
+                     <Password></Password>
+                     <!--Enter the account password.-->  
+                     <DisplayName>GXW</DisplayName>  
+                     <!--Display Name in the FROM header.-->  
+                     <Sender>anonymous@example.com</Sender>  
+                     <!--Configure an email address that will be displayed as the sender.-->  
+                     <Domain>example.com</Domain>
+					 <!--MTA mode option only-->
+                     <!--Configure a non-public domain name that will be used for the UCM's virtual email server. Do not use well-known domains (e.g., gmail.com), or email sending may fail.-->  
+                     <!--for example :client type
+                        <TLSEnable>no</TLSEnable>
+                        <Type>client</Type>
+                        <EmailTemplateSendingFormat>html</EmailTemplateSendingFormat>
+                        <SMTPServer>smtp.qiye.163.com</SMTPServer>
+                        <EnableSASLAuthentication>yes</EnableSASLAuthentication>
+                        <Username>user</Username>
+                        <Password>pass</Password>
+                        <DisplayName>display</DisplayName>
+                        <Sender>sender@aa.com</Sender>
+                         --> 
+						 
+                    </email_settings>
+                  </email_settings>
+                  
+				  <SNMP>
+                 <!--SNMPCommunity->AccessLevel supported values:
+					ro: read-only
+					rw: read/write
+					-->
+                 <!--SNMPTrapDestinations->Type supported values: 
+					trapsink
+					trap2sink
+					informsink
+					-->
+                 <!--
+                  <SNMPSettings>
+                    <Enable>yes</Enable>
+                    <DeviceName>GXW45XX</DeviceName>
+                    <DeviceLocation>DeviceLocation</DeviceLocation>
+                    <ContactEmail>ContactEmail@test.com</ContactEmail>
+                    <EnableSNMPTrapProxy>yes</EnableSNMPTrapProxy>
+                    <SNMPTrapProxyListeningPort>168</SNMPTrapProxyListeningPort>
+                  </SNMPSettings>
+                  <SNMPCommunity>
+                   <user1>
+                     <Name>test1</Name>
+                     <AccessLevel>rw</AccessLevel>
+                    </user1>
+                    <user2>
+                     <Name>test2</Name>
+                     <AccessLevel>ro</AccessLevel>
+                    </user2>
+                   </SNMPCommunity>
+                   <SNMPTrapDestinations>
+                      <user1>
+                       <Name>test1</Name>
+                       <IPAddress>192.168.89.120</IPAddress>
+                       <Port>162</Port>
+                       <Community>public</Community>
+                       <Type>trapsink</Type>
+                      </user1>
+                      <user2>
+                        <Name>test2</Name>
+                        <IPAddress>192.168.89.130</IPAddress>
+                        <Port>166</Port>
+                        <Community>public</Community>
+                        <Type>trap2sink</Type>
+                       </user2>
+                        <user3>
+                        <Name>test3</Name>
+                        <IPAddress>192.168.89.130</IPAddress>
+                        <Port>166</Port>
+                        <Community>public</Community>
+                        <Type>informsink</Type>
+                       </user3>
+                    </SNMPTrapDestinations>
+                    <SNMPV3Users>
+                       <user1>
+                         <Name>test1</Name>
+                         <AuthenticationProtocol>MD5</AuthenticationProtocol>
+                         <AuthenticationPassword>12341ds</AuthenticationPassword>
+                         <PrivacyProtocol>DES</PrivacyProtocol>
+                         <PrivacyPassword>fds32</PrivacyPassword>
+                         <GroupLevel>ro</GroupLevel>
+                       </user1>
+                       <user2>
+                         <Name>test2</Name>
+                         <AuthenticationProtocol>MD5</AuthenticationProtocol>
+                         <AuthenticationPassword>12341ds</AuthenticationPassword>
+                         <PrivacyProtocol>DES</PrivacyProtocol>
+                         <PrivacyPassword>fds32</PrivacyPassword>
+                         <GroupLevel>rw</GroupLevel>
+                    </user2>
+                    </SNMPV3Users>
+                    <SNMPTrapProxy>
+                      <TrapProxy1>
+                          <Name>test123</Name>
+                          <IPAddress>192.168.129.89</IPAddress>
+                          <Port>7788</Port>
+                      </TrapProxy1>
+                      <TrapProxy2>
+                          <Name>1232</Name>
+                          <IPAddress>5.5.5.5</IPAddress>
+                          <Port>8899</Port>
+                        </TrapProxy2>
+                    </SNMPTrapProxy>
+                    -->
+                    </SNMP>
+       </system_settings>
+  
+ <!--For Maintenance -->
+       <maintenance>
+                 <user_management>
+                 <!--Use the following format to create new users. For the Privilege field, the following values are supported: 0=super administrator, 1=administrator-->
+                 <!--<test>
+                    <UserName>test</UserName>
+                    <Privilege>1</Privilege>
+                    <UserPassword>admin123</UserPassword>
+                    <Department></Department>
+                    <Fax></Fax>
+                    <EmailAddress>test@test.com</EmailAddress>
+                    <FirstName></FirstName>
+                    <LastName></LastName>
+                    <HomeNumber></HomeNumber>
+                    <MobilePhoneNumber></MobilePhoneNumber>
+                </test>-->
+
+                </user_management>
+                
+                <change_information>
+                   <change_password_email>
+                    <NewPassword></NewPassword>
+                    <EmailAddress></EmailAddress>
+                   </change_password_email>
+                    
+                   <login_settings>
+                    <UserLoginTimeout>10</UserLoginTimeout>
+					<!-- Login Timeout in minutes. Default is 10 -->
+                    <Maximumnumberofloginattempts>5</Maximumnumberofloginattempts>
+					<!-- Max number of login attempts before a user is banned. Default is 5 -->
+                    <Userbanperiod>5</Userbanperiod>
+					<!-- Amount of time a user is banned (in minutes). Default is 5 -->
+                    <LoginWhitelist1></LoginWhitelist1>
+                    <LoginWhitelist2></LoginWhitelist2>
+                    <!--Enter the IP addresses that cannot be blacklisted from repeatedly entering the wrong login credentials
+						Example:"192.168.129.66"-->                   
+				   </login_settings>
+                   
+                 </change_information>
+                 
+                 <syslog>
+                   <SyslogServer></SyslogServer>
+                   <!-- please enter a valid hostname/server address-->
+                   <EnableWriteSyslogIntoCache>1</EnableWriteSyslogIntoCache>
+                   <!-- 1=enabled, 0=disabled. Default is 1 -->
+                   <TimeInterval>60</TimeInterval>
+                   <!-- Please enter a number between 3-120. Default is 60 -->
+                 </syslog>
+                 
+                 <system_event> 
+                  <alert_event_list> 
+                   <DeliveryMethod>0</DeliveryMethod> 
+                   <!--0=Real-time, 1=Periodic. Default is 0-->  
+                   <EmailAlertInterval>0,minute</EmailAlertInterval> 
+                   <!--For Periodic alerts only. For alerts every x hours, enter a number between 1-23. For alerts every x minutes, enter a number between 0-59. For alerts every x days, enter a number between 0-30-->
+                   <EnableAlert>6</EnableAlert>
+                   <EnableEmailNotification></EnableEmailNotification>
+                   <!--Event List：
+                          1: Disk Usage                              
+                          2:  Modify Super Admin Password             
+                          3:  Memory Usage                            
+                          4:  System Reboot                           
+                          5:  System Update                           
+                          6:  System Crash                            
+                          8:  Register SIP trunk failed               
+                          9:  Restore Config                          
+                          10:  User login success                      
+                          11: User login failed                       
+                          13: SIP outgoing Call through Trunk Failure 
+                          14: Fail2ban Blocking                       
+                          16: SIP Peer Trunk Status                   
+                          17: User Login Banned                       
+                          18: External Disk Usage                    
+                          21: The CDR database is corrupted    
+                          23: Digital Trunk Alarm                                             
+
+                   -->
+                   <ParameterSettings>
+					<DiskUsage>
+						<id>1</id>
+							<!-- 10s = 10 seconds   10m = 10 minutes   10h = 10 hours   10d = 10days -->
+						<DetectCycle>10m</DetectCycle>
+							<!--80 percent = 0.8 -->
+						<AlertThreshold>0.8</AlertThreshold>
+					</DiskUsage>
+					<MemoryUsage>
+						<id>3</id>
+						<DetectCycle>10s</DetectCycle>
+							<!--80 percent = 0.8 -->
+						<AlertThreshold>0.9</AlertThreshold>
+					</MemoryUsage>
+					</ParameterSettings>                   
+				   </alert_event_list>
+                   
+                   <alert_contact>
+                    <SuperAdminEmail></SuperAdminEmail>
+                    <AdminEmail></AdminEmail>
+                   <!--Enter a valid email address. To add multiple email addresses, separate addresses with commas (e.g., test@163.com,helo@126.com). Only 10 addresses can be added--> 
+                   </alert_contact>
+                   
+                  </system_event> 
+                  
+                   <upgrade> 
+                    <UpgradeVia>1</UpgradeVia>
+                    <!-- 1=http, 2=https. Default is 1-->
+                    <FirmwareServerPath>fw.ipvideotalk.com/gs</FirmwareServerPath>
+					<!--Default is fw.ipvideotalk.com/gs-->
+                    <FirmwareFilePrefix></FirmwareFilePrefix>
+                    <FirmwareFileSuffix></FirmwareFileSuffix>
+                    <HTTPUsername></HTTPUsername>
+                    <HTTPPassword></HTTPPassword>
+                  </upgrade>
+                  
+                  <backup>
+                   <ScheduledBackup>
+                    <EnableScheduledBackup>no</EnableScheduledBackup>
+                    <!--yes=enabled, no=disabled. Default is no -->
+                    <ChooseConfigFiles>yes</ChooseConfigFiles>
+                    <!--yes=selected, no=unselected. Default is yes -->
+                    <ChooseCDRRecordFiles>no</ChooseCDRRecordFiles>
+					<!--yes=selected, no=unselected. Default is no-->
+                    <ChooseVoicePromptFiles>no</ChooseVoicePromptFiles>
+					<!--yes=selected, no=unselected. Default is no-->
+                    <ChooseStorageLocation>network</ChooseStorageLocation>
+                    <!-- Select backup storage location:('network','sd','usb1', or 'usb2'. sd, usb1, and usb2 cannot be selected if they are not connected to the GXW -->
+                    <Account></Account>
+                    <Password></Password>
+                    <ServerAddress></ServerAddress>
+                    <DestinationDirectory></DestinationDirectory>
+                    <!-- Format: "xxx/xxx/xxx". -->
+                    <BackupTime>0</BackupTime>
+                    <!-- Enter a number between 0-23. This is the hour that the backup will start. Default is 0 -->
+                    <BackupFrequency>1</BackupFrequency>
+                    <!-- Enter a number between 1-30. This is the amount of days between backups. Default is 1 -->
+                   </ScheduledBackup>
+                   
+                   <DataSync>
+                    <EnableDataSync>no</EnableDataSync>
+                    <!--yes=enabled, no=disabled. Default is no -->
+                    <ChooseCDRRecordFiles>yes</ChooseCDRRecordFiles>
+					<!--yes=selected, no=unselected. Default is no-->
+                    <Account></Account>
+                    <Password></Password>
+                    <ServerAddress></ServerAddress>
+                    <DestinationDirectory></DestinationDirectory>
+                    <SyncTime></SyncTime>
+                    <!-- Enter a number between 0-23. This is the hour that the backup will start. -->
+                    </DataSync>
+                    
+                  </backup>
+                  
+                  <system_cleanup>
+                   <cleaner>
+                    <EnableCDRCleaner>0</EnableCDRCleaner>
+                    <!--1=enabled, 0=disabled. Default is 0-->
+                    <CDRCleanTime></CDRCleanTime>
+                    <!--Enter a number between 0-23 -->
+                    <CleanInterval></CleanInterval>
+                    <!--Enter a number between 1-30 -->
+                    <EnableFileCleaner>0</EnableFileCleaner>
+                    <!--1=enabled, 0=disabled. Default is 0-->
+                    <CleanFilesinExternalStorage></CleanFilesinExternalStorage>
+                    <!--1=enabled, 0=disabled. Default is 0 -->
+                    <ChooseCleanerFiles>0</ChooseCleanerFiles>
+                    <!--1=enabled, 0=disabled. Default is 0-->
+                    <FileCleanThreshold></FileCleanThreshold>
+                    <!--Enter a number between 1-99 -->
+                    <FileCleanTime></FileCleanTime>
+                    <!--Enter a number between 0-23 -->
+                    <FileCleanInterval></FileCleanInterval>
+                    <!--Enter a number between 1-30 -->
+                   </cleaner>
+                  </system_cleanup>
+                  
+                  <server_check>
+                     <ToggleServiceCheck>0</ToggleServiceCheck>
+                     <!-- 1=enabled, 0=disabled. Default is 0 -->
+                     <CheckCycle>60</CheckCycle>
+                     <!-- Enter a number between 30-86400. Default is 60 -->
+                     <Checktimes>3</Checktimes>
+                     <!-- Enter a number between 1-99. Default is 3 -->
+                   </server_check>
+
+       </maintenance>
+
+       
+<!--For CDR -->
+       <cdr>
+           <automatic_download>
+                <AutomaticDownload>no</AutomaticDownload>
+                    <!--yes=enabled, no=disabled. Default is no-->
+                <DeleteSentRecords>no</DeleteSentRecords>
+                    <!--yes=enabled, no=disabled. Default is no-->
+                <AutomaticDownloadPeriod>day,0</AutomaticDownloadPeriod>
+                <!--
+                   By Day:day,0(Valid range is 0-23)
+                   By Week:week,0(Valid range is 0-6),0(Valid range is 0-23)
+                   By Month:month,1(Valid range is 1-28),0(Valid range is 0-23.)
+				   Default is day,0
+                    -->
+                <Email></Email>
+                <!--Enter a valid email address. Separate multiple addresses with semicolon(;)(e.g.,example1@grandstream.cn;example2@grandstream.cn) -->
+           </automatic_download>
+       </cdr>
+ 
+    </config>
+</gs_provision>

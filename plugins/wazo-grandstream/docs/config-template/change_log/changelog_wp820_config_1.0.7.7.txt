@@ -1,0 +1,1455 @@
+####################################################################
+## Change Log                                                     ##
+####################################################################
+####################################################################
+## P value added since 1.0.5.5                                    ##
+####################################################################
+###############################################################
+# Network Settings/Wi-Fi Settings/Wi-Fi Basics               
+###############################################################
+# Wi-Fi Signal Warning. 0 - Disable, 1 - Level 1, 2 - Level 2, 3 - Level 3, 4 - Level 4, 5 - Level 5. Default is 3.
+# Number: 0 - 5
+# P22322 = 3
+###############################################################
+# System Settings/Security Settings/Web/SSH Access               
+###############################################################
+# User Login Timeout (in minutes). Default is 15.
+# Number: 0 - 60
+# P28116 = 15
+###############################################################
+# Phone Settings->Call Settings           
+###############################################################
+# Enable In-call Recording. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P22318 = 1
+#
+# Default Video Zoom Area. Default is 0.
+# Number: 0 - 9
+# P22324 = 0
+###############################################################
+# Value-added Service->BroadSoft Directories     
+###############################################################
+# Authentication Type. 0 - SIP Credentials, 1 - Login Credentials. Default is 1.
+# Number: 0, 1
+# P22054 = 1
+#
+# Server
+# String
+# P1591 =
+#
+# Port
+# Number: 0 - 65535
+# P1592 = 80
+#
+# Action Path
+# String
+# P2937 =
+#
+# BroadWorks User ID
+# String
+# P22034 =
+#
+# SIP Authentication ID
+# String
+# P1593 =
+#
+# SIP Authentication Password
+# String
+# P1594 =
+#
+# Login Password
+# String
+# P22103 =
+#
+# Broadsoft Directory & Call Logs Update Interval. Default is 1800.
+# Number: 60 - 2147483647
+# TBA
+#
+# BroadSoft Directory Hits
+# Number: 1 - 1000
+# P22014 =
+#
+# Associated Broadsoft Account. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# xsi_call_accountid = 0
+#
+# BroadSoft Directory Order
+# TBA
+####################################################################
+# Value-added Service/BroadSoft Directories/Network Directories   ##
+####################################################################
+# Group Directory. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P2971 = 1
+
+# Name
+# String
+# P2972 =
+
+# Enterprise Directory. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P2973 = 1
+
+# Name
+# String
+# P2974 =
+
+# Group Common. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P2975 = 1
+
+# Name
+# String
+# P2976 =
+
+# Enterprise Common. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P2977 = 1
+
+# Name
+# String
+# P2978 =
+
+# Personal Directory. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P2979 = 1
+
+# Name
+# String
+# P2980 =
+
+# Missed Call Log. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P2981 = 1
+
+# Name
+# String
+# P2982 =
+
+# Placed Call Log. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P2983 = 1
+
+# Name
+# String
+# P2984 =
+
+# Received Call Log. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P2985 = 1
+
+# Name
+# String
+# P2986 =
+###############################################################
+# System Settings->Security Settings->TLS 
+###############################################################
+# Minimum TLS Version. 10 - 1.0, 11 - 1.1, 12 - 1.2. Default is 11.
+# Number: 10, 11, 12
+# P22293 = 11
+#
+# Maximum TLS Version. 10 - 1.0, 11 - 1.1, 12 - 1.2, 99 - No limit. Default is 99.
+# Number: 10, 11, 12, 99
+# P22294 = 99
+###############################################################
+# Maintenance->Upgrade->Provision
+###############################################################
+# Enable Randomized Automatic Upgrade. 0 - Disable, 1 - Enable. Default is 0.
+# Number: 0, 1
+# P8458 = 0
+###############################################################
+# Account 1->SIP Settings
+###############################################################
+# Add MAC in User-Agent. 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0.
+# Number: 0, 1, 2
+# P26061 = 0
+###############################################################
+# Account 2->SIP Settings
+###############################################################
+# Add MAC in User-Agent. 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0.
+# Number: 0, 1, 2
+# P26161 = 0
+###############################################################
+# Value-added Service->Door System
+###############################################################
+# Door System Type. 0 - GDS, 1 - Others. Default is 0. (Also enables GDS 1-10)
+# Number: 0, 1
+# P32001 = 0
+# P32006 = 0
+# P32011 = 0
+# P32016 = 0
+# P32021 = 0
+# P32026 = 0
+# P32031 = 0
+# P32036 = 0
+# P32041 = 0
+# P32046 = 0
+###############################################################
+# System Settings->Preferences->Sound
+###############################################################
+# Silent Mode. 0 - Disable, 1 - Enable. Default is 0.
+# Number: 0, 1
+# P22319 = 0
+#
+# Vibrate Mode. 0 - Disable, 1 - Enable. Default is 0.
+# Number: 0, 1
+# P22320 = 0
+#
+# Charging tone. 0 - Disable, 1 - Enable. Default is 0.
+# Number: 0, 1
+# P22224 = 1
+#
+# Low Battery Warning Tone. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P22321 = 1
+#
+# Voicemail Notification Tone. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P22323 = 1
+#
+# Ringtone Volume
+# TBA
+#
+# Media Volume
+# TBA
+#
+# Alarm Volume
+# TBA
+###############################################################
+# Account 1->Call Settings
+###############################################################
+# Start Video Automatically. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P2314 = 1
+###############################################################
+# Account 2->Call Settings
+###############################################################
+# Start Video Automatically. 0 - Disable, 1 - Enable. Default is 1.
+# Number: 0, 1
+# P2414 = 1
+###############################################################
+# Account 1->Advanced Settings
+###############################################################
+# Feature Key Synchronization. 0 – Disable, 1 – BroadSoft/Metaswitch. Default is 0.
+# Number: 0, 1
+# P2325 = 0
+###############################################################
+# Account 2->Advanced Settings
+###############################################################
+# Feature Key Synchronization. 0 – Disable, 1 – BroadSoft/Metaswitch. Default is 0.
+# Number: 0, 1
+# P2425 = 0
+###############################################################
+# Phone Settings->PTT/Multicast Settings->General Settings
+###############################################################
+# Allow PTT/Paging When Lock Screen Status. 0 - Disable, 1 - Enable. Default is 0.
+# Number: 0, 1
+# P22325 = 0
+###############################################################
+# System Settings->Preferences->LCD & LED Management
+###############################################################
+# Font Size. 0 - Small, 1 - Standard, 2 - Large. Default is 1.
+# Number: 0, 1, 2
+# P22275 = 1
+####################################################################
+## P value updated since 1.0.5.5                                  ##
+####################################################################
+###############################################################
+# Maintenance->Upgrade->Provision            
+###############################################################
+# Allow DHCP Option 43, 160 and 66 Override Server. 0 - No, 1 - Yes, 2 - Prefer, fallback when failed. Default is 1.
+# Number: 0, 1, 2
+# P145 = 1
+###############################################################
+# Maintenance/Upgrade/Advanced Settings                           
+###############################################################
+# Enable SIP NOTIFY Authentication. 1 - No, 0 - Yes. Default is 1
+# Number: 0,1
+# Mandatory
+# P4428 = 1
+###############################################################
+# Account 1->SIP Settings
+###############################################################
+# Use MAC Header. 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0.
+# Number: 0, 1, 2
+# P29090 = 0
+###############################################################
+# Account 1->Advanced Settings
+###############################################################
+# Special Feature. Default is 100
+# 100 - Standard, 102 - Broadsoft, 113 - China Mobile
+# 114 - ZTE IMS, 115 - Mobotix, 116 - ZTE NGN, 117 - Huawei IMS, 122 - Metaswitch, 123 - NEC, 125 - WorldStone
+# Number: 100, 102, 113, 114, 115, 116, 117, 122, 123, 125
+# Mandatory
+# P198 = 100
+###############################################################
+# Account 2->SIP Settings
+###############################################################
+# Use MAC Header. 0 - No, 1 - Yes except REGISTER, 2 - Yes to all SIP. Default is 0.
+# Number: 0, 1, 2
+# P29190 = 0
+###############################################################
+# Account 2->Advanced Settings
+###############################################################
+# Special Feature. Default is 100
+# 100 - Standard, 102 - Broadsoft, 113 - China Mobile
+# 114 - ZTE IMS, 115 - Mobotix, 116 - ZTE NGN, 117 - Huawei IMS, 122 - Metaswitch, 123 - NEC, 125 - WorldStone
+# Number: 100, 102, 113, 114, 115, 116, 117, 122, 123, 125
+# Mandatory
+# P424 = 100
+###############################################################
+# Network Settings/Wi-Fi Settings/Wi-Fi Basics                   
+###############################################################
+# IP mode. 0 - Both, prefer IPv4, 1 - Both, prefer IPv6, 2 - IPv4 Only, 3 - IPv6 Only. Default is 2.
+# Number: 0, 1, 2, 3
+# P22233 = 2
+###############################################################
+# System Settings->Preferences->Sound
+###############################################################
+# Default Ringtone
+# TBA
+#
+# Notification Tone
+# TBA
+####################################################################
+## P value removed since 1.0.5.5                                  ##
+####################################################################
+# Enable GDS. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# P32000 = 0
+# P32005 = 0
+# P32010 = 0
+# P32015 = 0
+# P32020 = 0
+# P32025 = 0
+# P32030 = 0
+# P32035 = 0
+# P32040 = 0
+# P32045 = 0
+####################################################################
+## P value added since 1.0.3.20                                   ##
+####################################################################
+###############################################################
+# Network Settings/OpenVPN® Settings                              
+###############################################################
+# OpenVPN Mode. 0 - Simple Mode, 1 - Expert Mode.
+# Number: 0, 1
+# P22292 = 0
+###############################################################
+# System Settings/Preferences/Button Customization
+###############################################################
+# Multi-function Button - Speed dial account. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# P23051 = 0
+#
+# Multi-function Button - Speed dial number.
+# String (numbers only)
+# P23053 =
+###############################################################
+# Network Settings/Wi-Fi Settings/Advanced Settings               
+###############################################################
+# Channel Mode. (Blank) - Auto, (Any value) - Customize. Default is blank.
+# 2.4G: Channel 1 - 2412, Channel 2 - 2417, Channel 3 - 2422, Channel 4 - 2427, Channel 5 - 2432, Channel 6 - 2437,
+# Channel 7 - 2442, Channel 8 - 2447, Channel 9 - 2452, Channel 10 - 2457, Channel 11 - 2462
+# 5G: Channel 36 - 5180, Channel 40 - 5200, Channel 44 - 5220, Channel 48 - 5240, Channel 52 - 5260, Channel 56 - 5280, 
+# Channel 60 - 5300, Channel 64 - 5320, Channel 100 - 5340, Channel 104 - 5360, Channel 108 - 5380, Channel 112 - 5400,
+# Channel 116 - 5420, Channel 120 - 5440, Channel 124 - 5460, Channel 128 - 5480, Channel 132 - 5500, Channel 136 - 5520,
+# Channel 140 - 5540, Channel 144 - 5560, Channel 149 - 5580, Channel 153 - 5600, Channel 157 - 5620, Channel 161 - 5640,
+# Channel 165 - 5660.
+# Separate channel values by comma e.g "2412,2417,5180,5200"
+# String
+# P22288 =
+###############################################################
+# System Settings/Security Settings/Lock Screen Settings           
+###############################################################
+# Screen Lock Function. 0 - Off, 1 - On. Default is 0.
+# Number: 0, 1
+# P22235 = 0
+#
+# Screen Lock Password.
+# String
+# P1383 =
+###############################################################
+# Network Settings/Bluetooth         
+###############################################################
+# Device Name
+# String
+# TBA
+#
+# Bluetooth Headset Mode
+# Number: 0, 1
+# TBA
+#
+# Bluetooth Function
+# Number: 0, 1
+# TBA
+###############################################################
+# Maintenance/Upgrade/Provision                               
+###############################################################
+# Download and Process All Available Config Files. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# P8467 = 0
+####################################################################
+## P value updated since 1.0.3.20                                 ##
+####################################################################
+###############################################################
+# System Settings/Preferences/Button Customization
+###############################################################
+# Multi-function button customization. 0 - PTT/Paging, 1 - Mute, 2 - SAFE/Panic Call, 3 - Speed Dial. Default is 0.
+# Number: 0, 1, 2, 3
+# P22258 = 0
+###############################################################
+# Phone Settings/Call Settings                   				 
+###############################################################
+# Enable Video Call. 0 - Yes, 1 - No. Default is 0.
+# Number: 0, 1
+# P22091 = 0
+#
+# Enable Call Waiting. 0 - Yes, 1 - No. Default is 0
+# Number: 0, 1
+# Mandatory
+# P91 = 0
+#
+# Enable Call Waiting Tone. 0 - Yes, 1 - No. Default is 0
+# Number: 0, 1
+# Mandatory
+# P186 = 0
+#
+# Enable DND Reminder Ring. 0 - Enable, 1 - Disabled. Default is 0
+# Number: 0, 1
+# Mandatory
+# P1486 = 0
+#
+# Enable Transfer. 0 - Yes, 1 - No. Default is 0
+# Number: 0, 1
+# Mandatory
+# P1341 = 0
+#
+# Enable Conference. 0 - Yes, 1 - No. Default is 0
+# Number: 0, 1
+# Mandatory
+# P1311 = 0
+####################################################################
+# System Settings/Security Settings/Web/SSH Access                ##
+####################################################################
+# Enable SSH. 0 - Yes, 1 - No. Default is 0.
+# Number: 0, 1
+# P276 = 0
+####################################################################
+# System Settings/Preferences/LCD & LED Management                ##
+####################################################################
+# LED Management
+#
+# Enable Missed Call Indicator. 0 - Yes, 1 - No. Default is 0.
+# Number: 0, 1
+# P1691 = 0
+#
+# Enable MWI Indicator. 0 - Yes, 1 - No. Default is 0.
+# Number: 0, 1
+# P1692 = 0
+#
+# Enable New Message Indicator. 0 - Yes, 1 - No. Default is 0.
+# Number: 0, 1
+# P1693 = 0
+###############################################################
+# Maintenance/Upgrade/Provision                               
+###############################################################
+# Upgrade With Prompt. 0 - Enable, 1 - Disable. Default value is 0.
+# Number: 0, 1
+# P1549 = 0
+####################################################################
+## P value added since 1.0.3.6                                    ##
+####################################################################
+###############################################################
+# Network Settings/OpenVPN® Settings                              
+###############################################################
+# Enable OpenVPN® Comp-lzo. 0 - On, 1 - Off. Default is 0.
+# Number: 0, 1
+# P8508 = 0
+###############################################################
+# Account 1/Codec Settings/RTP Settings
+###############################################################
+# RTP Timeout (in seconds). Default is 30.
+# Number: 0 - 600
+# P29068 = 30
+###############################################################
+# Account 2/Codec Settings/RTP Settings
+###############################################################
+# RTP Timeout (in seconds). Default is 30.
+# Number: 0 - 600
+# P29168 = 30
+###############################################################
+# Account 1/Call Settings/Call Features
+###############################################################
+# Mute on Answer Intercom Call. 0 - Off, 1 - On. Default is 1.
+# Number: 0, 1
+# P26071 = 0
+###############################################################
+# Account 2/Call Settings/Call Features
+###############################################################
+# Mute on Answer Intercom Call. 0 - Off, 1 - On. Default is 1.
+# Number: 0, 1
+# P26171 = 0
+###############################################################
+# Value-added Service/Door System 
+###############################################################
+# 10 GDS entries are supported
+# Enable GDS. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# P32000 = 0
+# P32005 = 0
+# P32010 = 0
+# P32015 = 0
+# P32020 = 0
+# P32025 = 0
+# P32030 = 0
+# P32035 = 0
+# P32040 = 0
+# P32045 = 0
+#
+# Door System Name
+# String
+# P32002
+# P32007
+# P32012
+# P32017
+# P32022
+# P32027
+# P32032
+# P32037
+# P32042
+# P32047
+#
+# System Number
+# String
+# P32003
+# P32008
+# P32013
+# P32018
+# P32023
+# P32028
+# P32033
+# P32038
+# P32043
+# P32048
+#
+# Access Password
+# P32004
+# P32009
+# P32014
+# P32019
+# P32024
+# P32029
+# P32034
+# P32039
+# P32044
+# P32049
+#
+# System Ringtone (see ringtone value table).
+# String
+# P22241 = /system/media/audio/ringtones/DingDong.wav
+# P22242 = /system/media/audio/ringtones/DingDong.wav
+# P22243 = /system/media/audio/ringtones/DingDong.wav
+# P22244 = /system/media/audio/ringtones/DingDong.wav
+# P22245 = /system/media/audio/ringtones/DingDong.wav
+# P22246 = /system/media/audio/ringtones/DingDong.wav
+# P22247 = /system/media/audio/ringtones/DingDong.wav
+# P22248 = /system/media/audio/ringtones/DingDong.wav
+# P22249 = /system/media/audio/ringtones/DingDong.wav
+# P22250 = /system/media/audio/ringtones/DingDong.wav
+###############################################################
+# System Settings/Preferences/LCD & LED Management                     
+###############################################################
+# Brightness. Default is 182.
+# Number: 1 - 255
+# P910 = 182
+#
+# Timeout. 0 - Never, 15 - 15 Seconds, 30 - 30 Seconds, 60 - 1 Minute, 120 - 2 Minutes, 300 - 5 Minutes, 600 - 10 Minutes, 1800 - 30 Minutes. Default is 60.
+# Number: 0, 15, 30, 60, 120, 300, 600, 1800
+# P1412 = 60
+###############################################################
+# Value-added Service/SAFE/Panic Call
+###############################################################
+# Associated Account. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# P22277 = 0
+#
+# Emergency Dial Force Speaker. 0 - Off, 1 - On. Default is 0.
+# Number: 0, 1
+# P22273 = 0
+###############################################################
+# Phone Settings/Call Settings
+###############################################################
+# Rejected Call Notification. 0 - Off, 1 - On. Default is 0.
+# Number: 0, 1
+# P8393 = 0
+###############################################################
+# Account 1/Advanced Settings
+###############################################################
+# Allow Sync Phonebook via SIP Notify. 0 - No, 1 - Yes. Default is 1.
+# Number: 0, 1
+# P26099 = 1
+###############################################################
+# Account 2/Advanced Settings
+###############################################################
+# Allow Sync Phonebook via SIP Notify. 0 - No, 1 - Yes. Default is 1.
+# Number: 0, 1
+# P26199 = 1
+###############################################################
+# Network Settings/Advanced Network Settings                      
+###############################################################
+# CSTA Control. 0 - Off, 1 - On. Default is 0.
+# Number: 0, 1
+# P32053 = 0
+###############################################################
+# Account 1/SIP Settings
+###############################################################
+# Subscribe Expiration (in minutes). Default is blank.
+# Number: 1 - 64800
+# P26051 =
+#
+# Use MAC Header. 0 - Off, 1 - On. Default is 0.
+# Number: 0, 1
+# P26061 = 0
+###############################################################
+# Account 2/SIP Settings
+###############################################################
+# Subscribe Expiration (in minutes). Default is blank.
+# Number: 1 - 64800
+# P26151 =
+#
+# Use MAC Header. 0 - Off, 1 - On. Default is 0.
+# Number: 0, 1
+# P26161 = 0
+###############################################################
+# Account 1/Call Settings
+###############################################################
+# Match Incoming Caller ID Rule 4
+# String
+# P6716 = 
+#
+# Distinctive Ringtone Rule 4
+# String
+# P6717 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 5
+# String
+# P6718 = 
+#
+# Distinctive Ringtone Rule 5
+# String
+# P6719 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 6
+# String
+# P6720 =
+#
+# Distinctive Ringtone Rule 6
+# String
+# P6721 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 7
+# String
+# P26064 =
+#
+# Distinctive Ringtone Rule 7 
+# String
+# P26065 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 8
+# String
+# P26066 =
+#
+# Distinctive Ringtone Rule 8 
+# String
+# P26067 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 9
+# String
+# P26068 =
+#
+# Distinctive Ringtone Rule 9
+# String
+# P26069 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 10
+# String
+# P26096 =
+#
+# Distinctive Ringtone Rule 10 
+# String
+# P26097 = content://settings/system/ringtone
+###############################################################
+# Account 2/Call Settings
+###############################################################
+# Match Incoming Caller ID Rule 4
+# String
+# P6722 = 
+#
+# Distinctive Ringtone Rule 4
+# String
+# P6723 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 5
+# String
+# P6724 = 
+#
+# Distinctive Ringtone Rule 5
+# String
+# P6725 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 6
+# String
+# P6726 =
+#
+# Distinctive Ringtone Rule 6 
+# String
+# P6727 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 7
+# String
+# P26164 =
+#
+# Distinctive Ringtone Rule 7
+# String
+# P26165 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 8
+# String
+# P26166 =
+#
+# Distinctive Ringtone Rule 8
+# String
+# P26167 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 9
+# String
+# P26168 =
+#
+# Distinctive Ringtone Rule 9
+# String
+# P26169 = content://settings/system/ringtone
+#
+# Match Incoming Caller ID Rule 10
+# String
+# P26196 =
+#
+# Distinctive Ringtone Rule 10
+# String
+# P26197 = content://settings/system/ringtone
+###############################################################
+# Handset/Basic Setting/Display                                
+###############################################################
+# LCD Font Size. 0 - Small, 1 - Normal, 2 - Large. Default is 1.
+# Number: 0, 1, 2
+# P22275 = 1
+###############################################################
+# Account 1/Codec Settings
+###############################################################
+# Preferred Video Codec. 99 - H264. Default is 99. 
+# Number: 99
+# P295 = 99
+###############################################################
+# Account 2/Codec Settings
+###############################################################
+# Preferred Video Codec. 99 - H264. Default is 99. 
+# Number: 99
+# P464 = 99
+####################################################################
+## P value updated since 1.0.3.6                                  ##
+####################################################################
+###############################################################
+# Maintenance/Upgrade/Provision
+###############################################################
+# Config Provision
+# List config file name in the preferred order separated by “;”. For example:
+# cfg$mac;cfg$mac.xml;cfg$product.xml;cfg.xml
+# String
+# P8501
+###############################################################
+# System Settings/Preferences/Gesture Control
+###############################################################
+# Customize (Reply Content)
+# String
+# P22274
+###############################################################
+# Account 1/Call Settings
+###############################################################
+# Use # As Dial Key. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P72 = 1
+###############################################################
+# Account 2/Call Settings
+###############################################################
+# Use # As Dial Key. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P492 = 1
+###############################################################
+# Phone Settings/Call Settings                   				 
+###############################################################
+# Enable Noise Shield. 0 - No, 1 - Yes. Default is 0. 
+# Number: 0, 1 
+# P25110 = 0
+####################################################################
+## P value removed since 1.0.3.6                                  ##
+####################################################################
+# Use H.264 Constrained Profiles. 0 - No, 1 - Yes. Default value is 0.
+# Number: 0, 1
+# P26045 = 0
+#
+# Use H.264 Constrained Profiles. 0 - No, 1 - Yes. Default value is 0.
+# Number: 0, 1
+# P26145 = 0
+####################################################################
+## P value added since 1.0.3.5                                    ##
+####################################################################
+# None
+#
+####################################################################
+## P value added since 1.0.1.16                                   ##
+####################################################################
+###############################################################
+# Account 1/SIP Settings
+###############################################################
+# Use P-Access-Network-Info Header. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# P26058 = 0
+#
+# Use P-Emergency-Info header. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# P26059 = 0
+###############################################################
+# Account 1/Codec Settings/Preferred Video Codec
+###############################################################
+# Enable Video FEC. 0 - No, 1 - Yes. Default value is 1.
+# Number: 0, 1
+# P2393 = 1
+#
+# Enable RFC5168 Support. 0 - No, 1 - Yes. Default value is 1.
+# Number: 0, 1
+# P1331 = 1
+#
+# FEC Payload Type. Default value is 120.
+# Number: 96 - 126
+# P2394 = 120
+#
+# H.264 Image Size. 9 - 720P, 1 - VGA, 5 - CIF, 4 - 4CIF, 0 - QVGA, 6 - QCIF. Default value is 9
+# Number: 9, 1, 5, 4, 0, 6
+# P2307 = 9
+#
+# Video Bit Rate. 32 - 32 kbps, 64 - 64 kbps, 96 - 96 kbps, 128 - 128 kbps, 160 - 160 kbps, 192 - 192 kbps
+# 210 - 210 kbps, 256 - 256 kbps, 384 - 384 kbps, 512 - 512 kbps, 640 - 640 kbps, 768 - 768 kbps
+# 1024 - 1024 kbps, 1280 - 1280 kbps, 1536 - 1536 kbps, 2048 - 2048 kbps. Default value is 2048.
+# Number: 32,64,96,128,160,192,210,256,384,512,640,768,1024,1280,1536,2048
+# P2315 = 2048
+#
+# SDP Bandwidth Attribute. 0 - Standard, 1 - Media Level, 2 - Session Level, 3 - None. Default value is Media Level.
+# Number: 0, 1, 2, 3
+# P2360 = 1
+###############################################################
+# Account 1/Call Settings
+###############################################################
+# Matching Rule 1 Distinctive Ringtone 
+# String
+# P1489 = content://settings/system/ringtone
+#
+# Matching Rule 2 Distinctive Ringtone 
+# String
+# P1491 = content://settings/system/ringtone
+#
+# Matching Rule 3 Distinctive Ringtone 
+# String
+# P1493 = content://settings/system/ringtone
+###############################################################
+# Account 2/SIP Settings
+###############################################################
+# Use P-Access-Network-Info Header. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# P26158 = 0
+#
+# Use P-Emergency-Info header. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# P26159 = 0
+###############################################################
+# Account 2/Codec Settings/Preferred Video Codec
+###############################################################
+# Enable Video FEC. 0 - No, 1 - Yes. Default value is 1.
+# Number: 0, 1
+# P2493 = 1
+#
+# Enable RFC5168 support. 0 - No, 1 - Yes. Default value is 1.
+# Number: 0, 1
+# P478 = 1
+#
+# FEC Payload Type. Default value is 120.
+# Number: 96 - 126
+# P2494 = 120
+#
+# H.264 Image Size. 9 - 720P, 1 - VGA, 5 - CIF, 4 - 4CIF, 0 - QVGA, 6 - QCIF. Default value is 9
+# Number: 9, 1, 5, 4, 0, 6
+# P2407 = 9
+#
+# Video Bit Rate. 32 - 32 kbps, 64 - 64 kbps, 96 - 96 kbps, 128 - 128 kbps, 160 - 160 kbps, 192 - 192 kbps
+# 210 - 210 kbps, 256 - 256 kbps, 384 - 384 kbps, 512 - 512 kbps, 640 - 640 kbps, 768 - 768 kbps
+# 1024 - 1024 kbps, 1280 - 1280 kbps, 1536 - 1536 kbps, 2048 - 2048 kbps. Default value is 2048.
+# Number: 32,64,96,128,160,192,210,256,384,512,640,768,1024,1280,1536,2048
+# P2415 = 2048
+#
+# SDP Bandwidth Attribute. 0 - Standard, 1 - Media Level, 2 - Session Level, 3 - None. Default value is Media Level.
+# Number: 0, 1, 2, 3
+# P2460 = 1
+###############################################################
+# Phone Settings/Call Settings
+###############################################################
+# Disable Video Call. 0 - No, 1 - Yes. Default is 0.
+# Number: 0, 1
+# P22091 = 0
+#
+# Default Ringtone
+# (P value TBA)
+#
+# Notification Tone
+# (P value TBA)
+#
+# Enable Noise Shield. 0 - No, 1 - Yes. Default is 0. 
+# Number: 0, 1 
+# avs_edrc = 
+#
+###############################################################
+# Phone Settings/Video Settings
+###############################################################
+# Video Frame Rate. 5 - 5 frames/second,  15 - 15 frames/second, 25 - 25 frames/second, 30 - 30 frames/second, 29 - Variable frames rate. Default value is 15
+# Number: 5, 15, 25, 29, 30
+# P904 = 15
+#
+# Video Display Mode. 0 - Original proportion, 1 - Equal proportional cutting, 2 - Proportional add black edge. Default value is 1
+# Number: 0, 1, 2
+# P921 = 1
+#
+# Enable Frame Skipping in Video Decoder. 0 - No, 1 - Yes, default is 1.
+# Number: 0, 1
+# P22008 = 1
+###############################################################
+# Phone Settings/PTT/Multicast Setting
+###############################################################
+# IGMP keep-alive internal. Default is 30. 
+# Number: 0 - 120
+# P22251
+####################################################################
+# Network Settings/Wi-Fi Settings/Wi-Fi Basics                    ##
+####################################################################
+# WiFi Band. 2.4G & 5G - P25420=1 P25421=1, 2.4G - P25420=1 P25421=0, 5G - P25420=0 P25421=1. Default is P25420=1 P25421=1.
+# Number: 0, 1
+# P25420 = 1
+# P25421 = 1
+####################################################################
+# Network Settings/Wi-Fi Settings/Advanced Settings               ##
+####################################################################
+# Country Code (World version device only. Locked device cannot change country code.)
+# Use ISO 3166-1 alpha-2 code for country value
+# For example, United States of America - US
+# P7831 = US
+#
+####################################################################
+# Network Settings/OpenVPN® Settings                              ##
+####################################################################
+# OpenVPN CA
+# String
+# P9902 =
+#
+# OpenVPN Client Certificate
+# String
+# P9903 =
+#
+# OpenVPN Client Private Key
+# String
+# P9904 =
+###############################################################
+# System Settings/Security Settings/Web/SSH Access
+###############################################################
+# SSH Port. Default is 22. 
+# Number 1 - 65535
+# P27006 = 22
+###############################################################
+# System Settings/Security Settings/Certificate Management
+###############################################################
+# User Certificate
+# (P value TBA)
+#
+# Custom Certificate
+# String
+# P8472 = 
+###############################################################
+# System Settings/Preferences/Gesture Control
+###############################################################
+# Flip phone 
+#
+# Reject incoming call. 1 - Reject, 2 - Reject with SMS, 3 - Off Default is 3.
+# Number: 1, 2, 3
+# P22225 = 3
+#
+# Reply content
+# not_convenient - Sorry, I can't answer the phone now.
+# call_later - I am not available now. I'll call you later.
+# in_metting - Sorry, I'm in a meeting.
+# in_a_call - I am on another call right now and will call you back later.
+# customize - Customize
+# P22228 = not_convenient
+#
+# Customize
+# String
+# gsensor_flip_reply_sms_customer = 
+#
+# Pick up the phone
+#
+# Ringtone. 1 - Mute, 2 - Ringing Down, 3 - Off. Default is 3. 
+# P22226 = 3
+#
+# Alarm Ringtone. 1 - Mute, 2 - Ringing Down, 3 - Off. Default is 3. 
+# P22227 = 3
+#
+###############################################################
+# System Settings/Preferences/Button Customization
+###############################################################
+# WP8xx main screen left softkey. 0 - Call history, 1 - Menu , 2 - Settings , 3 - Contacts , 4 - Voicemail, 5 - DND. Default is 0.
+# Number: 0 - 5
+# P22252 = 0
+#
+# WP8xx main screen center softkey. 0 - Call history, 1 - Menu , 2 - Settings , 3 - Contacts , 4 - Voicemail, 5 - DND. Default is 1.
+# Number: 0 - 5
+# P22253 = 1
+#
+# WP8xx main screen right softkey. 0 - Call history, 1 - Menu , 2 - Settings , 3 - Contacts , 4 - Voicemail, 5 - DND. Default is 2
+# Number: 0 - 5
+# P22254 = 2
+#
+# WP8xx call screen left softkey. 0 - Option, 1 - Transfer, 2 - Hold, 3 - Mute, 4 - New Call, 5 - Conference, 6 - Record. Default is 0.
+# Number: 0 - 6
+# P22255 = 0
+#
+# WP8xx call screen center softkey. 0 - Option, 1 - Transfer, 2 - Hold, 3 - Mute, 4 - New Call, 5 - Conference, 6 - Record. Default is 1.
+# Number: 0 - 6
+# P22256 = 1
+#
+# WP8xx call screen right softkey. 0 - Option, 1 - Transfer, 2 - Hold, 3 - Mute, 4 - New Call, 5 - Conference, 6 - Record. Default is 2. 
+# Number: 0 - 6
+# P22257 = 2
+#
+# Multi-function button customization. 0 - PTT/Paging, 1 - Mute, 2 - SAFE/Panic Call. Default is 0.
+# Number: 0, 1, 2
+# P22258 = 0
+###############################################################
+# Maintenance/Upgrade/Provision
+###############################################################
+# Config Provision
+# List config file name in the preferred order separated by “;”. For example:
+# cfg000b82e30668;cfg.xml;cfg000b82e30668.xml;cfgwp820.xml 	
+# String
+# P8501
+#
+#PNP (3CX) Auto Provision. 0 - No, 1 - Yes. Default is 1.
+#P1414 = 1
+#
+# Control whether to download only XML config files	
+# If set to 1, WP820 will only download all the XML config files for provisioning: cfg.xml, cfg${max}.xml and cfgwp820.xml.  
+# P8467 has higher priority than P8501 when set to 1.
+# P8467
+###############################################################
+# Application/LDAP Phonebook
+###############################################################
+# Connection Mode. 0 - LDAP, 1 - LDAPS. Default Value is 0
+# Number : 0, 1
+# P8037 = 0
+#
+# Server Address
+# LDAP Server Address, up to 256 characters can be used. It can be IP address or Domain name
+# String
+# P8020 =
+#
+# Port
+# Number: 1 - 65535. Default value is 389
+# P8021 = 389
+#
+# Base DN. The LDAP search base refers to the location in the directory where the search is requested to begin
+# Example 1: dc=grandstream,dc=com
+# Example 2: ou=Boston, dc=grandstream,dc=com
+# String
+# P8022 =
+#
+# User Name. The bind "Username" for querying LDAP servers. Some LDAP servers allow anonymous binds in which case the setting can be left blank
+# String
+# P8023 =
+#
+# Password. The bind "Password" for querying LDAP servers. And the field can be left blank if the LDAP server allows anonymous binds
+# String
+# P8024 =
+#
+# LDAP Name Attributes. This setting specifies the "name" attributes of each record which are returned in the LDAP search result
+# The setting allows the users to configure multiple space separated name attributes
+# String
+# P8028 =
+#
+# LDAP Number Attributes. This setting specifies the "number" attributes of each record which are returned in the LDAP search result
+# The setting allows the users to configure multiple space separated number attributes
+# String
+# P8029 =
+#
+# LDAP Name Filter
+# LDAP name filter is the filter used for name look ups. Please refer to usermanual for examples
+# String
+# P8026 =
+#
+# LDAP Number Filter
+# LDAP name filter is the filter used for number look ups. Please refer to usermanual for examples
+# String
+# P8025 =
+#
+# Search Field Filter. 0 - All filter, 1 - Name Filter, 2 - Number Filter. Default is 0.
+# Number: 0, 1, 2
+# ldap_search_field = 0
+#
+# LDAP Displaying Name Attributes. The entry information to be shown on phone LCD. Grandstream phones will display up to 3 fields
+# String
+# P8030 =
+#
+# Max Hits. The setting specifies the maximum number of results to be returned by the LDAP server
+# If the value is set to 0, server will return all search results. Default is 50
+# Number: 0 - 32000
+# P8031 = 50
+#
+# Search Timeout (in seconds). Default is 4
+# The setting specifies how long the server should process the request and client waits for server to return
+# Number: 0 - 180
+# P8032 = 4
+#
+# LDAP Lookup For Dial. 0 - No, 1 - Yes. Default is 0
+# P8034 = 0
+#
+# LDAP Lookup For Incoming Calls. 0 - No, 1 - Yes. Default is 0
+# P8035 = 0
+#
+# LDAP Dialing Default Account. -1 - Default, 0 - Account 1, 1 - Account 2. Default is 0
+# Number: -1 - 1
+# P22039 = -1
+###############################################################
+# Value-added Service/SAFE/Panic Call
+###############################################################
+# WP8xx safety monitoring. 0 - off, 1 - on. Default is 0.
+# P22259 = 0
+#
+# WP8xx no-movement sensitivity. 0 - Disable, 1 - Level 1 (lowest), 2 - Level 2, 3 - Level 3, 4 - Level 4, 5 - Level 5, 6 - Level 6, 7 - Level 7 (highest). Default 0.  
+# Number: 0 - 7
+# P22260 = 0
+#
+# WP8xx no-movement timeout. Default is 5.  
+# Number: 5 - 300
+# P22261 = 5
+#
+# WP8xx tilt sensitivity. 0 - Disable, 1 - Level 1 (lowest), 2 - Level 2, 3 - Level 3, 4 - Level 4, 5 - Level 5, 6 - Level 6, 7 - Level 7 (highest). Default 0.
+# Number: 0 - 7
+# P22262 = 0
+#
+# WP8xx tilt timeout 
+# Number: 5 - 300
+# P22263 = 5 
+#
+# WP8xx running sensitivity. 0 - Disable, 1 - Level 1 (lowest), 2 - Level 2, 3 - Level 3, 4 - Level 4, 5 - Level 5, 6 - Level 6, 7 - Level 7 (highest). Default 0.
+# Number: 0 - 7
+# P22264 = 0
+#
+# WP8xx running timeout 
+# Number: 5 - 300
+# P22265 = 5
+#
+# WP8xx snooze timeout 
+# Number: 0 - 300
+# P22266 = 0
+#
+# WP8xx warning timeout 
+# Numnber: 5 - 60
+# P22267 = 5
+#
+# WP8xx panic call silent alarm. 0 - Off, 1 - On. Default is 1.
+# Number: 0, 1
+# P22268 = 1
+#
+# WP8xx emergency call. 0 - Off, 1 - On. Default is 1.
+# Number: 0, 1
+# P22269 = 1 
+#
+# WP8xx emergency call number
+# String
+# P22270 =
+#
+##################################Warning Tone Value Table##################################
+# Web GUI Option                            Value
+# Adara										/system/media/audio/notifications/Adara.ogg
+# Aldebaran									/system/media/audio/notifications/Aldebaran.ogg
+# Altair									/system/media/audio/notifications/Altair.ogg
+# Alya										/system/media/audio/notifications/Alya.ogg
+# Antares									/system/media/audio/notifications/Antares.ogg
+# Antimony									/system/media/audio/notifications/Antimony.ogg
+# Arcturus									/system/media/audio/notifications/Arcturus.ogg
+# Argon										/system/media/audio/notifications/Argon.ogg
+# Beat Box Android							/system/media/audio/notifications/Beat_Box_Android.ogg
+# Bellatrix									/system/media/audio/notifications/Bellatrix.ogg
+# Beryllium									/system/media/audio/notifications/Beryllium.ogg
+# Betegeuse									/system/media/audio/notifications/Betegeuse.ogg
+# Caffeinated Rattlesnake					/system/media/audio/notifications/CaffeineSnake.ogg
+# Canopus									/system/media/audio/notifications/Canopus.ogg
+# Capella									/system/media/audio/notifications/Capella.ogg
+# Captain's Log								/system/media/audio/notifications/F1_New_MMS.ogg
+# Castor									/system/media/audio/notifications/Castor.ogg
+# Ceti Alpha								/system/media/audio/notifications/CetiAlpha.ogg
+# Cobalt									/system/media/audio/notifications/Cobalt.ogg
+# Cricket									/system/media/audio/notifications/Cricket.ogg
+# Dear Deer									/system/media/audio/notifications/DearDeer.ogg
+# Deneb										/system/media/audio/notifications/Deneb.ogg
+# Doink										/system/media/audio/notifications/Doink.ogg
+# Don't Panic								/system/media/audio/notifications/DontPanic.ogg
+# Drip										/system/media/audio/notifications/Drip.ogg
+# Electra									/system/media/audio/notifications/Electra.ogg
+# Fluorine									/system/media/audio/notifications/Fluorine.ogg
+# Fomalhaut									/system/media/audio/notifications/Fomalhaut.ogg
+# Gallium									/system/media/audio/notifications/Gallium.ogg
+# Heaven									/system/media/audio/notifications/Heaven.ogg
+# Helium									/system/media/audio/notifications/Helium.ogg
+# Highwire									/system/media/audio/notifications/Highwire.ogg
+# Hojus										/system/media/audio/notifications/Hojus.ogg
+# Iridium									/system/media/audio/notifications/Iridium.ogg
+# Krypton									/system/media/audio/notifications/Krypton.ogg
+# Kzurb Sonar								/system/media/audio/notifications/KzurbSonar.ogg
+# Lalande									/system/media/audio/notifications/Lalande.ogg
+# Look At Me								/system/media/audio/notifications/F1_New_SMS.ogg
+# Merope									/system/media/audio/notifications/Merope.ogg
+# Mira										/system/media/audio/notifications/Mira.ogg
+# Missed It									/system/media/audio/notifications/F1_MissedCall.ogg
+# Moonbeam									/system/media/audio/notifications/moonbeam.ogg
+# On The Hunt								/system/media/audio/notifications/OnTheHunt.ogg
+# Palladium									/system/media/audio/notifications/Palladium.ogg
+# Pixie Dust								/system/media/audio/notifications/pixiedust.ogg
+# Pizzicato									/system/media/audio/notifications/pizzicato.ogg
+# Plastic Pipe 								/system/media/audio/notifications/Plastic_Pipe.ogg
+# Polaris									/system/media/audio/notifications/Polaris.ogg
+# Pollux									/system/media/audio/notifications/Pollux.ogg
+# Procyon									/system/media/audio/notifications/Procyon.ogg
+# Proxima									/system/media/audio/notifications/Proxima.ogg
+# Radon										/system/media/audio/notifications/Radon.ogg
+# Regulus									/system/media/audio/notifications/regulus.ogg
+# Rubidium									/system/media/audio/notifications/Rubidium.ogg
+# Selenium									/system/media/audio/notifications/Selenium.ogg
+# Shaula									/system/media/audio/notifications/Shaula.ogg
+# Sirius									/system/media/audio/notifications/sirius.ogg
+# Sirrah									/system/media/audio/notifications/Sirrah.ogg
+# Space Seed								/system/media/audio/notifications/SpaceSeed.ogg
+# Spica										/system/media/audio/notifications/Spica.ogg
+# Strontium									/system/media/audio/notifications/Strontium.ogg
+# Syrma										/system/media/audio/notifications/Syrma.ogg
+# Ta Da										/system/media/audio/notifications/TaDa.ogg
+# Talitha									/system/media/audio/notifications/Talitha.ogg
+# Tejat										/system/media/audio/notifications/Tejat.ogg
+# Thallium									/system/media/audio/notifications/Thallium.ogg
+# Thinkerbell								/system/media/audio/notifications/Tinkerbell.ogg
+# Tweeters									/system/media/audio/notifications/tweeters.ogg
+# Upsilon									/system/media/audio/notifications/Upsilon.ogg
+# Vega										/system/media/audio/notifications/vega.ogg
+# Voila										/system/media/audio/notifications/Voila.ogg
+# Xenon										/system/media/audio/notifications/Xenon.ogg
+# Zirconium									/system/media/audio/notifications/Zirconium.ogg
+#
+# WP8xx warning tone. Default is Xenon.
+# P22271 = /system/media/audio/notifications/Xenon.ogg
+#
+#
+##################################Alarm Tone Value Table##################################
+# Argon										/system/media/audio/alarms/Argon.ogg
+# Barium									/system/media/audio/alarms/Barium.ogg
+# BeeBeep Alarm								/system/media/audio/alarms/Alarm_Beep_02.ogg
+# Beep-Beep-Beep Alarm						/system/media/audio/alarms/Alarm_Beep_03.ogg
+# Buzzer Alarm								/system/media/audio/alarms/Alarm_Buzzer.ogg
+# Carbon									/system/media/audio/alarms/Carbon.ogg
+# Cesium									/system/media/audio/alarms/Alarm_Classic.ogg
+# Fermium									/system/media/audio/alarms/Fermium.ogg
+# Hassium									/system/media/audio/alarms/Hassium.ogg
+# Hellium									/system/media/audio/alarms/Helium.ogg
+# Krypton									/system/media/audio/alarms/Krypton.ogg
+# Neon										/system/media/audio/alarms/Neon.ogg
+# Neptunium									/system/media/audio/alarms/Neptunium.ogg
+# Nobelium									/system/media/audio/alarms/Nobelium.ogg
+# Osmium									/system/media/audio/alarms/Osmium.ogg
+# Oxygen									/system/media/audio/alarms/Oxygen.ogg
+# Piezo Alarm								/system/media/audio/alarms/Alarm_Beep_01.ogg
+# Platinum									/system/media/audio/alarms/Platinum.ogg
+# Plutonium									/system/media/audio/alarms/Plutonium.ogg
+# Rooster Alarm								/system/media/audio/alarms/Alarm_Rooster_02.ogg
+# Scandium									/system/media/audio/alarms/Scandium.ogg
+#
+# WP8xx alarm tone. Default is Oxygen. 
+# P22272 = /system/media/audio/alarms/Oxygen.ogg
+###############################################################
+# Handset/Speed Dial  
+###############################################################
+# Key 0 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0. 
+# Number: 0, 1
+# P23001 = 0 
+#
+# Key 0 SpeedDial Number
+# String
+# P23003 =
+#
+# Key 2 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# P23011 =
+#
+# Key 2 SpeedDial Number
+# String
+# P23013 =
+#
+# Key 3 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# P23016 =
+#
+# Key 3 SpeedDial Number
+# String
+# P23018 =
+#
+# Key 4 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# P23021 =
+#
+# Key 4 SpeedDial Number
+# String
+# P23023 =
+#
+# Key 5 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# P23026 =
+#
+# Key 5 SpeedDial Number
+# String
+# P23028 =
+#
+# Key 6 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# P23031 =
+#
+# Key 6 SpeedDial Number
+# String
+# P23033 =
+#
+# Key 7 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# P23036 =
+#
+# Key 7 SpeedDial Number
+# String
+# P23038 =
+#
+# Key 8 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# P23041 =
+#
+# Key 8 SpeedDial Number
+# String
+# P23043 =
+#
+# Key 9 SpeedDial Account Index. 0 - Account 1, 1 - Account 2. Default is 0.
+# Number: 0, 1
+# P23046 =
+#
+# Key 9 SpeedDial Number
+# String
+# P23048 =
+####################################################################
+## P value updated since 1.0.1.16                                 ##
+####################################################################
+###############################################################
+# Account/Call Settings
+###############################################################
+# Ringtone value table updated for Account 1 and Account 2
+#
+###############################################################
+# Account 2/Call Settings
+###############################################################
+# Match Incoming Caller ID. Matching Rule 1
+# String
+# P1494 = 
+#
+# Matching Rule 1 Distinctive Ringtone 
+# String
+# P1495 = content://settings/system/ringtone
+#
+# Matching Incoming Caller ID. Matching Rule 2
+# String
+# P1496 = 
+#
+# Matching Rule 2 Distinctive Ringtone 
+# String
+# P1497 = content://settings/system/ringtone
+#
+# Matching Incoming Caller ID. Matching Rule 3
+# String
+# P1498 =
+#
+# Matching Rule 3 Distinctive Ringtone 
+# String
+# P1499 = content://settings/system/ringtone
+#
+# Automatic Download Interval. 0 - None, 5 - 5 min, 30 - 30 min, 60 - 1 Hour, 120 - 2 Hours, 240 - 4 Hours, 360 - 6 Hours, 480 - 8 Hours, 720 - 12 Hours. Default is 0.
+# Number: 0, 5, 30, 60, 120, 240, 360, 480, 720
+# Mandatory
+# P332 = 0
+####################################################################
+# Network Settings/Wi-Fi Settings/Wi-Fi Security                  ##
+####################################################################
+# ESSID
+# String
+# P7812 = wp_master
+#
+# Password
+# String
+# P7830 = wp!987@dmin
+#
+# Security Mode for Hidden SSID. 0 - None, 1 - WEP, 2 - WPA/WPA2 PSK, 3 - 802.1x EAP.  Default value is 2.
+# Number: 0, 1, 2, 3
+# P7814 = 2
+####################################################################
+# Network Settings/Wi-Fi Settings/Wi-Fi Roaming                   ##
+####################################################################
+# Good Signal Scanning Interval
+# Number: 1 - 65535
+# P22230 = 600
+#
+# Poor Signal Scanning Interval
+# Number: 1 - 65535
+# P22231 = 5
+#
+# Roaming signal threshold
+# Number: -100 - -30
+# P22232 = -70
+####################################################################
+## P value removed since 1.0.1.16                                 ##
+####################################################################
+# Layer 2 QoS 802.1p Priority Value (Wi-Fi). Default is 0. 
+# Number: 0 - 7
+# P22048 = 0
+#
+# Jitter Buffer Type. 0 - Fixed, 1 - Adaptive. Default is 1
+# Number: 0, 1
+# Mandatory
+# P133 = 1
+#
+# Jitter Buffer Type. 0 - Fixed, 1 - Adaptive. Default is 1
+# Number: 0, 1
+# Mandatory
+# P498 = 1
+####################################################################
+## P value added since 1.0.1.15                                   ##
+####################################################################
+# None
+#
+####################################################################
+## Change Log End                                                 ##
+####################################################################

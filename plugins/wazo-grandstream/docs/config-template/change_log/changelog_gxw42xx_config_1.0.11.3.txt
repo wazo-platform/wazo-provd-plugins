@@ -1,0 +1,1018 @@
+
+####################################################################
+## Change Log                                                     ##
+####################################################################
+
+###########################################
+#P values changed since 1.0.9.4           #
+###########################################
+
+# SIP User-Agent
+# String
+# P29071 = (Profile1)
+# P29171 = (Profile2)
+# P29271 = (Profile3)
+# P29371 = (Profile4)
+
+# SIP User-Agent Postfix
+# String
+# P4834 = (Profile1)
+# P4835 = (Profile2)
+# P4836 = (Profile3)
+# P4837 = (Profile4)
+
+###########################################
+#P values changed since 1.0.9.2           #
+###########################################
+
+# CDR record Option. 0 - Keep, 1 - Override
+# Number: 0, 1
+# Mandatory 
+# P8534=0
+
+# SIP Log Option. 0 - Keep, 1 - Override
+# Number: 0, 1
+# Mandatory 
+# P8535=0
+
+# Disable Weak TLS Cipher Suites. 
+# 0 – Enable Weak TLS Ciphers Suites, 1 – Disable Symmetric Encryption RC4/DES/3DES, 2 - Disable Symmetric Encryption SEED, 3 - Disable All Of The Above Weak Symmetric Encryption, 4 - Disable Symmetric Authentication MD5, 5 - Disable All Of The Above Weak Symmetric Authentication, 6 - Disable Protocol Version SSLv2/SSLv3, 7 - Disable All Of The Above Weak Protocol Version, 8 - Disable All Of The Above Weak TLS Ciphers Suites
+# Number: 0-8 
+# Mandatory
+# P8536 = 0 
+
+# Disable Reminder Ring for DND. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P29072 = 0 (Profile 1)
+# P29172 = 0 (Profile 2)
+# P29272 = 0 (Profile 3)
+# P29372 = 0 (Profile 4)
+
+# Callee Flash to 3WC. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P28169 = 0 (Profile 1)
+# P28170 = 0 (Profile 2)
+# P28171 = 0 (Profile 3)
+# P28172 = 0 (Profile 4)
+
+# Connection Request Port. Default is 7547
+# Number: 0 - 65535
+# Mandatory
+# P4518 = 7547
+
+# Client Circuit ID (Option 82)
+# String
+# P8560 = 
+
+# Remote Agent ID (Option 82)
+# String
+# P8561 = 
+
+# Local DNS
+# String
+# Syntax: FQDN0/IP0; FQDN1/IP1; FQDN2/IP2; FQDN3/IP3
+# P8562 = 
+
+
+###########################################
+#P values changed since 1.0.7.10          #
+###########################################
+
+# Chaned Pvalue of Automatic Upgrade from P194 to P22296
+
+# Minumum TLS version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2
+# Number: 99, 10, 11, 12
+# Mandatory
+# P22293 = 99 
+
+# Maximum TLS version. 99 - Unlimited, 10 - TLS 1.0, 11 - TLS 1.1, 12 - TLS 1.2
+# Number: 99, 10, 11, 12
+# Mandatory
+# P22294 = 99
+
+# Syslog Protocol. 0 - UDP, 1 - SSL/TLS
+# Number: 0, 1
+# Mandatory
+# P8402 = 0
+
+# RFC2543 Hold. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P26062 = 1 (Profile 1)
+# P26162 = 1 (Profile 2)
+# P26262 = 1 (Profile 3)
+# P26362 = 1 (Profile 4)
+
+# Call Waiting Tones for Profile 1 #####
+# Distinctive Call Waiting Tone 1
+# Number: 0-9
+# Mandatory
+# P29074 = 0 
+
+# Distinctive Call Waiting Tone 2
+# Number: 0-9
+# Mandatory
+# P29075 = 0 
+
+# Distinctive Call Waiting Tone 3
+# Number: 0-9
+# Mandatory
+# P29076 = 0
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 1
+# Max Length: 64
+# P29077 = 
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 2
+# Max Length: 64
+# P29078 = 
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 3
+# Max Length: 64
+# P29079 = 
+
+# Call Waiting Tone Cadences 
+# Call Waiting Tone 1 - Call Waiting Tone 10
+# Mandatory
+# P29080 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29081 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29082 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29083 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29084 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29085 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29086 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29087 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29088 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29089 = f1=440@-13,c=300/10000-300/10000-0/0;
+
+
+# Call Waiting Tones for Profile 2 ####
+# Distinctive Call Waiting Tone 1
+# Number: 0-9
+# Mandatory
+# P29174 = 0 
+
+# Distinctive Call Waiting Tone 2
+# Number: 0-9
+# Mandatory
+# P29175 = 0
+
+# Distinctive Call Waiting Tone 3
+# Number: 0-9
+# Mandatory
+# P29176 = 0
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 1
+# Max Length: 64
+# P29177 = 
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 2
+# Max Length: 64
+# P29178 = 
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 3
+# Max Length: 64
+# P29179 = 
+
+# Call Waiting Tone Cadences 
+# Call Waiting Tone 1 - Call Waiting Tone 10
+# Mandatory
+# P29180 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29181 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29182 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29183 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29184 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29185 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29186 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29187 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29188 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29189 = f1=440@-13,c=300/10000-300/10000-0/0;
+
+# Call Waiting Tones for Profile 3 ####
+# Distinctive Call Waiting Tone 1
+# Number: 0-9
+# Mandatory
+# P29274 = 0
+
+# Distinctive Call Waiting Tone 2
+# Number: 0-9
+# Mandatory
+# P29275 = 0
+
+# Distinctive Call Waiting Tone 3
+# Number: 0-9
+# Mandatory
+# P29276 = 0
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 1
+# Max Length: 64
+# P29277 = 
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 2
+# Max Length: 64
+# P29278 = 
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 3
+# Max Length: 64
+# P29279 = 
+
+# Call Waiting Tone Cadences 
+# Call Waiting Tone 1 - Call Waiting Tone 10
+# Mandatory
+# P29280 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29281 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29282 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29283 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29284 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29285 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29286 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29287 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29288 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29289 = f1=440@-13,c=300/10000-300/10000-0/0;
+
+
+# Call Waiting Tones for Profile 4 ####
+# Distinctive Call Waiting Tone 1
+# Number: 0-9
+# Mandatory
+# P29374 = 0
+
+# Distinctive Call Waiting Tone 2
+# Number: 0-9
+# Mandatory
+# P29375 = 0
+
+# Distinctive Call Waiting Tone 3
+# Number: 0-9
+# Mandatory
+# P29376 = 0
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 1
+# Max Length: 64
+# P29377 = 
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 2
+# Max Length: 64
+# P29378 = 
+
+# Distinctive Call Waiting Tone CID matching plan for Tone 3
+# Max Length: 64
+# P29379 = 
+
+# Call Waiting Tone Cadences 
+# Call Waiting Tone 1 - Call Waiting Tone 10
+# Mandatory
+# P29380 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29381 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29382 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29383 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29384 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29385 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29386 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29387 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29388 = f1=440@-13,c=300/10000-300/10000-0/0;
+# P29389 = f1=440@-13,c=300/10000-300/10000-0/0;
+
+
+###########################################
+#P values changed since 1.0.7.8           #
+###########################################
+
+# Use Actual Ephemeral Port in Contact with TCP/TLS. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P2331 = 0 (Profile 1)
+# P2431 = 0 (Profile 2)
+# P2531 = 0 (Profile 3)
+# P2631 = 0 (Profile 4)
+
+# Reset Call Features. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P24199 = 0 (Profile 1)
+# P24399 = 0 (Profile 2)
+# P24599 = 0 (Profile 3)
+# P24799 = 0 (Profile 4)
+
+# Replace Beginning '+' with 00 in Caller ID. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P29073 = 0 (Profile 1)
+# P29173 = 0 (Profile 2)
+# P29273 = 0 (Profile 3)
+# P29373 = 0 (Profile 4)
+
+###########################################
+#P values changed since 1.0.7.3           #
+###########################################
+
+# Validate Server Certificates. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P8463 = 0
+
+###########################################
+#P values added since 1.0.5.43            #
+###########################################
+
+# Enable SIP OPTIONS/NOTIFY Keep Alive. 0 - No, 1 - OPTIONS, 2 - NOTIFY
+# Number: 0, 1, 2
+# Mandatory
+# P2397 = 0 (Profile1)
+# P2497 = 0 (Profile2)
+# P2597 = 0 (Profile3)
+# P2697 = 0 (Profile4)
+
+# Enable SIP OPTIONS/NOTIFY Keep Alive Interval. In seconds. The default value is 30 seconds.
+# Number: 1 - 64800
+# Mandatory
+# P2398 = 30 (Profile1)
+# P2498 = 30 (Profile2)
+# P2598 = 30 (Profile3)
+# P2698 = 30 (Profile4)
+
+# SIP OPTIONS/NOTIFY Keep Alive Max Lost. In packages. The default value is 3 packages.
+# Number: 3 - 10
+# Mandatory
+# P2399 = 3 (Profile1)
+# P2499 = 3 (Profile2)
+# P2599 = 3 (Profile3)
+# P2699 = 3 (Profile4)
+
+###########################################
+#P values added since 1.0.5.36            #
+###########################################
+
+# Conference Party Hangup Tone. 
+# String Max Length: 256
+# Mandatory
+# P28133=f1=425@-15,c=600/600;
+
+# Inter-port Calling. 0 - Disabled, 1 - Enabled
+# Number: 0, 1
+# Mandatory
+# P28146=0
+
+# LED Pattern. 0 - Pattern A, 1 - Pattern B, 2 - Pattern C
+# Number: 0, 1, 2
+# Mandatory
+# P4049=0
+
+# Reply to ICMP. 0 -No, 1 -Yes
+# Number: 0, 1
+# Mandatory
+# P189 = 0
+
+# Validate Server Certificates. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P8463 = 1
+
+# Load CA Certificates. 0 - Built-in trusted certificates, 1 - Custom trusted certificates, 2 - All trusted certificates
+# Number: 0, 1 ,2
+# Mandatory
+# P8502 = 0
+
+# Disable User Level Web Access. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P28158 = 0
+
+# Disable Viewer Level Web Access. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P28159 = 0
+
+# Randomized Automatic Upgrade. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P8458 = 0
+
+# Hour of the Day - End(0 -23). 
+# Minimum: 0
+# Maximum: 23
+# Mandatory
+# P8459 = 22
+
+# Virtual Network Interface.
+# Network Setting For Management Interface
+# Enable management interface. 0 - Disabled, 1 - Enabled
+# Number: 0, 1
+# Mandatory
+# P28161 = 0
+# Management access. 0- Management interface only, 1 - Both on services and management interfaces
+# Number： 0， 1
+# Mandatory
+# P28162 = 0
+# IP Address Mode for Management Interface. 0 - DHCP, 1 - Static IP
+# Number: 0, 1
+# Mandatory = 0
+# P22105 = 0
+# Static IP Settings
+# IP Address.
+# ipaddress
+# P22106 = 192.168.100.100
+# Subnet Mask. 
+# ipaddress
+# P22107 = 255.255.255.0
+# Gateway.
+# ipaddress
+# P22108 = 192.168.100.1
+# DNS Server 1
+# ipaddress
+# P22109 = 0.0.0.0
+# DNS Server 2
+# ipaddress
+# P22110 = 0.0.0.0
+# Layer 2 QoS 802.1Q/VLAN Tag for Management Interface.
+# Number
+# P22111 = 0
+# Layer 2 QoS 802.1p Priority Value for Management Interface.
+# Number
+# P22112 = 0
+
+# Disable Voicemail Reminder Tone. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P28151 = 0 Profile1
+# P28143 = 0 Profile2
+# P28144 = 0 Profile3
+# P28145 = 0 Profile4
+
+# Disable # as Redial Key. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P28147 = 0 Profile1
+# P28148 = 0 Profile2
+# P28149 = 0 Profile3
+# P28150 = 0 Profile4
+
+# Ringing Frequency. 0 - Default, 1 - 20Hz, 2 - 25Hz
+# Number: 0, 1, 2
+# Mandatory
+# P4429 = 0 Profile1
+# P4430 = 0 Profile2
+# P4431 = 0 Profile3
+# P4432 = 0 Profile4
+
+###########################################
+#P values added since 1.0.5.30             #
+###########################################
+
+# Allow Auto-Dial Config Per Port. 0 - Disable, 1 - Enable
+# Number: 0, 1
+# Mandatory
+# P28129=0 Profile1
+# P28130=0 Profile2
+# P28131=0 Profile3
+# P28132=0 Profile4
+
+# RTCP. 0 - Disable, 1 - Enable
+# Number: 0, 1
+# Mandatory
+# P2392=1 Profile1
+# P2492=1 Profile2
+# P2592=1 Profile3
+# P2692=1 Profile4
+
+# Custom Certificate
+# String
+# P8472 = 
+
+
+###########################################
+#P values added since 1.0.5.16             #
+###########################################
+
+# Caller ID Display. 0 - Auto, 1 - Disable, 2 - From Header
+# Number: 0, 1, 2
+# Mandatory
+# P2324=0 Profile1
+# P2424=0 Profile2
+# P2524=0 Profile3
+# P2624=0 Profile4
+
+# Save Syslog. 0 - No, 1 - Yes. Default is No
+# Number: 0, 1
+# Mandatory
+# P28100=0
+
+# Backup Outbound Proxy.
+# String: serveraddress
+# P2333= Profile1
+# P2433= Profile2
+# P2533= Profile3
+# P2633= Profile4
+
+# Prefer Primary Outbound Proxy. 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P28096=0 Profile1
+# P28097=0 Profile2
+# P28098=0 Profile3
+# P28099=0 Profile4
+
+# HTTPS Web Port. Default HTTPS Port is 443
+# Number 0 - 65535
+# Mandatory
+# P27010 = 443
+
+# Web Access Mode. 0 - HTTPS, 1 - HTTP
+# Number: 0, 1
+# Mandatory
+# P1650 = 1
+
+# Lockout time interval. minimum - 1 minute, maximum - 15 minutes
+# Mandatory
+# P1683 = 15
+
+# White list for WAN side
+# String: ip address
+# P20701 =
+
+# Black list for WAN side
+# String: ip address
+# P20702 =
+
+###########################################
+#P values added since 1.0.5.8             #
+###########################################
+
+#Corrected!
+#Request URI Routing ID
+#Number
+#P21832-P21847 for FXS port 33-48
+
+# DTMF-RELAY Tag Respect SIP INFO. 0 - No, 1 - Yes (If set to "NO", the dtmf-relay tag in Accept Header is always added in outbound INVITE. If set to "YES", it depends on if SIP INFO is chosen in Prefered DTMF Method.)
+# Number: 0, 1
+# Mandatory
+# P28088=0 Profile1
+# P28089=0 Profile2
+# P28090=0 Profile3
+# P28091=0 Profile4
+
+# Crypto Life Time. 0 = Disabled, 1 = Enabled
+# Number: 0, 1
+# Mandatory
+# P2363=1 Profile1
+# P2463=1 Profile2
+# P2563=1 Profile3
+# P2663=1 Profile4
+
+# Play busy/reorder tone before Loop Current Disconnect. 0 = Disabled, 1 = Enabled
+# Number: 0, 1
+# Mandatory
+# P21925=0 Profile1
+# P21926=0 Profile2
+# P21927=0 Profile3
+# P21928=0 Profile4
+
+# Disable Connected Line ID. 0 = Disabled, 1 = Enabled. (If yes, Connected Line ID will not be displayed even received.)
+# Number: 0, 1
+# Mandatory
+# P20525=0 Profile1
+# P20526=0 Profile2
+# P20527=0 Profile3
+# P20528=0 Profile4
+
+# Flash Digit Control. 0 - No, 1 - Yes(Set Yes will overrides the default settings for call control when both channels are in use.) 
+# Number: 0, 1
+# Mandatory
+# P28080=0 Profile1
+# P28081=0 Profile2
+# P28082=0 Profile3
+# P28083=0 Profile4
+
+# Local RTP port (1024-65535, default are 50000, 51000, 52000, 53000 for 1-4 profile)
+# Number: 1024 to 65535
+# Mandatory
+# P39 = 50000 Profile1
+# P739 = 51000 Profile2
+# P539 = 52000 Profile3
+# P4573 = 53000 Profile4
+
+# SIP Registration Failure Retry Wait Time upon 403 Forbidden. 0 second means stop retry registration. Default is 1200 sec.
+# Number 0 to 3600
+# Mandatory
+# P26002=1200 Profile1
+# P26102=1200 Profile2
+# P26202=1200 Profile3
+# P26302=1200 Profile4
+
+# Hold Target Before Refer 0 - No, 1 - Yes
+# Number: 0, 1
+# Mandatory
+# P26003=1 Profile1
+# P26103=1 Profile2
+# P26203=1 Profile3
+# P26303=1 Profile4
+
+# Authenticate server certificate domain. 0 - No, 1 - Yes, default is 0
+# Number: 0, 1
+# Mandatory
+# P2311=0 Profile1
+# P2411=0 Profile2
+# P2511=0 Profile3
+# P2611=0 Profile4
+
+# Authenticate server certificate chain. 0 - No, 1 - Yes, default is 0
+# Number: 0, 1
+# Mandatory
+# P2367=0 Profile1
+# P2467=0 Profile2
+# P2567=0 Profile3
+# P2667=0 Profile4
+
+# Trusted CA certificates.
+# String
+# P2386= 
+# P2486= 
+# P2586= 
+# P2686= 
+
+# Automatic Reboot. 0 - No, 1 - Yes, reboot every day, 2 - Yes, reboot every week
+# Number: 0,1,2
+# Mandatory
+# P21929=0
+
+# Hour of the Day(0-23) Defines the hour of the day to reboot the gateway. Will valid after configured Automatic Reboot to yes.
+# Number: 0-23
+# Mandatory
+# P21930=1
+
+# Day of the Week (0-6) Defines the day of the week to reboot the gateway.
+# Number: 0-6
+# Mandatory
+# P21931=1
+
+# Allow DHCP Option 42 to NTP Server. (If DHCP Option 42 is enabled, the NTP server can be changed.)
+# Number: 0, 1
+# Mandatory
+# P144=1
+
+# Allow DHCP Option 2 to override time zone (If DHCP Option 2 is enabled, the timezone can be offset.)
+# Number: 0, 1
+# Mandatory
+# P143=1
+
+# 3CX Auto Provision. 0 - Disable, 1 - Enable (Phone will multicast SUBSCRIBE for provision if this feature is enabled.)
+# Number: 0, 1
+# Mandatory
+# P1414=0
+
+###########################################
+#P values added since 1.0.5.5             #
+###########################################
+
+#SIP REGISTER Contact Header Uses. 0 - LAN Address, 1 - WAN Address
+#Number: 0, 1
+#Mandatory
+#P4437=0 Profile1
+#P4438=0 Profile2
+#P4439=0 Profile3
+#P4440=0 Profile4
+
+###########################################
+#P values added since 1.0.4.24            #
+###########################################
+
+#Enable Fast RFC2833. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory
+#P21917=0 Profile 1
+#P21918=0 Profile 2
+#P21919=0 Profile 3
+#P21920=0 Profile 4
+
+###################SNMP support#####################
+#SNMP enable/disable. 0 - No, 1 - Yes (default is No)
+#Number: 0,1
+#Mandatory
+#P21896= 0
+
+#Trap Community
+#P21900=
+
+#IP Address
+#IP format
+#P21897=
+
+#Port (default 162)
+#Number: 1 to 65535
+#Mandatory
+#P21898= 162
+
+#Version. 1 - Version 1, 2 - Version 2c (default 2)
+#Number: 1 or 2
+#Mandatory
+#P21899= 2
+
+#Trap interval (default 5)
+#Mandatory, in seconds
+#P21901= 5
+###########################################
+
+###########Configurable feature code#########
+#NOTE: only list profile1
+#Profile2_value=Profile1_value+200
+#Profile3_value=Profile1_value+400
+#Profile4_value=Profile1_value+600
+
+#SRTP Feature.
+#P24060=1
+#P24001=16
+#P24002=17
+
+#SRTP per call Feature.
+#P24061=1
+#P24003=18
+#P24004=19
+
+#CID Feature.
+#P24062=1
+#P24005=31
+#P24006=30
+
+#CID per call Feature.
+#P24065=1
+#P24019=82
+#P24010=67
+
+#Direct IP calling Feature.
+#P24063=1
+#P24007=47
+
+#CW Feature. 
+#P24064=1
+#P24009=51
+#P24008=50
+
+#CW per call Feature. 
+#P24067=1
+#P24013=71
+#P24012=70
+
+#Call return Feature.
+#P24066=1
+#P24011=69
+
+#Unconditional forward Feature.
+#P24068=1
+#P24014=72
+#P24015=73
+
+#Busy forward Feature.
+#P24072=1
+#P24021=90
+#P24022=91
+
+#Delayed forward Feature.
+#P24073=1
+#P24023=92
+#P24024=93
+
+#Paging Feature.
+#P24069=1
+#P24016=74
+
+#DND Feature.
+#P24070=1
+#P24017=78
+#P24018=79
+
+#Blind Transfer Feature.
+#P24071=1
+#P24020=87
+
+#Disable LEC per call Feature.
+#P24074=1
+#P24025=03
+
+#Star Code 3WC Feature. 0 - No, 1 - Yes
+#P24075=1
+#Star Code 3WC
+#P24026=23
+
+#Provision start Feature.
+#P24086=1
+#P24037=99
+
+#Play registration id Feature.
+#P24087=1
+#P24038=98
+
+#Forced Codec Feature. 
+#P24059=1
+#P24000=02
+
+#PCMU codec feature. 
+#P24076=1
+#P24027=7110
+
+#PCMA codec feature
+#P24077=1
+#P24028=7111
+
+#G723 codec feature
+#P24078=1
+#P24029=723
+
+#G729 codec feature
+#P24079=1
+#P24030=729
+
+#AAL2-G726-R16 codec 
+#P24080=1
+#P24031=72616
+
+#AAL2-G726-R24 codec feature
+#P24081=1
+#P24032=72624
+
+#AAL2-G726-R32 codec feature
+#P24082=1
+#P24033=72632
+
+#AAL2-G726-R40 codec 
+#P24083=1
+#P24034=72640
+
+#iLBC codec feature
+#P24084=1
+#P24035=7201
+
+#G722 codec feature
+#P24085=1
+#P24036=722
+###########################################
+
+#Moved following values to call feature settings
+#Enable Call Features.  0 - no, 1 - yes
+#Number: 0,1
+#Mandatory 
+#P191=1 Profile1
+#P751=1 Profile2
+#P551=1 Profile3
+#P620=1 Profile4
+
+#Moved following values to call feature settings
+#Disable Bellcore Style 3-Way Conference. 0 - No, 1 - Yes.
+#Number: 0,1 
+#Mandatory 
+#P4830=1 Profile1
+#P4831=1 Profile2
+#P4832=1 Profile3
+#P4833=1 Profile4
+
+#(Rearrange 802.1p setings)
+#################Layer 2 QoS Settings####################
+#Layer 2 QoS 802.1Q/VLAN Tag
+#Number
+#Mandatory
+#P51=0
+
+#Layer 2 QoS 802.1p Priority Value for SIP signaling
+#Number: 0 to 7
+#Mandatory
+#P5038=0
+
+#Layer 2 QoS 802.1p Priority Value for RTP media
+#Number: 0 to 7
+#Mandatory
+#P5042=0
+###########################################
+
+############Layer 3 QoS Settings###########
+#Layer 3 QoS SIP Diff-Serv (default 24)
+#Number
+#Mandatory
+#P5046=24 Profile1
+#P5047=24 Profile2
+#P5048=24 Profile3
+#P5049=24 Profile4
+
+#Layer 3 QoS RTP Diff-Serv (default 46)
+#Number
+#Mandatory
+#P5050=46 Profile1
+#P5051=46 Profile2
+#P5052=46 Profile3
+#P5053=46 Profile4
+###########################################
+
+
+###########################################
+#P values added since 1.0.4.22            #
+###########################################
+
+#Country Specific Deployment. 0 - None(default), zh - China, zh1 - China Custom #1, zh2 - China Custom #2
+#String
+#Mandatory
+#P400=0
+
+#Disable Multiple m Line in SDP. 0 - No, 1 - Yes
+#P137=0 Profile 1
+#P487=0 Profile 2
+#P587=0 Profile 3
+#P687=0 Profile 4
+
+#Use Privacy Header. 0 - Default, 1 - No, 2 - Yes
+#Number: 0, 1, 2
+#Mandatory
+#P2338=0 Profile1
+#P2438=0 Profile2
+#P2538=0 Profile3
+#P2638=0 Profile4
+
+#Use P-Preferred-Identity Header. 0 - Default, 1 - No, 2 - Yes
+#Number: 0, 1, 2
+#Mandatory
+#P2339=0 Profile1
+#P2439=0 Profile2
+#P2539=0 Profile3
+#P2639=0 Profile4
+
+###########################################
+#P values added since 1.0.4.20            #
+###########################################
+
+#Always send HTTP Basic Authentication Information. 0 - No, 1- Yes.
+#Number: 0,1
+#Mandatory
+#P20713=0
+
+#Do Not Escape '#' as %23 in SIP URI. 0 - No, 1 - Yes
+#Number: 0, 1
+#Mandatory
+#P1406= 0 (Profile1)
+#P4895= 0 (Profile2)
+#P4896= 0 (Profile3)
+#P4897= 0 (Profile4)
+
+###########################################
+#P values added since 1.0.4.17            #
+###########################################
+
+#Added option value 9 - G.722 (wide band)
+#for all following audio codec P values
+#Profile1: P57;P58;P59;P60;P61;P62;P46;P98;
+#Profile2: P757;P758;P759;P760;P761;P762;P814;P815
+#Profile3: P557;P558;P559;P660;P661;P662;P514;P515
+#Profile4: P651;P652;P653;P654;P655;P656;P4657;P658
+
+###########################################
+#P values added since 1.0.4.15            #
+###########################################
+
+#Ping/traceroute tool destination IP/URL (Telnet P values)
+#IP address or URL
+#P22005=
+
+###########################################
+#P values added since 1.0.4.9             #
+###########################################
+
+#Use Request Routing ID in SIP Headers. 0 - No, 1 - Yes
+#Number: 0,1
+#Mandatory 
+#P4891=0 (Profile1)
+#P4892=0 (Profile2)
+#P4893=0 (Profile3)
+#P4894=0 (Profile4)
+#
+#Add Auth Header On Initial REGISTER
+#Number: 0,1
+#Mandatory 
+#P2359=0 (Profile1)
+#P2459=0 (Profile2)
+#P2559=0 (Profile3)
+#P2659=0 (Profile4)
+
+###########################################
+#P values added since 1.0.4.4             #
+###########################################
+
+#Enable LLDP. 0 - Disable, 1 - Enable
+#Number: 0,1
+#Mandatory
+#P1684=1
+#
+#Request URI Routing ID
+#Number
+#P4669-P4700 for FXS port 1-32
+#P21832-P21847 for FXS port 33-48
+
+###########################################
+#P values added since 1.0.3.9             #
+###########################################
+
+#LCD Display Language. en - English, zh - Chinese, fr - French, es - Spanish 
+#String
+#Mandatory
+#P1362=en
+
+####################################################################
+## Change Log End                                                 ##
+####################################################################

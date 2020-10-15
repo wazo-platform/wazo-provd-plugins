@@ -1,0 +1,1372 @@
+###############################################################################################
+####            Configuration Template for Grandstream Wave                                ####
+###############################################################################################
+##############################################################################
+##  Account 1 Settings                                                      ##
+##############################################################################
+#######################################################################
+##  Account 1 General Settings                                       ##
+#######################################################################
+# Account Active. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P271 = 1
+
+# Account Name
+P270 =
+
+# SIP Server
+P47 =
+
+# SIP User ID
+P35 = 
+
+# SIP Authentication ID
+P36 = 
+
+# SIP Authentication Password
+P34 = 
+
+# Voice Mail Access Number
+P33 =
+
+# Name (Display Name, e.g., John Doe)
+P3 = 
+#######################################################################
+##  Account 1 Network Settings                                       ##
+#######################################################################
+# Outbound Proxy
+P48 =
+
+# Secondary Outbound Proxy
+P2333 =
+
+# DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV. Default value is 0
+# Number: 0, 1, 2
+P103 = 0
+
+# NAT Traversal. 0 - NAT No, 1 - STUN, 2 - Keep-alive, 3 - UPnP, 4 - Auto. Default value is 2
+# Number: 0, 1, 2, 3, 4
+P52 = 2
+
+# Proxy-Require
+P197 =
+#######################################################################
+##  Account 1 SIP Settings                                           ##
+#######################################################################
+# Unregister Before New Registration. 0 - Do Not Unregister, 1 - Unregister All, 2 - Unregister Single. Default value is 2
+# Number: 0, 1, 2
+P81 = 2
+
+# Register Expiration (m). In minutes. Default value is 60
+# Number: 0 - 64800
+P32 = 60
+
+# Local SIP Port. Default value is 5060
+# Number: 5 - 65535
+P40 = 5060
+
+# Enable Session Timer/ Session Expiration(s).  In seconds. Default value is 180 seconds.
+# By default,  Session Timer is Enabled.  Session Timer is disabled if the value is 0.
+# Number: 0 or 90 - 64800
+P260 = 180
+
+# Min-SE(s). Default value is 90 seconds
+# Number: 90 - 64800
+P261 = 90
+
+# UAC Specify Refresher. 0 - Omit, 1 - UAC, 2 - UAS. Default value is 0
+# Number: 0, 1, 2
+P266 = 0
+
+# UAS Specify Refresher. 1 - UAC, 2 - UAS. Default value is 1
+# Number: 1, 2
+P267 = 1
+
+# Force INVITE. Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P265 = 0
+
+# Caller Request Timer. Request for timer when calling
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P262 = 0
+
+# Callee Request Timer
+# Request for timer when being called (i.e., if remote party supports timer but did not request for one)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P263 = 0
+
+# Force Timer. Still use timer when remote party does not support timer
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P264 = 0
+
+# SIP Transport
+# 0 - UDP , 1 - TCP, 2 - TLS. Default value is 0
+# Number: 0, 1, 2
+P130 = 0
+
+# Only Accept SIP Requests from Known Servers
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2347 = 0
+
+# Check SIP User ID for Incoming INVITE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P258 = 0
+#######################################################################
+##  Account 1 Codec Settings                                         ##
+#######################################################################
+
+# DTMF: in audio. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2301 = 0
+
+# DTMF: via RFC2833. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P2302 = 1
+
+# DTMF: via SIP INFO. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2303 = 0
+
+# Preferred Vocoder
+# First codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 0
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P57 = 0
+
+# Second codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 8
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P58 = 8
+
+# Third codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P59 = -1
+
+# Forth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P60 = -1
+
+# Fifth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P61 = -1
+
+# Sixth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P62 = -1
+
+# Seventh codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P63 = -1
+
+# H.264 Image Size. 9 - 720P, 1 - VGA, 5 - CIF, 0 - QVGA, 6 - QCIF. Default value is 1
+# Number: 9, 1, 5, 0, 6
+P2307 = 1
+
+# Video Bit Rate. 32 - 32 kbps, 64 - 64 kbps, 96 - 96 kbps, 128 - 128 kbps, 160 - 160 kbps, 192 - 192 kbps
+# 210 - 210 kbps, 256 - 256 kbps, 384 - 384 kbps, 512 - 512 kbps, 640 - 640 kbps, 768 - 768 kbps
+# 1024 - 1024 kbps. Default value is 512.
+# Number: 32, 64, 96, 128, 160, 192, 210, 256, 384, 512, 640, 768, 1024.
+P2315 = 512
+
+# SDP Bandwidth Attribute. Default value is 1
+# 0 - Standard, 1 - Media Level, 2 - Session Level, 3 - None
+# Number: 0, 1, 2, 3
+P2360 = 1
+
+# H.264 Payload Type. Default value is 99
+# Number
+P293 = 99
+
+# SRTP Mode. Default value is 0. 0 - Disable, 1 - Enable but not forced, 2 - Enable and forced.
+# Number: 0, 1, 2
+P183 = 0
+
+# Enable SRTP Key Lifetime. 0 - No, 1 - Yes.
+# Number: 0,1
+P2363 = 1
+#######################################################################
+##  Account 1 Call Settings                                          ##
+#######################################################################
+# Dial Plan Prefix
+# String
+P66 =
+
+# Dial Plan. Default value is { x+ | \+x+ | *x+ | *xx*x+ }
+P290 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+# Auto Answer. 0 - No, 1 - Yes, 2 - Enable Intercom/Paging. Default value is 0
+# Number: 0, 1, 2
+P90 = 0
+
+# Use # as Dial Key. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P72 = 1
+
+# No Answer Timeout (s). Default value is 20
+# Number: 1 - 120
+P139 = 20
+##############################################################################
+##  Account 2 Settings                                                      ##
+##############################################################################
+#######################################################################
+##  Account 2 General Settings                                       ##
+#######################################################################
+
+# Account Active. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P401 = 0
+
+# Account Name
+P417 =
+
+# SIP Server
+P402 = 
+
+# SIP User ID
+P404 = 
+
+# SIP Authenticate ID
+P405 = 
+
+# SIP Authenticate Password
+P406 = 
+
+# Voice Mail UserID
+P426 =
+
+# Name (Display name, e.g., John Doe)
+P407 = 
+
+#######################################################################
+##  Account 2 Network Settings                                       ##
+#######################################################################
+
+# Outbound Proxy
+P403 =
+
+# Secondary Outbound Proxy
+P2433 =
+
+# DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV. Default value is 0
+# Number: 0, 1, 2
+P408 = 0
+
+# NAT Traversal. 0 - No, 1 - STUN, 2 - Keep-alive, 3 - UPnP, 4 - Auto. Default value is 2
+# Number: 0, 1, 2, 3, 4, 5
+P414 = 2
+
+# Proxy-Require
+P418 =
+
+#######################################################################
+##  Account 2 SIP Settings                                           ##
+#######################################################################
+
+# Unregister Before New Registration. 0 - Do Not Unregister, 1 - Unregister All, 2 - Unregister Single. Default value is 2
+# Number: 0, 1, 2
+P411 = 2
+
+# Register Expiration (m). In minutes. Default value is 60
+# Number: 0 - 64800
+P412 = 60
+
+# Local SIP Port. Default value is 5062
+# Number: 5 - 65535
+P413 = 5062
+
+# Session Expiration. In seconds. Default value is 180 seconds
+# Number: 90 - 64800
+P434 = 180
+
+# Min-SE (s). Default value is 90 seconds
+# Number: 90 - 64800
+P427 = 90
+
+# UAC Specify Refresher. 0 - Omit, 1 - UAC, 2 - UAS. Default value is 0
+# Number: 0, 1, 2
+P432 = 0
+
+# UAS Specify Refresher. 1 - UAC, 2 - UAS. Default value is 1
+# Number: 1, 2
+P433 = 1
+
+# Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P431 = 0
+
+# Caller Request Timer (Request for timer when calling). 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P428 = 0
+
+# Callee Request Timer (Request for timer when being called, i.e. if remote party supports timer but did not request for one)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P429 = 0
+
+# Force Timer (Still use timer when remote party does not support timer). 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P430 = 0
+
+# SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS. Default value is 0
+# Number: 0, 1, 2
+P448 = 0
+
+# Only Accept SIP Requests from Known Servers. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2447 = 0
+
+# Check SIP User ID for Incoming INVITE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P449 = 0
+#######################################################################
+##  Account 2 Codec Settings                                         ##
+#######################################################################
+
+# DTMF: in audio. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2401 = 0
+
+# DTMF: via RFC2833. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P2402 = 1
+
+# DTMF: via SIP INFO. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2403 = 0
+
+# Preferred Vocoder
+# First codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 0
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P451 = 0
+
+# Second codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 8
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P452 = 8
+
+# Third codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P453 = -1
+
+# Forth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P454 = -1
+
+# Fifthcodec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P455 = -1
+
+# Sixth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P456 = -1
+
+# Seventh codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P457 = -1
+
+# H.264 Image Size. 9 - 720P, 1 - VGA, 5 - CIF, 0 - QVGA, 6 - QCIF. Default value is 1
+# Number: 9, 1, 5, 0, 6
+P2407 = 1
+
+# Video Bit Rate. 32 - 32 kbps, 64 - 64 kbps, 96 - 96 kbps, 128 - 128 kbps, 160 - 160 kbps, 192 - 192 kbps
+# 210 - 210 kbps, 256 - 256 kbps, 384 - 384 kbps, 512 - 512 kbps, 640 - 640 kbps, 768 - 768 kbps
+# 1024 - 1024 kbps. Default value is 512.
+# Number: 32, 64, 96, 128, 160, 192, 210, 256, 384, 512, 640, 768, 1024.
+P2415 = 512
+
+# SDP Bandwidth Attribute. Default value is 1
+# 0 - Standard, 1 - Media Level, 2 - Session Level, 3 - None
+P2460 = 1
+
+# H.264 Payload Type
+P462 = 99
+
+# SRTP Mode. Default value is 0. 0 - Disable, 1 - Enable but not forced, 2 - Enable and forced.
+# Number: 0, 1, 2.
+P443 = 0
+
+# Enable SRTP Key Lift Time. 0 - No, 1 - Yes.
+# Number: 0,1
+P2463 = 1
+
+#######################################################################
+##  Account 2 Call Settings                                          ##
+#######################################################################
+
+# Dial Plan Prefix
+# String
+P419 =
+
+# Dial Plan. Default value is { x+ | \+x+ | *x+ | *xx*x+ }
+P459 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+# Auto Answer. 0 - No, 1 - Yes, 2 - Enable Intercom/Paging. Default value is 0
+# Number: 0, 1, 2
+P425 = 0
+
+# Use # as Dial Key. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P492 = 1
+
+# No Answer Timeout (s). Default value is 20
+# Number: 1 - 120.
+P470 = 20
+##############################################################################
+##  Account 3 Settings                                                      ##
+##############################################################################
+
+#######################################################################
+##  Account 3 General Settings                                       ##
+#######################################################################
+
+# Account Active. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P501 = 0
+
+# Account Name
+P517 =
+
+# SIP Server
+P502 =
+
+# SIP User ID
+P504 =
+
+# SIP Authenticate ID
+P505 =
+
+# SIP Authenticate Password
+P506 =
+
+# Voice Mail UserID
+P526 =
+
+# Name (Display name: John Doe)
+P507 =
+
+# Show Account Name Only. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2580 = 0
+
+#######################################################################
+##  Account 3 Network Settings                                       ##
+#######################################################################
+
+# Outbound Proxy
+P503 =
+
+# Secondary Outbound Proxy
+P2533 =
+
+# DNS Mode  0 - A Record, 1 - SRV, 2 - NAPTR/SRV. Default is 0
+# Number: 0, 1, 2.
+P508 = 0
+
+# NAT Traversal. 0 - No, 1 - STUN, 2 - Keep-alive, 3 - UPnP, 4 - Auto. Default value is 2
+# Number: 0, 1, 2, 3, 4
+P514 = 2
+
+# Proxy-Require
+P518 =
+
+#######################################################################
+##  Account 3 SIP Settings                                           ##
+#######################################################################
+
+# Unregister Before New Registration. 0 - Do Not Unregister, 1 - Unregister All, 2 - Unregister Single. Default value is 2
+# Number: 0, 1, 2
+P511 = 2
+
+# Register Expiration (m). In minutes. Default value is 60
+# Number: 0 - 64800
+P512 = 60
+
+# Local SIP Port. Default value is 5064
+# Number: 5 - 65535
+P513 = 5064
+
+# Session Expiration. In seconds. Default value is 180 seconds
+# Number: 90 - 64800
+P534 = 180
+
+# Min-SE (s). Default value is 90 seconds
+# Number: 5 - 65535
+P527 = 90
+
+# UAC Specify Refresher. 0 - Omit, 1 - UAC, 2 - UAS. Default value is 0
+# Number: 0, 1, 2
+P532 = 0
+
+# UAS Specify Refresher. 1 - UAC, 2 - UAS. Default value is 1
+# Number: 1, 2
+P533 = 1
+
+# Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P531 = 0
+
+# Caller Request Timer (Request for timer when calling)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1.
+P528 = 0
+
+# Callee Request Timer. Request for timer when called (i.e. if remote party supports timer but did not request for one)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P529 = 0
+
+# Force Timer (Still use timer when remote party does not support timer). 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P530 = 0
+
+# SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS. Default value is 0
+# Number: 0, 1, 2
+P548 = 0
+
+# Only Accept SIP Requests from Known Servers. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2547 = 0
+
+# Check SIP User ID for Incoming INVITE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P549 = 0
+#######################################################################
+##  Account 3 Codec Settings                                         ##
+#######################################################################
+
+# DTMF: in audio. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2501 = 0
+
+# DTMF: in RFC2833. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P2502 = 1
+
+# DTMF: in SIP INFO. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2503 = 0
+
+# Preferred Vocoder
+# First codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 0
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P551 = 0
+
+# Second codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 8
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P552 = 8
+
+# Third codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P553 = -1
+
+# Forth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P554 = -1
+
+# Fifth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P555 = -1
+
+# Sixth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P556 = -1
+
+# Seventh codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P557 = -1
+
+# H.264 Image Size. 9 - 720P, 1 - VGA, 5 - CIF, 0 - QVGA, 6 - QCIF. Default value is 1
+# Number: 9, 1, 5, 0, 6
+P2507 = 1
+
+# Video Bit Rate. 32 - 32 kbps, 64 - 64 kbps, 96 - 96 kbps, 128 - 128 kbps, 160 - 160 kbps, 192 - 192 kbps
+# 210 - 210 kbps, 256 - 256 kbps, 384 - 384 kbps, 512 - 512 kbps, 640 - 640 kbps, 768 - 768 kbps
+# 1024 - 1024 kbps. Default value is 512.
+# Number: 32, 64, 96, 128, 160, 192, 210, 256, 384, 512, 640, 768, 1024.
+P2515 = 2048
+
+# SDP Bandwidth Attribute. Default value is 1
+# 0 - Standard, 1 - Media Level, 2 - Session Level, 3 - None
+P2560 = 1
+
+# H.264 Payload Type
+P562 = 99
+
+# SRTP Mode. Default value is 0. 0 - Disable, 1 - Enable but not forced, 2 Enable and forced.
+# Number: 0, 1, 2.
+P543 = 0
+
+# Enable SRTP Key Lift Time. 0 - No, 1 - Yes.
+# Number: 0,1
+P2563 = 1
+
+#######################################################################
+##  Account 3 Call Settings                                          ##
+#######################################################################
+
+# Dial Plan Prefix
+# String
+P519 =
+
+# Dial Plan. Default value is { x+ | \+x+ | *x+ | *xx*x+ }
+P559 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+# Auto Answer. 0 - No, 1 - Yes, 2 - Enable Intercom/Paging. Default value is 0
+# Number: 0, 1, 2
+P525 = 0
+
+# Use # as Dial Key. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P592 = 1 
+
+# No Answer Timeout (s). Default value is 20
+# Number: 1 - 120
+P570 = 20
+##############################################################################
+##  Account 4 Settings                                                      ##
+##############################################################################
+
+#######################################################################
+##  Account 4 General Settings                                       ##
+#######################################################################
+
+# Account Active. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P601 = 
+
+# Account Name
+P617 =
+
+# SIP Server
+P602 =
+
+# SIP User ID
+P604 =
+
+# SIP Authenticate ID
+P605 =
+
+# SIP Authenticate Password
+P606 =
+
+# Voice Mail UserID
+P626 =
+
+# Name (Display Name, e.g., John Doe)
+P607 =
+
+# Show Account Name Only. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2680 = 0
+
+#######################################################################
+##  Account 4 Network Settings                                       ##
+#######################################################################
+
+# Outbound Proxy
+P603 =
+
+# Secondary Outbound Proxy
+P2633 =
+
+# DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV. Default value is 0
+# Number: 0, 1, 2
+P608 = 0
+
+# NAT Traversal. 0 - NAT No, 1 - STUN, 2 - Keep-alive, 3 - UPnP, 4 - Auto. Default value is 2
+# Number: 0, 1, 2, 3, 4, 5
+P614 = 2
+
+# Proxy-Require
+P618 =
+
+#######################################################################
+##  Account 4 SIP Settings                                           ##
+#######################################################################
+
+# Unregister Before New Registration. 0 - Do Not Unregister, 1 - Unregister All, 2 - Unregister Single. Default value is 2
+# Number: 0, 1, 2
+P611 = 2
+
+# Register Expiration (m). In minutes. Default value is 60
+# Number: 0 - 64800
+P612 = 60
+
+# Local SIP Port. Default value is 5066
+# Number: 5 - 65535
+P613 = 5066
+
+# Session Expiration. In seconds. Default value is 180 seconds
+# Number: 90 - 64800
+P634 = 180
+
+# Min-SE (s). Default value is 90 seconds
+# Number: 90 - 64800
+P627 = 90
+
+# UAC Specify Refresher. 0 - Omit, 1 - UAC, 2 - UAS. Default value is 0
+# Number: 0, 1, 2
+P632 = 0
+
+# UAS Specify Refresher. 1 - UAC, 2 - UAS. Default value is 1
+# Number: 1, 2
+P633 = 1
+
+# Force INVITE. Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P631 = 0
+
+# Caller Request Timer. Request for timer when calling. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P628 = 0
+
+# Callee Request Timer. Request for timer when being called (i.e., if remote party supports timer but did not request for one)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P629 = 0
+
+# Force Timer. Still use timer when remote party does not support timer
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P630 = 0
+
+# SIP Transport. 0 - UDP , 1 - TCP, 2 - TLS. Default value is 0
+# Number: 0, 1, 2
+P648 = 0
+
+# Only Accept SIP Requests from Known Servers. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2647 = 0
+
+# Check SIP User ID for Incoming INVITE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P649 = 0
+#######################################################################
+##  Account 4 Codec Settings                                         ##
+#######################################################################
+
+# DTMF: in audio. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2601 = 0
+
+# DTMF: via RFC2833. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P2602 = 1
+
+# DTMF: via SIP INFO. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2603 = 0
+
+# Preferred Vocoder
+# First codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 0
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P651 = 0
+
+# Second codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 8
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P652 = 8
+
+# Third codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P653 = -1
+
+# Forth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P654 = -1
+
+# Fifth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P655 = -1
+
+# Sixth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P656 = -1
+
+# Seventh codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P657 = -1
+
+# H.264 Image Size. 9 - 720P, 1 - VGA, 5 - CIF, 0 - QVGA, 6 - QCIF. Default value is 1
+# Number: 9, 1, 5, 4, 0, 6
+P2607 = 1
+
+# Video Bit Rate. 32 - 32 kbps, 64 - 64 kbps, 96 - 96 kbps, 128 - 128 kbps, 160 - 160 kbps, 192 - 192 kbps
+# 210 - 210 kbps, 256 - 256 kbps, 384 - 384 kbps, 512 - 512 kbps, 640 - 640 kbps, 768 - 768 kbps
+# 1024 - 1024 kbps. Default value is 512.
+# Number: 32, 64, 96, 128, 160, 192, 210, 256, 384, 512, 640, 768, 1024.
+P2615 = 512
+
+# SDP Bandwidth Attribute. Default value is 1
+# 0 - Standard, 1 - Media Level, 2 - Session Level, 3 - None
+P2660 = 1
+
+# H.264 Payload Type
+P662 = 99
+
+# SRTP Mode. Default value is 0. 0 - Disable, 1 - Enable but not forced, 2 Enable and forced.
+# Number: 0, 1, 2.
+P643 = 0
+
+# Enable SRTP Key Lift Time. 0 - No, 1 - Yes.
+# Number: 0,1
+P2663 = 1
+
+#######################################################################
+##  Account 4 Call Settings                                          ##
+#######################################################################
+
+# Dial Plan Prefix
+# String
+P619 =
+
+# Dial Plan. Default value is { x+ | \+x+ | *x+ | *xx*x+ }
+P659 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+# Auto Answer. 0 - No, 1 - Yes, 2 - Enable Intercom/Paging. Default value is 0
+# Number: 0, 1, 2
+P625 = 0
+
+# Use # as Dial Key. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P692 = 1
+
+# No Answer Timeout (s). Default value is 20
+# Number: 1 - 120
+P670 = 20
+##############################################################################
+##  Account 5 Settings                                                      ##
+##############################################################################
+
+#######################################################################
+##  Account 5 General Settings                                       ##
+#######################################################################
+
+# Account Active. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1701 = 
+
+# Account Name
+P1717 =
+
+# SIP Server
+P1702 =
+
+# SIP User ID
+P1704 =
+
+# SIP Authenticate ID
+P1705 =
+
+# SIP Authenticate Password
+P1706 =
+
+# Voice Mail UserID
+P1726 =
+
+# Name (Display name, e.g., John Doe)
+P1707 =
+
+# Show Account Name Only. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2780 = 0
+
+#######################################################################
+##  Account 5 Network Settings                                       ##
+#######################################################################
+
+# Outbound Proxy
+P1703 =
+
+# Secondary Outbound Proxy
+P2733 =
+
+# DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV. Default value is 0
+# Number: 0, 1, 2.
+P1708 = 0
+
+# NAT Traversal. 0 - No, 1 - STUN, 2 - Keep-alive, 3 - UPnP, 4 - Auto. Default value is 2
+# Number: 0, 1, 2, 3, 4
+P1714 = 2
+
+# Proxy-Require
+P1718 =
+
+#######################################################################
+##  Account 5 SIP Settings                                           ##
+#######################################################################
+
+# Unregister Before New Registration. 0 - Do Not Unregister, 1 - Unregister All, 2 - Unregister Single. Default value is 2
+# Number: 0, 1, 2
+P1711 = 2
+
+# Register Expiration (m). In minutes. Default value is 60
+# Number: 0 - 64800
+P1712 = 60
+
+# Local SIP Port. Default value is 5068
+# Number: 5 - 65535
+P1713 = 5068
+
+# SUBSCRIBE for MWI. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1715 = 0
+
+# Session Expiration. In seconds. Default value is 180 seconds
+# Number: 90 - 64800
+P1734 = 180
+
+# Min-SE (s). Default value is 90 seconds
+# Number is 90 - 64800
+P1727 = 90
+
+# UAC Specify Refresher. 0 - Omit, 1 - UAC, 2 - UAS. Default value is 0
+# Number: 0, 1, 2
+P1732 = 0
+
+# UAS Specify Refresher. 1 - UAC, 2 - UAS. Default value is 1
+# Number: 1, 2
+P1733 = 1
+
+# Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1731 = 0
+
+# Caller Request Timer (Request for timer when calling). 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1728 = 0
+
+# Callee Request Timer (Request for timer when being called, i.e. if remote party supports timer but did not request for one)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1729 = 0
+
+# Force Timer (Still use timer when remote party does not support timer). 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1730 = 0
+
+# SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS. Default value is 0
+# Number: 0, 1, 2
+P1748 = 0
+
+# Only Accept SIP Requests from Known Servers. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2747 = 0
+
+# Check SIP User ID for Incoming INVITE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1749 = 0
+#######################################################################
+##  Account 5 Codec Settings                                         ##
+#######################################################################
+
+# DTMF: in audio. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2701 = 0
+
+# DTMF: via RFC2833. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P2702 = 1
+
+# DTMF: via SIP INFO. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2703 = 0
+
+# Preferred Vocoder
+# First codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 0
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1751 = 0
+
+# Second codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 8
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1752 = 8
+
+# Third codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1753 = -1
+
+# Forth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1754 = -1
+
+# Fifth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1755 = -1
+
+# Sixth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1756 = -1
+
+# Seventh codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1757 = -1
+
+# H.264 Image Size. 9 - 720P, 1 - VGA, 5 - CIF, 0 - QVGA, 6 - QCIF. Default value is 1
+# Number: 9, 1, 5, 0, 6
+P2707 = 1
+
+# Video Bit Rate. 32 - 32 kbps, 64 - 64 kbps, 96 - 96 kbps, 128 - 128 kbps, 160 - 160 kbps, 192 - 192 kbps
+# 210 - 210 kbps, 256 - 256 kbps, 384 - 384 kbps, 512 - 512 kbps, 640 - 640 kbps, 768 - 768 kbps
+# 1024 - 1024 kbps. Default value is 512.
+# Number: 32, 64, 96, 128, 160, 192, 210, 256, 384, 512, 640, 768, 1024.
+P2715 = 512
+
+# SDP Bandwidth Attribute. Default value is 1
+# 0 - Standard, 1 - Media Level, 2 - Session Level, 3 - None
+P2760 = 1
+
+# H.264 Payload Type
+P1762 = 99
+
+# SRTP Mode. Default value is 0. 0 - Disable, 1 - Enable but not forced, 2 Enable and forced.
+# Number: 0, 1, 2.
+P1743 = 0
+
+# Enable SRTP Key Lift Time. 0 - No, 1 - Yes.
+# Number: 0,1
+P2763 = 1
+
+#######################################################################
+##  Account 5 Call Settings                                          ##
+#######################################################################
+
+# Dial Plan Prefix
+# String
+P1719 =
+
+# Dial Plan Maxlength: unlimited, default is allow all { x+ | *x+ | *xx*x+ }
+P1759 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+# Auto Answer. 0 - No, 1 - Yes, 2 - Enable Intercom/Paging. Default value is 0
+# Number: 0, 1, 2
+P1725 = 0
+
+# Use # as Dial Key. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P1792 = 1
+
+# No Answer Timeout (s). Default value is 20
+# Number: 1 - 120
+P1770 = 20
+##############################################################################
+##  Account 6 Settings                                                      ##
+##############################################################################
+
+#######################################################################
+##  Account 6 General Settings                                       ##
+#######################################################################
+
+# Account Active. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P1801 = 1
+
+# Account Name
+P1817 = 
+
+# SIP Server
+P1802 = 
+
+# SIP User ID
+P1804 = 
+
+# SIP Authenticate ID
+P1805 =
+
+# SIP Authenticate Password
+P1806 =
+
+# Voice Mail UserID
+P1826 =
+
+# Name (Display name :John Doe)
+P1807 =
+
+# Show Account Name Only. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2880 = 0
+
+#######################################################################
+##  Account 6 Network Settings                                       ##
+#######################################################################
+
+# Outbound Proxy
+P1803 =
+
+# Secondary Outbound Proxy
+P2833 =
+
+# DNS Mode. 0 - A Record, 1 - SRV, 2 - NAPTR/SRV. Default is 0
+# Number: 0, 1, 2
+P1808 = 0
+
+# NAT Traversal. 0 - No, 1 - STUN, 2 - Keep-alive, 3 - UPnP, 4 - Auto. Default value is 2
+# Number: 0, 1, 2, 3, 4
+P1814 = 2
+
+# Proxy-Require
+P1818 =
+
+#######################################################################
+##  Account 6 SIP Settings                                           ##
+#######################################################################
+
+# Unregister Before New Registration. 0 - Do Not Unregister, 1 - Unregister All, 2 - Unregister Single. Default value is 2
+# Number: 0, 1, 2
+P1811 = 2
+
+# Register Expiration (m). In minutes. Default value is 60
+# Number: 0 - 64800
+P1812 = 60
+
+# Local SIP Port. Default value is 5070
+# Number: 5-65535
+P1813 = 5070
+
+# Session Expiration (in seconds). Default value is 180 seconds
+# Number: 90 - 64800
+P1834 = 180
+
+# Min-SE (s). Default value is 90 seconds
+# Number: 5 - 65535
+P1827 = 90
+
+# UAC Specify Refresher. 0 - Omit, 1 - UAC, 2 - UAS. Default value is 0
+# Number: 0, 1, 2
+P1832 = 0
+
+# UAS Specify Refresher. 1 - UAC, 2 - UAS. Default value is 1
+# Number: 1, 
+P1833 = 1
+
+# Force INVITE (Always refresh with INVITE instead of UPDATE even when remote party supports UPDATE)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1831 = 0
+
+# Caller Request Timer (Request for timer when calling)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1828 = 0
+
+# Callee Request Timer. Request for timer when called (i.e. if remote party supports timer but did not request for one)
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1829 = 0
+
+# Force Timer (Still use timer when remote party does not support timer). 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1830 = 0
+
+# SIP Transport. 0 - UDP, 1 - TCP, 2 - TLS. Default value is 0
+# Number: 0, 1, 2
+P1848 = 0
+
+# Only Accept SIP Requests from Known Servers. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2847 = 0
+
+# Check SIP User ID for Incoming INVITE
+# 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P1849 = 0
+#######################################################################
+##  Account 6 Codec Settings                                         ##
+#######################################################################
+
+# DTMF: in audio. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2801 = 0
+
+# DTMF: in RFC2833. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P2802 = 1
+
+# DTMF: in SIP INFO. 0 - No, 1 - Yes. Default value is 0
+# Number: 0, 1
+P2803 = 0
+
+# Preferred Vocoder
+# First codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 0
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1851 = 0
+
+# Second codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is 8
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1852 = 8
+
+# Third codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1853 = -1
+
+# Forth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1854 = -1
+
+# Fifth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1855 = -1
+
+# Sixth codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1856 = -1
+
+# Seventh codec. -1 - NONE, 0 - PCMU, 8 - PCMA, 9 - G.722, 2 - G.726-32, 97 - iLBC, 123 - Opus, 3 - GSM. Default value is -1
+# Number: -1, 0, 8, 9, 2, 97, 123, 3
+P1857 = -1
+
+# H.264 Image Size. 9 - 720P, 1 - VGA, 5 - CIF, 0 - QVGA, 6 - QCIF. Default value is 1
+# Number: 9, 1, 5, 0, 6
+P2807 = 1
+
+# Video Bit Rate. 32 - 32 kbps, 64 - 64 kbps, 96 - 96 kbps, 128 - 128 kbps, 160 - 160 kbps, 192 - 192 kbps
+# 210 - 210 kbps, 256 - 256 kbps, 384 - 384 kbps, 512 - 512 kbps, 640 - 640 kbps, 768 - 768 kbps
+# 1024 - 1024 kbps. Default value is 512.
+# Number: 32, 64, 96, 128, 160, 192, 210, 256, 384, 512, 640, 768, 1024.
+P2815 = 512
+
+# SDP Bandwidth Attribute. Default value is 1
+# 0 - Standard, 1 - Media Level, 2 - Session Level, 3 - None
+P2860 = 1
+
+# H.264 Payload Type
+P1862 = 99
+
+# SRTP Mode. Default value is 0. 0 - Disable, 1 - Enable but not forced, 2 Enable and forced.
+# Number: 0, 1, 2.
+P1843 = 0
+
+# Enable SRTP Key Lift Time. 0 - No, 1 - Yes.
+# Number: 0,1
+P2863 = 1
+
+#######################################################################
+##  Account 6 Call Settings                                          ##
+#######################################################################
+# Dial Plan Prefix
+# String
+P1819 =
+
+# Dial Plan. Default value is { x+ | \+x+ | *x+ | *xx*x+ }
+P1859 = { x+ | \+x+ | *x+ | *xx*x+ }
+
+# Auto Answer. 0 - No, 1 - Yes, 2 - Enable Intercom/Paging. Default value is 0
+# Number: 0, 1
+P1825 = 0
+
+# Use # as Dial Key. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P1892 = 1 
+
+# No Answer Timeout (s). Default value is 20
+# Number: 1 - 120
+P1870 = 20
+##############################################################################
+##  Advanced Settings                                                       ##
+##############################################################################
+
+#######################################################################
+##  Advanced Settings - Audio Settings                               ##
+#######################################################################
+# Noise Rduction Level. 0 - Low, 1 - Middle, 2 - High. Default value is 1.
+# Number: 0, 1, 2
+P2358 = 1
+
+#######################################################################
+##  Advanced Settings -> Network Settings                            ##
+#######################################################################
+# Use Random Port. 0 - No, 1 - Yes. Default value is 1
+# Number: 0, 1
+P78 = 1
+
+# STUN Server
+P76 = stun.ipvideotalk.com
+
+# Layer 3 QoS for SIP. Default value is 48
+P1558 = 48
+
+# Layer 3 QoS for Audio. Default value is 48
+P1559 = 48
+
+#######################################################################
+##  Advanced Settings - Other Settings                               ##
+#######################################################################
+
+# Config Server Path
+P237 = labtest1.grandstream.com/William
+
+# LDAP Lookup For Dial. 0 - No, 1 - Yes. Default is 0
+P8034 = 1
+
+# LDAP Lookup For Incoming Calls. 0 - No, 1 - Yes. Default is 0
+P8035 = 1
+
+# Server Address, up to 256 characters can be used. It can be IP address or Domain name
+# String
+P8020 =
+
+# Port. Default value is 389
+# Number: 1 - 65535
+P8021 = 389
+
+# Base DN. The LDAP search base refers to the location in the directory where the search is requested to begin
+# Example 1: dc=grandstream,dc=com
+# Example 2: ou=Boston, dc=grandstream,dc=com
+# String
+P8022 =
+
+# User Name. The bind "Username" for querying LDAP servers. Some LDAP servers allow anonymous binds in which case the setting can be left blank
+# String
+P8023 =
+
+# Password. The bind "Password" for querying LDAP servers. And the field can be left blank if the LDAP server allows anonymous binds
+# String
+P8024 =
+
+# LDAP Name Attributes. This setting specifies the "name" attributes of each record which are returned in the LDAP search result
+# The setting allows the users to configure multiple space separated name attributes
+# String
+P8028 =
+
+# LDAP Number Attributes. This setting specifies the "number" attributes of each record which are returned in the LDAP search result
+# The setting allows the users to configure multiple space separated number attributes
+# String
+P8029 =
+
+# LDAP Name Filter
+# LDAP name filter is the filter used for name look ups. Please refer to usermanual for examples
+# String
+P8026 =
+
+# LDAP Number Filter
+# LDAP name filter is the filter used for number look ups. Please refer to usermanual for examples
+# String
+P8025 =
+
+# LDAP Displaying Name Attributes. The entry information to be shown on phone LCD. Grandstream Wave will display up to 3 fields
+# String
+P8030 =
+
+# Max Hits. The setting specifies the maximum number of results to be returned by the LDAP server
+# If the value is set to 0, server will return all search results. Default is 100
+# Number: 0 - 32000
+P8031 = 100
+
+# Search Timeout (in milliseconds). Default is 10000
+# The setting specifies how long the server should process the request and client waits for server to return
+P8032 = 10000
+
+# Connection Mode. 0 - LDAP, 1 - LDAPS. Default Value is 0
+# Number : 0, 1
+P8037 = 0
+
+
