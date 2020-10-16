@@ -123,7 +123,6 @@ class BaseGrandstreamPlugin(StandardPlugin):
         self._add_timezone(raw_config)
         self._add_locale(raw_config)
         raw_config['XX_mac'] = self._format_mac(device)
-        raw_config['XX_main_proxy_ip'] = self._get_main_proxy_ip(raw_config)
 
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
@@ -174,14 +173,6 @@ class BaseGrandstreamPlugin(StandardPlugin):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
         return 'cfg' + fmted_mac + '.xml'
-
-    def _get_main_proxy_ip(self, raw_config):
-        if raw_config[u'sip_lines']:
-            line_no = min(int(x) for x in raw_config[u'sip_lines'].keys())
-            line_no = str(line_no)
-            return raw_config[u'sip_lines'][line_no][u'proxy_ip']
-        else:
-            return raw_config[u'ip']
 
     def _format_mac(self, device):
          return format_mac(device[u'mac'], separator='', uppercase=False)

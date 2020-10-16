@@ -87,11 +87,11 @@
 
     <!-- Primary SIP Server -->
     <!-- String: serveraddress -->
-    <P47>{{ XX_main_proxy_ip }}</P47>
+    <P47>{{ sip_proxy_ip }}</P47>
 
     <!-- Failover SIP Server -->
     <!-- String: serveraddress -->
-    <P967></P967>
+    <P967>{{ sip_backup_proxy_ip }}</P967>
 
     <!-- Prefer Primary SIP Server. 0 - No, 1 - Yes. -->
     <!-- Number: 0,1 -->
@@ -100,11 +100,11 @@
 
     <!-- Primary Outbound Proxy -->
     <!-- String: serveraddress -->
-    <P48>{{ XX_main_proxy_ip }}</P48>
+    <P48>{{ sip_outbound_proxy_ip }}</P48>
 
     <!-- Backup Outbound Proxy. -->
     <!-- String: serveraddress -->
-    <P2333></P2333>
+    <P2333>{{ sip_outbound_proxy_ip }}</P2333>
 
 
     <!-- Prefer Primary Outbound Proxy. 0 - No, 1 - Yes -->
