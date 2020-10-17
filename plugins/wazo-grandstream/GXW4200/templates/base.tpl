@@ -2,6 +2,59 @@
 <gs_provision version="1">
  <mac>{{ XX_mac }}</mac>
  <config version="1">
+    <!-- Maintenance-Web/Telnet Access -->
+
+    <!-- HTTP Web Port. Default HTTP is 80. -->
+    <!-- Number: 1 to 65535 -->
+    <!-- Mandatory -->
+    <!-- Reboot required -->
+    <P901>80</P901>
+
+    <!-- HTTPS Web Port. Default HTTPS Port is 443 -->
+    <!-- Number: 1 to 65535 -->
+    <!-- Mandatory -->
+    <P27010>443</P27010>
+
+    <!-- Web Access Mode. 0 - HTTPS, 1 - HTTP -->
+    <!-- Number: 0, 1 -->
+    <!-- Mandatory -->
+    <P1650>1</P1650>
+
+    <!-- Disable SSH. 0 - No, 1 - Yes -->
+    <!-- Number: 0,1 -->
+    <!-- Mandatory -->
+    <P276>1</P276>
+
+    <!-- Lockout time interval. minimum - 1 minute, maximum - 15 minutes -->
+    <!-- Mandatory -->
+    <P1683>15</P1683>
+
+    <!-- Disable User Level Web Access. 0 - No, 1 - Yes -->
+    <!-- Number: 0, 1 -->
+    <!-- Mandatory -->
+    <P28158>0</P28158>
+
+    <!-- Disable Viewer Level Web Access. 0 - No, 1 - Yes -->
+    <!-- Number: 0, 1 -->
+    <!-- Mandatory -->
+    <P28159>0</P28159>
+
+    <!-- User Password -->
+    <!-- P196=123 -->
+
+    <!-- Admin password -->
+    <!-- String Max Length: 30; between ascii values 33 and 126 -->
+    <!-- Mandatory -->
+    <!-- P2=admin -->
+    
+    <!-- White list for WAN side -->
+    <!-- String: ip address -->
+    <!-- <P20701></P20701> -->
+
+    <!-- Black list for WAN side -->
+    <!-- String: ip address -->
+    <!-- <P20702></P20702> -->
+
     {% if ntp_enabled -%}
     <!-- NTP Server -->
     <!-- String: serveraddress -->
@@ -87,11 +140,11 @@
 
     <!-- Primary SIP Server -->
     <!-- String: serveraddress -->
-    <P47>{{ sip_proxy_ip }}</P47>
+    <P47>{{ XX_main_proxy_ip }}</P47>
 
     <!-- Failover SIP Server -->
     <!-- String: serveraddress -->
-    <P967>{{ sip_backup_proxy_ip }}</P967>
+    <!-- <P967></P967> -->
 
     <!-- Prefer Primary SIP Server. 0 - No, 1 - Yes. -->
     <!-- Number: 0,1 -->
@@ -100,11 +153,11 @@
 
     <!-- Primary Outbound Proxy -->
     <!-- String: serveraddress -->
-    <P48>{{ sip_outbound_proxy_ip }}</P48>
+    <P48>{{ XX_main_proxy_ip }}</P48>
 
     <!-- Backup Outbound Proxy. -->
     <!-- String: serveraddress -->
-    <P2333>{{ sip_outbound_proxy_ip }}</P2333>
+    <!-- <P2333></P2333> -->
 
 
     <!-- Prefer Primary Outbound Proxy. 0 - No, 1 - Yes -->
@@ -140,35 +193,58 @@
     <P{{ 4060 + ref }}>{{ line['auth_username'] }}</P{{ 4060 + ref }}>
     <P{{ 4090 + ref }}>{{ line['auth_username'] }}</P{{ 4090 + ref }}>
     <P{{ 4120 + ref }}>{{ line['password'] }}</P{{ 4120 + ref }}>
+    {% if line_no|int <= 20 %}
     <P{{ 4180 + ref }}>{{ line['display_name'] }}</P{{ 4180 + ref }}>
+    {% else -%}
+    <P{{ 4252 + ref - 20 }}>{{ line['display_name'] }}</P{{ 4252 + ref - 20 }}>
+    {% endif -%}
     <P{{ 4150 + ref }}>0</P{{ 4150 + ref }}>
     <P{{ 4595 + ref }}>1</P{{ 4595 + ref }}>
 
-    <P{{ 4210 + ref }}></P{{ 4210 + ref }}>
+    <!-- <P{{ 4210 + ref }}></P{{ 4210 + ref }}> -->
     <P{{ 4300 + ref }}>0</P{{ 4300 + ref }}>
-    <P{{ 4669 + ref }}></P{{ 4669 + ref }}>
+    <!-- <P{{ 4669 + ref }}></P{{ 4669 + ref }}> -->
 
     <P{{ 4521 + ref }}>1</P{{ 4521 + ref }}>
-    <P{{ 4264 + ref }}></P{{ 4264 + ref }}>
+    <!-- <P{{ 4264 + ref }}></P{{ 4264 + ref }}> -->
     <P{{ 4858 + ref }}>5060</P{{ 4858 + ref }}>
   {% else -%}
-    {% set ref = line_no|int - 31 %}
-    <!-- FXS {{ line_no }}  -->
-    <P{{ 4240 + ref }}>{{ line['auth_username'] }}</P{{ 4240 + ref }}>
-    <P{{ 4242 + ref }}>{{ line['auth_username'] }}</P{{ 4242 + ref }}>
-    <P{{ 4244 + ref }}>{{ line['password'] }}</P{{ 4244 + ref }}>
-    <P{{ 4262 + ref }}>{{ line['display_name'] }}</P{{ 4262 + ref }}>
-    <P{{ 4246 + ref }}>0</P{{ 4246 + ref }}>
-    <P{{ 4625 + ref }}>1</P{{ 4625 + ref }}>
+    {% if line_no|int <= 32 %}
+      {% set ref = line_no|int - 31 %}
+      <!-- FXS {{ line_no }}  -->
+      <P{{ 4240 + ref }}>{{ line['auth_username'] }}</P{{ 4240 + ref }}>
+      <P{{ 4242 + ref }}>{{ line['auth_username'] }}</P{{ 4242 + ref }}>
+      <P{{ 4244 + ref }}>{{ line['password'] }}</P{{ 4244 + ref }}>
+      <P{{ 4262 + ref }}>{{ line['display_name'] }}</P{{ 4262 + ref }}>
+      <P{{ 4246 + ref }}>0</P{{ 4246 + ref }}>
+      <P{{ 4625 + ref }}>1</P{{ 4625 + ref }}>
 
-    <P{{ 4806 + ref }}></P{{ 4806 + ref }}>
-    <P{{ 4250 + ref }}>0</P{{ 4250 + ref }}>
-    <P{{ 4699 + ref }}></P{{ 4699 + ref }}>
+      <!-- <P{{ 4806 + ref }}></P{{ 4806 + ref }}> -->
+      <P{{ 4250 + ref }}>0</P{{ 4250 + ref }}>
+      <!-- <P{{ 4699 + ref }}></P{{ 4699 + ref }}> -->
 
-    <P{{ 4809 + ref }}>1</P{{ 4809 + ref }}>
-    <P{{ 4294 + ref }}></P{{ 4294 + ref }}>
-    <P{{ 4888 + ref }}>5060</P{{ 4888 + ref }}>
+      <P{{ 4809 + ref }}>1</P{{ 4809 + ref }}>
+      <!-- <P{{ 4294 + ref }}></P{{ 4294 + ref }}> -->
+      <P{{ 4888 + ref }}>5060</P{{ 4888 + ref }}>
+    {% else -%}
+      {% set ref = line_no|int - 33 %}
+      <!-- FXS {{ line_no }}  -->
+      <P{{ 21000 + ref }}>{{ line['auth_username'] }}</P{{ 21000 + ref }}>
+      <P{{ 21064 + ref }}>{{ line['auth_username'] }}</P{{ 21064 + ref }}>
+      <P{{ 21128 + ref }}>{{ line['password'] }}</P{{ 21128 + ref }}>
+      <P{{ 21192 + ref }}>{{ line['display_name'] }}</P{{ 21192 + ref }}>
+      <P{{ 21256 + ref }}>0</P{{ 21256 + ref }}>
+      <P{{ 21384 + ref }}>1</P{{ 21384 + ref }}>
 
+      <!-- <P{{ 21448 + ref }}></P{{ 21448 + ref }}> -->
+      <P{{ 21320 + ref }}>0</P{{ 21320 + ref }}>
+      <!-- <P{{ 21704 + ref }}></P{{ 21704 + ref }}> -->
+
+      <P{{ 21512 + ref }}>1</P{{ 21512 + ref }}>
+      <!-- <P{{ 21576 + ref }}></P{{ 21576 + ref }}> -->
+      <P{{ 21640 + ref }}>5060</P{{ 21640 + ref }}>
+
+    {% endif -%}
   {% endif -%}
 {% endfor %}
 {{ XX_fkeys }}
