@@ -1,5 +1,5 @@
 {
-    "version": "1.46",
+    "version": "1.47",
     "description": "Plugin for Yealink T20P, T22P, T26P, T28P and W52P in version V73.",
     "description_fr": "Greffon pour Yealink T20P, T22P, T26P, T28P and W52P en version V73.",
     "vendor" : "Yealink",
