@@ -101,6 +101,9 @@ account.{{ line_no }}.alert_info_url_enable = 0
 account.{{ line_no }}.nat.udp_update_enable = 1
 account.{{ line_no }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
 account.{{ line_no }}.dtmf.info_type = 1
+{% if sip_subscribe_mwi -%}
+account.{{ line_no }}.subscribe_mwi = 1
+{% endif %}
 voice_mail.number.{{ line_no }} = {{ line['voicemail']|d('%NULL%') }}
 {% else -%}
 account.{{ line_no }}.enable = 0
@@ -115,6 +118,7 @@ account.{{ line_no }}.sip_server.1.transport_type = %NULL%
 account.{{ line_no }}.sip_server.2.address = %NULL%
 account.{{ line_no }}.sip_server.2.port = %NULL%
 account.{{ line_no }}.sip_server.2.transport_type = %NULL%
+account.{{ line_no }}.subscribe_mwi = %NULL%
 voice_mail.number.{{ line_no }} = %NULL%
 {% endif %}
 {% endfor %}

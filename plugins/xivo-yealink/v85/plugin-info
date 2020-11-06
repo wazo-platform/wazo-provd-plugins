@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Plugin for Yealink for T31, T30, T30P, T31G, T31P, T33P and T33G in version V85.",
     "description_fr": "Greffon pour Yealink pour T31, T30, T30P, T31G, T31P, T33P and T33G en version V85.",
     "vendor" : "Yealink",

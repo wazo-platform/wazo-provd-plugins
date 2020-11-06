@@ -96,6 +96,9 @@ account.{{ line_no }}.nat.udp_update_enable = 1
 account.{{ line_no }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
 account.{{ line_no }}.dtmf.info_type = 1
 account.{{ line_no }}.transport = {{ XX_sip_transport }}
+{% if sip_subscribe_mwi -%}
+account.{{ line_no }}.subscribe_mwi = 1
+{% endif %}
 voice_mail.number.{{ line_no }} = {{ line['voicemail']|d('%NULL%') }}
 {% else -%}
 account.{{ line_no }}.enable = 0
@@ -109,6 +112,7 @@ account.{{ line_no }}.sip_server.1.port = %NULL%
 account.{{ line_no }}.sip_server.2.address = %NULL%
 account.{{ line_no }}.sip_server.2.port = %NULL%
 account.{{ line_no }}.transport = %NULL%
+account.{{ line_no }}.subscribe_mwi = %NULL%
 voice_mail.number.{{ line_no }} = %NULL%
 {% endif %}
 {% endfor %}
@@ -124,4 +128,3 @@ call_waiting.enable = 1
 directory_setting.url = http://{{ ip }}:{{ http_port }}/directory_setting.xml
 
 {{ XX_fkeys }}
-
