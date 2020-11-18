@@ -172,7 +172,7 @@ description: Language pack for Yealink T58A and CP960
 description_fr: Paquet de langues pour Yealink T58A et CP960
 version: 84.0.30
 files: T58_CP960-lang
-install: yealink-T57W-lang
+install: yealink-T58_CP960-lang
 
 
 
@@ -222,7 +222,7 @@ b-c: cp */GUI/*.lang lang/T57W/
 
 [install_yealink-T58_CP960-lang]
 a-b: unzip $FILE1
-b-c: cp */GUI/*.lang lang/T58-CP960/
+b-c: cp */GUI/*/*.lang lang/T58-CP960/
 
 
 [file_CP920-fw]
@@ -371,7 +371,7 @@ size: 860168
 sha1sum: f010633a2fc395153db9ee98183e35af48a55e5a
 
 [file_T58_CP960-lang]
-filename: Language_Packs_for_T58_CP960.zip
-url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyps5ejdULu/plusSymbolnIMplusSymbol7Wj8uUGO3Kmh9vawNeqdac0EV9RHE7O8oU6AvHcadJfx0Xd7FdkftUTxTY6kvXj25LQOv2YcotsXLYu6DdRIxWjXwBHhb1kIKwQ3Ec7o=
-size: 824936
-sha1sum: aa5017b7ee30a50c2902c20d3f6f7fb44f6c2cfc
+filename: Yealink_Android_Based_IP_Phones_Language_Packs.zip
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/bv0zz5RV3bonplusSymboltk0jutxplusSymbolq13jEjyxq0CPQ7N7WS0jEXrMf3f2H5AfVN/vmYXAH3mDAe7u6toIp31nyY68CwbWUjW4JQTplusSymbolvyMNfC5ihpzXjpEHClUnf9rrxljFD/MXU3P
+size: 962517
+sha1sum: 451bf950f4e40261a45be38ad12020d4e47f24dd
