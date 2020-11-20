@@ -71,36 +71,36 @@ b-c: cp * i18n/
 
 [file_6863i-fw]
 filename: 58015370REV035001018SP16863i.zip
-url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/58015370rev035001018sp16863i.zip
+url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/6863/58015370rev035001018sp16863i.zip
 size: 12223593
 sha1sum: 2ae6e15f06254209e6966f9d114f746844a183ae
 
 [file_6865i-fw]
 filename: 58015371REV035001018SP16865i.zip
-url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/58015371rev035001018sp16865i.zip
+url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/6865/58015371rev035001018sp16865i.zip
 size: 24858245
 sha1sum: dc9c11d843a74fcd47d778079aa46dd8640075a8
 
 [file_6867i-fw]
 filename: 58015372REV035001018SP16867i.zip
-url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/58015372rev035001018sp16867i.zip
+url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/6867/58015372rev035001018sp16867i.zip
 size: 44267740
 sha1sum: c5050f4a134a734a82d5aa20d3c1be4d6bc5321e
 
 [file_6869i-fw]
 filename: 58015373rev035001018sp16869i.zip
-url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/58015373rev035001018sp16869i.zip
+url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/6869/58015373rev035001018sp16869i.zip
 size: 44968084
 sha1sum: 8ad19807445ac1af8f44002388c054a8bc8755b6
 
 [file_6873i-fw]
 filename: 58015374REV035001018SP16873i.zip
-url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/58015374rev035001018sp16873i.zip
+url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/6873/58015374rev035001018sp16873i.zip
 size: 36675325
 sha1sum: 569b2b4629073c6d1b9404bc1251bc8aa69a647d
 
 [file_lang]
-filename: R500 6800 5801456REV00LangPacks3.zip
-url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/r500-6800-5801456rev00langpacks3.zip
+filename: R500-6800-5801456REV00LangPacks3.zip
+url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/6867/r500-6800-5801456rev00langpacks1.zip
 size: 905670
 sha1sum: 931ca34c03f43713d59e7afe1f5cf5ca5e114b0a
