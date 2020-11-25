@@ -1,14 +1,14 @@
 [pkg_78xx-mpp-fw]
 description: Multiplatform firmware for Cisco 7811, 7821, 7831, 7841 and 7861
 description_fr: Micrologiciel MPP pour Cisco 7811, 7821, 7831, 7841 et 7861
-version: 11.3.1-MSR2-6
+version: 11.3.1-MSR3-3
 files: 78xx-mpp-fw
 install: cisco-mpp-fw
 
 [pkg_cisco-mpp-locales]
 description: Multiplatform phone locales
 description_fr: Locales multi-plateformes
-version: 11.3.1-MSR2-6
+version: 11.3.1-MSR3-3
 files: cisco-mpp-locales
 install: cisco-mpp-locales
 
@@ -22,13 +22,13 @@ b-c: cp *.xml locales/
 
 
 [file_78xx-mpp-fw]
-filename: cmterm-78xx.11-3-1MSR2-6_REL.zip
+filename: cmterm-78xx.11-3-1MSR3-3_REL.zip
 url:
-size: 31218243
-sha1sum: 7edcffc35e1f65e620ba309a860c6476100bec2b
+size: 31216737
+sha1sum: df67e5c0beda5b0b79fae42416958b1d3117ee54
 
 [file_cisco-mpp-locales]
-filename: cmterm-68xx_78xx_88xx.11-3-1MPP-697-Locale-1.zip
+filename: cmterm-68xx_78xx_88xx.11-3-2MPP-609-Locale-1.zip
 url:
-size: 36634432
-sha1sum: 7eed59b7c156e812116df1cf082dbff11d9caa05
+size: 36749270
+sha1sum: b72e626625e4fb68ec4dea8656c2e64cf458aa4b
