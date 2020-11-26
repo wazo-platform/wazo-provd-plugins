@@ -159,11 +159,11 @@ class BaseCiscoSipPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _NB_FKEY = {
         # <model>: (<nb keys>, <nb expansion modules>)
-        u'7811': (4, 0),
-        u'7821': (4, 0),
-        u'7832': (4, 0),
+        u'7811': (1, 0),
+        u'7821': (2, 0),
+        u'7832': (1, 0),
         u'7841': (4, 0),
-        u'7861': (4, 0),
+        u'7861': (16, 0),
         u'6821': (2, 0),
         u'6841': (4, 0),
         u'6851': (4, 1),
