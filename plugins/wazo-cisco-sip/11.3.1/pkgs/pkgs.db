@@ -5,6 +5,20 @@ version: 11.3.1-MSR3-3
 files: 78xx-mpp-fw
 install: cisco-mpp-fw
 
+[pkg_68xx-mpp-fw]
+description: Multiplatform firmware for Cisco 6841, 6851, 6861 and 6871
+description_fr: Micrologiciel MPP pour Cisco 6841, 6851, 6861 et 6871
+version: 11.3.1-MSR3-3
+files: 68xx-mpp-fw
+install: cisco-mpp-fw
+
+[pkg_6821-mpp-fw]
+description: Multiplatform firmware for Cisco 6821
+description_fr: Micrologiciel MPP pour Cisco 6821
+version: 11.3.1-MSR3-3
+files: 6821-mpp-fw
+install: cisco-mpp-fw
+
 [pkg_cisco-mpp-locales]
 description: Multiplatform phone locales
 description_fr: Locales multi-plateformes
@@ -26,6 +40,18 @@ filename: cmterm-78xx.11-3-1MSR3-3_REL.zip
 url:
 size: 31216737
 sha1sum: df67e5c0beda5b0b79fae42416958b1d3117ee54
+
+[file_68xx-mpp-fw]
+filename: cmterm-68xx.11-3-1MSR3-3_REL.zip
+url:
+size: 105925597
+sha1sum: 708fe9a3de09a68faad5218624add9d702de9191
+
+[file_6821-mpp-fw]
+filename: cmterm-6821.11-3-1MSR3-3_REL.zip
+url:
+size: 41070594
+sha1sum: 6280e8074d0de40b9dd631859847980c0656542a
 
 [file_cisco-mpp-locales]
 filename: cmterm-68xx_78xx_88xx.11-3-2MPP-609-Locale-1.zip

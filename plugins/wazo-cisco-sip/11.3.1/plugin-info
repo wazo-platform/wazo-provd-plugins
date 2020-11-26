@@ -42,6 +42,46 @@
             "expansion_modules": 0,
             "switchboard": false,
             "protocol": "sip"
+        },
+        "Cisco, 6821, 11.3.1-msr3-3": {
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Cisco, 6841, 11.3.1-msr3-3": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Cisco, 6851, 11.3.1-msr3-3": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 1,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Cisco, 6861, 11.3.1-msr3-3": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
+        },
+        "Cisco, 6871, 11.3.1-msr3-3": {
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "protocol": "sip"
         }
     }
 }

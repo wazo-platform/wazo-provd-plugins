@@ -164,6 +164,11 @@ class BaseCiscoSipPlugin(StandardPlugin):
         u'7832': (4, 0),
         u'7841': (4, 0),
         u'7861': (4, 0),
+        u'6821': (2, 0),
+        u'6841': (4, 0),
+        u'6851': (4, 1),
+        u'6861': (4, 0),
+        u'6871': (6, 0),
     }
     _DEFAULT_LOCALE = u'en_US'
     _LANGUAGE = {
