@@ -30,7 +30,7 @@
 {% endif -%}
 
 {% block upgrade_rule -%}
-<Upgrade_Rule>http://{{ ip }}:{{ http_port }}/sip78xx.11-3-1MSR2-6.loads</Upgrade_Rule>
+<Upgrade_Rule>http://{{ ip }}:{{ http_port }}/sip78xx.11-3-1MSR3-3.loads</Upgrade_Rule>
 {% endblock -%}
 
 {% if exten_voicemail is defined -%}
