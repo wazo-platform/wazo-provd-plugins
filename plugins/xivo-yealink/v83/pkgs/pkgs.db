@@ -57,7 +57,7 @@ install: yealink-fw
 [pkg_T41P-fw]
 description: Firmware for Yealink T41P
 description_fr: Micrologiciel pour Yealink T41P
-version: 36.83.0.35
+version: 36.83.0.120
 files: T41P-fw
 install: yealink-fw
 
@@ -190,10 +190,10 @@ size: 8656560
 sha1sum: 111987a0fdc34a0e6ea7a4c80359a8768968555b
 
 [file_T41P-fw]
-filename: T41-36.83.0.35.rom
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypmu8iHU8LZNSz2KpFm8Jsbb5DP0jQIknDw2GQiS3YvlZg6NuU5d4aIy9Jt5wvhuxX98XYu6EoTkDjB8ax5zfplusSymbol9la0aQSjxfitA==
-size: 7641536
-sha1sum: 32d48daa5f4b0d795e269ffb5e5b6a881327d4fb
+filename: T41-36.83.0.120.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgRplusSymbolYFVgEdMpEcplusSymbolaY7OxUNeMO2PR/RQPgbCnIDxWsOlbUp5yPyXcFJ3oeKifzCsggLkAxPbERwiEl25mwjqkYhFHNplusSymbolYEk81V4g==
+size: 7657920
+sha1sum: e7ca2cd77d389be4636872e2748bb4985c268f97
 
 [file_T42G-fw]
 filename: T42-29.83.0.35.rom
