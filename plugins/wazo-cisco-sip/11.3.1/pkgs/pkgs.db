@@ -22,7 +22,7 @@ install: cisco-mpp-fw
 [pkg_cisco-mpp-locales]
 description: Multiplatform phone locales
 description_fr: Locales multi-plateformes
-version: 11.3.1-MSR3-3
+version: 11.3.2-MPP-609
 files: cisco-mpp-locales
 install: cisco-mpp-locales
 
