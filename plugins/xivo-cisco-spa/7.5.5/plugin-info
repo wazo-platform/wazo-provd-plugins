@@ -1,5 +1,5 @@
 {
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "Plugin for Cisco SMB SPA301, 303, 501G, 502G, 504G, 508G, 509G, 512G, 514G, 525G and 525G2 in version 7.5.5.",
     "description_fr": "Greffon pour Cisco SMB SPA301, 303, 501G, 502G, 504G, 508G, 509G, 512G, 514G, 525G et 525G2 en version 7.5.5.",
     "capabilities": {
