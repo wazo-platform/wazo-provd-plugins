@@ -1,0 +1,17 @@
+[pkg_ata19x-mpp-fw]
+description: Multiplatform firmware for Cisco ATA 191 and 192
+description_fr: Micrologiciel MPP pour Cisco ATA 191 et 192
+version: 11.1.0-MSR4
+files: ata19x-mpp-fw
+install: cisco-mpp-fw
+
+
+[install_cisco-mpp-fw]
+a-b: unzip $FILE1
+
+
+[file_ata19x-mpp-fw]
+filename: ATA19x.11-1-0MPP0401-002.zip
+url:
+size: 25190968
+sha1sum: 49db4648fd4fd6f069df9886f0a3f5867643d2a9

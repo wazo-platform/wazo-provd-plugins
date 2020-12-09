@@ -1,5 +1,5 @@
 {
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "Plugin for Cisco SPA2102 in version 5.2.12.",
     "description_fr": "Greffon pour Cisco SPA2102 en version 5.2.12.",
     "capabilities": {
