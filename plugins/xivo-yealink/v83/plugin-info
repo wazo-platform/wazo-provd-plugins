@@ -163,7 +163,7 @@
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, W80B, 103.83.0.70": {
+        "Yealink, W80B, 103.83.0.80": {
             "lines": 100,
             "high_availability": false,
             "function_keys": 0,
