@@ -27,7 +27,7 @@ files: 7832-mpp-fw
 install: cisco-mpp-fw
 
 [pkg_88xx-mpp-fw]
-description: Multiplatform firmware for Cisco 8811, 8441, 8851 et 8861
+description: Multiplatform firmware for Cisco 8811, 8441, 8851 and 8861
 description_fr: Micrologiciel MPP pour Cisco 8811, 8441, 8851 et 8861
 version: 11-3-1MSR3-3
 files: 88xx-mpp-fw
