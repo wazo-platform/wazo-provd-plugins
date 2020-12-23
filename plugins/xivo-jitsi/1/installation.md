@@ -1,4 +1,0 @@
-# Installation
-
-The provisioning URL to use in Jitsi is:
-    `http://<provd_ip:provd_port>/jitsi?uuid=${uuid}`
