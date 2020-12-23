@@ -1,0 +1,172 @@
+[pkg_T29G-fw]
+description: Firmware for Yealink T29G
+description_fr: Micrologiciel pour Yealink T29G
+version: 46.83.0.120
+files: T29G-fw
+install: yealink-fw
+
+[pkg_T41P-fw]
+description: Firmware for Yealink T41P
+description_fr: Micrologiciel pour Yealink T41P
+version: 36.83.0.120
+files: T41P-fw
+install: yealink-fw
+
+[pkg_T42G-fw]
+description: Firmware for Yealink T42G
+description_fr: Micrologiciel pour Yealink T42G
+version: 29.83.0.120
+files: T42G-fw
+install: yealink-fw
+
+[pkg_T46G-fw]
+description: Firmware for Yealink T46G
+description_fr: Micrologiciel pour Yealink T46G
+version: 28.83.0.120
+files: T46G-fw
+install: yealink-fw
+
+[pkg_T48G-fw]
+description: Firmware for Yealink T48G
+description_fr: Micrologiciel pour Yealink T48G
+version: 35.83.0.120
+files: T48G-fw
+install: yealink-fw
+
+[pkg_T58V_T56A-fw]
+description: Firmware for Yealink T58A/V and T56A
+description_fr: Micrologiciel pour Yealink T58A/V et T56A
+version: 58.83.0.15
+files: T58V_T56A-fw
+install: yealink-fw
+
+[pkg_W60B-fw]
+description: Firmware for Yealink W60B
+description_fr: Micrologiciel pour Yealink W60B
+version: 77.83.0.85
+files: W60B-fw
+install: yealink-fw
+
+[pkg_W53H-fw]
+description: Firmware for Yealink W53H handset
+description_fr: Micrologiciel pour le combiné Yealink W53H
+version: 88.83.0.90
+files: W53H-fw
+install: yealink-fw
+
+[pkg_W56H-fw]
+description: Firmware for Yealink W56H handset
+description_fr: Micrologiciel pour le combiné Yealink W56H
+version: 61.83.0.90
+files: W56H-fw
+install: yealink-fw
+
+[pkg_W59R-fw]
+description: Firmware for Yealink W59R handset
+description_fr: Micrologiciel pour le combiné Yealink W59R
+version: 115.83.0.10
+files: W59R-fw
+install: yealink-fw
+
+[pkg_W80B-fw]
+description: Firmware for Yealink W80B
+description_fr: Micrologiciel pour Yealink W80B
+version: 103.83.0.80
+files: W80B-fw
+install: yealink-fw
+
+[pkg_CP930W-fw]
+description: Firmware for Yealink CP930W
+description_fr: Micrologiciel pour Yealink CP930W
+version: 87.83.0.60
+files: CP930W-fw
+install: yealink-fw
+
+[pkg_CP960-fw]
+description: Firmware for Yealink CP960
+description_fr: Micrologiciel pour Yealink CP960
+version: 73.83.0.30
+files: CP960-fw
+install: yealink-fw
+
+[install_yealink-fw]
+a-b: cp *.rom firmware/
+
+
+[file_T29G-fw]
+filename: T29-46.83.0.120.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgRplusSymbolYFVgEdMpg9rTokJHIIngjOqDPt7D23yJnto5G44x9pmTtni3TdwMPlyI5L5GRXAya8q35cJCN7FLuvf2JyQXbPeK/9/RSQ==
+size: 21236896
+sha1sum: e48450fc77b7ad0068e47bd6d8f589cd290991ab
+
+[file_T41P-fw]
+filename: T41-36.83.0.120.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgRplusSymbolYFVgEdMpEcplusSymbolaY7OxUNeMO2PR/RQPgbCnIDxWsOlbUp5yPyXcFJ3oeKifzCsggLkAxPbERwiEl25mwjqkYhFHNplusSymbolYEk81V4g==
+size: 7657920
+sha1sum: e7ca2cd77d389be4636872e2748bb4985c268f97
+
+[file_T42G-fw]
+filename: T42-29.83.0.120.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgRplusSymbolYFVgEdMpplusSymbolplusSymbol8E1LVApPGvbVVHHLYcROYVROn3plusSymbolnDG7N2gF8sTSTZZ6hvnx8vce9gs4xOy3AD50z6UVplusSymbolcusubwuXgpskGHCA==
+size: 7657920
+sha1sum: c7de05017dc28c9a8583ffa93d8b3f9b26ab1a88
+
+[file_T46G-fw]
+filename: T46-28.83.0.120.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgRplusSymbolYFVgEdMpcTIuUtddfbwFV68WFKxcI57iTVKou4QkVCRAz9SiplusSymbolozVl80jkSTWMtg1NUsetF8C8cgGT2wuVM52RjRRNyISqw==
+size: 23625296
+sha1sum: c72e7470453e0847f9472932e3e271852bd75d9c
+
+[file_T48G-fw]
+filename: T48-35.83.0.120.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgRplusSymbolYFVgEdMpPg7zHF9nhWDpKOhQDm1rSZrEw4ld4plusSymbolvLgPErmAY6o4plusSymbolu8woZ/ZQiHhHOlMUdrNElQFV6J1SG7FFtUJHj4Awd5w==
+size: 22225872
+sha1sum: 4931b1b6bd05e814f51b1be021a09f13506d11f2
+
+[file_T58V_T56A-fw]
+filename: T58V(T56A)-58.83.0.15.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/XzpOaqhFOhYrPixvrxLiND8SIanDGRXr9cOS8iIEJygNnWBLFIGPXGaurKXfcgwJHnjlDRXnDq86zW/3QsaYMxxb7em/8YM73N
+size: 225190128
+sha1sum: 5acf5a498b194b6284e8c9f78a3b9dd682813fa9
+
+[file_W60B-fw]
+filename: W60B-77.83.0.85.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypj2Z/5eTuuVwLHc/hyFKaHEI1FUWXbn1PAGBicJHLMff7yv8pplusSymbolJUfbKYGId1bYDTKku3KJZIrWmyjRPA0K9lrFVBzvg/plusSymbolDxOgQ==
+size: 9927744
+sha1sum: 74350224319182dc99927a13871b84bfe4398ef2
+
+[file_W53H-fw]
+filename: W53H-88.83.0.90.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyphshNtpyhFJck/PPOUmJ86kIu8kLMgriDoee9LfWmW0im5wQP7OIiaoplusSymbol7u0alDCdZ18hbwA9ZtEV/LO65Q6tosyF2Uj9dH2plusSymbolCQ==
+size: 2593056
+sha1sum: f05f49293820598bb3c50a2fdc25f63ca2092a13
+
+[file_W56H-fw]
+filename: W56H-61.83.0.90.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyphshNtpyhFJcPedL5LWg0FOFBbMt95NZcoBtFdBa4GQiDnSPKAt6Q2sqcqYi3ZucjlFSpemev5VvTy6WjIiDA4u4l78raocxBw==
+size: 4398576
+sha1sum: 04b9a905d2cf46a62a9dd02cc09deb01e7972c7a
+
+[file_W59R-fw]
+filename: W59R-115.83.0.10.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypu1NZb3I38UcFYkBLdMx5FB/upSrPeSqgU0wJIPYM0vMBe9FbxRVUT5LLRclBI/1pU/0MgJcy0EYp1724glkZCHh6Rrq4eZFQw==
+size: 3161936
+sha1sum: d97cf031a2d3f34db448f9bea19a0fdbea1648f7
+
+[file_W80B-fw]
+filename: W80B-103.83.0.80.rom
+url:http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypu1NZb3I38UcEavsauKR73vVeplusSymbolXdqV3j1PplusSymbolg2HKXEgCUCCaIagDUG1sso7286k3wQaOthmLtDWZ0P3vK2qplusSymbolQBIZafaAa6AZf5A==
+size: 22581456
+sha1sum: 2a41721bbc8d88a1e0153e122fa4c3962f706471
+
+[file_CP930W-fw]
+filename: CP930W-87.83.0.60.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyphshNtpyhFJcOXx1pDjIo0tQihcMzxvSk3mryXN8ygqArQBVe1fxYYG13ZplusSymbolocVlS3hu6Jp/A3LPpQplusSymbol/SaS6/bqYvplusSymbolOIjV9LMhdPLbrpAzLx0
+size: 4686880
+sha1sum: 3755723cf3268079a10ee1ecb3d528d3153df0cb
+
+[file_CP960-fw]
+filename: CP960-73.83.0.30.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/XznN1O1cA8l2BmcbsVmqfXpHrQlGyQIHzzxeHH4FkCMq7SyQsQxtk9IJr7X3waidsCNWnkplusSymbolpgOogGoNBww6USu97ICKR7CCPyE
+size: 207186688
+sha1sum: 0e5b7015e915dcca1931937ae63cb8f6a87daa0b
