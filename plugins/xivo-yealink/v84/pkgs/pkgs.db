@@ -104,8 +104,8 @@ files: T27G_CP920-lang
 install: yealink-T27G_CP920-lang
 
 [pkg_T19_T21_T23_T40_T40G-lang]
-description: Language pack for Yealink T19, T21, T23, T40 et T40G
-description_fr: Paquet de langues pour Yealink T19, T21, T23, T40 and T40G
+description: Language pack for Yealink T19, T21, T23, T40 and T40G
+description_fr: Paquet de langues pour Yealink T19, T21, T23, T40 et T40G
 version: 84.0.15
 files: T19_T21_T23_T40_T40G-lang
 install: yealink-T19_T21_T23_T40_T40G-lang
