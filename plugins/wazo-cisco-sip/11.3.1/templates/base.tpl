@@ -57,7 +57,7 @@
 <!--  available options: Clock|Download Picture|Logo  -->
 <Screen_Saver_Wait ua="rw">300</Screen_Saver_Wait>
 <Screen_Saver_Refresh_Period ua="rw">10</Screen_Saver_Refresh_Period>
-<Back_Light_Timer ua="rw">Always On</Back_Light_Timer>
+<Back_Light_Timer ua="rw">5m</Back_Light_Timer>
 <!--  available options: 1m|5m|30m|Always On  -->
 
 
