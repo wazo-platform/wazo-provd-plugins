@@ -46,7 +46,6 @@ MODEL_VERSIONS = {
 
 COMMON_FILES = [
     ('y000000000069.cfg', u'T27G-69.85.0.5.rom', 'model.tpl'),
-    ('y000000000058.cfg', u'T58-58.85.0.5.rom', 'model.tpl'),
     ('y000000000065.cfg', u'T46S(T48S,T42S,T41S)-66.85.0.5.rom', 'model.tpl'),
     ('y000000000066.cfg', u'T46S(T48S,T42S,T41S)-66.85.0.5.rom', 'model.tpl'),
     ('y000000000067.cfg', u'T46S(T48S,T42S,T41S)-66.85.0.5.rom', 'model.tpl'),
@@ -59,6 +58,15 @@ COMMON_FILES = [
 ]
 
 COMMON_FILES_DECT = [
+    {
+        'filename': u'y000000000058.cfg',
+        'fw_filename': u'T58-58.85.0.5.rom',
+        'handsets_fw': {
+            'w53h': u'W53H-88.85.0.20.rom',
+            'w56h': u'W56H-61.85.0.20.rom',
+        },
+        'tpl_filename': u'dect_model.tpl',
+    },    
     {
         'filename': u'y000000000077.cfg',
         'fw_filename': u'W60B-77.85.0.20.rom',
