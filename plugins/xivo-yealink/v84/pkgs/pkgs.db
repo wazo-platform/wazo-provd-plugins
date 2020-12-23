@@ -97,7 +97,7 @@ files: T58A-fw
 install: yealink-fw
 
 [pkg_T27G_CP920-lang]
-description: Language pack for Yealink T27G et CP920
+description: Language pack for Yealink T27G and CP920
 description_fr: Paquet de langues pour Yealink T27G et CP920
 version: 84.0.15
 files: T27G_CP920-lang
