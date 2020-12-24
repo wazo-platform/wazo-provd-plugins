@@ -48,7 +48,7 @@
 <Host_Name ua="na"/>
 <Domain ua="na"/>
 
-<Primary_NTP_Server ua="na">192.168.0.45</Primary_NTP_Server>
+<Primary_NTP_Server ua="na"/>
 <Secondary_NTP_Server ua="na"/>
 
 <!--  Screen  -->
