@@ -60,7 +60,7 @@
 <Back_Light_Timer ua="rw">5m</Back_Light_Timer>
 <!--  available options: 1m|5m|30m|Always On  -->
 
-
+<!--  Password for Factory Reset  -->
 <Protect_IVR_FactoryReset ua="na">Yes</Protect_IVR_FactoryReset>
 
 <!--  VLAN Settings  -->
@@ -94,10 +94,6 @@
 <PC_Port_VLAN_ID>{{ vlan_pc_port_id }}</PC_Port_VLAN_ID>
 {% endif -%}
 {% endif -%}
-
-{% block upgrade_rule -%}
-<Upgrade_Rule>http://{{ ip }}:{{ http_port }}/sip78xx.11-3-1MSR3-3.loads</Upgrade_Rule>
-{% endblock -%}
 
 {% if exten_voicemail is defined -%}
 <Voice_Mail_Number>{{ exten_voicemail }}</Voice_Mail_Number>
