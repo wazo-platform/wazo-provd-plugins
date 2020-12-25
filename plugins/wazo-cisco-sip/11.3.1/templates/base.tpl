@@ -95,6 +95,10 @@
 {% endif -%}
 {% endif -%}
 
+{% block upgrade_rule -%}
+<Upgrade_Rule></Upgrade_Rule>
+{% endblock -%}
+
 {% if exten_voicemail is defined -%}
 <Voice_Mail_Number>{{ exten_voicemail }}</Voice_Mail_Number>
 {% endif -%}
