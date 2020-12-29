@@ -1,5 +1,5 @@
 {
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Plugin for Aastra/Mitel 6863i, 6865i, 6867i, 6869i and 6873i in version 5.0.0 SP1",
     "description_fr": "Greffon pour Aastra/Mitel 6863i, 6865i, 6867i, 6869i et 6873i en version 5.0.0 SP1",
     "capabilities": {
