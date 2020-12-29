@@ -1,5 +1,5 @@
 {
-    "version": "1.1.4",
+    "version": "1.1.5",
     "description": "Plugin for Cisco (previously known as Linksys) SPA901, 921, 922, 941, 942, 962 in different versions.",
     "description_fr": "Greffon pour Cisco (auparavant connu comme Linksys) SPA901, 921, 922, 941, 942, 962 en versions variées.",
     "capabilities": {

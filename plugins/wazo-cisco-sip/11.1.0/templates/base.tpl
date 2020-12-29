@@ -30,7 +30,6 @@
 {% endif -%}
 
 {% block upgrade_rule -%}
-<Upgrade_Rule>http://{{ ip }}:{{ http_port }}/sip78xx.11-3-1MSR3-3.loads</Upgrade_Rule>
 {% endblock -%}
 
 {% if exten_voicemail is defined -%}
@@ -48,9 +47,6 @@
 <Station_Name>{{ sip_lines['1']['display_name']|e }}</Station_Name>
 {% endif -%}
 
-{% block dictionary_server_script -%}
-<Dictionary_Server_Script></Dictionary_Server_Script>
-{% endblock -%}
 <Language_Selection>{{ XX_language }}</Language_Selection>
 <Locale>{{ XX_locale }}</Locale>
 {{ XX_timezone }}

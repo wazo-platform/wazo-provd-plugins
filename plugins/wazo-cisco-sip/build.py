@@ -18,6 +18,12 @@ def build_9_3(path):
                 '9.3/', path])
 
 
+@target('11.1.0', 'wazo-cisco-sip-11.1.0')
+def build_11_3_1(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '11.1.0/', path])
+
+
 @target('11.3.1', 'wazo-cisco-sip-11.3.1')
 def build_11_3_1(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',

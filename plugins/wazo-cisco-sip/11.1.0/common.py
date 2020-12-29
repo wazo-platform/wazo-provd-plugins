@@ -3,12 +3,9 @@
 # Copyright 2010-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-import errno
 import logging
 import os
 import re
-import subprocess
-from copy import deepcopy
 from operator import itemgetter
 from xml.sax.saxutils import escape
 from provd import plugins
@@ -17,14 +14,13 @@ from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT, \
     PROBABLE_SUPPORT, COMPLETE_SUPPORT, FULL_SUPPORT
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
-    TemplatePluginHelper
+from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
-logger = logging.getLogger('plugins.xivo-cisco-spa')
+logger = logging.getLogger('plugins.wazo-cisco-sip')
 
 
 def _norm_model(raw_model):
@@ -34,10 +30,7 @@ def _norm_model(raw_model):
 
 
 class BaseCiscoDHCPDeviceInfoExtractor(object):
-    _RAW_VENDORS = ['linksys', 'cisco']
-    _CISCO_VDI_REGEX = re.compile(r'^(CISCO|Cisco) (SPA[0-9]{3}|ATA190G?g?2?)')
-    _LINKSYS_VDI_REGEX = re.compile(r'^(LINKSYS) (SPA-?[0-9]{3,4})')
-    _VDIS = [_CISCO_VDI_REGEX, _LINKSYS_VDI_REGEX]
+    _CISCO_VDI_REGEX = re.compile(r'^CISCO (ATA[0-9]{3})-MPP')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -51,84 +44,53 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
 
     def _extract_from_vdi(self, vdi):
         # Vendor class identifier:
-        #   "LINKSYS SPA-942" (SPA942 6.1.5a)
-        #   "LINKSYS SPA-962" (SPA962 6.1.5a)
-        #   "LINKSYS SPA8000" (SPA8000 unknown version)
-        #   "Cisco SPA501G" (SPA501G 7.4.4)
-        #   "Cisco SPA508G" (SPA508G 7.4.4)
-        #   "Cisco SPA525g" (SPA525G unknown version, from Cisco documentation)
-        #   "Cisco SPA525G" (SPA525G 7.4.4)
-        #   "Cisco SPA525G" (SPA525G 7.4.7)
-        #   "Cisco SPA525G2" (SPA525G2 7.4.5)
-        #   "CISCO SPA122"
-        #   "CISCO ATA190"
+        # CISCO ATA191-MPP
+        # CISCO ATA192-MPP
 
-        for vdi_matcher in self._VDIS:
-            match = vdi_matcher.match(vdi)
-            if match:
-                raw_vendor, raw_model = match.groups()
-                if raw_vendor.lower() in self._RAW_VENDORS:
-                    dev_info = {u'vendor': u'Cisco',
-                                u'model': _norm_model(raw_model)}
-                    return dev_info
+        m = self._CISCO_VDI_REGEX.match(vdi)
+        if m:
+            model = m.group(1)
+            dev_info = {u'vendor': u'Cisco',
+                        u'model': _norm_model(model)}
+            return dev_info
         return None
 
 
 class BaseCiscoHTTPDeviceInfoExtractor(object):
-    _LINKSYS_UA_REGEX = re.compile(r'^Linksys/([\w\-]+)-([^\s\-]+) \((\w+)\)$')
-    _CISCO_UA_REGEX = re.compile(r'^Cisco/(\w+)-(\S+) (?:\(([\dA-F]{12})\))?\((\w+)\)$')
-    _PATH_REGEX = re.compile(r'\b([\da-f]{12})\.xml$')
+    _CISCO_UA_REGEX = re.compile(r'^Cisco/(ATA[0-9]{3})-MPP-(\S+) \((\S+)\)$')
+    _PATH_REGEX = re.compile(r'\b/([\da-f]{12})\.xml$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
         ua = request.getHeader('User-Agent')
+        raw_mac = request.args.get('mac', [None])[0]
+        dev_info = {}
+        if raw_mac:
+            dev_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
+            logger.debug('Got MAC from URL: %s', dev_info[u'mac'])
         if ua:
-            dev_info = {}
             self._extract_from_ua(ua, dev_info)
             if dev_info:
                 dev_info[u'vendor'] = u'Cisco'
-                if u'mac' not in dev_info:
+                if u'mac' not in dev_info or u'model' not in dev_info:
                     self._extract_from_path(request.path, dev_info)
                 return dev_info
         return None
 
     def _extract_from_ua(self, ua, dev_info):
         # HTTP User-Agent:
-        # Note: the last group of digit is the serial number;
-        #       the first, if present, is the MAC address
-        #   "Linksys/SPA-942-6.1.5(a) (88019FA42805)"
-        #   "Linksys/SPA-962-6.1.5(a) (4MM00F903042)"
-        #   "Cisco/SPA501G-7.4.4 (8843E157DDCC)(CBT141100HR)"
-        #   "Cisco/SPA508G-7.4.4 (0002FDFF2103)(CBT141400UK)"
-        #   "Cisco/SPA508G-7.4.8a (0002FDFF2103)(CBT141400UK)"
-        #   "Cisco/SPA525G-7.4.4 (CBT141900G7)"
-        #   "Cisco/SPA525G-7.4.7 (CBT141900G7)"
-        if ua.startswith('Linksys/'):
-            self._extract_linksys_from_ua(ua, dev_info)
-        elif ua.startswith('Cisco/'):
-            self._extract_cisco_from_ua(ua, dev_info)
-
-    def _extract_linksys_from_ua(self, ua, dev_info):
-        # Pre: ua.startswith('Linksys/')
-        m = self._LINKSYS_UA_REGEX.match(ua)
-        if m:
-            raw_model, version, sn = m.groups()
-            dev_info[u'model'] = _norm_model(raw_model)
-            dev_info[u'version'] = version.decode('ascii')
-            dev_info[u'sn'] = sn.decode('ascii')
-
-    def _extract_cisco_from_ua(self, ua, dev_info):
-        # Pre: ua.startswith('Cisco/')
+        # Note: the last group of digit is the serial number
+        #   It is not possible to extract the MAC address from the UA on these ATAs
+        #   Cisco/ATA191-MPP-11-1-0-MSR4 (FCH2443D9R4)
         m = self._CISCO_UA_REGEX.match(ua)
         if m:
-            model, version, raw_mac, sn = m.groups()
+            model, version, dev_sn = m.groups()
             dev_info[u'model'] = model.decode('ascii')
             dev_info[u'version'] = version.decode('ascii')
-            if raw_mac:
-                dev_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
-            dev_info[u'sn'] = sn.decode('ascii')
+            if dev_sn:
+                dev_info[u'sn'] = dev_sn.decode('ascii')
 
     def _extract_from_path(self, path, dev_info):
         # try to extract MAC address from path
@@ -144,10 +106,7 @@ class BaseCiscoHTTPDeviceInfoExtractor(object):
 
 
 class BaseCiscoTFTPDeviceInfoExtractor(object):
-    _SEPFILE_REGEX = re.compile(r'^SEP([\dA-F]{12})\.cnf\.xml$')
-    _SPAFILE_REGEX = re.compile(r'^/spa(.+?)\.cfg$')
-    _ATAFILE_REGEX = re.compile(r'^ATA([\dA-F]{12})\.cnf\.xml$')
-    _CTLSEPFILE_REGEX = re.compile(r'^CTLSEP([\dA-F]{12})\.tlv$')
+    _MACFILE_REGEX = re.compile(r'^/([\da-fA-F]{12})\.xml$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -155,36 +114,25 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
     def _do_extract(self, request):
         packet = request['packet']
         filename = packet['filename']
-        for test_fun in [self._test_spafile, self._test_init, self._test_atafile]:
-            dev_info = test_fun(filename)
-            if dev_info:
-                dev_info[u'vendor'] = u'Cisco'
-                return dev_info
+        dev_info = self._test_macfile(filename)
+        if dev_info:
+            dev_info[u'vendor'] = u'Cisco'
+            return dev_info
         return None
 
     def __repr__(self):
-        return object.__repr__(self) + "-SPA"
+        return object.__repr__(self)
 
-    def _test_spafile(self, filename):
-        # Test if filename is "/spa$PSN.cfg".
-        m = self._SPAFILE_REGEX.match(filename)
+    def _test_macfile(self, filename):
+        # Test if filename is "/$MA.xml".
+        m = self._MACFILE_REGEX.match(filename)
         if m:
-            raw_model = 'SPA' + m.group(1)
-            return {u'model': _norm_model(raw_model)}
-        return None
-
-    def _test_atafile(self, filename):
-        # Test if filename is "ATAMAC.cnf.xml".
-        # Only the ATA190 requests this file
-        m = self._ATAFILE_REGEX.match(filename)
-        if m:
-            return {u'model': 'ATA190'}
-        return None
-
-    def _test_init(self, filename):
-        # Test if filename is "/init.cfg".
-        if filename == '/init.cfg':
-            return {u'model': u'PAP2T'}
+            raw_mac = m.group(1)
+            try:
+                mac = norm_mac(raw_mac.decode('ascii'))
+            except ValueError, e:
+                logger.warning('Could not normalize MAC address: %s', e)
+            return {u'mac': mac}
         return None
 
 
@@ -209,7 +157,7 @@ class BaseCiscoPgAssociator(BasePgAssociator):
         return IMPROBABLE_SUPPORT
 
 
-class BaseCiscoPlugin(StandardPlugin):
+class BaseCiscoSipPlugin(StandardPlugin):
     """Base classes MUST have a '_COMMON_FILENAMES' attribute which is a
     sequence of filenames that will be generated by the common template in
     the common_configure function.
@@ -219,20 +167,8 @@ class BaseCiscoPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _NB_FKEY = {
         # <model>: (<nb keys>, <nb expansion modules>)
-        u'SPA941': (4, 0),
-        u'SPA942': (4, 0),
-        u'SPA962': (6, 2),
-        u'SPA303': (3, 2),
-        u'SPA501G': (8, 2),
-        u'SPA502G': (0, 2),
-        u'SPA504G': (4, 2),
-        u'SPA508G': (8, 2),
-        u'SPA509G': (12, 2),
-        u'SPA512G': (0, 2),
-        u'SPA514G': (4, 2),
-        u'SPA525G': (5, 2),
-        u'SPA525G2': (5, 2),
-        u'ATA190': (0,0),
+        u'ATA191': (0, 0),
+        u'ATA192': (0, 0),
     }
     _DEFAULT_LOCALE = u'en_US'
     _LANGUAGE = {
@@ -257,14 +193,12 @@ class BaseCiscoPlugin(StandardPlugin):
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
 
-        self._tpl_helper = TemplatePluginHelper(plugin_dir)
-
         downloaders = FetchfwPluginHelper.new_downloaders(gen_cfg.get('proxies'))
-        if 'cisco' not in downloaders:
-            logger.warning('cisco downloader not found (xivo is probably not up to date); not loading plugin packages')
-        else:
-            fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
-            self.services = fetchfw_helper.services()
+        fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
+
+        self.services = fetchfw_helper.services()
+
+        self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
         self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
         self.tftp_service = TFTPFileService(self._tftpboot_dir)
@@ -411,21 +345,7 @@ class BaseCiscoPlugin(StandardPlugin):
     def _dev_specific_filename(self, dev):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(dev[u'mac'], separator='')
-
-        if dev.get('model', '').startswith('ATA'):
-            fmted_mac = 'ATA%s.cnf' % fmted_mac.upper()
-
         return fmted_mac + '.xml'
-
-    def _dev_shifted_device(self, dev):
-        device2 = deepcopy(dev)
-        device2[u'mac'] = device2[u'mac'][3:] + ':01'
-        return device2
-
-    def _dev_shifted_specific_filename(self, dev):
-        '''Returns a device specific filename based on the shifted MAC address,
-        as required by the Cisco ATA190 for the second phone port.'''
-        return self._dev_specific_filename(self._dev_shifted_device(dev))
 
     def _check_config(self, raw_config):
         if u'http_port' not in raw_config:
@@ -452,22 +372,8 @@ class BaseCiscoPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING, errors='replace')
 
-        if len(raw_config[u'sip_lines']) >= 2 and device.get('model', '').startswith('ATA'):
-            raw_config[u'XX_second_line_ata'] = True
-
-            filename = self._dev_shifted_specific_filename(device)
-            path = os.path.join(self._tftpboot_dir, filename)
-            self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING, errors='replace')
-
     def deconfigure(self, device):
         path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
-
-        if device.get('model', '').startswith('ATA'):
-            path2 = os.path.join(self._tftpboot_dir, self._dev_shifted_specific_filename(device))
-            try:
-                os.remove(path2)
-            except OSError as e:
-                logger.info('error while removing configuration file: %s', e)
         try:
             os.remove(path)
         except OSError as e:

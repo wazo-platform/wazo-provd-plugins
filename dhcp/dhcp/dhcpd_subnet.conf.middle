@@ -68,6 +68,8 @@
         allow members of "CiscoSMBSPA122";
         # CiscoATA
         allow members of "CiscoATA190";
+        allow members of "CiscoATA191MPP";
+        allow members of "CiscoATA192MPP";
         # Digium
         allow members of "DigiumD40";
         allow members of "DigiumD50";
