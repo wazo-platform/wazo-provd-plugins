@@ -2,13 +2,13 @@
 <ProviderFrame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="N510.xsd">
   <Provider>
 <!-- Please enter the correct MAC Address example: 3E2F800E1234
-	 Please enter a Profile name 
+	 Please enter a Profile name
 	 If not correct, no setting will be done
 -->
     <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
-    <PROFILE_NAME class="string" value="N510"/>	
+    <PROFILE_NAME class="string" value="N510"/>
     {%- if http_port %}
-    <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/merkur247_42.bin"'/> 
+    <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/merkur247_42.bin"'/>
     {%- endif %}
 <!-- Allow access from other networks. -->
     <SYMB_ITEM ID="BS_IP_Data1.ucB_ACCEPT_FOREIGN_SUBNET" class="symb_item" value="0x1"/>
@@ -16,14 +16,14 @@
     {%- if vlan_enabled %}
     <SYMB_ITEM ID="BS_IP_Data1.ucB_VLAN_ENABLED" class="symb_item" value="1"/>
     <SYMB_ITEM ID="BS_IP_Data1.ucI_VLAN_PRIORITY" class="symb_item" value="{{ vlan_priority }}"/>
-    <SYMB_ITEM ID="BS_IP_Data1.uiI_VLAN_ID" class="symb_item" value="0x{{ "%x"|format(vlan_id) }}"/>
+    <SYMB_ITEM ID="BS_IP_Data1.uiI_VLAN_ID" class="symb_item" value="{{ XX_vlan_id_hex }}"/>
     {%- endif %}
     {%- if dns_enabled %}
     <SYMB_ITEM ID="BS_IP_Data1.ulI_DNS_SERVER_1" class="symb_item" value="{{ XX_dns_ip_hex }}"/>
     <SYMB_ITEM ID="BS_IP_Data1.ulI_DNS_SERVER_2" class="symb_item" value="0"/>
     {%- endif %}
 <!-- WEB-UI: Settings - Telephony - Connections - Connection Name or Number -->
-    
+
 {% for line_no, line in sip_lines.iteritems() %}
     {%- if line_no == '1' %}
     {%- set line_suffix = '' %}
@@ -93,18 +93,18 @@
 <!-- Auto Provisioning - Selected Codec settings 0x00(G.711ulaw),0x01(G.711alaw),0x02(G.726),0x03(G.729),0x05(G722) -->
     <SYMB_ITEM ID="BS_IP_Data1.ucI_CODEC_PREFERENCES" class="symb_item" value="0"/>
 
-<!-- Change DTMF to RFC2833 compatible with RFC4733 -->    
+<!-- Change DTMF to RFC2833 compatible with RFC4733 -->
     <SYMB_ITEM ID="BS_IP_Data1.ucB_DTMF_TX_MODE_AUTO" class="symb_item" value="0"/>
     <SYMB_ITEM ID="BS_IP_Data1.ucI_DTMF_TX_MODE_BITS" class="symb_item" value="2"/>
-    
+
 <!-- Needed to enable Provisioning, After Reboot -->	 -->
     <SYMB_ITEM ID="BS_IP_Data.ucB_AUTO_UPDATE_PROFILE" class="symb_item" value="0x1"/>
     <SYMB_ITEM ID="BS_IP_Data3.ucI_ONESHOT_PROVISIONING_MODE_1" class="symb_item" value="0x1"/>
-    
-<!-- Enable Session timer minimum value is 90 seconds -->    
+
+<!-- Enable Session timer minimum value is 90 seconds -->
     <SYMB_ITEM ID="BS_VOIP_Data.astVoipProviders[0].ulSessionRefresh_MIN_SE" class="symb_item" value="90"/>
-    
-<!-- Increase lenght handset name on display -->    
+
+<!-- Increase lenght handset name on display -->
     <SYMB_ITEM ID="BS_LM_AppCfg.bit.bHasIdleTextInternalName" class="symb_item" value="1"/>
 
 <!-- WEB UI: Settings - Management - Firmware update - Data Server
@@ -114,7 +114,7 @@
     {%- endif %}
 
 <!-- WEB UI: Settings - Telephony - Advanced VoIP Settings - Transfer Call by On Hook
-     Call Transfer by ending the call -->	
+     Call Transfer by ending the call -->
     <SYMB_ITEM ID="BS_IP_Data1.ucB_CT_AFTER_ON_HOOK" class="symb_item" value="0x1"/>
     <SYMB_ITEM ID="BS_CUSTOM_ORG.bit.bEct" class="symb_item" value="0x1"/>
     <SYMB_ITEM ID="BS_IP_Data1.ucB_USE_R_KEY_FOR_CALL_TRANSFER" class="symb_item" value="0x1"/>
@@ -122,35 +122,35 @@
 <!-- WEB UI: Settings - Management - Local Settings - Tone Selection
 	 International=0, US=1, CH=2, AUS=4, ES=6, FR=7, UK=8, NL=9, PL=10, Russia=11, DE=12, IT=13 -->
     <SYMB_ITEM ID="BS_AE_SwConfig.ucCountryCodeTone" class="symb_item" value="0"/>
-    
+
 <!-- Http language of the device
-	 English=0x1,German=0x2,Spanish=0x4,Italian=0x7,French=0x9,Dutch=0xa,Turkish=0x10,Polski=0x11 -->	
-    <SYMB_ITEM ID="BS_IP_Data1.ucI_HTTPLANGUAGE" class="symb_item" value="0x1"/> 
+	 English=0x1,German=0x2,Spanish=0x4,Italian=0x7,French=0x9,Dutch=0xa,Turkish=0x10,Polski=0x11 -->
+    <SYMB_ITEM ID="BS_IP_Data1.ucI_HTTPLANGUAGE" class="symb_item" value="0x1"/>
 
-<!-- WEB UI: Settings - Management - Date&Time  
-	 Time Country: NL=0x30, UK=0x4A, DE=0x19, FR=0x18 --> 	
-    <SYMB_ITEM ID="BS_IP_Data1.uiI_TIME_COUNTRY" class="symb_item" value="0x30"/>   
+<!-- WEB UI: Settings - Management - Date&Time
+	 Time Country: NL=0x30, UK=0x4A, DE=0x19, FR=0x18 -->
+    <SYMB_ITEM ID="BS_IP_Data1.uiI_TIME_COUNTRY" class="symb_item" value="0x30"/>
 
-<!-- WEB UI: Settings - Management - Local Settings - Select Country optimum setting for behind other platformen is "Other country"--> 
-    <SYMB_ITEM ID="BS_IP_Data1.ucI_DIALING_PLAN_COUNTRY_ID" class="symb_item" value="0xff"/>    
-    
-<!-- Autoprovisioning - Preference - Admin Password. The default setting for the PIN is 0000 (0x00,0x00). Enter a new 4-digit 
+<!-- WEB UI: Settings - Management - Local Settings - Select Country optimum setting for behind other platformen is "Other country"-->
+    <SYMB_ITEM ID="BS_IP_Data1.ucI_DIALING_PLAN_COUNTRY_ID" class="symb_item" value="0xff"/>
+
+<!-- Autoprovisioning - Preference - Admin Password. The default setting for the PIN is 0000 (0x00,0x00). Enter a new 4-digit
     system PIN for the base station - four digits from 0 to 9. Example: PIN='1234' please enter '0x12,0x34' -->
-    <SYMB_ITEM ID="BS_CUSTOM.aucKdsPin[0]" class="symb_item" value="0x00,0x00"/>    
-    
-<!-- Autoprovisioning - Preference - Time Zone: 
+    <SYMB_ITEM ID="BS_CUSTOM.aucKdsPin[0]" class="symb_item" value="0x00,0x00"/>
+
+<!-- Autoprovisioning - Preference - Time Zone:
      0x00(GMT-12),0x01(GMT-11),0x02(GMT-10),0x03(GMT-9),0x04(GMT-8),0x07(GMT-7),0x09(GMT-6),0x0d(GMT-5),0x0f(GMT-4),0x15(GMT-3),0x16(GMT-2),
-     0x18(GMT-1),0x1a(GMT),0x1b(GMT+1),0x20(GMT+2),0x28(GMT+3),0x2b(GMT+4),0x2e(GMT+5),0x33(GMT+6),0x37(GMT+7),0x3a(GMT+8),0x3d(GMT+9),0x43(GMT+10) -->    
-    <SYMB_ITEM ID="BS_IP_Data1.uiI_TIME_TIMEZONE" class="symb_item" value="0x{{ "%x"|format(XX_timezone_code) }}"/>  
+     0x18(GMT-1),0x1a(GMT),0x1b(GMT+1),0x20(GMT+2),0x28(GMT+3),0x2b(GMT+4),0x2e(GMT+5),0x33(GMT+6),0x37(GMT+7),0x3a(GMT+8),0x3d(GMT+9),0x43(GMT+10) -->
+    <SYMB_ITEM ID="BS_IP_Data1.uiI_TIME_TIMEZONE" class="symb_item" value="0x{{ "%x"|format(XX_timezone_code) }}"/>
 
 <!-- Autoprovisioning - Preference - Primary NTP server -->
     {%- if ntp_enabled %}
     <SYMB_ITEM ID="BS_IP_Data1.aucS_TIME_NTP_SERVER" class="symb_item" value='"{{ ntp_ip }}"'/>
     {%- endif %}
-    
+
 <!-- Autoprovisioning - Preference - Daylight Saving time: 0x1(enabled),0x0(Disabled) -->
-    <SYMB_ITEM ID="BS_IP_Data1.ucB_TIME_USE_AUTOMATIC_DST" class="symb_item" value="0x1"/>      
+    <SYMB_ITEM ID="BS_IP_Data1.ucB_TIME_USE_AUTOMATIC_DST" class="symb_item" value="0x1"/>
 <!-- end -->
-    
+
   </Provider>
 </ProviderFrame>
