@@ -43,7 +43,7 @@ MODEL_VERSIONS = {
     u'T56A': u'58.83.0.5',
     u'T58': u'58.83.0.5',
     u'W60B': u'77.83.0.85',
-    u'W80B': u'103.83.0.70',
+    u'W80B': u'103.83.0.80',
 }
 
 COMMON_FILES = [
@@ -77,7 +77,7 @@ COMMON_FILES_DECT = [
     },
     {
         'filename': u'y000000000103.cfg',
-        'fw_filename': u'W80B-103.93.0.70.rom',
+        'fw_filename': u'W80DM-103.83.0.80.rom',
         'handsets_fw': {
             'w53h': u'W53H-88.83.0.90.rom',
             'w56h': u'W56H-61.83.0.90.rom',

@@ -127,7 +127,7 @@ install: yealink-fw
 [pkg_W80B-fw]
 description: Firmware for Yealink W80B
 description_fr: Micrologiciel pour Yealink W80B
-version: 103.83.0.70
+version: 103.83.0.80
 files: W80B-fw
 install: yealink-fw
 
@@ -250,10 +250,10 @@ size: 4398576
 sha1sum: 04b9a905d2cf46a62a9dd02cc09deb01e7972c7a
 
 [file_W80B-fw]
-filename: W80B-103.83.0.70.rom
-url:
-size: 9856720
-sha1sum: 97701015c2ef13126040c2877dba7300fd181757
+filename: W80DM-103.83.0.80.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypu1NZb3I38UcPnJW9d1ArC5mzd5/VReg8QIiwhvE2PeFUYNx5eplusSymbole9VZwWsESbWflG/kJpo7WrImpBeFplusSymbolkgT46riplusSymbolR/hCC2HuFA==
+size: 22582192
+sha1sum: aa6af0b5ea549be7bab05803bfdf86038092f1ca
 
 [file_CP930W-fw]
 filename: CP930W-87.83.0.60.rom
