@@ -5,6 +5,49 @@ version: 124.85.0.15
 files: T3X-fw
 install: yealink-fw
 
+[pkg_W90DM-fw]
+description: Firmware for Yealink W90DM
+description_fr: Micrologiciel pour Yealink W90DM
+version: 130.85.0.15
+files: W90DM-fw
+install: yealink-fw
+
+[pkg_W90B-fw]
+description: Firmware for Yealink W90B
+description_fr: Micrologiciel pour Yealink W90B
+version: 130.85.0.15
+files: W90B-fw
+install: yealink-fw
+
+
+[pkg_CP930W-fw]
+description: Firmware for Yealink CP930W
+description_fr: Micrologiciel pour Yealink CP930W
+version: 87.85.0.20
+files: CP930W-fw
+install: yealink-fw
+
+[pkg_W53H-fw]
+description: Firmware for Yealink W53H handset
+description_fr: Micrologiciel pour combiné Yealink W53H
+version: 88.85.0.20
+files: W53H-fw
+install: yealink-fw
+
+[pkg_W56H-fw]
+description: Firmware for Yealink W56H handset
+description_fr: Micrologiciel pour combiné Yealink W56H
+version: 61.85.0.20
+files: W56H-fw
+install: yealink-fw
+
+[pkg_W59R-fw]
+description: Firmware for Yealink W59R handset
+description_fr: Micrologiciel pour combiné Yealink W59R
+version: 115.85.0.20
+files: W59R-fw
+install: yealink-fw
+
 
 [install_yealink-fw]
 a-b: cp *.rom firmware/
@@ -15,3 +58,40 @@ filename: T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.15.rom
 url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyps6JUOXOXzepzjndQWfdwPTNMcv/ryCJ7WRjs7B86H9mq6EECyVBLrnUjmVHaKW4TYognkJPqWASGa5VBplusSymbolVmj5KNFrtSTHudwRplusSymbolfoZ7ut1ZUgqXUu9fXK25NvmrOeTIv1sWcKiQb3u1/
 size: 11603584
 sha1sum: 9ea2ae5a60980ea9133b43f054b9faadb149a401
+
+[file_W90DM-fw]
+filename: W90DM-130.85.0.15.rom
+url:
+size: 22057776
+sha1sum: 57232fc46b564cc1e0e0e7a8efe3a6d295057bdd
+
+[file_W90B-fw]
+filename: W90B-130.85.0.15.rom
+url:
+size: 22057840
+sha1sum: 0fc2e1093956341ff0b3f230af526c279de98595
+
+[file_CP930W-fw]
+filename: CP930W-87.85.0.20.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaGL5UXnwnflJkrwF3or2hiV0ZTbCw7IC/plusSymbolcaXuwqPTSNZBDH9f4Okv6wbEEYweplusSymbol8UcCt58lpS9oNOXaGBkwQh2hNdgyGkDNAc
+size: 4707008
+sha1sum: c8352c05618b75abdd7239f9ba96d81143df810f
+
+[file_W53H-fw]
+filename: W53H-88.85.0.20.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaplusSymbol0qSTyaLIdtqptKGSQ3XeTjQt6fV0Vya0U8xir/zZ1rs1P3NvLESQmJ9DlT3xBh7plusSymbolSFDt1r2J27/FwIrCEp49w==
+size: 2631680
+sha1sum: 8184fdfadbceac79e6256e7f0f70ac0d1832f9a9
+
+[file_W56H-fw]
+filename: W56H-61.85.0.20.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaiuXz9yCL/QYwRAXKohXgCo5mcxuZqA9WfAW1qIHizipOKvVQvMVgomokuirGUv/E2VxiEZ64pYtVbHUzylW6nQ==
+size: 4412384
+sha1sum: 42b7b4dbfc98058635c6c5dc8bd8f88a4ade2568
+
+
+[file_W59R-fw]
+filename: W59R-115.85.0.20.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaxx5awq37Uct9zHd5cZ0splusSymbolejpISplusSymbolpArxKDBBJr1egGc4j8h87MuB7zbYPQrQHW70h77plusSymboliKk/plusSymbolXplusSymbolUZBAYO9FmM1VVNiKqineel
+size: 3148768
+sha1sum: 3e826495b1585156a300b1e3752013491791db2d
