@@ -6,7 +6,7 @@ PLUGINS_PATH := $(BUILDDIR)/plugins
 TESTING_PATH := $(BUILDDIR)/testing
 STABLE_PATH := $(BUILDDIR)/stable
 ARCHIVE_PATH := $(BUILDDIR)/archive
-FIRMWARES_PATH := $(BUILDDIR)/firmwares
+FIRMWARES_PATH := _firmwares
 
 REMOTE_HOST := webserver.wazo.community
 REMOTE_USER := root
