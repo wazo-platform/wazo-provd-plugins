@@ -22,13 +22,13 @@ possible to test it.
 
 ## Firmware management
 
-If you wish to add firmwares for specific phones, go to the `plugins/_build/firmwares` directory.
+If you wish to add firmwares for specific phones, go to the `plugins/_firmwares` directory.
 Find the subdirectory specific to the brand (i.e `yealink`) then put the firmware files into it.
 You can then execute `make upload-firmwares` to upload them to the web server.
 
 ## Add a new firmware brand
 
-Create a new subdirectory named after the brand in `plugins/_build/firmwares` and put an empty file
+Create a new subdirectory named after the brand in `plugins/_firmwares` and put an empty file
 named `.brand` in it. Commit it to the git repository. Then, add the firmware files and execute
 `make upload-firmwares`.
 
