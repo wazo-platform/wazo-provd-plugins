@@ -61,13 +61,13 @@ sha1sum: 9ea2ae5a60980ea9133b43f054b9faadb149a401
 
 [file_W90DM-fw]
 filename: W90DM-130.85.0.15.rom
-url:
+url: http://provd.wazo.community/firmwares/yealink/W90DM-130.85.0.15.rom
 size: 22057776
 sha1sum: 57232fc46b564cc1e0e0e7a8efe3a6d295057bdd
 
 [file_W90B-fw]
 filename: W90B-130.85.0.15.rom
-url:
+url: http://provd.wazo.community/firmwares/yealink/W90B-130.85.0.15.rom
 size: 22057840
 sha1sum: 0fc2e1093956341ff0b3f230af526c279de98595
 
