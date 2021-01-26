@@ -22,7 +22,7 @@ possible to test it.
 
 ## Firmware management
 
-If you wish to add firmwares for specific phones, go to the `plugins/_firmwares` directory.
+If you wish to host firmwares for specific phones, go to the `plugins/_firmwares` directory.
 Find the subdirectory specific to the brand (i.e `yealink`) then put the firmware files into it.
 You can then execute `make upload-firmwares` to upload them to the web server.
 
