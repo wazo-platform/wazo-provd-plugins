@@ -53,7 +53,7 @@
 
 {% for line_no, line in sip_lines.iteritems() %}
 <Line_Enable_{{ line_no }}_>Yes</Line_Enable_{{ line_no }}_>
-<Proxy_{{ line_no }}_>{{ XX_proxies[line_no] }}</Proxy_{{ line_no }}_>
+<proxy_{{ line_no }}_>{{ line['proxy_ip'] }}:{{ line['proxy_port'] or sip_proxy_port or 5060}}</proxy_{{ line_no }}_>
 <Use_DNS_SRV_{{ line_no }}_>Yes</Use_DNS_SRV_{{ line_no }}_>
 <Proxy_Fallback_Intvl_{{ line_no }}_>120</Proxy_Fallback_Intvl_{{ line_no }}_>
 <Display_Name_{{ line_no }}_>{{ line['display_name']|e }}</Display_Name_{{ line_no }}_>
