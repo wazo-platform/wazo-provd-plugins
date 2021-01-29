@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2014-2020 The Wazo Authors (see AUTHORS file)
+# Copyright 2014-2021 The Wazo Authors (see AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Depends on the following external programs:
@@ -524,3 +524,45 @@ def build_10_1_54_13(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '10.1.54.13/', path])
+
+
+@target('05.20.0001', 'wazo-snom-dect-05.20.0001')
+def build_05_20_0001(path):
+    MODELS = [
+        'M300',
+        'M700',
+        'M900',
+    ]
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '--include', '/templates/base.tpl',
+                '--include', '/templates/M300.tpl',
+                '--include', '/templates/M700.tpl',
+                '--include', '/templates/M900.tpl',
+                '--exclude', '/templates/*.tpl',
+                '--exclude', '*.btpl',
+                'common_dect/', path])
+
+    for model in MODELS:
+        # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
+        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s-firmware.htm.tpl' % model)
+        sed_script = 's/#FW_FILENAME#/%s_v0520_b0001.fwu/' % model
+        with open(model_tpl, 'wb') as f:
+            check_call(['sed', sed_script, 'common_dect/templates/common/snom-model-firmware.htm.tpl.btpl'],
+                       stdout=f)
+
+        # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
+        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s.htm.tpl' % model)
+        sed_script = 's/#MODEL#/%s/' % model
+        with open(model_tpl, 'wb') as f:
+            check_call(['sed', sed_script, 'common_dect/templates/common/snom-model.htm.tpl.btpl'],
+                       stdout=f)
+
+        # generate snom<model>.xml.tpl from snom-model.xml.mtpl
+        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s.xml.tpl' % model)
+        sed_script = 's/#MODEL#/%s/' % model
+        with open(model_tpl, 'wb') as f:
+            check_call(['sed', sed_script, 'common_dect/templates/common/snom-model.xml.tpl.btpl'],
+                       stdout=f)
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '05.20.0001/', path])

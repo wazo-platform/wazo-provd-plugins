@@ -1,0 +1,46 @@
+[pkg_M300-fw]
+description: Firmware for Snom M300
+description_fr: Firmware pour Snom M300
+version: 05.20.0001
+files: M300-fw
+install: snom-M300-fw
+
+[pkg_M700-fw]
+description: Firmware for Snom M700
+description_fr: Firmware pour Snom M700
+version: 05.20.0001
+files: M700-fw
+install: snom-M700-fw
+
+[pkg_M900-fw]
+description: Firmware for Snom M900
+description_fr: Firmware pour Snom M900
+version: 05.20.0001
+files: M900-fw
+install: snom-M900-fw
+
+
+[install_snom-M300-fw]
+a-b: cp $FILE1 M300/
+
+[install_snom-M700-fw]
+a-b: cp $FILE1 M700/
+
+[install_snom-M900-fw]
+a-b: cp $FILE1 M900/
+
+
+[file_M300-fw]
+url: http://dect.snom.com/M300/M300_v0520_b0001.fwu
+size: 2355242
+sha1sum: 8f57acf5268ef9023bb29faa4a8f165b4affe711
+
+[file_M700-fw]
+url: http://dect.snom.com/M700/M700_v0520_b0001.fwu
+size: 2336588
+sha1sum: bf8ed17794714ebfcb65592f8e2d1ed195c21fd6
+
+[file_M900-fw]
+url: http://dect.snom.com/M900/M900_v0520_b0001.fwu
+size: 3237201
+sha1sum: b6e5f6530dd823d0f70c43e1c7f72c35b7fc6751

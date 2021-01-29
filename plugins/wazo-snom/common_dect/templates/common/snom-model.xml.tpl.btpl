@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<firmware-settings>
+    <firmware-status>http://{{ ip }}:{{ http_port }}/snom#MODEL#-firmware.xml</firmware-status>
+</firmware-settings>
