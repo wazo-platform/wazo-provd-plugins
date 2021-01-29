@@ -8,7 +8,6 @@ import os.path
 import re
 from pkg_resources import parse_version
 from provd import plugins
-from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import (
@@ -206,38 +205,6 @@ class BaseSnomPlugin(StandardPlugin):
             if locale in self._LOCALE:
                 raw_config[u'XX_lang'] = self._LOCALE[locale]
 
-    def _format_dst_change(self, dst_change):
-        fmted_time = u'%02d:%02d:%02d' % tuple(dst_change['time'].as_hms)
-        day = dst_change['day']
-        if day.startswith('D'):
-            return u'%02d.%02d %s' % (int(day[1:]), dst_change['month'], fmted_time)
-        else:
-            week, weekday = map(int, day[1:].split('.'))
-            weekday = tzinform.week_start_on_monday(weekday)
-            return u'%02d.%02d.%02d %s' % (dst_change['month'], week, weekday, fmted_time)
-
-    def _format_tzinfo(self, tzinfo):
-        lines = []
-        lines.append(u'<timezone perm="R"></timezone>')
-        lines.append(u'<utc_offset perm="R">%+d</utc_offset>' % tzinfo['utcoffset'].as_seconds)
-        if tzinfo['dst'] is None:
-            lines.append(u'<dst perm="R"></dst>')
-        else:
-            lines.append(u'<dst perm="R">%d %s %s</dst>' %
-                         (tzinfo['dst']['save'].as_seconds,
-                          self._format_dst_change(tzinfo['dst']['start']),
-                          self._format_dst_change(tzinfo['dst']['end'])))
-        return u'\n'.join(lines)
-
-    def _add_timezone(self, raw_config):
-        if u'timezone' in raw_config:
-            try:
-                tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
-            except tzinform.TimezoneNotFoundError, e:
-                logger.warning('Unknown timezone %s: %s', raw_config[u'timezone'], e)
-            else:
-                raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
-
     def _add_user_dtmf_info(self, raw_config):
         dtmf_mode = raw_config.get(u'sip_dtmf_mode')
         for line in raw_config[u'sip_lines'].itervalues():
@@ -293,7 +260,6 @@ class BaseSnomPlugin(StandardPlugin):
         self._add_sip_servers(raw_config)
         self._update_sip_lines(raw_config)
         self._add_lang(raw_config)
-        self._add_timezone(raw_config)
         self._add_xivo_phonebook_url(raw_config)
         raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
         raw_config[u'XX_options'] = device.get(u'options', {})

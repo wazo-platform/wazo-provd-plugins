@@ -62,8 +62,6 @@
         <tone_scheme>{{ XX_lang[1] }}</tone_scheme>
     {%- endif %}
 
-    {{ XX_timezone }}
-
     {% block settings_suffix %}{% endblock %}
     </phone-settings>
 </settings>
