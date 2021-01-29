@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <firmware-settings>
-  <firmware perm="R">http://{{ ip }}:{{ http_port }}</firmware>
+  <firmware perm="">http://{{ ip }}:{{ http_port }}</firmware>
   <fp_fwu_sw_version>520</fp_fwu_sw_version>
   <fp_fwu_branch_version>1</fp_fwu_branch_version>
 

@@ -1,7 +1,11 @@
 # Installation
 
-## Firmware support
+## Firmware
 
+* There is currently a bug with firmware upgrade. The provisioning port is stripped from the
+  provisioning server URL by the firmware. If you want to upgrade the firmware, please go to the
+  web interface of the base station and input the port number after the IP address or hostname used
+  for provisioning and press on `Save/start upgrade`.
 * After upgrading to version 450BXX or higher the rollback to version 410BXX or previous is not
   possible.
 * After uprading to version 500BXX or higher you need to update also any M5 Repeater you would like

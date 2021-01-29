@@ -141,11 +141,10 @@ class BaseSnomPlugin(StandardPlugin):
     http_dev_info_extractor = BaseSnomDECTHTTPDeviceInfoExtractor()
 
     def _common_templates(self):
-        yield ('common/web_lang.xml.tpl', 'web_lang.xml')
         yield ('common/snom-general.xml.tpl', 'snom-general.xml')
         for tpl_format, file_format in [('common/snom%s.htm.tpl', 'snom%s.htm'),
                                         ('common/snom%s.xml.tpl', 'snom%s.xml'),
-                                        ('common/snom%s-firmware.htm.tpl', 'snom%s-firmware.htm')]:
+                                        ('common/snom%s-firmware.xml.tpl', 'snom%s-firmware.xml')]:
             for model in self._MODELS:
                 yield tpl_format % model, file_format % model
 

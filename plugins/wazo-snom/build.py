@@ -544,10 +544,10 @@ def build_05_20_0001(path):
 
     for model in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s-firmware.htm.tpl' % model)
+        model_tpl = os.path.join(path, 'templates', 'common', 'snom%s-firmware.xml.tpl' % model)
         sed_script = 's/#FW_FILENAME#/%s_v0520_b0001.fwu/' % model
         with open(model_tpl, 'wb') as f:
-            check_call(['sed', sed_script, 'common_dect/templates/common/snom-model-firmware.htm.tpl.btpl'],
+            check_call(['sed', sed_script, 'common_dect/templates/common/snom-model-firmware.xml.tpl.btpl'],
                        stdout=f)
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
