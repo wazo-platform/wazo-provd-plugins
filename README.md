@@ -22,6 +22,17 @@ A key that is not present in a `plugin-info` file means that this information is
 situation is possible when a new key is added and only some plugins support it, or when it was not
 possible to test it.
 
+### Install files
+
+A file named `install.md` can be present at the root of a plugin. If present, it is important to
+read prior to installation, as it can provide some information on what to do to get it running.
+
+### Limitations file
+
+A file named `limitations.md` can be present at the root of a plugin. If present, it can be useful
+to read if you want to know what is not supported or what is not completely supported by the plugin
+or the phone.
+
 ## Firmware management
 
 If you wish to host firmwares for specific phones, go to the `plugins/_firmwares` directory.
