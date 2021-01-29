@@ -19,6 +19,48 @@ version: 05.20.0001
 files: M900-fw
 install: snom-M900-fw
 
+[pkg_M25-fw]
+description: Firmware for Snom M25 handset
+description_fr: Firmware pour combiné Snom M25
+version: 05.20.0001
+files: M25-fw
+install: snom-M25-fw
+
+[pkg_M65-fw]
+description: Firmware for Snom M65 handset
+description_fr: Firmware pour combiné Snom M65
+version: 05.20.0001
+files: M65-fw
+install: snom-M65-fw
+
+[pkg_M70-fw]
+description: Firmware for Snom M70 handset
+description_fr: Firmware pour combiné Snom M70
+version: 05.20.0001
+files: M70-fw
+install: snom-M70-fw
+
+[pkg_M80-fw]
+description: Firmware for Snom M80 handset
+description_fr: Firmware pour combiné Snom M80
+version: 05.20.0001
+files: M80-fw
+install: snom-M80-fw
+
+[pkg_M85-fw]
+description: Firmware for Snom M85 handset
+description_fr: Firmware pour combiné Snom M85
+version: 05.20.0001
+files: M85-fw
+install: snom-M85-fw
+
+[pkg_M90-fw]
+description: Firmware for Snom M90 handset
+description_fr: Firmware pour combiné Snom M90
+version: 05.20.0001
+files: M90-fw
+install: snom-M90-fw
+
 
 [install_snom-M300-fw]
 a-b: cp $FILE1 M300/
@@ -28,6 +70,24 @@ a-b: cp $FILE1 M700/
 
 [install_snom-M900-fw]
 a-b: cp $FILE1 M900/
+
+[install_snom-M25-fw]
+a-b: cp $FILE1 M25/
+
+[install_snom-M65-fw]
+a-b: cp $FILE1 M65/
+
+[install_snom-M70-fw]
+a-b: cp $FILE1 M70/
+
+[install_snom-M80-fw]
+a-b: cp $FILE1 M80/
+
+[install_snom-M85-fw]
+a-b: cp $FILE1 M85/
+
+[install_snom-M90-fw]
+a-b: cp $FILE1 M90/
 
 
 [file_M300-fw]
@@ -44,3 +104,33 @@ sha1sum: bf8ed17794714ebfcb65592f8e2d1ed195c21fd6
 url: http://dect.snom.com/M900/M900_v0520_b0001.fwu
 size: 3237201
 sha1sum: b6e5f6530dd823d0f70c43e1c7f72c35b7fc6751
+
+[file_M25-fw]
+url: http://dect.snom.com/M25/M25_v0520_b0001.fwu
+size: 959839
+sha1sum: 7a23c79689e119f7fd1633923f632fe2a1658677
+
+[file_M65-fw]
+url: http://dect.snom.com/M65/M65_v0520_b0001.fwu
+size: 1038481
+sha1sum: 344c270045149d741699e8a8c21c699907e9f162
+
+[file_M70-fw]
+url: http://dect.snom.com/M70/M70_v0520_b0001.fwu
+size: 1579209
+sha1sum: 516910d9580bb38dd9b5dd81c79c20b95a475ff0
+
+[file_M80-fw]
+url: http://dect.snom.com/M80/M80_v0520_b0001.fwu
+size: 1580237
+sha1sum: 2f7475af5cb03009d4afc5d5a8f44a046f1bcd72
+
+[file_M85-fw]
+url: http://dect.snom.com/M85/M85_v0520_b0001.fwu
+size: 1597199
+sha1sum: b8e15a2918fa140b20fd6d2afe20b8b73d43c654
+
+[file_M90-fw]
+url: http://dect.snom.com/M90/M90_v0520_b0001.fwu
+size: 1579723
+sha1sum: 59a6f623151c778a65e0437d21b2ebcb9ebf9204
