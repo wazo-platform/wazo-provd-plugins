@@ -33,7 +33,7 @@
     {%- endif %}
 
     {%- for server in XX_servers.values() %}
-        <srv_sip_server_alias idx="1">Wazo {{ server['id'] }}</srv_sip_server_alias>
+        <srv_sip_server_alias idx="{{ server['id'] }}">Wazo {{ server['id'] }}</srv_sip_server_alias>
         <user_host idx="{{ server['id'] }}">{{ server['proxy_ip'] }}</user_host>
         <srv_srtp_auth idx="{{ server['id'] }}">off</srv_srtp_auth>
         <user_dtmf_info idx="{{ server['id'] }}">{{ server['dtmf_mode'] }}</user_dtmf_info>
