@@ -15,6 +15,8 @@ Valid keys are described as follows:
 * `expansion_modules` (integer): maximum number of expansion modules
 * `switchboard` (boolean): switchboard support
 * `protocol` (string): the protocol used by the phones, usually `sip` or `sccp`
+* `type` (string): the device type. Can be either `deskphone`, `dect`, `ata` or `gateway`
+* `multicell` (boolean): DECT multicell support
 
 A key that is not present in a `plugin-info` file means that this information is unknown. This
 situation is possible when a new key is added and only some plugins support it, or when it was not
