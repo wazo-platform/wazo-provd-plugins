@@ -32,26 +32,24 @@ COMMON_FILES = [
     ('y000000000073.cfg', u'CP960-73.83.0.30.rom', 'model.tpl'),
 ]
 
+HANDSETS_FW = {
+    'w53h': u'W53H-88.83.0.90.rom',
+    'w56h': u'W56H-61.83.0.90.rom',
+    'w59r': u'W59R-115.83.0.10.rom',
+    'cp930w': u'CP930W-87.83.0.60.rom',
+}
+
 COMMON_FILES_DECT = [
     {
         'filename': u'y000000000077.cfg',
         'fw_filename': u'W60B-77.83.0.85.rom',
-        'handsets_fw': {
-            'w53h': u'W53H-88.83.0.90.rom',
-            'w56h': u'W56H-61.83.0.90.rom',
-            'cp930w': u'CP930W-87.83.0.60.rom',
-        },
+        'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
     {
         'filename': u'y000000000103.cfg',
         'fw_filename': u'$PN-103.83.0.80.rom',  # $PN = Product Name, i.e W80B/W80DM
-        'handsets_fw': {
-            'w53h': u'W53H-88.83.0.90.rom',
-            'w56h': u'W56H-61.83.0.90.rom',
-            'w59r': u'W59R-115.83.0.10.rom',
-            'cp930w': u'CP930W-87.83.0.60.rom',
-        },
+        'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     }
 ]
