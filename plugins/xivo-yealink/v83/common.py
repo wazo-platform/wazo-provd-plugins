@@ -1,19 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2011-2020 The Wazo Authors  (see the AUTHORS file)
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2011-2021 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 import re
@@ -22,12 +10,20 @@ from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, PROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, FULL_SUPPORT, BasePgAssociator
-from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
-    TemplatePluginHelper
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    IMPROBABLE_SUPPORT,
+    PROBABLE_SUPPORT,
+)
+from provd.plugins import (
+    FetchfwPluginHelper,
+    StandardPlugin,
+    TemplatePluginHelper,
+)
 from provd.servers.http import HTTPNoListingFileService
-from provd.util import norm_mac, format_mac
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-yealink')
@@ -35,9 +31,9 @@ logger = logging.getLogger('plugin.xivo-yealink')
 
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
-        re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'^[yY]ealink\s+(CP860|W52P|W60B|W80B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'(VP530P?|W52P|W60B|W80B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^[yY]ealink\s+SIP?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^[yY]ealink\s+(CP960|W60B|W80(?:B|DM))\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'(W60B|W80(?:B|DM))\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
 
@@ -53,32 +49,17 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
 
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
-        #   "Yealink CP860 37.72.0.5 00:15:65:8a:37:86"
-        #   "yealink SIP-T18 18.0.0.80 00:15:65:27:3e:05"
-        #   "Yealink SIP-T19P_E2 53.80.0.3 00:15:65:4c:4c:26"
-        #   "Yealink SIP-T20P 9.72.0.30 00:15:65:5e:16:7c"
-        #   "Yealink SIP-T21P 34.72.0.1 00:15:65:4c:4c:26"
-        #   "Yealink SIP-T21P_E2 52.80.0.3 00:15:65:4c:4c:26"
-        #   "Yealink SIP-T22P 7.72.0.30 00:15:65:39:31:fc"
-        #   "Yealink SIP-T23G 44.80.0.60 00:15:65:93:70:f2"
-        #   "Yealink SIP-T26P 6.72.0.30 00:15:65:4b:57:d2"
-        #   "Yealink SIP-T27P 45.80.0.25 00:15:65:8c:48:12"
-        #   "yealink SIP-T28P 2.70.0.140 00:15:65:13:ae:0b"
-        #   "Yealink SIP-T38G  38.70.0.125 00:15:65:2f:c3:5e"
-        #   "Yealink SIP-T40P 54.80.0.10 00:15:65:94:86:64"
-        #   "Yealink SIP-T41P 36.72.0.1 00:15:65:53:83:22"
-        #   "Yealink SIP-T42G 29.72.0.1 00:15:65:4c:3b:b0"
-        #   "Yealink SIP-T46G 28.72.0.1 00:15:65:4a:a9:37"
-        #   "Yealink SIP-T48G 35.72.0.6 00:15:65:5c:60:82"
-        #   "Yealink SIP VP-T49G 51.80.0.10 00:15:65:9b:5a:44"
-        #   "Yealink SIP-W52P 25.73.0.20 00:15:65:40:ae:35"
-        #   "W52P 25.30.0.2 00:15:65:44:b3:7c"
-        #   "Yealink W52P 25.80.0.15 00:15:65:b8:60:05"
+        #   "Yealink CP960 73.83.0.30 00:15:65:8a:37:86"
+        #   "yealink SIP-T29G 46.83.0.120 00:15:65:13:ae:0b"
+        #   "Yealink SIP-T41P 36.83.0.120 00:15:65:53:83:22"
+        #   "Yealink SIP-T42G 29.83.0.120 00:15:65:4c:3b:b0"
+        #   "Yealink SIP-T46G 28.83.0.120 00:15:65:4a:a9:37"
+        #   "Yealink SIP-T48G 35.83.0.120 00:15:65:5c:60:82"
+        #   "Yealink SIP-T49G 51.80.0.10 00:15:65:9b:5a:44"
+        #   "Yealink SIP-T58A 58.83.0.15 00:15:65:9b:5b:22"
         #   "Yealink W60B 77.81.0.35 80:5e:c0:09:ab:dc"
-        #   "Yealink-T46G 28.71.0.81 28.1.0.128.0.0.0"
-        #   "VP530P 23.70.0.40 00:15:65:31:4b:c0"
-        #   "VP530 23.70.0.41 00:15:65:3d:58:e3"
         #   "Yealink W80B 103.83.0.70 80:5e:c0:71:01:38"
+        #   "Yealink W80DM 103.83.0.70 80:5e:c0:71:02:38"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
@@ -107,9 +88,6 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
                 logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
             else:
                 return {u'mac': mac}
-        if request.path.startswith('/y000000000025.cfg'):
-            return {u'vendor': u'Yealink',
-                    u'model': u'W52P'}
         return None
 
 
@@ -205,68 +183,32 @@ class BaseYealinkFunckeyGenerator(object):
 class BaseYealinkFunckeyPrefixIterator(object):
 
     _NB_LINEKEY = {
-        u'CP860': 0,
-        u'T19P': 0,
-        u'T19P_E2': 0,
-        u'T20P': 2,
-        u'T21P': 2,
-        u'T21P_E2': 2,
-        u'T23P': 3,
-        u'T23G': 3,
-        u'T27P': 21,
-        u'T27G': 21,
+        u'CP960': 0,
         u'T29G': 27,
-        u'T32G': 3,
-        u'T38G': 6,
-        u'T40P': 3,
         u'T41P': 15,
-        u'T41S': 15,
         u'T42G': 15,
-        u'T42S': 15,
         u'T46G': 27,
-        u'T46S': 27,
         u'T48G': 29,
-        u'T48S': 29,
         u'T49G': 29,
-        u'T52S': 21,
-        u'T54S': 27,
         u'T56A': 27,
         u'T58': 27,
-        u'W52P': 0,
         u'W60B': 0,
         u'W80B': 0,
+        u'W80DM': 0,
     }
     _NB_MEMORYKEY = {
-        u'CP860': 0,
-        u'T19P': 0,
-        u'T19P_E2': 0,
-        u'T20P': 0,
-        u'T21P': 0,
-        u'T21P_E2': 0,
-        u'T23P': 0,
-        u'T23G': 0,
-        u'T27P': 0,
-        u'T27G': 0,
+        u'CP960': 0,
         u'T29G': 0,
-        u'T32G': 0,
-        u'T38G': 10,
-        u'T40P': 0,
         u'T41P': 0,
-        u'T41S': 0,
         u'T42G': 0,
-        u'T42S': 0,
         u'T46G': 0,
-        u'T46S': 0,
         u'T48G': 0,
-        u'T48S': 0,
         u'T49G': 0,
-        u'T52S': 0,
-        u'T54S': 0,
         u'T56A': 0,
         u'T58': 0,
-        u'W52P': 0,
         u'W60B': 0,
         u'W80B': 0,
+        u'W80DM': 0,
     }
 
     class NullExpansionModule(object):
@@ -345,37 +287,18 @@ class BaseYealinkPlugin(StandardPlugin):
     }
     _SIP_TRANSPORT_DEF = u'0'
     _NB_SIP_ACCOUNTS = {
-        u'CP860': 1,
-        u'T19P': 1,
-        u'T19P_E2': 1,
-        u'T20P': 2,
-        u'T21P': 2,
-        u'T21P_E2': 2,
-        u'T23P': 3,
-        u'T23G': 3,
-        u'T27P': 6,
-        u'T27G': 6,
+        u'CP960': 1,
         u'T29G': 16,
-        u'T32G': 3,
-        u'T38G': 6,
-        u'T40P': 3,
         u'T41P': 6,
-        u'T41S': 6,
         u'T42G': 12,
-        u'T42S': 12,
         u'T46G': 16,
-        u'T46S': 16,
         u'T48G': 16,
-        u'T48S': 16,
         u'T49G': 16,
-        u'T52S': 12,
-        u'T54S': 16,
         u'T56A': 16,
         u'T58': 16,
-        u'VP530P': 4,
-        u'W52P': 5,
         u'W60B': 8,
-        u'W80B': 100,
+        u'W80B': 0,
+        u'W80DM': 100,
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
