@@ -46,71 +46,48 @@ COMMON_FILES = [
     ('y000000000127.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom', 'model.tpl'),
 ]
 
+HANDSETS_FW = {
+    'w53h': u'W53H-88.85.0.20.rom',
+    'w56h': u'W56H-61.85.0.20.rom',
+    'w59r': u'W59R-115.85.0.20.rom',
+    'cp930w': u'CP930W-87.85.0.20.rom',
+}
+
 COMMON_FILES_DECT = [
     {
         'filename': u'y000000000130.cfg',
         'fw_filename': u'$PN-130.85.0.15.rom',  # $PN = Product Name, i.e W90B/W90DM
-        'handsets_fw': {
-            'w53h': u'W53H-88.85.0.20.rom',
-            'w56h': u'W56H-61.85.0.20.rom',
-            'w59r': u'W59R-115.85.0.20.rom',
-            'cp930w': u'CP930W-87.85.0.20.rom',
-        },
+        'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
     {
         'filename': u'y000000000058.cfg',
         'fw_filename': u'T58-58.85.0.5.rom',
-        'handsets_fw': {
-            'w53h': u'W53H-88.85.0.20.rom',
-            'w56h': u'W56H-61.85.0.20.rom',
-            'w59r': u'W59R-115.85.0.20.rom',
-            'cp930w': u'CP930W-87.85.0.20.rom',
-        },
+        'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
     {
         'filename': u'y000000000077.cfg',
         'fw_filename': u'W60B-77.85.0.20.rom',
-        'handsets_fw': {
-            'w53h': u'W53H-88.85.0.20.rom',
-            'w56h': u'W56H-61.85.0.20.rom',
-            'w59r': u'W59R-115.85.0.20.rom',
-            'cp930w': u'CP930W-87.85.0.20.rom',
-        },
+        'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
     {
         'filename': u'y000000000095.cfg',
         'fw_filename': u'T54W(T57W,T53W,T53)-96.85.0.5.rom',
-        'handsets_fw': {
-            'w53h': u'W53H-88.85.0.20.rom',
-            'w56h': u'W56H-61.85.0.20.rom',
-            'w59r': u'W59R-115.85.0.20.rom',
-            'cp930w': u'CP930W-87.85.0.20.rom',
-        },
+        'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
     {
         'filename': u'y000000000096.cfg',
         'fw_filename': u'T54W(T57W,T53W,T53)-96.85.0.5.rom',
-        'handsets_fw': {
-            'w53h': u'W53H-88.85.0.20.rom',
-            'w56h': u'W56H-61.85.0.20.rom',
-            'w59r': u'W59R-115.85.0.20.rom',
-            'cp930w': u'CP930W-87.85.0.20.rom',
-        },
+        'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
     {
         'filename': u'y000000000097.cfg',
         'fw_filename': u'T54W(T57W,T53W,T53)-96.85.0.5.rom',
-        'handsets_fw': {
-            'w53h': u'W53H-88.85.0.20.rom',
-            'w56h': u'W56H-61.85.0.20.rom',
-            'w59r': u'W59R-115.85.0.20.rom',
-            'cp930w': u'CP930W-87.85.0.20.rom',
-        },
+        'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     }
 ]
