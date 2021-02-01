@@ -25,6 +25,10 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'^[yY]ealink\s+(W90(?:DM|B))\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^[yY]ealink\s+(W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'(VP530P?|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
 
     def extract(self, request, request_type):
@@ -39,10 +43,21 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
 
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
+        #   "yealink SIP-T18 18.0.0.80 00:15:65:27:3e:05"
+        #   "Yealink SIP-T19P_E2 53.80.0.3 00:15:65:4c:4c:26"
+        #   "Yealink SIP-T20P 9.72.0.30 00:15:65:5e:16:7c"
+        #   "Yealink SIP-T21P 34.72.0.1 00:15:65:4c:4c:26"
+        #   "Yealink SIP-T21P_E2 52.80.0.3 00:15:65:4c:4c:26"
+        #   "Yealink SIP-T22P 7.72.0.30 00:15:65:39:31:fc"
+        #   "Yealink SIP-T23G 44.80.0.60 00:15:65:93:70:f2"
+        #   "Yealink SIP-T26P 6.72.0.30 00:15:65:4b:57:d2"
+        #   "Yealink SIP-T27P 45.80.0.25 00:15:65:8c:48:12"
+        #   "Yealink SIP VP-T49G 51.80.0.10 00:15:65:9b:5a:44"
+        #   "Yealink W60B 77.81.0.35 80:5e:c0:09:ab:dc"
+        #   "VP530P 23.70.0.40 00:15:65:31:4b:c0"
         #   "Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72"
         #   "Yealink SIP-T33G 124.85.257.55 80:5e:c0:bd:ea:ef"
         #   "Yealink W90DM 130.85.0.15 80:5e:c0:d9:c7:44"
-        #   "Yealink W80B 130.85.0.15 80:5e:c0:d9:c6:f8"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
@@ -63,7 +78,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         return None
 
     def _extract_from_path(self, request):
-        if request.path.startswith('/001565') or request.path.startswith('/805ec0'):
+        if request.path.startswith('/001565'):
             raw_mac = path[1:-4]
             try:
                 mac = norm_mac(raw_mac.decode('ascii'))
@@ -166,6 +181,9 @@ class BaseYealinkFunckeyGenerator(object):
 class BaseYealinkFunckeyPrefixIterator(object):
 
     _NB_LINEKEY = {
+        u'CP920': 0,
+        u'CP960': 0,
+        u'T27G': 21,
         u'T30': 0,
         u'T30P': 0,
         u'T31': 2,
@@ -173,10 +191,24 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T31P': 2,
         u'T33G': 4,
         u'T33P': 4,
+        u'T41S': 15,
+        u'T42S': 15,
+        u'T46S': 27,
+        u'T48S': 29,
+        u'T53': 21,
+        u'T53W': 21,
+        u'T54S': 27,
+        u'T54W': 27,
+        u'T57W': 29,
+        u'T58': 27,
+        u'W60B': 0,
         u'W90DM': 0,
         u'W90B': 0,
     }
     _NB_MEMORYKEY = {
+        u'CP920': 0,
+        u'CP960': 0,
+        u'T27G': 0,
         u'T30': 0,
         u'T30P': 0,
         u'T31': 0,
@@ -184,6 +216,17 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T31P': 0,
         u'T33G': 0,
         u'T33P': 0,
+        u'T41S': 0,
+        u'T42S': 0,
+        u'T46S': 0,
+        u'T48S': 0,
+        u'T53': 0,
+        u'T53W': 0,
+        u'T54S': 0,
+        u'T54W': 0,
+        u'T57W': 0,
+        u'T58': 0,
+        u'W60B': 0,
         u'W90DM': 0,
         u'W90B': 0,
     }
@@ -264,6 +307,9 @@ class BaseYealinkPlugin(StandardPlugin):
     }
     _SIP_TRANSPORT_DEF = u'0'
     _NB_SIP_ACCOUNTS = {
+        u'CP920': 1,
+        u'CP960': 1,
+        u'T27G': 6,
         u'T30': 1,
         u'T30P': 1,
         u'T31': 2,
@@ -271,6 +317,17 @@ class BaseYealinkPlugin(StandardPlugin):
         u'T31P': 2,
         u'T33G': 4,
         u'T33P': 4,
+        u'T41S': 6,
+        u'T42S': 12,
+        u'T46S': 16,
+        u'T48S': 16,
+        u'T53': 12,
+        u'T53W': 12,
+        u'T54S': 16,
+        u'T54W': 16,
+        u'T57W': 16,
+        u'T58': 16,
+        u'W60B': 8,
         u'W90DM': 250,
         u'W90B': 0,
     }

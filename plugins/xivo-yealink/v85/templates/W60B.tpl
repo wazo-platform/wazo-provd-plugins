@@ -2,31 +2,12 @@
 
 static.auto_provision.pnp_enable = 0
 static.auto_provision.custom.protect = 1
+static.auto_provision.handset_configured.enable = 1
 
-distinctive_ring_tones.alert_info.1.text = ring1
-distinctive_ring_tones.alert_info.2.text = ring2
-distinctive_ring_tones.alert_info.3.text = ring3
-distinctive_ring_tones.alert_info.4.text = ring4
-distinctive_ring_tones.alert_info.5.text = ring5
-distinctive_ring_tones.alert_info.6.text = ring6
-distinctive_ring_tones.alert_info.7.text = ring7
-distinctive_ring_tones.alert_info.8.text = ring8
-distinctive_ring_tones.alert_info.1.ringer = 1
-distinctive_ring_tones.alert_info.2.ringer = 2
-distinctive_ring_tones.alert_info.3.ringer = 3
-distinctive_ring_tones.alert_info.4.ringer = 4
-distinctive_ring_tones.alert_info.5.ringer = 5
-distinctive_ring_tones.alert_info.6.ringer = 6
-distinctive_ring_tones.alert_info.7.ringer = 7
-distinctive_ring_tones.alert_info.8.ringer = 8
-
-features.caller_name_type_on_dialing = 1
-
-local_time.date_format = 2
+custom.handset.date_format = 2
+custom.handset.screen_saver.enable = 0
 
 sip.notify_reboot_enable = 0
-
-transfer.dsskey_deal_type = 1
 
 {% if vlan_enabled -%}
 static.network.vlan.internet_port_enable = 1
@@ -38,24 +19,16 @@ static.network.vlan.internet_port_vid = %NULL%
 static.network.vlan.internet_port_priority = %NULL%
 {% endif %}
 
-{% if vlan_enabled and vlan_pc_port_id -%}
-static.network.vlan.pc_port_enable = 1
-static.network.vlan.pc_port_vid = {{ vlan_pc_port_id }}
-{% else -%}
-static.network.vlan.pc_port_enable = 0
-static.network.vlan.pc_port_vid = %NULL%
-{% endif %}
-
 {% if syslog_enabled -%}
-static.syslog.enable = 1
+static.syslog.mode = 1
 static.syslog.server = {{ syslog_ip }}
 {% else -%}
-static.syslog.enable = 0
+static.syslog.mode = 0
 static.syslog.server = %NULL%
 {% endif %}
 
-static.lang.wui = {{ XX_lang|d('%NULL%') }}
-static.lang.gui = {{ XX_lang|d('%NULL%') }}
+lang.wui = {{ XX_lang|d('%NULL%') }}
+custom.handset.language = {{ XX_handset_lang|d('%NULL%') }}
 
 voice.tone.country = {{ XX_country|d('%NULL%') }}
 
@@ -91,14 +64,12 @@ account.{{ line_no }}.user_name = {{ line['username'] }}
 account.{{ line_no }}.password = {{ line['password'] }}
 account.{{ line_no }}.sip_server.1.address = {{ line['proxy_ip'] }}
 account.{{ line_no }}.sip_server.1.port = {{ line['proxy_port']|d('%NULL%') }}
-account.{{ line_no }}.sip_server.1.transport_type = {{ XX_sip_transport }}
 account.{{ line_no }}.sip_server.2.address = {{ line['backup_proxy_ip']|d('%NULL%') }}
 account.{{ line_no }}.sip_server.2.port = {{ line['backup_proxy_port']|d('%NULL%') }}
-account.{{ line_no }}.sip_server.2.transport_type = {{ XX_sip_transport }}
 account.{{ line_no }}.fallback.redundancy_type = 1
 account.{{ line_no }}.cid_source = 2
 account.{{ line_no }}.alert_info_url_enable = 0
-account.{{ line_no }}.nat.udp_update_enable = 1
+account.{{ line_no }}.nat.udp_update_enable = 0
 account.{{ line_no }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
 account.{{ line_no }}.dtmf.info_type = 1
 {% if sip_subscribe_mwi -%}
@@ -114,10 +85,8 @@ account.{{ line_no }}.user_name = %NULL%
 account.{{ line_no }}.password = %NULL%
 account.{{ line_no }}.sip_server.1.address = %NULL%
 account.{{ line_no }}.sip_server.1.port = %NULL%
-account.{{ line_no }}.sip_server.1.transport_type = %NULL%
 account.{{ line_no }}.sip_server.2.address = %NULL%
 account.{{ line_no }}.sip_server.2.port = %NULL%
-account.{{ line_no }}.sip_server.2.transport_type = %NULL%
 account.{{ line_no }}.subscribe_mwi = %NULL%
 voice_mail.number.{{ line_no }} = %NULL%
 {% endif %}
@@ -128,17 +97,3 @@ call_waiting.enable = 0
 {% else -%}
 call_waiting.enable = 1
 {% endif %}
-
-static.directory_setting.url = http://{{ ip }}:{{ http_port }}/directory_setting.xml
-
-{% if XX_wazo_phoned_user_service_dnd_enabled_url -%}
-action_url.dnd_on = {{ XX_wazo_phoned_user_service_dnd_enabled_url }}
-{% endif -%}
-{% if XX_wazo_phoned_user_service_dnd_disabled_url -%}
-action_url.dnd_off = {{ XX_wazo_phoned_user_service_dnd_disabled_url }}
-{% endif -%}
-
-{{ XX_fkeys }}
-
-{% block model_specific_parameters -%}
-{% endblock %}

@@ -1,24 +1,72 @@
+[pkg_T27G-fw]
+description: Firmware for Yealink T27G
+description_fr: Micrologiciel pour Yealink T27G
+version: 69.85.0.85
+files: T27G-fw
+install: yealink-fw
+
 [pkg_T3X-fw]
 description: Firmware for Yealink T3X series
 description_fr: Micrologiciel pour Yealink série T3X
-version: 124.85.0.15
+version: 124.85.0.40
 files: T3X-fw
 install: yealink-fw
 
-[pkg_W90DM-fw]
-description: Firmware for Yealink W90DM
-description_fr: Micrologiciel pour Yealink W90DM
-version: 130.85.0.15
-files: W90DM-fw
+[pkg_T46S_T48S_T42S_T41S-fw]
+description: Firmware for Yealink T46S T48S T42S and T41S
+description_fr: Micrologiciel pour Yealink T46S T48S T42S et T41S
+version: 66.85.0.5
+files: T46S_T48S_T42S_T41S-fw
 install: yealink-fw
 
-[pkg_W90B-fw]
-description: Firmware for Yealink W90B
-description_fr: Micrologiciel pour Yealink W90B
-version: 130.85.0.15
-files: W90B-fw
+[pkg_T53_T53W_T54W_T57W-fw]
+description: Firmware for Yealink T53 T53W T54W and T57W
+description_fr: Micrologiciel pour Yealink T53 T53W T54W et T57W
+version: 96.85.0.5
+files: T53_T53W_T54W_T57W-fw
 install: yealink-fw
 
+[pkg_T58A-fw]
+description: Firmware for Yealink T58A
+description_fr: Micrologiciel pour Yealink T58A
+version: 58.85.0.5
+files: T58A-fw
+install: yealink-fw
+
+[pkg_W60B-fw]
+description: Firmware for Yealink W60B
+description_fr: Micrologiciel pour Yealink W60B
+version: 77.85.0.20
+files: W60B-fw
+install: yealink-fw
+
+[pkg_W53H-fw]
+description: Firmware for Yealink W53H handset
+description_fr: Micrologiciel pour le combiné Yealink W53H
+version: 88.85.0.20
+files: W53H-fw
+install: yealink-fw
+
+[pkg_W56H-fw]
+description: Firmware for Yealink W56H handset
+description_fr: Micrologiciel pour le combiné Yealink W56H
+version: 61.85.0.20
+files: W56H-fw
+install: yealink-fw
+
+[pkg_W59R-fw]
+description: Firmware for Yealink W59R handset
+description_fr: Micrologiciel pour le combiné Yealink W59R
+version: 115.85.0.20
+files: W59R-fw
+install: yealink-fw
+
+[pkg_CP920-fw]
+description: Firmware for Yealink CP920
+description_fr: Micrologiciel pour Yealink CP920
+version: 78.85.0.5
+files: CP920-fw
+install: yealink-fw
 
 [pkg_CP930W-fw]
 description: Firmware for Yealink CP930W
@@ -27,55 +75,75 @@ version: 87.85.0.20
 files: CP930W-fw
 install: yealink-fw
 
-[pkg_W53H-fw]
-description: Firmware for Yealink W53H handset
-description_fr: Micrologiciel pour combiné Yealink W53H
-version: 88.85.0.20
-files: W53H-fw
+[pkg_CP960-fw]
+description: Firmware for Yealink CP960
+description_fr: Micrologiciel pour Yealink CP960
+version: 73.85.0.5
+files: CP960-fw
 install: yealink-fw
 
-[pkg_W56H-fw]
-description: Firmware for Yealink W56H handset
-description_fr: Micrologiciel pour combiné Yealink W56H
-version: 61.85.0.20
-files: W56H-fw
-install: yealink-fw
+[pkg_T58_CP960-lang]
+description: Language pack for Yealink T58A and CP960
+description_fr: Paquet de langues pour Yealink T58A et CP960
+version:
+files: T58_CP960-lang
+install: yealink-T58_CP960-lang
 
-[pkg_W59R-fw]
-description: Firmware for Yealink W59R handset
-description_fr: Micrologiciel pour combiné Yealink W59R
-version: 115.85.0.20
-files: W59R-fw
-install: yealink-fw
+[pkg_T2X_T4X_T5X_CP920-lang]
+description: Language pack for Yealink T27, T41S, T42S, T46S, T48S, T53, T53W, T54W, T57W and CP920
+description_fr: Paquet de langues pour T27, T41S, T42S, T46S, T48S, T53, T53W, T54W, T57W et CP920
+version:
+files: T2X_T4X_T5X_CP920-lang
+install: yealink-T2X_T4X_T5X_CP920-lang
 
 
 [install_yealink-fw]
 a-b: cp *.rom firmware/
 
+[install_yealink-T58_CP960-lang]
+a-b: unzip $FILE1
+b-c: cp */GUI/*/*.lang lang/T58-CP960/
+
+[install_yealink-T2X_T4X_T5X_CP920-lang]
+a-b: unzip $FILE1
+b-c: cp */GUI/* lang/
+
+
+[file_T27G-fw]
+filename: T27G-69.85.0.85.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/cQXScowVOki2lf6C3HHTOEplusSymbolxOeh16yCKuaejgka2TNmkG8neODdVjoWxj0LVmZj3VBUaJpAYA6HbGDrhZnsxcQ==
+size: 19481168
+sha1sum: 7a577bb7bf78369ac040a09f5c01df87a0a040a0
 
 [file_T3X-fw]
-filename: T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.15.rom
-url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyps6JUOXOXzepzjndQWfdwPTNMcv/ryCJ7WRjs7B86H9mq6EECyVBLrnUjmVHaKW4TYognkJPqWASGa5VBplusSymbolVmj5KNFrtSTHudwRplusSymbolfoZ7ut1ZUgqXUu9fXK25NvmrOeTIv1sWcKiQb3u1/
-size: 11603584
-sha1sum: 9ea2ae5a60980ea9133b43f054b9faadb149a401
+filename: T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaLax8/BK0F3qWPL7mTTwQzGCzdCwFXQNwTjKkYXobplusSymbolmgH4NmWKzmh2BMZhaPB960HLtt4lL6rMoNplusSymbolg99kS0OyRfraANJmxKVeIg9PbT10PAR9VWitFKniYC3jmoMo62iK
+size: 11628240
+sha1sum: c642dc5fa8010253b91016c7fd11a6da0d2ec879
 
-[file_W90DM-fw]
-filename: W90DM-130.85.0.15.rom
-url: http://provd.wazo.community/firmwares/yealink/W90DM-130.85.0.15.rom
-size: 22057776
-sha1sum: 57232fc46b564cc1e0e0e7a8efe3a6d295057bdd
+[file_T46S_T48S_T42S_T41S-fw]
+filename: T46S(T48S,T42S,T41S)-66.85.0.5.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/x71yaViKhXSKOgYSKl0Pb7N9IXFpYf7YAOhOJmV0fGjbcYgmf0b9uxGdQ1IFTWkfgTz2m4g5Uoy1NWm3/S6JBTsplusSymbolM5UOVemCq9Kf2pvmyoc=
+size: 25559152
+sha1sum: 091d469ba3ce13b424a5212fb74f0e1b59c31a6a
 
-[file_W90B-fw]
-filename: W90B-130.85.0.15.rom
-url: http://provd.wazo.community/firmwares/yealink/W90B-130.85.0.15.rom
-size: 22057840
-sha1sum: 0fc2e1093956341ff0b3f230af526c279de98595
+[file_T53_T53W_T54W_T57W-fw]
+filename: T54W(T57W,T53W,T53)-96.85.0.5.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/sKL4XBvNyeFAFj6iRUIQMwplusSymbolJP9V1Oso2y/CGBHWvxmsB6aHbZoB7iAjQqo2AApq99Zqt6m/o8TomrLplusSymboloxAHEoRkikrZNg9XVRDplusSymbolcXNhAplusSymbol4I=
+size: 33026048
+sha1sum: dccfcc12ab010ed74bd49327fb396c3dbcc71774
 
-[file_CP930W-fw]
-filename: CP930W-87.85.0.20.rom
-url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaGL5UXnwnflJkrwF3or2hiV0ZTbCw7IC/plusSymbolcaXuwqPTSNZBDH9f4Okv6wbEEYweplusSymbol8UcCt58lpS9oNOXaGBkwQh2hNdgyGkDNAc
-size: 4707008
-sha1sum: c8352c05618b75abdd7239f9ba96d81143df810f
+[file_T58A-fw]
+filename: T58-58.85.0.5.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/WgHS0ldv1pQnJaaMIzkEplusSymboleplusSymbolHd9u6FcH6DP46voplusSymbolSLJDhhCOZWaRrtUkJXs6hWjfSedGCiU7f8EInRFVLVSFxxg==
+size: 234797120
+sha1sum: 960956917bfc6e5be956f9c783a35005984795b8
+
+[file_W60B-fw]
+filename: W60B-77.85.0.20.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaGplusSymboluYFWK5G2/beSaQsCO6y5G2nxsbFnQrIKFErEBoXSzMVIAhVbI2b3splusSymbolzAHQqHUBwa7ZGigCkVkM2aMmmU5ouw==
+size: 10847536
+sha1sum: a2d03d87db1954fee89db9b7637538ff463bfe5f
 
 [file_W53H-fw]
 filename: W53H-88.85.0.20.rom
@@ -89,9 +157,38 @@ url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPX
 size: 4412384
 sha1sum: 42b7b4dbfc98058635c6c5dc8bd8f88a4ade2568
 
-
 [file_W59R-fw]
 filename: W59R-115.85.0.20.rom
 url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaxx5awq37Uct9zHd5cZ0splusSymbolejpISplusSymbolpArxKDBBJr1egGc4j8h87MuB7zbYPQrQHW70h77plusSymboliKk/plusSymbolXplusSymbolUZBAYO9FmM1VVNiKqineel
 size: 3148768
 sha1sum: 3e826495b1585156a300b1e3752013491791db2d
+
+[file_CP920-fw]
+filename: CP920-78.85.0.5.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/49OL6tVRFp0O0TxnAgN0xxVqUA1UMejgRbBFugI2y2VGMxhagCorDjD7civfp7wxFyTN8Jf/AE2FoXLGuQrmPg==
+size: 20647536
+sha1sum: 35627d9a483e45382ec3664bc672613f954e66fb
+
+[file_CP930W-fw]
+filename: CP930W-87.85.0.20.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaGL5UXnwnflJkrwF3or2hiV0ZTbCw7IC/plusSymbolcaXuwqPTSNZBDH9f4Okv6wbEEYweplusSymbol8UcCt58lpS9oNOXaGBkwQh2hNdgyGkDNAc
+size: 4707008
+sha1sum: c8352c05618b75abdd7239f9ba96d81143df810f
+
+[file_CP960-fw]
+filename: CP960-73.85.0.5.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/820lDplusSymboliRJ5magDUK3TIo7eNDQgLfNy9lwm5y8RAQQb6rqQGP8vOOlqqeSHfoRplusSymbolZr7fMvdhn6Z22FLGvbwW6DdQ==
+size: 205201136
+sha1sum: 5eecd52d398aa17437d96d72dec5affcfa5b706b
+
+[file_T58_CP960-lang]
+filename: Yealink_Android_Based_IP_Phones_Language_Packs.zip
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/bv0zz5RV3bonplusSymboltk0jutxplusSymbolq13jEjyxq0CPQ7N7WS0jEXrMf3f2H5AfVN/vmYXAH3mDAe7u6toIp31nyY68CwbWUjW4JQTplusSymbolvyMNfC5ihpzXjpEHClUnf9rrxljFD/MXU3P
+size: 962517
+sha1sum: 451bf950f4e40261a45be38ad12020d4e47f24dd
+
+[file_T2X_T4X_T5X_CP920-lang]
+filename: Yealink_SIP_Phones_Language_Packs.zip
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/waElr/1HnySCyBvKzh5D1fS8fGfq8b6ALR4P4HuwAjgxyFvcdGAoCKh1OD8DbEQKHQilonqrsfsCB9PKL/v/jvU/CUym5nkjV1rT6gJAGDbS2ASHn13D6w==
+size: 2996116
+sha1sum: c8290a0543ab7973d6254e4770777fa30f2fc891
