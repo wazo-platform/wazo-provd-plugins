@@ -89,7 +89,7 @@ COMMON_FILES_DECT = [
         'fw_filename': u'T54W(T57W,T53W,T53)-96.85.0.5.rom',
         'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
-    }
+    },
 ]
 
 

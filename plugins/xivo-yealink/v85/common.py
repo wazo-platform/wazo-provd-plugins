@@ -10,12 +10,20 @@ from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, PROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, FULL_SUPPORT, BasePgAssociator
-from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
-    TemplatePluginHelper
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    IMPROBABLE_SUPPORT,
+    PROBABLE_SUPPORT,
+)
+from provd.plugins import (
+    FetchfwPluginHelper,
+    StandardPlugin,
+    TemplatePluginHelper,
+)
 from provd.servers.http import HTTPNoListingFileService
-from provd.util import norm_mac, format_mac
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-yealink')
@@ -67,14 +75,18 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
                     mac = norm_mac(raw_mac.decode('ascii'))
                 except ValueError as e:
                     logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
-                    return {u'vendor': u'Yealink',
-                            u'model': raw_model.decode('ascii'),
-                            u'version': raw_version.decode('ascii')}
+                    return {
+                        u'vendor': u'Yealink',
+                        u'model': raw_model.decode('ascii'),
+                        u'version': raw_version.decode('ascii'),
+                    }
                 else:
-                    return {u'vendor': u'Yealink',
-                            u'model': raw_model.decode('ascii'),
-                            u'version': raw_version.decode('ascii'),
-                            u'mac': mac}
+                    return {
+                        u'vendor': u'Yealink',
+                        u'model': raw_model.decode('ascii'),
+                        u'version': raw_version.decode('ascii'),
+                        u'mac': mac,
+                    }
         return None
 
     def _extract_from_path(self, request):
@@ -107,7 +119,6 @@ class BaseYealinkPgAssociator(BasePgAssociator):
 
 
 class BaseYealinkFunckeyGenerator(object):
-
     def __init__(self, device, raw_config):
         self._model = device.get(u'model')
         self._exten_pickup_call = raw_config.get(u'exten_pickup_call')
@@ -370,9 +381,11 @@ class BaseYealinkPlugin(StandardPlugin):
             if u'proxy_port' not in line and u'sip_proxy_port' in raw_config:
                 line[u'proxy_port'] = raw_config[u'sip_proxy_port']
             # set SIP template to use
-            template_id = raw_config['XX_templates'].get(
-                (line.get(u'proxy_ip'), line.get(u'proxy_port', 5060)), {}
-            ).get('id')
+            template_id = (
+                raw_config['XX_templates']
+                .get((line.get(u'proxy_ip'), line.get(u'proxy_port', 5060)), {})
+                .get('id')
+            )
             line[u'XX_template_id'] = template_id or 1
 
     def _add_sip_templates(self, raw_config):
@@ -382,7 +395,9 @@ class BaseYealinkPlugin(StandardPlugin):
             proxy_ip = line.get(u'proxy_ip') or raw_config.get(u'sip_proxy_ip')
             proxy_port = line.get(u'proxy_port') or raw_config.get(u'sip_proxy_port')
             backup_proxy_ip = line.get(u'backup_proxy_ip') or raw_config.get(u'sip_backup_proxy_ip')
-            backup_proxy_port = line.get(u'backup_proxy_port') or raw_config.get(u'sip_backup_proxy_port')
+            backup_proxy_port = line.get(u'backup_proxy_port') or raw_config.get(
+                u'sip_backup_proxy_port'
+            )
             if (proxy_ip, proxy_port) not in templates:
                 templates[(proxy_ip, proxy_port)] = {
                     u'id': template_number,
@@ -401,21 +416,34 @@ class BaseYealinkPlugin(StandardPlugin):
     def _add_country_and_lang(self, raw_config):
         locale = raw_config.get(u'locale')
         if locale in self._LOCALE:
-            (raw_config[u'XX_lang'],
-             raw_config[u'XX_country'],
-             raw_config[u'XX_handset_lang']) = self._LOCALE[locale]
+            (
+                raw_config[u'XX_lang'],
+                raw_config[u'XX_country'],
+                raw_config[u'XX_handset_lang'],
+            ) = self._LOCALE[locale]
 
     def _format_dst_change(self, dst_change):
         if dst_change['day'].startswith('D'):
-            return u'%02d/%02d/%02d' % (dst_change['month'], int(dst_change['day'][1:]), dst_change['time'].as_hours)
+            return u'%02d/%02d/%02d' % (
+                dst_change['month'],
+                int(dst_change['day'][1:]),
+                dst_change['time'].as_hours,
+            )
         else:
             week, weekday = map(int, dst_change['day'][1:].split('.'))
             weekday = tzinform.week_start_on_monday(weekday)
-            return u'%d/%d/%d/%d' % (dst_change['month'], week, weekday, dst_change['time'].as_hours)
+            return u'%d/%d/%d/%d' % (
+                dst_change['month'],
+                week,
+                weekday,
+                dst_change['time'].as_hours,
+            )
 
     def _format_tz_info(self, tzinfo):
         lines = []
-        lines.append(u'local_time.time_zone = %+d' % min(max(tzinfo['utcoffset'].as_hours, -11), 12))
+        lines.append(
+            u'local_time.time_zone = %+d' % min(max(tzinfo['utcoffset'].as_hours, -11), 12)
+        )
         if tzinfo['dst'] is None:
             lines.append(u'local_time.summer_time = 0')
         else:
@@ -424,8 +452,12 @@ class BaseYealinkPlugin(StandardPlugin):
                 lines.append(u'local_time.dst_time_type = 0')
             else:
                 lines.append(u'local_time.dst_time_type = 1')
-            lines.append(u'local_time.start_time = %s' % self._format_dst_change(tzinfo['dst']['start']))
-            lines.append(u'local_time.end_time = %s' % self._format_dst_change(tzinfo['dst']['end']))
+            lines.append(
+                u'local_time.start_time = %s' % self._format_dst_change(tzinfo['dst']['start'])
+            )
+            lines.append(
+                u'local_time.end_time = %s' % self._format_dst_change(tzinfo['dst']['end'])
+            )
             lines.append(u'local_time.offset_time = %s' % tzinfo['dst']['save'].as_minutes)
         return u'\n'.join(lines)
 
@@ -439,8 +471,9 @@ class BaseYealinkPlugin(StandardPlugin):
                 raw_config[u'XX_timezone'] = self._format_tz_info(tzinfo)
 
     def _add_sip_transport(self, raw_config):
-        raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'),
-                                                                  self._SIP_TRANSPORT_DEF)
+        raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(
+            raw_config.get(u'sip_transport'), self._SIP_TRANSPORT_DEF
+        )
 
     def _add_xx_sip_lines(self, device, raw_config):
         sip_lines = raw_config[u'sip_lines']
@@ -459,14 +492,20 @@ class BaseYealinkPlugin(StandardPlugin):
 
     def _add_xivo_phonebook_url(self, raw_config):
         if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(raw_config, u'yealink', entry_point=u'lookup', qs_suffix=u'term=#SEARCH')
+            plugins.add_xivo_phonebook_url(
+                raw_config, u'yealink', entry_point=u'lookup', qs_suffix=u'term=#SEARCH'
+            )
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
 
     def _add_xivo_phonebook_url_compat(self, raw_config):
         hostname = raw_config.get(u'X_xivo_phonebook_ip')
         if hostname:
-            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(hostname=hostname)
+            raw_config[
+                u'XX_xivo_phonebook_url'
+            ] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(
+                hostname=hostname
+            )
 
     def _add_wazo_phoned_user_service_url(self, raw_config, service):
         if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
@@ -516,6 +555,7 @@ class BaseYealinkPlugin(StandardPlugin):
             logger.info('error while removing file: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
