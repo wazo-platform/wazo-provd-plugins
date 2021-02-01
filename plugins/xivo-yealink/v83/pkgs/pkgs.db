@@ -96,9 +96,108 @@ version: 73.83.0.30
 files: CP960-fw
 install: yealink-fw
 
+[pkg_T29G-lang]
+description: Language files for Yealink T29G
+description_fr: Fichiers de langue pour Yealink T29G
+version:
+files: T29G-lang
+install: yealink-T29G-lang
+
+[pkg_T41P-T42G-lang]
+description: Language files for Yealink T41P and T42G
+description_fr: Fichiers de langue pour Yealink T41P et T42G
+version:
+files: T41P-T42G-lang
+install: yealink-T41P-T42G-lang
+
+[pkg_T46G-lang]
+description: Language files for Yealink T46G
+description_fr: Fichiers de langue pour Yealink T46G
+version:
+files: T46G-lang
+install: yealink-T46G-lang
+
+[pkg_T48G-lang]
+description: Language files for Yealink T48G
+description_fr: Fichiers de langue pour Yealink T48G
+version:
+files: T48G-lang
+install: yealink-T48G-lang
+
+[pkg_T56-T58-lang]
+description: Language files for Yealink T56A and T58A/V
+description_fr: Fichiers de langue pour Yealink T56A et T58A/V
+version:
+files: T56-T58-lang
+install: yealink-T56-T58-lang
+
+[pkg_W60B-lang]
+description: Language files for Yealink W60B
+description_fr: Fichiers de langue pour Yealink W60B
+version:
+files: W60B-lang
+install: yealink-W60B-lang
+
+[pkg_W80-lang]
+description: Language files for Yealink W80
+description_fr: Fichiers de langue pour Yealink W80
+version:
+files: W80-lang
+install: yealink-W80-lang
+
+[pkg_CP930W-lang]
+description: Language files for Yealink CP930W
+description_fr: Fichiers de langue pour Yealink CP930W
+version:
+files: CP930W-lang
+install: yealink-CP930W-lang
+
+[pkg_CP930W-lang]
+description: Language files for Yealink CP930W
+description_fr: Fichiers de langue pour Yealink CP930W
+version:
+files: T58-CP960-lang
+install: yealink-T58-CP960-lang
+
 
 [install_yealink-fw]
 a-b: cp *.rom firmware/
+
+[install_yealink-T29G-lang]
+a-b: unzip $FILE1
+b-c: cp */GUI/*/*.lang lang/T29G/
+
+[install_yealink-T41P-T42G-lang]
+a-b: unzip $FILE1
+b-c: cp */GUI/*/*.lang lang/T41P-T42G/
+
+[install_yealink-T46G-lang]
+a-b: unzip $FILE1
+b-c: cp */GUI/*/*.lang lang/T46G/
+
+[install_yealink-T48G-lang]
+a-b: unzip $FILE1
+b-c: cp */GUI/*/*.lang lang/T48G/
+
+[install_yealink-T56-T58-lang]
+a-b: unzip $FILE1
+b-c: cp */GUI/*/*.lang lang/T56-T58/
+
+[install_yealink-W60B-lang]
+a-b: unzip $FILE1
+b-c: cp */language/*.js lang/W60B/
+
+[install_yealink-W80-lang]
+a-b: unzip $FILE1
+b-c: cp */1.WEB/language/*.js lang/W80/
+
+[install_yealink-CP930W-lang]
+a-b: unrar $FILE1
+b-c: cp *.xml lang/CP930W/
+
+[install_yealink-T58-CP960-lang]
+a-b: unzip $FILE1
+b-c: cp */GUI/*/*.lang lang/T58-CP960/
 
 
 [file_T29G-fw]
@@ -184,3 +283,57 @@ filename: CP960-73.83.0.30.rom
 url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/XznN1O1cA8l2BmcbsVmqfXpHrQlGyQIHzzxeHH4FkCMq7SyQsQxtk9IJr7X3waidsCNWnkplusSymbolpgOogGoNBww6USu97ICKR7CCPyE
 size: 207186688
 sha1sum: 0e5b7015e915dcca1931937ae63cb8f6a87daa0b
+
+[file_T29G-lang]
+filename: Language_Packs_for_SIP-T29G.zip
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypsN1StLgAwqIplusSymbolOY120AXS5pWdxoIky0rKptvy3WWRqxJ3O9ZGA2yPejGEObo44L7e6bCWZ42KdmcRk3r4nwyV8PcgLjEOxIhV6jCLN0qrdL8uwtrJMlQcDk=
+size: 272082
+sha1sum: a3913444229f9e1adb7cd3513e475dafeb67d49f
+
+[file_T41P-T42G-lang]
+filename: Language_Packs_for_SIP-T41P_SIP-T42G.zip
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkVeccWMZSPidGmIliOAHQ2vDW3BC3ObSLM9F3r2gX9lQqWqOhJ7DYOLTYpCJI8/u7p5DvrvTXhTst551r1STECRO0lrxn59kvvICCI1iz5ie10Or1ZhDBBAfBiHZ93MHg==
+size: 223322
+sha1sum: e706e9f70b7349410487544c5444bd0838c7f7d5
+
+[file_T46G-lang]
+filename: Language_Packs_for_SIP-T46G.zip
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkVeccWMZSPiEfbLx6oZwM30iZWpd0SZSYPtaqYmC4g83UplusSymbolee4D8DaKWJb5tB7R/i20fV8xSofLOQDU/1i4MJ7phhgfDwnPQ6nN0b0W50SvKmWLOXWvnIwg=
+size: 223335
+sha1sum: 4b5b35c0cb7691ebe0b322e884af871983646627
+
+[file_T48G-lang]
+filename: Language_Packs_for_SIP-T48G.zip
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkVeccWMZSPiYVSbtfrrsEJY2msfjua2fdwhLbLqQ/kT45YxcJF42XaAFkcxL0H2BxkbixCiwurfZMGSLWqY6XyOvOxZ7rqqaHeLohnk1ZVQi/plusSymbolk/1dN6SQ=
+size: 223378
+sha1sum: f21562c051b6ffdd3f1b351a50a2c1e3f8a88f95
+
+[file_T56-T58-lang]
+filename: Language_Packs_for_SIP-T58_SIP_T56.zip
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyptRqysyHm94LKX32PeI8FLpzdPKcs6N3yVqj/nOYIe84AH0Qg41ZPVlHB5uW3tlwGk/Ubz8i5spUZxmpKTYsNDHpgM0WyKzu0HfAZ9GYnY7ERVJ5/j6M/eWZP3MUpaalZg==
+size: 873139
+sha1sum: 5c7778469c116570a58582aea98acb61aa5c05f2
+
+[file_W60B-lang]
+filename: Language_Packs_for_W60B.zip
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypl48kozZF/icplusSymbolB96zz/ITaZxOXplusSymboldWfAH08LUBTPQ8jMzADndvQsPTenwVJ1h96RQDzpeEUnsnuj1IG4Xv3AplusSymbolEEjNqTZgYwy4sU70/KtPvEHy
+size: 632306
+sha1sum: f2cfc2c9b27cf6a9289c493196410eaf2c9045b7
+
+[file_W80-lang]
+filename: Language_Packs_for_W80.zip
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyphshNtpyhFJcP8f48i/wlplusSymbolq05ZMA98Tnb4C0fRaCxaRMGn3qF4gRgV74VI19i3t1FTCHZUKUPjKZkxwnEZqz63tMZBfq2lp1IQt4XkQQW2rk
+size: 603702
+sha1sum: 5f563f4981beaa14426fa967bff256c6ac9694b4
+
+[file_CP930W-lang]
+filename: Language_Packs_for_CP930W.rar
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyploAOxsQD/XzW/MTujXjii6ujJ8maMgAph5Ww11Q9eVTKBgj8lNOIlsDICz2qp2hLjGKk9ZB68xusO4AMfNf3swTOFB5CFmPvkGFWnottFaNwAhe2Lw9plusSymbolMU=
+size: 149620
+sha1sum: 1c3479da1023c888e31bd6b1bdbb779550b76641
+
+[file_T58-CP960-lang]
+filename: Yealink_Android_Based_IP_Phones_Language_Packs.zip
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/bv0zz5RV3bonplusSymboltk0jutxplusSymbolq13jEjyxq0CPQ7N7WS0jEXrMf3f2H5AfVN/vmYXAH3mDAe7u6toIp31nyY68CwbWUjW4JQTplusSymbolvyMNfC5ihpzXjpEHClUnf9rrxljFD/MXU3P
+size: 962517
+sha1sum: 451bf950f4e40261a45be38ad12020d4e47f24dd
