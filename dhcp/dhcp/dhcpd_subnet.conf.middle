@@ -50,6 +50,10 @@
         allow members of "CiscoCP-7970G";
         allow members of "CiscoCP-7971G-GE";
         allow members of "CiscoCP-7975G";
+        allow members of "CiscoCP-8811";
+        allow members of "CiscoCP-8841";
+        allow members of "CiscoCP-8851";
+        allow members of "CiscoCP-8861";
         allow members of "CiscoCP-8941";
         allow members of "CiscoCP-8945";
         allow members of "CiscoCP-8961";
