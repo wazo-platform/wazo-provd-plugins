@@ -1,5 +1,5 @@
 {
-    "version": "1.0.12",
+    "version": "1.0.13",
     "description": "Plugin for Yealink for CP920, CP960, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W, T57(W) and T58A in version V84.",
     "description_fr": "Greffon pour Yealink pour CP920, CP960, T19P_E2, T21P_E2, T23P/G, T27G, T40P/G, T41S, T42S, T46S, T48S, T52S, T53(W), T54S/W, T57(W) et T58A en version V84.",
     "vendor" : "Yealink",
@@ -7,84 +7,84 @@
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
     "vendor.official" : 1,
     "capabilities": {
-        "Yealink, CP920, 78.84.0.90": {
+        "Yealink, CP920, 78.84.0.125": {
             "lines": 1,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, CP960, 73.84.0.15": {
+        "Yealink, CP960, 73.84.0.25": {
             "lines": 1,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T19P_E2, 53.84.0.15": {
+        "Yealink, T19P_E2, 53.84.0.125": {
             "lines": 1,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T21P_E2, 52.84.0.15": {
+        "Yealink, T21P_E2, 52.84.0.125": {
             "lines": 2,
             "high_availability": true,
             "function_keys": 2,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T23P, 44.84.0.15": {
+        "Yealink, T23P, 44.84.0.140": {
             "lines": 3,
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T23G, 44.84.0.15": {
+        "Yealink, T23G, 44.84.0.140": {
             "lines": 3,
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T27G, 69.84.0.90": {
+        "Yealink, T27G, 69.84.0.125": {
             "lines": 6,
             "high_availability": false,
             "function_keys": 21,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T40P, 54.84.0.15": {
+        "Yealink, T40P, 54.84.0.125": {
             "lines": 3,
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T40G, 76.84.0.15": {
+        "Yealink, T40G, 76.84.0.125": {
             "lines": 3,
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T41S, 66.84.0.90": {
+        "Yealink, T41S, 66.84.0.125": {
             "lines": 6,
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T42S, 66.84.0.90": {
+        "Yealink, T42S, 66.84.0.125": {
             "lines": 12,
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T46S, 66.84.0.90": {
+        "Yealink, T46S, 66.84.0.125": {
             "lines": 16,
             "high_availability": true,
             "function_keys": 27,
@@ -92,7 +92,7 @@
             "switchboard": true,
             "protocol": "sip"
         },
-        "Yealink, T48S, 66.84.0.90": {
+        "Yealink, T48S, 66.84.0.125": {
             "lines": 16,
             "high_availability": true,
             "function_keys": 29,
@@ -106,14 +106,14 @@
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T53, 70.84.0.95": {
+        "Yealink, T53, 95.84.0.125": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 10,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T53W, 70.84.0.95": {
+        "Yealink, T53W, 95.84.0.125": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 10,
@@ -127,21 +127,21 @@
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T54W, 96.84.0.95": {
+        "Yealink, T54W, 96.84.0.125": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 10,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T57W, 97.84.0.95": {
+        "Yealink, T57W, 97.84.0.125": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, T58, 58.84.0.15": {
+        "Yealink, T58, 58.84.0.25": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 27,
