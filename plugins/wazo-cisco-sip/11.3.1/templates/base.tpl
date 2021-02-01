@@ -4,9 +4,8 @@
 {% if admin_password is defined -%}
 <Admin_Password>{{ admin_password|e }}</Admin_Password>
 {% endif -%}
-{% if user_password is defined -%}
-<User_Password>{{ user_password|e }}</User_Password>
-{% endif -%}
+
+<User_Password></User_Password>
 
 {% if dns_enabled -%}
 <Primary_DNS>{{ dns_ip }}</Primary_DNS>
