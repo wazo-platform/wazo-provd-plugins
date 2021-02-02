@@ -3,7 +3,7 @@
 
 <!--  System Configuration  -->
 <Restricted_Access_Domains ua="na"/>
-<Enable_Web_Server ua="na">Yes</Enable_Web_Server>
+<Enable_Web_Server ua="na">No</Enable_Web_Server>
 <Enable_Protocol ua="na">Http</Enable_Protocol>
 
 <Phone-UI-readonly ua="na">No</Phone-UI-readonly>
