@@ -9,13 +9,10 @@
 <Phone-UI-readonly ua="na">No</Phone-UI-readonly>
 <Phone-UI-User-Mode ua="na">Yes</Phone-UI-User-Mode>
 
-#<!--  Network Settings  -->
+<!--  Network Settings  -->
 <IP_Mode ua="na"/>
 
-#<Device_Administration ua="na">No</Device_Administration>
-
-#<!-- Network Configuration -->
-#<Network_Configuration ua="na">IPv4 Only</Network_Configuration>
+<Device_Administration ua="na">No</Device_Administration>
 
 <!-- Network Configuration -->
 <Network_Configuration ua="na"/>
