@@ -81,6 +81,8 @@ static.security.user_name.admin = {{ admin_username|d('admin') }}
 static.security.user_password = {{ user_username|d('user') }}:{{ user_password|d('user') }}
 static.security.user_password = {{ admin_username|d('admin') }}:{{ admin_password|d('admin') }}
 
+static.usb.power.enable = 1
+
 {% for line_no, line in XX_sip_lines.iteritems() -%}
 {% if line -%}
 account.{{ line_no }}.enable = 1
