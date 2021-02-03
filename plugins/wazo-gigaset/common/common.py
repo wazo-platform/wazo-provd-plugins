@@ -83,8 +83,8 @@ class GigasetHTTPDeviceInfoExtractor(object):
         # "N720-DM-PRO/70.040.00.000.000"
         # "N510 IP PRO/42.245.00.000.000;7C2F804DF9A9"
         # "N510 IP PRO/42.245.00.000.000"
-        # "N510 IP PRO/42.250.00.000.000;7C2F806257D7"
-        # "N510 IP PRO/42.250.00.000.000"
+        # "N510 IP PRO/42.258.00.000.000;7C2F806257D7"
+        # "N510 IP PRO/42.258.00.000.000"
         m = self._UA_REGEX.search(ua)
         dev_info = {}
         if m:

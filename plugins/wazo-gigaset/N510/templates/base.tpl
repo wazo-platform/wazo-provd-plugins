@@ -8,7 +8,7 @@
     <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
     <PROFILE_NAME class="string" value="N510"/>
     {%- if http_port %}
-    <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/merkur247_42.bin"'/>
+    <S_SPECIAL_DATA_SRV class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/merkur258_42.bin"'/>
     {%- endif %}
 <!-- Allow access from other networks. -->
     <SYMB_ITEM ID="BS_IP_Data1.ucB_ACCEPT_FOREIGN_SUBNET" class="symb_item" value="0x1"/>
