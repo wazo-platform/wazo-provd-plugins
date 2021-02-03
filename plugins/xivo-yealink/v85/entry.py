@@ -51,6 +51,7 @@ HANDSETS_FW = {
     'w56h': u'W56H-61.85.0.20.rom',
     'w59r': u'W59R-115.85.0.20.rom',
     'cp930w': u'CP930W-87.85.0.20.rom',
+    't41s_dd10k': u'T4S-ddphone-66.85.0.56.rom',
 }
 
 COMMON_FILES_DECT = [

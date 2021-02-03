@@ -61,6 +61,13 @@ version: 115.85.0.20
 files: W59R-fw
 install: yealink-fw
 
+[pkg_T4S-ddphone-fw]
+description: Firmware for Yealink T4XS in ddphone mode
+description_fr: Micrologiciel pour le poste Yealink T4XS en mode ddphone
+version: 66.85.0.56
+files: T4S-ddphone-fw
+install: yealink-fw
+
 [pkg_CP920-fw]
 description: Firmware for Yealink CP920
 description_fr: Micrologiciel pour Yealink CP920
@@ -162,6 +169,12 @@ filename: W59R-115.85.0.20.rom
 url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaxx5awq37Uct9zHd5cZ0splusSymbolejpISplusSymbolpArxKDBBJr1egGc4j8h87MuB7zbYPQrQHW70h77plusSymboliKk/plusSymbolXplusSymbolUZBAYO9FmM1VVNiKqineel
 size: 3148768
 sha1sum: 3e826495b1585156a300b1e3752013491791db2d
+
+[file_T4S-ddphone-fw]
+filename: T4S-ddphone-66.85.0.56.rom
+url: http://provd.wazo.community/firmwares/yealink/T4S-ddphone-66.85.0.56.rom
+size: 2110592
+sha1sum: 88b0b4690f52205aced4ba0a08b5cef94b1314d0
 
 [file_CP920-fw]
 filename: CP920-78.85.0.5.rom
