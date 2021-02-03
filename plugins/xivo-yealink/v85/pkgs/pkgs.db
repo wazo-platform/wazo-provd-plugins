@@ -68,6 +68,13 @@ version: 66.85.0.56
 files: T4S-ddphone-fw
 install: yealink-fw
 
+[pkg_T54W-ddphone-fw]
+description: Firmware for Yealink T54W in ddphone mode
+description_fr: Micrologiciel pour le poste Yealink T54W en mode ddphone
+version: 96.85.0.65
+files: T54W-ddphone-fw
+install: yealink-fw
+
 [pkg_CP920-fw]
 description: Firmware for Yealink CP920
 description_fr: Micrologiciel pour Yealink CP920
@@ -175,6 +182,12 @@ filename: T4S-ddphone-66.85.0.56.rom
 url: http://provd.wazo.community/firmwares/yealink/T4S-ddphone-66.85.0.56.rom
 size: 2110592
 sha1sum: 88b0b4690f52205aced4ba0a08b5cef94b1314d0
+
+[file_T54W-ddphone-fw]
+filename: T54W-ddphone-96.85.0.65.rom
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqas9GMbErjo4LkLfAIgeMal8FeOmjb/8u/plusSymbolWplusSymbolt2iGCVBIBwD/n9fzFelQDyUoBUjjMg0V3UJKO4bjR0b0ZpdNcchq669guY/fn
+size: 2304784
+sha1sum: 8a0c1e872ef9819ad2006661f753eb022eb2fd8e
 
 [file_CP920-fw]
 filename: CP920-78.85.0.5.rom
