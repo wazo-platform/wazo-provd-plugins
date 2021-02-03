@@ -36,7 +36,7 @@ install: yealink-fw
 [pkg_W60B-fw]
 description: Firmware for Yealink W60B
 description_fr: Micrologiciel pour Yealink W60B
-version: 77.85.0.20
+version: 77.85.0.25
 files: W60B-fw
 install: yealink-fw
 
@@ -140,10 +140,10 @@ size: 234797120
 sha1sum: 960956917bfc6e5be956f9c783a35005984795b8
 
 [file_W60B-fw]
-filename: W60B-77.85.0.20.rom
-url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaGplusSymboluYFWK5G2/beSaQsCO6y5G2nxsbFnQrIKFErEBoXSzMVIAhVbI2b3splusSymbolzAHQqHUBwa7ZGigCkVkM2aMmmU5ouw==
-size: 10847536
-sha1sum: a2d03d87db1954fee89db9b7637538ff463bfe5f
+filename: W60B-77.85.0.25.rom
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyprkfRlGTqdFMbAVf81NnTP/95/FVRL1rtzoORnY1HnveXt6bnGL0gA4Bj7MGid1rCEhkzMxpR6ozQ7FKzkLUH9JXmw7Gcc2TFg==
+size: 10732848
+sha1sum: 73f3d3485395e53bb647f7da270a49f13acca6c0
 
 [file_W53H-fw]
 filename: W53H-88.85.0.20.rom

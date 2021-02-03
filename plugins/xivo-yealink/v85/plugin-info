@@ -113,7 +113,7 @@
             "expansion_modules": 0,
             "protocol": "sip"
         },
-        "Yealink, W60B, 77.85.0.20": {
+        "Yealink, W60B, 77.85.0.25": {
             "lines": 8,
             "high_availability": false,
             "function_keys": 0,
