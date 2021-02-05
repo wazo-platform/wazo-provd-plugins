@@ -32,8 +32,8 @@ logger = logging.getLogger('plugin.xivo-yealink')
 class BaseYealinkHTTPDeviceInfoExtractor(object):
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'^[yY]ealink\s+(CP960|W60B|W80(?:B|DM))\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'(W60B|W80(?:B|DM))\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^[yY]ealink\s+(CP960|W60B|W80B))\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'(W60B|W80B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
 
@@ -59,7 +59,6 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink SIP-T58A 58.83.0.15 00:15:65:9b:5b:22"
         #   "Yealink W60B 77.81.0.35 80:5e:c0:09:ab:dc"
         #   "Yealink W80B 103.83.0.70 80:5e:c0:71:01:38"
-        #   "Yealink W80DM 103.83.0.70 80:5e:c0:71:02:38"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
@@ -194,7 +193,6 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T58': 27,
         u'W60B': 0,
         u'W80B': 0,
-        u'W80DM': 0,
     }
     _NB_MEMORYKEY = {
         u'CP960': 0,
@@ -208,7 +206,6 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T58': 0,
         u'W60B': 0,
         u'W80B': 0,
-        u'W80DM': 0,
     }
 
     class NullExpansionModule(object):
@@ -298,7 +295,6 @@ class BaseYealinkPlugin(StandardPlugin):
         u'T58': 16,
         u'W60B': 8,
         u'W80B': 0,
-        u'W80DM': 100,
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
