@@ -1,5 +1,5 @@
 {
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "Plugin for Cisco 7811, 7821, 7832, 7841, 7861, 6821, 6841, 6851, 6861, 6871, 8811, 8841, 8851 and 8861 in version 11.3.1 of the SIP software.<br/> Please see the documentation if you want to install Cisco firmwares.",
     "description_fr": "Greffon pour Cisco 7811, 7821, 7832, 7841, 7861, 6821, 6841, 6851, 6861, 6871, 8811, 8841, 8851 et 8861 en version 11.3.1 du logiciel SIP.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
     "capabilities": {
