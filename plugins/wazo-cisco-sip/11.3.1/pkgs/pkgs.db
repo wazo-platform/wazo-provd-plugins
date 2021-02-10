@@ -19,6 +19,20 @@ version: 11.3.1-MSR3-3
 files: 6821-mpp-fw
 install: cisco-mpp-fw
 
+[pkg_7832-mpp-fw]
+description: Multiplatform firmware for Cisco 7832
+description_fr: Micrologiciel MPP pour Cisco 7832
+version: 11.3.1-MSR3-3
+files: 7832-mpp-fw
+install: cisco-mpp-fw
+
+[pkg_88xx-mpp-fw]
+description: Multiplatform firmware for Cisco 8811, 8441, 8851 and 8861
+description_fr: Micrologiciel MPP pour Cisco 8811, 8441, 8851 et 8861
+version: 11-3-1MSR3-3
+files: 88xx-mpp-fw
+install: cisco-mpp-fw
+
 [pkg_cisco-mpp-locales]
 description: Multiplatform phone locales
 description_fr: Locales multi-plateformes
@@ -52,6 +66,18 @@ filename: cmterm-6821.11-3-1MSR3-3_REL.zip
 url:
 size: 41070594
 sha1sum: 6280e8074d0de40b9dd631859847980c0656542a
+
+[file_7832-mpp-fw]
+filename: cmterm-7832.11-3-1MSR3-3_REL.zip
+url:
+size: 30897821
+sha1sum: 151215192204f83def57ef9fef46d491bf48b902
+
+[file_88xx-mpp-fw]
+filename: cmterm-88xx.11-3-1MSR3-3_REL.zip
+url:
+size: 106269062
+sha1sum: 6fc817c5c0b537fb09ee6f703b3e7dd31beb4043
 
 [file_cisco-mpp-locales]
 filename: cmterm-68xx_78xx_88xx.11-3-2MPP-609-Locale-1.zip

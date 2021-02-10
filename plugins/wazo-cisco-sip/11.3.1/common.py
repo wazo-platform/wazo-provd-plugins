@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import logging
@@ -169,6 +169,10 @@ class BaseCiscoSipPlugin(StandardPlugin):
         u'6851': (4, 1),
         u'6861': (4, 0),
         u'6871': (6, 0),
+        u'8811': (10, 0),
+        u'8841': (10, 0),
+        u'8851': (10, 0),
+        u'8861': (10, 0),
     }
     _DEFAULT_LOCALE = u'en_US'
     _LANGUAGE = {

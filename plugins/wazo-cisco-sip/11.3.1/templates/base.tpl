@@ -1,12 +1,74 @@
 <?xml version="1.0" standalone="yes"?>
 <flat-profile>
 
+<!--  System Configuration  -->
+<Restricted_Access_Domains ua="na"/>
+<Enable_Web_Server ua="na">No</Enable_Web_Server>
+<Enable_Protocol ua="na">Http</Enable_Protocol>
+
+<Phone-UI-readonly ua="na">No</Phone-UI-readonly>
+<Phone-UI-User-Mode ua="na">Yes</Phone-UI-User-Mode>
+
+<!--  Network Settings  -->
+<IP_Mode ua="na"/>
+
+<Device_Administration ua="na">No</Device_Administration>
+
+<!-- Network Configuration -->
+<Network_Configuration ua="na"/>
+
+<!--  IPv4 Settings   -->
+<Connection_Type ua="na">DHCP</Connection_Type>
+<!--  available options: DHCP|Static IP  -->
+<Static_IP ua="na"/>
+<NetMask ua="na"/>
+<Gateway ua="na"/>
+<Primary_DNS ua="na"/>
+<Secondary_DNS ua="na"/>
+
+<!--  IPv6 Settings   -->
+<IPv6_Connection_Type ua="na">DHCP</IPv6_Connection_Type>
+<!--  available options: DHCP|Static IP  -->
+<IPv6_Static_IP ua="na"/>
+<Prefix_Length ua="na">1</Prefix_Length>
+<IPv6_Gateway ua="na"/>
+<IPv6_Primary_DNS ua="na"/>
+<IPv6_Secondary_DNS ua="na"/>
+<Broadcast_Echo ua="na">Disabled</Broadcast_Echo>
+<Auto_Config ua="na">Enabled</Auto_Config>
+<!--  available options: Disabled|Enabled  -->
+
+<!--  802.1X Authentication  -->
+<Enable_802.1X_Authentication ua="na">No</Enable_802.1X_Authentication>
+
+<!--  Optional Network Configuration  -->
+<Host_Name ua="na"/>
+<Domain ua="na"/>
+
+<Primary_NTP_Server ua="na"/>
+<Secondary_NTP_Server ua="na"/>
+
+<!--  Screen  -->
+<Screen_Saver_Enable ua="rw">Yes</Screen_Saver_Enable>
+<Screen_Saver_Type ua="rw">Clock</Screen_Saver_Type>
+<!--  available options: Clock|Download Picture|Logo  -->
+<Screen_Saver_Wait ua="rw">300</Screen_Saver_Wait>
+<Screen_Saver_Refresh_Period ua="rw">10</Screen_Saver_Refresh_Period>
+<Back_Light_Timer ua="rw">5m</Back_Light_Timer>
+<!--  available options: 1m|5m|30m|Always On  -->
+
+<!--  Password for Factory Reset  -->
+<Protect_IVR_FactoryReset ua="na">Yes</Protect_IVR_FactoryReset>
+
+<!--  VLAN Settings  -->
+<Enable_VLAN ua="na">No</Enable_VLAN>
+<VLAN_ID ua="na">1</VLAN_ID>
+
 {% if admin_password is defined -%}
 <Admin_Password>{{ admin_password|e }}</Admin_Password>
 {% endif -%}
-{% if user_password is defined -%}
-<User_Password>{{ user_password|e }}</User_Password>
-{% endif -%}
+
+<User_Password></User_Password>
 
 {% if dns_enabled -%}
 <Primary_DNS>{{ dns_ip }}</Primary_DNS>
@@ -30,7 +92,7 @@
 {% endif -%}
 
 {% block upgrade_rule -%}
-<Upgrade_Rule>http://{{ ip }}:{{ http_port }}/sip78xx.11-3-1MSR3-3.loads</Upgrade_Rule>
+<Upgrade_Rule></Upgrade_Rule>
 {% endblock -%}
 
 {% if exten_voicemail is defined -%}

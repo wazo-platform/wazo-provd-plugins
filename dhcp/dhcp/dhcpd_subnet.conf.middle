@@ -22,6 +22,11 @@
         allow members of "Alcatel-SIP";
         # Cisco
         allow members of "CiscoCP-unknown";
+        allow members of "CiscoCP-6821";
+        allow members of "CiscoCP-6841";
+        allow members of "CiscoCP-6851";
+        allow members of "CiscoCP-6861";
+        allow members of "CiscoCP-6871";
         allow members of "CiscoCP-7811";
         allow members of "CiscoCP-7821";
         allow members of "CiscoCP-7832";
@@ -50,6 +55,10 @@
         allow members of "CiscoCP-7970G";
         allow members of "CiscoCP-7971G-GE";
         allow members of "CiscoCP-7975G";
+        allow members of "CiscoCP-8811";
+        allow members of "CiscoCP-8841";
+        allow members of "CiscoCP-8851";
+        allow members of "CiscoCP-8861";
         allow members of "CiscoCP-8941";
         allow members of "CiscoCP-8945";
         allow members of "CiscoCP-8961";
