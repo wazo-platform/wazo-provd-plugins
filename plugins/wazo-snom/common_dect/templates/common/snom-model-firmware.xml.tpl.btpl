@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<firmware-settings>
+  <firmware perm="">http://{{ ip }}:{{ http_port }}</firmware>
+  <fp_fwu_sw_version>520</fp_fwu_sw_version>
+  <fp_fwu_branch_version>1</fp_fwu_branch_version>
+
+  <pp_fwu_sw_version type="M25">520</pp_fwu_sw_version>
+  <pp_fwu_branch_version type="M25">1</pp_fwu_branch_version>
+
+  <pp_fwu_sw_version type="M65">520</pp_fwu_sw_version>
+  <pp_fwu_branch_version type="M65">1</pp_fwu_branch_version>
+
+  <pp_fwu_sw_version type="M70">520</pp_fwu_sw_version>
+  <pp_fwu_branch_version type="M70">1</pp_fwu_branch_version>
+
+  <pp_fwu_sw_version type="M80">520</pp_fwu_sw_version>
+  <pp_fwu_branch_version type="M80">1</pp_fwu_branch_version>
+
+  <pp_fwu_sw_version type="M85">520</pp_fwu_sw_version>
+  <pp_fwu_branch_version type="M85">1</pp_fwu_branch_version>
+
+  <pp_fwu_sw_version type="M90">520</pp_fwu_sw_version>
+  <pp_fwu_branch_version type="M90">1</pp_fwu_branch_version>
+</firmware-settings>

@@ -37,7 +37,7 @@
         },
         "Snom, D345, 10.1.51.12": {
             "lines": 12,
-	    "high_availability": false,
+            "high_availability": false,
             "function_keys": 48,
             "expansion_modules": 3,
             "switchboard": false,
@@ -45,7 +45,7 @@
         },
         "Snom, D375, 10.1.51.12": {
             "lines": 12,
-	    "high_availability": false,
+            "high_availability": false,
             "function_keys": 12,
             "expansion_modules": 3,
             "switchboard": false,
