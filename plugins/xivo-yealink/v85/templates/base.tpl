@@ -54,8 +54,8 @@ static.syslog.enable = 0
 static.syslog.server = %NULL%
 {% endif %}
 
-static.lang.wui = {{ XX_lang|d('%NULL%') }}
-static.lang.gui = {{ XX_lang|d('%NULL%') }}
+lang.wui = {{ XX_lang|d('%NULL%') }}
+lang.gui = {{ XX_lang|d('%NULL%') }}
 
 voice.tone.country = {{ XX_country|d('%NULL%') }}
 
@@ -80,6 +80,8 @@ static.security.user_name.user = {{ user_username|d('user') }}
 static.security.user_name.admin = {{ admin_username|d('admin') }}
 static.security.user_password = {{ user_username|d('user') }}:{{ user_password|d('user') }}
 static.security.user_password = {{ admin_username|d('admin') }}:{{ admin_password|d('admin') }}
+
+static.usb.power.enable = 1
 
 {% for line_no, line in XX_sip_lines.iteritems() -%}
 {% if line -%}

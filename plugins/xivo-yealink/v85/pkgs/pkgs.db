@@ -36,7 +36,7 @@ install: yealink-fw
 [pkg_W60B-fw]
 description: Firmware for Yealink W60B
 description_fr: Micrologiciel pour Yealink W60B
-version: 77.85.0.20
+version: 77.85.0.25
 files: W60B-fw
 install: yealink-fw
 
@@ -59,6 +59,20 @@ description: Firmware for Yealink W59R handset
 description_fr: Micrologiciel pour le combiné Yealink W59R
 version: 115.85.0.20
 files: W59R-fw
+install: yealink-fw
+
+[pkg_T4S-ddphone-fw]
+description: Firmware for Yealink T4XS in ddphone mode
+description_fr: Micrologiciel pour le poste Yealink T4XS en mode ddphone
+version: 66.85.0.56
+files: T4S-ddphone-fw
+install: yealink-fw
+
+[pkg_T54W-ddphone-fw]
+description: Firmware for Yealink T54W in ddphone mode
+description_fr: Micrologiciel pour le poste Yealink T54W en mode ddphone
+version: 96.85.0.65
+files: T54W-ddphone-fw
 install: yealink-fw
 
 [pkg_CP920-fw]
@@ -140,10 +154,10 @@ size: 234797120
 sha1sum: 960956917bfc6e5be956f9c783a35005984795b8
 
 [file_W60B-fw]
-filename: W60B-77.85.0.20.rom
-url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaGplusSymboluYFWK5G2/beSaQsCO6y5G2nxsbFnQrIKFErEBoXSzMVIAhVbI2b3splusSymbolzAHQqHUBwa7ZGigCkVkM2aMmmU5ouw==
-size: 10847536
-sha1sum: a2d03d87db1954fee89db9b7637538ff463bfe5f
+filename: W60B-77.85.0.25.rom
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyprkfRlGTqdFMbAVf81NnTP/95/FVRL1rtzoORnY1HnveXt6bnGL0gA4Bj7MGid1rCEhkzMxpR6ozQ7FKzkLUH9JXmw7Gcc2TFg==
+size: 10732848
+sha1sum: 73f3d3485395e53bb647f7da270a49f13acca6c0
 
 [file_W53H-fw]
 filename: W53H-88.85.0.20.rom
@@ -162,6 +176,18 @@ filename: W59R-115.85.0.20.rom
 url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaxx5awq37Uct9zHd5cZ0splusSymbolejpISplusSymbolpArxKDBBJr1egGc4j8h87MuB7zbYPQrQHW70h77plusSymboliKk/plusSymbolXplusSymbolUZBAYO9FmM1VVNiKqineel
 size: 3148768
 sha1sum: 3e826495b1585156a300b1e3752013491791db2d
+
+[file_T4S-ddphone-fw]
+filename: T4S-ddphone-66.85.0.56.rom
+url: http://provd.wazo.community/firmwares/yealink/T4S-ddphone-66.85.0.56.rom
+size: 2110592
+sha1sum: 88b0b4690f52205aced4ba0a08b5cef94b1314d0
+
+[file_T54W-ddphone-fw]
+filename: T54W-ddphone-96.85.0.65.rom
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqas9GMbErjo4LkLfAIgeMal8FeOmjb/8u/plusSymbolWplusSymbolt2iGCVBIBwD/n9fzFelQDyUoBUjjMg0V3UJKO4bjR0b0ZpdNcchq669guY/fn
+size: 2304784
+sha1sum: 8a0c1e872ef9819ad2006661f753eb022eb2fd8e
 
 [file_CP920-fw]
 filename: CP920-78.85.0.5.rom

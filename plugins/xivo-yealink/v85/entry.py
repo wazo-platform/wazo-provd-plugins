@@ -28,7 +28,7 @@ MODEL_VERSIONS = {
     u'T54W': u'96.85.0.5',
     u'T57W': u'96.85.0.5',
     u'T58': u'58.85.0.5',
-    u'W60B': u'77.85.0.20',
+    u'W60B': u'77.85.0.25',
     u'W90DM': u'130.85.0.15',
     u'W90B': u'130.85.0.15',
 }
@@ -51,6 +51,8 @@ HANDSETS_FW = {
     'w56h': u'W56H-61.85.0.20.rom',
     'w59r': u'W59R-115.85.0.20.rom',
     'cp930w': u'CP930W-87.85.0.20.rom',
+    't41s_dd10k': u'T4S-ddphone-66.85.0.56.rom',
+    't54w_dd10k': u'T54W-ddphone-96.85.0.65.rom ',
 }
 
 COMMON_FILES_DECT = [
