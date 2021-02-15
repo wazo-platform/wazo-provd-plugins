@@ -1,5 +1,5 @@
 {
-    "version": "1.0.19",
+    "version": "1.0.20",
     "description": "Plugin for Htek for 9XX and 8XX series in version 2.0.",
     "description_fr": "Greffon Htek pour les séries 9XX et 8XX en version 2.0.",
     "vendor" : "Htek",
@@ -9,126 +9,126 @@
     "capabilities": {
         "Htek, UC926, 2.0.4.4.58": {
             "lines": 16,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 36,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC926E, 2.0.4.4.58": {
             "lines": 16,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 36,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC924, 2.0.4.4.58": {
             "lines": 12,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 28,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC924E, 2.0.4.4.58": {
             "lines": 12,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 28,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC923, 2.0.4.4.58": {
             "lines": 8,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 20,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC912, 2.0.4.4.58": {
             "lines": 4,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 12,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC912E, 2.0.4.4.58": {
             "lines": 4,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 12,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC912G, 2.0.4.4.58": {
             "lines": 4,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 12,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC903, 2.0.4.4.58": {
             "lines": 6,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 20,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC902, 2.0.4.4.58": {
             "lines": 4,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC862, 2.0.4.4.58": {
             "lines": 2,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 14,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC860P, 2.0.4.4.58": {
             "lines": 4,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 14,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC842, 2.0.4.4.58": {
             "lines": 3,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 4,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC840P, 2.0.4.4.58": {
             "lines": 3,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 4,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC806T, 2.0.4.4.58": {
             "lines": 4,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 4,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC804T, 2.0.4.4.58": {
             "lines": 3,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 4,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC803T, 2.0.4.4.58": {
             "lines": 2,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Htek, UC802T, 2.0.4.4.58": {
             "lines": 2,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
             "protocol": "sip"
