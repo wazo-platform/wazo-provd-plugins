@@ -21,6 +21,8 @@ distinctive_ring_tones.alert_info.7.ringer = 7
 distinctive_ring_tones.alert_info.8.ringer = 8
 
 features.caller_name_type_on_dialing = 1
+features.text_message.enable = 0
+features.text_message_popup.enable = 0
 
 local_time.date_format = 2
 
