@@ -1,5 +1,5 @@
 {
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Plugin for Gigaset N510 IP",
     "description_fr": "Greffon pour Gigaset N510 IP",
     "capabilities": {
@@ -9,6 +9,8 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "dect",
+            "multicell": false,
             "protocol": "sip"
         }
     },
