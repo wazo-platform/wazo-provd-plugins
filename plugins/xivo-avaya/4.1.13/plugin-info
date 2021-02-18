@@ -1,5 +1,5 @@
 {
-    "version": "0.2",
+    "version": "0.2.0",
     "description": "Plugin for Avaya (previously known as Nortel) 1220 IP and 1230 IP Deskphone in version 04.01.13.00.",
     "description_fr": "Greffon pour Avaya (auparavant connu comme Nortel) 1220 IP et 1230 IP deskphone en version 04.01.13.00.",
     "capabilities": {
@@ -9,6 +9,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Avaya, 1230IP, 04.01.13.00": {
@@ -17,6 +18,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }
