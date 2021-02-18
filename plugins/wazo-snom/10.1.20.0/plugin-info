@@ -1,5 +1,5 @@
 {
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "Plugin for Snom D785 in version 10.1.20.0.",
     "description_fr": "Greffon pour Snom série D785 en version 10.1.20.0.",
     "capabilities": {
@@ -9,6 +9,7 @@
             "function_keys": 24,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }
