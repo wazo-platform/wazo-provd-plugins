@@ -1,5 +1,5 @@
 {
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Plugin for Gigaset (also known as Siemens) C590 IP, C595 IP, C610 IP, C610A IP, N300 IP and N300A IP in version 025.",
     "description_fr": "Greffon pour Gigaset (aussi connu comme Siemens) C590 IP, C595 IP, C610 IP, C610A IP, N300 IP et N300A IP en version 025.",
     "capabilities": {
@@ -9,6 +9,8 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "dect",
+            "multicell": false,
             "protocol": "sip"
         },
         "Gigaset, C595 IP, 025": {
@@ -17,6 +19,8 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "dect",
+            "multicell": false,
             "protocol": "sip"
         },
         "Gigaset, C610 IP, 025": {
@@ -25,6 +29,8 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "dect",
+            "multicell": false,
             "protocol": "sip"
         },
         "Gigaset, C610A IP, 025": {
@@ -33,6 +39,8 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "dect",
+            "multicell": false,
             "protocol": "sip"
         },
         "Gigaset, N300 IP, 025": {
@@ -41,6 +49,8 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "dect",
+            "multicell": false,
             "protocol": "sip"
         },
         "Gigaset, N300A IP, 025": {
@@ -49,6 +59,8 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "dect",
+            "multicell": false,
             "protocol": "sip"
         }
     }
