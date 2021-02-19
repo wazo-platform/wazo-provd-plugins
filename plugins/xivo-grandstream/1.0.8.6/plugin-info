@@ -1,5 +1,5 @@
 {
-    "version": "0.1",
+    "version": "0.1.0",
     "description": "Plugin for Grandstream GXP11XX and GXP21XX in version 1.0.8.6.",
     "description_fr": "Greffon pour Grandstream GXP11XX et GXP21XX en version 1.0.8.6.",
     "vendor" : "Grandstream",
@@ -9,38 +9,54 @@
     "capabilities": {
         "Grandstream, GXP1100, 1.0.8.6": {
             "lines": 2,
+            "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Grandstream, GXP1105, 1.0.8.6": {
             "lines": 2,
+            "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
             "protocol": "sip"
         },
         "Grandstream, GXP2100, 1.0.8.6": {
             "lines": 4,
+            "high_availability": true,
             "function_keys": 7,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Grandstream, GXP2110, 1.0.8.6": {
             "lines": 1,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Grandstream, GXP2120, 1.0.8.6": {
             "lines": 1,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Grandstream, GXP2124, 1.0.8.6": {
             "lines": 1,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }
