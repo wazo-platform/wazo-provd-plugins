@@ -15,7 +15,7 @@ Valid keys are described as follows:
 * `expansion_modules` (integer): maximum number of expansion modules
 * `switchboard` (boolean): switchboard support
 * `protocol` (string): the protocol used by the phones, usually `sip` or `sccp`
-* `type` (string): the device type. Can be either `deskphone`, `dect`, `conference`, `bridge`,
+* `type` (string): the device type. Can be either `deskphone`, `dect`, `conference`, `pager`,
   `ata`, `softphone` or `gateway`
 * `multicell` (boolean): DECT multicell support
 
