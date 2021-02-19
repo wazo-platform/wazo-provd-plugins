@@ -1,20 +1,8 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2010-2014 Avencall
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2010-2021 The Wazo Authors (see AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 """A tool for building provd plugins."""
 
@@ -41,20 +29,20 @@ PACKAGE_SUFFIX = '.tar.bz2'
 def count(iterable, function=bool):
     """Return the number of element 'e' in iterable for which function(e) is
     true.
-    
+
     If function is not specified, return the number of element 'e' in iterable
     which evaluates to true in a boolean context.
-    
+
     """
     return len(filter(function, iterable))
 
 
 def _is_bplugin(path):
     """Check if path is a bplugin.
-    
+
     A path is a bplugin if it's a directory and has a file named BUILD_FILENAME
     inside it.
-    
+
     """
     return os.path.isfile(os.path.join(path, BUILD_FILENAME))
 
@@ -83,9 +71,9 @@ def _mkdir(path):
 class Bplugin(object):
     def __init__(self, path):
         """Create a new Bplugin object.
-        
+
         path -- the path to a bplugin [directory]
-        
+
         """
         self._load_bplugin(path)
         self._bplugin_path = path
@@ -93,6 +81,7 @@ class Bplugin(object):
 
     def _load_bplugin(self, path):
         targets = {}
+
         def _target(target_id, pg_id, std_dirs=True):
             def aux(fun):
                 if target_id in targets:
@@ -109,12 +98,12 @@ class Bplugin(object):
 
     def build(self, target_id, pgdir):
         """Build the target plugin in pgdir.
-        
+
         Note: pgdir is the base directory where plugins are created. The
         plugin will be created in a sub-directory.
-        
+
         Raise a KeyError if target_id is not a valid target id.
-        
+
         """
         target = self.targets[target_id]
         path = os.path.join(pgdir, target['pg_id'])
@@ -314,7 +303,7 @@ def _version_cmp(version1, version2):
     - negative if version1<version2
     - zero if version1==version2
     - positive if version1>version2.
-    
+
     """
     start1, _, last1 = version1.rpartition('-')
     start2, _, last2 = version2.rpartition('-')
