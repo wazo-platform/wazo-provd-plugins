@@ -1,5 +1,5 @@
 {
-    "version": "1.47",
+    "version": "1.47.0",
     "description": "Plugin for Yealink T20P, T22P, T26P, T28P and W52P in version V73.",
     "description_fr": "Greffon pour Yealink T20P, T22P, T26P, T28P and W52P en version V73.",
     "vendor" : "Yealink",
@@ -12,6 +12,8 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T22P, 7.73.0.50": {
@@ -19,6 +21,7 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T26P, 6.73.0.50": {
@@ -26,6 +29,7 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T28P, 2.73.0.50": {
@@ -33,6 +37,7 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, W52P, 25.73.0.40": {
@@ -40,6 +45,8 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "dect",
+            "multicell": false,
             "protocol": "sip"
         }
     }

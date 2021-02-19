@@ -12,6 +12,7 @@
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "conference",
             "protocol": "sip"
         },
         "Yealink, T29G, 46.83.0.120": {
@@ -19,6 +20,7 @@
             "high_availability": false,
             "function_keys": 27,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T41P, 36.83.0.35": {
@@ -26,6 +28,7 @@
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T42G, 29.83.0.120": {
@@ -33,6 +36,7 @@
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T46G, 28.83.0.120": {
@@ -40,6 +44,7 @@
             "high_availability": true,
             "function_keys": 27,
             "expansion_modules": 0,
+            "type": "deskphone",
             "switchboard": true,
             "protocol": "sip"
         },
@@ -48,6 +53,7 @@
             "high_availability": true,
             "function_keys": 29,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T56A, 58.83.0.15": {
@@ -55,6 +61,7 @@
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T58, 58.83.0.15": {
@@ -62,6 +69,7 @@
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, W60B, 77.83.0.85": {
@@ -69,6 +77,8 @@
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "dect",
+            "multicell": false,
             "protocol": "sip"
         },
         "Yealink, W80, 103.83.0.80": {
@@ -76,6 +86,8 @@
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "dect",
+            "multicell": true,
             "protocol": "sip"
         }
     }
