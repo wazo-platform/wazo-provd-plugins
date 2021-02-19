@@ -1,10 +1,14 @@
 {
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Plugin for Cisco 7921G in version 1.4.5 of the SCCP software.<br/> Please see the documentation if you want to install Cisco firmwares.",
     "description_fr": "Greffon pour Cisco 7921G en version 1.4.5 du logiciel SCCP.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
     "capabilities": {
         "Cisco, 7921G, 1.4.5/SCCP": {
-            "sccp.lines": 6
+            "lines": 6,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "type": "deskphone",
+            "protocol": "sccp"
         }
     }
 }

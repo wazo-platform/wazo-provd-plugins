@@ -1,5 +1,5 @@
 {
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Plugin for Cisco 7906G, 7911G, 7931G, 7941G, 7941G-GE, 7942G, 7945G, 7961G, 7961G-GE, 7962G, 7965G, 7970G, 7971G and 7975G in version 8.5.2 of the SCCP software.<br/> Please see the documentation if you want to install Cisco firmwares.",
     "description_fr": "Greffon pour Cisco 7906G, 7911G, 7931G, 7941G, 7941G-GE, 7942G, 7945G, 7961G, 7961G-GE, 7962G, 7965G, 7970G, 7971G et 7975G en version 8.5.2 du logiciel SCCP.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
     "capabilities": {
@@ -7,72 +7,84 @@
             "lines": 1,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7911G, 8.5.2/SCCP": {
             "lines": 1,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7931G, 8.5.2/SCCP": {
             "lines": 24,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7941G, 8.5.2/SCCP": {
             "lines": 2,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7942G, 8.5.2/SCCP": {
             "lines": 2,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7945G, 8.5.2/SCCP": {
             "lines": 2,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7961G, 8.5.2/SCCP": {
             "lines": 6,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7962G, 8.5.2/SCCP": {
             "lines": 6,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7965G, 8.5.2/SCCP": {
             "lines": 6,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7970G, 8.5.2/SCCP": {
             "lines": 8,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7971G, 8.5.2/SCCP": {
             "lines": 8,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7975G, 8.5.2/SCCP": {
             "lines": 8,
             "function_keys": 0,
             "expansion_modules": 0,
+            "type": "deskphone",
             "protocol": "sccp"
         }
     }
