@@ -1,30 +1,42 @@
 {
-    "version": "0.2",
+    "version": "0.2.0",
     "description": "Plugin for Panasonic KX-UT1XX in version 01.133.",
     "description_fr": "Greffon pour Panasonic KX-UT1XX en version 01.133.",
     "capabilities": {
         "Panasonic, KX-UT113, 01.133": {
             "lines": 1,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Panasonic, KX-UT123, 01.133": {
             "lines": 2,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Panasonic, KX-UT133, 01.133": {
             "lines": 3,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Panasonic, KX-UT136, 01.133": {
             "lines": 6,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }
