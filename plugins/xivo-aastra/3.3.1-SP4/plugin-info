@@ -8,8 +8,8 @@
             "high_availability": true,
             "function_keys": 8,
             "expansion_modules": 0,
-            "switchboard": false
-            "type": "deskphone",,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Aastra, 6731i, 3.3.1.4365": {
@@ -44,8 +44,8 @@
             "high_availability": true,
             "function_keys": 55,
             "expansion_modules": 0,
-            "switchboard": false
-            "type": "deskphone",,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Aastra, 6753i, 3.3.1.4365": {
