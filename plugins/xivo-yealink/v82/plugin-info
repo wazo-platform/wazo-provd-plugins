@@ -12,6 +12,7 @@
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -20,6 +21,7 @@
             "high_availability": true,
             "function_keys": 2,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -28,6 +30,7 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -36,6 +39,7 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -44,6 +48,7 @@
             "high_availability": true,
             "function_keys": 21,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -52,6 +57,7 @@
             "high_availability": false,
             "function_keys": 21,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -60,6 +66,7 @@
             "high_availability": false,
             "function_keys": 27,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -68,6 +75,7 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -76,6 +84,7 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -84,6 +93,7 @@
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -92,6 +102,7 @@
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -100,6 +111,7 @@
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -108,6 +120,7 @@
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -116,7 +129,7 @@
             "high_availability": true,
             "function_keys": 27,
             "expansion_modules": 0,
-            "switchboard": true,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -125,7 +138,7 @@
             "high_availability": true,
             "function_keys": 27,
             "expansion_modules": 0,
-            "switchboard": true,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -134,6 +147,7 @@
             "high_availability": true,
             "function_keys": 29,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -142,6 +156,7 @@
             "high_availability": true,
             "function_keys": 29,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         }

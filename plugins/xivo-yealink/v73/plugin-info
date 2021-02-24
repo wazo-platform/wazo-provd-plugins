@@ -12,6 +12,7 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -20,6 +21,7 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -28,6 +30,7 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -36,6 +39,7 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -44,6 +48,7 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "dect",
             "multicell": false,
             "protocol": "sip"
