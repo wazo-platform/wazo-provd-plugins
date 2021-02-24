@@ -21,6 +21,8 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Grandstream, GXP2100, 1.0.8.6": {
