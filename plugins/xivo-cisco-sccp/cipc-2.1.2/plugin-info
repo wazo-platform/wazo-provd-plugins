@@ -5,8 +5,10 @@
     "capabilities": {
         "Cisco, CIPC, 2.1.2": {
             "lines": 8,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "softphone",
             "protocol": "sccp"
         }

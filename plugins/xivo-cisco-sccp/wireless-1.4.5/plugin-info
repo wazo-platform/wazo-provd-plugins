@@ -5,8 +5,10 @@
     "capabilities": {
         "Cisco, 7921G, 1.4.5/SCCP": {
             "lines": 6,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sccp"
         }

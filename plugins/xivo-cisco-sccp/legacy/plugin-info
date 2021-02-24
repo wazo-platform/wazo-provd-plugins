@@ -5,50 +5,64 @@
     "capabilities": {
         "Cisco, 7905G, 8.0.3/SCCP": {
             "lines": 1,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7912G, 8.0.4/SCCP": {
             "lines": 1,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7920, 3.0.2/SCCP": {
             "lines": 6,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7937, 1.4.5.7/SCCP": {
             "lines": 4,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7940, 8.1.2/SCCP": {
             "lines": 2,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7940G, 8.1.2/SCCP": {
             "lines": 2,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sccp"
         },
         "Cisco, 7960G, 8.1.2/SCCP": {
             "lines": 6,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sccp"
         }
