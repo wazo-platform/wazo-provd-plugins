@@ -11,6 +11,8 @@
             "lines": 2,
             "high_availability": false,
             "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -18,6 +20,8 @@
             "lines": 2,
             "high_availability": false,
             "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -25,6 +29,8 @@
             "lines": 2,
             "high_availability": false,
             "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -32,6 +38,8 @@
             "lines": 4,
             "high_availability": false,
             "function_keys": 30,
+            "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -39,6 +47,8 @@
             "lines": 16,
             "high_availability": false,
             "function_keys": 40,
+            "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -46,6 +56,8 @@
             "lines": 16,
             "high_availability": false,
             "function_keys": 40,
+            "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -53,6 +65,8 @@
             "lines": 20,
             "high_availability": false,
             "function_keys": 60,
+            "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -60,6 +74,8 @@
             "lines": 20,
             "high_availability": false,
             "function_keys": 60,
+            "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -67,6 +83,8 @@
             "lines": 20,
             "high_availability": false,
             "function_keys": 127,
+            "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
@@ -74,6 +92,8 @@
             "lines": 20,
             "high_availability": false,
             "function_keys": 60,
+            "expansion_modules": 0,
+            "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         }
