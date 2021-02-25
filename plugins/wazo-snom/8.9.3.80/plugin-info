@@ -72,6 +72,7 @@
             "function_keys": 18,
             "expansion_modules": 0,
             "switchboard": true,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 725, 8.9.3.80": {
@@ -80,6 +81,7 @@
             "function_keys": 18,
             "expansion_modules": 3,
             "switchboard": true,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, D745, 8.9.3.80": {
