@@ -1,5 +1,5 @@
 {
-    "version": "1.8.5",
+    "version": "1.8.6",
     "description": "Plugin for Snom 300, 320, 370, 710/D710, 715/D715, 720, D725, 760, D765, 820, 821, 870, MP and PA1 in version 8.7.5.35.",
     "description_fr": "Greffon pour Snom 300, 320, 370, 710/D710, 715/D715, 720, D725, 760, D765, 820, 821, 870, MP et PA1 en version 8.7.5.35.",
     "capabilities": {
@@ -9,6 +9,7 @@
             "function_keys": 6,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 320, 8.7.5.35": {
@@ -17,6 +18,7 @@
             "function_keys": 12,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 370, 8.7.5.35": {
@@ -25,6 +27,7 @@
             "function_keys": 12,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 710, 8.7.5.35": {
@@ -33,6 +36,7 @@
             "function_keys": 5,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 715, 8.7.5.35": {
@@ -41,6 +45,7 @@
             "function_keys": 5,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 720, 8.7.5.35": {
@@ -49,6 +54,7 @@
             "function_keys": 18,
             "expansion_modules": 3,
             "switchboard": true,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 725, 8.7.5.35": {
@@ -57,6 +63,7 @@
             "function_keys": 18,
             "expansion_modules": 3,
             "switchboard": true,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 760, 8.7.5.35": {
@@ -65,6 +72,7 @@
             "function_keys": 16,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, D765, 8.7.5.35": {
@@ -73,6 +81,7 @@
             "function_keys": 16,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 820, 8.7.5.35": {
@@ -81,6 +90,7 @@
             "function_keys": 16,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 821, 8.7.5.35": {
@@ -89,6 +99,7 @@
             "function_keys": 12,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 870, 8.7.5.35": {
@@ -97,6 +108,7 @@
             "function_keys": 15,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, MP, 8.7.5.35": {
@@ -105,6 +117,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "conference",
             "protocol": "sip"
         },
         "Snom, PA1, 8.7.5.35": {
@@ -113,6 +126,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "pager",
             "protocol": "sip"
         }
     }

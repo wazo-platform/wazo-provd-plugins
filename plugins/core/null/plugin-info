@@ -8,7 +8,8 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
-            "protocol": "sip"
+            "protocol": "sip",
+            "type": "generic"
         }
     }
 }

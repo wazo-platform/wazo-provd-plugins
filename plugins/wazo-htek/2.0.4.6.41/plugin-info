@@ -1,5 +1,5 @@
 {
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Plugin for Htek for UC926 UC924 UC923 UC921 UC912G UC903 UC902 in version 2.0.4.6.41",
     "description_fr": "Greffon Htek pour UC926 UC924 UC923 UC921 UC912G UC903 UC902 en version 2.0.4.6.41",
     "vendor" : "Htek",
@@ -12,6 +12,8 @@
             "high_availability": true,
             "function_keys": 36,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Htek, UC924, 2.0.4.6.41": {
@@ -19,6 +21,8 @@
             "high_availability": true,
             "function_keys": 28,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Htek, UC923, 2.0.4.6.41": {
@@ -26,6 +30,8 @@
             "high_availability": true,
             "function_keys": 20,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Htek, UC912, 2.0.4.6.41": {
@@ -33,6 +39,8 @@
             "high_availability": true,
             "function_keys": 12,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Htek, UC912G, 2.0.4.6.41": {
@@ -40,6 +48,8 @@
             "high_availability": true,
             "function_keys": 12,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Htek, UC903, 2.0.4.6.41": {
@@ -47,6 +57,8 @@
             "high_availability": true,
             "function_keys": 20,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Htek, UC902, 2.0.4.6.41": {
@@ -54,6 +66,8 @@
             "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }

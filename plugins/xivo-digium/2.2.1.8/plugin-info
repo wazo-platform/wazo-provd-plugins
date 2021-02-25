@@ -1,5 +1,5 @@
 {
-    "version": "1.1",
+    "version": "1.1.0",
     "description": "Plugin for Digium D4X, D50, D6X and D70 in version 2.2.1.8.",
     "description_fr": "Greffon pour Digium D4X, D50, D6X et D70 en version 2.2.1.8.",
     "capabilities": {
@@ -9,6 +9,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Digium, D45, 2.2.1.8": {
@@ -17,6 +18,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Digium, D50, 2.2.1.8": {
@@ -25,6 +27,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Digium, D60, 2.2.1.8": {
@@ -33,6 +36,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Digium, D62, 2.2.1.8": {
@@ -41,6 +45,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Digium, D65, 2.2.1.8": {
@@ -49,6 +54,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Digium, D70, 2.2.1.8": {
@@ -57,6 +63,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }

@@ -1,5 +1,5 @@
 {
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Plugin for Snom D3x5, D717, D7x5 in version 10.1.39.11.",
     "description_fr": "Greffon pour Snom D3x5, D717, D7x5 en version 10.1.39.11.",
     "capabilities": {
@@ -9,6 +9,7 @@
             "function_keys": 12,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 715, 10.1.39.11": {
@@ -17,6 +18,7 @@
             "function_keys": 5,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, D717, 10.1.39.11": {
@@ -25,6 +27,7 @@
             "function_keys": 3,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, 725, 10.1.39.11": {
@@ -33,6 +36,7 @@
             "function_keys": 18,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
 
         },
@@ -42,6 +46,7 @@
             "function_keys": 32,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
 
         },
@@ -51,6 +56,7 @@
             "function_keys": 32,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, D765, 10.1.39.11": {
@@ -59,6 +65,7 @@
             "function_keys": 16,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, D785, 10.1.39.11": {
@@ -67,6 +74,7 @@
             "function_keys": 24,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
 
         }

@@ -1,5 +1,5 @@
 {
-    "version": "0.3",
+    "version": "0.3.0",
     "description": "Plugin for Polycom IP301, IP501, IP600, IP601 and IP4000 in version 3.1.6.0017.",
     "description_fr": "Greffon pour Polycom IP301, IP501, IP600, IP601 et IP4000 en version 3.1.6.0017.",
     "capabilities": {
@@ -9,6 +9,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP501, 3.1.6.0017": {
@@ -17,6 +18,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP600, 3.1.6.0017": {
@@ -25,6 +27,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP601, 3.1.6.0017": {
@@ -33,6 +36,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SSIP4000, 3.1.6.0017": {
@@ -41,6 +45,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "conference",
             "protocol": "sip"
         }
     }
