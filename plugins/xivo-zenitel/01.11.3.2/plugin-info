@@ -8,6 +8,7 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
             "type": "conference",
             "protocol": "sip"
         }
