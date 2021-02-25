@@ -16,7 +16,7 @@ Valid keys are described as follows:
 * `switchboard` (boolean): switchboard support
 * `protocol` (string): the protocol used by the phones, usually `sip` or `sccp`
 * `type` (string): the device type. Can be either `deskphone`, `dect`, `conference`, `pager`,
-  `ata`, `softphone` or `gateway`
+  `ata`, `softphone`, `generic` or `gateway`
 * `multicell` (boolean): DECT multicell support
 
 A key that is not present in a `plugin-info` file means that this information is unknown. This
