@@ -70,7 +70,7 @@ COMMON_FILES_DECT = [
     },
     {
         'filename': u'y000000000077.cfg',
-        'fw_filename': u'W60B-77.85.0.20.rom',
+        'fw_filename': u'W60B-77.85.0.25.rom',
         'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
