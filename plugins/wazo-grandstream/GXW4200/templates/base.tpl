@@ -2,6 +2,32 @@
 <gs_provision version="1">
  <mac>{{ XX_mac }}</mac>
  <config version="1">
+    <!-- Allow DHCP Option 66 to override server. 0 - No, 1 - Yes. Default is Yes. -->
+    <!-- When set to Yes(1), it will override the configured provision path and method. -->
+    <!-- Number: 0,1 -->
+    <!-- Mandatory -->
+    <!-- Reboot required -->
+    <P145>1</P145>
+
+    <!-- Use firmware pre/postfix to determine if f/w is required -->
+    <!-- 0=Always Check for New Firmware -->
+    <!-- 1=Check New Firmware only when F/W pre/suffix changes -->
+    <!-- 2=Always Skip the Firmware Check -->
+    <!-- For Firmware only. -->
+    <!-- Number: 0,1,2 -->
+    <!-- Mandatory -->
+    <P238>0</P238>
+
+    <!-- Automatic Upgrade. 0 - No, 1 - Check every () minutes, 2 - Check daily, 3 - Check weekly,. Default is No. -->
+    <!-- Number: 0,1,2,3 -->
+    <!-- Mandatory -->
+    <P22296>1</P22296>
+
+    <!-- Automatic Upgrade. Check for new firmware/config file every () minutes, unit is in minute, minimum 60 minutes, default is 7 days. P194=3 -->
+    <!-- Number: 60 to 5256000 -->
+    <!-- Mandatory -->
+    <P193>60<P193>
+
     <!-- Maintenance-Web/Telnet Access -->
 
     <!-- HTTP Web Port. Default HTTP is 80. -->
@@ -41,11 +67,17 @@
 
     <!-- User Password -->
     <!-- P196=123 -->
+    {% if user_password -%}
+    <P196>{{ user_password }}</P196>
+    {% endif -%}
 
     <!-- Admin password -->
     <!-- String Max Length: 30; between ascii values 33 and 126 -->
     <!-- Mandatory -->
     <!-- P2=admin -->
+    {% if admin_password -%}
+    <P2>{{ admin_password }}</P2>
+    {% endif -%}
     
     <!-- White list for WAN side -->
     <!-- String: ip address -->
