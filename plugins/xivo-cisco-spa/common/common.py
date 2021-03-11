@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import errno
@@ -35,6 +35,9 @@ def _norm_model(raw_model):
 
 class BaseCiscoDHCPDeviceInfoExtractor(object):
     _RAW_VENDORS = ['linksys', 'cisco']
+    _CISCO_VDI_REGEX = re.compile(r'^(CISCO|Cisco) (SPA[0-9]{3}|ATA190G?g?2?)')
+    _LINKSYS_VDI_REGEX = re.compile(r'^(LINKSYS) (SPA-?[0-9]{3,4})')
+    _VDIS = [_CISCO_VDI_REGEX, _LINKSYS_VDI_REGEX]
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -59,13 +62,15 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
         #   "Cisco SPA525G2" (SPA525G2 7.4.5)
         #   "CISCO SPA122"
         #   "CISCO ATA190"
-        tokens = vdi.split()
-        if len(tokens) == 2:
-            raw_vendor, raw_model = tokens
-            if raw_vendor.lower() in self._RAW_VENDORS:
-                dev_info = {u'vendor': u'Cisco',
-                            u'model': _norm_model(raw_model)}
-                return dev_info
+
+        for vdi_matcher in self._VDIS:
+            match = vdi_matcher.match(vdi)
+            if match:
+                raw_vendor, raw_model = match.groups()
+                if raw_vendor.lower() in self._RAW_VENDORS:
+                    dev_info = {u'vendor': u'Cisco',
+                                u'model': _norm_model(raw_model)}
+                    return dev_info
         return None
 
 

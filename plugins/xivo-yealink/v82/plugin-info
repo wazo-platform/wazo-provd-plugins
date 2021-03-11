@@ -1,5 +1,5 @@
 {
-    "version": "1.0.3",
+    "version": "1.0.5",
     "description": "Plugin for Yealink for all T2X and T4X series in version V82.",
     "description_fr": "Greffon pour Yealink pour toutes les series T2X et T4X en version V82.",
     "vendor" : "Yealink",
@@ -12,6 +12,8 @@
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T21P_E2, 52.82.0.20": {
@@ -19,6 +21,8 @@
             "high_availability": true,
             "function_keys": 2,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T23P, 44.82.0.20": {
@@ -26,6 +30,8 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T23G, 44.82.0.20": {
@@ -33,6 +39,8 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T27P, 45.82.0.20": {
@@ -40,6 +48,8 @@
             "high_availability": true,
             "function_keys": 21,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T27G, 69.82.0.20": {
@@ -47,6 +57,8 @@
             "high_availability": false,
             "function_keys": 21,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T29G, 46.82.0.20": {
@@ -54,6 +66,8 @@
             "high_availability": false,
             "function_keys": 27,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T40P, 54.82.0.20": {
@@ -61,6 +75,8 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T40G, 76.82.0.20": {
@@ -68,6 +84,8 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T41P, 36.82.0.20": {
@@ -75,6 +93,8 @@
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T41S, 66.82.0.20": {
@@ -82,6 +102,8 @@
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T42G, 29.82.0.20": {
@@ -89,6 +111,8 @@
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T42S, 66.82.0.20": {
@@ -96,6 +120,8 @@
             "high_availability": true,
             "function_keys": 15,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T46G, 28.82.0.20": {
@@ -103,7 +129,8 @@
             "high_availability": true,
             "function_keys": 27,
             "expansion_modules": 0,
-            "switchboard": true,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T46S, 66.82.0.20": {
@@ -111,7 +138,8 @@
             "high_availability": true,
             "function_keys": 27,
             "expansion_modules": 0,
-            "switchboard": true,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T48G, 35.82.0.20": {
@@ -119,6 +147,8 @@
             "high_availability": true,
             "function_keys": 29,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T48S, 66.82.0.20": {
@@ -126,6 +156,8 @@
             "high_availability": true,
             "function_keys": 29,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }

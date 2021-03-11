@@ -1,7 +1,7 @@
 [pkg_N510-fw]
 description: Firmware for Gigaset N510 IP PRO
 description_fr: Micrologiciel pour Gigaset N510 IP PRO
-version: 42.250
+version: 42.258
 files: N510-fw
 install: gigasetn510-fw
 
@@ -10,7 +10,7 @@ a-b: unzip $FILE1
 b-c: cp */*.bin Gigaset/
 
 [file_N510-fw]
-filename: N510_SW_250.zip
-url: https://teamwork.gigaset.com/gigawiki/download/attachments/926844154/N510_SW_250.zip?version=1&modificationDate=1561377527000&api=v2&download=true
-size: 5789114
-sha1sum: 3509432aac911b0010677a2bf90dd20a3d41f331
+filename: N510_SW_258.zip
+url: https://teamwork.gigaset.com/gigawiki/download/attachments/1171554762/N510_SW_258.zip?version=1&modificationDate=1605603398000&api=v2
+size: 5823580
+sha1sum: 355fbfc2a088e4cd0af07581cafc320657bd1695

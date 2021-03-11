@@ -1,5 +1,5 @@
 {
-    "version": "0.2",
+    "version": "0.2.0",
     "description": "Plugin for Zenitel IP stations in version 01.11.3.2.",
     "description_fr": "Greffon pour Zenitel IP stations en version 01.11.3.2.",
     "capabilities": {
@@ -8,6 +8,8 @@
             "high_availability": true,
             "function_keys": 3,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "conference",
             "protocol": "sip"
         }
     }

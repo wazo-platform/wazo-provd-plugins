@@ -1,0 +1,4 @@
+plugins/_build
+dhcp/dhcpd.tar*
+plugins/_firmwares/*/*
+!plugins/_firmwares/*/.brand

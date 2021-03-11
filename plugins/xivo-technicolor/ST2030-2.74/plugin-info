@@ -1,5 +1,5 @@
 {
-    "version": "0.3",
+    "version": "0.3.0",
     "description": "Plugin for Technicolor (previously known as Thomson) ST2030 in version 2.74.",
     "description_fr": "Greffon pour Technicolor (auparavant connu comme Thomson) ST2030 en version 2.74.",
     "capabilities": {
@@ -8,6 +8,8 @@
             "high_availability": true,
             "function_keys": 66,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }

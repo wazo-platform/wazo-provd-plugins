@@ -6,12 +6,14 @@ PLUGINS_PATH := $(BUILDDIR)/plugins
 TESTING_PATH := $(BUILDDIR)/testing
 STABLE_PATH := $(BUILDDIR)/stable
 ARCHIVE_PATH := $(BUILDDIR)/archive
+FIRMWARES_PATH := _firmwares
 
 REMOTE_HOST := webserver.wazo.community
 REMOTE_USER := root
 REMOTE_TESTING_PATH := /var/www/provd/plugins/1/testing
 REMOTE_STABLE_PATH := /var/www/provd/plugins/1/stable
 REMOTE_ARCHIVE_PATH := /var/www/provd/plugins/1/archive
+REMOTE_FIRMWARES_PATH := /var/www/provd/firmwares
 
 
 .PHONY : download
@@ -66,6 +68,17 @@ build-archive :
 .PHONY : upload-archive
 upload-archive : build-archive
 	rsync -v -rt --delete $(ARCHIVE_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_ARCHIVE_PATH)
+
+
+.PHONY : download-firmwares
+download-firmwares :
+	mkdir -p $(FIRMWARES_PATH)
+	rsync -v -rt $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_FIRMWARES_PATH)/ $(FIRMWARES_PATH)
+
+
+.PHONY : upload-firmwares
+upload-firmwares:
+	rsync -v -rt $(FIRMWARES_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_FIRMWARES_PATH)
 
 
 .PHONY : clean

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2011-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 """Common code shared by the various wazo-gigaset plugins."""
@@ -83,8 +83,8 @@ class GigasetHTTPDeviceInfoExtractor(object):
         # "N720-DM-PRO/70.040.00.000.000"
         # "N510 IP PRO/42.245.00.000.000;7C2F804DF9A9"
         # "N510 IP PRO/42.245.00.000.000"
-        # "N510 IP PRO/42.250.00.000.000;7C2F806257D7"
-        # "N510 IP PRO/42.250.00.000.000"
+        # "N510 IP PRO/42.258.00.000.000;7C2F806257D7"
+        # "N510 IP PRO/42.258.00.000.000"
         m = self._UA_REGEX.search(ua)
         dev_info = {}
         if m:
@@ -207,6 +207,10 @@ class BaseGigasetPlugin(StandardPlugin):
             ip = raw_config[u'dns_ip']
             ip_str = '0x' + ''.join(['%x' % int(p) for p in ip.split('.')])
             raw_config[u'XX_dns_ip_hex'] = ip_str
+
+        if u'vlan_id' in raw_config:
+            vlan_id = raw_config[u'vlan_id']
+            raw_config[u'XX_vlan_id_hex'] = '0x%x' % int(vlan_id)
 
         self._add_timezone_code(raw_config)
 

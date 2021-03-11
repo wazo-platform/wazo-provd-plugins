@@ -1,5 +1,5 @@
 {
-    "version": "1.1.5",
+    "version": "1.1.7",
     "description": "Plugin for Cisco SMB SPA301, 303, 501G, 502G, 504G, 508G, 509G, 512G, 514G, 525G and 525G2 in version 7.5.5.",
     "description_fr": "Greffon pour Cisco SMB SPA301, 303, 501G, 502G, 504G, 508G, 509G, 512G, 514G, 525G et 525G2 en version 7.5.5.",
     "capabilities": {
@@ -9,6 +9,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Cisco, SPA303, 7.5.5": {
@@ -17,6 +18,7 @@
             "function_keys": 3,
             "expansion_modules": 2,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Cisco, SPA501G, 7.5.5": {
@@ -25,6 +27,7 @@
             "function_keys": 8,
             "expansion_modules": 2,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Cisco, SPA502G, 7.5.5": {
@@ -33,6 +36,7 @@
             "function_keys": 0,
             "expansion_modules": 2,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Cisco, SPA504G, 7.5.5": {
@@ -41,6 +45,7 @@
             "function_keys": 4,
             "expansion_modules": 2,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Cisco, SPA508G, 7.5.5": {
@@ -49,6 +54,7 @@
             "function_keys": 8,
             "expansion_modules": 2,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Cisco, SPA509G, 7.5.5": {
@@ -57,6 +63,7 @@
             "function_keys": 12,
             "expansion_modules": 2,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Cisco, SPA512G, 7.5.5": {
@@ -65,6 +72,7 @@
             "function_keys": 0,
             "expansion_modules": 2,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Cisco, SPA514G, 7.5.5": {
@@ -73,6 +81,7 @@
             "function_keys": 4,
             "expansion_modules": 2,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Cisco, SPA525G, 7.5.5": {
@@ -81,6 +90,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Cisco, SPA525G2, 7.5.5": {
@@ -89,6 +99,7 @@
             "function_keys": 5,
             "expansion_modules": 2,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }

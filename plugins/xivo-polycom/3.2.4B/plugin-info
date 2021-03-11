@@ -1,5 +1,5 @@
 {
-    "version": "0.3",
+    "version": "0.3.0",
     "description": "Plugin for Polycom IP320, IP321, IP330, IP331, IP335, IP430, IP450, IP550, IP560, IP650, IP670, IP5000, IP6000, IP7000 and VVX1500 in version 3.2.4.0267.",
     "description_fr": "Greffon pour Polycom IP320, IP321, IP330, IP331, IP335, IP430, IP450, IP550, IP560, IP650, IP670, IP5000, IP6000, IP7000 et VVX1500 en version 3.2.4.0267.",
     "capabilities": {
@@ -9,6 +9,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP321, 3.2.4.0267": {
@@ -17,6 +18,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP330, 3.2.4.0267": {
@@ -25,6 +27,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP331, 3.2.4.0267": {
@@ -33,6 +36,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP335, 3.2.4.0267": {
@@ -41,6 +45,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP430, 3.2.4.0267": {
@@ -49,6 +54,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP450, 3.2.4.0267": {
@@ -57,6 +63,7 @@
             "function_keys": 2,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP550, 3.2.4.0267": {
@@ -65,6 +72,7 @@
             "function_keys": 3,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP560, 3.2.4.0267": {
@@ -73,6 +81,7 @@
             "function_keys": 3,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP650, 3.2.4.0267": {
@@ -81,6 +90,7 @@
             "function_keys": 47,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SPIP670, 3.2.4.0267": {
@@ -89,6 +99,7 @@
             "function_keys": 47,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Polycom, SSIP5000, 3.2.4.0267": {
@@ -97,6 +108,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "conference",
             "protocol": "sip"
         },
         "Polycom, SSIP6000, 3.2.4.0267": {
@@ -105,6 +117,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "conference",
             "protocol": "sip"
         },
         "Polycom, SSIP7000, 3.2.4.0267": {
@@ -113,6 +126,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "conference",
             "protocol": "sip"
         },
         "Polycom, VVX1500, 3.2.4.0244": {
@@ -121,6 +135,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }

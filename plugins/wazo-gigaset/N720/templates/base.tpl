@@ -61,7 +61,7 @@
     {%- if vlan_enabled %}
         <SYMB_ITEM ID="BS_IP_Data.ucB_VLAN_ENABLED" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_IP_Data.ucI_VLAN_PRIORITY" class="symb_item" value="{{ vlan_priority }}"/>
-        <SYMB_ITEM ID="BS_IP_Data.uiI_VLAN_ID" class="symb_item" value="0x{{ "%x"|format(vlan_id) }}"/>
+        <SYMB_ITEM ID="BS_IP_Data.uiI_VLAN_ID" class="symb_item" value="{{ XX_vlan_id_hex }}"/>
     {%- endif %}
         <SYMB_ITEM ID="BS_IP_Data.uiI_PAGE_MASK_ID" class="symb_item" value="0xf0ff"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_AUTO_UPDATE_FW" class="symb_item" value="0"/>

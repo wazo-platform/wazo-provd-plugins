@@ -3,9 +3,6 @@
 static.auto_provision.pnp_enable = 0
 static.auto_provision.custom.protect = 1
 
-static.network.qos.audiotos 46
-static.network.qos.signaltos 46
-
 distinctive_ring_tones.alert_info.1.text = ring1
 distinctive_ring_tones.alert_info.2.text = ring2
 distinctive_ring_tones.alert_info.3.text = ring3
@@ -24,6 +21,8 @@ distinctive_ring_tones.alert_info.7.ringer = 7
 distinctive_ring_tones.alert_info.8.ringer = 8
 
 features.caller_name_type_on_dialing = 1
+features.text_message.enable = 0
+features.text_message_popup.enable = 0
 
 local_time.date_format = 2
 
@@ -84,6 +83,8 @@ static.security.user_name.admin = {{ admin_username|d('admin') }}
 static.security.user_password = {{ user_username|d('user') }}:{{ user_password|d('user') }}
 static.security.user_password = {{ admin_username|d('admin') }}:{{ admin_password|d('admin') }}
 
+static.usb.power.enable = 1
+
 {% for line_no, line in XX_sip_lines.iteritems() -%}
 {% if line -%}
 account.{{ line_no }}.enable = 1
@@ -104,6 +105,9 @@ account.{{ line_no }}.alert_info_url_enable = 0
 account.{{ line_no }}.nat.udp_update_enable = 1
 account.{{ line_no }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
 account.{{ line_no }}.dtmf.info_type = 1
+{% if sip_subscribe_mwi -%}
+account.{{ line_no }}.subscribe_mwi = 1
+{% endif %}
 voice_mail.number.{{ line_no }} = {{ line['voicemail']|d('%NULL%') }}
 {% else -%}
 account.{{ line_no }}.enable = 0
@@ -118,6 +122,7 @@ account.{{ line_no }}.sip_server.1.transport_type = %NULL%
 account.{{ line_no }}.sip_server.2.address = %NULL%
 account.{{ line_no }}.sip_server.2.port = %NULL%
 account.{{ line_no }}.sip_server.2.transport_type = %NULL%
+account.{{ line_no }}.subscribe_mwi = %NULL%
 voice_mail.number.{{ line_no }} = %NULL%
 {% endif %}
 {% endfor %}

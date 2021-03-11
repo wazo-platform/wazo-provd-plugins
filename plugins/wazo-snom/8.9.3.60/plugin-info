@@ -1,5 +1,5 @@
 {
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "Plugin for Snom D305, D315, D345 and D375 in version 8.9.3.60.",
     "description_fr": "Greffon pour Snom D305, D315, D345 and D375 en version 8.9.3.60.",
     "capabilities": {
@@ -9,6 +9,7 @@
             "function_keys": 5,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, D315, 8.9.3.60": {
@@ -17,6 +18,7 @@
             "function_keys": 5,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, D345, 8.9.3.60": {
@@ -25,6 +27,7 @@
             "function_keys": 5,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Snom, D375, 8.9.3.60": {
@@ -33,6 +36,7 @@
             "function_keys": 12,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }

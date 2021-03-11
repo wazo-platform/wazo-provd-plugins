@@ -1,16 +1,34 @@
 {
-    "version": "1.1",
+    "version": "1.1.0",
     "description": "Plugin for Digium D40, D50 and D70 in version 1.4.0.0.",
     "description_fr": "Greffon pour Digium D40, D50 et D70 en version 1.4.0.0.",
     "capabilities": {
         "Digium, D40, 1.4.0.0": {
-            "sip.lines": 2
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
         },
         "Digium, D50, 1.4.0.0": {
-            "sip.lines": 4
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
         },
         "Digium, D70, 1.4.0.0": {
-            "sip.lines": 6
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
         }
     }
 }

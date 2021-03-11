@@ -1,5 +1,5 @@
 {
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Plugin for Fanvil C58, C62 in version 2.3.",
     "description_fr": "Greffon pour Fanvil C58, C62 en version 2.3.",
     "vendor" : "Fanvil",
@@ -12,6 +12,8 @@
             "high_availability": false,
             "function_keys": 2,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Fanvil, C62, 2.3": {
@@ -19,48 +21,71 @@
             "high_availability": false,
             "function_keys": 8,
             "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Fanvil, X2, 2.3": {
             "lines": 1,
             "high_availability" : false,
             "function_keys" : 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Fanvil, X3, 2.3": {
             "lines": 2,
             "high_availability" : false,
             "function_keys" : 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Fanvil, X3S, 2.3": {
             "lines": 2,
-            "high_availability" : 0,
+            "high_availability": false,
             "function_keys" : 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol" : "sip"
         },
         "Fanvil, X4, 2.3": {
             "lines": 4,
-            "high_availability" : 0,
+            "high_availability": false,
             "function_keys" : 12,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol" : "sip"
         },
         "Fanvil, X5, 2.3": {
             "lines": 6,
-            "high_availability" : 0,
+            "high_availability": false,
             "function_keys" : 40,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol" : "sip"
         },
         "Fanvil, X5S, 2.3": {
             "lines": 6,
-            "high_availability" : 0,
+            "high_availability": false,
             "function_keys" : 40,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol" : "sip"
         },
         "Fanvil, X6, 2.3": {
             "lines": 6,
-            "high_availability" : 0,
+            "high_availability": false,
             "function_keys" : 60,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
             "protocol" : "sip"
         }
     }

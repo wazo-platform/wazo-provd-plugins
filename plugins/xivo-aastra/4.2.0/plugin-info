@@ -1,5 +1,5 @@
 {
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Plugin for Aastra/Mitel 6863i, 6865i, 6867i and 6869i in version 4.2.0.",
     "description_fr": "Greffon pour Aastra/Mitel 6863i, 6865i, 6867i et 6869i en version 4.2.0.",
     "capabilities": {
@@ -9,6 +9,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Aastra, 6865i, 4.2.0.2023": {
@@ -17,6 +18,7 @@
             "function_keys": 8,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Aastra, 6867i, 4.2.0.2023": {
@@ -25,6 +27,7 @@
             "function_keys": 38,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         },
         "Aastra, 6869i, 4.2.0.2023": {
@@ -33,6 +36,7 @@
             "function_keys": 68,
             "expansion_modules": 3,
             "switchboard": false,
+            "type": "deskphone",
             "protocol": "sip"
         }
     }
