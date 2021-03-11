@@ -1,6 +1,6 @@
 #!/bin/bash
 
-snom_products=(D120 D305 D315 D335 D345 D375 D385 D712 715 D717 725 D735 D745 D765 D785)
+snom_products=(D305 D315 D335 D345 D375 D385 D712 715 D717 725 D735 D745 D765 D785)
 
 dest_filename="pkgs.db"
 echo $dest_filename
