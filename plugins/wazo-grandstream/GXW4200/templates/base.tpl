@@ -45,7 +45,7 @@
     <!-- Web Access Mode. 0 - HTTPS, 1 - HTTP -->
     <!-- Number: 0, 1 -->
     <!-- Mandatory -->
-    <P1650>0</P1650>
+    <P1650>1</P1650>
 
     <!-- Disable SSH. 0 - No, 1 - Yes -->
     <!-- Number: 0,1 -->
