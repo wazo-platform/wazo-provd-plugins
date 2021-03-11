@@ -165,23 +165,23 @@ a-b: cp *.rom firmware/
 
 [install_yealink-T29G-lang]
 a-b: unzip $FILE1
-b-c: cp */GUI/*/*.lang lang/T29G/
+b-c: cp */*.lang lang/T29G/
 
 [install_yealink-T41P-T42G-lang]
 a-b: unzip $FILE1
-b-c: cp */GUI/*/*.lang lang/T41P-T42G/
+b-c: cp */*.lang lang/T41P-T42G/
 
 [install_yealink-T46G-lang]
 a-b: unzip $FILE1
-b-c: cp */GUI/*/*.lang lang/T46G/
+b-c: cp */*.lang lang/T46G/
 
 [install_yealink-T48G-lang]
 a-b: unzip $FILE1
-b-c: cp */GUI/*/*.lang lang/T48G/
+b-c: cp */*.lang lang/T48G/
 
 [install_yealink-T56-T58-lang]
 a-b: unzip $FILE1
-b-c: cp */GUI/*/*.lang lang/T56-T58/
+b-c: cp */GUI/*.lang lang/T56-T58/
 
 [install_yealink-W60B-lang]
 a-b: unzip $FILE1
