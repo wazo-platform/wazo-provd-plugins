@@ -23,7 +23,7 @@
     <!-- Mandatory -->
     <P22296>1</P22296>
 
-    <P194>3</P194>
+    <!-- <P194>3</P194> -->
     <!-- Automatic Upgrade. Check for new firmware/config file every () minutes, unit is in minute, minimum 60 minutes, default is 7 days. P194=3 -->
     <!-- Number: 60 to 5256000 -->
     <!-- Mandatory -->
