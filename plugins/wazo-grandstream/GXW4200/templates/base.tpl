@@ -23,6 +23,7 @@
     <!-- Mandatory -->
     <P22296>1</P22296>
 
+    <P194>3</P194>
     <!-- Automatic Upgrade. Check for new firmware/config file every () minutes, unit is in minute, minimum 60 minutes, default is 7 days. P194=3 -->
     <!-- Number: 60 to 5256000 -->
     <!-- Mandatory -->
@@ -44,7 +45,7 @@
     <!-- Web Access Mode. 0 - HTTPS, 1 - HTTP -->
     <!-- Number: 0, 1 -->
     <!-- Mandatory -->
-    <P1650>1</P1650>
+    <P1650>0</P1650>
 
     <!-- Disable SSH. 0 - No, 1 - Yes -->
     <!-- Number: 0,1 -->
@@ -70,6 +71,7 @@
     {% if user_password -%}
     <P196>{{ user_password }}</P196>
     {% endif -%}
+
 
     <!-- Admin password -->
     <!-- String Max Length: 30; between ascii values 33 and 126 -->
@@ -141,7 +143,12 @@
     <!-- Number -->
     <!-- Mandatory -->
     <P51>{{ vlan_id }}</P51>
+    
+    <!-- Layer 2 QoS 802.1Q/VLAN Tag for Management Interface. -->
+    <!-- Number -->
+    <P22111>{{ vlan_id }}</P22111>
     {% endif -%}
+
     {% if vlan_priority is defined -%}
     <!-- Layer 2 QoS 802.1p Priority Value for SIP signaling -->
     <!-- Number: 0 to 7 -->
