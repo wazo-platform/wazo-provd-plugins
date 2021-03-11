@@ -30,7 +30,8 @@ do
 	echo "" >> $dest_filename
 done
 echo "[install_$constructor-fw]" >> $dest_filename
-echo "a-b: cp \$FILE1 firmware/" >> $dest_filename
+echo "a-b: unzip \$FILE1" >> $dest_filename
+echo "b-c: cp */*.bin ./" >> $dest_filename
 echo "" >> $dest_filename
 
 for i in "${products[@]}" 

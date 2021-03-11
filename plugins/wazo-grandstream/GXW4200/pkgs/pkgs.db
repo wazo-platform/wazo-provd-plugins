@@ -27,7 +27,8 @@ files: GXW4248-fw
 install: Grandstream-fw
 
 [install_Grandstream-fw]
-a-b: cp $FILE1 firmware/
+a-b: unzip $FILE1
+b-c: cp */*.bin ./
 
 [file_GXW4216-fw]
 url: http://firmware.grandstream.com/Release_GXW4216_1.0.14.2.zip
