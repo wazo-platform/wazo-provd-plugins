@@ -1,43 +1,47 @@
 {
-    "version": "0.0.3",
-    "description": "Plugin for Grandstream GXW42XX (XML v1) in version 1.0.11.3.",
-    "description_fr": "Greffon pour Grandstream GXW42XX (XML v1) en version 1.0.11.3.",
+    "version": "0.0.4",
+    "description": "Plugin for Grandstream GXW42XX (XML v1) in version 1.0.14.2.",
+    "description_fr": "Greffon pour Grandstream GXW42XX (XML v1) en version 1.0.14.2.",
     "vendor" : "Grandstream",
     "vendor.url" : "http://www.grandstream.com",
     "vendor.description" : "Grandstream Networks, Inc. is an award-winning designer and ISO 9001 certified manufacturer of next generation IP voice & video products for broadband networks. Grandstream’s products deliver superb sound and picture quality, rich telephony features, full compliance with industry standards, and broad interoperability with most service providers and 3rd party SIP based VoIP products.",
     "vendor.official" : 0,
     "capabilities": {
-        "Grandstream, GXW4216, 1.0.11.3": {
+        "Grandstream, GXW4216, 1.0.14.2": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": 0,
-            "protocol": "sip"
+            "protocol": "sip",
+            "type": "gateway"
         },
-        "Grandstream, GXW4224, 1.0.11.3": {
+        "Grandstream, GXW4224, 1.0.14.2": {
             "lines": 24,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": 0,
-            "protocol": "sip"
+            "protocol": "sip",
+            "type": "gateway"
         },
-        "Grandstream, GXW4232, 1.0.11.3": {
+        "Grandstream, GXW4232, 1.0.14.2": {
             "lines": 32,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": 0,
-            "protocol": "sip"
+            "protocol": "sip",
+            "type": "gateway"
         },
-        "Grandstream, GXW4248, 1.0.11.3": {
+        "Grandstream, GXW4248, 1.0.14.2": {
             "lines": 48,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": 0,
-            "protocol": "sip"
+            "protocol": "sip",
+            "type": "gateway"
         }
     }
 }

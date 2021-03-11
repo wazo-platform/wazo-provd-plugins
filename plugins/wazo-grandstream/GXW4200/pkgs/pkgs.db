@@ -1,52 +1,51 @@
 [pkg_GXW4216-fw]
 description: Firmware for Grandstream GXW4216
-description_fr: Micrologiciel pour Grandstream GXW4216
-version: 1.0.11.3
+description_fr: Firmware pour Grandstream GXW4216
+version: 1.0.14.2
 files: GXW4216-fw
-install: grandstream
+install: Grandstream-fw
 
 [pkg_GXW4224-fw]
 description: Firmware for Grandstream GXW4224
-description_fr: Micrologiciel pour Grandstream GXW4224
-version: 1.0.11.3
+description_fr: Firmware pour Grandstream GXW4224
+version: 1.0.14.2
 files: GXW4224-fw
-install: grandstream
+install: Grandstream-fw
 
 [pkg_GXW4232-fw]
 description: Firmware for Grandstream GXW4232
-description_fr: Micrologiciel pour Grandstream GXW4232
-version: 1.0.11.3
+description_fr: Firmware pour Grandstream GXW4232
+version: 1.0.14.2
 files: GXW4232-fw
-install: grandstream
+install: Grandstream-fw
 
 [pkg_GXW4248-fw]
 description: Firmware for Grandstream GXW4248
-description_fr: Micrologiciel pour Grandstream GXW4248
-version: 1.0.11.3
+description_fr: Firmware pour Grandstream GXW4248
+version: 1.0.14.2
 files: GXW4248-fw
-install: grandstream
+install: Grandstream-fw
 
-[install_grandstream]
-a-b: unzip $FILE1
-b-c: cp */*.bin ./
+[install_Grandstream-fw]
+a-b: cp $FILE1 firmware/
 
 [file_GXW4216-fw]
-url: http://firmware.grandstream.com/Release_GXW4216_1.0.11.3.zip
-size: 11657468
-sha1sum: 2a89fe0784a6da6c4fbd1db431875218f5492ad7
+url: http://firmware.grandstream.com/Release_GXW4216_1.0.14.2.zip
+size: 11656646
+sha1sum: be308006e704f7c18fd21ca71a98b2256a5ed00f
 
 [file_GXW4224-fw]
-url: http://firmware.grandstream.com/Release_GXW4224_1.0.11.3.zip
-size: 11657682
-sha1sum: b706f452df7f040117cbbeb03fc3e7b6773b4d3e
+url: http://firmware.grandstream.com/Release_GXW4224_1.0.14.2.zip
+size: 11656797
+sha1sum: 3392e2f82315395ea765e25c32756ae048041c78
 
 [file_GXW4232-fw]
-url: http://firmware.grandstream.com/Release_GXW4232_1.0.11.3.zip
-size: 11657762
-sha1sum: 0c77278412967dee9048a521fd2a847f713f949b
+url: http://firmware.grandstream.com/Release_GXW4232_1.0.14.2.zip
+size: 11657160
+sha1sum: 6a7d1f1d64596dd09c01ecf6c61b03fac02d005d
 
 [file_GXW4248-fw]
-url: http://firmware.grandstream.com/Release_GXW4248_1.0.11.3.zip
-size: 11675377
-sha1sum: dd5fe9f9e36400f8f7a8c98351c7a55713b7377f
+url: http://firmware.grandstream.com/Release_GXW4248_1.0.14.2.zip
+size: 11674366
+sha1sum: fb639a43b99265bb4f5057e96708e0369b3d5705
 
