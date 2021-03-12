@@ -127,7 +127,7 @@ install: yealink-cp-rom
 [pkg_W52P_W56P-base-fw]
 description: Firmware for Yealink W52P and W56P base
 description_fr: Micrologiciel pour base Yealink W52P et W56P
-version: 25.81.0.10
+version: 25.81.0.60
 files: W52P_W56P-base-fw
 install: yealink-cp-rom
 
@@ -274,10 +274,10 @@ size: 18948304
 sha1sum: 7bd04e6f92e94ff819f4694f502e63e6bc1079b1
 
 [file_W52P_W56P-base-fw]
-filename: Base-W52P-W56P-25.81.0.10.rom
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypsN1StLgAwqIbXplusSymboleOhpPym/bPNc3lNFOcMcJBzGqUr/8syZXHHLlYcAGh9Mt9WObDk1QwXUClUp6U3PnQtJon0I5ET5BfqI8dRS8liplusSymbolyVEg29utctf2JmplusSymbol8=
+filename: Base-W52P-W56P-25.81.0.60.rom
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgRplusSymbolYFVgEdMpoBjb4z7QlPnbSdqizjP/cuPAJea/izs000vYrgAxHUMMf6ZvgrlHOJZGVrwbsS7UkuT40UqtNbSgyWSVRBtG2EHFWHFj1HSPKftWtvfBzd4=
 size: 6763776
-sha1sum: 69ea05cd71ed7e5bdfd508cdae4782a9c94e353b
+sha1sum: 313ff1117f0a8c168d1b1c06bbd3380dc915d304
 
 [file_W56P-handset-fw]
 filename: W56H-61.81.0.30.rom
