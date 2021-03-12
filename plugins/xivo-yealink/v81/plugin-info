@@ -1,5 +1,5 @@
 {
-    "version": "1.48.0",
+    "version": "1.48.1",
     "description": "Plugin for Yealink for all T2X and T4X series, W52/56 and CP860 in version V81.",
     "description_fr": "Greffon pour Yealink toutes les sÃ©ries T2X et T4X, W52/56 et CP860 en version V81.",
     "vendor" : "Yealink",
@@ -178,7 +178,7 @@
             "type": "conference",
             "protocol": "sip"
         },
-        "Yealink, W52P, 25.81.0.10": {
+        "Yealink, W52P, 25.81.0.60": {
             "lines": 5,
             "high_availability": true,
             "function_keys": 0,
