@@ -40,7 +40,7 @@ MODEL_VERSIONS = {
     u'T48S': u'66.81.0.110',
     u'CP860': u'37.81.0.10',
     u'CP920': u'78.81.0.15',
-    u'W52P': u'25.81.0.10',
+    u'W52P': u'25.81.0.60',
 }
 
 COMMON_FILES = [
@@ -65,7 +65,7 @@ COMMON_FILES = [
 ]
 
 COMMON_FILES_DECT = [
-    ('y000000000025.cfg', u'Base-W52P-W56P-25.81.0.10.rom', u'W56H-61.81.0.30.rom', 'W52P.tpl'),
+    ('y000000000025.cfg', u'Base-W52P-W56P-25.81.0.60.rom', u'W56H-61.81.0.30.rom', 'W52P.tpl'),
 ]
 
 class YealinkPlugin(common_globals['BaseYealinkPlugin']):
