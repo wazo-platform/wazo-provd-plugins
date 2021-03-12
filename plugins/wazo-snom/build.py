@@ -559,11 +559,7 @@ def build_10_1_64_14(path):
         with open(model_tpl, 'wb') as f:
             check_call(['sed', sed_script, 'common/templates/common/snom-model-firmware.xml.tpl.btpl'],
                        stdout=f)
-
-        sed_script = 's/#FW_FILEUXM#/snomUXM-2.1.1.bin/'
-        with open(model_tpl, 'wb') as f:
-            check_call(['sed', sed_script, 'common/templates/common/snom-model-firmware.xml.tpl.btpl'],
-                       stdout=f)
+	# generate sed for uxm 's/#FW_FILEUXM#/snomUXM-2.1.1.bin/'
 
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
