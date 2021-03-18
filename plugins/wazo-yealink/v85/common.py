@@ -66,6 +66,8 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72"
         #   "Yealink SIP-T33G 124.85.257.55 80:5e:c0:bd:ea:ef"
         #   "Yealink W90DM 130.85.0.15 80:5e:c0:d9:c7:44"
+        #   "Yealink SIP-T46U 180.85.0.54 80:5E:C0:78:29:65"
+        
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
@@ -215,6 +217,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'W60B': 0,
         u'W90DM': 0,
         u'W90B': 0,
+        u'T46U': 27,
     }
     _NB_MEMORYKEY = {
         u'CP920': 0,
@@ -240,6 +243,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'W60B': 0,
         u'W90DM': 0,
         u'W90B': 0,
+        u'T46U': 0,
     }
 
     class NullExpansionModule(object):
@@ -341,6 +345,7 @@ class BaseYealinkPlugin(StandardPlugin):
         u'W60B': 8,
         u'W90DM': 250,
         u'W90B': 0,
+        u'T46U': 16,
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):

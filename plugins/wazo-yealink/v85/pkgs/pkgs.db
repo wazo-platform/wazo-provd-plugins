@@ -19,6 +19,13 @@ version: 66.85.0.5
 files: T46S_T48S_T42S_T41S-fw
 install: yealink-fw
 
+[pkg_T46U_T48U_T43U_T42U-fw]
+description: Firmware for Yealink T46U T48U T42U and T43U
+description_fr: Micrologiciel pour Yealink T46U T48U T42U et T43U
+version: 108.85.0.63
+files: T46U_T48U_T42U_T43U-fw
+install: yealink-fw
+
 [pkg_T53_T53W_T54W_T57W-fw]
 description: Firmware for Yealink T53 T53W T54W and T57W
 description_fr: Micrologiciel pour Yealink T53 T53W T54W et T57W
@@ -154,6 +161,13 @@ filename: T46S(T48S,T42S,T41S)-66.85.0.5.rom
 url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/x71yaViKhXSKOgYSKl0Pb7N9IXFpYf7YAOhOJmV0fGjbcYgmf0b9uxGdQ1IFTWkfgTz2m4g5Uoy1NWm3/S6JBTsplusSymbolM5UOVemCq9Kf2pvmyoc=
 size: 25559152
 sha1sum: 091d469ba3ce13b424a5212fb74f0e1b59c31a6a
+
+[file_T46U_T48U_T42U_T43U-fw]
+filename: 
+url: https://fileonline.yealink.com/?Command=DownloadFileShare&FileToken=0&ShareToken=704C2A2B6953F5AA4C5732C442CCCAD1786B968F
+size: 37705936
+sha1sum:  a5c721d6e2f50d88186187080c4b9a404fb948cb
+
 
 [file_T53_T53W_T54W_T57W-fw]
 filename: T54W(T57W,T53W,T53)-96.85.0.5.rom

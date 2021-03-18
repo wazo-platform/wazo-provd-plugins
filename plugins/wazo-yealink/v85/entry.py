@@ -31,6 +31,7 @@ MODEL_VERSIONS = {
     u'W60B': u'77.85.0.25',
     u'W90DM': u'130.85.0.15',
     u'W90B': u'130.85.0.15',
+    u'T46U': u'180.85.0.63',
 }
 
 COMMON_FILES = [
@@ -44,6 +45,7 @@ COMMON_FILES = [
     ('y000000000123.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom', 'model.tpl'),
     ('y000000000124.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom', 'model.tpl'),
     ('y000000000127.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom', 'model.tpl'),
+    ('y000000000108.cfg', u'T46U(T43U,T46U,T41U,T48U,T42U)-108.85.0.63.rom', 'model.tpl'),
 ]
 
 HANDSETS_FW = {
