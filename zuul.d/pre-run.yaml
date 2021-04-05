@@ -6,4 +6,6 @@
       apt:
         name:
           - jq
+          - make
+          - rsync
         state: installed
