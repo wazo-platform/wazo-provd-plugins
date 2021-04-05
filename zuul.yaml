@@ -10,8 +10,8 @@
     check:
       jobs:
         - wazo-provd-plugins:
-            nodeset: pod-debian-10
+            nodeset: vm-debian-10-m1s
     gate:
       jobs:
         - wazo-provd-plugins:
-            nodeset: pod-debian-10
+            nodeset: vm-debian-10-m1s
