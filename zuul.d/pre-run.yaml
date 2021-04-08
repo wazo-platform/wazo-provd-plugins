@@ -1,9 +1,11 @@
 ---
 - hosts: all
   tasks:
-    - name: Install jq
+    - name: Install requirements
       become: yes
       apt:
         name:
           - jq
-        state: installed
+          - make
+          - rsync
+        state: present
