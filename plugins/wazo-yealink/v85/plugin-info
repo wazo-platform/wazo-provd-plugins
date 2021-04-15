@@ -88,6 +88,15 @@
             "type": "deskphone",
             "protocol": "sip"
         },
+        "Yealink, T46U, 108.85.0.63": {
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 27,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
         "Yealink, T48S, 66.85.0.5": {
             "lines": 16,
             "high_availability": true,
@@ -160,15 +169,6 @@
             "switchboard": false,
             "type": "dect",
             "multicell": true,
-            "protocol": "sip"
-        }
-		"Yealink, T46U, 108.85.0.63": {
-            "lines": 16,
-            "high_availability": true,
-            "function_keys": 27,
-            "expansion_modules": 0,
-            "switchboard": false,
-            "type": "deskphone",
             "protocol": "sip"
         }
     }
