@@ -8,12 +8,12 @@ echo $dest_filename
 current_dir=$(pwd)
 echo "CURRENT FOLDER: $current_dir"
 
-if [ "$#" -ne 1 ]; then
-    echo "specify firmware version"
+if [ "$#" -ne 2 ]; then
+    echo "./generate_pkgs-db.sh [STABLE|BETA] version"
     exit
 fi
 
-dir=$(mktemp --tmpdir -d gs-gxw42xx-fw-$1.XXXXX)
+dir=$(mktemp --tmpdir -d gs-gxw42xx-fw-$2.XXXXX)
 echo "TMP FOLDER: $dir"
 cd $dir
 touch $dest_filename
@@ -24,7 +24,7 @@ do
 	echo "[pkg_$NAME-fw]" >> $dest_filename
 	echo "description: Firmware for $constructor $i" >> $dest_filename
 	echo "description_fr: Firmware pour $constructor $i" >> $dest_filename
-	echo "version: $1" >> $dest_filename
+	echo "version: $2" >> $dest_filename
 	echo "files: $NAME-fw" >> $dest_filename
 	echo "install: $constructor-fw" >> $dest_filename
 	echo "" >> $dest_filename
@@ -38,9 +38,13 @@ for i in "${products[@]}"
 do
 	NAME=$i
 	# FILE=snom$i-$1-SIP-r.bin
-        FILE=Release_${i}_${1}.zip
+        FILE=Release_${i}_${2}.zip
         #URL=http://downloads.snom.com/fw/$1/bin/$FILE
-        URL=http://firmware.grandstream.com/$FILE
+        if [[ $1 == 'STABLE' ]]; then
+            URL=http://firmware.grandstream.com/$FILE
+        else
+            URL=http://firmware.grandstream.com/BETA/$FILE
+        fi
 	wget $URL
 	SIZE=$(stat -c "%s" "$FILE")
 	SHA1SUM=$(sha1sum "$FILE" | cut -f1 -d' ')

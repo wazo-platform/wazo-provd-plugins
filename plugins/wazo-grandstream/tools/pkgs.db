@@ -1,0 +1,52 @@
+[pkg_GXW4216-fw]
+description: Firmware for Grandstream GXW4216
+description_fr: Firmware pour Grandstream GXW4216
+version: 1.0.17.4
+files: GXW4216-fw
+install: Grandstream-fw
+
+[pkg_GXW4224-fw]
+description: Firmware for Grandstream GXW4224
+description_fr: Firmware pour Grandstream GXW4224
+version: 1.0.17.4
+files: GXW4224-fw
+install: Grandstream-fw
+
+[pkg_GXW4232-fw]
+description: Firmware for Grandstream GXW4232
+description_fr: Firmware pour Grandstream GXW4232
+version: 1.0.17.4
+files: GXW4232-fw
+install: Grandstream-fw
+
+[pkg_GXW4248-fw]
+description: Firmware for Grandstream GXW4248
+description_fr: Firmware pour Grandstream GXW4248
+version: 1.0.17.4
+files: GXW4248-fw
+install: Grandstream-fw
+
+[install_Grandstream-fw]
+a-b: unzip $FILE1
+b-c: cp */*.bin ./
+
+[file_GXW4216-fw]
+url: http://firmware.grandstream.com/BETA/Release_GXW4216_1.0.17.4.zip
+size: 12848669
+sha1sum: a88d976ee0c032357e000f9c77ba6f3afea1b911
+
+[file_GXW4224-fw]
+url: http://firmware.grandstream.com/BETA/Release_GXW4224_1.0.17.4.zip
+size: 12848753
+sha1sum: ff524a0130aa956ef6bea463824abd754dee4d2c
+
+[file_GXW4232-fw]
+url: http://firmware.grandstream.com/BETA/Release_GXW4232_1.0.17.4.zip
+size: 12848906
+sha1sum: 87c22478217f199a6040a2c96e9103860628dc68
+
+[file_GXW4248-fw]
+url: http://firmware.grandstream.com/BETA/Release_GXW4248_1.0.17.4.zip
+size: 12870579
+sha1sum: 1ac5b6cd7c2a4ef5663cc8d593921a16574733ea
+
