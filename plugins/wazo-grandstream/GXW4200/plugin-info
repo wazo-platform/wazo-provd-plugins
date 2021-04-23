@@ -1,5 +1,5 @@
 {
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Plugin for Grandstream GXW42XX (XML v1) in version 1.0.15.2.",
     "description_fr": "Greffon pour Grandstream GXW42XX (XML v1) en version 1.0.15.2.",
     "vendor" : "Grandstream",

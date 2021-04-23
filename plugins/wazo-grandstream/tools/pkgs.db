@@ -1,28 +1,28 @@
 [pkg_GXW4216-fw]
 description: Firmware for Grandstream GXW4216
 description_fr: Firmware pour Grandstream GXW4216
-version: 1.0.17.4
+version: 1.0.15.2
 files: GXW4216-fw
 install: Grandstream-fw
 
 [pkg_GXW4224-fw]
 description: Firmware for Grandstream GXW4224
 description_fr: Firmware pour Grandstream GXW4224
-version: 1.0.17.4
+version: 1.0.15.2
 files: GXW4224-fw
 install: Grandstream-fw
 
 [pkg_GXW4232-fw]
 description: Firmware for Grandstream GXW4232
 description_fr: Firmware pour Grandstream GXW4232
-version: 1.0.17.4
+version: 1.0.15.2
 files: GXW4232-fw
 install: Grandstream-fw
 
 [pkg_GXW4248-fw]
 description: Firmware for Grandstream GXW4248
 description_fr: Firmware pour Grandstream GXW4248
-version: 1.0.17.4
+version: 1.0.15.2
 files: GXW4248-fw
 install: Grandstream-fw
 
@@ -31,22 +31,22 @@ a-b: unzip $FILE1
 b-c: cp */*.bin ./
 
 [file_GXW4216-fw]
-url: http://firmware.grandstream.com/BETA/Release_GXW4216_1.0.17.4.zip
-size: 12848669
-sha1sum: a88d976ee0c032357e000f9c77ba6f3afea1b911
+url: http://firmware.grandstream.com/Release_GXW4216_1.0.15.2.zip
+size: 11762384
+sha1sum: f51c61492d9f037f36103f5ed5e2011866dc2c92
 
 [file_GXW4224-fw]
-url: http://firmware.grandstream.com/BETA/Release_GXW4224_1.0.17.4.zip
-size: 12848753
-sha1sum: ff524a0130aa956ef6bea463824abd754dee4d2c
+url: http://firmware.grandstream.com/Release_GXW4224_1.0.15.2.zip
+size: 11762678
+sha1sum: 8793985e19792d38efe9d7e9813332bb9d428a64
 
 [file_GXW4232-fw]
-url: http://firmware.grandstream.com/BETA/Release_GXW4232_1.0.17.4.zip
-size: 12848906
-sha1sum: 87c22478217f199a6040a2c96e9103860628dc68
+url: http://firmware.grandstream.com/Release_GXW4232_1.0.15.2.zip
+size: 11763127
+sha1sum: bd2c6583d6a6af8b981108b050753df581bc8613
 
 [file_GXW4248-fw]
-url: http://firmware.grandstream.com/BETA/Release_GXW4248_1.0.17.4.zip
-size: 12870579
-sha1sum: 1ac5b6cd7c2a4ef5663cc8d593921a16574733ea
+url: http://firmware.grandstream.com/Release_GXW4248_1.0.15.2.zip
+size: 11782040
+sha1sum: 6bf6079af0072624ab5d00b39738a5b38028bc1a
 
