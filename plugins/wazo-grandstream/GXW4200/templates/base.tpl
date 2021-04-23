@@ -241,13 +241,24 @@
     <P{{ 4150 + ref }}>0</P{{ 4150 + ref }}>
     <P{{ 4595 + ref }}>1</P{{ 4595 + ref }}>
 
-    <!-- <P{{ 4210 + ref }}></P{{ 4210 + ref }}> -->
+    {% if line_no|int <= 24 %}
+        <!-- <P{{ 4210 + ref }}></P{{ 4210 + ref }}> -->
+    {% else -%}
+        {% set subref1 = line_no|int - 25 %}
+	<!-- <P{{ 4800 + subref1 }}></P{{ 4800 + subref1 }}> -->
+    {% endif -%}
     <P{{ 4300 + ref }}>0</P{{ 4300 + ref }}>
     <!-- <P{{ 4669 + ref }}></P{{ 4669 + ref }}> -->
+ 
+    {% if line_no|int < 30 %} 
+         <P{{ 4521 + ref }}>1</P{{ 4521 + ref }}>
+    {% else -%}
+         <P4808>1</P4808>
+    {% endif -%}
 
-    <P{{ 4521 + ref }}>1</P{{ 4521 + ref }}>
     <!-- <P{{ 4264 + ref }}></P{{ 4264 + ref }}> -->
     <P{{ 4858 + ref }}>5060</P{{ 4858 + ref }}>
+
   {% else -%}
     {% if line_no|int <= 32 %}
       {% set ref = line_no|int - 31 %}
