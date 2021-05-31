@@ -1,5 +1,5 @@
 {
-    "version": "0.2.45",
+    "version": "0.2.46",
     "description": "Plugin for Grandstream GXP2000 in version 1.2.5.3.",
     "description_fr": "Greffon pour Grandstream GXP2000 en version 1.2.5.3.",
     "vendor" : "Grandstream",

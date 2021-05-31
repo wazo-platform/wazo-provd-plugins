@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Plugin for Grandstream GXP116X and GXP14XX in version 1.0.8.9.",
     "description_fr": "Greffon pour Grandstream GXP116X et GXP14XX en version 1.0.8.9.",
     "vendor" : "Grandstream",
