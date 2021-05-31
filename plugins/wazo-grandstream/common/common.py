@@ -203,18 +203,15 @@ class BaseGrandstreamPlugin(StandardPlugin):
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
             type_code = u'P32%s' % (i_funckey_no + 2)
-            lines.append(self._format_line(type_code, FUNCKEY_TYPES[funckey_type]))
+            lines.append((type_code, FUNCKEY_TYPES[funckey_type]))
             line_code = self._format_code(3 * i_funckey_no - 2)
-            lines.append(self._format_line(line_code, int(funckey_dict[u'line']) - 1))
+            lines.append((line_code, int(funckey_dict[u'line']) - 1))
             if u'label' in funckey_dict:
                 label_code = self._format_code(3 * i_funckey_no - 1)
-                lines.append(self._format_line(label_code, funckey_dict[u'label']))
+                lines.append((label_code, funckey_dict[u'label']))
             value_code = self._format_code(3 * i_funckey_no)
-            lines.append(self._format_line(value_code, funckey_dict[u'value']))
-        raw_config[u'XX_fkeys'] = u'\n'.join(lines)
-
-    def _format_line(self, code, value):
-        return u'    <%s>%s</%s>' % (code, value, code)
+            lines.append((value_code, funckey_dict[u'value']))
+        raw_config[u'XX_fkeys'] = lines
 
     def _format_code(self, code):
         if code >= 10:

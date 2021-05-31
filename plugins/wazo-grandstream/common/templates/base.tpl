@@ -51,11 +51,14 @@
     <P{{ position }}20>0</P{{ position }}20>
     <P2{{ position }}01>0</P2{{ position }}01>
     <P2{{ position }}02>0</P2{{ position }}02>
-    <P2{{ position }}03>1</P2{{ position }}03> 
+    <P2{{ position }}03>1</P2{{ position }}03>
     <P2{{ position }}12>{{ line['backup_registrar_ip'] }}</P2{{ position }}12>
   {% endif -%}
 {% endfor %}
-{{ XX_fkeys }}
-</config>
+{% if XX_fkeys -%}
+  {% for code, value in XX_fkeys -%}
+    <{{ code }}>{{ value }}</{{ code }}>
+  {% endfor -%}
+{% endif -%}
+  </config>
 </gs_provision>
-

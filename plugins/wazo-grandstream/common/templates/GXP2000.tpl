@@ -52,5 +52,8 @@
     P2{{ position }}12={{ line['backup_registrar_ip'] }}
   {% endif -%}
 {% endfor %}
-{{ XX_fkeys }}
-
+{% if XX_fkeys -%}
+{% for code, value in XX_fkeys -%}
+<{{ code }}>{{ value }}</{{ code }}>
+{% endfor -%}
+{% endif -%}
