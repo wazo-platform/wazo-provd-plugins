@@ -1,0 +1,15 @@
+[pkg_GXP1600-fw]
+description: Firmware for Grandstream GXP16XX
+description_fr: Micrologiciel pour Grandstream GXP16XX
+version: 1.0.7.13
+files: GXP16XX-fw
+install: grandstream-fw
+
+[install_grandstream-fw]
+a-b: unzip $FILE1
+b-c: cp */*.bin ./
+
+[file_GXP16XX-fw]
+url: http://firmware.grandstream.com/Release_GXP16xx_1.0.7.13.zip
+size: 13426259
+sha1sum: fb572dade4f8404e7fe060c529715879475b4f93

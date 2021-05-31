@@ -27,6 +27,24 @@ def build_1_0_3_27(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', '1.0.3.27/', path])
 
 
+@target('1.0.7.13', 'wazo-grandstream-1.0.7.13')
+def build_1_0_7_13(path):
+    check_call(
+        [
+            'rsync',
+            '-rlp',
+            '--exclude',
+            '.*',
+            '--include',
+            '/templates/*',
+            'common/',
+            path,
+        ]
+    )
+
+    check_call(['rsync', '-rlp', '--exclude', '.*', '1.0.7.13/', path])
+
+
 @target('1.0.8.6', 'wazo-grandstream-1.0.8.6')
 def build_1_0_8_6(path):
     check_call(
