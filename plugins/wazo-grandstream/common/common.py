@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2021 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
-logger = logging.getLogger('plugin.xivo-grandstream')
+logger = logging.getLogger('plugin.wazo-grandstream')
 
 TZ_NAME = { 'Europe/Paris': 'CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00' }
 LOCALE = {
@@ -213,7 +213,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
             lines.append(self._format_line(type_code, FUNCKEY_TYPES[funckey_type]))
             line_code = self._format_code(3*i_funckey_no - 2)
             lines.append(self._format_line(line_code, int(funckey_dict[u'line']) - 1))
-            if u'label' in funckey_dict : 
+            if u'label' in funckey_dict :
                 label_code = self._format_code(3*i_funckey_no - 1)
                 lines.append(self._format_line(label_code, funckey_dict[u'label']))
             value_code = self._format_code(3*i_funckey_no)
