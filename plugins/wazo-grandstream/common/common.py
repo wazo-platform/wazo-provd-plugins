@@ -3,40 +3,38 @@
 # Copyright 2010-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import errno
 import logging
 import re
 import os.path
-from operator import itemgetter
-from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
-    TemplatePluginHelper
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, \
-    FULL_SUPPORT, BasePgAssociator, UNKNOWN_SUPPORT
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    IMPROBABLE_SUPPORT,
+    UNKNOWN_SUPPORT,
+)
 from provd.servers.http import HTTPNoListingFileService
-from provd.util import norm_mac, format_mac
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-grandstream')
 
-TZ_NAME = { 'Europe/Paris': 'CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00' }
+TZ_NAME = {'Europe/Paris': 'CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00'}
 LOCALE = {
-        u'de_DE': 'de',
-        u'es_ES': 'es',
-        u'fr_FR': 'fr',
-        u'fr_CA': 'fr',
-        u'it_IT': 'it',
-        u'nl_NL': 'nl',
-        u'en_US': 'en'
-    }
+    u'de_DE': 'de',
+    u'es_ES': 'es',
+    u'fr_FR': 'fr',
+    u'fr_CA': 'fr',
+    u'it_IT': 'it',
+    u'nl_NL': 'nl',
+    u'en_US': 'en',
+}
 
-FUNCKEY_TYPES = {
-        u'speeddial': 0,
-        u'blf': 1,
-        u'park': 9
-    }
+FUNCKEY_TYPES = {u'speeddial': 0, u'blf': 1, u'park': 9}
+
 
 class BaseGrandstreamHTTPDeviceInfoExtractor(object):
 
@@ -57,7 +55,6 @@ class BaseGrandstreamHTTPDeviceInfoExtractor(object):
         ua = request.getHeader('User-Agent')
         if ua:
             return self._extract_from_ua(ua)
-        return None
 
     def _extract_from_ua(self, ua):
         for UA_REGEX in self._UA_REGEX_LIST:
@@ -66,14 +63,17 @@ class BaseGrandstreamHTTPDeviceInfoExtractor(object):
                 raw_model, raw_version, raw_mac = m.groups()
                 try:
                     mac = norm_mac(raw_mac.decode('ascii'))
-                except ValueError, e:
-                    logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
+                except ValueError as e:
+                    logger.warning(
+                        'Could not normalize MAC address "%s": %s', raw_mac, e
+                    )
                 else:
-                    return {u'vendor': u'Grandstream',
-                            u'model': raw_model.decode('ascii'),
-                            u'version': raw_version.decode('ascii'),
-                            u'mac': mac}
-        return None
+                    return {
+                        u'vendor': u'Grandstream',
+                        u'model': raw_model.decode('ascii'),
+                        u'version': raw_version.decode('ascii'),
+                        u'mac': mac,
+                    }
 
 
 class BaseGrandstreamPgAssociator(BasePgAssociator):
@@ -150,6 +150,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
             logger.info('error while removing configuration file: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -159,19 +160,23 @@ class BaseGrandstreamPlugin(StandardPlugin):
             try:
                 ip = device[u'ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+                    return defer.fail(
+                        Exception('Incompatible sync service: %s' % sync_service)
+                    )
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return threads.deferToThread(
+                        sync_service.sip_notify, ip, 'check-sync'
+                    )
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device:
-            return None
-
-        return self._dev_specific_filename(device)
+        if u'mac' in device:
+            return self._dev_specific_filename(device)
 
     def _check_lines_password(self, raw_config):
         for line in raw_config[u'sip_lines'].itervalues():
@@ -185,8 +190,8 @@ class BaseGrandstreamPlugin(StandardPlugin):
             raw_config['timezone'] = TZ_NAME['Europe/Paris']
 
     def _add_locale(self, raw_config):
-       locale = raw_config.get(u'locale')
-       if locale in LOCALE:
+        locale = raw_config.get(u'locale')
+        if locale in LOCALE:
             raw_config[u'XX_locale'] = LOCALE[locale]
 
     def _add_fkeys(self, raw_config):
@@ -199,12 +204,12 @@ class BaseGrandstreamPlugin(StandardPlugin):
                 continue
             type_code = u'P32%s' % (i_funckey_no + 2)
             lines.append(self._format_line(type_code, FUNCKEY_TYPES[funckey_type]))
-            line_code = self._format_code(3*i_funckey_no - 2)
+            line_code = self._format_code(3 * i_funckey_no - 2)
             lines.append(self._format_line(line_code, int(funckey_dict[u'line']) - 1))
-            if u'label' in funckey_dict :
-                label_code = self._format_code(3*i_funckey_no - 1)
+            if u'label' in funckey_dict:
+                label_code = self._format_code(3 * i_funckey_no - 1)
                 lines.append(self._format_line(label_code, funckey_dict[u'label']))
-            value_code = self._format_code(3*i_funckey_no)
+            value_code = self._format_code(3 * i_funckey_no)
             lines.append(self._format_line(value_code, funckey_dict[u'value']))
         raw_config[u'XX_fkeys'] = u'\n'.join(lines)
 
