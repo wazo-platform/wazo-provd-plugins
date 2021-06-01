@@ -25,8 +25,15 @@
     <P298>1</P298>
     <P290>{ [*x]+ }</P290>
     <P81>1</P81>
-    {# Auto-upgrade firmware #}
-    <P194>1</P194>
+    {# Auto-upgrade firmware, check every day #}
+    <P194>2</P194>
+    {# Randomize check #}
+    <P8458>1</P8458>
+    {# Check firmware update between 23:00 and 01:00 #}
+    <P285>23</P285>
+    <P8459>1</P8459>
+    {# Do not ask the user to update #}
+    <P8375>0</P8375>
 {# SIP per-line settings -#}
 {% for line_no, line in sip_lines.iteritems() %}
   {% if line_no == '1' %}
