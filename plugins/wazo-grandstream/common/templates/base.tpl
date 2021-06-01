@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <gs_provision version="1">
  <config version="1">
+    {% if admin_password -%}
+    <P2>{{ admin_password|e }}</P2>
+    {% endif -%}
     {% if ntp_enabled -%}
     <P30>{{ ntp_ip }}</P30>
     {% endif -%}
