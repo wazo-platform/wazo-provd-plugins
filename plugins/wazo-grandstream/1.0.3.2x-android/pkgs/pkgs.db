@@ -1,0 +1,39 @@
+[pkg_GXV3350-fw]
+description: Firmware for Grandstream GXV3350
+description_fr: Micrologiciel pour Grandstream GXV3350
+version: 1.0.3.25
+files: GXV3350-fw
+install: grandstream-fw
+
+[pkg_GXV3370-fw]
+description: Firmware for Grandstream GXV3370
+description_fr: Micrologiciel pour Grandstream GXV3370
+version: 1.0.3.27
+files: GXV3370-fw
+install: grandstream-fw
+
+[pkg_GXV3380-fw]
+description: Firmware for Grandstream GXV3380
+description_fr: Micrologiciel pour Grandstream GXV3380
+version: 1.0.3.27
+files: GXV3380-fw
+install: grandstream-fw
+
+[install_grandstream-fw]
+a-b: unzip $FILE1
+b-c: cp */*.bin ./
+
+[file_GXV3350-fw]
+url: https://firmware.grandstream.com/Release_GXV3350_1.0.3.25.zip
+size: 597059172
+sha1sum: 67911a385958df41e7a4d5b1ab62376a3f39a04b
+
+[file_GXV3370-fw]
+url: https://firmware.grandstream.com/Release_GXV3370_1.0.3.27.zip
+size: 669615832
+sha1sum: 5acdfcf5a5938d36f5537b9cb8353822f0b7c4ba
+
+[file_GXV3380-fw]
+url: https://firmware.grandstream.com/Release_GXV3380_1.0.3.27.zip
+size: 603199826
+sha1sum: 9802861b01d70087c9c08b78717239380e7efc32
