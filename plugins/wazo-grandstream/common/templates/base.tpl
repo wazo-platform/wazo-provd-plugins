@@ -22,6 +22,12 @@
     {% if vlan_priority is defined -%}
     <P87>{{ vlan_priority }}</P87>
     {% endif -%}
+    {% if dns_enabled -%}
+    <P92>{{ XX_dns_1 }}</P92>
+    <P93>{{ XX_dns_2 }}</P93>
+    <P94>{{ XX_dns_3 }}</P94>
+    <P95>{{ XX_dns_4 }}</P95>
+    {% endif -%}
     <P298>1</P298>
     <P290>{ [*x]+ }</P290>
     <P81>1</P81>

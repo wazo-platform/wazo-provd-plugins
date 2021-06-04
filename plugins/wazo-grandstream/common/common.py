@@ -135,6 +135,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         self._add_timezone(raw_config)
         self._add_locale(raw_config)
         self._add_fkeys(raw_config)
+        self._add_dns(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
@@ -221,3 +222,9 @@ class BaseGrandstreamPlugin(StandardPlugin):
         else:
             str_code = u'0%s' % code
         return u'P3%s' % str_code
+
+    def _add_dns(self, raw_config):
+        if raw_config.get(u'dns_enabled'):
+            dns_parts = raw_config[u'dns_ip'].split('.')
+            for part_nb, part in enumerate(dns_parts, start=1):
+                raw_config[u'XX_dns_%s' % part_nb] = part
