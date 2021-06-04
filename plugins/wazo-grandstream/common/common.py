@@ -135,6 +135,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         self._add_timezone(raw_config)
         self._add_locale(raw_config)
         self._add_fkeys(raw_config)
+        self._add_mpk(raw_config)
         self._add_dns(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
@@ -215,6 +216,27 @@ class BaseGrandstreamPlugin(StandardPlugin):
             value_code = self._format_code(3 * i_funckey_no)
             lines.append((value_code, funckey_dict[u'value']))
         raw_config[u'XX_fkeys'] = lines
+
+    def _add_mpk(self, raw_config):
+        lines = []
+        start_code = 23000
+        for funckey_no, funckey_dict in raw_config[u'funckeys'].iteritems():
+            i_funckey_no = int(funckey_no)  # starts at 1
+            funckey_type = funckey_dict[u'type']
+            if funckey_type not in FUNCKEY_TYPES:
+                logger.info('Unsupported funckey type: %s', funckey_type)
+                continue
+            start_p_code = start_code + (i_funckey_no - 1) * 5
+            type_code = u'P{}'.format(start_p_code)
+            lines.append((type_code, FUNCKEY_TYPES[funckey_type]))
+            line_code = u'P{}'.format(start_p_code + 1)
+            lines.append((line_code, int(funckey_dict[u'line']) - 1))
+            if u'label' in funckey_dict:
+                label_code = u'P{}'.format(start_p_code + 2)
+                lines.append((label_code, funckey_dict[u'label']))
+            value_code = u'P{}'.format(start_p_code + 3)
+            lines.append((value_code, funckey_dict[u'value']))
+        raw_config[u'XX_mpk'] = lines
 
     def _format_code(self, code):
         if code >= 10:
