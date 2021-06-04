@@ -9,6 +9,6 @@ install: grandstream-fw
 a-b: unzip $FILE1
 
 [file_GXP2200-fw]
-url: http://www.grandstream.com/sites/default/files/Resources/Release_GXP2200_1.0.3.27.zip
+url: http://www.grandstream.com/hubfs/IoT%20Team/Release_GXP2200_1.0.3.27.zip
 size: 73964236
 sha1sum: 143caa3d3422af5326bb6d3c555c31dbe3e42a8a
