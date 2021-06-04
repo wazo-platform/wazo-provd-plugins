@@ -86,7 +86,7 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
     def _do_associate(self, vendor, model, version):
         if vendor == u'Grandstream':
             if model in self._models:
-                if version == self._version:
+                if version.startswith(self._version):
                     return FULL_SUPPORT
                 return COMPLETE_SUPPORT
             return UNKNOWN_SUPPORT
