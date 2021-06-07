@@ -38,6 +38,7 @@ tagging enabled: 0
 
 tos sip: 46
 tos rtp: 46
+play a ring splash: 1
 
 {# NTP settings -#}
 {% if ntp_enabled -%}
