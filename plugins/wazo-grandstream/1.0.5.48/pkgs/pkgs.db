@@ -1,0 +1,15 @@
+[pkg_GRP261X-fw]
+description: Firmware for Grandstream GRP261X
+description_fr: Micrologiciel pour Grandstream GRP261X
+version: 1.0.7.13
+files: GRP261X-fw
+install: grandstream-fw
+
+[install_grandstream-fw]
+a-b: unzip $FILE1
+b-c: cp */*.bin ./
+
+[file_GRP261X-fw]
+url: http://firmware.grandstream.com/Release_GRP261x_1.0.5.48.zip
+size: 56183370
+sha1sum: e82b4622212455f58c6b621f8a750cc8062356e4
