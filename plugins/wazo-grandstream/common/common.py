@@ -33,7 +33,7 @@ LOCALE = {
     u'en_US': 'en',
 }
 
-FUNCKEY_TYPES = {u'speeddial': 0, u'blf': 1, u'park': 9}
+FUNCKEY_TYPES = {u'speeddial': 0, u'blf': 1, u'park': 9, u'disabled': -1}
 
 
 class BaseGrandstreamHTTPDeviceInfoExtractor(object):
@@ -47,7 +47,9 @@ class BaseGrandstreamHTTPDeviceInfoExtractor(object):
     # Grandstream Model HW GRP2614 SW 1.0.5.15 DevId c074ad0b63ee
 
     _UA_REGEX_LIST = [
-        re.compile(r'^Grandstream Model HW (\w+)(?:\s+V[^ ]+)? SW ([^ ]+) DevId ([^ ]+)'),
+        re.compile(
+            r'^Grandstream Model HW (\w+)(?:\s+V[^ ]+)? SW ([^ ]+) DevId ([^ ]+)'
+        ),
         re.compile(r'^Grandstream (GXP2000) .*:([^ ]+)\) DevId ([^ ]+)'),
     ]
 
@@ -97,6 +99,30 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
 
 class BaseGrandstreamPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
+    # VPKs are the virtual phone keys on the main display
+    # MPKs are the physical programmable keys on some models
+    MODEL_FKEYS = {
+        u'GRP2612': {
+            u'vpk': 16,
+            u'mpk': 0,
+        },
+        u'GRP2613': {
+            u'vpk': 24,
+            u'mpk': 0,
+        },
+        u'GRP2614': {
+            u'vpk': 16,
+            u'mpk': 24,
+        },
+        u'GRP2615': {
+            u'vpk': 40,
+            u'mpk': 0,
+        },
+        u'GRP2616': {
+            u'vpk': 16,
+            u'mpk': 24,
+        },
+    }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -137,6 +163,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         self._add_locale(raw_config)
         self._add_fkeys(raw_config)
         self._add_mpk(raw_config)
+        self._add_v2_fkeys(raw_config, device.get(u'model'))
         self._add_dns(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
@@ -238,6 +265,48 @@ class BaseGrandstreamPlugin(StandardPlugin):
             value_code = u'P{}'.format(start_p_code + 3)
             lines.append((value_code, funckey_dict[u'value']))
         raw_config[u'XX_mpk'] = lines
+
+    def _add_v2_fkeys(self, raw_config, model):
+        lines = []
+        model_fkeys = self.MODEL_FKEYS.get(model)
+        if not model_fkeys:
+            logger.info('Unknown model: "%s"', model)
+            return
+        for funckey_no in range(1, model_fkeys[u'vpk'] + 1):
+            funckey = raw_config[u'funckeys'].get(str(funckey_no), {})
+            funckey_type = funckey.get(u'type', 'disabled')
+            if funckey_type not in FUNCKEY_TYPES:
+                logger.info('Unsupported funckey type: %s', funckey_type)
+            lines.append(
+                (
+                    funckey_no,
+                    {
+                        u'section': u'vpk',
+                        u'type': FUNCKEY_TYPES[funckey_type],
+                        u'label': funckey.get(u'label') or u'',
+                        u'value': funckey.get(u'value') or u'',
+                    },
+                )
+            )
+        for funckey_no in range(1, model_fkeys[u'mpk'] + 1):
+            funckey = raw_config[u'funckeys'].get(
+                str(funckey_no + model_fkeys[u'vpk']), {}
+            )
+            funckey_type = funckey.get(u'type', 'disabled')
+            if funckey_type not in FUNCKEY_TYPES:
+                logger.info('Unsupported funckey type: %s', funckey_type)
+            lines.append(
+                (
+                    funckey_no,
+                    {
+                        u'section': u'mpk',
+                        u'type': FUNCKEY_TYPES[funckey_type],
+                        u'label': funckey.get(u'label') or u'',
+                        u'value': funckey.get(u'value') or u'',
+                    },
+                )
+            )
+        raw_config[u'XX_v2_fkeys'] = lines
 
     def _format_code(self, code):
         if code >= 10:

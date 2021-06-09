@@ -10,7 +10,7 @@
         "Grandstream, GRP2612, 1.0.5.48": {
             "lines": 1,
             "high_availability": true,
-            "function_keys": 0,
+            "function_keys": 16,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -19,7 +19,7 @@
         "Grandstream, GRP2613, 1.0.5.48": {
             "lines": 1,
             "high_availability": true,
-            "function_keys": 0,
+            "function_keys": 24,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -28,7 +28,7 @@
         "Grandstream, GRP2614, 1.0.5.48": {
             "lines": 2,
             "high_availability": true,
-            "function_keys": 0,
+            "function_keys": 40,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -37,7 +37,7 @@
         "Grandstream, GRP2615, 1.0.5.48": {
             "lines": 2,
             "high_availability": true,
-            "function_keys": 0,
+            "function_keys": 40,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -46,7 +46,7 @@
         "Grandstream, GRP2616, 1.0.5.48": {
             "lines": 2,
             "high_availability": true,
-            "function_keys": 8,
+            "function_keys": 40,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
