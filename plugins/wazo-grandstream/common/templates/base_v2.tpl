@@ -16,7 +16,6 @@
     {% if vlan_enabled -%}
     <item name="network.port.eth.1.vlan.tag">{{ vlan_id }}</item>
     {% endif -%}
-
     {% if vlan_priority is defined -%}
     <item name="network.port.eth.1.vlan.priority">{{ vlan_priority }}</item>
     {% endif -%}
@@ -45,6 +44,9 @@
     {% endif -%}
     <item name="account.{{ line_no }}.enable">Yes</item>
     <item name="account.{{ line_no }}.name">{{ line['display_name'] }}</item>
+    {% if XX_sip_transport -%}
+    <item name="account.{{ line_no }}.sip.transport">{{ XX_sip_transport }}</item>
+    {% endif -%}
     <item name="account.{{ line_no }}.sip.server.1.address">{{ line['registrar_ip'] }}</item>
     <item name="account.{{ line_no }}.sip.server.2.address">{{ line['backup_registrar_ip'] }}</item>
     <item name="account.{{ line_no }}.sip.userid">{{ line['auth_username'] }}</item>

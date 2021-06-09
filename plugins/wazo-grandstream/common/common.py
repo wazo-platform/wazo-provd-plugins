@@ -131,6 +131,12 @@ class BaseGrandstreamPlugin(StandardPlugin):
         u'SIP-INFO': ('No', 'No', 'Yes'),
     }
 
+    SIP_TRANSPORTS = {
+        u'udp': u'UDP',
+        u'tcp': u'TCP',
+        u'tls': u'TlsOrTcp',
+    }
+
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
         # update to use the non-standard tftpboot directory
@@ -166,6 +172,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         self._check_config(raw_config)
         self._check_device(device)
         self._check_lines_password(raw_config)
+        self._add_sip_transport(raw_config)
         self._add_timezone(raw_config)
         self._add_locale(raw_config)
         self._add_dtmf_mode(raw_config)
@@ -335,3 +342,8 @@ class BaseGrandstreamPlugin(StandardPlugin):
             raw_config['XX_dtmf_in_audio'] = dtmf_info[0]
             raw_config['XX_dtmf_in_rtp'] = dtmf_info[1]
             raw_config['XX_dtmf_in_sip'] = dtmf_info[2]
+
+    def _add_sip_transport(self, raw_config):
+        sip_transport = raw_config.get(u'sip_transport')
+        if sip_transport in self.SIP_TRANSPORTS:
+            raw_config[u'XX_sip_transport'] = self.SIP_TRANSPORTS[sip_transport]
