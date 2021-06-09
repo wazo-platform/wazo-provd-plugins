@@ -124,6 +124,13 @@ class BaseGrandstreamPlugin(StandardPlugin):
         },
     }
 
+    DTMF_MODES = {
+        # mode: (in audio, in RTP, in SIP)
+        u'RTP-in-band': ('Yes', 'Yes', 'No'),
+        u'RTP-out-of-band': ('No', 'Yes', 'No'),
+        u'SIP-INFO': ('No', 'No', 'Yes'),
+    }
+
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
         # update to use the non-standard tftpboot directory
@@ -161,6 +168,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         self._check_lines_password(raw_config)
         self._add_timezone(raw_config)
         self._add_locale(raw_config)
+        self._add_dtmf_mode(raw_config)
         self._add_fkeys(raw_config)
         self._add_mpk(raw_config)
         self._add_v2_fkeys(raw_config, device.get(u'model'))
@@ -320,3 +328,10 @@ class BaseGrandstreamPlugin(StandardPlugin):
             dns_parts = raw_config[u'dns_ip'].split('.')
             for part_nb, part in enumerate(dns_parts, start=1):
                 raw_config[u'XX_dns_%s' % part_nb] = part
+
+    def _add_dtmf_mode(self, raw_config):
+        if raw_config.get(u'sip_dtmf_mode'):
+            dtmf_info = self.DTMF_MODES[raw_config[u'sip_dtmf_mode']]
+            raw_config['XX_dtmf_in_audio'] = dtmf_info[0]
+            raw_config['XX_dtmf_in_rtp'] = dtmf_info[1]
+            raw_config['XX_dtmf_in_sip'] = dtmf_info[2]

@@ -52,9 +52,9 @@
     <item name="account.{{ line_no }}.sip.subscriber.password">{{ line['password'] }}</item>
     <item name="account.{{ line_no }}.sip.subscriber.name">{{ line['display_name'] }}</item>
     <item name="account.{{ line_no }}.sip.voicemail.number">{{ exten_voicemail }}</item>
-    <item name="account.{{ line_no }}.dtmf.sendInAudio">No</item>
-    <item name="account.{{ line_no }}.dtmf.sendInRtp">No</item>
-    <item name="account.{{ line_no }}.dtmf.sendInSip">Yes</item>
+    <item name="account.{{ line_no }}.dtmf.sendInAudio">{{ XX_dtmf_in_audio }}</item>
+    <item name="account.{{ line_no }}.dtmf.sendInRtp">{{ XX_dtmf_in_rtp }}</item>
+    <item name="account.{{ line_no }}.dtmf.sendInSip">{{ XX_dtmf_in_sip }}</item>
     <item name="account.{{ line_no }}.featureCodes.callFeatures">No</item>
 {% endfor -%}
 {% if XX_v2_fkeys -%}
