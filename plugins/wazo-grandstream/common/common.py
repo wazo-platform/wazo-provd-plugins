@@ -33,7 +33,13 @@ LOCALE = {
     u'en_US': 'en',
 }
 
-FUNCKEY_TYPES = {u'speeddial': 0, u'blf': 1, u'park': 9, u'disabled': -1}
+FUNCKEY_TYPES = {
+    u'speeddial': 0,
+    u'blf': 1,
+    u'park': 9,
+    u'default': 31,
+    u'disabled': -1,
+}
 
 
 class BaseGrandstreamHTTPDeviceInfoExtractor(object):
@@ -292,6 +298,12 @@ class BaseGrandstreamPlugin(StandardPlugin):
             funckey_type = funckey.get(u'type', 'disabled')
             if funckey_type not in FUNCKEY_TYPES:
                 logger.info('Unsupported funckey type: %s', funckey_type)
+                continue
+            if str(funckey_no) in raw_config[u'sip_lines']:
+                logger.info(
+                    'Function key %s would conflict with an existing line', funckey_no
+                )
+                continue
             lines.append(
                 (
                     funckey_no,
