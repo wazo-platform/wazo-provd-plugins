@@ -21,10 +21,10 @@
     {% endif -%}
 
     {% if dns_enabled -%}
-    <item name="network.dns.1.ip.1">{{ XX_dns_1 }}</item>
-    <item name="network.dns.1.ip.2">{{ XX_dns_2 }}</item>
-    <item name="network.dns.1.ip.3">{{ XX_dns_3 }}</item>
-    <item name="network.dns.1.ip.4">{{ XX_dns_4 }}</item>
+    <item name="network.dns.preferred.ip.1">{{ XX_dns_1 }}</item>
+    <item name="network.dns.preferred.ip.2">{{ XX_dns_2 }}</item>
+    <item name="network.dns.preferred.ip.3">{{ XX_dns_3 }}</item>
+    <item name="network.dns.preferred.ip.4">{{ XX_dns_4 }}</item>
     {% endif -%}
     {# Auto-upgrade firmware, check every day #}
     <item name="provisioning.auto.mode">YesUpgradeHourOfDay</item>
@@ -36,13 +36,14 @@
 
 {# SIP per-line settings -#}
 {% for line_no, line in sip_lines.iteritems() %}
+    <item name="account.{{ line_no }}.enable">Yes</item>
+    <item name="account.{{ line_no }}.sip.registration">Yes</item>
     <item name="account.{{ line_no }}.sip.unregisterOnReboot">Yes</item>
     <item name="account.{{ line_no }}.call.dialplan">{ [*x]+ }</item>
     <item name="account.{{ line_no }}.intercom.allowAutoAnswer">Yes</item>
     {% if exten_pickup_call -%}
     <item name="account.{{ line_no }}.sip.blf.callPickup.prefix">{{ exten_pickup_call }}</item>
     {% endif -%}
-    <item name="account.{{ line_no }}.enable">Yes</item>
     <item name="account.{{ line_no }}.name">{{ line['display_name'] }}</item>
     {% if XX_sip_transport -%}
     <item name="account.{{ line_no }}.sip.transport">{{ XX_sip_transport }}</item>
@@ -53,6 +54,7 @@
     <item name="account.{{ line_no }}.sip.subscriber.userid">{{ line['auth_username'] }}</item>
     <item name="account.{{ line_no }}.sip.subscriber.password">{{ line['password'] }}</item>
     <item name="account.{{ line_no }}.sip.subscriber.name">{{ line['display_name'] }}</item>
+    <item name="account.{{ line_no }}.sip.accountDisplay">User Name</item>
     <item name="account.{{ line_no }}.sip.voicemail.number">{{ exten_voicemail }}</item>
     <item name="account.{{ line_no }}.dtmf.sendInAudio">{{ XX_dtmf_in_audio }}</item>
     <item name="account.{{ line_no }}.dtmf.sendInRtp">{{ XX_dtmf_in_rtp }}</item>
