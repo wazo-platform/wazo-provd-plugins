@@ -7,21 +7,18 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODELS = [
-        u'D305',
         u'D315',
         u'D335',
         u'D345',
-        u'D375',
         u'D385',
         u'D712',
         u'715',
         u'D717',
         u'725',
         u'D735',
-        u'D765',
         u'D785',
 ]
-VERSION = u'10.1.64.14'
+VERSION = u'10.1.73.16'
 
 
 class SnomPlugin(common_globals['BaseSnomPlugin']):
