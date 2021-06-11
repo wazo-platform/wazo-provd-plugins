@@ -42,10 +42,11 @@ class BaseGrandstreamHTTPDeviceInfoExtractor(object):
     # Grandstream Model HW GXP1628 SW 1.0.4.138 DevId c074ad2bd859
     # Grandstream Model HW GXP2200 V2.2A SW 1.0.1.33 DevId 000b82462d97
     # Grandstream Model HW GXV3240 V1.6B SW 1.0.1.27 DevId 000b82632815
+    # Grandstream Model HW GXV3350  V1.3A SW 1.0.1.8 DevId c074ad150b88
     # Grandstream GXP2000 (gxp2000e.bin:1.2.5.3/boot55e.bin:1.1.6.9) DevId 000b822726c8
 
     _UA_REGEX_LIST = [
-        re.compile(r'^Grandstream Model HW (\w+)(?: V[^ ]+)? SW ([^ ]+) DevId ([^ ]+)'),
+        re.compile(r'^Grandstream Model HW (\w+)(?:\s+V[^ ]+)? SW ([^ ]+) DevId ([^ ]+)'),
         re.compile(r'^Grandstream (GXP2000) .*:([^ ]+)\) DevId ([^ ]+)'),
     ]
 
@@ -86,7 +87,7 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
     def _do_associate(self, vendor, model, version):
         if vendor == u'Grandstream':
             if model in self._models:
-                if version == self._version:
+                if version.startswith(self._version):
                     return FULL_SUPPORT
                 return COMPLETE_SUPPORT
             return UNKNOWN_SUPPORT
@@ -134,6 +135,8 @@ class BaseGrandstreamPlugin(StandardPlugin):
         self._add_timezone(raw_config)
         self._add_locale(raw_config)
         self._add_fkeys(raw_config)
+        self._add_mpk(raw_config)
+        self._add_dns(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
@@ -214,9 +217,36 @@ class BaseGrandstreamPlugin(StandardPlugin):
             lines.append((value_code, funckey_dict[u'value']))
         raw_config[u'XX_fkeys'] = lines
 
+    def _add_mpk(self, raw_config):
+        lines = []
+        start_code = 23000
+        for funckey_no, funckey_dict in raw_config[u'funckeys'].iteritems():
+            i_funckey_no = int(funckey_no)  # starts at 1
+            funckey_type = funckey_dict[u'type']
+            if funckey_type not in FUNCKEY_TYPES:
+                logger.info('Unsupported funckey type: %s', funckey_type)
+                continue
+            start_p_code = start_code + (i_funckey_no - 1) * 5
+            type_code = u'P{}'.format(start_p_code)
+            lines.append((type_code, FUNCKEY_TYPES[funckey_type]))
+            line_code = u'P{}'.format(start_p_code + 1)
+            lines.append((line_code, int(funckey_dict[u'line']) - 1))
+            if u'label' in funckey_dict:
+                label_code = u'P{}'.format(start_p_code + 2)
+                lines.append((label_code, funckey_dict[u'label']))
+            value_code = u'P{}'.format(start_p_code + 3)
+            lines.append((value_code, funckey_dict[u'value']))
+        raw_config[u'XX_mpk'] = lines
+
     def _format_code(self, code):
         if code >= 10:
             str_code = str(code)
         else:
             str_code = u'0%s' % code
         return u'P3%s' % str_code
+
+    def _add_dns(self, raw_config):
+        if raw_config.get(u'dns_enabled'):
+            dns_parts = raw_config[u'dns_ip'].split('.')
+            for part_nb, part in enumerate(dns_parts, start=1):
+                raw_config[u'XX_dns_%s' % part_nb] = part

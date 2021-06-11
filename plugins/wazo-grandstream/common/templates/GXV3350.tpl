@@ -73,8 +73,8 @@
     <P2{{ position }}12>{{ line['backup_registrar_ip'] }}</P2{{ position }}12>
   {% endif -%}
 {% endfor %}
-{% if XX_fkeys -%}
-  {% for code, value in XX_fkeys -%}
+{% if XX_mpk -%}
+  {% for code, value in XX_mpk -%}
     <{{ code }}>{{ value }}</{{ code }}>
   {% endfor -%}
 {% endif -%}

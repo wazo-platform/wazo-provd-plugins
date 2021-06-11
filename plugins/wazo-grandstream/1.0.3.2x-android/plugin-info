@@ -1,0 +1,38 @@
+{
+    "version": "0.1.0",
+    "description": "Plugin for Grandstream GXV3350, GXV3370 and GXV3380 in version 1.0.3.2x-android.",
+    "description_fr": "Greffon pour Grandstream GXV3350, GXV3370 et GXV3380 en version 1.0.3.2x-android.",
+    "vendor" : "Grandstream",
+    "vendor.url" : "http://www.grandstream.com",
+    "vendor.description" : "Grandstream Networks, Inc. is an award-winning designer and ISO 9001 certified manufacturer of next generation IP voice & video products for broadband networks. Grandstream’s products deliver superb sound and picture quality, rich telephony features, full compliance with industry standards, and broad interoperability with most service providers and 3rd party SIP based VoIP products.",
+    "vendor.official" : 0,
+    "capabilities": {
+        "Grandstream, GXV3350, 1.0.3.25-android": {
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 160,
+            "expansion_modules": 4,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GXV3370, 1.0.3.27-android": {
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 160,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GXV3380, 1.0.3.27-android": {
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 160,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}
