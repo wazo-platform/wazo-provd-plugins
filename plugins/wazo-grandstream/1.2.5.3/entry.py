@@ -1,19 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2013-2016 The Wazo Authors  (see the AUTHORS file)
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2013-2021 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import binascii
 import os.path
@@ -59,11 +47,11 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
         config = ''
         for line in rawdata.splitlines():
             cleanedLine = line.strip()
-            if cleanedLine: # is not empty                    
+            if cleanedLine:  # is not empty
                 items = [x.strip() for x in cleanedLine.split('=')]
-                if len(items) == 2: # Only interested in pairs (name=value)
+                if len(items) == 2:  # Only interested in pairs (name=value)
                     config += items[0] + '=' + urllib.quote(items[1]) + '&'
-            
+
         fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
         short_mac = fmted_mac[2:6]
         config = config + 'gnkey=' + short_mac
@@ -72,7 +60,7 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
 
         # Convert mac to binary
         b_mac = binascii.unhexlify(fmted_mac)
-        
+
         # Make sure length is even bytewise
         if len(config) % 2 != 0:
             config += '\x00'
@@ -80,29 +68,29 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
         # Make sure length is even wordwise
         if len(config) % 4 != 0:
             config += "\x00\x00"
-            
+
         config_length = 8 + (len(config) / 2)
-        
+
         b_length = struct.pack('>L', config_length)
-                
+
         b_crlf = '\x0D\x0A\x0D\x0A'
         b_string = b_length
         b_string += b_mac
         b_string += b_crlf
         b_string += config
-        
+
         # check sum ...
         csv = 0
         for i in range(0, len(b_string), 2):
-            chunk = b_string[i:i+2]
-            x = struct.unpack( '>H', chunk)[0];
+            chunk = b_string[i : i + 2]
+            x = struct.unpack('>H', chunk)[0]
             csv += x
         csv = 0x10000 - csv
         csv &= 0xFFFF
         b_checksum = struct.pack('>H', csv)
-        
+
         b_config = b_length + b_checksum + b_mac + b_crlf + config
-        
+
         # Write config file
         with open(path, 'w') as content_file:
             content_file.write(b_config)

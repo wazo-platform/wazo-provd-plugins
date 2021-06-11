@@ -1,52 +1,61 @@
 {
     "version": "0.1.0",
-    "description": "Plugin for Grandstream GXP116X and GXP14XX in version 1.0.8.9.",
-    "description_fr": "Greffon pour Grandstream GXP116X et GXP14XX en version 1.0.8.9.",
+    "description": "Plugin for Grandstream GXP1610, GXP1615, GXP1620, GXP1625, GXP1628 and GXP1630 in version 1.0.7.13.",
+    "description_fr": "Greffon pour Grandstream GXP1610, GXP1615, GXP1620, GXP1625, GXP1628 and GXP1630 en version 1.0.7.13.",
     "vendor" : "Grandstream",
     "vendor.url" : "http://www.grandstream.com",
     "vendor.description" : "Grandstream Networks, Inc. is an award-winning designer and ISO 9001 certified manufacturer of next generation IP voice & video products for broadband networks. Grandstream’s products deliver superb sound and picture quality, rich telephony features, full compliance with industry standards, and broad interoperability with most service providers and 3rd party SIP based VoIP products.",
     "vendor.official" : 0,
     "capabilities": {
-        "Grandstream, GXP1160, 1.0.8.9": {
-            "lines": 2,
+        "Grandstream, GXP1610, 1.0.7.13": {
+            "lines": 1,
             "high_availability": true,
-            "function_keys": 3,
+            "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Grandstream, GXP1165, 1.0.8.9": {
-            "lines": 2,
+        "Grandstream, GXP1615, 1.0.7.13": {
+            "lines": 1,
             "high_availability": true,
-            "function_keys": 3,
+            "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Grandstream, GXP1400, 1.0.8.9": {
+        "Grandstream, GXP1620, 1.0.7.13": {
             "lines": 2,
             "high_availability": true,
-            "function_keys": 3,
+            "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Grandstream, GXP1405, 1.0.8.9": {
+        "Grandstream, GXP1625, 1.0.7.13": {
             "lines": 2,
             "high_availability": true,
-            "function_keys": 3,
+            "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Grandstream, GXP1450, 1.0.8.9": {
+        "Grandstream, GXP1628, 1.0.7.13": {
             "lines": 2,
             "high_availability": true,
-            "function_keys": 3,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GXP1630, 1.0.7.13": {
+            "lines": 3,
+            "high_availability": true,
+            "function_keys": 8,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",

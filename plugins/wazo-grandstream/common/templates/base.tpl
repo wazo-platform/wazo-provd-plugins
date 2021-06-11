@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <gs_provision version="1">
  <config version="1">
+    {% if admin_password -%}
+    <P2>{{ admin_password|e }}</P2>
+    {% endif -%}
     {% if ntp_enabled -%}
     <P30>{{ ntp_ip }}</P30>
     {% endif -%}
@@ -22,6 +25,15 @@
     <P298>1</P298>
     <P290>{ [*x]+ }</P290>
     <P81>1</P81>
+    {# Auto-upgrade firmware, check every day #}
+    <P194>2</P194>
+    {# Randomize check #}
+    <P8458>1</P8458>
+    {# Check firmware update between 23:00 and 01:00 #}
+    <P285>23</P285>
+    <P8459>1</P8459>
+    {# Do not ask the user to update #}
+    <P8375>0</P8375>
 {# SIP per-line settings -#}
 {% for line_no, line in sip_lines.iteritems() %}
   {% if line_no == '1' %}
@@ -51,11 +63,14 @@
     <P{{ position }}20>0</P{{ position }}20>
     <P2{{ position }}01>0</P2{{ position }}01>
     <P2{{ position }}02>0</P2{{ position }}02>
-    <P2{{ position }}03>1</P2{{ position }}03> 
+    <P2{{ position }}03>1</P2{{ position }}03>
     <P2{{ position }}12>{{ line['backup_registrar_ip'] }}</P2{{ position }}12>
   {% endif -%}
 {% endfor %}
-{{ XX_fkeys }}
-</config>
+{% if XX_fkeys -%}
+  {% for code, value in XX_fkeys -%}
+    <{{ code }}>{{ value }}</{{ code }}>
+  {% endfor -%}
+{% endif -%}
+  </config>
 </gs_provision>
-
