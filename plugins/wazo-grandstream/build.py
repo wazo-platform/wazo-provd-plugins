@@ -45,6 +45,24 @@ def build_1_0_3_2x_android(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', '1.0.3.2x-android/', path])
 
 
+@target('1.0.5.48', 'wazo-grandstream-1.0.5.48')
+def build_1_0_5_48(path):
+    check_call(
+        [
+            'rsync',
+            '-rlp',
+            '--exclude',
+            '.*',
+            '--include',
+            '/templates/*',
+            'common/',
+            path,
+        ]
+    )
+
+    check_call(['rsync', '-rlp', '--exclude', '.*', '1.0.5.48/', path])
+
+
 @target('1.0.7.13', 'wazo-grandstream-1.0.7.13')
 def build_1_0_7_13(path):
     check_call(

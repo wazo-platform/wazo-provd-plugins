@@ -1,0 +1,56 @@
+{
+    "version": "0.1.0",
+    "description": "Plugin for Grandstream GRP2612, GRP2613, GRP2614, GRP2615 and GRP2616 in version 1.0.5.48.",
+    "description_fr": "Greffon pour Grandstream GRP2612, GRP2613, GRP2614, GRP2615 et GRP2616 en version 1.0.5.48.",
+    "vendor" : "Grandstream",
+    "vendor.url" : "http://www.grandstream.com",
+    "vendor.description" : "Grandstream Networks, Inc. is an award-winning designer and ISO 9001 certified manufacturer of next generation IP voice & video products for broadband networks. Grandstream’s products deliver superb sound and picture quality, rich telephony features, full compliance with industry standards, and broad interoperability with most service providers and 3rd party SIP based VoIP products.",
+    "vendor.official" : 0,
+    "capabilities": {
+        "Grandstream, GRP2612, 1.0.5.48": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 16,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GRP2613, 1.0.5.48": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 24,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GRP2614, 1.0.5.48": {
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 40,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GRP2615, 1.0.5.48": {
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 40,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GRP2616, 1.0.5.48": {
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 40,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}

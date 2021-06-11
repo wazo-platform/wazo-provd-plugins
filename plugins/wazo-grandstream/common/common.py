@@ -33,7 +33,13 @@ LOCALE = {
     u'en_US': 'en',
 }
 
-FUNCKEY_TYPES = {u'speeddial': 0, u'blf': 1, u'park': 9}
+FUNCKEY_TYPES = {
+    u'speeddial': 0,
+    u'blf': 1,
+    u'park': 9,
+    u'default': 31,
+    u'disabled': -1,
+}
 
 
 class BaseGrandstreamHTTPDeviceInfoExtractor(object):
@@ -44,9 +50,12 @@ class BaseGrandstreamHTTPDeviceInfoExtractor(object):
     # Grandstream Model HW GXV3240 V1.6B SW 1.0.1.27 DevId 000b82632815
     # Grandstream Model HW GXV3350  V1.3A SW 1.0.1.8 DevId c074ad150b88
     # Grandstream GXP2000 (gxp2000e.bin:1.2.5.3/boot55e.bin:1.1.6.9) DevId 000b822726c8
+    # Grandstream Model HW GRP2614 SW 1.0.5.15 DevId c074ad0b63ee
 
     _UA_REGEX_LIST = [
-        re.compile(r'^Grandstream Model HW (\w+)(?:\s+V[^ ]+)? SW ([^ ]+) DevId ([^ ]+)'),
+        re.compile(
+            r'^Grandstream Model HW (\w+)(?:\s+V[^ ]+)? SW ([^ ]+) DevId ([^ ]+)'
+        ),
         re.compile(r'^Grandstream (GXP2000) .*:([^ ]+)\) DevId ([^ ]+)'),
     ]
 
@@ -96,6 +105,43 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
 
 class BaseGrandstreamPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
+    # VPKs are the virtual phone keys on the main display
+    # MPKs are the physical programmable keys on some models
+    MODEL_FKEYS = {
+        u'GRP2612': {
+            u'vpk': 16,
+            u'mpk': 0,
+        },
+        u'GRP2613': {
+            u'vpk': 24,
+            u'mpk': 0,
+        },
+        u'GRP2614': {
+            u'vpk': 16,
+            u'mpk': 24,
+        },
+        u'GRP2615': {
+            u'vpk': 40,
+            u'mpk': 0,
+        },
+        u'GRP2616': {
+            u'vpk': 16,
+            u'mpk': 24,
+        },
+    }
+
+    DTMF_MODES = {
+        # mode: (in audio, in RTP, in SIP)
+        u'RTP-in-band': ('Yes', 'Yes', 'No'),
+        u'RTP-out-of-band': ('No', 'Yes', 'No'),
+        u'SIP-INFO': ('No', 'No', 'Yes'),
+    }
+
+    SIP_TRANSPORTS = {
+        u'udp': u'UDP',
+        u'tcp': u'TCP',
+        u'tls': u'TlsOrTcp',
+    }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -132,10 +178,13 @@ class BaseGrandstreamPlugin(StandardPlugin):
         self._check_config(raw_config)
         self._check_device(device)
         self._check_lines_password(raw_config)
+        self._add_sip_transport(raw_config)
         self._add_timezone(raw_config)
         self._add_locale(raw_config)
+        self._add_dtmf_mode(raw_config)
         self._add_fkeys(raw_config)
         self._add_mpk(raw_config)
+        self._add_v2_fkeys(raw_config, device.get(u'model'))
         self._add_dns(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
@@ -238,6 +287,54 @@ class BaseGrandstreamPlugin(StandardPlugin):
             lines.append((value_code, funckey_dict[u'value']))
         raw_config[u'XX_mpk'] = lines
 
+    def _add_v2_fkeys(self, raw_config, model):
+        lines = []
+        model_fkeys = self.MODEL_FKEYS.get(model)
+        if not model_fkeys:
+            logger.info('Unknown model: "%s"', model)
+            return
+        for funckey_no in range(1, model_fkeys[u'vpk'] + 1):
+            funckey = raw_config[u'funckeys'].get(str(funckey_no), {})
+            funckey_type = funckey.get(u'type', 'disabled')
+            if funckey_type not in FUNCKEY_TYPES:
+                logger.info('Unsupported funckey type: %s', funckey_type)
+                continue
+            if str(funckey_no) in raw_config[u'sip_lines']:
+                logger.info(
+                    'Function key %s would conflict with an existing line', funckey_no
+                )
+                continue
+            lines.append(
+                (
+                    funckey_no,
+                    {
+                        u'section': u'vpk',
+                        u'type': FUNCKEY_TYPES[funckey_type],
+                        u'label': funckey.get(u'label') or u'',
+                        u'value': funckey.get(u'value') or u'',
+                    },
+                )
+            )
+        for funckey_no in range(1, model_fkeys[u'mpk'] + 1):
+            funckey = raw_config[u'funckeys'].get(
+                str(funckey_no + model_fkeys[u'vpk']), {}
+            )
+            funckey_type = funckey.get(u'type', 'disabled')
+            if funckey_type not in FUNCKEY_TYPES:
+                logger.info('Unsupported funckey type: %s', funckey_type)
+            lines.append(
+                (
+                    funckey_no,
+                    {
+                        u'section': u'mpk',
+                        u'type': FUNCKEY_TYPES[funckey_type],
+                        u'label': funckey.get(u'label') or u'',
+                        u'value': funckey.get(u'value') or u'',
+                    },
+                )
+            )
+        raw_config[u'XX_v2_fkeys'] = lines
+
     def _format_code(self, code):
         if code >= 10:
             str_code = str(code)
@@ -250,3 +347,15 @@ class BaseGrandstreamPlugin(StandardPlugin):
             dns_parts = raw_config[u'dns_ip'].split('.')
             for part_nb, part in enumerate(dns_parts, start=1):
                 raw_config[u'XX_dns_%s' % part_nb] = part
+
+    def _add_dtmf_mode(self, raw_config):
+        if raw_config.get(u'sip_dtmf_mode'):
+            dtmf_info = self.DTMF_MODES[raw_config[u'sip_dtmf_mode']]
+            raw_config['XX_dtmf_in_audio'] = dtmf_info[0]
+            raw_config['XX_dtmf_in_rtp'] = dtmf_info[1]
+            raw_config['XX_dtmf_in_sip'] = dtmf_info[2]
+
+    def _add_sip_transport(self, raw_config):
+        sip_transport = raw_config.get(u'sip_transport')
+        if sip_transport in self.SIP_TRANSPORTS:
+            raw_config[u'XX_sip_transport'] = self.SIP_TRANSPORTS[sip_transport]
