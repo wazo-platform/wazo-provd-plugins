@@ -78,5 +78,6 @@
     <{{ code }}>{{ value }}</{{ code }}>
   {% endfor -%}
 {% endif -%}
+{% block model_specific_config %}{% endblock %}
   </config>
 </gs_provision>
