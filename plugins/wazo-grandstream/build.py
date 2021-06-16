@@ -9,6 +9,24 @@
 from subprocess import check_call
 
 
+@target('1.0.27.2', 'wazo-grandstream-1.0.27.2')
+def build_1_0_27_2(path):
+    check_call(
+        [
+            'rsync',
+            '-rlp',
+            '--exclude',
+            '.*',
+            '--include',
+            '/templates/*',
+            'common/',
+            path,
+        ]
+    )
+
+    check_call(['rsync', '-rlp', '--exclude', '.*', '1.0.27.2/', path])
+
+
 @target('1.0.3.27', 'wazo-grandstream-1.0.3.27')
 def build_1_0_3_27(path):
     check_call(

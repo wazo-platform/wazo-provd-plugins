@@ -51,6 +51,7 @@ class BaseGrandstreamHTTPDeviceInfoExtractor(object):
     # Grandstream Model HW GXV3350  V1.3A SW 1.0.1.8 DevId c074ad150b88
     # Grandstream GXP2000 (gxp2000e.bin:1.2.5.3/boot55e.bin:1.1.6.9) DevId 000b822726c8
     # Grandstream Model HW GRP2614 SW 1.0.5.15 DevId c074ad0b63ee
+    # Grandstream Model HW HT801 V1.1A SW 1.0.17.5 DevId c074ad273a10
 
     _UA_REGEX_LIST = [
         re.compile(
