@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Depends on the following external programs:
@@ -26,7 +26,7 @@ def build_N720(path):
                 'N720/', path])
 
 
-@target('N870', 'wazo-gigaset-N870-83.v2.17.2')
-def build_N870_83_v2_17_2(path):
+@target('N870', 'wazo-gigaset-N870-83.v2.39.0')
+def build_N870_83_v2_39_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
-                'N870-83.v2.17.2/', path])
+                'N870-83.v2.39.0/', path])
