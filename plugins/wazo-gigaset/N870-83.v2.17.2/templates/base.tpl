@@ -2,7 +2,7 @@
 <provisioning version="1.1" productID="e2">
     <firmware>
     {%- if http_port %}
-        <file version="2.17.2" url="http://{{ ip }}:{{ http_port }}/einstein-albert-V2.17.2+build.b14e3f1.update.bin"/>
+        <file version="2.39.0" url="http://{{ ip }}:{{ http_port }}/Gigaset-Nx70-V2.39.0-build.1ffa429.bin"/>
     {%- endif %}
     </firmware>
 
