@@ -12,13 +12,6 @@ version: 52.81.0.110
 files: T21P_E2-fw
 install: yealink-fw
 
-[pkg_T23-fw]
-description: Firmware for Yealink T23P and T23G
-description_fr: Micrologiciel pour Yealink T23P et T23G
-version: 44.81.0.110
-files: T23-fw
-install: yealink-fw
-
 [pkg_T27P-fw]
 description: Firmware for Yealink T27P
 description_fr: Micrologiciel pour Yealink T27P
@@ -176,12 +169,6 @@ filename: T21P_E2-52.81.0.110.zip
 url: http://provd.wazo.community/firmwares/yealink/T21P_E2-52.81.0.110.zip
 size: 7545839
 sha1sum: 82a3433cef54ce0551e14925a40980cd533101ab
-
-[file_T23-fw]
-filename: T23-44.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfPqplusSymbolWgxwxblrDfExbV5xY8EXfX5AyM7LIruSMU6ZesJ6LkRSKt3OuUXi4SPajFAh5ysXmKfkng5WU6zvN60wvPQ==
-size: 7609550
-sha1sum: 2eed9bea77e3da9ef396e3c766dfb6bd668ce096
 
 [file_T27P-fw]
 filename: T27-45.81.0.110.zip
