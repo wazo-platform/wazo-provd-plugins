@@ -167,13 +167,13 @@ a-b: cp *.rom firmware/
 
 [file_T19P_E2-fw]
 filename: T19P_E2-53.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPf6LwtZZ1V2sWkZaJEnS3OCgUqMrTKK3CaplusSymbolRdLIf2L1GMKn9ivNNdzhpM2c4jO/PEf2sQGNDR1bplusSymbol6i7R9AAMrwFBHplusSymbolg4IvGAVx
+url: http://provd.wazo.community/firmwares/yealink/T19P_E2-53.81.0.110.zip
 size: 7545815
 sha1sum: d19af8e8eb8d4e2305d4a100af01032b203dabb0
 
 [file_T21P_E2-fw]
 filename: T21P_E2-52.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfaLZwSmvdjlwrOSQKWNz6SpV8OTXl/68qzUIvqTmdXPpmMO2tUqnIzcjV6bRmKU4RNUB5Sh0laI3RwRoqd5z1FzVd7vcL/ge9
+url: http://provd.wazo.community/firmwares/yealink/T21P_E2-52.81.0.110.zip
 size: 7545839
 sha1sum: 82a3433cef54ce0551e14925a40980cd533101ab
 
@@ -185,102 +185,102 @@ sha1sum: 2eed9bea77e3da9ef396e3c766dfb6bd668ce096
 
 [file_T27P-fw]
 filename: T27-45.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfms3BOFXiwSjbC0ZQBnQQJ3vr4FrplusSymboltGZsACAP/W0pY/rWzrJro6M9yCMRlbWeOvhcuC/6jSuKAcXliiJqzYK5mA==
+url: http://provd.wazo.community/firmwares/yealink/T27-45.81.0.110.zip
 size: 7564067
 sha1sum: 408cedc8fe92f6df2146f8a71e2ff56b90bf89ae
 
 [file_T27G-fw]
 filename: T27G-69.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfPVNt/n9uWDinQneC1GGSP9TDy0ERI/SyUpJ26P1s9iYePAzJs1yoqWaplusSymboleomaVmFZTw7yMMm3FRZqFFZ43b0FKA==
+url: http://provd.wazo.community/firmwares/yealink/T27G-69.81.0.110.zip
 size: 12151304
 sha1sum: 2c7ebd85706edd79c1db7db08675687a27acc1e5
 
 [file_T29G-fw]
 filename: T29-46.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPf/0uEpT23hmodjt3zmK9lAI7vGQcvVCFm3iTQlhMIFP7cMGqtBZKlTO8q9m/sLBrE4S1NwPDlizHEaVuGjvuQRA==
+url: http://provd.wazo.community/firmwares/yealink/T29-46.81.0.110.zip
 size: 19953980
 sha1sum: 8d625598c078e938a1dff62f80cd95f8198c672f
 
 [file_T40P-fw]
 filename: T40-54.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfWkUwSyQvUu3DAjsW3ADxSj7bk1g4atzEEGxmBb9hON0G3w9pvIi9fTsDzqUU5Ep2eGHf0o4fhCrFUZHswfPpRA==
+url: http://provd.wazo.community/firmwares/yealink/T40-54.81.0.110.zip
 size: 7576394
 sha1sum: 8878fa095f799d85384fe45ff720420a1ecb6c91
 
 [file_T40G-fw]
 filename: T40G-76.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfzSPqPgipBUJNyEkTbaRkoAIoyZ6vxiw3RXNFt9RplusSymbolJC4MVkP9Jaj7p66nMCZRqj43LJYKwfL1G5RPsq529N7PVw==
+url: http://provd.wazo.community/firmwares/yealink/T40G-76.81.0.110.zip
 size: 8088255
 sha1sum: 8f67a549e4e28000df386f21810dc2cc342ff029
 
 [file_T41P-fw]
 filename: T41-36.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfnBPyJXqXBSKFLb/JbDtYq4fnlLxrfnkM3hpTolMorNeagxRC4lXXOTgTfT2wGlfWH0mplusSymboltxTNuQ8fIRKmNsr/SA==
+url: http://provd.wazo.community/firmwares/yealink/T41-36.81.0.110.zip
 size: 7194114
 sha1sum: db530463e9b84fc5684c31b2a9844a27bae06a55
 
 [file_T41S-fw]
 filename: T41S-66.81.0.110.rar
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPf6tgW150unUdnWD749VQtHSRKUe/c4GfkhJXxGJOLEkMjDGItrLZYWKsWvnmzNcUdgTVaW3kGDt/6wcfhB5Fb2Q==
+url: http://provd.wazo.community/firmwares/yealink/T41S-66.81.0.110.rar
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
 
 [file_T42G-fw]
 filename: T42-29.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfcoY97dlTcvWyEqErO/gUvanIWqX403V6zHMDsbvP8QH94QHdh32EnzmOdWoYX6GGYicesqlcLCGmytwplusSymboliiRsXw==
+url: http://provd.wazo.community/firmwares/yealink/T42-29.81.0.110.zip
 size: 7194379
 sha1sum: 04f6fbb368822ff57c8d4a399aae4ab23100b86d
 
 [file_T42S-fw]
 filename: T42S-66.81.0.110.rar
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPf9ibD99lNL7oBlLarxXBmXzUnJXkc7VL9xQeTmplusSymbolDGMv0oaGUnj3plusSymbolx3bwfkhEFPiAo56U/3ClxIatul8bivqKgkA==
+url: http://provd.wazo.community/firmwares/yealink/T42S-66.81.0.110.rar
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
 
 [file_T46G-fw]
 filename: T46-28.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfdZnnbbkASqmYaXRS5X4K2nCpHveuyMTkGPkZBdiLFcOHVkN8GjtV47h9PhcbLAcatX4SNirgbyJVl9I1DQyq6A==
+url: http://provd.wazo.community/firmwares/yealink/T46-28.81.0.110.zip
 size: 22998162
 sha1sum: 1371d7eb5869675c37ab0ae9239ac7698bb37e3e
 
 [file_T46S-fw]
 filename: T46S-66.81.0.110.rar
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPf0cfcKmsjAI02c6wS/ssD81KpE94plusSymbolE3DtrgoNjzaGIeeAZZzogPlbqrL/aEtamZK6bIv589o3Vpyo4melpKaACw==
+url: http://provd.wazo.community/firmwares/yealink/T46S-66.81.0.110.rar
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
 
 [file_T48G-fw]
 filename: T48-35.81.0.110.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfqqn0PG9tKRX24jOnJtm3a4jlP2eCpplusSymbolJ19u/BOo9S6lp3sZK3O70zJpHsfu0GZYhmp5BrkkIdBoJXC8SArQjkplusSymbolw==
+url: http://provd.wazo.community/firmwares/yealink/T48-35.81.0.110.zip
 size: 21110225
 sha1sum: 0aad3152f18a8aba79ae9fe774aefc0c785783a4
 
 [file_T48S-fw]
 filename: T48S-66.81.0.110.rar
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypp7gZ5VyznPfxRZReCMoLu3BxbGYIXIZsd4UlSWlSXRplusSymbolpM/kTNjwvTRK6iNLnmqFyQOA54Erl1WNpe1CUVMJKIwEFhUvSQB1pA==
+url: http://provd.wazo.community/firmwares/yealink/T48S-66.81.0.110.rar
 size: 25611345
 sha1sum: 07e74a9047c6b0e357b6be9564a0934c98244e35
 
 [file_CP860-fw]
 filename: CP860-37.81.0.10.zip
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypoI9VcwQsqO8sHffVzo7plusSymbol6GvRjw8dGGGARD0dw1plusSymbolQ8RRUDkq0y1urQbDt7fbljWMCREJykg4UDv6FZieSyz4sUSzoB3e6KV9LQ==
+url: http://provd.wazo.community/firmwares/yealink/CP860-37.81.0.10.zip
 size: 9106482
 sha1sum: 36ba04d0a95a512e6cc14276ec65a052fd414df7
 
 [file_CP920-fw]
 filename: CP920-78.81.0.15.rom
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypsN1StLgAwqI4ECLv6qE5vE7IGQnEATut0giWWplusSymbolyYcx4ogPk9HZXVSPKictym32AplusSymbolGxQ2d3OSUsoh8RemtGoj8jhiLJKd5izKA==
+url: http://provd.wazo.community/firmwares/yealink/CP920-78.81.0.15.rom
 size: 18948304
 sha1sum: 7bd04e6f92e94ff819f4694f502e63e6bc1079b1
 
 [file_W52P_W56P-base-fw]
 filename: Base-W52P-W56P-25.81.0.60.rom
-url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypgRplusSymbolYFVgEdMpoBjb4z7QlPnbSdqizjP/cuPAJea/izs000vYrgAxHUMMf6ZvgrlHOJZGVrwbsS7UkuT40UqtNbSgyWSVRBtG2EHFWHFj1HSPKftWtvfBzd4=
+url: http://provd.wazo.community/firmwares/yealink/Base-W52P-W56P-25.81.0.60.rom
 size: 6763776
 sha1sum: 313ff1117f0a8c168d1b1c06bbd3380dc915d304
 
 [file_W56P-handset-fw]
 filename: W56H-61.81.0.30.rom
-url: http://download.support.yealink.com/download?path=ZIjHOJbWuW/DFrGTLnGypiNdPZjJiENykplusSymbolifP/yGCIS72yIR5V09fHx/xYpL7ql5u38Nz2sv8XRq/aPplusSymbolLDl6D0Ryayt7TgBc4vdJHkbzFxF5R9PGzQTqLQ==
+url: http://provd.wazo.community/firmwares/yealink/W56H-61.81.0.30.rom
 size: 4259808
 sha1sum: 197d100b0b6ec78eea698f37f06933c097e498dd
