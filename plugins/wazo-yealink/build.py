@@ -70,3 +70,12 @@ def build_v85(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'v85/', path])
+
+
+@target('v86', 'wazo-yealink-v86')
+def build_v86(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'v86/', path])
