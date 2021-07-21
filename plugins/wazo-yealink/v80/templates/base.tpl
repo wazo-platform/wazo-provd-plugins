@@ -101,6 +101,24 @@ account.{{ line_no }}.alert_info_url_enable = 0
 account.{{ line_no }}.nat.udp_update_enable = 1
 account.{{ line_no }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
 account.{{ line_no }}.dtmf.info_type = 1
+
+account.{{ line_no }}.codec.g722.enable = 1
+account.{{ line_no }}.codec.g722_1c_48kpbs.enable = 1
+account.{{ line_no }}.codec.g722_1c_32kpbs.enable = 1
+account.{{ line_no }}.codec.g722_1c_24kpbs.enable = 1
+account.{{ line_no }}.codec.g722_1_24kpbs.enable = 1
+account.{{ line_no }}.codec.pcmu.enable = 1
+account.{{ line_no }}.codec.pcma.enable = 1
+account.{{ line_no }}.codec.g729.enable = 1
+account.{{ line_no }}.codec.g726_16.enable = 0
+account.{{ line_no }}.codec.g726_24.enable = 0
+account.{{ line_no }}.codec.g726_32.enable = 0
+account.{{ line_no }}.codec.g726_40.enable = 0
+account.{{ line_no }}.codec.g723_53.enable = 0
+account.{{ line_no }}.codec.g723_63.enable = 0
+account.{{ line_no }}.codec.opus.enable = 0
+account.{{ line_no }}.codec.ilbc.enable = 0
+
 {% if sip_subscribe_mwi -%}
 account.{{ line_no }}.subscribe_mwi = 1
 {% endif %}
