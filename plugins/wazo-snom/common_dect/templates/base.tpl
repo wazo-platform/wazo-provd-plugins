@@ -10,6 +10,7 @@
     {%- endif %}
 
         <codec_tos>184</codec_tos>
+        <codec_priority_list perm="R">pcma,pcmu,g722,g729,telephone-event</codec_priority_list>
         <signaling_tos>184</signaling_tos>
 
     {%- if admin_username %}
@@ -49,6 +50,7 @@
         <subscr_sip_hs_idx idx="{{ line_no }}">{{ line_no }}</subscr_sip_hs_idx>
         <subscr_dect_ac_code idx="{{ line_no }}">{{ "{0:0>4}".format(line_no) }}</subscr_dect_ac_code>
         <subscr_sip_ua_data_server_id idx="{{ line_no }}">{{ line['XX_server_id'] }}</subscr_sip_ua_data_server_id>
+        <codec_priority_list idx="{{ line_no }}" perm="R">pcma,pcmu,g722,g729,telephone-event</codec_priority_list>
     {%- endfor %}
 
     {% if XX_xivo_phonebook_url -%}

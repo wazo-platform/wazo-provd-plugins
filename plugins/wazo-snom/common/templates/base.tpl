@@ -8,8 +8,8 @@
     <vlan_id perm="R"></vlan_id>
     <vlan_qos perm="R"></vlan_qos>
     {% endif -%}
-    
-    <codec_tos perm="R">184</codec_tos> 
+
+    <codec_tos perm="R">184</codec_tos>
     <signaling_tos perm="R">184</signaling_tos>
 
     {% if admin_username -%}
@@ -42,6 +42,7 @@
     <user_realname idx="{{ line_no }}" perm="R">{{ line['display_name']|e }}</user_realname>
     <user_mailbox idx="{{ line_no }}" perm="R">{{ line['voicemail'] }}</user_mailbox>
     <user_dtmf_info idx="{{ line_no }}" perm="R">{{ line['XX_user_dtmf_info'] }}</user_dtmf_info>
+    <codec_priority_list idx="{{ line_no }}" perm="R">pcma,pcmu,g722,g729,telephone-event</codec_priority_list>
 
     {% if line['backup_proxy_ip'] -%}
     <user_failover_identity idx="{{ line_no }}" perm="R">{{ line_no|int + 1 }}</user_failover_identity>
