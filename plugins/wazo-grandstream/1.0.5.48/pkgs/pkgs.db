@@ -1,7 +1,7 @@
 [pkg_GRP261X-fw]
 description: Firmware for Grandstream GRP261X
 description_fr: Micrologiciel pour Grandstream GRP261X
-version: 1.0.7.13
+version: 1.0.5.48
 files: GRP261X-fw
 install: grandstream-fw
 
