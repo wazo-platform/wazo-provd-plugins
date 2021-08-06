@@ -34,7 +34,7 @@ VENDOR = u'Gigaset'
 
 class GigasetHTTPDeviceInfoExtractor(object):
 
-    _UA_REGEX = re.compile(r'^(Gigaset )?(?P<model>[\w\s]+)\/(?P<version>(?:\w{2,3}\.){3,4}\w{1,3})(?:\+.+)?;(?P<mac>[0-9A-F]{12})?$')
+    _UA_REGEX = re.compile(r'^(Gigaset )?(?P<model>[\w\s]+)\/(?P<version>(?:\w{2,3}\.){3,4}\w{1,3})(?:\+.+)?;(?P<mac>[0-9A-F]{12})?(;Handset=\d+)?$')
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
