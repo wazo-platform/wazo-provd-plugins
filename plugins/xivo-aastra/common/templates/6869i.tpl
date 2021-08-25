@@ -1,6 +1,6 @@
 idle screen mode: 1
 
-play a ring splash: 1
+play a ring splash: 0
 
 topsoftkey1 type: directory
 

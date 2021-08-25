@@ -1,5 +1,5 @@
 idle screen mode: 1
-play a ring splash: 1
+play a ring splash: 0
 
 {% if XX_xivo_phonebook_url -%}
 directory script: {{ XX_xivo_phonebook_url }}
