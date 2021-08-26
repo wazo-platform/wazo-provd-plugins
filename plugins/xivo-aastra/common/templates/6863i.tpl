@@ -2,6 +2,6 @@
 directory script: {{ XX_xivo_phonebook_url }}
 {% endif -%}
 
-play a ring splash: 1
+play a ring splash: 0
 
 {% include 'base.tpl' %}
