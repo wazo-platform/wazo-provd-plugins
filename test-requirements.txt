@@ -1,0 +1,13 @@
+https://github.com/wazo-platform/wazo-provd/archive/master.zip
+https://github.com/wazo-platform/wazo-lib-rest-client/archive/master.zip  # from wazo-provd
+https://github.com/wazo-platform/wazo-amid-client/archive/master.zip  # from wazo-provd
+https://github.com/wazo-platform/wazo-auth-client/archive/master.zip  # from wazo-provd
+https://github.com/wazo-platform/xivo-fetchfw/archive/master.zip  # from wazo-provd
+https://github.com/wazo-platform/xivo-lib-python/archive/master.zip  # from wazo-provd
+beautifulsoup4==4.7.1  # from xivo-fetchfw
+jinja2==2.10  # from wazo-provd
+mock
+pyhamcrest
+pytest
+twisted==18.9.0  # from wazo-provd
+zope.interface==4.3.2  # from wazo-provd
