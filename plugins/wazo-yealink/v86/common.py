@@ -460,7 +460,7 @@ class BaseYealinkPlugin(StandardPlugin):
         if u'timezone' in raw_config:
             try:
                 tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
-            except tzinform.TimezoneNotFoundError, e:
+            except tzinform.TimezoneNotFoundError as e:
                 logger.warning('Unknown timezone: %s', e)
             else:
                 raw_config[u'XX_timezone'] = self._format_tz_info(tzinfo)
@@ -545,7 +545,7 @@ class BaseYealinkPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
         try:
             os.remove(path)
-        except OSError, e:
+        except OSError as e:
             # ignore
             logger.info('error while removing file: %s', e)
 
