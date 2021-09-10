@@ -1,9 +1,9 @@
 {
-    "version": "1.1.1",
-    "description": "Plugin for Digium D4X, D50, D6X and D70 in version 2.2.1.8.",
-    "description_fr": "Greffon pour Digium D4X, D50, D6X et D70 en version 2.2.1.8.",
+    "version": "1.0",
+    "description": "Plugin for Digium D4X, D50, D6X and D70 in version 2.8.1.",
+    "description_fr": "Greffon pour Digium D4X, D50, D6X et D70 en version 2.8.1.",
     "capabilities": {
-        "Digium, D40, 2.2.1.8": {
+        "Digium, D40, 2.8.1": {
             "lines": 2,
             "high_availability": true,
             "function_keys": 0,
@@ -12,7 +12,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Digium, D45, 2.2.1.8": {
+        "Digium, D45, 2.8.1": {
             "lines": 2,
             "high_availability": true,
             "function_keys": 0,
@@ -21,7 +21,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Digium, D50, 2.2.1.8": {
+        "Digium, D50, 2.8.1": {
             "lines": 4,
             "high_availability": true,
             "function_keys": 0,
@@ -30,7 +30,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Digium, D60, 2.2.1.8": {
+        "Digium, D60, 2.8.1": {
             "lines": 4,
             "high_availability": true,
             "function_keys": 0,
@@ -39,7 +39,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Digium, D62, 2.2.1.8": {
+        "Digium, D62, 2.8.1": {
             "lines": 2,
             "high_availability": true,
             "function_keys": 0,
@@ -48,7 +48,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Digium, D65, 2.2.1.8": {
+        "Digium, D65, 2.8.1": {
             "lines": 6,
             "high_availability": true,
             "function_keys": 0,
@@ -57,7 +57,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Digium, D70, 2.2.1.8": {
+        "Digium, D70, 2.8.1": {
             "lines": 6,
             "high_availability": true,
             "function_keys": 0,

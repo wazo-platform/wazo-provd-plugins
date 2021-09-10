@@ -17,7 +17,17 @@
     <setting id="ehs" value="Plantronics" />
     <setting id="enable_blf_on_unused_line_keys" value="1" />
     <setting id="blf_contact_group" value="Default" />
-
+    
+    <ringtones>
+        <alerts>
+            <alert alert_info="normal" ringtone_id="Digium" ring_type="normal" />
+            <alert alert_info="answer" ringtone_id="" ring_type="answer" />
+            <alert alert_info="ring-answer" ringtone_id="Digium" ring_type="answer" />
+            <alert alert_info="intercom" ringtone_id="" ring_type="answer" />
+            <alert alert_info="visual" ringtone_id="" ring_type="visual" />
+        </alerts>
+    </ringtones>
+ 
     {% if vlan_enabled %}
     <setting id="network_vlan_qos" value="{{ vlan_priority|d(0) }}" />
     <setting id="network_vlan_id" value="{{ vlan_id }}" />

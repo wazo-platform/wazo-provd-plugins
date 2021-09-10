@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Avencall
+# Copyright 2014-2019 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@ def build_1_4_0_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '1.4.0.0/', path])
 
+
 @target('2.2.1.8', 'xivo-digium-2.2.1.8')
 def build_2_2_1_8(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
@@ -33,3 +34,12 @@ def build_2_2_1_8(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 '2.2.1.8/', path])
+
+
+@target('2.8.1', 'wazo-digium-2.8.1')
+def build_2_8_1(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'common/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                '2.8.1/', path])

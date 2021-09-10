@@ -187,9 +187,8 @@ class BaseDigiumPlugin(StandardPlugin):
         else:
             return raw_config[u'ip']
 
-
     def _format_mac(self, device):
-         return format_mac(device[u'mac'], separator='', uppercase=False)
+        return format_mac(device[u'mac'], separator='', uppercase=False)
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg$')
 
