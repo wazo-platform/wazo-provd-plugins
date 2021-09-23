@@ -40,6 +40,13 @@ version: 77.85.0.25
 files: W60B-fw
 install: yealink-fw
 
+[pkg_W70B-fw]
+description: Firmware for Yealink W70B
+description_fr: Micrologiciel pour Yealink W70B
+version: 146.85.0.20
+files: W70B-fw
+install: yealink-fw
+
 [pkg_W90B-fw]
 description: Firmware for Yealink W90B
 description_fr: Micrologiciel pour Yealink W90B
@@ -172,6 +179,12 @@ filename: W60B-77.85.0.25.rom
 url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyprkfRlGTqdFMbAVf81NnTP/95/FVRL1rtzoORnY1HnveXt6bnGL0gA4Bj7MGid1rCEhkzMxpR6ozQ7FKzkLUH9JXmw7Gcc2TFg==
 size: 10732848
 sha1sum: 73f3d3485395e53bb647f7da270a49f13acca6c0
+
+[file_W70B-fw]
+filename: W70B-146.85.0.20.rom
+url: http://provd.wazo.community/firmwares/yealink/W70B-146.85.0.20.rom
+size: 16443376
+sha1sum: 3dfa39c1317bd72d7a362d38caab70eef78cffd2
 
 [file_W90DM-fw]
 filename: W90DM-130.85.0.15.rom
