@@ -1,5 +1,7 @@
+__pycache__
 .coverage
 .tox
+*.pyc
 coverage.xml
 dhcp/dhcpd.tar*
 plugins/_build
