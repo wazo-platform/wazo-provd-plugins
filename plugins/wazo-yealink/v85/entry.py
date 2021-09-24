@@ -29,6 +29,7 @@ MODEL_VERSIONS = {
     u'T57W': u'96.85.0.5',
     u'T58': u'58.85.0.5',
     u'W60B': u'77.85.0.25',
+    u'W70B': u'146.85.0.20',
     u'W90DM': u'130.85.0.15',
     u'W90B': u'130.85.0.15',
 }
@@ -71,6 +72,12 @@ COMMON_FILES_DECT = [
     {
         'filename': u'y000000000077.cfg',
         'fw_filename': u'W60B-77.85.0.25.rom',
+        'handsets_fw': HANDSETS_FW,
+        'tpl_filename': u'dect_model.tpl',
+    },
+    {
+        'filename': u'y000000000146.cfg',
+        'fw_filename': u'W70B-146.85.0.20.rom',
         'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
