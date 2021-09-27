@@ -36,6 +36,7 @@ MODEL_VERSIONS = {
     u'T57W': u'96.86.0.20',
     u'T56': u'58.86.0.20',
     u'T58': u'58.86.0.20',
+    u'T58W': u'150.86.0.11',
 }
 
 COMMON_FILES = [
@@ -48,6 +49,7 @@ COMMON_FILES = [
     ('y000000000123.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.20.rom', 'model.tpl'),
     ('y000000000124.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.20.rom', 'model.tpl'),
     ('y000000000127.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.20.rom', 'model.tpl'),
+    ('y000000000150.cfg', u'T58W-150.86.0.11.rom', 'model.tpl'),
 ]
 
 HANDSETS_FW = {

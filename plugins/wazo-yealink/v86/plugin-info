@@ -177,6 +177,15 @@
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
+        },
+        "Yealink, T58W, 58.86.0.11": {
+            "lines": 16,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
         }
     }
 }
