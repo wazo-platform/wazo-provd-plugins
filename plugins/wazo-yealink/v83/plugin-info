@@ -206,7 +206,7 @@
             "multicell": false,
             "protocol": "sip"
         },
-        "Yealink, W80, 103.83.0.80": {
+        "Yealink, W80, 103.83.0.90": {
             "lines": 100,
             "high_availability": false,
             "function_keys": 0,
