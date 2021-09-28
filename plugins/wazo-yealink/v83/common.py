@@ -82,7 +82,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink-T46G 28.71.0.81 28.1.0.128.0.0.0"
         #   "VP530P 23.70.0.40 00:15:65:31:4b:c0"
         #   "VP530 23.70.0.41 00:15:65:3d:58:e3"
-        #   "Yealink W80B 103.83.0.70 80:5e:c0:71:01:38"
+        #   "Yealink W80B 103.83.0.90 80:5e:c0:71:01:38"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
