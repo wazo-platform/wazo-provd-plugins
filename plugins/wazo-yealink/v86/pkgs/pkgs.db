@@ -47,6 +47,13 @@ version: 58.86.0.20
 files: T58A-fw
 install: yealink-fw
 
+[pkg_T58W-fw]
+description: Firmware for Yealink T58W
+description_fr: Micrologiciel pour Yealink T58W
+version: 150.86.0.11
+files: T58W-fw
+install: yealink-fw
+
 [pkg_W53H-fw]
 description: Firmware for Yealink W53H handset
 description_fr: Micrologiciel pour le combiné Yealink W53H
@@ -157,6 +164,13 @@ filename: T58V(T56A)-58.86.0.20.rom
 url: http://provd.wazo.community/firmwares/yealink/T58V(T56A)-58.86.0.20.rom
 size: 249769728
 sha1sum: a080a214b81811f3c4661365e6ba5e0a52285d2e
+
+[file_T58W-fw]
+filename: T58W-150.86.0.11.rom
+url: http://provd.wazo.community/firmwares/yealink/T58W-150.86.0.11.rom
+size: 703144864
+sha1sum: 11c14d8a6c06cae947b8d170c12b282942c0eef8
+
 
 [file_W53H-fw]
 filename: W53H-88.85.0.20.rom

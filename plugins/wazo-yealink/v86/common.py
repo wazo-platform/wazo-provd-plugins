@@ -203,6 +203,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T54W': 27,
         u'T57W': 29,
         u'T58': 27,
+        u'T58W': 27,
     }
     _NB_MEMORYKEY = {
         u'CP920': 0,
@@ -224,6 +225,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T54W': 0,
         u'T57W': 0,
         u'T58': 0,
+        u'T58W': 0,
     }
 
     class NullExpansionModule(object):
@@ -321,6 +323,7 @@ class BaseYealinkPlugin(StandardPlugin):
         u'T54W': 16,
         u'T57W': 16,
         u'T58': 16,
+        u'T58W': 16,
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
