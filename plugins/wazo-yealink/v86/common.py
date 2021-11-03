@@ -26,6 +26,8 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
 
+from .models import KNOWN_MAC_PREFIXES
+
 logger = logging.getLogger('plugin.wazo-yealink')
 
 
@@ -82,14 +84,14 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         return None
 
     def _extract_from_path(self, request):
-        if request.path.startswith('/001565'):
-            raw_mac = path[1:-4]
+        if request.path[1:7] in KNOWN_MAC_PREFIXES:
+            raw_mac = request.path[1:-4]
             try:
                 mac = norm_mac(raw_mac.decode('ascii'))
             except ValueError as e:
                 logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
             else:
-                return {u'mac': mac}
+                return {u'vendor': u'Yealink', u'mac': mac}
         return None
 
 

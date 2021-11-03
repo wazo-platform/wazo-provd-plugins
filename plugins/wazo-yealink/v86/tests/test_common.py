@@ -23,9 +23,10 @@ from ..models import MODEL_VERSIONS
 
 
 class TestCommon(unittest.TestCase):
-    def _mock_request(self, ua=None):
+    def _mock_request(self, ua=None, path=None):
         request = MagicMock()
         request.getHeader = MagicMock(return_value=ua)
+        request.path = path
         return request
 
     def test_http_ua_extractor_when_all_info(self):
@@ -48,6 +49,23 @@ class TestCommon(unittest.TestCase):
             assert_that(
                 http_info_extractor._do_extract(self._mock_request(ua=ua)),
                 has_entries(info),
+            )
+
+    def test_http_extractor_when_no_ua_extracts_mac_from_path(self):
+        macs_from_paths = {
+            '/001565123456.cfg': '00:15:65:12:34:56',
+            '/e434d7123456.cfg': 'e4:34:d7:12:34:56',
+            '/805ec0123456.cfg': '80:5e:c0:12:34:56',
+            '/805e0c123456.cfg': '80:5e:0c:12:34:56',
+            '/249ad8123456.cfg': '24:9a:d8:12:34:56',
+        }
+
+        http_info_extractor = BaseYealinkHTTPDeviceInfoExtractor()
+
+        for path, mac in six.iteritems(macs_from_paths):
+            assert_that(
+                http_info_extractor._do_extract(self._mock_request(path=path)),
+                has_entries({u'vendor': u'Yealink', u'mac': mac})
             )
 
     def test_plugin_association_when_all_info_match(self):
