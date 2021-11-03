@@ -33,3 +33,11 @@ MODEL_VERSIONS = {
     u'T58': u'58.86.0.20',
     u'T58W': u'150.86.0.11',
 }
+
+KNOWN_MAC_PREFIXES = (
+    '001565',
+    'e434d7',
+    '805ec0',
+    '805e0c',  # NOTE(afournier): not a mistake
+    '249ad8',
+)
