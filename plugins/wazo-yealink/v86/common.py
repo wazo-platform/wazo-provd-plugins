@@ -397,7 +397,9 @@ class BaseYealinkPlugin(StandardPlugin):
         for line_no, line in six.iteritems(raw_config[u'sip_lines']):
             proxy_ip = line.get(u'proxy_ip') or raw_config.get(u'sip_proxy_ip')
             proxy_port = line.get(u'proxy_port') or raw_config.get(u'sip_proxy_port')
-            backup_proxy_ip = line.get(u'backup_proxy_ip') or raw_config.get(u'sip_backup_proxy_ip')
+            backup_proxy_ip = line.get(u'backup_proxy_ip') or raw_config.get(
+                u'sip_backup_proxy_ip'
+            )
             backup_proxy_port = line.get(u'backup_proxy_port') or raw_config.get(
                 u'sip_backup_proxy_port'
             )
@@ -494,7 +496,10 @@ class BaseYealinkPlugin(StandardPlugin):
         return self._NB_SIP_ACCOUNTS.get(model)
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get(u'config_version', 0) >= 1
+        ):
             plugins.add_xivo_phonebook_url(
                 raw_config, u'yealink', entry_point=u'lookup', qs_suffix=u'term=#SEARCH'
             )
