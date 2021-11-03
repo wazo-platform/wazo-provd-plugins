@@ -3,9 +3,16 @@
 # Copyright 2011-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+from __future__ import absolute_import
 import logging
 import re
 import os.path
+import six
+
+from six.moves import map
+from six.moves import range
+from twisted.internet import defer, threads
+
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
@@ -24,7 +31,6 @@ from provd.plugins import (
 )
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import format_mac, norm_mac
-from twisted.internet import defer, threads
 
 from .models import KNOWN_MAC_PREFIXES
 
@@ -123,7 +129,7 @@ class BaseYealinkFunckeyGenerator(object):
     def generate(self):
         prefixes = BaseYealinkFunckeyPrefixIterator(self._model)
         for funckey_no, prefix in enumerate(prefixes, start=1):
-            funckey = self._funckeys.get(unicode(funckey_no))
+            funckey = self._funckeys.get(six.text_type(funckey_no))
             self._format_funckey(prefix, funckey_no, funckey)
             self._lines.append(u'')
 
@@ -131,8 +137,8 @@ class BaseYealinkFunckeyGenerator(object):
 
     def _format_funckey(self, prefix, funckey_no, funckey):
         if funckey is None:
-            if unicode(funckey_no) in self._sip_lines:
-                self._format_funckey_line(prefix, unicode(funckey_no))
+            if six.text_type(funckey_no) in self._sip_lines:
+                self._format_funckey_line(prefix, six.text_type(funckey_no))
             else:
                 self._format_funckey_null(prefix)
             return
@@ -284,12 +290,12 @@ class BaseYealinkFunckeyPrefixIterator(object):
             return self.NullExpansionModule
 
     def __iter__(self):
-        for linekey_no in xrange(1, self._nb_linekey + 1):
+        for linekey_no in range(1, self._nb_linekey + 1):
             yield u'linekey.%s' % linekey_no
-        for memorykey_no in xrange(1, self._nb_memorykey + 1):
+        for memorykey_no in range(1, self._nb_memorykey + 1):
             yield u'memorykey.%s' % memorykey_no
-        for expmod_no in xrange(1, self._expmod.max_daisy_chain + 1):
-            for expmodkey_no in xrange(1, self._expmod.key_count + 1):
+        for expmod_no in range(1, self._expmod.max_daisy_chain + 1):
+            for expmodkey_no in range(1, self._expmod.key_count + 1):
                 yield u'expansion_module.%s.key.%s' % (expmod_no, expmodkey_no)
 
 
@@ -361,7 +367,7 @@ class BaseYealinkPlugin(StandardPlugin):
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _update_sip_lines(self, raw_config):
-        for line_no, line in raw_config[u'sip_lines'].iteritems():
+        for line_no, line in six.iteritems(raw_config[u'sip_lines']):
             # set line number
             line[u'XX_line_no'] = int(line_no)
             # set dtmf inband transfer
@@ -388,7 +394,7 @@ class BaseYealinkPlugin(StandardPlugin):
     def _add_sip_templates(self, raw_config):
         templates = dict()
         template_number = 1
-        for line_no, line in raw_config[u'sip_lines'].iteritems():
+        for line_no, line in six.iteritems(raw_config[u'sip_lines']):
             proxy_ip = line.get(u'proxy_ip') or raw_config.get(u'sip_proxy_ip')
             proxy_port = line.get(u'proxy_port') or raw_config.get(u'sip_proxy_port')
             backup_proxy_ip = line.get(u'backup_proxy_ip') or raw_config.get(u'sip_backup_proxy_ip')
@@ -427,7 +433,7 @@ class BaseYealinkPlugin(StandardPlugin):
                 dst_change['time'].as_hours,
             )
         else:
-            week, weekday = map(int, dst_change['day'][1:].split('.'))
+            week, weekday = list(map(int, dst_change['day'][1:].split('.')))
             weekday = tzinform.week_start_on_monday(weekday)
             return u'%d/%d/%d/%d' % (
                 dst_change['month'],
@@ -479,7 +485,7 @@ class BaseYealinkPlugin(StandardPlugin):
             xx_sip_lines = dict(sip_lines)
         else:
             xx_sip_lines = {}
-            for line_no in xrange(1, sip_accounts + 1):
+            for line_no in range(1, sip_accounts + 1):
                 line_no = str(line_no)
                 xx_sip_lines[line_no] = sip_lines.get(line_no)
         raw_config[u'XX_sip_lines'] = xx_sip_lines
