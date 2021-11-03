@@ -66,7 +66,7 @@ class TestCommon(unittest.TestCase):
         for path, mac in six.iteritems(macs_from_paths):
             assert_that(
                 http_info_extractor._do_extract(self._mock_request(path=path)),
-                has_entries({u'vendor': u'Yealink', u'mac': mac})
+                has_entries({u'vendor': u'Yealink', u'mac': mac}),
             )
 
     def test_plugin_association_when_all_info_match(self):
