@@ -216,6 +216,12 @@ url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPX
 size: 3148768
 sha1sum: 3e826495b1585156a300b1e3752013491791db2d
 
+[file_W73H-fw]
+filename: W73H-116.85.0.15.rom
+url: https://provd.wazo.community/firmwares/yealink/W73H-116.85.0.15.rom
+size: 2936160
+sha1sum: 399dfe27733d1ad1410f9fadcf04b85722e75783
+
 [file_T4S-ddphone-fw]
 filename: T4S-ddphone-66.85.0.56.rom
 url: http://provd.wazo.community/firmwares/yealink/T4S-ddphone-66.85.0.56.rom
