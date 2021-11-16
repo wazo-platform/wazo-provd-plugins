@@ -51,6 +51,7 @@ HANDSETS_FW = {
     'w53h': u'W53H-88.85.0.20.rom',
     'w56h': u'W56H-61.85.0.20.rom',
     'w59r': u'W59R-115.85.0.20.rom',
+    'w73h': u'W73H-116.85.0.15.rom',
     'cp930w': u'CP930W-87.85.0.20.rom',
     't41s_dd10k': u'T4S-ddphone-66.85.0.56.rom',
     't54w_dd10k': u'T54W-ddphone-96.85.0.65.rom ',
