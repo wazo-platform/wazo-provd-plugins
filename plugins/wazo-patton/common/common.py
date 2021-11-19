@@ -30,7 +30,7 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
-logger = logging.getLogger('plugin.xivo-patton')
+logger = logging.getLogger('plugin.wazo-patton')
 
 
 class BasePattonHTTPDeviceInfoExtractor(object):
