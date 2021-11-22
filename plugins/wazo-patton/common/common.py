@@ -4,18 +4,25 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
-import re
 import os.path
+import re
 
 from operator import itemgetter
-from provd import tzinform
-from provd import synchronize
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
-    TemplatePluginHelper
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, \
-    FULL_SUPPORT, BasePgAssociator, UNKNOWN_SUPPORT
+from provd import synchronize, tzinform
+from provd.plugins import (
+    FetchfwPluginHelper,
+    StandardPlugin,
+    TemplatePluginHelper,
+)
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    IMPROBABLE_SUPPORT,
+    UNKNOWN_SUPPORT,
+)
 from provd.servers.http import HTTPNoListingFileService
-from provd.util import norm_mac, format_mac
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-patton')
@@ -50,7 +57,6 @@ class BasePattonHTTPDeviceInfoExtractor(object):
                         u'model': raw_model.decode('ascii'),
                         u'version': raw_version.decode('ascii'),
                         u'mac': mac}
-        return None
 
 
 class BasePattonPgAssociator(BasePgAssociator):
