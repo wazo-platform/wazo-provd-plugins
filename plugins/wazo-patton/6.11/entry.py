@@ -16,7 +16,7 @@ MODELS = [
     u'SN4324',
     u'SN4332',
 ]
-VERSION = u'6.9'
+VERSION = u'6.11'
 
 
 class PattonPlugin(common['BasePattonPlugin']):
