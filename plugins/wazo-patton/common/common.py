@@ -1,36 +1,31 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2016-2019 The Wazo Authors  (see the AUTHORS file)
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2016-2021 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
-import re
 import os.path
+import re
 
 from operator import itemgetter
-from provd import tzinform
-from provd import synchronize
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
-    TemplatePluginHelper
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, \
-    FULL_SUPPORT, BasePgAssociator, UNKNOWN_SUPPORT
+from provd import synchronize, tzinform
+from provd.plugins import (
+    FetchfwPluginHelper,
+    StandardPlugin,
+    TemplatePluginHelper,
+)
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    IMPROBABLE_SUPPORT,
+    UNKNOWN_SUPPORT,
+)
 from provd.servers.http import HTTPNoListingFileService
-from provd.util import norm_mac, format_mac
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
 
-logger = logging.getLogger('plugin.xivo-patton')
+logger = logging.getLogger('plugin.wazo-patton')
 
 
 class BasePattonHTTPDeviceInfoExtractor(object):
@@ -62,7 +57,6 @@ class BasePattonHTTPDeviceInfoExtractor(object):
                         u'model': raw_model.decode('ascii'),
                         u'version': raw_version.decode('ascii'),
                         u'mac': mac}
-        return None
 
 
 class BasePattonPgAssociator(BasePgAssociator):
