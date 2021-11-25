@@ -11,15 +11,21 @@ from hamcrest import (
     assert_that,
     equal_to,
     has_entries,
+    has_properties,
 )
-from mock import MagicMock
+from mock import MagicMock, patch, sentinel
 from provd.devices.pgasso import (
     COMPLETE_SUPPORT,
     FULL_SUPPORT,
     IMPROBABLE_SUPPORT,
     PROBABLE_SUPPORT,
 )
-from ..common import BaseYealinkHTTPDeviceInfoExtractor, BaseYealinkPgAssociator
+from .. import common
+from ..common import (
+    BaseYealinkHTTPDeviceInfoExtractor,
+    BaseYealinkPgAssociator,
+    BaseYealinkPlugin,
+)
 from ..models import MODEL_VERSIONS
 
 
@@ -106,3 +112,51 @@ class TestPluginAssociation(unittest.TestCase):
             self.plugin_associator._do_associate('', '', ''),
             equal_to(IMPROBABLE_SUPPORT),
         )
+
+
+class TestPlugin(unittest.TestCase):
+    def setUp(self):
+        self.app = MagicMock()
+
+        self._fetchfw_patcher = patch('provd.plugins.FetchfwPluginHelper')
+        self.fetchfw = self._fetchfw_patcher.start()
+        self.fetchfw.return_value.services = MagicMock(return_value=sentinel.fetchfw_services)
+        self.fetchfw.new_downloaders.return_value = sentinel.fetchfw_downloaders
+
+        original_fetchfw = common.FetchfwPluginHelper
+
+        def restore_fetchfw():
+            common.FetchfwPluginHelper = original_fetchfw
+
+        common.FetchfwPluginHelper = self.fetchfw
+        self.addCleanup(self._fetchfw_patcher.stop)
+        self.addCleanup(restore_fetchfw)
+
+        self._template_helper_patcher = patch('provd.plugins.TemplatePluginHelper')
+        self.template_plugin_helper = self._template_helper_patcher.start()
+        original_template_helper = common.TemplatePluginHelper
+
+        def restore_template_helper():
+            common.TemplatePluginHelper = original_template_helper
+
+        self.addCleanup(restore_template_helper)
+        self.addCleanup(self._template_helper_patcher.stop)
+
+    def test_init(self):
+        plugin = BaseYealinkPlugin(self.app, 'test_dir', MagicMock(), MagicMock())
+        assert_that(
+            plugin,
+            has_properties(
+                services=sentinel.fetchfw_services,
+            ),
+        )
+        self.fetchfw.assert_called_once_with('test_dir', sentinel.fetchfw_downloaders)
+
+    def test_common_configure(self):
+        pass
+
+    def test_configure(self):
+        pass
+
+    def test_sensitive_file(self):
+        pass
