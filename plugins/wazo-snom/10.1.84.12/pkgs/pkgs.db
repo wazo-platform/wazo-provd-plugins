@@ -1,0 +1,135 @@
+[pkg_315-fw]
+description: Firmware for Snom D315
+description_fr: Firmware pour Snom D315
+version: 10.1.84.12
+files: 315-fw
+install: snom-fw
+
+[pkg_335-fw]
+description: Firmware for Snom D335
+description_fr: Firmware pour Snom D335
+version: 10.1.84.12
+files: 335-fw
+install: snom-fw
+
+[pkg_345-fw]
+description: Firmware for Snom D345
+description_fr: Firmware pour Snom D345
+version: 10.1.84.12
+files: 345-fw
+install: snom-fw
+
+[pkg_385-fw]
+description: Firmware for Snom D385
+description_fr: Firmware pour Snom D385
+version: 10.1.84.12
+files: 385-fw
+install: snom-fw
+
+[pkg_712-fw]
+description: Firmware for Snom D712
+description_fr: Firmware pour Snom D712
+version: 10.1.84.12
+files: 712-fw
+install: snom-fw
+
+[pkg_715-fw]
+description: Firmware for Snom 715
+description_fr: Firmware pour Snom 715
+version: 10.1.84.12
+files: 715-fw
+install: snom-fw
+
+[pkg_717-fw]
+description: Firmware for Snom D717
+description_fr: Firmware pour Snom D717
+version: 10.1.84.12
+files: 717-fw
+install: snom-fw
+
+[pkg_725-fw]
+description: Firmware for Snom 725
+description_fr: Firmware pour Snom 725
+version: 10.1.84.12
+files: 725-fw
+install: snom-fw
+
+[pkg_735-fw]
+description: Firmware for Snom D735
+description_fr: Firmware pour Snom D735
+version: 10.1.84.12
+files: 735-fw
+install: snom-fw
+
+[pkg_785-fw]
+description: Firmware for Snom D785
+description_fr: Firmware pour Snom D785
+version: 10.1.84.12
+files: 785-fw
+install: snom-fw
+
+[pkg_uxm-fw]
+description: Firmware for Snom Extension USB Module UXM D3/D7
+description_fr: Micrologiciel pour module d'extension USB Snom UXM D3/D7
+version: 2.1.1
+files: uxm-fw
+install: snom-fw
+
+[install_snom-fw]
+a-b: cp $FILE1 firmware/
+
+[file_uxm-fw]
+url: http://downloads.snom.com/snomUXM-2.1.1.bin
+size: 96560
+sha1sum:9c4e07185ca6eb863858edf23147ab8576f94c4a
+
+[file_315-fw]
+url: http://downloads.snom.com/fw/10.1.84.12/bin/snomD315-10.1.84.12-SIP-r.bin
+size: 30474400
+sha1sum: 29b42218d6593aeec2451b782580cabbb57fe226
+
+[file_335-fw]
+url: http://downloads.snom.com/fw/10.1.84.12/bin/snomD335-10.1.84.12-SIP-r.bin
+size: 37053152
+sha1sum: ceb395fa74ec8d3313bbc22b884f9199c7c8709d
+
+[file_345-fw]
+url: http://downloads.snom.com/fw/10.1.84.12/bin/snomD345-10.1.84.12-SIP-r.bin
+size: 30549744
+sha1sum: 785138a167281cd69dff87293191dc053576ac28
+
+[file_385-fw]
+url: http://downloads.snom.com/fw/10.1.84.12/bin/snomD385-10.1.84.12-SIP-r.bin
+size: 37477968
+sha1sum: 772e79e473523fc2cbf9db88c777c096e44915df
+
+[file_712-fw]
+url: http://downloads.snom.com/fw/10.1.84.12/bin/snomD712-10.1.84.12-SIP-r.bin
+size: 24787424
+sha1sum: 1afc6b0f7bff78c7e436dd81f77bf02b8a384e80
+
+[file_715-fw]
+url: http://downloads.snom.com/fw/10.1.84.12/bin/snom715-10.1.84.12-SIP-r.bin
+size: 28313648
+sha1sum: 6426748b43e9109ed8f7bc74668ab062ce1ca2c6
+
+[file_717-fw]
+url: http://downloads.snom.com/fw/10.1.84.12/bin/snomD717-10.1.84.12-SIP-r.bin
+size: 39962784
+sha1sum: cbde0ddfba2e3b23485a4b06e721d7ebbca1becb
+
+[file_725-fw]
+url: http://downloads.snom.com/fw/10.1.84.12/bin/snom725-10.1.84.12-SIP-r.bin
+size: 28317632
+sha1sum: 966575b413cb516c39386ed0ff2bf1c64ad4e7ff
+
+[file_735-fw]
+url: http://downloads.snom.com/fw/10.1.84.12/bin/snomD735-10.1.84.12-SIP-r.bin
+size: 39655984
+sha1sum: 29b50b1e671edb5343d2d100deefd94a8b5e10c7
+
+[file_785-fw]
+url: http://downloads.snom.com/fw/10.1.84.12/bin/snomD785-10.1.84.12-SIP-r.bin
+size: 39999408
+sha1sum: 43f7efaaa42fa4611bc824a1870d3d59438784ed
+
