@@ -107,9 +107,6 @@ class BaseGrandstreamPlugin(StandardPlugin):
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
         # update to use the non-standard tftpboot directory
-        self._base_tftpboot_dir = self._tftpboot_dir
-        self._tftpboot_dir = os.path.join(self._tftpboot_dir, 'Grandstream')
-
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
         downloaders = FetchfwPluginHelper.new_downloaders(gen_cfg.get('proxies'))
@@ -118,7 +115,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         fetchfw_helper.root_dir = self._tftpboot_dir
 
         self.services = fetchfw_helper.services()
-        self.http_service = HTTPNoListingFileService(self._base_tftpboot_dir)
+        self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
 
     http_dev_info_extractor = BaseGrandstreamHTTPDeviceInfoExtractor()
 

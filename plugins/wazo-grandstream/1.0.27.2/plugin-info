@@ -1,5 +1,5 @@
 {
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Plugin for Grandstream HT801 and HT802 in version 1.0.27.2.",
     "description_fr": "Greffon pour Grandstream HT801 et HT802 en version 1.0.27.2.",
     "vendor" : "Grandstream",
