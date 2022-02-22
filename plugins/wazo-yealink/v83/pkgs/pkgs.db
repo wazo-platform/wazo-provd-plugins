@@ -377,10 +377,10 @@ size: 3161936
 sha1sum: d97cf031a2d3f34db448f9bea19a0fdbea1648f7
 
 [file_W80DM-fw]
-filename: W80DM-103.83.0.90.rom
-url: http://provd.wazo.community/firmwares/yealink/W80DM-103.83.0.90.rom
-size: 22596032
-sha1sum: 0777ccf5341449f88e94a68a7558737f6555804a
+filename: W80DM-103.83.0.122.rom
+url: http://provd.wazo.community/firmwares/yealink/W80DM-103.83.0.122.rom
+size: 22844080
+sha1sum: 01c8ffc9a2b5916176e29155d314938d9c21651f
 
 [file_W80B-fw]
 filename: W80B-103.83.0.90.rom
