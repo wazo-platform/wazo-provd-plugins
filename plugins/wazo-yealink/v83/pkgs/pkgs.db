@@ -132,17 +132,10 @@ files: W59R-fw
 install: yealink-fw
 
 [pkg_W80DM-fw]
-description: Firmware for Yealink W80DM
-description_fr: Micrologiciel pour Yealink W80DM
-version: 103.83.0.90
+description: Firmware for Yealink W80DM and W80B
+description_fr: Micrologiciel pour Yealink W80DM et W80B
+version: 103.83.0.122
 files: W80DM-fw
-install: yealink-fw
-
-[pkg_W80B-fw]
-description: Firmware for Yealink W80B
-description_fr: Micrologiciel pour Yealink W80B
-version: 103.83.0.90
-files: W80B-fw
 install: yealink-fw
 
 [pkg_CP930W-fw]
@@ -381,12 +374,6 @@ filename: W80DM-103.83.0.122.rom
 url: http://provd.wazo.community/firmwares/yealink/W80DM-103.83.0.122.rom
 size: 22844080
 sha1sum: 01c8ffc9a2b5916176e29155d314938d9c21651f
-
-[file_W80B-fw]
-filename: W80B-103.83.0.90.rom
-url: http://provd.wazo.community/firmwares/yealink/W80B-103.83.0.90.rom
-size: 22593824
-sha1sum: 4a821482f848930bfbd13be2b4a3a5b976901f12
 
 [file_CP930W-fw]
 filename: CP930W-87.83.0.60.rom
