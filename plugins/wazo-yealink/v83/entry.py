@@ -42,18 +42,12 @@ MODEL_VERSIONS = {
 }
 
 COMMON_FILES = [
-    ('y000000000028.cfg', u'T46-28.83.0.35.rom', 'model.tpl'),
-    ('y000000000029.cfg', u'T42-29.83.0.35.rom', 'model.tpl'),
-    ('y000000000035.cfg', u'T48-35.83.0.35.rom', 'model.tpl'),
-    ('y000000000036.cfg', u'T41-36.83.0.35.rom', 'model.tpl'),
     ('y000000000044.cfg', u'T23-44.83.0.35.rom', 'model.tpl'),
     ('y000000000045.cfg', u'T27-45.83.0.35.rom', 'model.tpl'),
     ('y000000000069.cfg', u'T27G-69.83.0.35.rom', 'model.tpl'),
-    ('y000000000046.cfg', u'T29-46.83.0.35.rom', 'model.tpl'),
     ('y000000000052.cfg', u'T21P_E2-52.83.0.35.rom', 'model.tpl'),
     ('y000000000053.cfg', u'T19P_E2-53.83.0.35.rom', 'model.tpl'),
     ('y000000000054.cfg', u'T40-54.83.0.35.rom', 'model.tpl'),
-    ('y000000000058.cfg', u'T58V(T56A)-58.83.0.5.rom', 'model.tpl'),
     ('y000000000076.cfg', u'T40G-76.83.0.35.rom', 'model.tpl'),
     ('y000000000066.cfg', u'T46S(T48S,T42S,T41S)-66.83.0.35.rom', 'model.tpl'),
     ('y000000000068.cfg', u'T46S(T48S,T42S,T41S)-66.83.0.35.rom', 'model.tpl'),
