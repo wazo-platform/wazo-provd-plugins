@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2013-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import os
@@ -38,22 +38,17 @@ MODEL_VERSIONS = {
     u'T56A': u'58.83.0.15',
     u'T58': u'58.83.0.15',
     u'W60B': u'77.83.0.85',
-    u'W80B': u'103.83.0.90',
+    u'W80B': u'103.83.0.122',
+    u'W80DM': u'103.83.0.122',
 }
 
 COMMON_FILES = [
-    ('y000000000028.cfg', u'T46-28.83.0.35.rom', 'model.tpl'),
-    ('y000000000029.cfg', u'T42-29.83.0.35.rom', 'model.tpl'),
-    ('y000000000035.cfg', u'T48-35.83.0.35.rom', 'model.tpl'),
-    ('y000000000036.cfg', u'T41-36.83.0.35.rom', 'model.tpl'),
     ('y000000000044.cfg', u'T23-44.83.0.35.rom', 'model.tpl'),
     ('y000000000045.cfg', u'T27-45.83.0.35.rom', 'model.tpl'),
     ('y000000000069.cfg', u'T27G-69.83.0.35.rom', 'model.tpl'),
-    ('y000000000046.cfg', u'T29-46.83.0.35.rom', 'model.tpl'),
     ('y000000000052.cfg', u'T21P_E2-52.83.0.35.rom', 'model.tpl'),
     ('y000000000053.cfg', u'T19P_E2-53.83.0.35.rom', 'model.tpl'),
     ('y000000000054.cfg', u'T40-54.83.0.35.rom', 'model.tpl'),
-    ('y000000000058.cfg', u'T58V(T56A)-58.83.0.5.rom', 'model.tpl'),
     ('y000000000076.cfg', u'T40G-76.83.0.35.rom', 'model.tpl'),
     ('y000000000066.cfg', u'T46S(T48S,T42S,T41S)-66.83.0.35.rom', 'model.tpl'),
     ('y000000000068.cfg', u'T46S(T48S,T42S,T41S)-66.83.0.35.rom', 'model.tpl'),
@@ -83,7 +78,7 @@ COMMON_FILES_DECT = [
     },
     {
         'filename': u'y000000000103.cfg',
-        'fw_filename': u'$PN-103.83.0.90.rom',  # $PN = Product Name, i.e W80B
+        'fw_filename': u'$PN-103.83.0.122.rom',  # $PN = Product Name, i.e W80B
         'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     }
