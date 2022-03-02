@@ -29,7 +29,7 @@ install: yealink-fw
 [pkg_T43U_T46U_T41U_T48U_T42U-fw]
 description: Firmware for Yealink T43U T46U T41U T48U T42U
 description_fr: Micrologiciel pour Yealink T43U T46U T41U T48U T42U
-version: 108.86.0.20
+version: 108.86.0.45
 files: T43U_T46U_T41U_T48U_T42U-fw
 install: yealink-fw
 
@@ -148,10 +148,10 @@ size: 23192144
 sha1sum: 2eff966f4969ba06f236134821e46c70fadad7e8
 
 [file_T43U_T46U_T41U_T48U_T42U-fw]
-filename: T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.20.rom
-url: http://provd.wazo.community/firmwares/yealink/T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.20.rom
-size: 36793152
-sha1sum: 46082991c004e48fc249f39f58bd58be3a13274c
+filename: T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom
+url: http://provd.wazo.community/firmwares/yealink/T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom
+size: 37055696
+sha1sum: a4371f5b62b44af5104275caa6d4b289750e419b
 
 [file_T53_T53C_T53W_T54W_T57W-fw]
 filename: T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.20.rom
