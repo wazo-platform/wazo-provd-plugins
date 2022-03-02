@@ -133,7 +133,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T53(C)(W), 96.86.0.20": {
+        "Yealink, T53(C)(W), 96.86.0.45": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 10,
@@ -142,7 +142,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T54(W), 96.86.0.20": {
+        "Yealink, T54(W), 96.86.0.45": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 10,
@@ -151,7 +151,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T57(W), 96.86.0.20": {
+        "Yealink, T57(W), 96.86.0.45": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 0,

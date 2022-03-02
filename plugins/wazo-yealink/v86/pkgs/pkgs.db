@@ -154,10 +154,10 @@ size: 37055696
 sha1sum: a4371f5b62b44af5104275caa6d4b289750e419b
 
 [file_T53_T53C_T53W_T54W_T57W-fw]
-filename: T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.20.rom
-url: http://provd.wazo.community/firmwares/yealink/T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.20.rom
-size: 42374880
-sha1sum: ca661d49516fd30b5324224dc1352027a686ef9b
+filename: T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.45(20211130).rom
+url: http://provd.wazo.community/firmwares/yealink/T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.45(20211130).rom
+size: 43072240
+sha1sum: 0975d447c78795c58d9bd2c2ed728f4f29415de8
 
 [file_T58A-fw]
 filename: T58V(T56A)-58.86.0.20.rom
