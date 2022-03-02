@@ -136,10 +136,10 @@ size: 16480816
 sha1sum: 994ba903dbc358e3a997a3ee4b00f355473da324
 
 [file_T3X-fw]
-filename: T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.20.rom
-url: http://provd.wazo.community/firmwares/yealink/T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.20.rom
-size: 11934400
-sha1sum: cfcccfcab30ffe43e398ef86cf11c4685f21272b
+filename: T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom
+url: http://provd.wazo.community/firmwares/yealink/T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom
+size: 11951664
+sha1sum: b67b093daf7a5b41e267fcff89f96a1bc9782c07
 
 [file_T46S_T48S_T42S_T41S-fw]
 filename: T46S(T48S,T42S,T41S)-66.86.0.15.rom

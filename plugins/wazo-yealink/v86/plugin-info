@@ -25,7 +25,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T30(P), 124.86.0.20": {
+        "Yealink, T30(P), 124.86.0.40": {
             "lines": 1,
             "high_availability": false,
             "function_keys": 0,
@@ -34,7 +34,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T31(P)(G), 124.86.0.20": {
+        "Yealink, T31(P)(G), 124.86.0.40": {
             "lines": 2,
             "high_availability": false,
             "function_keys": 0,
@@ -43,7 +43,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T33(P)(G), 124.86.0.20": {
+        "Yealink, T33(P)(G), 124.86.0.40": {
             "lines": 4,
             "high_availability": false,
             "function_keys": 0,
