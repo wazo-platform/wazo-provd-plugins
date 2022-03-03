@@ -1,5 +1,5 @@
 {
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Plugin for Yealink for CP920, T27G, T3X, T4X and T5X series in version 86.",
     "description_fr": "Greffon pour Yealink pour les series CP920, T27G, T3X, T4X et T5X en version 86.",
     "vendor" : "Yealink",
@@ -25,7 +25,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T30(P), 124.86.0.20": {
+        "Yealink, T30(P), 124.86.0.40": {
             "lines": 1,
             "high_availability": false,
             "function_keys": 0,
@@ -34,7 +34,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T31(P)(G), 124.86.0.20": {
+        "Yealink, T31(P)(G), 124.86.0.40": {
             "lines": 2,
             "high_availability": false,
             "function_keys": 0,
@@ -43,7 +43,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T33(P)(G), 124.86.0.20": {
+        "Yealink, T33(P)(G), 124.86.0.40": {
             "lines": 4,
             "high_availability": false,
             "function_keys": 0,
@@ -88,7 +88,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T41U, 108.86.0.20": {
+        "Yealink, T41U, 108.86.0.45": {
             "lines": 6,
             "high_availability": true,
             "function_keys": 15,
@@ -97,7 +97,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T42U, 108.86.0.20": {
+        "Yealink, T42U, 108.86.0.45": {
             "lines": 12,
             "high_availability": true,
             "function_keys": 15,
@@ -106,7 +106,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T43U, 108.86.0.20": {
+        "Yealink, T43U, 108.86.0.45": {
             "lines": 12,
             "high_availability": true,
             "function_keys": 15,
@@ -115,7 +115,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T46U, 108.86.0.20": {
+        "Yealink, T46U, 108.86.0.45": {
             "lines": 16,
             "high_availability": true,
             "function_keys": 27,
@@ -124,7 +124,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T48U, 108.86.0.20": {
+        "Yealink, T48U, 108.86.0.45": {
             "lines": 16,
             "high_availability": true,
             "function_keys": 29,
@@ -133,7 +133,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T53(C)(W), 96.86.0.20": {
+        "Yealink, T53(C)(W), 96.86.0.45": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 10,
@@ -142,7 +142,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T54(W), 96.86.0.20": {
+        "Yealink, T54(W), 96.86.0.45": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 10,
@@ -151,7 +151,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T57(W), 96.86.0.20": {
+        "Yealink, T57(W), 96.86.0.45": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 0,

@@ -29,7 +29,7 @@ install: yealink-fw
 [pkg_T43U_T46U_T41U_T48U_T42U-fw]
 description: Firmware for Yealink T43U T46U T41U T48U T42U
 description_fr: Micrologiciel pour Yealink T43U T46U T41U T48U T42U
-version: 108.86.0.20
+version: 108.86.0.45
 files: T43U_T46U_T41U_T48U_T42U-fw
 install: yealink-fw
 
@@ -136,10 +136,10 @@ size: 16480816
 sha1sum: 994ba903dbc358e3a997a3ee4b00f355473da324
 
 [file_T3X-fw]
-filename: T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.20.rom
-url: http://provd.wazo.community/firmwares/yealink/T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.20.rom
-size: 11934400
-sha1sum: cfcccfcab30ffe43e398ef86cf11c4685f21272b
+filename: T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom
+url: http://provd.wazo.community/firmwares/yealink/T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom
+size: 11951664
+sha1sum: b67b093daf7a5b41e267fcff89f96a1bc9782c07
 
 [file_T46S_T48S_T42S_T41S-fw]
 filename: T46S(T48S,T42S,T41S)-66.86.0.15.rom
@@ -148,16 +148,16 @@ size: 23192144
 sha1sum: 2eff966f4969ba06f236134821e46c70fadad7e8
 
 [file_T43U_T46U_T41U_T48U_T42U-fw]
-filename: T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.20.rom
-url: http://provd.wazo.community/firmwares/yealink/T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.20.rom
-size: 36793152
-sha1sum: 46082991c004e48fc249f39f58bd58be3a13274c
+filename: T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom
+url: http://provd.wazo.community/firmwares/yealink/T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom
+size: 37055696
+sha1sum: a4371f5b62b44af5104275caa6d4b289750e419b
 
 [file_T53_T53C_T53W_T54W_T57W-fw]
-filename: T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.20.rom
-url: http://provd.wazo.community/firmwares/yealink/T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.20.rom
-size: 42374880
-sha1sum: ca661d49516fd30b5324224dc1352027a686ef9b
+filename: T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.45(20211130).rom
+url: http://provd.wazo.community/firmwares/yealink/T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.45(20211130).rom
+size: 43072240
+sha1sum: 0975d447c78795c58d9bd2c2ed728f4f29415de8
 
 [file_T58A-fw]
 filename: T58V(T56A)-58.86.0.20.rom
