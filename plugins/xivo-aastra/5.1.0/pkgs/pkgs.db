@@ -1,0 +1,37 @@
+[pkg_6930-fw]
+description: Firmware for Mitel 6930
+description_fr: Micrologiciel pour Mitel 6930
+version: 5.1.0.6044
+files: 6930-fw
+install: 6930-fw
+
+[pkg_lang]
+description: Language files
+description_fr: Fichiers de langue
+version: 5.1.0.6044
+files: lang
+install: aastra-lang
+
+[install_aastra-fw]
+a-b: unzip $FILE1
+
+[install_6930-fw]
+a-b: unzip $FILE1
+b-c: include *.st
+
+[install_aastra-lang]
+a-b: unzip $FILE1
+b-c: cp * i18n/
+
+
+[file_6930-fw]
+filename:
+url: 
+size:
+sha1sum:
+
+[file_lang]
+filename: 
+url: 
+size: 
+sha1sum: 
