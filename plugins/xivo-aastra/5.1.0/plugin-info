@@ -3,7 +3,7 @@
     "description": "Plugin for Aastra/Mitel 6930 in version 5.1.0",
     "description_fr": "Greffon pour Aastra/Mitel 6930 en version 5.1.0",
     "capabilities": {
-        "Aastra, 6863i, 5.1.0.6044": {
+        "Aastra, 6930, 5.1.0.6044": {
             "lines": 24,
             "high_availability": true,
             "function_keys": 44,
