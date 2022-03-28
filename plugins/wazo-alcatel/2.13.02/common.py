@@ -100,6 +100,31 @@ class BaseAlcatelPlugin(StandardPlugin):
         u'blf': 59,
         u'speeddial': 1,
     }
+    _LANG = {
+        u'en': 0,
+        u'fr': 1,
+        u'de': 2,
+        u'it': 3,
+        u'es': 4,
+        u'nl': 5,
+        u'pt': 6,
+        u'hu': 7,
+        u'cs': 8,
+        u'sk': 9,
+        u'sl': 10,
+        u'et': 11,
+        u'pl': 12,
+        u'lt': 13,
+        u'lv': 14,
+        u'tr': 15,
+        u'el': 16,
+        u'sv': 17,
+        u'no': 18,
+        u'da': 19,
+        u'fi': 20,
+        u'is': 21,
+        u'zh': 22,
+    }
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^config\.[0-9a-f]{12}\.xml')
     http_dev_info_extractor = BaseAlcatelMyriadHTTPDeviceInfoExtractor()
@@ -193,6 +218,16 @@ class BaseAlcatelPlugin(StandardPlugin):
             else:
                 raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
 
+    def _add_language(self, raw_config):
+        locale = raw_config[u'locale']
+        if '_' in locale:
+            lang, _ = locale.split('_')
+        else:
+            lang = locale
+
+        lang_code = self._LANG.get(lang, self._LANG['en'])
+        raw_config[u'XX_lang'] = lang_code
+
     def _add_user_dtmf_info(self, raw_config):
         dtmf_mode = raw_config.get(u'sip_dtmf_mode')
         for line in raw_config[u'sip_lines'].itervalues():
@@ -243,6 +278,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         self._add_user_dtmf_info(raw_config)
         self._add_xivo_phonebook_url(raw_config)
         self._add_server_url(raw_config)
+        self._add_language(raw_config)
         raw_config[u'XX_options'] = device.get(u'options', {})
 
         path = os.path.join(self._tftpboot_dir, xml_filename)

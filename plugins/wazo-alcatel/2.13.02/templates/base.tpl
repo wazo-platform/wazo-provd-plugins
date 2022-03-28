@@ -202,7 +202,7 @@
     <setting id="SettingTimeFormat" value="" />
 
     <!-- Language Setting -->
-    <setting id="SettingLanguage" value="" />
+    <setting id="SettingLanguage" value="{{ XX_lang }}" />
     <setting id="SettingWuiLanguage" value="" />
 
     <!-- Firmware Upgrading -->
