@@ -20,6 +20,7 @@
         # Alcatel
         allow members of "Alcatel-NOE";
         allow members of "Alcatel-SIP";
+        allow members of "Alcatel-Myriad-ictouch-SIP";
         # Cisco
         allow members of "CiscoCP-unknown";
         allow members of "CiscoCP-6821";

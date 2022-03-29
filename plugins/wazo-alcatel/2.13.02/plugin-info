@@ -1,0 +1,34 @@
+{
+    "version": "1.0.0",
+    "description": "Plugin for Alcatel M3, M5 and M7 in version SIP 2.13.02.",
+    "description_fr": "Greffon pour Alcatel M3, M5 et M7 en version SIP 2.13.02.",
+    "capabilities": {
+        "Alcatel, M3, 2.13.02": {
+            "lines": 8,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Alcatel, M5, 2.13.02": {
+            "lines": 8,
+            "high_availability": true,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Alcatel, M7, 2.13.02": {
+            "lines": 8,
+            "high_availability": true,
+            "function_keys": 8,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}
