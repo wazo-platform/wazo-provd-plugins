@@ -31,7 +31,7 @@ logger = logging.getLogger('plugin.wazo-alcatel')
 
 class BaseAlcatelMyriadHTTPDeviceInfoExtractor(object):
     _UA_REGEX_MAC = re.compile(
-        r'^ALE (?P<model>M[3,5,7])-CE (?P<version>([0-9]{1,4}\.?){4}) (?P<mac>[0-9a-f]{12})$'
+        r'^ALE (?P<model>M[3,5,7])(?:-CE)? (?P<version>([0-9]{1,4}\.?){4,5}) (?P<mac>[0-9a-f]{12})'
     )
 
     def extract(self, request, request_type):
