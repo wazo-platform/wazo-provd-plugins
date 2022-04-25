@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,10 +22,10 @@ MODELS = [
     u'C58',
     u'C62',
 ]
-COMMON_FILES = [
-    ('f0C00580000.cfg', u'C58_V2_3_431_247T20140605184312.z', 'model.tpl'),
-    ('f0C00620000.cfg', u'2012070649327421.z', 'model.tpl'),
-]
+COMMON_FILES = {
+    'f0C00580000.cfg': ('C58', u'C58_V2_3_431_247T20140605184312.z', 'model.tpl'),
+    'f0C00620000.cfg': ('C62', u'2012070649327421.z', 'model.tpl'),
+}
 
 
 class FanvilPlugin(common['BaseFanvilPlugin']):
