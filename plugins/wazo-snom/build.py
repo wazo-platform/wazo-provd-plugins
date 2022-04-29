@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2014-2021 The Wazo Authors (see AUTHORS file)
+# Copyright 2014-2022 The Wazo Authors (see AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Depends on the following external programs:
