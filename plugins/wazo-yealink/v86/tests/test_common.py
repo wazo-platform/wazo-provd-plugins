@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import absolute_import
+import importlib.util
 import six
 import unittest
 
@@ -27,6 +28,17 @@ from ..common import (
     BaseYealinkPlugin,
 )
 from ..models import MODEL_VERSIONS
+
+
+# This does not work in python2 because importlib.util does not exist
+def import_module_custom_attrs(module_name, attrlist):
+    spec = importlib.util.find_spec(module_name, 'plugins.wazo-yealink.v86.tests')
+    if spec is not None:
+        module = importlib.util.module_from_spec(spec)
+        for attr_name, attr_value in attrlist.items():
+            setattr(module, attr_name, attr_value)
+        spec.loader.exec_module(module)
+        return module
 
 
 class TestInfoExtraction(unittest.TestCase):
@@ -134,6 +146,8 @@ class TestPlugin(unittest.TestCase):
 
         self._template_helper_patcher = patch('provd.plugins.TemplatePluginHelper')
         self.template_plugin_helper = self._template_helper_patcher.start()
+        self.template_plugin_helper.get_template = MagicMock()
+        self.template_plugin_helper.dump = MagicMock()
         original_template_helper = common.TemplatePluginHelper
 
         def restore_template_helper():
@@ -141,6 +155,11 @@ class TestPlugin(unittest.TestCase):
 
         self.addCleanup(restore_template_helper)
         self.addCleanup(self._template_helper_patcher.stop)
+
+        def execfile_(filename, common_globals):
+            common_globals['BaseYealinkPlugin'] = BaseYealinkPlugin
+
+        self.entry_module = import_module_custom_attrs('..entry', {'execfile_': execfile_})
 
     def test_init(self):
         plugin = BaseYealinkPlugin(self.app, 'test_dir', MagicMock(), MagicMock())
@@ -153,7 +172,10 @@ class TestPlugin(unittest.TestCase):
         self.fetchfw.assert_called_once_with('test_dir', sentinel.fetchfw_downloaders)
 
     def test_common_configure(self):
-        pass
+        plugin = BaseYealinkPlugin(self.app, 'test_dir', MagicMock(), MagicMock())
+        plugin.configure_common(MagicMock())
+        self.template_plugin_helper.get_template.assert_called()
+        self.template_plugin_helper.dump.assert_called()
 
     def test_configure(self):
         pass
