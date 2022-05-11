@@ -596,7 +596,7 @@ def build_10_1_101_11(path):
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
         model_tpl = os.path.join(path, 'templates', 'common', 'snom%s-firmware.xml.tpl' % model)
-        sed_script = 's/#FW_FILENAME#/snom%s-10.1.54.13-SIP-%s.bin/' % (model, fw_suffix)
+        sed_script = 's/#FW_FILENAME#/snom%s-10.1.101.11-SIP-%s.bin/' % (model, fw_suffix)
         with open(model_tpl, 'wb') as f:
             check_call(['sed', sed_script, 'common/templates/common/snom-model-firmware.xml.tpl.btpl'],
                        stdout=f)
