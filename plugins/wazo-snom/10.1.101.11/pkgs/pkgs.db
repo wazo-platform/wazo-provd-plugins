@@ -75,8 +75,20 @@ version: 2.1.1
 files: uxm-fw
 install: snom-fw
 
+[pkg_uxmc-fw]
+description: Firmware for Snom Extension USB Module UXMC D7C
+description_fr: Micrologiciel pour module d'extension USB Snom UXMC D7C
+version: 1.1.1
+files: uxmc-fw
+install: snom-fw
+
 [install_snom-fw]
 a-b: cp $FILE1 firmware/
+
+[file_uxmc-fw]
+url: https://downloads.snom.com/fw/d7c/snomD7C-1.1.1-r.bin
+size: 35708675
+sha1sum:8722d0c3d6ce1374561302f703559faade15a49a
 
 [file_uxm-fw]
 url: http://downloads.snom.com/snomUXM-2.1.1.bin
