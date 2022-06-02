@@ -128,6 +128,10 @@ class BaseSnomPlugin(StandardPlugin):
         u'RTP-out-of-band': u'off',
         u'SIP-INFO': u'sip_info_only'
     }
+    _SIP_TRANSPORT = {
+        u'udp': u'udp',
+        u'tls': u'tls'
+    }
     _XX_DICT_DEF = u'en'
     _XX_DICT = {
         u'en': {
@@ -258,6 +262,12 @@ class BaseSnomPlugin(StandardPlugin):
             cur_dtmf_mode = line.get(u'dtmf_mode', dtmf_mode)
             line[u'XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, u'off')
 
+    def _add_sip_transport(self, raw_config):
+        transport = raw_config.get(u'sip_transport')
+        for line in raw_config[u'sip_lines'].itervalues():
+            cur_transport = line.get(u'transport', transport)
+            line[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(cur_transport, u'udp')
+
     def _add_msgs_blocked(self, raw_config):
         msgs_blocked = ''
         for line_no, line in raw_config[u'sip_lines'].iteritems():
@@ -318,6 +328,7 @@ class BaseSnomPlugin(StandardPlugin):
         self._add_lang(raw_config)
         self._add_timezone(raw_config)
         self._add_user_dtmf_info(raw_config)
+        self._add_sip_transport(raw_config)
         self._add_msgs_blocked(raw_config)
         self._add_xivo_phonebook_url(raw_config)
         raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
