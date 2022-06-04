@@ -52,7 +52,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, X4U, 2.4.5": {
+        "Fanvil, X4U, 2.4.11": {
             "lines": 12,
             "high_availability": false,
             "function_keys": 33,
