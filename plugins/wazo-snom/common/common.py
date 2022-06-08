@@ -130,6 +130,7 @@ class BaseSnomPlugin(StandardPlugin):
     }
     _SIP_TRANSPORT = {
         u'udp': u'udp',
+        u'tcp': u'tcp',
         u'tls': u'tls'
     }
     _XX_DICT_DEF = u'en'
@@ -263,10 +264,7 @@ class BaseSnomPlugin(StandardPlugin):
             line[u'XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, u'off')
 
     def _add_sip_transport(self, raw_config):
-        transport = raw_config.get(u'sip_transport')
-        for line in raw_config[u'sip_lines'].itervalues():
-            cur_transport = line.get(u'transport', transport)
-            line[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(cur_transport, u'udp')
+        raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'), u'udp')
 
     def _add_msgs_blocked(self, raw_config):
         msgs_blocked = ''
