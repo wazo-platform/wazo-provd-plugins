@@ -124,7 +124,7 @@ sha1sum: 9d16b8936ecf2b1ccd394aaf6e044faef7bb45f1
 [file_X3U-fw]
 url: https://download.fanvil.com/Firmware/Release/X3U/20211222/x3u-5912-RECOVERY-P0.18.23.1.23-2.4.12-1164T2021-11-10-01.18.44.z
 size: 11129914
-sha1sum: d18508f3c83d625e4e192dc08bd0d023
+sha1sum: 6e44800cf003a6af036350649927e7433759398b
 
 [file_X4-fw]
 url: http://download.fanvil.com/Firmware/Release/X4/20191210/x42.10.2.6887T20191122095252.z
@@ -134,7 +134,7 @@ sha1sum: 8b8e53095c92deaddd3b6e32705f8fe7a21934d3
 [file_X4U-fw]
 url: https://download.fanvil.com/Firmware/Release/X4U/20211115/x4u-6902-P0.18.23.79-2.4.5-3581T2021-11-23-17.34.40.z
 size: 44493920
-sha1sum: 2f2e7fe7aa2956dda9f2daadcb386979
+sha1sum: ab2214b6eed360ff22144a4d3727f427bef5f0ef
 
 [file_X5-fw]
 url: http://download.fanvil.com/Firmware/Release/X5/20170303/x51.4.0.2016T20170303151233.z
@@ -149,7 +149,7 @@ sha1sum: 059aed5ac70267c8a25c3c4ba6933607de2de7ab
 [file_X5U-fw]
 url: https://download.fanvil.com/Firmware/Release/X5U/20211115/x5u-6906-P0.18.23.79-2.4.5-3581T2021-11-23-17.07.22.z
 size: 44984152
-sha1sum: 144781d5270b2e8dc4c9f33ef0e797c4
+sha1sum: 312a89ca945ab085fd83179969464c49b7e649b6
 
 [file_X6-fw]
 url: http://download.fanvil.com/Firmware/Release/X6/20190729_64M/x6-6904-P0.16.5-1.12.2-3144T2019-07-29-15.09.59.z
@@ -164,7 +164,7 @@ sha1sum: 6ba47b395ab3a6a35b9cd6b9a685e9677bf839d4
 [file_X6U-fw]
 url: https://download.fanvil.com/Firmware/Release/X6U/20211115/x6u-6915-P0.18.23.79-2.4.5-3581T2021-11-23-17.30.44.z
 size: 45173448
-sha1sum: 0aeca64802bc3f13c88856583a4d6171
+sha1sum: cf3454e6ba632b0f173ba64dff16cf82a3f2d9be
 
 [file_X7-fw]
 url: http://download.fanvil.com/Firmware/Release/X7/20190924/x7-6926-P0.17.0-1.12.5.1-3739T2019-11-07-18.19.52.z
@@ -179,4 +179,4 @@ sha1sum: ccdb26e859912bfed4d3ef8ff38fb21306dfdfdc
 [file_X210-fw]
 url: https://download.fanvil.com/Firmware/Release/X210/20211115/x210-6924-P0.18.23.79-2.4.5-3581T2021-11-23-17.13.30.z
 size: 45433624
-sha1sum: 23affdbf0703aa192f1d0b1017c5853f
+sha1sum: 9152857ba4f5b95dafebc3f945864f5ba0303a01
