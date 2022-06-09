@@ -33,8 +33,6 @@
     <cw_dialtone perm="R">off</cw_dialtone>
 
     <network_id_port perm="R">5060</network_id_port>
-    <tls_listen perm="R">on</tls_listen>
-    <sip_tls_listen_port perm="R">5061</sip_tls_listen_port>
 
     <answer_after_policy perm="R">idle</answer_after_policy>
 
