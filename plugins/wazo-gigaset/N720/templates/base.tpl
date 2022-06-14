@@ -9,8 +9,8 @@
         <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
         <PROFILE_NAME class="string" value="N720"/>
     {%- if http_port %}
-        <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/einsteiniwu111_70.bin?mac={{ XX_mac_addr }}&server_einstein_iwu111.bin"'/>
-        <S_SPECIAL_DATA_SRV_SAT class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/sat7111100000000.bin?mac={{ XX_mac_addr }}&sat7111100000000.bin"'/>
+        <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/einsteiniwu117_70.bin?mac={{ XX_mac_addr }}&server_einstein_iwu117.bin"'/>
+        <S_SPECIAL_DATA_SRV_SAT class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/sat7111700000000.bin?mac={{ XX_mac_addr }}&sat7111700000000.bin"'/>
         <SYMB_ITEM ID="BS_IP_Data.KindOfPlannedUpdate" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_IP_Data.PlannedUpdateTime" class="symb_item" value="0x648"/>
     {%- endif %}

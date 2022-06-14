@@ -3,7 +3,7 @@
     "description": "Plugin for Gigaset N720 IP/DM PRO.",
     "description_fr": "Greffon pour Gigaset N720 IP/DM PRO.",
     "capabilities": {
-        "Gigaset, N720 IP/DM PRO, 70.111": {
+        "Gigaset, N720 IP/DM PRO, 70.117": {
             "lines": 100,
             "high_availability": false,
             "function_keys": 0,
