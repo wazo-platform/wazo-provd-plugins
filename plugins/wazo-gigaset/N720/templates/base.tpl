@@ -43,6 +43,7 @@
     <!-- Local settings - Data -->
         <SYMB_ITEM ID="BS_IP_Data.aucS_NETWORK_DEVICENAME[%]" class="symb_item" value='"N720-DM-PRO"'/>
         <SYMB_ITEM ID="BS_RAP.astRAPServices[1].ActivateService" class="symb_item" value="0"/>
+        <SYMB_ITEM ID="BS_CUSTOM.WebUIPassword" class="symb_item" value='"{{ admin_password }}"'/>
     {%- if http_port %}
         <SYMB_ITEM ID="BS_IP_Data.aucS_DATA_SERVER[%]" class="symb_item" value='"http://{{ ip }}:{{ http_port }}"'/>
     {%- endif %}
