@@ -1,5 +1,5 @@
 {
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Plugin for Yealink for CP920, T27G, T3X, T4X and T5X series in version 86.",
     "description_fr": "Greffon pour Yealink pour les series CP920, T27G, T3X, T4X et T5X en version 86.",
     "vendor" : "Yealink",
