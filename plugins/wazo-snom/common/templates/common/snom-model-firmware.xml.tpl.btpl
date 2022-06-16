@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <firmware-settings>
   <firmware>http://{{ ip }}:{{ http_port }}/firmware/#FW_FILENAME#?mac={mac}</firmware>
-  {% if os.path.exists('/var/lib/wazo-provd/plugins/wazo-snom-10.1.101.11/var/tftpboot/firmware/snomUXM-2.1.1.bin') %}
+  {% if XX_uxm_firmware == 'uxm' -%}
   <firmware_uxm>http://{{ ip }}:{{ http_port }}/firmware/snomUXM-2.1.1.bin?mac={mac}</firmware_uxm>
-  {% elif os.path.exists('/var/lib/wazo-provd/plugins/wazo-snom-10.1.101.11/var/tftpboot/firmware/snomD7C-1.1.1-r.bin') %}
+  {% elif XX_uxm_firmware == 'uxmc' -%}
   <firmware_uxm>http://{{ ip }}:{{ http_port }}/firmware/snomD7C-1.1.1-r.bin?mac={mac}</firmware_uxm>
   {% endif %}
 </firmware-settings>
