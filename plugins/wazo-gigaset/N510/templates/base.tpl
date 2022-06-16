@@ -8,7 +8,7 @@
     <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
     <PROFILE_NAME class="string" value="N510"/>
     {%- if http_port %}
-    <S_SPECIAL_DATA_SRV class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/merkur258_42.bin"'/>
+    <S_SPECIAL_DATA_SRV class="string" value='"http://profile.gigaset.net/device/42/merkur258_42.bin"'/>
     {%- endif %}
 <!-- Allow access from other networks. -->
     <SYMB_ITEM ID="BS_IP_Data1.ucB_ACCEPT_FOREIGN_SUBNET" class="symb_item" value="0x1"/>
@@ -31,6 +31,8 @@
     {%- set line_suffix = '_' + line_no %}
     {%- endif %}
     <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].aucAccountName[0]" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
+    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].uiSendMask" class="symb_item" value="0x0{{ "%x"|format(line_no|int()) }}"/>
+    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].uiReceiveMask" class="symb_item" value="0x0{{ "%x"|format(line_no|int()) }}"/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_ACCOUNT_NAME_{{ line_no }}" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_DISPLAYNAME{{ line_suffix }}" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data3.aucS_SIP_LOGIN_ID{{ line_suffix }}" class="symb_item" value='"{{ line['auth_username']|d(line['username']) }}"'/>
