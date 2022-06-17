@@ -158,8 +158,8 @@ class BaseSnomPlugin(StandardPlugin):
     http_dev_info_extractor = BaseSnomHTTPDeviceInfoExtractor()
 
     def _add_uxm_firmware(self, raw_config):
-        f = glob.glob(self._tftpboot_dir + u'/firmware/snomD7C-*.bin') + glob.glob(self._tftpboot_dir + u'/firmware/snomUXM-*.bin')
-        if len(f):
+        f = glob.glob(os.path.join(self._tftpboot_dir, u'/firmware/snomD7C-*.bin')) + glob.glob(os.path.join(self._tftpboot_dir, u'/firmware/snomUXM-*.bin'))
+        if f:
             if re.match(r"^.*\/snomUXM-.*.bin$", max(f, key=os.path.getmtime)):
                 raw_config[u'XX_uxm_firmware'] = 'uxm'
             if re.match(r"^.*\/snomD7C-.*.bin$", max(f, key=os.path.getmtime)):
