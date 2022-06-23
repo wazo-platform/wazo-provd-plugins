@@ -25,6 +25,8 @@ features.text_message.enable = 0
 features.text_message_popup.enable = 0
 features.config_dsskey_length = 1
 features.dnd.large_icon.enable = 1
+features.action_uri_limit_ip = {{ ip }}
+features.show_action_uri_option = 0
 
 local_time.date_format = 2
 
