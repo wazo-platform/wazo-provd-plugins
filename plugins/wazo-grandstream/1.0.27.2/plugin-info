@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0",
+    "version": "0.1.2",
     "description": "Plugin for Grandstream HT801 and HT802 in version 1.0.27.2.",
     "description_fr": "Greffon pour Grandstream HT801 et HT802 en version 1.0.27.2.",
     "vendor" : "Grandstream",
@@ -13,7 +13,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
-            "type": "deskphone",
+            "type": "ata",
             "protocol": "sip"
         },
         "Grandstream, HT802, 1.0.27.2": {
@@ -22,7 +22,7 @@
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
-            "type": "deskphone",
+            "type": "ata",
             "protocol": "sip"
         }
     }

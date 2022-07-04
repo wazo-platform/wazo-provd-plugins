@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2013-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import os
@@ -23,17 +23,17 @@ MODEL_VERSIONS = {
     u'T42S': u'66.86.0.15',
     u'T46S': u'66.86.0.15',
     u'T48S': u'66.86.0.15',
-    u'T41U': u'108.86.0.20',
-    u'T42U': u'108.86.0.20',
-    u'T43U': u'108.86.0.20',
-    u'T46U': u'108.86.0.20',
-    u'T48U': u'108.86.0.20',
-    u'T53': u'96.86.0.20',
-    u'T53C': u'96.86.0.20',
-    u'T53W': u'96.86.0.20',
-    u'T54W': u'96.86.0.20',
-    u'T57': u'96.86.0.20',
-    u'T57W': u'96.86.0.20',
+    u'T41U': u'108.86.0.45',
+    u'T42U': u'108.86.0.45',
+    u'T43U': u'108.86.0.45',
+    u'T46U': u'108.86.0.45',
+    u'T48U': u'108.86.0.45',
+    u'T53': u'96.86.0.45',
+    u'T53C': u'96.86.0.45',
+    u'T53W': u'96.86.0.45',
+    u'T54W': u'96.86.0.45',
+    u'T57': u'96.86.0.45',
+    u'T57W': u'96.86.0.45',
     u'T56': u'58.86.0.20',
     u'T58': u'58.86.0.20',
     u'T58W': u'150.86.0.11',
@@ -45,10 +45,10 @@ COMMON_FILES = [
     ('y000000000066.cfg', u'T46S(T48S,T42S,T41S)-66.86.0.15.rom', 'model.tpl'),
     ('y000000000067.cfg', u'T46S(T48S,T42S,T41S)-66.86.0.15.rom', 'model.tpl'),
     ('y000000000068.cfg', u'T46S(T48S,T42S,T41S)-66.86.0.15.rom', 'model.tpl'),
-    ('y000000000108.cfg', u'T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.20.rom', 'model.tpl'),
-    ('y000000000123.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.20.rom', 'model.tpl'),
-    ('y000000000124.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.20.rom', 'model.tpl'),
-    ('y000000000127.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.20.rom', 'model.tpl'),
+    ('y000000000108.cfg', u'T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom', 'model.tpl'),
+    ('y000000000123.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom', 'model.tpl'),
+    ('y000000000124.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom', 'model.tpl'),
+    ('y000000000127.cfg', u'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom', 'model.tpl'),
     ('y000000000150.cfg', u'T58W-150.86.0.11.rom', 'model.tpl'),
 ]
 
@@ -70,19 +70,19 @@ COMMON_FILES_DECT = [
     },
     {
         'filename': u'y000000000095.cfg',
-        'fw_filename': u'T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.20.rom',
+        'fw_filename': u'T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.45(20211130).rom',
         'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
     {
         'filename': u'y000000000096.cfg',
-        'fw_filename': u'T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.20.rom',
+        'fw_filename': u'T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.45(20211130).rom',
         'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
     {
         'filename': u'y000000000097.cfg',
-        'fw_filename': u'T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.20.rom',
+        'fw_filename': u'T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.45(20211130).rom',
         'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },

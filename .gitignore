@@ -1,4 +1,10 @@
-plugins/_build
+.coverage
+.tox
+coverage.xml
 dhcp/dhcpd.tar*
+plugins/_build
 plugins/_firmwares/*/*
 !plugins/_firmwares/*/.brand
+pycodestyle.txt
+pylint.txt
+unit-tests.xml

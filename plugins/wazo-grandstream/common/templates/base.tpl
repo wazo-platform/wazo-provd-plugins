@@ -44,7 +44,7 @@
 {% for line_no, line in sip_lines.iteritems() %}
   {% if line_no == '1' %}
     <P271>1</P271>
-    <P270>{{ line['display_name'] }}</P270>
+    <P270>{{ line['display_name'] }}</P270>
     <P47>{{ line['registrar_ip'] }}</P47>
     <P2312>{{ line['backup_registrar_ip'] }}</P2312>
     <P35>{{ line['auth_username'] }}</P35>
@@ -63,8 +63,8 @@
     <P{{ position }}04>{{ line['auth_username'] }}</P{{ position }}04>
     <P{{ position }}05>{{ line['auth_username'] }}</P{{ position }}05>
     <P{{ position }}06>{{ line['password'] }}</P{{ position }}06>
-    <P{{ position }}07>{{ line['display_name'] }}</P{{ position }}07>
-    <P{{ position }}17>{{ line['display_name'] }}</P{{ position }}17>
+    <P{{ position }}07>{{ line['display_name'] }}</P{{ position }}07>
+    <P{{ position }}17>{{ line['display_name'] }}</P{{ position }}17>
     <P{{ position }}26>{{ exten_voicemail }}</P{{ position }}26>
     <P{{ position }}20>0</P{{ position }}20>
     <P2{{ position }}01>0</P2{{ position }}01>

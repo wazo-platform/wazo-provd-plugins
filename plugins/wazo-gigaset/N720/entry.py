@@ -7,8 +7,8 @@ execfile_('common.py', common)
 
 
 MODEL_VERSIONS = {
-    u'N720 DM PRO': u'70.111.00.000.000',
-    u'N720 IP PRO': u'70.111.00.000.000',
+    u'N720 DM PRO': u'70.117.00.000.000',
+    u'N720 IP PRO': u'70.117.00.000.000',
 }
 
 

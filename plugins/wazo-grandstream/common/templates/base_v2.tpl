@@ -44,7 +44,7 @@
     {% if exten_pickup_call -%}
     <item name="account.{{ line_no }}.sip.blf.callPickup.prefix">{{ exten_pickup_call }}</item>
     {% endif -%}
-    <item name="account.{{ line_no }}.name">{{ line['display_name'] }}</item>
+    <item name="account.{{ line_no }}.name">{{ line['display_name'] }}</item>
     {% if XX_sip_transport -%}
     <item name="account.{{ line_no }}.sip.transport">{{ XX_sip_transport }}</item>
     {% endif -%}
@@ -57,8 +57,8 @@
     <item name="account.{{ line_no }}.sip.accountDisplay">User Name</item>
     <item name="account.{{ line_no }}.sip.voicemail.number">{{ exten_voicemail }}</item>
     <item name="account.{{ line_no }}.dtmf.sendInAudio">{{ XX_dtmf_in_audio }}</item>
-    <item name="account.{{ line_no }}.dtmf.sendInRtp">{{ XX_dtmf_in_rtp }}</item>
-    <item name="account.{{ line_no }}.dtmf.sendInSip">{{ XX_dtmf_in_sip }}</item>
+    <item name="account.{{ line_no }}.dtmf.sendInRtp">{{ XX_dtmf_in_rtp }}</item>
+    <item name="account.{{ line_no }}.dtmf.sendInSip">{{ XX_dtmf_in_sip }}</item>
     <item name="account.{{ line_no }}.featureCodes.callFeatures">No</item>
 {% endfor -%}
 {% if XX_v2_fkeys -%}
