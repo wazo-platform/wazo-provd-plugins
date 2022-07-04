@@ -76,8 +76,7 @@ files: uxm-fw
 install: snom-fw
 
 [install_snom-fw]
-a-b: mkdir -p firmware/
-b-c: cp $FILE1 firmware/
+a-b: cp $FILE1 firmware/
 
 [file_uxm-fw]
 url: http://downloads.snom.com/snomUXM-2.1.1.bin
