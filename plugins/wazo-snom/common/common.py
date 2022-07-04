@@ -6,6 +6,7 @@
 import logging
 import os.path
 import re
+import glob
 from operator import itemgetter
 from pkg_resources import parse_version
 from xml.sax.saxutils import escape
@@ -156,6 +157,14 @@ class BaseSnomPlugin(StandardPlugin):
 
     http_dev_info_extractor = BaseSnomHTTPDeviceInfoExtractor()
 
+    def _add_uxm_firmware(self, raw_config):
+        f = glob.glob(os.path.join(self._tftpboot_dir, u'/firmware/snomD7C-*.bin')) + glob.glob(os.path.join(self._tftpboot_dir, u'/firmware/snomUXM-*.bin'))
+        if f:
+            if re.match(r"^.*\/snomUXM-.*.bin$", max(f, key=os.path.getmtime)):
+                raw_config[u'XX_uxm_firmware'] = 'uxm'
+            if re.match(r"^.*\/snomD7C-.*.bin$", max(f, key=os.path.getmtime)):
+                raw_config[u'XX_uxm_firmware'] = 'uxmc'
+
     def _common_templates(self):
         yield ('common/gui_lang.xml.tpl', 'gui_lang.xml')
         yield ('common/web_lang.xml.tpl', 'web_lang.xml')
@@ -166,6 +175,7 @@ class BaseSnomPlugin(StandardPlugin):
                 yield tpl_format % model, file_format % model
 
     def configure_common(self, raw_config):
+        self._add_uxm_firmware(raw_config)
         for tpl_filename, filename in self._common_templates():
             tpl = self._tpl_helper.get_template(tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
