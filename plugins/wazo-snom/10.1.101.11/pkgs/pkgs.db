@@ -84,7 +84,6 @@ install: snom-fw
 
 [install_snom-fw]
 a-b: cp $FILE1 firmware/
-b-c: touch -c firmware/$FILE1
 
 [file_uxmc-fw]
 url: https://downloads.snom.com/fw/d7c/snomD7C-1.1.1-r.bin
