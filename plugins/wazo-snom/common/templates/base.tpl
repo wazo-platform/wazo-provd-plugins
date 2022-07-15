@@ -12,6 +12,8 @@
     <codec_tos perm="R">184</codec_tos>
     <signaling_tos perm="R">184</signaling_tos>
 
+    <setting_server perm="R">http://{{ ip }}:{{ http_port }}</setting_server>
+
     {% if admin_username -%}
     <http_user perm="R">{{ admin_username|e }}</http_user>
     {% else -%}
@@ -43,6 +45,8 @@
     {% else -%}
     <user_srtp idx="{{ line_no }}" perm="R">off</user_srtp>
     {% endif %}
+    <user_savp idx="{{ line_no }}" perm="R">mandatory</user_savp>
+    <user_auth_tag idx="{{ line_no }}" perm="R">off</user_auth_tag>
     <user_name idx="{{ line_no }}" perm="R">{{ line['username']|e }}</user_name>
     <user_pname idx="{{ line_no }}" perm="R">{{ line['auth_username']|e }}</user_pname>
     <user_pass idx="{{ line_no }}" perm="R">{{ line['password']|e }}</user_pass>
@@ -63,6 +67,8 @@
     {% else -%}
     <user_srtp idx="{{ line_no|int + 1 }}" perm="R">off</user_srtp>
     {% endif %}
+    <user_savp idx="{{ line_no|int + 1 }}" perm="R">mandatory</user_savp>
+    <user_auth_tag idx="{{ line_no|int + 1 }}" perm="R">off</user_auth_tag>
     <user_name idx="{{ line_no|int + 1 }}" perm="R">{{ line['username']|e }}</user_name>
     <user_pname idx="{{ line_no|int + 1 }}" perm="R">{{ line['auth_username']|e }}</user_pname>
     <user_pass idx="{{ line_no|int + 1 }}" perm="R">{{ line['password']|e }}</user_pass>
