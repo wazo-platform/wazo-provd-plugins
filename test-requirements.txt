@@ -1,4 +1,4 @@
-https://github.com/wazo-platform/wazo-provd/archive/master.zip
+https://github.com/wazo-platform/wazo-provd/archive/WAZO-2586-use-implementer-instead-of-implements.zip
 https://github.com/wazo-platform/wazo-lib-rest-client/archive/master.zip  # from wazo-provd
 https://github.com/wazo-platform/wazo-amid-client/archive/master.zip  # from wazo-provd
 https://github.com/wazo-platform/wazo-auth-client/archive/master.zip  # from wazo-provd

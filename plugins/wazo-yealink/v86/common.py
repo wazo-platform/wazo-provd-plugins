@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2011-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import absolute_import
@@ -72,19 +72,19 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
             if m:
                 raw_model, raw_version, raw_mac = m.groups()
                 try:
-                    mac = norm_mac(raw_mac.decode('ascii'))
+                    mac = norm_mac(six.ensure_str(raw_mac))
                 except ValueError as e:
                     logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
                     return {
                         u'vendor': u'Yealink',
-                        u'model': raw_model.decode('ascii'),
-                        u'version': raw_version.decode('ascii'),
+                        u'model': six.ensure_str(raw_model),
+                        u'version': six.ensure_str(raw_version),
                     }
                 else:
                     return {
                         u'vendor': u'Yealink',
-                        u'model': raw_model.decode('ascii'),
-                        u'version': raw_version.decode('ascii'),
+                        u'model': six.ensure_str(raw_model),
+                        u'version': six.ensure_str(raw_version),
                         u'mac': mac,
                     }
         return None
@@ -93,7 +93,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         if request.path[1:7] in KNOWN_MAC_PREFIXES:
             raw_mac = request.path[1:-4]
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(six.ensure_str(raw_mac))
             except ValueError as e:
                 logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
             else:

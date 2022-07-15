@@ -32,7 +32,7 @@ from ..models import MODEL_VERSIONS
 
 # This does not work in python2 because importlib.util does not exist
 def import_module_custom_attrs(module_name, attrlist):
-    spec = importlib.util.find_spec(module_name, 'plugins.wazo-yealink.v86.tests')
+    spec = importlib.util.find_spec(module_name, 'v86.tests')
     if spec is not None:
         module = importlib.util.module_from_spec(spec)
         for attr_name, attr_value in attrlist.items():
@@ -158,6 +158,7 @@ class TestPlugin(unittest.TestCase):
 
         def execfile_(filename, common_globals):
             common_globals['BaseYealinkPlugin'] = BaseYealinkPlugin
+            common_globals['BaseYealinkPgAssociator'] = BaseYealinkPgAssociator
 
         self.entry_module = import_module_custom_attrs('..entry', {'execfile_': execfile_})
 
