@@ -106,6 +106,7 @@
     <status_msgs_that_are_blocked perm="R">PhoneHasVoiceMessages PhoneHasTextMessages{{ XX_msgs_blocked }}</status_msgs_that_are_blocked>
 
     <call_waiting perm="R">{{ 'off' if XX_options['switchboard'] else 'on' }}</call_waiting>
+    <quick_transfer perm="R">attended</quick_transfer>
 
     {% block settings_suffix %}{% endblock %}
   </phone-settings>
