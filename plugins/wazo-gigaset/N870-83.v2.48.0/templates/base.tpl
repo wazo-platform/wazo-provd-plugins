@@ -48,7 +48,7 @@
         <param name="SipAccount.{{ handset_no }}.AuthPassword" value="{{ line['auth_password']|d(line['password']) }}"/>
         <param name="SipAccount.{{ handset_no }}.ProviderId" value="{{ line['provider_id'] }}"/>
         <param name="SipAccount.{{ handset_no }}.UserName" value="{{ line['auth_username']|d(line['username']) }}"/>
-        <param name="SipAccount.{{ handset_no }}.DisplayName" value="{{ line['number'] }}"/>
+        <param name="SipAccount.{{ handset_no }}.DisplayName" value="{{ line['number'] }} {{ line['display_name'] }}"/>
         {%- if line['voicemail'] %}
         <param name="SipAccount.{{ handset_no }}.VoiceMailMailbox" value="{{ line['voicemail'] }}"/>
         <param name="SipAccount.{{ handset_no }}.VoiceMailActive" value="1"/>
