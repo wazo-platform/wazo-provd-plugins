@@ -363,7 +363,7 @@ class BaseSnomPlugin(StandardPlugin):
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
         def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device, event='check-sync;reboot=true')
+            return synchronize.standard_sip_synchronize(device, event='check-sync;reboot=false')
 
     else:
         # backward compatibility with older wazo-provd server
@@ -377,7 +377,7 @@ class BaseSnomPlugin(StandardPlugin):
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
                     return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=true')
+                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=false')
 
     def get_remote_state_trigger_filename(self, device):
         if u'mac' not in device or u'model' not in device:
