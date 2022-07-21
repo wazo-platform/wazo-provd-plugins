@@ -21,7 +21,7 @@
         <param name="Telephony.0.CT_ViaRKey" value="1"/>
         <param name="Telephony.0.CT_ByOnHook" value="1"/>
 
-
+        <param name="DmGlobal.0.SuotaEnable" value="1"/>
         <param name="DmGlobal.0.HSIdleDisplay" value="1"/>
         <param name="DmGlobal.0.SystemRegDomain" value="EUR"/>
 
