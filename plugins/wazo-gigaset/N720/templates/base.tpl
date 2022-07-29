@@ -8,14 +8,12 @@
     -->
         <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
         <PROFILE_NAME class="string" value="N720"/>
-    {# Disable firmware upgrade temporarily because of issues
     {%- if http_port %}
-        <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/server_einstein_iwu111.bin"'/>
-        <S_SPECIAL_DATA_SRV_SAT class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/sat7111100000000.bin"'/>
+        <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/einsteiniwu117_70.bin?mac={{ XX_mac_addr }}&server_einstein_iwu117.bin"'/>
+        <S_SPECIAL_DATA_SRV_SAT class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/sat7111700000000.bin?mac={{ XX_mac_addr }}&sat7111700000000.bin"'/>
+        <SYMB_ITEM ID="BS_IP_Data.KindOfPlannedUpdate" class="symb_item" value="1"/>
+        <SYMB_ITEM ID="BS_IP_Data.PlannedUpdateTime" class="symb_item" value="0x648"/>
     {%- endif %}
-    #}
-    <S_SPECIAL_DATA_SRV_IWU class="string" value=""/>
-    <S_SPECIAL_DATA_SRV_SAT class="string" value=""/>
     <!-- NetDirectory settings -->
     {%- if XX_xivo_phonebook_url %}
         <SYMB_ITEM ID="BS_XML_Netdirs.aucAvailableNetdirs[%]" class="symb_item" value="0x2a"/>
@@ -44,6 +42,8 @@
 
     <!-- Local settings - Data -->
         <SYMB_ITEM ID="BS_IP_Data.aucS_NETWORK_DEVICENAME[%]" class="symb_item" value='"N720-DM-PRO"'/>
+        <SYMB_ITEM ID="BS_RAP.astRAPServices[1].ActivateService" class="symb_item" value="0"/>
+        <SYMB_ITEM ID="BS_CUSTOM.WebUIPassword" class="symb_item" value='"{{ admin_password }}"'/>
     {%- if http_port %}
         <SYMB_ITEM ID="BS_IP_Data.aucS_DATA_SERVER[%]" class="symb_item" value='"http://{{ ip }}:{{ http_port }}"'/>
     {%- endif %}
@@ -188,7 +188,7 @@
     {%- if sip_lines %}
         {%- for line_no, line in sip_lines.iteritems() %}
         {%- set lnb = line_no|int() - 1 %}
-        <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_DISPLAYNAME[0]" class="symb_item" value='"{{ line['number'] }} | {{ line['display_name'] }}"'/>
+        <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_DISPLAYNAME[0]" class="symb_item" value='"{{ line['number'] }} {{ line['display_name'] }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_LOGIN_ID[0]" class="symb_item" value='"{{ line['auth_username']|d(line['username']) }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_PASSWORD[0]" class="symb_item" value='"{{ line['auth_password']|d(line['password']) }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_USER_ID[0]" class="symb_item" value='"{{ line['auth_username']|d(line['username']) }}"'/>

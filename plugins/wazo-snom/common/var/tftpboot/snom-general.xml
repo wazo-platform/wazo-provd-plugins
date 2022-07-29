@@ -4,14 +4,14 @@
     <!-- auto_reboot must be at the top of the file to be effective -->
     <auto_reboot_on_setting_change perm="R">on</auto_reboot_on_setting_change>
 
-    <provisioning_order perm="R">dhcp:stop</provisioning_order>
+    <provisioning_order perm="R">dhcp:stop redirection:stop</provisioning_order>
 
     <!-- the "perm" attribute for admin_mode must be "RW", else the admin
          can't enter admin mode on the phone because the admin_mode value
          is read only -->
     <admin_mode perm="RW">off</admin_mode>
 
-    <retry_after_failed_register perm="R">120</retry_after_failed_register>
+    <retry_after_failed_register perm="R">5:60</retry_after_failed_register>
 
     <date_us_format perm="R">off</date_us_format>
     <time_24_format perm="R">on</time_24_format>
@@ -52,22 +52,6 @@
     <user_active idx="10" perm="R">off</user_active>
     <user_active idx="11" perm="R">off</user_active>
     <user_active idx="12" perm="R">off</user_active>
-
-    <!-- Set user_srtp to off until we have TLS/SRTP support in the plugin
-         since setting it to on seems to cause some compatibility issue with
-         asterisk 1.8. See http://forum.snom.com/index.php?showtopic=6665 -->
-    <user_srtp idx="1" perm="R">off</user_srtp>
-    <user_srtp idx="2" perm="R">off</user_srtp>
-    <user_srtp idx="3" perm="R">off</user_srtp>
-    <user_srtp idx="4" perm="R">off</user_srtp>
-    <user_srtp idx="5" perm="R">off</user_srtp>
-    <user_srtp idx="6" perm="R">off</user_srtp>
-    <user_srtp idx="7" perm="R">off</user_srtp>
-    <user_srtp idx="8" perm="R">off</user_srtp>
-    <user_srtp idx="9" perm="R">off</user_srtp>
-    <user_srtp idx="10" perm="R">off</user_srtp>
-    <user_srtp idx="11" perm="R">off</user_srtp>
-    <user_srtp idx="12" perm="R">off</user_srtp>
 
     <!-- http://wiki.snom.com/Interoperability/PBX/Asterisk-->
     <call_completion perm="R">off</call_completion>

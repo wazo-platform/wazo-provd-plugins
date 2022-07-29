@@ -23,6 +23,8 @@ distinctive_ring_tones.alert_info.8.ringer = 8
 features.caller_name_type_on_dialing = 1
 features.text_message.enable = 0
 features.text_message_popup.enable = 0
+features.config_dsskey_length = 1
+features.dnd.large_icon.enable = 1
 
 local_time.date_format = 2
 
@@ -88,8 +90,7 @@ static.usb.power.enable = 1
 {% for line_no, line in XX_sip_lines.iteritems() -%}
 {% if line -%}
 account.{{ line_no }}.enable = 1
-account.{{ line_no }}.label = {{ line['number']|d(line['display_name']) }}
-account.{{ line_no }}.display_name = {{ line['display_name'] }}
+account.{{ line_no }}.label = {{ line['display_name'] }}
 account.{{ line_no }}.auth_name = {{ line['auth_username'] }}
 account.{{ line_no }}.user_name = {{ line['username'] }}
 account.{{ line_no }}.password = {{ line['password'] }}
@@ -105,6 +106,11 @@ account.{{ line_no }}.alert_info_url_enable = 0
 account.{{ line_no }}.nat.udp_update_enable = 1
 account.{{ line_no }}.dtmf.type = {{ line['XX_dtmf_type']|d('2') }}
 account.{{ line_no }}.dtmf.info_type = 1
+{% if XX_sip_transport == '2' -%}
+account.{{ line_no }}.srtp_encryption = 2
+{% else -%}
+account.{{ line_no }}.srtp_encryption = 0
+{% endif %}
 
 account.{{ line_no }}.codec.g722.enable = 1
 account.{{ line_no }}.codec.g722_1c_48kpbs.enable = 1

@@ -6,6 +6,7 @@
 import logging
 import os.path
 import re
+import glob
 from operator import itemgetter
 from pkg_resources import parse_version
 from xml.sax.saxutils import escape
@@ -128,6 +129,11 @@ class BaseSnomPlugin(StandardPlugin):
         u'RTP-out-of-band': u'off',
         u'SIP-INFO': u'sip_info_only'
     }
+    _SIP_TRANSPORT = {
+        u'udp': u'udp',
+        u'tcp': u'tcp',
+        u'tls': u'tls'
+    }
     _XX_DICT_DEF = u'en'
     _XX_DICT = {
         u'en': {
@@ -151,6 +157,14 @@ class BaseSnomPlugin(StandardPlugin):
 
     http_dev_info_extractor = BaseSnomHTTPDeviceInfoExtractor()
 
+    def _add_uxm_firmware(self, raw_config):
+        f = glob.glob(os.path.join(self._tftpboot_dir, u'firmware/snomD7C-*.bin')) + glob.glob(os.path.join(self._tftpboot_dir, u'firmware/snomUXM-*.bin'))
+        if f:
+            if re.match(r"^.*\/snomUXM-.*.bin$", max(f, key=os.path.getmtime)):
+                raw_config[u'XX_uxm_firmware'] = 'uxm'
+            if re.match(r"^.*\/snomD7C-.*.bin$", max(f, key=os.path.getmtime)):
+                raw_config[u'XX_uxm_firmware'] = 'uxmc'
+
     def _common_templates(self):
         yield ('common/gui_lang.xml.tpl', 'gui_lang.xml')
         yield ('common/web_lang.xml.tpl', 'web_lang.xml')
@@ -161,6 +175,7 @@ class BaseSnomPlugin(StandardPlugin):
                 yield tpl_format % model, file_format % model
 
     def configure_common(self, raw_config):
+        self._add_uxm_firmware(raw_config)
         for tpl_filename, filename in self._common_templates():
             tpl = self._tpl_helper.get_template(tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
@@ -258,6 +273,9 @@ class BaseSnomPlugin(StandardPlugin):
             cur_dtmf_mode = line.get(u'dtmf_mode', dtmf_mode)
             line[u'XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, u'off')
 
+    def _add_sip_transport(self, raw_config):
+        raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'), u'udp')
+
     def _add_msgs_blocked(self, raw_config):
         msgs_blocked = ''
         for line_no, line in raw_config[u'sip_lines'].iteritems():
@@ -318,6 +336,7 @@ class BaseSnomPlugin(StandardPlugin):
         self._add_lang(raw_config)
         self._add_timezone(raw_config)
         self._add_user_dtmf_info(raw_config)
+        self._add_sip_transport(raw_config)
         self._add_msgs_blocked(raw_config)
         self._add_xivo_phonebook_url(raw_config)
         raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
@@ -344,7 +363,7 @@ class BaseSnomPlugin(StandardPlugin):
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
         def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device, event='check-sync;reboot=true')
+            return synchronize.standard_sip_synchronize(device, event='check-sync;reboot=false')
 
     else:
         # backward compatibility with older wazo-provd server
@@ -358,7 +377,7 @@ class BaseSnomPlugin(StandardPlugin):
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
                     return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=true')
+                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=false')
 
     def get_remote_state_trigger_filename(self, device):
         if u'mac' not in device or u'model' not in device:

@@ -36,7 +36,7 @@ logger = logging.getLogger('plugin.xivo-aastra')
 
 
 class BaseAastraHTTPDeviceInfoExtractor(object):
-    _UA_REGEX = re.compile(r'^Aastra(\w+) MAC:([^ ]+) V:([^ ]+)-SIP$')
+    _UA_REGEX = re.compile(r'^(?:Aastra|Mitel)(\w+) MAC:([^ ]+) V:([^ ]+)-SIP$')
     _UA_MODELS_MAP = {
         '51i': u'6751i', # not tested
         '53i': u'6753i', # not tested
@@ -189,6 +189,12 @@ class BaseAastraPlugin(StandardPlugin):
         ),
         u'6873i': AastraModel(
             nb_topsoftkey=48,
+            nb_softkey=24,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        u'6930': AastraModel(
+            nb_topsoftkey=44,
             nb_softkey=24,
             nb_expmod=3,
             nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
