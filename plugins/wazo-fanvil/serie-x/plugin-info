@@ -1,5 +1,5 @@
 {
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "Plugin for Fanvil X serie",
     "description_fr": "Greffon pour La serie X Fanvil",
     "vendor" : "Fanvil",
@@ -88,10 +88,10 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, X7C, P0.17.0-1.12.2.1": {
+        "Fanvil, X7C, P0.18.23.79-2.4.5": {
             "lines": 20,
             "high_availability": false,
-            "function_keys": 60,
+            "function_keys": 12,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
