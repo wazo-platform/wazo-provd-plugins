@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 common = {}
@@ -11,6 +11,7 @@ MODELS = [
     u'X3',
     u'X3S',
     u'X4',
+    u'X4U',
     u'X5',
     u'X5S',
     u'X6',
@@ -24,6 +25,7 @@ COMMON_FILES = {
     'F0V00X300000.cfg': ('X3', u'x31.4.0.2090T20180403152509.z', 'model.tpl'),
     'f0X3shw1.100.cfg': ('X3S', u'x3s2.10.2.6887T20191115101938.z', 'model.tpl'),
     'f0X4hw1.100.cfg': ('X4', u'x42.10.2.6887T20191122095252.z', 'model.tpl'),
+    'F0V0X4U00000.cfg': ('X4U', u'x4u-6902-P0.18.23.79-2.4.5-3581T2021-11-23-17.34.40.z', 'model.tpl'),
     'f0X5hw1.100.cfg': ('X5', u'x51.4.0.2016T20170303151233.z', 'model.tpl'),
     'F0V00X5S0000.cfg': ('X5S', u'x5s-6900-P0.16.5-1.12.2-3144T2019-07-23-14.20.37.z', 'model.tpl'),
     'F0V00X600000.cfg': ('X6', u'x6-6904-P0.16.5-1.12.2-3144T2019-07-29-15.09.59.z', 'model.tpl'),

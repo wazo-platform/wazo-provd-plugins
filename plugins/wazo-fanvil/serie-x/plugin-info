@@ -1,5 +1,5 @@
 {
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "Plugin for Fanvil X serie",
     "description_fr": "Greffon pour La serie X Fanvil",
     "vendor" : "Fanvil",
@@ -38,6 +38,15 @@
             "lines": 4,
             "high_availability": false,
             "function_keys": 30,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X4U, 2.4.5": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 33,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",

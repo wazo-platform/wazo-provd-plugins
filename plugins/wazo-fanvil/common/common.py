@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -240,9 +240,12 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def _add_locale(self, device, raw_config):
         locale = raw_config.get(u'locale')
+        logger.info('Raw config: %s', raw_config)
         model_locales = self._LOCALE
         if locale in model_locales:
             raw_config[u'XX_locale'] = model_locales[locale]
+        if not locale:
+            return
         language = locale.split('_')[0]
         directory_key_text = self._DIRECTORY_KEY.get(language, None)
         if directory_key_text:
