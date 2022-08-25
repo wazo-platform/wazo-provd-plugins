@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
-from __future__ import unicode_literals
 
 import logging
 import os.path
@@ -66,14 +65,14 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
         filename = os.path.basename(request.path)
         device_info = self._COMMON_FILES.get(filename)
         if device_info:
-            return {'vendor': 'Fanvil',
-                    'model': device_info[0]}
+            return {u'vendor': u'Fanvil',
+                    u'model': device_info[0]}
 
         m = self._PATH_REGEX.search(request.path)
         if m:
             raw_mac = m.group(1)
             mac = norm_mac(raw_mac.decode('ascii'))
-            return {'mac': mac}
+            return {u'mac': mac}
         return {}
 
 
@@ -84,7 +83,7 @@ class BaseFanvilPgAssociator(BasePgAssociator):
         self._models = models
 
     def _do_associate(self, vendor, model, version):
-        if vendor == 'Fanvil':
+        if vendor == u'Fanvil':
             if model in self._models:
                 return COMPLETE_SUPPORT
             return UNKNOWN_SUPPORT
@@ -96,18 +95,18 @@ class BaseFanvilPlugin(StandardPlugin):
     _LOCALE = {}
     _TZ_INFO = {}
     _SIP_DTMF_MODE = {
-        'RTP-in-band': '0',
-        'RTP-out-of-band': '1',
-        'SIP-INFO': '2',
+        u'RTP-in-band': u'0',
+        u'RTP-out-of-band': u'1',
+        u'SIP-INFO': u'2',
     }
     _SIP_TRANSPORT = {
-        'udp': '0',
-        'tcp': '1',
-        'tls': '3',
+        u'udp': u'0',
+        u'tcp': u'1',
+        u'tls': u'3',
     }
     _DIRECTORY_KEY = {
-        'en': 'Directory',
-        'fr': 'Annuaire',
+        u'en': u'Directory',
+        u'fr': u'Annuaire',
     }
     _NEW_MODEL_REGEX = re.compile(r'^X([4-9][UC]|(210i?)|7)([- ]Pro)?$')
     _NEW_MODEL_SHORT_LANGUAGE_MAPPINGS = {
@@ -138,15 +137,15 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
+        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
         return fmted_mac + '.cfg'
 
     def _check_config(self, raw_config):
-        if 'http_port' not in raw_config:
+        if u'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
     def _check_device(self, device):
-        if 'mac' not in device:
+        if u'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 
     def configure(self, device, raw_config):
@@ -173,7 +172,7 @@ class BaseFanvilPlugin(StandardPlugin):
         for filename, (_, fw_filename, tpl_filename) in self._COMMON_FILES.iteritems():
             tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
-            raw_config['XX_fw_filename'] = fw_filename
+            raw_config[u'XX_fw_filename'] = fw_filename
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _remove_configuration_file(self, device):
@@ -191,7 +190,7 @@ class BaseFanvilPlugin(StandardPlugin):
         # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = device['ip'].encode('ascii')
+                ip = device[u'ip'].encode('ascii')
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:
@@ -202,15 +201,15 @@ class BaseFanvilPlugin(StandardPlugin):
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):
-        if 'mac' not in device:
+        if u'mac' not in device:
             return None
 
         return self._dev_specific_filename(device)
 
     def _check_lines_password(self, raw_config):
-        for line in raw_config['sip_lines'].itervalues():
-            if line['password'] == 'autoprov':
-                line['password'] = ''
+        for line in raw_config[u'sip_lines'].itervalues():
+            if line[u'password'] == u'autoprov':
+                line[u'password'] = u''
 
     def _extract_dst_change(self, dst_change):
         lines = {}
@@ -245,19 +244,19 @@ class BaseFanvilPlugin(StandardPlugin):
         return tz_all
 
     def _add_timezone(self, device, raw_config):
-        if 'timezone' in raw_config:
+        if u'timezone' in raw_config:
             try:
                 tzinfo = tzinform.get_timezone_info(raw_config['timezone'])
             except tzinform.TimezoneNotFoundError as e:
                 logger.info('Unknown timezone: %s', e)
             else:
-                raw_config['XX_timezone'] = self._extract_tzinfo(device, tzinfo)
+                raw_config[u'XX_timezone'] = self._extract_tzinfo(device, tzinfo)
 
     def _is_new_model(self, device):
         return self._NEW_MODEL_REGEX.match(device['model']) is not None
 
     def _add_locale(self, device, raw_config):
-        locale = raw_config.get('locale')
+        locale = raw_config.get(u'locale')
         if not locale:
             return
         language = locale.split('_')[0]
@@ -269,7 +268,7 @@ class BaseFanvilPlugin(StandardPlugin):
             raw_config['XX_locale'] = self._LOCALE[locale]
         directory_key_text = self._DIRECTORY_KEY.get(language, None)
         if directory_key_text:
-            raw_config['XX_directory'] = directory_key_text
+            raw_config[u'XX_directory'] = directory_key_text
 
     def _update_lines(self, raw_config):
         default_dtmf_mode = raw_config.get('sip_dtmf_mode', 'SIP-INFO')
@@ -281,26 +280,26 @@ class BaseFanvilPlugin(StandardPlugin):
                 line['voicemail'] = raw_config['exten_voicemail']
 
     def _add_sip_transport(self, raw_config):
-        raw_config['X_sip_transport_protocol'] = self._SIP_TRANSPORT[raw_config.get('sip_transport', 'udp')]
+        raw_config['X_sip_transport_protocol'] = self._SIP_TRANSPORT[raw_config.get(u'sip_transport', u'udp')]
 
     def _format_funckey_speeddial(self, funckey_dict):
-        return '{value}@{line}/f'.format(value=funckey_dict['value'], line=funckey_dict['line'])
+        return u'{value}@{line}/f'.format(value=funckey_dict[u'value'], line=funckey_dict[u'line'])
 
     def _format_funckey_blf(self, funckey_dict, exten_pickup_call=None):
         # Be warned that blf works only for DSS keys.
         if exten_pickup_call:
-            return '{value}@{line}/ba{exten_pickup}{value}'.format(
-                value=funckey_dict['value'],
-                line=funckey_dict['line'],
+            return u'{value}@{line}/ba{exten_pickup}{value}'.format(
+                value=funckey_dict[u'value'],
+                line=funckey_dict[u'line'],
                 exten_pickup=exten_pickup_call,
             )
         else:
-            return '{value}@{line}/ba'.format(
-                value=funckey_dict['value'], line=funckey_dict['line']
+            return u'{value}@{line}/ba'.format(
+                value=funckey_dict[u'value'], line=funckey_dict[u'line']
             )
 
     def _format_funckey_call_park(self, funckey_dict):
-        return '{value}@{line}/c'.format(value=funckey_dict['value'], line=funckey_dict['line'])
+        return '{value}@{line}/c'.format(value=funckey_dict[u'value'], line=funckey_dict[u'line'])
 
     def _add_fkeys(self, device, raw_config):
         lines = []
@@ -309,22 +308,22 @@ class BaseFanvilPlugin(StandardPlugin):
         for funckey_no, funckey_dict in raw_config['funckeys'].iteritems():
             fkey_line = {}
             keynum = int(funckey_no)
-            fkey_line['id'] = keynum + offset
-            fkey_line['title'] = funckey_dict['label']
-            fkey_line['type'] = 1
-            funckey_type = funckey_dict['type']
-            if funckey_type == 'speeddial':
-                fkey_line['value'] = self._format_funckey_speeddial(funckey_dict)
-                if funckey_dict['value'].startswith('*'):
-                    fkey_line['type'] = 4
-            elif funckey_type == 'blf':
+            fkey_line[u'id'] = keynum + 1
+            fkey_line[u'title'] = funckey_dict[u'label']
+            fkey_line[u'type'] = 1
+            funckey_type = funckey_dict[u'type']
+            if funckey_type == u'speeddial':
+                fkey_line[u'value'] = self._format_funckey_speeddial(funckey_dict)
+                if funckey_dict[u'value'].startswith('*'):
+                    fkey_line[u'type'] = 4
+            elif funckey_type == u'blf':
                 if keynum <= 12:
-                    fkey_line['value'] = self._format_funckey_blf(funckey_dict, exten_pickup_call)
+                    fkey_line[u'value'] = self._format_funckey_blf(funckey_dict, exten_pickup_call)
                 else:
                     logger.info('For Fanvil, blf is only available on DSS keys')
-                    fkey_line['value'] = self._format_funckey_speeddial(funckey_dict)
-            elif funckey_type == 'park':
-                fkey_line['value'] = self._format_funckey_call_park(funckey_dict)
+                    fkey_line[u'value'] = self._format_funckey_speeddial(funckey_dict)
+            elif funckey_type == u'park':
+                fkey_line[u'value'] = self._format_funckey_call_park(funckey_dict)
             else:
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
@@ -346,6 +345,6 @@ class BaseFanvilPlugin(StandardPlugin):
             plugins.add_xivo_phonebook_url(raw_config, 'fanvil')
 
     def _add_firmware(self, device, raw_config):
-        model = device.get('model')
+        model = device.get(u'model')
         if model in self._MODEL_FIRMWARE_MAPPING:
-            raw_config['XX_fw_filename'] = self._MODEL_FIRMWARE_MAPPING[model]
+            raw_config[u'XX_fw_filename'] = self._MODEL_FIRMWARE_MAPPING[model]
