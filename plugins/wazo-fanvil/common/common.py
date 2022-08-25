@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -30,7 +30,7 @@ logger = logging.getLogger('plugin.wazo-fanvil')
 
 class BaseFanvilHTTPDeviceInfoExtractor(object):
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
-    _UA_REGEX = re.compile(r'^Fanvil (?P<model>[X|C][0-9]{1,2}[S|G|V|U|C]?[0-9]?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$')
+    _UA_REGEX = re.compile(r'^Fanvil (?P<model>[X|C][0-9]{1,2}[S|G|V|U|C]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$')
 
     def __init__(self, common_files):
         self._COMMON_FILES = common_files
@@ -49,11 +49,12 @@ class BaseFanvilHTTPDeviceInfoExtractor(object):
 
     def _extract_from_ua(self, ua):
         # Fanvil X4 2.10.2.6887 0c383e07e16c
+        # Fanvil X6U Pro 0.0.10 0c383e2cd782
         dev_info = {}
         m = self._UA_REGEX.search(ua)
         if m:
             dev_info['vendor'] = 'Fanvil'
-            dev_info['model'] = m.group('model').decode('ascii')
+            dev_info['model'] = m.group('model').decode('ascii').replace(' ', '-')
             dev_info['version'] = m.group('version').decode('ascii')
             dev_info['mac'] = norm_mac(m.group('mac').decode('ascii'))
         return dev_info
@@ -145,6 +146,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._update_lines(raw_config)
         self._add_fkeys(raw_config)
         self._add_phonebook_url(raw_config)
+        self._add_firmware(device, raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
@@ -309,3 +311,8 @@ class BaseFanvilPlugin(StandardPlugin):
     def _add_phonebook_url(self, raw_config):
         if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
             plugins.add_xivo_phonebook_url(raw_config, u'fanvil')
+
+    def _add_firmware(self, device, raw_config):
+        model = device.get(u'model')
+        if model in self._MODEL_FIRMWARE_MAPPING:
+            raw_config[u'XX_fw_filename'] = self._MODEL_FIRMWARE_MAPPING[model]

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-
-# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 common = {}
@@ -8,15 +7,22 @@ execfile_('common.py', common)
 
 MODELS = [
     u'X2',
+    u'X210-Pro',
+    u'X210i-Pro',
     u'X3',
     u'X3S',
     u'X4',
+    u'X4U-Pro',
     u'X5',
+    u'X5U-Pro',
     u'X5S',
     u'X6',
     u'X6V2',
+    u'X6U-Pro',
     u'X7',
+    u'X7-Pro',
     u'X7C',
+    u'X7C-Pro',
 ]
 
 COMMON_FILES = {
@@ -28,8 +34,18 @@ COMMON_FILES = {
     'F0V00X5S0000.cfg': ('X5S', u'x5s-6900-P0.16.5-1.12.2-3144T2019-07-23-14.20.37.z', 'model.tpl'),
     'F0V00X600000.cfg': ('X6', u'x6-6904-P0.16.5-1.12.2-3144T2019-07-29-15.09.59.z', 'model.tpl'),
     'F0000X600000.cfg': ('X6V2', u'x6-6914-P0.16.5-1.12.2-3144T2019-07-23-14.20.41.z', 'model.tpl'),
-    'F0V00X700000.cfg': ('X7', u'x7-6926-P0.17.0-1.12.5.1-3739T2019-11-07-18.19.52.z', 'model.tpl'),
-    'F0V0X7C00000.cfg': ('X7C', u'x7c-6925-P0.17.0-1.12.2.1-3739T2019-11-07-18.27.06.z', 'model.tpl'),
+}
+
+MODEL_FIRMWARE_MAPPING = {
+    u'X210-Pro': u'x210pro-fanvil-release-6959-2.12.1.3-krnvlT2022-05-14-17.24.15.z',
+    u'X210i-Pro': u'x210ipro-fanvil-release-6960-2.12.1.3-krnvlT2022-05-14-17.29.43.z',
+    u'X4U-Pro': u'x4upro-fanvil-release-ff01-6903-2.12.4.1-krnvUT2022-05-18-17.16.07.z',
+    u'X5U-Pro': u'x5upro-fanvil-release-ff01-6907-2.12.4.1-krnvUT2022-05-18-17.22.39.z',
+    u'X6U-Pro': u'x6upro-fanvil-release-ff01-6916-2.12.4.1-krnvUT2022-05-18-17.47.06.z',
+    u'X7': u'x7-6926-P0.17.0-1.12.5.1-3739T2019-11-07-18.19.52.z',
+    u'X7-Pro': u'x7upro-fanvil-release-6957-2.12.1.3-krnvlT2022-05-14-17.01.35.z',
+    u'X7C': u'x7c-6925-P0.17.0-1.12.2.1-3739T2019-11-07-18.27.06.z',
+    u'X7C-Pro': u'x7upro-fanvil-release-6957-2.12.1.3-krnvlT2022-05-14-17.01.35.z',
 }
 
 
@@ -37,6 +53,7 @@ class FanvilPlugin(common['BaseFanvilPlugin']):
     IS_PLUGIN = True
 
     _COMMON_FILES = COMMON_FILES
+    _MODEL_FIRMWARE_MAPPING = MODEL_FIRMWARE_MAPPING
     _LOCALE = {
         u'de_DE': '16',
         u'es_ES': '10',
