@@ -40,7 +40,7 @@
     <user_idle_number idx="{{ line_no }}" perm="R">{{ line['number'] }}</user_idle_text>
     <user_host idx="{{ line_no }}" perm="R">{{ line['proxy_ip'] }}</user_host>
     <user_outbound idx="{{ line_no }}" perm="R">{{ line['proxy_ip'] }}:{{ line['proxy_port'] }};transport={{ XX_sip_transport }}</user_outbound>
-    {% if XX_sip_transport == 'tls' -%}
+    {% if XX_sip_transport == 'tls' and line['number'] != 'autoprov' -%}
     <user_srtp idx="{{ line_no }}" perm="R">on</user_srtp>
     {% else -%}
     <user_srtp idx="{{ line_no }}" perm="R">off</user_srtp>
@@ -62,7 +62,7 @@
     <user_idle_text idx="{{ line_no|int + 1 }}" perm="R">{{ line['display_name']|e }} {{ line['number'] }}</user_idle_text>
     <user_host idx="{{ line_no|int + 1 }}" perm="R">{{ line['backup_proxy_ip'] }}</user_host>
     <user_outbound idx="{{ line_no|int + 1 }}" perm="R">{{ line['proxy_ip'] }}:{{ line['proxy_port'] }};transport={{ XX_sip_transport }}</user_outbound>
-    {% if XX_sip_transport == 'tls' -%}
+    {% if XX_sip_transport == 'tls' and line['number'] != 'autoprov' -%}
     <user_srtp idx="{{ line_no|int + 1 }}" perm="R">on</user_srtp>
     {% else -%}
     <user_srtp idx="{{ line_no|int + 1 }}" perm="R">off</user_srtp>
