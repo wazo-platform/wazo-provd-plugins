@@ -98,7 +98,7 @@ files: X7-fw
 install: fanvil-fw
 
 [pkg_X7-Pro-fw]
-description: Firmware for Fanvil X7-V2
+description: Firmware for Fanvil X7-Pro
 description_fr: Micrologiciel pour Fanvil X7-Pro
 version: 6957-2.12.1.3
 files: X7-Pro-fw
@@ -112,7 +112,7 @@ files: X7C-fw
 install: fanvil-fw
 
 [pkg_X7C-Pro-fw]
-description: Firmware for Fanvil X7C-V2
+description: Firmware for Fanvil X7C-Pro
 description_fr: Micrologiciel pour Fanvil X7C-Pro
 version: 6958-2.12.1.3
 files: X7C-Pro-fw

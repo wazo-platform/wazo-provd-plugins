@@ -32,7 +32,7 @@ logger = logging.getLogger('plugin.wazo-fanvil')
 class BaseFanvilHTTPDeviceInfoExtractor(object):
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
     _UA_REGEX = re.compile(
-        r'^Fanvil (?P<model>[XC][0-9]{1,2}[SGVUC]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'
+        r'^Fanvil (?P<model>X[0-9]{1,3}[SGVUCi]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'
     )
 
     def __init__(self, common_files):
@@ -109,6 +109,16 @@ class BaseFanvilPlugin(StandardPlugin):
         'en': 'Directory',
         'fr': 'Annuaire',
     }
+    _NEW_MODEL_REGEX = re.compile(r'^X([4-9][UC]|(210i?)|7)([- ]Pro)?$')
+    _NEW_MODEL_SHORT_LANGUAGE_MAPPINGS = {
+        'ca': 'cat',
+        'eu': 'eus',
+        'sk': 'slo',
+    }
+    _NEW_SUPPORTED_LANGUAGES = (
+        'en', 'cn', 'tc', 'ru', 'it', 'fr', 'de', 'he', 'es', 'cat', 'eus',
+        'tr', 'hr', 'slo', 'cz', 'nl', 'ko', 'ua', 'pt', 'pl', 'ar',
+    )
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -147,7 +157,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._add_locale(device, raw_config)
         self._add_sip_transport(raw_config)
         self._update_lines(raw_config)
-        self._add_fkeys(raw_config)
+        self._add_fkeys(device, raw_config)
         self._add_phonebook_url(raw_config)
         self._add_firmware(device, raw_config)
         filename = self._dev_specific_filename(device)
@@ -243,12 +253,20 @@ class BaseFanvilPlugin(StandardPlugin):
             else:
                 raw_config['XX_timezone'] = self._extract_tzinfo(device, tzinfo)
 
+    def _is_new_model(self, device):
+        return self._NEW_MODEL_REGEX.match(device['model']) is not None
+
     def _add_locale(self, device, raw_config):
         locale = raw_config.get('locale')
-        model_locales = self._LOCALE
-        if locale in model_locales:
-            raw_config['XX_locale'] = model_locales[locale]
+        if not locale:
+            return
         language = locale.split('_')[0]
+        if self._is_new_model(device):
+            language = self._NEW_MODEL_SHORT_LANGUAGE_MAPPINGS.get(language, language)
+            if language in self._NEW_SUPPORTED_LANGUAGES:
+                raw_config['XX_locale'] = language
+        elif locale in self._LOCALE:
+            raw_config['XX_locale'] = self._LOCALE[locale]
         directory_key_text = self._DIRECTORY_KEY.get(language, None)
         if directory_key_text:
             raw_config['XX_directory'] = directory_key_text
@@ -282,13 +300,14 @@ class BaseFanvilPlugin(StandardPlugin):
     def _format_funckey_call_park(self, funckey_dict):
         return '{value}@{line}/c'.format(value=funckey_dict['value'], line=funckey_dict['line'])
 
-    def _add_fkeys(self, raw_config):
+    def _add_fkeys(self, device, raw_config):
         lines = []
         exten_pickup_call = raw_config.get('exten_pickup_call')
+        offset = 0 if self._is_new_model(device) else 1
         for funckey_no, funckey_dict in raw_config['funckeys'].iteritems():
             fkey_line = {}
             keynum = int(funckey_no)
-            fkey_line['id'] = keynum + 1
+            fkey_line['id'] = keynum + offset
             fkey_line['title'] = funckey_dict['label']
             fkey_line['type'] = 1
             funckey_type = funckey_dict['type']
