@@ -3,6 +3,7 @@
     <Version>2.0002</Version>
     {% if XX_fw_filename -%}
     <AUTOUPDATE_CONFIG_MODULE>
+    <Download_Mode>1</Download_Mode>
     <Auto_Image_URL>http://{{ ip }}:{{ http_port }}/Fanvil/firmware/{{ XX_fw_filename }}</Auto_Image_URL>
     <Save_Provision_Info>1</Save_Provision_Info>
     </AUTOUPDATE_CONFIG_MODULE>
