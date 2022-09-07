@@ -36,3 +36,8 @@ def build_N870_83_v2_39_0(path):
 def build_N870_83_v2_48_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*',
                 'N870-83.v2.48.0/', path])
+
+@target('Nx70-83.v2.48.0', 'wazo-gigaset-Nx70-83.v2.48.0')
+def build_Nx70_83_v2_48_0(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*',
+                'Nx70-83.v2.48.0/', path])
