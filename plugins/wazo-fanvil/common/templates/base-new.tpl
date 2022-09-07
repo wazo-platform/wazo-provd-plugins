@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sysConf>
     <Version>2.0002</Version>
-    <AUTOUPDATE_CONFIG_MODULE>
-    <Download_Protocol>2</Download_Protocol>
-    <Download_Mode>1</Download_Mode>
-    <Download_Interval>1</Download_Interval>
     {% if XX_fw_filename -%}
+    <AUTOUPDATE_CONFIG_MODULE>
     <Auto_Image_URL>http://{{ ip }}:{{ http_port }}/Fanvil/firmware/{{ XX_fw_filename }}</Auto_Image_URL>
-    {% endif -%}
+    <Save_Provision_Info>1</Save_Provision_Info>
     </AUTOUPDATE_CONFIG_MODULE>
+    {% endif -%}
     <ap>
         <DownloadCommonConf>0</DownloadCommonConf>
         <DownloadDeviceConf>1</DownloadDeviceConf>
@@ -25,6 +23,12 @@
             <DHCPOption>66</DHCPOption>
         </opt>
     </ap>
+    <fwCheck>
+        <EnableAutoUpgrade>0</EnableAutoUpgrade>
+        <UpgradeServer1></UpgradeServer1>
+        <UpgradeServer2></UpgradeServer2>
+        <AutoUpgradeInterval>24</AutoUpgradeInterval>
+    </fwCheck>
     <phone>
         <MenuPassword>{{ admin_password|d('123') }}</MenuPassword>
         <display>
@@ -111,12 +115,6 @@
         <Voice_Priority>0</Voice_Priority>
         {% endif -%}
     </qos>
-    <fwCheck>
-        <EnableAutoUpgrade>0</EnableAutoUpgrade>
-        <UpgradeServer1></UpgradeServer1>
-        <UpgradeServer2></UpgradeServer2>
-        <AutoUpgradeInterval>24</AutoUpgradeInterval>
-    </fwCheck>
     <log>
         <OutputDevice>stdout</OutputDevice>
         <FileName>platform.log</FileName>
