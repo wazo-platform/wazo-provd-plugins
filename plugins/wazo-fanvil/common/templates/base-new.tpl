@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sysConf>
-    <Version>2.0000000000</Version>
-    {% if XX_fw_filename -%}
+    <Version>2.0002</Version>
     <AUTOUPDATE_CONFIG_MODULE>
+    <Download_Protocol>2</Download_Protocol>
     <Download_Mode>1</Download_Mode>
+    <Download_Interval>1</Download_Interval>
+    {% if XX_fw_filename -%}
     <Auto_Image_URL>http://{{ ip }}:{{ http_port }}/Fanvil/firmware/{{ XX_fw_filename }}</Auto_Image_URL>
-    </AUTOUPDATE_CONFIG_MODULE>
     {% endif -%}
+    </AUTOUPDATE_CONFIG_MODULE>
     <ap>
         <DownloadCommonConf>0</DownloadCommonConf>
         <DownloadDeviceConf>1</DownloadDeviceConf>
         <SaveProvisionInfo>1</SaveProvisionInfo>
         <FlashServerIP>{{ ip }}</FlashServerIP>
         <FlashFileName>Fanvil/$mac.cfg</FlashFileName>
-        <FlashProtocol>4</FlashProtocol>
-        <FlashMode>2</FlashMode>
+        <FlashProtocol>1</FlashProtocol>
+        <FlashMode>1</FlashMode>
         <FlashInterval>1</FlashInterval>
         <pnp>
             <PNPEnable>0</PNPEnable>
@@ -33,7 +35,7 @@
         </display>
         <date>
             {% if ntp_enabled -%}
-            <SNTPServer>{{ ntp_ip }}</SNTPServer>
+            <SNTPServer>{{ ntp_ip|d('pool.ntp.org') }}</SNTPServer>
             <EnableSNTP>1</EnableSNTP>
             <SNTPTimeout>60</SNTPTimeout>
             {% else -%}
@@ -189,29 +191,38 @@
     </call>
     <dsskey>
         <dssSide index="1">
+            {% if sip_lines -%}
+            {% for line_no in sip_lines -%}
+            <Fkey index="{{ line_no }}">
+                <Type>2</Type>
+                <Value>SIP{{ line_no }}</Value>
+                <Title></Title>
+            </Fkey>
+            {% endfor -%}
+            {% else -%}
             <Fkey index="1">
                 <Type>2</Type>
                 <Value>SIP1</Value>
                 <Title></Title>
-                <ICON>Green</ICON>
             </Fkey>
+            {% endif -%}
         </dssSide>
+        {% if XX_fkeys -%}
         <internal index="1">
         {% for fkey in XX_fkeys -%}
             <Fkey index="{{ fkey['id'] }}">
                 <Type>{{ fkey['type'] }}</Type>
                 <Value>{{ fkey['value'] }}</Value>
                 <Title>{{ fkey['title'] }}</Title>
-                <ICON>Green</ICON>
             </Fkey>
         {% endfor -%}
         </internal>
+        {% endif -%}
         {% if XX_xivo_phonebook_url -%}
         <dssSoft index="1">
             <Type>21</Type>
             <Value>{{ XX_xivo_phonebook_url }}</Value>
             <Title>{{ XX_directory|d('Directory') }}</Title>
-            <ICON>Green</ICON>
         </dssSoft>
         {% endif -%}
     </dsskey>

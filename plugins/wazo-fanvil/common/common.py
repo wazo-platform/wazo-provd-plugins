@@ -277,6 +277,8 @@ class BaseFanvilPlugin(StandardPlugin):
             line['XX_dtmf_mode'] = self._SIP_DTMF_MODE[line.get('dtmf_mode', default_dtmf_mode)]
             line['backup_proxy_ip'] = line.get('backup_proxy_ip') or raw_config.get('sip_backup_proxy_ip')
             line['backup_proxy_port'] = line.get('backup_proxy_port') or raw_config.get('sip_backup_proxy_port')
+            if 'voicemail' not in line and 'exten_voicemail' in raw_config:
+                line['voicemail'] = raw_config['exten_voicemail']
 
     def _add_sip_transport(self, raw_config):
         raw_config['X_sip_transport_protocol'] = self._SIP_TRANSPORT[raw_config.get('sip_transport', 'udp')]
