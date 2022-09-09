@@ -50,7 +50,7 @@ install: yealink-fw
 [pkg_T58W-fw]
 description: Firmware for Yealink T58W
 description_fr: Micrologiciel pour Yealink T58W
-version: 150.86.0.11
+version: 150.86.0.5
 files: T58W-fw
 install: yealink-fw
 
@@ -166,10 +166,10 @@ size: 249769728
 sha1sum: a080a214b81811f3c4661365e6ba5e0a52285d2e
 
 [file_T58W-fw]
-filename: T58W-150.86.0.11.rom
-url: http://provd.wazo.community/firmwares/yealink/T58W-150.86.0.11.rom
-size: 703144864
-sha1sum: 11c14d8a6c06cae947b8d170c12b282942c0eef8
+filename: T58W-150.86.0.5.rom
+url: http://provd.wazo.community/firmwares/yealink/T58W-150.86.0.5.rom
+size: 699497760
+sha1sum: 184675f3f7965f3ed564876a0078594710904daa
 
 
 [file_W53H-fw]
