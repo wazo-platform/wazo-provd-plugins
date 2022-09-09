@@ -64,7 +64,7 @@ install: fanvil-fw
 [pkg_X7C-fw]
 description: Firmware for Fanvil X7C
 description_fr: Micrologiciel pour Fanvil X7C
-version: P0.17.0-1.12.2.1
+version: P0.18.23.79-2.4.5
 files: X7C-fw
 install: fanvil-fw
 
@@ -117,6 +117,6 @@ size: 41456968
 sha1sum: a188c9bfbb98403c6dce2c4ad08042811bc194d8
 
 [file_X7C-fw]
-url: http://download.fanvil.com/Firmware/Release/X7C/20190729/x7c-6925-P0.17.0-1.12.2.1-3739T2019-11-07-18.27.06.z
-size: 41232360
-sha1sum: ccdb26e859912bfed4d3ef8ff38fb21306dfdfdc
+url: http://download.fanvil.com/Firmware/Release/X7C/20211115/x7c-6925-P0.18.23.79-2.4.5-4189T2021-11-23-18.12.44.z
+size: 45777360
+sha1sum: ec19012bf81acafe7ba5a2742ebb16a1993cd566
