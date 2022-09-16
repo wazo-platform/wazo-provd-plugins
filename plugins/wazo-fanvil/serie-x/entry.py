@@ -49,12 +49,21 @@ MODEL_FIRMWARE_MAPPING = {
     'X7C-Pro': 'x7upro-fanvil-release-6957-2.12.1.3-krnvlT2022-05-14-17.01.35.z',
 }
 
+FUNCTION_KEYS_PER_PAGE = {
+    'X210': 32,
+    'X210i': 32,
+    'X4U': 6,
+    'X5U': 6,
+    'X6U': 12,
+}
+
 
 class FanvilPlugin(common['BaseFanvilPlugin']):
     IS_PLUGIN = True
 
     _COMMON_FILES = COMMON_FILES
     _MODEL_FIRMWARE_MAPPING = MODEL_FIRMWARE_MAPPING
+    _FUNCTION_KEYS_PER_PAGE = FUNCTION_KEYS_PER_PAGE
     _LOCALE = {
         'de_DE': '16',
         'es_ES': '10',

@@ -64,7 +64,7 @@
             {% else -%}
             <EnableDST>0</EnableDST>
             {% endif -%}
-            {% endif -%}
+            {%- endif %}
         </date>
         <timeDisplay>
             <TimeDisplayStyle>0</TimeDisplayStyle>
@@ -189,31 +189,36 @@
     </call>
     <dsskey>
         <dssSide index="1">
-            {% if sip_lines -%}
+            {%- if sip_lines %}
             {% for line_no in sip_lines -%}
             <Fkey index="{{ line_no }}">
                 <Type>2</Type>
                 <Value>SIP{{ line_no }}</Value>
                 <Title></Title>
             </Fkey>
-            {% endfor -%}
-            {% else -%}
+            {%- endfor %}
+            {%- else %}
             <Fkey index="1">
                 <Type>2</Type>
                 <Value>SIP1</Value>
                 <Title></Title>
             </Fkey>
-            {% endif -%}
+            {%- endif %}
         </dssSide>
-        {% if XX_fkeys -%}
-        <internal index="1">
-        {% for fkey in XX_fkeys -%}
-            <Fkey index="{{ fkey['id'] }}">
+        {% if XX_paginated_fkeys -%}
+        {% for page, index, fkey in XX_paginated_fkeys -%}
+        {% if loop.index0 == 0 or page != loop.previtem[0] -%}
+        {% if loop.index0 != 0 -%}
+        </internal>
+        {%- endif %}
+        <internal index="{{ page + 1 }}">
+        {%- endif %}
+            <Fkey index="{{ index + 1}}">
                 <Type>{{ fkey['type'] }}</Type>
                 <Value>{{ fkey['value'] }}</Value>
                 <Title>{{ fkey['title'] }}</Title>
             </Fkey>
-        {% endfor -%}
+        {%- endfor %}
         </internal>
         {% endif -%}
         {% if XX_xivo_phonebook_url -%}
@@ -222,6 +227,6 @@
             <Value>{{ XX_xivo_phonebook_url }}</Value>
             <Title>{{ XX_directory|d('Directory') }}</Title>
         </dssSoft>
-        {% endif -%}
+        {%- endif %}
     </dsskey>
 </sysConf>

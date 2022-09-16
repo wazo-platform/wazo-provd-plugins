@@ -330,6 +330,15 @@ class BaseFanvilPlugin(StandardPlugin):
                 continue
 
             lines.append(fkey_line)
+
+        keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(device['model'].split('-')[0], None)
+        if keys_per_page:
+            raw_config['XX_paginated_fkeys'] = sorted([
+                ((fkey['id'] - 1) // keys_per_page, (fkey['id'] - 1) % keys_per_page, fkey)
+                for fkey in lines
+            ])
+        else:
+            raw_config['XX_paginated_fkeys'] = [(0, fkey['id'] - 1, fkey) for fkey in lines]
         raw_config['XX_fkeys'] = lines
 
     def _add_phonebook_url(self, raw_config):
