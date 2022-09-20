@@ -4,9 +4,10 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import absolute_import
-import importlib.util
+from __future__ import unicode_literals
+
 import six
-import unittest
+import pytest
 
 from hamcrest import (
     assert_that,
@@ -21,7 +22,6 @@ from provd.devices.pgasso import (
     IMPROBABLE_SUPPORT,
     PROBABLE_SUPPORT,
 )
-from .. import common
 from ..common import (
     BaseYealinkHTTPDeviceInfoExtractor,
     BaseYealinkPgAssociator,
@@ -30,20 +30,19 @@ from ..common import (
 from ..models import MODEL_VERSIONS
 
 
-# This does not work in python2 because importlib.util does not exist
-def import_module_custom_attrs(module_name, attrlist):
-    spec = importlib.util.find_spec(module_name, 'v86.tests')
-    if spec is not None:
-        module = importlib.util.module_from_spec(spec)
-        for attr_name, attr_value in attrlist.items():
-            setattr(module, attr_name, attr_value)
-        spec.loader.exec_module(module)
-        return module
+@pytest.fixture(name='v86_entry')
+def v86_entry_fixture(module_initializer):
+    def execfile_(_, common_globals):
+        common_globals['BaseYealinkPlugin'] = BaseYealinkPlugin
+        common_globals['BaseYealinkPgAssociator'] = BaseYealinkPgAssociator
+
+    return module_initializer('entry', {'execfile_': execfile_})
 
 
-class TestInfoExtraction(unittest.TestCase):
-    def setUp(self):
-        self.http_info_extractor = BaseYealinkHTTPDeviceInfoExtractor()
+class TestInfoExtraction(object):
+    @classmethod
+    def setup_class(cls):
+        cls.http_info_extractor = BaseYealinkHTTPDeviceInfoExtractor()
 
     def _mock_request(self, ua=None, path=None):
         request = MagicMock()
@@ -89,9 +88,10 @@ class TestInfoExtraction(unittest.TestCase):
             )
 
 
-class TestPluginAssociation(unittest.TestCase):
-    def setUp(self):
-        self.plugin_associator = BaseYealinkPgAssociator(MODEL_VERSIONS)
+class TestPluginAssociation(object):
+    @classmethod
+    def setup_class(cls):
+        cls.plugin_associator = BaseYealinkPgAssociator(MODEL_VERSIONS)
 
     def test_plugin_association_when_all_info_match(self):
         for model, version in six.iteritems(MODEL_VERSIONS):
@@ -126,60 +126,59 @@ class TestPluginAssociation(unittest.TestCase):
         )
 
 
-class TestPlugin(unittest.TestCase):
-    def setUp(self):
-        self.app = MagicMock()
-
-        self._fetchfw_patcher = patch('provd.plugins.FetchfwPluginHelper')
-        self.fetchfw = self._fetchfw_patcher.start()
-        self.fetchfw.return_value.services = MagicMock(return_value=sentinel.fetchfw_services)
-        self.fetchfw.new_downloaders.return_value = sentinel.fetchfw_downloaders
-
-        original_fetchfw = common.FetchfwPluginHelper
-
-        def restore_fetchfw():
-            common.FetchfwPluginHelper = original_fetchfw
-
-        common.FetchfwPluginHelper = self.fetchfw
-        self.addCleanup(self._fetchfw_patcher.stop)
-        self.addCleanup(restore_fetchfw)
-
-        self._template_helper_patcher = patch('provd.plugins.TemplatePluginHelper')
-        self.template_plugin_helper = self._template_helper_patcher.start()
-        self.template_plugin_helper.get_template = MagicMock()
-        self.template_plugin_helper.dump = MagicMock()
-        original_template_helper = common.TemplatePluginHelper
-
-        def restore_template_helper():
-            common.TemplatePluginHelper = original_template_helper
-
-        self.addCleanup(restore_template_helper)
-        self.addCleanup(self._template_helper_patcher.stop)
-
-        def execfile_(filename, common_globals):
-            common_globals['BaseYealinkPlugin'] = BaseYealinkPlugin
-            common_globals['BaseYealinkPgAssociator'] = BaseYealinkPgAssociator
-
-        self.entry_module = import_module_custom_attrs('..entry', {'execfile_': execfile_})
-
-    def test_init(self):
-        plugin = BaseYealinkPlugin(self.app, 'test_dir', MagicMock(), MagicMock())
+class TestPlugin(object):
+    @patch('v86.common.FetchfwPluginHelper')
+    def test_init(self, fetch_fw, v86_entry):
+        fetch_fw.return_value.services.return_value = sentinel.fetchfw_services
+        fetch_fw.new_downloaders.return_value = sentinel.fetchfw_downloaders
+        plugin = v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())
         assert_that(
             plugin,
             has_properties(
                 services=sentinel.fetchfw_services,
             ),
         )
-        self.fetchfw.assert_called_once_with('test_dir', sentinel.fetchfw_downloaders)
+        fetch_fw.assert_called_once_with('test_dir', sentinel.fetchfw_downloaders)
 
-    def test_common_configure(self):
-        plugin = BaseYealinkPlugin(self.app, 'test_dir', MagicMock(), MagicMock())
-        plugin.configure_common(MagicMock())
-        self.template_plugin_helper.get_template.assert_called()
-        self.template_plugin_helper.dump.assert_called()
+    @patch('v86.common.FetchfwPluginHelper')
+    @patch('v86.common.TemplatePluginHelper')
+    def test_common_configure(self, template_plugin_helper, fetch_fw, v86_entry):
+        plugin = v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())
+        raw_config = {}
+        plugin._tpl_helper.get_template.return_value = 'template'
+        plugin.configure_common(raw_config)
+        template_plugin_helper.assert_called_once()
+        plugin._tpl_helper.get_template.assert_called_with('common/dect_model.tpl')
+        assert len(plugin._tpl_helper.dump.mock_calls) == 14
 
-    def test_configure(self):
-        pass
+    @patch('v86.common.FetchfwPluginHelper')
+    @patch('v86.common.TemplatePluginHelper')
+    def test_configure(self, template_plugin_helper, fetch_fw, v86_entry):
+        device = {
+            'vendor': 'Yealink',
+            'model': 'T31G',
+            'version': '124.85.257.55',
+            'mac': '80:5e:c0:d5:7d:72',
+        }
+        raw_config = {
+            'http_port': '80',
+            'locale': 'en_US',
+            'funckeys': {},
+            'sip_lines': {},
+        }
+        plugin = v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())
+        plugin._tpl_helper.get_dev_template.return_value = 'template'
+        plugin.configure(device, raw_config)
+        assert raw_config['XX_country'] == 'United States'
+        assert raw_config['XX_lang'] == 'English'
+        assert raw_config['XX_handset_lang'] == '0'
+        plugin._tpl_helper.get_dev_template.assert_called_with('805ec0d57d72.cfg', device)
+        plugin._tpl_helper.dump.assert_called_with(
+            'template', raw_config, 'test_dir/var/tftpboot/805ec0d57d72.cfg', 'UTF-8'
+        )
 
-    def test_sensitive_file(self):
-        pass
+    @patch('v86.common.FetchfwPluginHelper')
+    def test_sensitive_file(self, fetch_fw, v86_entry):
+        plugin = v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())
+        assert plugin.is_sensitive_filename('patate') is False
+        assert plugin.is_sensitive_filename('805ec0d57d72.cfg') is True
