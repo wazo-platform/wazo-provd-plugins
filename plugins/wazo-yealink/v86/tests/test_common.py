@@ -7,7 +7,6 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 import six
-import pytest
 
 from hamcrest import (
     assert_that,
@@ -25,18 +24,8 @@ from provd.devices.pgasso import (
 from ..common import (
     BaseYealinkHTTPDeviceInfoExtractor,
     BaseYealinkPgAssociator,
-    BaseYealinkPlugin,
 )
 from ..models import MODEL_VERSIONS
-
-
-@pytest.fixture(name='v86_entry')
-def v86_entry_fixture(module_initializer):
-    def execfile_(_, common_globals):
-        common_globals['BaseYealinkPlugin'] = BaseYealinkPlugin
-        common_globals['BaseYealinkPgAssociator'] = BaseYealinkPgAssociator
-
-    return module_initializer('entry', {'execfile_': execfile_})
 
 
 class TestInfoExtraction(object):
@@ -140,20 +129,14 @@ class TestPlugin(object):
         )
         fetch_fw.assert_called_once_with('test_dir', sentinel.fetchfw_downloaders)
 
-    @patch('v86.common.FetchfwPluginHelper')
-    @patch('v86.common.TemplatePluginHelper')
-    def test_common_configure(self, template_plugin_helper, fetch_fw, v86_entry):
-        plugin = v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())
+    def test_common_configure(self, v86_plugin):
         raw_config = {}
-        plugin._tpl_helper.get_template.return_value = 'template'
-        plugin.configure_common(raw_config)
-        template_plugin_helper.assert_called_once()
-        plugin._tpl_helper.get_template.assert_called_with('common/dect_model.tpl')
-        assert len(plugin._tpl_helper.dump.mock_calls) == 14
+        v86_plugin._tpl_helper.get_template.return_value = 'template'
+        v86_plugin.configure_common(raw_config)
+        v86_plugin._tpl_helper.get_template.assert_called_with('common/dect_model.tpl')
+        assert len(v86_plugin._tpl_helper.dump.mock_calls) == 14
 
-    @patch('v86.common.FetchfwPluginHelper')
-    @patch('v86.common.TemplatePluginHelper')
-    def test_configure(self, template_plugin_helper, fetch_fw, v86_entry):
+    def test_configure(self, v86_plugin):
         device = {
             'vendor': 'Yealink',
             'model': 'T31G',
@@ -166,19 +149,16 @@ class TestPlugin(object):
             'funckeys': {},
             'sip_lines': {},
         }
-        plugin = v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())
-        plugin._tpl_helper.get_dev_template.return_value = 'template'
-        plugin.configure(device, raw_config)
+        v86_plugin._tpl_helper.get_dev_template.return_value = 'template'
+        v86_plugin.configure(device, raw_config)
         assert raw_config['XX_country'] == 'United States'
         assert raw_config['XX_lang'] == 'English'
         assert raw_config['XX_handset_lang'] == '0'
-        plugin._tpl_helper.get_dev_template.assert_called_with('805ec0d57d72.cfg', device)
-        plugin._tpl_helper.dump.assert_called_with(
+        v86_plugin._tpl_helper.get_dev_template.assert_called_with('805ec0d57d72.cfg', device)
+        v86_plugin._tpl_helper.dump.assert_called_with(
             'template', raw_config, 'test_dir/var/tftpboot/805ec0d57d72.cfg', 'UTF-8'
         )
 
-    @patch('v86.common.FetchfwPluginHelper')
-    def test_sensitive_file(self, fetch_fw, v86_entry):
-        plugin = v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())
-        assert plugin.is_sensitive_filename('patate') is False
-        assert plugin.is_sensitive_filename('805ec0d57d72.cfg') is True
+    def test_sensitive_file(self, v86_plugin):
+        assert v86_plugin.is_sensitive_filename('patate') is False
+        assert v86_plugin.is_sensitive_filename('805ec0d57d72.cfg') is True
