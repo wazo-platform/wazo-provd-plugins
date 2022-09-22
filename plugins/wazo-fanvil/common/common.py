@@ -306,12 +306,17 @@ class BaseFanvilPlugin(StandardPlugin):
         lines = []
         exten_pickup_call = raw_config.get('exten_pickup_call')
         offset = 0 if self._is_new_model(device) else 1
+        max_funckey_position = 0
         for funckey_no, funckey_dict in raw_config['funckeys'].iteritems():
             fkey_line = {}
             keynum = int(funckey_no)
-            fkey_line['id'] = keynum + offset
+            fkey_id = keynum + offset
+            fkey_line['id'] = fkey_id
             fkey_line['title'] = funckey_dict['label']
             fkey_line['type'] = 1
+            if keynum > max_funckey_position:
+                max_funckey_position = keynum
+
             funckey_type = funckey_dict['type']
             if funckey_type == 'speeddial':
                 fkey_line['value'] = self._format_funckey_speeddial(funckey_dict)
@@ -333,6 +338,7 @@ class BaseFanvilPlugin(StandardPlugin):
 
         keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(device['model'].split('-')[0], None)
         if keys_per_page:
+            raw_config['XX_max_page'] = max_funckey_position // keys_per_page + 1
             raw_config['XX_paginated_fkeys'] = sorted([
                 ((fkey['id'] - 1) // keys_per_page, (fkey['id'] - 1) % keys_per_page, fkey)
                 for fkey in lines

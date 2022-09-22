@@ -207,6 +207,7 @@
             {%- endif %}
         </dssSide>
         {% if XX_paginated_fkeys -%}
+            <FuncKeyPageNum>{{ XX_max_page }}</FuncKeyPageNum>
         {% for page, index, fkey in XX_paginated_fkeys -%}
         {% if loop.index0 == 0 or page != loop.previtem[0] -%}
         {% if loop.index0 != 0 -%}
