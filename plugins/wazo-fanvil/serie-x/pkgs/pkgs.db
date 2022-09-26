@@ -5,6 +5,13 @@ version: 2.2.0.3753
 files: X2-fw
 install: fanvil-fw
 
+[pkg_X210-fw]
+description: Firmware for Fanvil X210
+description_fr: Micrologiciel pour Fanvil X210
+version: P0.18.23.89-2.4.5.2
+files: X210-fw
+install: fanvil-fw
+
 [pkg_X210-Pro-fw]
 description: Firmware for Fanvil X210-Pro
 description_fr: Micrologiciel pour Fanvil X210-Pro
@@ -12,6 +19,12 @@ version: 6959-2.12.1.3
 files: X210-Pro-fw
 install: fanvil-fw
 
+[pkg_X210i-fw]
+description: Firmware for Fanvil X210i
+description_fr: Micrologiciel pour Fanvil X210i
+version: P0.18.23.89-2.4.5.2
+files: X210i-fw
+install: fanvil-fw
 
 [pkg_X210i-Pro-fw]
 description: Firmware for Fanvil X210i-Pro
@@ -41,6 +54,13 @@ version: 2.10.2.6887
 files: X4-fw
 install: fanvil-fw
 
+[pkg_X4U-fw]
+description: Firmware for Fanvil X4U
+description_fr: Micrologiciel pour Fanvil X4U
+version: P0.18.23.89-2.4.5.2
+files: X4U-fw
+install: fanvil-fw
+
 [pkg_X4U-Pro-fw]
 description: Firmware for Fanvil X4U-Pro
 description_fr: Micrologiciel pour Fanvil X4U-Pro
@@ -60,6 +80,13 @@ description: Firmware for Fanvil X5S
 description_fr: Micrologiciel pour Fanvil X5S
 version: P0.16.5-1.12.2
 files: X5S-fw
+install: fanvil-fw
+
+[pkg_X5U-fw]
+description: Firmware for Fanvil X5U
+description_fr: Micrologiciel pour Fanvil X5U
+version: P0.18.23.89-2.4.5.2
+files: X5U-fw
 install: fanvil-fw
 
 [pkg_X5U-Pro-fw]
@@ -83,6 +110,13 @@ version: P0.16.5-1.12.2
 files: X6V2-fw
 install: fanvil-fw
 
+[pkg_X6U-fw]
+description: Firmware for Fanvil X6U
+description_fr: Micrologiciel pour Fanvil X6U
+version: P0.18.23.89-2.4.5.2
+files: X6U-fw
+install: fanvil-fw
+
 [pkg_X6U-Pro-fw]
 description: Firmware for Fanvil X6U-Pro
 description_fr: Micrologiciel pour Fanvil X6U-Pro
@@ -93,7 +127,7 @@ install: fanvil-fw
 [pkg_X7-fw]
 description: Firmware for Fanvil X7
 description_fr: Micrologiciel pour Fanvil X7
-version: P0.17.0-1.12.5.1
+version: P0.18.23.89-2.4.5.2
 files: X7-fw
 install: fanvil-fw
 
@@ -107,7 +141,7 @@ install: fanvil-fw
 [pkg_X7C-fw]
 description: Firmware for Fanvil X7C
 description_fr: Micrologiciel pour Fanvil X7C
-version: P0.18.23.79-2.4.5
+version: P0.18.23.89-2.4.5.2
 files: X7C-fw
 install: fanvil-fw
 
@@ -126,10 +160,20 @@ url: http://download.fanvil.com/Firmware/Release/X2/20191210/x22.10.2.6887T20191
 size: 3894766
 sha1sum: e80165d5cc3fbdc967d13d136f4e69c61ee73ece
 
+[file_X210-fw]
+url: http://download.fanvil.com/Firmware/Release/X210/20220811/x210-6924-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.44.03.z
+size: 45171152
+sha1sum: 5d47df43b9f02c7b64694e57773a51a4c0bf59e8
+
 [file_X210-Pro-fw]
 url: http://download.fanvil.com/Firmware/Release/X-V2/X210-V2/20220620/x210pro-fanvil-release-6959-2.12.1.3-krnvlT2022-05-14-17.24.15.z
 size: 24831624
 sha1sum: b322581ee4312e98f19e0d5f77cea1f25127a240
+
+[file_X210i-fw]
+url: http://download.fanvil.com/Firmware/Release/X210i/20220811/x210i-6923-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.53.39.z
+size: 45171152
+sha1sum: 0033ede79e8b9470d95f176eb285dd6eeb562473
 
 [file_X210i-Pro-fw]
 url: http://download.fanvil.com/Firmware/Release/X-V2/X210i-V2/20220620/x210ipro-fanvil-release-6960-2.12.1.3-krnvlT2022-05-14-17.29.43.z
@@ -151,6 +195,11 @@ url: http://download.fanvil.com/Firmware/Release/X4/20191210/x42.10.2.6887T20191
 size: 3901759
 sha1sum: 8b8e53095c92deaddd3b6e32705f8fe7a21934d3
 
+[file_X4U-fw]
+url: http://download.fanvil.com/Firmware/Release/X4U/20220811/x4u-6902-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.39.20.z
+size: 44231360
+sha1sum: f686d1271c5088e718d8cdef88386d2cf10ee228
+
 [file_X4U-Pro-fw]
 url: http://download.fanvil.com/Firmware/Release/XU-V2/X4U-V2/20220620/x4upro-fanvil-release-ff01-6903-2.12.4.1-krnvUT2022-05-18-17.16.07.z
 size: 27542172
@@ -165,6 +214,11 @@ sha1sum: ea480d3592fa5929975aa0e3aff77dd544aef75f
 url: http://download.fanvil.com/Firmware/Release/X5S/20190729/x5s-6900-P0.16.5-1.12.2-3144T2019-07-23-14.20.37.z
 size: 38491164
 sha1sum: 059aed5ac70267c8a25c3c4ba6933607de2de7ab
+
+[file_X5U-fw]
+url: http://download.fanvil.com/Firmware/Release/X5U/20220811/x5u-6906-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.20.52.z
+size: 44459712
+sha1sum: 4c32f0b76d51a2470006c40fad4fb47372ee02be
 
 [file_X5U-Pro-fw]
 url: http://download.fanvil.com/Firmware/Release/XU-V2/X5U-V2/20220620/x5upro-fanvil-release-ff01-6907-2.12.4.1-krnvUT2022-05-18-17.22.39.z
@@ -181,15 +235,20 @@ url: http://download.fanvil.com/Firmware/Release/X6/20190729_128M/x6-6914-P0.16.
 size: 41504096
 sha1sum: 6ba47b395ab3a6a35b9cd6b9a685e9677bf839d4
 
+[file_X6U-fw]
+url: http://download.fanvil.com/Firmware/Release/X6U/20220811/x6u-6915-P0.18.23.89-2.4.5.2-3594T2022-07-28-17.32.21.z
+size: 44910296
+sha1sum: 02b6c7ec874a6f83c82d78afe59b09ac25fa9716
+
 [file_X6U-Pro-fw]
 url: http://download.fanvil.com/Firmware/Release/XU-V2/X6U-V2/20220620/x6upro-fanvil-release-ff01-6916-2.12.4.1-krnvUT2022-05-18-17.47.06.z
 size: 27845584
 sha1sum: b620398c536b1a14ce81e201342b603997ff710b
 
 [file_X7-fw]
-url: http://download.fanvil.com/Firmware/Release/X7/20190924/x7-6926-P0.17.0-1.12.5.1-3739T2019-11-07-18.19.52.z
-size: 41456968
-sha1sum: a188c9bfbb98403c6dce2c4ad08042811bc194d8
+url: http://download.fanvil.com/Firmware/Release/X7/20220811/x7-6926-P0.18.23.89-2.4.5.2-4229T2022-07-29-16.11.47.z
+size: 45870744
+sha1sum: b18cf5b2219af6ba6f194839cbd3acf01d258706
 
 [file_X7-Pro-fw]
 url: http://download.fanvil.com/Firmware/Release/X-V2/X7-V2/20220620/x7upro-fanvil-release-6957-2.12.1.3-krnvlT2022-05-14-17.01.35.z
@@ -197,9 +256,9 @@ size: 25877228
 sha1sum: 8dc35d91c00c4df402a10c0b90f70b33528eef48
 
 [file_X7C-fw]
-url: http://download.fanvil.com/Firmware/Release/X7C/20211115/x7c-6925-P0.18.23.79-2.4.5-4189T2021-11-23-18.12.44.z
-size: 45777360
-sha1sum: ec19012bf81acafe7ba5a2742ebb16a1993cd566
+url: http://download.fanvil.com/Firmware/Release/X7C/20220811/x7c-6925-P0.18.23.89-2.4.5.2-4229T2022-07-29-16.16.20.z
+size: 45645976
+sha1sum: dbe82a16d91515c8318cd7890609a5435373ba29
 
 [file_X7C-Pro-fw]
 url: http://download.fanvil.com/Firmware/Release/X-V2/X7C-V2/20220620/x7cpro-fanvil-release-6958-2.12.1.3-krnvlT2022-05-14-17.08.08.z
