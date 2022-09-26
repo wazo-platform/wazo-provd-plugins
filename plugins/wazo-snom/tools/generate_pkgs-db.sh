@@ -45,7 +45,7 @@ echo "a-b: cp \$FILE1 firmware/" >> $dest_filename
 echo "" >> $dest_filename
 
 echo "[file_uxm-fw]" >> $dest_filename
-echo "url: http://downloads.snom.com/snomUXM-2.1.1.bin" >> $dest_filename
+echo "url: https://downloads.snom.com/snomUXM-2.1.1.bin" >> $dest_filename
 echo "size: 96560" >> $dest_filename
 echo "sha1sum:9c4e07185ca6eb863858edf23147ab8576f94c4a" >> $dest_filename
 echo "" >> $dest_filename
@@ -58,7 +58,7 @@ do
     fi
 
     FILE=snom$i-$1-SIP-r.bin
-    URL=http://downloads.snom.com/fw/$1/bin/$FILE
+    URL=https://downloads.snom.com/fw/$1/bin/$FILE
     wget $URL
     SIZE=$(stat -c "%s" "$FILE")
     SHA1SUM=$(sha1sum "$FILE" | cut -f1 -d' ')
