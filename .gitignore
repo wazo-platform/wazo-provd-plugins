@@ -3,6 +3,7 @@ __pycache__
 .tox
 *.pyc
 coverage.xml
+htmlcov
 dhcp/dhcpd.tar*
 plugins/_build
 plugins/_firmwares/*/*

@@ -173,6 +173,7 @@ class BaseYealinkFunckeyGenerator(object):
 
     def _format_funckey_blf(self, prefix, funckey):
         line_no = funckey.get(u'line', 1)
+        # TODO code is unreachable since these models are not listed in _NB_LINEKEY
         if self._model in (u'T32G', u'T38G'):
             line_no -= 1
         self._lines.append(u'%s.type = 16' % prefix)
@@ -292,6 +293,7 @@ class BaseYealinkFunckeyPrefixIterator(object):
     def __iter__(self):
         for linekey_no in range(1, self._nb_linekey + 1):
             yield u'linekey.%s' % linekey_no
+        # TODO: No phones have memory keys in _NB_MEMORYKEY so is this logic relevant?
         for memorykey_no in range(1, self._nb_memorykey + 1):
             yield u'memorykey.%s' % memorykey_no
         for expmod_no in range(1, self._expmod.max_daisy_chain + 1):
@@ -569,6 +571,7 @@ class BaseYealinkPlugin(StandardPlugin):
 
     else:
         # backward compatibility with older wazo-provd server
+        # TODO: Should this be deleted? It's untestable.
         def synchronize(self, device, raw_config):
             try:
                 ip = device[u'ip'].encode('ascii')

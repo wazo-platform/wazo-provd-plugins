@@ -15,6 +15,7 @@ from textwrap import dedent
 
 import pytest
 import six
+import six.moves as sm
 
 from hamcrest import (
     assert_that,
@@ -22,7 +23,7 @@ from hamcrest import (
     has_entries,
     has_properties,
 )
-from mock import MagicMock, patch, sentinel
+from mock import MagicMock, Mock, patch, sentinel, PropertyMock
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import (
     COMPLETE_SUPPORT,
@@ -30,11 +31,30 @@ from provd.devices.pgasso import (
     IMPROBABLE_SUPPORT,
     PROBABLE_SUPPORT,
 )
+from provd.tzinform import TimezoneNotFoundError
 from ..common import (
     BaseYealinkHTTPDeviceInfoExtractor,
     BaseYealinkPgAssociator,
 )
 from ..models import MODEL_VERSIONS
+
+TEST_LINES = """\
+linekey.1.type = 13
+linekey.1.line = 1
+linekey.1.value = test_speed_dial
+linekey.1.label = Test Speed dial
+
+linekey.2.type = 16
+linekey.2.line = 1
+linekey.2.value = test_blf
+linekey.2.label = Test blf
+linekey.2.extension = 1234
+
+linekey.3.type = 10
+linekey.3.line = 1
+linekey.3.value = test_park
+linekey.3.label = Test Park
+"""
 
 
 class TestInfoExtraction(object):
@@ -69,6 +89,19 @@ class TestInfoExtraction(object):
                 self.http_info_extractor._do_extract(self._mock_request(ua=ua)),
                 has_entries(info),
             )
+
+    def test_http_ua_extractor_when_no_info(self):
+        assert self.http_info_extractor._extract_from_ua('') is None
+
+    @patch('v86.common.defer')
+    def test_extract(self, mocked_defer):
+        self.http_info_extractor.extract(
+            self._mock_request('Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72'),
+            None,
+        )
+        mocked_defer.succeed.assert_called_with(
+            {'mac': '80:5e:c0:d5:7d:72', 'version': '124.85.257.55', 'vendor': 'Yealink', 'model': 'T31G'}
+        )
 
     def test_http_extractor_when_no_ua_extracts_mac_from_path(self):
         macs_from_paths = {
@@ -197,6 +230,18 @@ class TestPlugin(object):
         assert message == 'error while removing file: %s'
         assert isinstance(exception, FileNotFoundError)
 
+    @patch('v86.common.synchronize')
+    def test_synchronize(self, provd_synchronize, v86_plugin):
+        device = {'mac': '80:5e:c0:d5:7d:72'}
+        v86_plugin.synchronize(device, {})
+        provd_synchronize.standard_sip_synchronize.assert_called_with(device)
+
+    def test_get_remote_state_trigger_filename(self, v86_plugin):
+        assert v86_plugin.get_remote_state_trigger_filename({}) is None
+        assert v86_plugin.get_remote_state_trigger_filename(
+            {'mac': '80:5e:c0:d5:7d:72'}
+        ) == '805ec0d57d72.cfg'
+
     def test_sensitive_file(self, v86_plugin):
         assert v86_plugin.is_sensitive_filename('patate') is False
         assert v86_plugin.is_sensitive_filename('805ec0d57d72.cfg') is True
@@ -268,7 +313,8 @@ class TestPlugin(object):
             '4': None,
         }
 
-    def test_timezones(self, v86_plugin):
+    @patch('v86.common.logger')
+    def test_timezones(self, mocked_logger, v86_plugin):
         raw_config = {'timezone': 'America/Montreal'}
         v86_plugin._add_timezone(raw_config)
         assert raw_config['XX_timezone'] == dedent(
@@ -287,6 +333,10 @@ class TestPlugin(object):
             local_time.time_zone = -6
             local_time.summer_time = 0"""
         )
+        v86_plugin._add_timezone({'timezone': 'Doesnt/Exist'})
+        message, exception = mocked_logger.warning.call_args.args
+        assert message == 'Unknown timezone: %s'
+        assert isinstance(exception, TimezoneNotFoundError)
 
     @patch('v86.common.logger')
     def test_function_keys(self, mocked_logger, v86_plugin):
@@ -314,26 +364,61 @@ class TestPlugin(object):
             },
             'sip_lines': {
                 '1': {'number': '5888'}
-            }
+            },
+            'exten_pickup_call': '1234',
         }
+        v86_plugin._add_fkeys({'model': 'T32G'}, raw_config)
+        assert raw_config['XX_fkeys'] == ''
         v86_plugin._add_fkeys({'model': 'T33G'}, raw_config)
         mocked_logger.info.assert_called_with('Unsupported funckey type: %s', 'other')
-        assert raw_config['XX_fkeys'] == dedent(
-            """\
-            linekey.1.type = 13
-            linekey.1.line = 1
-            linekey.1.value = test_speed_dial
-            linekey.1.label = Test Speed dial
-           
-            linekey.2.type = 16
-            linekey.2.line = 1
-            linekey.2.value = test_blf
-            linekey.2.label = Test blf
-            
-            linekey.3.type = 10
-            linekey.3.line = 1
-            linekey.3.value = test_park
-            linekey.3.label = Test Park
-            
-            """
-        )
+        assert raw_config['XX_fkeys'] == TEST_LINES + '\n'
+
+    def _build_exp_expectation(self, start_line, end_line, expansion_number):
+        return ''.join([
+           dedent('''
+               linekey.{line}.type = 0
+               linekey.{line}.line = %NULL%
+               linekey.{line}.value = %NULL%
+               linekey.{line}.label = %NULL%
+           ''').format(line=line)
+           for line in sm.range(start_line, end_line + 1)
+        ] + [
+            dedent('''
+            expansion_module.{page}.key.{key}.type = 0
+            expansion_module.{page}.key.{key}.line = %NULL%
+            expansion_module.{page}.key.{key}.value = %NULL%
+            expansion_module.{page}.key.{key}.label = %NULL%
+            ''').format(key=key, page=page)
+            for page in sm.range(1, 7) for key in sm.range(1, expansion_number + 1)
+        ])
+
+    def test_fkeys_with_exp40(self, v86_plugin):
+        base_raw_config = {
+            'funckeys': {
+                '1': {
+                    'type': 'speeddial',
+                    'value': 'test_speed_dial',
+                    'label': 'Test Speed dial',
+                },
+                '2': {
+                    'type': 'blf',
+                    'value': 'test_blf',
+                    'label': 'Test blf',
+                },
+                '3': {
+                    'type': 'park',
+                    'value': 'test_park',
+                    'label': 'Test Park',
+                },
+            },
+            'sip_lines': {
+                '1': {'number': '5888'}
+            },
+            'exten_pickup_call': '1234',
+        }
+        raw_config = dict(**base_raw_config)
+        v86_plugin._add_fkeys({'model': 'T27G'}, raw_config)
+        assert raw_config['XX_fkeys'] == TEST_LINES + self._build_exp_expectation(4, 21, 40)
+        raw_config = dict(**base_raw_config)
+        v86_plugin._add_fkeys({'model': 'T5'}, raw_config)
+
