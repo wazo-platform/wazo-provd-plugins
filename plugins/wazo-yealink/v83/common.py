@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2011-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 import re
 import os.path
+import six
+import six.moves as sm
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
@@ -89,24 +91,24 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
             if m:
                 raw_model, raw_version, raw_mac = m.groups()
                 try:
-                    mac = norm_mac(raw_mac.decode('ascii'))
+                    mac = norm_mac(six.ensure_str(raw_mac))
                 except ValueError as e:
                     logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
                     return {u'vendor': u'Yealink',
-                            u'model': raw_model.decode('ascii'),
-                            u'version': raw_version.decode('ascii')}
+                            u'model': six.ensure_str(raw_model),
+                            u'version': six.ensure_str(raw_version)}
                 else:
                     return {u'vendor': u'Yealink',
-                            u'model': raw_model.decode('ascii'),
-                            u'version': raw_version.decode('ascii'),
+                            u'model': six.ensure_str(raw_model),
+                            u'version': six.ensure_str(raw_version),
                             u'mac': mac}
         return None
 
     def _extract_from_path(self, request):
         if request.path.startswith('/001565'):
-            raw_mac = path[1:-4]
+            raw_mac = request.path[1:-4]
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(six.ensure_str(raw_mac))
             except ValueError as e:
                 logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
             else:
@@ -146,7 +148,7 @@ class BaseYealinkFunckeyGenerator(object):
     def generate(self):
         prefixes = BaseYealinkFunckeyPrefixIterator(self._model)
         for funckey_no, prefix in enumerate(prefixes, start=1):
-            funckey = self._funckeys.get(unicode(funckey_no))
+            funckey = self._funckeys.get(six.text_type(funckey_no))
             self._format_funckey(prefix, funckey_no, funckey)
             self._lines.append(u'')
 
@@ -154,8 +156,8 @@ class BaseYealinkFunckeyGenerator(object):
 
     def _format_funckey(self, prefix, funckey_no, funckey):
         if funckey is None:
-            if unicode(funckey_no) in self._sip_lines:
-                self._format_funckey_line(prefix, unicode(funckey_no))
+            if six.text_type(funckey_no) in self._sip_lines:
+                self._format_funckey_line(prefix, six.text_type(funckey_no))
             else:
                 self._format_funckey_null(prefix)
             return
@@ -321,12 +323,12 @@ class BaseYealinkFunckeyPrefixIterator(object):
             return self.NullExpansionModule
 
     def __iter__(self):
-        for linekey_no in xrange(1, self._nb_linekey + 1):
+        for linekey_no in sm.range(1, self._nb_linekey + 1):
             yield u'linekey.%s' % linekey_no
-        for memorykey_no in xrange(1, self._nb_memorykey + 1):
+        for memorykey_no in sm.range(1, self._nb_memorykey + 1):
             yield u'memorykey.%s' % memorykey_no
-        for expmod_no in xrange(1, self._expmod.max_daisy_chain + 1):
-            for expmodkey_no in xrange(1, self._expmod.key_count + 1):
+        for expmod_no in sm.range(1, self._expmod.max_daisy_chain + 1):
+            for expmodkey_no in sm.range(1, self._expmod.key_count + 1):
                 yield u'expansion_module.%s.key.%s' % (expmod_no, expmodkey_no)
 
 
@@ -406,7 +408,7 @@ class BaseYealinkPlugin(StandardPlugin):
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _update_sip_lines(self, raw_config):
-        for line_no, line in raw_config[u'sip_lines'].iteritems():
+        for line_no, line in six.iteritems(raw_config[u'sip_lines']):
             # set line number
             line[u'XX_line_no'] = int(line_no)
             # set dtmf inband transfer
@@ -431,7 +433,7 @@ class BaseYealinkPlugin(StandardPlugin):
     def _add_sip_templates(self, raw_config):
         templates = dict()
         template_number = 1
-        for line_no, line in raw_config[u'sip_lines'].iteritems():
+        for line_no, line in six.iteritems(raw_config[u'sip_lines']):
             proxy_ip = line.get(u'proxy_ip') or raw_config.get(u'sip_proxy_ip')
             proxy_port = line.get(u'proxy_port') or raw_config.get(u'sip_proxy_port')
             backup_proxy_ip = line.get(u'backup_proxy_ip') or raw_config.get(u'sip_backup_proxy_ip')
@@ -486,14 +488,16 @@ class BaseYealinkPlugin(StandardPlugin):
         if u'timezone' in raw_config:
             try:
                 tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
-            except tzinform.TimezoneNotFoundError, e:
+            except tzinform.TimezoneNotFoundError as e:
                 logger.warning('Unknown timezone: %s', e)
             else:
                 raw_config[u'XX_timezone'] = self._format_tz_info(tzinfo)
 
     def _add_sip_transport(self, raw_config):
-        raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'),
-                                                                  self._SIP_TRANSPORT_DEF)
+        raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(
+            raw_config.get(u'sip_transport'),
+            self._SIP_TRANSPORT_DEF,
+        )
 
     def _add_xx_sip_lines(self, device, raw_config):
         sip_lines = raw_config[u'sip_lines']
@@ -502,7 +506,7 @@ class BaseYealinkPlugin(StandardPlugin):
             xx_sip_lines = dict(sip_lines)
         else:
             xx_sip_lines = {}
-            for line_no in xrange(1, sip_accounts + 1):
+            for line_no in sm.range(1, sip_accounts + 1):
                 line_no = str(line_no)
                 xx_sip_lines[line_no] = sip_lines.get(line_no)
         raw_config[u'XX_sip_lines'] = xx_sip_lines
@@ -564,7 +568,7 @@ class BaseYealinkPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
         try:
             os.remove(path)
-        except OSError, e:
+        except OSError as e:
             # ignore
             logger.info('error while removing file: %s', e)
 
@@ -576,7 +580,7 @@ class BaseYealinkPlugin(StandardPlugin):
         # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = device[u'ip'].encode('ascii')
+                ip = six.ensure_str(device[u'ip'])
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:
@@ -589,7 +593,6 @@ class BaseYealinkPlugin(StandardPlugin):
     def get_remote_state_trigger_filename(self, device):
         if u'mac' not in device:
             return None
-
         return self._dev_specific_filename(device)
 
     def is_sensitive_filename(self, filename):
