@@ -578,7 +578,7 @@ class BaseYealinkPlugin(StandardPlugin):
         # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = six.ensure_str(device[u'ip'])
+                ip = six.text_type(device[u'ip'])
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:

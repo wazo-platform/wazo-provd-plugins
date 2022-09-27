@@ -6,11 +6,6 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
-try:
-    FileNotFoundError
-except NameError:
-    FileNotFoundError = OSError
-
 from textwrap import dedent
 
 import pytest
@@ -32,10 +27,14 @@ from provd.devices.pgasso import (
     PROBABLE_SUPPORT,
 )
 from provd.tzinform import TimezoneNotFoundError
+
 from ..common import (
     BaseYealinkHTTPDeviceInfoExtractor,
     BaseYealinkPgAssociator,
 )
+
+if six.PY2:
+    FileNotFoundError = OSError
 
 TEST_LINES = """\
 linekey.1.type = 13
@@ -54,7 +53,6 @@ linekey.3.line = 1
 linekey.3.value = test_park
 linekey.3.label = Test Park
 """
-
 
 
 class TestInfoExtraction(object):
@@ -332,6 +330,17 @@ class TestPlugin(object):
             """\
             local_time.time_zone = -6
             local_time.summer_time = 0"""
+        )
+        raw_config = {'timezone': 'Asia/Tehran'}
+        v85_plugin._add_timezone(raw_config)
+        assert raw_config['XX_timezone'] == dedent(
+            """\
+            local_time.time_zone = +3
+            local_time.summer_time = 1
+            local_time.dst_time_type = 0
+            local_time.start_time = 03/22/00
+            local_time.end_time = 09/22/00
+            local_time.offset_time = 60"""
         )
         v85_plugin._add_timezone({'timezone': 'Doesnt/Exist'})
         message, exception = mocked_logger.warning.call_args.args
