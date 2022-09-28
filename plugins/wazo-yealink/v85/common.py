@@ -357,6 +357,7 @@ class BaseYealinkPlugin(StandardPlugin):
         u'W90DM': 250,
         u'W90B': 0,
     }
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -506,27 +507,11 @@ class BaseYealinkPlugin(StandardPlugin):
         return self._NB_SIP_ACCOUNTS.get(model)
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(
-                raw_config, u'yealink', entry_point=u'lookup', qs_suffix=u'term=#SEARCH'
-            )
-        else:
-            self._add_xivo_phonebook_url_compat(raw_config)
-
-    def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get(u'X_xivo_phonebook_ip')
-        if hostname:
-            raw_config[
-                u'XX_xivo_phonebook_url'
-            ] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(
-                hostname=hostname
-            )
+        plugins.add_xivo_phonebook_url(raw_config, u'yealink', entry_point=u'lookup', qs_suffix=u'term=#SEARCH')
 
     def _add_wazo_phoned_user_service_url(self, raw_config, service):
         if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
             plugins.add_wazo_phoned_user_service_url(raw_config, u'yealink', service)
-
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
@@ -569,24 +554,8 @@ class BaseYealinkPlugin(StandardPlugin):
             # ignore
             logger.info('error while removing file: %s', e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device)
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = six.text_type(device[u'ip'])
-            except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
-                else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(device)
 
     def get_remote_state_trigger_filename(self, device):
         if u'mac' not in device:

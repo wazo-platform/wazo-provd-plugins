@@ -264,15 +264,6 @@ class TestPlugin(object):
 
     @patch('v86.common.plugins')
     def test_phonebook_url(self, provd_plugins, v86_plugin):
-        raw_config = {
-            'config_version': 0,
-            'X_xivo_phonebook_ip': '1.1.1.1',
-        }
-        v86_plugin._add_xivo_phonebook_url(raw_config)
-        provd_plugins.add_xivo_phonebook_url.assert_not_called()
-        expected_url = 'http://1.1.1.1/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'
-        assert raw_config['XX_xivo_phonebook_url'] == expected_url
-
         raw_config = {'config_version': 1}
         v86_plugin._add_xivo_phonebook_url(raw_config)
         provd_plugins.add_xivo_phonebook_url.assert_called_with(
