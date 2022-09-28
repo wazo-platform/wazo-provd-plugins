@@ -12,12 +12,6 @@ import pytest
 import six
 import six.moves as sm
 
-from hamcrest import (
-    assert_that,
-    equal_to,
-    has_entries,
-    has_properties,
-)
 from mock import MagicMock, Mock, patch, sentinel, PropertyMock
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import (
@@ -84,9 +78,8 @@ class TestInfoExtraction(object):
         }
 
         for ua, info in ua_infos.items():
-            assert_that(
-                self.http_info_extractor._do_extract(self._mock_request(ua=ua)),
-                has_entries(info),
+            assert six.viewitems(info) <= six.viewitems(
+                self.http_info_extractor._do_extract(self._mock_request(ua=ua))
             )
 
     def test_http_ua_extractor_when_no_info(self):
@@ -112,10 +105,8 @@ class TestInfoExtraction(object):
         }
 
         for path, mac in six.iteritems(macs_from_paths):
-            assert_that(
-                self.http_info_extractor._do_extract(self._mock_request(path=path)),
-                has_entries({u'vendor': u'Yealink', u'mac': mac}),
-            )
+            result = self.http_info_extractor._do_extract(self._mock_request(path=path))
+            assert six.viewitems({u'vendor': u'Yealink', u'mac': mac}) <= six.viewitems(result)
 
     @patch('v86.common.logger')
     def test_invalid_mac(self, mocked_logger):
@@ -144,35 +135,20 @@ class TestPluginAssociation(object):
 
     def test_plugin_association_when_all_info_match(self):
         for model, version in six.iteritems(MODEL_VERSIONS):
-            assert_that(
-                self.plugin_associator._do_associate('Yealink', model, version),
-                equal_to(FULL_SUPPORT),
-            )
+            assert self.plugin_associator._do_associate('Yealink', model, version) == FULL_SUPPORT
 
     def test_plugin_association_when_only_vendor_and_model_match(self):
         for model in six.iterkeys(MODEL_VERSIONS):
-            assert_that(
-                self.plugin_associator._do_associate('Yealink', model, None),
-                equal_to(COMPLETE_SUPPORT),
-            )
+            assert self.plugin_associator._do_associate('Yealink', model, None) == COMPLETE_SUPPORT
 
     def test_plugin_association_when_only_vendor_matches(self):
-        assert_that(
-            self.plugin_associator._do_associate('Yealink', None, None),
-            equal_to(PROBABLE_SUPPORT),
-        )
+        assert self.plugin_associator._do_associate('Yealink', None, None) == PROBABLE_SUPPORT
 
     def test_plugin_association_when_nothing_matches(self):
-        assert_that(
-            self.plugin_associator._do_associate('DoesNotMatch', 'NothingPhone', '1.2.3'),
-            equal_to(IMPROBABLE_SUPPORT),
-        )
+        assert self.plugin_associator._do_associate('DoesNotMatch', 'NothingPhone', '1.2.3') == IMPROBABLE_SUPPORT
 
     def test_plugin_association_does_not_match_when_empty_strings(self):
-        assert_that(
-            self.plugin_associator._do_associate('', '', ''),
-            equal_to(IMPROBABLE_SUPPORT),
-        )
+        assert self.plugin_associator._do_associate('', '', '') == IMPROBABLE_SUPPORT
 
 
 class TestPlugin(object):
@@ -181,12 +157,7 @@ class TestPlugin(object):
         fetch_fw.return_value.services.return_value = sentinel.fetchfw_services
         fetch_fw.new_downloaders.return_value = sentinel.fetchfw_downloaders
         plugin = v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())
-        assert_that(
-            plugin,
-            has_properties(
-                services=sentinel.fetchfw_services,
-            ),
-        )
+        assert plugin.services == sentinel.fetchfw_services
         fetch_fw.assert_called_once_with('test_dir', sentinel.fetchfw_downloaders)
 
     def test_common_configure(self, v86_plugin):

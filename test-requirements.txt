@@ -8,7 +8,6 @@ beautifulsoup4==4.7.1  # from xivo-fetchfw
 markupsafe==1.1.0  # from jinja2
 jinja2==2.10  # from wazo-provd
 mock
-pyhamcrest
 pytest
 twisted==18.9.0  # from wazo-provd
 zope.interface==4.7.2  # from wazo-provd
