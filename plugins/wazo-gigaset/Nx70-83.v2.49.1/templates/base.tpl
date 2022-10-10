@@ -75,7 +75,7 @@
         <param name="SipProvider.{{ provider['id'] }}.RegServerAddress" value="{{ sip_registrar_ip }}"/>
         <param name="SipProvider.{{ provider['id'] }}.RegServerPort" value="{{ sip_registrar_port|d(5060) }}"/>
     {%- endif %}
-        <param name="SipProvider.{{ provider['id'] }}.RegServerRefreshTimer" value="180"/>
+        <param name="SipProvider.{{ provider['id'] }}.RegServerRefreshTimer" value="90"/>
         <param name="SipProvider.{{ provider['id'] }}.TransportProtocol" value="{{ provider['sip_transport'] }}"/>
         <param name="SipProvider.{{ provider['id'] }}.UseSIPS" value="0"/>
     {%- if provider['sip_transport'] == '3' %}
