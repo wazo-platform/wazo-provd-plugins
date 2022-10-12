@@ -139,37 +139,37 @@ b-c: cp */GUI/* lang/
 
 [file_T27G-fw]
 filename: T27G-69.85.0.85.rom
-url: http://provd.wazo.community/firmwares/yealink/T27G-69.85.0.85.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/cQXScowVOki2lf6C3HHTOEplusSymbolxOeh16yCKuaejgka2TNmkG8neODdVjoWxj0LVmZj3VBUaJpAYA6HbGDrhZnsxcQ==
 size: 19481168
 sha1sum: 7a577bb7bf78369ac040a09f5c01df87a0a040a0
 
 [file_T3X-fw]
 filename: T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom
-url: http://provd.wazo.community/firmwares/yealink/T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaLax8/BK0F3qWPL7mTTwQzGCzdCwFXQNwTjKkYXobplusSymbolmgH4NmWKzmh2BMZhaPB960HLtt4lL6rMoNplusSymbolg99kS0OyRfraANJmxKVeIg9PbT10PAR9VWitFKniYC3jmoMo62iK
 size: 11628240
 sha1sum: c642dc5fa8010253b91016c7fd11a6da0d2ec879
 
 [file_T46S_T48S_T42S_T41S-fw]
 filename: T46S(T48S,T42S,T41S)-66.85.0.5.rom
-url: http://provd.wazo.community/firmwares/yealink/T46S(T48S,T42S,T41S)-66.85.0.5.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/x71yaViKhXSKOgYSKl0Pb7N9IXFpYf7YAOhOJmV0fGjbcYgmf0b9uxGdQ1IFTWkfgTz2m4g5Uoy1NWm3/S6JBTsplusSymbolM5UOVemCq9Kf2pvmyoc=
 size: 25559152
 sha1sum: 091d469ba3ce13b424a5212fb74f0e1b59c31a6a
 
 [file_T53_T53W_T54W_T57W-fw]
 filename: T54W(T57W,T53W,T53)-96.85.0.5.rom
-url: http://provd.wazo.community/firmwares/yealink/T54W(T57W,T53W,T53)-96.85.0.5.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/sKL4XBvNyeFAFj6iRUIQMwplusSymbolJP9V1Oso2y/CGBHWvxmsB6aHbZoB7iAjQqo2AApq99Zqt6m/o8TomrLplusSymboloxAHEoRkikrZNg9XVRDplusSymbolcXNhAplusSymbol4I=
 size: 33026048
 sha1sum: dccfcc12ab010ed74bd49327fb396c3dbcc71774
 
 [file_T58A-fw]
 filename: T58-58.85.0.5.rom
-url: http://provd.wazo.community/firmwares/yealink/T58-58.85.0.5.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/WgHS0ldv1pQnJaaMIzkEplusSymboleplusSymbolHd9u6FcH6DP46voplusSymbolSLJDhhCOZWaRrtUkJXs6hWjfSedGCiU7f8EInRFVLVSFxxg==
 size: 234797120
 sha1sum: 960956917bfc6e5be956f9c783a35005984795b8
 
 [file_W60B-fw]
 filename: W60B-77.85.0.25.rom
-url: http://provd.wazo.community/firmwares/yealink/W60B-77.85.0.25.rom
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyprkfRlGTqdFMbAVf81NnTP/95/FVRL1rtzoORnY1HnveXt6bnGL0gA4Bj7MGid1rCEhkzMxpR6ozQ7FKzkLUH9JXmw7Gcc2TFg==
 size: 10732848
 sha1sum: 73f3d3485395e53bb647f7da270a49f13acca6c0
 
@@ -187,19 +187,19 @@ sha1sum: 9ed6081e193026cdc6d4af4c822ce9f530305f1d
 
 [file_W53H-fw]
 filename: W53H-88.85.0.20.rom
-url: http://provd.wazo.community/firmwares/yealink/W53H-88.85.0.20.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaplusSymbol0qSTyaLIdtqptKGSQ3XeTjQt6fV0Vya0U8xir/zZ1rs1P3NvLESQmJ9DlT3xBh7plusSymbolSFDt1r2J27/FwIrCEp49w==
 size: 2631680
 sha1sum: 8184fdfadbceac79e6256e7f0f70ac0d1832f9a9
 
 [file_W56H-fw]
 filename: W56H-61.85.0.20.rom
-url: http://provd.wazo.community/firmwares/yealink/W56H-61.85.0.20.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaiuXz9yCL/QYwRAXKohXgCo5mcxuZqA9WfAW1qIHizipOKvVQvMVgomokuirGUv/E2VxiEZ64pYtVbHUzylW6nQ==
 size: 4412384
 sha1sum: 42b7b4dbfc98058635c6c5dc8bd8f88a4ade2568
 
 [file_W59R-fw]
 filename: W59R-115.85.0.20.rom
-url: http://provd.wazo.community/firmwares/yealink/W59R-115.85.0.20.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaxx5awq37Uct9zHd5cZ0splusSymbolejpISplusSymbolpArxKDBBJr1egGc4j8h87MuB7zbYPQrQHW70h77plusSymboliKk/plusSymbolXplusSymbolUZBAYO9FmM1VVNiKqineel
 size: 3148768
 sha1sum: 3e826495b1585156a300b1e3752013491791db2d
 
@@ -217,36 +217,36 @@ sha1sum: 88b0b4690f52205aced4ba0a08b5cef94b1314d0
 
 [file_T54W-ddphone-fw]
 filename: T54W-ddphone-96.85.0.65.rom
-url: http://provd.wazo.community/firmwares/yealink/T54W-ddphone-96.85.0.65.rom
+url: https://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqas9GMbErjo4LkLfAIgeMal8FeOmjb/8u/plusSymbolWplusSymbolt2iGCVBIBwD/n9fzFelQDyUoBUjjMg0V3UJKO4bjR0b0ZpdNcchq669guY/fn
 size: 2304784
 sha1sum: 8a0c1e872ef9819ad2006661f753eb022eb2fd8e
 
 [file_CP920-fw]
 filename: CP920-78.85.0.5.rom
-url: http://provd.wazo.community/firmwares/yealink/CP920-78.85.0.5.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/49OL6tVRFp0O0TxnAgN0xxVqUA1UMejgRbBFugI2y2VGMxhagCorDjD7civfp7wxFyTN8Jf/AE2FoXLGuQrmPg==
 size: 20647536
 sha1sum: 35627d9a483e45382ec3664bc672613f954e66fb
 
 [file_CP930W-fw]
 filename: CP930W-87.85.0.20.rom
-url: http://provd.wazo.community/firmwares/yealink/CP930W-87.85.0.20.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGyppagPXFxrNqaGL5UXnwnflJkrwF3or2hiV0ZTbCw7IC/plusSymbolcaXuwqPTSNZBDH9f4Okv6wbEEYweplusSymbol8UcCt58lpS9oNOXaGBkwQh2hNdgyGkDNAc
 size: 4707008
 sha1sum: c8352c05618b75abdd7239f9ba96d81143df810f
 
 [file_CP960-fw]
 filename: CP960-73.85.0.5.rom
-url: http://provd.wazo.community/firmwares/yealink/CP960-73.85.0.5.rom
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/820lDplusSymboliRJ5magDUK3TIo7eNDQgLfNy9lwm5y8RAQQb6rqQGP8vOOlqqeSHfoRplusSymbolZr7fMvdhn6Z22FLGvbwW6DdQ==
 size: 205201136
 sha1sum: 5eecd52d398aa17437d96d72dec5affcfa5b706b
 
 [file_T58_CP960-lang]
 filename: Yealink_Android_Based_IP_Phones_Language_Packs.zip
-url: http://provd.wazo.community/firmwares/yealink/Yealink_Android_Based_IP_Phones_Language_Packs.zip
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/bv0zz5RV3bonplusSymboltk0jutxplusSymbolq13jEjyxq0CPQ7N7WS0jEXrMf3f2H5AfVN/vmYXAH3mDAe7u6toIp31nyY68CwbWUjW4JQTplusSymbolvyMNfC5ihpzXjpEHClUnf9rrxljFD/MXU3P
 size: 962517
 sha1sum: 451bf950f4e40261a45be38ad12020d4e47f24dd
 
 [file_T2X_T4X_T5X_CP920-lang]
 filename: Yealink_SIP_Phones_Language_Packs.zip
-url: http://provd.wazo.community/firmwares/yealink/Yealink_SIP_Phones_Language_Packs.zip
+url: http://support.yealink.com/forward2download?path=ZIjHOJbWuW/DFrGTLnGypkTJASVqwzX/waElr/1HnySCyBvKzh5D1fS8fGfq8b6ALR4P4HuwAjgxyFvcdGAoCKh1OD8DbEQKHQilonqrsfsCB9PKL/v/jvU/CUym5nkjV1rT6gJAGDbS2ASHn13D6w==
 size: 2996116
 sha1sum: c8290a0543ab7973d6254e4770777fa30f2fc891
