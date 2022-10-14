@@ -30,6 +30,8 @@ MODEL_VERSIONS = {
     u'T58': u'58.85.0.5',
     u'W60B': u'77.85.0.25',
     u'W70B': u'146.85.0.37',
+    u'W80B': u'103.85.0.25',
+    u'W80DM': u'103.85.0.25',
     u'W90DM': u'130.85.0.44',
     u'W90B': u'130.85.0.44',
 }
@@ -100,6 +102,12 @@ COMMON_FILES_DECT = [
         'handsets_fw': HANDSETS_FW,
         'tpl_filename': u'dect_model.tpl',
     },
+    {
+        'filename': u'y000000000103.cfg',
+        'fw_filename': u'$PN-103.85.0.25.rom',  # $PN = Product Name, i.e W80B
+        'handsets_fw': HANDSETS_FW,
+        'tpl_filename': u'dect_model.tpl',
+    }
 ]
 
 

@@ -67,6 +67,8 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         #   "Yealink SIP-T33G 124.85.257.55 80:5e:c0:bd:ea:ef"
         #   "Yealink W90DM 130.85.0.15 80:5e:c0:d9:c7:44"
         #   "Yealink W70B 146.85.0.5 80:5e:0c:1d:65:4e"
+        #   "Yealink W80B 103.85.0.25 80:5e:c0:71:01:38"
+        #   "Yealink W80DM 103.85.0.25 80:5e:c0:71:01:38"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
@@ -218,6 +220,8 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T57W': 29,
         u'T58': 27,
         u'W60B': 0,
+        u'W80B': 0,
+        u'W80DM': 0,
         u'W90DM': 0,
         u'W90B': 0,
     }
@@ -247,6 +251,8 @@ class BaseYealinkFunckeyPrefixIterator(object):
         u'T57W': 0,
         u'T58': 0,
         u'W60B': 0,
+        u'W80B': 0,
+        u'W80DM': 0,
         u'W90DM': 0,
         u'W90B': 0,
     }
@@ -352,6 +358,8 @@ class BaseYealinkPlugin(StandardPlugin):
         u'T57W': 16,
         u'T58': 16,
         u'W60B': 8,
+        u'W80B': 100,
+        u'W80DM': 100,
         u'W90DM': 250,
         u'W90B': 0,
     }
