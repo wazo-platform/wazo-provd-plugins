@@ -149,6 +149,11 @@ class BaseFanvilPlugin(StandardPlugin):
         if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 
+    def _add_server_url(self, raw_config):
+        ip = raw_config[u'ip']
+        http_port = raw_config[u'http_port']
+        raw_config[u'XX_server_url'] = u'http://{}:{}'.format(ip, http_port)
+
     def configure(self, device, raw_config):
         self._check_config(raw_config)
         self._check_device(device)
@@ -159,6 +164,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._update_lines(raw_config)
         self._add_fkeys(device, raw_config)
         self._add_phonebook_url(raw_config)
+        self._add_server_url(raw_config)
         self._add_firmware(device, raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
@@ -170,6 +176,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._remove_configuration_file(device)
 
     def configure_common(self, raw_config):
+        self._add_server_url(raw_config)
         for filename, (_, fw_filename, tpl_filename) in self._COMMON_FILES.iteritems():
             tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
