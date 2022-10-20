@@ -12,9 +12,9 @@
         <DownloadCommonConf>0</DownloadCommonConf>
         <DownloadDeviceConf>1</DownloadDeviceConf>
         <SaveProvisionInfo>1</SaveProvisionInfo>
-        <FlashServerIP>{{ ip }}</FlashServerIP>
+        <FlashServerIP>{{ XX_server_url }}</FlashServerIP>
         <FlashFileName>Fanvil/$mac.cfg</FlashFileName>
-        <FlashProtocol>1</FlashProtocol>
+        <FlashProtocol>4</FlashProtocol>
         <FlashMode>1</FlashMode>
         <FlashInterval>1</FlashInterval>
         <pnp>
