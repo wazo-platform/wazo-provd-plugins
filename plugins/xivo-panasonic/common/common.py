@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,12 +13,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import errno
 import logging
 import re
 import os.path
-from operator import itemgetter
-from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
@@ -54,13 +49,13 @@ class BasePanasonicHTTPDeviceInfoExtractor(object):
             raw_model, raw_version, raw_mac = m.groups()
             try:
                 mac = norm_mac(raw_mac.decode('ascii'))
-            except ValueError, e:
+            except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
-                return {u'vendor': u'Panasonic',
-                        u'model': raw_model.decode('ascii'),
-                        u'version': raw_version.decode('ascii'),
-                        u'mac': mac}
+                return {'vendor': 'Panasonic',
+                        'model': raw_model.decode('ascii'),
+                        'version': raw_version.decode('ascii'),
+                        'mac': mac}
         return None
 
 
@@ -71,7 +66,7 @@ class BasePanasonicPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(self, vendor, model, version):
-        if vendor == u'Panasonic':
+        if vendor == 'Panasonic':
             if model in self._models:
                 if version == self._version:
                     return FULL_SUPPORT
@@ -103,15 +98,15 @@ class BasePanasonicPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
+        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return 'Config' + fmted_mac + '.cfg'
 
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 
     def _common_templates(self):
@@ -153,7 +148,7 @@ class BasePanasonicPlugin(StandardPlugin):
         # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = device[u'ip'].encode('ascii')
+                ip = device['ip'].encode('ascii')
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:
@@ -164,7 +159,7 @@ class BasePanasonicPlugin(StandardPlugin):
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             return None
 
         return self._dev_specific_filename(device)

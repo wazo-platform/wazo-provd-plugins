@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2014-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +16,7 @@
 common_globals = {}
 execfile_('common.py', common_globals)
 
-MODEL_VERSION = {u'SPA2102': u'5.2.12'}
+MODEL_VERSION = {'SPA2102': '5.2.12'}
 
 
 class CiscoPlugin(common_globals['BaseCiscoPlugin']):

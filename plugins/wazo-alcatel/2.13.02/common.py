@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -43,7 +41,7 @@ class BaseAlcatelMyriadHTTPDeviceInfoExtractor(object):
         raw_mac = request.args.get('mac', [None])[0]
         if raw_mac:
             logger.debug('Got MAC from URL: "%s"', raw_mac)
-            device_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
+            device_info['mac'] = norm_mac(raw_mac.decode('ascii'))
         if ua:
             info_from_ua = self._extract_from_ua(ua)
             if info_from_ua:
@@ -60,10 +58,10 @@ class BaseAlcatelMyriadHTTPDeviceInfoExtractor(object):
             raw_version = device_info['version']
             raw_mac = device_info['mac']
             return {
-                u'vendor': u'Alcatel-Lucent',
-                u'model': raw_model.decode('ascii'),
-                u'mac': norm_mac(raw_mac.decode('ascii')),
-                u'version': raw_version.decode('ascii'),
+                'vendor': 'Alcatel-Lucent',
+                'model': raw_model.decode('ascii'),
+                'mac': norm_mac(raw_mac.decode('ascii')),
+                'version': raw_version.decode('ascii'),
             }
 
 
@@ -72,7 +70,7 @@ class BaseAlcatelMyriadPgAssociator(BasePgAssociator):
         self._models_versions = models_versions
 
     def _do_associate(self, vendor, model, version):
-        if vendor == u'Alcatel-Lucent':
+        if vendor == 'Alcatel-Lucent':
             if model in self._models_versions:
                 if version == self._models_versions.get(model, None):
                     return FULL_SUPPORT
@@ -85,45 +83,45 @@ class BaseAlcatelPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
 
     _SIP_DTMF_MODE = {
-        u'off': 0,
-        u'RTP-in-band': 1,
-        u'RTP-out-of-band': 2,
-        u'SIP-INFO': 4,
+        'off': 0,
+        'RTP-in-band': 1,
+        'RTP-out-of-band': 2,
+        'SIP-INFO': 4,
     }
 
     _NB_FUNCKEYS = {
-        u'M3': 20,
-        u'M5': 28,
-        u'M7': 28,
+        'M3': 20,
+        'M5': 28,
+        'M7': 28,
     }
     _FUNCKEY_TYPE = {
-        u'blf': 59,
-        u'speeddial': 1,
+        'blf': 59,
+        'speeddial': 1,
     }
     _LANG = {
-        u'en': 0,
-        u'fr': 1,
-        u'de': 2,
-        u'it': 3,
-        u'es': 4,
-        u'nl': 5,
-        u'pt': 6,
-        u'hu': 7,
-        u'cs': 8,
-        u'sk': 9,
-        u'sl': 10,
-        u'et': 11,
-        u'pl': 12,
-        u'lt': 13,
-        u'lv': 14,
-        u'tr': 15,
-        u'el': 16,
-        u'sv': 17,
-        u'no': 18,
-        u'da': 19,
-        u'fi': 20,
-        u'is': 21,
-        u'zh': 22,
+        'en': 0,
+        'fr': 1,
+        'de': 2,
+        'it': 3,
+        'es': 4,
+        'nl': 5,
+        'pt': 6,
+        'hu': 7,
+        'cs': 8,
+        'sk': 9,
+        'sl': 10,
+        'et': 11,
+        'pl': 12,
+        'lt': 13,
+        'lv': 14,
+        'tr': 15,
+        'el': 16,
+        'sv': 17,
+        'no': 18,
+        'da': 19,
+        'fi': 20,
+        'is': 21,
+        'zh': 22,
     }
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^config\.[0-9a-f]{12}\.xml')
@@ -153,29 +151,29 @@ class BaseAlcatelPlugin(StandardPlugin):
             self._tpl_helper.dump(tpl, raw_config, dest_file, self._ENCODING)
 
     def _update_sip_lines(self, raw_config):
-        proxy_ip = raw_config.get(u'sip_proxy_ip')
-        proxy_port = raw_config.get(u'sip_proxy_port')
-        backup_proxy_ip = raw_config.get(u'sip_backup_proxy_ip')
-        backup_proxy_port = raw_config.get(u'sip_backup_proxy_port')
-        outbound_proxy_ip = raw_config.get(u'sip_outbound_proxy_ip')
-        outbound_proxy_port = raw_config.get(u'sip_outbound_proxy_port')
-        voicemail = raw_config.get(u'exten_voicemail')
+        proxy_ip = raw_config.get('sip_proxy_ip')
+        proxy_port = raw_config.get('sip_proxy_port')
+        backup_proxy_ip = raw_config.get('sip_backup_proxy_ip')
+        backup_proxy_port = raw_config.get('sip_backup_proxy_port')
+        outbound_proxy_ip = raw_config.get('sip_outbound_proxy_ip')
+        outbound_proxy_port = raw_config.get('sip_outbound_proxy_port')
+        voicemail = raw_config.get('exten_voicemail')
 
-        for line in raw_config[u'sip_lines'].itervalues():
+        for line in raw_config['sip_lines'].values():
             if proxy_ip:
-                line.setdefault(u'proxy_ip', proxy_ip)
+                line.setdefault('proxy_ip', proxy_ip)
             if proxy_port:
-                line.setdefault(u'proxy_port', proxy_port)
+                line.setdefault('proxy_port', proxy_port)
             if backup_proxy_ip:
-                line.setdefault(u'backup_proxy_ip', backup_proxy_ip)
+                line.setdefault('backup_proxy_ip', backup_proxy_ip)
             if backup_proxy_port:
-                line.setdefault(u'backup_proxy_port', backup_proxy_port)
+                line.setdefault('backup_proxy_port', backup_proxy_port)
             if outbound_proxy_ip:
-                line.setdefault(u'outbound_proxy_ip', outbound_proxy_ip)
+                line.setdefault('outbound_proxy_ip', outbound_proxy_ip)
             if outbound_proxy_port:
-                line.setdefault(u'outbound_proxy_port', outbound_proxy_port)
+                line.setdefault('outbound_proxy_port', outbound_proxy_port)
             if voicemail:
-                line.setdefault(u'voicemail', voicemail)
+                line.setdefault('voicemail', voicemail)
 
     def _add_fkeys(self, raw_config, model):
         nb_funckeys = self._NB_FUNCKEYS.get(model)
@@ -183,25 +181,25 @@ class BaseAlcatelPlugin(StandardPlugin):
             logger.warning('Unknown model: "%s". Skipping function key configuration.', model)
             return
 
-        raw_config[u'XX_fkeys'] = []
-        for funckey_no, funckey_dict in raw_config[u'funckeys'].iteritems():
+        raw_config['XX_fkeys'] = []
+        for funckey_no, funckey_dict in raw_config['funckeys'].items():
             position = int(funckey_no) + 1
             fkey_type = self._FUNCKEY_TYPE.get(
-                funckey_dict[u'type'], self._FUNCKEY_TYPE[u'speeddial']
+                funckey_dict['type'], self._FUNCKEY_TYPE['speeddial']
             )
-            fkey_label = funckey_dict[u'label']
-            fkey_extension = funckey_dict[u'value']
+            fkey_label = funckey_dict['label']
+            fkey_extension = funckey_dict['value']
             if position > nb_funckeys:
                 logger.warning('Function key "%s" outside range supported by phone.', position)
                 continue
             fkey_data = {
-                u'position': position,
-                u'type': fkey_type,
-                u'label': fkey_label,
-                u'extension': fkey_extension,
-                u'value': fkey_extension,
+                'position': position,
+                'type': fkey_type,
+                'label': fkey_label,
+                'extension': fkey_extension,
+                'value': fkey_extension,
             }
-            raw_config[u'XX_fkeys'].append(fkey_data)
+            raw_config['XX_fkeys'].append(fkey_data)
 
     def _format_tzinfo(self, tzinfo):
         tz_hms = tzinfo['utcoffset'].as_hms
@@ -210,58 +208,58 @@ class BaseAlcatelPlugin(StandardPlugin):
         return '{:+02d}:{:02d}'.format(offset_hour, offset_minutes)
 
     def _add_timezone(self, raw_config):
-        if u'timezone' in raw_config:
+        if 'timezone' in raw_config:
             try:
-                tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
+                tzinfo = tzinform.get_timezone_info(raw_config['timezone'])
             except tzinform.TimezoneNotFoundError as e:
-                logger.warning('Unknown timezone "%s": "%s"', raw_config[u'timezone'], e)
+                logger.warning('Unknown timezone "%s": "%s"', raw_config['timezone'], e)
             else:
-                raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
+                raw_config['XX_timezone'] = self._format_tzinfo(tzinfo)
 
     def _add_language(self, raw_config):
-        locale = raw_config[u'locale']
+        locale = raw_config['locale']
         if '_' in locale:
             lang, _ = locale.split('_')
         else:
             lang = locale
 
         lang_code = self._LANG.get(lang, self._LANG['en'])
-        raw_config[u'XX_lang'] = lang_code
+        raw_config['XX_lang'] = lang_code
 
     def _add_user_dtmf_info(self, raw_config):
-        dtmf_mode = raw_config.get(u'sip_dtmf_mode')
-        for line in raw_config[u'sip_lines'].itervalues():
-            cur_dtmf_mode = line.get(u'dtmf_mode', dtmf_mode)
-            line[u'XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, 'off')
+        dtmf_mode = raw_config.get('sip_dtmf_mode')
+        for line in raw_config['sip_lines'].values():
+            cur_dtmf_mode = line.get('dtmf_mode', dtmf_mode)
+            line['XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, 'off')
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(raw_config, u'snom')
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+            plugins.add_xivo_phonebook_url(raw_config, 'snom')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
 
     def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
 
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
-        if u'model' not in device:
+        if 'model' not in device:
             raise Exception('Model name needed for device configuration')
 
     def _dev_specific_filename(self, device):
-        return u'config.{}.xml'.format(format_mac(device[u'mac'], separator=''))
+        return 'config.{}.xml'.format(format_mac(device['mac'], separator=''))
 
     def _add_server_url(self, raw_config):
-        ip = raw_config[u'ip']
-        http_port = raw_config[u'http_port']
-        raw_config[u'XX_server_url'] = u'http://{}:{}'.format(ip, http_port)
+        ip = raw_config['ip']
+        http_port = raw_config['http_port']
+        raw_config['XX_server_url'] = 'http://{}:{}'.format(ip, http_port)
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
@@ -271,7 +269,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         # generate xml file
         tpl = self._tpl_helper.get_dev_template(xml_filename, device)
 
-        model = device.get(u'model')
+        model = device.get('model')
         self._update_sip_lines(raw_config)
         self._add_fkeys(raw_config, model)
         self._add_timezone(raw_config)
@@ -279,7 +277,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         self._add_xivo_phonebook_url(raw_config)
         self._add_server_url(raw_config)
         self._add_language(raw_config)
-        raw_config[u'XX_options'] = device.get(u'options', {})
+        raw_config['XX_options'] = device.get('options', {})
 
         path = os.path.join(self._tftpboot_dir, xml_filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
@@ -300,7 +298,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = device[u'ip'].encode('ascii')
+                ip = device['ip'].encode('ascii')
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:
@@ -311,7 +309,7 @@ class BaseAlcatelPlugin(StandardPlugin):
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=true')
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             return None
 
         return self._dev_specific_filename(device)

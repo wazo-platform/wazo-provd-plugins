@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2010-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -38,10 +36,10 @@ logger = logging.getLogger('plugin.xivo-aastra')
 class BaseAastraHTTPDeviceInfoExtractor(object):
     _UA_REGEX = re.compile(r'^(?:Aastra|Mitel)(\w+) MAC:([^ ]+) V:([^ ]+)-SIP$')
     _UA_MODELS_MAP = {
-        '51i': u'6751i', # not tested
-        '53i': u'6753i', # not tested
-        '55i': u'6755i',
-        '57i': u'6757i',
+        '51i': '6751i', # not tested
+        '53i': '6753i', # not tested
+        '55i': '6755i',
+        '57i': '6757i',
     }
 
     def extract(self, request, request_type):
@@ -67,17 +65,17 @@ class BaseAastraHTTPDeviceInfoExtractor(object):
             raw_model, raw_mac, raw_version = m.groups()
             try:
                 mac = norm_mac(raw_mac.decode('ascii'))
-            except ValueError, e:
+            except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
                 if raw_model in self._UA_MODELS_MAP:
                     model = self._UA_MODELS_MAP[raw_model]
                 else:
                     model = raw_model.decode('ascii')
-                return {u'vendor': u'Aastra',
-                        u'model': model,
-                        u'version': raw_version.decode('ascii'),
-                        u'mac': mac}
+                return {'vendor': 'Aastra',
+                        'model': model,
+                        'version': raw_version.decode('ascii'),
+                        'mac': mac}
         return None
 
 
@@ -87,7 +85,7 @@ class BaseAastraPgAssociator(BasePgAssociator):
         self._model_versions = model_versions
 
     def _do_associate(self, vendor, model, version):
-        if vendor == u'Aastra':
+        if vendor == 'Aastra':
             if model in self._model_versions:
                 if version == self._model_versions[model]:
                     return FULL_SUPPORT
@@ -108,16 +106,16 @@ class AastraModel(object):
     def get_keytype(self, funckey_no):
         for keytype, nb_key in self._keytypes():
             if funckey_no <= nb_key:
-                return keytype + unicode(funckey_no)
+                return keytype + str(funckey_no)
             funckey_no -= nb_key
         return None
 
     def _keytypes(self):
-        yield (u'prgkey', self.nb_prgkey)
-        yield (u'topsoftkey', self.nb_topsoftkey)
-        yield (u'softkey', self.nb_softkey)
-        for expmod_num in xrange(1, self.nb_expmod + 1):
-            yield (u'expmod%s key' % expmod_num, self.nb_expmodkey)
+        yield ('prgkey', self.nb_prgkey)
+        yield ('topsoftkey', self.nb_topsoftkey)
+        yield ('softkey', self.nb_softkey)
+        for expmod_num in range(1, self.nb_expmod + 1):
+            yield ('expmod%s key' % expmod_num, self.nb_expmodkey)
 
 
 class BaseAastraPlugin(StandardPlugin):
@@ -127,139 +125,139 @@ class BaseAastraPlugin(StandardPlugin):
     _M680_NB_KEY = 16
     _M685_NB_KEY = 84
     _MODELS = {
-        u'6730i': AastraModel(
+        '6730i': AastraModel(
             nb_prgkey=8,
         ),
-        u'6731i': AastraModel(
+        '6731i': AastraModel(
             nb_prgkey=8,
         ),
-        u'6735i': AastraModel(
+        '6735i': AastraModel(
             nb_prgkey=6,
             nb_softkey=20,
             nb_expmod=3,
             nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
         ),
-        u'6737i': AastraModel(
+        '6737i': AastraModel(
             nb_topsoftkey=10,
             nb_softkey=20,
             nb_expmod=3,
             nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
         ),
-        u'6739i': AastraModel(
+        '6739i': AastraModel(
             nb_softkey=55,
             nb_expmod=3,
             nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
         ),
-        u'6753i': AastraModel(
+        '6753i': AastraModel(
             nb_prgkey=6,
             nb_expmod=3,
             nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
         ),
-        u'6755i': AastraModel(
+        '6755i': AastraModel(
             nb_prgkey=6,
             nb_softkey=20,
             nb_expmod=3,
             nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
         ),
-        u'6757i': AastraModel(
+        '6757i': AastraModel(
             nb_topsoftkey=10,
             nb_softkey=20,
             nb_expmod=3,
             nb_expmodkey=max(_M670_NB_KEY, _M675_NB_KEY),
         ),
-        u'6863i': AastraModel(
+        '6863i': AastraModel(
             nb_prgkey=3,
         ),
-        u'6865i': AastraModel(
+        '6865i': AastraModel(
             nb_prgkey=8,
             nb_expmod=3,
             nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
         ),
-        u'6867i': AastraModel(
+        '6867i': AastraModel(
             nb_topsoftkey=20,
             nb_softkey=18,
             nb_expmod=3,
             nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
         ),
-        u'6869i': AastraModel(
+        '6869i': AastraModel(
             nb_topsoftkey=44,
             nb_softkey=24,
             nb_expmod=3,
             nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
         ),
-        u'6873i': AastraModel(
+        '6873i': AastraModel(
             nb_topsoftkey=48,
             nb_softkey=24,
             nb_expmod=3,
             nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
         ),
-        u'6930': AastraModel(
+        '6930': AastraModel(
             nb_topsoftkey=44,
             nb_softkey=24,
             nb_expmod=3,
             nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
         ),
-        u'9143i': AastraModel(
+        '9143i': AastraModel(
             nb_prgkey=7,
         ),
-        u'9480i': AastraModel(
+        '9480i': AastraModel(
             nb_softkey=6,
         ),
     }
     _TRUSTED_ROOT_CERTS_SUFFIX = '-ca_servers.crt'
     _LOCALE = {
         # <locale>: (<lang file>, <tone set>, <input language>)
-        u'de_DE': (u'lang_de.txt', u'Germany', u'German'),
-        u'es_ES': (u'lang_es.txt', u'Europe', u'Spanish'),
-        u'fr_FR': (u'lang_fr.txt', u'France', u'French'),
-        u'fr_CA': (u'lang_fr_ca.txt', u'US', u'French'),
-        u'it_IT': (u'lang_it.txt', u'Italy', u'Italian'),
-        u'nl_NL': (u'lang_nl_nl.txt', u'Germany', u'Dutch'),
+        'de_DE': ('lang_de.txt', 'Germany', 'German'),
+        'es_ES': ('lang_es.txt', 'Europe', 'Spanish'),
+        'fr_FR': ('lang_fr.txt', 'France', 'French'),
+        'fr_CA': ('lang_fr_ca.txt', 'US', 'French'),
+        'it_IT': ('lang_it.txt', 'Italy', 'Italian'),
+        'nl_NL': ('lang_nl_nl.txt', 'Germany', 'Dutch'),
     }
     _SIP_DTMF_MODE = {
         # <dtmf mode>: (<out-of-band dtmf>, <dtmf method>)
-        u'RTP-in-band': (u'0', u'0'),
-        u'RTP-out-of-band': (u'1', u'0'),
-        u'SIP-INFO': (u'1', u'1')
+        'RTP-in-band': ('0', '0'),
+        'RTP-out-of-band': ('1', '0'),
+        'SIP-INFO': ('1', '1')
     }
     _SIP_SRTP_MODE = {
-        u'disabled': u'0',
-        u'preferred': u'1',
-        u'required': u'2'
+        'disabled': '0',
+        'preferred': '1',
+        'required': '2'
     }
     _SIP_TRANSPORT = {
-        u'udp': u'1',
-        u'tcp': u'2',
-        u'tls': u'4'
+        'udp': '1',
+        'tcp': '2',
+        'tls': '4'
     }
     _SYSLOG_LEVEL = {
-        u'critical': u'1',
-        u'error': u'3',
-        u'warning': u'7',
-        u'info': u'39',
-        u'debug': u'65535'
+        'critical': '1',
+        'error': '3',
+        'warning': '7',
+        'info': '39',
+        'debug': '65535'
     }
-    _XX_DICT_DEF = u'en'
+    _XX_DICT_DEF = 'en'
     _XX_DICT = {
-        u'en': {
-            u'voicemail':  u'Voicemail',
-            u'fwd_unconditional': u'Unconditional forward',
-            u'dnd': u'D.N.D',
-            u'local_directory': u'Directory',
-            u'callers': u'Callers',
-            u'services': u'Services',
-            u'pickup_call': u'Call pickup',
-            u'remote_directory': u'Directory',
+        'en': {
+            'voicemail':  'Voicemail',
+            'fwd_unconditional': 'Unconditional forward',
+            'dnd': 'D.N.D',
+            'local_directory': 'Directory',
+            'callers': 'Callers',
+            'services': 'Services',
+            'pickup_call': 'Call pickup',
+            'remote_directory': 'Directory',
         },
-        u'fr': {
-            u'voicemail':  u'Messagerie',
-            u'fwd_unconditional': u'Renvoi inconditionnel',
-            u'dnd': u'N.P.D',
-            u'local_directory': u'Repertoire',
-            u'callers': u'Appels',
-            u'services': u'Services',
-            u'pickup_call': u'Interception',
-            u'remote_directory': u'Annuaire',
+        'fr': {
+            'voicemail':  'Messagerie',
+            'fwd_unconditional': 'Renvoi inconditionnel',
+            'dnd': 'N.P.D',
+            'local_directory': 'Repertoire',
+            'callers': 'Appels',
+            'services': 'Services',
+            'pickup_call': 'Interception',
+            'remote_directory': 'Annuaire',
         },
     }
 
@@ -282,65 +280,65 @@ class BaseAastraPlugin(StandardPlugin):
     http_dev_info_extractor = BaseAastraHTTPDeviceInfoExtractor()
 
     def _add_out_of_band_dtmf(self, raw_config):
-        dtmf_mode = raw_config.get(u'sip_dtmf_mode')
+        dtmf_mode = raw_config.get('sip_dtmf_mode')
         if dtmf_mode in self._SIP_DTMF_MODE:
-            raw_config[u'XX_out_of_band_dtmf'] = self._SIP_DTMF_MODE[dtmf_mode][0]
-            raw_config[u'XX_dtmf_method'] = self._SIP_DTMF_MODE[dtmf_mode][1]
+            raw_config['XX_out_of_band_dtmf'] = self._SIP_DTMF_MODE[dtmf_mode][0]
+            raw_config['XX_dtmf_method'] = self._SIP_DTMF_MODE[dtmf_mode][1]
 
     def _add_locale(self, raw_config):
-        locale = raw_config.get(u'locale')
+        locale = raw_config.get('locale')
         if locale in self._LOCALE:
-            raw_config[u'XX_locale'] = self._LOCALE[locale]
+            raw_config['XX_locale'] = self._LOCALE[locale]
 
     def _add_log_level(self, raw_config):
-        syslog_level = raw_config.get(u'syslog_level')
-        raw_config[u'XX_log_level'] = self._SYSLOG_LEVEL.get(syslog_level, u'1')
+        syslog_level = raw_config.get('syslog_level')
+        raw_config['XX_log_level'] = self._SYSLOG_LEVEL.get(syslog_level, '1')
 
     def _add_transport_proto(self, raw_config):
-        sip_transport = raw_config.get(u'sip_transport')
+        sip_transport = raw_config.get('sip_transport')
         if sip_transport in self._SIP_TRANSPORT:
-            raw_config[u'XX_transport_proto'] = self._SIP_TRANSPORT[sip_transport]
+            raw_config['XX_transport_proto'] = self._SIP_TRANSPORT[sip_transport]
 
     def _format_dst_change(self, suffix, dst_change):
         lines = []
-        lines.append(u'dst %s month: %d' % (suffix, dst_change['month']))
-        lines.append(u'dst %s hour: %d' % (suffix, min(dst_change['time'].as_hours, 23)))
+        lines.append('dst %s month: %d' % (suffix, dst_change['month']))
+        lines.append('dst %s hour: %d' % (suffix, min(dst_change['time'].as_hours, 23)))
         if dst_change['day'].startswith('D'):
-            lines.append(u'dst %s day: %s' % (suffix, dst_change['day'][1:]))
+            lines.append('dst %s day: %s' % (suffix, dst_change['day'][1:]))
         else:
             week, weekday = dst_change['day'][1:].split('.')
             if week == '5':
-                lines.append(u'dst %s week: -1' % suffix)
+                lines.append('dst %s week: -1' % suffix)
             else:
-                lines.append(u'dst %s week: %s' % (suffix, week))
-            lines.append(u'dst %s day: %s' % (suffix, weekday))
+                lines.append('dst %s week: %s' % (suffix, week))
+            lines.append('dst %s day: %s' % (suffix, weekday))
         return lines
 
     def _format_tzinfo(self, tzinfo):
         lines = []
-        lines.append(u'time zone name: Custom')
-        lines.append(u'time zone minutes: %d' % -(tzinfo['utcoffset'].as_minutes))
+        lines.append('time zone name: Custom')
+        lines.append('time zone minutes: %d' % -(tzinfo['utcoffset'].as_minutes))
         if tzinfo['dst'] is None:
-            lines.append(u'dst config: 0')
+            lines.append('dst config: 0')
         else:
-            lines.append(u'dst config: 3')
-            lines.append(u'dst minutes: %d' % (min(tzinfo['dst']['save'].as_minutes, 60)))
+            lines.append('dst config: 3')
+            lines.append('dst minutes: %d' % (min(tzinfo['dst']['save'].as_minutes, 60)))
             if tzinfo['dst']['start']['day'].startswith('D'):
-                lines.append(u'dst [start|end] relative date: 0')
+                lines.append('dst [start|end] relative date: 0')
             else:
-                lines.append(u'dst [start|end] relative date: 1')
+                lines.append('dst [start|end] relative date: 1')
             lines.extend(self._format_dst_change('start', tzinfo['dst']['start']))
             lines.extend(self._format_dst_change('end', tzinfo['dst']['end']))
-        return u'\n'.join(lines)
+        return '\n'.join(lines)
 
     def _add_timezone(self, raw_config):
-        if u'timezone' in raw_config:
+        if 'timezone' in raw_config:
             try:
-                tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
-            except tzinform.TimezoneNotFoundError, e:
+                tzinfo = tzinform.get_timezone_info(raw_config['timezone'])
+            except tzinform.TimezoneNotFoundError as e:
                 logger.info('Unknown timezone: %s', e)
             else:
-                raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
+                raw_config['XX_timezone'] = self._format_tzinfo(tzinfo)
 
     def _add_fkeys(self, raw_config, model):
         model_obj = self._MODELS.get(model)
@@ -348,76 +346,76 @@ class BaseAastraPlugin(StandardPlugin):
             logger.info('Unknown model %s; no function key will be configured', model)
             return
         lines = []
-        for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
+        for funckey_no, funckey_dict in sorted(iter(raw_config['funckeys'].items()),
                                                key=itemgetter(0)):
             keytype = model_obj.get_keytype(int(funckey_no))
             if keytype is None:
                 logger.info('Function key %s is out of range for model %s', funckey_no, model)
                 continue
-            funckey_type = funckey_dict[u'type']
-            if funckey_type == u'speeddial':
-                type_ = u'speeddial'
-                value = funckey_dict[u'value']
-            elif funckey_type == u'blf':
-                if keytype.startswith(u'softkey') and model.startswith(u'68'):
+            funckey_type = funckey_dict['type']
+            if funckey_type == 'speeddial':
+                type_ = 'speeddial'
+                value = funckey_dict['value']
+            elif funckey_type == 'blf':
+                if keytype.startswith('softkey') and model.startswith('68'):
                     # 6800 series doesn't support the "blf" type on softkey
-                    type_ = u'speeddial'
+                    type_ = 'speeddial'
                 else:
-                    type_ = u'blf'
-                value = funckey_dict[u'value']
-            elif funckey_type == u'park':
-                type_ = u'park'
+                    type_ = 'blf'
+                value = funckey_dict['value']
+            elif funckey_type == 'park':
+                type_ = 'park'
                 # note that value for park is ignored for firmware 3.x
-                value = 'asterisk;%s' % funckey_dict[u'value']
+                value = 'asterisk;%s' % funckey_dict['value']
             else:
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
-            label = funckey_dict.get(u'label', value)
-            line = funckey_dict.get(u'line', u'1')
-            lines.append(u'%s type: %s' % (keytype, type_))
-            lines.append(u'%s value: %s' % (keytype, value))
-            lines.append(u'%s label: %s' % (keytype, label))
-            lines.append(u'%s line: %s' % (keytype, line))
-        raw_config[u'XX_fkeys'] = u'\n'.join(lines)
+            label = funckey_dict.get('label', value)
+            line = funckey_dict.get('line', '1')
+            lines.append('%s type: %s' % (keytype, type_))
+            lines.append('%s value: %s' % (keytype, value))
+            lines.append('%s label: %s' % (keytype, label))
+            lines.append('%s line: %s' % (keytype, line))
+        raw_config['XX_fkeys'] = '\n'.join(lines)
 
     def _update_sip_lines(self, raw_config):
-        proxy_ip = raw_config.get(u'sip_proxy_ip')
-        proxy_port = raw_config.get(u'sip_proxy_port', u'5060')
-        backup_proxy_ip = raw_config.get(u'sip_backup_proxy_ip', u'0.0.0.0')
-        backup_proxy_port = raw_config.get(u'sip_backup_proxy_port', u'5060')
-        registrar_ip = raw_config.get(u'sip_registrar_ip')
-        registrar_port = raw_config.get(u'sip_registrar_port', u'5060')
-        backup_registrar_ip = raw_config.get(u'sip_backup_registrar_ip', u'0.0.0.0')
-        backup_registrar_port = raw_config.get(u'sip_backup_registrar_port', u'5060')
-        dtmf_mode = raw_config.get(u'sip_dtmf_mode')
-        srtp_mode = raw_config.get(u'sip_srtp_mode')
-        voicemail = raw_config.get(u'exten_voicemail')
-        for line in raw_config[u'sip_lines'].itervalues():
-            line.setdefault(u'proxy_ip', proxy_ip)
-            line.setdefault(u'proxy_port', proxy_port)
-            line.setdefault(u'backup_proxy_ip', backup_proxy_ip)
-            line.setdefault(u'backup_proxy_port', backup_proxy_port)
-            line.setdefault(u'registrar_ip', registrar_ip)
-            line.setdefault(u'registrar_port', registrar_port)
-            line.setdefault(u'backup_registrar_ip', backup_registrar_ip)
-            line.setdefault(u'backup_registrar_port', backup_registrar_port)
+        proxy_ip = raw_config.get('sip_proxy_ip')
+        proxy_port = raw_config.get('sip_proxy_port', '5060')
+        backup_proxy_ip = raw_config.get('sip_backup_proxy_ip', '0.0.0.0')
+        backup_proxy_port = raw_config.get('sip_backup_proxy_port', '5060')
+        registrar_ip = raw_config.get('sip_registrar_ip')
+        registrar_port = raw_config.get('sip_registrar_port', '5060')
+        backup_registrar_ip = raw_config.get('sip_backup_registrar_ip', '0.0.0.0')
+        backup_registrar_port = raw_config.get('sip_backup_registrar_port', '5060')
+        dtmf_mode = raw_config.get('sip_dtmf_mode')
+        srtp_mode = raw_config.get('sip_srtp_mode')
+        voicemail = raw_config.get('exten_voicemail')
+        for line in raw_config['sip_lines'].values():
+            line.setdefault('proxy_ip', proxy_ip)
+            line.setdefault('proxy_port', proxy_port)
+            line.setdefault('backup_proxy_ip', backup_proxy_ip)
+            line.setdefault('backup_proxy_port', backup_proxy_port)
+            line.setdefault('registrar_ip', registrar_ip)
+            line.setdefault('registrar_port', registrar_port)
+            line.setdefault('backup_registrar_ip', backup_registrar_ip)
+            line.setdefault('backup_registrar_port', backup_registrar_port)
             # add XX_dtmf_method
-            cur_dtmf_mode = line.get(u'dtmf_mode', dtmf_mode)
+            cur_dtmf_mode = line.get('dtmf_mode', dtmf_mode)
             if cur_dtmf_mode in self._SIP_DTMF_MODE:
-                line[u'XX_dtmf_method'] = self._SIP_DTMF_MODE[cur_dtmf_mode][1]
+                line['XX_dtmf_method'] = self._SIP_DTMF_MODE[cur_dtmf_mode][1]
             else:
-                line[u'XX_dtmf_method'] = u'0'
+                line['XX_dtmf_method'] = '0'
             # add XX_srtp_mode
-            cur_srtp_mode = line.get(u'srtp_mode', srtp_mode)
-            line[u'XX_srtp_mode'] = self._SIP_SRTP_MODE.get(cur_srtp_mode, u'0')
+            cur_srtp_mode = line.get('srtp_mode', srtp_mode)
+            line['XX_srtp_mode'] = self._SIP_SRTP_MODE.get(cur_srtp_mode, '0')
             # add voicemail
             if voicemail:
-                line.setdefault(u'voicemail', voicemail)
+                line.setdefault('voicemail', voicemail)
 
     def _gen_xx_dict(self, raw_config):
         xx_dict = self._XX_DICT[self._XX_DICT_DEF]
-        if u'locale' in raw_config:
-            locale = raw_config[u'locale']
+        if 'locale' in raw_config:
+            locale = raw_config['locale']
             lang = locale.split('_', 1)[0]
             if lang in self._XX_DICT:
                 xx_dict = self._XX_DICT[lang]
@@ -425,7 +423,7 @@ class BaseAastraPlugin(StandardPlugin):
 
     def _device_cert_or_key_filename(self, device, suffix):
         # Return the cert or key file filename for a device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
+        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return fmted_mac + suffix
 
     def _write_cert_or_key_file(self, pem_cert, device, suffix):
@@ -437,56 +435,56 @@ class BaseAastraPlugin(StandardPlugin):
         return filename
 
     def _add_trusted_certificates(self, raw_config, device):
-        if u'sip_servers_root_and_intermediate_certificates' in raw_config:
-            pem_cert = raw_config[u'sip_servers_root_and_intermediate_certificates']
-            raw_config[u'XX_trusted_certificates'] = self._write_cert_or_key_file(pem_cert, device,
+        if 'sip_servers_root_and_intermediate_certificates' in raw_config:
+            pem_cert = raw_config['sip_servers_root_and_intermediate_certificates']
+            raw_config['XX_trusted_certificates'] = self._write_cert_or_key_file(pem_cert, device,
                                                                     self._TRUSTED_ROOT_CERTS_SUFFIX)
 
     def _add_parking(self, raw_config):
         # hack to set the per line parking config if a park function key is used
         parking = None
         is_parking_set = False
-        for funckey_no, funckey_dict in raw_config[u'funckeys'].iteritems():
-            if funckey_dict[u'type'] == u'park':
+        for funckey_no, funckey_dict in raw_config['funckeys'].items():
+            if funckey_dict['type'] == 'park':
                 if is_parking_set:
-                    cur_parking = funckey_dict[u'value']
+                    cur_parking = funckey_dict['value']
                     if cur_parking != parking:
                         logger.warning('Ignoring park value %s for function key %s: using %s',
                                        cur_parking, funckey_no, parking)
                 else:
-                    parking = funckey_dict[u'value']
+                    parking = funckey_dict['value']
                     is_parking_set = True
                     self._do_add_parking(raw_config, parking)
 
     def _do_add_parking(self, raw_config, parking):
-        raw_config[u'XX_parking'] = u'\n'.join(u'sip line%s park pickup config: %s;%s;asterisk' %
+        raw_config['XX_parking'] = '\n'.join('sip line%s park pickup config: %s;%s;asterisk' %
                                                (line_no, parking, parking)
-                                               for line_no in raw_config[u'sip_lines'])
+                                               for line_no in raw_config['sip_lines'])
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(raw_config, u'aastra')
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+            plugins.add_xivo_phonebook_url(raw_config, 'aastra')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
 
     def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.cfg$')
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
+        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return fmted_mac + '.cfg'
 
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 
     def configure(self, device, raw_config):
@@ -496,7 +494,7 @@ class BaseAastraPlugin(StandardPlugin):
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
         self._add_out_of_band_dtmf(raw_config)
-        self._add_fkeys(raw_config, device.get(u'model'))
+        self._add_fkeys(raw_config, device.get('model'))
         self._add_locale(raw_config)
         self._add_log_level(raw_config)
         self._add_timezone(raw_config)
@@ -505,9 +503,9 @@ class BaseAastraPlugin(StandardPlugin):
         self._update_sip_lines(raw_config)
         self._add_parking(raw_config)
         self._add_xivo_phonebook_url(raw_config)
-        raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
-        raw_config[u'XX_options'] = device.get(u'options', {})
-        raw_config[u'XX_language_path'] = self._LANGUAGE_PATH
+        raw_config['XX_dict'] = self._gen_xx_dict(raw_config)
+        raw_config['XX_options'] = device.get('options', {})
+        raw_config['XX_language_path'] = self._LANGUAGE_PATH
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
@@ -540,7 +538,7 @@ class BaseAastraPlugin(StandardPlugin):
         # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = device[u'ip'].encode('ascii')
+                ip = device['ip'].encode('ascii')
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:
@@ -551,7 +549,7 @@ class BaseAastraPlugin(StandardPlugin):
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             return None
 
         return self._dev_specific_filename(device)

@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2011-2014 Avencall
+# Copyright (C) 2011-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-"""Common code shared by the the various xivo-zenitel plugins.
+"""Common code shared by the various xivo-zenitel plugins.
 
 """
 
@@ -23,7 +21,7 @@
 import logging
 import re
 import os.path
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 from operator import itemgetter
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, UNKNOWN_SUPPORT,\
@@ -52,14 +50,14 @@ class BaseZenitelTFTPDeviceInfoExtractor(object):
         filename = request['packet']['filename']
         m = self._FILENAME_REGEX.match(filename)
         if m:
-            dev_info = {u'vendor': u'Zenitel',
-                        u'model': u'IP station'}
+            dev_info = {'vendor': 'Zenitel',
+                        'model': 'IP station'}
             raw_mac = m.group(1)
             if raw_mac:
                 raw_mac = raw_mac.replace('_', '')
                 try:
-                    dev_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
-                except ValueError, e:
+                    dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
+                except ValueError as e:
                     logger.warning('Could not normalize MAC address: %s', e)
             return dev_info
         return None
@@ -67,8 +65,8 @@ class BaseZenitelTFTPDeviceInfoExtractor(object):
 
 class BaseZenitelPgAssociator(BasePgAssociator):
     def _do_associate(self, vendor, model, version):
-        if vendor == u'Zenitel':
-            if model == u'IP station':
+        if vendor == 'Zenitel':
+            if model == 'IP station':
                 return COMPLETE_SUPPORT
             else:
                 return UNKNOWN_SUPPORT
@@ -103,7 +101,7 @@ class ZenitelConfigureService(object):
     def get(self, name):
         try:
             return getattr(self, '_p_' + name)
-        except AttributeError, e:
+        except AttributeError as e:
             raise KeyError(e)
     
     def set(self, name, value):
@@ -115,19 +113,19 @@ class ZenitelConfigureService(object):
             raise KeyError(name)
     
     description = [
-        (u'username', u'The username used to download files on the alphawiki'),
-        (u'password', u'The password used to download files on the alphawiki'),
+        ('username', 'The username used to download files on the alphawiki'),
+        ('password', 'The password used to download files on the alphawiki'),
     ]
     
     description_fr = [
-        (u'username', u"Le nom d'utilisateur pour télécharger les fichiers sur le alphawiki"),
-        (u'password', u'Le mot de passe pour télécharger les fichiers sur le alphawiki'),
+        ('username', "Le nom d'utilisateur pour télécharger les fichiers sur le alphawiki"),
+        ('password', 'Le mot de passe pour télécharger les fichiers sur le alphawiki'),
     ]
 
 
 class BaseZenitelPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
-    _VALID_FUNCKEY_NO = [u'1', u'2', u'3']
+    _VALID_FUNCKEY_NO = ['1', '2', '3']
     
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -153,42 +151,42 @@ class BaseZenitelPlugin(StandardPlugin):
     pg_associator = BaseZenitelPgAssociator()
     
     def _add_sip_section_info(self, raw_config):
-        if u'1' in raw_config[u'sip_lines']:
-            line = raw_config[u'sip_lines'][u'1']
-            raw_config[u'XX_sip'] = True
-            raw_config[u'XX_nick_name'] = line[u'display_name']
-            raw_config[u'XX_sip_id'] = line[u'username']
-            raw_config[u'XX_domain'] = line.get(u'proxy_ip') or raw_config[u'sip_proxy_ip']
-            raw_config[u'XX_domain2'] = line.get(u'backup_proxy_ip') or \
-                                        raw_config.get(u'backup_proxy_ip', u'')
-            raw_config[u'XX_auth_user'] = line[u'auth_username']
-            raw_config[u'XX_auth_pwd'] = line[u'password']
+        if '1' in raw_config['sip_lines']:
+            line = raw_config['sip_lines']['1']
+            raw_config['XX_sip'] = True
+            raw_config['XX_nick_name'] = line['display_name']
+            raw_config['XX_sip_id'] = line['username']
+            raw_config['XX_domain'] = line.get('proxy_ip') or raw_config['sip_proxy_ip']
+            raw_config['XX_domain2'] = line.get('backup_proxy_ip') or \
+                                        raw_config.get('backup_proxy_ip', '')
+            raw_config['XX_auth_user'] = line['auth_username']
+            raw_config['XX_auth_pwd'] = line['password']
     
     def _add_fkeys(self, raw_config):
         lines = []
-        for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
+        for funckey_no, funckey_dict in sorted(iter(raw_config['funckeys'].items()),
                                                key=itemgetter(0)):
             if funckey_no in self._VALID_FUNCKEY_NO:
-                if funckey_dict[u'type'] == u'speeddial':
-                    exten = funckey_dict[u'value']
-                    lines.append(u'speeddial_%s_c1=%s' % (funckey_no, exten))
+                if funckey_dict['type'] == 'speeddial':
+                    exten = funckey_dict['value']
+                    lines.append('speeddial_%s_c1=%s' % (funckey_no, exten))
                 else:
-                    logger.info('Unsupported funckey type: %s', funckey_dict[u'type'])
+                    logger.info('Unsupported funckey type: %s', funckey_dict['type'])
             else:
                 logger.info('Out of range funckey no: %s', funckey_no)
-        raw_config[u'XX_fkeys'] = u'\n'.join(' ' + s for s in lines)
+        raw_config['XX_fkeys'] = '\n'.join(' ' + s for s in lines)
     
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='_', uppercase=False)
+        fmted_mac = format_mac(device['mac'], separator='_', uppercase=False)
         return 'ipst_config_%s.cfg' % fmted_mac
     
     def _check_config(self, raw_config):
-        if u'tftp_port' not in raw_config:
+        if 'tftp_port' not in raw_config:
             raise RawConfigError('only support configuration via TFTP')
     
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
     
     def configure(self, device, raw_config):
@@ -207,28 +205,28 @@ class BaseZenitelPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
         try:
             os.remove(path)
-        except OSError, e:
+        except OSError as e:
             # ignore
             logger.info('error while removing file: %s', e)
     
     def _do_synchronize(self, ip):
         # XXX could use twisted native http stuff one day...
         url = "http://%s/goform/zForm_send_cmd" % ip
-        pwd_manager = urllib2.HTTPPasswordMgrWithDefaultRealm()
+        pwd_manager = urllib.request.HTTPPasswordMgrWithDefaultRealm()
         pwd_manager.add_password(None, url, 'admin', 'alphaadmin')
-        basic_auth_handler = urllib2.HTTPBasicAuthHandler(pwd_manager)
-        opener = urllib2.build_opener(basic_auth_handler)
+        basic_auth_handler = urllib.request.HTTPBasicAuthHandler(pwd_manager)
+        opener = urllib.request.build_opener(basic_auth_handler)
         fobj = opener.open(url, 'message=Reboot', 15)
         try:
             fobj.read()
-        except Exception, e:
+        except Exception as e:
             logger.info('Exception during read from Zenitel synchronize: %s', e)
         finally:
             fobj.close()
     
     def synchronize(self, device, raw_config):
         try:
-            ip = device[u'ip']
+            ip = device['ip']
         except KeyError:
             return defer.fail(Exception('IP address needed for device synchronization'))
         else:

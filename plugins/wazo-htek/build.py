@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
+"""
+Copyright 2017-2022 The Wazo Authors  (see the AUTHORS file)
+SPDX-License-Identifier: GPL-3.0-or-later
 
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0-or-later
-
-# Depends on the following external programs:
-#  -rsync
+Depends on the following external programs:
+ -rsync
+"""
 
 from subprocess import check_call
 

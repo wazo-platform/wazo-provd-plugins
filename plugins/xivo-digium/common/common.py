@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2010-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -53,9 +51,9 @@ class DigiumDHCPDeviceInfoExtractor(object):
         if match:
             model = match.group(1).decode('ascii')
             fw_version = match.group(2).replace('_', '.').decode('ascii')
-            dev_info = {u'vendor': u'Digium',
-                        u'model': model,
-                        u'version': fw_version}
+            dev_info = {'vendor': 'Digium',
+                        'model': model,
+                        'version': fw_version}
             return dev_info
 
 
@@ -69,24 +67,24 @@ class DigiumHTTPDeviceInfoExtractor(object):
     def _do_extract(self, request):
         match = self._PATH_REGEX.match(request.path)
         if match:
-            dev_info = {u'vendor': u'Digium'}
+            dev_info = {'vendor': 'Digium'}
             raw_mac = match.group(1)
             if raw_mac and raw_mac != '000000000000':
                 mac = norm_mac(raw_mac.decode('ascii'))
-                dev_info[u'mac'] = mac
+                dev_info['mac'] = mac
             return dev_info
 
 
 class DigiumPgAssociator(BasePgAssociator):
 
-    _MODELS = [u'D40', u'D45', u'D50', u'D60', u'D62', u'D65', u'D70']
+    _MODELS = ['D40', 'D45', 'D50', 'D60', 'D62', 'D65', 'D70']
 
     def __init__(self, version):
         BasePgAssociator.__init__(self)
         self._version = version
 
     def _do_associate(self, vendor, model, version):
-        if vendor == u'Digium':
+        if vendor == 'Digium':
             if model in self._MODELS:
                 if version == self._version:
                     return FULL_SUPPORT
@@ -128,7 +126,7 @@ class BaseDigiumPlugin(StandardPlugin):
         raw_config['XX_mac'] = self._format_mac(device)
         raw_config['XX_main_proxy_ip'] = self._get_main_proxy_ip(raw_config)
         raw_config['XX_funckeys'] = self._transform_funckeys(raw_config)
-        raw_config['XX_lang'] = raw_config.get(u'locale')
+        raw_config['XX_lang'] = raw_config.get('locale')
 
         path = os.path.join(self._digium_dir, filename)
         contact_path = os.path.join(self._digium_dir, contact_filename)
@@ -156,7 +154,7 @@ class BaseDigiumPlugin(StandardPlugin):
         # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = device[u'ip'].encode('ascii')
+                ip = device['ip'].encode('ascii')
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:
@@ -167,7 +165,7 @@ class BaseDigiumPlugin(StandardPlugin):
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             return None
 
         return self._dev_specific_filename(device)
@@ -176,19 +174,19 @@ class BaseDigiumPlugin(StandardPlugin):
         return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))
 
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed to configure device')
 
     def _get_main_proxy_ip(self, raw_config):
-        if raw_config[u'sip_lines']:
-            line_no = min(int(x) for x in raw_config[u'sip_lines'].keys())
+        if raw_config['sip_lines']:
+            line_no = min(int(x) for x in list(raw_config['sip_lines'].keys()))
             line_no = str(line_no)
-            return raw_config[u'sip_lines'][line_no][u'proxy_ip']
+            return raw_config['sip_lines'][line_no]['proxy_ip']
         else:
-            return raw_config[u'ip']
+            return raw_config['ip']
 
     def _format_mac(self, device):
-        return format_mac(device[u'mac'], separator='', uppercase=False)
+        return format_mac(device['mac'], separator='', uppercase=False)
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg$')
 
@@ -202,5 +200,5 @@ class BaseDigiumPlugin(StandardPlugin):
 
     def _transform_funckeys(self, raw_config):
         return dict(
-            (int(k), v) for k, v in raw_config['funckeys'].iteritems()
+            (int(k), v) for k, v in raw_config['funckeys'].items()
         )

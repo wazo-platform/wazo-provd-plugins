@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2015-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2015-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,11 +18,11 @@ execfile_('common.py', common)
 
 
 MODEL_VERSIONS = {
-    u'6863i': u'4.3.0.2036',
-    u'6865i': u'4.3.0.2036',
-    u'6867i': u'4.3.0.2036',
-    u'6869i': u'4.3.0.2036',
-    u'6873i': u'4.3.0.2036',
+    '6863i': '4.3.0.2036',
+    '6865i': '4.3.0.2036',
+    '6867i': '4.3.0.2036',
+    '6869i': '4.3.0.2036',
+    '6873i': '4.3.0.2036',
 }
 
 

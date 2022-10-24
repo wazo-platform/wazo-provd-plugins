@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2013-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,17 +17,17 @@ common = {}
 execfile_('common.py', common)
 
 MODELS = [
-    u'7906G',
-    u'7911G',
-    u'7931G',
-    u'7941G',
-    u'7942G',
-    u'7945G',
-    u'7961G',
-    u'7962G',
-    u'7965G',
-    u'7970G',
-    u'7971G',
+    '7906G',
+    '7911G',
+    '7931G',
+    '7941G',
+    '7942G',
+    '7945G',
+    '7961G',
+    '7962G',
+    '7965G',
+    '7970G',
+    '7971G',
 ]
 
 

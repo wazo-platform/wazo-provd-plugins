@@ -1,21 +1,19 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2013-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import binascii
 import os.path
 import struct
-import urllib
+import urllib.request, urllib.parse, urllib.error
 from provd.util import format_mac
 
 common = {}
 execfile_('common.py', common)
 
 MODELS = [
-    u'GXP2000',
+    'GXP2000',
 ]
-VERSION = u'1.2.5.3'
+VERSION = '1.2.5.3'
 
 
 class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
@@ -27,7 +25,7 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
+        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return 'cfg' + fmted_mac
 
     def configure(self, device, raw_config):
@@ -50,9 +48,9 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
             if cleanedLine:  # is not empty
                 items = [x.strip() for x in cleanedLine.split('=')]
                 if len(items) == 2:  # Only interested in pairs (name=value)
-                    config += items[0] + '=' + urllib.quote(items[1]) + '&'
+                    config += items[0] + '=' + urllib.parse.quote(items[1]) + '&'
 
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
+        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
         short_mac = fmted_mac[2:6]
         config = config + 'gnkey=' + short_mac
         # Convert to ascii
@@ -96,4 +94,4 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
             content_file.write(b_config)
 
     def _format_line(self, code, value):
-        return u'    %s = %s' % (code, value)
+        return '    %s = %s' % (code, value)

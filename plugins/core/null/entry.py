@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright (C) 2010-2014 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
@@ -21,6 +19,7 @@ from twisted.web.resource import NoResource
 
 
 _MSG = 'Null plugin always reject requests'
+
 
 class NullPlugin(Plugin):
     IS_PLUGIN = True

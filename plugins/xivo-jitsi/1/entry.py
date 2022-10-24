@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2011-2014 Avencall
+# Copyright (C) 2011-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -57,23 +55,23 @@ class JitsiHTTPDeviceInfoExtractor(object):
         m = self._UA_REGEX.match(ua)
         if m:
             raw_version = m.group(1)
-            return {u'vendor': u'Jitsi',
-                    u'model': u'Jitsi',
-                    u'version': raw_version.decode('ascii')}
+            return {'vendor': 'Jitsi',
+                    'model': 'Jitsi',
+                    'version': raw_version.decode('ascii')}
         return None
     
     def _extract_from_args(self, args, dev_info):
         if 'uuid' in args:
             try:
-                dev_info[u'uuid'] = norm_uuid(args['uuid'][0].decode('ascii'))
-            except ValueError, e:
+                dev_info['uuid'] = norm_uuid(args['uuid'][0].decode('ascii'))
+            except ValueError as e:
                 logger.warning('Could not normalize UUID: %s', e)
 
 
 class JitsiPgAssociator(BasePgAssociator):
     def _do_associate(self, vendor, model, version):
-        if vendor == model == u'Jitsi':
-            if version.startswith(u'1.'):
+        if vendor == model == 'Jitsi':
+            if version.startswith('1.'):
                 return FULL_SUPPORT
             return PROBABLE_SUPPORT
         return IMPROBABLE_SUPPORT
@@ -104,7 +102,7 @@ class JitsiHTTPService(Resource):
                 try:
                     with open(file) as fobj:
                         content = fobj.read()
-                except EnvironmentError, e:
+                except EnvironmentError as e:
                     logger.warning('Error while reading file %s: %s', file, e)
                     request.setResponseCode(404)
                     request.setHeader('Content-Type', 'text/plain; charset=ascii')
@@ -135,18 +133,18 @@ class JitsiPlugin(StandardPlugin):
     
     def _device_config_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        return device[u'uuid']
+        return device['uuid']
     
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
     
     def _check_device(self, device):
-        if u'uuid' not in device:
+        if 'uuid' not in device:
             raise Exception('UUID needed for device configuration')
-        if not is_normed_uuid(device[u'uuid']):
+        if not is_normed_uuid(device['uuid']):
             # non normalized uuid can lead to security issue
-            raise Exception('non normalized UUID: %s', device[u'uuid'])
+            raise Exception('non normalized UUID: %s', device['uuid'])
     
     def configure(self, device, raw_config):
         self._check_config(raw_config)
@@ -161,11 +159,11 @@ class JitsiPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, self._device_config_filename(device))
         try:
             os.remove(path)
-        except OSError, e:
+        except OSError as e:
             logger.warning('error while deconfiguring device: %s', e)
 
     def get_remote_state_trigger_filename(self, device):
-        if u'uuid' not in device:
+        if 'uuid' not in device:
             return None
 
         return self._device_config_filename(device)

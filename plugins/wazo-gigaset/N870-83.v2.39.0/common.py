@@ -1,8 +1,9 @@
-# -*- coding: utf-8 -*-
-# Copyright 2011-2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0-or-later
+"""
+Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
+SPDX-License-Identifier: GPL-3.0-or-later
 
-"""Common code shared by the various wazo-gigaset plugins."""
+Common code shared by the various wazo-gigaset plugins.
+"""
 
 import os
 import logging
@@ -29,7 +30,7 @@ from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-gigaset')
 
-VENDOR = u'Gigaset'
+VENDOR = 'Gigaset'
 
 
 class GigasetHTTPDeviceInfoExtractor(object):
@@ -54,11 +55,11 @@ class GigasetHTTPDeviceInfoExtractor(object):
         m = self._UA_REGEX.search(ua)
         dev_info = {}
         if m:
-            dev_info = {u'vendor': VENDOR,
-                        u'model': m.group('model').decode('ascii'),
-                        u'version': m.group('version').decode('ascii')}
+            dev_info = {'vendor': VENDOR,
+                        'model': m.group('model').decode('ascii'),
+                        'version': m.group('version').decode('ascii')}
             if 'mac' in m.groupdict():
-                dev_info[u'mac'] = norm_mac(m.group('mac').decode('ascii'))
+                dev_info['mac'] = norm_mac(m.group('mac').decode('ascii'))
 
         return dev_info
 
@@ -83,19 +84,19 @@ class BaseGigasetPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
 
     _SIP_DTMF_MODE = {
-        u'RTP-in-band': u'1',
-        u'RTP-out-of-band': u'2',
-        u'SIP-INFO': u'4',
+        'RTP-in-band': '1',
+        'RTP-out-of-band': '2',
+        'SIP-INFO': '4',
     }
     _SIP_SRTP_MODE = {
-        u'disabled': u'0',
-        u'preferred': u'1',
-        u'required': u'1',
+        'disabled': '0',
+        'preferred': '1',
+        'required': '1',
     }
     _SIP_TRANSPORT = {
-        u'udp': u'1',
-        u'tcp': u'2',
-        u'tls': u'3',
+        'udp': '1',
+        'tcp': '2',
+        'tls': '3',
     }
 
     _VALID_TZ_GIGASET = set((
@@ -219,70 +220,70 @@ class BaseGigasetPlugin(StandardPlugin):
     http_dev_info_extractor = GigasetHTTPDeviceInfoExtractor()
 
     def _check_device(self, device):
-        if u'ip' not in device:
+        if 'ip' not in device:
             raise Exception('IP address needed for Gigaset configuration')
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
+        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return fmted_mac + '.xml'
 
     def _add_phonebook(self, raw_config):
-        uuid_format = u'{scheme}://{hostname}:{port}/0.1/directories/lookup/{profile}/gigaset/{user_uuid}?'
+        uuid_format = '{scheme}://{hostname}:{port}/0.1/directories/lookup/{profile}/gigaset/{user_uuid}?'
         plugins.add_xivo_phonebook_url_from_format(raw_config, uuid_format)
 
     def _fix_timezone(self, raw_config):
-        timezone = raw_config.get(u'timezone', 'Greenwich')
+        timezone = raw_config.get('timezone', 'Greenwich')
         if timezone not in self._VALID_TZ_GIGASET:
             tz_db = tzinform.TextTimezoneInfoDB()
             tz_info = tz_db.get_timezone_info(timezone)['utcoffset'].as_hms
             offset_hour = tz_info[0]
             offset_minutes = tz_info[1]
-            raw_config[u'timezone'] = self._FALLBACK_TZ[(offset_hour, offset_minutes)]
+            raw_config['timezone'] = self._FALLBACK_TZ[(offset_hour, offset_minutes)]
 
     def _add_xx_vars(self, device, raw_config):
-        raw_config[u'XX_epoch'] = int(time.time())
+        raw_config['XX_epoch'] = int(time.time())
         self._fix_timezone(raw_config)
 
     def _add_voip_providers(self, raw_config):
         voip_providers = dict()
         provider_id = 0
-        sip_lines = raw_config.get(u'sip_lines')
-        dtmf_mode = raw_config.get(u'sip_dtmf_mode', '1')
-        srtp_mode = raw_config.get(u'sip_srtp_mode', '0')
-        sip_transport = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport', '1'))
+        sip_lines = raw_config.get('sip_lines')
+        dtmf_mode = raw_config.get('sip_dtmf_mode', '1')
+        srtp_mode = raw_config.get('sip_srtp_mode', '0')
+        sip_transport = self._SIP_TRANSPORT.get(raw_config.get('sip_transport', '1'))
         if sip_lines:
-            for line in sip_lines.itervalues():
-                proxy_ip = line.get(u'proxy_ip')
-                proxy_port = line.get(u'proxy_port', 5060)
-                line_dtmf_mode = self._SIP_DTMF_MODE.get(line.get(u'dtmf_mode', dtmf_mode))
-                line_srtp_mode = self._SIP_SRTP_MODE.get(line.get(u'strp_mode', srtp_mode))
+            for line in sip_lines.values():
+                proxy_ip = line.get('proxy_ip')
+                proxy_port = line.get('proxy_port', 5060)
+                line_dtmf_mode = self._SIP_DTMF_MODE.get(line.get('dtmf_mode', dtmf_mode))
+                line_srtp_mode = self._SIP_SRTP_MODE.get(line.get('strp_mode', srtp_mode))
                 if (proxy_ip, proxy_port) not in voip_providers:
                     provider = {
-                        u'id': provider_id,
-                        u'sip_proxy_ip': proxy_ip,
-                        u'sip_proxy_port': proxy_port,
-                        u'dtmf_mode': line_dtmf_mode,
-                        u'srtp_mode': line_srtp_mode,
-                        u'sip_transport': sip_transport,
+                        'id': provider_id,
+                        'sip_proxy_ip': proxy_ip,
+                        'sip_proxy_port': proxy_port,
+                        'dtmf_mode': line_dtmf_mode,
+                        'srtp_mode': line_srtp_mode,
+                        'sip_transport': sip_transport,
                     }
-                    line[u'provider_id'] = provider_id
+                    line['provider_id'] = provider_id
                     voip_providers[(proxy_ip, proxy_port)] = provider
                     provider_id += 1
                 else:
-                    line[u'provider_id'] = voip_providers[(proxy_ip, proxy_port)]['id']
+                    line['provider_id'] = voip_providers[(proxy_ip, proxy_port)]['id']
 
-        raw_config[u'XX_voip_providers'] = voip_providers.values()
+        raw_config['XX_voip_providers'] = list(voip_providers.values())
 
     def _add_ac_code(self, raw_config):
-        sip_lines = raw_config.get(u'sip_lines')
+        sip_lines = raw_config.get('sip_lines')
         if sip_lines:
-            for line in sip_lines.itervalues():
-                number = line.get(u'number')
-                if number.startswith(u'auto'):
-                    line[u'XX_hs_code'] = '0000'
+            for line in sip_lines.values():
+                number = line.get('number')
+                if number.startswith('auto'):
+                    line['XX_hs_code'] = '0000'
                 else:
-                    line[u'XX_hs_code'] = number[-4:].zfill(4)
+                    line['XX_hs_code'] = number[-4:].zfill(4)
 
     def configure(self, device, raw_config):
         self._check_device(device)
@@ -317,7 +318,7 @@ class BaseGigasetPlugin(StandardPlugin):
         # backward compatibility with older xivo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = device[u'ip'].encode('ascii')
+                ip = device['ip'].encode('ascii')
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:

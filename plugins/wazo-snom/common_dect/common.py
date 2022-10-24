@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2010-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -43,7 +41,7 @@ class BaseSnomDECTHTTPDeviceInfoExtractor(object):
         raw_mac = request.args.get('mac', [None])[0]
         if raw_mac:
             logger.debug('Got MAC from URL: %s', raw_mac)
-            device_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
+            device_info['mac'] = norm_mac(raw_mac.decode('ascii'))
         if ua:
             info_from_ua = self._extract_from_ua(ua)
             if info_from_ua:
@@ -57,17 +55,17 @@ class BaseSnomDECTHTTPDeviceInfoExtractor(object):
         m = self._UA_REGEX_MAC.search(ua)
         if m:
             raw_model, raw_version, raw_mac = m.groups()
-            return {u'vendor': u'Snom',
-                    u'model': raw_model.decode('ascii'),
-                    u'mac': norm_mac(raw_mac.decode('ascii')),
-                    u'version': raw_version.decode('ascii')}
+            return {'vendor': 'Snom',
+                    'model': raw_model.decode('ascii'),
+                    'mac': norm_mac(raw_mac.decode('ascii')),
+                    'version': raw_version.decode('ascii')}
         return None
 
     def _extract_from_path(self, path, dev_info):
         m = self._PATH_REGEX.search(path)
         if m:
             raw_mac = m.group(1)
-            dev_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
+            dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
 
 
 class BaseSnomPgAssociator(BasePgAssociator):
@@ -76,7 +74,7 @@ class BaseSnomPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(self, vendor, model, version):
-        if vendor == u'Snom':
+        if vendor == 'Snom':
             if version is None:
                 # Could be an old version with no XML support
                 return PROBABLE_SUPPORT
@@ -103,26 +101,26 @@ class BaseSnomPgAssociator(BasePgAssociator):
 class BaseSnomPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _LOCALE = {
-        u'de_DE': (u'Deutsch', u'GER'),
-        u'en_US': (u'English', u'USA'),
-        u'es_ES': (u'Espanol', u'ESP'),
-        u'fr_FR': (u'Francais', u'FRA'),
-        u'fr_CA': (u'Francais', u'USA'),
-        u'it_IT': (u'Italiano', u'ITA'),
-        u'nl_NL': (u'Dutch', u'NLD'),
+        'de_DE': ('Deutsch', 'GER'),
+        'en_US': ('English', 'USA'),
+        'es_ES': ('Espanol', 'ESP'),
+        'fr_FR': ('Francais', 'FRA'),
+        'fr_CA': ('Francais', 'USA'),
+        'it_IT': ('Italiano', 'ITA'),
+        'nl_NL': ('Dutch', 'NLD'),
     }
     _SIP_DTMF_MODE = {
-        u'RTP-in-band': u'off',
-        u'RTP-out-of-band': u'off',
-        u'SIP-INFO': u'sip_info_only'
+        'RTP-in-band': 'off',
+        'RTP-out-of-band': 'off',
+        'SIP-INFO': 'sip_info_only'
     }
-    _XX_DICT_DEF = u'en'
+    _XX_DICT_DEF = 'en'
     _XX_DICT = {
-        u'en': {
-            u'remote_directory': u'Directory',
+        'en': {
+            'remote_directory': 'Directory',
         },
-        u'fr': {
-            u'remote_directory': u'Annuaire',
+        'fr': {
+            'remote_directory': 'Annuaire',
         },
     }
 
@@ -154,78 +152,78 @@ class BaseSnomPlugin(StandardPlugin):
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _update_sip_lines(self, raw_config):
-        proxy_ip = raw_config.get(u'sip_proxy_ip')
-        backup_proxy_ip = raw_config.get(u'sip_backup_proxy_ip')
-        voicemail = raw_config.get(u'exten_voicemail')
-        for line in raw_config[u'sip_lines'].itervalues():
+        proxy_ip = raw_config.get('sip_proxy_ip')
+        backup_proxy_ip = raw_config.get('sip_backup_proxy_ip')
+        voicemail = raw_config.get('exten_voicemail')
+        for line in raw_config['sip_lines'].values():
             if proxy_ip:
-                line.setdefault(u'proxy_ip', proxy_ip)
+                line.setdefault('proxy_ip', proxy_ip)
             if backup_proxy_ip:
-                line.setdefault(u'backup_proxy_ip', backup_proxy_ip)
+                line.setdefault('backup_proxy_ip', backup_proxy_ip)
             if voicemail:
-                line.setdefault(u'voicemail', voicemail)
+                line.setdefault('voicemail', voicemail)
             # set SIP server to use
             server_id = raw_config['XX_servers'].get(
-                (line.get(u'proxy_ip'), line.get(u'proxy_port', 5060)), {}
+                (line.get('proxy_ip'), line.get('proxy_port', 5060)), {}
             ).get('id')
-            line[u'XX_server_id'] = server_id or 1
+            line['XX_server_id'] = server_id or 1
 
     def _add_sip_servers(self, raw_config):
         servers = dict()
         server_number = 1
-        for line_no, line in raw_config[u'sip_lines'].iteritems():
-            proxy_ip = line.get(u'proxy_ip') or raw_config.get(u'sip_proxy_ip')
-            proxy_port = line.get(u'proxy_port') or raw_config.get(u'sip_proxy_port')
-            backup_proxy_ip = line.get(u'backup_proxy_ip') or raw_config.get(u'sip_backup_proxy_ip')
-            backup_proxy_port = line.get(u'backup_proxy_port') or raw_config.get(u'sip_backup_proxy_port')
+        for line_no, line in raw_config['sip_lines'].items():
+            proxy_ip = line.get('proxy_ip') or raw_config.get('sip_proxy_ip')
+            proxy_port = line.get('proxy_port') or raw_config.get('sip_proxy_port')
+            backup_proxy_ip = line.get('backup_proxy_ip') or raw_config.get('sip_backup_proxy_ip')
+            backup_proxy_port = line.get('backup_proxy_port') or raw_config.get('sip_backup_proxy_port')
             dtmf_mode = self._SIP_DTMF_MODE.get(
-                line.get(u'dtmf_mode') or raw_config.get(u'sip_dtmf_mode'),
+                line.get('dtmf_mode') or raw_config.get('sip_dtmf_mode'),
                 'off',
             )
             if (proxy_ip, proxy_port) not in servers:
                 servers[(proxy_ip, proxy_port)] = {
-                    u'id': server_number,
-                    u'proxy_ip': proxy_ip,
-                    u'proxy_port': proxy_port,
-                    u'backup_proxy_ip': backup_proxy_ip,
-                    u'backup_proxy_port': backup_proxy_port,
-                    u'dtmf_mode': dtmf_mode,
+                    'id': server_number,
+                    'proxy_ip': proxy_ip,
+                    'proxy_port': proxy_port,
+                    'backup_proxy_ip': backup_proxy_ip,
+                    'backup_proxy_port': backup_proxy_port,
+                    'dtmf_mode': dtmf_mode,
                 }
             server_number += 1
             if server_number > 10:
                 logger.warning('Maximum number of valid server reached')
-        raw_config[u'XX_servers'] = servers
+        raw_config['XX_servers'] = servers
 
     def _format_fkey_value(self, fkey_type, value, suffix):
         return '%s %s%s' % (fkey_type, value, suffix)
 
     def _add_lang(self, raw_config):
-        if u'locale' in raw_config:
-            locale = raw_config[u'locale']
+        if 'locale' in raw_config:
+            locale = raw_config['locale']
             if locale in self._LOCALE:
-                raw_config[u'XX_lang'] = self._LOCALE[locale]
+                raw_config['XX_lang'] = self._LOCALE[locale]
 
     def _add_user_dtmf_info(self, raw_config):
-        dtmf_mode = raw_config.get(u'sip_dtmf_mode')
-        for line in raw_config[u'sip_lines'].itervalues():
-            cur_dtmf_mode = line.get(u'dtmf_mode', dtmf_mode)
-            line[u'XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, u'off')
+        dtmf_mode = raw_config.get('sip_dtmf_mode')
+        for line in raw_config['sip_lines'].values():
+            cur_dtmf_mode = line.get('dtmf_mode', dtmf_mode)
+            line['XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, 'off')
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(raw_config, u'snom')
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+            plugins.add_xivo_phonebook_url(raw_config, 'snom')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
 
     def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
 
     def _gen_xx_dict(self, raw_config):
         xx_dict = self._XX_DICT[self._XX_DICT_DEF]
-        if u'locale' in raw_config:
-            locale = raw_config[u'locale']
+        if 'locale' in raw_config:
+            locale = raw_config['locale']
             lang = locale.split('_', 1)[0]
             if lang in self._XX_DICT:
                 xx_dict = self._XX_DICT[lang]
@@ -235,18 +233,18 @@ class BaseSnomPlugin(StandardPlugin):
 
     def _dev_specific_filenames(self, device):
         # Return a tuple (htm filename, xml filename)
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
-        return 'snom%s-%s.htm' % (device[u'model'], fmted_mac), fmted_mac + '.xml'
+        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
+        return 'snom%s-%s.htm' % (device['model'], fmted_mac), fmted_mac + '.xml'
 
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
         # model is needed since filename has model name in it.
-        if u'model' not in device:
+        if 'model' not in device:
             raise Exception('model needed for device configuration')
 
     def configure(self, device, raw_config):
@@ -261,8 +259,8 @@ class BaseSnomPlugin(StandardPlugin):
         self._update_sip_lines(raw_config)
         self._add_lang(raw_config)
         self._add_xivo_phonebook_url(raw_config)
-        raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
-        raw_config[u'XX_options'] = device.get(u'options', {})
+        raw_config['XX_dict'] = self._gen_xx_dict(raw_config)
+        raw_config['XX_options'] = device.get('options', {})
 
         path = os.path.join(self._tftpboot_dir, xml_filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
@@ -270,7 +268,7 @@ class BaseSnomPlugin(StandardPlugin):
         # generate htm file
         tpl = self._tpl_helper.get_template('other/base.htm.tpl')
 
-        raw_config[u'XX_xml_filename'] = xml_filename
+        raw_config['XX_xml_filename'] = xml_filename
 
         path = os.path.join(self._tftpboot_dir, htm_filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
@@ -279,7 +277,7 @@ class BaseSnomPlugin(StandardPlugin):
         for filename in self._dev_specific_filenames(device):
             try:
                 os.remove(os.path.join(self._tftpboot_dir, filename))
-            except OSError, e:
+            except OSError as e:
                 # ignore
                 logger.info('error while removing file: %s', e)
 
@@ -291,7 +289,7 @@ class BaseSnomPlugin(StandardPlugin):
         # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = device[u'ip'].encode('ascii')
+                ip = device['ip'].encode('ascii')
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:
@@ -302,7 +300,7 @@ class BaseSnomPlugin(StandardPlugin):
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=true')
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device or u'model' not in device:
+        if 'mac' not in device or 'model' not in device:
             return None
 
         return self._dev_specific_filenames(device)[1]

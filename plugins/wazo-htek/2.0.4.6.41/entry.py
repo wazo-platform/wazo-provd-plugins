@@ -1,19 +1,17 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2020-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 common_globals = {}
 execfile_('common.py', common_globals)
 
 MODEL_VERSIONS = {
-    u'UC926': u'2.0.4.6.41',
-    u'UC924': u'2.0.4.6.41',
-    u'UC923': u'2.0.4.6.41',
-    u'UC912': u'2.0.4.6.41',
-    u'UC912G': u'2.0.4.6.41',
-    u'UC903': u'2.0.4.6.41',
-    u'UC902': u'2.0.4.6.41',
+    'UC926': '2.0.4.6.41',
+    'UC924': '2.0.4.6.41',
+    'UC923': '2.0.4.6.41',
+    'UC912': '2.0.4.6.41',
+    'UC912G': '2.0.4.6.41',
+    'UC903': '2.0.4.6.41',
+    'UC902': '2.0.4.6.41',
 }
 
 COMMON_FILES = [

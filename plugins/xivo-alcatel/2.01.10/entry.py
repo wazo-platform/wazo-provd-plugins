@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,8 +28,8 @@ execfile_('common.py', common_globals)
 
 logger = logging.getLogger('plugin.xivo-alcatel')
 
-MODELS = [u'4008', u'4018']
-VERSION = u'2.01.10'
+MODELS = ['4008', '4018']
+VERSION = '2.01.10'
 
 
 class AlcatelPlugin(common_globals['BaseAlcatelPlugin']):

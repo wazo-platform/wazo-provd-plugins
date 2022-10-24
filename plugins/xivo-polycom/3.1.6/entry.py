@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2014-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,8 +28,8 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 
-MODELS = [u'SPIP301', u'SPIP501', u'SPIP600', u'SPIP601', u'SSIP4000']
-VERSION = u'3.1.6.0017'
+MODELS = ['SPIP301', 'SPIP501', 'SPIP600', 'SPIP601', 'SSIP4000']
+VERSION = '3.1.6.0017'
 
 
 class PolycomPlugin(common_globals['BasePolycomPlugin']):

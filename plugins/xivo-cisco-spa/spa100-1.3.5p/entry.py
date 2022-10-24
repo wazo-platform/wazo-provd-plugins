@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2014-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,13 +16,14 @@
 common_globals = {}
 execfile_('common.py', common_globals)
 
-MODEL_VERSION = {u'SPA112': u'1.3.5p',
-                 u'SPA122': u'1.3.5p'}
+MODEL_VERSION = {
+    'SPA112': '1.3.5p',
+    'SPA122': '1.3.5p',
+}
 
 
 class CiscoPlugin(common_globals['BaseCiscoPlugin']):
     IS_PLUGIN = True
-    _COMMON_FILENAMES = ['spa112.cfg',
-                         'spa122.cfg']
+    _COMMON_FILENAMES = ['spa112.cfg', 'spa122.cfg']
 
     pg_associator = common_globals['BaseCiscoPgAssociator'](MODEL_VERSION)

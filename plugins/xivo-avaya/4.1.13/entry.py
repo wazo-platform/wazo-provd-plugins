@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,8 +19,8 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 
-MODELS = [u'1220IP', u'1230IP']
-VERSION = u'04.01.13.00'
+MODELS = ['1220IP', '1230IP']
+VERSION = '04.01.13.00'
 
 
 class AvayaPlugin(common_globals['BaseAvayaPlugin']):

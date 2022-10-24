@@ -1,13 +1,9 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-import errno
 import logging
 import os
 import re
-import subprocess
 from copy import deepcopy
 from operator import itemgetter
 from xml.sax.saxutils import escape
@@ -43,7 +39,7 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
-        options = request[u'options']
+        options = request['options']
         logger.debug('_do_extract request: %s', request)
         if 60 in options:
             return self._extract_from_vdi(options[60])
@@ -68,8 +64,8 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
             if match:
                 raw_vendor, raw_model = match.groups()
                 if raw_vendor.lower() in self._RAW_VENDORS:
-                    dev_info = {u'vendor': u'Cisco',
-                                u'model': _norm_model(raw_model)}
+                    dev_info = {'vendor': 'Cisco',
+                                'model': _norm_model(raw_model)}
                     return dev_info
         return None
 
@@ -88,8 +84,8 @@ class BaseCiscoHTTPDeviceInfoExtractor(object):
             dev_info = {}
             self._extract_from_ua(ua, dev_info)
             if dev_info:
-                dev_info[u'vendor'] = u'Cisco'
-                if u'mac' not in dev_info:
+                dev_info['vendor'] = 'Cisco'
+                if 'mac' not in dev_info:
                     self._extract_from_path(request.path, dev_info)
                 return dev_info
         return None
@@ -115,20 +111,20 @@ class BaseCiscoHTTPDeviceInfoExtractor(object):
         m = self._LINKSYS_UA_REGEX.match(ua)
         if m:
             raw_model, version, sn = m.groups()
-            dev_info[u'model'] = _norm_model(raw_model)
-            dev_info[u'version'] = version.decode('ascii')
-            dev_info[u'sn'] = sn.decode('ascii')
+            dev_info['model'] = _norm_model(raw_model)
+            dev_info['version'] = version.decode('ascii')
+            dev_info['sn'] = sn.decode('ascii')
 
     def _extract_cisco_from_ua(self, ua, dev_info):
         # Pre: ua.startswith('Cisco/')
         m = self._CISCO_UA_REGEX.match(ua)
         if m:
             model, version, raw_mac, sn = m.groups()
-            dev_info[u'model'] = model.decode('ascii')
-            dev_info[u'version'] = version.decode('ascii')
+            dev_info['model'] = model.decode('ascii')
+            dev_info['version'] = version.decode('ascii')
             if raw_mac:
-                dev_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
-            dev_info[u'sn'] = sn.decode('ascii')
+                dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
+            dev_info['sn'] = sn.decode('ascii')
 
     def _extract_from_path(self, path, dev_info):
         # try to extract MAC address from path
@@ -137,10 +133,10 @@ class BaseCiscoHTTPDeviceInfoExtractor(object):
             raw_mac = m.group(1)
             try:
                 mac = norm_mac(raw_mac.decode('ascii'))
-            except ValueError, e:
+            except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
-                dev_info[u'mac'] = mac
+                dev_info['mac'] = mac
 
 
 class BaseCiscoTFTPDeviceInfoExtractor(object):
@@ -158,7 +154,7 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
         for test_fun in [self._test_spafile, self._test_init, self._test_atafile]:
             dev_info = test_fun(filename)
             if dev_info:
-                dev_info[u'vendor'] = u'Cisco'
+                dev_info['vendor'] = 'Cisco'
                 return dev_info
         return None
 
@@ -170,7 +166,7 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
         m = self._SPAFILE_REGEX.match(filename)
         if m:
             raw_model = 'SPA' + m.group(1)
-            return {u'model': _norm_model(raw_model)}
+            return {'model': _norm_model(raw_model)}
         return None
 
     def _test_atafile(self, filename):
@@ -178,13 +174,13 @@ class BaseCiscoTFTPDeviceInfoExtractor(object):
         # Only the ATA190 requests this file
         m = self._ATAFILE_REGEX.match(filename)
         if m:
-            return {u'model': 'ATA190'}
+            return {'model': 'ATA190'}
         return None
 
     def _test_init(self, filename):
         # Test if filename is "/init.cfg".
         if filename == '/init.cfg':
-            return {u'model': u'PAP2T'}
+            return {'model': 'PAP2T'}
         return None
 
 
@@ -194,7 +190,7 @@ class BaseCiscoPgAssociator(BasePgAssociator):
         self._model_version = model_version
 
     def _do_associate(self, vendor, model, version):
-        if vendor == u'Cisco':
+        if vendor == 'Cisco':
             if model in self._model_version:
                 if version == self._model_version[model]:
                     return FULL_SUPPORT
@@ -219,39 +215,39 @@ class BaseCiscoPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _NB_FKEY = {
         # <model>: (<nb keys>, <nb expansion modules>)
-        u'SPA941': (4, 0),
-        u'SPA942': (4, 0),
-        u'SPA962': (6, 2),
-        u'SPA303': (3, 2),
-        u'SPA501G': (8, 2),
-        u'SPA502G': (0, 2),
-        u'SPA504G': (4, 2),
-        u'SPA508G': (8, 2),
-        u'SPA509G': (12, 2),
-        u'SPA512G': (0, 2),
-        u'SPA514G': (4, 2),
-        u'SPA525G': (5, 2),
-        u'SPA525G2': (5, 2),
-        u'ATA190': (0,0),
+        'SPA941': (4, 0),
+        'SPA942': (4, 0),
+        'SPA962': (6, 2),
+        'SPA303': (3, 2),
+        'SPA501G': (8, 2),
+        'SPA502G': (0, 2),
+        'SPA504G': (4, 2),
+        'SPA508G': (8, 2),
+        'SPA509G': (12, 2),
+        'SPA512G': (0, 2),
+        'SPA514G': (4, 2),
+        'SPA525G': (5, 2),
+        'SPA525G2': (5, 2),
+        'ATA190': (0,0),
     }
-    _DEFAULT_LOCALE = u'en_US'
+    _DEFAULT_LOCALE = 'en_US'
     _LANGUAGE = {
-        u'de_DE': u'German',
-        u'en_US': u'English',
-        u'es_ES': u'Spanish',
-        u'fr_FR': u'French',
-        u'fr_CA': u'French',
+        'de_DE': 'German',
+        'en_US': 'English',
+        'es_ES': 'Spanish',
+        'fr_FR': 'French',
+        'fr_CA': 'French',
     }
     _LOCALE = {
-        u'de_DE': u'de-DE',
-        u'en_US': u'en-US',
-        u'es_ES': u'es-ES',
-        u'fr_FR': u'fr-FR',
-        u'fr_CA': u'fr-CA',
+        'de_DE': 'de-DE',
+        'en_US': 'en-US',
+        'es_ES': 'es-ES',
+        'fr_FR': 'fr-FR',
+        'fr_CA': 'fr-CA',
     }
     _DIRECTORY_NAME = {
-        u'en_US': u'Wazo Directory',
-        u'fr_FR': u'Répertoire Wazo',
+        'en_US': 'Wazo Directory',
+        'fr_FR': 'Répertoire Wazo',
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
@@ -281,29 +277,29 @@ class BaseCiscoPlugin(StandardPlugin):
 
     def _add_fkeys(self, raw_config, model):
         if model not in self._NB_FKEY:
-            logger.info(u'Unknown model or model with no funckeys: %s', model)
+            logger.info('Unknown model or model with no funckeys: %s', model)
             return
         nb_keys, nb_expmods = self._NB_FKEY[model]
         lines = []
-        for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
+        for funckey_no, funckey_dict in sorted(iter(raw_config['funckeys'].items()),
                                                key=itemgetter(0)):
-            funckey_type = funckey_dict[u'type']
-            value = funckey_dict[u'value']
-            label = escape(funckey_dict.get(u'label', value))
-            if funckey_type == u'speeddial':
-                function = u'fnc=sd;ext=%s@$PROXY;nme=%s' % (value, label)
-            elif funckey_type == u'blf':
-                function = u'fnc=sd+blf+cp;sub=%s@$PROXY;nme=%s' % (value, label)
+            funckey_type = funckey_dict['type']
+            value = funckey_dict['value']
+            label = escape(funckey_dict.get('label', value))
+            if funckey_type == 'speeddial':
+                function = 'fnc=sd;ext=%s@$PROXY;nme=%s' % (value, label)
+            elif funckey_type == 'blf':
+                function = 'fnc=sd+blf+cp;sub=%s@$PROXY;nme=%s' % (value, label)
             else:
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
             keynum = int(funckey_no)
             if keynum <= nb_keys:
-                lines.append(u'<Extension_%s_>Disabled</Extension_%s_>' %
+                lines.append('<Extension_%s_>Disabled</Extension_%s_>' %
                              (funckey_no, funckey_no))
-                lines.append(u'<Short_Name_%s_>%s</Short_Name_%s_>' %
+                lines.append('<Short_Name_%s_>%s</Short_Name_%s_>' %
                              (funckey_no, label, funckey_no))
-                lines.append(u'<Extended_Function_%s_>%s</Extended_Function_%s_>' %
+                lines.append('<Extended_Function_%s_>%s</Extended_Function_%s_>' %
                              (funckey_no, function, funckey_no))
             else:
                 expmod_keynum = keynum - nb_keys - 1
@@ -312,9 +308,9 @@ class BaseCiscoPlugin(StandardPlugin):
                     logger.info('Model %s has less than %s function keys', model, funckey_no)
                 else:
                     expmod_key_no = expmod_keynum % 32 + 1
-                    lines.append(u'<Unit_%s_Key_%s>%s</Unit_%s_Key_%s>' %
+                    lines.append('<Unit_%s_Key_%s>%s</Unit_%s_Key_%s>' %
                                  (expmod_no, expmod_key_no, function, expmod_no, expmod_key_no))
-        raw_config[u'XX_fkeys'] = u'\n'.join(lines)
+        raw_config['XX_fkeys'] = '\n'.join(lines)
 
     def _format_dst_change(self, dst_change):
         _day = dst_change['day']
@@ -330,84 +326,84 @@ class BaseCiscoPlugin(StandardPlugin):
                 day = (int(week) - 1) * 7 + 1
 
         h, m, s = dst_change['time'].as_hms
-        return u'%s/%s/%s/%s:%s:%s' % (dst_change['month'], day, weekday, h, m, s)
+        return '%s/%s/%s/%s:%s:%s' % (dst_change['month'], day, weekday, h, m, s)
 
     def _format_tzinfo(self, tzinfo):
         lines = []
         hours, minutes = tzinfo['utcoffset'].as_hms[:2]
-        lines.append(u'<Time_Zone>GMT%+03d:%02d</Time_Zone>' % (hours, minutes))
+        lines.append('<Time_Zone>GMT%+03d:%02d</Time_Zone>' % (hours, minutes))
         if tzinfo['dst'] is None:
-            lines.append(u'<Daylight_Saving_Time_Enable>no</Daylight_Saving_Time_Enable>')
+            lines.append('<Daylight_Saving_Time_Enable>no</Daylight_Saving_Time_Enable>')
         else:
-            lines.append(u'<Daylight_Saving_Time_Enable>yes</Daylight_Saving_Time_Enable>')
+            lines.append('<Daylight_Saving_Time_Enable>yes</Daylight_Saving_Time_Enable>')
             h, m, s = tzinfo['dst']['save'].as_hms
-            lines.append(u'<Daylight_Saving_Time_Rule>start=%s;end=%s;save=%d:%d:%s</Daylight_Saving_Time_Rule>' %
+            lines.append('<Daylight_Saving_Time_Rule>start=%s;end=%s;save=%d:%d:%s</Daylight_Saving_Time_Rule>' %
                          (self._format_dst_change(tzinfo['dst']['start']),
                           self._format_dst_change(tzinfo['dst']['end']),
                           h, m, s,
                           ))
-        return u'\n'.join(lines)
+        return '\n'.join(lines)
 
     def _add_timezone(self, raw_config):
-        if u'timezone' in raw_config:
+        if 'timezone' in raw_config:
             try:
-                tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
-            except tzinform.TimezoneNotFoundError, e:
+                tzinfo = tzinform.get_timezone_info(raw_config['timezone'])
+            except tzinform.TimezoneNotFoundError as e:
                 logger.info('Unknown timezone: %s', e)
             else:
-                raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
+                raw_config['XX_timezone'] = self._format_tzinfo(tzinfo)
 
     def _format_proxy(self, raw_config, line, line_no):
-        proxy_ip = line.get(u'proxy_ip') or raw_config[u'sip_proxy_ip']
-        backup_proxy_ip = line.get(u'backup_proxy_ip') or raw_config.get(u'sip_backup_proxy_ip')
-        proxy_port = line.get(u'proxy_port') or raw_config.get(u'sip_proxy_port', '5060')
-        backup_proxy_port = line.get(u'backup_proxy_port') or raw_config.get(u'sip_backup_proxy_port', '5060')
+        proxy_ip = line.get('proxy_ip') or raw_config['sip_proxy_ip']
+        backup_proxy_ip = line.get('backup_proxy_ip') or raw_config.get('sip_backup_proxy_ip')
+        proxy_port = line.get('proxy_port') or raw_config.get('sip_proxy_port', '5060')
+        backup_proxy_port = line.get('backup_proxy_port') or raw_config.get('sip_backup_proxy_port', '5060')
         if backup_proxy_ip:
-            proxy_value = u'xivo_proxies%s:SRV=%s:%s:p=0|%s:%s:p=1' % (line_no,
+            proxy_value = 'xivo_proxies%s:SRV=%s:%s:p=0|%s:%s:p=1' % (line_no,
                             proxy_ip, proxy_port, backup_proxy_ip, backup_proxy_port)
         else:
-            proxy_value = u'%s:%s' % (proxy_ip, proxy_port)
+            proxy_value = '%s:%s' % (proxy_ip, proxy_port)
         return proxy_value
 
     def _add_proxies(self, raw_config):
         proxies = {}
-        for line_no, line in raw_config[u'sip_lines'].iteritems():
+        for line_no, line in raw_config['sip_lines'].items():
             proxies[line_no] = self._format_proxy(raw_config, line, line_no)
-        raw_config[u'XX_proxies'] = proxies
+        raw_config['XX_proxies'] = proxies
 
     def _add_language(self, raw_config):
-        locale = raw_config.get(u'locale')
+        locale = raw_config.get('locale')
         if locale in self._LANGUAGE:
-            raw_config[u'XX_language'] = self._LANGUAGE[locale]
+            raw_config['XX_language'] = self._LANGUAGE[locale]
 
     def _add_directory_name(self, raw_config):
-        locale = raw_config.get(u'locale')
+        locale = raw_config.get('locale')
         if locale not in self._DIRECTORY_NAME:
             locale = self._DEFAULT_LOCALE
-        raw_config[u'XX_directory_name'] = self._DIRECTORY_NAME[locale]
+        raw_config['XX_directory_name'] = self._DIRECTORY_NAME[locale]
 
     def _add_locale(self, raw_config):
-        locale = raw_config.get(u'locale')
+        locale = raw_config.get('locale')
         if locale not in self._LOCALE:
             locale = self._DEFAULT_LOCALE
-        raw_config[u'XX_locale'] = self._LOCALE[locale]
+        raw_config['XX_locale'] = self._LOCALE[locale]
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(raw_config, u'cisco')
+        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+            plugins.add_xivo_phonebook_url(raw_config, 'cisco')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
 
     def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get(u'X_xivo_phonebook_ip')
+        hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^\w{,3}[0-9a-fA-F]{12}(?:\.cnf)?\.xml$')
 
     def _dev_specific_filename(self, dev):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(dev[u'mac'], separator='')
+        fmted_mac = format_mac(dev['mac'], separator='')
 
         if dev.get('model', '').startswith('ATA'):
             fmted_mac = 'ATA%s.cnf' % fmted_mac.upper()
@@ -416,7 +412,7 @@ class BaseCiscoPlugin(StandardPlugin):
 
     def _dev_shifted_device(self, dev):
         device2 = deepcopy(dev)
-        device2[u'mac'] = device2[u'mac'][3:] + ':01'
+        device2['mac'] = device2['mac'][3:] + ':01'
         return device2
 
     def _dev_shifted_specific_filename(self, dev):
@@ -425,11 +421,11 @@ class BaseCiscoPlugin(StandardPlugin):
         return self._dev_specific_filename(self._dev_shifted_device(dev))
 
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 
     def configure(self, device, raw_config):
@@ -449,8 +445,8 @@ class BaseCiscoPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING, errors='replace')
 
-        if len(raw_config[u'sip_lines']) >= 2 and device.get('model', '').startswith('ATA'):
-            raw_config[u'XX_second_line_ata'] = True
+        if len(raw_config['sip_lines']) >= 2 and device.get('model', '').startswith('ATA'):
+            raw_config['XX_second_line_ata'] = True
 
             filename = self._dev_shifted_specific_filename(device)
             path = os.path.join(self._tftpboot_dir, filename)
@@ -478,7 +474,7 @@ class BaseCiscoPlugin(StandardPlugin):
         # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = device[u'ip'].encode('ascii')
+                ip = device['ip'].encode('ascii')
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:
@@ -489,7 +485,7 @@ class BaseCiscoPlugin(StandardPlugin):
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             return None
 
         return self._dev_specific_filename(device)

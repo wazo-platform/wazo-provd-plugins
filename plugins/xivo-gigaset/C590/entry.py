@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,8 +34,8 @@ execfile_('common.py', common_globals)
 logger = logging.getLogger('plugin.xivo-gigaset')
 
 
-MODELS = [u'C590 IP', u'C595 IP', u'C610 IP', u'C610A IP', u'N300 IP',
-          u'N300A IP']
+MODELS = ['C590 IP', 'C595 IP', 'C610 IP', 'C610A IP', 'N300 IP',
+          'N300A IP']
 
 
 class GigasetRequestBroker(common_globals['BaseGigasetRequestBroker']):
@@ -66,7 +64,7 @@ class GigasetRequestBroker(common_globals['BaseGigasetRequestBroker']):
         # dict_ is a dictionary where keys are line number and values are
         # mailbox extensions number
         raw_data = {}
-        for id_no in xrange(8):
+        for id_no in range(8):
             line_no = id_no + 1
             if line_no in dict_:
                 raw_data['ad_number_%s' % id_no] = voicemail

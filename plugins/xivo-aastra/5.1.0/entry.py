@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2015-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,7 +18,7 @@ execfile_('common.py', common)
 
 
 MODEL_VERSIONS = {
-    u'6930': u'5.1.0.6044',
+    '6930': '5.1.0.6044',
 }
 
 

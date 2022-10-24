@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2014-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,9 +16,9 @@
 common_globals = {}
 execfile_('common.py', common_globals)
 
-PSN = [u'301', u'303', u'501G', u'502G', u'504G', u'508G', u'509G', u'512G', u'514G', u'525G', u'525G2']
-MODELS = [u'SPA' + psn for psn in PSN]
-MODEL_VERSION = dict((model, u'7.5.5') for model in MODELS)
+PSN = ['301', '303', '501G', '502G', '504G', '508G', '509G', '512G', '514G', '525G', '525G2']
+MODELS = ['SPA' + psn for psn in PSN]
+MODEL_VERSION = dict((model, '7.5.5') for model in MODELS)
 
 
 class CiscoPlugin(common_globals['BaseCiscoPlugin']):

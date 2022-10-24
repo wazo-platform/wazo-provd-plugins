@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2011-2014 Avencall
+# Copyright (C) 2011-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,19 +13,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-"""Common code shared by the the various xivo-gigaset plugins.
+"""Common code shared by the various xivo-gigaset plugins.
 
 """
 
 
-import cookielib
+import http.cookiejar
 import logging
 import re
-import urllib
-import urllib2
-from ConfigParser import RawConfigParser
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
+from configparser import RawConfigParser
 from contextlib import closing
-from StringIO import StringIO
+from io import StringIO
 from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT,\
     COMPLETE_SUPPORT, UNKNOWN_SUPPORT
 from provd.plugins import StandardPlugin, TemplatePluginHelper
@@ -36,24 +34,24 @@ from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-gigaset')
 
-VENDOR = u'Gigaset'
+VENDOR = 'Gigaset'
 
 
 class BaseGigasetDHCPDeviceInfoExtractor(object):
     _VDI = {
-        'C470IP':  u'C470 IP',
-        'C470_IP': u'C470 IP',
-        'S675IP':  u'S675 IP',
-        'S675_IP': u'S675 IP',
-        'C590_IP': u'C590 IP',
-        'C610_IP': u'C610 IP'
+        'C470IP':  'C470 IP',
+        'C470_IP': 'C470 IP',
+        'S675IP':  'S675 IP',
+        'S675_IP': 'S675 IP',
+        'C590_IP': 'C590 IP',
+        'C610_IP': 'C610 IP'
     }
     
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
     
     def _do_extract(self, request):
-        options = request[u'options']
+        options = request['options']
         if 60 in options:
             return self._extract_from_vdi(options[60])
         else:
@@ -67,8 +65,8 @@ class BaseGigasetDHCPDeviceInfoExtractor(object):
         #   "S675_IP"
         #   "C590_IP"
         if vdi in self._VDI:
-            return {u'vendor': VENDOR,
-                    u'model': self._VDI[vdi]}
+            return {'vendor': VENDOR,
+                    'model': self._VDI[vdi]}
         else:
             return None
 
@@ -101,8 +99,8 @@ class BaseGigasetRequestBroker(object):
         self._host = host
         self._pin = pin or self.DEFAULT_PIN
         self._url_prefix = 'http://%s/' % host
-        self._cookie_jar = cookielib.CookieJar()
-        self._opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(self._cookie_jar))
+        self._cookie_jar = http.cookiejar.CookieJar()
+        self._opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(self._cookie_jar))
     
     def login(self):
         raw_data = 'language=1&password=%s' % self._pin
@@ -140,10 +138,10 @@ class BaseGigasetRequestBroker(object):
     
     def do_post_request(self, path, raw_data):
         url = self._compute_url(path)
-        if isinstance(raw_data, basestring):
+        if isinstance(raw_data, str):
             data = raw_data
         else:
-            data = urllib.urlencode(raw_data)
+            data = urllib.parse.urlencode(raw_data)
         return self._do_request(url, data)
     
     def _is_valid_line_no(self, line_no):
@@ -210,7 +208,7 @@ class BaseGigasetRequestBroker(object):
         with self.do_get_request('status_device.html') as fobj:
             content = fobj.read()
         
-        dev_info = {u'vendor': VENDOR}
+        dev_info = {'vendor': VENDOR}
         
         cur_pos = content.find('MAC address:')
         if cur_pos == -1:
@@ -222,7 +220,7 @@ class BaseGigasetRequestBroker(object):
             return
         raw_mac = m.group()
         cur_pos = m.end()
-        dev_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
+        dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
         
         if hasattr(self, '_VERSION_REGEX'):
             cur_pos = content.find('Firmware version:', cur_pos)
@@ -234,7 +232,7 @@ class BaseGigasetRequestBroker(object):
                 logger.warning('could not find firmware version')
                 return
             raw_version = m.group(1)
-            dev_info[u'version'] = raw_version.decode('ascii')
+            dev_info['version'] = raw_version.decode('ascii')
         
         return dev_info
 
@@ -252,7 +250,7 @@ class BaseGigasetPlugin(StandardPlugin):
     dhcp_dev_info_extractor = BaseGigasetDHCPDeviceInfoExtractor()
     
     def _check_device(self, device):
-        if u'ip' not in device:
+        if 'ip' not in device:
             raise Exception('IP address needed for Gigaset configuration')
     
     def configure(self, device, raw_config):
@@ -265,7 +263,7 @@ class BaseGigasetPlugin(StandardPlugin):
     
     def _do_synchronize(self, device, raw_config):
         # 1. generate template and read it as our own config for our broker
-        tpl = self._tpl_helper.get_dev_template(raw_config.get(u'mac'), device)
+        tpl = self._tpl_helper.get_dev_template(raw_config.get('mac'), device)
         fobj = StringIO(tpl.render(raw_config))
         
         config = RawConfigParser()
@@ -275,7 +273,7 @@ class BaseGigasetPlugin(StandardPlugin):
         general = dict(config.items('general'))
         
         # 2. instantiate broker and do requests...
-        host = device[u'ip']
+        host = device['ip']
         pin = general.get('pin')
         broker = self._BROKER_FACTORY(host, pin)
         
@@ -291,23 +289,23 @@ class BaseGigasetPlugin(StandardPlugin):
             
             # configure lines
             if general.get('skip_lines_configuration') != '1':
-                for line_no in xrange(1, 7):
+                for line_no in range(1, 7):
                     line_no_str = str(line_no)
-                    if line_no_str in raw_config[u'sip_lines']:
-                        line = raw_config[u'sip_lines'][line_no_str]
+                    if line_no_str in raw_config['sip_lines']:
+                        line = raw_config['sip_lines'][line_no_str]
                         kwargs = {
-                            'password': line[u'password'],
-                            'auth_username': line[u'auth_username'],
-                            'username': line[u'username'],
-                            'display_name': line[u'display_name'],
-                            'proxy_ip': line.get(u'proxy_ip') or \
-                                        raw_config[u'sip_proxy_ip'],
-                            'proxy_port': line.get(u'proxy_port') or \
-                                          raw_config.get(u'proxy_port', '5060'),
-                            'registrar_ip': line.get(u'registrar_ip') or \
-                                            raw_config[u'sip_registrar_ip'],
-                            'registrar_port': line.get(u'registrar_port') or \
-                                              raw_config.get(u'registrar_port', '5060')
+                            'password': line['password'],
+                            'auth_username': line['auth_username'],
+                            'username': line['username'],
+                            'display_name': line['display_name'],
+                            'proxy_ip': line.get('proxy_ip') or \
+                                        raw_config['sip_proxy_ip'],
+                            'proxy_port': line.get('proxy_port') or \
+                                          raw_config.get('proxy_port', '5060'),
+                            'registrar_ip': line.get('registrar_ip') or \
+                                            raw_config['sip_registrar_ip'],
+                            'registrar_port': line.get('registrar_port') or \
+                                              raw_config.get('registrar_port', '5060')
                         }
                         broker.set_line(line_no, **kwargs)
                     else:
@@ -321,21 +319,21 @@ class BaseGigasetPlugin(StandardPlugin):
             # configure mailboxes
             if general.get('skip_mailboxes_configuration') != '1':
                 mailboxes = {}
-                for line_no_str, line in raw_config[u'sip_lines'].iteritems():
+                for line_no_str, line in raw_config['sip_lines'].items():
                     line_no = int(line_no_str)
-                    voicemail = line.get(u'voicemail') or raw_config.get(u'exten_voicemail')
+                    voicemail = line.get('voicemail') or raw_config.get('exten_voicemail')
                     if voicemail:
                         mailboxes[line_no] = voicemail 
             
             # do generic requests stuff here
             config_dict = dict((s, dict(config.items(s))) for s in config.sections() if s != 'general')
-            for path, raw_data in config_dict.iteritems():
+            for path, raw_data in config_dict.items():
                 with broker.do_post_request(path, raw_data) as fobj:
                     fobj.read()
         finally:
             broker.logout()
     
     def synchronize(self, device, raw_config):
-        assert u'ip' in device      # see self.configure() and plugin contract
+        assert 'ip' in device      # see self.configure() and plugin contract
         
         return threads.deferToThread(self._do_synchronize, device, raw_config)

@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
 # Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
-from __future__ import unicode_literals
 
 import logging
 import os.path
@@ -150,9 +148,9 @@ class BaseFanvilPlugin(StandardPlugin):
             raise Exception('MAC address needed for device configuration')
 
     def _add_server_url(self, raw_config):
-        ip = raw_config[u'ip']
-        http_port = raw_config[u'http_port']
-        raw_config[u'XX_server_url'] = u'http://{}:{}'.format(ip, http_port)
+        ip = raw_config['ip']
+        http_port = raw_config['http_port']
+        raw_config['XX_server_url'] = f'http://{ip}:{http_port}'
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
@@ -177,7 +175,7 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def configure_common(self, raw_config):
         self._add_server_url(raw_config)
-        for filename, (_, fw_filename, tpl_filename) in self._COMMON_FILES.iteritems():
+        for filename, (_, fw_filename, tpl_filename) in self._COMMON_FILES.items():
             tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config['XX_fw_filename'] = fw_filename
@@ -215,7 +213,7 @@ class BaseFanvilPlugin(StandardPlugin):
         return self._dev_specific_filename(device)
 
     def _check_lines_password(self, raw_config):
-        for line in raw_config['sip_lines'].itervalues():
+        for line in raw_config['sip_lines'].values():
             if line['password'] == 'autoprov':
                 line['password'] = ''
 
@@ -280,7 +278,7 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def _update_lines(self, raw_config):
         default_dtmf_mode = raw_config.get('sip_dtmf_mode', 'SIP-INFO')
-        for line in raw_config['sip_lines'].itervalues():
+        for line in raw_config['sip_lines'].values():
             line['XX_dtmf_mode'] = self._SIP_DTMF_MODE[line.get('dtmf_mode', default_dtmf_mode)]
             line['backup_proxy_ip'] = line.get('backup_proxy_ip') or raw_config.get('sip_backup_proxy_ip')
             line['backup_proxy_port'] = line.get('backup_proxy_port') or raw_config.get('sip_backup_proxy_port')
@@ -314,7 +312,7 @@ class BaseFanvilPlugin(StandardPlugin):
         exten_pickup_call = raw_config.get('exten_pickup_call')
         offset = 0 if self._is_new_model(device) else 1
         max_funckey_position = 0
-        for funckey_no, funckey_dict in raw_config['funckeys'].iteritems():
+        for funckey_no, funckey_dict in raw_config['funckeys'].items():
             fkey_line = {}
             keynum = int(funckey_no)
             fkey_id = keynum + offset

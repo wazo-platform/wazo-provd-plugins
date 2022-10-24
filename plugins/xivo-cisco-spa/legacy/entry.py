@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2014-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,12 +17,12 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODEL_VERSION = {
-    u'SPA901': u'5.1.5',
-    u'SPA921': u'5.1.8',
-    u'SPA922': u'6.1.5(a)',
-    u'SPA941': u'5.1.8',
-    u'SPA942': u'6.1.5(a)',
-    u'SPA962': u'6.1.5(a)',
+    'SPA901': '5.1.5',
+    'SPA921': '5.1.8',
+    'SPA922': '6.1.5(a)',
+    'SPA941': '5.1.8',
+    'SPA942': '6.1.5(a)',
+    'SPA962': '6.1.5(a)',
 }
 
 

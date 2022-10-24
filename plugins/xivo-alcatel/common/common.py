@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2011-2016 Avencall
+# Copyright (C) 2011-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -42,7 +40,7 @@ from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-alcatel')
 
-VENDOR = u'Alcatel'
+VENDOR = 'Alcatel'
 
 
 class BaseAlcatelHTTPDeviceInfoExtractor(object):
@@ -71,9 +69,9 @@ class BaseAlcatelHTTPDeviceInfoExtractor(object):
         m = self._UA_REGEX.match(ua)
         if m:
             raw_model, raw_version = m.groups()
-            return {u'vendor': VENDOR,
-                    u'model': raw_model.decode('ascii'),
-                    u'version': raw_version.decode('ascii')}
+            return {'vendor': VENDOR,
+                    'model': raw_model.decode('ascii'),
+                    'version': raw_version.decode('ascii')}
         return None
     
     def _extract_from_path(self, path, dev_info):
@@ -83,10 +81,10 @@ class BaseAlcatelHTTPDeviceInfoExtractor(object):
             raw_mac = m.group(1)
             try:
                 mac = norm_mac(raw_mac.decode('ascii'))
-            except ValueError, e:
+            except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
-                dev_info[u'mac'] = mac
+                dev_info['mac'] = mac
 
 
 class BaseAlcatelTFTPDeviceInfoExtractor(object):
@@ -100,7 +98,7 @@ class BaseAlcatelTFTPDeviceInfoExtractor(object):
     def _do_extract(self, request):
         filename = request['packet']['filename']
         if filename == '/lanpbx.cfg':
-            return {u'vendor': VENDOR}
+            return {'vendor': VENDOR}
         return None
 
 
@@ -121,28 +119,28 @@ class BaseAlcatelPgAssociator(BasePgAssociator):
 
 class BaseAlcatelPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
-    _DEFAULT_PASSWORD = u'000000'
+    _DEFAULT_PASSWORD = '000000'
     _SIP_TRANSPORT = {
-        u'udp': u'1',
-        u'tcp': u'2'
+        'udp': '1',
+        'tcp': '2'
     }
     _SIP_DTMF_MODE = {
-        u'RTP-in-band': u'1',
-        u'RTP-out-of-band': u'0',
-        u'SIP-INFO': u'2'
+        'RTP-in-band': '1',
+        'RTP-out-of-band': '0',
+        'SIP-INFO': '2'
     }
     # XXX this is confused, but I don't care that much right now
     _TONE_COUNTRY = [
         # "English" tone country
-        [u'US', u'CA'],
+        ['US', 'CA'],
         # "French" tone country
-        [u'FR'],
+        ['FR'],
         # "German" tone country
-        [u'DE'],
+        ['DE'],
         # "Italian" tone country
-        [u'IT'],
+        ['IT'],
         # "Spanish" tone country
-        [u'ES'],
+        ['ES'],
         # "Dutch" tone country
         [],
         # "Portuguese" tone country
@@ -166,54 +164,54 @@ class BaseAlcatelPlugin(StandardPlugin):
     tftp_dev_info_extractor = BaseAlcatelTFTPDeviceInfoExtractor()
     
     def _extract_sip_line_info(self, raw_config):
-        assert raw_config[u'sip_lines']
-        sip_lines_key = min(raw_config[u'sip_lines'])
-        sip_line = raw_config[u'sip_lines'][sip_lines_key]
+        assert raw_config['sip_lines']
+        sip_lines_key = min(raw_config['sip_lines'])
+        sip_line = raw_config['sip_lines'][sip_lines_key]
         def set_if(line_id, id):
             if line_id in sip_line:
                 raw_config[id] = sip_line[line_id]
-        set_if(u'proxy_ip', u'sip_proxy_ip')
-        set_if(u'proxy_port', u'sip_proxy_port')
-        set_if(u'backup_proxy_ip', u'sip_backup_proxy_ip')
-        set_if(u'backup_proxy_port', u'sip_backup_proxy_port')
-        set_if(u'outbound_proxy_ip', u'sip_outbound_proxy_ip')
-        set_if(u'outbound_proxy_port', u'sip_outbound_proxy_port')
-        set_if(u'registrar_ip', u'sip_registrar_ip')
-        set_if(u'registrar_port', u'sip_registrar_port')
-        set_if(u'backup_registrar_ip', u'sip_backup_registrar_ip')
-        set_if(u'backup_registrar_port', u'sip_backup_registrar_port')
+        set_if('proxy_ip', 'sip_proxy_ip')
+        set_if('proxy_port', 'sip_proxy_port')
+        set_if('backup_proxy_ip', 'sip_backup_proxy_ip')
+        set_if('backup_proxy_port', 'sip_backup_proxy_port')
+        set_if('outbound_proxy_ip', 'sip_outbound_proxy_ip')
+        set_if('outbound_proxy_port', 'sip_outbound_proxy_port')
+        set_if('registrar_ip', 'sip_registrar_ip')
+        set_if('registrar_port', 'sip_registrar_port')
+        set_if('backup_registrar_ip', 'sip_backup_registrar_ip')
+        set_if('backup_registrar_port', 'sip_backup_registrar_port')
         
-        raw_config[u'XX_auth_name'] = sip_line[u'auth_username']
-        raw_config[u'XX_auth_password'] = sip_line[u'password']
-        raw_config[u'XX_user_name'] = sip_line[u'username']
-        raw_config[u'XX_display_name'] = sip_line[u'display_name']
+        raw_config['XX_auth_name'] = sip_line['auth_username']
+        raw_config['XX_auth_password'] = sip_line['password']
+        raw_config['XX_user_name'] = sip_line['username']
+        raw_config['XX_display_name'] = sip_line['display_name']
         
-        voicemail = sip_line.get(u'voicemail') or raw_config.get(u'exten_voicemail')
+        voicemail = sip_line.get('voicemail') or raw_config.get('exten_voicemail')
         if voicemail:
-            raw_config[u'XX_voice_mail_uri'] = voicemail
+            raw_config['XX_voice_mail_uri'] = voicemail
             # XXX should we consider the value of sip_subscribe_mwi before ?
-            raw_config[u'XX_mwi_uri'] = "%s@%s" % (voicemail, raw_config[u'sip_proxy_ip'])
+            raw_config['XX_mwi_uri'] = "%s@%s" % (voicemail, raw_config['sip_proxy_ip'])
     
     def _add_dns_addr(self, raw_config):
         # this function must be called after _extract_sip_line_info
-        if raw_config.get(u'dns_enabled'):
-            dns_addr = raw_config[u'dns_ip']
+        if raw_config.get('dns_enabled'):
+            dns_addr = raw_config['dns_ip']
         else:
-            dns_addr = raw_config[u'sip_proxy_ip']
-        raw_config[u'XX_dns_addr'] = dns_addr
+            dns_addr = raw_config['sip_proxy_ip']
+        raw_config['XX_dns_addr'] = dns_addr
     
     def _add_sip_transport_mode(self, raw_config):
         try:
-            sip_transport = self._SIP_TRANSPORT[raw_config[u'sip_transport']]
+            sip_transport = self._SIP_TRANSPORT[raw_config['sip_transport']]
         except KeyError:
             logger.info('Unknown/unsupported sip_transport: %s',
-                        raw_config[u'sip_transport'])
+                        raw_config['sip_transport'])
         else:
-            raw_config[u'XX_sip_transport_mode'] = sip_transport
+            raw_config['XX_sip_transport_mode'] = sip_transport
     
     def _add_sntp_addr(self, raw_config):
-        if raw_config.get(u'ntp_enabled'):
-            raw_config[u'XX_sntp_addr'] = raw_config[u'ntp_ip']
+        if raw_config.get('ntp_enabled'):
+            raw_config['XX_sntp_addr'] = raw_config['ntp_ip']
     
     def _format_dst_change(self, dst):
         if dst['day'].startswith('D'):
@@ -239,75 +237,75 @@ class BaseAlcatelPlugin(StandardPlugin):
         return 'UT::%s:%s:%s' % (offset, dst_start, dst_end)
     
     def _add_timezone(self, raw_config):
-        if u'timezone' in raw_config:
+        if 'timezone' in raw_config:
             try:
-                tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
-            except tzinform.TimezoneNotFoundError, e:
+                tzinfo = tzinform.get_timezone_info(raw_config['timezone'])
+            except tzinform.TimezoneNotFoundError as e:
                 logger.info('Unknown timezone: %s', e)
             else:
                 try:
-                    raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
+                    raw_config['XX_timezone'] = self._format_tzinfo(tzinfo)
                 except Exception:
                     logger.error('Error while formating tzinfo', exc_info=True)
     
     def _add_tone_country(self, raw_config):
-        if u'locale' in raw_config:
+        if 'locale' in raw_config:
             try:
-                country = raw_config[u'locale'].rsplit('_', 1)[1]
+                country = raw_config['locale'].rsplit('_', 1)[1]
             except IndexError:
                 # locale is not of the form 'xx_XX'
                 pass
             else:
                 for i, countries in enumerate(self._TONE_COUNTRY):
                     if country in countries:
-                        raw_config[u'XX_tone_country'] = unicode(i)
+                        raw_config['XX_tone_country'] = str(i)
                         break
     
     def _add_dtmf_type(self, raw_config):
-        if u'sip_dtmf_mode' in raw_config:
+        if 'sip_dtmf_mode' in raw_config:
             try:
-                dtmf_type = self._SIP_DTMF_MODE[raw_config[u'sip_dtmf_mode']]
+                dtmf_type = self._SIP_DTMF_MODE[raw_config['sip_dtmf_mode']]
             except KeyError:
                 logger.info('Unknown/unsupported sip_dtmf_mode: %s',
-                            raw_config[u'sip_dtmf_mode'])
+                            raw_config['sip_dtmf_mode'])
             else:
-                raw_config[u'XX_dtmf_type'] = dtmf_type
+                raw_config['XX_dtmf_type'] = dtmf_type
     
     def _add_fkeys(self, raw_config):
         lines = []
-        for funckey_no, funckey_dict in raw_config[u'funckeys'].iteritems():
+        for funckey_no, funckey_dict in raw_config['funckeys'].items():
             int_funckey_no = int(funckey_no)
             if int_funckey_no > 4:
                 logger.warning('Out of range funckey number: %s', funckey_no)
             else:
-                funckey_type = funckey_dict[u'type']
-                if funckey_type == u'speeddial':
-                    value = funckey_dict[u'value']
+                funckey_type = funckey_dict['type']
+                if funckey_type == 'speeddial':
+                    value = funckey_dict['value']
                     # need to set a non-empty label for the funckey to works
-                    label = funckey_dict.get(u'label', value)
+                    label = funckey_dict.get('label', value)
                     lines.append('speed_dial_%s_first_name=%s' % (funckey_no, label))
                     lines.append('speed_dial_%s_uri=%s' % (funckey_no, value))
                 else:
                     logger.warning('Unsupported funckey type: %s', funckey_type)
-        raw_config[u'XX_fkeys'] = u'\n'.join(lines)
+        raw_config['XX_fkeys'] = '\n'.join(lines)
     
     def _update_admin_password(self, raw_config):
-        raw_config.setdefault(u'admin_password', self._DEFAULT_PASSWORD)
+        raw_config.setdefault('admin_password', self._DEFAULT_PASSWORD)
     
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
+        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return 'sipconfig-%s.txt' % fmted_mac
     
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
-        if not raw_config[u'sip_lines']:
+        if not raw_config['sip_lines']:
             # the phone won't be configured properly if a sip line is not defined
             raise RawConfigError('need at least one sip lines defined')
     
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
     
     def configure(self, device, raw_config):
@@ -333,7 +331,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
         try:
             os.remove(path)
-        except OSError, e:
+        except OSError as e:
             # ignore
             logger.info('error while removing file: %s', e)
     
@@ -352,15 +350,15 @@ class BaseAlcatelPlugin(StandardPlugin):
     
     def synchronize(self, device, raw_config):
         try:
-            ip = device[u'ip'].encode('ascii')
+            ip = device['ip'].encode('ascii')
         except KeyError:
             return defer.fail(Exception('IP address needed for device synchronization'))
         else:
-            password = raw_config.get(u'admin_password', self._DEFAULT_PASSWORD).encode('ascii')
+            password = raw_config.get('admin_password', self._DEFAULT_PASSWORD).encode('ascii')
             return threads.deferToThread(self._do_synchronize_via_telnet, ip, password)
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             return None
 
         return self._dev_specific_filename(device)

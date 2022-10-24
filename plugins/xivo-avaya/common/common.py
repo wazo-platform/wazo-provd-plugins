@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2011-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-"""Common code shared by the the various xivo-avaya plugins.
+"""Common code shared by the various xivo-avaya plugins.
 
 Support the 1220IP and 1230IP.
 
@@ -41,11 +39,12 @@ logger = logging.getLogger('plugin.xivo-avaya')
 
 
 _FILENAME_MAP = {
-    '1220.cfg': u'1220IP',
-    '1220SIP.cfg': u'1220IP',
-    '1230.cfg': u'1230IP',
-    '1230SIP.cfg': u'1230IP',
+    '1220.cfg': '1220IP',
+    '1220SIP.cfg': '1220IP',
+    '1230.cfg': '1230IP',
+    '1230SIP.cfg': '1230IP',
 }
+
 
 class BaseAvayaHTTPDeviceInfoExtractor(object):
     _UA_REGEX = re.compile(r'^AVAYA/[^/]+/([\d.]{11})$')
@@ -72,19 +71,19 @@ class BaseAvayaHTTPDeviceInfoExtractor(object):
         m = self._UA_REGEX.match(ua)
         if m:
             raw_version = m.group(1)
-            return {u'vendor': u'Avaya',
-                    u'version': raw_version.decode('ascii')}
+            return {'vendor': 'Avaya',
+                    'version': raw_version.decode('ascii')}
         return None
     
     def _extract_from_path(self, path, dev_info):
         m = self._PATH_REGEX.search(path)
         if m:
             raw_mac = m.group(1)
-            dev_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
+            dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
         else:
             filename = os.path.basename(path)
             if filename in _FILENAME_MAP:
-                dev_info[u'model'] = _FILENAME_MAP[filename]
+                dev_info['model'] = _FILENAME_MAP[filename]
 
 
 class BaseAvayaTFTPDeviceInfoExtractor(object):
@@ -97,7 +96,7 @@ class BaseAvayaTFTPDeviceInfoExtractor(object):
     def _do_extract(self, request):
         filename = request['packet']['filename']
         if filename in _FILENAME_MAP:
-            return {u'vendor': u'Avaya', u'model': _FILENAME_MAP[filename]}
+            return {'vendor': 'Avaya', 'model': _FILENAME_MAP[filename]}
         return None
 
 
@@ -108,7 +107,7 @@ class BaseAvayaPgAssociator(BasePgAssociator):
         self._version = version
     
     def _do_associate(self, vendor, model, version):
-        if vendor == u'Avaya':
+        if vendor == 'Avaya':
             if model in self._models:
                 if version == self._version:
                     return FULL_SUPPORT
@@ -141,25 +140,25 @@ class BaseAvayaPlugin(StandardPlugin):
     tftp_dev_info_extractor = BaseAvayaTFTPDeviceInfoExtractor()
     
     def _add_timezone(self, raw_config):
-        if u'timezone' in raw_config:
+        if 'timezone' in raw_config:
             try:
-                tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
-            except tzinform.TimezoneNotFoundError, e:
+                tzinfo = tzinform.get_timezone_info(raw_config['timezone'])
+            except tzinform.TimezoneNotFoundError as e:
                 logger.warning('Unknown timezone: %s', e)
             else:
-                raw_config[u'XX_timezone'] = u'TIMEZONE_OFFSET %d' % tzinfo['utcoffset'].as_seconds
+                raw_config['XX_timezone'] = 'TIMEZONE_OFFSET %d' % tzinfo['utcoffset'].as_seconds
     
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
+        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return 'SIP%s.cfg' % fmted_mac
     
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
     
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
     
     def configure(self, device, raw_config):
@@ -177,7 +176,7 @@ class BaseAvayaPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
         try:
             os.remove(path)
-        except OSError, e:
+        except OSError as e:
             # ignore
             logger.info('error while removing file: %s', e)
     
@@ -189,7 +188,7 @@ class BaseAvayaPlugin(StandardPlugin):
         # backward compatibility with older wazo-provd server
         def synchronize(self, device, raw_config):
             try:
-                ip = device[u'ip'].encode('ascii')
+                ip = device['ip'].encode('ascii')
             except KeyError:
                 return defer.fail(Exception('IP address needed for device synchronization'))
             else:
@@ -200,7 +199,7 @@ class BaseAvayaPlugin(StandardPlugin):
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             return None
 
         return self._dev_specific_filename(device)

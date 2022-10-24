@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,8 +21,8 @@ execfile_('common.py', common)
 logger = logging.getLogger('plugin.xivo-panasonic')
 
 
-MODELS = [u'KX-UT113', u'KX-UT123', u'KX-UT133', u'KX-UT136']
-VERSION = u'01.133'
+MODELS = ['KX-UT113', 'KX-UT123', 'KX-UT133', 'KX-UT136']
+VERSION = '01.133'
 
 
 class PanasonicPlugin(common['BasePanasonicPlugin']):

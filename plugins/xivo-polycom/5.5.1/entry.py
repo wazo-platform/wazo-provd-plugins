@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2014-2016 Avencall
+# Copyright (C) 2014-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,15 +17,15 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODELS = [
-    u'VVX101',
-    u'VVX201',
-    u'VVX300',
-    u'VVX310',
-    u'VVX400',
-    u'VVX410',
-    u'VVX500',
-    u'VVX600',
-    u'VVX1500',
+    'VVX101',
+    'VVX201',
+    'VVX300',
+    'VVX310',
+    'VVX400',
+    'VVX410',
+    'VVX500',
+    'VVX600',
+    'VVX1500',
 ]
 
 

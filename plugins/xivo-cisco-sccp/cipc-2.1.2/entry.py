@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2022 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +16,7 @@
 common = {}
 execfile_('common.py', common)
 
-MODELS = [u'CIPC']
+MODELS = ['CIPC']
 
 
 class CiscoSccpPlugin(common['BaseCiscoSccpPlugin']):

@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2013-2014 Avencall
+# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,13 +17,13 @@ common = {}
 execfile_('common.py', common)
 
 MODELS = [
-    u'7905G',
-    u'7912G',
-    u'7920',
-    u'7937G',
-    u'7940',
-    u'7940G',
-    u'7960G'
+    '7905G',
+    '7912G',
+    '7920',
+    '7937G',
+    '7940',
+    '7940G',
+    '7960G'
 ]
 
 
