@@ -29,7 +29,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.xivo-digium')
 
 
-class DigiumDHCPDeviceInfoExtractor(object):
+class DigiumDHCPDeviceInfoExtractor:
 
     _VDI_REGEX = re.compile(r'^digium_(D\d\d)_([\d_]+)$')
 
@@ -57,7 +57,7 @@ class DigiumDHCPDeviceInfoExtractor(object):
             return dev_info
 
 
-class DigiumHTTPDeviceInfoExtractor(object):
+class DigiumHTTPDeviceInfoExtractor:
 
     _PATH_REGEX = re.compile(r'^/Digium/(?:([a-fA-F\d]{12})\.cfg)?')
 
@@ -160,9 +160,8 @@ class BaseDigiumPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
-                else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:
@@ -191,11 +190,10 @@ class BaseDigiumPlugin(StandardPlugin):
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg$')
 
     def _dev_specific_filename(self, device):
-        filename = '%s.cfg' % self._format_mac(device)
-        return filename
+        return f'{self._format_mac(device)}.cfg'
 
     def _dev_contact_filename(self, device):
-        contact_filename = '%s-contacts.xml' % self._format_mac(device)
+        contact_filename = f'{self._format_mac(device)}-contacts.xml'
         return contact_filename
 
     def _transform_funckeys(self, raw_config):

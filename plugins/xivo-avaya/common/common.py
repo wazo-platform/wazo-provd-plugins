@@ -46,7 +46,7 @@ _FILENAME_MAP = {
 }
 
 
-class BaseAvayaHTTPDeviceInfoExtractor(object):
+class BaseAvayaHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^AVAYA/[^/]+/([\d.]{11})$')
     _PATH_REGEX = re.compile(r'\bSIP([\dA-F]{12})\.cfg$')
     
@@ -86,7 +86,7 @@ class BaseAvayaHTTPDeviceInfoExtractor(object):
                 dev_info['model'] = _FILENAME_MAP[filename]
 
 
-class BaseAvayaTFTPDeviceInfoExtractor(object):
+class BaseAvayaTFTPDeviceInfoExtractor:
     # TFTP is only used for the update from UNIStim to SIP, so we only
     # need minimal information to get the plugin association working.
     
@@ -146,12 +146,12 @@ class BaseAvayaPlugin(StandardPlugin):
             except tzinform.TimezoneNotFoundError as e:
                 logger.warning('Unknown timezone: %s', e)
             else:
-                raw_config['XX_timezone'] = 'TIMEZONE_OFFSET %d' % tzinfo['utcoffset'].as_seconds
+                raw_config['XX_timezone'] = f'TIMEZONE_OFFSET {tzinfo["utcoffset"].as_seconds:d}'
     
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
         fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
-        return 'SIP%s.cfg' % fmted_mac
+        return f'SIP{fmted_mac}.cfg'
     
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -194,9 +194,8 @@ class BaseAvayaPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
-                else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

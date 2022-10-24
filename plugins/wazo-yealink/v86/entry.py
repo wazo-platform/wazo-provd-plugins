@@ -100,7 +100,7 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     def configure_common(self, raw_config):
         super(YealinkPlugin, self).configure_common(raw_config)
         for dect_info in COMMON_FILES_DECT:
-            tpl = self._tpl_helper.get_template('common/%s' % dect_info['tpl_filename'])
+            tpl = self._tpl_helper.get_template(f'common/{dect_info["tpl_filename"]}')
             dst = os.path.join(self._tftpboot_dir, dect_info['filename'])
             raw_config['XX_handsets_fw'] = dect_info['handsets_fw']
             raw_config['XX_fw_filename'] = dect_info['fw_filename']

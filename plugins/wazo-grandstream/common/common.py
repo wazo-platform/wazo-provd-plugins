@@ -40,7 +40,7 @@ FUNCKEY_TYPES = {
 }
 
 
-class BaseGrandstreamHTTPDeviceInfoExtractor(object):
+class BaseGrandstreamHTTPDeviceInfoExtractor:
 
     # Grandstream Model HW GXP1405 SW 1.0.4.23 DevId 000b8240d55c
     # Grandstream Model HW GXP1628 SW 1.0.4.138 DevId c074ad2bd859
@@ -219,7 +219,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
                     return defer.fail(
-                        Exception('Incompatible sync service: %s' % sync_service)
+                        Exception(f'Incompatible sync service: {sync_service}')
                     )
                 else:
                     return threads.deferToThread(
@@ -254,7 +254,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
             if funckey_type not in FUNCKEY_TYPES:
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
-            type_code = 'P32%s' % (i_funckey_no + 2)
+            type_code = f'P32{i_funckey_no + 2}'
             lines.append((type_code, FUNCKEY_TYPES[funckey_type]))
             line_code = self._format_code(3 * i_funckey_no - 2)
             lines.append((line_code, int(funckey_dict['line']) - 1))
@@ -338,14 +338,14 @@ class BaseGrandstreamPlugin(StandardPlugin):
         if code >= 10:
             str_code = str(code)
         else:
-            str_code = '0%s' % code
-        return 'P3%s' % str_code
+            str_code = f'0{code}'
+        return f'P3{str_code}'
 
     def _add_dns(self, raw_config):
         if raw_config.get('dns_enabled'):
             dns_parts = raw_config['dns_ip'].split('.')
             for part_nb, part in enumerate(dns_parts, start=1):
-                raw_config['XX_dns_%s' % part_nb] = part
+                raw_config[f'XX_dns_{part_nb}'] = part
 
     def _add_dtmf_mode(self, raw_config):
         if raw_config.get('sip_dtmf_mode'):

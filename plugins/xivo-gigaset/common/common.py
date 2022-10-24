@@ -37,7 +37,7 @@ logger = logging.getLogger('plugin.xivo-gigaset')
 VENDOR = 'Gigaset'
 
 
-class BaseGigasetDHCPDeviceInfoExtractor(object):
+class BaseGigasetDHCPDeviceInfoExtractor:
     _VDI = {
         'C470IP':  'C470 IP',
         'C470_IP': 'C470 IP',
@@ -89,7 +89,7 @@ class GigasetInteractionError(Exception):
     pass
 
 
-class BaseGigasetRequestBroker(object):
+class BaseGigasetRequestBroker:
     DEFAULT_PIN = '0000'
     DEFAULT_TIMEOUT = 15
     _MAC_REGEX = re.compile(r'\b[\dA-F]{2}(?::[\dA-F]{2}){5}\b')
@@ -98,12 +98,12 @@ class BaseGigasetRequestBroker(object):
     def __init__(self, host, pin=None):
         self._host = host
         self._pin = pin or self.DEFAULT_PIN
-        self._url_prefix = 'http://%s/' % host
+        self._url_prefix = f'http://{host}/'
         self._cookie_jar = http.cookiejar.CookieJar()
         self._opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(self._cookie_jar))
     
     def login(self):
-        raw_data = 'language=1&password=%s' % self._pin
+        raw_data = f'language=1&password={self._pin}'
         with self.do_post_request('login.html', raw_data) as fobj:
             fobj.read()
             url = fobj.geturl()
@@ -149,20 +149,20 @@ class BaseGigasetRequestBroker(object):
     
     def _check_is_valid_line_no(self, line_no):
         if not self._is_valid_line_no(line_no):
-            raise ValueError('invalid line number: %s' % line_no)
+            raise ValueError(f'invalid line number: {line_no}')
     
     def set_line(self, line_no, **kwargs):
         self._check_is_valid_line_no(line_no)
 
         logger.debug('Setting line %s', line_no)
         id_no = line_no - 1
-        path = 'settings_telephony_voip.html?id=%s' % id_no
+        path = f'settings_telephony_voip.html?id={id_no}'
         raw_data = {
             'go_profile': '0',
             'account_id': id_no,
             'sip_password': kwargs['password'],
             'do_delete': '0',
-            'account_name': kwargs.get('account_name', 'IP%s' % line_no),
+            'account_name': kwargs.get('account_name', f'IP{line_no}'),
             'autocode': '',
             'sip_login_id': kwargs['auth_username'],
             'sip_password_2': kwargs['password'],
@@ -191,8 +191,8 @@ class BaseGigasetRequestBroker(object):
         
         logger.debug('Deleting line %s', line_no)
         id_no = line_no - 1
-        path = 'settings_telephony_voip.html?id=%s' % id_no
-        raw_data = 'account_id=%s&do_delete=1' % id_no
+        path = f'settings_telephony_voip.html?id={id_no}'
+        raw_data = f'account_id={id_no}&do_delete=1'
         with self.do_post_request(path, raw_data) as fobj:
             fobj.read()
     

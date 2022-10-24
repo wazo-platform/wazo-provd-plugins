@@ -94,4 +94,4 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
             content_file.write(b_config)
 
     def _format_line(self, code, value):
-        return '    %s = %s' % (code, value)
+        return f'    {code} = {value}'

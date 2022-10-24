@@ -43,7 +43,7 @@ logger = logging.getLogger('plugin.xivo-alcatel')
 VENDOR = 'Alcatel'
 
 
-class BaseAlcatelHTTPDeviceInfoExtractor(object):
+class BaseAlcatelHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^Alcatel IP Touch (\d+)/([\w.]+)$')
     _PATH_REGEX = re.compile(r'\bsipconfig-(\w+)\.txt$')
     
@@ -87,7 +87,7 @@ class BaseAlcatelHTTPDeviceInfoExtractor(object):
                 dev_info['mac'] = mac
 
 
-class BaseAlcatelTFTPDeviceInfoExtractor(object):
+class BaseAlcatelTFTPDeviceInfoExtractor:
     # We need a TFTP device extractor if we want to be able to update a phone
     # in NOE mode to SIP mode, since it seems like it's not possible for the
     # phone to do HTTP request in NOE mode
@@ -190,7 +190,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         if voicemail:
             raw_config['XX_voice_mail_uri'] = voicemail
             # XXX should we consider the value of sip_subscribe_mwi before ?
-            raw_config['XX_mwi_uri'] = "%s@%s" % (voicemail, raw_config['sip_proxy_ip'])
+            raw_config['XX_mwi_uri'] = f"{voicemail}@{raw_config['sip_proxy_ip']}"
     
     def _add_dns_addr(self, raw_config):
         # this function must be called after _extract_sip_line_info
@@ -224,7 +224,7 @@ class BaseAlcatelPlugin(StandardPlugin):
             current_year = datetime.datetime.utcnow().year
             month_calendar = calendar.monthcalendar(current_year, dst['month'])
             day = month_calendar[week][weekday]
-        return '%02d%02d%02d' % (dst['month'], day, dst['time'].as_hours)
+        return f'{dst["month"]:02d}{day:02d}{dst["time"].as_hours:02d}'
     
     def _format_tzinfo(self, tzinfo):
         offset = tzinfo['utcoffset'].as_minutes
@@ -234,7 +234,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         else:
             dst_start = '000000'
             dst_end = '000000'
-        return 'UT::%s:%s:%s' % (offset, dst_start, dst_end)
+        return f'UT::{offset}:{dst_start}:{dst_end}'
     
     def _add_timezone(self, raw_config):
         if 'timezone' in raw_config:
@@ -283,8 +283,8 @@ class BaseAlcatelPlugin(StandardPlugin):
                     value = funckey_dict['value']
                     # need to set a non-empty label for the funckey to works
                     label = funckey_dict.get('label', value)
-                    lines.append('speed_dial_%s_first_name=%s' % (funckey_no, label))
-                    lines.append('speed_dial_%s_uri=%s' % (funckey_no, value))
+                    lines.append(f'speed_dial_{funckey_no}_first_name={label}')
+                    lines.append(f'speed_dial_{funckey_no}_uri={value}')
                 else:
                     logger.warning('Unsupported funckey type: %s', funckey_type)
         raw_config['XX_fkeys'] = '\n'.join(lines)
@@ -294,8 +294,8 @@ class BaseAlcatelPlugin(StandardPlugin):
     
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
-        return 'sipconfig-%s.txt' % fmted_mac
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
+        return f'sipconfig-{formatted_mac}.txt'
     
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:

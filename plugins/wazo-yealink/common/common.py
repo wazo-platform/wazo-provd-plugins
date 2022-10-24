@@ -31,7 +31,7 @@ from twisted.internet import defer
 logger = logging.getLogger('plugin.xivo-yealink')
 
 
-class BaseYealinkHTTPDeviceInfoExtractor(object):
+class BaseYealinkHTTPDeviceInfoExtractor:
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'^[yY]ealink\s+(CP860|W52P)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
@@ -95,7 +95,7 @@ class BaseYealinkHTTPDeviceInfoExtractor(object):
         return None
 
     def _extract_from_path(self, request):
-        if request.path.startswith('/001565'):
+        if request.path.startswith(b'/001565'):
             raw_mac = request.path[1:-4]
             try:
                 mac = norm_mac(raw_mac.decode('ascii'))
@@ -126,7 +126,7 @@ class BaseYealinkPgAssociator(BasePgAssociator):
         return IMPROBABLE_SUPPORT
 
 
-class BaseYealinkFunckeyGenerator(object):
+class BaseYealinkFunckeyGenerator:
 
     def __init__(self, device, raw_config):
         self._model = device.get('model')
@@ -163,43 +163,43 @@ class BaseYealinkFunckeyGenerator(object):
             logger.info('Unsupported funckey type: %s', funckey_type)
 
     def _format_funckey_null(self, prefix):
-        self._lines.append('%s.type = 0' % prefix)
-        self._lines.append('%s.line = %%NULL%%' % prefix)
-        self._lines.append('%s.value = %%NULL%%' % prefix)
-        self._lines.append('%s.label = %%NULL%%' % prefix)
+        self._lines.append(f'{prefix}.type = 0')
+        self._lines.append(f'{prefix}.line = %NULL%')
+        self._lines.append(f'{prefix}.value = %NULL%')
+        self._lines.append(f'{prefix}.label = %NULL%')
 
     def _format_funckey_speeddial(self, prefix, funckey):
-        self._lines.append('%s.type = 13' % prefix)
-        self._lines.append('%s.line = %s' % (prefix, funckey.get('line', 1)))
-        self._lines.append('%s.value = %s' % (prefix, funckey['value']))
-        self._lines.append('%s.label = %s' % (prefix, funckey.get('label', '')))
+        self._lines.append(f'{prefix}.type = 13')
+        self._lines.append(f'{prefix}.line = {funckey.get("line", 1)}')
+        self._lines.append(f'{prefix}.value = {funckey["value"]}')
+        self._lines.append(f'{prefix}.label = {funckey.get("label", "")}')
 
     def _format_funckey_park(self, prefix, funckey):
-        self._lines.append('%s.type = 10' % prefix)
-        self._lines.append('%s.line = %s' % (prefix, funckey.get('line', 1)))
-        self._lines.append('%s.value = %s' % (prefix, funckey['value']))
-        self._lines.append('%s.label = %s' % (prefix, funckey.get('label', '')))
+        self._lines.append(f'{prefix}.type = 10')
+        self._lines.append(f'{prefix}.line = {funckey.get("line", 1)}')
+        self._lines.append(f'{prefix}.value = {funckey["value"]}')
+        self._lines.append(f'{prefix}.label = {funckey.get("label", "")}')
 
     def _format_funckey_blf(self, prefix, funckey):
         line_no = funckey.get('line', 1)
         if self._model in ('T32G', 'T38G'):
             line_no -= 1
-        self._lines.append('%s.type = 16' % prefix)
-        self._lines.append('%s.line = %s' % (prefix, line_no))
-        self._lines.append('%s.value = %s' % (prefix, funckey['value']))
-        self._lines.append('%s.label = %s' % (prefix, funckey.get('label', '')))
+        self._lines.append(f'{prefix}.type = 16')
+        self._lines.append(f'{prefix}.line = {line_no}')
+        self._lines.append(f'{prefix}.value = {funckey["value"]}')
+        self._lines.append(f'{prefix}.label = {funckey.get("label", "")}')
         if self._exten_pickup_call:
-            self._lines.append('%s.pickup_value = %s' % (prefix, self._exten_pickup_call))
-            self._lines.append('%s.extension = %s' % (prefix, self._exten_pickup_call))
+            self._lines.append(f'{prefix}.pickup_value = {self._exten_pickup_call}')
+            self._lines.append(f'{prefix}.extension = {self._exten_pickup_call}')
 
     def _format_funckey_line(self, prefix, line):
-        self._lines.append('%s.type = 15' % prefix)
-        self._lines.append('%s.line = %s' % (prefix, line))
-        self._lines.append('%s.value = %s' % (prefix, self._sip_lines[line]['number']))
-        self._lines.append('%s.label = %s' % (prefix, self._sip_lines[line]['number']))
+        self._lines.append(f'{prefix}.type = 15')
+        self._lines.append(f'{prefix}.line = {line}')
+        self._lines.append(f'{prefix}.value = {self._sip_lines[line]["number"]}')
+        self._lines.append(f'{prefix}.label = {self._sip_lines[line]["number"]}')
 
 
-class BaseYealinkFunckeyPrefixIterator(object):
+class BaseYealinkFunckeyPrefixIterator:
 
     _NB_LINEKEY = {
         'CP860': 0,
@@ -298,12 +298,12 @@ class BaseYealinkFunckeyPrefixIterator(object):
 
     def __iter__(self):
         for linekey_no in range(1, self._nb_linekey + 1):
-            yield 'linekey.%s' % linekey_no
+            yield f'linekey.{linekey_no}'
         for memorykey_no in range(1, self._nb_memorykey + 1):
-            yield 'memorykey.%s' % memorykey_no
+            yield f'memorykey.{memorykey_no}'
         for expmod_no in range(1, self._nb_expmod + 1):
             for expmodkey_no in range(1, self._NB_EXPMODKEY + 1):
-                yield 'expansion_module.%s.key.%s' % (expmod_no, expmodkey_no)
+                yield f'expansion_module.{expmod_no}.key.{expmodkey_no}'
 
 
 class BaseYealinkPlugin(StandardPlugin):
@@ -375,7 +375,7 @@ class BaseYealinkPlugin(StandardPlugin):
 
     def configure_common(self, raw_config):
         for filename, fw_filename, tpl_filename in self._COMMON_FILES:
-            tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
+            tpl = self._tpl_helper.get_template(f'common/{tpl_filename}')
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config['XX_fw_filename'] = fw_filename
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
@@ -411,15 +411,15 @@ class BaseYealinkPlugin(StandardPlugin):
 
     def _format_dst_change(self, dst_change):
         if dst_change['day'].startswith('D'):
-            return '%02d/%02d/%02d' % (dst_change['month'], int(dst_change['day'][1:]), dst_change['time'].as_hours)
-        else:
-            week, weekday = list(map(int, dst_change['day'][1:].split('.')))
-            weekday = tzinform.week_start_on_monday(weekday)
-            return '%d/%d/%d/%d' % (dst_change['month'], week, weekday, dst_change['time'].as_hours)
+            return f'{dst_change["month"]:02d}/{int(dst_change["day"][1:]):02d}/{dst_change["time"].as_hours:02d}'
+
+        week, weekday = list(map(int, dst_change['day'][1:].split('.')))
+        weekday = tzinform.week_start_on_monday(weekday)
+        return f'{dst_change["month"]:d}/{week:d}/{weekday:d}/{dst_change["time"].as_hours:d}'
 
     def _format_tz_info(self, tzinfo):
         lines = []
-        lines.append('local_time.time_zone = %+d' % min(max(tzinfo['utcoffset'].as_hours, -11), 12))
+        lines.append(f'local_time.time_zone = {min(max(tzinfo["utcoffset"].as_hours, -11), 12):+d}')
         if tzinfo['dst'] is None:
             lines.append('local_time.summer_time = 0')
         else:
@@ -428,9 +428,9 @@ class BaseYealinkPlugin(StandardPlugin):
                 lines.append('local_time.dst_time_type = 0')
             else:
                 lines.append('local_time.dst_time_type = 1')
-            lines.append('local_time.start_time = %s' % self._format_dst_change(tzinfo['dst']['start']))
-            lines.append('local_time.end_time = %s' % self._format_dst_change(tzinfo['dst']['end']))
-            lines.append('local_time.offset_time = %s' % tzinfo['dst']['save'].as_minutes)
+            lines.append(f'local_time.start_time = {self._format_dst_change(tzinfo["dst"]["start"])}')
+            lines.append(f'local_time.end_time = {self._format_dst_change(tzinfo["dst"]["end"])}')
+            lines.append(f'local_time.offset_time = {tzinfo["dst"]["save"].as_minutes}')
         return '\n'.join(lines)
 
     def _add_timezone(self, raw_config):

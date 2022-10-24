@@ -28,7 +28,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.wazo-snom')
 
 
-class BaseSnomDECTHTTPDeviceInfoExtractor(object):
+class BaseSnomDECTHTTPDeviceInfoExtractor:
     _UA_REGEX_MAC = re.compile(r'\b[sS]nom\s?(?P<model>M[0-9]{3})\s(?P<version>[0-9.]+)\s(?P<mac>[0-9a-fA-F]{12})\b')
     _PATH_REGEX = re.compile(r'\bsnom\w+-([\dA-F]{12})\.htm$')
 
@@ -195,7 +195,7 @@ class BaseSnomPlugin(StandardPlugin):
         raw_config['XX_servers'] = servers
 
     def _format_fkey_value(self, fkey_type, value, suffix):
-        return '%s %s%s' % (fkey_type, value, suffix)
+        return f'{fkey_type} {value}{suffix}'
 
     def _add_lang(self, raw_config):
         if 'locale' in raw_config:
@@ -233,8 +233,8 @@ class BaseSnomPlugin(StandardPlugin):
 
     def _dev_specific_filenames(self, device):
         # Return a tuple (htm filename, xml filename)
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
-        return 'snom%s-%s.htm' % (device['model'], fmted_mac), fmted_mac + '.xml'
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
+        return f'snom{device["model"]}-{formatted_mac}.htm', f'{formatted_mac}.xml'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -295,7 +295,7 @@ class BaseSnomPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
                 else:
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=true')
 

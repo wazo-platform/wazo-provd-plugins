@@ -32,7 +32,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.xivo-technicolor')
 
 
-class BaseTechnicolorHTTPDeviceInfoExtractor(object):
+class BaseTechnicolorHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^(?:Thomson|THOMSON) (\w+) hw[^ ]+ fw([^ ]+) ([^ ]+)$')
 
     def extract(self, request, request_type):
@@ -224,25 +224,21 @@ class BaseTechnicolorPlugin(StandardPlugin):
     def _add_config_sn(self, raw_config):
         # The only thing config_sn needs to be is 12 digit long and different
         # from one config file to another.
-        raw_config['XX_config_sn'] = '%012.f' % time.time()
+        raw_config['XX_config_sn'] = f'{time.time():012f}'
 
     def _add_dtmf_mode_flag(self, raw_config):
         dtmf_mode = raw_config.get('sip_dtmf_mode')
-        raw_config['XX_dtmf_mode_flag'] = self._SIP_DTMF_MODE.get(dtmf_mode,
-                                                                   self._DTMF_DEF)
+        raw_config['XX_dtmf_mode_flag'] = self._SIP_DTMF_MODE.get(dtmf_mode, self._DTMF_DEF)
 
     def _add_transport_flg(self, raw_config):
         sip_transport = raw_config.get('sip_transport')
-        raw_config['XX_transport_flg'] = self._SIP_TRANSPORT.get(sip_transport,
-                                                                  self._TRANSPORT_DEF)
+        raw_config['XX_transport_flg'] = self._SIP_TRANSPORT.get(sip_transport, self._TRANSPORT_DEF)
 
     def _gen_xx_phonebook_name(self, raw_config):
         if 'locale' in raw_config:
             language = raw_config['locale'].split('_')[0]
-            return self._XX_PHONEBOOK_NAME.get(language,
-                                               self._XX_PHONEBOOK_NAME_DEF)
-        else:
-            return self._XX_PHONEBOOK_NAME_DEF
+            return self._XX_PHONEBOOK_NAME.get(language, self._XX_PHONEBOOK_NAME_DEF)
+        return self._XX_PHONEBOOK_NAME_DEF
 
     def _tzinfo_to_zone_num(self, tzinfo):
         utcoffset_m = tzinfo['utcoffset'].as_minutes
@@ -293,12 +289,12 @@ class BaseTechnicolorPlugin(StandardPlugin):
                     prefix = 'S'
                 else:
                     logger.info('Unsupported funckey type: %s', funckey_type)
-                    lines.append('FeatureKeyExt%02d=L/<sip:>' % keynum)
+                    lines.append(f'FeatureKeyExt{keynum:02d}=L/<sip:>')
                     continue
                 lines.append('FeatureKeyExt%02d=%s/<sip:%s>' %
                              (keynum, prefix, funckey_dict['value']))
             else:
-                lines.append('FeatureKeyExt%02d=L/<sip:>' % keynum)
+                lines.append(f'FeatureKeyExt{keynum:02d}=L/<sip:>')
         raw_config['XX_fkeys'] = '\n'.join(lines)
 
     def _add_xivo_phonebook_url(self, raw_config):
@@ -314,8 +310,8 @@ class BaseTechnicolorPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
-        return '%s_%s.txt' % (self._FILENAME_PREFIX, fmted_mac)
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
+        return f'{self._FILENAME_PREFIX}_{formatted_mac}.txt'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -366,7 +362,7 @@ class BaseTechnicolorPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
                 else:
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 

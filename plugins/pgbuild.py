@@ -153,7 +153,7 @@ def build_op(opts, args, src_dir, dest_dir):
         try:
             build_plugin = BuildPlugin(build_plugin_path)
         except Exception as e:
-            print("error: while loading build plugin '%s': %s" % (build_plugin_path, e), file=stderr)
+            print(f"error: while loading build plugin '{build_plugin_path}': {e}", file=stderr)
             exit(1)
         else:
             build_plugins[build_plugin_path] = build_plugin
@@ -259,7 +259,7 @@ def _get_package_plugin_info(package, package_name):
     try:
         plugin_info_name = os.path.join(package_name, PLUGIN_INFO_FILENAME)
         if plugin_info_name not in tar_package.getnames():
-            print("error: package '%s' has no file '%s'" % (package, plugin_info_name), file=stderr)
+            print(f"error: package '{package}' has no file '{plugin_info_name}'", file=stderr)
             exit(1)
 
         fobj = tar_package.extractfile(plugin_info_name)
@@ -384,7 +384,7 @@ def main():
     options, args = parser.parse_known_args()
     nb_op = count(getattr(options, name) for name in ('build', 'package', 'create_db'))
     if nb_op != 1:
-        print("error: only one operation may be used at a time (%s given)" % nb_op, file=stderr)
+        print(f"error: only one operation may be used at a time ({nb_op} given)", file=stderr)
         exit(1)
     # assert: only one operation is specified
 

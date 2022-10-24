@@ -32,7 +32,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.xivo-polycom')
 
 
-class BasePolycomHTTPDeviceInfoExtractor(object):
+class BasePolycomHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^FileTransport Polycom\w+-(\w*?)-UA/([\d.]+)')
     _PATH_REGEX = re.compile(
         r'/(?!000000000000)([\da-f]{12})(?:\.cfg|-boot\.log|-phone\.cfg|-license\.cfg|-directory\.xml|-app\.log)$'
@@ -156,23 +156,23 @@ class BasePolycomPlugin(StandardPlugin):
 
     def _format_dst_change(self, suffix, dst_change):
         lines = []
-        lines.append('tcpIpApp.sntp.daylightSavings.%s.month="%d"' % (suffix, dst_change['month']))
-        lines.append('tcpIpApp.sntp.daylightSavings.%s.time="%d"' % (suffix, dst_change['time'].as_hours))
+        lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.month="{dst_change["month"]:d}"')
+        lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.time="{dst_change["time"].as_hours:d}"')
         if dst_change['day'].startswith('D'):
-            lines.append('tcpIpApp.sntp.daylightSavings.%s.date="%s"' % (suffix, dst_change['day'][1:]))
+            lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.date="{dst_change["day"][1:]}"')
         else:
             week, weekday = dst_change['day'][1:].split('.')
-            lines.append('tcpIpApp.sntp.daylightSavings.%s.dayOfWeek="%s"' % (suffix, weekday))
+            lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.dayOfWeek="{weekday}"')
             if week == '5':
-                lines.append('tcpIpApp.sntp.daylightSavings.%s.dayOfWeek.lastInMonth="1"' % suffix)
+                lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.dayOfWeek.lastInMonth="1"')
             else:
-                lines.append('tcpIpApp.sntp.daylightSavings.%s.dayOfWeek.lastInMonth="0"' % suffix)
-                lines.append('tcpIpApp.sntp.daylightSavings.%s.date="%d"' % (suffix, (int(week) - 1) * 7 + 1))
+                lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.dayOfWeek.lastInMonth="0"')
+                lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.date="{(int(week) - 1) * 7 + 1:d}"')
         return lines
 
     def _format_tzinfo(self, tzinfo):
         lines = []
-        lines.append('tcpIpApp.sntp.gmtOffset="%d"' % tzinfo['utcoffset'].as_seconds)
+        lines.append(f'tcpIpApp.sntp.gmtOffset="{tzinfo["utcoffset"].as_seconds:d}"')
         if tzinfo['dst'] is None:
             lines.append('tcpIpApp.sntp.daylightSavings.enable="0"')
         else:
@@ -249,8 +249,8 @@ class BasePolycomPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='')
-        return '%s-user.cfg' % fmted_mac
+        formatted_mac = format_mac(device['mac'], separator='')
+        return f'{formatted_mac}-user.cfg'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -297,7 +297,7 @@ class BasePolycomPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
                 else:
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 

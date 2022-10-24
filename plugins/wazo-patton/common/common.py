@@ -26,7 +26,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.wazo-patton')
 
 
-class BasePattonHTTPDeviceInfoExtractor(object):
+class BasePattonHTTPDeviceInfoExtractor:
 
     _UA_REGEX = re.compile(r'^SmartNode \(Model:(\w+)/[^;]+; Serial:(\w+); Software Version:R([^ ]+)')
 
@@ -73,7 +73,7 @@ class BasePattonPgAssociator(BasePgAssociator):
         return IMPROBABLE_SUPPORT
 
 
-class _TimezoneConverter(object):
+class _TimezoneConverter:
 
     _DAYS_DEFAULT_SUFFIX = 'th'
     _DAYS_SUFFIX = {
@@ -140,7 +140,7 @@ class _TimezoneConverter(object):
 
     def _format_time(self, tz_time):
         hours, minutes, _ = tz_time.as_hms
-        return '%02d:%02d' % (hours, minutes)
+        return f'{hours:02d}:{minutes:02d}'
 
     def _format_time_as_offset(self, tz_time):
         hours, minutes, _ = tz_time.as_hms
@@ -148,7 +148,7 @@ class _TimezoneConverter(object):
             sign = '-'
         else:
             sign = '+'
-        return '%s%02d:%02d' % (sign, abs(hours), abs(minutes))
+        return f'{sign}{abs(hours):02d}:{abs(minutes):02d}'
 
     def _format_dst_change(self, dst_change):
         fmted_time = self._format_time(dst_change['time'])
@@ -161,12 +161,12 @@ class _TimezoneConverter(object):
             week, day_of_week = int(day[1]), int(day[3])
             fmted_day_of_week = self._convert_day_of_week(day_of_week)
             fmted_week = self._convert_week(week)
-            day_rule = '%s %s' % (fmted_week, fmted_day_of_week)
-        return '%s %s %s' % (fmted_time, fmted_month, day_rule)
+            day_rule = f'{fmted_week} {fmted_day_of_week}'
+        return f'{fmted_time} {fmted_month} {day_rule}'
 
     def _convert_day(self, day):
         suffix = self._DAYS_SUFFIX.get(day, self._DAYS_DEFAULT_SUFFIX)
-        return '%d%s' % (day, suffix)
+        return f'{day:d}{suffix}'
 
     def _convert_day_of_week(self, day_of_week):
         return self._DAYS_OF_WEEK[tzinform.week_start_on_monday(day_of_week) - 1]
@@ -178,7 +178,7 @@ class _TimezoneConverter(object):
         return self._WEEKS[week - 1]
 
 
-class _SIPLinesConverter(object):
+class _SIPLinesConverter:
 
     def __init__(self):
         self._lines = []
@@ -204,8 +204,9 @@ class _SIPLinesConverter(object):
         username = sip_line['username']
         for existing_line in self._lines:
             if existing_line['username'] == username:
-                raise Exception('username %s is referenced by both lines %s and %s' % (
-                                username, line_no, existing_line['line_no']))
+                raise Exception(
+                    f'username {username} is referenced by both lines {line_no} and {existing_line["line_no"]}'
+                )
         line = self._new_line(line_no, sip_line)
         self._lines.append(line)
         return line
@@ -233,8 +234,10 @@ class _SIPLinesConverter(object):
         for existing_server in self._servers:
             if existing_server['proxy_ip'] == proxy_ip:
                 if existing_server['proxy_port'] != proxy_port:
-                    raise Exception('proxy %s is referenced with both port %s and %s' % (
-                                    proxy_ip, proxy_port, existing_server['proxy_port']))
+                    raise Exception(
+                        f'proxy {proxy_ip} is referenced with both port {proxy_port} '
+                        f'and {existing_server["proxy_port"]}'
+                    )
                 return existing_server
         server = self._new_server(proxy_ip, proxy_port)
         self._servers.append(server)
@@ -363,7 +366,7 @@ class BasePattonPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
                 else:
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 

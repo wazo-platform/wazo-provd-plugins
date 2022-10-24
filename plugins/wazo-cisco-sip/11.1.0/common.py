@@ -27,7 +27,7 @@ def _norm_model(raw_model):
     return raw_model.replace('-', '').upper().decode('ascii')
 
 
-class BaseCiscoDHCPDeviceInfoExtractor(object):
+class BaseCiscoDHCPDeviceInfoExtractor:
     _CISCO_VDI_REGEX = re.compile(r'^CISCO (ATA[0-9]{3})-MPP')
 
     def extract(self, request, request_type):
@@ -54,7 +54,7 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
         return None
 
 
-class BaseCiscoHTTPDeviceInfoExtractor(object):
+class BaseCiscoHTTPDeviceInfoExtractor:
     _CISCO_UA_REGEX = re.compile(r'^Cisco/(ATA[0-9]{3})-MPP-(\S+) \((\S+)\)$')
     _PATH_REGEX = re.compile(r'\b/([\da-f]{12})\.xml$')
 
@@ -103,7 +103,7 @@ class BaseCiscoHTTPDeviceInfoExtractor(object):
                 dev_info['mac'] = mac
 
 
-class BaseCiscoTFTPDeviceInfoExtractor(object):
+class BaseCiscoTFTPDeviceInfoExtractor:
     _MACFILE_REGEX = re.compile(r'^/([\da-fA-F]{12})\.xml$')
 
     def extract(self, request, request_type):
@@ -226,20 +226,19 @@ class BaseCiscoSipPlugin(StandardPlugin):
             value = funckey_dict['value']
             label = escape(funckey_dict.get('label', value))
             if funckey_type == 'speeddial':
-                function = 'fnc=sd;ext=%s@$PROXY;nme=%s' % (value, label)
+                function = f'fnc=sd;ext={value}@$PROXY;nme={label}'
             elif funckey_type == 'blf':
-                function = 'fnc=sd+blf+cp;sub=%s@$PROXY;nme=%s' % (value, label)
+                function = f'fnc=sd+blf+cp;sub={value}@$PROXY;nme={label}'
             else:
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
             keynum = int(funckey_no)
             if keynum <= nb_keys:
-                lines.append('<Extension_%s_>Disabled</Extension_%s_>' %
-                             (funckey_no, funckey_no))
-                lines.append('<Short_Name_%s_>%s</Short_Name_%s_>' %
-                             (funckey_no, label, funckey_no))
-                lines.append('<Extended_Function_%s_>%s</Extended_Function_%s_>' %
-                             (funckey_no, function, funckey_no))
+                lines += [
+                    f'<Extension_{funckey_no}_>Disabled</Extension_{funckey_no}_>',
+                    f'<Short_Name_{funckey_no}_>{label}</Short_Name_{funckey_no}_>',
+                    f'<Extended_Function_{funckey_no}_>{function}</Extended_Function_{funckey_no}_>',
+                ]
             else:
                 expmod_keynum = keynum - nb_keys - 1
                 expmod_no = expmod_keynum // 32 + 1
@@ -247,8 +246,9 @@ class BaseCiscoSipPlugin(StandardPlugin):
                     logger.info('Model %s has less than %s function keys', model, funckey_no)
                 else:
                     expmod_key_no = expmod_keynum % 32 + 1
-                    lines.append('<Unit_%s_Key_%s>%s</Unit_%s_Key_%s>' %
-                                 (expmod_no, expmod_key_no, function, expmod_no, expmod_key_no))
+                    lines.append(
+                        f'<Unit_{expmod_no}_Key_{expmod_key_no}>{function}</Unit_{expmod_no}_Key_{expmod_key_no}>'
+                    )
         raw_config['XX_fkeys'] = '\n'.join(lines)
 
     def _format_dst_change(self, dst_change):
@@ -265,22 +265,22 @@ class BaseCiscoSipPlugin(StandardPlugin):
                 day = (int(week) - 1) * 7 + 1
 
         h, m, s = dst_change['time'].as_hms
-        return '%s/%s/%s/%s:%s:%s' % (dst_change['month'], day, weekday, h, m, s)
+        return f'{dst_change["month"]}/{day}/{weekday}/{h}:{m}:{s}'
 
     def _format_tzinfo(self, tzinfo):
         lines = []
         hours, minutes = tzinfo['utcoffset'].as_hms[:2]
-        lines.append('<Time_Zone>GMT%+03d:%02d</Time_Zone>' % (hours, minutes))
+        lines.append(f'<Time_Zone>GMT{hours:+03d}:{minutes:02d}</Time_Zone>')
         if tzinfo['dst'] is None:
             lines.append('<Daylight_Saving_Time_Enable>no</Daylight_Saving_Time_Enable>')
         else:
             lines.append('<Daylight_Saving_Time_Enable>yes</Daylight_Saving_Time_Enable>')
             h, m, s = tzinfo['dst']['save'].as_hms
-            lines.append('<Daylight_Saving_Time_Rule>start=%s;end=%s;save=%d:%d:%s</Daylight_Saving_Time_Rule>' %
-                         (self._format_dst_change(tzinfo['dst']['start']),
-                          self._format_dst_change(tzinfo['dst']['end']),
-                          h, m, s,
-                          ))
+            start = self._format_dst_change(tzinfo['dst']['start'])
+            end = self._format_dst_change(tzinfo['dst']['end'])
+            lines.append(
+                f'<Daylight_Saving_Time_Rule>start={start};end={end};save={h:d}:{m:d}:{s}</Daylight_Saving_Time_Rule>'
+            )
         return '\n'.join(lines)
 
     def _add_timezone(self, raw_config):
@@ -298,10 +298,9 @@ class BaseCiscoSipPlugin(StandardPlugin):
         proxy_port = line.get('proxy_port') or raw_config.get('sip_proxy_port', '5060')
         backup_proxy_port = line.get('backup_proxy_port') or raw_config.get('sip_backup_proxy_port', '5060')
         if backup_proxy_ip:
-            proxy_value = 'xivo_proxies%s:SRV=%s:%s:p=0|%s:%s:p=1' % (line_no,
-                            proxy_ip, proxy_port, backup_proxy_ip, backup_proxy_port)
+            proxy_value = f'xivo_proxies{line_no}:SRV={proxy_ip}:{proxy_port}:p=0|{backup_proxy_ip}:{backup_proxy_port}:p=1'
         else:
-            proxy_value = '%s:%s' % (proxy_ip, proxy_port)
+            proxy_value = f'{proxy_ip}:{proxy_port}'
         return proxy_value
 
     def _add_proxies(self, raw_config):
@@ -391,7 +390,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
                 else:
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 

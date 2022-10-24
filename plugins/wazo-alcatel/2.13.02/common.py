@@ -27,7 +27,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.wazo-alcatel')
 
 
-class BaseAlcatelMyriadHTTPDeviceInfoExtractor(object):
+class BaseAlcatelMyriadHTTPDeviceInfoExtractor:
     _UA_REGEX_MAC = re.compile(
         r'^ALE (?P<model>M[3,5,7])(?:-CE)? (?P<version>([0-9]{1,4}\.?){4,5}) (?P<mac>[0-9a-f]{12})'
     )
@@ -304,9 +304,8 @@ class BaseAlcatelPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
-                else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=true')
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=true')
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

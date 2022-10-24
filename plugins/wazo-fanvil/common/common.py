@@ -27,7 +27,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.wazo-fanvil')
 
 
-class BaseFanvilHTTPDeviceInfoExtractor(object):
+class BaseFanvilHTTPDeviceInfoExtractor:
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
     _UA_REGEX = re.compile(
         r'^Fanvil (?P<model>X[0-9]{1,3}[SGVUCi]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'
@@ -176,7 +176,7 @@ class BaseFanvilPlugin(StandardPlugin):
     def configure_common(self, raw_config):
         self._add_server_url(raw_config)
         for filename, (_, fw_filename, tpl_filename) in self._COMMON_FILES.items():
-            tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
+            tpl = self._tpl_helper.get_template(f'common/{tpl_filename}')
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config['XX_fw_filename'] = fw_filename
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
@@ -202,7 +202,7 @@ class BaseFanvilPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
                 else:
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 

@@ -37,7 +37,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.xivo-zenitel')
 
 
-class BaseZenitelTFTPDeviceInfoExtractor(object):
+class BaseZenitelTFTPDeviceInfoExtractor:
     _FILENAME_REGEX = re.compile(r'^ipst_config((?:_\w\w){6})?\.cfg$')
     
     def extract(self, request, request_type):
@@ -74,7 +74,7 @@ class BaseZenitelPgAssociator(BasePgAssociator):
             return IMPROBABLE_SUPPORT
 
 
-class ZenitelConfigureService(object):
+class ZenitelConfigureService:
     _URI = 'https://alphasupport.zenitel.com/alphawiki/'
     
     def __init__(self, auth_downloader, username, password):
@@ -169,7 +169,7 @@ class BaseZenitelPlugin(StandardPlugin):
             if funckey_no in self._VALID_FUNCKEY_NO:
                 if funckey_dict['type'] == 'speeddial':
                     exten = funckey_dict['value']
-                    lines.append('speeddial_%s_c1=%s' % (funckey_no, exten))
+                    lines.append(f'speeddial_{funckey_no}_c1={exten}')
                 else:
                     logger.info('Unsupported funckey type: %s', funckey_dict['type'])
             else:
@@ -178,8 +178,8 @@ class BaseZenitelPlugin(StandardPlugin):
     
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='_', uppercase=False)
-        return 'ipst_config_%s.cfg' % fmted_mac
+        formatted_mac = format_mac(device['mac'], separator='_', uppercase=False)
+        return f'ipst_config_{formatted_mac}.cfg'
     
     def _check_config(self, raw_config):
         if 'tftp_port' not in raw_config:
@@ -211,7 +211,7 @@ class BaseZenitelPlugin(StandardPlugin):
     
     def _do_synchronize(self, ip):
         # XXX could use twisted native http stuff one day...
-        url = "http://%s/goform/zForm_send_cmd" % ip
+        url = f"http://{ip}/goform/zForm_send_cmd"
         pwd_manager = urllib.request.HTTPPasswordMgrWithDefaultRealm()
         pwd_manager.add_password(None, url, 'admin', 'alphaadmin')
         basic_auth_handler = urllib.request.HTTPBasicAuthHandler(pwd_manager)

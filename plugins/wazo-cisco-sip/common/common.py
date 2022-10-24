@@ -52,7 +52,7 @@ class BaseCiscoPgAssociator(BasePgAssociator):
         return IMPROBABLE_SUPPORT
 
 
-class BaseCiscoDHCPDeviceInfoExtractor(object):
+class BaseCiscoDHCPDeviceInfoExtractor:
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
 
@@ -91,7 +91,7 @@ class BaseCiscoDHCPDeviceInfoExtractor(object):
             return dev_info
 
 
-class BaseCiscoHTTPDeviceInfoExtractor(object):
+class BaseCiscoHTTPDeviceInfoExtractor:
     _CIPC_REGEX = re.compile(r'^/Communicator[/\\]')
     _FILENAME_REGEXES = [
         re.compile(r'^/SEP([\dA-F]{12})\.cnf\.xml$'),
@@ -118,7 +118,7 @@ class BaseCiscoHTTPDeviceInfoExtractor(object):
                 return dev_info
 
 
-class BaseCiscoTFTPDeviceInfoExtractor(object):
+class BaseCiscoTFTPDeviceInfoExtractor:
     _CIPC_REGEX = re.compile(r'^Communicator[/\\]')
     _FILENAME_REGEXES = [
         re.compile(r'^SEP([\dA-F]{12})\.cnf\.xml$'),
@@ -365,8 +365,8 @@ class BaseCiscoSipPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
-        return 'SEP%s.cnf.xml' % fmted_mac
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
+        return f'SEP{formatted_mac}.cnf.xml'
 
     def _check_config(self, raw_config):
         if 'tftp_port' not in raw_config:

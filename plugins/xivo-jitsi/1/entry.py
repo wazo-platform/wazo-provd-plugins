@@ -34,7 +34,7 @@ from twisted.web.resource import Resource
 logger = logging.getLogger('plugin.xivo-jitsi')
 
 
-class JitsiHTTPDeviceInfoExtractor(object):
+class JitsiHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^Jitsi/(\S+)$')
     
     def extract(self, request, request_type):

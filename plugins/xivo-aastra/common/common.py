@@ -33,7 +33,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.xivo-aastra')
 
 
-class BaseAastraHTTPDeviceInfoExtractor(object):
+class BaseAastraHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^(?:Aastra|Mitel)(\w+) MAC:([^ ]+) V:([^ ]+)-SIP$')
     _UA_MODELS_MAP = {
         '51i': '6751i', # not tested
@@ -94,7 +94,7 @@ class BaseAastraPgAssociator(BasePgAssociator):
         return IMPROBABLE_SUPPORT
 
 
-class AastraModel(object):
+class AastraModel:
 
     def __init__(self, nb_prgkey=0, nb_topsoftkey=0, nb_softkey=0, nb_expmod=0, nb_expmodkey=0):
         self.nb_prgkey = nb_prgkey
@@ -111,11 +111,11 @@ class AastraModel(object):
         return None
 
     def _keytypes(self):
-        yield ('prgkey', self.nb_prgkey)
-        yield ('topsoftkey', self.nb_topsoftkey)
-        yield ('softkey', self.nb_softkey)
+        yield 'prgkey', self.nb_prgkey
+        yield 'topsoftkey', self.nb_topsoftkey
+        yield 'softkey', self.nb_softkey
         for expmod_num in range(1, self.nb_expmod + 1):
-            yield ('expmod%s key' % expmod_num, self.nb_expmodkey)
+            yield f'expmod{expmod_num} key', self.nb_expmodkey
 
 
 class BaseAastraPlugin(StandardPlugin):
@@ -301,28 +301,28 @@ class BaseAastraPlugin(StandardPlugin):
 
     def _format_dst_change(self, suffix, dst_change):
         lines = []
-        lines.append('dst %s month: %d' % (suffix, dst_change['month']))
-        lines.append('dst %s hour: %d' % (suffix, min(dst_change['time'].as_hours, 23)))
+        lines.append(f'dst {suffix} month: {dst_change["month"]:d}')
+        lines.append(f'dst {suffix} hour: {min(dst_change["time"].as_hours, 23):d}')
         if dst_change['day'].startswith('D'):
-            lines.append('dst %s day: %s' % (suffix, dst_change['day'][1:]))
+            lines.append(f'dst {suffix} day: {dst_change["day"][1:]}')
         else:
             week, weekday = dst_change['day'][1:].split('.')
             if week == '5':
-                lines.append('dst %s week: -1' % suffix)
+                lines.append(f'dst {suffix} week: -1')
             else:
-                lines.append('dst %s week: %s' % (suffix, week))
-            lines.append('dst %s day: %s' % (suffix, weekday))
+                lines.append(f'dst {suffix} week: {week}')
+            lines.append(f'dst {suffix} day: {weekday}')
         return lines
 
     def _format_tzinfo(self, tzinfo):
         lines = []
         lines.append('time zone name: Custom')
-        lines.append('time zone minutes: %d' % -(tzinfo['utcoffset'].as_minutes))
+        lines.append(f'time zone minutes: {-(tzinfo["utcoffset"].as_minutes):d}')
         if tzinfo['dst'] is None:
             lines.append('dst config: 0')
         else:
             lines.append('dst config: 3')
-            lines.append('dst minutes: %d' % (min(tzinfo['dst']['save'].as_minutes, 60)))
+            lines.append(f'dst minutes: {min(tzinfo["dst"]["save"].as_minutes, 60):d}')
             if tzinfo['dst']['start']['day'].startswith('D'):
                 lines.append('dst [start|end] relative date: 0')
             else:
@@ -366,16 +366,16 @@ class BaseAastraPlugin(StandardPlugin):
             elif funckey_type == 'park':
                 type_ = 'park'
                 # note that value for park is ignored for firmware 3.x
-                value = 'asterisk;%s' % funckey_dict['value']
+                value = f'asterisk;{funckey_dict["value"]}'
             else:
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
             label = funckey_dict.get('label', value)
             line = funckey_dict.get('line', '1')
-            lines.append('%s type: %s' % (keytype, type_))
-            lines.append('%s value: %s' % (keytype, value))
-            lines.append('%s label: %s' % (keytype, label))
-            lines.append('%s line: %s' % (keytype, line))
+            lines.append(f'{keytype} type: {type_}')
+            lines.append(f'{keytype} value: {value}')
+            lines.append(f'{keytype} label: {label}')
+            lines.append(f'{keytype} line: {line}')
         raw_config['XX_fkeys'] = '\n'.join(lines)
 
     def _update_sip_lines(self, raw_config):
@@ -544,7 +544,7 @@ class BaseAastraPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
                 else:
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 

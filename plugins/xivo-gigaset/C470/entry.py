@@ -64,10 +64,10 @@ class GigasetRequestBroker(common_globals['BaseGigasetRequestBroker']):
         for id_no in range(7):
             line_no = id_no + 1
             if line_no in dict_:
-                raw_data['ad1_%s' % id_no] = dict_[line_no]
-                raw_data['ad2_%s' % id_no] = 'on'
+                raw_data[f'ad1_{id_no}'] = dict_[line_no]
+                raw_data[f'ad2_{id_no}'] = 'on'
             else:
-                raw_data['ad1_%s' % id_no] = ''
+                raw_data[f'ad1_{id_no}'] = ''
         with self.do_post_request('settings_telephony_am.html', raw_data) as fobj:
             fobj.read()
 

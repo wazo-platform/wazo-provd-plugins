@@ -32,7 +32,7 @@ LOCALE = {
 }
 
 
-class BaseGrandstreamHTTPDeviceInfoExtractor(object):
+class BaseGrandstreamHTTPDeviceInfoExtractor:
 
     # Grandstream Model HW HT801 V1.1A SW 1.0.17.5 DevId c074ad273a10
 
@@ -173,7 +173,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
                     return defer.fail(
-                        Exception('Incompatible sync service: %s' % sync_service)
+                        Exception(f'Incompatible sync service: {sync_service}')
                     )
                 else:
                     return threads.deferToThread(
@@ -204,7 +204,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         if raw_config.get('dns_enabled'):
             dns_parts = raw_config['dns_ip'].split('.')
             for part_nb, part in enumerate(dns_parts, start=1):
-                raw_config['XX_dns_%s' % part_nb] = part
+                raw_config[f'XX_dns_{part_nb}'] = part
 
     def _add_dtmf_mode(self, raw_config):
         if raw_config.get('sip_dtmf_mode'):

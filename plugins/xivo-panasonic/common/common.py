@@ -29,7 +29,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.xivo-panasonic')
 
 
-class BasePanasonicHTTPDeviceInfoExtractor(object):
+class BasePanasonicHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^Panasonic_([^ ]+)/([^ ]+) \(([^ ]+)\)')
 
     def extract(self, request, request_type):
@@ -154,9 +154,8 @@ class BasePanasonicPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
-                else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

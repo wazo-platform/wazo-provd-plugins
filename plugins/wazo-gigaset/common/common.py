@@ -24,7 +24,7 @@ logger = logging.getLogger('plugin.wazo-gigaset')
 VENDOR = 'Gigaset'
 
 
-class GigasetDHCPDeviceInfoExtractor(object):
+class GigasetDHCPDeviceInfoExtractor:
     _VDI = {
         'N720_DM_PRO': 'N720 DM PRO',
         'N510_IP_PRO': 'N510 IP PRO',
@@ -60,7 +60,7 @@ class GigasetDHCPDeviceInfoExtractor(object):
             return None
 
 
-class GigasetHTTPDeviceInfoExtractor(object):
+class GigasetHTTPDeviceInfoExtractor:
 
     _UA_REGEX = re.compile(r'^(Gigaset )?(?P<model>N\d{3} .+)\/(?P<version>\d{2,3}\.\d{2,3})\.(\d{2,3})\.(\d{2,3})\.(\d{2,3});?(?P<mac>[A-F0-9]{12})?$')
     _PATH_REGEX = re.compile(r'^/\d{2}/\d{1}/(.+)$')
@@ -207,12 +207,12 @@ class BaseGigasetPlugin(StandardPlugin):
 
         if 'dns_enabled' in raw_config:
             ip = raw_config['dns_ip']
-            ip_str = '0x' + ''.join(['%x' % int(p) for p in ip.split('.')])
+            ip_str = '0x' + ''.join([f'{int(p):x}' for p in ip.split('.')])
             raw_config['XX_dns_ip_hex'] = ip_str
 
         if 'vlan_id' in raw_config:
             vlan_id = raw_config['vlan_id']
-            raw_config['XX_vlan_id_hex'] = '0x%x' % int(vlan_id)
+            raw_config['XX_vlan_id_hex'] = f'0x{int(vlan_id):x}'
 
         self._add_timezone_code(raw_config)
 

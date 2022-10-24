@@ -19,7 +19,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.wazo-htek')
 
 
-class BaseHtekHTTPDeviceInfoExtractor(object):
+class BaseHtekHTTPDeviceInfoExtractor:
     _UA_REGEX_LIST = [
         re.compile(r'^Htek ([^ ]+) ([^ ]+) ([^ ]+)$')
     ]
@@ -203,7 +203,7 @@ class BaseHtekPlugin(StandardPlugin):
 
     def configure_common(self, raw_config):
         for filename, tpl_filename in self._COMMON_FILES:
-            tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
+            tpl = self._tpl_helper.get_template(f'common/{tpl_filename}')
             dst = os.path.join(self._tftpboot_dir, filename)
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
@@ -363,7 +363,7 @@ class BaseHtekPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
                 else:
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 

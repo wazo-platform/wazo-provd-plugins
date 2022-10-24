@@ -23,7 +23,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugin.xivo-snom')
 
 
-class BaseSnomHTTPDeviceInfoExtractor(object):
+class BaseSnomHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'\bsnom(\w+)-SIP ([\d.]+)')
     _UA_REGEX_MAC = re.compile(r'\bsnom(\w+)-SIP\s([\d.]+)\s(.+)\s(?P<mac>[0-9A-F]+)')
     _PATH_REGEX = re.compile(r'\bsnom\w+-([\dA-F]{12})\.htm$')
@@ -164,8 +164,8 @@ class BaseSnomPlugin(StandardPlugin):
                 raw_config['XX_uxm_firmware'] = 'uxmc'
 
     def _common_templates(self):
-        yield ('common/gui_lang.xml.tpl', 'gui_lang.xml')
-        yield ('common/web_lang.xml.tpl', 'web_lang.xml')
+        yield 'common/gui_lang.xml.tpl', 'gui_lang.xml'
+        yield 'common/web_lang.xml.tpl', 'web_lang.xml'
         for tpl_format, file_format in [('common/snom%s.htm.tpl', 'snom%s.htm'),
                                         ('common/snom%s.xml.tpl', 'snom%s.xml'),
                                         ('common/snom%s-firmware.xml.tpl', 'snom%s-firmware.xml')]:
@@ -209,7 +209,7 @@ class BaseSnomPlugin(StandardPlugin):
             elif funckey_type == 'blf':
                 if 'exten_pickup_call' in raw_config:
                     type_ = 'blf'
-                    suffix = '|%s' % raw_config['exten_pickup_call']
+                    suffix = f'|{raw_config["exten_pickup_call"]}'
                 else:
                     logger.warning('Could not set funckey %s: no exten_pickup_call',
                                    funckey_no)
@@ -225,7 +225,7 @@ class BaseSnomPlugin(StandardPlugin):
         raw_config['XX_fkeys'] = '\n'.join(lines)
 
     def _format_fkey_value(self, fkey_type, value, suffix):
-        return '%s %s%s' % (fkey_type, value, suffix)
+        return f'{fkey_type} {value}{suffix}'
 
     def _add_lang(self, raw_config):
         if 'locale' in raw_config:
@@ -234,26 +234,25 @@ class BaseSnomPlugin(StandardPlugin):
                 raw_config['XX_lang'] = self._LOCALE[locale]
 
     def _format_dst_change(self, dst_change):
-        fmted_time = '%02d:%02d:%02d' % tuple(dst_change['time'].as_hms)
+        fmted_time = '{:02d}:{:02d}:{:02d}'.format(*dst_change['time'].as_hms)
         day = dst_change['day']
         if day.startswith('D'):
-            return '%02d.%02d %s' % (int(day[1:]), dst_change['month'], fmted_time)
-        else:
-            week, weekday = list(map(int, day[1:].split('.')))
-            weekday = tzinform.week_start_on_monday(weekday)
-            return '%02d.%02d.%02d %s' % (dst_change['month'], week, weekday, fmted_time)
+            return f'{int(day[1:]):02d}.{dst_change["month"]:02d} {fmted_time}'
+
+        week, weekday = list(map(int, day[1:].split('.')))
+        weekday = tzinform.week_start_on_monday(weekday)
+        return f'{dst_change["month"]:02d}.{week:02d}.{weekday:02d} {fmted_time}'
 
     def _format_tzinfo(self, tzinfo):
         lines = []
         lines.append('<timezone perm="R"></timezone>')
-        lines.append('<utc_offset perm="R">%+d</utc_offset>' % tzinfo['utcoffset'].as_seconds)
+        lines.append(f'<utc_offset perm="R">{tzinfo["utcoffset"].as_seconds:+d}</utc_offset>')
         if tzinfo['dst'] is None:
             lines.append('<dst perm="R"></dst>')
         else:
-            lines.append('<dst perm="R">%d %s %s</dst>' %
-                         (tzinfo['dst']['save'].as_seconds,
-                          self._format_dst_change(tzinfo['dst']['start']),
-                          self._format_dst_change(tzinfo['dst']['end'])))
+            start = self._format_dst_change(tzinfo['dst']['start'])
+            end = self._format_dst_change(tzinfo['dst']['end'])
+            lines.append(f'<dst perm="R">{tzinfo["dst"]["save"].as_seconds:d} {start} {end}</dst>')
         return '\n'.join(lines)
 
     def _add_timezone(self, raw_config):
@@ -279,7 +278,7 @@ class BaseSnomPlugin(StandardPlugin):
         for line_no, line in raw_config['sip_lines'].items():
             if line.get('backup_proxy_ip'):
                 backup_line_no = int(line_no) + 1
-                msgs_blocked += ' Identity%02dIsNotRegistered' % backup_line_no
+                msgs_blocked += f' Identity{backup_line_no:02d}IsNotRegistered'
         raw_config['XX_msgs_blocked'] = msgs_blocked
 
     def _add_xivo_phonebook_url(self, raw_config):
@@ -307,7 +306,7 @@ class BaseSnomPlugin(StandardPlugin):
     def _dev_specific_filenames(self, device):
         # Return a tuple (htm filename, xml filename)
         fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
-        return 'snom%s-%s.htm' % (device['model'], fmted_mac), fmted_mac + '.xml'
+        return f'snom{device["model"]}-{fmted_mac}.htm', fmted_mac + '.xml'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -373,7 +372,7 @@ class BaseSnomPlugin(StandardPlugin):
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
+                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
                 else:
                     return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=false')
 
