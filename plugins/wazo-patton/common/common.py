@@ -28,7 +28,9 @@ logger = logging.getLogger('plugin.wazo-patton')
 
 class BasePattonHTTPDeviceInfoExtractor:
 
-    _UA_REGEX = re.compile(r'^SmartNode \(Model:(\w+)/[^;]+; Serial:(\w+); Software Version:R([^ ]+)')
+    _UA_REGEX = re.compile(
+        r'^SmartNode \(Model:(\w+)/[^;]+; Serial:(\w+); Software Version:R([^ ]+)'
+    )
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -41,8 +43,10 @@ class BasePattonHTTPDeviceInfoExtractor:
 
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
-        #   "SmartNode (Model:SN4112/JS/EUI; Serial:00A0BA08933C; Software Version:R6.2 2012-09-11 H323 SIP FXS FXO; Hardware Version:4.4)"
-        #   "SmartNode (Model:SN4316/JS; Serial:00A0BA0BA9A5; Software Version:R6.9 2016-07-05 H323 SIP FXS FXO; Hardware Version:2.3)"
+        #   "SmartNode (Model:SN4112/JS/EUI; Serial:00A0BA08933C;
+        #   Software Version:R6.2 2012-09-11 H323 SIP FXS FXO; Hardware Version:4.4)"
+        #   "SmartNode (Model:SN4316/JS; Serial:00A0BA0BA9A5;
+        #   Software Version:R6.9 2016-07-05 H323 SIP FXS FXO; Hardware Version:2.3)"
         m = self._UA_REGEX.match(ua)
         if m:
             raw_model, raw_mac, raw_version = m.groups()
@@ -51,14 +55,15 @@ class BasePattonHTTPDeviceInfoExtractor:
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
-                return {'vendor': 'Patton',
-                        'model': raw_model.decode('ascii'),
-                        'version': raw_version.decode('ascii'),
-                        'mac': mac}
+                return {
+                    'vendor': 'Patton',
+                    'model': raw_model.decode('ascii'),
+                    'version': raw_version.decode('ascii'),
+                    'mac': mac,
+                }
 
 
 class BasePattonPgAssociator(BasePgAssociator):
-
     def __init__(self, models, version):
         self._models = models
         self._version = version
@@ -129,7 +134,10 @@ class _TimezoneConverter:
         return self._tzinfo['dst'] is not None
 
     def dst_offset(self):
-        tz_time = tzinform.Time(self._tzinfo['utcoffset'].as_seconds + self._tzinfo['dst']['save'].as_seconds)
+        tz_time = tzinform.Time(
+            self._tzinfo['utcoffset'].as_seconds
+            + self._tzinfo['dst']['save'].as_seconds
+        )
         return self._format_time_as_offset(tz_time)
 
     def dst_start(self):
@@ -179,7 +187,6 @@ class _TimezoneConverter:
 
 
 class _SIPLinesConverter:
-
     def __init__(self):
         self._lines = []
         self._servers = []
@@ -189,7 +196,9 @@ class _SIPLinesConverter:
         line = self._build_line(sip_line_no, sip_line)
         server = self._build_server(sip_line, 'proxy_ip', 'proxy_port')
         if 'backup_proxy_ip' in sip_line:
-            backup_server = self._build_server(sip_line, 'backup_proxy_ip', 'backup_proxy_port')
+            backup_server = self._build_server(
+                sip_line, 'backup_proxy_ip', 'backup_proxy_port'
+            )
         else:
             backup_server = None
 
@@ -205,7 +214,8 @@ class _SIPLinesConverter:
         for existing_line in self._lines:
             if existing_line['username'] == username:
                 raise Exception(
-                    f'username {username} is referenced by both lines {line_no} and {existing_line["line_no"]}'
+                    f'username {username} is referenced by both lines '
+                    f'{line_no} and {existing_line["line_no"]}'
                 )
         line = self._new_line(line_no, sip_line)
         self._lines.append(line)
@@ -224,8 +234,12 @@ class _SIPLinesConverter:
             'servers': [],
         }
         if 'backup_proxy_ip' in sip_line:
-            line['backup_registrar_ip'] = sip_line.get('backup_registrar_ip', sip_line['backup_proxy_ip'])
-            line['backup_registrar_port'] = sip_line.get('backup_registrar_port', '5060')
+            line['backup_registrar_ip'] = sip_line.get(
+                'backup_registrar_ip', sip_line['backup_proxy_ip']
+            )
+            line['backup_registrar_port'] = sip_line.get(
+                'backup_registrar_port', '5060'
+            )
         return line
 
     def _build_server(self, sip_line, key_proxy_ip, key_proxy_port):
@@ -266,7 +280,7 @@ class BasePattonPlugin(StandardPlugin):
     _SIP_DTMF_MODE = {
         'RTP-in-band': 'default',
         'RTP-out-of-band': 'rtp',
-        'SIP-INFO': 'signaling'
+        'SIP-INFO': 'signaling',
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
@@ -307,12 +321,16 @@ class BasePattonPlugin(StandardPlugin):
         if 'sip_transport' not in raw_config:
             raw_config['sip_transport'] = 'udp'
         elif raw_config.get('sip_transport') == 'tls':
-            logger.warning("Patton doesn't support the SIP transport tls: fallback to udp")
+            logger.warning(
+                "Patton doesn't support the SIP transport tls: fallback to udp"
+            )
             raw_config['sip_transport'] = 'udp'
 
     def _add_dtmf_relay(self, raw_config):
         if 'sip_dtmf_mode' in raw_config:
-            raw_config['XX_dtmf_relay'] = self._SIP_DTMF_MODE[raw_config['sip_dtmf_mode']]
+            raw_config['XX_dtmf_relay'] = self._SIP_DTMF_MODE[
+                raw_config['sip_dtmf_mode']
+            ]
 
     def _add_lines_and_servers(self, raw_config):
         converter = _SIPLinesConverter()
@@ -324,8 +342,8 @@ class BasePattonPlugin(StandardPlugin):
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg$')
 
     def _dev_specific_filename(self, device):
-        fmted_mac = format_mac(device['mac'], separator='')
-        return fmted_mac + '.cfg'
+        formatted_mac = format_mac(device['mac'], separator='')
+        return f'{formatted_mac}.cfg'
 
     def _check_device(self, device):
         if 'mac' not in device:
@@ -353,6 +371,7 @@ class BasePattonPlugin(StandardPlugin):
             logger.info('error while removing file: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -362,13 +381,19 @@ class BasePattonPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return threads.deferToThread(
+                        sync_service.sip_notify, ip, 'check-sync'
+                    )
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

@@ -18,10 +18,14 @@ import os
 import re
 from provd import synchronize
 from provd.util import norm_mac, format_mac
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
-    TemplatePluginHelper
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, PROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, FULL_SUPPORT, BasePgAssociator
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
+from provd.devices.pgasso import (
+    IMPROBABLE_SUPPORT,
+    PROBABLE_SUPPORT,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    BasePgAssociator,
+)
 from provd.servers.http import HTTPNoListingFileService
 from twisted.internet import defer, threads
 
@@ -51,9 +55,7 @@ class DigiumDHCPDeviceInfoExtractor:
         if match:
             model = match.group(1).decode('ascii')
             fw_version = match.group(2).replace('_', '.').decode('ascii')
-            dev_info = {'vendor': 'Digium',
-                        'model': model,
-                        'version': fw_version}
+            dev_info = {'vendor': 'Digium', 'model': model, 'version': fw_version}
             return dev_info
 
 
@@ -136,7 +138,7 @@ class BaseDigiumPlugin(StandardPlugin):
     def deconfigure(self, device):
         filenames = [
             self._dev_specific_filename(device),
-            self._dev_contact_filename(device)
+            self._dev_contact_filename(device),
         ]
 
         for filename in filenames:
@@ -147,6 +149,7 @@ class BaseDigiumPlugin(StandardPlugin):
                 logger.info('error while removing file %s: %s', path, e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -156,11 +159,15 @@ class BaseDigiumPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):
@@ -197,6 +204,4 @@ class BaseDigiumPlugin(StandardPlugin):
         return contact_filename
 
     def _transform_funckeys(self, raw_config):
-        return dict(
-            (int(k), v) for k, v in raw_config['funckeys'].items()
-        )
+        return dict((int(k), v) for k, v in raw_config['funckeys'].items())

@@ -26,10 +26,14 @@ import logging
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import BasePgAssociator, FULL_SUPPORT,\
-    COMPLETE_SUPPORT, PROBABLE_SUPPORT, IMPROBABLE_SUPPORT
-from provd.plugins import StandardPlugin, TemplatePluginHelper,\
-    FetchfwPluginHelper
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    FULL_SUPPORT,
+    COMPLETE_SUPPORT,
+    PROBABLE_SUPPORT,
+    IMPROBABLE_SUPPORT,
+)
+from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import format_mac, norm_mac
@@ -49,10 +53,10 @@ _FILENAME_MAP = {
 class BaseAvayaHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^AVAYA/[^/]+/([\d.]{11})$')
     _PATH_REGEX = re.compile(r'\bSIP([\dA-F]{12})\.cfg$')
-    
+
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
-    
+
     def _do_extract(self, request):
         ua = request.getHeader('User-Agent')
         if ua:
@@ -61,7 +65,7 @@ class BaseAvayaHTTPDeviceInfoExtractor:
                 self._extract_from_path(request.path, dev_info)
                 return dev_info
         return None
-    
+
     def _extract_from_ua(self, ua):
         # HTTP User-Agent:
         #   "AVAYA/SIP12x0\x17/04.00.04.00"
@@ -71,10 +75,9 @@ class BaseAvayaHTTPDeviceInfoExtractor:
         m = self._UA_REGEX.match(ua)
         if m:
             raw_version = m.group(1)
-            return {'vendor': 'Avaya',
-                    'version': raw_version.decode('ascii')}
+            return {'vendor': 'Avaya', 'version': raw_version.decode('ascii')}
         return None
-    
+
     def _extract_from_path(self, path, dev_info):
         m = self._PATH_REGEX.search(path)
         if m:
@@ -89,10 +92,10 @@ class BaseAvayaHTTPDeviceInfoExtractor:
 class BaseAvayaTFTPDeviceInfoExtractor:
     # TFTP is only used for the update from UNIStim to SIP, so we only
     # need minimal information to get the plugin association working.
-    
+
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
-    
+
     def _do_extract(self, request):
         filename = request['packet']['filename']
         if filename in _FILENAME_MAP:
@@ -105,7 +108,7 @@ class BaseAvayaPgAssociator(BasePgAssociator):
         BasePgAssociator.__init__(self)
         self._models = models
         self._version = version
-    
+
     def _do_associate(self, vendor, model, version):
         if vendor == 'Avaya':
             if model in self._models:
@@ -122,23 +125,23 @@ class BaseAvayaPgAssociator(BasePgAssociator):
 class BaseAvayaPlugin(StandardPlugin):
     # XXX file encoding is not stated anywhere
     _ENCODING = 'UTF-8'
-    
+
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
-        
+
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
-        
+
         downloaders = FetchfwPluginHelper.new_downloaders(gen_cfg.get('proxies'))
         fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
-        
+
         self.services = fetchfw_helper.services()
         self.tftp_service = TFTPFileService(self._tftpboot_dir)
         self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
-    
+
     http_dev_info_extractor = BaseAvayaHTTPDeviceInfoExtractor()
-    
+
     tftp_dev_info_extractor = BaseAvayaTFTPDeviceInfoExtractor()
-    
+
     def _add_timezone(self, raw_config):
         if 'timezone' in raw_config:
             try:
@@ -146,32 +149,34 @@ class BaseAvayaPlugin(StandardPlugin):
             except tzinform.TimezoneNotFoundError as e:
                 logger.warning('Unknown timezone: %s', e)
             else:
-                raw_config['XX_timezone'] = f'TIMEZONE_OFFSET {tzinfo["utcoffset"].as_seconds:d}'
-    
+                raw_config[
+                    'XX_timezone'
+                ] = f'TIMEZONE_OFFSET {tzinfo["utcoffset"].as_seconds:d}'
+
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
-        return f'SIP{fmted_mac}.cfg'
-    
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
+        return f'SIP{formatted_mac}.cfg'
+
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
-    
+
     def _check_device(self, device):
         if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
-    
+
     def configure(self, device, raw_config):
         self._check_config(raw_config)
         self._check_device(device)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
-        
+
         self._add_timezone(raw_config)
-        
+
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
-    
+
     def deconfigure(self, device):
         path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
         try:
@@ -179,8 +184,9 @@ class BaseAvayaPlugin(StandardPlugin):
         except OSError as e:
             # ignore
             logger.info('error while removing file: %s', e)
-    
+
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -190,11 +196,15 @@ class BaseAvayaPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):

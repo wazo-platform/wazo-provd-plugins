@@ -78,7 +78,9 @@ class BaseYealinkHTTPDeviceInfoExtractor:
                 try:
                     mac = norm_mac(raw_mac.decode('ascii'))
                 except ValueError as e:
-                    logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
+                    logger.warning(
+                        'Could not normalize MAC address "%s": %s', raw_mac, e
+                    )
                     return {
                         'vendor': 'Yealink',
                         'model': raw_model.decode('ascii'),
@@ -403,12 +405,13 @@ class BaseYealinkPlugin(StandardPlugin):
             ) = self._LOCALE[locale]
 
     def _format_dst_change(self, dst_change):
-        if dst_change['day'].startswith('D'):
-            return f'{dst_change["month"]:02d}/{int(dst_change["day"][1:]):02d}/{dst_change["time"].as_hours:02d}'
+        day, month, time = dst_change['day'], dst_change['month'], dst_change['time']
+        if day.startswith('D'):
+            return f'{month:02d}/{int(day[1:]):02d}/{time.as_hours:02d}'
         else:
-            week, weekday = list(map(int, dst_change['day'][1:].split('.')))
+            week, weekday = list(map(int, day[1:].split('.')))
             weekday = tzinform.week_start_on_monday(weekday)
-            return f'{dst_change["month"]:d}/{week:d}/{weekday:d}/{dst_change["time"].as_hours:d}'
+            return f'{month:d}/{week:d}/{weekday:d}/{time.as_hours:d}'
 
     def _format_tz_info(self, tzinfo):
         lines = []
@@ -468,8 +471,8 @@ class BaseYealinkPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='')
-        return fmted_mac + '.cfg'
+        formatted_mac = format_mac(device['mac'], separator='')
+        return f'{formatted_mac}.cfg'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:

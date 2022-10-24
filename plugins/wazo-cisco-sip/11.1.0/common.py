@@ -10,8 +10,13 @@ from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT, \
-    PROBABLE_SUPPORT, COMPLETE_SUPPORT, FULL_SUPPORT
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    IMPROBABLE_SUPPORT,
+    PROBABLE_SUPPORT,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+)
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
@@ -48,8 +53,7 @@ class BaseCiscoDHCPDeviceInfoExtractor:
         m = self._CISCO_VDI_REGEX.match(vdi)
         if m:
             model = m.group(1)
-            dev_info = {'vendor': 'Cisco',
-                        'model': _norm_model(model)}
+            dev_info = {'vendor': 'Cisco', 'model': _norm_model(model)}
             return dev_info
         return None
 
@@ -220,8 +224,9 @@ class BaseCiscoSipPlugin(StandardPlugin):
             return
         nb_keys, nb_expmods = self._NB_FKEY[model]
         lines = []
-        for funckey_no, funckey_dict in sorted(iter(raw_config['funckeys'].items()),
-                                               key=itemgetter(0)):
+        for funckey_no, funckey_dict in sorted(
+            iter(raw_config['funckeys'].items()), key=itemgetter(0)
+        ):
             funckey_type = funckey_dict['type']
             value = funckey_dict['value']
             label = escape(funckey_dict.get('label', value))
@@ -237,17 +242,21 @@ class BaseCiscoSipPlugin(StandardPlugin):
                 lines += [
                     f'<Extension_{funckey_no}_>Disabled</Extension_{funckey_no}_>',
                     f'<Short_Name_{funckey_no}_>{label}</Short_Name_{funckey_no}_>',
-                    f'<Extended_Function_{funckey_no}_>{function}</Extended_Function_{funckey_no}_>',
+                    f'<Extended_Function_{funckey_no}_>{function}</Extended_Function_{funckey_no}_>',  # noqa: E501
                 ]
             else:
                 expmod_keynum = keynum - nb_keys - 1
                 expmod_no = expmod_keynum // 32 + 1
                 if expmod_no > nb_expmods:
-                    logger.info('Model %s has less than %s function keys', model, funckey_no)
+                    logger.info(
+                        'Model %s has less than %s function keys', model, funckey_no
+                    )
                 else:
                     expmod_key_no = expmod_keynum % 32 + 1
                     lines.append(
-                        f'<Unit_{expmod_no}_Key_{expmod_key_no}>{function}</Unit_{expmod_no}_Key_{expmod_key_no}>'
+                        f'<Unit_{expmod_no}_Key_{expmod_key_no}>'
+                        f'{function}'
+                        f'</Unit_{expmod_no}_Key_{expmod_key_no}>'
                     )
         raw_config['XX_fkeys'] = '\n'.join(lines)
 
@@ -272,14 +281,20 @@ class BaseCiscoSipPlugin(StandardPlugin):
         hours, minutes = tzinfo['utcoffset'].as_hms[:2]
         lines.append(f'<Time_Zone>GMT{hours:+03d}:{minutes:02d}</Time_Zone>')
         if tzinfo['dst'] is None:
-            lines.append('<Daylight_Saving_Time_Enable>no</Daylight_Saving_Time_Enable>')
+            lines.append(
+                '<Daylight_Saving_Time_Enable>no</Daylight_Saving_Time_Enable>'
+            )
         else:
-            lines.append('<Daylight_Saving_Time_Enable>yes</Daylight_Saving_Time_Enable>')
+            lines.append(
+                '<Daylight_Saving_Time_Enable>yes</Daylight_Saving_Time_Enable>'
+            )
             h, m, s = tzinfo['dst']['save'].as_hms
             start = self._format_dst_change(tzinfo['dst']['start'])
             end = self._format_dst_change(tzinfo['dst']['end'])
             lines.append(
-                f'<Daylight_Saving_Time_Rule>start={start};end={end};save={h:d}:{m:d}:{s}</Daylight_Saving_Time_Rule>'
+                '<Daylight_Saving_Time_Rule>'
+                f'start={start};end={end};save={h:d}:{m:d}:{s}'
+                '</Daylight_Saving_Time_Rule>'
             )
         return '\n'.join(lines)
 
@@ -294,11 +309,18 @@ class BaseCiscoSipPlugin(StandardPlugin):
 
     def _format_proxy(self, raw_config, line, line_no):
         proxy_ip = line.get('proxy_ip') or raw_config['sip_proxy_ip']
-        backup_proxy_ip = line.get('backup_proxy_ip') or raw_config.get('sip_backup_proxy_ip')
+        backup_proxy_ip = line.get('backup_proxy_ip') or raw_config.get(
+            'sip_backup_proxy_ip'
+        )
         proxy_port = line.get('proxy_port') or raw_config.get('sip_proxy_port', '5060')
-        backup_proxy_port = line.get('backup_proxy_port') or raw_config.get('sip_backup_proxy_port', '5060')
+        backup_proxy_port = line.get('backup_proxy_port') or raw_config.get(
+            'sip_backup_proxy_port', '5060'
+        )
         if backup_proxy_ip:
-            proxy_value = f'xivo_proxies{line_no}:SRV={proxy_ip}:{proxy_port}:p=0|{backup_proxy_ip}:{backup_proxy_port}:p=1'
+            proxy_value = (
+                f'xivo_proxies{line_no}:SRV={proxy_ip}:{proxy_port}:p=0|'
+                f'{backup_proxy_ip}:{backup_proxy_port}:p=1'
+            )
         else:
             proxy_value = f'{proxy_ip}:{proxy_port}'
         return proxy_value
@@ -327,7 +349,10 @@ class BaseCiscoSipPlugin(StandardPlugin):
         raw_config['XX_locale'] = self._LOCALE[locale]
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get('config_version', 0) >= 1
+        ):
             plugins.add_xivo_phonebook_url(raw_config, 'cisco')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
@@ -335,14 +360,15 @@ class BaseCiscoSipPlugin(StandardPlugin):
     def _add_xivo_phonebook_url_compat(self, raw_config):
         hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'
+            raw_config['XX_xivo_phonebook_url'] = url
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^\w{,3}[0-9a-fA-F]{12}(?:\.cnf)?\.xml$')
 
     def _dev_specific_filename(self, dev):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(dev['mac'], separator='')
-        return fmted_mac + '.xml'
+        formatted_mac = format_mac(dev['mac'], separator='')
+        return formatted_mac + '.xml'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -377,6 +403,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
             logger.info('error while removing configuration file: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -386,13 +413,19 @@ class BaseCiscoSipPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return threads.deferToThread(
+                        sync_service.sip_notify, ip, 'check-sync'
+                    )
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

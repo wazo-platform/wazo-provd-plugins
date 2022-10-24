@@ -19,10 +19,14 @@ import re
 from provd import plugins
 from provd import tzinform
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT, \
-    NO_SUPPORT, COMPLETE_SUPPORT, PROBABLE_SUPPORT
-from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
-    TemplatePluginHelper
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    IMPROBABLE_SUPPORT,
+    NO_SUPPORT,
+    COMPLETE_SUPPORT,
+    PROBABLE_SUPPORT,
+)
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
 from provd import synchronize
@@ -152,8 +156,8 @@ _ZONE_MAP = {
     'Etc/GMT+7': 'US Mountain Standard Time',
     'US/Central': 'Central Standard/Daylight Time',
     'America/Mexico_City': 'Mexico Standard/Daylight Time',
-#    '': u'Canada Central Standard Time',
-#    '': u'SA Pacific Standard Time',
+    #    '': u'Canada Central Standard Time',
+    #    '': u'SA Pacific Standard Time',
     'US/Eastern': 'Eastern Standard/Daylight Time',
     'Etc/GMT+5': 'US Eastern Standard Time',
     'Canada/Atlantic': 'Atlantic Standard/Daylight Time',
@@ -165,37 +169,37 @@ _ZONE_MAP = {
     'Atlantic/Azores': 'Azores Standard/Daylight Time',
     'Europe/London': 'GMT Standard/Daylight Time',
     'Etc/GMT': 'Greenwich Standard Time',
-#    'Europe/Belfast': u'W. Europe Standard/Daylight Time',
-#    '': u'GTB Standard/Daylight Time',
+    #    'Europe/Belfast': u'W. Europe Standard/Daylight Time',
+    #    '': u'GTB Standard/Daylight Time',
     'Egypt': 'Egypt Standard/Daylight Time',
     'Europe/Athens': 'E. Europe Standard/Daylight Time',
-#    'Europe/Rome': u'Romance Standard/Daylight Time',
+    #    'Europe/Rome': u'Romance Standard/Daylight Time',
     'Europe/Paris': 'Central Europe Standard/Daylight Time',
     'Africa/Johannesburg': 'South Africa Standard Time ',
     'Asia/Jerusalem': 'Jerusalem Standard/Daylight Time',
     'Asia/Riyadh': 'Saudi Arabia Standard Time',
-    'Europe/Moscow': 'Russian Standard/Daylight Time', # Russia covers 8 time zones.
+    'Europe/Moscow': 'Russian Standard/Daylight Time',  # Russia covers 8 time zones.
     'Iran': 'Iran Standard/Daylight Time',
-#    '': u'Caucasus Standard/Daylight Time',
+    #    '': u'Caucasus Standard/Daylight Time',
     'Etc/GMT-4': 'Arabian Standard Time',
     'Asia/Kabul': 'Afghanistan Standard Time ',
     'Etc/GMT-5': 'West Asia Standard Time',
-#    '': u'Ekaterinburg Standard Time',
+    #    '': u'Ekaterinburg Standard Time',
     'Asia/Calcutta': 'India Standard Time',
     'Etc/GMT-6': 'Central Asia Standard Time ',
     'Etc/GMT-7': 'SE Asia Standard Time',
-#    '': u'China Standard/Daylight Time', # China doesn't observe DST since 1991
+    #    '': u'China Standard/Daylight Time', # China doesn't observe DST since 1991
     'Asia/Taipei': 'Taipei Standard Time',
     'Asia/Tokyo': 'Tokyo Standard Time',
     'Australia/ACT': 'Cen. Australia Standard/Daylight Time',
     'Australia/Brisbane': 'AUS Central Standard Time',
-#    '': u'E. Australia Standard Time',
-#    '': u'AUS Eastern Standard/Daylight Time',
+    #    '': u'E. Australia Standard Time',
+    #    '': u'AUS Eastern Standard/Daylight Time',
     'Etc/GMT-10': 'West Pacific Standard Time',
     'Australia/Tasmania': 'Tasmania Standard/Daylight Time',
     'Etc/GMT-11': 'Central Pacific Standard Time',
     'Etc/GMT-12': 'Fiji Standard Time',
-#    '': u'New Zealand Standard/Daylight Time',
+    #    '': u'New Zealand Standard/Daylight Time',
 }
 
 
@@ -222,7 +226,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
         'en_US': ('english_united_states', 'en', 'united_states'),
         'es_ES': ('spanish_spain', 'es', 'spain'),
         'fr_FR': ('french_france', 'fr', 'france'),
-        'fr_CA': ('french_france', 'fr', 'canada')
+        'fr_CA': ('french_france', 'fr', 'canada'),
     }
 
     _SIP_TRANSPORT = {
@@ -241,10 +245,11 @@ class BaseCiscoSipPlugin(StandardPlugin):
 
         self.services = fetchfw_helper.services()
 
-        # Maybe find a way to bind to a specific port without changing the general http_port setting of wazo-provd ?
+        # Maybe find a way to bind to a specific port without changing the
+        # general http_port setting of wazo-provd ?
         # At the moment, http_port 6970 must be set in /etc/wazo-provd/config.yml
         self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
-        
+
         self.tftp_service = TFTPFileService(self._tftpboot_dir)
 
     dhcp_dev_info_extractor = BaseCiscoDHCPDeviceInfoExtractor()
@@ -295,7 +300,10 @@ class BaseCiscoSipPlugin(StandardPlugin):
                 raw_config['XX_timezone'] = self._tzinfo_to_value(tzinfo)
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get('config_version', 0) >= 1
+        ):
             plugins.add_xivo_phonebook_url(raw_config, 'cisco', entry_point='menu')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
@@ -308,7 +316,8 @@ class BaseCiscoSipPlugin(StandardPlugin):
     def _add_xivo_phonebook_url_compat(self, raw_config):
         hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/menu/'.format(hostname=hostname)
+            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/menu/'
+            raw_config['XX_xivo_phonebook_url'] = url
 
     def _update_call_managers(self, raw_config):
         for priority, call_manager in raw_config['sccp_call_managers'].items():
@@ -352,15 +361,15 @@ class BaseCiscoSipPlugin(StandardPlugin):
             fkey_type = {
                 'blf': 21,
                 'speeddial': 2,
-                }
-            
+            }
+
             for line_no, line_info in raw_config['funckeys'].items():
                 line_id = str(fkeys_start + int(line_no))
                 fkeys[line_id] = raw_config['funckeys'][line_no]
                 fkeys[line_id]['feature_id'] = fkey_type[line_info['type']]
-            
+
             raw_config['XX_fkeys'] = fkeys
-    
+
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^SEP[0-9A-F]{12}\.cnf\.xml$')
 
     def _dev_specific_filename(self, device):
@@ -409,15 +418,21 @@ class BaseCiscoSipPlugin(StandardPlugin):
         try:
             action = [
                 'Content-type=text/plain',
-                'Content=action=restart', # restart unregisters and redownloads config files from the server, reset unregisters and reboots the phone
+                # Restart unregisters and re-downloads config files
+                # from the server, reset unregisters and reboots the phone
+                'Content=action=restart',
                 'Content=RegisterCallId={}',
                 'Content=ConfigVersionStamp={0000000000000000}',
                 'Content=DialplanVersionStamp={0000000000000000}',
                 'Content=SoftkeyVersionStamp={0000000000000000}',
             ]
-            return synchronize.standard_sip_synchronize(device, event='service-control', extra_vars=action)
-        except TypeError: # wazo-provd not up to date for extra_vars
-            return defer.fail(Exception('operation not supported, please update your wazo-provd'))
+            return synchronize.standard_sip_synchronize(
+                device, event='service-control', extra_vars=action
+            )
+        except TypeError:  # wazo-provd not up to date for extra_vars
+            return defer.fail(
+                Exception('operation not supported, please update your wazo-provd')
+            )
 
     def is_sensitive_filename(self, filename):
         return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))

@@ -35,7 +35,9 @@ VENDOR = 'Gigaset'
 
 class GigasetHTTPDeviceInfoExtractor:
 
-    _UA_REGEX = re.compile(r'^(Gigaset )?(?P<model>[\w\s]+)\/(?P<version>(?:\w{2,3}\.){3,4}\w{1,3})(?:\+.+)?;(?P<mac>[0-9A-F]{12})?(;Handset=\d+)?$')
+    _UA_REGEX = re.compile(
+        r'^(Gigaset )?(?P<model>[\w\s]+)\/(?P<version>(?:\w{2,3}\.){3,4}\w{1,3})(?:\+.+)?;(?P<mac>[0-9A-F]{12})?(;Handset=\d+)?$'  # noqa: E501
+    )
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -55,9 +57,11 @@ class GigasetHTTPDeviceInfoExtractor:
         m = self._UA_REGEX.search(ua)
         dev_info = {}
         if m:
-            dev_info = {'vendor': VENDOR,
-                        'model': m.group('model').decode('ascii'),
-                        'version': m.group('version').decode('ascii')}
+            dev_info = {
+                'vendor': VENDOR,
+                'model': m.group('model').decode('ascii'),
+                'version': m.group('version').decode('ascii'),
+            }
             if 'mac' in m.groupdict():
                 dev_info['mac'] = norm_mac(m.group('mac').decode('ascii'))
 
@@ -99,90 +103,92 @@ class BaseGigasetPlugin(StandardPlugin):
         'tls': '3',
     }
 
-    _VALID_TZ_GIGASET = set((
-        'Pacific/Honolulu',
-        'America/Anchorage',
-        'America/Los_Angeles',
-        'America/Denver',
-        'America/Chicago',
-        'America/New_York',
-        'America/Caracas',
-        'America/Sao_Paulo',
-        'Europe/Belfast',
-        'Europe/Dublin',
-        'Europe/Guernsey',
-        'Europe/Isle_of_Man',
-        'Europe/Jersey',
-        'Europe/Lisbon',
-        'Europe/London',
-        'Greenwich',
-        'Europe/Amsterdam',
-        'Europe/Andorra',
-        'Europe/Belgrade',
-        'Europe/Berlin',
-        'Europe/Bratislava',
-        'Europe/Brussels',
-        'Europe/Budapest',
-        'Europe/Busingen',
-        'Europe/Copenhagen',
-        'Europe/Gibraltar',
-        'Europe/Ljubljana',
-        'Europe/Luxembourg',
-        'Europe/Madrid',
-        'Europe/Malta',
-        'Europe/Monaco',
-        'Europe/Oslo',
-        'Europe/Paris',
-        'Europe/Podgorica',
-        'Europe/Prague',
-        'Europe/Rome',
-        'Europe/San_Marino',
-        'Europe/Sarajevo',
-        'Europe/Skopje',
-        'Europe/Stockholm',
-        'Europe/Tirane',
-        'Europe/Vaduz',
-        'Europe/Vatican',
-        'Europe/Vienna',
-        'Europe/Warsaw',
-        'Europe/Zagreb',
-        'Europe/Zurich',
-        'Africa/Cairo',
-        'Europe/Athens',
-        'Europe/Bucharest',
-        'Europe/Chisinau',
-        'Europe/Helsinki',
-        'Europe/Kaliningrad',
-        'Europe/Kiev',
-        'Europe/Mariehamn',
-        'Europe/Nicosia',
-        'Europe/Riga',
-        'Europe/Sofia',
-        'Europe/Tallinn',
-        'Europe/Tiraspol',
-        'Europe/Uzhgorod',
-        'Europe/Vilnius',
-        'Europe/Zaporozhye',
-        'Europe/Istanbul',
-        'Europe/Kirov',
-        'Europe/Minsk',
-        'Europe/Moscow',
-        'Europe/Simferopol',
-        'Europe/Volgograd',
-        'Asia/Dubai',
-        'Europe/Astrakhan',
-        'Europe/Samara',
-        'Europe/Ulyanovsk',
-        'Asia/Karachi',
-        'Asia/Dhaka',
-        'Asia/Hong_Kong',
-        'Asia/Tokyo',
-        'Australia/Adelaide',
-        'Australia/Darwin',
-        'Australia/Brisbane',
-        'Australia/Sydney',
-        'Pacific/Noumea',
-    ))
+    _VALID_TZ_GIGASET = set(
+        (
+            'Pacific/Honolulu',
+            'America/Anchorage',
+            'America/Los_Angeles',
+            'America/Denver',
+            'America/Chicago',
+            'America/New_York',
+            'America/Caracas',
+            'America/Sao_Paulo',
+            'Europe/Belfast',
+            'Europe/Dublin',
+            'Europe/Guernsey',
+            'Europe/Isle_of_Man',
+            'Europe/Jersey',
+            'Europe/Lisbon',
+            'Europe/London',
+            'Greenwich',
+            'Europe/Amsterdam',
+            'Europe/Andorra',
+            'Europe/Belgrade',
+            'Europe/Berlin',
+            'Europe/Bratislava',
+            'Europe/Brussels',
+            'Europe/Budapest',
+            'Europe/Busingen',
+            'Europe/Copenhagen',
+            'Europe/Gibraltar',
+            'Europe/Ljubljana',
+            'Europe/Luxembourg',
+            'Europe/Madrid',
+            'Europe/Malta',
+            'Europe/Monaco',
+            'Europe/Oslo',
+            'Europe/Paris',
+            'Europe/Podgorica',
+            'Europe/Prague',
+            'Europe/Rome',
+            'Europe/San_Marino',
+            'Europe/Sarajevo',
+            'Europe/Skopje',
+            'Europe/Stockholm',
+            'Europe/Tirane',
+            'Europe/Vaduz',
+            'Europe/Vatican',
+            'Europe/Vienna',
+            'Europe/Warsaw',
+            'Europe/Zagreb',
+            'Europe/Zurich',
+            'Africa/Cairo',
+            'Europe/Athens',
+            'Europe/Bucharest',
+            'Europe/Chisinau',
+            'Europe/Helsinki',
+            'Europe/Kaliningrad',
+            'Europe/Kiev',
+            'Europe/Mariehamn',
+            'Europe/Nicosia',
+            'Europe/Riga',
+            'Europe/Sofia',
+            'Europe/Tallinn',
+            'Europe/Tiraspol',
+            'Europe/Uzhgorod',
+            'Europe/Vilnius',
+            'Europe/Zaporozhye',
+            'Europe/Istanbul',
+            'Europe/Kirov',
+            'Europe/Minsk',
+            'Europe/Moscow',
+            'Europe/Simferopol',
+            'Europe/Volgograd',
+            'Asia/Dubai',
+            'Europe/Astrakhan',
+            'Europe/Samara',
+            'Europe/Ulyanovsk',
+            'Asia/Karachi',
+            'Asia/Dhaka',
+            'Asia/Hong_Kong',
+            'Asia/Tokyo',
+            'Australia/Adelaide',
+            'Australia/Darwin',
+            'Australia/Brisbane',
+            'Australia/Sydney',
+            'Pacific/Noumea',
+        )
+    )
 
     _FALLBACK_TZ = {
         (-3, 0): 'America/Sao_Paulo',
@@ -225,11 +231,11 @@ class BaseGigasetPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
-        return fmted_mac + '.xml'
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
+        return f'{formatted_mac}.xml'
 
     def _add_phonebook(self, raw_config):
-        uuid_format = '{scheme}://{hostname}:{port}/0.1/directories/lookup/{profile}/gigaset/{user_uuid}?'
+        uuid_format = '{scheme}://{hostname}:{port}/0.1/directories/lookup/{profile}/gigaset/{user_uuid}?'  # noqa: E501
         plugins.add_xivo_phonebook_url_from_format(raw_config, uuid_format)
 
     def _fix_timezone(self, raw_config):
@@ -256,8 +262,12 @@ class BaseGigasetPlugin(StandardPlugin):
             for line in sip_lines.values():
                 proxy_ip = line.get('proxy_ip')
                 proxy_port = line.get('proxy_port', 5060)
-                line_dtmf_mode = self._SIP_DTMF_MODE.get(line.get('dtmf_mode', dtmf_mode))
-                line_srtp_mode = self._SIP_SRTP_MODE.get(line.get('strp_mode', srtp_mode))
+                line_dtmf_mode = self._SIP_DTMF_MODE.get(
+                    line.get('dtmf_mode', dtmf_mode)
+                )
+                line_srtp_mode = self._SIP_SRTP_MODE.get(
+                    line.get('strp_mode', srtp_mode)
+                )
                 if (proxy_ip, proxy_port) not in voip_providers:
                     provider = {
                         'id': provider_id,
@@ -311,6 +321,7 @@ class BaseGigasetPlugin(StandardPlugin):
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.xml$')
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -320,10 +331,16 @@ class BaseGigasetPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return threads.deferToThread(
+                        sync_service.sip_notify, ip, 'check-sync'
+                    )

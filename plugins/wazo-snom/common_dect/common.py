@@ -29,7 +29,9 @@ logger = logging.getLogger('plugin.wazo-snom')
 
 
 class BaseSnomDECTHTTPDeviceInfoExtractor:
-    _UA_REGEX_MAC = re.compile(r'\b[sS]nom\s?(?P<model>M[0-9]{3})\s(?P<version>[0-9.]+)\s(?P<mac>[0-9a-fA-F]{12})\b')
+    _UA_REGEX_MAC = re.compile(
+        r'\b[sS]nom\s?(?P<model>M[0-9]{3})\s(?P<version>[0-9.]+)\s(?P<mac>[0-9a-fA-F]{12})\b'
+    )
     _PATH_REGEX = re.compile(r'\bsnom\w+-([\dA-F]{12})\.htm$')
 
     def extract(self, request, request_type):
@@ -55,10 +57,12 @@ class BaseSnomDECTHTTPDeviceInfoExtractor:
         m = self._UA_REGEX_MAC.search(ua)
         if m:
             raw_model, raw_version, raw_mac = m.groups()
-            return {'vendor': 'Snom',
-                    'model': raw_model.decode('ascii'),
-                    'mac': norm_mac(raw_mac.decode('ascii')),
-                    'version': raw_version.decode('ascii')}
+            return {
+                'vendor': 'Snom',
+                'model': raw_model.decode('ascii'),
+                'mac': norm_mac(raw_mac.decode('ascii')),
+                'version': raw_version.decode('ascii'),
+            }
         return None
 
     def _extract_from_path(self, path, dev_info):
@@ -112,7 +116,7 @@ class BaseSnomPlugin(StandardPlugin):
     _SIP_DTMF_MODE = {
         'RTP-in-band': 'off',
         'RTP-out-of-band': 'off',
-        'SIP-INFO': 'sip_info_only'
+        'SIP-INFO': 'sip_info_only',
     }
     _XX_DICT_DEF = 'en'
     _XX_DICT = {
@@ -139,9 +143,11 @@ class BaseSnomPlugin(StandardPlugin):
 
     def _common_templates(self):
         yield ('common/snom-general.xml.tpl', 'snom-general.xml')
-        for tpl_format, file_format in [('common/snom%s.htm.tpl', 'snom%s.htm'),
-                                        ('common/snom%s.xml.tpl', 'snom%s.xml'),
-                                        ('common/snom%s-firmware.xml.tpl', 'snom%s-firmware.xml')]:
+        for tpl_format, file_format in [
+            ('common/snom%s.htm.tpl', 'snom%s.htm'),
+            ('common/snom%s.xml.tpl', 'snom%s.xml'),
+            ('common/snom%s-firmware.xml.tpl', 'snom%s-firmware.xml'),
+        ]:
             for model in self._MODELS:
                 yield tpl_format % model, file_format % model
 
@@ -163,9 +169,11 @@ class BaseSnomPlugin(StandardPlugin):
             if voicemail:
                 line.setdefault('voicemail', voicemail)
             # set SIP server to use
-            server_id = raw_config['XX_servers'].get(
-                (line.get('proxy_ip'), line.get('proxy_port', 5060)), {}
-            ).get('id')
+            server_id = (
+                raw_config['XX_servers']
+                .get((line.get('proxy_ip'), line.get('proxy_port', 5060)), {})
+                .get('id')
+            )
             line['XX_server_id'] = server_id or 1
 
     def _add_sip_servers(self, raw_config):
@@ -174,8 +182,12 @@ class BaseSnomPlugin(StandardPlugin):
         for line_no, line in raw_config['sip_lines'].items():
             proxy_ip = line.get('proxy_ip') or raw_config.get('sip_proxy_ip')
             proxy_port = line.get('proxy_port') or raw_config.get('sip_proxy_port')
-            backup_proxy_ip = line.get('backup_proxy_ip') or raw_config.get('sip_backup_proxy_ip')
-            backup_proxy_port = line.get('backup_proxy_port') or raw_config.get('sip_backup_proxy_port')
+            backup_proxy_ip = line.get('backup_proxy_ip') or raw_config.get(
+                'sip_backup_proxy_ip'
+            )
+            backup_proxy_port = line.get('backup_proxy_port') or raw_config.get(
+                'sip_backup_proxy_port'
+            )
             dtmf_mode = self._SIP_DTMF_MODE.get(
                 line.get('dtmf_mode') or raw_config.get('sip_dtmf_mode'),
                 'off',
@@ -210,7 +222,10 @@ class BaseSnomPlugin(StandardPlugin):
             line['XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, 'off')
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get('config_version', 0) >= 1
+        ):
             plugins.add_xivo_phonebook_url(raw_config, 'snom')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
@@ -218,7 +233,8 @@ class BaseSnomPlugin(StandardPlugin):
     def _add_xivo_phonebook_url_compat(self, raw_config):
         hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'
+            raw_config['XX_xivo_phonebook_url'] = url
 
     def _gen_xx_dict(self, raw_config):
         xx_dict = self._XX_DICT[self._XX_DICT_DEF]
@@ -282,8 +298,11 @@ class BaseSnomPlugin(StandardPlugin):
                 logger.info('error while removing file: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device, event='check-sync;reboot=true')
+            return synchronize.standard_sip_synchronize(
+                device, event='check-sync;reboot=true'
+            )
 
     else:
         # backward compatibility with older wazo-provd server
@@ -291,13 +310,19 @@ class BaseSnomPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=true')
+                    return threads.deferToThread(
+                        sync_service.sip_notify, ip, 'check-sync;reboot=true'
+                    )
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device or 'model' not in device:

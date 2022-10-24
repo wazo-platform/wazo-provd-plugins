@@ -44,10 +44,26 @@ COMMON_FILES = [
     ('y000000000067.cfg', 'T46S(T48S,T42S,T41S)-66.86.0.15.rom', 'model.tpl'),
     ('y000000000068.cfg', 'T46S(T48S,T42S,T41S)-66.86.0.15.rom', 'model.tpl'),
     ('y000000000078.cfg', 'CP920-78.86.0.15.rom', 'model.tpl'),
-    ('y000000000108.cfg', 'T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom', 'model.tpl'),
-    ('y000000000123.cfg', 'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom', 'model.tpl'),
-    ('y000000000124.cfg', 'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom', 'model.tpl'),
-    ('y000000000127.cfg', 'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom', 'model.tpl'),
+    (
+        'y000000000108.cfg',
+        'T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom',
+        'model.tpl',
+    ),
+    (
+        'y000000000123.cfg',
+        'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom',
+        'model.tpl',
+    ),
+    (
+        'y000000000124.cfg',
+        'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom',
+        'model.tpl',
+    ),
+    (
+        'y000000000127.cfg',
+        'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.86.0.40.rom',
+        'model.tpl',
+    ),
     ('y000000000150.cfg', 'T58W-150.86.0.11.rom', 'model.tpl'),
 ]
 

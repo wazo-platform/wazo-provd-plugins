@@ -6,6 +6,7 @@ import os
 common_globals = {}
 execfile_('common.py', common_globals)
 
+# commented values are repeated values that are then overriden
 MODEL_VERSIONS = {
     'T19P_E2': '53.83.0.35',
     'T21P_E2': '52.83.0.35',
@@ -13,23 +14,17 @@ MODEL_VERSIONS = {
     'T23G': '44.83.0.35',
     'T27P': '45.83.0.35',
     'T27G': '69.83.0.35',
-    'T29G': '46.83.0.35',
     'T40P': '54.83.0.35',
     'T40G': '76.83.0.35',
     'CP960': '73.83.0.30',
     'T29G': '46.83.0.120',
     'T41P': '36.83.0.35',
     'T41S': '66.83.0.35',
-    'T42G': '29.83.0.35',
     'T42S': '66.83.0.35',
-    'T46G': '28.83.0.35',
     'T46S': '66.83.0.35',
-    'T48G': '35.83.0.35',
     'T48S': '66.83.0.35',
     'T52S': '70.83.0.35',
     'T54S': '70.83.0.35',
-    'T56A': '58.83.0.5',
-    'T58': '58.83.0.5',
     'T42G': '29.83.0.120',
     'T46G': '28.83.0.120',
     'T48G': '35.83.0.120',
@@ -79,7 +74,7 @@ COMMON_FILES_DECT = [
         'fw_filename': '$PN-103.83.0.122.rom',  # $PN = Product Name, i.e W80B
         'handsets_fw': HANDSETS_FW,
         'tpl_filename': 'dect_model.tpl',
-    }
+    },
 ]
 
 

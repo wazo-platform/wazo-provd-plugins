@@ -22,10 +22,13 @@ from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, PROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, BasePgAssociator
-from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
-    TemplatePluginHelper
+from provd.devices.pgasso import (
+    IMPROBABLE_SUPPORT,
+    PROBABLE_SUPPORT,
+    COMPLETE_SUPPORT,
+    BasePgAssociator,
+)
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
@@ -35,8 +38,12 @@ logger = logging.getLogger('plugin.xivo-polycom')
 
 class BasePolycomHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^FileTransport Polycom\w+-(\w*?)-UA/([\d.]+)')
-    _PATH_REGEX = re.compile(r'/(?!000000000000)([\da-f]{12})(?:\.cfg|-user\.cfg|-boot\.log|-phone\.cfg|-license\.cfg|-directory\.xml|-app\.log)$')
-    _IS_SIPAPP_REGEX = re.compile(r'/(?:(?:common\.cfg|phone1\.cfg|sip\.cfg)|(?:[\da-f]{12}-(?:phone\.cfg|license\.cfg|directory\.xml|app\.log)))$')
+    _PATH_REGEX = re.compile(
+        r'/(?!000000000000)([\da-f]{12})(?:\.cfg|-user\.cfg|-boot\.log|-phone\.cfg|-license\.cfg|-directory\.xml|-app\.log)$'  # noqa: E501
+    )
+    _IS_SIPAPP_REGEX = re.compile(
+        r'/(?:(?:common\.cfg|phone1\.cfg|sip\.cfg)|(?:[\da-f]{12}-(?:phone\.cfg|license\.cfg|directory\.xml|app\.log)))$'  # noqa: E501
+    )
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -59,10 +66,14 @@ class BasePolycomHTTPDeviceInfoExtractor:
         # be the BootROM version (first few requests) or the SIP application
         # version (later on in the boot process).
         # HTTP User-Agent:
-        #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/3.2.1.0078" (SPIP335 3.2.1.0078/4.2.1.0275)
-        #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/4.2.1.0275" (SPIP335 3.2.1.0078/4.2.1.0275)
-        #   "FileTransport PolycomSoundPointIP-SPIP_450-UA/3.2.3.1734" (SPIP450 3.2.3.1734/4.2.2.0710)
-        #   "FileTransport PolycomSoundPointIP-SPIP_550-UA/3.2.3.1734" (SPIP335 3.2.3.1734/4.2.2.0710)
+        #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/3.2.1.0078"
+        #    (SPIP335 3.2.1.0078/4.2.1.0275)
+        #   "FileTransport PolycomSoundPointIP-SPIP_335-UA/4.2.1.0275"
+        #    (SPIP335 3.2.1.0078/4.2.1.0275)
+        #   "FileTransport PolycomSoundPointIP-SPIP_450-UA/3.2.3.1734"
+        #    (SPIP450 3.2.3.1734/4.2.2.0710)
+        #   "FileTransport PolycomSoundPointIP-SPIP_550-UA/3.2.3.1734"
+        #    (SPIP335 3.2.3.1734/4.2.2.0710)
         #   "FileTransport PolycomSoundStationIP-SSIP_6000-UA/4.0.4.2906 Type/Application"
         #   "FileTransport PolycomSoundStationIP-SSIP_6000-UA/5.0.3.1667 Type/Updater"
         #   "FileTransport PolycomVVX-VVX_400-UA/4.1.4.7430 Type/Application"
@@ -89,7 +100,6 @@ class BasePolycomHTTPDeviceInfoExtractor:
 
 
 class BasePolycomPgAssociator(BasePgAssociator):
-
     def __init__(self, models):
         BasePgAssociator.__init__(self)
         self._models = models
@@ -148,14 +158,10 @@ class BasePolycomPlugin(StandardPlugin):
         'error': '4',
         'warning': '3',
         'info': '2',
-        'debug': '1'
+        'debug': '1',
     }
     _SYSLOG_LEVEL_DEF = '1'
-    _SIP_TRANSPORT = {
-        'udp': 'UDPOnly',
-        'tcp': 'TCPOnly',
-        'tls': 'TLS'
-    }
+    _SIP_TRANSPORT = {'udp': 'UDPOnly', 'tcp': 'TCPOnly', 'tls': 'TLS'}
     _SIP_TRANSPORT_DEF = 'UDPOnly'
     _XX_DICT_DEF = 'en'
     _XX_DICT = {
@@ -182,18 +188,32 @@ class BasePolycomPlugin(StandardPlugin):
 
     def _format_dst_change(self, suffix, dst_change):
         lines = []
-        lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.month="{dst_change["month"]:d}"')
-        lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.time="{dst_change["time"].as_hours:d}"')
+        lines.append(
+            f'tcpIpApp.sntp.daylightSavings.{suffix}.month="{dst_change["month"]:d}"'
+        )
+        lines.append(
+            f'tcpIpApp.sntp.daylightSavings.{suffix}.time="{dst_change["time"].as_hours:d}"'
+        )
         if dst_change['day'].startswith('D'):
-            lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.date="{dst_change["day"][1:]}"')
+            lines.append(
+                f'tcpIpApp.sntp.daylightSavings.{suffix}.date="{dst_change["day"][1:]}"'
+            )
         else:
             week, weekday = dst_change['day'][1:].split('.')
-            lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.dayOfWeek="{weekday}"')
+            lines.append(
+                f'tcpIpApp.sntp.daylightSavings.{suffix}.dayOfWeek="{weekday}"'
+            )
             if week == '5':
-                lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.dayOfWeek.lastInMonth="1"')
+                lines.append(
+                    f'tcpIpApp.sntp.daylightSavings.{suffix}.dayOfWeek.lastInMonth="1"'
+                )
             else:
-                lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.dayOfWeek.lastInMonth="0"')
-                lines.append(f'tcpIpApp.sntp.daylightSavings.{suffix}.date="{(int(week) - 1) * 7 + 1:d}"')
+                lines.append(
+                    f'tcpIpApp.sntp.daylightSavings.{suffix}.dayOfWeek.lastInMonth="0"'
+                )
+                lines.append(
+                    f'tcpIpApp.sntp.daylightSavings.{suffix}.date="{(int(week) - 1) * 7 + 1:d}"'
+                )
         return lines
 
     def _format_tzinfo(self, tzinfo):
@@ -231,8 +251,9 @@ class BasePolycomPlugin(StandardPlugin):
             return
         nb_keys = self._NB_FKEY[model]
         lines = []
-        for funckey_no, funckey_dict in sorted(iter(raw_config['funckeys'].items()),
-                                               key=itemgetter(0)):
+        for funckey_no, funckey_dict in sorted(
+            iter(raw_config['funckeys'].items()), key=itemgetter(0)
+        ):
             funckey_type = funckey_dict['type']
             if funckey_type == 'speeddial':
                 logger.info('Polycom doesn\'t support non-supervised function keys')
@@ -242,25 +263,35 @@ class BasePolycomPlugin(StandardPlugin):
             keynum = int(funckey_no)
             if keynum <= nb_keys:
                 value = funckey_dict['value']
-                lines.append('attendant.resourceList.%s.address="%s"' %
-                             (funckey_no, value))
-                lines.append('attendant.resourceList.%s.label="%s"' %
-                             (funckey_no, escape(funckey_dict.get('label', value))))
+                lines.append(
+                    'attendant.resourceList.%s.address="%s"' % (funckey_no, value)
+                )
+                lines.append(
+                    'attendant.resourceList.%s.label="%s"'
+                    % (funckey_no, escape(funckey_dict.get('label', value)))
+                )
             else:
-                logger.info('Model %s has less than %s function keys', model, funckey_no)
+                logger.info(
+                    'Model %s has less than %s function keys', model, funckey_no
+                )
         raw_config['XX_fkeys'] = '\n'.join(lines)
 
     def _add_syslog_level(self, raw_config):
         syslog_level = raw_config.get('syslog_level')
-        raw_config['XX_syslog_level'] = self._SYSLOG_LEVEL.get(syslog_level,
-                                                                self._SYSLOG_LEVEL_DEF)
+        raw_config['XX_syslog_level'] = self._SYSLOG_LEVEL.get(
+            syslog_level, self._SYSLOG_LEVEL_DEF
+        )
 
     def _add_sip_transport(self, raw_config):
-        raw_config['XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get('sip_transport'),
-                                                                  self._SIP_TRANSPORT_DEF)
+        raw_config['XX_sip_transport'] = self._SIP_TRANSPORT.get(
+            raw_config.get('sip_transport'), self._SIP_TRANSPORT_DEF
+        )
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get('config_version', 0) >= 1
+        ):
             plugins.add_xivo_phonebook_url(raw_config, 'polycom')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
@@ -268,7 +299,8 @@ class BasePolycomPlugin(StandardPlugin):
     def _add_xivo_phonebook_url_compat(self, raw_config):
         hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'
+            raw_config['XX_xivo_phonebook_url'] = url
 
     def _update_sip_lines(self, raw_config):
         proxy_ip = raw_config.get('sip_proxy_ip')
@@ -335,6 +367,7 @@ class BasePolycomPlugin(StandardPlugin):
             logger.warning('error while deconfiguring device: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -344,11 +377,15 @@ class BasePolycomPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):

@@ -37,7 +37,7 @@ MODELS = ['C470 IP', 'C475 IP', 'S675 IP', 'S685 IP']
 
 class GigasetRequestBroker(common_globals['BaseGigasetRequestBroker']):
     _VERSION_REGEX = re.compile(r'\b02(\d{3})')
-    
+
     def disable_gigasetnet_line(self):
         # we need to first check if the line is enabled or not...
         with self.do_get_request('scripts/settings_telephony_voip_multi.js') as fobj:
@@ -51,12 +51,14 @@ class GigasetRequestBroker(common_globals['BaseGigasetRequestBroker']):
                         return
             else:
                 raise GigasetInteractionError('Could not determine gigaset line status')
-        
+
         # assert: gigaset line is enabled
         raw_data = 'account_id=6'
-        with self.do_post_request('settings_telephony_voip_multi.html', raw_data) as fobj:
+        with self.do_post_request(
+            'settings_telephony_voip_multi.html', raw_data
+        ) as fobj:
             fobj.read()
-    
+
     def set_mailboxes(self, dict_):
         # dict_ is a dictionary where keys are line number and values are
         # mailbox extensions number
@@ -74,7 +76,7 @@ class GigasetRequestBroker(common_globals['BaseGigasetRequestBroker']):
 
 class GigasetPlugin(common_globals['BaseGigasetPlugin']):
     IS_PLUGIN = True
-    
+
     _BROKER_FACTORY = GigasetRequestBroker
-    
+
     pg_associator = common_globals['BaseGigasetPgAssociator'](MODELS)

@@ -37,7 +37,7 @@ class FanvilPlugin(common['BaseFanvilPlugin']):
         'fr_CA': 'fr',
         'it_IT': 'it',
         'nl_NL': 'nl',
-        'en_US': 'en'
+        'en_US': 'en',
     }
     _TZ_INFO = {
         -12: [('UCT_-12', 0)],

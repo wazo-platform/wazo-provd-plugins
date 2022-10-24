@@ -30,7 +30,8 @@ class CiscoPlugin(common_globals['BaseCiscoPlugin']):
     IS_PLUGIN = True
 
     _ENCODING = 'ISO-8859-1'
-    _COMMON_FILENAMES = [model.lower().encode('ascii') + '.cfg' for model in
-                         MODEL_VERSION]
+    _COMMON_FILENAMES = [
+        model.lower().encode('ascii') + '.cfg' for model in MODEL_VERSION
+    ]
 
     pg_associator = common_globals['BaseCiscoPgAssociator'](MODEL_VERSION)

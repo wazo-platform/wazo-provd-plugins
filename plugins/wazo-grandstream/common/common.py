@@ -162,8 +162,8 @@ class BaseGrandstreamPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
-        return 'cfg' + fmted_mac + '.xml'
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
+        return f'cfg{formatted_mac}.xml'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:

@@ -18,10 +18,14 @@ import re
 import os.path
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
-    TemplatePluginHelper
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, \
-    FULL_SUPPORT, BasePgAssociator, UNKNOWN_SUPPORT
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
+from provd.devices.pgasso import (
+    IMPROBABLE_SUPPORT,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    BasePgAssociator,
+    UNKNOWN_SUPPORT,
+)
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
@@ -52,10 +56,12 @@ class BasePanasonicHTTPDeviceInfoExtractor:
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
-                return {'vendor': 'Panasonic',
-                        'model': raw_model.decode('ascii'),
-                        'version': raw_version.decode('ascii'),
-                        'mac': mac}
+                return {
+                    'vendor': 'Panasonic',
+                    'model': raw_model.decode('ascii'),
+                    'version': raw_version.decode('ascii'),
+                    'mac': mac,
+                }
         return None
 
 
@@ -98,8 +104,8 @@ class BasePanasonicPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
-        return 'Config' + fmted_mac + '.cfg'
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
+        return f'Config{formatted_mac}.cfg'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -110,7 +116,9 @@ class BasePanasonicPlugin(StandardPlugin):
             raise Exception('MAC address needed for device configuration')
 
     def _common_templates(self):
-        for tpl_format, file_format in [('common/%s.tpl', '%s.cfg'),]:
+        for tpl_format, file_format in [
+            ('common/%s.tpl', '%s.cfg'),
+        ]:
             for model in self._MODELS:
                 yield tpl_format % model, file_format % model
 
@@ -119,7 +127,6 @@ class BasePanasonicPlugin(StandardPlugin):
             tpl = self._tpl_helper.get_template(tpl_filename)
             dst = os.path.join(self._base_tftpboot_dir, filename)
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
-
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
@@ -141,6 +148,7 @@ class BasePanasonicPlugin(StandardPlugin):
             logger.info('error while removing configuration file: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -150,11 +158,15 @@ class BasePanasonicPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
 
     def get_remote_state_trigger_filename(self, device):

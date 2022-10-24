@@ -139,7 +139,9 @@ class BaseAlcatelPlugin(StandardPlugin):
         self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
 
     def _common_templates(self):
-        for tpl_format, file_format in [('common/config.model.xml.tpl', 'config.{}.xml')]:
+        for tpl_format, file_format in [
+            ('common/config.model.xml.tpl', 'config.{}.xml')
+        ]:
             for model in self._MODELS_VERSIONS:
                 yield tpl_format.format(model), file_format.format(model)
 
@@ -178,7 +180,9 @@ class BaseAlcatelPlugin(StandardPlugin):
     def _add_fkeys(self, raw_config, model):
         nb_funckeys = self._NB_FUNCKEYS.get(model)
         if not nb_funckeys:
-            logger.warning('Unknown model: "%s". Skipping function key configuration.', model)
+            logger.warning(
+                'Unknown model: "%s". Skipping function key configuration.', model
+            )
             return
 
         raw_config['XX_fkeys'] = []
@@ -190,7 +194,9 @@ class BaseAlcatelPlugin(StandardPlugin):
             fkey_label = funckey_dict['label']
             fkey_extension = funckey_dict['value']
             if position > nb_funckeys:
-                logger.warning('Function key "%s" outside range supported by phone.', position)
+                logger.warning(
+                    'Function key "%s" outside range supported by phone.', position
+                )
                 continue
             fkey_data = {
                 'position': position,
@@ -233,7 +239,10 @@ class BaseAlcatelPlugin(StandardPlugin):
             line['XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, 'off')
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get('config_version', 0) >= 1
+        ):
             plugins.add_xivo_phonebook_url(raw_config, 'snom')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
@@ -241,7 +250,8 @@ class BaseAlcatelPlugin(StandardPlugin):
     def _add_xivo_phonebook_url_compat(self, raw_config):
         hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'
+            raw_config['XX_xivo_phonebook_url'] = url
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -291,6 +301,7 @@ class BaseAlcatelPlugin(StandardPlugin):
             logger.warning('error while removing file: "%s"', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device, event='check-sync')
 
@@ -300,12 +311,18 @@ class BaseAlcatelPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
-                return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=true')
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
+                return threads.deferToThread(
+                    sync_service.sip_notify, ip, 'check-sync;reboot=true'
+                )
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

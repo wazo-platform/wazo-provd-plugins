@@ -7,6 +7,8 @@
     post-run: zuul.d/post-run.yaml
 
 - project:
+    templates:
+      - wazo-tox-linters
     check:
       jobs:
         - wazo-provd-plugins:

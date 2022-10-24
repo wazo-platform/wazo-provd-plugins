@@ -4,7 +4,10 @@
 import binascii
 import os.path
 import struct
-import urllib.request, urllib.parse, urllib.error
+import urllib.error
+import urllib.parse
+import urllib.request
+
 from provd.util import format_mac
 
 common = {}
@@ -25,8 +28,8 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
-        return 'cfg' + fmted_mac
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
+        return f'cfg{formatted_mac}'
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
@@ -50,14 +53,14 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
                 if len(items) == 2:  # Only interested in pairs (name=value)
                     config += items[0] + '=' + urllib.parse.quote(items[1]) + '&'
 
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
-        short_mac = fmted_mac[2:6]
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
+        short_mac = formatted_mac[2:6]
         config = config + 'gnkey=' + short_mac
         # Convert to ascii
         config = str(config)
 
         # Convert mac to binary
-        b_mac = binascii.unhexlify(fmted_mac)
+        b_mac = binascii.unhexlify(formatted_mac)
 
         # Make sure length is even bytewise
         if len(config) % 2 != 0:

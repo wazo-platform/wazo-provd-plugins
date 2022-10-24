@@ -52,7 +52,12 @@ COMMON_FILES = [
 ]
 
 COMMON_FILES_DECT = [
-    ('y000000000025.cfg', 'Base for W52P&W56P-25.80.0.15.rom', 'W56H-61.80.0.15.rom', 'W52P.tpl'),
+    (
+        'y000000000025.cfg',
+        'Base for W52P&W56P-25.80.0.15.rom',
+        'W56H-61.80.0.15.rom',
+        'W52P.tpl',
+    ),
 ]
 
 
@@ -67,7 +72,12 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
 
     def configure_common(self, raw_config):
         super(YealinkPlugin, self).configure_common(raw_config)
-        for filename, fw_filename, fw_handset_filename, tpl_filename in COMMON_FILES_DECT:
+        for (
+            filename,
+            fw_filename,
+            fw_handset_filename,
+            tpl_filename,
+        ) in COMMON_FILES_DECT:
             tpl = self._tpl_helper.get_template(f'common/{tpl_filename}')
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config['XX_fw_filename'] = fw_filename

@@ -22,10 +22,14 @@ from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
-    TemplatePluginHelper
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, COMPLETE_SUPPORT, \
-    FULL_SUPPORT, BasePgAssociator, UNKNOWN_SUPPORT
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
+from provd.devices.pgasso import (
+    IMPROBABLE_SUPPORT,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    BasePgAssociator,
+    UNKNOWN_SUPPORT,
+)
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
@@ -36,8 +40,8 @@ logger = logging.getLogger('plugin.xivo-aastra')
 class BaseAastraHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^(?:Aastra|Mitel)(\w+) MAC:([^ ]+) V:([^ ]+)-SIP$')
     _UA_MODELS_MAP = {
-        '51i': '6751i', # not tested
-        '53i': '6753i', # not tested
+        '51i': '6751i',  # not tested
+        '53i': '6753i',  # not tested
         '55i': '6755i',
         '57i': '6757i',
     }
@@ -72,10 +76,12 @@ class BaseAastraHTTPDeviceInfoExtractor:
                     model = self._UA_MODELS_MAP[raw_model]
                 else:
                     model = raw_model.decode('ascii')
-                return {'vendor': 'Aastra',
-                        'model': model,
-                        'version': raw_version.decode('ascii'),
-                        'mac': mac}
+                return {
+                    'vendor': 'Aastra',
+                    'model': model,
+                    'version': raw_version.decode('ascii'),
+                    'mac': mac,
+                }
         return None
 
 
@@ -95,8 +101,9 @@ class BaseAastraPgAssociator(BasePgAssociator):
 
 
 class AastraModel:
-
-    def __init__(self, nb_prgkey=0, nb_topsoftkey=0, nb_softkey=0, nb_expmod=0, nb_expmodkey=0):
+    def __init__(
+        self, nb_prgkey=0, nb_topsoftkey=0, nb_softkey=0, nb_expmod=0, nb_expmodkey=0
+    ):
         self.nb_prgkey = nb_prgkey
         self.nb_topsoftkey = nb_topsoftkey
         self.nb_softkey = nb_softkey
@@ -218,29 +225,21 @@ class BaseAastraPlugin(StandardPlugin):
         # <dtmf mode>: (<out-of-band dtmf>, <dtmf method>)
         'RTP-in-band': ('0', '0'),
         'RTP-out-of-band': ('1', '0'),
-        'SIP-INFO': ('1', '1')
+        'SIP-INFO': ('1', '1'),
     }
-    _SIP_SRTP_MODE = {
-        'disabled': '0',
-        'preferred': '1',
-        'required': '2'
-    }
-    _SIP_TRANSPORT = {
-        'udp': '1',
-        'tcp': '2',
-        'tls': '4'
-    }
+    _SIP_SRTP_MODE = {'disabled': '0', 'preferred': '1', 'required': '2'}
+    _SIP_TRANSPORT = {'udp': '1', 'tcp': '2', 'tls': '4'}
     _SYSLOG_LEVEL = {
         'critical': '1',
         'error': '3',
         'warning': '7',
         'info': '39',
-        'debug': '65535'
+        'debug': '65535',
     }
     _XX_DICT_DEF = 'en'
     _XX_DICT = {
         'en': {
-            'voicemail':  'Voicemail',
+            'voicemail': 'Voicemail',
             'fwd_unconditional': 'Unconditional forward',
             'dnd': 'D.N.D',
             'local_directory': 'Directory',
@@ -250,7 +249,7 @@ class BaseAastraPlugin(StandardPlugin):
             'remote_directory': 'Directory',
         },
         'fr': {
-            'voicemail':  'Messagerie',
+            'voicemail': 'Messagerie',
             'fwd_unconditional': 'Renvoi inconditionnel',
             'dnd': 'N.P.D',
             'local_directory': 'Repertoire',
@@ -260,6 +259,7 @@ class BaseAastraPlugin(StandardPlugin):
             'remote_directory': 'Annuaire',
         },
     }
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.cfg$')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
@@ -346,11 +346,14 @@ class BaseAastraPlugin(StandardPlugin):
             logger.info('Unknown model %s; no function key will be configured', model)
             return
         lines = []
-        for funckey_no, funckey_dict in sorted(iter(raw_config['funckeys'].items()),
-                                               key=itemgetter(0)):
+        for funckey_no, funckey_dict in sorted(
+            iter(raw_config['funckeys'].items()), key=itemgetter(0)
+        ):
             keytype = model_obj.get_keytype(int(funckey_no))
             if keytype is None:
-                logger.info('Function key %s is out of range for model %s', funckey_no, model)
+                logger.info(
+                    'Function key %s is out of range for model %s', funckey_no, model
+                )
                 continue
             funckey_type = funckey_dict['type']
             if funckey_type == 'speeddial':
@@ -423,8 +426,8 @@ class BaseAastraPlugin(StandardPlugin):
 
     def _device_cert_or_key_filename(self, device, suffix):
         # Return the cert or key file filename for a device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
-        return fmted_mac + suffix
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
+        return formatted_mac + suffix
 
     def _write_cert_or_key_file(self, pem_cert, device, suffix):
         filename = self._device_cert_or_key_filename(device, suffix)
@@ -437,8 +440,9 @@ class BaseAastraPlugin(StandardPlugin):
     def _add_trusted_certificates(self, raw_config, device):
         if 'sip_servers_root_and_intermediate_certificates' in raw_config:
             pem_cert = raw_config['sip_servers_root_and_intermediate_certificates']
-            raw_config['XX_trusted_certificates'] = self._write_cert_or_key_file(pem_cert, device,
-                                                                    self._TRUSTED_ROOT_CERTS_SUFFIX)
+            raw_config['XX_trusted_certificates'] = self._write_cert_or_key_file(
+                pem_cert, device, self._TRUSTED_ROOT_CERTS_SUFFIX
+            )
 
     def _add_parking(self, raw_config):
         # hack to set the per line parking config if a park function key is used
@@ -449,20 +453,29 @@ class BaseAastraPlugin(StandardPlugin):
                 if is_parking_set:
                     cur_parking = funckey_dict['value']
                     if cur_parking != parking:
-                        logger.warning('Ignoring park value %s for function key %s: using %s',
-                                       cur_parking, funckey_no, parking)
+                        logger.warning(
+                            'Ignoring park value %s for function key %s: using %s',
+                            cur_parking,
+                            funckey_no,
+                            parking,
+                        )
                 else:
                     parking = funckey_dict['value']
                     is_parking_set = True
                     self._do_add_parking(raw_config, parking)
 
     def _do_add_parking(self, raw_config, parking):
-        raw_config['XX_parking'] = '\n'.join('sip line%s park pickup config: %s;%s;asterisk' %
-                                               (line_no, parking, parking)
-                                               for line_no in raw_config['sip_lines'])
+        raw_config['XX_parking'] = '\n'.join(
+            'sip line%s park pickup config: %s;%s;asterisk'
+            % (line_no, parking, parking)
+            for line_no in raw_config['sip_lines']
+        )
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get('config_version', 0) >= 1
+        ):
             plugins.add_xivo_phonebook_url(raw_config, 'aastra')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
@@ -470,14 +483,13 @@ class BaseAastraPlugin(StandardPlugin):
     def _add_xivo_phonebook_url_compat(self, raw_config):
         hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
-
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.cfg$')
+            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'
+            raw_config['XX_xivo_phonebook_url'] = url
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=True)
-        return fmted_mac + '.cfg'
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
+        return f'{formatted_mac}.cfg'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -522,8 +534,10 @@ class BaseAastraPlugin(StandardPlugin):
             logger.info('error while removing configuration file: %s', e)
 
     def _remove_certificate_file(self, device):
-        path = os.path.join(self._tftpboot_dir,
-                            self._device_cert_or_key_filename(device, self._TRUSTED_ROOT_CERTS_SUFFIX))
+        path = os.path.join(
+            self._tftpboot_dir,
+            self._device_cert_or_key_filename(device, self._TRUSTED_ROOT_CERTS_SUFFIX),
+        )
         try:
             os.remove(path)
         except OSError as e:
@@ -531,6 +545,7 @@ class BaseAastraPlugin(StandardPlugin):
                 logger.info('error while removing certificate file: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -540,13 +555,19 @@ class BaseAastraPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return threads.deferToThread(
+                        sync_service.sip_notify, ip, 'check-sync'
+                    )
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

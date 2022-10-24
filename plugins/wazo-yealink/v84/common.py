@@ -8,10 +8,14 @@ from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, PROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, FULL_SUPPORT, BasePgAssociator
-from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
-    TemplatePluginHelper
+from provd.devices.pgasso import (
+    IMPROBABLE_SUPPORT,
+    PROBABLE_SUPPORT,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    BasePgAssociator,
+)
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
@@ -72,15 +76,21 @@ class BaseYealinkHTTPDeviceInfoExtractor:
                 try:
                     mac = norm_mac(raw_mac.decode('ascii'))
                 except ValueError as e:
-                    logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
-                    return {'vendor': 'Yealink',
-                            'model': raw_model.decode('ascii'),
-                            'version': raw_version.decode('ascii')}
+                    logger.warning(
+                        'Could not normalize MAC address "%s": %s', raw_mac, e
+                    )
+                    return {
+                        'vendor': 'Yealink',
+                        'model': raw_model.decode('ascii'),
+                        'version': raw_version.decode('ascii'),
+                    }
                 else:
-                    return {'vendor': 'Yealink',
-                            'model': raw_model.decode('ascii'),
-                            'version': raw_version.decode('ascii'),
-                            'mac': mac}
+                    return {
+                        'vendor': 'Yealink',
+                        'model': raw_model.decode('ascii'),
+                        'version': raw_version.decode('ascii'),
+                        'mac': mac,
+                    }
         return None
 
     def _extract_from_path(self, request):
@@ -113,7 +123,6 @@ class BaseYealinkPgAssociator(BasePgAssociator):
 
 
 class BaseYealinkFunckeyGenerator:
-
     def __init__(self, device, raw_config):
         self._model = device.get('model')
         self._exten_pickup_call = raw_config.get('exten_pickup_call')
@@ -170,7 +179,7 @@ class BaseYealinkFunckeyGenerator:
             f'{prefix}.line = {funckey.get("line", 1)}',
             f'{prefix}.value = {funckey["value"]}',
             f'{prefix}.label = {funckey.get("label", "")}',
-       ]
+        ]
 
     def _format_funckey_blf(self, prefix, funckey):
         line_no = funckey.get('line', 1)
@@ -383,21 +392,25 @@ class BaseYealinkPlugin(StandardPlugin):
     def _add_country_and_lang(self, raw_config):
         locale = raw_config.get('locale')
         if locale in self._LOCALE:
-            (raw_config['XX_lang'],
-             raw_config['XX_country'],
-             raw_config['XX_handset_lang']) = self._LOCALE[locale]
+            (
+                raw_config['XX_lang'],
+                raw_config['XX_country'],
+                raw_config['XX_handset_lang'],
+            ) = self._LOCALE[locale]
 
     def _format_dst_change(self, dst_change):
-        if dst_change['day'].startswith('D'):
-            return f'{dst_change["month"]:02d}/{int(dst_change["day"][1:]):02d}/{dst_change["time"].as_hours:02d}'
+        day, month, time = dst_change['day'], dst_change['month'], dst_change['time']
+        if day.startswith('D'):
+            return f'{month:02d}/{int(day[1:]):02d}/{time.as_hours:02d}'
         else:
-            week, weekday = list(map(int, dst_change['day'][1:].split('.')))
+            week, weekday = list(map(int, day[1:].split('.')))
             weekday = tzinform.week_start_on_monday(weekday)
-            return f'{dst_change["month"]:d}/{week:d}/{weekday:d}/{dst_change["time"].as_hours:d}'
+            return f'{month:d}/{week:d}/{weekday:d}/{time.as_hours:d}'
 
     def _format_tz_info(self, tzinfo):
-        lines = []
-        lines.append(f'local_time.time_zone = {min(max(tzinfo["utcoffset"].as_hours, -11), 12):+d}')
+        lines = [
+            f'local_time.time_zone = {min(max(tzinfo["utcoffset"].as_hours, -11), 12):+d}'
+        ]
         if tzinfo['dst'] is None:
             lines.append('local_time.summer_time = 0')
         else:
@@ -406,8 +419,12 @@ class BaseYealinkPlugin(StandardPlugin):
                 lines.append('local_time.dst_time_type = 0')
             else:
                 lines.append('local_time.dst_time_type = 1')
-            lines.append(f'local_time.start_time = {self._format_dst_change(tzinfo["dst"]["start"])}')
-            lines.append(f'local_time.end_time = {self._format_dst_change(tzinfo["dst"]["end"])}')
+            lines.append(
+                f'local_time.start_time = {self._format_dst_change(tzinfo["dst"]["start"])}'
+            )
+            lines.append(
+                f'local_time.end_time = {self._format_dst_change(tzinfo["dst"]["end"])}'
+            )
             lines.append(f'local_time.offset_time = {tzinfo["dst"]["save"].as_minutes}')
         return '\n'.join(lines)
 
@@ -421,8 +438,9 @@ class BaseYealinkPlugin(StandardPlugin):
                 raw_config['XX_timezone'] = self._format_tz_info(tzinfo)
 
     def _add_sip_transport(self, raw_config):
-        raw_config['XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get('sip_transport'),
-                                                                  self._SIP_TRANSPORT_DEF)
+        raw_config['XX_sip_transport'] = self._SIP_TRANSPORT.get(
+            raw_config.get('sip_transport'), self._SIP_TRANSPORT_DEF
+        )
 
     def _add_xx_sip_lines(self, device, raw_config):
         sip_lines = raw_config['sip_lines']
@@ -448,8 +466,8 @@ class BaseYealinkPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='')
-        return fmted_mac + '.cfg'
+        formatted_mac = format_mac(device['mac'], separator='')
+        return f'{formatted_mac}.cfg'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:

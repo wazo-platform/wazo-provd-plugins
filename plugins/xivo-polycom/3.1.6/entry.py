@@ -34,5 +34,5 @@ VERSION = '3.1.6.0017'
 
 class PolycomPlugin(common_globals['BasePolycomPlugin']):
     IS_PLUGIN = True
-    
+
     pg_associator = common_globals['BasePolycomPgAssociator'](MODELS, VERSION)

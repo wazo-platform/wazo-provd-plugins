@@ -21,44 +21,34 @@ from subprocess import check_call
 
 @target('8.5.2', 'xivo-cisco-sccp-8.5.2')
 def build_8_5_2(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
 
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '8.5.2/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', '8.5.2/', path])
 
 
 @target('9.4', 'xivo-cisco-sccp-9.4')
 def build_9_4(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
 
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                '9.4/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', '9.4/', path])
 
 
 @target('cipc-2.1.2', 'xivo-cisco-sccp-cipc-2.1.2')
 def build_cipc_2_1_2(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
 
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'cipc-2.1.2/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'cipc-2.1.2/', path])
 
 
 @target('legacy', 'xivo-cisco-sccp-legacy')
 def build_legacy(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
 
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'legacy/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'legacy/', path])
 
 
 @target('wireless-1.4.5', 'xivo-cisco-sccp-wireless-1.4.5')
 def build_wireless(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'common/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
 
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'wireless-1.4.5/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'wireless-1.4.5/', path])

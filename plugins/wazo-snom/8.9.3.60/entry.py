@@ -16,12 +16,7 @@
 common_globals = {}
 execfile_('common.py', common_globals)
 
-MODELS = [
-    'D305',
-    'D315',
-    'D345',
-    'D375'
-]
+MODELS = ['D305', 'D315', 'D345', 'D375']
 VERSION = '8.9.3.60'
 
 

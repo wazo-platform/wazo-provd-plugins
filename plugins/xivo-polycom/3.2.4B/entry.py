@@ -40,13 +40,27 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 
-MODELS = ['SPIP320', 'SPIP321', 'SPIP330', 'SPIP331', 'SPIP335', 'SPIP430',
-          'SPIP450', 'SPIP550', 'SPIP560', 'SPIP650', 'SPIP670', 'SSIP5000',
-          'SSIP6000', 'SSIP7000', 'VVX1500']
+MODELS = [
+    'SPIP320',
+    'SPIP321',
+    'SPIP330',
+    'SPIP331',
+    'SPIP335',
+    'SPIP430',
+    'SPIP450',
+    'SPIP550',
+    'SPIP560',
+    'SPIP650',
+    'SPIP670',
+    'SSIP5000',
+    'SSIP6000',
+    'SSIP7000',
+    'VVX1500',
+]
 VERSION = '3.2.4.0267'
 
 
 class PolycomPlugin(common_globals['BasePolycomPlugin']):
     IS_PLUGIN = True
-    
+
     pg_associator = common_globals['BasePolycomPgAssociator'](MODELS, VERSION)

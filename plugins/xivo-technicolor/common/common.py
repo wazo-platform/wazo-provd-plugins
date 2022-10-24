@@ -21,10 +21,14 @@ from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import BasePgAssociator, FULL_SUPPORT, \
-    COMPLETE_SUPPORT, PROBABLE_SUPPORT, IMPROBABLE_SUPPORT
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
-    TemplatePluginHelper
+from provd.devices.pgasso import (
+    BasePgAssociator,
+    FULL_SUPPORT,
+    COMPLETE_SUPPORT,
+    PROBABLE_SUPPORT,
+    IMPROBABLE_SUPPORT,
+)
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
@@ -49,7 +53,7 @@ class BaseTechnicolorHTTPDeviceInfoExtractor:
     def _extract_info_from_ua(self, ua):
         # HTTP User-Agent:
         #   "THOMSON ST2022 hw2 fw3.54 00-18-F6-B5-00-00" (from web)
-        #   "THOMSON ST2022 hw2 fw4.68 00-14-7F-E1-FC-6D" (from web)  
+        #   "THOMSON ST2022 hw2 fw4.68 00-14-7F-E1-FC-6D" (from web)
         #   "THOMSON ST2030 hw5 fw2.72 00-14-7F-E1-47-B3"
         #   "THOMSON ST2030 hw5 fw2.74 00-14-7F-E1-47-B3"
         #   "Thomson TB30 hw1 fw1.72.0 00-1F-9F-84-F1-80"
@@ -62,10 +66,12 @@ class BaseTechnicolorHTTPDeviceInfoExtractor:
             except ValueError as e:
                 logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
             else:
-                return {'vendor': 'Technicolor',
-                        'model': raw_model.decode('ascii'),
-                        'version': raw_version.decode('ascii'),
-                        'mac': mac}
+                return {
+                    'vendor': 'Technicolor',
+                    'model': raw_model.decode('ascii'),
+                    'version': raw_version.decode('ascii'),
+                    'mac': mac,
+                }
         return None
 
 
@@ -86,71 +92,72 @@ class BaseTechnicolorPgAssociator(BasePgAssociator):
 
 
 _ZONE_LIST = [
-    'Pacific/Kwajalein',    # Eniwetok, Kwajalein
-    'Pacific/Midway',       # Midway Island, Samoa
-    'US/Hawaii',            # Hawaii
-    'US/Alaska',            # Alaska
-    'US/Pacific',           # Pacific Time(US & Canada); Tijuana
-    'US/Arizona',           # Arizona
-    'US/Mountain',          # Mountain Time(US & Canada)
-    'US/Central',           # Central Time(US & Canada)
+    'Pacific/Kwajalein',  # Eniwetok, Kwajalein
+    'Pacific/Midway',  # Midway Island, Samoa
+    'US/Hawaii',  # Hawaii
+    'US/Alaska',  # Alaska
+    'US/Pacific',  # Pacific Time(US & Canada); Tijuana
+    'US/Arizona',  # Arizona
+    'US/Mountain',  # Mountain Time(US & Canada)
+    'US/Central',  # Central Time(US & Canada)
     'America/Tegucigalpa',  # Mexico City, Tegucigalpa (!)
     'Canada/Saskatchewan',  # Central America, Mexico City,Saskatchewan (!)
-    'America/Bogota',       # Bogota, Lima, Quito
-    'US/Eastern',           # Eastern Time(US & Canada)
-    'US/East-Indiana',      # Indiana(East)
-    'Canada/Atlantic',      # Atlantic Time (Canada)
-    'America/La_Paz',       # Caracas, La Paz
+    'America/Bogota',  # Bogota, Lima, Quito
+    'US/Eastern',  # Eastern Time(US & Canada)
+    'US/East-Indiana',  # Indiana(East)
+    'Canada/Atlantic',  # Atlantic Time (Canada)
+    'America/La_Paz',  # Caracas, La Paz
     'Canada/Newfoundland',  # Newfoundland
-    'America/Sao_Paulo',    # Brasilia
-    'America/Argentina/Buenos_Aires',   # Buenos Aires, Georgetown
-    'Atlantic/South_Georgia',           # Mid-Atlantic
-    'Atlantic/Azores',      # Azores, Cape Verde Is
-    'Africa/Casablanca',    # Casablanca, Monrovia    (!)
-    'Europe/London',        # Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London
-    'Europe/Paris',         # Amsterdam, Copenhagen, Madrid, Paris, Vilnius
-    'Europe/Belgrade',      # Central Europe Time(Belgrade, Sarajevo, Skopje, Sofija, Zagreb) (?)
-    'Europe/Bratislava',    # Bratislava, Budapest, Ljubljana, Prague, Warsaw
-    'Europe/Brussels',      # Brussels, Berlin, Bern, Rome, Stockholm, Vienna
-    'Europe/Athens',        # Athens, Istanbul, Minsk
-    'Europe/Bucharest',     # Bucharest
-    'Africa/Cairo',         # Cairo
-    'Africa/Harare',        # Harare, Pretoria
-    'Europe/Helsinki',      # Helsinki, Riga, Tallinn
-    'Israel',               # Israel
-    'Asia/Baghdad',         # Baghdad, Kuwait, Riyadh
-    'Europe/Moscow',        # Moscow, St. Petersburg, Volgograd
-    'Africa/Nairobi',       # Nairobi
-    'Asia/Tehran',          # Tehran
-    'Asia/Muscat',          # Abu Dhabi, Muscat
-    'Asia/Baku',            # Baku, Tbilisi (!)
-    'Asia/Kabul',           # Kabul
-    'Asia/Yekaterinburg',   # Ekaterinburg
-    'Asia/Karachi',         # Islamabad, Karachi, Tashkent
-    'Asia/Calcutta',        # Bombay, Calcutta, Madras, New Delhi
-    'Asia/Kathmandu',       # Kathmandu
-    'Asia/Almaty',          # Almaty, Dhaka
-    'Asia/Colombo',         # Colombo
-    'Asia/Rangoon',         # Rangoon
-    'Asia/Bangkok',         # Bangkok, Hanoi, Jakarta
-    'Asia/Hong_Kong',       # Beijin, Chongqing, Hong Kong, Urumqi
-    'Australia/Perth',      # Perth
-    'Asia/Urumqi',          # Urumqi,Taipei, Kuala Lumpur, Sinapore
-    'Asia/Tokyo',           # Osaka, Sappora, Tokyo
-    'Asia/Seoul',           # Seoul
-    'Asia/Yakutsk',         # Yakutsk
-    'Australia/Adelaide',   # Adelaide
-    'Australia/Darwin',     # Darwin
-    'Australia/Brisbane',   # Brisbane
-    'Australia/Canberra',   # Canberra, Melbourne, Sydney
-    'Pacific/Guam',         # Guam, Port Moresby
-    'Australia/Hobart',     # Hobart
-    'Asia/Vladivostok',     # Vladivostok
-    'Asia/Magadan',         # Magadan, Solomon Is., New Caledonia
-    'Pacific/Auckland',     # Auckland, Wellington
-    'Pacific/Fiji',         # Fiji, Kamchatka, Marshall Is. (!)
-    'Pacific/Tongatapu',    # Nuku'alofa
+    'America/Sao_Paulo',  # Brasilia
+    'America/Argentina/Buenos_Aires',  # Buenos Aires, Georgetown
+    'Atlantic/South_Georgia',  # Mid-Atlantic
+    'Atlantic/Azores',  # Azores, Cape Verde Is
+    'Africa/Casablanca',  # Casablanca, Monrovia    (!)
+    'Europe/London',  # Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London
+    'Europe/Paris',  # Amsterdam, Copenhagen, Madrid, Paris, Vilnius
+    'Europe/Belgrade',  # Central Europe Time(Belgrade, Sarajevo, Skopje, Sofija, Zagreb) (?)
+    'Europe/Bratislava',  # Bratislava, Budapest, Ljubljana, Prague, Warsaw
+    'Europe/Brussels',  # Brussels, Berlin, Bern, Rome, Stockholm, Vienna
+    'Europe/Athens',  # Athens, Istanbul, Minsk
+    'Europe/Bucharest',  # Bucharest
+    'Africa/Cairo',  # Cairo
+    'Africa/Harare',  # Harare, Pretoria
+    'Europe/Helsinki',  # Helsinki, Riga, Tallinn
+    'Israel',  # Israel
+    'Asia/Baghdad',  # Baghdad, Kuwait, Riyadh
+    'Europe/Moscow',  # Moscow, St. Petersburg, Volgograd
+    'Africa/Nairobi',  # Nairobi
+    'Asia/Tehran',  # Tehran
+    'Asia/Muscat',  # Abu Dhabi, Muscat
+    'Asia/Baku',  # Baku, Tbilisi (!)
+    'Asia/Kabul',  # Kabul
+    'Asia/Yekaterinburg',  # Ekaterinburg
+    'Asia/Karachi',  # Islamabad, Karachi, Tashkent
+    'Asia/Calcutta',  # Bombay, Calcutta, Madras, New Delhi
+    'Asia/Kathmandu',  # Kathmandu
+    'Asia/Almaty',  # Almaty, Dhaka
+    'Asia/Colombo',  # Colombo
+    'Asia/Rangoon',  # Rangoon
+    'Asia/Bangkok',  # Bangkok, Hanoi, Jakarta
+    'Asia/Hong_Kong',  # Beijin, Chongqing, Hong Kong, Urumqi
+    'Australia/Perth',  # Perth
+    'Asia/Urumqi',  # Urumqi,Taipei, Kuala Lumpur, Sinapore
+    'Asia/Tokyo',  # Osaka, Sappora, Tokyo
+    'Asia/Seoul',  # Seoul
+    'Asia/Yakutsk',  # Yakutsk
+    'Australia/Adelaide',  # Adelaide
+    'Australia/Darwin',  # Darwin
+    'Australia/Brisbane',  # Brisbane
+    'Australia/Canberra',  # Canberra, Melbourne, Sydney
+    'Pacific/Guam',  # Guam, Port Moresby
+    'Australia/Hobart',  # Hobart
+    'Asia/Vladivostok',  # Vladivostok
+    'Asia/Magadan',  # Magadan, Solomon Is., New Caledonia
+    'Pacific/Auckland',  # Auckland, Wellington
+    'Pacific/Fiji',  # Fiji, Kamchatka, Marshall Is. (!)
+    'Pacific/Tongatapu',  # Nuku'alofa
 ]
+
 
 def _gen_tz_map():
     result = {}
@@ -176,23 +183,12 @@ class BaseTechnicolorPlugin(StandardPlugin):
         'fr_CA': ('1', 'US'),
     }
     _LOCALE_DEF = ('0', 'US')
-    _SIP_DTMF_MODE = {
-        'RTP-in-band': '0',
-        'RTP-out-of-band': '1',
-        'SIP-INFO': '4'
-    }
+    _SIP_DTMF_MODE = {'RTP-in-band': '0', 'RTP-out-of-band': '1', 'SIP-INFO': '4'}
     _DTMF_DEF = '1'
-    _SIP_TRANSPORT = {
-        'udp': '0',
-        'tcp': '1',
-        'tls': '2'
-    }
+    _SIP_TRANSPORT = {'udp': '0', 'tcp': '1', 'tls': '2'}
     _TRANSPORT_DEF = '0'
     _NTP_ZONE_NUM_DEF = '23'
-    _XX_PHONEBOOK_NAME = {
-        'fr': 'Annuaire entreprise',
-        'en': 'Enterprise directory'
-    }
+    _XX_PHONEBOOK_NAME = {'fr': 'Annuaire entreprise', 'en': 'Enterprise directory'}
     _XX_PHONEBOOK_NAME_DEF = ''
     _NB_FKEYS = 66
     _NB_LINES = 4
@@ -218,8 +214,10 @@ class BaseTechnicolorPlugin(StandardPlugin):
 
     def _add_country_and_lang(self, raw_config):
         locale = raw_config.get('locale')
-        raw_config['XX_language_type'], raw_config['XX_country_code'] = \
-                                self._LOCALE.get(locale, self._LOCALE_DEF)
+        (
+            raw_config['XX_language_type'],
+            raw_config['XX_country_code'],
+        ) = self._LOCALE.get(locale, self._LOCALE_DEF)
 
     def _add_config_sn(self, raw_config):
         # The only thing config_sn needs to be is 12 digit long and different
@@ -228,11 +226,15 @@ class BaseTechnicolorPlugin(StandardPlugin):
 
     def _add_dtmf_mode_flag(self, raw_config):
         dtmf_mode = raw_config.get('sip_dtmf_mode')
-        raw_config['XX_dtmf_mode_flag'] = self._SIP_DTMF_MODE.get(dtmf_mode, self._DTMF_DEF)
+        raw_config['XX_dtmf_mode_flag'] = self._SIP_DTMF_MODE.get(
+            dtmf_mode, self._DTMF_DEF
+        )
 
     def _add_transport_flg(self, raw_config):
         sip_transport = raw_config.get('sip_transport')
-        raw_config['XX_transport_flg'] = self._SIP_TRANSPORT.get(sip_transport, self._TRANSPORT_DEF)
+        raw_config['XX_transport_flg'] = self._SIP_TRANSPORT.get(
+            sip_transport, self._TRANSPORT_DEF
+        )
 
     def _gen_xx_phonebook_name(self, raw_config):
         if 'locale' in raw_config:
@@ -291,22 +293,30 @@ class BaseTechnicolorPlugin(StandardPlugin):
                     logger.info('Unsupported funckey type: %s', funckey_type)
                     lines.append(f'FeatureKeyExt{keynum:02d}=L/<sip:>')
                     continue
-                lines.append('FeatureKeyExt%02d=%s/<sip:%s>' %
-                             (keynum, prefix, funckey_dict['value']))
+                lines.append(
+                    'FeatureKeyExt%02d=%s/<sip:%s>'
+                    % (keynum, prefix, funckey_dict['value'])
+                )
             else:
                 lines.append(f'FeatureKeyExt{keynum:02d}=L/<sip:>')
         raw_config['XX_fkeys'] = '\n'.join(lines)
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(raw_config, 'thomson', entry_point='lookup', qs_suffix='term=#SEARCH')
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get('config_version', 0) >= 1
+        ):
+            plugins.add_xivo_phonebook_url(
+                raw_config, 'thomson', entry_point='lookup', qs_suffix='term=#SEARCH'
+            )
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
 
     def _add_xivo_phonebook_url_compat(self, raw_config):
         hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(hostname=hostname)
+            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'
+            raw_config['XX_xivo_phonebook_url'] = url
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
@@ -349,6 +359,7 @@ class BaseTechnicolorPlugin(StandardPlugin):
             logger.info('error while removing file: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -358,13 +369,19 @@ class BaseTechnicolorPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return threads.deferToThread(
+                        sync_service.sip_notify, ip, 'check-sync'
+                    )
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

@@ -40,9 +40,21 @@ COMMON_FILES = [
     ('y000000000068.cfg', 'T46S(T48S,T42S,T41S)-66.85.0.5.rom', 'model.tpl'),
     ('y000000000073.cfg', 'CP960-73.85.0.5.rom', 'model.tpl'),
     ('y000000000078.cfg', 'CP920-78.85.0.5.rom', 'model.tpl'),
-    ('y000000000123.cfg', 'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom', 'model.tpl'),
-    ('y000000000124.cfg', 'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom', 'model.tpl'),
-    ('y000000000127.cfg', 'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom', 'model.tpl'),
+    (
+        'y000000000123.cfg',
+        'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom',
+        'model.tpl',
+    ),
+    (
+        'y000000000124.cfg',
+        'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom',
+        'model.tpl',
+    ),
+    (
+        'y000000000127.cfg',
+        'T31(T30,T30P,T31G,T31P,T33P,T33G)-124.85.0.40.rom',
+        'model.tpl',
+    ),
 ]
 
 HANDSETS_FW = {

@@ -8,10 +8,14 @@ from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, PROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, FULL_SUPPORT, BasePgAssociator
-from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
-    TemplatePluginHelper
+from provd.devices.pgasso import (
+    IMPROBABLE_SUPPORT,
+    PROBABLE_SUPPORT,
+    COMPLETE_SUPPORT,
+    FULL_SUPPORT,
+    BasePgAssociator,
+)
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
@@ -20,9 +24,7 @@ logger = logging.getLogger('plugin.wazo-htek')
 
 
 class BaseHtekHTTPDeviceInfoExtractor:
-    _UA_REGEX_LIST = [
-        re.compile(r'^Htek ([^ ]+) ([^ ]+) ([^ ]+)$')
-    ]
+    _UA_REGEX_LIST = [re.compile(r'^Htek ([^ ]+) ([^ ]+) ([^ ]+)$')]
 
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
@@ -43,15 +45,21 @@ class BaseHtekHTTPDeviceInfoExtractor:
                 try:
                     mac = norm_mac(raw_mac.decode('ascii'))
                 except ValueError as e:
-                    logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
-                    return {'vendor': 'Htek',
-                            'model': raw_model.decode('ascii'),
-                            'version': raw_version.decode('ascii')}
+                    logger.warning(
+                        'Could not normalize MAC address "%s": %s', raw_mac, e
+                    )
+                    return {
+                        'vendor': 'Htek',
+                        'model': raw_model.decode('ascii'),
+                        'version': raw_version.decode('ascii'),
+                    }
                 else:
-                    return {'vendor': 'Htek',
-                            'model': raw_model.decode('ascii'),
-                            'version': raw_version.decode('ascii'),
-                            'mac': mac}
+                    return {
+                        'vendor': 'Htek',
+                        'model': raw_model.decode('ascii'),
+                        'version': raw_version.decode('ascii'),
+                        'mac': mac,
+                    }
         return None
 
 
@@ -256,7 +264,11 @@ class BaseHtekPlugin(StandardPlugin):
         fkeys = raw_config['funckeys']
         fkey_type_assoc = {'': 0, 'speeddial': 2, 'blf': 3, 'park': 8}
 
-        if 'model' in device and device['model'] is not None and device['model'] in self._NB_LINEKEYS:
+        if (
+            'model' in device
+            and device['model'] is not None
+            and device['model'] in self._NB_LINEKEYS
+        ):
             for key_nb in range(1, self._NB_LINEKEYS[device['model']] + 1):
                 if str(key_nb) in raw_config['sip_lines']:
                     sip_line = raw_config['sip_lines'][str(key_nb)]
@@ -265,12 +277,24 @@ class BaseHtekPlugin(StandardPlugin):
                     val = fkeys.get(str(key_nb), {'type': '', 'value': '', 'label': ''})
                     val['type'] = fkey_type_assoc[val['type']]
                 complete_fkeys[key_nb] = {
-                    'type': {'p_nb': self._gen_param_num(key_nb)[0], 'val': val['type']},
+                    'type': {
+                        'p_nb': self._gen_param_num(key_nb)[0],
+                        'val': val['type'],
+                    },
                     'mode': {'p_nb': self._gen_param_num(key_nb)[1]},
-                    'value': {'p_nb': self._gen_param_num(key_nb, offset=1)[0], 'val': val['value']},
-                    'label': {'p_nb': self._gen_param_num(key_nb, offset=2)[0], 'val': val['label']},
+                    'value': {
+                        'p_nb': self._gen_param_num(key_nb, offset=1)[0],
+                        'val': val['value'],
+                    },
+                    'label': {
+                        'p_nb': self._gen_param_num(key_nb, offset=2)[0],
+                        'val': val['label'],
+                    },
                     'account': {'p_nb': self._gen_param_num(key_nb, offset=3)[0]},
-                    'extension': {'p_nb': self._gen_param_num(key_nb, offset=4)[0], 'val': val['value']},
+                    'extension': {
+                        'p_nb': self._gen_param_num(key_nb, offset=4)[0],
+                        'val': val['value'],
+                    },
                 }
             raw_config['XX_fkeys'] = complete_fkeys
 
@@ -278,8 +302,10 @@ class BaseHtekPlugin(StandardPlugin):
         locale = raw_config.get('locale')
         if locale in self._LOCALE:
             (lang, country) = self._LOCALE[locale]
-            (raw_config['XX_lang'],
-             raw_config['XX_country']) = (lang, self._COUNTRIES[country])
+            (raw_config['XX_lang'], raw_config['XX_country']) = (
+                lang,
+                self._COUNTRIES[country],
+            )
 
     def _add_timezone(self, raw_config):
         timezone = raw_config.get('timezone', 'Etc/UTC')
@@ -290,16 +316,22 @@ class BaseHtekPlugin(StandardPlugin):
         offset_minutes = tz_info[1]
 
         if (offset_hour, offset_minutes) in self._TZ_INFO:
-            raw_config['XX_timezone_code'] = self._TZ_INFO[(offset_hour, offset_minutes)]
+            raw_config['XX_timezone_code'] = self._TZ_INFO[
+                (offset_hour, offset_minutes)
+            ]
         else:
             raw_config['XX_timezone_code'] = self._TZ_INFO[(-5, 0)]
 
     def _add_sip_transport(self, raw_config):
-        raw_config['XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get('sip_transport'),
-                                                                  self._SIP_TRANSPORT_DEF)
+        raw_config['XX_sip_transport'] = self._SIP_TRANSPORT.get(
+            raw_config.get('sip_transport'), self._SIP_TRANSPORT_DEF
+        )
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get('config_version', 0) >= 1
+        ):
             plugins.add_xivo_phonebook_url(raw_config, 'htek', entry_point='lookup')
         else:
             self._add_xivo_phonebook_url_compat(raw_config)
@@ -307,14 +339,15 @@ class BaseHtekPlugin(StandardPlugin):
     def _add_xivo_phonebook_url_compat(self, raw_config):
         hostname = raw_config.get('X_xivo_phonebook_ip')
         if hostname:
-            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(hostname=hostname)
+            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'
+            raw_config['XX_xivo_phonebook_url'] = url
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^cfg[0-9a-f]{12}\.xml')
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='')
-        return 'cfg' + fmted_mac + '.xml'
+        formatted_mac = format_mac(device['mac'], separator='')
+        return f'cfg{formatted_mac}.xml'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -350,6 +383,7 @@ class BaseHtekPlugin(StandardPlugin):
             logger.info('error while removing file: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -359,13 +393,19 @@ class BaseHtekPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return threads.deferToThread(
+                        sync_service.sip_notify, ip, 'check-sync'
+                    )
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

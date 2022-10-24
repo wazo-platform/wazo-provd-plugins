@@ -57,6 +57,7 @@ def _list_build_plugins(directory):
             file = os.path.join(directory, file)
             if _is_build_plugin(file):
                 yield file
+
     return list(aux())
 
 
@@ -89,16 +90,19 @@ class BuildPlugin:
         def _target(target_id, pg_id, std_dirs=True):
             def aux(fun):
                 if target_id in targets:
-                    raise Exception(f"in build_plugin '{self.name}': target redefinition for '{target_id}'")
-                targets[target_id] = {
-                    'fun': fun,
-                    'pg_id': pg_id,
-                    'std_dirs': std_dirs
-                }
+                    raise Exception(
+                        f"in build_plugin '{self.name}': target redefinition for '{target_id}'"
+                    )
+                targets[target_id] = {'fun': fun, 'pg_id': pg_id, 'std_dirs': std_dirs}
                 return fun
+
             return aux
+
         build_file = os.path.join(path, BUILD_FILENAME)
-        exec(compile(open(build_file, "rb").read(), build_file, 'exec'), {'target': _target})
+        exec(
+            compile(open(build_file, "rb").read(), build_file, 'exec'),
+            {'target': _target},
+        )
         self.targets = targets
 
     def build(self, target_id, pgdir):
@@ -127,7 +131,13 @@ class BuildPlugin:
 
     @staticmethod
     def _mk_std_dirs(abs_path):
-        for directory in ['var', 'var/cache', 'var/installed', 'var/templates', 'var/tftpboot']:
+        for directory in [
+            'var',
+            'var/cache',
+            'var/installed',
+            'var/templates',
+            'var/tftpboot',
+        ]:
             _mkdir(os.path.join(abs_path, directory))
 
 
@@ -153,7 +163,10 @@ def build_op(opts, args, src_dir, dest_dir):
         try:
             build_plugin = BuildPlugin(build_plugin_path)
         except Exception as e:
-            print(f"error: while loading build plugin '{build_plugin_path}': {e}", file=stderr)
+            print(
+                f"error: while loading build plugin '{build_plugin_path}': {e}",
+                file=stderr,
+            )
             exit(1)
         else:
             build_plugins[build_plugin_path] = build_plugin
@@ -162,7 +175,10 @@ def build_op(opts, args, src_dir, dest_dir):
                 continue
             for target_id in targets:
                 if target_id not in build_plugin.targets:
-                    print(f"error: target '{target_id}' not in build plugin '{build_plugin_path}'", file=stderr)
+                    print(
+                        f"error: target '{target_id}' not in build plugin '{build_plugin_path}'",
+                        file=stderr,
+                    )
                     exit(1)
 
     # build, build plugins
@@ -191,6 +207,7 @@ def _list_plugins(directory):
             file = os.path.join(directory, file)
             if _is_plugin(file):
                 yield file
+
     return list(aux())
 
 
@@ -213,7 +230,9 @@ def package_op(opts, args, src_dir, dest_dir):
 
     # parse plugins to package
     if args:
-        plugins = [file for arg in args for file in glob.iglob(os.path.join(pg_dir, arg))]
+        plugins = [
+            file for arg in args for file in glob.iglob(os.path.join(pg_dir, arg))
+        ]
         # make sure plugins are plugins...
         for plugin in plugins:
             if not _is_plugin(plugin):
@@ -225,11 +244,19 @@ def package_op(opts, args, src_dir, dest_dir):
     # build packages
     for plugin in plugins:
         plugin_version = _get_plugin_version(plugin)
-        package = f"{os.path.join(pkg_dir, os.path.basename(plugin))}-{plugin_version}{PACKAGE_SUFFIX}"
+        package_path = os.path.join(pkg_dir, os.path.basename(plugin))
+        package = f"{package_path}-{plugin_version}{PACKAGE_SUFFIX}"
         print(f"Packaging plugin '{plugin}' into '{package}'...")
-        check_call(['tar', 'caf', package,
-                    '-C', os.path.dirname(plugin) or os.curdir,
-                    os.path.basename(plugin)])
+        check_call(
+            [
+                'tar',
+                'caf',
+                package,
+                '-C',
+                os.path.dirname(plugin) or os.curdir,
+                os.path.basename(plugin),
+            ]
+        )
 
 
 def _list_packages(directory):
@@ -246,7 +273,10 @@ def _get_package_name(package):
         shortest_name = min(tar_package.getnames())
         if tar_package.getmember(shortest_name).isdir():
             return shortest_name
-        print(f"error: package '{package}' should have only 1 directory at depth 0", file=stderr)
+        print(
+            f"error: package '{package}' should have only 1 directory at depth 0",
+            file=stderr,
+        )
         exit(1)
     finally:
         tar_package.close()
@@ -259,7 +289,10 @@ def _get_package_plugin_info(package, package_name):
     try:
         plugin_info_name = os.path.join(package_name, PLUGIN_INFO_FILENAME)
         if plugin_info_name not in tar_package.getnames():
-            print(f"error: package '{package}' has no file '{plugin_info_name}'", file=stderr)
+            print(
+                f"error: package '{package}' has no file '{plugin_info_name}'",
+                file=stderr,
+            )
             exit(1)
 
         fobj = tar_package.extractfile(plugin_info_name)
@@ -270,7 +303,9 @@ def _get_package_plugin_info(package, package_name):
                     raise ValueError()
             return raw_plugin_info
         except ValueError:
-            print(f"error: package '{package}' has invalid plugin-info file", file=stderr)
+            print(
+                f"error: package '{package}' has invalid plugin-info file", file=stderr
+            )
             exit(1)
         finally:
             fobj.close()
@@ -336,7 +371,11 @@ def create_db_op(opts, args, src_dir, dest_dir):
         if package_name in package_infos:
             cur_version = package_info['version']
             last_version = package_infos[package_name]['version']
-            print(f"warning: found package {package_name} in version {cur_version} and {last_version}", file=stderr)
+            print(
+                f"warning: found package {package_name} "
+                f"in version {cur_version} and {last_version}",
+                file=stderr,
+            )
             if _version_cmp(cur_version, last_version) > 0:
                 package_infos[package_name] = package_info
         else:
@@ -368,23 +407,45 @@ def _get_directories(opts):
 
 def main():
     parser = ArgumentParser()
-    parser.add_argument('-B', '--build', action='store_true', dest='build',
-                        help='create plugins from build_plugins')
-    parser.add_argument('-P', '--package', action='store_true', dest='package',
-                        help='create packages from plugins')
-    parser.add_argument('-D', '--db', action='store_true', dest='create_db',
-                        help='create DB file from packages')
-    parser.add_argument('-s', '--source', dest='source',
-                        help='source directory')
-    parser.add_argument('-d', '--destination', dest='destination',
-                        help='destination directory')
-    parser.add_argument('--pretty-db', action='store_true', dest='pretty_db',
-                        help='pretty format the DB file')
+    parser.add_argument(
+        '-B',
+        '--build',
+        action='store_true',
+        dest='build',
+        help='create plugins from build_plugins',
+    )
+    parser.add_argument(
+        '-P',
+        '--package',
+        action='store_true',
+        dest='package',
+        help='create packages from plugins',
+    )
+    parser.add_argument(
+        '-D',
+        '--db',
+        action='store_true',
+        dest='create_db',
+        help='create DB file from packages',
+    )
+    parser.add_argument('-s', '--source', dest='source', help='source directory')
+    parser.add_argument(
+        '-d', '--destination', dest='destination', help='destination directory'
+    )
+    parser.add_argument(
+        '--pretty-db',
+        action='store_true',
+        dest='pretty_db',
+        help='pretty format the DB file',
+    )
 
     options, args = parser.parse_known_args()
     nb_op = count(getattr(options, name) for name in ('build', 'package', 'create_db'))
     if nb_op != 1:
-        print(f"error: only one operation may be used at a time ({nb_op} given)", file=stderr)
+        print(
+            f"error: only one operation may be used at a time ({nb_op} given)",
+            file=stderr,
+        )
         exit(1)
     # assert: only one operation is specified
 

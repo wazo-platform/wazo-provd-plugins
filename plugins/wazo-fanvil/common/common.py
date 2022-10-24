@@ -9,16 +9,12 @@ from provd import plugins
 from provd import synchronize
 from provd import tzinform
 from provd.devices.config import RawConfigError
-from provd.plugins import (
-    FetchfwPluginHelper,
-    StandardPlugin,
-    TemplatePluginHelper
-)
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
 from provd.devices.pgasso import (
     BasePgAssociator,
     COMPLETE_SUPPORT,
     IMPROBABLE_SUPPORT,
-    UNKNOWN_SUPPORT
+    UNKNOWN_SUPPORT,
 )
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
@@ -30,7 +26,7 @@ logger = logging.getLogger('plugin.wazo-fanvil')
 class BaseFanvilHTTPDeviceInfoExtractor:
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
     _UA_REGEX = re.compile(
-        r'^Fanvil (?P<model>X[0-9]{1,3}[SGVUCi]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'
+        r'^Fanvil (?P<model>X[0-9]{1,3}[SGVUCi]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
     )
 
     def __init__(self, common_files):
@@ -64,8 +60,7 @@ class BaseFanvilHTTPDeviceInfoExtractor:
         filename = os.path.basename(request.path)
         device_info = self._COMMON_FILES.get(filename)
         if device_info:
-            return {'vendor': 'Fanvil',
-                    'model': device_info[0]}
+            return {'vendor': 'Fanvil', 'model': device_info[0]}
 
         m = self._PATH_REGEX.search(request.path)
         if m:
@@ -76,7 +71,6 @@ class BaseFanvilHTTPDeviceInfoExtractor:
 
 
 class BaseFanvilPgAssociator(BasePgAssociator):
-
     def __init__(self, models):
         BasePgAssociator.__init__(self)
         self._models = models
@@ -114,8 +108,27 @@ class BaseFanvilPlugin(StandardPlugin):
         'sk': 'slo',
     }
     _NEW_SUPPORTED_LANGUAGES = (
-        'en', 'cn', 'tc', 'ru', 'it', 'fr', 'de', 'he', 'es', 'cat', 'eus',
-        'tr', 'hr', 'slo', 'cz', 'nl', 'ko', 'ua', 'pt', 'pl', 'ar',
+        'en',
+        'cn',
+        'tc',
+        'ru',
+        'it',
+        'fr',
+        'de',
+        'he',
+        'es',
+        'cat',
+        'eus',
+        'tr',
+        'hr',
+        'slo',
+        'cz',
+        'nl',
+        'ko',
+        'ua',
+        'pt',
+        'pl',
+        'ar',
     )
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
@@ -136,8 +149,8 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device):
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device['mac'], separator='', uppercase=False)
-        return fmted_mac + '.cfg'
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
+        return f'{formatted_mac}.cfg'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -189,6 +202,7 @@ class BaseFanvilPlugin(StandardPlugin):
             logger.info('error while removing configuration file: %s', e)
 
     if hasattr(synchronize, 'standard_sip_synchronize'):
+
         def synchronize(self, device, raw_config):
             return synchronize.standard_sip_synchronize(device)
 
@@ -198,13 +212,19 @@ class BaseFanvilPlugin(StandardPlugin):
             try:
                 ip = device['ip'].encode('ascii')
             except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
+                return defer.fail(
+                    Exception('IP address needed for device synchronization')
+                )
             else:
                 sync_service = synchronize.get_sync_service()
                 if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception(f'Incompatible sync service: {sync_service}'))
+                    return defer.fail(
+                        Exception(f'Incompatible sync service: {sync_service}')
+                    )
                 else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+                    return threads.deferToThread(
+                        sync_service.sip_notify, ip, 'check-sync'
+                    )
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:
@@ -279,17 +299,27 @@ class BaseFanvilPlugin(StandardPlugin):
     def _update_lines(self, raw_config):
         default_dtmf_mode = raw_config.get('sip_dtmf_mode', 'SIP-INFO')
         for line in raw_config['sip_lines'].values():
-            line['XX_dtmf_mode'] = self._SIP_DTMF_MODE[line.get('dtmf_mode', default_dtmf_mode)]
-            line['backup_proxy_ip'] = line.get('backup_proxy_ip') or raw_config.get('sip_backup_proxy_ip')
-            line['backup_proxy_port'] = line.get('backup_proxy_port') or raw_config.get('sip_backup_proxy_port')
+            line['XX_dtmf_mode'] = self._SIP_DTMF_MODE[
+                line.get('dtmf_mode', default_dtmf_mode)
+            ]
+            line['backup_proxy_ip'] = line.get('backup_proxy_ip') or raw_config.get(
+                'sip_backup_proxy_ip'
+            )
+            line['backup_proxy_port'] = line.get('backup_proxy_port') or raw_config.get(
+                'sip_backup_proxy_port'
+            )
             if 'voicemail' not in line and 'exten_voicemail' in raw_config:
                 line['voicemail'] = raw_config['exten_voicemail']
 
     def _add_sip_transport(self, raw_config):
-        raw_config['X_sip_transport_protocol'] = self._SIP_TRANSPORT[raw_config.get('sip_transport', 'udp')]
+        raw_config['X_sip_transport_protocol'] = self._SIP_TRANSPORT[
+            raw_config.get('sip_transport', 'udp')
+        ]
 
     def _format_funckey_speeddial(self, funckey_dict):
-        return '{value}@{line}/f'.format(value=funckey_dict['value'], line=funckey_dict['line'])
+        return '{value}@{line}/f'.format(
+            value=funckey_dict['value'], line=funckey_dict['line']
+        )
 
     def _format_funckey_blf(self, funckey_dict, exten_pickup_call=None):
         # Be warned that blf works only for DSS keys.
@@ -305,7 +335,9 @@ class BaseFanvilPlugin(StandardPlugin):
             )
 
     def _format_funckey_call_park(self, funckey_dict):
-        return '{value}@{line}/c'.format(value=funckey_dict['value'], line=funckey_dict['line'])
+        return '{value}@{line}/c'.format(
+            value=funckey_dict['value'], line=funckey_dict['line']
+        )
 
     def _add_fkeys(self, device, raw_config):
         lines = []
@@ -329,7 +361,9 @@ class BaseFanvilPlugin(StandardPlugin):
                     fkey_line['type'] = 4
             elif funckey_type == 'blf':
                 if keynum <= 12:
-                    fkey_line['value'] = self._format_funckey_blf(funckey_dict, exten_pickup_call)
+                    fkey_line['value'] = self._format_funckey_blf(
+                        funckey_dict, exten_pickup_call
+                    )
                 else:
                     logger.info('For Fanvil, blf is only available on DSS keys')
                     fkey_line['value'] = self._format_funckey_speeddial(funckey_dict)
@@ -341,19 +375,32 @@ class BaseFanvilPlugin(StandardPlugin):
 
             lines.append(fkey_line)
 
-        keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(device['model'].split('-')[0], None)
+        keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(
+            device['model'].split('-')[0], None
+        )
         if keys_per_page:
             raw_config['XX_max_page'] = max_funckey_position // keys_per_page + 1
-            raw_config['XX_paginated_fkeys'] = sorted([
-                ((fkey['id'] - 1) // keys_per_page, (fkey['id'] - 1) % keys_per_page, fkey)
-                for fkey in lines
-            ])
+            raw_config['XX_paginated_fkeys'] = sorted(
+                [
+                    (
+                        (fkey['id'] - 1) // keys_per_page,
+                        (fkey['id'] - 1) % keys_per_page,
+                        fkey,
+                    )
+                    for fkey in lines
+                ]
+            )
         else:
-            raw_config['XX_paginated_fkeys'] = [(0, fkey['id'] - 1, fkey) for fkey in lines]
+            raw_config['XX_paginated_fkeys'] = [
+                (0, fkey['id'] - 1, fkey) for fkey in lines
+            ]
         raw_config['XX_fkeys'] = lines
 
     def _add_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get('config_version', 0) >= 1
+        ):
             plugins.add_xivo_phonebook_url(raw_config, 'fanvil')
 
     def _add_firmware(self, device, raw_config):

@@ -34,5 +34,5 @@ VERSION = '2.01.10'
 
 class AlcatelPlugin(common_globals['BaseAlcatelPlugin']):
     IS_PLUGIN = True
-    
+
     pg_associator = common_globals['BaseAlcatelPgAssociator'](MODELS, VERSION)
