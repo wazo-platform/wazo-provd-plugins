@@ -5,19 +5,13 @@ from __future__ import annotations
 import logging
 import re
 import os.path
-from typing import Dict
+from typing import Dict, Optional
 
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import (
-    IMPROBABLE_SUPPORT,
-    PROBABLE_SUPPORT,
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-    BasePgAssociator,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
@@ -108,14 +102,16 @@ class BaseYealinkPgAssociator(BasePgAssociator):
         super().__init__()
         self._model_versions = model_versions
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Yealink':
             if model in self._model_versions:
                 if version == self._model_versions[model]:
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
 
 class BaseYealinkFunckeyGenerator:

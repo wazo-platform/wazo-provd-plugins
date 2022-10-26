@@ -15,13 +15,7 @@ from provd.plugins import (
     StandardPlugin,
     TemplatePluginHelper,
 )
-from provd.devices.pgasso import (
-    BasePgAssociator,
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-    IMPROBABLE_SUPPORT,
-    UNKNOWN_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
@@ -73,14 +67,16 @@ class BasePattonPgAssociator(BasePgAssociator):
         self._models = models
         self._version = version
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Patton':
             if model in self._models:
                 if version == self._version:
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            return UNKNOWN_SUPPORT
-        return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.UNKNOWN
+        return DeviceSupport.IMPROBABLE
 
 
 class _TimezoneConverter:

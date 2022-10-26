@@ -5,20 +5,13 @@ from __future__ import annotations
 import logging
 import os.path
 import re
-from typing import Dict
+from typing import Dict, Optional
 
 from pkg_resources import parse_version
 from provd import plugins
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import (
-    BasePgAssociator,
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-    IMPROBABLE_SUPPORT,
-    NO_SUPPORT,
-    PROBABLE_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import (
     FetchfwPluginHelper,
     StandardPlugin,
@@ -82,20 +75,22 @@ class BaseSnomPgAssociator(BasePgAssociator):
         self._models = models
         self._version = version
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Snom':
             if version is None:
                 # Could be an old version with no XML support
-                return PROBABLE_SUPPORT
+                return DeviceSupport.PROBABLE
             assert version is not None
             if self._is_incompatible_version(version):
-                return NO_SUPPORT
+                return DeviceSupport.NONE
             if model in self._models:
                 if version == self._version:
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
     def _is_incompatible_version(self, version):
         try:

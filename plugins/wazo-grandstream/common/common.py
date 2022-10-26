@@ -5,18 +5,12 @@ from __future__ import annotations
 import logging
 import re
 import os.path
-from typing import Dict
+from typing import Dict, Optional
 
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
-from provd.devices.pgasso import (
-    BasePgAssociator,
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-    IMPROBABLE_SUPPORT,
-    UNKNOWN_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.util import format_mac, norm_mac
@@ -97,14 +91,16 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
         self._models = models
         self._version = version
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Grandstream':
             if model in self._models:
                 if version.startswith(self._version):
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            return UNKNOWN_SUPPORT
-        return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.UNKNOWN
+        return DeviceSupport.IMPROBABLE
 
 
 class BaseGrandstreamPlugin(StandardPlugin):

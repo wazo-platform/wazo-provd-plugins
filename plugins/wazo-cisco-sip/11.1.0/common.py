@@ -6,19 +6,13 @@ import logging
 import os
 import re
 from operator import itemgetter
-from typing import Dict
+from typing import Dict, Optional
 from xml.sax.saxutils import escape
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import (
-    BasePgAssociator,
-    IMPROBABLE_SUPPORT,
-    PROBABLE_SUPPORT,
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
@@ -143,20 +137,22 @@ class BaseCiscoPgAssociator(BasePgAssociator):
         super().__init__()
         self._model_version = model_version
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Cisco':
             if model in self._model_version:
                 if version == self._model_version[model]:
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
             if model is not None:
                 # model is unknown to the plugin, chance are low
                 # that it's going to be supported because of missing
                 # common configuration file that are used to bootstrap
                 # the provisioning process
-                return IMPROBABLE_SUPPORT
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                return DeviceSupport.IMPROBABLE
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
 
 class BaseCiscoSipPlugin(StandardPlugin):

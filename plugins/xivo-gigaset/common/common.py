@@ -27,13 +27,9 @@ import urllib.request
 from configparser import RawConfigParser
 from contextlib import closing
 from io import StringIO
+from typing import Optional
 
-from provd.devices.pgasso import (
-    BasePgAssociator,
-    IMPROBABLE_SUPPORT,
-    COMPLETE_SUPPORT,
-    UNKNOWN_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper
 from provd.util import norm_mac
 from twisted.internet import defer, threads
@@ -79,14 +75,14 @@ class BaseGigasetPgAssociator(BasePgAssociator):
     def __init__(self, models):
         self._models = models
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == VENDOR:
             if model in self._models:
-                return COMPLETE_SUPPORT
-            else:
-                return UNKNOWN_SUPPORT
-        else:
-            return IMPROBABLE_SUPPORT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.UNKNOWN
+        return DeviceSupport.IMPROBABLE
 
 
 class GigasetInteractionError(Exception):

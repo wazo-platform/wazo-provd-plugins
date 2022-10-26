@@ -19,20 +19,14 @@ import logging
 import re
 import os.path
 from operator import itemgetter
-from typing import Dict
+from typing import Dict, Optional
 
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
-from provd.devices.pgasso import (
-    IMPROBABLE_SUPPORT,
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-    BasePgAssociator,
-    UNKNOWN_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
 from provd.servers.http_site import Request
@@ -95,14 +89,16 @@ class BaseAastraPgAssociator(BasePgAssociator):
         super().__init__()
         self._model_versions = model_versions
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Aastra':
             if model in self._model_versions:
                 if version == self._model_versions[model]:
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            return UNKNOWN_SUPPORT
-        return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.UNKNOWN
+        return DeviceSupport.IMPROBABLE
 
 
 class AastraModel:

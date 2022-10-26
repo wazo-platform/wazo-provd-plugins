@@ -5,19 +5,14 @@ from __future__ import annotations
 import logging
 import os.path
 import re
-from typing import Dict
+from typing import Dict, Optional
 
 from provd import plugins
 from provd import synchronize
 from provd import tzinform
 from provd.devices.config import RawConfigError
 from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
-from provd.devices.pgasso import (
-    BasePgAssociator,
-    COMPLETE_SUPPORT,
-    IMPROBABLE_SUPPORT,
-    UNKNOWN_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
@@ -79,12 +74,14 @@ class BaseFanvilPgAssociator(BasePgAssociator):
         super().__init__()
         self._models = models
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Fanvil':
             if model in self._models:
-                return COMPLETE_SUPPORT
-            return UNKNOWN_SUPPORT
-        return IMPROBABLE_SUPPORT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.UNKNOWN
+        return DeviceSupport.IMPROBABLE
 
 
 class BaseFanvilPlugin(StandardPlugin):

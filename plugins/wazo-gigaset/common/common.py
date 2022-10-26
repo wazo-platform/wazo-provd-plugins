@@ -10,15 +10,9 @@ import os
 import logging
 import re
 import datetime
-from typing import Dict
+from typing import Dict, Optional
 
-from provd.devices.pgasso import (
-    BasePgAssociator,
-    IMPROBABLE_SUPPORT,
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-    UNKNOWN_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.servers.http_site import Request
 from provd.util import norm_mac, format_mac
@@ -116,16 +110,16 @@ class BaseGigasetPgAssociator(BasePgAssociator):
     def __init__(self, models):
         self._models = models
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == VENDOR:
             if model in self._models:
                 if version == self._models[model]:
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            else:
-                return UNKNOWN_SUPPORT
-        else:
-            return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.UNKNOWN
+        return DeviceSupport.IMPROBABLE
 
 
 class HTTPServiceWrapper(HTTPNoListingFileService):

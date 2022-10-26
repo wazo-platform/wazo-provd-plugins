@@ -23,18 +23,12 @@ from __future__ import annotations
 import re
 import os
 import logging
-from typing import Dict
+from typing import Dict, Optional
 
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import (
-    BasePgAssociator,
-    FULL_SUPPORT,
-    COMPLETE_SUPPORT,
-    PROBABLE_SUPPORT,
-    IMPROBABLE_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
@@ -111,17 +105,19 @@ class BaseAvayaPgAssociator(BasePgAssociator):
         self._models = models
         self._version = version
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Avaya':
             if model in self._models:
                 if version == self._version:
-                    return FULL_SUPPORT
+                    return DeviceSupport.EXACT
                 # XXX if there's one day a plugin supporting UNIStim (...),
                 #     then we might want to do more check on the version,
                 #     or return a lower support value
-                return COMPLETE_SUPPORT
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
 
 class BaseAvayaPlugin(StandardPlugin):

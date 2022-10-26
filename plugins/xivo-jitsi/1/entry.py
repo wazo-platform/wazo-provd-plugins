@@ -24,15 +24,10 @@ from __future__ import annotations
 import logging
 import os.path
 import re
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import (
-    IMPROBABLE_SUPPORT,
-    PROBABLE_SUPPORT,
-    FULL_SUPPORT,
-    BasePgAssociator,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper
 from provd.util import is_normed_uuid, norm_uuid
 from provd.servers.http_site import Request
@@ -80,12 +75,14 @@ class JitsiHTTPDeviceInfoExtractor:
 
 
 class JitsiPgAssociator(BasePgAssociator):
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == model == 'Jitsi':
             if version.startswith('1.'):
-                return FULL_SUPPORT
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                return DeviceSupport.EXACT
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
 
 class JitsiHTTPService(Resource):

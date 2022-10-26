@@ -17,18 +17,12 @@ from __future__ import annotations
 import logging
 import os
 import re
-from typing import Dict
+from typing import Dict, Optional
 
 from provd import synchronize
 from provd.util import norm_mac, format_mac
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
-from provd.devices.pgasso import (
-    IMPROBABLE_SUPPORT,
-    PROBABLE_SUPPORT,
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-    BasePgAssociator,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
@@ -90,14 +84,16 @@ class DigiumPgAssociator(BasePgAssociator):
         super().__init__(self)
         self._version = version
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Digium':
             if model in self._MODELS:
                 if version == self._version:
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
 
 class BaseDigiumPlugin(StandardPlugin):

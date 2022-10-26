@@ -5,18 +5,12 @@ from __future__ import annotations
 import logging
 import os
 import re
-from typing import Dict
+from typing import Dict, Optional, Union
 
 from provd import plugins
 from provd import tzinform
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import (
-    BasePgAssociator,
-    IMPROBABLE_SUPPORT,
-    NO_SUPPORT,
-    COMPLETE_SUPPORT,
-    PROBABLE_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
@@ -32,20 +26,20 @@ class BaseCiscoPgAssociator(BasePgAssociator):
     def __init__(self, models):
         self._models = models
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> Union[DeviceSupport, int]:
         if vendor == 'Cisco':
             if model is None:
                 # when model is None, give a score slightly higher than
                 # xivo-cisco-spa plugins
-                return PROBABLE_SUPPORT + 10
-            if model.startswith('SPA'):
-                return NO_SUPPORT
-            if model.startswith('ATA'):
-                return NO_SUPPORT
+                return DeviceSupport.PROBABLE.value + 10
+            if model.startswith('SPA') or model.startswith('ATA'):
+                return DeviceSupport.NONE
             if model in self._models:
-                return COMPLETE_SUPPORT
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
 
 class BaseCiscoDHCPDeviceInfoExtractor:

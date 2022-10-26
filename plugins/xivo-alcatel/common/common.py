@@ -27,18 +27,12 @@ import logging
 import os.path
 import re
 import time
-from typing import Dict
+from typing import Dict, Optional
 
 from provd import tzinform
 from provd.devices.config import RawConfigError
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
-from provd.devices.pgasso import (
-    IMPROBABLE_SUPPORT,
-    PROBABLE_SUPPORT,
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-    BasePgAssociator,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
@@ -117,14 +111,16 @@ class BaseAlcatelPgAssociator(BasePgAssociator):
         self._models = models
         self._version = version
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == VENDOR:
             if model in self._models:
                 if version == self._version:
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
 
 class BaseAlcatelPlugin(StandardPlugin):

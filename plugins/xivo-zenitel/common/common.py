@@ -25,15 +25,10 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from operator import itemgetter
-from typing import Dict
+from typing import Dict, Optional
 
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import (
-    IMPROBABLE_SUPPORT,
-    COMPLETE_SUPPORT,
-    UNKNOWN_SUPPORT,
-    BasePgAssociator,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.servers.tftp.service import TFTPFileService
 from provd.services import JsonConfigPersister, PersistentConfigureServiceDecorator
@@ -70,14 +65,14 @@ class BaseZenitelTFTPDeviceInfoExtractor:
 
 
 class BaseZenitelPgAssociator(BasePgAssociator):
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Zenitel':
             if model == 'IP station':
-                return COMPLETE_SUPPORT
-            else:
-                return UNKNOWN_SUPPORT
-        else:
-            return IMPROBABLE_SUPPORT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.UNKNOWN
+        return DeviceSupport.IMPROBABLE
 
 
 class ZenitelConfigureService:

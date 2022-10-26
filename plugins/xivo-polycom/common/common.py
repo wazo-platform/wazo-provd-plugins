@@ -18,18 +18,13 @@ import logging
 import re
 import os.path
 from operator import itemgetter
-from typing import Dict
+from typing import Dict, Optional, Union
 from xml.sax.saxutils import escape
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import (
-    IMPROBABLE_SUPPORT,
-    PROBABLE_SUPPORT,
-    COMPLETE_SUPPORT,
-    BasePgAssociator,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
@@ -107,12 +102,14 @@ class BasePolycomPgAssociator(BasePgAssociator):
         super().__init__()
         self._models = models
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> Union[DeviceSupport]:
         if vendor == 'Polycom':
             if model in self._models:
-                return COMPLETE_SUPPORT + 1
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                return DeviceSupport.COMPLETE + 1
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
 
 class BasePolycomPlugin(StandardPlugin):
