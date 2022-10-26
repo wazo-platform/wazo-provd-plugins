@@ -4,11 +4,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 Common code shared by the various wazo-gigaset plugins.
 """
+from __future__ import annotations
 
 import os
 import logging
 import re
 import datetime
+from typing import Dict
+
 from provd.devices.pgasso import (
     BasePgAssociator,
     IMPROBABLE_SUPPORT,
@@ -17,12 +20,14 @@ from provd.devices.pgasso import (
     UNKNOWN_SUPPORT,
 )
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
+from provd.servers.http_site import Request
 from provd.util import norm_mac, format_mac
 from provd import synchronize
 from provd import plugins
 from provd import tzinform
 from provd.servers.http import HTTPNoListingFileService
 from twisted.internet import defer
+from provd.devices.ident import RequestType
 
 logger = logging.getLogger('plugin.wazo-gigaset')
 
@@ -35,7 +40,7 @@ class GigasetDHCPDeviceInfoExtractor:
         'N510_IP_PRO': 'N510 IP PRO',
     }
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
@@ -60,8 +65,7 @@ class GigasetDHCPDeviceInfoExtractor:
 
         if vdi_to_check in self._VDI:
             return {'vendor': VENDOR, 'model': self._VDI[vdi_to_check]}
-        else:
-            return None
+        return None
 
 
 class GigasetHTTPDeviceInfoExtractor:
@@ -72,19 +76,19 @@ class GigasetHTTPDeviceInfoExtractor:
     )
     _PATH_REGEX = re.compile(r'^/\d{2}/\d{1}/(.+)$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: Request):
         dev_info = {}
 
-        ua = request.getHeader('User-Agent')
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            dev_info.update(self._extract_from_ua(ua))
+            dev_info.update(self._extract_from_ua(ua.decode('ascii')))
 
         return dev_info
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         # "Gigaset N720 DM PRO/70.089.00.000.000;7C2F80CA21E4"
         # "Gigaset N720 DM PRO/70.108.00.000.000"
@@ -99,11 +103,11 @@ class GigasetHTTPDeviceInfoExtractor:
         if m:
             dev_info = {
                 'vendor': VENDOR,
-                'model': m.group('model').decode('ascii').replace('-', ' '),
-                'version': m.group('version').decode('ascii'),
+                'model': m.group('model').replace('-', ' '),
+                'version': m.group('version'),
             }
             if m.groupdict().get('mac'):
-                dev_info['mac'] = norm_mac(m.group('mac').decode('ascii'))
+                dev_info['mac'] = norm_mac(m.group('mac'))
 
         return dev_info
 
@@ -170,7 +174,7 @@ class BaseGigasetPlugin(StandardPlugin):
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         self._app = app
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
@@ -190,7 +194,7 @@ class BaseGigasetPlugin(StandardPlugin):
     def _check_config(self, raw_config):
         pass
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'{formatted_mac}.xml'

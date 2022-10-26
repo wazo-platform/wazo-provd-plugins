@@ -1,10 +1,12 @@
 # Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
+from __future__ import annotations
 
 import logging
 import os
 import re
 from operator import itemgetter
+from typing import Any, Dict
 from xml.sax.saxutils import escape
 from provd import plugins
 from provd import tzinform
@@ -19,8 +21,10 @@ from provd.devices.pgasso import (
 )
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugins.wazo-cisco-sip')
@@ -29,11 +33,11 @@ logger = logging.getLogger('plugins.wazo-cisco-sip')
 class BaseCiscoDHCPDeviceInfoExtractor:
     _CISCO_VDI_REGEX = re.compile(r'^CP-([0-9]{4})-3PCC')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Dict[str, Any], request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        options = request['options']
+    def _do_extract(self, request: Dict[str, Any]):
+        options: dict = request['options']
         logger.debug('_do_extract request: %s', request)
         if 60 in options:
             return self._extract_from_vdi(options[60])
@@ -57,22 +61,22 @@ class BaseCiscoHTTPDeviceInfoExtractor:
     )
     _PATH_REGEX = re.compile(r'\b/Cisco/CP-([0-9]{4})-3PCC/([\da-f]{12})\.cfg$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
             dev_info = {}
-            self._extract_from_ua(ua, dev_info)
+            self._extract_from_ua(ua.decode('ascii'), dev_info)
             if dev_info:
                 dev_info['vendor'] = 'Cisco'
                 if 'mac' not in dev_info or 'model' not in dev_info:
-                    self._extract_from_path(request.path, dev_info)
+                    self._extract_from_path(request.path.decode('ascii'), dev_info)
                 return dev_info
         return None
 
-    def _extract_from_ua(self, ua, dev_info):
+    def _extract_from_ua(self, ua: str, dev_info: Dict[str, str]):
         # HTTP User-Agent:
         # Note: the last group of digit is the serial number;
         #       the first, if present, is the MAC address
@@ -80,19 +84,19 @@ class BaseCiscoHTTPDeviceInfoExtractor:
         m = self._CISCO_UA_REGEX.match(ua)
         if m:
             model, version, raw_mac = m.groups()
-            dev_info['model'] = model.decode('ascii')
-            dev_info['version'] = version.decode('ascii')
+            dev_info['model'] = model
+            dev_info['version'] = version
             if raw_mac:
-                dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
+                dev_info['mac'] = norm_mac(raw_mac)
 
-    def _extract_from_path(self, path, dev_info):
+    def _extract_from_path(self, path: str, dev_info: Dict[str, str]):
         # try to extract MAC address from path
         m = self._PATH_REGEX.search(path)
         if m:
             dev_info['model'] = m.group(1)
             raw_mac = m.group(2)
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(raw_mac)
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
@@ -102,10 +106,10 @@ class BaseCiscoHTTPDeviceInfoExtractor:
 class BaseCiscoTFTPDeviceInfoExtractor:
     _MACFILE_REGEX = re.compile(r'^/Cisco/CP-([0-9]{4})-3PCC/([\da-fA-F]{12})\.cfg$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: dict):
         packet = request['packet']
         filename = packet['filename']
         dev_info = self._test_macfile(filename)
@@ -114,18 +118,16 @@ class BaseCiscoTFTPDeviceInfoExtractor:
             return dev_info
         return None
 
-    def __repr__(self):
-        return object.__repr__(self)
-
-    def _test_macfile(self, filename):
+    def _test_macfile(self, filename: str):
         # Test if filename is "/$MA.xml".
         m = self._MACFILE_REGEX.match(filename)
         if m:
             raw_mac = m.group(2)
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(raw_mac)
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
+                mac = None
 
             model = m.group(1)
             return {'model': model, 'mac': mac}
@@ -134,7 +136,7 @@ class BaseCiscoTFTPDeviceInfoExtractor:
 
 class BaseCiscoPgAssociator(BasePgAssociator):
     def __init__(self, model_version):
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._model_version = model_version
 
     def _do_associate(self, vendor, model, version):
@@ -199,7 +201,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         downloaders = FetchfwPluginHelper.new_downloaders(gen_cfg.get('proxies'))
         fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
@@ -371,7 +373,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^\w{,3}[0-9a-fA-F]{12}(?:\.cnf)?\.xml$')
 
-    def _dev_specific_filename(self, dev):
+    def _dev_specific_filename(self, dev: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(dev['mac'], separator='')
         return f'{formatted_mac}.xml'

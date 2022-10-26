@@ -1,10 +1,12 @@
 # Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
+from __future__ import annotations
 
 import logging
 import os
 import re
 from operator import itemgetter
+from typing import Dict
 from xml.sax.saxutils import escape
 from provd import plugins
 from provd import tzinform
@@ -19,27 +21,29 @@ from provd.devices.pgasso import (
 )
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugins.wazo-cisco-sip')
 
 
-def _norm_model(raw_model):
+def _norm_model(raw_model: str) -> str:
     # Normalize a model name and return it as a unicode string. This removes
     # minus sign and make all the characters uppercase.
-    return raw_model.replace('-', '').upper().decode('ascii')
+    return raw_model.replace('-', '').upper()
 
 
 class BaseCiscoDHCPDeviceInfoExtractor:
     _CISCO_VDI_REGEX = re.compile(r'^CISCO (ATA[0-9]{3})-MPP')
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        options = request['options']
+    def _do_extract(self, request: dict):
+        options: dict = request['options']
         logger.debug('_do_extract request: %s', request)
         if 60 in options:
             return self._extract_from_vdi(options[60])
@@ -62,26 +66,26 @@ class BaseCiscoHTTPDeviceInfoExtractor:
     _CISCO_UA_REGEX = re.compile(r'^Cisco/(ATA[0-9]{3})-MPP-(\S+) \((\S+)\)$')
     _PATH_REGEX = re.compile(r'\b/([\da-f]{12})\.xml$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
-        raw_mac = request.args.get('mac', [None])[0]
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
+        raw_mac = request.args.get(b'mac', [None])[0]
         dev_info = {}
         if raw_mac:
             dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
             logger.debug('Got MAC from URL: %s', dev_info['mac'])
         if ua:
-            self._extract_from_ua(ua, dev_info)
+            self._extract_from_ua(ua.decode('ascii'), dev_info)
             if dev_info:
                 dev_info['vendor'] = 'Cisco'
                 if 'mac' not in dev_info or 'model' not in dev_info:
-                    self._extract_from_path(request.path, dev_info)
+                    self._extract_from_path(request.path.decode('ascii'), dev_info)
                 return dev_info
         return None
 
-    def _extract_from_ua(self, ua, dev_info):
+    def _extract_from_ua(self, ua: str, dev_info: Dict[str, str]):
         # HTTP User-Agent:
         # Note: the last group of digit is the serial number
         #   It is not possible to extract the MAC address from the UA on these ATAs
@@ -89,58 +93,54 @@ class BaseCiscoHTTPDeviceInfoExtractor:
         m = self._CISCO_UA_REGEX.match(ua)
         if m:
             model, version, dev_sn = m.groups()
-            dev_info['model'] = model.decode('ascii')
-            dev_info['version'] = version.decode('ascii')
+            dev_info['model'] = model
+            dev_info['version'] = version
             if dev_sn:
-                dev_info['sn'] = dev_sn.decode('ascii')
+                dev_info['sn'] = dev_sn
 
-    def _extract_from_path(self, path, dev_info):
+    def _extract_from_path(self, path: str, dev_info: Dict[str, str]):
         # try to extract MAC address from path
         m = self._PATH_REGEX.search(path)
         if m:
             raw_mac = m.group(1)
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                dev_info['mac'] = norm_mac(raw_mac)
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
-            else:
-                dev_info['mac'] = mac
 
 
 class BaseCiscoTFTPDeviceInfoExtractor:
     _MACFILE_REGEX = re.compile(r'^/([\da-fA-F]{12})\.xml$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        packet = request['packet']
-        filename = packet['filename']
+    def _do_extract(self, request: dict):
+        packet: dict = request['packet']
+        filename: str = packet['filename']
         dev_info = self._test_macfile(filename)
         if dev_info:
             dev_info['vendor'] = 'Cisco'
             return dev_info
         return None
 
-    def __repr__(self):
-        return object.__repr__(self)
-
-    def _test_macfile(self, filename):
+    def _test_macfile(self, filename: str):
         # Test if filename is "/$MA.xml".
         m = self._MACFILE_REGEX.match(filename)
         if m:
             raw_mac = m.group(1)
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(raw_mac)
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
+                return None
             return {'mac': mac}
         return None
 
 
 class BaseCiscoPgAssociator(BasePgAssociator):
     def __init__(self, model_version):
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._model_version = model_version
 
     def _do_associate(self, vendor, model, version):
@@ -151,7 +151,7 @@ class BaseCiscoPgAssociator(BasePgAssociator):
                 return COMPLETE_SUPPORT
             if model is not None:
                 # model is unknown to the plugin, chance are low
-                # that's it's going to be supported because of missing
+                # that it's going to be supported because of missing
                 # common configuration file that are used to bootstrap
                 # the provisioning process
                 return IMPROBABLE_SUPPORT
@@ -193,7 +193,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         downloaders = FetchfwPluginHelper.new_downloaders(gen_cfg.get('proxies'))
         fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)

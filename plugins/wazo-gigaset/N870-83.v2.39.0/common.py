@@ -4,11 +4,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 Common code shared by the various wazo-gigaset plugins.
 """
+from __future__ import annotations
 
 import os
 import logging
 import re
 import time
+from typing import Dict
 
 from provd import (
     plugins,
@@ -25,6 +27,8 @@ from provd.devices.pgasso import (
 )
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
@@ -39,19 +43,19 @@ class GigasetHTTPDeviceInfoExtractor:
         r'^(Gigaset )?(?P<model>[\w\s]+)\/(?P<version>(?:\w{2,3}\.){3,4}\w{1,3})(?:\+.+)?;(?P<mac>[0-9A-F]{12})?(;Handset=\d+)?$'  # noqa: E501
     )
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: Request):
         dev_info = {}
 
-        ua = request.getHeader('User-Agent')
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            dev_info.update(self._extract_from_ua(ua))
+            dev_info.update(self._extract_from_ua(ua.decode('ascii')))
 
         return dev_info
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         # "Gigaset N870 IP PRO/83.V2.11.0+build.a546b91;7C2F80E0D605"
         m = self._UA_REGEX.search(ua)
@@ -59,11 +63,11 @@ class GigasetHTTPDeviceInfoExtractor:
         if m:
             dev_info = {
                 'vendor': VENDOR,
-                'model': m.group('model').decode('ascii'),
-                'version': m.group('version').decode('ascii'),
+                'model': m.group('model'),
+                'version': m.group('version'),
             }
             if 'mac' in m.groupdict():
-                dev_info['mac'] = norm_mac(m.group('mac').decode('ascii'))
+                dev_info['mac'] = norm_mac(m.group('mac'))
 
         return dev_info
 
@@ -103,92 +107,90 @@ class BaseGigasetPlugin(StandardPlugin):
         'tls': '3',
     }
 
-    _VALID_TZ_GIGASET = set(
-        (
-            'Pacific/Honolulu',
-            'America/Anchorage',
-            'America/Los_Angeles',
-            'America/Denver',
-            'America/Chicago',
-            'America/New_York',
-            'America/Caracas',
-            'America/Sao_Paulo',
-            'Europe/Belfast',
-            'Europe/Dublin',
-            'Europe/Guernsey',
-            'Europe/Isle_of_Man',
-            'Europe/Jersey',
-            'Europe/Lisbon',
-            'Europe/London',
-            'Greenwich',
-            'Europe/Amsterdam',
-            'Europe/Andorra',
-            'Europe/Belgrade',
-            'Europe/Berlin',
-            'Europe/Bratislava',
-            'Europe/Brussels',
-            'Europe/Budapest',
-            'Europe/Busingen',
-            'Europe/Copenhagen',
-            'Europe/Gibraltar',
-            'Europe/Ljubljana',
-            'Europe/Luxembourg',
-            'Europe/Madrid',
-            'Europe/Malta',
-            'Europe/Monaco',
-            'Europe/Oslo',
-            'Europe/Paris',
-            'Europe/Podgorica',
-            'Europe/Prague',
-            'Europe/Rome',
-            'Europe/San_Marino',
-            'Europe/Sarajevo',
-            'Europe/Skopje',
-            'Europe/Stockholm',
-            'Europe/Tirane',
-            'Europe/Vaduz',
-            'Europe/Vatican',
-            'Europe/Vienna',
-            'Europe/Warsaw',
-            'Europe/Zagreb',
-            'Europe/Zurich',
-            'Africa/Cairo',
-            'Europe/Athens',
-            'Europe/Bucharest',
-            'Europe/Chisinau',
-            'Europe/Helsinki',
-            'Europe/Kaliningrad',
-            'Europe/Kiev',
-            'Europe/Mariehamn',
-            'Europe/Nicosia',
-            'Europe/Riga',
-            'Europe/Sofia',
-            'Europe/Tallinn',
-            'Europe/Tiraspol',
-            'Europe/Uzhgorod',
-            'Europe/Vilnius',
-            'Europe/Zaporozhye',
-            'Europe/Istanbul',
-            'Europe/Kirov',
-            'Europe/Minsk',
-            'Europe/Moscow',
-            'Europe/Simferopol',
-            'Europe/Volgograd',
-            'Asia/Dubai',
-            'Europe/Astrakhan',
-            'Europe/Samara',
-            'Europe/Ulyanovsk',
-            'Asia/Karachi',
-            'Asia/Dhaka',
-            'Asia/Hong_Kong',
-            'Asia/Tokyo',
-            'Australia/Adelaide',
-            'Australia/Darwin',
-            'Australia/Brisbane',
-            'Australia/Sydney',
-            'Pacific/Noumea',
-        )
-    )
+    _VALID_TZ_GIGASET = {
+        'Pacific/Honolulu',
+        'America/Anchorage',
+        'America/Los_Angeles',
+        'America/Denver',
+        'America/Chicago',
+        'America/New_York',
+        'America/Caracas',
+        'America/Sao_Paulo',
+        'Europe/Belfast',
+        'Europe/Dublin',
+        'Europe/Guernsey',
+        'Europe/Isle_of_Man',
+        'Europe/Jersey',
+        'Europe/Lisbon',
+        'Europe/London',
+        'Greenwich',
+        'Europe/Amsterdam',
+        'Europe/Andorra',
+        'Europe/Belgrade',
+        'Europe/Berlin',
+        'Europe/Bratislava',
+        'Europe/Brussels',
+        'Europe/Budapest',
+        'Europe/Busingen',
+        'Europe/Copenhagen',
+        'Europe/Gibraltar',
+        'Europe/Ljubljana',
+        'Europe/Luxembourg',
+        'Europe/Madrid',
+        'Europe/Malta',
+        'Europe/Monaco',
+        'Europe/Oslo',
+        'Europe/Paris',
+        'Europe/Podgorica',
+        'Europe/Prague',
+        'Europe/Rome',
+        'Europe/San_Marino',
+        'Europe/Sarajevo',
+        'Europe/Skopje',
+        'Europe/Stockholm',
+        'Europe/Tirane',
+        'Europe/Vaduz',
+        'Europe/Vatican',
+        'Europe/Vienna',
+        'Europe/Warsaw',
+        'Europe/Zagreb',
+        'Europe/Zurich',
+        'Africa/Cairo',
+        'Europe/Athens',
+        'Europe/Bucharest',
+        'Europe/Chisinau',
+        'Europe/Helsinki',
+        'Europe/Kaliningrad',
+        'Europe/Kiev',
+        'Europe/Mariehamn',
+        'Europe/Nicosia',
+        'Europe/Riga',
+        'Europe/Sofia',
+        'Europe/Tallinn',
+        'Europe/Tiraspol',
+        'Europe/Uzhgorod',
+        'Europe/Vilnius',
+        'Europe/Zaporozhye',
+        'Europe/Istanbul',
+        'Europe/Kirov',
+        'Europe/Minsk',
+        'Europe/Moscow',
+        'Europe/Simferopol',
+        'Europe/Volgograd',
+        'Asia/Dubai',
+        'Europe/Astrakhan',
+        'Europe/Samara',
+        'Europe/Ulyanovsk',
+        'Asia/Karachi',
+        'Asia/Dhaka',
+        'Asia/Hong_Kong',
+        'Asia/Tokyo',
+        'Australia/Adelaide',
+        'Australia/Darwin',
+        'Australia/Brisbane',
+        'Australia/Sydney',
+        'Pacific/Noumea',
+    }
 
     _FALLBACK_TZ = {
         (-3, 0): 'America/Sao_Paulo',
@@ -213,7 +215,7 @@ class BaseGigasetPlugin(StandardPlugin):
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         self._app = app
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
@@ -229,7 +231,7 @@ class BaseGigasetPlugin(StandardPlugin):
         if 'ip' not in device:
             raise Exception('IP address needed for Gigaset configuration')
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return f'{formatted_mac}.xml'

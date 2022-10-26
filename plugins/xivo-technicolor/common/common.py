@@ -12,11 +12,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+from __future__ import annotations
 
 import logging
 import os.path
 import re
 import time
+from typing import Dict
+
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
@@ -31,6 +34,8 @@ from provd.devices.pgasso import (
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import format_mac, norm_mac
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-technicolor')
@@ -39,18 +44,18 @@ logger = logging.getLogger('plugin.xivo-technicolor')
 class BaseTechnicolorHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^(?:Thomson|THOMSON) (\w+) hw[^ ]+ fw([^ ]+) ([^ ]+)$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
             # All information is present in the User-Agent header for
             # Technicolor
-            return self._extract_info_from_ua(ua)
+            return self._extract_info_from_ua(ua.decode('ascii'))
         return None
 
-    def _extract_info_from_ua(self, ua):
+    def _extract_info_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "THOMSON ST2022 hw2 fw3.54 00-18-F6-B5-00-00" (from web)
         #   "THOMSON ST2022 hw2 fw4.68 00-14-7F-E1-FC-6D" (from web)
@@ -62,22 +67,22 @@ class BaseTechnicolorHTTPDeviceInfoExtractor:
         if m:
             raw_model, raw_version, raw_mac = m.groups()
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(raw_mac)
             except ValueError as e:
                 logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
-            else:
-                return {
-                    'vendor': 'Technicolor',
-                    'model': raw_model.decode('ascii'),
-                    'version': raw_version.decode('ascii'),
-                    'mac': mac,
-                }
+                return None
+            return {
+                'vendor': 'Technicolor',
+                'model': raw_model,
+                'version': raw_version,
+                'mac': mac,
+            }
         return None
 
 
 class BaseTechnicolorPgAssociator(BasePgAssociator):
     def __init__(self, model, version):
-        BasePgAssociator.__init__(self)
+        super().__init__(self)
         self._model = model
         self._version = version
 
@@ -194,7 +199,7 @@ class BaseTechnicolorPlugin(StandardPlugin):
     _NB_LINES = 4
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -318,7 +323,7 @@ class BaseTechnicolorPlugin(StandardPlugin):
             url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'
             raw_config['XX_xivo_phonebook_url'] = url
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'{self._FILENAME_PREFIX}_{formatted_mac}.txt'

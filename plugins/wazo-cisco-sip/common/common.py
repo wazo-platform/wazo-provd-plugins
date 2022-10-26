@@ -12,6 +12,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+from __future__ import annotations
 
 import logging
 import os
@@ -28,9 +29,11 @@ from provd.devices.pgasso import (
 )
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
 from provd.servers.tftp.service import TFTPFileService
 from provd import synchronize
 from provd.util import norm_mac, format_mac
+from provd.devices.ident import RequestType
 from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-cisco-sip')
@@ -57,7 +60,7 @@ class BaseCiscoPgAssociator(BasePgAssociator):
 
 
 class BaseCiscoDHCPDeviceInfoExtractor:
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
     _VDI_REGEX = re.compile(r'\bPhone (?:79(\d\d)|CP-79(\d\d)G|CP-(\d\d\d\d))')
@@ -90,7 +93,7 @@ class BaseCiscoDHCPDeviceInfoExtractor:
                     dev_info['model'] = fmt % _7900_modelnum
                 else:
                     model_num = m.group(3)
-                    dev_info['model'] = model_num.decode('ascii')
+                    dev_info['model'] = model_num
                     logger.debug('Model: %s', dev_info['model'])
             return dev_info
 
@@ -104,19 +107,20 @@ class BaseCiscoHTTPDeviceInfoExtractor:
         re.compile(r'^/ITLFile\.tlv$'),
     ]
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        if self._CIPC_REGEX.match(request.path):
+    def _do_extract(self, request: Request):
+        path = request.path.decode('ascii')
+        if self._CIPC_REGEX.match(path):
             return {'vendor': 'Cisco', 'model': 'CIPC'}
         for regex in self._FILENAME_REGEXES:
-            m = regex.match(request.path)
-            if m:
+            match = regex.match(path)
+            if match:
                 dev_info = {'vendor': 'Cisco'}
-                if m.lastindex == 1:
+                if match.lastindex == 1:
                     try:
-                        dev_info['mac'] = norm_mac(m.group(1).decode('ascii'))
+                        dev_info['mac'] = norm_mac(match.group(1))
                     except ValueError as e:
                         logger.warning('Could not normalize MAC address: %s', e)
                 return dev_info
@@ -131,7 +135,7 @@ class BaseCiscoTFTPDeviceInfoExtractor:
         re.compile(r'^ITLFile\.tlv$'),
     ]
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
@@ -236,7 +240,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 

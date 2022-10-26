@@ -1,9 +1,12 @@
 # Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
 import re
 import os.path
+from typing import Dict
+
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
@@ -15,6 +18,8 @@ from provd.devices.pgasso import (
     UNKNOWN_SUPPORT,
 )
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
 
@@ -42,37 +47,37 @@ class BaseGrandstreamHTTPDeviceInfoExtractor:
         ),
     ]
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            return self._extract_from_ua(ua)
+            return self._extract_from_ua(ua.decode('ascii'))
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
             if m:
                 raw_model, raw_version, raw_mac = m.groups()
                 try:
-                    mac = norm_mac(raw_mac.decode('ascii'))
+                    mac = norm_mac(raw_mac)
                 except ValueError as e:
                     logger.warning(
                         'Could not normalize MAC address "%s": %s', raw_mac, e
                     )
-                else:
-                    return {
-                        'vendor': 'Grandstream',
-                        'model': raw_model.decode('ascii'),
-                        'version': raw_version.decode('ascii'),
-                        'mac': mac,
-                    }
+                    return None
+                return {
+                    'vendor': 'Grandstream',
+                    'model': raw_model,
+                    'version': raw_version,
+                    'mac': mac,
+                }
 
 
 class BaseGrandstreamPgAssociator(BasePgAssociator):
     def __init__(self, models, version):
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._models = models
         self._version = version
 
@@ -103,7 +108,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         # update to use the non-standard tftpboot directory
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -117,7 +122,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
 
     http_dev_info_extractor = BaseGrandstreamHTTPDeviceInfoExtractor()
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return f'cfg{formatted_mac}.xml'

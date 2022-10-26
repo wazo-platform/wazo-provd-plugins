@@ -18,6 +18,7 @@
 Support the IP Touch 4008EE and 4018EE.
 
 """
+from __future__ import annotations
 
 
 import calendar
@@ -26,6 +27,8 @@ import logging
 import os.path
 import re
 import time
+from typing import Dict
+
 from provd import tzinform
 from provd.devices.config import RawConfigError
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
@@ -39,6 +42,8 @@ from provd.devices.pgasso import (
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-alcatel')
@@ -50,19 +55,19 @@ class BaseAlcatelHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^Alcatel IP Touch (\d+)/([\w.]+)$')
     _PATH_REGEX = re.compile(r'\bsipconfig-(\w+)\.txt$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            dev_info = self._extract_from_ua(ua)
+            dev_info = self._extract_from_ua(ua.decode('ascii'))
             if dev_info:
-                self._extract_from_path(request.path, dev_info)
+                self._extract_from_path(request.path.decode('ascii'), dev_info)
             return dev_info
         return None
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # Note that the MAC address if not present in User-Agent and so will
         # never be returned by this function.
         # HTTP User-Agent:
@@ -71,21 +76,21 @@ class BaseAlcatelHTTPDeviceInfoExtractor:
         #   "Alcatel IP Touch 4018/2.01.10"
         m = self._UA_REGEX.match(ua)
         if m:
-            raw_model, raw_version = m.groups()
+            model, version = m.groups()
             return {
                 'vendor': VENDOR,
-                'model': raw_model.decode('ascii'),
-                'version': raw_version.decode('ascii'),
+                'model': model,
+                'version': version,
             }
         return None
 
-    def _extract_from_path(self, path, dev_info):
+    def _extract_from_path(self, path: str, dev_info: Dict[str, str]):
         # try to extract MAC address from path
         m = self._PATH_REGEX.search(path)
         if m:
             raw_mac = m.group(1)
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(raw_mac)
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
@@ -97,7 +102,7 @@ class BaseAlcatelTFTPDeviceInfoExtractor:
     # in NOE mode to SIP mode, since it seems like it's not possible for the
     # phone to do HTTP request in NOE mode
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request):
@@ -146,7 +151,7 @@ class BaseAlcatelPlugin(StandardPlugin):
     ]
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -294,7 +299,7 @@ class BaseAlcatelPlugin(StandardPlugin):
     def _update_admin_password(self, raw_config):
         raw_config.setdefault('admin_password', self._DEFAULT_PASSWORD)
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return f'sipconfig-{formatted_mac}.txt'

@@ -1,9 +1,11 @@
 # Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
 import os.path
 import re
+from typing import Dict
 
 from provd import plugins
 from provd import synchronize
@@ -17,6 +19,8 @@ from provd.devices.pgasso import (
     UNKNOWN_SUPPORT,
 )
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
@@ -32,47 +36,47 @@ class BaseFanvilHTTPDeviceInfoExtractor:
     def __init__(self, common_files):
         self._COMMON_FILES = common_files
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: Request):
         dev_info = {}
         dev_info.update(self._extract_from_path(request))
-        ua = request.getHeader('User-Agent')
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            dev_info.update(self._extract_from_ua(ua))
+            dev_info.update(self._extract_from_ua(ua.decode('ascii')))
 
         return dev_info
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # Fanvil X4 2.10.2.6887 0c383e07e16c
         # Fanvil X6U Pro 0.0.10 0c383e2cd782
         dev_info = {}
         m = self._UA_REGEX.search(ua)
         if m:
             dev_info['vendor'] = 'Fanvil'
-            dev_info['model'] = m.group('model').decode('ascii').replace(' ', '-')
-            dev_info['version'] = m.group('version').decode('ascii')
-            dev_info['mac'] = norm_mac(m.group('mac').decode('ascii'))
+            dev_info['model'] = m.group('model').replace(' ', '-')
+            dev_info['version'] = m.group('version')
+            dev_info['mac'] = norm_mac(m.group('mac'))
         return dev_info
 
-    def _extract_from_path(self, request):
-        filename = os.path.basename(request.path)
+    def _extract_from_path(self, request: Request):
+        filename = os.path.basename(request.path.decode('ascii'))
         device_info = self._COMMON_FILES.get(filename)
         if device_info:
             return {'vendor': 'Fanvil', 'model': device_info[0]}
 
-        m = self._PATH_REGEX.search(request.path)
+        m = self._PATH_REGEX.search(request.path.decode('ascii'))
         if m:
             raw_mac = m.group(1)
-            mac = norm_mac(raw_mac.decode('ascii'))
+            mac = norm_mac(raw_mac)
             return {'mac': mac}
         return {}
 
 
 class BaseFanvilPgAssociator(BasePgAssociator):
     def __init__(self, models):
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._models = models
 
     def _do_associate(self, vendor, model, version):
@@ -132,7 +136,7 @@ class BaseFanvilPlugin(StandardPlugin):
     )
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         # update to use the non-standard tftpboot directory
         self._base_tftpboot_dir = self._tftpboot_dir
         self._tftpboot_dir = os.path.join(self._tftpboot_dir, 'Fanvil')
@@ -147,7 +151,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self.services = fetchfw_helper.services()
         self.http_service = HTTPNoListingFileService(self._base_tftpboot_dir)
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return f'{formatted_mac}.cfg'

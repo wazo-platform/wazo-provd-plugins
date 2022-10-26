@@ -7,5 +7,5 @@ executable installed on your system.
 ## Installing dependencies on Debian
 
 ```
-$ apt-get install p7zip python-pexpect telnet
+$ apt-get install p7zip python3-pexpect telnet
 ```

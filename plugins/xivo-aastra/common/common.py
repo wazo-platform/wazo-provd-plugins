@@ -12,12 +12,15 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+from __future__ import annotations
 
 import errno
 import logging
 import re
 import os.path
 from operator import itemgetter
+from typing import Dict
+
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
@@ -32,6 +35,8 @@ from provd.devices.pgasso import (
 )
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-aastra')
@@ -46,16 +51,16 @@ class BaseAastraHTTPDeviceInfoExtractor:
         '57i': '6757i',
     }
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            return self._extract_from_ua(ua)
+            return self._extract_from_ua(ua.decode('ascii'))
         return None
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "Aastra6731i MAC:00-08-5D-23-74-29 V:3.2.0.70-SIP"
         #   "Aastra6731i MAC:00-08-5D-23-73-01 V:3.2.0.1011-SIP"
@@ -66,28 +71,28 @@ class BaseAastraHTTPDeviceInfoExtractor:
         #   "Aastra6863i MAC:00-08-5D-40-90-5F V:4.1.0.128-SIP"
         m = self._UA_REGEX.match(ua)
         if m:
-            raw_model, raw_mac, raw_version = m.groups()
+            model, mac, version = m.groups()
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(mac)
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
-            else:
-                if raw_model in self._UA_MODELS_MAP:
-                    model = self._UA_MODELS_MAP[raw_model]
-                else:
-                    model = raw_model.decode('ascii')
-                return {
-                    'vendor': 'Aastra',
-                    'model': model,
-                    'version': raw_version.decode('ascii'),
-                    'mac': mac,
-                }
+                return None
+
+            if model in self._UA_MODELS_MAP:
+                model = self._UA_MODELS_MAP[model]
+
+            return {
+                'vendor': 'Aastra',
+                'model': model,
+                'version': version,
+                'mac': mac,
+            }
         return None
 
 
 class BaseAastraPgAssociator(BasePgAssociator):
     def __init__(self, model_versions):
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._model_versions = model_versions
 
     def _do_associate(self, vendor, model, version):
@@ -262,7 +267,7 @@ class BaseAastraPlugin(StandardPlugin):
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.cfg$')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         # update to use the non-standard tftpboot directory
         self._base_tftpboot_dir = self._tftpboot_dir
         self._tftpboot_dir = os.path.join(self._tftpboot_dir, 'Aastra')
@@ -486,7 +491,7 @@ class BaseAastraPlugin(StandardPlugin):
             url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'
             raw_config['XX_xivo_phonebook_url'] = url
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'{formatted_mac}.cfg'

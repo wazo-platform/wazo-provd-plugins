@@ -16,7 +16,7 @@
 """Common code shared by the various xivo-zenitel plugins.
 
 """
-
+from __future__ import annotations
 
 import logging
 import os.path
@@ -25,6 +25,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from operator import itemgetter
+from typing import Dict
 
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import (
@@ -37,6 +38,7 @@ from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHel
 from provd.servers.tftp.service import TFTPFileService
 from provd.services import JsonConfigPersister, PersistentConfigureServiceDecorator
 from provd.util import norm_mac, format_mac
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-zenitel')
@@ -45,10 +47,10 @@ logger = logging.getLogger('plugin.xivo-zenitel')
 class BaseZenitelTFTPDeviceInfoExtractor:
     _FILENAME_REGEX = re.compile(r'^ipst_config((?:_\w\w){6})?\.cfg$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: dict):
         # filename:
         #   "ipst_config.cfg"
         #   "ipst_config_01_02_03_04_05_ab.cfg"
@@ -60,7 +62,7 @@ class BaseZenitelTFTPDeviceInfoExtractor:
             if raw_mac:
                 raw_mac = raw_mac.replace('_', '')
                 try:
-                    dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
+                    dev_info['mac'] = norm_mac(raw_mac)
                 except ValueError as e:
                     logger.warning('Could not normalize MAC address: %s', e)
             return dev_info
@@ -134,7 +136,7 @@ class BaseZenitelPlugin(StandardPlugin):
     _VALID_FUNCKEY_NO = ['1', '2', '3']
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -184,7 +186,7 @@ class BaseZenitelPlugin(StandardPlugin):
                 logger.info('Out of range funckey no: %s', funckey_no)
         raw_config['XX_fkeys'] = '\n'.join(' ' + s for s in lines)
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='_', uppercase=False)
         return f'ipst_config_{formatted_mac}.cfg'

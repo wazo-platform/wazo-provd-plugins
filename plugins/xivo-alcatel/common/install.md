@@ -5,7 +5,7 @@ Touch phones which are capable of running in SIP standalone mode. This plugin
 can also be used to go from NOE to SIP mode. To be able to use SIP standalone
 mode, the phone must run at least firmware NOE 4.xx.xx.
 
-If you want to use the synchronize facility of the plugin, you must have
+If you want to use the synchronize functionality of the plugin, you must have
 the python 'pexpect' module and the telnet executable installed on your
 system.
 

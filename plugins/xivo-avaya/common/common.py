@@ -18,11 +18,13 @@
 Support the 1220IP and 1230IP.
 
 """
-
+from __future__ import annotations
 
 import re
 import os
 import logging
+from typing import Dict
+
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
@@ -37,6 +39,8 @@ from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHel
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import format_mac, norm_mac
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-avaya')
@@ -57,16 +61,16 @@ class BaseAvayaHTTPDeviceInfoExtractor:
     def extract(self, request, request_type):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            dev_info = self._extract_from_ua(ua)
+            dev_info = self._extract_from_ua(ua.decode('ascii'))
             if dev_info:
-                self._extract_from_path(request.path, dev_info)
+                self._extract_from_path(request.path.decode('ascii'), dev_info)
                 return dev_info
         return None
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "AVAYA/SIP12x0\x17/04.00.04.00"
         #   "AVAYA/SIP12x0\x16/04.00.04.00"
@@ -74,15 +78,13 @@ class BaseAvayaHTTPDeviceInfoExtractor:
         #   "AVAYA/SIP12x0\xff/04.01.13.00"
         m = self._UA_REGEX.match(ua)
         if m:
-            raw_version = m.group(1)
-            return {'vendor': 'Avaya', 'version': raw_version.decode('ascii')}
+            return {'vendor': 'Avaya', 'version': m.group(1)}
         return None
 
-    def _extract_from_path(self, path, dev_info):
+    def _extract_from_path(self, path: str, dev_info: Dict[str, str]):
         m = self._PATH_REGEX.search(path)
         if m:
-            raw_mac = m.group(1)
-            dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
+            dev_info['mac'] = norm_mac(m.group(1))
         else:
             filename = os.path.basename(path)
             if filename in _FILENAME_MAP:
@@ -93,10 +95,10 @@ class BaseAvayaTFTPDeviceInfoExtractor:
     # TFTP is only used for the update from UNIStim to SIP, so we only
     # need minimal information to get the plugin association working.
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: dict):
         filename = request['packet']['filename']
         if filename in _FILENAME_MAP:
             return {'vendor': 'Avaya', 'model': _FILENAME_MAP[filename]}
@@ -105,7 +107,7 @@ class BaseAvayaTFTPDeviceInfoExtractor:
 
 class BaseAvayaPgAssociator(BasePgAssociator):
     def __init__(self, models, version):
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._models = models
         self._version = version
 
@@ -127,7 +129,7 @@ class BaseAvayaPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -153,7 +155,7 @@ class BaseAvayaPlugin(StandardPlugin):
                     'XX_timezone'
                 ] = f'TIMEZONE_OFFSET {tzinfo["utcoffset"].as_seconds:d}'
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'SIP{formatted_mac}.cfg'

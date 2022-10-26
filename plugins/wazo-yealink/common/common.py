@@ -12,10 +12,13 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+from __future__ import annotations
 
 import logging
 import re
 import os.path
+from typing import Dict
+
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
@@ -29,6 +32,8 @@ from provd.devices.pgasso import (
 )
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer
 
@@ -43,17 +48,17 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            return self._extract_from_ua(ua)
+            return self._extract_from_ua(ua.decode('ascii'))
         else:
             return self._extract_from_path(request)
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "Yealink CP860 37.72.0.5 00:15:65:8a:37:86"
         #   "yealink SIP-T18 18.0.0.80 00:15:65:27:3e:05"
@@ -83,36 +88,26 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
             if m:
-                raw_model, raw_version, raw_mac = m.groups()
+                model, version, mac = m.groups()
+                device_info = {
+                    'vendor': 'Yealink',
+                    'model': model,
+                    'version': version,
+                }
                 try:
-                    mac = norm_mac(raw_mac.decode('ascii'))
+                    device_info['mac'] = norm_mac(mac)
                 except ValueError as e:
-                    logger.warning(
-                        'Could not normalize MAC address "%s": %s', raw_mac, e
-                    )
-                    return {
-                        'vendor': 'Yealink',
-                        'model': raw_model.decode('ascii'),
-                        'version': raw_version.decode('ascii'),
-                    }
-                else:
-                    return {
-                        'vendor': 'Yealink',
-                        'model': raw_model.decode('ascii'),
-                        'version': raw_version.decode('ascii'),
-                        'mac': mac,
-                    }
+                    logger.warning('Could not normalize MAC address "%s": %s', mac, e)
+                return device_info
         return None
 
-    def _extract_from_path(self, request):
+    def _extract_from_path(self, request: Request) -> Dict[str, str] | None:
         if request.path.startswith(b'/001565'):
             raw_mac = request.path[1:-4]
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                return {'mac': norm_mac(raw_mac.decode('ascii'))}
             except ValueError as e:
                 logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
-            else:
-                return {'mac': mac}
         if request.path.startswith(b'/y000000000025.cfg'):
             return {'vendor': 'Yealink', 'model': 'W52P'}
         return None
@@ -122,7 +117,7 @@ class BaseYealinkPgAssociator(BasePgAssociator):
     def __init__(self, model_versions):
         # model_versions is a dictionary which keys are model IDs and values
         # are version IDs.
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._model_versions = model_versions
 
     def _do_associate(self, vendor, model, version):
@@ -301,8 +296,7 @@ class BaseYealinkFunckeyPrefixIterator:
     def _nb_expmod_by_model(self, model):
         if model in ('T27P', 'T27G', 'T29G', 'T46G', 'T46S', 'T48G', 'T48S'):
             return 6
-        else:
-            return 0
+        return 0
 
     def __iter__(self):
         for linekey_no in range(1, self._nb_linekey + 1):
@@ -369,7 +363,7 @@ class BaseYealinkPlugin(StandardPlugin):
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -481,7 +475,7 @@ class BaseYealinkPlugin(StandardPlugin):
     def _add_xivo_phonebook_url(self, raw_config):
         plugins.add_xivo_phonebook_url(raw_config, 'yealink', entry_point='lookup', qs_suffix='term=#SEARCH')
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
         return f'{formatted_mac}.cfg'

@@ -1,11 +1,13 @@
 # Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
+from __future__ import annotations
 
 import logging
 import os
 import re
 from copy import deepcopy
 from operator import itemgetter
+from typing import Dict
 from xml.sax.saxutils import escape
 from provd import plugins
 from provd import tzinform
@@ -22,15 +24,17 @@ from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHel
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugins.xivo-cisco-spa')
 
 
-def _norm_model(raw_model):
+def _norm_model(raw_model: str):
     # Normalize a model name and return it as a unicode string. This removes
     # minus sign and make all the characters uppercase.
-    return raw_model.replace('-', '').upper().decode('ascii')
+    return raw_model.replace('-', '').upper()
 
 
 class BaseCiscoDHCPDeviceInfoExtractor:
@@ -39,10 +43,10 @@ class BaseCiscoDHCPDeviceInfoExtractor:
     _LINKSYS_VDI_REGEX = re.compile(r'^(LINKSYS) (SPA-?[0-9]{3,4})')
     _VDIS = [_CISCO_VDI_REGEX, _LINKSYS_VDI_REGEX]
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: dict):
         options = request['options']
         logger.debug('_do_extract request: %s', request)
         if 60 in options:
@@ -78,22 +82,22 @@ class BaseCiscoHTTPDeviceInfoExtractor:
     _CISCO_UA_REGEX = re.compile(r'^Cisco/(\w+)-(\S+) (?:\(([\dA-F]{12})\))?\((\w+)\)$')
     _PATH_REGEX = re.compile(r'\b([\da-f]{12})\.xml$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
             dev_info = {}
-            self._extract_from_ua(ua, dev_info)
+            self._extract_from_ua(ua.decode('ascii'), dev_info)
             if dev_info:
                 dev_info['vendor'] = 'Cisco'
                 if 'mac' not in dev_info:
-                    self._extract_from_path(request.path, dev_info)
+                    self._extract_from_path(request.path.decode('ascii'), dev_info)
                 return dev_info
         return None
 
-    def _extract_from_ua(self, ua, dev_info):
+    def _extract_from_ua(self, ua: str, dev_info: Dict[str, str]):
         # HTTP User-Agent:
         # Note: the last group of digit is the serial number;
         #       the first, if present, is the MAC address
@@ -109,33 +113,33 @@ class BaseCiscoHTTPDeviceInfoExtractor:
         elif ua.startswith('Cisco/'):
             self._extract_cisco_from_ua(ua, dev_info)
 
-    def _extract_linksys_from_ua(self, ua, dev_info):
+    def _extract_linksys_from_ua(self, ua: str, dev_info: Dict[str, str]):
         # Pre: ua.startswith('Linksys/')
         m = self._LINKSYS_UA_REGEX.match(ua)
         if m:
             raw_model, version, sn = m.groups()
             dev_info['model'] = _norm_model(raw_model)
-            dev_info['version'] = version.decode('ascii')
-            dev_info['sn'] = sn.decode('ascii')
+            dev_info['version'] = version
+            dev_info['sn'] = sn
 
-    def _extract_cisco_from_ua(self, ua, dev_info):
+    def _extract_cisco_from_ua(self, ua: str, dev_info: Dict[str, str]):
         # Pre: ua.startswith('Cisco/')
         m = self._CISCO_UA_REGEX.match(ua)
         if m:
             model, version, raw_mac, sn = m.groups()
-            dev_info['model'] = model.decode('ascii')
-            dev_info['version'] = version.decode('ascii')
+            dev_info['model'] = model
+            dev_info['version'] = version
             if raw_mac:
-                dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
-            dev_info['sn'] = sn.decode('ascii')
+                dev_info['mac'] = norm_mac(raw_mac)
+            dev_info['sn'] = sn
 
-    def _extract_from_path(self, path, dev_info):
+    def _extract_from_path(self, path: str, dev_info: Dict[str, str]):
         # try to extract MAC address from path
         m = self._PATH_REGEX.search(path)
         if m:
             raw_mac = m.group(1)
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(raw_mac)
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
@@ -148,12 +152,12 @@ class BaseCiscoTFTPDeviceInfoExtractor:
     _ATAFILE_REGEX = re.compile(r'^ATA([\dA-F]{12})\.cnf\.xml$')
     _CTLSEPFILE_REGEX = re.compile(r'^CTLSEP([\dA-F]{12})\.tlv$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: dict):
         packet = request['packet']
-        filename = packet['filename']
+        filename: str = packet['filename']
         for test_fun in [self._test_spafile, self._test_init, self._test_atafile]:
             dev_info = test_fun(filename)
             if dev_info:
@@ -164,7 +168,7 @@ class BaseCiscoTFTPDeviceInfoExtractor:
     def __repr__(self):
         return object.__repr__(self) + "-SPA"
 
-    def _test_spafile(self, filename):
+    def _test_spafile(self, filename: str):
         # Test if filename is "/spa$PSN.cfg".
         m = self._SPAFILE_REGEX.match(filename)
         if m:
@@ -172,7 +176,7 @@ class BaseCiscoTFTPDeviceInfoExtractor:
             return {'model': _norm_model(raw_model)}
         return None
 
-    def _test_atafile(self, filename):
+    def _test_atafile(self, filename: str):
         # Test if filename is "ATAMAC.cnf.xml".
         # Only the ATA190 requests this file
         m = self._ATAFILE_REGEX.match(filename)
@@ -180,7 +184,7 @@ class BaseCiscoTFTPDeviceInfoExtractor:
             return {'model': 'ATA190'}
         return None
 
-    def _test_init(self, filename):
+    def _test_init(self, filename: str):
         # Test if filename is "/init.cfg".
         if filename == '/init.cfg':
             return {'model': 'PAP2T'}
@@ -189,7 +193,7 @@ class BaseCiscoTFTPDeviceInfoExtractor:
 
 class BaseCiscoPgAssociator(BasePgAssociator):
     def __init__(self, model_version):
-        BasePgAssociator.__init__(self)
+        super().__init__(self)
         self._model_version = model_version
 
     def _do_associate(self, vendor, model, version):
@@ -424,7 +428,7 @@ class BaseCiscoPlugin(StandardPlugin):
             url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'
             raw_config['XX_xivo_phonebook_url'] = url
 
-    def _dev_specific_filename(self, dev):
+    def _dev_specific_filename(self, dev: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(dev['mac'], separator='')
 

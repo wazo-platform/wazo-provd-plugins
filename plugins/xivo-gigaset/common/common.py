@@ -16,7 +16,7 @@
 """Common code shared by the various xivo-gigaset plugins.
 
 """
-
+from __future__ import annotations
 
 import http.cookiejar
 import logging
@@ -37,6 +37,7 @@ from provd.devices.pgasso import (
 from provd.plugins import StandardPlugin, TemplatePluginHelper
 from provd.util import norm_mac
 from twisted.internet import defer, threads
+from provd.devices.ident import RequestType
 
 logger = logging.getLogger('plugin.xivo-gigaset')
 
@@ -53,15 +54,14 @@ class BaseGigasetDHCPDeviceInfoExtractor:
         'C610_IP': 'C610 IP',
     }
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: dict):
         options = request['options']
         if 60 in options:
             return self._extract_from_vdi(options[60])
-        else:
-            return None
+        return None
 
     def _extract_from_vdi(self, vdi):
         # Vendor class identifier:
@@ -72,8 +72,7 @@ class BaseGigasetDHCPDeviceInfoExtractor:
         #   "C590_IP"
         if vdi in self._VDI:
             return {'vendor': VENDOR, 'model': self._VDI[vdi]}
-        else:
-            return None
+        return None
 
 
 class BaseGigasetPgAssociator(BasePgAssociator):
@@ -213,7 +212,7 @@ class BaseGigasetRequestBroker:
 
     def get_device_info(self):
         with self.do_get_request('status_device.html') as fobj:
-            content = fobj.read()
+            content = fobj.read().decode('ascii')
 
         dev_info = {'vendor': VENDOR}
 
@@ -227,7 +226,7 @@ class BaseGigasetRequestBroker:
             return
         raw_mac = m.group()
         cur_pos = m.end()
-        dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
+        dev_info['mac'] = norm_mac(raw_mac)
 
         if hasattr(self, '_VERSION_REGEX'):
             cur_pos = content.find('Firmware version:', cur_pos)
@@ -239,7 +238,7 @@ class BaseGigasetRequestBroker:
                 logger.warning('could not find firmware version')
                 return
             raw_version = m.group(1)
-            dev_info['version'] = raw_version.decode('ascii')
+            dev_info['version'] = raw_version
 
         return dev_info
 
@@ -249,7 +248,7 @@ class BaseGigasetPlugin(StandardPlugin):
     # _BROKER_FACTORY attribute must be present in (derived) instance of this class
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         self._app = app
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)

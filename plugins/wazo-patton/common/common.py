@@ -1,11 +1,14 @@
 # Copyright 2016-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
 import os.path
 import re
 
 from operator import itemgetter
+from typing import Dict, Optional
+
 from provd import synchronize, tzinform
 from provd.plugins import (
     FetchfwPluginHelper,
@@ -20,6 +23,8 @@ from provd.devices.pgasso import (
     UNKNOWN_SUPPORT,
 )
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
 
@@ -32,16 +37,16 @@ class BasePattonHTTPDeviceInfoExtractor:
         r'^SmartNode \(Model:(\w+)/[^;]+; Serial:(\w+); Software Version:R([^ ]+)'
     )
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            return self._extract_from_ua(ua)
+            return self._extract_from_ua(ua.decode('ascii'))
         return None
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str) -> Optional[Dict[str, str]]:
         # HTTP User-Agent:
         #   "SmartNode (Model:SN4112/JS/EUI; Serial:00A0BA08933C;
         #   Software Version:R6.2 2012-09-11 H323 SIP FXS FXO; Hardware Version:4.4)"
@@ -51,16 +56,16 @@ class BasePattonHTTPDeviceInfoExtractor:
         if m:
             raw_model, raw_mac, raw_version = m.groups()
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(raw_mac)
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
-            else:
-                return {
-                    'vendor': 'Patton',
-                    'model': raw_model.decode('ascii'),
-                    'version': raw_version.decode('ascii'),
-                    'mac': mac,
-                }
+                return None
+            return {
+                'vendor': 'Patton',
+                'model': raw_model,
+                'version': raw_version,
+                'mac': mac,
+            }
 
 
 class BasePattonPgAssociator(BasePgAssociator):
@@ -284,7 +289,7 @@ class BasePattonPlugin(StandardPlugin):
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -341,7 +346,7 @@ class BasePattonPlugin(StandardPlugin):
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg$')
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         formatted_mac = format_mac(device['mac'], separator='')
         return f'{formatted_mac}.cfg'
 

@@ -12,10 +12,13 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+from __future__ import annotations
 
 import logging
 import re
 import os.path
+from typing import Dict
+
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
@@ -28,6 +31,8 @@ from provd.devices.pgasso import (
 )
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-panasonic')
@@ -36,30 +41,30 @@ logger = logging.getLogger('plugin.xivo-panasonic')
 class BasePanasonicHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^Panasonic_([^ ]+)/([^ ]+) \(([^ ]+)\)')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            return self._extract_from_ua(ua)
+            return self._extract_from_ua(ua.decode('ascii'))
         return None
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         # "Panasonic_KX-UT113/01.133 (0080f0c8c381)"
         m = self._UA_REGEX.match(ua)
         if m:
-            raw_model, raw_version, raw_mac = m.groups()
+            model, version, raw_mac = m.groups()
             try:
-                mac = norm_mac(raw_mac.decode('ascii'))
+                mac = norm_mac(raw_mac)
             except ValueError as e:
                 logger.warning('Could not normalize MAC address: %s', e)
             else:
                 return {
                     'vendor': 'Panasonic',
-                    'model': raw_model.decode('ascii'),
-                    'version': raw_version.decode('ascii'),
+                    'model': model,
+                    'version': version,
                     'mac': mac,
                 }
         return None
@@ -67,7 +72,7 @@ class BasePanasonicHTTPDeviceInfoExtractor:
 
 class BasePanasonicPgAssociator(BasePgAssociator):
     def __init__(self, models, version):
-        BasePgAssociator.__init__(self)
+        super().__init__(self)
         self._models = models
         self._version = version
 
@@ -85,7 +90,7 @@ class BasePanasonicPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         # update to use the non-standard tftpboot directory
         self._base_tftpboot_dir = self._tftpboot_dir
         self._tftpboot_dir = os.path.join(self._tftpboot_dir, 'Panasonic')
@@ -102,7 +107,7 @@ class BasePanasonicPlugin(StandardPlugin):
 
     http_dev_info_extractor = BasePanasonicHTTPDeviceInfoExtractor()
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'Config{formatted_mac}.cfg'
@@ -111,7 +116,7 @@ class BasePanasonicPlugin(StandardPlugin):
         if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
-    def _check_device(self, device):
+    def _check_device(self, device: Dict[str, str]):
         if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 

@@ -12,11 +12,13 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+from __future__ import annotations
 
 import logging
 import re
 import os.path
 from operator import itemgetter
+from typing import Dict
 from xml.sax.saxutils import escape
 from provd import tzinform
 from provd import synchronize
@@ -31,6 +33,8 @@ from provd.devices.pgasso import (
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import norm_mac, format_mac
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.xivo-polycom')
@@ -47,23 +51,23 @@ class BasePolycomHTTPDeviceInfoExtractor:
         r'(?:[\da-f]{12}-(?:phone\.cfg|license\.cfg|directory\.xml|app\.log)))$'
     )
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
             dev_info = {}
-            self._extract_info_from_ua(ua, dev_info)
+            self._extract_info_from_ua(ua.decode('ascii'), dev_info)
             if dev_info:
-                path = request.path
+                path = request.path.decode('ascii')
                 if 'version' in dev_info and not self._is_sip_application_request(path):
                     del dev_info['version']
                 self._extract_mac_from_path(path, dev_info)
                 return dev_info
         return None
 
-    def _extract_info_from_ua(self, ua, dev_info):
+    def _extract_info_from_ua(self, ua: str, dev_info: Dict[str, str]):
         # Note: depending on the boot step, the version number will either
         # be the BootROM version (first few requests) or the SIP application
         # version (later on in the boot process).
@@ -82,26 +86,26 @@ class BasePolycomHTTPDeviceInfoExtractor:
         if m:
             dev_info['vendor'] = 'Polycom'
             raw_model, raw_version = m.groups()
-            dev_info['model'] = raw_model.replace('_', '').decode('ascii')
-            dev_info['version'] = raw_version.decode('ascii')
+            dev_info['model'] = raw_model.replace('_', '')
+            dev_info['version'] = raw_version
 
-    def _extract_mac_from_path(self, path, dev_info):
+    def _extract_mac_from_path(self, path: str, dev_info: Dict[str, str]):
         # Extract the MAC address from the requested path if possible
         m = self._PATH_REGEX.search(path)
         if m:
             raw_mac = m.group(1)
-            dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
+            dev_info['mac'] = norm_mac(raw_mac)
 
-    def _is_sip_application_request(self, path):
+    def _is_sip_application_request(self, path: str) -> bool:
         # Return true if path has been requested by the SIP application (and
         # not the BootROM). This use the fact that some files are only
         # request by the SIP application.
-        return self._IS_SIPAPP_REGEX.search(path)
+        return bool(self._IS_SIPAPP_REGEX.search(path))
 
 
 class BasePolycomPgAssociator(BasePgAssociator):
     def __init__(self, models, version):
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._models = models
         self._version = version
 
@@ -147,7 +151,7 @@ class BasePolycomPlugin(StandardPlugin):
     _SIP_TRANSPORT_DEF = 'UDPOnly'
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -274,7 +278,7 @@ class BasePolycomPlugin(StandardPlugin):
             if voicemail:
                 line.setdefault('voicemail', voicemail)
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
         return f'{formatted_mac}-user.cfg'

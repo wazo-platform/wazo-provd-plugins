@@ -1,9 +1,12 @@
 # Copyright 2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
 import os.path
 import re
+from typing import Dict
+
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
@@ -20,8 +23,10 @@ from provd.plugins import (
     StandardPlugin,
     TemplatePluginHelper,
 )
+from provd.servers.http_site import Request
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import format_mac, norm_mac
+from provd.devices.ident import RequestType
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-alcatel')
@@ -32,36 +37,33 @@ class BaseAlcatelMyriadHTTPDeviceInfoExtractor:
         r'^ALE (?P<model>M[3,5,7])(?:-CE)? (?P<version>([0-9]{1,4}\.?){4,5}) (?P<mac>[0-9a-f]{12})'
     )
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: Request):
         device_info = {}
-        ua = request.getHeader('User-Agent')
-        raw_mac = request.args.get('mac', [None])[0]
+        ua = request.getHeader(b'User-Agent')
+        raw_mac = request.args.get(b'mac', [None])[0]
         if raw_mac:
             logger.debug('Got MAC from URL: "%s"', raw_mac)
             device_info['mac'] = norm_mac(raw_mac.decode('ascii'))
         if ua:
-            info_from_ua = self._extract_from_ua(ua)
+            info_from_ua = self._extract_from_ua(ua.decode('ascii'))
             if info_from_ua:
                 device_info.update(info_from_ua)
         return device_info
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "ALE M3-CE 2.11.01.1604 3c28a620089e"
         m = self._UA_REGEX_MAC.search(ua)
         if m:
             device_info = m.groupdict()
-            raw_model = device_info['model']
-            raw_version = device_info['version']
-            raw_mac = device_info['mac']
             return {
                 'vendor': 'Alcatel-Lucent',
-                'model': raw_model.decode('ascii'),
-                'mac': norm_mac(raw_mac.decode('ascii')),
-                'version': raw_version.decode('ascii'),
+                'model': device_info['model'],
+                'mac': norm_mac(device_info['mac']),
+                'version': device_info['version'],
             }
 
 
@@ -128,7 +130,7 @@ class BaseAlcatelPlugin(StandardPlugin):
     http_dev_info_extractor = BaseAlcatelMyriadHTTPDeviceInfoExtractor()
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -263,13 +265,13 @@ class BaseAlcatelPlugin(StandardPlugin):
         if 'model' not in device:
             raise Exception('Model name needed for device configuration')
 
-    def _dev_specific_filename(self, device):
-        return 'config.{}.xml'.format(format_mac(device['mac'], separator=''))
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+        return f'config.{format_mac(device["mac"], separator="")}.xml'
 
     def _add_server_url(self, raw_config):
         ip = raw_config['ip']
         http_port = raw_config['http_port']
-        raw_config['XX_server_url'] = 'http://{}:{}'.format(ip, http_port)
+        raw_config['XX_server_url'] = f'http://{ip}:{http_port}'
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
@@ -330,5 +332,5 @@ class BaseAlcatelPlugin(StandardPlugin):
 
         return self._dev_specific_filename(device)
 
-    def is_sensitive_filename(self, filename):
+    def is_sensitive_filename(self, filename: str):
         return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))

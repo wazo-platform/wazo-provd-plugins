@@ -7,6 +7,7 @@ import struct
 import urllib.error
 import urllib.parse
 import urllib.request
+from typing import Dict
 
 from provd.util import format_mac
 
@@ -26,7 +27,7 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
 
     pg_associator = common['BaseGrandstreamPgAssociator'](MODELS, VERSION)
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return f'cfg{formatted_mac}'

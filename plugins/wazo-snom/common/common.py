@@ -1,11 +1,14 @@
 # Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
 import os.path
 import re
 import glob
 from operator import itemgetter
+from typing import Dict
+
 from pkg_resources import parse_version
 from xml.sax.saxutils import escape
 from provd import plugins
@@ -22,6 +25,8 @@ from provd.devices.pgasso import (
 )
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
@@ -33,24 +38,24 @@ class BaseSnomHTTPDeviceInfoExtractor:
     _UA_REGEX_MAC = re.compile(r'\bsnom(\w+)-SIP\s([\d.]+)\s(.+)\s(?P<mac>[0-9A-F]+)')
     _PATH_REGEX = re.compile(r'\bsnom\w+-([\dA-F]{12})\.htm$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: Request):
         device_info = {}
-        ua = request.getHeader('User-Agent')
-        raw_mac = request.args.get('mac', [None])[0]
+        ua = request.getHeader(b'User-Agent')
+        raw_mac = request.args.get(b'mac', [None])[0]
         if raw_mac:
             logger.debug('Got MAC from URL: %s', raw_mac)
             device_info['mac'] = norm_mac(raw_mac.decode('ascii'))
         if ua:
-            info_from_ua = self._extract_from_ua(ua)
+            info_from_ua = self._extract_from_ua(ua.decode('ascii'))
             if info_from_ua:
                 device_info.update(info_from_ua)
-                self._extract_from_path(request.path, device_info)
+                self._extract_from_path(request.path.decode('ascii'), device_info)
         return device_info
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "Mozilla/4.0 (compatible; snom lid 3605)" --> Snom 6.5.xx
         #   "Mozilla/4.0 (compatible; snom320-SIP 6.5.20; snom320 jffs2 v3.36; snom320 linux 3.38)"
@@ -69,9 +74,9 @@ class BaseSnomHTTPDeviceInfoExtractor:
             raw_model, raw_version, _, raw_mac = m.groups()
             return {
                 'vendor': 'Snom',
-                'model': raw_model.decode('ascii'),
-                'mac': norm_mac(raw_mac.decode('ascii')),
-                'version': raw_version.decode('ascii'),
+                'model': raw_model,
+                'mac': norm_mac(raw_mac),
+                'version': raw_version,
             }
         # if the complete regex did not match, match a smaller one
         m = self._UA_REGEX.search(ua)
@@ -79,16 +84,16 @@ class BaseSnomHTTPDeviceInfoExtractor:
             raw_model, raw_version = m.groups()
             return {
                 'vendor': 'Snom',
-                'model': raw_model.decode('ascii'),
-                'version': raw_version.decode('ascii'),
+                'model': raw_model,
+                'version': raw_version,
             }
         return None
 
-    def _extract_from_path(self, path, dev_info):
+    def _extract_from_path(self, path: str, dev_info: Dict[str, str]):
         m = self._PATH_REGEX.search(path)
         if m:
             raw_mac = m.group(1)
-            dev_info['mac'] = norm_mac(raw_mac.decode('ascii'))
+            dev_info['mac'] = norm_mac(raw_mac)
 
 
 class BaseSnomPgAssociator(BasePgAssociator):
@@ -149,7 +154,7 @@ class BaseSnomPlugin(StandardPlugin):
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 

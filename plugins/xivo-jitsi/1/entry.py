@@ -19,10 +19,13 @@
 
 
 # provisioning url to use in Jitsi: http://<provd_ip:provd_port>/jitsi?uuid=${uuid}
+from __future__ import annotations
 
 import logging
 import os.path
 import re
+from typing import Any, Dict
+
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import (
     IMPROBABLE_SUPPORT,
@@ -32,6 +35,8 @@ from provd.devices.pgasso import (
 )
 from provd.plugins import StandardPlugin, TemplatePluginHelper
 from provd.util import is_normed_uuid, norm_uuid
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from twisted.internet import defer
 from twisted.web.resource import Resource
 
@@ -41,35 +46,35 @@ logger = logging.getLogger('plugin.xivo-jitsi')
 class JitsiHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^Jitsi/(\S+)$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            dev_info = self._extract_from_ua(ua)
+            dev_info = self._extract_from_ua(ua.decode('ascii'))
             if dev_info:
                 self._extract_from_args(request.args, dev_info)
                 return dev_info
         return None
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "Jitsi/1.0-beta1-nightly.build.3408"
         m = self._UA_REGEX.match(ua)
         if m:
-            raw_version = m.group(1)
+            version = m.group(1)
             return {
                 'vendor': 'Jitsi',
                 'model': 'Jitsi',
-                'version': raw_version.decode('ascii'),
+                'version': version,
             }
         return None
 
-    def _extract_from_args(self, args, dev_info):
+    def _extract_from_args(self, args: Dict[bytes, Any], dev_info):
         if 'uuid' in args:
             try:
-                dev_info['uuid'] = norm_uuid(args['uuid'][0].decode('ascii'))
+                dev_info['uuid'] = norm_uuid(args[b'uuid'][0].decode('ascii'))
             except ValueError as e:
                 logger.warning('Could not normalize UUID: %s', e)
 
@@ -85,38 +90,37 @@ class JitsiPgAssociator(BasePgAssociator):
 
 class JitsiHTTPService(Resource):
     def __init__(self, tftpboot_dir):
-        Resource.__init__(self)
+        super().__init__()
         self._tftpboot_dir = tftpboot_dir
 
-    def render_POST(self, request):
+    def render_POST(self, request: Request):
         try:
-            uuid = request.args['uuid'][0]
+            uuid = request.args[b'uuid'][0].decode('ascii')
         except KeyError:
             logger.warning('No UUID in args: %s', request.args)
             request.setResponseCode(400)
-            request.setHeader('Content-Type', 'text/plain; charset=ascii')
-            return 'missing uuid'
-        else:
-            if not is_normed_uuid(uuid):
-                # non normalized uuid can lead to security issue
-                logger.warning('Non normalized uuid: %s', uuid)
-                request.setResponseCode(400)
-                request.setHeader('Content-Type', 'text/plain; charset=ascii')
-                return 'invalid uuid'
-            else:
-                file = os.path.join(self._tftpboot_dir, uuid)
-                try:
-                    with open(file) as fobj:
-                        content = fobj.read()
-                except EnvironmentError as e:
-                    logger.warning('Error while reading file %s: %s', file, e)
-                    request.setResponseCode(404)
-                    request.setHeader('Content-Type', 'text/plain; charset=ascii')
-                    return 'not found/error while reading'
-                else:
-                    request.setResponseCode(200)
-                    request.setHeader('Content-Type', 'text/plain; charset=UTF-8')
-                    return content
+            request.setHeader(b'Content-Type', b'text/plain; charset=ascii')
+            return b'missing uuid'
+        if not is_normed_uuid(uuid):
+            # non normalized uuid can lead to security issue
+            logger.warning('Non normalized uuid: %s', uuid)
+            request.setResponseCode(400)
+            request.setHeader(b'Content-Type', b'text/plain; charset=ascii')
+            return 'invalid uuid'
+
+        file = os.path.join(self._tftpboot_dir, uuid)
+        try:
+            with open(file) as fobj:
+                content = fobj.read()
+        except OSError as e:
+            logger.warning('Error while reading file %s: %s', file, e)
+            request.setResponseCode(404)
+            request.setHeader(b'Content-Type', b'text/plain; charset=ascii')
+            return b'not found/error while reading'
+
+        request.setResponseCode(200)
+        request.setHeader(b'Content-Type', b'text/plain; charset=UTF-8')
+        return content
 
 
 class JitsiPlugin(StandardPlugin):
@@ -125,12 +129,12 @@ class JitsiPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
         root_resource = Resource()
-        root_resource.putChild('jitsi', JitsiHTTPService(self._tftpboot_dir))
+        root_resource.putChild(b'jitsi', JitsiHTTPService(self._tftpboot_dir))
         self.http_service = root_resource
 
     http_dev_info_extractor = JitsiHTTPDeviceInfoExtractor()

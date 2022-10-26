@@ -1,9 +1,12 @@
 # Copyright 2017-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
 import re
 import os.path
+from typing import Dict
+
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
@@ -17,6 +20,8 @@ from provd.devices.pgasso import (
 )
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer, threads
 
@@ -26,15 +31,15 @@ logger = logging.getLogger('plugin.wazo-htek')
 class BaseHtekHTTPDeviceInfoExtractor:
     _UA_REGEX_LIST = [re.compile(r'^Htek ([^ ]+) ([^ ]+) ([^ ]+)$')]
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            return self._extract_from_ua(ua)
+            return self._extract_from_ua(ua.decode('ascii'))
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "Htek UC903 2.0.4.2 00:1f:c1:1c:22:a9"
 
@@ -42,24 +47,18 @@ class BaseHtekHTTPDeviceInfoExtractor:
             m = UA_REGEX.match(ua)
             if m:
                 raw_model, raw_version, raw_mac = m.groups()
+                device_info = {
+                    'vendor': 'Htek',
+                    'model': raw_model,
+                    'version': raw_version,
+                }
                 try:
-                    mac = norm_mac(raw_mac.decode('ascii'))
+                    device_info['mac'] = norm_mac(raw_mac)
                 except ValueError as e:
                     logger.warning(
                         'Could not normalize MAC address "%s": %s', raw_mac, e
                     )
-                    return {
-                        'vendor': 'Htek',
-                        'model': raw_model.decode('ascii'),
-                        'version': raw_version.decode('ascii'),
-                    }
-                else:
-                    return {
-                        'vendor': 'Htek',
-                        'model': raw_model.decode('ascii'),
-                        'version': raw_version.decode('ascii'),
-                        'mac': mac,
-                    }
+                return device_info
         return None
 
 
@@ -67,7 +66,7 @@ class BaseHtekPgAssociator(BasePgAssociator):
     def __init__(self, model_versions):
         # model_versions is a dictionary which keys are model IDs and values
         # are version IDs.
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._model_versions = model_versions
 
     def _do_associate(self, vendor, model, version):
@@ -195,9 +194,10 @@ class BaseHtekPlugin(StandardPlugin):
         (12, 45): 103,
         (13, 00): 104,
     }
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^cfg[0-9a-f]{12}\.xml')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -342,9 +342,7 @@ class BaseHtekPlugin(StandardPlugin):
             url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'
             raw_config['XX_xivo_phonebook_url'] = url
 
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^cfg[0-9a-f]{12}\.xml')
-
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
         return f'cfg{formatted_mac}.xml'

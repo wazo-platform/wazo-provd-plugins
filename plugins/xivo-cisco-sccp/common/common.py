@@ -1,9 +1,12 @@
 # Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
+from __future__ import annotations
 
 import logging
 import os
 import re
+from typing import Dict
+
 from provd import plugins
 from provd import tzinform
 from provd.devices.config import RawConfigError
@@ -18,6 +21,8 @@ from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHel
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from twisted.internet import defer
 
 logger = logging.getLogger('plugin.xivo-cisco')
@@ -44,7 +49,7 @@ class BaseCiscoPgAssociator(BasePgAssociator):
 
 
 class BaseCiscoDHCPDeviceInfoExtractor:
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
     _VDI_REGEX = re.compile(r'\bPhone (?:79(\d\d)|CP-79(\d\d)G|CP-(\d\d\d\d))')
@@ -77,7 +82,7 @@ class BaseCiscoDHCPDeviceInfoExtractor:
                     dev_info['model'] = fmt % _7900_modelnum
                 else:
                     model_num = m.group(3)
-                    dev_info['model'] = model_num.decode('ascii')
+                    dev_info['model'] = model_num
             return dev_info
 
 
@@ -90,19 +95,19 @@ class BaseCiscoHTTPDeviceInfoExtractor:
         re.compile(r'^/ITLFile\.tlv$'),
     ]
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        if self._CIPC_REGEX.match(request.path):
+    def _do_extract(self, request: Request):
+        if self._CIPC_REGEX.match(request.path.decode('ascii')):
             return {'vendor': 'Cisco', 'model': 'CIPC'}
         for regex in self._FILENAME_REGEXES:
-            m = regex.match(request.path)
+            m = regex.match(request.path.decode('ascii'))
             if m:
                 dev_info = {'vendor': 'Cisco'}
                 if m.lastindex == 1:
                     try:
-                        dev_info['mac'] = norm_mac(m.group(1).decode('ascii'))
+                        dev_info['mac'] = norm_mac(m.group(1))
                     except ValueError as e:
                         logger.warning('Could not normalize MAC address: %s', e)
                 return dev_info
@@ -117,11 +122,11 @@ class BaseCiscoTFTPDeviceInfoExtractor:
         re.compile(r'^ITLFile\.tlv$'),
     ]
 
-    def extract(self, request, request_type):
+    def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        packet = request['packet']
+    def _do_extract(self, request: dict):
+        packet: dict = request['packet']
         filename = packet['filename']
         if self._CIPC_REGEX.match(filename):
             return {'vendor': 'Cisco', 'model': 'CIPC'}
@@ -220,7 +225,7 @@ class BaseCiscoSccpPlugin(StandardPlugin):
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^SEP[0-9A-F]{12}\.cnf\.xml$')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -237,9 +242,7 @@ class BaseCiscoSccpPlugin(StandardPlugin):
         self.tftp_service = TFTPFileService(self._tftpboot_dir)
 
     dhcp_dev_info_extractor = BaseCiscoDHCPDeviceInfoExtractor()
-
     http_dev_info_extractor = BaseCiscoHTTPDeviceInfoExtractor()
-
     tftp_dev_info_extractor = BaseCiscoTFTPDeviceInfoExtractor()
 
     def _add_locale(self, raw_config):
@@ -301,7 +304,7 @@ class BaseCiscoSccpPlugin(StandardPlugin):
         for priority, call_manager in raw_config['sccp_call_managers'].items():
             call_manager['XX_priority'] = str(int(priority) - 1)
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'SEP{formatted_mac}.cnf.xml'
