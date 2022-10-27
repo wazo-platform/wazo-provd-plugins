@@ -14,7 +14,7 @@
   </dateTimeSetting>
   <callManagerGroup>
    <members>
-    {% for call_manager in sccp_call_managers.itervalues() -%}
+    {% for call_manager in sccp_call_managers.values() -%}
     <member priority="{{ call_manager['XX_priority'] }}">
      <callManager>
       <ports>

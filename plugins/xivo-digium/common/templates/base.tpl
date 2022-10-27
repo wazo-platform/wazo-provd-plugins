@@ -41,7 +41,7 @@
     <setting id="locale" value="{{ XX_lang }}"/>
 
     <accounts>
-        {% for line_no, line in sip_lines.iteritems() %}
+        {% for line_no, line in sip_lines.items() %}
         <account
         index="{{ line_no|int - 1 }}"
         status="1"

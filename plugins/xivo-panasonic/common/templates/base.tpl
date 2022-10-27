@@ -23,7 +23,7 @@ SYSLOG_PORT="{{ syslog_port }}"
 
 
 {# SIP per-line settings -#}
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
 PHONE_NUMBER_{{ line_no }}="{{ line['number'] }}"
 DISPLAY_NAME_{{ line_no }}="{{ line['display_name'] }}"
 VM_NUMBER_{{ line_no }}="{{ line['voicemail'] }}"

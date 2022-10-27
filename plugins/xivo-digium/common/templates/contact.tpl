@@ -1,6 +1,6 @@
 <phonebooks>
     <contacts group_name="Default" editable="0">
-        {% for funckey_no, funckey in XX_funckeys.iteritems()|sort %}
+        {% for funckey_no, funckey in XX_funckeys.items()|sort %}
         <contact
         first_name="{{ funckey['label']|d(funckey['value']) }}"
         last_name=""

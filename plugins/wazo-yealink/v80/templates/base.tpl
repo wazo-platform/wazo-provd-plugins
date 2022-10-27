@@ -81,7 +81,7 @@ security.user_name.admin = {{ admin_username|d('admin') }}
 security.user_password = {{ user_username|d('user') }}:{{ user_password|d('user') }}
 security.user_password = {{ admin_username|d('admin') }}:{{ admin_password|d('admin') }}
 
-{% for line_no, line in XX_sip_lines.iteritems() -%}
+{% for line_no, line in XX_sip_lines.items() -%}
 {% if line -%}
 account.{{ line_no }}.enable = 1
 account.{{ line_no }}.label = {{ line['number']|d(line['display_name']) }}

@@ -25,7 +25,7 @@ from twisted.internet import defer, threads
 logger = logging.getLogger('plugins.xivo-cisco-spa')
 
 
-def _norm_model(raw_model: str):
+def _norm_model(raw_model: str) -> str:
     # Normalize a model name and return it as a unicode string. This removes
     # minus sign and make all the characters uppercase.
     return raw_model.replace('-', '').upper()

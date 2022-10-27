@@ -69,7 +69,7 @@ tone.dtmf.viaRtp="0"
 voIpProt.SIP.dtmfViaSignaling.rfc2976="1"
 {% endif -%}
 
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
 reg.{{ line_no }}.server.1.address="{{ line['proxy_ip'] }}"
 reg.{{ line_no }}.server.1.port="{{ line['proxy_port'] }}"
 reg.{{ line_no }}.server.1.transport="{{ XX_sip_transport }}"

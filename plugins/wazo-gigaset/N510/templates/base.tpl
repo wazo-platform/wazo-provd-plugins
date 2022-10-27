@@ -24,7 +24,7 @@
     {%- endif %}
 <!-- WEB-UI: Settings - Telephony - Connections - Connection Name or Number -->
 
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
     {%- if line_no == '1' %}
     {%- set line_suffix = '' %}
     {%- else %}

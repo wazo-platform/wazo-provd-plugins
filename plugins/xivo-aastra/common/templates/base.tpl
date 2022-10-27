@@ -87,7 +87,7 @@ sips trusted certificates: {{ XX_trusted_certificates }}
 sip customized codec: payload=9;ptime=20;silsupp=on,payload=18;ptime=20;silsupp=on,,payload=0;ptime=20;silsupp=on,payload=8;ptime=20;silsupp=on
 
 {# SIP per-line settings -#}
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
 sip line{{ line_no }} proxy ip: {{ line['proxy_ip'] }}
 sip line{{ line_no }} proxy port: {{ line['proxy_port'] }}
 sip line{{ line_no }} backup proxy ip: {{ line['backup_proxy_ip'] }}

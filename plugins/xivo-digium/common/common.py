@@ -187,7 +187,7 @@ class BaseDigiumPlugin(StandardPlugin):
 
     def _get_main_proxy_ip(self, raw_config):
         if raw_config['sip_lines']:
-            line_no = min(int(x) for x in list(raw_config['sip_lines'].keys()))
+            line_no = min(int(x) for x in list(raw_config['sip_lines']))
             line_no = str(line_no)
             return raw_config['sip_lines'][line_no]['proxy_ip']
         else:

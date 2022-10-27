@@ -1,4 +1,4 @@
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
 net.java.sip.communicator.impl.protocol.sip.acc{{ line_no }}=acc{{ line_no }}
 net.java.sip.communicator.impl.protocol.sip.acc{{ line_no }}.ACCOUNT_UID=SIP\:{{ line['username'] }}@{{ line['proxy_ip'] or sip_proxy_ip }}
 net.java.sip.communicator.impl.protocol.sip.acc{{ line_no }}.AUTHORIZATION_NAME={{ line['auth_username'] }}

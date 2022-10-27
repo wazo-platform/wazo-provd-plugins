@@ -34,7 +34,7 @@
         <MenuPassword>{{ admin_password|d('123') }}</MenuPassword>
         <display>
             <DefaultLanguage>{{ XX_locale }}</DefaultLanguage>
-            {% for line_no, line in sip_lines.iteritems() %}
+            {% for line_no, line in sip_lines.items() %}
             <LCDTitle>{{ line['display_name']|e }} {{ line['number'] }}</LCDTitle>
             {% endfor %}
         </display>
@@ -135,7 +135,7 @@
     </log>
     <sip>
         <SIPPort>5060</SIPPort>
-        {% for line_no, line in sip_lines.iteritems() -%}
+        {% for line_no, line in sip_lines.items() -%}
         <line index="{{ line_no }}">
             {% if line -%}
             <PhoneNumber>{{ line['username']}}</PhoneNumber>

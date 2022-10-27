@@ -52,7 +52,7 @@
 <Locale>{{ XX_locale }}</Locale>
 {{ XX_timezone }}
 
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
 <Line_Enable_{{ line_no }}_>Yes</Line_Enable_{{ line_no }}_>
 <Proxy_{{ line_no }}_>{{ XX_proxies[line_no] }}</Proxy_{{ line_no }}_>
 <Use_DNS_SRV_{{ line_no }}_>Yes</Use_DNS_SRV_{{ line_no }}_>
@@ -79,7 +79,7 @@
      want the line key definition to override the function key definition -->
 {{ XX_fkeys }}
 
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
 <Extension_{{ line_no }}_>{{ line_no }}</Extension_{{ line_no }}_>
 <Short_Name_{{ line_no }}_>{{ line['number']|d('$USER') }}</Short_Name_{{ line_no }}_>
 <Extended_Function_{{ line_no }}_></Extended_Function_{{ line_no }}_>

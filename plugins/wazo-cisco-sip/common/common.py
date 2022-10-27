@@ -286,7 +286,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
             if None in dst_map:
                 dst_key = None
             else:
-                dst_key = list(dst_map.keys())[0]
+                dst_key = list(dst_map)[0]
         return dst_map[dst_key]
 
     def _add_timezone(self, raw_config):
