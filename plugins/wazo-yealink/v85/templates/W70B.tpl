@@ -9,6 +9,8 @@ custom.handset.screen_saver.enable = 0
 
 sip.notify_reboot_enable = 0
 
+transfer.dsskey_deal_type = 1
+
 {% if vlan_enabled -%}
 static.network.vlan.internet_port_enable = 1
 static.network.vlan.internet_port_vid = {{ vlan_id }}
