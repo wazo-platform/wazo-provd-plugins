@@ -73,7 +73,7 @@ class BaseYealinkHTTPDeviceInfoExtractor:
                     'version': version,
                 }
                 try:
-                    device_info['mac'] = norm_mac(raw_mac.decode('ascii'))
+                    device_info['mac'] = norm_mac(raw_mac)
                 except ValueError as e:
                     logger.warning(
                         'Could not normalize MAC address "%s": %s', raw_mac, e
