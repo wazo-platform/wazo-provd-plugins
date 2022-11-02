@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2010-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import errno
@@ -260,11 +260,8 @@ class BaseCiscoPlugin(StandardPlugin):
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
         downloaders = FetchfwPluginHelper.new_downloaders(gen_cfg.get('proxies'))
-        if 'cisco' not in downloaders:
-            logger.warning('cisco downloader not found (xivo is probably not up to date); not loading plugin packages')
-        else:
-            fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
-            self.services = fetchfw_helper.services()
+        fetchfw_helper = FetchfwPluginHelper(plugin_dir, downloaders)
+        self.services = fetchfw_helper.services()
 
         self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
         self.tftp_service = TFTPFileService(self._tftpboot_dir)
