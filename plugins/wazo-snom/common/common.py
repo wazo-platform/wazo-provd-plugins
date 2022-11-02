@@ -21,7 +21,7 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.xivo-snom')
 
@@ -147,6 +147,7 @@ class BaseSnomPlugin(StandardPlugin):
             'remote_directory': 'Annuaire',
         },
     }
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.xml')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
@@ -302,19 +303,7 @@ class BaseSnomPlugin(StandardPlugin):
         raw_config['XX_msgs_blocked'] = msgs_blocked
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if (
-            hasattr(plugins, 'add_xivo_phonebook_url')
-            and raw_config.get('config_version', 0) >= 1
-        ):
-            plugins.add_xivo_phonebook_url(raw_config, 'snom')
-        else:
-            self._add_xivo_phonebook_url_compat(raw_config)
-
-    def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get('X_xivo_phonebook_ip')
-        if hostname:
-            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'
-            raw_config['XX_xivo_phonebook_url'] = url
+        plugins.add_xivo_phonebook_url(raw_config, 'snom')
 
     def _gen_xx_dict(self, raw_config):
         xx_dict = self._XX_DICT[self._XX_DICT_DEF]
@@ -324,8 +313,6 @@ class BaseSnomPlugin(StandardPlugin):
             if lang in self._XX_DICT:
                 xx_dict = self._XX_DICT[lang]
         return xx_dict
-
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.xml')
 
     def _dev_specific_filenames(self, device):
         # Return a tuple (htm filename, xml filename)
@@ -382,32 +369,10 @@ class BaseSnomPlugin(StandardPlugin):
                 # ignore
                 logger.info('error while removing file: %s', e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(
-                device, event='check-sync;reboot=false'
-            )
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device['ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(
-                    Exception('IP address needed for device synchronization')
-                )
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(
-                        Exception(f'Incompatible sync service: {sync_service}')
-                    )
-                else:
-                    return threads.deferToThread(
-                        sync_service.sip_notify, ip, 'check-sync;reboot=false'
-                    )
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(
+            device, event='check-sync;reboot=false'
+        )
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device or 'model' not in device:

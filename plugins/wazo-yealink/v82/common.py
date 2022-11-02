@@ -19,7 +19,7 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
 from provd.util import format_mac, norm_mac
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-yealink')
 

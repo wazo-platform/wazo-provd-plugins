@@ -19,7 +19,7 @@ from provd.servers.http_site import Request
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
 from provd.devices.ident import RequestType
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugins.wazo-cisco-sip')
 
@@ -207,6 +207,8 @@ class BaseCiscoSipPlugin(StandardPlugin):
 
     tftp_dev_info_extractor = BaseCiscoTFTPDeviceInfoExtractor()
 
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^\w{,3}[0-9a-fA-F]{12}(?:\.cnf)?\.xml$')
+
     def configure_common(self, raw_config):
         tpl = self._tpl_helper.get_template('common/model.cfg.tpl')
         common_filenames = self._COMMON_FILENAMES
@@ -345,21 +347,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
         raw_config['XX_locale'] = self._LOCALE[locale]
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if (
-            hasattr(plugins, 'add_xivo_phonebook_url')
-            and raw_config.get('config_version', 0) >= 1
-        ):
-            plugins.add_xivo_phonebook_url(raw_config, 'cisco')
-        else:
-            self._add_xivo_phonebook_url_compat(raw_config)
-
-    def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get('X_xivo_phonebook_ip')
-        if hostname:
-            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'
-            raw_config['XX_xivo_phonebook_url'] = url
-
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^\w{,3}[0-9a-fA-F]{12}(?:\.cnf)?\.xml$')
+        plugins.add_xivo_phonebook_url(raw_config, 'cisco')
 
     def _dev_specific_filename(self, dev):
         # Return the device specific filename (not pathname) of device
@@ -398,30 +386,8 @@ class BaseCiscoSipPlugin(StandardPlugin):
         except OSError as e:
             logger.info('error while removing configuration file: %s', e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device)
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device['ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(
-                    Exception('IP address needed for device synchronization')
-                )
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(
-                        Exception(f'Incompatible sync service: {sync_service}')
-                    )
-                else:
-                    return threads.deferToThread(
-                        sync_service.sip_notify, ip, 'check-sync'
-                    )
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(device)
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

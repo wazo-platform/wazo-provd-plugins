@@ -26,7 +26,7 @@ from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 
 logger = logging.getLogger('plugin.xivo-digium')
@@ -150,27 +150,8 @@ class BaseDigiumPlugin(StandardPlugin):
             except OSError as e:
                 logger.info('error while removing file %s: %s', path, e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device)
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device['ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(
-                    Exception('IP address needed for device synchronization')
-                )
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(
-                        Exception(f'Incompatible sync service: {sync_service}')
-                    )
-                return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(device)
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:
@@ -190,8 +171,7 @@ class BaseDigiumPlugin(StandardPlugin):
             line_no = min(int(x) for x in list(raw_config['sip_lines']))
             line_no = str(line_no)
             return raw_config['sip_lines'][line_no]['proxy_ip']
-        else:
-            return raw_config['ip']
+        return raw_config['ip']
 
     def _format_mac(self, device):
         return format_mac(device['mac'], separator='', uppercase=False)

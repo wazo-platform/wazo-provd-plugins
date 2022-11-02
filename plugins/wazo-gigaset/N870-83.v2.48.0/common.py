@@ -24,7 +24,7 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-gigaset')
 
@@ -203,6 +203,7 @@ class BaseGigasetPlugin(StandardPlugin):
         (10, 0): 'Australia/Sydney',
         (11, 0): 'Pacific/Noumea',
     }
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.xml$')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
@@ -305,29 +306,5 @@ class BaseGigasetPlugin(StandardPlugin):
     def is_sensitive_filename(self, filename):
         return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))
 
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.xml$')
-
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device)
-
-    else:
-        # backward compatibility with older xivo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device['ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(
-                    Exception('IP address needed for device synchronization')
-                )
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(
-                        Exception(f'Incompatible sync service: {sync_service}')
-                    )
-                else:
-                    return threads.deferToThread(
-                        sync_service.sip_notify, ip, 'check-sync'
-                    )
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(device)

@@ -347,7 +347,7 @@ class BaseAlcatelPlugin(StandardPlugin):
             child.sendline(password)
             child.expect('Login accepted')
             child.sendline('reset soft')
-            # wait a small time before closing the connection
+            # wait a short time before closing the connection
             time.sleep(10)
         finally:
             child.close(force=True)

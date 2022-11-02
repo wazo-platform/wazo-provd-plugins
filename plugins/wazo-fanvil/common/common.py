@@ -17,7 +17,7 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-fanvil')
 
@@ -202,30 +202,8 @@ class BaseFanvilPlugin(StandardPlugin):
         except OSError as e:
             logger.info('error while removing configuration file: %s', e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device)
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device['ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(
-                    Exception('IP address needed for device synchronization')
-                )
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(
-                        Exception(f'Incompatible sync service: {sync_service}')
-                    )
-                else:
-                    return threads.deferToThread(
-                        sync_service.sip_notify, ip, 'check-sync'
-                    )
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(device)
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

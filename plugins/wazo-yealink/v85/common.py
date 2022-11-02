@@ -21,7 +21,7 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.util import format_mac, norm_mac
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-yealink')
 
@@ -490,7 +490,9 @@ class BaseYealinkPlugin(StandardPlugin):
         return self._NB_SIP_ACCOUNTS.get(model)
 
     def _add_xivo_phonebook_url(self, raw_config):
-        plugins.add_xivo_phonebook_url(raw_config, u'yealink', entry_point=u'lookup', qs_suffix=u'term=#SEARCH')
+        plugins.add_xivo_phonebook_url(
+            raw_config, 'yealink', entry_point='lookup', qs_suffix='term=#SEARCH'
+        )
 
     def _add_wazo_phoned_user_service_url(self, raw_config, service):
         if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
@@ -543,7 +545,6 @@ class BaseYealinkPlugin(StandardPlugin):
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:
             return None
-
         return self._dev_specific_filename(device)
 
     def is_sensitive_filename(self, filename):

@@ -17,7 +17,7 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-htek')
 
@@ -324,19 +324,7 @@ class BaseHtekPlugin(StandardPlugin):
         )
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if (
-            hasattr(plugins, 'add_xivo_phonebook_url')
-            and raw_config.get('config_version', 0) >= 1
-        ):
-            plugins.add_xivo_phonebook_url(raw_config, 'htek', entry_point='lookup')
-        else:
-            self._add_xivo_phonebook_url_compat(raw_config)
-
-    def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get('X_xivo_phonebook_ip')
-        if hostname:
-            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'
-            raw_config['XX_xivo_phonebook_url'] = url
+        plugins.add_xivo_phonebook_url(raw_config, 'htek', entry_point='lookup')
 
     def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
@@ -376,30 +364,8 @@ class BaseHtekPlugin(StandardPlugin):
             # ignore
             logger.info('error while removing file: %s', e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device)
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device['ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(
-                    Exception('IP address needed for device synchronization')
-                )
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(
-                        Exception(f'Incompatible sync service: {sync_service}')
-                    )
-                else:
-                    return threads.deferToThread(
-                        sync_service.sip_notify, ip, 'check-sync'
-                    )
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(device)
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:

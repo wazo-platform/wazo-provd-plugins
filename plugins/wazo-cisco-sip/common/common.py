@@ -300,24 +300,12 @@ class BaseCiscoSipPlugin(StandardPlugin):
                 raw_config['XX_timezone'] = self._tzinfo_to_value(tzinfo)
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if (
-            hasattr(plugins, 'add_xivo_phonebook_url')
-            and raw_config.get('config_version', 0) >= 1
-        ):
-            plugins.add_xivo_phonebook_url(raw_config, 'cisco', entry_point='menu')
-        else:
-            self._add_xivo_phonebook_url_compat(raw_config)
+        plugins.add_xivo_phonebook_url(raw_config, 'cisco', entry_point='menu')
 
     def _add_transport_proto(self, raw_config):
         sip_transport = raw_config.get('sip_transport')
         if sip_transport in self._SIP_TRANSPORT:
             raw_config['XX_transport_proto'] = self._SIP_TRANSPORT[sip_transport]
-
-    def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get('X_xivo_phonebook_ip')
-        if hostname:
-            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/menu/'
-            raw_config['XX_xivo_phonebook_url'] = url
 
     def _update_call_managers(self, raw_config):
         for priority, call_manager in raw_config['sccp_call_managers'].items():

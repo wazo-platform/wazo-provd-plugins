@@ -21,7 +21,7 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-snom')
 
@@ -142,7 +142,7 @@ class BaseSnomPlugin(StandardPlugin):
     http_dev_info_extractor = BaseSnomDECTHTTPDeviceInfoExtractor()
 
     def _common_templates(self):
-        yield ('common/snom-general.xml.tpl', 'snom-general.xml')
+        yield 'common/snom-general.xml.tpl', 'snom-general.xml'
         for tpl_format, file_format in [
             ('common/snom%s.htm.tpl', 'snom%s.htm'),
             ('common/snom%s.xml.tpl', 'snom%s.xml'),
@@ -177,7 +177,7 @@ class BaseSnomPlugin(StandardPlugin):
             line['XX_server_id'] = server_id or 1
 
     def _add_sip_servers(self, raw_config):
-        servers = dict()
+        servers = {}
         server_number = 1
         for line_no, line in raw_config['sip_lines'].items():
             proxy_ip = line.get('proxy_ip') or raw_config.get('sip_proxy_ip')
@@ -222,19 +222,7 @@ class BaseSnomPlugin(StandardPlugin):
             line['XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, 'off')
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if (
-            hasattr(plugins, 'add_xivo_phonebook_url')
-            and raw_config.get('config_version', 0) >= 1
-        ):
-            plugins.add_xivo_phonebook_url(raw_config, 'snom')
-        else:
-            self._add_xivo_phonebook_url_compat(raw_config)
-
-    def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get('X_xivo_phonebook_ip')
-        if hostname:
-            url = f'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'
-            raw_config['XX_xivo_phonebook_url'] = url
+        plugins.add_xivo_phonebook_url(raw_config, 'snom')
 
     def _gen_xx_dict(self, raw_config):
         xx_dict = self._XX_DICT[self._XX_DICT_DEF]
@@ -297,32 +285,10 @@ class BaseSnomPlugin(StandardPlugin):
                 # ignore
                 logger.info('error while removing file: %s', e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(
-                device, event='check-sync;reboot=true'
-            )
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device['ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(
-                    Exception('IP address needed for device synchronization')
-                )
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(
-                        Exception(f'Incompatible sync service: {sync_service}')
-                    )
-                else:
-                    return threads.deferToThread(
-                        sync_service.sip_notify, ip, 'check-sync;reboot=true'
-                    )
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(
+            device, event='check-sync;reboot=true'
+        )
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device or 'model' not in device:

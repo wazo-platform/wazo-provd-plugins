@@ -469,7 +469,9 @@ class BaseYealinkPlugin(StandardPlugin):
         return self._NB_SIP_ACCOUNTS.get(model)
 
     def _add_xivo_phonebook_url(self, raw_config):
-        plugins.add_xivo_phonebook_url(raw_config, 'yealink', entry_point='lookup', qs_suffix='term=#SEARCH')
+        plugins.add_xivo_phonebook_url(
+            raw_config, 'yealink', entry_point='lookup', qs_suffix='term=#SEARCH'
+        )
 
     def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
