@@ -81,7 +81,7 @@ class DigiumPgAssociator(BasePgAssociator):
     _MODELS = ['D40', 'D45', 'D50', 'D60', 'D62', 'D65', 'D70']
 
     def __init__(self, version):
-        super().__init__(self)
+        super().__init__()
         self._version = version
 
     def _do_associate(

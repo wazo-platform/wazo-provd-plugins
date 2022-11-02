@@ -66,7 +66,7 @@ class BasePanasonicHTTPDeviceInfoExtractor:
 
 class BasePanasonicPgAssociator(BasePgAssociator):
     def __init__(self, models, version):
-        super().__init__(self)
+        super().__init__()
         self._models = models
         self._version = version
 

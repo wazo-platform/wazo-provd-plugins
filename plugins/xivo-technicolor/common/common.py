@@ -76,7 +76,7 @@ class BaseTechnicolorHTTPDeviceInfoExtractor:
 
 class BaseTechnicolorPgAssociator(BasePgAssociator):
     def __init__(self, model, version):
-        super().__init__(self)
+        super().__init__()
         self._model = model
         self._version = version
 

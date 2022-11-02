@@ -96,7 +96,7 @@ class BaseYealinkPgAssociator(BasePgAssociator):
     def __init__(self, model_versions):
         # model_versions is a dictionary which keys are model IDs and values
         # are version IDs.
-        super().__init__(self)
+        super().__init__()
         self._model_versions = model_versions
 
     def _do_associate(
