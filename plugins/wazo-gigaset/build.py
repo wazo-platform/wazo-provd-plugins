@@ -29,3 +29,17 @@ def build_N870_83_v2_39_0(path):
 @target('N870-83.v2.48.0', 'wazo-gigaset-N870-83.v2.48.0')
 def build_N870_83_v2_48_0(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', 'N870-83.v2.48.0/', path])
+
+
+@target('C470', 'wazo-gigaset-C470')
+def build_C470(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'common-c/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'C470/', path])
+
+
+@target('C590', 'wazo-gigaset-C590')
+def build_C590(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'common-c/', path])
+
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'C590/', path])

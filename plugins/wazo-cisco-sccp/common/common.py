@@ -1,23 +1,11 @@
-# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0+
 from __future__ import annotations
 
 import logging
 import os
 import re
-from typing import Optional, Union
+from typing import Dict, Optional, Union
 
 from provd import plugins
 from provd import tzinform
@@ -25,14 +13,13 @@ from provd.devices.config import RawConfigError
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
-from provd.servers.http_site import Request
 from provd.servers.tftp.service import TFTPFileService
-from provd import synchronize
 from provd.util import norm_mac, format_mac
+from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
 from twisted.internet import defer
 
-logger = logging.getLogger('plugin.wazo-cisco-sip')
+logger = logging.getLogger('plugin.wazo-cisco')
 
 
 class BaseCiscoPgAssociator(BasePgAssociator):
@@ -76,7 +63,7 @@ class BaseCiscoDHCPDeviceInfoExtractor:
         #   "Cisco Systems, Inc. IP Phone CP-8961\x00" (Cisco 8961 9.1.2)
         #   "Cisco Systems, Inc. IP Phone CP-9951\x00" (Cisco 9951 9.1.2)
         #   "Cisco Systems Inc. Wireless Phone 7921"
-        if vdi.startswith('Cisco System'):
+        if vdi.startswith('Cisco Systems'):
             dev_info = {'vendor': 'Cisco'}
             m = self._VDI_REGEX.search(vdi)
             if m:
@@ -90,7 +77,6 @@ class BaseCiscoDHCPDeviceInfoExtractor:
                 else:
                     model_num = m.group(3)
                     dev_info['model'] = model_num
-                    logger.debug('Model: %s', dev_info['model'])
             return dev_info
 
 
@@ -107,16 +93,15 @@ class BaseCiscoHTTPDeviceInfoExtractor:
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request: Request):
-        path = request.path.decode('ascii')
-        if self._CIPC_REGEX.match(path):
+        if self._CIPC_REGEX.match(request.path.decode('ascii')):
             return {'vendor': 'Cisco', 'model': 'CIPC'}
         for regex in self._FILENAME_REGEXES:
-            match = regex.match(path)
-            if match:
+            m = regex.match(request.path.decode('ascii'))
+            if m:
                 dev_info = {'vendor': 'Cisco'}
-                if match.lastindex == 1:
+                if m.lastindex == 1:
                     try:
-                        dev_info['mac'] = norm_mac(match.group(1))
+                        dev_info['mac'] = norm_mac(m.group(1))
                     except ValueError as e:
                         logger.warning('Could not normalize MAC address: %s', e)
                 return dev_info
@@ -134,8 +119,8 @@ class BaseCiscoTFTPDeviceInfoExtractor:
     def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        packet = request['packet']
+    def _do_extract(self, request: dict):
+        packet: dict = request['packet']
         filename = packet['filename']
         if self._CIPC_REGEX.match(filename):
             return {'vendor': 'Cisco', 'model': 'CIPC'}
@@ -144,6 +129,9 @@ class BaseCiscoTFTPDeviceInfoExtractor:
             if m:
                 dev_info = {'vendor': 'Cisco'}
                 return dev_info
+
+    def __repr__(self):
+        return object.__repr__(self) + "-SCCP"
 
 
 _ZONE_MAP = {
@@ -215,8 +203,8 @@ def _gen_tz_map():
     return result
 
 
-class BaseCiscoSipPlugin(StandardPlugin):
-    # XXX actually, we didn't find which encoding Cisco Sip are using
+class BaseCiscoSccpPlugin(StandardPlugin):
+    # XXX actually, we didn't find which encoding Cisco SCCP are using
     _ENCODING = 'UTF-8'
     _TZ_MAP = _gen_tz_map()
     _TZ_VALUE_DEF = 'Eastern Standard/Daylight Time'
@@ -228,12 +216,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
         'fr_FR': ('french_france', 'fr', 'france'),
         'fr_CA': ('french_france', 'fr', 'canada'),
     }
-
-    _SIP_TRANSPORT = {
-        'tcp': '1',
-        'udp': '2',
-        'tls': '3',
-    }
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^SEP[0-9A-F]{12}\.cnf\.xml$')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
@@ -245,22 +228,19 @@ class BaseCiscoSipPlugin(StandardPlugin):
 
         self.services = fetchfw_helper.services()
 
-        # Maybe find a way to bind to a specific port without changing the
-        # general http_port setting of wazo-provd ?
-        # At the moment, http_port 6970 must be set in /etc/wazo-provd/config.yml
+        # Maybe find a way to bind to a specific port
+        # without changing the general http_port setting of wazo-provd ?
+        # At the moment, http_port 6970 must be set in /etc/xivo/provd/provd.conf
         self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
 
         self.tftp_service = TFTPFileService(self._tftpboot_dir)
 
     dhcp_dev_info_extractor = BaseCiscoDHCPDeviceInfoExtractor()
-
     http_dev_info_extractor = BaseCiscoHTTPDeviceInfoExtractor()
-
     tftp_dev_info_extractor = BaseCiscoTFTPDeviceInfoExtractor()
 
     def _add_locale(self, raw_config):
         locale = raw_config.get('locale')
-        logger.debug('locale in raw_config: %s', locale)
         if locale in self._LOCALE:
             raw_config['XX_locale'] = self._LOCALE[locale]
 
@@ -302,65 +282,11 @@ class BaseCiscoSipPlugin(StandardPlugin):
     def _add_xivo_phonebook_url(self, raw_config):
         plugins.add_xivo_phonebook_url(raw_config, 'cisco', entry_point='menu')
 
-    def _add_transport_proto(self, raw_config):
-        sip_transport = raw_config.get('sip_transport')
-        if sip_transport in self._SIP_TRANSPORT:
-            raw_config['XX_transport_proto'] = self._SIP_TRANSPORT[sip_transport]
-
     def _update_call_managers(self, raw_config):
         for priority, call_manager in raw_config['sccp_call_managers'].items():
             call_manager['XX_priority'] = str(int(priority) - 1)
 
-    def _update_sip_lines(self, raw_config):
-        assert raw_config['sip_lines']
-        sip_lines_key = min(raw_config['sip_lines'])
-        sip_line = raw_config['sip_lines'][sip_lines_key]
-        proxy_port = raw_config.get('sip_proxy_port', '5060')
-        voicemail = raw_config.get('exten_voicemail')
-        for line in raw_config['sip_lines'].values():
-            line.setdefault('proxy_port', proxy_port)
-            if voicemail:
-                line.setdefault('voicemail', voicemail)
-
-        def set_if(line_id, id):
-            if line_id in sip_line:
-                raw_config[id] = sip_line[line_id]
-
-        set_if('proxy_ip', 'sip_proxy_ip')
-        set_if('proxy_port', 'sip_proxy_port')
-        set_if('backup_proxy_ip', 'sip_backup_proxy_ip')
-        set_if('backup_proxy_port', 'sip_backup_proxy_port')
-        set_if('outbound_proxy_ip', 'sip_outbound_proxy_ip')
-        set_if('outbound_proxy_port', 'sip_outbound_proxy_port')
-        set_if('registrar_ip', 'sip_registrar_ip')
-        set_if('registrar_port', 'sip_registrar_port')
-        set_if('backup_registrar_ip', 'sip_backup_registrar_ip')
-        set_if('backup_registrar_port', 'sip_backup_registrar_port')
-
-    def _add_fkeys(self, raw_config):
-        assert raw_config['sip_lines']
-        logger.debug('Func keys: %s', raw_config['funckeys'])
-
-        if raw_config['funckeys']:
-            fkeys_lines = [int(line) for line in raw_config['sip_lines']]
-            fkeys_start = max(fkeys_lines)
-
-            fkeys = {}
-            fkey_type = {
-                'blf': 21,
-                'speeddial': 2,
-            }
-
-            for line_no, line_info in raw_config['funckeys'].items():
-                line_id = str(fkeys_start + int(line_no))
-                fkeys[line_id] = raw_config['funckeys'][line_no]
-                fkeys[line_id]['feature_id'] = fkey_type[line_info['type']]
-
-            raw_config['XX_fkeys'] = fkeys
-
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^SEP[0-9A-F]{12}\.cnf\.xml$')
-
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'SEP{formatted_mac}.cnf.xml'
@@ -382,14 +308,10 @@ class BaseCiscoSipPlugin(StandardPlugin):
         # TODO check support for addons, and test what the addOnModules is
         #      really doing...
         raw_config['XX_addons'] = ''
-        raw_config['protocol'] = 'SIP'
         self._add_locale(raw_config)
         self._add_timezone(raw_config)
         self._add_xivo_phonebook_url(raw_config)
-        self._add_transport_proto(raw_config)
         self._update_call_managers(raw_config)
-        self._update_sip_lines(raw_config)
-        self._add_fkeys(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
@@ -403,24 +325,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
             logger.info('error while removing file: %s', e)
 
     def synchronize(self, device, raw_config):
-        try:
-            action = [
-                'Content-type=text/plain',
-                # Restart unregisters and re-downloads config files
-                # from the server, reset unregisters and reboots the phone
-                'Content=action=restart',
-                'Content=RegisterCallId={}',
-                'Content=ConfigVersionStamp={0000000000000000}',
-                'Content=DialplanVersionStamp={0000000000000000}',
-                'Content=SoftkeyVersionStamp={0000000000000000}',
-            ]
-            return synchronize.standard_sip_synchronize(
-                device, event='service-control', extra_vars=action
-            )
-        except TypeError:  # wazo-provd not up to date for extra_vars
-            return defer.fail(
-                Exception('operation not supported, please update your wazo-provd')
-            )
+        return defer.fail(Exception('operation not supported'))
 
     def is_sensitive_filename(self, filename):
         return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))

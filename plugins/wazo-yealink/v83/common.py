@@ -23,7 +23,7 @@ from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
 from twisted.internet import defer
 
-logger = logging.getLogger('plugin.xivo-yealink')
+logger = logging.getLogger('plugin.wazo-yealink')
 
 
 class BaseYealinkHTTPDeviceInfoExtractor:

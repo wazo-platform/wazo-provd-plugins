@@ -9,7 +9,7 @@ Depends on the following external programs:
 from subprocess import check_call
 
 
-@target('2.3', 'xivo-fanvil-2.3')
+@target('2.3', 'wazo-fanvil-2.3')
 def build_2_3(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
 

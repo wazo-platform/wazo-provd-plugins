@@ -23,7 +23,7 @@ from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer
 
-logger = logging.getLogger('plugin.xivo-snom')
+logger = logging.getLogger('plugin.wazo-snom')
 
 
 class BaseSnomHTTPDeviceInfoExtractor:

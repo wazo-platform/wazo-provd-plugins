@@ -9,21 +9,21 @@ Depends on the following external programs:
 from subprocess import check_call
 
 
-@target('v73', 'xivo-yealink-v73')
+@target('v73', 'wazo-yealink-v73')
 def build_v73(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v73/', path])
 
 
-@target('v80', 'xivo-yealink-v80')
+@target('v80', 'wazo-yealink-v80')
 def build_v80(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
 
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v80/', path])
 
 
-@target('v81', 'xivo-yealink-v81')
+@target('v81', 'wazo-yealink-v81')
 def build_v81(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
 
@@ -37,7 +37,7 @@ def build_v82(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v82/', path])
 
 
-@target('v83', 'xivo-yealink-v83')
+@target('v83', 'wazo-yealink-v83')
 def build_v83(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
 

@@ -11,7 +11,7 @@ import os.path
 from subprocess import check_call
 
 
-@target('8.7.5.35', 'xivo-snom-8.7.5.35')
+@target('8.7.5.35', 'wazo-snom-8.7.5.35')
 def build_8_7_5_35(path):
     MODELS = [
         ('300', 'f'),
@@ -71,7 +71,7 @@ def build_8_7_5_35(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', '8.7.5.35/', path])
 
 
-@target('8.9.3.40', 'xivo-snom-8.9.3.40')
+@target('8.9.3.40', 'wazo-snom-8.9.3.40')
 def build_8_9_3_40(path):
     MODELS = [('D745', 'r')]
 
@@ -131,7 +131,7 @@ def build_8_9_3_40(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', '8.9.3.40/', path])
 
 
-@target('8.9.3.60', 'xivo-snom-8.9.3.60')
+@target('8.9.3.60', 'wazo-snom-8.9.3.60')
 def build_8_9_3_60(path):
     MODELS = [
         ('D305', 'r'),
@@ -196,7 +196,7 @@ def build_8_9_3_60(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', '8.9.3.60/', path])
 
 
-@target('8.9.3.80', 'xivo-snom-8.9.3.80')
+@target('8.9.3.80', 'wazo-snom-8.9.3.80')
 def build_8_9_3_80(path):
     MODELS = [
         ('D305', 'r'),
