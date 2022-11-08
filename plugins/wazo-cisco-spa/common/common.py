@@ -20,6 +20,7 @@ from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
+from provd.servers.tftp.packet import Packet
 from twisted.internet import defer
 
 logger = logging.getLogger('plugins.wazo-cisco-spa')
@@ -150,8 +151,8 @@ class BaseCiscoTFTPDeviceInfoExtractor:
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request: dict):
-        packet = request['packet']
-        filename: str = packet['filename']
+        packet: Packet = request['packet']
+        filename = packet['filename'].decode('ascii')
         for test_fun in [self._test_spafile, self._test_init, self._test_atafile]:
             dev_info = test_fun(filename)
             if dev_info:

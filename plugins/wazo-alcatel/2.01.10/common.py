@@ -38,6 +38,7 @@ from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
+from provd.servers.tftp.packet import Packet
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-alcatel')
@@ -99,9 +100,9 @@ class BaseAlcatelTFTPDeviceInfoExtractor:
     def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: Dict[str, Packet]):
         filename = request['packet']['filename']
-        if filename == '/lanpbx.cfg':
+        if filename == b'/lanpbx.cfg':
             return {'vendor': VENDOR}
         return None
 

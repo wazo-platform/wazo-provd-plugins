@@ -34,6 +34,7 @@ from provd.servers.tftp.service import TFTPFileService
 from provd.services import JsonConfigPersister, PersistentConfigureServiceDecorator
 from provd.util import norm_mac, format_mac
 from provd.devices.ident import RequestType
+from provd.servers.tftp.packet import Packet
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-zenitel')
@@ -45,11 +46,11 @@ class BaseZenitelTFTPDeviceInfoExtractor:
     def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: dict):
+    def _do_extract(self, request: Dict[str, Packet]):
         # filename:
         #   "ipst_config.cfg"
         #   "ipst_config_01_02_03_04_05_ab.cfg"
-        filename = request['packet']['filename']
+        filename = request['packet']['filename'].decode('ascii')
         m = self._FILENAME_REGEX.match(filename)
         if m:
             dev_info = {'vendor': 'Zenitel', 'model': 'IP station'}

@@ -35,6 +35,7 @@ from provd.servers.tftp.service import TFTPFileService
 from provd.util import format_mac, norm_mac
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
+from provd.servers.tftp.packet import Packet
 from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-avaya')
@@ -92,8 +93,8 @@ class BaseAvayaTFTPDeviceInfoExtractor:
     def extract(self, request: dict, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: dict):
-        filename = request['packet']['filename']
+    def _do_extract(self, request: Dict[str, Packet]):
+        filename = request['packet']['filename'].decode('ascii')
         if filename in _FILENAME_MAP:
             return {'vendor': 'Avaya', 'model': _FILENAME_MAP[filename]}
         return None
