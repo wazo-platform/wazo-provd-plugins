@@ -38,7 +38,7 @@ from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
-from provd.servers.tftp.packet import Packet
+from provd.servers.tftp.service import TFTPRequest
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-alcatel')
@@ -97,10 +97,10 @@ class BaseAlcatelTFTPDeviceInfoExtractor:
     # in NOE mode to SIP mode, since it seems like it's not possible for the
     # phone to do HTTP request in NOE mode
 
-    def extract(self, request: dict, request_type: RequestType):
+    def extract(self, request: TFTPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: Dict[str, Packet]):
+    def _do_extract(self, request: TFTPRequest):
         filename = request['packet']['filename']
         if filename == b'/lanpbx.cfg':
             return {'vendor': VENDOR}

@@ -18,8 +18,9 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
-from provd.devices.ident import RequestType
+from provd.devices.ident import RequestType, DHCPRequest
 from provd.servers.tftp.packet import Packet
+from provd.servers.tftp.service import TFTPRequest
 from twisted.internet import defer
 
 logger = logging.getLogger('plugins.wazo-cisco-sip')
@@ -34,17 +35,17 @@ def _norm_model(raw_model: str) -> str:
 class BaseCiscoDHCPDeviceInfoExtractor:
     _CISCO_VDI_REGEX = re.compile(r'^CISCO (ATA[0-9]{3})-MPP')
 
-    def extract(self, request: dict, request_type: RequestType):
+    def extract(self, request: DHCPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: dict):
+    def _do_extract(self, request: DHCPRequest):
         options: dict = request['options']
         logger.debug('_do_extract request: %s', request)
         if 60 in options:
             return self._extract_from_vdi(options[60])
         return None
 
-    def _extract_from_vdi(self, vdi):
+    def _extract_from_vdi(self, vdi: str):
         # Vendor class identifier:
         # CISCO ATA191-MPP
         # CISCO ATA192-MPP
@@ -52,8 +53,7 @@ class BaseCiscoDHCPDeviceInfoExtractor:
         m = self._CISCO_VDI_REGEX.match(vdi)
         if m:
             model = m.group(1)
-            dev_info = {'vendor': 'Cisco', 'model': _norm_model(model)}
-            return dev_info
+            return {'vendor': 'Cisco', 'model': _norm_model(model)}
         return None
 
 
@@ -107,10 +107,10 @@ class BaseCiscoHTTPDeviceInfoExtractor:
 class BaseCiscoTFTPDeviceInfoExtractor:
     _MACFILE_REGEX = re.compile(r'^/([\da-fA-F]{12})\.xml$')
 
-    def extract(self, request: dict, request_type: RequestType):
+    def extract(self, request: TFTPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: dict):
+    def _do_extract(self, request: TFTPRequest):
         packet: Packet = request['packet']
         filename = packet['filename'].decode('ascii')
         dev_info = self._test_macfile(filename)

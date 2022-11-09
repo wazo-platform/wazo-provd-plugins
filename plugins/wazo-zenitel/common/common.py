@@ -34,7 +34,7 @@ from provd.servers.tftp.service import TFTPFileService
 from provd.services import JsonConfigPersister, PersistentConfigureServiceDecorator
 from provd.util import norm_mac, format_mac
 from provd.devices.ident import RequestType
-from provd.servers.tftp.packet import Packet
+from provd.servers.tftp.service import TFTPRequest
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-zenitel')
@@ -43,10 +43,10 @@ logger = logging.getLogger('plugin.wazo-zenitel')
 class BaseZenitelTFTPDeviceInfoExtractor:
     _FILENAME_REGEX = re.compile(r'^ipst_config((?:_\w\w){6})?\.cfg$')
 
-    def extract(self, request: dict, request_type: RequestType):
+    def extract(self, request: TFTPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: Dict[str, Packet]):
+    def _do_extract(self, request: TFTPRequest):
         # filename:
         #   "ipst_config.cfg"
         #   "ipst_config_01_02_03_04_05_ab.cfg"

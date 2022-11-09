@@ -35,7 +35,7 @@ from provd.servers.tftp.service import TFTPFileService
 from provd.util import format_mac, norm_mac
 from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
-from provd.servers.tftp.packet import Packet
+from provd.servers.tftp.service import TFTPRequest
 from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-avaya')
@@ -53,7 +53,7 @@ class BaseAvayaHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^AVAYA/[^/]+/([\d.]{11})$')
     _PATH_REGEX = re.compile(r'\bSIP([\dA-F]{12})\.cfg$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
     def _do_extract(self, request: Request):
@@ -90,10 +90,10 @@ class BaseAvayaTFTPDeviceInfoExtractor:
     # TFTP is only used for the update from UNIStim to SIP, so we only
     # need minimal information to get the plugin association working.
 
-    def extract(self, request: dict, request_type: RequestType):
+    def extract(self, request: TFTPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: Dict[str, Packet]):
+    def _do_extract(self, request: TFTPRequest):
         filename = request['packet']['filename'].decode('ascii')
         if filename in _FILENAME_MAP:
             return {'vendor': 'Avaya', 'model': _FILENAME_MAP[filename]}

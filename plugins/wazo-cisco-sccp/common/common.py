@@ -16,8 +16,9 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.servers.tftp.service import TFTPFileService
 from provd.util import norm_mac, format_mac
 from provd.servers.http_site import Request
-from provd.devices.ident import RequestType
+from provd.devices.ident import RequestType, DHCPRequest
 from provd.servers.tftp.packet import Packet
+from provd.servers.tftp.service import TFTPRequest
 from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-cisco')
@@ -46,15 +47,15 @@ class BaseCiscoPgAssociator(BasePgAssociator):
 class BaseCiscoDHCPDeviceInfoExtractor:
     _VDI_REGEX = re.compile(r'\bPhone (?:79(\d\d)|CP-79(\d\d)G|CP-(\d\d\d\d))')
 
-    def extract(self, request: dict, request_type: RequestType):
+    def extract(self, request: DHCPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: DHCPRequest):
         options = request['options']
         if 60 in options:
             return self._extract_from_vdi(options[60])
 
-    def _extract_from_vdi(self, vdi):
+    def _extract_from_vdi(self, vdi: str):
         # Vendor class identifier:
         #   "Cisco Systems, Inc." (Cisco 6901 9.1.2/9.2.1)
         #   "Cisco Systems, Inc. IP Phone 7912" (Cisco 7912 9.0.3)
@@ -117,10 +118,10 @@ class BaseCiscoTFTPDeviceInfoExtractor:
         re.compile(r'^ITLFile\.tlv$'),
     ]
 
-    def extract(self, request: dict, request_type: RequestType):
+    def extract(self, request: TFTPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: dict):
+    def _do_extract(self, request: TFTPRequest):
         packet: Packet = request['packet']
         filename = packet['filename'].decode('ascii')
         if self._CIPC_REGEX.match(filename):

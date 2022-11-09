@@ -25,7 +25,7 @@ from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHel
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
-from provd.devices.ident import RequestType
+from provd.devices.ident import RequestType, DHCPRequest
 from twisted.internet import defer
 
 
@@ -36,15 +36,15 @@ class DigiumDHCPDeviceInfoExtractor:
 
     _VDI_REGEX = re.compile(r'^digium_(D\d\d)_([\d_]+)$')
 
-    def extract(self, request: dict, request_type: RequestType):
+    def extract(self, request: DHCPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: DHCPRequest):
         options = request['options']
         if 60 in options:
             return self._extract_from_vdi(options[60])
 
-    def _extract_from_vdi(self, vdi):
+    def _extract_from_vdi(self, vdi: str):
         # Vendor Class Identifier:
         #   digium_D40_1_0_5_46476
         #   digium_D40_1_1_0_0_48178
@@ -54,8 +54,7 @@ class DigiumDHCPDeviceInfoExtractor:
         if match:
             model = match.group(1)
             fw_version = match.group(2).replace('_', '.')
-            dev_info = {'vendor': 'Digium', 'model': model, 'version': fw_version}
-            return dev_info
+            return {'vendor': 'Digium', 'model': model, 'version': fw_version}
 
 
 class DigiumHTTPDeviceInfoExtractor:
@@ -156,7 +155,6 @@ class BaseDigiumPlugin(StandardPlugin):
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:
             return None
-
         return self._dev_specific_filename(device)
 
     def is_sensitive_filename(self, filename):
@@ -180,8 +178,7 @@ class BaseDigiumPlugin(StandardPlugin):
         return f'{self._format_mac(device)}.cfg'
 
     def _dev_contact_filename(self, device):
-        contact_filename = f'{self._format_mac(device)}-contacts.xml'
-        return contact_filename
+        return f'{self._format_mac(device)}-contacts.xml'
 
     def _transform_funckeys(self, raw_config):
-        return dict((int(k), v) for k, v in raw_config['funckeys'].items())
+        return {int(k): v for k, v in raw_config['funckeys'].items()}

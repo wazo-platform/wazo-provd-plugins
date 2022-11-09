@@ -33,7 +33,7 @@ from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper
 from provd.util import norm_mac
 from twisted.internet import defer, threads
-from provd.devices.ident import RequestType
+from provd.devices.ident import RequestType, DHCPRequest
 
 logger = logging.getLogger('plugin.wazo-gigaset')
 
@@ -50,16 +50,16 @@ class BaseGigasetDHCPDeviceInfoExtractor:
         'C610_IP': 'C610 IP',
     }
 
-    def extract(self, request: dict, request_type: RequestType):
+    def extract(self, request: DHCPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: dict):
+    def _do_extract(self, request: DHCPRequest):
         options = request['options']
         if 60 in options:
             return self._extract_from_vdi(options[60])
         return None
 
-    def _extract_from_vdi(self, vdi):
+    def _extract_from_vdi(self, vdi: str):
         # Vendor class identifier:
         #   "C470IP"
         #   "C470_IP"

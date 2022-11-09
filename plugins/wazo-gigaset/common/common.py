@@ -21,7 +21,7 @@ from provd import plugins
 from provd import tzinform
 from provd.servers.http import HTTPNoListingFileService
 from twisted.internet import defer
-from provd.devices.ident import RequestType
+from provd.devices.ident import RequestType, DHCPRequest
 
 logger = logging.getLogger('plugin.wazo-gigaset')
 
@@ -34,22 +34,20 @@ class GigasetDHCPDeviceInfoExtractor:
         'N510_IP_PRO': 'N510 IP PRO',
     }
 
-    def extract(self, request: dict, request_type: RequestType):
+    def extract(self, request: DHCPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: DHCPRequest):
         options = request['options']
         if 60 in options:
             return self._extract_from_vdi(options[60])
-        else:
-            return None
+        return None
 
-    def _extract_from_vdi(self, vdi):
+    def _extract_from_vdi(self, vdi: str):
         # Vendor class identifier:
         #   "Gigaset_N720_DM_PRO"
         #   "N510_IP_PRO"
 
-        vdi_to_check = ''
         vdi_split = vdi.split('_')
 
         if vdi.startswith(VENDOR):
