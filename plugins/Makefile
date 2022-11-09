@@ -10,9 +10,9 @@ FIRMWARES_PATH := _firmwares
 
 REMOTE_HOST := webserver.wazo.community
 REMOTE_USER := root
-REMOTE_TESTING_PATH := /var/www/provd/plugins/1/testing
-REMOTE_STABLE_PATH := /var/www/provd/plugins/1/stable
-REMOTE_ARCHIVE_PATH := /var/www/provd/plugins/1/archive
+REMOTE_TESTING_PATH := /var/www/provd/plugins/2/testing
+REMOTE_STABLE_PATH := /var/www/provd/plugins/2/stable
+REMOTE_ARCHIVE_PATH := /var/www/provd/plugins/2/archive
 REMOTE_FIRMWARES_PATH := /var/www/provd/firmwares
 
 
