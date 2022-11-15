@@ -82,10 +82,10 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         return None
 
     def _extract_from_path(self, request: Request) -> Optional[Dict[str, str]]:
-        if request.path.startswith(b'/001565'):
+        if request.path[1:7].decode('ascii') in KNOWN_MAC_PREFIXES:
             raw_mac = request.path[1:-4]
             try:
-                return {'mac': norm_mac(raw_mac.decode('ascii'))}
+                return {'vendor': 'Yealink', 'mac': norm_mac(raw_mac.decode('ascii'))}
             except ValueError as e:
                 logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
         return None

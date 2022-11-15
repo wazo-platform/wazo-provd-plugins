@@ -1,34 +1,16 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2021-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
-
-from __future__ import absolute_import
-from __future__ import unicode_literals
-
 from textwrap import dedent
-
 import pytest
-import six
-import six.moves as sm
-
-from mock import MagicMock, Mock, patch, sentinel, PropertyMock
+from unittest.mock import MagicMock, patch, sentinel
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import (
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-    IMPROBABLE_SUPPORT,
-    PROBABLE_SUPPORT,
-)
+from provd.devices.pgasso import DeviceSupport
 from provd.tzinform import TimezoneNotFoundError
 
 from ..common import (
     BaseYealinkHTTPDeviceInfoExtractor,
     BaseYealinkPgAssociator,
 )
-
-if six.PY2:
-    FileNotFoundError = OSError
 
 TEST_LINES = """\
 linekey.1.type = 13
@@ -49,26 +31,26 @@ linekey.3.label = Test Park
 """
 
 
-class TestInfoExtraction(object):
+class TestInfoExtraction:
     @classmethod
     def setup_class(cls):
         cls.http_info_extractor = BaseYealinkHTTPDeviceInfoExtractor()
 
-    def _mock_request(self, ua=None, path=None):
+    def _mock_request(self, ua: bytes = None, path: bytes = None):
         request = MagicMock()
         request.getHeader = MagicMock(return_value=ua)
         request.path = path
         return request
 
     def test_http_ua_extractor_when_all_info(self):
-        ua_infos = {
-            'Yealink SIP-T20P 9.72.0.30 00:15:65:5e:16:7c': {
+        ua_info = {
+            b'Yealink SIP-T20P 9.72.0.30 00:15:65:5e:16:7c': {
                 'vendor': 'Yealink',
                 'model': 'T20P',
                 'version': '9.72.0.30',
                 'mac': '00:15:65:5e:16:7c',
             },
-            'Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72': {
+            b'Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72': {
                 'vendor': 'Yealink',
                 'model': 'T31G',
                 'version': '124.85.257.55',
@@ -76,10 +58,9 @@ class TestInfoExtraction(object):
             },
         }
 
-        for ua, info in ua_infos.items():
-            assert six.viewitems(info) <= six.viewitems(
-                self.http_info_extractor._do_extract(self._mock_request(ua=ua))
-            )
+        for ua, info in ua_info.items():
+            result = self.http_info_extractor._do_extract(self._mock_request(ua=ua))
+            assert info.items() <= result.items()
 
     def test_http_ua_extractor_when_no_info(self):
         assert self.http_info_extractor._extract_from_ua('') is None
@@ -87,30 +68,39 @@ class TestInfoExtraction(object):
     @patch('v86.common.defer')
     def test_extract(self, mocked_defer):
         self.http_info_extractor.extract(
-            self._mock_request('Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72'),
+            self._mock_request(b'Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72'),
             None,
         )
         mocked_defer.succeed.assert_called_with(
-            {'mac': '80:5e:c0:d5:7d:72', 'version': '124.85.257.55', 'vendor': 'Yealink', 'model': 'T31G'}
+            {
+                'mac': '80:5e:c0:d5:7d:72',
+                'version': '124.85.257.55',
+                'vendor': 'Yealink',
+                'model': 'T31G',
+            }
         )
 
     def test_http_extractor_when_no_ua_extracts_mac_from_path(self):
         macs_from_paths = {
-            '/001565123456.cfg': '00:15:65:12:34:56',
-            '/e434d7123456.cfg': 'e4:34:d7:12:34:56',
-            '/805ec0123456.cfg': '80:5e:c0:12:34:56',
-            '/805e0c123456.cfg': '80:5e:0c:12:34:56',
-            '/249ad8123456.cfg': '24:9a:d8:12:34:56',
+            b'/001565123456.cfg': '00:15:65:12:34:56',
+            b'/e434d7123456.cfg': 'e4:34:d7:12:34:56',
+            b'/805ec0123456.cfg': '80:5e:c0:12:34:56',
+            b'/805e0c123456.cfg': '80:5e:0c:12:34:56',
+            b'/249ad8123456.cfg': '24:9a:d8:12:34:56',
         }
 
-        for path, mac in six.iteritems(macs_from_paths):
+        for path, mac in macs_from_paths.items():
             result = self.http_info_extractor._do_extract(self._mock_request(path=path))
-            assert six.viewitems({u'vendor': u'Yealink', u'mac': mac}) <= six.viewitems(result)
+            if result is None:
+                raise Exception(path, mac)
+            assert {'vendor': 'Yealink', 'mac': mac}.items() <= result.items()
 
     @patch('v86.common.logger')
     def test_invalid_mac(self, mocked_logger):
-        self.http_info_extractor._extract_from_ua('Yealink SIP-T20P 9.72.0.30 00:15:6525ef16a7c')
-        message, mac, exception = mocked_logger.warning.call_args.args
+        self.http_info_extractor._extract_from_ua(
+            'Yealink SIP-T20P 9.72.0.30 00:15:6525ef16a7c'
+        )
+        message, mac, exception = mocked_logger.warning.call_args[0]
         assert message == 'Could not normalize MAC address "%s": %s'
         assert mac == '00:15:6525ef16a7c'
         assert isinstance(exception, ValueError)
@@ -118,45 +108,53 @@ class TestInfoExtraction(object):
 
         mocked_logger.reset_mock()
         request = MagicMock()
-        request.path = '/e434d7jabd'
+        request.path = b'/e434d7jabd'
         self.http_info_extractor._extract_from_path(request)
-        message, mac, exception = mocked_logger.warning.call_args.args
+        message, mac, exception = mocked_logger.warning.call_args[0]
         assert message == 'Could not normalize MAC address "%s": %s'
-        assert mac == 'e434d7'
+        assert mac == b'e434d7'
         assert isinstance(exception, ValueError)
         assert str(exception) == 'invalid MAC string'
 
 
-class TestPluginAssociation(object):
+class TestPluginAssociation:
     def test_plugin_association_when_all_info_match(self, v86_entry):
         plugin_associator = BaseYealinkPgAssociator(v86_entry.MODEL_VERSIONS)
-        for model, version in six.iteritems(v86_entry.MODEL_VERSIONS):
-            assert plugin_associator._do_associate('Yealink', model, version) == FULL_SUPPORT
+        for model, version in v86_entry.MODEL_VERSIONS.items():
+            support = plugin_associator._do_associate('Yealink', model, version)
+            assert support == DeviceSupport.EXACT
 
     def test_plugin_association_when_only_vendor_and_model_match(self, v86_entry):
         plugin_associator = BaseYealinkPgAssociator(v86_entry.MODEL_VERSIONS)
-        for model in six.iterkeys(v86_entry.MODEL_VERSIONS):
-            assert plugin_associator._do_associate('Yealink', model, None) == COMPLETE_SUPPORT
+        for model in v86_entry.MODEL_VERSIONS:
+            support = plugin_associator._do_associate('Yealink', model, None)
+            assert support == DeviceSupport.COMPLETE
 
     def test_plugin_association_when_only_vendor_matches(self, v86_entry):
         plugin_associator = BaseYealinkPgAssociator(v86_entry.MODEL_VERSIONS)
-        assert plugin_associator._do_associate('Yealink', None, None) == PROBABLE_SUPPORT
+        support = plugin_associator._do_associate('Yealink', None, None)
+        assert support == DeviceSupport.PROBABLE
 
     def test_plugin_association_when_nothing_matches(self, v86_entry):
         plugin_associator = BaseYealinkPgAssociator(v86_entry.MODEL_VERSIONS)
-        assert plugin_associator._do_associate('DoesNotMatch', 'NothingPhone', '1.2.3') == IMPROBABLE_SUPPORT
+        support = plugin_associator._do_associate(
+            'DoesNotMatch', 'NothingPhone', '1.2.3'
+        )
+        assert support == DeviceSupport.IMPROBABLE
 
     def test_plugin_association_does_not_match_when_empty_strings(self, v86_entry):
         plugin_associator = BaseYealinkPgAssociator(v86_entry.MODEL_VERSIONS)
-        assert plugin_associator._do_associate('', '', '') == IMPROBABLE_SUPPORT
+        assert plugin_associator._do_associate('', '', '') == DeviceSupport.IMPROBABLE
 
 
-class TestPlugin(object):
+class TestPlugin:
     @patch('v86.common.FetchfwPluginHelper')
     def test_init(self, fetch_fw, v86_entry):
         fetch_fw.return_value.services.return_value = sentinel.fetchfw_services
         fetch_fw.new_downloaders.return_value = sentinel.fetchfw_downloaders
-        plugin = v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())
+        plugin = v86_entry.YealinkPlugin(
+            MagicMock(), 'test_dir', MagicMock(), MagicMock()
+        )
         assert plugin.services == sentinel.fetchfw_services
         fetch_fw.assert_called_once_with('test_dir', sentinel.fetchfw_downloaders)
 
@@ -179,11 +177,13 @@ class TestPlugin(object):
             'locale': 'en_US',
             'funckeys': {},
             'sip_proxy_ip': '1.1.1.1',
-            'sip_lines': {'1': {'number': '5888'}}
+            'sip_lines': {'1': {'number': '5888'}},
         }
         v86_plugin._tpl_helper.get_dev_template.return_value = 'template'
         v86_plugin.configure(device, raw_config)
-        v86_plugin._tpl_helper.get_dev_template.assert_called_with('805ec0d57d72.cfg', device)
+        v86_plugin._tpl_helper.get_dev_template.assert_called_with(
+            '805ec0d57d72.cfg', device
+        )
         v86_plugin._tpl_helper.dump.assert_called_with(
             'template', raw_config, 'test_dir/var/tftpboot/805ec0d57d72.cfg', 'UTF-8'
         )
@@ -196,7 +196,7 @@ class TestPlugin(object):
     @patch('v86.common.logger')
     def test_deconfigure_no_file(self, mocked_logger, v86_plugin):
         v86_plugin.deconfigure({'mac': '00:00:00:00:00:00'})
-        message, exception = mocked_logger.info.call_args.args
+        message, exception = mocked_logger.info.call_args[0]
         assert message == 'error while removing file: %s'
         assert isinstance(exception, FileNotFoundError)
 
@@ -208,9 +208,10 @@ class TestPlugin(object):
 
     def test_get_remote_state_trigger_filename(self, v86_plugin):
         assert v86_plugin.get_remote_state_trigger_filename({}) is None
-        assert v86_plugin.get_remote_state_trigger_filename(
-            {'mac': '80:5e:c0:d5:7d:72'}
-        ) == '805ec0d57d72.cfg'
+        assert (
+            v86_plugin.get_remote_state_trigger_filename({'mac': '80:5e:c0:d5:7d:72'})
+            == '805ec0d57d72.cfg'
+        )
 
     def test_sensitive_file(self, v86_plugin):
         assert v86_plugin.is_sensitive_filename('patate') is False
@@ -238,7 +239,10 @@ class TestPlugin(object):
         raw_config = {'config_version': 1}
         v86_plugin._add_xivo_phonebook_url(raw_config)
         provd_plugins.add_xivo_phonebook_url.assert_called_with(
-            raw_config, 'yealink', entry_point='lookup', qs_suffix='term=#SEARCH',
+            raw_config,
+            'yealink',
+            entry_point='lookup',
+            qs_suffix='term=#SEARCH',
         )
 
     def test_sip_lines(self, v86_plugin):
@@ -252,7 +256,7 @@ class TestPlugin(object):
                 '1': {
                     'number': '5888',
                 }
-            }
+            },
         }
         v86_plugin._add_xx_sip_lines({'model': 'patate'}, raw_config)
         assert raw_config['sip_lines'] == raw_config['XX_sip_lines']
@@ -267,7 +271,7 @@ class TestPlugin(object):
                 'voicemail': '*98',
                 'proxy_ip': '1.1.1.1',
                 'proxy_port': '5080',
-                'XX_template_id': 5
+                'XX_template_id': 5,
             },
             '2': None,
             '3': None,
@@ -306,7 +310,7 @@ class TestPlugin(object):
             local_time.offset_time = 60"""
         )
         v86_plugin._add_timezone({'timezone': 'Doesnt/Exist'})
-        message, exception = mocked_logger.warning.call_args.args
+        message, exception = mocked_logger.warning.call_args[0]
         assert message == 'Unknown timezone: %s'
         assert isinstance(exception, TimezoneNotFoundError)
 
@@ -334,9 +338,7 @@ class TestPlugin(object):
                     'label': 'Test Park',
                 },
             },
-            'sip_lines': {
-                '1': {'number': '5888'}
-            },
+            'sip_lines': {'1': {'number': '5888'}},
             'exten_pickup_call': '1234',
         }
         v86_plugin._add_fkeys({'model': 'T32G'}, raw_config)
@@ -346,23 +348,31 @@ class TestPlugin(object):
         assert raw_config['XX_fkeys'] == TEST_LINES + '\n'
 
     def _build_exp_expectation(self, start_line, end_line, expansion_number):
-        return ''.join([
-           dedent('''
+        return ''.join(
+            [
+                dedent(
+                    '''
                linekey.{line}.type = 0
                linekey.{line}.line = %NULL%
                linekey.{line}.value = %NULL%
                linekey.{line}.label = %NULL%
-           ''').format(line=line)
-           for line in sm.range(start_line, end_line + 1)
-        ] + [
-            dedent('''
+           '''
+                ).format(line=line)
+                for line in range(start_line, end_line + 1)
+            ]
+            + [
+                dedent(
+                    '''
             expansion_module.{page}.key.{key}.type = 0
             expansion_module.{page}.key.{key}.line = %NULL%
             expansion_module.{page}.key.{key}.value = %NULL%
             expansion_module.{page}.key.{key}.label = %NULL%
-            ''').format(key=key, page=page)
-            for page in sm.range(1, 7) for key in sm.range(1, expansion_number + 1)
-        ])
+            '''
+                ).format(key=key, page=page)
+                for page in range(1, 7)
+                for key in range(1, expansion_number + 1)
+            ]
+        )
 
     def test_fkeys_with_exp40(self, v86_plugin):
         base_raw_config = {
@@ -383,14 +393,13 @@ class TestPlugin(object):
                     'label': 'Test Park',
                 },
             },
-            'sip_lines': {
-                '1': {'number': '5888'}
-            },
+            'sip_lines': {'1': {'number': '5888'}},
             'exten_pickup_call': '1234',
         }
         raw_config = dict(**base_raw_config)
         v86_plugin._add_fkeys({'model': 'T27G'}, raw_config)
-        assert raw_config['XX_fkeys'] == TEST_LINES + self._build_exp_expectation(4, 21, 40)
+        assert raw_config['XX_fkeys'] == TEST_LINES + self._build_exp_expectation(
+            4, 21, 40
+        )
         raw_config = dict(**base_raw_config)
         v86_plugin._add_fkeys({'model': 'T5'}, raw_config)
-
