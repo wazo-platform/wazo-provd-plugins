@@ -26,7 +26,6 @@ from ..common import (
     BaseYealinkHTTPDeviceInfoExtractor,
     BaseYealinkPgAssociator,
 )
-from ..models import MODEL_VERSIONS
 
 if six.PY2:
     FileNotFoundError = OSError
@@ -129,26 +128,27 @@ class TestInfoExtraction(object):
 
 
 class TestPluginAssociation(object):
-    @classmethod
-    def setup_class(cls):
-        cls.plugin_associator = BaseYealinkPgAssociator(MODEL_VERSIONS)
+    def test_plugin_association_when_all_info_match(self, v86_entry):
+        plugin_associator = BaseYealinkPgAssociator(v86_entry.MODEL_VERSIONS)
+        for model, version in six.iteritems(v86_entry.MODEL_VERSIONS):
+            assert plugin_associator._do_associate('Yealink', model, version) == FULL_SUPPORT
 
-    def test_plugin_association_when_all_info_match(self):
-        for model, version in six.iteritems(MODEL_VERSIONS):
-            assert self.plugin_associator._do_associate('Yealink', model, version) == FULL_SUPPORT
+    def test_plugin_association_when_only_vendor_and_model_match(self, v86_entry):
+        plugin_associator = BaseYealinkPgAssociator(v86_entry.MODEL_VERSIONS)
+        for model in six.iterkeys(v86_entry.MODEL_VERSIONS):
+            assert plugin_associator._do_associate('Yealink', model, None) == COMPLETE_SUPPORT
 
-    def test_plugin_association_when_only_vendor_and_model_match(self):
-        for model in six.iterkeys(MODEL_VERSIONS):
-            assert self.plugin_associator._do_associate('Yealink', model, None) == COMPLETE_SUPPORT
+    def test_plugin_association_when_only_vendor_matches(self, v86_entry):
+        plugin_associator = BaseYealinkPgAssociator(v86_entry.MODEL_VERSIONS)
+        assert plugin_associator._do_associate('Yealink', None, None) == PROBABLE_SUPPORT
 
-    def test_plugin_association_when_only_vendor_matches(self):
-        assert self.plugin_associator._do_associate('Yealink', None, None) == PROBABLE_SUPPORT
+    def test_plugin_association_when_nothing_matches(self, v86_entry):
+        plugin_associator = BaseYealinkPgAssociator(v86_entry.MODEL_VERSIONS)
+        assert plugin_associator._do_associate('DoesNotMatch', 'NothingPhone', '1.2.3') == IMPROBABLE_SUPPORT
 
-    def test_plugin_association_when_nothing_matches(self):
-        assert self.plugin_associator._do_associate('DoesNotMatch', 'NothingPhone', '1.2.3') == IMPROBABLE_SUPPORT
-
-    def test_plugin_association_does_not_match_when_empty_strings(self):
-        assert self.plugin_associator._do_associate('', '', '') == IMPROBABLE_SUPPORT
+    def test_plugin_association_does_not_match_when_empty_strings(self, v86_entry):
+        plugin_associator = BaseYealinkPgAssociator(v86_entry.MODEL_VERSIONS)
+        assert plugin_associator._do_associate('', '', '') == IMPROBABLE_SUPPORT
 
 
 class TestPlugin(object):
@@ -165,7 +165,7 @@ class TestPlugin(object):
         v86_plugin._tpl_helper.get_template.return_value = 'template'
         v86_plugin.configure_common(raw_config)
         v86_plugin._tpl_helper.get_template.assert_called_with('common/dect_model.tpl')
-        assert len(v86_plugin._tpl_helper.dump.mock_calls) == 14
+        assert len(v86_plugin._tpl_helper.dump.mock_calls) == 15
 
     def test_configure(self, v86_plugin):
         device = {

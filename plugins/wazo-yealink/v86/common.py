@@ -11,7 +11,7 @@ import six
 
 from six.moves import map
 from six.moves import range
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 from provd import plugins
 from provd import tzinform
@@ -32,9 +32,16 @@ from provd.plugins import (
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import format_mac, norm_mac
 
-from .models import KNOWN_MAC_PREFIXES
 
 logger = logging.getLogger('plugin.wazo-yealink')
+
+KNOWN_MAC_PREFIXES = (
+    '001565',
+    'e434d7',
+    '805ec0',
+    '805e0c',  # NOTE(afournier): not a mistake
+    '249ad8',
+)
 
 
 class BaseYealinkHTTPDeviceInfoExtractor(object):
