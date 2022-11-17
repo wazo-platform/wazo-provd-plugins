@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2010-2014 Avencall
+# Copyright (C) 2010-2022 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,8 +20,8 @@ from provd.servers.tftp.service import TFTPFileService
 
 class ZeroPlugin(StandardPlugin):
     IS_PLUGIN = True
-    
+
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         self.tftp_service = TFTPFileService(self._tftpboot_dir)
         self.http_service = HTTPNoListingFileService(self._tftpboot_dir)

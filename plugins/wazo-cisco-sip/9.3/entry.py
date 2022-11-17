@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2018 Wazo Authors
+# Copyright (C) 2018-2022 Wazo Authors
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,8 +17,8 @@ common = {}
 execfile_('common.py', common)
 
 MODELS = [
-    u'8941',
-    u'8945',
+    '8941',
+    '8945',
 ]
 
 

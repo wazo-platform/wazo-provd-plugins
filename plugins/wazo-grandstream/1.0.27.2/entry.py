@@ -1,16 +1,14 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 common = {}
 execfile_('common.py', common)
 
 MODELS = [
-    u'HT801',
-    u'HT802',
+    'HT801',
+    'HT802',
 ]
-VERSION = u'1.0.27.2'
+VERSION = '1.0.27.2'
 
 
 class GrandstreamPlugin(common['BaseGrandstreamPlugin']):

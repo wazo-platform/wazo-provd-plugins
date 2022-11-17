@@ -66,7 +66,7 @@ template.{{ template['id'] }}.sip_server.2.transport_type = {{ XX_sip_transport 
 {% endif -%}
 {% endfor -%}
 
-{% for line_no, line in XX_sip_lines.iteritems() -%}
+{% for line_no, line in XX_sip_lines.items() -%}
 {% if line -%}
 account.{{ line_no }}.enable = 1
 account.{{ line_no }}.label = {{ line['number']|d(line['display_name']) }}

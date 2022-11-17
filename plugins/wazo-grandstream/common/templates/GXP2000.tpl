@@ -20,7 +20,7 @@
     P290={ [*x]+ }
     P81=1
 {# SIP per-line settings -#}
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
   {% if line_no == '1' %}
     P271=1
     P270={{ line['display_name'] }}

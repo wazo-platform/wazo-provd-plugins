@@ -64,7 +64,7 @@
 <SIP_CONFIG_MODULE>
 <SIP__Port>5060</SIP__Port>
 <SIP_Line_List>
-{% for line_no, line in sip_lines.iteritems() -%}
+{% for line_no, line in sip_lines.items() -%}
 {% if line -%}
 <SIP_Line_List_Entry>
 <ID>SIP{{ line_no }}</ID>
@@ -162,7 +162,7 @@
 
 <DSSKEY_CONFIG_MODULE>
 
-{% for line_no, line in sip_lines.iteritems() -%}
+{% for line_no, line in sip_lines.items() -%}
 <Sidekey_Config1>
 <Sidekey_Config1_Entry>
 <ID>Fkey{{ line_no }}</ID>
@@ -190,7 +190,7 @@
 {% else -%}
 <Menu_Password>123</Menu_Password>
 {% endif -%}
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
 <LCD_Title>{{ line['display_name']|e }} {{ line['number'] }}</LCD_Title>
 {% endfor %}
 <Time_Display_Style>0</Time_Display_Style>

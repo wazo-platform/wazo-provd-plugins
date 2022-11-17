@@ -1,5 +1,5 @@
 import pytest
-from mock import MagicMock, patch
+from unittest.mock import MagicMock, patch
 
 from ..common import BaseYealinkPgAssociator, BaseYealinkPlugin
 
@@ -15,5 +15,7 @@ def v86_entry(module_initializer):
 
 @pytest.fixture
 def v86_plugin(v86_entry):
-    with patch('v86.common.FetchfwPluginHelper'), patch('v86.common.TemplatePluginHelper'):
+    with patch('v86.common.FetchfwPluginHelper'), patch(
+        'v86.common.TemplatePluginHelper'
+    ):
         yield v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())

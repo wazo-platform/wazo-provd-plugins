@@ -2,6 +2,11 @@
 
 `wazo-provd-plugins` is the complete collection of phone provisioning plugins available for Wazo.
 
+## Repositories and branches
+
+The plugins in the `master` branch for the latest release are Python 3 only and are published to the new repository URL.
+The old versions of the plugins compatible with Python 2 are location in the branch `python2`.
+
 ## Plugin information files
 
 The plugin information files (`plugin-info`) contain metadata about plugins in JSON format.
@@ -46,7 +51,7 @@ Create a new subdirectory named after the brand in `plugins/_firmwares` and put 
 named `.brand` in it. Commit it to the git repository. Then, add the firmware files and execute
 `make upload-firmwares`.
 
-## Download all firmwares
+## Download all firmware
 
 If you wish to download all firmwares present on the web server, you can execute
 `make download-firmwares`

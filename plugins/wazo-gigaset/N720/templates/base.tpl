@@ -186,7 +186,7 @@
     <!--VoIP 1 -->
 
     {%- if sip_lines %}
-        {%- for line_no, line in sip_lines.iteritems() %}
+        {%- for line_no, line in sip_lines.items() %}
         {%- set lnb = line_no|int() - 1 %}
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_DISPLAYNAME[0]" class="symb_item" value='"{{ line['number'] }} {{ line['display_name'] }}"'/>
         <SYMB_ITEM ID="BS_VOIP_Data.astVoipAccounts[{{ lnb }}].aucS_SIP_LOGIN_ID[0]" class="symb_item" value='"{{ line['auth_username']|d(line['username']) }}"'/>

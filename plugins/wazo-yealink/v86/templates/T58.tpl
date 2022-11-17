@@ -2,7 +2,7 @@
 
 {% block model_specific_parameters -%}
 
-{% for line_no, line in XX_sip_lines.iteritems() -%}
+{% for line_no, line in XX_sip_lines.items() -%}
 {% if line -%}
 account.{{ line_no }}.codec.g722.enable = 1
 account.{{ line_no }}.codec.g722_1c_48kpbs.enable = 0

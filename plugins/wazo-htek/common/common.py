@@ -1,40 +1,39 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
 import re
 import os.path
+from typing import Dict, Optional
+
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import IMPROBABLE_SUPPORT, PROBABLE_SUPPORT,\
-    COMPLETE_SUPPORT, FULL_SUPPORT, BasePgAssociator
-from provd.plugins import StandardPlugin, FetchfwPluginHelper,\
-    TemplatePluginHelper
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-htek')
 
 
-class BaseHtekHTTPDeviceInfoExtractor(object):
-    _UA_REGEX_LIST = [
-        re.compile(r'^Htek ([^ ]+) ([^ ]+) ([^ ]+)$')
-    ]
+class BaseHtekHTTPDeviceInfoExtractor:
+    _UA_REGEX_LIST = [re.compile(r'^Htek ([^ ]+) ([^ ]+) ([^ ]+)$')]
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            return self._extract_from_ua(ua)
+            return self._extract_from_ua(ua.decode('ascii'))
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "Htek UC903 2.0.4.2 00:1f:c1:1c:22:a9"
 
@@ -42,18 +41,18 @@ class BaseHtekHTTPDeviceInfoExtractor(object):
             m = UA_REGEX.match(ua)
             if m:
                 raw_model, raw_version, raw_mac = m.groups()
+                device_info = {
+                    'vendor': 'Htek',
+                    'model': raw_model,
+                    'version': raw_version,
+                }
                 try:
-                    mac = norm_mac(raw_mac.decode('ascii'))
+                    device_info['mac'] = norm_mac(raw_mac)
                 except ValueError as e:
-                    logger.warning('Could not normalize MAC address "%s": %s', raw_mac, e)
-                    return {u'vendor': u'Htek',
-                            u'model': raw_model.decode('ascii'),
-                            u'version': raw_version.decode('ascii')}
-                else:
-                    return {u'vendor': u'Htek',
-                            u'model': raw_model.decode('ascii'),
-                            u'version': raw_version.decode('ascii'),
-                            u'mac': mac}
+                    logger.warning(
+                        'Could not normalize MAC address "%s": %s', raw_mac, e
+                    )
+                return device_info
         return None
 
 
@@ -61,28 +60,30 @@ class BaseHtekPgAssociator(BasePgAssociator):
     def __init__(self, model_versions):
         # model_versions is a dictionary which keys are model IDs and values
         # are version IDs.
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._model_versions = model_versions
 
-    def _do_associate(self, vendor, model, version):
-        if vendor == u'Htek':
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
+        if vendor == 'Htek':
             if model in self._model_versions:
                 if version == self._model_versions[model]:
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
 
 class BaseHtekPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _LOCALE = {
-        u'de_DE': (u'German', u'Germany'),
-        u'en_US': (u'English', u'United States'),
-        u'en_GB': (u'English', u'Great Britain'),
-        u'es_ES': (u'Spanish', u'Spain'),
-        u'fr_FR': (u'French', u'France'),
-        u'fr_CA': (u'French', u'United States'),
+        'de_DE': ('German', 'Germany'),
+        'en_US': ('English', 'United States'),
+        'en_GB': ('English', 'Great Britain'),
+        'es_ES': ('Spanish', 'Spain'),
+        'fr_FR': ('French', 'France'),
+        'fr_CA': ('French', 'United States'),
     }
 
     # Used for tone select
@@ -119,40 +120,40 @@ class BaseHtekPlugin(StandardPlugin):
     }
 
     _SIP_DTMF_MODE = {
-        u'RTP-out-of-band': u'0',
-        u'RTP-in-band': u'1',
-        u'SIP-INFO': u'2',
+        'RTP-out-of-band': '0',
+        'RTP-in-band': '1',
+        'SIP-INFO': '2',
     }
     _SIP_TRANSPORT = {
-        u'udp': u'0',
-        u'tcp': u'1',
-        u'tls': u'2',
+        'udp': '0',
+        'tcp': '1',
+        'tls': '2',
     }
-    _SIP_TRANSPORT_DEF = u'0'
+    _SIP_TRANSPORT_DEF = '0'
     _NB_LINEKEYS = {
-        u'UC926': 36,
-        u'UC926E': 36,
-        u'UC924': 28,
-        u'UC924E': 28,
-        u'UC923': 20,
-        u'UC912': 12,
-        u'UC912E': 12,
-        u'UC912G': 12,
-        u'UC903': 20,
-        u'UC862': 14,
-        u'UC860': 14,
-        u'UC860P': 14,
-        u'UC842': 4,
-        u'UC840': 4,
-        u'UC840P': 4,
-        u'UC806': 4,
-        u'UC806T': 4,
-        u'UC804': 4,
-        u'UC804T': 4,
-        u'UC803': 0,
-        u'UC803T': 0,
-        u'UC802': 0,
-        u'UC802T': 0,
+        'UC926': 36,
+        'UC926E': 36,
+        'UC924': 28,
+        'UC924E': 28,
+        'UC923': 20,
+        'UC912': 12,
+        'UC912E': 12,
+        'UC912G': 12,
+        'UC903': 20,
+        'UC862': 14,
+        'UC860': 14,
+        'UC860P': 14,
+        'UC842': 4,
+        'UC840': 4,
+        'UC840P': 4,
+        'UC806': 4,
+        'UC806T': 4,
+        'UC804': 4,
+        'UC804T': 4,
+        'UC803': 0,
+        'UC803T': 0,
+        'UC802': 0,
+        'UC802T': 0,
     }
 
     _TZ_INFO = {
@@ -189,9 +190,10 @@ class BaseHtekPlugin(StandardPlugin):
         (12, 45): 103,
         (13, 00): 104,
     }
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^cfg[0-9a-f]{12}\.xml')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -205,27 +207,27 @@ class BaseHtekPlugin(StandardPlugin):
 
     def configure_common(self, raw_config):
         for filename, tpl_filename in self._COMMON_FILES:
-            tpl = self._tpl_helper.get_template('common/%s' % tpl_filename)
+            tpl = self._tpl_helper.get_template(f'common/{tpl_filename}')
             dst = os.path.join(self._tftpboot_dir, filename)
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _update_sip_lines(self, raw_config):
-        for line_no, line in raw_config[u'sip_lines'].iteritems():
+        for line_no, line in raw_config['sip_lines'].items():
             # set line number
-            line[u'XX_line_no'] = int(line_no)
+            line['XX_line_no'] = int(line_no)
             # set dtmf inband transfer
-            dtmf_mode = line.get(u'dtmf_mode') or raw_config.get(u'sip_dtmf_mode')
+            dtmf_mode = line.get('dtmf_mode') or raw_config.get('sip_dtmf_mode')
             if dtmf_mode in self._SIP_DTMF_MODE:
-                line[u'XX_dtmf_type'] = self._SIP_DTMF_MODE[dtmf_mode]
+                line['XX_dtmf_type'] = self._SIP_DTMF_MODE[dtmf_mode]
             # set voicemail
-            if u'voicemail' not in line and u'exten_voicemail' in raw_config:
-                line[u'voicemail'] = raw_config[u'exten_voicemail']
+            if 'voicemail' not in line and 'exten_voicemail' in raw_config:
+                line['voicemail'] = raw_config['exten_voicemail']
             # set proxy_ip
-            if u'proxy_ip' not in line:
-                line[u'proxy_ip'] = raw_config[u'sip_proxy_ip']
+            if 'proxy_ip' not in line:
+                line['proxy_ip'] = raw_config['sip_proxy_ip']
             # set proxy_port
-            if u'proxy_port' not in line and u'sip_proxy_port' in raw_config:
-                line[u'proxy_port'] = raw_config[u'sip_proxy_port']
+            if 'proxy_port' not in line and 'sip_proxy_port' in raw_config:
+                line['proxy_port'] = raw_config['sip_proxy_port']
 
     def _gen_param_num(self, line, offset=0):
         '''Method that generates line parameter numbers for the config file
@@ -255,36 +257,54 @@ class BaseHtekPlugin(StandardPlugin):
     def _add_fkeys(self, device, raw_config):
         # Setting up the line/function keys
         complete_fkeys = {}
-        fkeys = raw_config[u'funckeys']
-        fkey_type_assoc = {u'': 0, u'speeddial': 2, u'blf': 3, u'park': 8}
+        fkeys = raw_config['funckeys']
+        fkey_type_assoc = {'': 0, 'speeddial': 2, 'blf': 3, 'park': 8}
 
-        if u'model' in device and device[u'model'] is not None and device[u'model'] in self._NB_LINEKEYS:
-            for key_nb in range(1, self._NB_LINEKEYS[device[u'model']] + 1):
-                if str(key_nb) in raw_config[u'sip_lines']:
-                    sip_line = raw_config[u'sip_lines'][str(key_nb)]
-                    val = {u'type': 1, u'value': '', u'label': sip_line['number']}
+        if (
+            'model' in device
+            and device['model'] is not None
+            and device['model'] in self._NB_LINEKEYS
+        ):
+            for key_nb in range(1, self._NB_LINEKEYS[device['model']] + 1):
+                if str(key_nb) in raw_config['sip_lines']:
+                    sip_line = raw_config['sip_lines'][str(key_nb)]
+                    val = {'type': 1, 'value': '', 'label': sip_line['number']}
                 else:
-                    val = fkeys.get(str(key_nb), {u'type': '', u'value': '', u'label': ''})
-                    val[u'type'] = fkey_type_assoc[val[u'type']]
+                    val = fkeys.get(str(key_nb), {'type': '', 'value': '', 'label': ''})
+                    val['type'] = fkey_type_assoc[val['type']]
                 complete_fkeys[key_nb] = {
-                    'type': {'p_nb': self._gen_param_num(key_nb)[0], 'val': val[u'type']},
+                    'type': {
+                        'p_nb': self._gen_param_num(key_nb)[0],
+                        'val': val['type'],
+                    },
                     'mode': {'p_nb': self._gen_param_num(key_nb)[1]},
-                    'value': {'p_nb': self._gen_param_num(key_nb, offset=1)[0], 'val': val[u'value']},
-                    'label': {'p_nb': self._gen_param_num(key_nb, offset=2)[0], 'val': val[u'label']},
+                    'value': {
+                        'p_nb': self._gen_param_num(key_nb, offset=1)[0],
+                        'val': val['value'],
+                    },
+                    'label': {
+                        'p_nb': self._gen_param_num(key_nb, offset=2)[0],
+                        'val': val['label'],
+                    },
                     'account': {'p_nb': self._gen_param_num(key_nb, offset=3)[0]},
-                    'extension': {'p_nb': self._gen_param_num(key_nb, offset=4)[0], 'val': val[u'value']},
+                    'extension': {
+                        'p_nb': self._gen_param_num(key_nb, offset=4)[0],
+                        'val': val['value'],
+                    },
                 }
-            raw_config[u'XX_fkeys'] = complete_fkeys
+            raw_config['XX_fkeys'] = complete_fkeys
 
     def _add_country_and_lang(self, raw_config):
-        locale = raw_config.get(u'locale')
+        locale = raw_config.get('locale')
         if locale in self._LOCALE:
             (lang, country) = self._LOCALE[locale]
-            (raw_config[u'XX_lang'],
-             raw_config[u'XX_country']) = (lang, self._COUNTRIES[country])
+            (raw_config['XX_lang'], raw_config['XX_country']) = (
+                lang,
+                self._COUNTRIES[country],
+            )
 
     def _add_timezone(self, raw_config):
-        timezone = raw_config.get(u'timezone', 'Etc/UTC')
+        timezone = raw_config.get('timezone', 'Etc/UTC')
         tz_db = tzinform.TextTimezoneInfoDB()
         tz_timezone_info = tz_db.get_timezone_info(timezone)
         tz_info = tz_timezone_info['utcoffset'].as_hms
@@ -292,38 +312,31 @@ class BaseHtekPlugin(StandardPlugin):
         offset_minutes = tz_info[1]
 
         if (offset_hour, offset_minutes) in self._TZ_INFO:
-            raw_config[u'XX_timezone_code'] = self._TZ_INFO[(offset_hour, offset_minutes)]
+            raw_config['XX_timezone_code'] = self._TZ_INFO[
+                (offset_hour, offset_minutes)
+            ]
         else:
-            raw_config[u'XX_timezone_code'] = self._TZ_INFO[(-5, 0)]
+            raw_config['XX_timezone_code'] = self._TZ_INFO[(-5, 0)]
 
     def _add_sip_transport(self, raw_config):
-        raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'),
-                                                                  self._SIP_TRANSPORT_DEF)
+        raw_config['XX_sip_transport'] = self._SIP_TRANSPORT.get(
+            raw_config.get('sip_transport'), self._SIP_TRANSPORT_DEF
+        )
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(raw_config, u'htek', entry_point=u'lookup')
-        else:
-            self._add_xivo_phonebook_url_compat(raw_config)
+        plugins.add_xivo_phonebook_url(raw_config, 'htek', entry_point='lookup')
 
-    def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get(u'X_xivo_phonebook_ip')
-        if hostname:
-            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/?name=#SEARCH'.format(hostname=hostname)
-
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^cfg[0-9a-f]{12}\.xml')
-
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='')
-        return 'cfg' + fmted_mac + '.xml'
+        formatted_mac = format_mac(device['mac'], separator='')
+        return f'cfg{formatted_mac}.xml'
 
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 
     def configure(self, device, raw_config):
@@ -338,7 +351,7 @@ class BaseHtekPlugin(StandardPlugin):
         self._add_sip_transport(raw_config)
         self._update_sip_lines(raw_config)
         self._add_xivo_phonebook_url(raw_config)
-        raw_config[u'XX_options'] = device.get(u'options', {})
+        raw_config['XX_options'] = device.get('options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
@@ -347,30 +360,15 @@ class BaseHtekPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, self._dev_specific_filename(device))
         try:
             os.remove(path)
-        except OSError, e:
+        except OSError as e:
             # ignore
             logger.info('error while removing file: %s', e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device)
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device[u'ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
-                else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync')
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(device)
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             return None
 
         return self._dev_specific_filename(device)

@@ -7,6 +7,7 @@ https://github.com/wazo-platform/xivo-lib-python/archive/master.zip  # from wazo
 beautifulsoup4==4.7.1  # from xivo-fetchfw
 markupsafe==1.1.0  # from jinja2
 jinja2==2.10  # from wazo-provd
+pyyaml  # from xivo
 mock
 pytest
 twisted==18.9.0  # from wazo-provd

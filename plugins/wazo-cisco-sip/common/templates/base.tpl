@@ -99,7 +99,7 @@
     <silentPeriodBetweenCallWaitingBursts>10</silentPeriodBetweenCallWaitingBursts>
     <disableLocalSpeedDialConfig>false</disableLocalSpeedDialConfig>
     <sipLines>
-    {% for line_no, line in sip_lines.iteritems() -%}
+    {% for line_no, line in sip_lines.items() -%}
       <line button="{{ line_no }}" lineIndex="{{ line_no }}">
         <featureID>9</featureID>
         <featureLabel>{{ line['number'] }}</featureLabel>

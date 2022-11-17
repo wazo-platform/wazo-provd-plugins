@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2014 Avencall
+# Copyright (C) 2012-2022 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,12 +22,10 @@ from subprocess import check_call
 
 @target('null', 'null', std_dirs=False)
 def build_null(path):
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'null/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'null/', path])
 
 
 @target('zero', 'zero', std_dirs=False)
 def build_zero(path):
     os.makedirs(os.path.join(path, 'var/tftpboot'))
-    check_call(['rsync', '-rlp', '--exclude', '.*',
-                'zero/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'zero/', path])
