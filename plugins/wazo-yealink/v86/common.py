@@ -82,7 +82,7 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         return None
 
     def _extract_from_path(self, request: Request) -> Optional[Dict[str, str]]:
-        if request.path[1:7].decode('ascii') in KNOWN_MAC_PREFIXES:
+        if request.path[1:7] in KNOWN_MAC_PREFIXES:
             raw_mac = request.path[1:-4]
             try:
                 return {'vendor': 'Yealink', 'mac': norm_mac(raw_mac.decode('ascii'))}
