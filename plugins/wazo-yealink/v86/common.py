@@ -253,6 +253,10 @@ class BaseYealinkFunckeyPrefixIterator:
         key_count = 40
         max_daisy_chain = 6
 
+    class EXP43ExpansionModule(NullExpansionModule):
+        key_count = 60
+        max_daisy_chain = 3
+
     class EXP50ExpansionModule(NullExpansionModule):
         key_count = 60
         max_daisy_chain = 3
@@ -274,6 +278,8 @@ class BaseYealinkFunckeyPrefixIterator:
     def _expmod_by_model(self, model):
         if model in ('T27G', 'T46S', 'T48S'):
             return self.EXP40ExpansionModule
+        elif model in ('T43U', 'T46U', 'T48U'):
+            return self.EXP43ExpansionModule
         elif model.startswith('T5'):
             return self.EXP50ExpansionModule
         else:
