@@ -278,7 +278,7 @@ class BaseYealinkFunckeyPrefixIterator:
     def _expmod_by_model(self, model):
         if model in ('T27G', 'T46S', 'T48S'):
             return self.EXP40ExpansionModule
-        elif model in (u'T43U', u'T46U', u'T48U'):
+        elif model in ('T43U', 'T46U', 'T48U'):
             return self.EXP43ExpansionModule
         elif model.startswith('T5'):
             return self.EXP50ExpansionModule
