@@ -25,7 +25,7 @@
     <setting id="TelephonyVmNumber" value="{{ exten_voicemail }}" />
 
     <!-- SIP Servers/Groups/Accounts -->
-{% for line_no, line in sip_lines.iteritems() -%}
+{% for line_no, line in sip_lines.items() -%}
     <setting id="SIPServer{{ line_no }}Address" value="{{ line['proxy_ip'] }}" override="true"/>
     <setting id="SIPGroup{{ line_no }}DomainName" value="{{ line['proxy_ip'] }}" override="true"/>
     <setting id="SIPGroup{{ line_no }}AuthenticationName" value="{{ line['auth_username']|d(line['username']) }}" override="true"/>
