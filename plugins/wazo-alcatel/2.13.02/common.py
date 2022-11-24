@@ -292,7 +292,6 @@ class BaseAlcatelPlugin(StandardPlugin):
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:
             return None
-
         return self._dev_specific_filename(device)
 
     def is_sensitive_filename(self, filename: str):

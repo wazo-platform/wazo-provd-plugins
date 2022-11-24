@@ -1,11 +1,12 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
 import os.path
 import re
+from typing import Dict, Optional
+
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
@@ -16,48 +17,47 @@ from provd.plugins import (
     StandardPlugin,
     TemplatePluginHelper,
 )
+from provd.servers.http_site import Request
 from provd.servers.http import HTTPNoListingFileService
 from provd.util import format_mac, norm_mac
-from twisted.internet import defer, threads
+from provd.devices.ident import RequestType
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-alcatel')
 
 
-class BaseAlcatelMyriadHTTPDeviceInfoExtractor(object):
+class BaseAlcatelMyriadHTTPDeviceInfoExtractor:
     _UA_REGEX_MAC = re.compile(
         r'^ALE (?P<model>8028s-GE) (?P<version>([0-9]{1,4}\.?){4,5}) (?P<mac>[0-9a-f]{12})'
     )
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: Request):
         device_info = {}
-        ua = request.getHeader('User-Agent')
-        raw_mac = request.args.get('mac', [None])[0]
+        ua = request.getHeader(b'User-Agent')
+        raw_mac = request.args.get(b'mac', [None])[0]
         if raw_mac:
             logger.debug('Got MAC from URL: "%s"', raw_mac)
             device_info['mac'] = norm_mac(raw_mac.decode('ascii'))
         if ua:
-            info_from_ua = self._extract_from_ua(ua)
+            info_from_ua = self._extract_from_ua(ua.decode('ascii'))
             if info_from_ua:
                 device_info.update(info_from_ua)
         return device_info
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "ALE 8028s-GE 1.51.52.2204 487a55023075"
         m = self._UA_REGEX_MAC.search(ua)
         if m:
             device_info = m.groupdict()
-            raw_model = device_info['model']
-            raw_version = device_info['version']
-            raw_mac = device_info['mac']
             return {
                 'vendor': 'Alcatel-Lucent',
-                'model': raw_model.decode('ascii'),
-                'mac': norm_mac(raw_mac.decode('ascii')),
-                'version': raw_version.decode('ascii'),
+                'model': device_info['model'],
+                'mac': norm_mac(device_info['mac']),
+                'version': device_info['version'],
             }
 
 
@@ -65,7 +65,9 @@ class BaseAlcatelMyriadPgAssociator(BasePgAssociator):
     def __init__(self, models_versions):
         self._models_versions = models_versions
 
-    def _do_associate(self, vendor, model, version):
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
         if vendor == 'Alcatel-Lucent':
             if model in self._models_versions:
                 if version == self._models_versions.get(model, None):
@@ -122,7 +124,7 @@ class BaseAlcatelPlugin(StandardPlugin):
     http_dev_info_extractor = BaseAlcatelMyriadHTTPDeviceInfoExtractor()
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -133,7 +135,9 @@ class BaseAlcatelPlugin(StandardPlugin):
         self.http_service = HTTPNoListingFileService(self._tftpboot_dir)
 
     def _common_templates(self):
-        for tpl_format, file_format in [('common/config.model.xml.tpl', 'config.{}.xml')]:
+        for tpl_format, file_format in [
+            ('common/config.model.xml.tpl', 'config.{}.xml')
+        ]:
             for model in self._MODELS_VERSIONS:
                 yield tpl_format.format(model), file_format.format(model)
 
@@ -172,7 +176,9 @@ class BaseAlcatelPlugin(StandardPlugin):
     def _add_fkeys(self, raw_config, model):
         nb_funckeys = self._NB_FUNCKEYS.get(model)
         if not nb_funckeys:
-            logger.warning('Unknown model: "%s". Skipping function key configuration.', model)
+            logger.warning(
+                'Unknown model: "%s". Skipping function key configuration.', model
+            )
             return
 
         raw_config['XX_fkeys'] = []
@@ -184,7 +190,9 @@ class BaseAlcatelPlugin(StandardPlugin):
             fkey_label = funckey_dict['label']
             fkey_extension = funckey_dict['value']
             if position > nb_funckeys:
-                logger.warning('Function key "%s" outside range supported by phone.', position)
+                logger.warning(
+                    'Function key "%s" outside range supported by phone.', position
+                )
                 continue
             fkey_data = {
                 'position': position,
@@ -199,7 +207,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         tz_hms = tzinfo['utcoffset'].as_hms
         offset_hour = tz_hms[0]
         offset_minutes = tz_hms[1]
-        return '{:+02d}:{:02d}'.format(offset_hour, offset_minutes)
+        return f'{offset_hour:+02d}:{offset_minutes:02d}'
 
     def _add_timezone(self, raw_config):
         if 'timezone' in raw_config:
@@ -227,15 +235,7 @@ class BaseAlcatelPlugin(StandardPlugin):
             line['XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, 'off')
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get('config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(raw_config, 'snom')
-        else:
-            self._add_xivo_phonebook_url_compat(raw_config)
-
-    def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get('X_xivo_phonebook_ip')
-        if hostname:
-            raw_config['XX_xivo_phonebook_url'] = 'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+        plugins.add_xivo_phonebook_url(raw_config, 'snom')
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
@@ -247,13 +247,13 @@ class BaseAlcatelPlugin(StandardPlugin):
         if 'model' not in device:
             raise Exception('Model name needed for device configuration')
 
-    def _dev_specific_filename(self, device):
-        return 'config.{}.xml'.format(format_mac(device['mac'], separator=''))
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+        return f'config.{format_mac(device["mac"], separator="")}.xml'
 
     def _add_server_url(self, raw_config):
         ip = raw_config['ip']
         http_port = raw_config['http_port']
-        raw_config['XX_server_url'] = 'http://{}:{}'.format(ip, http_port)
+        raw_config['XX_server_url'] = f'http://{ip}:{http_port}'
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
@@ -284,28 +284,12 @@ class BaseAlcatelPlugin(StandardPlugin):
             # ignore
             logger.warning('error while removing file: "%s"', e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device, event='check-sync')
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device['ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
-                else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=true')
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(device, event='check-sync')
 
     def get_remote_state_trigger_filename(self, device):
         if 'mac' not in device:
             return None
-
         return self._dev_specific_filename(device)
 
     def is_sensitive_filename(self, filename):

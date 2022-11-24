@@ -14,19 +14,9 @@ def build_2_01_10(path):
 
 @target('2.13.02', 'wazo-alcatel-2.13.02')
 def build_2_13_02(path):
-<<<<<<< HEAD
     check_call(['rsync', '-rlp', '--exclude', '.*', '2.13.02/', path])
-=======
-    check_call(
-        ['rsync', '-rlp', '--exclude', '.*', '2.13.02/', path]
-    )
+
 
 @target('1.51.52', 'wazo-alcatel-1.51.52')
 def build_1_55_03(path):
-    check_call(
-        ['rsync', '-rlp', '--exclude', '.*', '1.51.52/', path]
-    )
-<<<<<<< HEAD
->>>>>>> first release
-=======
->>>>>>> 326acd83cce3fc88f18135ff5ae3ab3af8a87cf4
+    check_call(['rsync', '-rlp', '--exclude', '.*', '1.51.52/', path])

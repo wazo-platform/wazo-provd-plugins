@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -7,7 +5,7 @@ common = {}
 execfile_('common.py', common)
 
 MODELS_VERSIONS = {
-    '8028': u'1.51.52',
+    '8028': '1.51.52',
 }
 
 
