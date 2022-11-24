@@ -36,6 +36,6 @@ MODEL_VERSION = dict((model, '7.5.5') for model in MODELS)
 class CiscoPlugin(common_globals['BaseCiscoPlugin']):
     IS_PLUGIN = True
     # similar to spa508G.cfg (G is uppercase)
-    _COMMON_FILENAMES = ['spa' + psn.encode('ascii') + '.cfg' for psn in PSN]
+    _COMMON_FILENAMES = [''.join(['spa', psn, '.cfg']) for psn in PSN]
 
     pg_associator = common_globals['BaseCiscoPgAssociator'](MODEL_VERSION)
