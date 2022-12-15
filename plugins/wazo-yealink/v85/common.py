@@ -306,6 +306,7 @@ class BaseYealinkPlugin(StandardPlugin):
         'es_ES': ('Spanish', 'Spain', '6'),
         'fr_FR': ('French', 'France', '1'),
         'fr_CA': ('French', 'United States', '1'),
+        'it_IT': ('Italian', 'Italy', '3'),
     }
     _SIP_DTMF_MODE = {
         'RTP-in-band': '0',
