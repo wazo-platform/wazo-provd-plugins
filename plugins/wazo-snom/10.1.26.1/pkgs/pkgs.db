@@ -11,6 +11,6 @@ a-b: cp $FILE1 firmware/
 
 
 [file_735-fw]
-url: http://downloads.snom.com/tmp/CO/snomD735-10.1.26.1-SIP-r.bin
+url: https://downloads.snom.com/tmp/CO/snomD735-10.1.26.1-SIP-r.bin
 size: 29000432
 sha1sum: 71dfcec135f23898bccb789dbbfbd501633bdf3e
