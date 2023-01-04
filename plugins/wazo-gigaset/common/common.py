@@ -124,7 +124,7 @@ class HTTPServiceWrapper(HTTPNoListingFileService):
     def path_preprocess(self, request):
         logger.debug('Complete path: %s', request.path)
         request.path = os.path.normpath(request.path)
-        request.postpath = request.path.split('/')[1:]
+        request.postpath = request.path.decode('ascii').split('/')[1:]
         logger.debug('Preprocessed path: %s', request.path)
 
 
