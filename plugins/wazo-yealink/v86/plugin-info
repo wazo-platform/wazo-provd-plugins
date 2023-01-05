@@ -1,5 +1,5 @@
 {
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "Plugin for Yealink for CP920, T27G, T3X, T4X and T5X series in version 86.",
     "description_fr": "Greffon pour Yealink pour les series CP920, T27G, T3X, T4X et T5X en version 86.",
     "vendor" : "Yealink",
@@ -46,7 +46,7 @@
         "Yealink, T33(P)(G), 124.86.0.40": {
             "lines": 4,
             "high_availability": false,
-            "function_keys": 0,
+            "function_keys": 12,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
