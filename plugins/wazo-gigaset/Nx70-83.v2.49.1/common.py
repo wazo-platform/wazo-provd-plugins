@@ -86,6 +86,13 @@ class BaseGigasetPgAssociator(BasePgAssociator):
 class BaseGigasetPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
 
+    _LOCALE = {
+        'de_DE': ('Germany'),
+        'en_US': ('Retail'),
+        'es_ES': ('Spain'),
+        'fr_FR': ('France'),
+        'fr_CA': ('Retail'),
+    }
     _SIP_DTMF_MODE = {
         'RTP-in-band': '1',
         'RTP-out-of-band': '2',
@@ -230,6 +237,15 @@ class BaseGigasetPlugin(StandardPlugin):
     def _add_phonebook(self, raw_config):
         uuid_format = '{scheme}://{hostname}:{port}/0.1/directories/lookup/{profile}/gigaset/{user_uuid}?'  # noqa: E501
         plugins.add_xivo_phonebook_url_from_format(raw_config, uuid_format)
+
+    def _add_country_and_lang(self, raw_config):
+        locale = raw_config.get('locale')
+        if locale in self._LOCALE:
+            (
+                raw_config['XX_country'],
+            ) = self._LOCALE[locale]
+        else:
+            raw_config['XX_country'] = 'Retail'
 
     def _fix_timezone(self, raw_config):
         timezone = raw_config.get('timezone', 'Greenwich')

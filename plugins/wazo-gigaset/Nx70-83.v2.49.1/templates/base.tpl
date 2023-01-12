@@ -2,7 +2,7 @@
 <provisioning version="1.1" productID="e2">
     <firmware>
     {%- if http_port %}
-        <file version="2.48.0" url="http://{{ ip }}:{{ http_port }}/Gigaset-Nx70-V2.48.0-build.4fa8a54.bin"/>
+        <file version="2.49.1" url="http://{{ ip }}:{{ http_port }}/Gigaset-Nx70-V2.49.1-build.0fc46d7.bin"/>
     {%- endif %}
     </firmware>
 
@@ -17,9 +17,10 @@
         <param name="Provisioning.global.ProvisioningServer" value="http://{{ ip }}:{{ http_port }}"/>
     {%- endif %}
 
-        <!-- N870 Telephony - Call settings -->
+        <!-- Nx70 Telephony - Call settings -->
         <param name="Telephony.0.CT_ViaRKey" value="1"/>
         <param name="Telephony.0.CT_ByOnHook" value="1"/>
+        <param name="Telephony.0.ToneScheme" value="{{ XX_country }}"/>
 
         <param name="DmGlobal.0.SuotaEnable" value="1"/>
         <param name="DmGlobal.0.HSIdleDisplay" value="1"/>
@@ -76,22 +77,17 @@
         <param name="SipProvider.{{ provider['id'] }}.RegServerPort" value="{{ sip_registrar_port|d(5060) }}"/>
     {%- endif %}
         <param name="SipProvider.{{ provider['id'] }}.RegServerRefreshTimer" value="180"/>
-        <!-- Disable SIP TLS support for now due to a bug when putting received calls on hold
-             These 3 enclosed parameters will then be enforced to plain SIP below, until bug fixed
         <param name="SipProvider.{{ provider['id'] }}.TransportProtocol" value="{{ provider['sip_transport'] }}"/>
+        <param name="SipProvider.{{ provider['id'] }}.UseSIPS" value="0"/>
     {%- if provider['sip_transport'] == '3' %}
-        <param name="SipProvider.{{ provider['id'] }}.UseSIPS" value="1"/>
         <param name="SipProvider.{{ provider['id'] }}.SRTP_Enabled" value="1"/>
     {%- else %}
-        <param name="SipProvider.{{ provider['id'] }}.UseSIPS" value="0"/>
         <param name="SipProvider.{{ provider['id'] }}.SRTP_Enabled" value="0"/>
     {%- endif %}
         -->
-        <param name="SipProvider.{{ provider['id'] }}.TransportProtocol" value="1"/>
-        <param name="SipProvider.{{ provider['id'] }}.UseSIPS" value="0"/>
-        <param name="SipProvider.{{ provider['id'] }}.SRTP_Enabled" value="0"/>
         <param name="SipProvider.{{ provider['id'] }}.AcceptNonSRTPCalls" value="0"/>
         <param name="SipProvider.{{ provider['id'] }}.DTMFTransmission" value="{{ provider['dtmf_mode'] }}"/>
+        <param name="SipProvider.{{ provider['id'] }}.WithDeregOnHsNotReachable" value="1"/>
 
         <!-- Redundancy -->
 
