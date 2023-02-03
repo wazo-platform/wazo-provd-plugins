@@ -40,7 +40,6 @@ FUNCKEY_TYPES = {
 
 
 class BaseGrandstreamHTTPDeviceInfoExtractor:
-
     # Grandstream Model HW GXP1405 SW 1.0.4.23 DevId 000b8240d55c
     # Grandstream Model HW GXP1628 SW 1.0.4.138 DevId c074ad2bd859
     # Grandstream Model HW GXP2200 V2.2A SW 1.0.1.33 DevId 000b82462d97

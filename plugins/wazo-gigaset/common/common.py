@@ -61,7 +61,6 @@ class GigasetDHCPDeviceInfoExtractor:
 
 
 class GigasetHTTPDeviceInfoExtractor:
-
     _UA_REGEX = re.compile(
         r'^(Gigaset )?(?P<model>N\d{3} .+)\/(?P<version>\d{2,3}\.\d{2,3})'
         r'\.(\d{2,3})\.(\d{2,3})\.(\d{2,3});?(?P<mac>[A-F0-9]{12})?$'
