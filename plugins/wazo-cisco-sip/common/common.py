@@ -58,7 +58,6 @@ class BaseCiscoPgAssociator(BasePgAssociator):
 
 
 class BaseCiscoDHCPDeviceInfoExtractor:
-
     _VDI_REGEX = re.compile(r'\bPhone (?:79(\d\d)|CP-79(\d\d)G|CP-(\d\d\d\d))')
 
     def extract(self, request: DHCPRequest, request_type: RequestType):

@@ -33,7 +33,6 @@ logger = logging.getLogger('plugin.wazo-digium')
 
 
 class DigiumDHCPDeviceInfoExtractor:
-
     _VDI_REGEX = re.compile(r'^digium_(D\d\d)_([\d_]+)$')
 
     def extract(self, request: DHCPRequest, request_type: RequestType):
@@ -58,7 +57,6 @@ class DigiumDHCPDeviceInfoExtractor:
 
 
 class DigiumHTTPDeviceInfoExtractor:
-
     _PATH_REGEX = re.compile(r'^/Digium/(?:([a-fA-F\d]{12})\.cfg)?')
 
     def extract(self, request: Request, request_type: RequestType):
@@ -76,7 +74,6 @@ class DigiumHTTPDeviceInfoExtractor:
 
 
 class DigiumPgAssociator(BasePgAssociator):
-
     _MODELS = ['D40', 'D45', 'D50', 'D60', 'D62', 'D65', 'D70']
 
     def __init__(self, version):
@@ -96,7 +93,6 @@ class DigiumPgAssociator(BasePgAssociator):
 
 
 class BaseDigiumPlugin(StandardPlugin):
-
     _ENCODING = 'UTF-8'
     _CONTACT_TEMPLATE = 'contact.tpl'
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg$')
