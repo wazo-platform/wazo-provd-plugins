@@ -61,7 +61,6 @@ class GigasetDHCPDeviceInfoExtractor:
 
 
 class GigasetHTTPDeviceInfoExtractor:
-
     _UA_REGEX = re.compile(
         r'^(Gigaset )?(?P<model>N\d{3} .+)\/(?P<version>\d{2,3}\.\d{2,3})'
         r'\.(\d{2,3})\.(\d{2,3})\.(\d{2,3});?(?P<mac>[A-F0-9]{12})?$'
@@ -124,7 +123,7 @@ class HTTPServiceWrapper(HTTPNoListingFileService):
     def path_preprocess(self, request):
         logger.debug('Complete path: %s', request.path)
         request.path = os.path.normpath(request.path)
-        request.postpath = request.path.split('/')[1:]
+        request.postpath = request.path.decode('ascii').split('/')[1:]
         logger.debug('Preprocessed path: %s', request.path)
 
 

@@ -199,7 +199,6 @@ class BaseYealinkFunckeyGenerator:
 
 
 class BaseYealinkFunckeyPrefixIterator:
-
     _NB_LINEKEY = {
         'CP860': 0,
         'CP920': 0,

@@ -26,7 +26,6 @@ logger = logging.getLogger('plugin.wazo-patton')
 
 
 class BasePattonHTTPDeviceInfoExtractor:
-
     _UA_REGEX = re.compile(
         r'^SmartNode \(Model:(\w+)/[^;]+; Serial:(\w+); Software Version:R([^ ]+)'
     )
@@ -80,7 +79,6 @@ class BasePattonPgAssociator(BasePgAssociator):
 
 
 class _TimezoneConverter:
-
     _DAYS_DEFAULT_SUFFIX = 'th'
     _DAYS_SUFFIX = {
         1: 'st',
@@ -276,7 +274,6 @@ class _SIPLinesConverter:
 
 
 class BasePattonPlugin(StandardPlugin):
-
     _ENCODING = 'ascii'
     _SIP_DTMF_MODE = {
         'RTP-in-band': 'default',

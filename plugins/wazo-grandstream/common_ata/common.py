@@ -32,7 +32,6 @@ LOCALE = {
 
 
 class BaseGrandstreamHTTPDeviceInfoExtractor:
-
     # Grandstream Model HW HT801 V1.1A SW 1.0.17.5 DevId c074ad273a10
 
     _UA_REGEX_LIST = [

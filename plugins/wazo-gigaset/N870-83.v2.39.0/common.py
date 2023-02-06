@@ -32,7 +32,6 @@ VENDOR = 'Gigaset'
 
 
 class GigasetHTTPDeviceInfoExtractor:
-
     _UA_REGEX = re.compile(
         r'^(Gigaset )?(?P<model>[\w\s]+)\/(?P<version>(?:\w{2,3}\.){3,4}\w{1,3})(?:\+.+)?;(?P<mac>[0-9A-F]{12})?(;Handset=\d+)?$'  # noqa: E501
     )

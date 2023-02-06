@@ -114,82 +114,82 @@ install: snom-fw
 a-b: cp $FILE1 firmware/
 
 [file_uxm-fw]
-url: http://downloads.snom.com/snomUXM-2.1.1.bin
+url: https://downloads.snom.com/snomUXM-2.1.1.bin
 size: 96560
 sha1sum:9c4e07185ca6eb863858edf23147ab8576f94c4a
 
 [file_120-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD120-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD120-10.1.51.12-SIP-r.bin
 size: 17527520
 sha1sum: 2f18fd503bf8099a2b92cf93da279e17e155e19d
 
 [file_305-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD305-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD305-10.1.51.12-SIP-r.bin
 size: 24823696
 sha1sum: 180f4eed5aff12cda64ec82f950634f1aa4a071a
 
 [file_315-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD315-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD315-10.1.51.12-SIP-r.bin
 size: 27863680
 sha1sum: c0c324b558842ffa85cc6fdd0d167d4a3c89d68b
 
 [file_335-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD335-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD335-10.1.51.12-SIP-r.bin
 size: 31620208
 sha1sum: f7662f54e873bd94810a5531b9188f648e2b89cc
 
 [file_345-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD345-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD345-10.1.51.12-SIP-r.bin
 size: 27954576
 sha1sum: ac80286e98cb6a4c3656ed3913664f88e820a599
 
 [file_375-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD375-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD375-10.1.51.12-SIP-r.bin
 size: 31713456
 sha1sum: 67406fc7729d7909bd57f3d43f29f7222dce1a31
 
 [file_385-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD385-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD385-10.1.51.12-SIP-r.bin
 size: 31781696
 sha1sum: 49448cffc50b66cd49f83e300bd455844e845f3b
 
 [file_712-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD712-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD712-10.1.51.12-SIP-r.bin
 size: 22192464
 sha1sum: 2bc2656492096d7d4e1960b4e9817264dd874410
 
 [file_715-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snom715-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snom715-10.1.51.12-SIP-r.bin
 size: 25708512
 sha1sum: 6af4325fca1fae4709fef1592bcbb82e5bf090ba
 
 [file_717-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD717-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD717-10.1.51.12-SIP-r.bin
 size: 31916448
 sha1sum: c221fd617188f94c6b0b83742c6eba2f904b9c9f
 
 [file_725-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snom725-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snom725-10.1.51.12-SIP-r.bin
 size: 25711168
 sha1sum: 498b72b18037a876c92ef5a422c167e32a4c49f0
 
 [file_735-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD735-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD735-10.1.51.12-SIP-r.bin
 size: 31679312
 sha1sum: 143faf95cf1a881db01cc767d6846a2c00a337b1
 
 [file_745-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD745-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD745-10.1.51.12-SIP-r.bin
 size: 27940304
 sha1sum: 90783b8083749d93a1c45617ef062462c73661f5
 
 [file_765-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD765-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD765-10.1.51.12-SIP-r.bin
 size: 31229808
 sha1sum: 59f2a0a8006703236a298532535c42e903598127
 
 [file_785-fw]
-url: http://downloads.snom.com/fw/10.1.51.12/bin/snomD785-10.1.51.12-SIP-r.bin
+url: https://downloads.snom.com/fw/10.1.51.12/bin/snomD785-10.1.51.12-SIP-r.bin
 size: 31781232
 sha1sum: 5c4415bb4a1eb2cd83001969df3beb8661f7d728
 
