@@ -87,11 +87,11 @@ class BaseGigasetPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
 
     _LOCALE = {
-        'de_DE': ('Germany'),
-        'en_US': ('Retail'),
-        'es_ES': ('Spain'),
-        'fr_FR': ('France'),
-        'fr_CA': ('Retail'),
+        'de_DE': 'Germany',
+        'en_US': 'Retail',
+        'es_ES': 'Spain',
+        'fr_FR': 'France',
+        'fr_CA': 'Retail',
     }
     _SIP_DTMF_MODE = {
         'RTP-in-band': '1',
@@ -241,9 +241,7 @@ class BaseGigasetPlugin(StandardPlugin):
     def _add_country_and_lang(self, raw_config):
         locale = raw_config.get('locale')
         if locale in self._LOCALE:
-            (
-                raw_config['XX_country'],
-            ) = self._LOCALE[locale]
+            raw_config['XX_country'] = self._LOCALE[locale]
         else:
             raw_config['XX_country'] = 'Retail'
 
@@ -304,6 +302,7 @@ class BaseGigasetPlugin(StandardPlugin):
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
+        self._add_country_and_lang(raw_config)
         self._add_voip_providers(raw_config)
         self._add_ac_code(raw_config)
         self._add_xx_vars(device, raw_config)

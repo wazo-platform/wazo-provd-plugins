@@ -11,7 +11,7 @@
     {%- if admin_password %}
         <param name="WebUIAccounts.1.Password" value="{{ admin_password }}"/>
     {%- endif %}
-        <param name="Telephony.0.ToneScheme" value="International"/>
+        <param name="Telephony.0.ToneScheme" value="{{ XX_country }}"/>
 
     {%- if http_port %}
         <param name="Provisioning.global.ProvisioningServer" value="http://{{ ip }}:{{ http_port }}"/>
@@ -20,7 +20,6 @@
         <!-- Nx70 Telephony - Call settings -->
         <param name="Telephony.0.CT_ViaRKey" value="1"/>
         <param name="Telephony.0.CT_ByOnHook" value="1"/>
-        <param name="Telephony.0.ToneScheme" value="{{ XX_country }}"/>
 
         <param name="DmGlobal.0.SuotaEnable" value="1"/>
         <param name="DmGlobal.0.HSIdleDisplay" value="1"/>
