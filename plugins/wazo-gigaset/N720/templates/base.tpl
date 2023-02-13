@@ -74,6 +74,7 @@
         <SYMB_ITEM ID="BS_IP_Data.aucS_HTTP_PROXY_URL[%]" class="symb_item" value='""'/>
         <SYMB_ITEM ID="BS_IP_Data.uiI_HTTP_PROXY_PORT" class="symb_item" value="8080"/>
         <SYMB_ITEM ID="BS_IP_Data.ucI_HTTPLANGUAGE" class="symb_item" value="1"/>
+        <SYMB_ITEM ID="BS_AE_SwConfig.ucCountryCodeTone" class="symb_item" value="{{ XX_country }}"/>
 
     {%- if ntp_enabled %}
         <SYMB_ITEM ID="BS_IP_Data.aucS_TIME_NTP_SERVER[%]" class="symb_item" value='"{{ ntp_ip }}"'/>
