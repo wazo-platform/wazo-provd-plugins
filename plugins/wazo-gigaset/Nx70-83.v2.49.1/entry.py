@@ -8,6 +8,7 @@ execfile_('common.py', common)
 MODEL_VERSIONS = {
     'N670 IP PRO': '83.V2.49.1',
     'N870 IP PRO': '83.V2.49.1',
+    'N870E IP PRO': '83.V2.49.1',
 }
 
 

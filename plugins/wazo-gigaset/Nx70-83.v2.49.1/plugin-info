@@ -1,7 +1,7 @@
 {
     "version": "0.1.1",
-    "description": "Plugin for Gigaset N670 IP PRO and N870 IP PRO.",
-    "description_fr": "Greffon pour Gigaset N670 IP PRO et N870 IP PRO.",
+    "description": "Plugin for Gigaset N670 IP PRO and N870(E) IP PRO.",
+    "description_fr": "Greffon pour Gigaset N670 IP PRO et N870(E) IP PRO.",
     "capabilities": {
         "Gigaset, N670 IP PRO, 83.V2.49.1": {
             "lines": 20,
@@ -12,6 +12,14 @@
             "protocol": "sip"
         },
         "Gigaset, N870 IP PRO, 83.V2.49.1": {
+            "lines": 250,
+            "high_availability": true,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "protocol": "sip"
+        },
+        "Gigaset, N870E IP PRO, 83.V2.49.1": {
             "lines": 250,
             "high_availability": true,
             "expansion_modules": 0,
