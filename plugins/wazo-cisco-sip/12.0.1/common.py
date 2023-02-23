@@ -248,7 +248,9 @@ class BaseCiscoSipPlugin(StandardPlugin):
                     )
                 else:
                     expmod_key_no = expmod_keynum % 32 + 1
-                    power_required = f'<PoE_Power_Required ua="na">Maximum</PoE_Power_Required>'
+                    power_required = (
+                        f'<PoE_Power_Required ua="na">Maximum</PoE_Power_Required>'
+                    )
                     lines.append(
                         f'<Unit_{expmod_no}_Key_{expmod_key_no}_ ua="na">'
                         f'{function}'
