@@ -218,7 +218,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
             return
         nb_keys, nb_expmods = self._NB_FKEY[model]
         lines = []
-        power_required = f'<PoE_Power_Required ua="na">Normal</PoE_Power_Required>'
+        power_required = '<PoE_Power_Required ua="na">Normal</PoE_Power_Required>'
         for funckey_no, funckey_dict in sorted(
             iter(raw_config['funckeys'].items()), key=itemgetter(0)
         ):
@@ -249,7 +249,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
                 else:
                     expmod_key_no = expmod_keynum % 32 + 1
                     power_required = (
-                        f'<PoE_Power_Required ua="na">Maximum</PoE_Power_Required>'
+                        '<PoE_Power_Required ua="na">Maximum</PoE_Power_Required>'
                     )
                     lines.append(
                         f'<Unit_{expmod_no}_Key_{expmod_key_no}_ ua="na">'
