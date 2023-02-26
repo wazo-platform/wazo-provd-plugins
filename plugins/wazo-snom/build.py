@@ -983,6 +983,8 @@ def build_10_1_141_13(path):
             path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
         )
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.141.13-SIP-{fw_suffix}.bin/'
+        if model.startswith("D8"):
+            sed_script = f's/#FW_FILENAME#/snom{model}-10.1.141.13-SIP-{fw_suffix}.swu/'
         with open(model_tpl, 'wb') as f:
             check_call(
                 [
