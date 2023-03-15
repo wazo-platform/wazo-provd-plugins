@@ -1,0 +1,17 @@
+[pkg_8028s-fw]
+description: Firmware for Alcatel-Lucent 8028s SIP Mode
+description_fr: Firmware pour Alcatel-Lucent 8028s SIP Mode
+version: 1.51.52
+files: 8028s-fw
+install: myriad-fw
+
+
+[install_myriad-fw]
+a-b: unzip $FILE1
+b-c: cp */* firmware/
+
+
+[file_8028s-fw]
+url: http://provd.wazo.community/firmwares/alcatel/2.13.02.010.1965.zip
+size: 76618218
+sha1sum: 2e3caf2a21deb2620132c40e2cd001562c5d6e76

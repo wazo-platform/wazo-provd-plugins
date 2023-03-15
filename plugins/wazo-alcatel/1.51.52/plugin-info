@@ -1,0 +1,16 @@
+{
+    "version": "1.0.1",
+    "description": "Plugin for Alcatel 8028s in version SIP Mode 1.51.52",
+    "description_fr": "Greffon pour Alcatel 8028s en version SIP Mode 1.51.52",
+    "capabilities": {
+        "Alcatel, 8028s, 1.51.52": {
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}

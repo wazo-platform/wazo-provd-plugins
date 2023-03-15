@@ -28,7 +28,7 @@ logger = logging.getLogger('plugin.wazo-alcatel')
 
 class BaseAlcatelMyriadHTTPDeviceInfoExtractor:
     _UA_REGEX_MAC = re.compile(
-        r'^ALE (?P<model>M[3,5,7])(?:-CE)? (?P<version>([0-9]{1,4}\.?){4,5}) (?P<mac>[0-9a-f]{12})'
+        r'^ALE (?P<model>8028s-GE) (?P<version>([0-9]{1,4}\.?){4,5}) (?P<mac>[0-9a-f]{12})'
     )
 
     def extract(self, request: Request, request_type: RequestType):
@@ -49,7 +49,7 @@ class BaseAlcatelMyriadHTTPDeviceInfoExtractor:
 
     def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
-        #   "ALE M3-CE 2.11.01.1604 3c28a620089e"
+        #   "ALE 8028s-GE 1.51.52.2204 487a55023075"
         m = self._UA_REGEX_MAC.search(ua)
         if m:
             device_info = m.groupdict()
@@ -88,9 +88,7 @@ class BaseAlcatelPlugin(StandardPlugin):
     }
 
     _NB_FUNCKEYS = {
-        'M3': 20,
-        'M5': 28,
-        'M7': 28,
+        '8028s-GE': 6,
     }
     _FUNCKEY_TYPE = {
         'blf': 59,
@@ -209,7 +207,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         tz_hms = tzinfo['utcoffset'].as_hms
         offset_hour = tz_hms[0]
         offset_minutes = tz_hms[1]
-        return '{:+02d}:{:02d}'.format(offset_hour, offset_minutes)
+        return f'{offset_hour:+02d}:{offset_minutes:02d}'
 
     def _add_timezone(self, raw_config):
         if 'timezone' in raw_config:
@@ -294,5 +292,5 @@ class BaseAlcatelPlugin(StandardPlugin):
             return None
         return self._dev_specific_filename(device)
 
-    def is_sensitive_filename(self, filename: str):
+    def is_sensitive_filename(self, filename):
         return bool(self._SENSITIVE_FILENAME_REGEX.match(filename))
