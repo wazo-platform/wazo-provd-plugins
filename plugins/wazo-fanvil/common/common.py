@@ -1,4 +1,4 @@
-# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
@@ -228,7 +228,7 @@ class BaseFanvilPlugin(StandardPlugin):
                 lines['dst_week'] = -1
             else:
                 lines['dst_week'] = week
-            lines['dst_wday'] = weekday
+            lines['dst_wday'] = int(weekday) - 1
         return lines
 
     def _extract_tzinfo(self, device, tzinfo):
