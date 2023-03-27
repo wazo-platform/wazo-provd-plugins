@@ -128,8 +128,10 @@
             {%- endif %}
         </date>
         <timeDisplay>
+            <EnableTimeDisplay>0</EnableTimeDisplay>
             <TimeDisplayStyle>0</TimeDisplayStyle>
-            <DateDisplayStyle>2</DateDisplayStyle>
+            <DateDisplayStyle>4</DateDisplayStyle>
+            <DateSeparator>0</DateSeparator>
         </timeDisplay>
         <softKeyConfig>
             <SoftkeyMode>0</SoftkeyMode>
