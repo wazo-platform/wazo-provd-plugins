@@ -1,0 +1,14 @@
+[pkg_V67]
+description: Firmware for Fanvil V67
+description_fr: Micrologiciel pour Fanvil V67
+version: 2.6.6.201
+files: V67-fw
+install: fanvil-fw
+
+[install_fanvil-fw]
+a-b: cp $FILE1 firmware/
+
+[file_V67-fw]
+url: https://download.fanvil.com/Firmware/Release/V67/20230219/v67_fanvil_2.6.6.201_20230202_full.zip
+size: 586284655
+sha1sum: 578745e82b0148eb8e1ecb59b1b8119b530e7d8c
