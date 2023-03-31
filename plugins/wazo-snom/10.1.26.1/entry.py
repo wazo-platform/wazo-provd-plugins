@@ -1,15 +1,13 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2018 The Wazo Authors  (see AUTHORS file)
+# Copyright 2018-2022 The Wazo Authors  (see AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 common_globals = {}
 execfile_('common.py', common_globals)
 
 MODELS = [
-    u'D735',
+    'D735',
 ]
-VERSION = u'10.1.26.1'
+VERSION = '10.1.26.1'
 
 
 class SnomPlugin(common_globals['BaseSnomPlugin']):

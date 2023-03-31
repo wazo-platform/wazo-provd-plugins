@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <settings>
-{% for line_no, line in sip_lines.iteritems() -%}
+{% for line_no, line in sip_lines.items() -%}
     <!-- Account{{ line_no }} Setting -->
     <setting id="Account{{ line_no }}Enable" value="true" />
     <setting id="Account{{ line_no }}RegName" value="{{ line['auth_username']|d(line['username']) }}" />

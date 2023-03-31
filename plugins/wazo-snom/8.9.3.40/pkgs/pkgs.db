@@ -22,7 +22,7 @@ b-c: cp snomlang/* i18n/
 
 
 [file_745-fw]
-url: http://downloads.snom.com/fw/snomD745-8.9.3.40-SIP-r.bin
+url: https://downloads.snom.com/fw/snomD745-8.9.3.40-SIP-r.bin
 size: 28240672
 sha1sum: e60c130bcee32c8727a014dec7c28519ce8415b7
 

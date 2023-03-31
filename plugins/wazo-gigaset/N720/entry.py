@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
@@ -7,8 +6,8 @@ execfile_('common.py', common)
 
 
 MODEL_VERSIONS = {
-    u'N720 DM PRO': u'70.117.00.000.000',
-    u'N720 IP PRO': u'70.117.00.000.000',
+    'N720 DM PRO': '70.117.00.000.000',
+    'N720 IP PRO': '70.117.00.000.000',
 }
 
 

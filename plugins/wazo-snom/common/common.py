@@ -1,53 +1,54 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2010-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
 import os.path
 import re
 import glob
 from operator import itemgetter
+from typing import Dict, Optional
+
 from pkg_resources import parse_version
 from xml.sax.saxutils import escape
 from provd import plugins
 from provd import tzinform
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import BasePgAssociator, IMPROBABLE_SUPPORT, \
-    PROBABLE_SUPPORT, FULL_SUPPORT, NO_SUPPORT, COMPLETE_SUPPORT
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, \
-    TemplatePluginHelper
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
+from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
-logger = logging.getLogger('plugin.xivo-snom')
+logger = logging.getLogger('plugin.wazo-snom')
 
 
-class BaseSnomHTTPDeviceInfoExtractor(object):
+class BaseSnomHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'\bsnom(\w+)-SIP ([\d.]+)')
     _UA_REGEX_MAC = re.compile(r'\bsnom(\w+)-SIP\s([\d.]+)\s(.+)\s(?P<mac>[0-9A-F]+)')
     _PATH_REGEX = re.compile(r'\bsnom\w+-([\dA-F]{12})\.htm$')
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
+    def _do_extract(self, request: Request):
         device_info = {}
-        ua = request.getHeader('User-Agent')
-        raw_mac = request.args.get('mac', [None])[0]
+        ua = request.getHeader(b'User-Agent')
+        raw_mac = request.args.get(b'mac', [None])[0]
         if raw_mac:
             logger.debug('Got MAC from URL: %s', raw_mac)
-            device_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
+            device_info['mac'] = norm_mac(raw_mac.decode('ascii'))
         if ua:
-            info_from_ua = self._extract_from_ua(ua)
+            info_from_ua = self._extract_from_ua(ua.decode('ascii'))
             if info_from_ua:
                 device_info.update(info_from_ua)
-                self._extract_from_path(request.path, device_info)
+                self._extract_from_path(request.path.decode('ascii'), device_info)
         return device_info
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "Mozilla/4.0 (compatible; snom lid 3605)" --> Snom 6.5.xx
         #   "Mozilla/4.0 (compatible; snom320-SIP 6.5.20; snom320 jffs2 v3.36; snom320 linux 3.38)"
@@ -59,28 +60,33 @@ class BaseSnomHTTPDeviceInfoExtractor(object):
         #   "Mozilla/4.0 (compatible; snom820-SIP 8.4.35 1.1.4-IFX-26.11.09)"
         #   "Mozilla/4.0 (compatible; snom870-SIP 8.4.35 SPEAr300 SNOM 1.4)"
         #   "Mozilla/4.0 (compatible; snomPA1-SIP 8.4.35 1.1.3-s)"
-        #   "Mozilla/4.0 (compatible; snomD785-SIP 10.1.33.33 2010.12-00004-g9ba52f5 000413922D24 SXM:0 UXM:0)"
+        #   "Mozilla/4.0 (compatible; snomD785-SIP
+        #    10.1.33.33 2010.12-00004-g9ba52f5 000413922D24 SXM:0 UXM:0)"
         m = self._UA_REGEX_MAC.search(ua)
         if m:
             raw_model, raw_version, _, raw_mac = m.groups()
-            return {u'vendor': u'Snom',
-                    u'model': raw_model.decode('ascii'),
-                    u'mac': norm_mac(raw_mac.decode('ascii')),
-                    u'version': raw_version.decode('ascii')}
+            return {
+                'vendor': 'Snom',
+                'model': raw_model,
+                'mac': norm_mac(raw_mac),
+                'version': raw_version,
+            }
         # if the complete regex did not match, match a smaller one
         m = self._UA_REGEX.search(ua)
         if m:
             raw_model, raw_version = m.groups()
-            return {u'vendor': u'Snom',
-                    u'model': raw_model.decode('ascii'),
-                    u'version': raw_version.decode('ascii')}
+            return {
+                'vendor': 'Snom',
+                'model': raw_model,
+                'version': raw_version,
+            }
         return None
 
-    def _extract_from_path(self, path, dev_info):
+    def _extract_from_path(self, path: str, dev_info: Dict[str, str]):
         m = self._PATH_REGEX.search(path)
         if m:
             raw_mac = m.group(1)
-            dev_info[u'mac'] = norm_mac(raw_mac.decode('ascii'))
+            dev_info['mac'] = norm_mac(raw_mac)
 
 
 class BaseSnomPgAssociator(BasePgAssociator):
@@ -88,20 +94,22 @@ class BaseSnomPgAssociator(BasePgAssociator):
         self._models = models
         self._version = version
 
-    def _do_associate(self, vendor, model, version):
-        if vendor == u'Snom':
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
+        if vendor == 'Snom':
             if version is None:
                 # Could be an old version with no XML support
-                return PROBABLE_SUPPORT
+                return DeviceSupport.PROBABLE
             assert version is not None
             if self._is_incompatible_version(version):
-                return NO_SUPPORT
+                return DeviceSupport.NONE
             if model in self._models:
                 if version == self._version:
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            return PROBABLE_SUPPORT
-        return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.PROBABLE
+        return DeviceSupport.IMPROBABLE
 
     def _is_incompatible_version(self, version):
         try:
@@ -116,36 +124,33 @@ class BaseSnomPgAssociator(BasePgAssociator):
 class BaseSnomPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _LOCALE = {
-        u'de_DE': (u'Deutsch', u'GER'),
-        u'en_US': (u'English', u'USA'),
-        u'es_ES': (u'Espanol', u'ESP'),
-        u'fr_FR': (u'Francais', u'FRA'),
-        u'fr_CA': (u'Francais', u'USA'),
-        u'it_IT': (u'Italiano', u'ITA'),
-        u'nl_NL': (u'Dutch', u'NLD'),
+        'de_DE': ('Deutsch', 'GER'),
+        'en_US': ('English', 'USA'),
+        'es_ES': ('Espanol', 'ESP'),
+        'fr_FR': ('Francais', 'FRA'),
+        'fr_CA': ('Francais', 'USA'),
+        'it_IT': ('Italiano', 'ITA'),
+        'nl_NL': ('Dutch', 'NLD'),
     }
     _SIP_DTMF_MODE = {
-        u'RTP-in-band': u'off',
-        u'RTP-out-of-band': u'off',
-        u'SIP-INFO': u'sip_info_only'
+        'RTP-in-band': 'off',
+        'RTP-out-of-band': 'off',
+        'SIP-INFO': 'sip_info_only',
     }
-    _SIP_TRANSPORT = {
-        u'udp': u'udp',
-        u'tcp': u'tcp',
-        u'tls': u'tls'
-    }
-    _XX_DICT_DEF = u'en'
+    _SIP_TRANSPORT = {'udp': 'udp', 'tcp': 'tcp', 'tls': 'tls'}
+    _XX_DICT_DEF = 'en'
     _XX_DICT = {
-        u'en': {
-            u'remote_directory': u'Directory',
+        'en': {
+            'remote_directory': 'Directory',
         },
-        u'fr': {
-            u'remote_directory': u'Annuaire',
+        'fr': {
+            'remote_directory': 'Annuaire',
         },
     }
+    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.xml')
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
 
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -158,19 +163,23 @@ class BaseSnomPlugin(StandardPlugin):
     http_dev_info_extractor = BaseSnomHTTPDeviceInfoExtractor()
 
     def _add_uxm_firmware(self, raw_config):
-        f = glob.glob(os.path.join(self._tftpboot_dir, u'firmware/snomD7C-*.bin')) + glob.glob(os.path.join(self._tftpboot_dir, u'firmware/snomUXM-*.bin'))
+        f = glob.glob(
+            os.path.join(self._tftpboot_dir, 'firmware/snomD7C-*.bin')
+        ) + glob.glob(os.path.join(self._tftpboot_dir, 'firmware/snomUXM-*.bin'))
         if f:
             if re.match(r"^.*\/snomUXM-.*.bin$", max(f, key=os.path.getmtime)):
-                raw_config[u'XX_uxm_firmware'] = 'uxm'
+                raw_config['XX_uxm_firmware'] = 'uxm'
             if re.match(r"^.*\/snomD7C-.*.bin$", max(f, key=os.path.getmtime)):
-                raw_config[u'XX_uxm_firmware'] = 'uxmc'
+                raw_config['XX_uxm_firmware'] = 'uxmc'
 
     def _common_templates(self):
-        yield ('common/gui_lang.xml.tpl', 'gui_lang.xml')
-        yield ('common/web_lang.xml.tpl', 'web_lang.xml')
-        for tpl_format, file_format in [('common/snom%s.htm.tpl', 'snom%s.htm'),
-                                        ('common/snom%s.xml.tpl', 'snom%s.xml'),
-                                        ('common/snom%s-firmware.xml.tpl', 'snom%s-firmware.xml')]:
+        yield 'common/gui_lang.xml.tpl', 'gui_lang.xml'
+        yield 'common/web_lang.xml.tpl', 'web_lang.xml'
+        for tpl_format, file_format in [
+            ('common/snom%s.htm.tpl', 'snom%s.htm'),
+            ('common/snom%s.xml.tpl', 'snom%s.xml'),
+            ('common/snom%s-firmware.xml.tpl', 'snom%s-firmware.xml'),
+        ]:
             for model in self._MODELS:
                 yield tpl_format % model, file_format % model
 
@@ -182,144 +191,143 @@ class BaseSnomPlugin(StandardPlugin):
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _update_sip_lines(self, raw_config):
-        proxy_ip = raw_config.get(u'sip_proxy_ip')
-        backup_proxy_ip = raw_config.get(u'sip_backup_proxy_ip')
-        voicemail = raw_config.get(u'exten_voicemail')
-        for line in raw_config[u'sip_lines'].itervalues():
+        proxy_ip = raw_config.get('sip_proxy_ip')
+        backup_proxy_ip = raw_config.get('sip_backup_proxy_ip')
+        voicemail = raw_config.get('exten_voicemail')
+        for line in raw_config['sip_lines'].values():
             if proxy_ip:
-                line.setdefault(u'proxy_ip', proxy_ip)
+                line.setdefault('proxy_ip', proxy_ip)
             if backup_proxy_ip:
-                line.setdefault(u'backup_proxy_ip', backup_proxy_ip)
+                line.setdefault('backup_proxy_ip', backup_proxy_ip)
             if voicemail:
-                line.setdefault(u'voicemail', voicemail)
+                line.setdefault('voicemail', voicemail)
 
     def _add_fkeys(self, raw_config, model):
         lines = []
-        for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
-                                               key=itemgetter(0)):
-            funckey_type = funckey_dict[u'type']
-            if funckey_type == u'speeddial':
-                type_ = u'speed'
+        for funckey_no, funckey_dict in sorted(
+            iter(raw_config['funckeys'].items()), key=itemgetter(0)
+        ):
+            funckey_type = funckey_dict['type']
+            if funckey_type == 'speeddial':
+                type_ = 'speed'
                 suffix = ''
-            elif funckey_type == u'park':
-                if model in [u'710', u'715', u'720', u'725', u'760', u'D765']:
-                    type_ = u'orbit'
+            elif funckey_type == 'park':
+                if model in ['710', '715', '720', '725', '760', 'D765']:
+                    type_ = 'orbit'
                     suffix = ''
                 else:
-                    type_ = u'speed'
+                    type_ = 'speed'
                     suffix = ''
-            elif funckey_type == u'blf':
-                if u'exten_pickup_call' in raw_config:
-                    type_ = u'blf'
-                    suffix = '|%s' % raw_config[u'exten_pickup_call']
+            elif funckey_type == 'blf':
+                if 'exten_pickup_call' in raw_config:
+                    type_ = 'blf'
+                    suffix = f'|{raw_config["exten_pickup_call"]}'
                 else:
-                    logger.warning('Could not set funckey %s: no exten_pickup_call',
-                                   funckey_no)
+                    logger.warning(
+                        'Could not set funckey %s: no exten_pickup_call', funckey_no
+                    )
                     continue
             else:
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
-            value = funckey_dict[u'value']
-            label = escape(funckey_dict.get(u'label') or value)
+            value = funckey_dict['value']
+            label = escape(funckey_dict.get('label') or value)
             fkey_value = self._format_fkey_value(type_, value, suffix)
-            lines.append(u'<fkey idx="%d" short_label="%s" label="%s" context="active" perm="R">%s</fkey>' %
-                        (int(funckey_no) - 1, label, label, fkey_value))
-        raw_config[u'XX_fkeys'] = u'\n'.join(lines)
+            lines.append(
+                '<fkey idx="%d" short_label="%s" label="%s" context="active" perm="R">%s</fkey>'
+                % (int(funckey_no) - 1, label, label, fkey_value)
+            )
+        raw_config['XX_fkeys'] = '\n'.join(lines)
 
     def _format_fkey_value(self, fkey_type, value, suffix):
-        return '%s %s%s' % (fkey_type, value, suffix)
+        return f'{fkey_type} {value}{suffix}'
 
     def _add_lang(self, raw_config):
-        if u'locale' in raw_config:
-            locale = raw_config[u'locale']
+        if 'locale' in raw_config:
+            locale = raw_config['locale']
             if locale in self._LOCALE:
-                raw_config[u'XX_lang'] = self._LOCALE[locale]
+                raw_config['XX_lang'] = self._LOCALE[locale]
 
     def _format_dst_change(self, dst_change):
-        fmted_time = u'%02d:%02d:%02d' % tuple(dst_change['time'].as_hms)
+        fmted_time = '{:02d}:{:02d}:{:02d}'.format(*dst_change['time'].as_hms)
         day = dst_change['day']
         if day.startswith('D'):
-            return u'%02d.%02d %s' % (int(day[1:]), dst_change['month'], fmted_time)
-        else:
-            week, weekday = map(int, day[1:].split('.'))
-            weekday = tzinform.week_start_on_monday(weekday)
-            return u'%02d.%02d.%02d %s' % (dst_change['month'], week, weekday, fmted_time)
+            return f'{int(day[1:]):02d}.{dst_change["month"]:02d} {fmted_time}'
+
+        week, weekday = list(map(int, day[1:].split('.')))
+        weekday = tzinform.week_start_on_monday(weekday)
+        return f'{dst_change["month"]:02d}.{week:02d}.{weekday:02d} {fmted_time}'
 
     def _format_tzinfo(self, tzinfo):
         lines = []
-        lines.append(u'<timezone perm="R"></timezone>')
-        lines.append(u'<utc_offset perm="R">%+d</utc_offset>' % tzinfo['utcoffset'].as_seconds)
+        lines.append('<timezone perm="R"></timezone>')
+        lines.append(
+            f'<utc_offset perm="R">{tzinfo["utcoffset"].as_seconds:+d}</utc_offset>'
+        )
         if tzinfo['dst'] is None:
-            lines.append(u'<dst perm="R"></dst>')
+            lines.append('<dst perm="R"></dst>')
         else:
-            lines.append(u'<dst perm="R">%d %s %s</dst>' %
-                         (tzinfo['dst']['save'].as_seconds,
-                          self._format_dst_change(tzinfo['dst']['start']),
-                          self._format_dst_change(tzinfo['dst']['end'])))
-        return u'\n'.join(lines)
+            start = self._format_dst_change(tzinfo['dst']['start'])
+            end = self._format_dst_change(tzinfo['dst']['end'])
+            lines.append(
+                f'<dst perm="R">{tzinfo["dst"]["save"].as_seconds:d} {start} {end}</dst>'
+            )
+        return '\n'.join(lines)
 
     def _add_timezone(self, raw_config):
-        if u'timezone' in raw_config:
+        if 'timezone' in raw_config:
             try:
-                tzinfo = tzinform.get_timezone_info(raw_config[u'timezone'])
-            except tzinform.TimezoneNotFoundError, e:
-                logger.warning('Unknown timezone %s: %s', raw_config[u'timezone'], e)
+                tzinfo = tzinform.get_timezone_info(raw_config['timezone'])
+            except tzinform.TimezoneNotFoundError as e:
+                logger.warning('Unknown timezone %s: %s', raw_config['timezone'], e)
             else:
-                raw_config[u'XX_timezone'] = self._format_tzinfo(tzinfo)
+                raw_config['XX_timezone'] = self._format_tzinfo(tzinfo)
 
     def _add_user_dtmf_info(self, raw_config):
-        dtmf_mode = raw_config.get(u'sip_dtmf_mode')
-        for line in raw_config[u'sip_lines'].itervalues():
-            cur_dtmf_mode = line.get(u'dtmf_mode', dtmf_mode)
-            line[u'XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, u'off')
+        dtmf_mode = raw_config.get('sip_dtmf_mode')
+        for line in raw_config['sip_lines'].values():
+            cur_dtmf_mode = line.get('dtmf_mode', dtmf_mode)
+            line['XX_user_dtmf_info'] = self._SIP_DTMF_MODE.get(cur_dtmf_mode, 'off')
 
     def _add_sip_transport(self, raw_config):
-        raw_config[u'XX_sip_transport'] = self._SIP_TRANSPORT.get(raw_config.get(u'sip_transport'), u'udp')
+        raw_config['XX_sip_transport'] = self._SIP_TRANSPORT.get(
+            raw_config.get('sip_transport'), 'udp'
+        )
 
     def _add_msgs_blocked(self, raw_config):
         msgs_blocked = ''
-        for line_no, line in raw_config[u'sip_lines'].iteritems():
+        for line_no, line in raw_config['sip_lines'].items():
             if line.get('backup_proxy_ip'):
                 backup_line_no = int(line_no) + 1
-                msgs_blocked += ' Identity%02dIsNotRegistered' % backup_line_no
+                msgs_blocked += f' Identity{backup_line_no:02d}IsNotRegistered'
         raw_config['XX_msgs_blocked'] = msgs_blocked
 
     def _add_xivo_phonebook_url(self, raw_config):
-        if hasattr(plugins, 'add_xivo_phonebook_url') and raw_config.get(u'config_version', 0) >= 1:
-            plugins.add_xivo_phonebook_url(raw_config, u'snom')
-        else:
-            self._add_xivo_phonebook_url_compat(raw_config)
-
-    def _add_xivo_phonebook_url_compat(self, raw_config):
-        hostname = raw_config.get(u'X_xivo_phonebook_ip')
-        if hostname:
-            raw_config[u'XX_xivo_phonebook_url'] = u'http://{hostname}/service/ipbx/web_services.php/phonebook/search/'.format(hostname=hostname)
+        plugins.add_xivo_phonebook_url(raw_config, 'snom')
 
     def _gen_xx_dict(self, raw_config):
         xx_dict = self._XX_DICT[self._XX_DICT_DEF]
-        if u'locale' in raw_config:
-            locale = raw_config[u'locale']
+        if 'locale' in raw_config:
+            locale = raw_config['locale']
             lang = locale.split('_', 1)[0]
             if lang in self._XX_DICT:
                 xx_dict = self._XX_DICT[lang]
         return xx_dict
 
-    _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.xml')
-
     def _dev_specific_filenames(self, device):
         # Return a tuple (htm filename, xml filename)
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=True)
-        return 'snom%s-%s.htm' % (device[u'model'], fmted_mac), fmted_mac + '.xml'
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
+        return f'snom{device["model"]}-{formatted_mac}.htm', f'{formatted_mac}.xml'
 
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
         # model is needed since filename has model name in it.
-        if u'model' not in device:
+        if 'model' not in device:
             raise Exception('model needed for device configuration')
 
     def configure(self, device, raw_config):
@@ -330,7 +338,7 @@ class BaseSnomPlugin(StandardPlugin):
         # generate xml file
         tpl = self._tpl_helper.get_dev_template(xml_filename, device)
 
-        model = device.get(u'model')
+        model = device.get('model')
         self._update_sip_lines(raw_config)
         self._add_fkeys(raw_config, model)
         self._add_lang(raw_config)
@@ -339,8 +347,8 @@ class BaseSnomPlugin(StandardPlugin):
         self._add_sip_transport(raw_config)
         self._add_msgs_blocked(raw_config)
         self._add_xivo_phonebook_url(raw_config)
-        raw_config[u'XX_dict'] = self._gen_xx_dict(raw_config)
-        raw_config[u'XX_options'] = device.get(u'options', {})
+        raw_config['XX_dict'] = self._gen_xx_dict(raw_config)
+        raw_config['XX_options'] = device.get('options', {})
 
         path = os.path.join(self._tftpboot_dir, xml_filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
@@ -348,7 +356,7 @@ class BaseSnomPlugin(StandardPlugin):
         # generate htm file
         tpl = self._tpl_helper.get_template('other/base.htm.tpl')
 
-        raw_config[u'XX_xml_filename'] = xml_filename
+        raw_config['XX_xml_filename'] = xml_filename
 
         path = os.path.join(self._tftpboot_dir, htm_filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
@@ -357,30 +365,17 @@ class BaseSnomPlugin(StandardPlugin):
         for filename in self._dev_specific_filenames(device):
             try:
                 os.remove(os.path.join(self._tftpboot_dir, filename))
-            except OSError, e:
+            except OSError as e:
                 # ignore
                 logger.info('error while removing file: %s', e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device, event='check-sync;reboot=false')
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device[u'ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(Exception('IP address needed for device synchronization'))
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(Exception('Incompatible sync service: %s' % sync_service))
-                else:
-                    return threads.deferToThread(sync_service.sip_notify, ip, 'check-sync;reboot=false')
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(
+            device, event='check-sync;reboot=false'
+        )
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' not in device or u'model' not in device:
+        if 'mac' not in device or 'model' not in device:
             return None
 
         return self._dev_specific_filenames(device)[1]

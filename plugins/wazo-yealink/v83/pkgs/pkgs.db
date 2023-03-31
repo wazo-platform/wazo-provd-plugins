@@ -208,7 +208,7 @@ version:
 files: CP930W-lang
 install: yealink-CP930W-lang
 
-[pkg_CP930W-lang]
+[pkg_CP960-lang]
 description: Language files for Yealink CP930W
 description_fr: Fichiers de langue pour Yealink CP930W
 version:

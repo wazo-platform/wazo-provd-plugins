@@ -36,7 +36,7 @@
     {%- endif %}
 
 {%- if sip_lines %}
-    {%- for line_no, line in sip_lines.iteritems() %}
+    {%- for line_no, line in sip_lines.items() %}
         {%- set handset_no = line_no.zfill(5) %}
         <!-- Handset {{ line_no }} -->
         <oper value="{{ handset_no }}" name="add_hs">

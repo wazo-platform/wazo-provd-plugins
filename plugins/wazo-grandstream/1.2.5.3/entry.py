@@ -1,21 +1,23 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2013-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import binascii
 import os.path
 import struct
-import urllib
+import urllib.error
+import urllib.parse
+import urllib.request
+from typing import Dict
+
 from provd.util import format_mac
 
 common = {}
 execfile_('common.py', common)
 
 MODELS = [
-    u'GXP2000',
+    'GXP2000',
 ]
-VERSION = u'1.2.5.3'
+VERSION = '1.2.5.3'
 
 
 class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
@@ -25,10 +27,10 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
 
     pg_associator = common['BaseGrandstreamPgAssociator'](MODELS, VERSION)
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
-        return 'cfg' + fmted_mac
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
+        return f'cfg{formatted_mac}'
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
@@ -50,16 +52,16 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
             if cleanedLine:  # is not empty
                 items = [x.strip() for x in cleanedLine.split('=')]
                 if len(items) == 2:  # Only interested in pairs (name=value)
-                    config += items[0] + '=' + urllib.quote(items[1]) + '&'
+                    config += items[0] + '=' + urllib.parse.quote(items[1]) + '&'
 
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
-        short_mac = fmted_mac[2:6]
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
+        short_mac = formatted_mac[2:6]
         config = config + 'gnkey=' + short_mac
         # Convert to ascii
         config = str(config)
 
         # Convert mac to binary
-        b_mac = binascii.unhexlify(fmted_mac)
+        b_mac = binascii.unhexlify(formatted_mac)
 
         # Make sure length is even bytewise
         if len(config) % 2 != 0:
@@ -96,4 +98,4 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
             content_file.write(b_config)
 
     def _format_line(self, code, value):
-        return u'    %s = %s' % (code, value)
+        return f'    {code} = {value}'

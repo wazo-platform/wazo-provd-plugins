@@ -40,7 +40,7 @@
         <user_dtmf_info idx="{{ server['id'] }}">{{ server['dtmf_mode'] }}</user_dtmf_info>
     {%- endfor %}
 
-    {%- for line_no, line in sip_lines.iteritems() %}
+    {%- for line_no, line in sip_lines.items() %}
         <user_active idx="{{ line_no }}">on</user_active>
         <user_name idx="{{ line_no }}">{{ line['username']|e }}</user_name>
         <user_pname idx="{{ line_no }}">{{ line['auth_username']|e }}</user_pname>

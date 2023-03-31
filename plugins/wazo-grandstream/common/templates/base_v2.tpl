@@ -35,7 +35,7 @@
     <item name="provisioning.firmware.confirm.enable">No</item>
 
 {# SIP per-line settings -#}
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
     <item name="account.{{ line_no }}.enable">Yes</item>
     <item name="account.{{ line_no }}.sip.registration">Yes</item>
     <item name="account.{{ line_no }}.sip.unregisterOnReboot">Yes</item>

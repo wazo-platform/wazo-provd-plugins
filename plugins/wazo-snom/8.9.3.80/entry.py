@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Copyright (C) 2014-2016 Avencall
+# Copyright (C) 2014-2022 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,20 +17,20 @@ common_globals = {}
 execfile_('common.py', common_globals)
 
 MODELS = [
-    u'D305',
-    u'D315',
-    u'D345',
-    u'D375',
-    u'710',
-    u'D712',
-    u'715',
-    u'720',
-    u'725',
-    u'D745',
-    u'760',
-    u'D765',
+    'D305',
+    'D315',
+    'D345',
+    'D375',
+    '710',
+    'D712',
+    '715',
+    '720',
+    '725',
+    'D745',
+    '760',
+    'D765',
 ]
-VERSION = u'8.9.3.80'
+VERSION = '8.9.3.80'
 
 
 class SnomPlugin(common_globals['BaseSnomPlugin']):

@@ -41,7 +41,7 @@
     {# Do not ask the user to update #}
     <P8375>0</P8375>
 {# SIP per-line settings -#}
-{% for line_no, line in sip_lines.iteritems() %}
+{% for line_no, line in sip_lines.items() %}
   {% if line_no == '1' %}
     <P271>1</P271>
     <P270>{{ line['display_name'] }}</P270>

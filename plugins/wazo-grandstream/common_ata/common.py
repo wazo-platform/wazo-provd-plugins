@@ -1,41 +1,37 @@
-# -*- coding: utf-8 -*-
-
 # Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
 import re
 import os.path
+from typing import Dict, Optional
+
 from provd import synchronize
 from provd.devices.config import RawConfigError
 from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
-from provd.devices.pgasso import (
-    BasePgAssociator,
-    COMPLETE_SUPPORT,
-    FULL_SUPPORT,
-    IMPROBABLE_SUPPORT,
-    UNKNOWN_SUPPORT,
-)
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.devices.ident import RequestType
 from provd.util import format_mac, norm_mac
-from twisted.internet import defer, threads
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-grandstream')
 
 TZ_NAME = {'Europe/Paris': 'CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00'}
 LOCALE = {
-    u'de_DE': 'de',
-    u'es_ES': 'es',
-    u'fr_FR': 'fr',
-    u'fr_CA': 'fr',
-    u'it_IT': 'it',
-    u'nl_NL': 'nl',
-    u'en_US': 'en',
+    'de_DE': 'de',
+    'es_ES': 'es',
+    'fr_FR': 'fr',
+    'fr_CA': 'fr',
+    'it_IT': 'it',
+    'nl_NL': 'nl',
+    'en_US': 'en',
 }
 
 
-class BaseGrandstreamHTTPDeviceInfoExtractor(object):
-
+class BaseGrandstreamHTTPDeviceInfoExtractor:
     # Grandstream Model HW HT801 V1.1A SW 1.0.17.5 DevId c074ad273a10
 
     _UA_REGEX_LIST = [
@@ -44,48 +40,50 @@ class BaseGrandstreamHTTPDeviceInfoExtractor(object):
         ),
     ]
 
-    def extract(self, request, request_type):
+    def extract(self, request: Request, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request):
-        ua = request.getHeader('User-Agent')
+    def _do_extract(self, request: Request):
+        ua = request.getHeader(b'User-Agent')
         if ua:
-            return self._extract_from_ua(ua)
+            return self._extract_from_ua(ua.decode('ascii'))
 
-    def _extract_from_ua(self, ua):
+    def _extract_from_ua(self, ua: str):
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
             if m:
                 raw_model, raw_version, raw_mac = m.groups()
                 try:
-                    mac = norm_mac(raw_mac.decode('ascii'))
+                    mac = norm_mac(raw_mac)
                 except ValueError as e:
                     logger.warning(
                         'Could not normalize MAC address "%s": %s', raw_mac, e
                     )
-                else:
-                    return {
-                        u'vendor': u'Grandstream',
-                        u'model': raw_model.decode('ascii'),
-                        u'version': raw_version.decode('ascii'),
-                        u'mac': mac,
-                    }
+                    return None
+                return {
+                    'vendor': 'Grandstream',
+                    'model': raw_model,
+                    'version': raw_version,
+                    'mac': mac,
+                }
 
 
 class BaseGrandstreamPgAssociator(BasePgAssociator):
     def __init__(self, models, version):
-        BasePgAssociator.__init__(self)
+        super().__init__()
         self._models = models
         self._version = version
 
-    def _do_associate(self, vendor, model, version):
-        if vendor == u'Grandstream':
+    def _do_associate(
+        self, vendor: str, model: Optional[str], version: Optional[str]
+    ) -> DeviceSupport:
+        if vendor == 'Grandstream':
             if model in self._models:
                 if version.startswith(self._version):
-                    return FULL_SUPPORT
-                return COMPLETE_SUPPORT
-            return UNKNOWN_SUPPORT
-        return IMPROBABLE_SUPPORT
+                    return DeviceSupport.EXACT
+                return DeviceSupport.COMPLETE
+            return DeviceSupport.UNKNOWN
+        return DeviceSupport.IMPROBABLE
 
 
 class BaseGrandstreamPlugin(StandardPlugin):
@@ -93,19 +91,19 @@ class BaseGrandstreamPlugin(StandardPlugin):
 
     DTMF_MODES = {
         # mode: (in audio, in RTP, in SIP)
-        u'RTP-in-band': ('Yes', 'Yes', 'No'),
-        u'RTP-out-of-band': ('No', 'Yes', 'No'),
-        u'SIP-INFO': ('No', 'No', 'Yes'),
+        'RTP-in-band': ('Yes', 'Yes', 'No'),
+        'RTP-out-of-band': ('No', 'Yes', 'No'),
+        'SIP-INFO': ('No', 'No', 'Yes'),
     }
 
     SIP_TRANSPORTS = {
-        u'udp': u'UDP',
-        u'tcp': u'TCP',
-        u'tls': u'TlsOrTcp',
+        'udp': 'UDP',
+        'tcp': 'TCP',
+        'tls': 'TlsOrTcp',
     }
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
-        StandardPlugin.__init__(self, app, plugin_dir, gen_cfg, spec_cfg)
+        super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         # update to use the non-standard tftpboot directory
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
@@ -119,17 +117,17 @@ class BaseGrandstreamPlugin(StandardPlugin):
 
     http_dev_info_extractor = BaseGrandstreamHTTPDeviceInfoExtractor()
 
-    def _dev_specific_filename(self, device):
+    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
-        fmted_mac = format_mac(device[u'mac'], separator='', uppercase=False)
-        return 'cfg' + fmted_mac + '.xml'
+        formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
+        return f'cfg{formatted_mac}.xml'
 
     def _check_config(self, raw_config):
-        if u'http_port' not in raw_config:
+        if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
     def _check_device(self, device):
-        if u'mac' not in device:
+        if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 
     def configure(self, device, raw_config):
@@ -157,65 +155,43 @@ class BaseGrandstreamPlugin(StandardPlugin):
         except OSError as e:
             logger.info('error while removing configuration file: %s', e)
 
-    if hasattr(synchronize, 'standard_sip_synchronize'):
-
-        def synchronize(self, device, raw_config):
-            return synchronize.standard_sip_synchronize(device)
-
-    else:
-        # backward compatibility with older wazo-provd server
-        def synchronize(self, device, raw_config):
-            try:
-                ip = device[u'ip'].encode('ascii')
-            except KeyError:
-                return defer.fail(
-                    Exception('IP address needed for device synchronization')
-                )
-            else:
-                sync_service = synchronize.get_sync_service()
-                if sync_service is None or sync_service.TYPE != 'AsteriskAMI':
-                    return defer.fail(
-                        Exception('Incompatible sync service: %s' % sync_service)
-                    )
-                else:
-                    return threads.deferToThread(
-                        sync_service.sip_notify, ip, 'check-sync'
-                    )
+    def synchronize(self, device, raw_config):
+        return synchronize.standard_sip_synchronize(device)
 
     def get_remote_state_trigger_filename(self, device):
-        if u'mac' in device:
+        if 'mac' in device:
             return self._dev_specific_filename(device)
 
     def _check_lines_password(self, raw_config):
-        for line in raw_config[u'sip_lines'].itervalues():
-            if line[u'password'] == u'autoprov':
-                line[u'password'] = u''
+        for line in raw_config['sip_lines'].values():
+            if line['password'] == 'autoprov':
+                line['password'] = ''
 
     def _add_timezone(self, raw_config):
-        if u'timezone' in raw_config and raw_config[u'timezone'] in TZ_NAME:
-            raw_config[u'XX_timezone'] = TZ_NAME[raw_config[u'timezone']]
+        if 'timezone' in raw_config and raw_config['timezone'] in TZ_NAME:
+            raw_config['XX_timezone'] = TZ_NAME[raw_config['timezone']]
         else:
             raw_config['timezone'] = TZ_NAME['Europe/Paris']
 
     def _add_locale(self, raw_config):
-        locale = raw_config.get(u'locale')
+        locale = raw_config.get('locale')
         if locale in LOCALE:
-            raw_config[u'XX_locale'] = LOCALE[locale]
+            raw_config['XX_locale'] = LOCALE[locale]
 
     def _add_dns(self, raw_config):
-        if raw_config.get(u'dns_enabled'):
-            dns_parts = raw_config[u'dns_ip'].split('.')
+        if raw_config.get('dns_enabled'):
+            dns_parts = raw_config['dns_ip'].split('.')
             for part_nb, part in enumerate(dns_parts, start=1):
-                raw_config[u'XX_dns_%s' % part_nb] = part
+                raw_config[f'XX_dns_{part_nb}'] = part
 
     def _add_dtmf_mode(self, raw_config):
-        if raw_config.get(u'sip_dtmf_mode'):
-            dtmf_info = self.DTMF_MODES[raw_config[u'sip_dtmf_mode']]
+        if raw_config.get('sip_dtmf_mode'):
+            dtmf_info = self.DTMF_MODES[raw_config['sip_dtmf_mode']]
             raw_config['XX_dtmf_in_audio'] = dtmf_info[0]
             raw_config['XX_dtmf_in_rtp'] = dtmf_info[1]
             raw_config['XX_dtmf_in_sip'] = dtmf_info[2]
 
     def _add_sip_transport(self, raw_config):
-        sip_transport = raw_config.get(u'sip_transport')
+        sip_transport = raw_config.get('sip_transport')
         if sip_transport in self.SIP_TRANSPORTS:
-            raw_config[u'XX_sip_transport'] = self.SIP_TRANSPORTS[sip_transport]
+            raw_config['XX_sip_transport'] = self.SIP_TRANSPORTS[sip_transport]

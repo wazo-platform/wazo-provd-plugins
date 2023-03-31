@@ -155,9 +155,6 @@ b-c: cp *.rom firmware/T46S-66.81.0.110.rom
 a-b: unrar $FILE1
 b-c: cp *.rom firmware/T48S-65.81.0.110.rom
 
-[install_yealink-cp-rom]
-a-b: cp *.rom firmware/
-
 [file_T19P_E2-fw]
 filename: T19P_E2-53.81.0.110.zip
 url: http://provd.wazo.community/firmwares/yealink/T19P_E2-53.81.0.110.zip

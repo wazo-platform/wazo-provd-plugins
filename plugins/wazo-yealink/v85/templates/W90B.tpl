@@ -2,6 +2,8 @@
 
 sip.notify_reboot_enable = 0
 
+transfer.dsskey_deal_type = 1
+
 static.security.user_name.user = {{ user_username|d('user') }}
 static.security.user_name.admin = {{ admin_username|d('admin') }}
 static.security.user_password = {{ user_username|d('user') }}:{{ user_password|d('user') }}

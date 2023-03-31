@@ -1,5 +1,5 @@
 {
-    "version": "1.1.5",
+    "version": "1.1.10",
     "description": "Plugin for Fanvil X serie",
     "description_fr": "Greffon pour La serie X Fanvil",
     "vendor" : "Fanvil",
@@ -11,6 +11,42 @@
             "lines": 2,
             "high_availability": false,
             "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X210, P0.18.23.89-2.4.5.2": {
+            "lines": 20,
+            "high_availability": false,
+            "function_keys": 116,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X210 Pro, 6959-2.12.1.3": {
+            "lines": 20,
+            "high_availability": false,
+            "function_keys": 116,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X210i, P0.18.23.89-2.4.5.2": {
+            "lines": 20,
+            "high_availability": false,
+            "function_keys": 116,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X210i Pro, 6960-2.12.1.3": {
+            "lines": 20,
+            "high_availability": false,
+            "function_keys": 116,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -43,6 +79,24 @@
             "type": "deskphone",
             "protocol": "sip"
         },
+        "Fanvil, X4U, P0.18.23.89-2.4.5.2": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 33,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X4U Pro, 6903-2.12.4.1": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 33,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
         "Fanvil, X5, 1.4.0.2016": {
             "lines": 16,
             "high_availability": false,
@@ -56,6 +110,24 @@
             "lines": 16,
             "high_availability": false,
             "function_keys": 40,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X5U, P0.18.23.89-2.4.5.2": {
+            "lines": 16,
+            "high_availability": false,
+            "function_keys": 34,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X5U Pro, 6907-2.12.4.1": {
+            "lines": 16,
+            "high_availability": false,
+            "function_keys": 34,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -79,7 +151,25 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, X7, P0.17.0-1.12.5.1": {
+        "Fanvil, X6U, P0.18.23.89-2.4.5.2": {
+            "lines": 20,
+            "high_availability": false,
+            "function_keys": 72,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X6U Pro, 6916-2.12.4.1": {
+            "lines": 20,
+            "high_availability": false,
+            "function_keys": 72,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X7, P0.18.23.89-2.4.5.2": {
             "lines": 20,
             "high_availability": false,
             "function_keys": 127,
@@ -88,10 +178,28 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, X7C, P0.17.0-1.12.2.1": {
+        "Fanvil, X7 Pro, 6957-2.12.1.3": {
             "lines": 20,
             "high_availability": false,
-            "function_keys": 60,
+            "function_keys": 127,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X7C, P0.18.23.89-2.4.5.2": {
+            "lines": 20,
+            "high_availability": false,
+            "function_keys": 12,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X7C Pro, 6958-2.12.1.3": {
+            "lines": 20,
+            "high_availability": false,
+            "function_keys": 72,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",

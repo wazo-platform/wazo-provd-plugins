@@ -43,22 +43,22 @@ b-c: cp snomlang/* i18n/
 
 
 [file_305-fw]
-url: http://downloads.snom.com/fw/snomD305-8.9.3.60-SIP-r.bin
+url: https://downloads.snom.com/fw/snomD305-8.9.3.60-SIP-r.bin
 size: 23988864
 sha1sum: d4e20c9e3d1d59eb9ad7868d7f0493805e574c48
 
 [file_315-fw]
-url: http://downloads.snom.com/fw/snomD315-8.9.3.60-SIP-r.bin
+url: https://downloads.snom.com/fw/snomD315-8.9.3.60-SIP-r.bin
 size: 25994192
 sha1sum: def23b67aa19cfd1f7db3934c74fc4dd0cb0c190
 
 [file_345-fw]
-url: http://downloads.snom.com/fw/snomD345-8.9.3.60-SIP-r.bin
+url: https://downloads.snom.com/fw/snomD345-8.9.3.60-SIP-r.bin
 size: 26018336
 sha1sum: 3b6960e65fae1795c62706f126c01b0f17d29ffb
 
 [file_375-fw]
-url: http://downloads.snom.com/fw/snomD375-8.9.3.60-SIP-r.bin
+url: https://downloads.snom.com/fw/snomD375-8.9.3.60-SIP-r.bin
 size: 30570016
 sha1sum: 83522d9a594a88456e8801ea25e35fc6c4332484
 
