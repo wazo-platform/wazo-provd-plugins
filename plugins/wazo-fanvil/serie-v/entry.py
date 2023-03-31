@@ -27,7 +27,7 @@ MODEL_FIRMWARE_MAPPING = {
 }
 
 FUNCTION_KEYS_PER_PAGE = {
-    'V67': 34,
+    'V67': 29,
 }
 
 
