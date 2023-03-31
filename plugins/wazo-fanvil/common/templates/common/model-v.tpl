@@ -3,7 +3,7 @@
     <Version>2.0000000000</Version>
     <fwCheck>
         <EnableAutoUpgrade>1</EnableAutoUpgrade>
-        <UpgradeServer1>http://{{ ip }}:{{ http_port }}/Fanvil/firmware/{{ XX_fw_filename }}</UpgradeServer1>
+        <UpgradeServer1>http://{{ ip }}:{{ http_port }}/Fanvil</UpgradeServer1>
         <UpgradeServer2></UpgradeServer2>
         <AutoUpgradeInterval>24</AutoUpgradeInterval>
     </fwCheck>

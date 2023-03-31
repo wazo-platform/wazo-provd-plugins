@@ -4,7 +4,7 @@
     {% if XX_fw_filename -%}
     <fwCheck>
         <EnableAutoUpgrade>1</EnableAutoUpgrade>
-        <UpgradeServer1>http://{{ ip }}:{{ http_port }}/Fanvil/firmware/{{ XX_fw_filename }}</UpgradeServer1>
+        <UpgradeServer1>http://{{ ip }}:{{ http_port }}/Fanvil</UpgradeServer1>
         <UpgradeServer2></UpgradeServer2>
         <AutoUpgradeInterval>24</AutoUpgradeInterval>
     </fwCheck>
@@ -155,7 +155,25 @@
             <DesktopLongPress>status;none;none;mwi;none;</DesktopLongPress>
             <DialerConfSoftkey>audio;video;cancel;contact;history;redial;</DialerConfSoftkey>
         </softKeyConfig>
+        {% if XX_xivo_phonebook_url -%}
+        <xmlContact index="1">
+            <Name>{{ XX_directory|d('Directory') }}</Name>
+            <Addr>{{ XX_xivo_phonebook_url }}</Addr>
+            <UserName></UserName>
+            <PassWd></PassWd>
+            <Sipline>-1</Sipline>
+            <BindLine>-1</BindLine>
+        </xmlContact>
+        {%- endif %}
     </phone>
+    <cti>
+        {% if XX_wazo_phoned_user_service_dnd_enabled_url -%}
+        <DNDOnUrl>{{ XX_wazo_phoned_user_service_dnd_enabled_url }}</DNDOnUrl>
+        {% endif -%}
+        {% if XX_wazo_phoned_user_service_dnd_disabled_url -%}
+        <DNDOffUrl>{{ XX_wazo_phoned_user_service_dnd_disabled_url }}</DNDOffUrl>
+        {% endif -%}
+    </cti>
     <web>
         <WebServerType>0</WebServerType>
         <WebPort>80</WebPort>
@@ -268,13 +286,13 @@
         </port>
     </call>
     <dsskey>
-        <dssSide index="1">
+        <internal index="1">
             {%- if sip_lines %}
-            {% for line_no in sip_lines -%}
+            {% for line_no, line in sip_lines.items() -%}
             <Fkey index="{{ line_no }}">
                 <Type>2</Type>
                 <Value>SIP{{ line_no }}</Value>
-                <Title></Title>
+                <Title>{{ line['number'] }}</Title>
             </Fkey>
             {%- endfor %}
             {%- else %}
@@ -284,7 +302,7 @@
                 <Title></Title>
             </Fkey>
             {%- endif %}
-        </dssSide>
+        </internal>
         {% if XX_paginated_fkeys -%}
             <FuncKeyPageNum>{{ XX_max_page }}</FuncKeyPageNum>
         {% for page, index, fkey in XX_paginated_fkeys -%}
@@ -301,13 +319,45 @@
             </Fkey>
         {%- endfor %}
         </internal>
+        {%- else %}
+            <Fkey index="2">
+                <Type>0</Type>
+                <Value></Value>
+                <Title></Title>
+                <ICON></ICON>
+            </Fkey>
+            <Fkey index="3">
+                <Type>0</Type>
+                <Value></Value>
+                <Title></Title>
+                <ICON></ICON>
+            </Fkey>
+            <Fkey index="4">
+                <Type>0</Type>
+                <Value></Value>
+                <Title></Title>
+                <ICON></ICON>
+            </Fkey>
+            <Fkey index="5">
+                <Type>0</Type>
+                <Value></Value>
+                <Title></Title>
+                <ICON></ICON>
+            </Fkey>
+            <Fkey index="6">
+                <Type>0</Type>
+                <Value></Value>
+                <Title></Title>
+                <ICON></ICON>
+            </Fkey>
+            <Fkey index="7">
+                <Type>0</Type>
+                <Value></Value>
+                <Title></Title>
+                <ICON></ICON>
+            </Fkey>
+        </internal>
         {% endif -%}
-        {% if XX_xivo_phonebook_url -%}
-        <dssSoft index="1">
-            <Type>21</Type>
-            <Value>{{ XX_xivo_phonebook_url }}</Value>
-            <Title>{{ XX_directory|d('Directory') }}</Title>
-        </dssSoft>
-        {%- endif %}
+
     </dsskey>
 </sysConf>

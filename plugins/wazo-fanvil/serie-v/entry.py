@@ -1,4 +1,4 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
@@ -15,6 +15,11 @@ COMMON_FILES = {
         'v67_fanvil_2.6.6.201_20230202_full.zip',
         'model-v.tpl',
     ),
+    'fanvil_v67_hw1_1.txt': (
+        'V67',
+        'v67_fanvil_2.6.6.201_20230202_full.zip',
+        'model-v67.tpl',
+    ),
 }
 
 MODEL_FIRMWARE_MAPPING = {
@@ -22,7 +27,7 @@ MODEL_FIRMWARE_MAPPING = {
 }
 
 FUNCTION_KEYS_PER_PAGE = {
-    'V67': 116,
+    'V67': 34,
 }
 
 
