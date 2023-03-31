@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import math
 import os.path
 import re
 
@@ -338,62 +339,99 @@ class BaseFanvilPlugin(StandardPlugin):
             value=funckey_dict['value'], line=funckey_dict['line']
         )
 
+    def _split_fkeys(self, funckeys, threshold):
+        fkeys_top = {}
+        fkeys_bottom = {}
+
+        for funckey_no, funckey_dict in funckeys:
+            keynum = int(funckey_no)
+            if keynum < threshold:
+                fkeys_top[keynum] = funckey_dict
+            else:
+                fkeys_bottom[keynum - threshold] = funckey_dict
+        return fkeys_top, fkeys_bottom
+
+    def _format_fkey(self, funckey_number, funckey, fkey_offset, pickup_exten):
+        fkey = {}
+        fkey['id'] = funckey_number + fkey_offset
+        fkey['title'] = funckey['label']
+        fkey['type'] = 1
+        if funckey['type'] == 'speeddial':
+            fkey['type'] = 4
+            fkey['value'] = self._format_funckey_speeddial(funckey)
+        elif funckey['type'] == 'blf':
+            fkey['value'] = self._format_funckey_blf(funckey, pickup_exten)
+        elif funckey['type'] == 'park':
+            fkey['value'] = self._format_funckey_call_park(funckey)
+        else:
+            logger.info('Unsupported funckey type: %s', funckey['type'])
+
+        return fkey
+
+    def _format_fkeys(self, fkeys, max_fkeys, offset, exten_pickup_call):
+        formatted_fkeys = []
+        for fkey_num in range(1, max_fkeys + 1):
+            fkey = fkeys.get(fkey_num)
+            if not fkey:
+                fkey = {'label': '', 'type': None}
+            formatted_fkeys.append(
+                self._format_fkey(fkey_num, fkey, offset, exten_pickup_call)
+            )
+        return formatted_fkeys
+
     def _add_fkeys(self, device, raw_config):
-        lines = []
         exten_pickup_call = raw_config.get('exten_pickup_call')
         offset = 0 if self._is_new_model(device) else 1
-        max_funckey_position = 0
-        for funckey_no, funckey_dict in raw_config['funckeys'].items():
-            fkey_line = {}
-            keynum = int(funckey_no)
-            fkey_id = keynum + offset
-            fkey_line['id'] = fkey_id
-            fkey_line['title'] = funckey_dict['label']
-            fkey_line['type'] = 1
-            if keynum > max_funckey_position:
-                max_funckey_position = keynum
-
-            funckey_type = funckey_dict['type']
-            if funckey_type == 'speeddial':
-                fkey_line['value'] = self._format_funckey_speeddial(funckey_dict)
-                if funckey_dict['value'].startswith('*'):
-                    fkey_line['type'] = 4
-            elif funckey_type == 'blf':
-                if keynum <= 12:
-                    fkey_line['value'] = self._format_funckey_blf(
-                        funckey_dict, exten_pickup_call
-                    )
-                else:
-                    logger.info('For Fanvil, blf is only available on DSS keys')
-                    fkey_line['value'] = self._format_funckey_speeddial(funckey_dict)
-            elif funckey_type == 'park':
-                fkey_line['value'] = self._format_funckey_call_park(funckey_dict)
-            else:
-                logger.info('Unsupported funckey type: %s', funckey_type)
-                continue
-
-            lines.append(fkey_line)
-
-        keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(
-            device['model'].split('-')[0], None
+        clean_model_name = device['model'].split('-')[0]
+        top_key_threshold = self._MAX_LINES.get(clean_model_name, 0)
+        raw_config['XX_top_key_threshold'] = top_key_threshold
+        top_keys, bottom_keys = self._split_fkeys(
+            raw_config['funckeys'].items(), top_key_threshold
         )
-        if keys_per_page:
-            raw_config['XX_max_page'] = max_funckey_position // keys_per_page + 1
-            raw_config['XX_paginated_fkeys'] = sorted(
-                [
-                    (
-                        (fkey['id'] - 1) // keys_per_page,
-                        (fkey['id'] - 1) % keys_per_page,
-                        fkey,
-                    )
-                    for fkey in lines
-                ]
+
+        top_keys_per_page = self._LINE_KEYS_PER_PAGE.get(clean_model_name, None)
+        keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(clean_model_name, None)
+
+        max_top_keys = max(top_keys) + 1 if top_keys else 0
+        max_bottom_keys = max(bottom_keys) + 1 if bottom_keys else 0
+        formatted_top_keys = self._format_fkeys(
+            top_keys, max_top_keys, offset, exten_pickup_call
+        )
+        formatted_bottom_keys = self._format_fkeys(
+            bottom_keys, max_bottom_keys, offset, exten_pickup_call
+        )
+        if top_keys_per_page:
+            max_top_page, paginated_top_fkeys = self._paginate(
+                formatted_top_keys, max_top_keys, top_keys_per_page
             )
+            raw_config['XX_max_top_page'] = max_top_page
+            raw_config['XX_paginated_top_fkeys'] = paginated_top_fkeys
         else:
-            raw_config['XX_paginated_fkeys'] = [
-                (0, fkey['id'] - 1, fkey) for fkey in lines
+            raw_config['XX_paginated_top_fkeys'] = [
+                (0, fkey['id'] - 1, fkey) for fkey in top_keys
             ]
-        raw_config['XX_fkeys'] = lines
+
+        if keys_per_page:
+            max_bottom_page, paginated_bottom_fkeys = self._paginate(
+                formatted_bottom_keys, max_bottom_keys, keys_per_page
+            )
+            raw_config['XX_max_page'] = max_bottom_page
+            raw_config['XX_paginated_fkeys'] = paginated_bottom_fkeys
+        raw_config['XX_fkeys'] = formatted_top_keys + formatted_bottom_keys
+
+    def _paginate(self, fkeys, max_position, results_per_page):
+        max_page = math.ceil(max_position / results_per_page)
+        paginated_fkeys = sorted(
+            [
+                (
+                    fkey['id'] // results_per_page,
+                    fkey['id'] % results_per_page,
+                    fkey,
+                )
+                for fkey in fkeys
+            ]
+        )
+        return max_page, paginated_fkeys
 
     def _add_phonebook_url(self, raw_config):
         if (

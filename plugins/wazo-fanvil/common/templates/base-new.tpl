@@ -190,23 +190,35 @@
         </port>
     </call>
     <dsskey>
+      {%- if XX_paginated_top_fkeys -%}
         <dssSide index="1">
-            {%- if sip_lines %}
-            {% for line_no in sip_lines -%}
-            <Fkey index="{{ line_no }}">
-                <Type>2</Type>
-                <Value>SIP{{ line_no }}</Value>
+      {%- for page, index, key in XX_paginated_top_fkeys -%}
+      {% if loop.index0 != 0 and page != loop.previtem[0] -%}
+        </dssSide>
+        <dssSide index="{{ page + 1 }}">
+	{% endif -%}
+          {%- if sip_lines %}
+            <Fkey index="{{ index + 1 }}">
+	      {%- if key['id']|string in sip_lines %}
+                <Type></Type>
+                <Value></Value>
                 <Title></Title>
+		{%- else %}
+		<Type>{{ key['type'] }}</Type>
+		<Value>{{ key['value'] }}</Value>
+		<Title>{{ key['title'] }}</Title>
+		{%- endif %}
             </Fkey>
-            {%- endfor %}
-            {%- else %}
+          {%- else %}
             <Fkey index="1">
                 <Type>2</Type>
                 <Value>SIP1</Value>
                 <Title></Title>
             </Fkey>
-            {%- endif %}
-        </dssSide>
+          {%- endif %}
+	  {%- endfor -%}
+	</dssSide>
+	{%- endif -%}
         {% if XX_paginated_fkeys -%}
             <FuncKeyPageNum>{{ XX_max_page }}</FuncKeyPageNum>
         {% for page, index, fkey in XX_paginated_fkeys -%}

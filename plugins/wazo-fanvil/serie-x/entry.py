@@ -1,6 +1,5 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
-
 
 common = {}
 execfile_('common.py', common)
@@ -84,6 +83,22 @@ FUNCTION_KEYS_PER_PAGE = {
     'X6U': 12,
 }
 
+LINE_KEYS_PER_PAGE = {
+    'X210': 10,
+    'X210i': 10,
+    'X4U': 3,
+    'X5U': 4,
+    'X6U': 5,
+}
+
+MAX_LINES = {
+    'X210': 20,
+    'X210i': 20,
+    'X4U': 12,
+    'X5U': 16,
+    'X6U': 20,
+}
+
 
 class FanvilPlugin(common['BaseFanvilPlugin']):
     IS_PLUGIN = True
@@ -91,6 +106,8 @@ class FanvilPlugin(common['BaseFanvilPlugin']):
     _COMMON_FILES = COMMON_FILES
     _MODEL_FIRMWARE_MAPPING = MODEL_FIRMWARE_MAPPING
     _FUNCTION_KEYS_PER_PAGE = FUNCTION_KEYS_PER_PAGE
+    _LINE_KEYS_PER_PAGE = LINE_KEYS_PER_PAGE
+    _MAX_LINES = MAX_LINES
     _LOCALE = {
         'de_DE': '16',
         'es_ES': '10',
