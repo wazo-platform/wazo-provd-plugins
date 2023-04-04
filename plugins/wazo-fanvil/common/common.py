@@ -355,7 +355,7 @@ class BaseFanvilPlugin(StandardPlugin):
         fkey = {}
         fkey['id'] = funckey_number + fkey_offset
         fkey['title'] = funckey['label']
-        fkey['type'] = 1
+        fkey['type'] = 2
         if funckey['type'] == 'speeddial':
             fkey['type'] = 4
             fkey['value'] = self._format_funckey_speeddial(funckey)
@@ -365,6 +365,7 @@ class BaseFanvilPlugin(StandardPlugin):
             fkey['value'] = self._format_funckey_call_park(funckey)
         else:
             logger.info('Unsupported funckey type: %s', funckey['type'])
+            fkey['type'] = 2
 
         return fkey
 
@@ -373,7 +374,7 @@ class BaseFanvilPlugin(StandardPlugin):
         for fkey_num in range(1, max_fkeys + 1):
             fkey = fkeys.get(fkey_num)
             if not fkey:
-                fkey = {'label': '', 'type': None}
+                fkey = {'id': fkey_num, 'label': '', 'type': None}
             formatted_fkeys.append(
                 self._format_fkey(fkey_num, fkey, offset, exten_pickup_call)
             )

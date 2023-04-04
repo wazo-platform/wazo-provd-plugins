@@ -197,10 +197,10 @@
         </dssSide>
         <dssSide index="{{ page + 1 }}">
 	{% endif -%}
+          <Fkey index="{{ index + 1 }}">
           {%- if sip_lines %}
-            <Fkey index="{{ index + 1 }}">
 	      {%- if key['id']|string in sip_lines %}
-                <Type></Type>
+                <Type>2</Type>
                 <Value></Value>
                 <Title></Title>
 		{%- else %}
@@ -208,14 +208,12 @@
 		<Value>{{ key['value'] }}</Value>
 		<Title>{{ key['title'] }}</Title>
 		{%- endif %}
-            </Fkey>
           {%- else %}
-            <Fkey index="1">
-                <Type>2</Type>
-                <Value>SIP1</Value>
-                <Title></Title>
-            </Fkey>
+            <Type>2</Type>
+            <Value></Value>
+            <Title></Title>
           {%- endif %}
+          </Fkey>
 	  {%- endfor -%}
 	</dssSide>
 	{%- endif -%}
