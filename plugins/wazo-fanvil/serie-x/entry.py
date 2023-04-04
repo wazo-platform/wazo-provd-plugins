@@ -91,12 +91,12 @@ LINE_KEYS_PER_PAGE = {
     'X6U': 5,
 }
 
-MAX_LINES = {
-    'X210': 20,
-    'X210i': 20,
-    'X4U': 12,
-    'X5U': 16,
-    'X6U': 20,
+TOP_FUNCTION_KEYS = {
+    'X210': 10,
+    'X210i': 10,
+    'X4U': 3,
+    'X5U': 4,
+    'X6U': 5,
 }
 
 
@@ -107,7 +107,7 @@ class FanvilPlugin(common['BaseFanvilPlugin']):
     _MODEL_FIRMWARE_MAPPING = MODEL_FIRMWARE_MAPPING
     _FUNCTION_KEYS_PER_PAGE = FUNCTION_KEYS_PER_PAGE
     _LINE_KEYS_PER_PAGE = LINE_KEYS_PER_PAGE
-    _MAX_LINES = MAX_LINES
+    _TOP_FUNCTION_KEYS = TOP_FUNCTION_KEYS
     _LOCALE = {
         'de_DE': '16',
         'es_ES': '10',

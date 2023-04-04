@@ -383,7 +383,7 @@ class BaseFanvilPlugin(StandardPlugin):
         exten_pickup_call = raw_config.get('exten_pickup_call')
         offset = 0 if self._is_new_model(device) else 1
         clean_model_name = device['model'].split('-')[0]
-        top_key_threshold = self._MAX_LINES.get(clean_model_name, 0)
+        top_key_threshold = self._TOP_FUNCTION_KEYS.get(clean_model_name, 0)
         raw_config['XX_top_key_threshold'] = top_key_threshold
         top_keys, bottom_keys = self._split_fkeys(
             raw_config['funckeys'].items(), top_key_threshold

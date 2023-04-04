@@ -21,7 +21,7 @@ class FanvilPlugin(common['BaseFanvilPlugin']):
     _MODEL_FIRMWARE_MAPPING = None
     _FUNCTION_KEYS_PER_PAGE = None
     _LINE_KEYS_PER_PAGE = None
-    _MAX_LINES = None
+    _TOP_FUNCTION_KEYS = None
     _LOCALE = {
         'de_DE': 'de',
         'es_ES': 'es',
