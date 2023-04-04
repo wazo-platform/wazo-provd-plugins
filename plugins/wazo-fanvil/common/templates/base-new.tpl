@@ -33,10 +33,11 @@
     <phone>
         <MenuPassword>{{ admin_password|d('123') }}</MenuPassword>
         <display>
-            <DefaultLanguage>{{ XX_locale }}</DefaultLanguage>
-            {% for line_no, line in sip_lines.items() %}
+          <DefaultLanguage>{{ XX_locale }}</DefaultLanguage>
+	  {% if sip_lines -%}
+	  {% set line_no, line = sip_lines.items()|first -%}
             <LCDTitle>{{ line['display_name']|e }} {{ line['number'] }}</LCDTitle>
-            {% endfor %}
+          {% endif %}
         </display>
         <date>
             {% if ntp_enabled -%}
