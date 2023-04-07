@@ -51,6 +51,7 @@
             <TimeZoneName>{{ XX_timezone['time_zone_name'] }}</TimeZoneName>
             {% if XX_timezone['enable_dst'] -%}
             <EnableDST>2</EnableDST>
+	    <DSTFixedType>2</DSTFixedType>
             <DSTMinOffset>{{ XX_timezone['dst_min_offset'] }}</DSTMinOffset>
             {% macro dst_change(suffix, value) -%}
             <DST{{ suffix }}Mon>{{ value['month'] }}</DST{{ suffix }}Mon>
