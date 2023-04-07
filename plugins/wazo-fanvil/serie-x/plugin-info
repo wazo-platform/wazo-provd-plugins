@@ -1,5 +1,5 @@
 {
-    "version": "1.1.10",
+    "version": "1.2.1",
     "description": "Plugin for Fanvil X serie",
     "description_fr": "Greffon pour La serie X Fanvil",
     "vendor" : "Fanvil",
@@ -62,6 +62,15 @@
             "protocol": "sip"
         },
         "Fanvil, X3S/X3SP/G, 2.10.2.6887": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Fanvil, X3SG, P0.18.23.1.23-2.4.12": {
             "lines": 2,
             "high_availability": false,
             "function_keys": 0,
