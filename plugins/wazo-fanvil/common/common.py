@@ -25,7 +25,7 @@ logger = logging.getLogger('plugin.wazo-fanvil')
 class BaseFanvilHTTPDeviceInfoExtractor:
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
     _UA_REGEX = re.compile(
-        r'^Fanvil (?P<model>X[0-9]{1,3}[SGVUCi]*[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
+        r'^Fanvil (?P<model>[XV][0-9]{1,3}[SGVUCi]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
     )
 
     def __init__(self, common_files):
@@ -46,6 +46,8 @@ class BaseFanvilHTTPDeviceInfoExtractor:
     def _extract_from_ua(self, ua: str):
         # Fanvil X4 2.10.2.6887 0c383e07e16c
         # Fanvil X6U Pro 0.0.10 0c383e2cd782
+        # Fanvil V67 2.6.6.187 0c383e2b29e6
+
         dev_info = {}
         m = self._UA_REGEX.search(ua)
         if m:
@@ -161,6 +163,10 @@ class BaseFanvilPlugin(StandardPlugin):
         if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 
+    def _add_wazo_phoned_user_service_url(self, raw_config, service):
+        if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
+            plugins.add_wazo_phoned_user_service_url(raw_config, 'yealink', service)
+
     def _add_server_url(self, raw_config):
         ip = raw_config['ip']
         http_port = raw_config['http_port']
@@ -176,6 +182,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._update_lines(raw_config)
         self._add_fkeys(device, raw_config)
         self._add_phonebook_url(raw_config)
+        self._add_wazo_phoned_user_service_url(raw_config, 'dnd')
         self._add_server_url(raw_config)
         self._add_firmware(device, raw_config)
         filename = self._dev_specific_filename(device)

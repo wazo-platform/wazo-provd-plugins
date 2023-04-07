@@ -1,0 +1,20 @@
+{
+    "version": "1.0.0",
+    "description": "Plugin for Fanvil V serie",
+    "description_fr": "Greffon pour La serie V Fanvil",
+    "vendor" : "Fanvil",
+    "vendor.url" : "http://www.fanvil.com",
+    "vendor.description" : "",
+    "vendor.official" : 0,
+    "capabilities": {
+        "Fanvil, V67, 2.2.6.201": {
+            "lines": 20,
+            "high_availability": false,
+            "function_keys": 116,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}
