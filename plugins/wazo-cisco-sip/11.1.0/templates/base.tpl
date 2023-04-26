@@ -2,10 +2,12 @@
 <flat-profile>
 
 {% if admin_password is defined -%}
-<Admin_Password>{{ admin_password|e }}</Admin_Password>
+<Web_Login_Admin_Name>admin</Web_Login_Admin_Name>
+<Web_Login_Admin_Password>{{ admin_password|e }}</Web_Login_Admin_Password>
 {% endif -%}
 {% if user_password is defined -%}
-<User_Password>{{ user_password|e }}</User_Password>
+<Web_Login_Guest_Name>cisco</Web_Login_Guest_Name>
+<Web_Login_Guest_Password>{{ user_password|e }}</Web_Login_Guest_Password>
 {% endif -%}
 
 {% if dns_enabled -%}
