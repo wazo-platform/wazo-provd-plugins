@@ -57,7 +57,7 @@ COMMON_FILES = {
 
 MODEL_FIRMWARE_MAPPING = {
     'V67': 'v67_fanvil_2.6.6.201_20230202_full.zip',
-    'V65': 'v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z'
+    'V65': 'v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z',
     'V64': 'v64-fanvil-release-ff01-5922-2.12.16.4-krnvUT2023-02-01-15.09.29.z',
     'V62': 'v62-fanvil-release-ff01-5944-2.12.16.4-krnvUT2023-02-01-15.23.52.z',
 }
