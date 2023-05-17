@@ -42,6 +42,6 @@
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
-        },
+        }
     }
 }
