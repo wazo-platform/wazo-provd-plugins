@@ -12,38 +12,40 @@ MODELS = [
     'i51W',
     'i52W',
     'i53W',
+    'i16S',
+    'i16SV',
 ]
 
 COMMON_FILES = {
     'F0V10S00000.cfg': (
         'i10S',
         'I10S-fanvil-3921-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.42.06.z',
-        'model-i10.tpl',
+        'model-i1x.tpl',
     ),
     'F0V10SV00000.cfg': (
         'i10SV',
         'I10SV-fanvil-3918-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.42.06.z',
-        'model-i10.tpl',
+        'model-i1x.tpl',
     ),
     'F0V10SD00000.cfg': (
         'i10SD',
         'I10SD-fanvil-3922-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.42.06.z',
-        'model-i10.tpl',
+        'model-i1x.tpl',
     ),
     'fanvil_i10s_hwv1_0.txt': (
         'i10S',
         'I10S-fanvil-3921-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.42.06.z',
-        'model-i10.tpl',
+        'model-i1x.tpl',
     ),
     'fanvil_i10sv_hwv1_0.txt': (
         'i10SV',
         'I10SV-fanvil-3918-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.42.06.z',
-        'model-i10.tpl',
+        'model-i1x.tpl',
     ),
     'fanvil_i10sd_hwv1_0.txt': (
         'i10SD',
         'I10SD-fanvil-3922-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.42.06.z',
-        'model-i10.tpl',
+        'model-i1x.tpl',
     ),
     'F0Vi51W00000.cfg': (
         'i51W',
@@ -75,6 +77,26 @@ COMMON_FILES = {
         'i53w-fanvil-release-4908-2.12.9-krnvlT2022-09-06-09.59.22.z',
         'model-i5x.tpl',
     ),
+    'F0V16S00000.cfg': (
+        'i16S',
+        'I16S-fanvil-3925-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.52.04.z',
+        'model-i1x.tpl',
+    ),
+    'fanvil_i16s_hwv1_0.txt': (
+        'i16S',
+        'I16S-fanvil-3925-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.52.04.z',
+        'model-i1x.tpl',
+    ),
+    'F0V16SV00000.cfg': (
+        'i16SV',
+        'I16SV-fanvil-3919-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.59.27.z',
+        'model-i1x.tpl',
+    ),
+    'fanvil_i16sv_hwv1_0.txt': (
+        'i16SV',
+        'I16SV-fanvil-3919-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.59.27.z',
+        'model-i1x.tpl',
+    ),
 }
 
 MODEL_FIRMWARE_MAPPING = {
@@ -84,6 +106,8 @@ MODEL_FIRMWARE_MAPPING = {
     'i51W': 'i51w-fanvil-release-4900-2.12.9-krnvlT2022-09-06-10.31.48.z',
     'i52W': 'i52w-fanvil-release-4902-2.12.9-krnvlT2022-09-06-10.18.53.z',
     'i53W': 'i53w-fanvil-release-4908-2.12.9-krnvlT2022-09-06-09.59.22.z',
+    'i16S': 'I16S-fanvil-3925-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.52.04.z',
+    'i16SV': 'I16SV-fanvil-3919-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.59.27.z',
 }
 
 FUNCTION_KEYS_PER_PAGE = {
@@ -93,6 +117,8 @@ FUNCTION_KEYS_PER_PAGE = {
     'i51W': 3,
     'i52W': 3,
     'i53W': 3,
+    'i16S': 1,
+    'i16SV': 1,
 }
 
 
