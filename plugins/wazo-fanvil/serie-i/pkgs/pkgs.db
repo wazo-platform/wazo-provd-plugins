@@ -1,0 +1,74 @@
+[pkg_i10sv]
+description: Firmware for Fanvil i10SV
+description_fr: Micrologiciel pour Fanvil i10SV
+version: 2.12.19.9
+files: i10sv-fw
+install: fanvil-fw
+
+[pkg_i10s]
+description: Firmware for Fanvil i10S
+description_fr: Micrologiciel pour Fanvil i10S
+version: 2.12.19.9
+files: i10s-fw
+install: fanvil-fw
+
+[pkg_i10sd]
+description: Firmware for Fanvil i10SD
+description_fr: Micrologiciel pour Fanvil i10SD
+version: 2.12.19.9
+files: i10sd-fw
+install: fanvil-fw
+
+[pkg_i51W]
+description: Firmware for Fanvil i51W
+description_fr: Micrologiciel pour Fanvil i51W
+version: 2.12.9   
+files: i51w-fw
+install: fanvil-fw
+
+[pkg_i52W]
+description: Firmware for Fanvil i52W
+description_fr: Micrologiciel pour Fanvil i52W
+version: 2.12.9   
+files: i52w-fw
+install: fanvil-fw
+
+[pkg_i53W]
+description: Firmware for Fanvil i53W
+description_fr: Micrologiciel pour Fanvil i53W
+version: 2.12.9   
+files: i53w-fw
+install: fanvil-fw
+
+[install_fanvil-fw]
+a-b: cp $FILE1 firmware/
+
+[file_i10sv-fw]
+url: http://provd.wazo.community/firmwares/fanvil/I10SV-fanvil-3918-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.42.06.z
+size: 17308988
+sha1sum: 8a9aed25101cd7072288258c34f457626b583601
+
+[file_i10s-fw]
+url: http://provd.wazo.community/firmwares/fanvil/I10S-fanvil-3921-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.26.03.z
+size: 17308472
+sha1sum: 2f7d156187dfdb14466d912dbb102511d29a4d2d
+
+[file_i10sd-fw]
+url: http://provd.wazo.community/firmwares/fanvil/I10SD-fanvil-3922-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.33.17.z
+size: 17308424
+sha1sum: a0a06fcbfd65411ee0ae4b94077cf104a446c23c
+
+[file_i51w-fw]
+url: http://provd.wazo.community/firmwares/fanvil/i51w-fanvil-release-4900-2.12.9-krnvlT2022-09-06-10.31.48.z
+size: 23998188
+sha1sum: 8828dc285dacb98b43c9e547a0f1ffa4f1f42564
+
+[file_i52w-fw]
+url: http://provd.wazo.community/firmwares/fanvil/i52w-fanvil-release-4902-2.12.9-krnvlT2022-09-06-10.18.53.z
+size: 24668116
+sha1sum: 370489c2a4dd80847b79c0efdca0e0be2d790764
+
+[file_i53w-fw]
+url: http://provd.wazo.community/firmwares/fanvil/i53w-fanvil-release-4908-2.12.9-krnvlT2022-09-06-09.59.22.z
+size: 24574092
+sha1sum: 82fa16a9f9caf2c50faeaf444feebc2250df8192

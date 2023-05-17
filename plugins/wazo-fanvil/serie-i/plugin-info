@@ -1,0 +1,65 @@
+{
+    "version": "1.0.0",
+    "description": "Plugin for Fanvil i1X series and i51W/i52W/i53W",
+    "description_fr": "Greffon pour les series i10X et i51W/i52W/i53W Fanvil",
+    "vendor" : "Fanvil",
+    "vendor.url" : "http://www.fanvil.com",
+    "vendor.description" : "",
+    "vendor.official" : 1,
+    "capabilities": {
+        "Fanvil, i10SV, 2.12.19.9": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 1,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "doorphone",
+            "protocol": "sip"
+        },
+        "Fanvil, i10S, 2.12.19.9": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 1,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "doorphone",
+            "protocol": "sip"
+        },
+        "Fanvil, i10SD, 2.12.19.9": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "doorphone",
+            "protocol": "sip"
+        },
+        "Fanvil, i51W, 2.12.9": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "doorstation",
+            "protocol": "sip"
+        },
+        "Fanvil, i52W, 2.12.9": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "doorstation",
+            "protocol": "sip"
+        },
+        "Fanvil, i53W, 2.12.9": {
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "doorstation",
+            "protocol": "sip"
+        }
+    }
+}
