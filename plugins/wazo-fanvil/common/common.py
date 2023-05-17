@@ -24,7 +24,7 @@ logger = logging.getLogger('plugin.wazo-fanvil')
 class BaseFanvilHTTPDeviceInfoExtractor:
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
     _UA_REGEX = re.compile(
-        r'^Fanvil (?P<model>[XV][0-9]{1,3}[SGVUCi]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
+        r'^Fanvil (?P<model>[XVi][0-9]{1,3}[WSGVUCi][DV]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
     )
 
     def __init__(self, common_files):
@@ -46,6 +46,8 @@ class BaseFanvilHTTPDeviceInfoExtractor:
         # Fanvil X4 2.10.2.6887 0c383e07e16c
         # Fanvil X6U Pro 0.0.10 0c383e2cd782
         # Fanvil V67 2.6.6.187 0c383e2b29e6
+        # Fanvil i10SV 2.12.10.1 0c383e2397f4
+        # Fanvil i53W 2.12.9 0c383e10a440
 
         dev_info = {}
         m = self._UA_REGEX.search(ua)
@@ -184,6 +186,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._add_wazo_phoned_user_service_url(raw_config, 'dnd')
         self._add_server_url(raw_config)
         self._add_firmware(device, raw_config)
+
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
@@ -199,6 +202,7 @@ class BaseFanvilPlugin(StandardPlugin):
             tpl = self._tpl_helper.get_template(f'common/{tpl_filename}')
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config['XX_fw_filename'] = fw_filename
+            raw_config['XX_model_info'] = _
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _remove_configuration_file(self, device):
