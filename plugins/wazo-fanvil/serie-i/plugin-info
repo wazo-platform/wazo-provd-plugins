@@ -34,6 +34,24 @@
             "type": "doorphone",
             "protocol": "sip"
         },
+        "Fanvil, i16S, 2.12.19.9": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 1,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "doorphone",
+            "protocol": "sip"
+        },
+        "Fanvil, i16SV, 2.12.19.9": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 1,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "doorphone",
+            "protocol": "sip"
+        },
         "Fanvil, i51W, 2.12.9": {
             "lines": 4,
             "high_availability": false,

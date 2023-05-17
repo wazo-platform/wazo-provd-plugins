@@ -19,6 +19,20 @@ version: 2.12.19.9
 files: i10sd-fw
 install: fanvil-fw
 
+[pkg_i16s]
+description: Firmware for Fanvil i16S
+description_fr: Micrologiciel pour Fanvil i16S
+version: 2.12.19.9
+files: i16s-fw
+install: fanvil-fw
+
+[pkg_i16sv]
+description: Firmware for Fanvil i16SV
+description_fr: Micrologiciel pour Fanvil i16SV
+version: 2.12.19.9
+files: i16sv-fw
+install: fanvil-fw
+
 [pkg_i51W]
 description: Firmware for Fanvil i51W
 description_fr: Micrologiciel pour Fanvil i51W
@@ -57,6 +71,16 @@ sha1sum: 2f7d156187dfdb14466d912dbb102511d29a4d2d
 url: http://provd.wazo.community/firmwares/fanvil/I10SD-fanvil-3922-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.33.17.z
 size: 17308424
 sha1sum: a0a06fcbfd65411ee0ae4b94077cf104a446c23c
+
+[file_i16s-fw]
+url: http://provd.wazo.community/firmwares/fanvil/I16S-fanvil-3925-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.52.04.z
+size: 17328828
+sha1sum: 083050fb6946bc993f9d2d02b6b730580dd87661
+
+[file_i16sv-fw]
+url: http://provd.wazo.community/firmwares/fanvil/I16SV-fanvil-3919-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-09.59.27.z
+size: 17328668
+sha1sum: 4568229c93eecb7df71cf15d2906bc107f5be852
 
 [file_i51w-fw]
 url: http://provd.wazo.community/firmwares/fanvil/i51w-fanvil-release-4900-2.12.9-krnvlT2022-09-06-10.31.48.z
