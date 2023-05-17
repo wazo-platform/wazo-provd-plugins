@@ -8,8 +8,8 @@
                 <Type>{{ fkey['type'] }}</Type>
                 <Value>{{ fkey['value'] }}</Value>
                 <Title>{{ fkey['title'] }}</Title>
-        {%- endfor %}
         </dssSoft>
+        {%- endfor %}
         {% endif -%}
     </dsskey>
 {% endblock %}
