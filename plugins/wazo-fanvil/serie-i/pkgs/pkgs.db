@@ -54,6 +54,34 @@ version: 2.12.9
 files: i53w-fw
 install: fanvil-fw
 
+[pkg_i61]
+description: Firmware for Fanvil i61
+description_fr: Micrologiciel pour Fanvil i61
+version: 2.12.19.9
+files: i61-fw
+install: fanvil-fw
+
+[pkg_i62]
+description: Firmware for Fanvil i62
+description_fr: Micrologiciel pour Fanvil i62
+version: 2.12.19.9
+files: i62-fw
+install: fanvil-fw
+
+[pkg_i63]
+description: Firmware for Fanvil i63
+description_fr: Micrologiciel pour Fanvil i63
+version: 2.12.19.9
+files: i63-fw
+install: fanvil-fw
+
+[pkg_i64]
+description: Firmware for Fanvil i64
+description_fr: Micrologiciel pour Fanvil i64
+version: 2.12.19.9
+files: i64-fw
+install: fanvil-fw
+
 [install_fanvil-fw]
 a-b: cp $FILE1 firmware/
 
@@ -96,3 +124,24 @@ sha1sum: 370489c2a4dd80847b79c0efdca0e0be2d790764
 url: http://provd.wazo.community/firmwares/fanvil/i53w-fanvil-release-4908-2.12.9-krnvlT2022-09-06-09.59.22.z
 size: 24574092
 sha1sum: 82fa16a9f9caf2c50faeaf444feebc2250df8192
+
+[file_i61-fw]
+url: http://provd.wazo.community/firmwares/fanvil/I61-fanvil-3940-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-10.13.47.z
+size: 18521736
+sha1sum: 85c40531038a78fccfcaca0c3967b5f78f1cade1
+
+[file_i62-fw]
+url: http://provd.wazo.community/firmwares/fanvil/I62-fanvil-3941-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-10.17.24.z
+size: 18521700
+sha1sum: a33c13f01b76fad81b07fce096d97e6071a527b2
+
+[file_i63-fw]
+url: http://provd.wazo.community/firmwares/fanvil/I63-fanvil-3942-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-10.20.57.z
+size: 18521480
+sha1sum: 4f51eb269142fd91f9de2a52a11aea61211263a2
+
+[file_i64-fw]
+url: http://provd.wazo.community/firmwares/fanvil/I64-fanvil-3943-full-V0.2.2-2.12.19.9-1746-D0.29.0-T2023-04-14-10.24.28.z
+size: 18521712
+sha1sum: a5694e7d17c9bd883612620d07da087fac1b7e2b
+
