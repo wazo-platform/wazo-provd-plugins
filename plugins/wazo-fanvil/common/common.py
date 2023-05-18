@@ -186,7 +186,6 @@ class BaseFanvilPlugin(StandardPlugin):
         self._add_wazo_phoned_user_service_url(raw_config, 'dnd')
         self._add_server_url(raw_config)
         self._add_firmware(device, raw_config)
-
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
