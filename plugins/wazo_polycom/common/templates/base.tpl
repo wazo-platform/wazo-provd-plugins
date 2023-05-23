@@ -2,6 +2,7 @@
 <polycomConfig
 
 device.set="1"
+device.prov.tagSerialNo.set="1"
 device.prov.tagSerialNo="1"
 
 {# VLAN settings -#}
