@@ -8,7 +8,7 @@
     "vendor" : "Fanvil",
     "vendor.url" : "http://www.fanvil.com",
     "vendor.description" : "",
-    "vendor.official" : 0,
+    "vendor.official" : 1,
     "capabilities": {
         "Fanvil, V62, 2.12.16.4": {
             "lines": 6,
