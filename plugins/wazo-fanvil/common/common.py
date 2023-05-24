@@ -49,6 +49,7 @@ class BaseFanvilHTTPDeviceInfoExtractor:
         # Fanvil V67 2.6.6.187 0c383e2b29e6
         # Fanvil i10SV 2.12.10.1 0c383e2397f4
         # Fanvil i53W 2.12.9 0c383e10a440
+        # Fanvil V65 2.12.2.4 0c383e38e123
 
         dev_info = {}
         m = self._UA_REGEX.search(ua)

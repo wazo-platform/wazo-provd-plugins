@@ -28,7 +28,7 @@ COMMON_FILES = {
         'v62-fanvil-release-ff01-5944-2.12.16.4-krnvUT2023-02-01-15.23.52.z',
         'model-v6x.tpl',
     ),
-    'fanvil_v62_hw1_1.txt': (
+    'fanvil_v62_hwv1_0.txt': (
         'V62',
         'v62-fanvil-release-ff01-5944-2.12.16.4-krnvUT2023-02-01-15.23.52.z',
         'model-v6x.tpl',
@@ -38,7 +38,7 @@ COMMON_FILES = {
         'v64-fanvil-release-ff01-5922-2.12.16.4-krnvUT2023-02-01-15.09.29.z',
         'model-v6x.tpl',
     ),
-    'fanvil_v64_hw1_1.txt': (
+    'fanvil_v64_hwv1_0.txt': (
         'V64',
         'v64-fanvil-release-ff01-5922-2.12.16.4-krnvUT2023-02-01-15.09.29.z',
         'model-v6x.tpl',
@@ -48,7 +48,7 @@ COMMON_FILES = {
         'v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z',
         'model-v6x.tpl',
     ),
-    'fanvil_v65_hw1_1.txt': (
+    'fanvil_v65_hwv1_0.txt': (
         'V65',
         'v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z',
         'model-v6x.tpl',
@@ -64,9 +64,9 @@ MODEL_FIRMWARE_MAPPING = {
 
 FUNCTION_KEYS_PER_PAGE = {
     'V67': 29,
-    'V65': 0,
-    'V64': 0,
-    'V62': 0,
+    'V65': 10,
+    'V64': 8,
+    'V62': 6,
 }
 
 
