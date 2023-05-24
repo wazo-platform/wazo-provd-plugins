@@ -1,11 +1,10 @@
-# Copyright 2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2022-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
 import os.path
 import re
-from typing import Dict, Optional
 
 from provd import plugins
 from provd import tzinform
@@ -66,7 +65,7 @@ class BaseAlcatelMyriadPgAssociator(BasePgAssociator):
         self._models_versions = models_versions
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Alcatel-Lucent':
             if model in self._models_versions:
@@ -247,7 +246,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         if 'model' not in device:
             raise Exception('Model name needed for device configuration')
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         return f'config.{format_mac(device["mac"], separator="")}.xml'
 
     def _add_server_url(self, raw_config):

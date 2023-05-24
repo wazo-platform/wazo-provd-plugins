@@ -1,11 +1,10 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 from __future__ import annotations
 
 import logging
 import os
 import re
-from typing import Dict, Optional, Union
 
 from provd import plugins
 from provd import tzinform
@@ -29,8 +28,8 @@ class BaseCiscoPgAssociator(BasePgAssociator):
         self._models = models
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
-    ) -> Union[DeviceSupport, int]:
+        self, vendor: str, model: str | None, version: str | None
+    ) -> DeviceSupport | int:
         if vendor == 'Cisco':
             if model is None:
                 # when model is None, give a score slightly higher than
@@ -287,7 +286,7 @@ class BaseCiscoSccpPlugin(StandardPlugin):
         for priority, call_manager in raw_config['sccp_call_managers'].items():
             call_manager['XX_priority'] = str(int(priority) - 1)
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'SEP{formatted_mac}.cnf.xml'

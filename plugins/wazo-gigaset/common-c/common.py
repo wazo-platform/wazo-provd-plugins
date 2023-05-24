@@ -1,4 +1,4 @@
-# Copyright (C) 2011-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,7 +27,6 @@ import urllib.request
 from configparser import RawConfigParser
 from contextlib import closing
 from io import StringIO
-from typing import Optional
 
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper
@@ -76,7 +75,7 @@ class BaseGigasetPgAssociator(BasePgAssociator):
         self._models = models
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == VENDOR:
             if model in self._models:
@@ -331,9 +330,9 @@ class BaseGigasetPlugin(StandardPlugin):
                         mailboxes[line_no] = voicemail
 
             # do generic requests stuff here
-            config_dict = dict(
-                (s, dict(config.items(s))) for s in config.sections() if s != 'general'
-            )
+            config_dict = {
+                s: dict(config.items(s)) for s in config.sections() if s != 'general'
+            }
             for path, raw_data in config_dict.items():
                 with broker.do_post_request(path, raw_data) as fobj:
                     fobj.read()

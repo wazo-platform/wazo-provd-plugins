@@ -1,4 +1,4 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 from __future__ import annotations
 
@@ -7,7 +7,6 @@ import os
 import re
 from copy import deepcopy
 from operator import itemgetter
-from typing import Dict, Optional
 from xml.sax.saxutils import escape
 from provd import plugins
 from provd import tzinform
@@ -93,7 +92,7 @@ class BaseCiscoHTTPDeviceInfoExtractor:
                 return dev_info
         return None
 
-    def _extract_from_ua(self, ua: str, dev_info: Dict[str, str]):
+    def _extract_from_ua(self, ua: str, dev_info: dict[str, str]):
         # HTTP User-Agent:
         # Note: the last group of digit is the serial number;
         #       the first, if present, is the MAC address
@@ -109,7 +108,7 @@ class BaseCiscoHTTPDeviceInfoExtractor:
         elif ua.startswith('Cisco/'):
             self._extract_cisco_from_ua(ua, dev_info)
 
-    def _extract_linksys_from_ua(self, ua: str, dev_info: Dict[str, str]):
+    def _extract_linksys_from_ua(self, ua: str, dev_info: dict[str, str]):
         # Pre: ua.startswith('Linksys/')
         m = self._LINKSYS_UA_REGEX.match(ua)
         if m:
@@ -118,7 +117,7 @@ class BaseCiscoHTTPDeviceInfoExtractor:
             dev_info['version'] = version
             dev_info['sn'] = sn
 
-    def _extract_cisco_from_ua(self, ua: str, dev_info: Dict[str, str]):
+    def _extract_cisco_from_ua(self, ua: str, dev_info: dict[str, str]):
         # Pre: ua.startswith('Cisco/')
         m = self._CISCO_UA_REGEX.match(ua)
         if m:
@@ -129,7 +128,7 @@ class BaseCiscoHTTPDeviceInfoExtractor:
                 dev_info['mac'] = norm_mac(raw_mac)
             dev_info['sn'] = sn
 
-    def _extract_from_path(self, path: str, dev_info: Dict[str, str]):
+    def _extract_from_path(self, path: str, dev_info: dict[str, str]):
         # try to extract MAC address from path
         m = self._PATH_REGEX.search(path)
         if m:
@@ -193,7 +192,7 @@ class BaseCiscoPgAssociator(BasePgAssociator):
         self._model_version = model_version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Cisco':
             if model in self._model_version:
@@ -414,7 +413,7 @@ class BaseCiscoPlugin(StandardPlugin):
     def _add_xivo_phonebook_url(self, raw_config):
         plugins.add_xivo_phonebook_url(raw_config, 'cisco')
 
-    def _dev_specific_filename(self, dev: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, dev: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(dev['mac'], separator='')
 

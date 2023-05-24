@@ -1,11 +1,10 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
 import re
 import os.path
-from typing import Dict, Optional
 
 from provd import synchronize
 from provd.devices.config import RawConfigError
@@ -75,7 +74,7 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Grandstream':
             if model in self._models:
@@ -117,7 +116,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
 
     http_dev_info_extractor = BaseGrandstreamHTTPDeviceInfoExtractor()
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return f'cfg{formatted_mac}.xml'

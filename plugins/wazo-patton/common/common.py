@@ -1,4 +1,4 @@
-# Copyright 2016-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2016-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
@@ -7,7 +7,6 @@ import os.path
 import re
 
 from operator import itemgetter
-from typing import Dict, Optional
 
 from provd import synchronize, tzinform
 from provd.plugins import (
@@ -39,7 +38,7 @@ class BasePattonHTTPDeviceInfoExtractor:
             return self._extract_from_ua(ua.decode('ascii'))
         return None
 
-    def _extract_from_ua(self, ua: str) -> Optional[Dict[str, str]]:
+    def _extract_from_ua(self, ua: str) -> dict[str, str] | None:
         # HTTP User-Agent:
         #   "SmartNode (Model:SN4112/JS/EUI; Serial:00A0BA08933C;
         #   Software Version:R6.2 2012-09-11 H323 SIP FXS FXO; Hardware Version:4.4)"
@@ -67,7 +66,7 @@ class BasePattonPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Patton':
             if model in self._models:
@@ -339,7 +338,7 @@ class BasePattonPlugin(StandardPlugin):
 
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg$')
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         formatted_mac = format_mac(device['mac'], separator='')
         return f'{formatted_mac}.cfg'
 

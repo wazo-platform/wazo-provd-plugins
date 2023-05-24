@@ -1,11 +1,10 @@
-# Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
 import os.path
 import re
-from typing import Dict, Optional
 
 from provd import plugins, synchronize, tzinform
 from provd.devices.config import RawConfigError
@@ -106,7 +105,7 @@ class BaseYealinkPgAssociator(BasePgAssociator):
         self._model_versions = model_versions
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Yealink':
             if model in self._model_versions:
@@ -460,7 +459,7 @@ class BaseYealinkPlugin(StandardPlugin):
             raw_config, 'yealink', entry_point='lookup', qs_suffix='term=#SEARCH'
         )
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
         return f'{formatted_mac}.cfg'

@@ -1,4 +1,4 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,7 +17,6 @@ from __future__ import annotations
 import logging
 import re
 import os.path
-from typing import Dict, Optional
 
 from provd import synchronize
 from provd.devices.config import RawConfigError
@@ -71,7 +70,7 @@ class BasePanasonicPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Panasonic':
             if model in self._models:
@@ -103,7 +102,7 @@ class BasePanasonicPlugin(StandardPlugin):
 
     http_dev_info_extractor = BasePanasonicHTTPDeviceInfoExtractor()
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'Config{formatted_mac}.cfg'
@@ -112,7 +111,7 @@ class BasePanasonicPlugin(StandardPlugin):
         if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
-    def _check_device(self, device: Dict[str, str]):
+    def _check_device(self, device: dict[str, str]):
         if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 
