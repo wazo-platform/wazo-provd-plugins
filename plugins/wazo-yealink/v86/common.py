@@ -1,11 +1,10 @@
-# Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
 import re
 import os.path
-from typing import Dict, Optional
 
 from provd import plugins
 from provd import tzinform
@@ -81,7 +80,7 @@ class BaseYealinkHTTPDeviceInfoExtractor:
                 return device_info
         return None
 
-    def _extract_from_path(self, request: Request) -> Optional[Dict[str, str]]:
+    def _extract_from_path(self, request: Request) -> dict[str, str] | None:
         if request.path[1:7] in KNOWN_MAC_PREFIXES:
             raw_mac = request.path[1:-4]
             try:
@@ -99,7 +98,7 @@ class BaseYealinkPgAssociator(BasePgAssociator):
         self._model_versions = model_versions
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Yealink':
             if model in self._model_versions:
@@ -489,7 +488,7 @@ class BaseYealinkPlugin(StandardPlugin):
         if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
             plugins.add_wazo_phoned_user_service_url(raw_config, 'yealink', service)
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
         return f'{formatted_mac}.cfg'

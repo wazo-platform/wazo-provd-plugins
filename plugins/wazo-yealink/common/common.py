@@ -1,4 +1,4 @@
-# Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,7 +17,6 @@ from __future__ import annotations
 import logging
 import re
 import os.path
-from typing import Dict, Optional
 
 from provd import plugins
 from provd import tzinform
@@ -95,7 +94,7 @@ class BaseYealinkHTTPDeviceInfoExtractor:
                 return device_info
         return None
 
-    def _extract_from_path(self, request: Request) -> Dict[str, str] | None:
+    def _extract_from_path(self, request: Request) -> dict[str, str] | None:
         if request.path.startswith(b'/001565'):
             raw_mac = request.path[1:-4]
             try:
@@ -115,7 +114,7 @@ class BaseYealinkPgAssociator(BasePgAssociator):
         self._model_versions = model_versions
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Yealink':
             if model in self._model_versions:
@@ -473,7 +472,7 @@ class BaseYealinkPlugin(StandardPlugin):
             raw_config, 'yealink', entry_point='lookup', qs_suffix='term=#SEARCH'
         )
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
         return f'{formatted_mac}.cfg'

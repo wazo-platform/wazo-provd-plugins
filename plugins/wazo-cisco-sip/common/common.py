@@ -1,4 +1,4 @@
-# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,7 +17,6 @@ from __future__ import annotations
 import logging
 import os
 import re
-from typing import Optional, Union
 
 from provd import plugins
 from provd import tzinform
@@ -42,8 +41,8 @@ class BaseCiscoPgAssociator(BasePgAssociator):
         self._models = models
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
-    ) -> Union[DeviceSupport, int]:
+        self, vendor: str, model: str | None, version: str | None
+    ) -> DeviceSupport | int:
         if vendor == 'Cisco':
             if model is None:
                 # when model is None, give a score slightly higher than

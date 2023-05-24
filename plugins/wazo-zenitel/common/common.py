@@ -1,4 +1,4 @@
-# Copyright (C) 2011-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,7 +25,6 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from operator import itemgetter
-from typing import Dict, Optional
 
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
@@ -67,7 +66,7 @@ class BaseZenitelTFTPDeviceInfoExtractor:
 
 class BaseZenitelPgAssociator(BasePgAssociator):
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Zenitel':
             if model == 'IP station':
@@ -182,7 +181,7 @@ class BaseZenitelPlugin(StandardPlugin):
                 logger.info('Out of range funckey no: %s', funckey_no)
         raw_config['XX_fkeys'] = '\n'.join(' ' + s for s in lines)
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='_', uppercase=False)
         return f'ipst_config_{formatted_mac}.cfg'

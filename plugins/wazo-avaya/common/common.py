@@ -1,4 +1,4 @@
-# Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@ from __future__ import annotations
 import re
 import os
 import logging
-from typing import Dict, Optional
 
 from provd import tzinform
 from provd import synchronize
@@ -76,7 +75,7 @@ class BaseAvayaHTTPDeviceInfoExtractor:
             return {'vendor': 'Avaya', 'version': m.group(1)}
         return None
 
-    def _extract_from_path(self, path: str, dev_info: Dict[str, str]):
+    def _extract_from_path(self, path: str, dev_info: dict[str, str]):
         m = self._PATH_REGEX.search(path)
         if m:
             dev_info['mac'] = norm_mac(m.group(1))
@@ -107,7 +106,7 @@ class BaseAvayaPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Avaya':
             if model in self._models:
@@ -152,7 +151,7 @@ class BaseAvayaPlugin(StandardPlugin):
                     'XX_timezone'
                 ] = f'TIMEZONE_OFFSET {tzinfo["utcoffset"].as_seconds:d}'
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'SIP{formatted_mac}.cfg'

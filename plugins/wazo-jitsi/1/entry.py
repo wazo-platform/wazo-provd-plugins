@@ -1,4 +1,4 @@
-# Copyright (C) 2011-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@ from __future__ import annotations
 import logging
 import os.path
 import re
-from typing import Any, Dict, Optional
 
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
@@ -66,7 +65,7 @@ class JitsiHTTPDeviceInfoExtractor:
             }
         return None
 
-    def _extract_from_args(self, args: Dict[bytes, Any], dev_info):
+    def _extract_from_args(self, args: dict[bytes, Any], dev_info):
         if 'uuid' in args:
             try:
                 dev_info['uuid'] = norm_uuid(args[b'uuid'][0].decode('ascii'))
@@ -76,7 +75,7 @@ class JitsiHTTPDeviceInfoExtractor:
 
 class JitsiPgAssociator(BasePgAssociator):
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == model == 'Jitsi':
             if version.startswith('1.'):
