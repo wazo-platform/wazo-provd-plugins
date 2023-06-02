@@ -3,12 +3,12 @@ description: Firmware for Alcatel-Lucent 8028s-GE SIP Mode
 description_fr: Firmware pour Alcatel-Lucent 8028s-GE SIP Mode
 version: 1.51.52
 files: 8028s-fw
-install: myriad-fw
+install: 8028s-fw
 
 
-[install_myriad-fw]
+[install_8028s-fw]
 a-b: unzip $FILE1
-b-c: cp */* firmware/
+b-c: cp * firmware/
 
 
 [file_8028s-fw]
