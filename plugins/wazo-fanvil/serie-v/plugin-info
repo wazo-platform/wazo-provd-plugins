@@ -2,8 +2,6 @@
     "version": "1.0.3",
     "description": "Plugin for Fanvil V6x series",
     "description_fr": "Greffon pour La serie V6x Fanvil",
-    "description": "Plugin for Fanvil V serie",
-    "description_fr": "Greffon pour La serie V Fanvil",
     "vendor" : "Fanvil",
     "vendor.url" : "http://www.fanvil.com",
     "vendor.description" : "",
