@@ -5,7 +5,7 @@ common = {}
 execfile_('common.py', common)
 
 MODELS_VERSIONS = {
-    '8028': '1.51.52',
+    '8028s-GE': '1.51.52',
 }
 
 

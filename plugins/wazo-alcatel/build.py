@@ -18,5 +18,5 @@ def build_2_13_02(path):
 
 
 @target('1.51.52', 'wazo-alcatel-1.51.52')
-def build_1_55_03(path):
+def build_1_51_52(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', '1.51.52/', path])
