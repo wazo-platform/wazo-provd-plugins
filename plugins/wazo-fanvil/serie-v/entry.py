@@ -6,6 +6,9 @@ common = {}
 execfile_('common.py', common)
 
 MODELS = [
+    'V62',
+    'V64',
+    'V65',
     'V67',
 ]
 
@@ -20,14 +23,50 @@ COMMON_FILES = {
         'v67_fanvil_2.6.6.201_20230202_full.zip',
         'model-v67.tpl',
     ),
+    'F0V0V6200000.cfg': (
+        'V62',
+        'v62-fanvil-release-ff01-5944-2.12.16.4-krnvUT2023-02-01-15.23.52.z',
+        'model-v6x.tpl',
+    ),
+    'fanvil_v62_hwv1_0.txt': (
+        'V62',
+        'v62-fanvil-release-ff01-5944-2.12.16.4-krnvUT2023-02-01-15.23.52.z',
+        'model-v6x.tpl',
+    ),
+    'F0V0V6400000.cfg': (
+        'V64',
+        'v64-fanvil-release-ff01-5922-2.12.16.4-krnvUT2023-02-01-15.09.29.z',
+        'model-v6x.tpl',
+    ),
+    'fanvil_v64_hwv1_0.txt': (
+        'V64',
+        'v64-fanvil-release-ff01-5922-2.12.16.4-krnvUT2023-02-01-15.09.29.z',
+        'model-v6x.tpl',
+    ),
+    'F0V0V6500000.cfg': (
+        'V65',
+        'v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z',
+        'model-v6x.tpl',
+    ),
+    'fanvil_v65_hwv1_0.txt': (
+        'V65',
+        'v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z',
+        'model-v6x.tpl',
+    ),
 }
 
 MODEL_FIRMWARE_MAPPING = {
     'V67': 'v67_fanvil_2.6.6.201_20230202_full.zip',
+    'V65': 'v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z',
+    'V64': 'v64-fanvil-release-ff01-5922-2.12.16.4-krnvUT2023-02-01-15.09.29.z',
+    'V62': 'v62-fanvil-release-ff01-5944-2.12.16.4-krnvUT2023-02-01-15.23.52.z',
 }
 
 FUNCTION_KEYS_PER_PAGE = {
     'V67': 29,
+    'V65': 10,
+    'V64': 8,
+    'V62': 6,
 }
 
 
