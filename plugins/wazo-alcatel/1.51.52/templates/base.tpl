@@ -73,16 +73,6 @@
      <!-- Admin Password  -->
      <setting id="WebUserPasswd" value="123789" override="true"/>
      <setting id="DmAdminPasswd" value="123456" override="true"/>
-{% if user_password -%}
-     <setting id="WebUserPasswd" value="{{ user_password|e }}" />
-{% else -%}
-     <setting id="WebUserPasswd" value="123789" />
-{% endif -%}
-{% if admin_password -%}
-     <setting id="DmAdminPasswd" value="{{ admin_password|e }}" />
-{% else -%}
-     <setting id="DmAdminPasswd" value="123456" />
-{% endif -%}
 
      <!-- Language -->
      <setting id="language_local" value="{{ XX_lang }}" override="true"/>

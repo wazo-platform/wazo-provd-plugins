@@ -1,4 +1,4 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,7 +17,6 @@ from __future__ import annotations
 import logging
 import os
 import re
-from typing import Dict, Optional
 
 from provd import synchronize
 from provd.util import norm_mac, format_mac
@@ -81,7 +80,7 @@ class DigiumPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Digium':
             if model in self._MODELS:
@@ -170,7 +169,7 @@ class BaseDigiumPlugin(StandardPlugin):
     def _format_mac(self, device):
         return format_mac(device['mac'], separator='', uppercase=False)
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         return f'{self._format_mac(device)}.cfg'
 
     def _dev_contact_filename(self, device):

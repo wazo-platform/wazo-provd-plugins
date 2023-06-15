@@ -1,4 +1,4 @@
-# Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@ import logging
 import os.path
 import re
 import time
-from typing import Dict, Optional
 
 from provd import plugins
 from provd import tzinform
@@ -81,7 +80,7 @@ class BaseTechnicolorPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Technicolor':
             if model == self._model:
@@ -307,7 +306,7 @@ class BaseTechnicolorPlugin(StandardPlugin):
             raw_config, 'thomson', entry_point='lookup', qs_suffix='term=#SEARCH'
         )
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'{self._FILENAME_PREFIX}_{formatted_mac}.txt'

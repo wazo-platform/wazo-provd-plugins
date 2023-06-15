@@ -1,4 +1,4 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@ import logging
 import re
 import os.path
 from operator import itemgetter
-from typing import Dict, Optional
 from xml.sax.saxutils import escape
 from provd import tzinform
 from provd import synchronize
@@ -61,7 +60,7 @@ class BasePolycomHTTPDeviceInfoExtractor:
                 return dev_info
         return None
 
-    def _extract_info_from_ua(self, ua: str, dev_info: Dict[str, str]):
+    def _extract_info_from_ua(self, ua: str, dev_info: dict[str, str]):
         # Note: depending on the boot step, the version number will either
         # be the BootROM version (first few requests) or the SIP application
         # version (later on in the boot process).
@@ -83,7 +82,7 @@ class BasePolycomHTTPDeviceInfoExtractor:
             dev_info['model'] = raw_model.replace('_', '')
             dev_info['version'] = raw_version
 
-    def _extract_mac_from_path(self, path: str, dev_info: Dict[str, str]):
+    def _extract_mac_from_path(self, path: str, dev_info: dict[str, str]):
         # Extract the MAC address from the requested path if possible
         m = self._PATH_REGEX.search(path)
         if m:
@@ -104,7 +103,7 @@ class BasePolycomPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Polycom':
             if model in self._models:
@@ -236,9 +235,7 @@ class BasePolycomPlugin(StandardPlugin):
             keynum = int(funckey_no)
             if keynum <= nb_keys:
                 value = funckey_dict['value']
-                lines.append(
-                    'attendant.resourceList.%s.address="%s"' % (funckey_no, value)
-                )
+                lines.append(f'attendant.resourceList.{funckey_no}.address="{value}"')
                 lines.append(
                     'attendant.resourceList.%s.label="%s"'
                     % (funckey_no, escape(funckey_dict.get('label', value)))
@@ -274,7 +271,7 @@ class BasePolycomPlugin(StandardPlugin):
             if voicemail:
                 line.setdefault('voicemail', voicemail)
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
         return f'{formatted_mac}-user.cfg'

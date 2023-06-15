@@ -1,4 +1,4 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
@@ -7,7 +7,6 @@ import os.path
 import re
 import glob
 from operator import itemgetter
-from typing import Dict, Optional
 
 from pkg_resources import parse_version
 from xml.sax.saxutils import escape
@@ -82,7 +81,7 @@ class BaseSnomHTTPDeviceInfoExtractor:
             }
         return None
 
-    def _extract_from_path(self, path: str, dev_info: Dict[str, str]):
+    def _extract_from_path(self, path: str, dev_info: dict[str, str]):
         m = self._PATH_REGEX.search(path)
         if m:
             raw_mac = m.group(1)
@@ -95,7 +94,7 @@ class BaseSnomPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Snom':
             if version is None:
