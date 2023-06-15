@@ -199,11 +199,11 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def configure_common(self, raw_config):
         self._add_server_url(raw_config)
-        for filename, (_, fw_filename, tpl_filename) in self._COMMON_FILES.items():
+        for filename, (model_info, fw_filename, tpl_filename) in self._COMMON_FILES.items():
             tpl = self._tpl_helper.get_template(f'common/{tpl_filename}')
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config['XX_fw_filename'] = fw_filename
-            raw_config['XX_model_info'] = _
+            raw_config['XX_model_info'] = model_info
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _remove_configuration_file(self, device):
