@@ -1,4 +1,4 @@
-# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import os
@@ -70,7 +70,7 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     _COMMON_FILES = COMMON_FILES
 
     def configure_common(self, raw_config):
-        super(YealinkPlugin, self).configure_common(raw_config)
+        super().configure_common(raw_config)
         for (
             filename,
             fw_filename,

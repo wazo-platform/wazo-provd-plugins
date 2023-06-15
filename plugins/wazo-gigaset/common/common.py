@@ -1,5 +1,5 @@
 """
-Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
+Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
 SPDX-License-Identifier: GPL-3.0-or-later
 
 Common code shared by the various wazo-gigaset plugins.
@@ -10,7 +10,6 @@ import os
 import logging
 import re
 import datetime
-from typing import Dict, Optional
 
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
@@ -108,7 +107,7 @@ class BaseGigasetPgAssociator(BasePgAssociator):
         self._models = models
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == VENDOR:
             if model in self._models:
@@ -185,7 +184,7 @@ class BaseGigasetPlugin(StandardPlugin):
     def _check_config(self, raw_config):
         pass
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'{formatted_mac}.xml'

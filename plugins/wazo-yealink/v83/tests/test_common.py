@@ -1,4 +1,4 @@
-# Copyright 2021-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from textwrap import dedent
@@ -97,7 +97,7 @@ class TestInfoExtraction:
         for path, mac in macs_from_paths.items():
             assert self.http_info_extractor._do_extract(
                 self._mock_request(path=path)
-            ) == {u'mac': mac}
+            ) == {'mac': mac}
 
         assert self.http_info_extractor._do_extract(
             self._mock_request(path=b'/y000000000025.cfg')

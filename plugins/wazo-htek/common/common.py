@@ -1,11 +1,10 @@
-# Copyright 2017-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
 import re
 import os.path
-from typing import Dict, Optional
 
 from provd import plugins
 from provd import tzinform
@@ -64,7 +63,7 @@ class BaseHtekPgAssociator(BasePgAssociator):
         self._model_versions = model_versions
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Htek':
             if model in self._model_versions:
@@ -326,7 +325,7 @@ class BaseHtekPlugin(StandardPlugin):
     def _add_xivo_phonebook_url(self, raw_config):
         plugins.add_xivo_phonebook_url(raw_config, 'htek', entry_point='lookup')
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
         return f'cfg{formatted_mac}.xml'

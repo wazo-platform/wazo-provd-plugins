@@ -1,4 +1,4 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,6 @@ import logging
 import re
 import os.path
 from operator import itemgetter
-from typing import Dict, Optional
 
 from provd import plugins
 from provd import tzinform
@@ -90,7 +89,7 @@ class BaseAastraPgAssociator(BasePgAssociator):
         self._model_versions = model_versions
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Aastra':
             if model in self._model_versions:
@@ -475,7 +474,7 @@ class BaseAastraPlugin(StandardPlugin):
     def _add_xivo_phonebook_url(self, raw_config):
         plugins.add_xivo_phonebook_url(raw_config, 'aastra')
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'{formatted_mac}.cfg'
