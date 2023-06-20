@@ -191,56 +191,50 @@
         </port>
     </call>
     <dsskey>
-      {%- if XX_paginated_top_fkeys -%}
+    <!-- offset: {{ XX_offset }} -->
+    <!-- split top keys: {{ XX_top_keys }} -->
+    <!-- split bottom keys: {{ XX_bottom_keys }} -->
+    {%- if XX_paginated_top_fkeys %}
+    <!-- top function keys: {{ XX_paginated_top_fkeys }} -->
         <dssSide index="1">
-      {%- for page, index, key in XX_paginated_top_fkeys -%}
-      {% if loop.index0 != 0 and page != loop.previtem[0] -%}
+    {%- for page, index, key in XX_paginated_top_fkeys -%}
+    {% if loop.index0 != 0 and page != loop.previtem[0] -%}
         </dssSide>
-        <dssSide index="{{ page + 1 }}">
-	{% endif -%}
-          <Fkey index="{{ index + 1 }}">
-          {%- if sip_lines %}
-	      {%- if key['id']|string in sip_lines %}
-                <Type>2</Type>
-                <Value></Value>
-                <Title></Title>
-		{%- else %}
-		<Type>{{ key['type'] }}</Type>
-		<Value>{{ key['value'] }}</Value>
-		<Title>{{ key['title'] }}</Title>
-		{%- endif %}
-          {%- else %}
-            <Type>2</Type>
-            <Value></Value>
-            <Title></Title>
-          {%- endif %}
-          </Fkey>
-	  {%- endfor -%}
+        <dssSide index="{{ page }}">
+    {%- endif %}
+        <Fkey index="{{ index }}">
+            <Type>{{ key['type'] }}</Type>
+		    <Value>{{ key['value'] }}</Value>
+		    <Title>{{ key['title'] }}</Title>
+        </Fkey>
+    {%- endfor -%}
 	</dssSide>
 	{%- endif -%}
-        {% if XX_paginated_fkeys -%}
-            <FuncKeyPageNum>{{ XX_max_page }}</FuncKeyPageNum>
-        {% for page, index, fkey in XX_paginated_fkeys -%}
-        {% if loop.index0 == 0 or page != loop.previtem[0] -%}
-        {% if loop.index0 != 0 -%}
-        </internal>
-        {%- endif %}
-        <internal index="{{ page + 1 }}">
-        {%- endif %}
-            <Fkey index="{{ index + 1}}">
-                <Type>{{ fkey['type'] }}</Type>
-                <Value>{{ fkey['value'] }}</Value>
-                <Title>{{ fkey['title'] }}</Title>
-            </Fkey>
-        {%- endfor %}
-        </internal>
-        {% endif -%}
-        {% if XX_xivo_phonebook_url -%}
-        <dssSoft index="1">
-            <Type>21</Type>
-            <Value>{{ XX_xivo_phonebook_url }}</Value>
-            <Title>{{ XX_directory|d('Directory') }}</Title>
-        </dssSoft>
-        {%- endif %}
+
+    {% if XX_paginated_fkeys -%}
+    <!-- bottom function keys: {{ XX_paginated_fkeys }} -->
+        <FuncKeyPageNum>{{ XX_max_page }}</FuncKeyPageNum>
+    {% for page, index, fkey in XX_paginated_fkeys -%}
+    {% if loop.index0 == 0 or page != loop.previtem[0] -%}
+    {% if loop.index0 != 0 -%}
+    </internal>
+    {%- endif %}
+    <internal index="{{ page }}">
+    {%- endif %}
+        <Fkey index="{{ index }}">
+            <Type>{{ fkey['type'] }}</Type>
+            <Value>{{ fkey['value'] }}</Value>
+            <Title>{{ fkey['title'] }}</Title>
+        </Fkey>
+    {%- endfor %}
+    </internal>
+    {% endif -%}
+    {% if XX_xivo_phonebook_url -%}
+    <dssSoft index="1">
+        <Type>21</Type>
+        <Value>{{ XX_xivo_phonebook_url }}</Value>
+        <Title>{{ XX_directory|d('Directory') }}</Title>
+    </dssSoft>
+    {%- endif %}
     </dsskey>
 </sysConf>

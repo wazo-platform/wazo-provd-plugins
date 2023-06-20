@@ -339,13 +339,14 @@ class BaseFanvilPlugin(StandardPlugin):
             value=funckey_dict['value'], line=funckey_dict['line']
         )
 
-    def _split_fkeys(self, funckeys, threshold):
+    @staticmethod
+    def _split_fkeys(funckeys, threshold):
         fkeys_top = {}
         fkeys_bottom = {}
 
         for funckey_no, funckey_dict in funckeys:
             keynum = int(funckey_no)
-            if keynum < threshold:
+            if keynum <= threshold:
                 fkeys_top[keynum] = funckey_dict
             else:
                 fkeys_bottom[keynum - threshold] = funckey_dict
@@ -353,7 +354,7 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def _format_fkey(self, funckey_number, funckey, fkey_offset, pickup_exten):
         fkey = {}
-        fkey['id'] = funckey_number + fkey_offset
+        fkey['id'] = funckey_number  # + fkey_offset
         fkey['title'] = funckey['label']
         fkey['type'] = 2
         if funckey['type'] == 'speeddial':
@@ -383,6 +384,7 @@ class BaseFanvilPlugin(StandardPlugin):
     def _add_fkeys(self, device, raw_config):
         exten_pickup_call = raw_config.get('exten_pickup_call')
         offset = 0 if self._is_new_model(device) else 1
+        raw_config['XX_offset'] = offset
         clean_model_name = device['model'].split('-')[0]
         top_key_threshold = self._TOP_FUNCTION_KEYS.get(clean_model_name, 0)
         raw_config['XX_top_key_threshold'] = top_key_threshold
@@ -390,11 +392,14 @@ class BaseFanvilPlugin(StandardPlugin):
             raw_config['funckeys'].items(), top_key_threshold
         )
 
+        raw_config['XX_top_keys'] = top_keys
+        raw_config['XX_bottom_keys'] = bottom_keys
+
         top_keys_per_page = self._LINE_KEYS_PER_PAGE.get(clean_model_name, None)
         keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(clean_model_name, None)
 
-        max_top_keys = max(top_keys) + 1 if top_keys else 0
-        max_bottom_keys = max(bottom_keys) + 1 if bottom_keys else 0
+        max_top_keys = max(top_keys) if top_keys else 0
+        max_bottom_keys = max(bottom_keys) if bottom_keys else 0
         formatted_top_keys = self._format_fkeys(
             top_keys, max_top_keys, offset, exten_pickup_call
         )
@@ -409,7 +414,7 @@ class BaseFanvilPlugin(StandardPlugin):
             raw_config['XX_paginated_top_fkeys'] = paginated_top_fkeys
         else:
             raw_config['XX_paginated_top_fkeys'] = [
-                (0, fkey['id'] - 1, fkey) for fkey in top_keys
+                (offset, fkey['id'] + offset, fkey) for fkey in top_keys
             ]
 
         if keys_per_page:
@@ -420,13 +425,14 @@ class BaseFanvilPlugin(StandardPlugin):
             raw_config['XX_paginated_fkeys'] = paginated_bottom_fkeys
         raw_config['XX_fkeys'] = formatted_top_keys + formatted_bottom_keys
 
-    def _paginate(self, fkeys, max_position, results_per_page):
+    @staticmethod
+    def _paginate(fkeys, max_position, results_per_page):
         max_page = math.ceil(max_position / results_per_page)
         paginated_fkeys = sorted(
             [
                 (
-                    fkey['id'] // results_per_page,
-                    fkey['id'] % results_per_page,
+                    ((fkey['id'] - 1) // results_per_page) + 1,
+                    ((fkey['id'] - 1) % results_per_page) + 1,
                     fkey,
                 )
                 for fkey in fkeys
