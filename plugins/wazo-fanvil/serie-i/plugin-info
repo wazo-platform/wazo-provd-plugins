@@ -58,7 +58,7 @@
             "function_keys": 3,
             "expansion_modules": 0,
             "switchboard": false,
-            "type": "doorstation",
+            "type": "doorphone",
             "protocol": "sip"
         },
         "Fanvil, i52W, 2.12.9": {
@@ -67,7 +67,7 @@
             "function_keys": 3,
             "expansion_modules": 0,
             "switchboard": false,
-            "type": "doorstation",
+            "type": "doorphone",
             "protocol": "sip"
         },
         "Fanvil, i53W, 2.12.9": {
@@ -76,7 +76,7 @@
             "function_keys": 3,
             "expansion_modules": 0,
             "switchboard": false,
-            "type": "doorstation",
+            "type": "doorphone",
             "protocol": "sip"
         },
         "Fanvil, i61, 2.12.19.9": {
