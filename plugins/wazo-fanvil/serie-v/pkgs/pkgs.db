@@ -5,10 +5,46 @@ version: 2.6.6.201
 files: V67-fw
 install: fanvil-fw
 
+[pkg_V65]
+description: Firmware for Fanvil V65
+description_fr: Micrologiciel pour Fanvil V65
+version: 2.12.16.4
+files: V65-fw
+install: fanvil-fw
+
+[pkg_V64]
+description: Firmware for Fanvil V64
+description_fr: Micrologiciel pour Fanvil V64
+version: 2.12.16.4
+files: V64-fw
+install: fanvil-fw
+
+[pkg_V62]
+description: Firmware for Fanvil V62
+description_fr: Micrologiciel pour Fanvil V62
+version: 2.12.16.4
+files: V62-fw
+install: fanvil-fw
+
 [install_fanvil-fw]
 a-b: cp $FILE1 firmware/
 
 [file_V67-fw]
-url: http://provd.wazo.community/firmwares/yealink/v67_fanvil_2.6.6.201_20230202_full.zip
+url: http://provd.wazo.community/firmwares/fanvil/v67_fanvil_2.6.6.201_20230202_full.zip
 size: 586284655
 sha1sum: 578745e82b0148eb8e1ecb59b1b8119b530e7d8c
+
+[file_V65-fw]
+url: http://provd.wazo.community/firmwares/fanvil/v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z
+size: 29750500
+sha1sum: b80d8d88423f55d50cea24e640c786f648cb0575
+
+[file_V64-fw]
+url: http://provd.wazo.community/firmwares/fanvil/v64-fanvil-release-ff01-5922-2.12.16.4-krnvUT2023-02-01-15.09.29.z
+size: 32281232
+sha1sum: 0f5eb87607a9802c95d7dae5d4d23530ffb22677
+
+[file_V62-fw]
+url: http://provd.wazo.community/firmwares/fanvil/v62-fanvil-release-ff01-5944-2.12.16.4-krnvUT2023-02-01-15.23.52.z
+size: 31474544
+sha1sum: 0368903c679f9935bf685e6829612bfe37293d85
