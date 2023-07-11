@@ -254,8 +254,12 @@ class BaseSnomPlugin(StandardPlugin):
             except tzinform.TimezoneNotFoundError as e:
                 logger.warning('Unknown timezone %s: %s', raw_config['timezone'], e)
             else:
-                raw_config['XX_timezone'] = f'<timezone perm="R">{raw_config["XX_lang"][1]}'
-                raw_config['XX_timezone'] += f'{tzinfo["utcoffset"].as_hours:+d}</timezone>'
+                raw_config[
+                    'XX_timezone'
+                ] = f'<timezone perm="R">{raw_config["XX_lang"][1]}'
+                raw_config[
+                    'XX_timezone'
+                ] += f'{tzinfo["utcoffset"].as_hours:+d}</timezone>'
 
     def _add_user_dtmf_info(self, raw_config):
         dtmf_mode = raw_config.get('sip_dtmf_mode')
