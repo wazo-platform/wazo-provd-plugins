@@ -1,7 +1,11 @@
-{% extends 'base.tpl' %}
+{% extends 'base.tpl' -%}
 
-{% block fkeys_prefix %}
-{% if XX_xivo_phonebook_url %}
-<fkey idx="4" context="active" perm="R">url {{ XX_xivo_phonebook_url|e }}</fkey>
-{% endif %}
+{% block gui_fkey1 %}{% endblock %}
+
+{% block settings_suffix %}
+{% if XX_xivo_phonebook_url -%}
+<gui_fkey1 perm="R">keyevent F_NONE</gui_fkey1>
+% else -%}
+<gui_fkey1 perm="R">keyevent F_ADR_BOOK</gui_fkey1>
+{% endif -%}
 {% endblock %}
