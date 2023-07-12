@@ -1,4 +1,4 @@
-# Copyright 2021-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from textwrap import dedent
@@ -98,7 +98,7 @@ class TestInfoExtraction:
             self.http_info_extractor._do_extract(self._mock_request(path=path))
             assert self.http_info_extractor._do_extract(
                 self._mock_request(path=path)
-            ) == {u'mac': mac}
+            ) == {'mac': mac}
 
     @patch('v84.common.logger')
     def test_invalid_mac(self, mocked_logger):
@@ -158,7 +158,7 @@ class TestPluginAssociation:
         assert plugin_associator._do_associate('', '', '') == DeviceSupport.IMPROBABLE
 
 
-class TestPlugin(object):
+class TestPlugin:
     @patch('v84.common.FetchfwPluginHelper')
     def test_init(self, fetch_fw, v84_entry):
         fetch_fw.return_value.services.return_value = sentinel.fetchfw_services

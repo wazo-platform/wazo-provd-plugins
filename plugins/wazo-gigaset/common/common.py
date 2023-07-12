@@ -10,7 +10,6 @@ import os
 import logging
 import re
 import datetime
-from typing import Dict, Optional
 
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
@@ -61,7 +60,6 @@ class GigasetDHCPDeviceInfoExtractor:
 
 
 class GigasetHTTPDeviceInfoExtractor:
-
     _UA_REGEX = re.compile(
         r'^(Gigaset )?(?P<model>N\d{3} .+)\/(?P<version>\d{2,3}\.\d{2,3})'
         r'\.(\d{2,3})\.(\d{2,3})\.(\d{2,3});?(?P<mac>[A-F0-9]{12})?$'
@@ -109,7 +107,7 @@ class BaseGigasetPgAssociator(BasePgAssociator):
         self._models = models
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == VENDOR:
             if model in self._models:
@@ -194,7 +192,7 @@ class BaseGigasetPlugin(StandardPlugin):
     def _check_config(self, raw_config):
         pass
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
         return f'{formatted_mac}.xml'

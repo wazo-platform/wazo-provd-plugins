@@ -1,11 +1,10 @@
-# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
 import os.path
 import re
-from typing import Dict, Optional
 
 from provd import plugins
 from provd import synchronize
@@ -25,7 +24,7 @@ logger = logging.getLogger('plugin.wazo-fanvil')
 class BaseFanvilHTTPDeviceInfoExtractor:
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
     _UA_REGEX = re.compile(
-        r'^Fanvil (?P<model>X[0-9]{1,3}[SGVUCi]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
+        r'^Fanvil (?P<model>[XVi][0-9]{1,3}[WSGVUCi]?[DV]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
     )
 
     def __init__(self, common_files):
@@ -46,6 +45,11 @@ class BaseFanvilHTTPDeviceInfoExtractor:
     def _extract_from_ua(self, ua: str):
         # Fanvil X4 2.10.2.6887 0c383e07e16c
         # Fanvil X6U Pro 0.0.10 0c383e2cd782
+        # Fanvil V67 2.6.6.187 0c383e2b29e6
+        # Fanvil i10SV 2.12.10.1 0c383e2397f4
+        # Fanvil i53W 2.12.9 0c383e10a440
+        # Fanvil V65 2.12.2.4 0c383e38e123
+
         dev_info = {}
         m = self._UA_REGEX.search(ua)
         if m:
@@ -75,7 +79,7 @@ class BaseFanvilPgAssociator(BasePgAssociator):
         self._models = models
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Fanvil':
             if model in self._models:
@@ -148,7 +152,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self.services = fetchfw_helper.services()
         self.http_service = HTTPNoListingFileService(self._base_tftpboot_dir)
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return f'{formatted_mac}.cfg'
@@ -160,6 +164,10 @@ class BaseFanvilPlugin(StandardPlugin):
     def _check_device(self, device):
         if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
+
+    def _add_wazo_phoned_user_service_url(self, raw_config, service):
+        if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
+            plugins.add_wazo_phoned_user_service_url(raw_config, 'yealink', service)
 
     def _add_server_url(self, raw_config):
         ip = raw_config['ip']
@@ -176,8 +184,10 @@ class BaseFanvilPlugin(StandardPlugin):
         self._update_lines(raw_config)
         self._add_fkeys(device, raw_config)
         self._add_phonebook_url(raw_config)
+        self._add_wazo_phoned_user_service_url(raw_config, 'dnd')
         self._add_server_url(raw_config)
         self._add_firmware(device, raw_config)
+
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
@@ -189,10 +199,15 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def configure_common(self, raw_config):
         self._add_server_url(raw_config)
-        for filename, (_, fw_filename, tpl_filename) in self._COMMON_FILES.items():
+        for filename, (
+            model_info,
+            fw_filename,
+            tpl_filename,
+        ) in self._COMMON_FILES.items():
             tpl = self._tpl_helper.get_template(f'common/{tpl_filename}')
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config['XX_fw_filename'] = fw_filename
+            raw_config['XX_model_info'] = model_info
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _remove_configuration_file(self, device):
@@ -228,7 +243,7 @@ class BaseFanvilPlugin(StandardPlugin):
                 lines['dst_week'] = -1
             else:
                 lines['dst_week'] = week
-            lines['dst_wday'] = weekday
+            lines['dst_wday'] = int(weekday) - 1
         return lines
 
     def _extract_tzinfo(self, device, tzinfo):

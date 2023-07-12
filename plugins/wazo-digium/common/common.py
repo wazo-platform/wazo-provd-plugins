@@ -1,4 +1,4 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,7 +17,6 @@ from __future__ import annotations
 import logging
 import os
 import re
-from typing import Dict, Optional
 
 from provd import synchronize
 from provd.util import norm_mac, format_mac
@@ -33,7 +32,6 @@ logger = logging.getLogger('plugin.wazo-digium')
 
 
 class DigiumDHCPDeviceInfoExtractor:
-
     _VDI_REGEX = re.compile(r'^digium_(D\d\d)_([\d_]+)$')
 
     def extract(self, request: DHCPRequest, request_type: RequestType):
@@ -58,7 +56,6 @@ class DigiumDHCPDeviceInfoExtractor:
 
 
 class DigiumHTTPDeviceInfoExtractor:
-
     _PATH_REGEX = re.compile(r'^/Digium/(?:([a-fA-F\d]{12})\.cfg)?')
 
     def extract(self, request: Request, request_type: RequestType):
@@ -76,7 +73,6 @@ class DigiumHTTPDeviceInfoExtractor:
 
 
 class DigiumPgAssociator(BasePgAssociator):
-
     _MODELS = ['D40', 'D45', 'D50', 'D60', 'D62', 'D65', 'D70']
 
     def __init__(self, version):
@@ -84,7 +80,7 @@ class DigiumPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Digium':
             if model in self._MODELS:
@@ -96,7 +92,6 @@ class DigiumPgAssociator(BasePgAssociator):
 
 
 class BaseDigiumPlugin(StandardPlugin):
-
     _ENCODING = 'UTF-8'
     _CONTACT_TEMPLATE = 'contact.tpl'
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg$')
@@ -174,7 +169,7 @@ class BaseDigiumPlugin(StandardPlugin):
     def _format_mac(self, device):
         return format_mac(device['mac'], separator='', uppercase=False)
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         return f'{self._format_mac(device)}.cfg'
 
     def _dev_contact_filename(self, device):

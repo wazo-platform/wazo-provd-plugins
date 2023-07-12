@@ -2,10 +2,12 @@
 <flat-profile>
 
 {% if admin_password is defined -%}
-<Admin_Password>{{ admin_password|e }}</Admin_Password>
+<Web_Login_Admin_Name>admin</Web_Login_Admin_Name>
+<Web_Login_Admin_Password>{{ admin_password|e }}</Web_Login_Admin_Password>
 {% endif -%}
 {% if user_password is defined -%}
-<User_Password>{{ user_password|e }}</User_Password>
+<Web_Login_Guest_Name>cisco</Web_Login_Guest_Name>
+<Web_Login_Guest_Password>{{ user_password|e }}</Web_Login_Guest_Password>
 {% endif -%}
 
 {% if dns_enabled -%}
@@ -53,7 +55,7 @@
 
 {% for line_no, line in sip_lines.items() %}
 <Line_Enable_{{ line_no }}_>Yes</Line_Enable_{{ line_no }}_>
-<proxy_{{ line_no }}_>{{ line['proxy_ip'] }}:{{ line['proxy_port'] or sip_proxy_port or 5060}}</proxy_{{ line_no }}_>
+<Proxy_{{ line_no }}_>{{ line['proxy_ip'] }}:{{ line['proxy_port'] or sip_proxy_port or 5060}}</Proxy_{{ line_no }}_>
 <Use_DNS_SRV_{{ line_no }}_>Yes</Use_DNS_SRV_{{ line_no }}_>
 <Proxy_Fallback_Intvl_{{ line_no }}_>120</Proxy_Fallback_Intvl_{{ line_no }}_>
 <Display_Name_{{ line_no }}_>{{ line['display_name']|e }}</Display_Name_{{ line_no }}_>

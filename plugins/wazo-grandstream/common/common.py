@@ -1,11 +1,10 @@
-# Copyright 2010-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
 import re
 import os.path
-from typing import Dict, Optional
 
 from provd import synchronize
 from provd.devices.config import RawConfigError
@@ -40,7 +39,6 @@ FUNCKEY_TYPES = {
 
 
 class BaseGrandstreamHTTPDeviceInfoExtractor:
-
     # Grandstream Model HW GXP1405 SW 1.0.4.23 DevId 000b8240d55c
     # Grandstream Model HW GXP1628 SW 1.0.4.138 DevId c074ad2bd859
     # Grandstream Model HW GXP2200 V2.2A SW 1.0.1.33 DevId 000b82462d97
@@ -92,7 +90,7 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
         self._version = version
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Grandstream':
             if model in self._models:
@@ -161,7 +159,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
 
     http_dev_info_extractor = BaseGrandstreamHTTPDeviceInfoExtractor()
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return f'cfg{formatted_mac}.xml'
@@ -254,14 +252,14 @@ class BaseGrandstreamPlugin(StandardPlugin):
                 logger.info('Unsupported funckey type: %s', funckey_type)
                 continue
             start_p_code = start_code + (i_funckey_no - 1) * 5
-            type_code = 'P{}'.format(start_p_code)
+            type_code = f'P{start_p_code}'
             lines.append((type_code, FUNCKEY_TYPES[funckey_type]))
-            line_code = 'P{}'.format(start_p_code + 1)
+            line_code = f'P{start_p_code + 1}'
             lines.append((line_code, int(funckey_dict['line']) - 1))
             if 'label' in funckey_dict:
-                label_code = 'P{}'.format(start_p_code + 2)
+                label_code = f'P{start_p_code + 2}'
                 lines.append((label_code, funckey_dict['label']))
-            value_code = 'P{}'.format(start_p_code + 3)
+            value_code = f'P{start_p_code + 3}'
             lines.append((value_code, funckey_dict['value']))
         raw_config['XX_mpk'] = lines
 

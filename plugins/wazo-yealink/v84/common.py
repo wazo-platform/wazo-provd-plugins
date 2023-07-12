@@ -1,11 +1,10 @@
-# Copyright 2011-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
 import re
 import os.path
-from typing import Dict, Optional
 
 from provd import plugins
 from provd import tzinform
@@ -103,7 +102,7 @@ class BaseYealinkPgAssociator(BasePgAssociator):
         self._model_versions = model_versions
 
     def _do_associate(
-        self, vendor: str, model: Optional[str], version: Optional[str]
+        self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Yealink':
             if model in self._model_versions:
@@ -194,7 +193,6 @@ class BaseYealinkFunckeyGenerator:
 
 
 class BaseYealinkFunckeyPrefixIterator:
-
     _NB_LINEKEY = {
         'CP920': 0,
         'CP960': 0,
@@ -303,6 +301,7 @@ class BaseYealinkPlugin(StandardPlugin):
         'es_ES': ('Spanish', 'Spain', '6'),
         'fr_FR': ('French', 'France', '1'),
         'fr_CA': ('French', 'United States', '1'),
+        'it_IT': ('Italian', 'Italy', '3'),
     }
     _SIP_DTMF_MODE = {
         'RTP-in-band': '0',
@@ -458,7 +457,7 @@ class BaseYealinkPlugin(StandardPlugin):
         if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
             plugins.add_wazo_phoned_user_service_url(raw_config, 'yealink', service)
 
-    def _dev_specific_filename(self, device: Dict[str, str]) -> str:
+    def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
         return f'{formatted_mac}.cfg'

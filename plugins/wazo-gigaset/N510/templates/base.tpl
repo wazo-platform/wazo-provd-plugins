@@ -8,7 +8,7 @@
     <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
     <PROFILE_NAME class="string" value="N510"/>
     {%- if http_port %}
-    <S_SPECIAL_DATA_SRV class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/merkur258_42.bin?mac={{ XX_mac_addr }}&merkur258_42.bin"'/>
+    <S_SPECIAL_DATA_SRV class="string" value='"http://{{ ip }}:{{ http_port }}/42/fw262.bin?mac={{ XX_mac_addr }}&fw262.bin"'/>
     {%- endif %}
 <!-- Allow access from other networks. -->
     <SYMB_ITEM ID="BS_IP_Data1.ucB_ACCEPT_FOREIGN_SUBNET" class="symb_item" value="0x1"/>
@@ -113,6 +113,8 @@
      Redirect device always to own provisioning Server so you are in control for example: Firmware updates 	-->
     {%- if http_port %}
     <SYMB_ITEM ID="BS_IP_Data1.aucS_DATA_SERVER[0]" class="symb_item" value='"{{ ip }}:{{ http_port }}"'/>
+    <SYMB_ITEM ID="BS_IP_Data1.aucS_USER_FIRMWARE_URL" class="string" value='"{{ ip }}:{{ http_port }}/42/fw262.bin"' />
+    <S_CONFIGFILE_URL class="string" value='"{{ ip }}:{{ http_port }}/{{ XX_mac_addr }}.xml"'/>
     {%- endif %}
 
 <!-- WEB UI: Settings - Telephony - Advanced VoIP Settings - Transfer Call by On Hook

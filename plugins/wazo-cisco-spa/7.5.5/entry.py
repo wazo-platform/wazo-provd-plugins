@@ -1,4 +1,4 @@
-# Copyright (C) 2014-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ PSN = [
     '525G2',
 ]
 MODELS = ['SPA' + psn for psn in PSN]
-MODEL_VERSION = dict((model, '7.5.5') for model in MODELS)
+MODEL_VERSION = {model: '7.5.5' for model in MODELS}
 
 
 class CiscoPlugin(common_globals['BaseCiscoPlugin']):

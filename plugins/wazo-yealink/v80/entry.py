@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -71,7 +71,7 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     _COMMON_FILES = COMMON_FILES
 
     def configure_common(self, raw_config):
-        super(YealinkPlugin, self).configure_common(raw_config)
+        super().configure_common(raw_config)
         for (
             filename,
             fw_filename,

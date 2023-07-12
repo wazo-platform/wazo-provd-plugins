@@ -1,4 +1,4 @@
-# Copyright 2013-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import os
@@ -123,7 +123,7 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     _COMMON_FILES = COMMON_FILES
 
     def configure_common(self, raw_config):
-        super(YealinkPlugin, self).configure_common(raw_config)
+        super().configure_common(raw_config)
         for dect_info in COMMON_FILES_DECT:
             tpl = self._tpl_helper.get_template(f'common/{dect_info["tpl_filename"]}')
             dst = os.path.join(self._tftpboot_dir, dect_info['filename'])

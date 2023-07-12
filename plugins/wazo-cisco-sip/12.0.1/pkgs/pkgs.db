@@ -1,0 +1,34 @@
+[pkg_88xx-mpp-fw]
+description: Multiplatform firmware for Cisco 8811, 8441, 8851 and 8861
+description_fr: Micrologiciel MPP pour Cisco 8811, 8441, 8851 et 8861
+version: 12-0-1MPP0001-245
+files: 88xx-mpp-fw
+install: cisco-mpp-fw
+
+[pkg_cisco-mpp-locales]
+description: Multiplatform phone locales
+description_fr: Locales multi-plateformes
+version: 12-0-1MPP0001-245
+files: cisco-mpp-locales
+install: cisco-mpp-locales
+
+
+[install_cisco-mpp-fw]
+a-b: unzip $FILE1
+
+[install_cisco-mpp-locales]
+a-b: unzip $FILE1
+b-c: cp *.xml locales/
+
+
+[file_88xx-mpp-fw]
+filename: cmterm-88xx.12-0-1MPP0001-245_REL.zip
+url:
+size: 188024536
+sha1sum: 1ebdfb72d460d96b5e3653b4224effb95a3d746a
+
+[file_cisco-mpp-locales]
+filename: cmterm-68xx_78xx_88xx.12-0-1MPP-245-Locale-1.zip
+url:
+size: 39964861
+sha1sum: 30c52050a2e0afd3082b7cd64c70eeb84a7d6468
