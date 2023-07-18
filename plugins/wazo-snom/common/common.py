@@ -247,40 +247,19 @@ class BaseSnomPlugin(StandardPlugin):
             if locale in self._LOCALE:
                 raw_config['XX_lang'] = self._LOCALE[locale]
 
-    def _format_dst_change(self, dst_change):
-        fmted_time = '{:02d}:{:02d}:{:02d}'.format(*dst_change['time'].as_hms)
-        day = dst_change['day']
-        if day.startswith('D'):
-            return f'{int(day[1:]):02d}.{dst_change["month"]:02d} {fmted_time}'
-
-        week, weekday = list(map(int, day[1:].split('.')))
-        weekday = tzinform.week_start_on_monday(weekday)
-        return f'{dst_change["month"]:02d}.{week:02d}.{weekday:02d} {fmted_time}'
-
-    def _format_tzinfo(self, tzinfo):
-        lines = []
-        lines.append('<timezone perm="R"></timezone>')
-        lines.append(
-            f'<utc_offset perm="R">{tzinfo["utcoffset"].as_seconds:+d}</utc_offset>'
-        )
-        if tzinfo['dst'] is None:
-            lines.append('<dst perm="R"></dst>')
-        else:
-            start = self._format_dst_change(tzinfo['dst']['start'])
-            end = self._format_dst_change(tzinfo['dst']['end'])
-            lines.append(
-                f'<dst perm="R">{tzinfo["dst"]["save"].as_seconds:d} {start} {end}</dst>'
-            )
-        return '\n'.join(lines)
-
     def _add_timezone(self, raw_config):
-        if 'timezone' in raw_config:
+        if 'timezone' in raw_config and 'XX_lang' in raw_config:
             try:
                 tzinfo = tzinform.get_timezone_info(raw_config['timezone'])
             except tzinform.TimezoneNotFoundError as e:
                 logger.warning('Unknown timezone %s: %s', raw_config['timezone'], e)
             else:
-                raw_config['XX_timezone'] = self._format_tzinfo(tzinfo)
+                raw_config[
+                    'XX_timezone'
+                ] = f'<timezone perm="R">{raw_config["XX_lang"][1]}'
+                raw_config[
+                    'XX_timezone'
+                ] += f'{tzinfo["utcoffset"].as_hours:+d}</timezone>'
 
     def _add_user_dtmf_info(self, raw_config):
         dtmf_mode = raw_config.get('sip_dtmf_mode')

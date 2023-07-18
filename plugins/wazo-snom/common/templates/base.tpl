@@ -14,18 +14,21 @@
 
     <setting_server perm="RW">http://{{ ip }}:{{ http_port }}</setting_server>
 
-    {% if admin_username -%}
-    <http_user perm="R">{{ admin_username|e }}</http_user>
-    {% else -%}
-    <http_user perm="R">guest</http_user>
+    {% if user_username -%}
+    <webserver_user_name perm="R">{{ user_username|e }}</webserver_user_name>
+    {% endif -%}
+    {% if user_password -%}
+    <webserver_user_password perm="R">{{ user_password|e }}</webserver_user_password>
     {% endif -%}
 
+    {% if admin_username -%}
+    <http_user perm="R">{{ admin_username|e }}</http_user>
+    <webserver_admin_name perm="R">{{ admin_username|e }}</webserver_admin_name>
+    {% endif -%}
     {% if admin_password -%}
-    <admin_mode_password perm="R">{{ admin_password|e }}</admin_mode_password>
     <http_pass perm="R">{{ admin_password|e }}</http_pass>
-    {% else -%}
-    <admin_mode_password perm="R">12345</admin_mode_password>
-    <http_pass perm="R">guest</http_pass>
+    <admin_mode_password perm="R">{{ admin_password|e }}</admin_mode_password>
+    <webserver_admin_password perm="R">{{ admin_password|e }}</webserver_admin_password>
     {% endif -%}
 
     {% if ntp_enabled -%}
