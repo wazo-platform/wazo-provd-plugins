@@ -1,4 +1,4 @@
-# Copyright 2018-2022 The Wazo Authors (see AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors (see AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 common_globals = {}
