@@ -44,8 +44,8 @@
     <SYMB_ITEM ID="BS_IP_Data1.aucS_STUN_SERVER{{ line_suffix }}" class="symb_item" value='""'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_OUTBOUND_PROXY{{ line_suffix }}" class="symb_item" value='""'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_PROVIDER_NAME{{ line_suffix }}" class="symb_item" value='"WazoPBX"'/>
-    <SYMB_ITEM ID="BS_IP_Data1.uiI_SIP_SERVER_PORT{{ line_suffix }}" class="symb_item" value="0x{{ "%x"|format(sip_proxy_port) }}"/>
-    <SYMB_ITEM ID="BS_IP_Data1.uiI_SIP_REGISTRAR_PORT{{ line_suffix }}" class="symb_item" value="0x{{ "%x"|format(sip_proxy_port) }}"/>
+    <SYMB_ITEM ID="BS_IP_Data1.uiI_SIP_SERVER_PORT{{ line_suffix }}" class="symb_item" value="0x{{ "%x"|format(sip_proxy_port|d(5060)) }}"/>
+    <SYMB_ITEM ID="BS_IP_Data1.uiI_SIP_REGISTRAR_PORT{{ line_suffix }}" class="symb_item" value="0x{{ "%x"|format(sip_proxy_port|d(5060)) }}"/>
     <SYMB_ITEM ID="BS_IP_Data1.ucB_SIP_USE_STUN{{ line_suffix }}" class="symb_item" value="0x0"/>
     <SYMB_ITEM ID="BS_IP_Data1.uiI_STUN_SERVER_PORT{{ line_suffix }}" class="symb_item" value="0xd96"/>
     <SYMB_ITEM ID="BS_IP_Data1.ucI_OUTBOUND_PROXY_MODE{{ line_suffix }}" class="symb_item" value="0x1"/>
