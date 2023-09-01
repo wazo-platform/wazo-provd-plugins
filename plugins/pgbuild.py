@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Copyright 2010-2022 The Wazo Authors (see AUTHORS file)
+Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 SPDX-License-Identifier: GPL-3.0-or-later
 
 A tool for building provd plugins.
@@ -244,7 +244,8 @@ def package_op(opts, args, src_dir, dest_dir):
     # build packages
     for plugin in plugins:
         plugin_version = _get_plugin_version(plugin)
-        package_path = os.path.join(pkg_dir, os.path.basename(plugin))
+        plugin_name = os.path.basename(plugin).replace('_', '-')
+        package_path = os.path.join(pkg_dir, plugin_name)
         package = f"{package_path}-{plugin_version}{PACKAGE_SUFFIX}"
         print(f"Packaging plugin '{plugin}' into '{package}'...")
         check_call(
@@ -364,7 +365,7 @@ def create_db_op(opts, args, src_dir, dest_dir):
     else:
         packages = _list_packages(pkg_dir)
 
-    # get package infos, and only for the most recent packages
+    # get package info, and only for the most recent packages
     package_infos = {}
     for package in packages:
         package_name, package_info = _get_package_info(package)
@@ -460,4 +461,5 @@ def main():
         raise AssertionError('unknown operation... this is a bug')
 
 
-main()
+if __name__ == '__main__':
+    main()
