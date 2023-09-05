@@ -1,18 +1,28 @@
 """
-Copyright 2014-2022 The Wazo Authors  (see the AUTHORS file)
+Copyright 2014-2023 The Wazo Authors  (see the AUTHORS file)
 SPDX-License-Identifier: GPL-3.0-or-later
 
 Depends on the following external programs:
  - rsync
  - sed
 """
+from __future__ import annotations
 
-import os.path
+from typing import TYPE_CHECKING, Callable
 from subprocess import check_call
+from pathlib import Path
+
+if TYPE_CHECKING:
+
+    def target(
+        target_id: str, plugin_id: str, std_dirs: bool = True
+    ) -> Callable[[str], None]:
+        """The `target` method is injected in `exec` call by the build script."""
+        return lambda x: None
 
 
 @target('8.7.5.35', 'wazo-snom-8.7.5.35')
-def build_8_7_5_35(path):
+def build_8_7_5_35(path: str) -> None:
     MODELS = [
         ('300', 'f'),
         ('320', 'f'),
@@ -29,18 +39,17 @@ def build_8_7_5_35(path):
         ('MP', 'r'),
         ('PA1', 'f'),
     ]
-
     check_call(
         ['rsync', '-rlp', '--exclude', '.*', '--exclude', '*.btpl', 'common/', path]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
+
         sed_script = f's/#FW_FILENAME#/snom{model}-8.7.5.35-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -51,28 +60,27 @@ def build_8_7_5_35(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', '8.7.5.35/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v8_7_5_35/', path])
 
 
 @target('8.9.3.40', 'wazo-snom-8.9.3.40')
-def build_8_9_3_40(path):
+def build_8_9_3_40(path: str) -> None:
     MODELS = [('D745', 'r')]
 
     check_call(
@@ -93,14 +101,13 @@ def build_8_9_3_40(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-8.9.3.40-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -111,28 +118,28 @@ def build_8_9_3_40(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '8.9.3.40/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v8_9_3_40/', path])
 
 
 @target('8.9.3.60', 'wazo-snom-8.9.3.60')
-def build_8_9_3_60(path):
+def build_8_9_3_60(path: str) -> None:
     MODELS = [
         ('D305', 'r'),
         ('D315', 'r'),
@@ -158,14 +165,13 @@ def build_8_9_3_60(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-8.9.3.60-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -176,24 +182,24 @@ def build_8_9_3_60(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '8.9.3.60/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v8_9_3_60/', path])
 
 
 @target('8.9.3.80', 'wazo-snom-8.9.3.80')
@@ -230,14 +236,13 @@ def build_8_9_3_80(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-8.9.3.80-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -248,24 +253,24 @@ def build_8_9_3_80(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '8.9.3.80/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v8_9_3_80/', path])
 
 
 @target('10.1.20.0', 'wazo-snom-10.1.20.0')
@@ -291,14 +296,13 @@ def build_10_1_20_0(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.20.0-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -309,24 +313,24 @@ def build_10_1_20_0(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '10.1.20.0/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_20_0/', path])
 
 
 @target('10.1.26.1', 'wazo-snom-10.1.26.1')
@@ -352,14 +356,13 @@ def build_10_1_26_1(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.26.1-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -370,24 +373,24 @@ def build_10_1_26_1(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '10.1.26.1/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_26_1/', path])
 
 
 @target('10.1.39.11', 'wazo-snom-10.1.39.11')
@@ -424,14 +427,13 @@ def build_10_1_39_11(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.39.11-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -442,24 +444,24 @@ def build_10_1_39_11(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '10.1.39.11/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_39_11/', path])
 
 
 @target('10.1.46.16', 'wazo-snom-10.1.46.16')
@@ -504,14 +506,15 @@ def build_10_1_46_16(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
+        model_tpl = (
+            Path(path) / 'templates' / 'common' / f'snom{model}-firmware.xml.tpl'
         )
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.46.16-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -522,24 +525,24 @@ def build_10_1_46_16(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '10.1.46.16/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_46_16/', path])
 
 
 @target('10.1.49.11', 'wazo-snom-10.1.49.11')
@@ -584,14 +587,13 @@ def build_10_1_49_11(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.46.16-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -602,24 +604,24 @@ def build_10_1_49_11(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '10.1.49.11/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_49_11/', path])
 
 
 @target('10.1.51.12', 'wazo-snom-10.1.51.12')
@@ -663,14 +665,13 @@ def build_10_1_51_12(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.51.12-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -681,24 +682,24 @@ def build_10_1_51_12(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '10.1.51.12/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_51_12/', path])
 
 
 @target('10.1.54.13', 'wazo-snom-10.1.54.13')
@@ -742,14 +743,13 @@ def build_10_1_54_13(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.54.13-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -760,24 +760,24 @@ def build_10_1_54_13(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '10.1.54.13/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_54_13/', path])
 
 
 @target('05.20.0001', 'wazo-snom-dect-05.20.0001')
@@ -809,14 +809,13 @@ def build_05_20_0001(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/{model}_v0520_b0001.fwu/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -827,9 +826,9 @@ def build_05_20_0001(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -840,9 +839,9 @@ def build_05_20_0001(path):
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -852,7 +851,7 @@ def build_05_20_0001(path):
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '05.20.0001/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v05_20_0001/', path])
 
 
 @target('10.1.101.11', 'wazo-snom-10.1.101.11')
@@ -895,14 +894,13 @@ def build_10_1_101_11(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.101.11-SIP-{fw_suffix}.bin/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -913,24 +911,24 @@ def build_10_1_101_11(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '10.1.101.11/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_101_11/', path])
 
 
 @target('10.1.141.13', 'wazo-snom-10.1.141.13')
@@ -976,16 +974,15 @@ def build_10_1_141_13(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.141.13-SIP-{fw_suffix}.bin/'
         if model.startswith("D8"):
             sed_script = f's/#FW_FILENAME#/snom{model}-10.1.141.13-SIP-{fw_suffix}.swu/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -996,24 +993,24 @@ def build_10_1_141_13(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '10.1.141.13/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_141_13/', path])
 
 
 @target('10.1.152.12', 'wazo-snom-10.1.152.12')
@@ -1059,16 +1056,15 @@ def build_10_1_152_12(path):
             path,
         ]
     )
+    template_dir = Path(path) / 'templates' / 'common'
 
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
-        model_tpl = os.path.join(
-            path, 'templates', 'common', f'snom{model}-firmware.xml.tpl'
-        )
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-10.1.152.12-SIP-{fw_suffix}.bin/'
         if model.startswith("D8"):
             sed_script = f's/#FW_FILENAME#/snom{model}-10.1.152.12-SIP-{fw_suffix}.swu/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 [
                     'sed',
@@ -1079,21 +1075,21 @@ def build_10_1_152_12(path):
             )
 
         # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.htm.tpl')
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
                 stdout=f,
             )
 
         # generate snom<model>.xml.tpl from snom-model.xml.mtpl
-        model_tpl = os.path.join(path, 'templates', 'common', f'snom{model}.xml.tpl')
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
         sed_script = f's/#MODEL#/{model}/'
-        with open(model_tpl, 'wb') as f:
+        with model_tpl.open(mode='wb') as f:
             check_call(
                 ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', '10.1.152.12/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_152_12/', path])

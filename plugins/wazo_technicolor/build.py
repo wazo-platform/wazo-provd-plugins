@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,12 +15,22 @@
 
 # Depends on the following external programs:
 #  -rsync
+from __future__ import annotations
 
+from typing import TYPE_CHECKING, Callable
 from subprocess import check_call
+
+if TYPE_CHECKING:
+
+    def target(
+        target_id: str, plugin_id: str, std_dirs: bool = True
+    ) -> Callable[[str], None]:
+        """The `target` method is injected in `exec` call by the build script."""
+        return lambda x: None
 
 
 @target('ST2022-4.78.1', 'wazo-technicolor-ST2022-4.78.1')
-def build_ST2022_4_78_1(path):
+def build_ST2022_4_78_1(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -37,12 +47,11 @@ def build_ST2022_4_78_1(path):
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', 'ST2022-4.78.1/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'ST2022_v4_78_1/', path])
 
 
 @target('ST2030-2.74', 'wazo-technicolor-ST2030-2.74')
-def build_ST2030_2_74(path):
+def build_ST2030_2_74(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -59,12 +68,11 @@ def build_ST2030_2_74(path):
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', 'ST2030-2.74/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'ST2030_v2_74/', path])
 
 
 @target('TB30-1.74.0', 'wazo-technicolor-TB30-1.74.0')
-def build_TB30_1_74_0(path):
+def build_TB30_1_74_0(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -81,5 +89,4 @@ def build_TB30_1_74_0(path):
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', 'TB30-1.74.0/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'TB30_v1_74_0/', path])

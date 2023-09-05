@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,12 +15,22 @@
 
 # Depends on the following external programs:
 #  -rsync
+from __future__ import annotations
 
+from typing import TYPE_CHECKING, Callable
 from subprocess import check_call
+
+if TYPE_CHECKING:
+
+    def target(
+        target_id: str, plugin_id: str, std_dirs: bool = True
+    ) -> Callable[[str], None]:
+        """The `target` method is injected in `exec` call by the build script."""
+        return lambda x: None
 
 
 @target('01.133', 'wazo-panasonic-01.133')
-def build_01_133(path):
+def build_01_133(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -33,5 +43,4 @@ def build_01_133(path):
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', '01.133/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v01_133/', path])

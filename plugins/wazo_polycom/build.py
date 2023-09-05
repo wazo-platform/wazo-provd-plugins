@@ -1,4 +1,4 @@
-# Copyright 2014-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,12 +15,22 @@
 
 # Depends on the following external programs:
 #  -rsync
+from __future__ import annotations
 
+from typing import TYPE_CHECKING, Callable
 from subprocess import check_call
+
+if TYPE_CHECKING:
+
+    def target(
+        target_id: str, plugin_id: str, std_dirs: bool = True
+    ) -> Callable[[str], None]:
+        """The `target` method is injected in `exec` call by the build script."""
+        return lambda x: None
 
 
 @target('4.0.11', 'wazo-polycom-4.0.11')
-def build_4_0_11(path):
+def build_4_0_11(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -57,12 +67,11 @@ def build_4_0_11(path):
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', '4.0.11/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v4_0_11/', path])
 
 
 @target('5.4.3', 'wazo-polycom-5.4.3')
-def build_5_4_3(path):
+def build_5_4_3(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -95,12 +104,11 @@ def build_5_4_3(path):
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', '5.4.3/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v5_4_3/', path])
 
 
 @target('5.5.1', 'wazo-polycom-5.5.1')
-def build_5_5_1(path):
+def build_5_5_1(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -133,12 +141,11 @@ def build_5_5_1(path):
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', '5.5.1/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v5_5_1/', path])
 
 
 @target('5.8.2', 'wazo-polycom-5.8.2')
-def build_5_8_2(path):
+def build_5_8_2(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -191,12 +198,11 @@ def build_5_8_2(path):
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', '5.8.2/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v5_8_2/', path])
 
 
 @target('5.9.2', 'wazo-polycom-5.9.2')
-def build_5_9_2(path):
+def build_5_9_2(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -249,12 +255,11 @@ def build_5_9_2(path):
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', '5.9.2/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v5_9_2/', path])
 
 
 @target('3.2.4B', 'wazo-polycom-3.2.4B')
-def build_3_2_4B(path):
+def build_3_2_4B(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -293,16 +298,15 @@ def build_3_2_4B(path):
             '/templates/SSIP7000.tpl',
             '--exclude',
             '/templates/*',
-            'common-v3/',
+            'common_v3/',
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', '3.2.4B/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v3_2_4B/', path])
 
 
 @target('3.1.6', 'wazo-polycom-3.1.6')
-def build_3_1_6(path):
+def build_3_1_6(path: str) -> None:
     check_call(
         [
             'rsync',
@@ -323,9 +327,8 @@ def build_3_1_6(path):
             '/templates/SSIP4000.tpl',
             '--exclude',
             '/templates/*',
-            'common-v3/',
+            'common_v3/',
             path,
         ]
     )
-
-    check_call(['rsync', '-rlp', '--exclude', '.*', '3.1.6/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v3_1_6/', path])
