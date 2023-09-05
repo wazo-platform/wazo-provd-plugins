@@ -16,9 +16,13 @@ if TYPE_CHECKING:
 
     def target(
         target_id: str, plugin_id: str, std_dirs: bool = True
-    ) -> Callable[[str], None]:
+    ) -> Callable[[Callable[[str], None]], None]:
         """The `target` method is injected in `exec` call by the build script."""
-        return lambda x: None
+
+        def wrapper(func: Callable[[str], None]) -> None:
+            pass
+
+        return wrapper
 
 
 @target('8.7.5.35', 'wazo-snom-8.7.5.35')

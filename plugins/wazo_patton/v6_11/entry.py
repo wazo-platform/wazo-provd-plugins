@@ -1,8 +1,19 @@
-# Copyright 2016-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2016-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
-common = {}
-execfile_('common.py', common)
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from ..common.common import BasePattonPlugin, BasePattonPgAssociator  # noqa: F401
+
+    class CommonGlobalsDict(TypedDict):
+        BasePattonPlugin: type[BasePattonPlugin]
+        BasePattonPgAssociator: type[BasePattonPgAssociator]
+
+
+common: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common)  # type: ignore[name-defined]
 
 MODELS = [
     'SN4112',
@@ -17,7 +28,7 @@ MODELS = [
 VERSION = '6.11'
 
 
-class PattonPlugin(common['BasePattonPlugin']):
+class PattonPlugin(common['BasePattonPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     pg_associator = common['BasePattonPgAssociator'](MODELS, VERSION)

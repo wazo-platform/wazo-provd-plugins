@@ -30,7 +30,7 @@ if TYPE_CHECKING:
         line: str
         type: str
 
-    class FKeyDict(TypedDict):
+    class FKeyDict(TypedDict, total=False):
         id: int
         title: str
         type: int
@@ -106,8 +106,8 @@ class BaseFanvilPgAssociator(BasePgAssociator):
 
 class BaseFanvilPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
-    _LOCALE = {}
-    _TZ_INFO = {}
+    _LOCALE: dict[str, str] = {}
+    _TZ_INFO: dict[int, list[tuple[str, int]]] = {}
     _SIP_DTMF_MODE = {
         'RTP-in-band': '0',
         'RTP-out-of-band': '1',
@@ -157,6 +157,7 @@ class BaseFanvilPlugin(StandardPlugin):
     _FUNCTION_KEYS_PER_PAGE: dict[str, int]
     _LINE_KEYS_PER_PAGE: dict[str, int]
     _TOP_FUNCTION_KEYS: dict[str, int]
+    _tftpboot_dir: str
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
@@ -275,8 +276,8 @@ class BaseFanvilPlugin(StandardPlugin):
         return lines
 
     def _extract_tzinfo(self, device, tzinfo):
-        tz_all = {}
-        utc = tzinfo['utcoffset'].as_hours
+        tz_all: dict[str, Any] = {}
+        utc: int = tzinfo['utcoffset'].as_hours
         utc_list = self._TZ_INFO[utc]
         for time_zone_name, time_zone in utc_list:
             tz_all['time_zone'] = time_zone
@@ -355,10 +356,10 @@ class BaseFanvilPlugin(StandardPlugin):
 
     @staticmethod
     def _split_fkeys(
-        funckeys: dict[str, FunctionKeyDict], threshold: int
+        funckeys: list[tuple[str, FunctionKeyDict]], threshold: int
     ) -> tuple[dict[int, FunctionKeyDict], dict[int, FunctionKeyDict]]:
-        fkeys_top = {}
-        fkeys_bottom = {}
+        fkeys_top: dict[int, FunctionKeyDict] = {}
+        fkeys_bottom: dict[int, FunctionKeyDict] = {}
 
         for funckey_no, funckey_dict in funckeys:
             keynum = int(funckey_no)
@@ -375,7 +376,7 @@ class BaseFanvilPlugin(StandardPlugin):
         fkey_offset: int,
         pickup_exten: str | None,
     ) -> FKeyDict:
-        fkey = {'id': funckey_number, 'title': funckey['label'], 'type': 2}
+        fkey: FKeyDict = {'id': funckey_number, 'title': funckey['label'], 'type': 2}
         if funckey['type'] == 'speeddial':
             fkey['type'] = 4
             fkey['value'] = self._format_funckey_speeddial(funckey)
@@ -397,11 +398,11 @@ class BaseFanvilPlugin(StandardPlugin):
     ) -> list[FKeyDict]:
         formatted_fkeys = []
         for fkey_num in range(1, max_fkeys + 1):
-            fkey = fkeys.get(fkey_num)
+            fkey: FunctionKeyDict | None = fkeys.get(fkey_num)
             if not fkey:
-                fkey = {'id': fkey_num, 'label': '', 'type': None}
+                fkey = {'id': fkey_num, 'label': '', 'type': None}  # type: ignore
             formatted_fkeys.append(
-                self._format_fkey(fkey_num, fkey, offset, exten_pickup_call)
+                self._format_fkey(fkey_num, fkey, offset, exten_pickup_call)  # type: ignore
             )
         return formatted_fkeys
 
@@ -438,7 +439,7 @@ class BaseFanvilPlugin(StandardPlugin):
             raw_config['XX_paginated_top_fkeys'] = paginated_top_fkeys
         else:
             raw_config['XX_paginated_top_fkeys'] = [
-                (offset, fkey['id'] + offset, fkey) for fkey in top_keys
+                (offset, fkey['id'] + offset, fkey) for fkey in formatted_top_keys
             ]
 
         if keys_per_page:

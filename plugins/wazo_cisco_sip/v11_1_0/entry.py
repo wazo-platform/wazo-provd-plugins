@@ -1,8 +1,19 @@
-# Copyright 2020-2022 The Wazo Authors (see AUTHORS file)
+# Copyright 2020-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
-common = {}
-execfile_('common.py', common)
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from .common import BaseCiscoSipPlugin, BaseCiscoPgAssociator  # noqa: F401
+
+    class CommonGlobalsDict(TypedDict):
+        BaseCiscoSipPlugin: type[BaseCiscoSipPlugin]
+        BaseCiscoPgAssociator: type[BaseCiscoPgAssociator]
+
+
+common: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common)  # type: ignore[name-defined]
 
 MODEL_VERSION = {
     'ATA191': 'MPP-11-1-0MPP0401-002',
@@ -10,7 +21,7 @@ MODEL_VERSION = {
 }
 
 
-class CiscoSipPlugin(common['BaseCiscoSipPlugin']):
+class CiscoSipPlugin(common['BaseCiscoSipPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
     _COMMON_FILENAMES = [
         'ata191.cfg',

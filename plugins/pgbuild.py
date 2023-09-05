@@ -43,7 +43,7 @@ if TYPE_CHECKING:
     class TargetDict(TypedDict):
         fun: TargetCallback
         pg_id: str
-        std_dirs: str
+        std_dirs: bool
 
     class PluginCapabilities(TypedDict):
         lines: int
@@ -117,7 +117,7 @@ class BuildPlugin:
         self._build_plugin_path = path
         self.name = os.path.basename(path)
 
-    def _load_build_plugin(self, path):
+    def _load_build_plugin(self, path: str) -> None:
         targets: dict[str, TargetDict] = {}
 
         def _target(
@@ -140,7 +140,7 @@ class BuildPlugin:
         )
         self.targets = targets
 
-    def build(self, target_id, pgdir):
+    def build(self, target_id: str, pgdir: str) -> None:
         """Build the target plugin in pgdir.
 
         Note: pgdir is the base directory where plugins are created. The
@@ -177,7 +177,7 @@ class BuildPlugin:
 
 
 def build_op(
-    opts: argparse.Namespace, args: Sequence[str], src_dir: str, dest_dir: str
+    opts: argparse.Namespace, args: list[str], src_dir: str, dest_dir: str
 ) -> None:
     # Pre: src_dir is a directory
     # Pre: dest_dir is a directory
@@ -185,6 +185,7 @@ def build_op(
     package_dir = dest_dir
 
     # parse build_plugins and target to build
+    build_plugin_targets: dict[str, list[str] | None]
     if args:
         build_plugin_path = os.path.join(build_dir, args[0])
         build_plugin_targets = {build_plugin_path: args[1:]}
@@ -222,7 +223,7 @@ def build_op(
     for build_plugin_path, targets in build_plugin_targets.items():
         print(f"Processing targets for build plugin '{build_plugin_path}'...")
         build_plugin = build_plugins[build_plugin_path]
-        for target_id in targets:
+        for target_id in targets or []:
             path = os.path.join(package_dir, build_plugin.targets[target_id]['pg_id'])
             if os.path.exists(path):
                 shutil.rmtree(path, False)
@@ -322,7 +323,7 @@ def _get_package_name(package: str) -> str:
         tar_package.close()
 
 
-def _get_package_plugin_info(package: str, package_name: str) -> dict:
+def _get_package_plugin_info(package: str, package_name: str) -> RawPluginInfo:
     # Return a dictionary representing the standardized content of the
     # plugin-info file
     tar_package = tarfile.open(package)
@@ -337,7 +338,9 @@ def _get_package_plugin_info(package: str, package_name: str) -> dict:
 
         fobj = tar_package.extractfile(plugin_info_name)
         try:
-            raw_plugin_info = json.load(fobj)
+            if fobj is None:
+                raise ValueError("No file to open")
+            raw_plugin_info: RawPluginInfo = json.load(fobj)  # type: ignore[assignment]
             for key in ['capabilities', 'description', 'version']:
                 if key not in raw_plugin_info:
                     raise ValueError()
@@ -348,7 +351,8 @@ def _get_package_plugin_info(package: str, package_name: str) -> dict:
             )
             exit(1)
         finally:
-            fobj.close()
+            if fobj:
+                fobj.close()
     finally:
         tar_package.close()
 
@@ -365,7 +369,9 @@ def _get_package_sha1sum(package: str) -> str:
 
 
 def _get_package_info(package: str) -> tuple[str, PluginInfo]:
-    result = {'filename': _get_package_filename(package)}
+    result: PluginInfo = {  # type: ignore[typeddict-item]
+        'filename': _get_package_filename(package)
+    }
     name = _get_package_name(package)
     result.update(_get_package_plugin_info(package, name))
     result['dsize'] = _get_package_dsize(package)
@@ -406,28 +412,30 @@ def create_db_op(
         packages = _list_packages(pkg_dir)
 
     # get package info, and only for the most recent packages
-    package_infos = {}
+    plugin_manifest: dict[str, PluginInfo] = {}
     for package in packages:
         package_name, package_info = _get_package_info(package)
-        if package_name in package_infos:
+        if package_name in plugin_manifest:
             cur_version = package_info['version']
-            last_version = package_infos[package_name]['version']
+            last_version = plugin_manifest[package_name]['version']
             print(
                 f"warning: found package {package_name} "
                 f"in version {cur_version} and {last_version}",
                 file=stderr,
             )
             if _version_cmp(cur_version, last_version) > 0:
-                package_infos[package_name] = package_info
+                plugin_manifest[package_name] = package_info
         else:
             print(f"  Adding package '{package}'...")
-            package_infos[package_name] = package_info
+            plugin_manifest[package_name] = package_info
 
     # create db file
     print(f"Creating DB file '{db_file}'...")
-    dump_kwargs = {'indent': 4} if opts.pretty_db else {'separators': (',', ':')}
+    dump_kwargs: dict[str, Any] = (
+        {'indent': 4} if opts.pretty_db else {'separators': (',', ':')}
+    )
     with open(db_file, 'w') as f:
-        json.dump(package_infos, fp=f, sort_keys=True, **dump_kwargs)
+        json.dump(plugin_manifest, fp=f, sort_keys=True, **dump_kwargs)  # type: ignore
 
 
 def _get_directory(opt_value):

@@ -1,8 +1,19 @@
-# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
-common_globals = {}
-execfile_('common.py', common_globals)
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from ..common.common import BasePolycomPlugin, BasePolycomPgAssociator  # noqa: F401
+
+    class CommonGlobalsDict(TypedDict):
+        BasePolycomPlugin: type[BasePolycomPlugin]
+        BasePolycomPgAssociator: type[BasePolycomPgAssociator]
+
+
+common_globals: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 MODELS = [
     'VVX101',
@@ -27,7 +38,7 @@ MODELS = [
 ]
 
 
-class PolycomPlugin(common_globals['BasePolycomPlugin']):
+class PolycomPlugin(common_globals['BasePolycomPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     pg_associator = common_globals['BasePolycomPgAssociator'](MODELS)

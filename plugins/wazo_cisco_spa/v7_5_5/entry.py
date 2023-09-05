@@ -12,9 +12,20 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
-common_globals = {}
-execfile_('common.py', common_globals)
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from ..common.common import BaseCiscoPlugin, BaseCiscoPgAssociator  # noqa: F401
+
+    class CommonGlobalsDict(TypedDict):
+        BaseCiscoPlugin: type[BaseCiscoPlugin]
+        BaseCiscoPgAssociator: type[BaseCiscoPgAssociator]
+
+
+common_globals: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 PSN = [
     '301',
@@ -33,7 +44,7 @@ MODELS = ['SPA' + psn for psn in PSN]
 MODEL_VERSION = {model: '7.5.5' for model in MODELS}
 
 
-class CiscoPlugin(common_globals['BaseCiscoPlugin']):
+class CiscoPlugin(common_globals['BaseCiscoPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
     # similar to spa508G.cfg (G is uppercase)
     _COMMON_FILENAMES = [''.join(['spa', psn, '.cfg']) for psn in PSN]

@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,16 +14,30 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 """Plugin for Technicolor ST2030 using the 2.74 SIP firmware."""
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
-common_globals = {}
-execfile_('common.py', common_globals)
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from ..common.common import (  # noqa: F401
+        BaseTechnicolorPlugin,
+        BaseTechnicolorPgAssociator,
+    )
+
+    class CommonGlobalsDict(TypedDict):
+        BaseTechnicolorPlugin: type[BaseTechnicolorPlugin]
+        BaseTechnicolorPgAssociator: type[BaseTechnicolorPgAssociator]
+
+
+common_globals: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 
 MODEL = 'ST2030'
 VERSION = '2.74'
 
 
-class TechnicolorPlugin(common_globals['BaseTechnicolorPlugin']):
+class TechnicolorPlugin(common_globals['BaseTechnicolorPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     _COMMON_TEMPLATES = [('common/ST2030S.inf.tpl', 'ST2030S.inf')]

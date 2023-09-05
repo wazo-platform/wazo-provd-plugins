@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,11 +20,21 @@ The following Alcatel "extended edition" phones are supported:
 - 4018
 
 """
-
+from __future__ import annotations
+from typing import TYPE_CHECKING
 import logging
 
-common_globals = {}
-execfile_('common.py', common_globals)
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from .common import BaseAlcatelPlugin, BaseAlcatelPgAssociator  # noqa: F401
+
+    class CommonGlobalsDict(TypedDict):
+        BaseAlcatelPlugin: type[BaseAlcatelPlugin]
+        BaseAlcatelPgAssociator: type[BaseAlcatelPgAssociator]
+
+
+common_globals: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 logger = logging.getLogger('plugin.wazo-alcatel')
 
@@ -32,7 +42,7 @@ MODELS = ['4008', '4018']
 VERSION = '2.01.10'
 
 
-class AlcatelPlugin(common_globals['BaseAlcatelPlugin']):
+class AlcatelPlugin(common_globals['BaseAlcatelPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     pg_associator = common_globals['BaseAlcatelPgAssociator'](MODELS, VERSION)

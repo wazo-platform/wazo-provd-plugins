@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,12 +22,29 @@ The following Gigaset phones are supported:
 - S685 IP (not tested)
 
 """
-
+from __future__ import annotations
+from typing import TYPE_CHECKING
 import logging
 import re
 
-common_globals = {}
-execfile_('common.py', common_globals)
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from ..common_c.common import (  # noqa: F401
+        BaseGigasetRequestBroker,
+        BaseGigasetPlugin,
+        BaseGigasetPgAssociator,
+        GigasetInteractionError,
+    )
+
+    class CommonGlobalsDict(TypedDict):
+        BaseGigasetRequestBroker: type[BaseGigasetRequestBroker]
+        BaseGigasetPlugin: type[BaseGigasetPlugin]
+        BaseGigasetPgAssociator: type[BaseGigasetPgAssociator]
+        GigasetInteractionError: type[GigasetInteractionError]
+
+
+common_globals: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 logger = logging.getLogger('plugin.wazo-gigaset')
 
@@ -35,7 +52,7 @@ logger = logging.getLogger('plugin.wazo-gigaset')
 MODELS = ['C470 IP', 'C475 IP', 'S675 IP', 'S685 IP']
 
 
-class GigasetRequestBroker(common_globals['BaseGigasetRequestBroker']):
+class GigasetRequestBroker(common_globals['BaseGigasetRequestBroker']):  # type: ignore[valid-type,misc]  # noqa
     _VERSION_REGEX = re.compile(r'\b02(\d{3})')
 
     def disable_gigasetnet_line(self):
@@ -74,7 +91,7 @@ class GigasetRequestBroker(common_globals['BaseGigasetRequestBroker']):
             fobj.read()
 
 
-class GigasetPlugin(common_globals['BaseGigasetPlugin']):
+class GigasetPlugin(common_globals['BaseGigasetPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     _BROKER_FACTORY = GigasetRequestBroker

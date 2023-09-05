@@ -1,5 +1,7 @@
 # Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
+
 from textwrap import dedent
 from unittest.mock import MagicMock, patch, sentinel
 
@@ -36,11 +38,13 @@ linekey.3.label = Test Park
 
 
 class TestInfoExtraction:
+    http_info_extractor: BaseYealinkHTTPDeviceInfoExtractor
+
     @classmethod
     def setup_class(cls):
         cls.http_info_extractor = BaseYealinkHTTPDeviceInfoExtractor()
 
-    def _mock_request(self, ua: bytes = None, path: bytes = None):
+    def _mock_request(self, ua: bytes | None = None, path: bytes | None = None):
         request = MagicMock()
         request.getHeader = MagicMock(return_value=ua)
         request.path = path

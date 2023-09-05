@@ -71,6 +71,7 @@ class BasePanasonicPgAssociator(BasePgAssociator):
 
 class BasePanasonicPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
+    _tftpboot_dir: str
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         super().__init__(app, plugin_dir, gen_cfg, spec_cfg)

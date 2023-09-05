@@ -1,8 +1,13 @@
 # Copyright 2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
-from unittest.mock import sentinel
+from __future__ import annotations
 
+from typing import TYPE_CHECKING
+from unittest.mock import sentinel
 from ..common import BaseFanvilPlugin
+
+if TYPE_CHECKING:
+    from ..common import FKeyDict
 
 
 class TestPlugin:
@@ -22,7 +27,7 @@ class TestPlugin:
         assert results_bottom[4] == sentinel.seventh_key
 
     def test_paginate(self):
-        fkeys = [
+        fkeys: list[FKeyDict] = [
             {'id': 1, 'value': sentinel.first_key},
             {'id': 2, 'value': sentinel.second_key},
             {'id': 3, 'value': sentinel.third_key},

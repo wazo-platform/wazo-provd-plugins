@@ -32,9 +32,11 @@ def module_initializer(
             module_file_path,
             submodule_search_locations=[str(plugin_base_path / plugin_version)],
         )
+        assert spec is not None
         module = importlib.util.module_from_spec(spec)
         if global_overrides is not None:
             module.__dict__.update(global_overrides)
+        assert spec and spec.loader
         spec.loader.exec_module(module)
         return module
 

@@ -6,6 +6,7 @@ import logging
 import os.path
 import re
 import time
+from typing import TYPE_CHECKING
 
 from provd import plugins, synchronize, tzinform
 from provd.devices.config import RawConfigError
@@ -16,6 +17,28 @@ from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
 from provd.util import format_mac, norm_mac
 from twisted.internet import defer
+
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from provd.tzinform import Time
+
+    # TODO these types should be defined in provd
+
+    class DSTRuleDict(TypedDict):
+        month: int
+        day: str
+        time: Time
+
+    class DSTInfoDict(TypedDict):
+        start: DSTRuleDict
+        end: DSTRuleDict
+        save: Time
+        as_string: str
+
+    class TimeZoneInfoDict(TypedDict):
+        utcoffset: Time
+        dst: DSTInfoDict
+
 
 logger = logging.getLogger('plugin.wazo-technicolor')
 
@@ -145,8 +168,8 @@ _ZONE_LIST = [
 ]
 
 
-def _gen_tz_map():
-    result = {}
+def _gen_tz_map() -> dict[str, dict[str | None, int]]:
+    result: dict[str, dict[str | None, int]] = {}
     for i, tz_name in enumerate(_ZONE_LIST):
         inform = tzinform.get_timezone_info(tz_name)
         inner_dict = result.setdefault(inform['utcoffset'].as_minutes, {})
@@ -229,7 +252,7 @@ class BaseTechnicolorPlugin(StandardPlugin):
             return self._XX_PHONEBOOK_NAME.get(language, self._XX_PHONEBOOK_NAME_DEF)
         return self._XX_PHONEBOOK_NAME_DEF
 
-    def _tzinfo_to_zone_num(self, tzinfo):
+    def _tzinfo_to_zone_num(self, tzinfo: TimeZoneInfoDict):
         utcoffset_m = tzinfo['utcoffset'].as_minutes
         if utcoffset_m not in self._TZ_MAP:
             # No UTC offset matching. Let's try finding one relatively close...
@@ -241,6 +264,7 @@ class BaseTechnicolorPlugin(StandardPlugin):
                 return self._XX_NTP_ZONE_NUM_DEF
 
         dst_map = self._TZ_MAP[utcoffset_m]
+        dst_key: str | None
         if tzinfo['dst']:
             dst_key = tzinfo['dst']['as_string']
         else:
@@ -251,7 +275,7 @@ class BaseTechnicolorPlugin(StandardPlugin):
             if None in dst_map:
                 dst_key = None
             else:
-                dst_key = dst_map.keys[0]
+                dst_key = list(dst_map)[0]
         return dst_map[dst_key]
 
     def _add_ntp_zone_num(self, raw_config):

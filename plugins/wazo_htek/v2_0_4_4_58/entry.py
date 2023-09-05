@@ -1,8 +1,19 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
-common_globals = {}
-execfile_('common.py', common_globals)
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from ..common.common import BaseHtekPlugin, BaseHtekPgAssociator  # noqa: F401
+
+    class CommonGlobalsDict(TypedDict):
+        BaseHtekPlugin: type[BaseHtekPlugin]
+        BaseHtekPgAssociator: type[BaseHtekPgAssociator]
+
+
+common_globals: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 MODEL_VERSIONS = {
     'UC926': '2.0.4.4.58',
@@ -55,7 +66,7 @@ COMMON_FILES = [
 ]
 
 
-class HtekPlugin(common_globals['BaseHtekPlugin']):
+class HtekPlugin(common_globals['BaseHtekPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     pg_associator = common_globals['BaseHtekPgAssociator'](MODEL_VERSIONS)

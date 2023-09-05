@@ -1,8 +1,22 @@
 # Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
-common_globals = {}
-execfile_('common.py', common_globals)
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from .common import (  # noqa: F401
+        BaseYealinkPlugin,
+        BaseYealinkPgAssociator,
+    )
+
+    class CommonGlobalsDict(TypedDict):
+        BaseYealinkPlugin: type[BaseYealinkPlugin]
+        BaseYealinkPgAssociator: type[BaseYealinkPgAssociator]
+
+
+common_globals: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 
 HANDSETS_FW = {
@@ -120,7 +134,7 @@ MODEL_INFO = {
 }
 
 
-class YealinkPlugin(common_globals['BaseYealinkPlugin']):
+class YealinkPlugin(common_globals['BaseYealinkPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     pg_associator = common_globals['BaseYealinkPgAssociator'](MODEL_INFO)

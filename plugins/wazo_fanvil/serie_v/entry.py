@@ -1,9 +1,24 @@
 # Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from ..common.common import (  # noqa: F401
+        BaseFanvilPlugin,
+        BaseFanvilPgAssociator,
+        BaseFanvilHTTPDeviceInfoExtractor,
+    )
+
+    class CommonGlobalsDict(TypedDict):
+        BaseFanvilPlugin: type[BaseFanvilPlugin]
+        BaseFanvilPgAssociator: type[BaseFanvilPgAssociator]
+        BaseFanvilHTTPDeviceInfoExtractor: type[BaseFanvilHTTPDeviceInfoExtractor]
 
 
-common = {}
-execfile_('common.py', common)
+common: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common)  # type: ignore[name-defined]
 
 MODELS = [
     'V62',
@@ -70,7 +85,7 @@ FUNCTION_KEYS_PER_PAGE = {
 }
 
 
-class FanvilPlugin(common['BaseFanvilPlugin']):
+class FanvilPlugin(common['BaseFanvilPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     _COMMON_FILES = COMMON_FILES

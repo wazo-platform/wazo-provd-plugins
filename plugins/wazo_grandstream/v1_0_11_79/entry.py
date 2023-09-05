@@ -1,6 +1,20 @@
-common = {}
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
-execfile_('common.py', common)
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from ..common.common import (  # noqa: F401
+        BaseGrandstreamPlugin,
+        BaseGrandstreamPgAssociator,
+    )
+
+    class CommonGlobalsDict(TypedDict):
+        BaseGrandstreamPlugin: type[BaseGrandstreamPlugin]
+        BaseGrandstreamPgAssociator: type[BaseGrandstreamPgAssociator]
+
+
+common: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common)  # type: ignore[name-defined]
 
 MODELS = [
     'GXP2135',
@@ -9,7 +23,7 @@ MODELS = [
 VERSION = '1.0.11.79'
 
 
-class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
+class GrandstreamPlugin(common['BaseGrandstreamPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     _MODELS = MODELS

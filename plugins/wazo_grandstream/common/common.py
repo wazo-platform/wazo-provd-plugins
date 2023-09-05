@@ -94,7 +94,7 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
     ) -> DeviceSupport:
         if vendor == 'Grandstream':
             if model in self._models:
-                if version.startswith(self._version):
+                if version and version.startswith(self._version):
                     return DeviceSupport.EXACT
                 return DeviceSupport.COMPLETE
             return DeviceSupport.UNKNOWN
@@ -144,6 +144,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         'tcp': 'TCP',
         'tls': 'TlsOrTcp',
     }
+    _tftpboot_dir: str
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
@@ -228,7 +229,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
             raw_config['XX_locale'] = LOCALE[locale]
 
     def _add_fkeys(self, raw_config):
-        lines = []
+        lines: list[tuple[str, str | int]] = []
         for funckey_no, funckey_dict in raw_config['funckeys'].items():
             i_funckey_no = int(funckey_no)
             funckey_type = funckey_dict['type']
@@ -247,7 +248,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         raw_config['XX_fkeys'] = lines
 
     def _add_mpk(self, raw_config):
-        lines = []
+        lines: list[tuple[str, int | str]] = []
         start_code = 23000
         for funckey_no, funckey_dict in raw_config['funckeys'].items():
             i_funckey_no = int(funckey_no)  # starts at 1

@@ -20,7 +20,7 @@
 
 # provisioning url to use in Jitsi: http://<provd_ip:provd_port>/jitsi?uuid=${uuid}
 from __future__ import annotations
-
+from typing import Any
 import logging
 import os.path
 import re
@@ -78,7 +78,7 @@ class JitsiPgAssociator(BasePgAssociator):
         self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == model == 'Jitsi':
-            if version.startswith('1.'):
+            if version and version.startswith('1.'):
                 return DeviceSupport.EXACT
             return DeviceSupport.PROBABLE
         return DeviceSupport.IMPROBABLE
