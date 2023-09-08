@@ -1,4 +1,4 @@
-# Copyright 2021-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from textwrap import dedent
 import pytest
@@ -178,6 +178,7 @@ class TestPlugin:
             'funckeys': {},
             'sip_proxy_ip': '1.1.1.1',
             'sip_lines': {'1': {'number': '5888'}},
+            'http_base_url': 'http://localhost:8667',
         }
         v86_plugin._tpl_helper.get_dev_template.return_value = 'template'
         v86_plugin.configure(device, raw_config)

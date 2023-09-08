@@ -149,7 +149,7 @@ push_xml.sip_notify = 0
 call_waiting.enable = 1
 {% endif %}
 
-directory_setting.url = http://{{ ip }}:{{ http_port }}/directory_setting.xml
+directory_setting.url = {{ XX_server_url }}/directory_setting.xml
 
 {{ XX_fkeys }}
 

@@ -189,6 +189,7 @@ class TestPlugin:
             'funckeys': {},
             'sip_proxy_ip': '1.1.1.1',
             'sip_lines': {'1': {'number': '5888'}},
+            'http_base_url': 'http://localhost:8667',
         }
         v84_plugin._tpl_helper.get_dev_template.return_value = 'template'
         v84_plugin.configure(device, raw_config)

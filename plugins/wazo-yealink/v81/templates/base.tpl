@@ -147,7 +147,7 @@ call_waiting.enable = 0
 call_waiting.enable = 1
 {% endif %}
 
-static.directory_setting.url = http://{{ ip }}:{{ http_port }}/directory_setting.xml
+static.directory_setting.url = {{ XX_server_url }}/directory_setting.xml
 
 {{ XX_fkeys }}
 
