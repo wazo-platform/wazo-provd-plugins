@@ -325,6 +325,16 @@ class BaseHtekPlugin(StandardPlugin):
     def _add_xivo_phonebook_url(self, raw_config):
         plugins.add_xivo_phonebook_url(raw_config, 'htek', entry_point='lookup')
 
+    def _add_server_url(self, raw_config):
+        if 'http_base_url' in raw_config:
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
+
     def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
@@ -350,6 +360,7 @@ class BaseHtekPlugin(StandardPlugin):
         self._add_sip_transport(raw_config)
         self._update_sip_lines(raw_config)
         self._add_xivo_phonebook_url(raw_config)
+        self._add_server_url(raw_config)
         raw_config['XX_options'] = device.get('options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)
