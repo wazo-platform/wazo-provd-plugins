@@ -1,17 +1,5 @@
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
@@ -359,6 +347,16 @@ class BaseCiscoSipPlugin(StandardPlugin):
 
             raw_config['XX_fkeys'] = fkeys
 
+    def _add_server_url(self, raw_config):
+        if 'http_base_url' in raw_config:
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
+
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^SEP[0-9A-F]{12}\.cnf\.xml$')
 
     def _dev_specific_filename(self, device):
@@ -391,6 +389,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
         self._update_call_managers(raw_config)
         self._update_sip_lines(raw_config)
         self._add_fkeys(raw_config)
+        self._add_server_url(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
