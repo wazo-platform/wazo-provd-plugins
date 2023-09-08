@@ -223,6 +223,16 @@ class BaseSnomPlugin(StandardPlugin):
     def _add_xivo_phonebook_url(self, raw_config):
         plugins.add_xivo_phonebook_url(raw_config, 'snom')
 
+    def _add_server_url(self, raw_config):
+        if 'http_base_url' in raw_config:
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
+
     def _gen_xx_dict(self, raw_config):
         xx_dict = self._XX_DICT[self._XX_DICT_DEF]
         if 'locale' in raw_config:
@@ -262,6 +272,7 @@ class BaseSnomPlugin(StandardPlugin):
         self._update_sip_lines(raw_config)
         self._add_lang(raw_config)
         self._add_xivo_phonebook_url(raw_config)
+        self._add_server_url(raw_config)
         raw_config['XX_dict'] = self._gen_xx_dict(raw_config)
         raw_config['XX_options'] = device.get('options', {})
 
