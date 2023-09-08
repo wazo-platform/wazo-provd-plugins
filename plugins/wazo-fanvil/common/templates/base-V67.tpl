@@ -4,7 +4,7 @@
     {% if XX_fw_filename -%}
     <fwCheck>
         <EnableAutoUpgrade>1</EnableAutoUpgrade>
-        <UpgradeServer1>http://{{ ip }}:{{ http_port }}/Fanvil</UpgradeServer1>
+        <UpgradeServer1>{{ XX_server_url }}/Fanvil</UpgradeServer1>
         <UpgradeServer2></UpgradeServer2>
         <AutoUpgradeInterval>24</AutoUpgradeInterval>
     </fwCheck>

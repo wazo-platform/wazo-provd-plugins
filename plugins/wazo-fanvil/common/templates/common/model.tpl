@@ -13,7 +13,7 @@
 <Download_Interval>1</Download_Interval>
 <DHCP_Option>66</DHCP_Option>
 <PNP_Enable>0</PNP_Enable>
-<Auto_Image_URL>http://{{ ip }}:{{ http_port }}/Fanvil/firmware/{{ XX_fw_filename }}</Auto_Image_URL>
+<Auto_Image_URL>{{ XX_server_url }}/Fanvil/firmware/{{ XX_fw_filename }}</Auto_Image_URL>
 <Save_Provision_Info>1</Save_Provision_Info>
 </AUTOUPDATE_CONFIG_MODULE>
 <<END OF FILE>>
