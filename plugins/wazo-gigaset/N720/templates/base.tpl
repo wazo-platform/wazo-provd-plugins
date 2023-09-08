@@ -9,8 +9,8 @@
         <MAC_ADDRESS value="{{ XX_mac_addr }}"/>
         <PROFILE_NAME class="string" value="N720"/>
     {%- if http_port %}
-        <S_SPECIAL_DATA_SRV_IWU class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/einsteiniwu117_70.bin?mac={{ XX_mac_addr }}&server_einstein_iwu117.bin"'/>
-        <S_SPECIAL_DATA_SRV_SAT class="string" value='"http://{{ ip }}:{{ http_port }}/Gigaset/sat7111700000000.bin?mac={{ XX_mac_addr }}&sat7111700000000.bin"'/>
+        <S_SPECIAL_DATA_SRV_IWU class="string" value='"{{ XX_server_url }}/Gigaset/einsteiniwu117_70.bin?mac={{ XX_mac_addr }}&server_einstein_iwu117.bin"'/>
+        <S_SPECIAL_DATA_SRV_SAT class="string" value='"{{ XX_server_url }}/Gigaset/sat7111700000000.bin?mac={{ XX_mac_addr }}&sat7111700000000.bin"'/>
         <SYMB_ITEM ID="BS_IP_Data.KindOfPlannedUpdate" class="symb_item" value="1"/>
         <SYMB_ITEM ID="BS_IP_Data.PlannedUpdateTime" class="symb_item" value="0x648"/>
     {%- endif %}
@@ -45,7 +45,7 @@
         <SYMB_ITEM ID="BS_RAP.astRAPServices[1].ActivateService" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_CUSTOM.WebUIPassword" class="symb_item" value='"{{ admin_password }}"'/>
     {%- if http_port %}
-        <SYMB_ITEM ID="BS_IP_Data.aucS_DATA_SERVER[%]" class="symb_item" value='"http://{{ ip }}:{{ http_port }}"'/>
+        <SYMB_ITEM ID="BS_IP_Data.aucS_DATA_SERVER[%]" class="symb_item" value='"{{ XX_server_url }}"'/>
     {%- endif %}
         <SYMB_ITEM ID="BS_CUSTOM.bit.UseRandomRegistrationPIN" class="symb_item" value="0"/>
     	<SYMB_ITEM ID="BS_CUSTOM.aucKdsPin[%]" class="symb_item" value="0x00,0x00"/>
