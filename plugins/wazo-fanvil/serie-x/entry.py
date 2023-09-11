@@ -41,12 +41,22 @@ COMMON_FILES = {
         'model.tpl',
     ),
     'f0X4hw1.100.cfg': ('X4', 'x42.10.2.6887T20191122095252.z', 'model.tpl'),
+    'F0V4UV200000.cfg': (
+        'X4U-V2',
+        'x4upro-fanvil-release-ff01-6903-2.12.16.17-krnvUT2023-05-05-18.33.33.z',
+        'model.tpl',
+    ),        
 	'f0X5hw1.100.cfg': ('X5', 'x51.4.0.2016T20170303151233.z', 'model.tpl'),
     'F0V00X5S0000.cfg': (
         'X5S',
         'x5s-6900-P0.16.5-1.12.2-3144T2019-07-23-14.20.37.z',
         'model.tpl',
     ),
+    'F0V5UV200000.cfg': (
+        'X5U-V2',
+        'x5upro-fanvil-release-ff01-6907-2.12.4.1-krnvUT2022-05-18-17.22.39.z',
+        'model.tpl',
+    ),    
     'F0V00X600000.cfg': (
         'X6',
         'x6-6904-P0.16.5-1.12.2-3144T2019-07-29-15.09.59.z',
@@ -57,6 +67,11 @@ COMMON_FILES = {
         'x6-6914-P0.16.5-1.12.2-3144T2019-07-23-14.20.41.z',
         'model.tpl',
     ),
+    'F0VX7UV200000.cfg': (
+        'X7-V2',
+        'x7upro-fanvil-release-6957-2.12.16.17-krnvlT2023-05-05-17.43%20(1).48.z',
+        'model.tpl',
+    ), 
 }
 
 MODEL_FIRMWARE_MAPPING = {
@@ -71,7 +86,7 @@ MODEL_FIRMWARE_MAPPING = {
     'X6U': 'x6u-6915-P0.18.23.89-2.4.5.2-3594T2022-07-28-17.32.21.z',
     'X6U-Pro': 'x6upro-fanvil-release-ff01-6916-2.12.4.1-krnvUT2022-05-18-17.47.06.z',
     'X7': 'x7-6926-P0.18.23.89-2.4.5.2-4229T2022-07-29-16.11.47.z',
-    'X7-V2': 'x7upro-fanvil-release-6957-2.12.16.17-krnvlT2023-05-05-17.43.48.z',
+    'X7-V2': 'x7upro-fanvil-release-6957-2.12.16.17-krnvlT2023-05-05-17.43%20(1).48.z',
     'X7C': 'x7c-6925-P0.18.23.89-2.4.5.2-4229T2022-07-29-16.16.20.z',
     'X7C-Pro': 'x7upro-fanvil-release-6957-2.12.1.3-krnvlT2022-05-14-17.01.35.z',
 }
