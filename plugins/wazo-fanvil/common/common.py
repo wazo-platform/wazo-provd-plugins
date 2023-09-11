@@ -24,7 +24,7 @@ logger = logging.getLogger('plugin.wazo-fanvil')
 class BaseFanvilHTTPDeviceInfoExtractor:
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
     _UA_REGEX = re.compile(
-        r'^Fanvil (?P<model>[XVi][0-9]{1,3}[WSGVUCi]?[DV]?[0-9]?( Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
+        r'^Fanvil (?P<model>[XVi][0-9]{1,3}[WSGVUCi]?[DV]?[0-9]?( Pro)?(-V2)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
     )
 
     def __init__(self, common_files):
@@ -49,6 +49,9 @@ class BaseFanvilHTTPDeviceInfoExtractor:
         # Fanvil i10SV 2.12.10.1 0c383e2397f4
         # Fanvil i53W 2.12.9 0c383e10a440
         # Fanvil V65 2.12.2.4 0c383e38e123
+		# Fanvil X4U-V2 2.12.16.17 0c383e43b71
+		# Fanvil X5U-V2 2.12.16.17 0c383e32c10d
+		# Fanvil X7-V2 2.12.16.17 0c383e32c10f
 
         dev_info = {}
         m = self._UA_REGEX.search(ua)

@@ -1,5 +1,5 @@
 {
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "Plugin for Fanvil X serie",
     "description_fr": "Greffon pour La serie X Fanvil",
     "vendor" : "Fanvil",
@@ -97,7 +97,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, X4U Pro, 6903-2.12.4.1": {
+        "Fanvil, X4U-V2, 6903-2.12.16.17": {
             "lines": 12,
             "high_availability": false,
             "function_keys": 33,
@@ -133,7 +133,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, X5U Pro, 6907-2.12.4.1": {
+        "Fanvil, X5U-V2, 6907-2.12.16.17": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 34,
@@ -187,7 +187,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, X7 Pro, 6957-2.12.1.3": {
+        "Fanvil, X7-V2, 6957-2.12.16.17": {
             "lines": 20,
             "high_availability": false,
             "function_keys": 127,
