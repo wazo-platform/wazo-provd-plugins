@@ -1,5 +1,5 @@
 - job:
-    parent: base
+    parent: wazo-tox
     name: wazo-provd-plugins
     description: Build Provd plugins
     pre-run: zuul.d/pre-run.yaml
@@ -8,12 +8,13 @@
 
 - project:
     templates:
-      - wazo-tox-linters
+      - wazo-tox-py39
+      - wazo-tox-linters-310
     wazo-check:
       jobs:
         - wazo-provd-plugins:
-            nodeset: vm-debian-10-m1s
+            nodeset: vm-debian-11-m1s
     wazo-gate:
       jobs:
         - wazo-provd-plugins:
-            nodeset: vm-debian-10-m1s
+            nodeset: vm-debian-11-m1s
