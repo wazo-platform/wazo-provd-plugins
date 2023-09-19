@@ -143,6 +143,7 @@ class BaseYealinkFunckeyGenerator:
             self._format_funckey_park(prefix, funckey)
         else:
             logger.info('Unsupported funckey type: %s', funckey_type)
+            self._format_funckey_null(prefix)
 
     def _format_funckey_null(self, prefix):
         self._lines += [
