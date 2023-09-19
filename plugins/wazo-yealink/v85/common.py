@@ -144,6 +144,7 @@ class BaseYealinkFunckeyGenerator:
             self._format_funckey_park(prefix, funckey)
         else:
             logger.info('Unsupported funckey type: %s', funckey_type)
+            self._format_funckey_null(prefix)
 
     def _format_funckey_null(self, prefix):
         self._lines.append(f'{prefix}.type = 0')
@@ -191,8 +192,8 @@ class BaseYealinkFunckeyPrefixIterator:
         'T31': 2,
         'T31G': 2,
         'T31P': 2,
-        'T33G': 4,
-        'T33P': 4,
+        'T33G': 12,
+        'T33P': 12,
         'T41S': 15,
         'T41U': 15,
         'T42S': 15,
