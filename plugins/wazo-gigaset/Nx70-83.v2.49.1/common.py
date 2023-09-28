@@ -256,6 +256,15 @@ class BaseGigasetPlugin(StandardPlugin):
         raw_config['XX_epoch'] = int(time.time())
         self._fix_timezone(raw_config)
 
+        if 'http_base_url' in raw_config:
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
+
     def _add_voip_providers(self, raw_config):
         voip_providers = dict()
         provider_id = 0

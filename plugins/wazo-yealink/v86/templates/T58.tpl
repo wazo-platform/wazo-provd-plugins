@@ -15,5 +15,5 @@ account.{{ line_no }}.video.vp8.enable = 0
 {% endif %}
 {% endfor %}
 
-gui_lang.url = http://{{ ip }}:{{ http_port }}/lang/T58-CP960/003.GUI.French.lang
+gui_lang.url = {{ XX_server_url }}/lang/T58-CP960/003.GUI.French.lang
 {% endblock %}

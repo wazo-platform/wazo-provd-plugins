@@ -2,7 +2,7 @@
 <provisioning version="1.1" productID="e2">
     <firmware>
     {%- if http_port %}
-        <file version="2.39.0" url="http://{{ ip }}:{{ http_port }}/Gigaset-Nx70-V2.39.0-build.1ffa429.bin"/>
+        <file version="2.39.0" url="{{ XX_server_url }}/Gigaset-Nx70-V2.39.0-build.1ffa429.bin"/>
     {%- endif %}
     </firmware>
 
@@ -14,7 +14,7 @@
         <param name="Telephony.0.ToneScheme" value="International"/>
 
     {%- if http_port %}
-        <param name="Provisioning.global.ProvisioningServer" value="http://{{ ip }}:{{ http_port }}"/>
+        <param name="Provisioning.global.ProvisioningServer" value="{{ XX_server_url }}"/>
     {%- endif %}
 
         <!-- N870 Telephony - Call settings -->

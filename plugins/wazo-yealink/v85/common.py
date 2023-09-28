@@ -144,6 +144,7 @@ class BaseYealinkFunckeyGenerator:
             self._format_funckey_park(prefix, funckey)
         else:
             logger.info('Unsupported funckey type: %s', funckey_type)
+            self._format_funckey_null(prefix)
 
     def _format_funckey_null(self, prefix):
         self._lines.append(f'{prefix}.type = 0')
@@ -191,8 +192,8 @@ class BaseYealinkFunckeyPrefixIterator:
         'T31': 2,
         'T31G': 2,
         'T31P': 2,
-        'T33G': 4,
-        'T33P': 4,
+        'T33G': 12,
+        'T33P': 12,
         'T41S': 15,
         'T41U': 15,
         'T42S': 15,
@@ -497,6 +498,16 @@ class BaseYealinkPlugin(StandardPlugin):
         if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
             plugins.add_wazo_phoned_user_service_url(raw_config, 'yealink', service)
 
+    def _add_server_url(self, raw_config):
+        if 'http_base_url' in raw_config:
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
+
     def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
@@ -525,6 +536,7 @@ class BaseYealinkPlugin(StandardPlugin):
         self._add_xx_sip_lines(device, raw_config)
         self._add_xivo_phonebook_url(raw_config)
         self._add_wazo_phoned_user_service_url(raw_config, 'dnd')
+        self._add_server_url(raw_config)
         raw_config['XX_options'] = device.get('options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)

@@ -1,4 +1,4 @@
-# Copyright 2021-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from textwrap import dedent
 import pytest
@@ -28,6 +28,7 @@ linekey.3.type = 10
 linekey.3.line = 1
 linekey.3.value = test_park
 linekey.3.label = Test Park
+
 """
 
 
@@ -182,6 +183,7 @@ class TestPlugin:
             'funckeys': {},
             'sip_proxy_ip': '1.1.1.1',
             'sip_lines': {'1': {'number': '5888'}},
+            'http_base_url': 'http://localhost:8667',
         }
         v85_plugin._tpl_helper.get_dev_template.return_value = 'template'
         v85_plugin.configure(device, raw_config)
@@ -349,13 +351,30 @@ class TestPlugin:
         assert raw_config['XX_fkeys'] == ''
         v85_plugin._add_fkeys({'model': 'T33G'}, raw_config)
         mocked_logger.info.assert_called_with('Unsupported funckey type: %s', 'other')
-        assert raw_config['XX_fkeys'] == TEST_LINES + '\n'
+        assert raw_config['XX_fkeys'] == TEST_LINES + self._build_fkey_expectation(
+            4, 12
+        )
 
-    def _build_exp_expectation(self, start_line, end_line, expansion_number):
-        return ''.join(
+    def _build_fkey_expectation(self, start_line, end_line):
+        return '\n'.join(
             [
                 dedent(
-                    '''
+                    '''\
+               linekey.{line}.type = 0
+               linekey.{line}.line = %NULL%
+               linekey.{line}.value = %NULL%
+               linekey.{line}.label = %NULL%
+           '''
+                ).format(line=line)
+                for line in range(start_line, end_line + 1)
+            ]
+        )
+
+    def _build_exp_expectation(self, start_line, end_line, expansion_number):
+        return '\n'.join(
+            [
+                dedent(
+                    '''\
                linekey.{line}.type = 0
                linekey.{line}.line = %NULL%
                linekey.{line}.value = %NULL%
@@ -366,7 +385,7 @@ class TestPlugin:
             ]
             + [
                 dedent(
-                    '''
+                    '''\
             expansion_module.{page}.key.{key}.type = 0
             expansion_module.{page}.key.{key}.line = %NULL%
             expansion_module.{page}.key.{key}.value = %NULL%

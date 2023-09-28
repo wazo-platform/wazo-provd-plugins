@@ -1,17 +1,5 @@
 # Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
@@ -472,6 +460,16 @@ class BaseYealinkPlugin(StandardPlugin):
             raw_config, 'yealink', entry_point='lookup', qs_suffix='term=#SEARCH'
         )
 
+    def _add_server_url(self, raw_config):
+        if 'http_base_url' in raw_config:
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
+
     def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
@@ -498,6 +496,7 @@ class BaseYealinkPlugin(StandardPlugin):
         self._update_sip_lines(raw_config)
         self._add_xx_sip_lines(device, raw_config)
         self._add_xivo_phonebook_url(raw_config)
+        self._add_server_url(raw_config)
         raw_config['XX_options'] = device.get('options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)

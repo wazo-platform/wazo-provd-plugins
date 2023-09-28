@@ -12,7 +12,7 @@
     <codec_tos perm="R">184</codec_tos>
     <signaling_tos perm="R">184</signaling_tos>
 
-    <setting_server perm="RW">http://{{ ip }}:{{ http_port }}</setting_server>
+    <setting_server perm="RW">{{ XX_server_url }}</setting_server>
 
     {% if user_username -%}
     <webserver_user_name perm="R">{{ user_username|e }}</webserver_user_name>

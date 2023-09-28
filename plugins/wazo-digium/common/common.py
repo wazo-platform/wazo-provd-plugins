@@ -1,17 +1,5 @@
 # Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
 import logging
@@ -114,6 +102,7 @@ class BaseDigiumPlugin(StandardPlugin):
 
     def configure(self, device, raw_config):
         self._check_device(device)
+        self._add_server_url(raw_config)
 
         filename = self._dev_specific_filename(device)
         contact_filename = self._dev_contact_filename(device)
@@ -165,6 +154,16 @@ class BaseDigiumPlugin(StandardPlugin):
             line_no = str(line_no)
             return raw_config['sip_lines'][line_no]['proxy_ip']
         return raw_config['ip']
+
+    def _add_server_url(self, raw_config):
+        if 'http_base_url' in raw_config:
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
 
     def _format_mac(self, device):
         return format_mac(device['mac'], separator='', uppercase=False)

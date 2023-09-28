@@ -1,5 +1,5 @@
 {
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "Plugin for Technicolor (previously known as Thomson) TB30 in version 1.74.0.",
     "description_fr": "Greffon pour Technicolor (auparavant connu comme Thomson) TB30 en version 1.74.0.",
     "capabilities": {

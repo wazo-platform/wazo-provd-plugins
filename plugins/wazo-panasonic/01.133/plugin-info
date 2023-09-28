@@ -1,5 +1,5 @@
 {
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Plugin for Panasonic KX-UT1XX in version 01.133.",
     "description_fr": "Greffon pour Panasonic KX-UT1XX en version 01.133.",
     "capabilities": {
