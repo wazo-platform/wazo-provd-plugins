@@ -854,6 +854,7 @@ def build_05_20_0001(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*', '05.20.0001/', path])
 
+
 @target('06.70.0202', 'wazo-snom-dect-06.70.0202')
 def build_06_70_0202(path):
     MODELS = [
@@ -892,7 +893,7 @@ def build_06_70_0202(path):
                 [
                     'sed',
                     sed_script,
-                    'common_dect/templates/common/snom-model-firmware-V670.xml.tpl.btpl',
+                    'common_dect/templates/common/snom-model-firmware-v670.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
