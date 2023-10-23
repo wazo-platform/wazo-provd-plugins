@@ -61,6 +61,7 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         #   "Yealink SIP-T23G 44.80.0.60 00:15:65:93:70:f2"
         #   "Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72"
         #   "Yealink SIP-T33G 124.85.257.55 80:5e:c0:bd:ea:ef"
+        #   "Yealink SIP-T34W 124.86.0.75 24:9a:d8:88:d0:f4"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
@@ -199,8 +200,10 @@ class BaseYealinkFunckeyPrefixIterator:
         'T31': 2,
         'T31G': 2,
         'T31P': 2,
+        'T31W': 2,
         'T33G': 12,
         'T33P': 12,
+        'T34W': 4,
         'T41S': 15,
         'T41U': 15,
         'T42S': 15,
@@ -225,8 +228,10 @@ class BaseYealinkFunckeyPrefixIterator:
         'T31': 0,
         'T31G': 0,
         'T31P': 0,
+        'T31W': 0,
         'T33G': 0,
         'T33P': 0,
+        'T34W': 0,
         'T41S': 0,
         'T41U': 0,
         'T42S': 0,
