@@ -217,6 +217,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
     def configure_common(self, raw_config):
         tpl = self._tpl_helper.get_template('common/model.cfg.tpl')
         common_filenames = self._COMMON_FILENAMES
+        self._add_server_url(raw_config)
         for filename in common_filenames:
             dst = os.path.join(self._tftpboot_dir, filename)
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
