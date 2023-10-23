@@ -27,12 +27,23 @@
 {% for line_no, line in sip_lines.items() %}
     {%- if line_no == '1' %}
     {%- set line_suffix = '' %}
+    {%- set line_outgoing = '01' %}
     {%- else %}
     {%- set line_suffix = '_' + line_no %}
+    {%- set line_outgoing = '0' + line_no %}
+    {%- endif %}
+    {%- if line_no == '3' %}
+    {%- set line_outgoing = '04' %}
+    {%- elif line_no == '4' %}
+    {%- set line_outgoing = '08' %}
+    {%- elif line_no == '5' %}
+    {%- set line_outgoing = '10' %}
+    {%- elif line_no == '6' %}
+    {%- set line_outgoing = '20' %}
     {%- endif %}
     <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].aucAccountName[0]" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
-    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].uiSendMask" class="symb_item" value="0x0{{ "%x"|format(line_no|int()) }}"/>
-    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].uiReceiveMask" class="symb_item" value="0x0{{ "%x"|format(line_no|int()) }}"/>
+    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].uiSendMask" class="symb_item" value="0x{{ line_outgoing }}"/>
+    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].uiReceiveMask" class="symb_item" value="0x{{ line_outgoing }}"/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_ACCOUNT_NAME_{{ line_no }}" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_DISPLAYNAME{{ line_suffix }}" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data3.aucS_SIP_LOGIN_ID{{ line_suffix }}" class="symb_item" value='"{{ line['auth_username']|d(line['username']) }}"'/>
