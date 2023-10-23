@@ -44,8 +44,8 @@
     <SYMB_ITEM ID="BS_IP_Data1.aucS_STUN_SERVER{{ line_suffix }}" class="symb_item" value='""'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_OUTBOUND_PROXY{{ line_suffix }}" class="symb_item" value='""'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_PROVIDER_NAME{{ line_suffix }}" class="symb_item" value='"WazoPBX"'/>
-    <SYMB_ITEM ID="BS_IP_Data1.uiI_SIP_SERVER_PORT{{ line_suffix }}" class="symb_item" value="0x{{ "%x"|format(sip_proxy_port) }}"/>
-    <SYMB_ITEM ID="BS_IP_Data1.uiI_SIP_REGISTRAR_PORT{{ line_suffix }}" class="symb_item" value="0x{{ "%x"|format(sip_proxy_port) }}"/>
+    <SYMB_ITEM ID="BS_IP_Data1.uiI_SIP_SERVER_PORT{{ line_suffix }}" class="symb_item" value="0x{{ "13C4"|format(sip_proxy_port) }}"/>
+    <SYMB_ITEM ID="BS_IP_Data1.uiI_SIP_REGISTRAR_PORT{{ line_suffix }}" class="symb_item" value="0x{{ "13C4"|format(sip_proxy_port) }}"/>
     <SYMB_ITEM ID="BS_IP_Data1.ucB_SIP_USE_STUN{{ line_suffix }}" class="symb_item" value="0x0"/>
     <SYMB_ITEM ID="BS_IP_Data1.uiI_STUN_SERVER_PORT{{ line_suffix }}" class="symb_item" value="0xd96"/>
     <SYMB_ITEM ID="BS_IP_Data1.ucI_OUTBOUND_PROXY_MODE{{ line_suffix }}" class="symb_item" value="0x1"/>
@@ -145,7 +145,7 @@
 <!-- Autoprovisioning - Preference - Time Zone:
      0x00(GMT-12),0x01(GMT-11),0x02(GMT-10),0x03(GMT-9),0x04(GMT-8),0x07(GMT-7),0x09(GMT-6),0x0d(GMT-5),0x0f(GMT-4),0x15(GMT-3),0x16(GMT-2),
      0x18(GMT-1),0x1a(GMT),0x1b(GMT+1),0x20(GMT+2),0x28(GMT+3),0x2b(GMT+4),0x2e(GMT+5),0x33(GMT+6),0x37(GMT+7),0x3a(GMT+8),0x3d(GMT+9),0x43(GMT+10) -->
-    <SYMB_ITEM ID="BS_IP_Data1.uiI_TIME_TIMEZONE" class="symb_item" value="0x{{ "%x"|format(XX_timezone_code) }}"/>
+    <SYMB_ITEM ID="BS_IP_Data1.uiI_TIME_TIMEZONE" class="symb_item" value="0x{{ "0x1a"|format(XX_timezone_code) }}"/>
 
 <!-- Autoprovisioning - Preference - Primary NTP server -->
     {%- if ntp_enabled %}
