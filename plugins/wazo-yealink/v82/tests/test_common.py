@@ -174,7 +174,7 @@ class TestPlugin:
         fetch_fw.assert_called_once_with('test_dir', sentinel.fetchfw_downloaders)
 
     def test_common_configure(self, v82_plugin):
-        raw_config = {}
+        raw_config = {'http_base_url': 'http://localhost:8667'}
         v82_plugin._tpl_helper.get_template.return_value = 'template'
         v82_plugin.configure_common(raw_config)
         v82_plugin._tpl_helper.get_template.assert_called_with('common/model.tpl')
