@@ -151,6 +151,7 @@ class BaseSnomPlugin(StandardPlugin):
                 yield tpl_format % model, file_format % model
 
     def configure_common(self, raw_config):
+        self._add_server_url(raw_config)
         for tpl_filename, filename in self._common_templates():
             tpl = self._tpl_helper.get_template(tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
