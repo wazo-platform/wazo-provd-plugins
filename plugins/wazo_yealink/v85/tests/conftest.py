@@ -15,7 +15,7 @@ def v85_entry(module_initializer):
 
 @pytest.fixture
 def v85_plugin(v85_entry):
-    with patch('v85.common.FetchfwPluginHelper'), patch(
-        'v85.common.TemplatePluginHelper'
+    with patch('plugins.wazo_yealink.v85.common.FetchfwPluginHelper'), patch(
+        'plugins.wazo_yealink.v85.common.TemplatePluginHelper'
     ):
         yield v85_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())

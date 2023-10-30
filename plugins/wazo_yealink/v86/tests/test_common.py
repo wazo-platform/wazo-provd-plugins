@@ -66,7 +66,7 @@ class TestInfoExtraction:
     def test_http_ua_extractor_when_no_info(self):
         assert self.http_info_extractor._extract_from_ua('') is None
 
-    @patch('v86.common.defer')
+    @patch('plugins.wazo_yealink.v86.common.defer')
     def test_extract(self, mocked_defer):
         self.http_info_extractor.extract(
             self._mock_request(b'Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72'),
@@ -96,7 +96,7 @@ class TestInfoExtraction:
                 raise Exception(path, mac)
             assert {'vendor': 'Yealink', 'mac': mac}.items() <= result.items()
 
-    @patch('v86.common.logger')
+    @patch('plugins.wazo_yealink.v86.common.logger')
     def test_invalid_mac(self, mocked_logger):
         self.http_info_extractor._extract_from_ua(
             'Yealink SIP-T20P 9.72.0.30 00:15:6525ef16a7c'
@@ -149,7 +149,7 @@ class TestPluginAssociation:
 
 
 class TestPlugin:
-    @patch('v86.common.FetchfwPluginHelper')
+    @patch('plugins.wazo_yealink.v86.common.FetchfwPluginHelper')
     def test_init(self, fetch_fw, v86_entry):
         fetch_fw.return_value.services.return_value = sentinel.fetchfw_services
         fetch_fw.new_downloaders.return_value = sentinel.fetchfw_downloaders
@@ -195,14 +195,14 @@ class TestPlugin:
         v86_plugin.deconfigure({'mac': '80:5e:c0:d5:7d:72'})
         mocked_remove.assert_called_with('test_dir/var/tftpboot/805ec0d57d72.cfg')
 
-    @patch('v86.common.logger')
+    @patch('plugins.wazo_yealink.v86.common.logger')
     def test_deconfigure_no_file(self, mocked_logger, v86_plugin):
         v86_plugin.deconfigure({'mac': '00:00:00:00:00:00'})
         message, exception = mocked_logger.info.call_args[0]
         assert message == 'error while removing file: %s'
         assert isinstance(exception, FileNotFoundError)
 
-    @patch('v86.common.synchronize')
+    @patch('plugins.wazo_yealink.v86.common.synchronize')
     def test_synchronize(self, provd_synchronize, v86_plugin):
         device = {'mac': '80:5e:c0:d5:7d:72'}
         v86_plugin.synchronize(device, {})
@@ -236,7 +236,7 @@ class TestPlugin:
         with pytest.raises(Exception):
             v86_plugin._check_device({})
 
-    @patch('v86.common.plugins')
+    @patch('plugins.wazo_yealink.v86.common.plugins')
     def test_phonebook_url(self, provd_plugins, v86_plugin):
         raw_config = {'config_version': 1}
         v86_plugin._add_xivo_phonebook_url(raw_config)
@@ -280,7 +280,7 @@ class TestPlugin:
             '4': None,
         }
 
-    @patch('v86.common.logger')
+    @patch('plugins.wazo_yealink.v86.common.logger')
     def test_timezones(self, mocked_logger, v86_plugin):
         raw_config = {'timezone': 'America/Montreal'}
         v86_plugin._add_timezone(raw_config)
@@ -316,7 +316,7 @@ class TestPlugin:
         assert message == 'Unknown timezone: %s'
         assert isinstance(exception, TimezoneNotFoundError)
 
-    @patch('v86.common.logger')
+    @patch('plugins.wazo_yealink.v86.common.logger')
     def test_function_keys(self, mocked_logger, v86_plugin):
         raw_config = {
             'funckeys': {
