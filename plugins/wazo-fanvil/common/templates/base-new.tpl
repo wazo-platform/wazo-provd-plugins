@@ -34,8 +34,8 @@
         <MenuPassword>{{ admin_password|d('123') }}</MenuPassword>
         <display>
           <DefaultLanguage>{{ XX_locale }}</DefaultLanguage>
-	  {% if sip_lines -%}
-	  {% set line_no, line = sip_lines.items()|first -%}
+          {% if sip_lines -%}
+            {% set line_no, line = sip_lines.items()|first -%}
             <LCDTitle>{{ line['display_name']|e }} {{ line['number'] }}</LCDTitle>
           {% endif %}
         </display>
@@ -52,7 +52,7 @@
             <TimeZoneName>{{ XX_timezone['time_zone_name'] }}</TimeZoneName>
             {% if XX_timezone['enable_dst'] -%}
             <EnableDST>2</EnableDST>
-	    <DSTFixedType>2</DSTFixedType>
+            <DSTFixedType>2</DSTFixedType>
             <DSTMinOffset>{{ XX_timezone['dst_min_offset'] }}</DSTMinOffset>
             {% macro dst_change(suffix, value) -%}
             <DST{{ suffix }}Mon>{{ value['month'] }}</DST{{ suffix }}Mon>
@@ -197,20 +197,25 @@
     {%- if XX_paginated_top_fkeys %}
     <!-- top function keys: {{ XX_paginated_top_fkeys }} -->
         <dssSide index="1">
-    {%- for page, index, key in XX_paginated_top_fkeys -%}
-    {% if loop.index0 != 0 and page != loop.previtem[0] -%}
+    {%- for page, index, key in XX_paginated_top_fkeys %}
+        {%- if loop.index0 != 0 and page != loop.previtem[0] %}
         </dssSide>
         <dssSide index="{{ page }}">
-    {%- endif %}
-        <Fkey index="{{ index }}">
-            <Type>{{ key['type'] }}</Type>
-		    <Value>{{ key['value'] }}</Value>
-		    <Title>{{ key['title'] }}</Title>
-        </Fkey>
-    {%- endfor -%}
-	</dssSide>
-	{%- endif -%}
-
+        {%- endif %}
+            <Fkey index="{{ index }}">
+                {% if (page * index)|string in sip_lines %}
+                    <Type>2</Type>
+                    <Value>SIP{{ index }}</Value>
+                    <Title></Title>
+                {% else %}
+                    <Type>{{ key['type'] }}</Type>
+                    <Value>{{ key['value'] }}</Value>
+                    <Title>{{ key['title'] }}</Title>
+                {% endif %}
+            </Fkey>
+    {%- endfor %}
+    </dssSide>
+    {%- endif -%}
     {% if XX_paginated_fkeys -%}
     <!-- bottom function keys: {{ XX_paginated_fkeys }} -->
         <FuncKeyPageNum>{{ XX_max_page }}</FuncKeyPageNum>
