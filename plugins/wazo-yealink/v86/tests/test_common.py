@@ -164,7 +164,7 @@ class TestPlugin:
         v86_plugin._tpl_helper.get_template.return_value = 'template'
         v86_plugin.configure_common(raw_config)
         v86_plugin._tpl_helper.get_template.assert_called_with('common/dect_model.tpl')
-        assert len(v86_plugin._tpl_helper.dump.mock_calls) == 15
+        assert len(v86_plugin._tpl_helper.dump.mock_calls) == 16
 
     def test_configure(self, v86_plugin):
         device = {
