@@ -33,10 +33,11 @@
     <phone>
         <MenuPassword>{{ admin_password|d('123') }}</MenuPassword>
         <display>
-            <DefaultLanguage>{{ XX_locale }}</DefaultLanguage>
-            {% for line_no, line in sip_lines.items() %}
+          <DefaultLanguage>{{ XX_locale }}</DefaultLanguage>
+          {% if sip_lines -%}
+            {% set line_no, line = sip_lines.items()|first -%}
             <LCDTitle>{{ line['display_name']|e }} {{ line['number'] }}</LCDTitle>
-            {% endfor %}
+          {% endif %}
         </display>
         <date>
             {% if ntp_enabled -%}
@@ -51,7 +52,7 @@
             <TimeZoneName>{{ XX_timezone['time_zone_name'] }}</TimeZoneName>
             {% if XX_timezone['enable_dst'] -%}
             <EnableDST>2</EnableDST>
-	    <DSTFixedType>2</DSTFixedType>
+            <DSTFixedType>2</DSTFixedType>
             <DSTMinOffset>{{ XX_timezone['dst_min_offset'] }}</DSTMinOffset>
             {% macro dst_change(suffix, value) -%}
             <DST{{ suffix }}Mon>{{ value['month'] }}</DST{{ suffix }}Mon>
@@ -190,46 +191,55 @@
         </port>
     </call>
     <dsskey>
+    <!-- offset: {{ XX_offset }} -->
+    <!-- split top keys: {{ XX_top_keys }} -->
+    <!-- split bottom keys: {{ XX_bottom_keys }} -->
+    {%- if XX_paginated_top_fkeys %}
+    <!-- top function keys: {{ XX_paginated_top_fkeys }} -->
         <dssSide index="1">
-            {%- if sip_lines %}
-            {% for line_no in sip_lines -%}
-            <Fkey index="{{ line_no }}">
-                <Type>2</Type>
-                <Value>SIP{{ line_no }}</Value>
-                <Title></Title>
-            </Fkey>
-            {%- endfor %}
-            {%- else %}
-            <Fkey index="1">
-                <Type>2</Type>
-                <Value>SIP1</Value>
-                <Title></Title>
-            </Fkey>
-            {%- endif %}
+    {%- for page, index, key in XX_paginated_top_fkeys %}
+        {%- if loop.index0 != 0 and page != loop.previtem[0] %}
         </dssSide>
-        {% if XX_paginated_fkeys -%}
-            <FuncKeyPageNum>{{ XX_max_page }}</FuncKeyPageNum>
-        {% for page, index, fkey in XX_paginated_fkeys -%}
-        {% if loop.index0 == 0 or page != loop.previtem[0] -%}
-        {% if loop.index0 != 0 -%}
-        </internal>
+        <dssSide index="{{ page }}">
         {%- endif %}
-        <internal index="{{ page + 1 }}">
-        {%- endif %}
-            <Fkey index="{{ index + 1}}">
-                <Type>{{ fkey['type'] }}</Type>
-                <Value>{{ fkey['value'] }}</Value>
-                <Title>{{ fkey['title'] }}</Title>
+            <Fkey index="{{ index }}">
+                {% if (page * index)|string in sip_lines %}
+                    <Type>2</Type>
+                    <Value>SIP{{ index }}</Value>
+                    <Title></Title>
+                {% else %}
+                    <Type>{{ key['type'] }}</Type>
+                    <Value>{{ key['value'] }}</Value>
+                    <Title>{{ key['title'] }}</Title>
+                {% endif %}
             </Fkey>
-        {%- endfor %}
-        </internal>
-        {% endif -%}
-        {% if XX_xivo_phonebook_url -%}
-        <dssSoft index="1">
-            <Type>21</Type>
-            <Value>{{ XX_xivo_phonebook_url }}</Value>
-            <Title>{{ XX_directory|d('Directory') }}</Title>
-        </dssSoft>
-        {%- endif %}
+    {%- endfor %}
+    </dssSide>
+    {%- endif -%}
+    {% if XX_paginated_fkeys -%}
+    <!-- bottom function keys: {{ XX_paginated_fkeys }} -->
+        <FuncKeyPageNum>{{ XX_max_page }}</FuncKeyPageNum>
+    {% for page, index, fkey in XX_paginated_fkeys -%}
+    {% if loop.index0 == 0 or page != loop.previtem[0] -%}
+    {% if loop.index0 != 0 -%}
+    </internal>
+    {%- endif %}
+    <internal index="{{ page }}">
+    {%- endif %}
+        <Fkey index="{{ index }}">
+            <Type>{{ fkey['type'] }}</Type>
+            <Value>{{ fkey['value'] }}</Value>
+            <Title>{{ fkey['title'] }}</Title>
+        </Fkey>
+    {%- endfor %}
+    </internal>
+    {% endif -%}
+    {% if XX_xivo_phonebook_url -%}
+    <dssSoft index="1">
+        <Type>21</Type>
+        <Value>{{ XX_xivo_phonebook_url }}</Value>
+        <Title>{{ XX_directory|d('Directory') }}</Title>
+    </dssSoft>
+    {%- endif %}
     </dsskey>
 </sysConf>

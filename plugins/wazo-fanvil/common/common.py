@@ -2,7 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
+from typing import TYPE_CHECKING, Any
 import logging
+import math
 import os.path
 import re
 
@@ -19,6 +21,22 @@ from provd.util import norm_mac, format_mac
 from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-fanvil')
+
+
+if TYPE_CHECKING:
+    from typing import TypedDict
+
+    class FunctionKeyDict(TypedDict):
+        label: str
+        value: str
+        line: str
+        type: str
+
+    class FKeyDict(TypedDict):
+        id: int
+        title: str
+        type: int
+        value: str
 
 
 class BaseFanvilHTTPDeviceInfoExtractor:
@@ -136,6 +154,12 @@ class BaseFanvilPlugin(StandardPlugin):
         'ar',
     )
 
+    _COMMON_FILES: dict[str, tuple[str, str, str]]
+    _MODEL_FIRMWARE_MAPPING: dict[str, str]
+    _FUNCTION_KEYS_PER_PAGE: dict[str, int]
+    _LINE_KEYS_PER_PAGE: dict[str, int]
+    _TOP_FUNCTION_KEYS: dict[str, int]
+
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         # update to use the non-standard tftpboot directory
@@ -157,7 +181,7 @@ class BaseFanvilPlugin(StandardPlugin):
         formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
         return f'{formatted_mac}.cfg'
 
-    def _check_config(self, raw_config):
+    def _check_config(self, raw_config: dict[str, Any]):
         if 'http_port' not in raw_config:
             raise RawConfigError('only support configuration via HTTP')
 
@@ -165,11 +189,11 @@ class BaseFanvilPlugin(StandardPlugin):
         if 'mac' not in device:
             raise Exception('MAC address needed for device configuration')
 
-    def _add_wazo_phoned_user_service_url(self, raw_config, service):
+    def _add_wazo_phoned_user_service_url(self, raw_config: dict[str, Any], service):
         if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
             plugins.add_wazo_phoned_user_service_url(raw_config, 'yealink', service)
 
-    def _add_server_url(self, raw_config):
+    def _add_server_url(self, raw_config: dict[str, Any]):
         if 'http_base_url' in raw_config:
             _, _, remaining_url = raw_config['http_base_url'].partition('://')
             raw_config['XX_server_url'] = raw_config['http_base_url']
@@ -179,7 +203,7 @@ class BaseFanvilPlugin(StandardPlugin):
             raw_config['XX_server_url_without_scheme'] = base_url
             raw_config['XX_server_url'] = f"http://{base_url}"
 
-    def configure(self, device, raw_config):
+    def configure(self, device, raw_config: dict[str, Any]) -> None:
         self._check_config(raw_config)
         self._check_device(device)
         self._check_lines_password(raw_config)
@@ -199,10 +223,10 @@ class BaseFanvilPlugin(StandardPlugin):
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
 
-    def deconfigure(self, device):
+    def deconfigure(self, device) -> None:
         self._remove_configuration_file(device)
 
-    def configure_common(self, raw_config):
+    def configure_common(self, raw_config: dict[str, Any]) -> None:
         self._add_server_url(raw_config)
         for filename, (
             model_info,
@@ -222,7 +246,7 @@ class BaseFanvilPlugin(StandardPlugin):
         except OSError as e:
             logger.info('error while removing configuration file: %s', e)
 
-    def synchronize(self, device, raw_config):
+    def synchronize(self, device, raw_config: dict[str, Any]):
         return synchronize.standard_sip_synchronize(device)
 
     def get_remote_state_trigger_filename(self, device):
@@ -231,15 +255,16 @@ class BaseFanvilPlugin(StandardPlugin):
 
         return self._dev_specific_filename(device)
 
-    def _check_lines_password(self, raw_config):
+    def _check_lines_password(self, raw_config: dict[str, Any]):
         for line in raw_config['sip_lines'].values():
             if line['password'] == 'autoprov':
                 line['password'] = ''
 
     def _extract_dst_change(self, dst_change):
-        lines = {}
-        lines['month'] = dst_change['month']
-        lines['hour'] = min(dst_change['time'].as_hours, 23)
+        lines = {
+            'month': dst_change['month'],
+            'hour': min(dst_change['time'].as_hours, 23),
+        }
         if dst_change['day'].startswith('D'):
             lines['dst_wday'] = dst_change['day'][1:]
         else:
@@ -268,7 +293,7 @@ class BaseFanvilPlugin(StandardPlugin):
             tz_all['dst_end'] = self._extract_dst_change(tzinfo['dst']['end'])
         return tz_all
 
-    def _add_timezone(self, device, raw_config):
+    def _add_timezone(self, device, raw_config: dict[str, Any]):
         if 'timezone' in raw_config:
             try:
                 tzinfo = tzinform.get_timezone_info(raw_config['timezone'])
@@ -280,7 +305,7 @@ class BaseFanvilPlugin(StandardPlugin):
     def _is_new_model(self, device):
         return self._NEW_MODEL_REGEX.match(device['model']) is not None
 
-    def _add_locale(self, device, raw_config):
+    def _add_locale(self, device, raw_config: dict[str, Any]):
         locale = raw_config.get('locale')
         if not locale:
             return
@@ -295,7 +320,7 @@ class BaseFanvilPlugin(StandardPlugin):
         if directory_key_text:
             raw_config['XX_directory'] = directory_key_text
 
-    def _update_lines(self, raw_config):
+    def _update_lines(self, raw_config: dict[str, Any]):
         default_dtmf_mode = raw_config.get('sip_dtmf_mode', 'SIP-INFO')
         for line in raw_config['sip_lines'].values():
             line['XX_dtmf_mode'] = self._SIP_DTMF_MODE[
@@ -310,99 +335,147 @@ class BaseFanvilPlugin(StandardPlugin):
             if 'voicemail' not in line and 'exten_voicemail' in raw_config:
                 line['voicemail'] = raw_config['exten_voicemail']
 
-    def _add_sip_transport(self, raw_config):
+    def _add_sip_transport(self, raw_config: dict[str, Any]) -> None:
         raw_config['X_sip_transport_protocol'] = self._SIP_TRANSPORT[
             raw_config.get('sip_transport', 'udp')
         ]
 
-    def _format_funckey_speeddial(self, funckey_dict):
-        return '{value}@{line}/f'.format(
-            value=funckey_dict['value'], line=funckey_dict['line']
-        )
+    def _format_funckey_speeddial(self, funckey_dict: FunctionKeyDict) -> str:
+        return f'{funckey_dict["value"]}@{funckey_dict["line"]}/f'
 
-    def _format_funckey_blf(self, funckey_dict, exten_pickup_call=None):
+    def _format_funckey_blf(
+        self, funckey_dict: FunctionKeyDict, exten_pickup_call=None
+    ) -> str:
         # Be warned that blf works only for DSS keys.
+        blf_entry = f'{funckey_dict["value"]}@{funckey_dict["line"]}/ba'
         if exten_pickup_call:
-            return '{value}@{line}/ba{exten_pickup}{value}'.format(
-                value=funckey_dict['value'],
-                line=funckey_dict['line'],
-                exten_pickup=exten_pickup_call,
-            )
-        else:
-            return '{value}@{line}/ba'.format(
-                value=funckey_dict['value'], line=funckey_dict['line']
-            )
+            return f'{blf_entry}{exten_pickup_call}{funckey_dict["value"]}'
+        return blf_entry
 
-    def _format_funckey_call_park(self, funckey_dict):
-        return '{value}@{line}/c'.format(
-            value=funckey_dict['value'], line=funckey_dict['line']
-        )
+    def _format_funckey_call_park(self, funckey_dict: FunctionKeyDict) -> str:
+        return f'{funckey_dict["value"]}@{funckey_dict["line"]}/c'
 
-    def _add_fkeys(self, device, raw_config):
-        lines = []
-        exten_pickup_call = raw_config.get('exten_pickup_call')
-        offset = 0 if self._is_new_model(device) else 1
-        max_funckey_position = 0
-        for funckey_no, funckey_dict in raw_config['funckeys'].items():
-            fkey_line = {}
+    @staticmethod
+    def _split_fkeys(
+        funckeys: dict[str, FunctionKeyDict], threshold: int
+    ) -> tuple[dict[int, FunctionKeyDict], dict[int, FunctionKeyDict]]:
+        fkeys_top = {}
+        fkeys_bottom = {}
+
+        for funckey_no, funckey_dict in funckeys:
             keynum = int(funckey_no)
-            fkey_id = keynum + offset
-            fkey_line['id'] = fkey_id
-            fkey_line['title'] = funckey_dict['label']
-            fkey_line['type'] = 1
-            if keynum > max_funckey_position:
-                max_funckey_position = keynum
-
-            funckey_type = funckey_dict['type']
-            if funckey_type == 'speeddial':
-                fkey_line['value'] = self._format_funckey_speeddial(funckey_dict)
-                if funckey_dict['value'].startswith('*'):
-                    fkey_line['type'] = 4
-            elif funckey_type == 'blf':
-                if keynum <= 12:
-                    fkey_line['value'] = self._format_funckey_blf(
-                        funckey_dict, exten_pickup_call
-                    )
-                else:
-                    logger.info('For Fanvil, blf is only available on DSS keys')
-                    fkey_line['value'] = self._format_funckey_speeddial(funckey_dict)
-            elif funckey_type == 'park':
-                fkey_line['value'] = self._format_funckey_call_park(funckey_dict)
+            if keynum <= threshold:
+                fkeys_top[keynum] = funckey_dict
             else:
-                logger.info('Unsupported funckey type: %s', funckey_type)
-                continue
+                fkeys_bottom[keynum - threshold] = funckey_dict
+        return fkeys_top, fkeys_bottom
 
-            lines.append(fkey_line)
-
-        keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(
-            device['model'].split('-')[0], None
-        )
-        if keys_per_page:
-            raw_config['XX_max_page'] = max_funckey_position // keys_per_page + 1
-            raw_config['XX_paginated_fkeys'] = sorted(
-                [
-                    (
-                        (fkey['id'] - 1) // keys_per_page,
-                        (fkey['id'] - 1) % keys_per_page,
-                        fkey,
-                    )
-                    for fkey in lines
-                ]
-            )
+    def _format_fkey(
+        self,
+        funckey_number: int,
+        funckey: FunctionKeyDict,
+        fkey_offset: int,
+        pickup_exten: str | None,
+    ) -> FKeyDict:
+        fkey = {'id': funckey_number, 'title': funckey['label'], 'type': 2}
+        if funckey['type'] == 'speeddial':
+            fkey['type'] = 4
+            fkey['value'] = self._format_funckey_speeddial(funckey)
+        elif funckey['type'] == 'blf':
+            fkey['value'] = self._format_funckey_blf(funckey, pickup_exten)
+        elif funckey['type'] == 'park':
+            fkey['value'] = self._format_funckey_call_park(funckey)
         else:
-            raw_config['XX_paginated_fkeys'] = [
-                (0, fkey['id'] - 1, fkey) for fkey in lines
-            ]
-        raw_config['XX_fkeys'] = lines
+            logger.info('Unsupported funckey type: %s', funckey['type'])
+            fkey['type'] = 2
+        return fkey
 
-    def _add_phonebook_url(self, raw_config):
+    def _format_fkeys(
+        self,
+        fkeys: dict[int, FunctionKeyDict],
+        max_fkeys: int,
+        offset: int,
+        exten_pickup_call: str | None,
+    ) -> list[FKeyDict]:
+        formatted_fkeys = []
+        for fkey_num in range(1, max_fkeys + 1):
+            fkey = fkeys.get(fkey_num)
+            if not fkey:
+                fkey = {'id': fkey_num, 'label': '', 'type': None}
+            formatted_fkeys.append(
+                self._format_fkey(fkey_num, fkey, offset, exten_pickup_call)
+            )
+        return formatted_fkeys
+
+    def _add_fkeys(self, device, raw_config: dict[str, Any]):
+        exten_pickup_call: str | None = raw_config.get('exten_pickup_call')
+        offset = 0 if self._is_new_model(device) else 1
+        raw_config['XX_offset'] = offset
+        clean_model_name = device['model'].split('-')[0]
+        top_key_threshold = self._TOP_FUNCTION_KEYS.get(clean_model_name, 0)
+        raw_config['XX_top_key_threshold'] = top_key_threshold
+        top_keys, bottom_keys = self._split_fkeys(
+            raw_config['funckeys'].items(), top_key_threshold
+        )
+
+        raw_config['XX_top_keys'] = top_keys
+        raw_config['XX_bottom_keys'] = bottom_keys
+
+        top_keys_per_page = self._LINE_KEYS_PER_PAGE.get(clean_model_name, None)
+        keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(clean_model_name, None)
+
+        max_top_keys = max(top_keys) if top_keys else 0
+        max_bottom_keys = max(bottom_keys) if bottom_keys else 0
+        formatted_top_keys = self._format_fkeys(
+            top_keys, max_top_keys, offset, exten_pickup_call
+        )
+        formatted_bottom_keys = self._format_fkeys(
+            bottom_keys, max_bottom_keys, offset, exten_pickup_call
+        )
+        if top_keys_per_page:
+            max_top_page, paginated_top_fkeys = self._paginate(
+                formatted_top_keys, max_top_keys, top_keys_per_page
+            )
+            raw_config['XX_max_top_page'] = max_top_page
+            raw_config['XX_paginated_top_fkeys'] = paginated_top_fkeys
+        else:
+            raw_config['XX_paginated_top_fkeys'] = [
+                (offset, fkey['id'] + offset, fkey) for fkey in top_keys
+            ]
+
+        if keys_per_page:
+            max_bottom_page, paginated_bottom_fkeys = self._paginate(
+                formatted_bottom_keys, max_bottom_keys, keys_per_page
+            )
+            raw_config['XX_max_page'] = max_bottom_page
+            raw_config['XX_paginated_fkeys'] = paginated_bottom_fkeys
+        raw_config['XX_fkeys'] = formatted_top_keys + formatted_bottom_keys
+
+    @staticmethod
+    def _paginate(
+        fkeys: list[FKeyDict], max_position: int, results_per_page: int
+    ) -> tuple[int, list[tuple[int, int, FKeyDict]]]:
+        max_page = math.ceil(max_position / results_per_page)
+        paginated_fkeys = sorted(
+            [
+                (
+                    ((fkey['id'] - 1) // results_per_page) + 1,
+                    ((fkey['id'] - 1) % results_per_page) + 1,
+                    fkey,
+                )
+                for fkey in fkeys
+            ]
+        )
+        return max_page, paginated_fkeys
+
+    def _add_phonebook_url(self, raw_config: dict[str, Any]) -> None:
         if (
             hasattr(plugins, 'add_xivo_phonebook_url')
             and raw_config.get('config_version', 0) >= 1
         ):
             plugins.add_xivo_phonebook_url(raw_config, 'fanvil')
 
-    def _add_firmware(self, device, raw_config):
+    def _add_firmware(self, device, raw_config: dict[str, Any]) -> None:
         model = device.get('model')
         if model in self._MODEL_FIRMWARE_MAPPING:
             raw_config['XX_fw_filename'] = self._MODEL_FIRMWARE_MAPPING[model]
