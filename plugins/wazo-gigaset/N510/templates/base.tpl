@@ -31,8 +31,8 @@
     {%- set line_suffix = '_' + line_no %}
     {%- endif %}
     <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].aucAccountName[0]" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
-    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].uiSendMask" class="symb_item" value="0x0{{ "%x"|format(line_no|int()) }}"/>
-    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].uiReceiveMask" class="symb_item" value="0x0{{ "%x"|format(line_no|int()) }}"/>
+    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].uiSendMask" class="symb_item" value="0x{{ "%x"|format(2 ** (line_no|int() - 1)) }}"/>
+    <SYMB_ITEM ID="BS_Accounts.astAccounts[{{ line_no|int() - 1 }}].uiReceiveMask" class="symb_item" value="0x{{ "%x"|format(2 ** (line_no|int() - 1)) }}"/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_ACCOUNT_NAME_{{ line_no }}" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data1.aucS_SIP_DISPLAYNAME{{ line_suffix }}" class="symb_item" value='"{{ line['display_name'] }} {{ line['number'] }}"'/>
     <SYMB_ITEM ID="BS_IP_Data3.aucS_SIP_LOGIN_ID{{ line_suffix }}" class="symb_item" value='"{{ line['auth_username']|d(line['username']) }}"'/>
