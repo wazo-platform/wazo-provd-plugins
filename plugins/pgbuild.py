@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Copyright 2010-2022 The Wazo Authors (see AUTHORS file)
+Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 SPDX-License-Identifier: GPL-3.0-or-later
 
 A tool for building provd plugins.
 """
+from __future__ import annotations
 
-
-import errno
+import argparse
 import glob
 import hashlib
 import json
@@ -17,8 +17,53 @@ import tarfile
 import traceback
 from argparse import ArgumentParser
 from itertools import zip_longest
+from pathlib import Path
 from subprocess import check_call
 from sys import exit, stderr
+from typing import Any, TYPE_CHECKING, Sequence
+
+if TYPE_CHECKING:
+    from typing import TypedDict, Literal
+    from collections.abc import Iterable, Callable
+
+    PhoneTypes = Literal[
+        'ata',
+        'conference',
+        'deskphone',
+        'dect',
+        'doorphone',
+        'gateway',
+        'generic',
+        'softphone',
+    ]
+    Protocols = Literal['sip', 'sccp']
+    TargetCallback = Callable[[str], None]
+
+    class TargetDict(TypedDict):
+        fun: TargetCallback
+        pg_id: str
+        std_dirs: str
+
+    class PluginCapabilities(TypedDict):
+        lines: int
+        high_availability: bool
+        function_keys: int
+        expansion_modules: int
+        switchboard: int
+        multicell: bool
+        type: PhoneTypes
+        protocol: Protocols
+
+    class RawPluginInfo(TypedDict):
+        version: str
+        description: str
+        capabilities: dict[str, PluginCapabilities]
+
+    class PluginInfo(RawPluginInfo):
+        filename: str
+        dsize: int
+        sha1sum: str
+
 
 BUILD_FILENAME = 'build.py'
 DB_FILENAME = 'plugins.db'
@@ -26,11 +71,11 @@ PLUGIN_INFO_FILENAME = 'plugin-info'
 PACKAGE_SUFFIX = '.tar.bz2'
 
 
-def cmp(a, b):
+def cmp(a: Any, b: Any) -> bool:
     return (a > b) - (a < b)
 
 
-def count(iterable, function=bool):
+def count(iterable: Iterable, function: Callable[[Any], bool] = bool):
     """Return the number of element 'e' in iterable for which function(e) is
     true.
 
@@ -51,26 +96,13 @@ def _is_build_plugin(path):
     return os.path.isfile(os.path.join(path, BUILD_FILENAME))
 
 
-def _list_build_plugins(directory):
-    def aux():
-        for file in os.listdir(directory):
-            file = os.path.join(directory, file)
-            if _is_build_plugin(file):
-                yield file
-
-    return list(aux())
-
-
-def _mkdir(path):
-    # Similar to os.mkdir but does not raise an exception if the directory
-    # already exist
-    try:
-        os.mkdir(path)
-    except OSError as e:
-        if e.errno == errno.EEXIST and os.path.isdir(path):
-            pass
-        else:
-            raise
+def _list_build_plugins(directory: str) -> list[str]:
+    build_plugins: list[str] = []
+    for file in os.listdir(directory):
+        file = os.path.join(directory, file)
+        if _is_build_plugin(file):
+            build_plugins.append(file)
+    return build_plugins
 
 
 class BuildPlugin:
@@ -85,10 +117,12 @@ class BuildPlugin:
         self.name = os.path.basename(path)
 
     def _load_build_plugin(self, path):
-        targets = {}
+        targets: dict[str, TargetDict] = {}
 
-        def _target(target_id, pg_id, std_dirs=True):
-            def aux(fun):
+        def _target(
+            target_id: str, pg_id: str, std_dirs: bool = True
+        ) -> Callable[[TargetCallback], TargetCallback]:
+            def aux(fun: TargetCallback) -> TargetCallback:
                 if target_id in targets:
                     raise Exception(
                         f"in build_plugin '{self.name}': target redefinition for '{target_id}'"
@@ -130,7 +164,7 @@ class BuildPlugin:
             self._mk_std_dirs(abs_path)
 
     @staticmethod
-    def _mk_std_dirs(abs_path):
+    def _mk_std_dirs(abs_path: str) -> None:
         for directory in [
             'var',
             'var/cache',
@@ -138,10 +172,12 @@ class BuildPlugin:
             'var/templates',
             'var/tftpboot',
         ]:
-            _mkdir(os.path.join(abs_path, directory))
+            os.makedirs(Path(abs_path) / directory, exist_ok=True)
 
 
-def build_op(opts, args, src_dir, dest_dir):
+def build_op(
+    opts: argparse.Namespace, args: Sequence[str], src_dir: str, dest_dir: str
+) -> None:
     # Pre: src_dir is a directory
     # Pre: dest_dir is a directory
     build_dir = src_dir
@@ -197,11 +233,11 @@ def build_op(opts, args, src_dir, dest_dir):
                 traceback.print_exc(None, stderr)
 
 
-def _is_plugin(path):
-    return os.path.isfile(os.path.join(path, PLUGIN_INFO_FILENAME))
+def _is_plugin(path: str) -> bool:
+    return (Path(path) / PLUGIN_INFO_FILENAME).is_file()
 
 
-def _list_plugins(directory):
+def _list_plugins(directory: str) -> list[str]:
     def aux():
         for file in os.listdir(directory):
             file = os.path.join(directory, file)
@@ -211,7 +247,7 @@ def _list_plugins(directory):
     return list(aux())
 
 
-def _get_plugin_version(plugin):
+def _get_plugin_version(plugin: str) -> str:
     # Pre: plugin is a directory with an PLUGIN_INFO_FILENAME file
     fobj = open(os.path.join(plugin, PLUGIN_INFO_FILENAME))
     try:
@@ -224,7 +260,9 @@ def _get_plugin_version(plugin):
         fobj.close()
 
 
-def package_op(opts, args, src_dir, dest_dir):
+def package_op(
+    opts: argparse.Namespace, args: Sequence[str], src_dir: str, dest_dir: str
+) -> None:
     pg_dir = src_dir
     pkg_dir = dest_dir
 
@@ -244,7 +282,8 @@ def package_op(opts, args, src_dir, dest_dir):
     # build packages
     for plugin in plugins:
         plugin_version = _get_plugin_version(plugin)
-        package_path = os.path.join(pkg_dir, os.path.basename(plugin))
+        plugin_name = os.path.basename(plugin).replace('_', '-')
+        package_path = os.path.join(pkg_dir, plugin_name)
         package = f"{package_path}-{plugin_version}{PACKAGE_SUFFIX}"
         print(f"Packaging plugin '{plugin}' into '{package}'...")
         check_call(
@@ -259,15 +298,15 @@ def package_op(opts, args, src_dir, dest_dir):
         )
 
 
-def _list_packages(directory):
+def _list_packages(directory: str) -> list[str]:
     return glob.glob(os.path.join(directory, '*' + PACKAGE_SUFFIX))
 
 
-def _get_package_filename(package):
+def _get_package_filename(package: str) -> str:
     return os.path.basename(package)
 
 
-def _get_package_name(package):
+def _get_package_name(package: str) -> str:
     tar_package = tarfile.open(package)
     try:
         shortest_name = min(tar_package.getnames())
@@ -282,7 +321,7 @@ def _get_package_name(package):
         tar_package.close()
 
 
-def _get_package_plugin_info(package, package_name):
+def _get_package_plugin_info(package: str, package_name: str) -> dict:
     # Return a dictionary representing the standardized content of the
     # plugin-info file
     tar_package = tarfile.open(package)
@@ -313,19 +352,18 @@ def _get_package_plugin_info(package, package_name):
         tar_package.close()
 
 
-def _get_package_dsize(package):
+def _get_package_dsize(package: str) -> int:
     return os.path.getsize(package)
 
 
-def _get_package_sha1sum(package):
+def _get_package_sha1sum(package: str) -> str:
     package_hash = hashlib.sha1()
     with open(package, 'rb') as f:
         package_hash.update(f.read())
     return package_hash.hexdigest()
 
 
-def _get_package_info(package):
-    # Return a tuple <package name, package info>
+def _get_package_info(package: str) -> tuple[str, PluginInfo]:
     result = {'filename': _get_package_filename(package)}
     name = _get_package_name(package)
     result.update(_get_package_plugin_info(package, name))
@@ -334,19 +372,19 @@ def _get_package_info(package):
     return name, result
 
 
-def _version_cmp(version1, version2):
+def _version_cmp(version1: str, version2: str) -> int | bool:
     """Compare the version version1 to version version2 and return:
     - negative if version1<version2
     - zero if version1==version2
     - positive if version1>version2.
-
+    - or bool.. Will be evaluated as 0 or 1, but should be made explicit.
     """
     start1, _, last1 = version1.rpartition('-')
     start2, _, last2 = version2.rpartition('-')
     for i1, i2 in zip_longest(start1.split('.'), start2.split('.'), fillvalue='0'):
         res_cmp = cmp(i1, i2)
         if res_cmp != 0:
-            return res_cmp
+            return int(res_cmp)
     if not last1 and last2 or not last1.startswith('dev') and last2.startswith('dev'):
         return 1
     elif last1 and not last2 or last1.startswith('dev') and not last2.startswith('dev'):
@@ -354,7 +392,9 @@ def _version_cmp(version1, version2):
     return cmp(last1, last2)
 
 
-def create_db_op(opts, args, src_dir, dest_dir):
+def create_db_op(
+    opts: argparse.Namespace, args: Sequence[str], src_dir: str, dest_dir: str
+) -> None:
     pkg_dir = src_dir
     db_file = os.path.join(dest_dir, DB_FILENAME)
 
@@ -364,7 +404,7 @@ def create_db_op(opts, args, src_dir, dest_dir):
     else:
         packages = _list_packages(pkg_dir)
 
-    # get package infos, and only for the most recent packages
+    # get package info, and only for the most recent packages
     package_infos = {}
     for package in packages:
         package_name, package_info = _get_package_info(package)
@@ -405,7 +445,7 @@ def _get_directories(opts):
     return _get_directory(opts.source), _get_directory(opts.destination)
 
 
-def main():
+def main() -> None:
     parser = ArgumentParser()
     parser.add_argument(
         '-B',
@@ -460,4 +500,5 @@ def main():
         raise AssertionError('unknown operation... this is a bug')
 
 
-main()
+if __name__ == '__main__':
+    main()
