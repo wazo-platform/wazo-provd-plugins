@@ -1,0 +1,27 @@
+[tool.black]
+skip-string-normalization = true
+
+[tool.flake8]
+show-source = true
+max-line-length = 99
+application-import-names = "plugins"
+ignore = [
+  "E203", # whitespace before ':'
+  "F821", # undefined. Because of injected _execfiles, target, etc.
+  "W503", # line break before binary operator
+]
+exclude = [
+    ".tox",
+    ".eggs",
+    "plugins/_build",
+]
+
+[tool.coverage.run]
+# entry.py is not loaded directly and thus coverage cannot be ascertained
+omit = ["**/entry.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "FileNotFoundError = OSError",
+]
+
