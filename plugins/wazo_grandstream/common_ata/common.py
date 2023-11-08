@@ -104,6 +104,9 @@ class BaseGrandstreamPlugin(StandardPlugin):
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         super().__init__(app, plugin_dir, gen_cfg, spec_cfg)
         # update to use the non-standard tftpboot directory
+        self._base_tftpboot_dir = self._tftpboot_dir
+        self._tftpboot_dir = os.path.join(self._tftpboot_dir, 'Grandstream')
+
         self._tpl_helper = TemplatePluginHelper(plugin_dir)
 
         downloaders = FetchfwPluginHelper.new_downloaders(gen_cfg.get('proxies'))
