@@ -30,11 +30,11 @@ LOCALE = {
 }
 
 FUNCKEY_TYPES = {
-    'speeddial': 0,
-    'blf': 1,
-    'park': 9,
-    'default': 31,
-    'disabled': -1,
+    'speeddial': 'SpeedDial',
+    'blf': 'BLF',
+    'park': 'CallPark',
+    'default': 'Line',
+    'disabled': 'None',
 }
 
 
