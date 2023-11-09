@@ -7,6 +7,7 @@ install: grandstream-fw
 
 [install_grandstream-fw]
 a-b: unzip $FILE1
+b-c: cp */*.bin ./
 
 [file_GXP2135-fw]
 url: http://firmware.grandstream.com/Release_GXP2135_1.0.11.79.zip
