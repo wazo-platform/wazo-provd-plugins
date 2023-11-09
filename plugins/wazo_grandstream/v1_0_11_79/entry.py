@@ -15,4 +15,3 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
     _MODELS = MODELS
 
     pg_associator = common['BaseGrandstreamPgAssociator'](MODELS, VERSION)
-
