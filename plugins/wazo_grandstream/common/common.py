@@ -126,6 +126,10 @@ class BaseGrandstreamPlugin(StandardPlugin):
             'vpk': 16,
             'mpk': 24,
         },
+        'GXP2135':{
+            'vpk': 32,
+            'mpk': 0,
+        }
     }
 
     DTMF_MODES = {
