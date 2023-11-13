@@ -194,6 +194,7 @@ class BaseYealinkFunckeyGenerator:
 class BaseYealinkFunckeyPrefixIterator:
     _NB_LINEKEY = {
         'CP920': 0,
+        'CP925': 0,
         'T27G': 21,
         'T30': 0,
         'T30P': 0,
@@ -222,6 +223,7 @@ class BaseYealinkFunckeyPrefixIterator:
     }
     _NB_MEMORYKEY = {
         'CP920': 0,
+        'CP925': 0,
         'T27G': 0,
         'T30': 0,
         'T30P': 0,
