@@ -30,11 +30,11 @@ LOCALE = {
 }
 
 FUNCKEY_TYPES = {
-    'speeddial': 0,
-    'blf': 1,
-    'park': 9,
-    'default': 31,
-    'disabled': -1,
+    'speeddial': 'SpeedDial',
+    'blf': 'BLF',
+    'park': 'CallPark',
+    'default': 'Line',
+    'disabled': 'None',
 }
 
 
@@ -125,6 +125,10 @@ class BaseGrandstreamPlugin(StandardPlugin):
         'GRP2616': {
             'vpk': 16,
             'mpk': 24,
+        },
+        'GXP2135': {
+            'vpk': 32,
+            'mpk': 0,
         },
     }
 

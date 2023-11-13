@@ -153,3 +153,20 @@ def build_1_2_5_3(path: str) -> None:
         ]
     )
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v1_2_5_3/', path])
+
+
+@target('1.0.11.79', 'wazo-grandstream-1.0.11.79')
+def build_1_0_11_79(path: str) -> None:
+    check_call(
+        [
+            'rsync',
+            '-rlp',
+            '--exclude',
+            '.*',
+            '--include',
+            '/templates/*',
+            'common/',
+            path,
+        ]
+    )
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v1_0_11_79/', path])

@@ -1,0 +1,15 @@
+[pkg_GXP2135-fw]
+description: Firmware for Grandstream GXP2135
+description_fr: Micrologiciel pour Grandstream GXP2135
+version: 1.0.11.79
+files: GXP2135-fw
+install: grandstream-fw
+
+[install_grandstream-fw]
+a-b: unzip $FILE1
+b-c: cp */*.bin ./
+
+[file_GXP2135-fw]
+url: http://firmware.grandstream.com/Release_GXP2135_1.0.11.79.zip
+size: 44199987
+sha1sum: 7c6cc1c426cfe32226f51a6d98984410165d104f

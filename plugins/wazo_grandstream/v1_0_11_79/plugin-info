@@ -1,28 +1,19 @@
 {
-    "version": "0.1.3",
-    "description": "Plugin for Grandstream HT801 and HT802 in version 1.0.27.2.",
-    "description_fr": "Greffon pour Grandstream HT801 et HT802 en version 1.0.27.2.",
+    "version": "0.0.3",
+    "description": "Plugin for Grandstream GXP2135 in version 1.0.11.79.",
+    "description_fr": "Greffon pour Grandstream GXP2135 en version 1.0.11.79.",
     "vendor" : "Grandstream",
     "vendor.url" : "http://www.grandstream.com",
     "vendor.description" : "Grandstream Networks, Inc. is an award-winning designer and ISO 9001 certified manufacturer of next generation IP voice & video products for broadband networks. Grandstream’s products deliver superb sound and picture quality, rich telephony features, full compliance with industry standards, and broad interoperability with most service providers and 3rd party SIP based VoIP products.",
     "vendor.official" : 0,
     "capabilities": {
-        "Grandstream, HT801, 1.0.27.2": {
-            "lines": 1,
+        "Grandstream, GXP2135, 1.0.11.79": {
+            "lines": 8,
             "high_availability": true,
-            "function_keys": 0,
+            "function_keys": 32,
             "expansion_modules": 0,
             "switchboard": false,
-            "type": "ata",
-            "protocol": "sip"
-        },
-        "Grandstream, HT802, 1.0.27.2": {
-            "lines": 2,
-            "high_availability": true,
-            "function_keys": 0,
-            "expansion_modules": 0,
-            "switchboard": false,
-            "type": "ata",
+            "type": "deskphone",
             "protocol": "sip"
         }
     }
