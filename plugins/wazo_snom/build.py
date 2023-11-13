@@ -1094,6 +1094,7 @@ def build_10_1_152_12(path):
 
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_152_12/', path])
 
+
 @target('10.1.159.12', 'wazo-snom-10.1.159.12')
 def build_10_1_159_12(path):
     MODELS = [
