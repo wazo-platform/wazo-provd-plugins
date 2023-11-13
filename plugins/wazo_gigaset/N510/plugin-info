@@ -1,0 +1,18 @@
+{
+    "version": "0.1.12",
+    "description": "Plugin for Gigaset N510 IP",
+    "description_fr": "Greffon pour Gigaset N510 IP",
+    "capabilities": {
+        "Gigaset, N510 IP PRO, 42.262": {
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "multicell": false,
+            "protocol": "sip"
+        }
+    },
+    "plugin_iface_version_min": 0.2
+}

@@ -78,6 +78,7 @@ download-firmwares :
 
 .PHONY : upload-firmwares
 upload-firmwares:
+	chmod +r $(FIRMWARES_PATH)/*
 	rsync -v -rt $(FIRMWARES_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_FIRMWARES_PATH)
 
 
