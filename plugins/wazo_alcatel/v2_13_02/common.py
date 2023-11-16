@@ -22,6 +22,8 @@ from provd.util import format_mac, norm_mac
 from provd.devices.ident import RequestType
 from twisted.internet import defer
 
+from typing import Any
+
 logger = logging.getLogger('plugin.wazo-alcatel')
 
 
@@ -251,10 +253,15 @@ class BaseAlcatelPlugin(StandardPlugin):
     def _dev_specific_filename(self, device: dict[str, str]) -> str:
         return f'config.{format_mac(device["mac"], separator="")}.xml'
 
-    def _add_server_url(self, raw_config):
-        ip = raw_config['ip']
-        http_port = raw_config['http_port']
-        raw_config['XX_server_url'] = f'http://{ip}:{http_port}'
+    def _add_server_url(self, raw_config: dict[str, Any]):
+        if 'http_base_url' in raw_config:
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
 
     def configure(self, device, raw_config):
         self._check_config(raw_config)
