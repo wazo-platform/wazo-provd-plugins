@@ -274,6 +274,7 @@ class BaseCiscoPlugin(StandardPlugin):
     tftp_dev_info_extractor = BaseCiscoTFTPDeviceInfoExtractor()
 
     def configure_common(self, raw_config):
+        self._add_server_url(raw_config)
         tpl = self._tpl_helper.get_template('common/model.cfg.tpl')
         common_filenames = self._COMMON_FILENAMES
         for filename in common_filenames:
