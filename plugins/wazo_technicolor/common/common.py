@@ -195,6 +195,7 @@ class BaseTechnicolorPlugin(StandardPlugin):
     http_dev_info_extractor = BaseTechnicolorHTTPDeviceInfoExtractor()
 
     def configure_common(self, raw_config):
+        self._add_server_url(raw_config)
         for tpl_filename, filename in self._COMMON_TEMPLATES:
             tpl = self._tpl_helper.get_template(tpl_filename)
             dst = os.path.join(self._tftpboot_dir, filename)
