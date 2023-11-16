@@ -1,5 +1,5 @@
 {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Plugin for Fanvil i10X/i16X, i6X series and i51W/i52W/i53W",
     "description_fr": "Greffon pour les series i10X/i16X, i6X et i51W/i52W/i53W Fanvil",
     "vendor" : "Fanvil",
