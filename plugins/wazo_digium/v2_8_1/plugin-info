@@ -1,5 +1,5 @@
 {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Plugin for Digium D4X, D50, D6X and D70 in version 2.8.1.",
     "description_fr": "Greffon pour Digium D4X, D50, D6X et D70 en version 2.8.1.",
     "capabilities": {

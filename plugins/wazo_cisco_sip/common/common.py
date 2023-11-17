@@ -348,7 +348,7 @@ class BaseCiscoSipPlugin(StandardPlugin):
             raw_config['XX_fkeys'] = fkeys
 
     def _add_server_url(self, raw_config):
-        if 'http_base_url' in raw_config:
+        if raw_config.get('http_base_url'):
             _, _, remaining_url = raw_config['http_base_url'].partition('://')
             raw_config['XX_server_url'] = raw_config['http_base_url']
             raw_config['XX_server_url_without_scheme'] = remaining_url
