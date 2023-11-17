@@ -25,6 +25,8 @@ from provd.devices.ident import RequestType
 from provd.util import norm_mac, format_mac
 from twisted.internet import defer
 
+from typing import Any
+
 logger = logging.getLogger('plugin.wazo-gigaset')
 
 VENDOR = 'Gigaset'
@@ -247,6 +249,7 @@ class BaseGigasetPlugin(StandardPlugin):
         raw_config['XX_epoch'] = int(time.time())
         self._fix_timezone(raw_config)
 
+    def _add_server_url(self, raw_config: dict[str, Any]):
         if 'http_base_url' in raw_config:
             _, _, remaining_url = raw_config['http_base_url'].partition('://')
             raw_config['XX_server_url'] = raw_config['http_base_url']
@@ -309,6 +312,7 @@ class BaseGigasetPlugin(StandardPlugin):
         self._add_ac_code(raw_config)
         self._add_xx_vars(device, raw_config)
         self._add_phonebook(raw_config)
+        self._add_server_url(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)

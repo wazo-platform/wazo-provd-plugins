@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Plugin for Alcatel M3, M5 and M7 in version SIP 2.13.02.",
     "description_fr": "Greffon pour Alcatel M3, M5 et M7 en version SIP 2.13.02.",
     "capabilities": {

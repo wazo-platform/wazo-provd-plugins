@@ -4,7 +4,7 @@
 <AUTOUPDATE_CONFIG_MODULE>
 <Download_Username></Download_Username>
 <Download_Password></Download_Password>
-<Download_Server_IP>{{ ip }}</Download_Server_IP>
+<Download_Server_IP>{{ XX_server_url }}</Download_Server_IP>
 <Config_File_Name>Fanvil/$mac.cfg</Config_File_Name>
 <Config_File_Key></Config_File_Key>
 <Common_Cfg_File_Key></Common_Cfg_File_Key>
