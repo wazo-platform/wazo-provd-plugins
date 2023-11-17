@@ -500,7 +500,7 @@ class BaseYealinkPlugin(StandardPlugin):
             plugins.add_wazo_phoned_user_service_url(raw_config, 'yealink', service)
 
     def _add_server_url(self, raw_config):
-        if 'http_base_url' in raw_config:
+        if raw_config.get('http_base_url'):
             _, _, remaining_url = raw_config['http_base_url'].partition('://')
             raw_config['XX_server_url'] = raw_config['http_base_url']
             raw_config['XX_server_url_without_scheme'] = remaining_url
