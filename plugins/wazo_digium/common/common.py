@@ -149,11 +149,12 @@ class BaseDigiumPlugin(StandardPlugin):
             raise Exception('MAC address needed to configure device')
 
     def _get_main_proxy_ip(self, raw_config):
-        if raw_config['sip_lines']:
-            line_no = min(int(x) for x in list(raw_config['sip_lines']))
-            line_no = str(line_no)
-            return raw_config['sip_lines'][line_no]['proxy_ip']
-        return raw_config['ip']
+        if not raw_config['sip_lines']:
+            raise Exception('Device need to have at least one line')
+
+        line_no = min(int(x) for x in list(raw_config['sip_lines']))
+        line_no = str(line_no)
+        return raw_config['sip_lines'][line_no]['proxy_ip']
 
     def _add_server_url(self, raw_config):
         if raw_config.get('http_base_url'):

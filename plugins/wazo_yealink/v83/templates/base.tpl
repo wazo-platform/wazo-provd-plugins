@@ -21,7 +21,9 @@ distinctive_ring_tones.alert_info.7.ringer = 7
 distinctive_ring_tones.alert_info.8.ringer = 8
 
 features.caller_name_type_on_dialing = 1
-features.action_uri_limit_ip = {{ ip }}
+{% for line_no, line in XX_sip_lines.items() if line -%}
+features.action_uri_limit_ip = {{ line['proxy_ip'] }}
+{% endfor -%}
 features.show_action_uri_option = 0
 
 local_time.date_format = 2
