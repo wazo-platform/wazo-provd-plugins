@@ -1,8 +1,6 @@
 # Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import os
-
 common_globals = {}
 execfile_('common.py', common_globals)
 
@@ -121,13 +119,4 @@ class YealinkPlugin(common_globals['BaseYealinkPlugin']):
     # Yealink plugin specific stuff
 
     _COMMON_FILES = COMMON_FILES
-
-    def configure_common(self, raw_config):
-        super().configure_common(raw_config)
-        for dect_info in COMMON_FILES_DECT:
-            tpl = self._tpl_helper.get_template(f'common/{dect_info["tpl_filename"]}')
-            dst = os.path.join(self._tftpboot_dir, dect_info['filename'])
-            raw_config['XX_handsets_fw'] = dect_info['handsets_fw']
-            raw_config['XX_fw_filename'] = dect_info['fw_filename']
-
-            self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
+    _COMMON_FILES_DECT = COMMON_FILES_DECT
