@@ -370,6 +370,14 @@ class BaseYealinkPlugin(StandardPlugin):
             raw_config['XX_fw_filename'] = fw_filename
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
+        for dect_info in self._COMMON_FILES_DECT:
+            tpl = self._tpl_helper.get_template(f'common/{dect_info["tpl_filename"]}')
+            dst = os.path.join(self._tftpboot_dir, dect_info['filename'])
+            raw_config['XX_handsets_fw'] = dect_info['handsets_fw']
+            raw_config['XX_fw_filename'] = dect_info['fw_filename']
+
+            self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
+
     def _update_sip_lines(self, raw_config):
         for line_no, line in raw_config['sip_lines'].items():
             # set line number
