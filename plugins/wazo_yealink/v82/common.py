@@ -98,11 +98,15 @@ class BaseYealinkHTTPDeviceInfoExtractor:
 
 
 class BaseYealinkPgAssociator(BasePgAssociator):
-    def __init__(self, model_versions):
-        # model_versions is a dictionary which keys are model IDs and values
-        # are version IDs.
+    def __init__(self, model_info):
+        # model_info is a dictionary which keys are model IDs and values
+        # are dictionaries with all info for this model, including version
         super().__init__()
-        self._model_versions = model_versions
+        self._model_info = model_info
+        self._model_versions = self._model_versions_from_info(model_info)
+
+    def _model_versions_from_info(self, model_info: dict) -> dict:
+        return {model: info['version'] for model, info in model_info.items()}
 
     def _do_associate(
         self, vendor: str, model: str | None, version: str | None
@@ -356,14 +360,6 @@ class BaseYealinkPlugin(StandardPlugin):
 
     http_dev_info_extractor = BaseYealinkHTTPDeviceInfoExtractor()
 
-    def configure_common(self, raw_config):
-        self._add_server_url(raw_config)
-        for filename, fw_filename, tpl_filename in self._COMMON_FILES:
-            tpl = self._tpl_helper.get_template(f'common/{tpl_filename}')
-            dst = os.path.join(self._tftpboot_dir, filename)
-            raw_config['XX_fw_filename'] = fw_filename
-            self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
-
     def _update_sip_lines(self, raw_config):
         for line_no, line in raw_config['sip_lines'].items():
             # set line number
@@ -470,6 +466,19 @@ class BaseYealinkPlugin(StandardPlugin):
             raw_config['XX_server_url_without_scheme'] = base_url
             raw_config['XX_server_url'] = f"http://{base_url}"
 
+    def _add_firmware_url(self, device, raw_config):
+        device_model = device.get('model')
+        if not device_model:
+            logger.warning('the device has no model')
+            return
+
+        model_info = self._MODEL_INFO.get(device.get('model'))
+        if not model_info:
+            logger.warning('no model information for "%s"', device_model)
+            return
+
+        raw_config['XX_fw_filename'] = model_info['firmware']
+
     def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
         formatted_mac = format_mac(device['mac'], separator='')
@@ -497,6 +506,7 @@ class BaseYealinkPlugin(StandardPlugin):
         self._add_xx_sip_lines(device, raw_config)
         self._add_xivo_phonebook_url(raw_config)
         self._add_server_url(raw_config)
+        self._add_firmware_url(device, raw_config)
         raw_config['XX_options'] = device.get('options', {})
 
         path = os.path.join(self._tftpboot_dir, filename)
