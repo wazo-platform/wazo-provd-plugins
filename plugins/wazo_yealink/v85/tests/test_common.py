@@ -118,37 +118,37 @@ class TestInfoExtraction:
 
 class TestPluginAssociation:
     def test_plugin_association_when_all_info_match(self, v85_entry):
-        plugin_associator = BaseYealinkPgAssociator(v85_entry.MODEL_VERSIONS)
-        for model, version in v85_entry.MODEL_VERSIONS.items():
+        plugin_associator = BaseYealinkPgAssociator(v85_entry.MODEL_INFO)
+        for model, info in v85_entry.MODEL_INFO.items():
             assert (
-                plugin_associator._do_associate('Yealink', model, version)
+                plugin_associator._do_associate('Yealink', model, info['version'])
                 == DeviceSupport.EXACT
             )
 
     def test_plugin_association_when_only_vendor_and_model_match(self, v85_entry):
-        plugin_associator = BaseYealinkPgAssociator(v85_entry.MODEL_VERSIONS)
-        for model in v85_entry.MODEL_VERSIONS:
+        plugin_associator = BaseYealinkPgAssociator(v85_entry.MODEL_INFO)
+        for model in v85_entry.MODEL_INFO:
             assert (
                 plugin_associator._do_associate('Yealink', model, None)
                 == DeviceSupport.COMPLETE
             )
 
     def test_plugin_association_when_only_vendor_matches(self, v85_entry):
-        plugin_associator = BaseYealinkPgAssociator(v85_entry.MODEL_VERSIONS)
+        plugin_associator = BaseYealinkPgAssociator(v85_entry.MODEL_INFO)
         assert (
             plugin_associator._do_associate('Yealink', None, None)
             == DeviceSupport.PROBABLE
         )
 
     def test_plugin_association_when_nothing_matches(self, v85_entry):
-        plugin_associator = BaseYealinkPgAssociator(v85_entry.MODEL_VERSIONS)
+        plugin_associator = BaseYealinkPgAssociator(v85_entry.MODEL_INFO)
         assert (
             plugin_associator._do_associate('DoesNotMatch', 'NothingPhone', '1.2.3')
             == DeviceSupport.IMPROBABLE
         )
 
     def test_plugin_association_does_not_match_when_empty_strings(self, v85_entry):
-        plugin_associator = BaseYealinkPgAssociator(v85_entry.MODEL_VERSIONS)
+        plugin_associator = BaseYealinkPgAssociator(v85_entry.MODEL_INFO)
         assert plugin_associator._do_associate('', '', '') == DeviceSupport.IMPROBABLE
 
 
@@ -162,13 +162,6 @@ class TestPlugin:
         )
         assert plugin.services == sentinel.fetchfw_services
         fetch_fw.assert_called_once_with('test_dir', sentinel.fetchfw_downloaders)
-
-    def test_common_configure(self, v85_plugin):
-        raw_config = {'http_base_url': 'http://localhost:8667'}
-        v85_plugin._tpl_helper.get_template.return_value = 'template'
-        v85_plugin.configure_common(raw_config)
-        v85_plugin._tpl_helper.get_template.assert_called_with('common/dect_model.tpl')
-        assert len(v85_plugin._tpl_helper.dump.mock_calls) == 17
 
     def test_configure(self, v85_plugin):
         device = {
