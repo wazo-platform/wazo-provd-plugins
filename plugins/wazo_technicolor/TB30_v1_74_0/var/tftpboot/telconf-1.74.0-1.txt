@@ -196,7 +196,7 @@ set ipp_prof 2 aer_hlc_ramp_up_tc     700
 set ipp_prof 2 aer_hlc_power_tc       1
 set ipp_prof 2 aer_hlc_max_siglevel   -21
 set ipp_prof 2 aer_rx_cng disable
-set ipp_prof 2 aer_tx_cng disable 
+set ipp_prof 2 aer_tx_cng disable
 set ipp_prof 2 aer_cng_rx_level -68
 set ipp_prof 2 aer_cng_tx_level -68
 set ipp_prof 2 aer_nlp_linattn_max_erle 24
@@ -240,7 +240,7 @@ set ipp_prof 8 aer_hlc_power_tc       1
 set ipp_prof 8 aer_hlc_max_siglevel   -21
 ;
 set ipp_prof 8 aer_rx_cng disable
-set ipp_prof 8 aer_tx_cng disable 
+set ipp_prof 8 aer_tx_cng disable
 set ipp_prof 8 aer_cng_rx_level -68
 set ipp_prof 8 aer_cng_tx_level -68
 set ipp_prof 8 aer_nlp_linattn_max_erle 18
@@ -902,22 +902,22 @@ set coding 5 valid
 ;==== 6:  L16-256   ====
 ;=========================
 ;# Coding Profile 6 == l16pcm_256 packet time ==> 10 ms
-set coding 6 coding_type   tx     l16pcm_256       
-set coding 6 coding_type   rx     l16pcm_256       
-set coding 6 usage fax                off          
-set coding 6 usage voice              on           
-set coding 6 usage modem              off          
-set coding 6 usage data               off          
-;set coding 6 vif                      2560         
-set coding 6 codec_init_rate_idx      0           
-set coding 6 encap                    rtp          
-set coding 6 vad                      on          
-set coding 6 vad_thresh               32767        
-;set coding 6 min_delay                40           
-;set coding 6 nom_delay                60           
-;set coding 6 max_delay                140          
-set coding 6 dtmf_relay        off           
-set coding 6 ec                       on           
+set coding 6 coding_type   tx     l16pcm_256
+set coding 6 coding_type   rx     l16pcm_256
+set coding 6 usage fax                off
+set coding 6 usage voice              on
+set coding 6 usage modem              off
+set coding 6 usage data               off
+;set coding 6 vif                      2560
+set coding 6 codec_init_rate_idx      0
+set coding 6 encap                    rtp
+set coding 6 vad                      on
+set coding 6 vad_thresh               32767
+;set coding 6 min_delay                40
+;set coding 6 nom_delay                60
+;set coding 6 max_delay                140
+set coding 6 dtmf_relay        off
+set coding 6 ec                       on
 ;set coding 6 ec_tail                  8
 set coding 6 ec_nl                   on
 set coding 6 lec_tail                 10
@@ -996,7 +996,7 @@ set sec_prof 0 cipher aes_cm_128
 set sec_prof 0 mac hmac_sha1_32
 set sec_prof 0 priority 255
 set sec_prof 0 rtcp off
-set sec_prof 0 kdr_offer 24 
+set sec_prof 0 kdr_offer 24
 ;
 ;###############################
 ;####        tcid           ####

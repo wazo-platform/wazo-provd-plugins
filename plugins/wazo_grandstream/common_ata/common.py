@@ -3,16 +3,16 @@
 from __future__ import annotations
 
 import logging
-import re
 import os.path
+import re
 
 from provd import synchronize
 from provd.devices.config import RawConfigError
-from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
+from provd.devices.ident import RequestType
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
-from provd.devices.ident import RequestType
 from provd.util import format_mac, norm_mac
 from twisted.internet import defer
 

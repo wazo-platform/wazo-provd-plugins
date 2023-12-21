@@ -26,11 +26,11 @@ import os.path
 import re
 
 from provd.devices.config import RawConfigError
+from provd.devices.ident import RequestType
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper
-from provd.util import is_normed_uuid, norm_uuid
 from provd.servers.http_site import Request
-from provd.devices.ident import RequestType
+from provd.util import is_normed_uuid, norm_uuid
 from twisted.internet import defer
 from twisted.web.resource import Resource
 

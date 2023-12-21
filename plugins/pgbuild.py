@@ -16,15 +16,16 @@ import shutil
 import tarfile
 import traceback
 from argparse import ArgumentParser
+from collections.abc import Sequence
 from itertools import zip_longest
 from pathlib import Path
 from subprocess import check_call
 from sys import exit, stderr
-from typing import Any, TYPE_CHECKING, Sequence
+from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
-    from typing import TypedDict, Literal
-    from collections.abc import Iterable, Callable
+    from collections.abc import Callable, Iterable
+    from typing import Literal, TypedDict
 
     PhoneTypes = Literal[
         'ata',

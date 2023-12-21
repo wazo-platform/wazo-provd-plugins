@@ -86,7 +86,7 @@ set ipp_prof 6 aer_eq rx disable
 ;  set ipp_prof 6 aer_eq rx enable
 ;  maximum Rx equalizer gain = 4.04dB
 ;  aer_eq_params update at 2007/05/15
-;  set ipp_prof 6 aer_eq_params rx 2048 -4052 5876 -5741 5001 -2678 1042 0 0 32767 -23879 24947 -9937 227 419 73 0 0 15552 -13790 -16086 18714 -3840 -1978 8099 907 -7577 0 0 0 0 0 0 0 0 0 0 0 -6 2 0 10 
+;  set ipp_prof 6 aer_eq_params rx 2048 -4052 5876 -5741 5001 -2678 1042 0 0 32767 -23879 24947 -9937 227 419 73 0 0 15552 -13790 -16086 18714 -3840 -1978 8099 907 -7577 0 0 0 0 0 0 0 0 0 0 0 -6 2 0 10
 
 set ipp_prof  6 aer_hlc                enable
 set ipp_prof  6 aer_hlc_ramp_down_tc   10
@@ -140,7 +140,7 @@ set ipp_prof 2 aer_hlc_ramp_up_tc     700
 set ipp_prof 2 aer_hlc_power_tc       1
 set ipp_prof 2 aer_hlc_max_siglevel   -21
 set ipp_prof 2 aer_rx_cng disable
-set ipp_prof 2 aer_tx_cng disable 
+set ipp_prof 2 aer_tx_cng disable
 set ipp_prof 2 aer_cng_rx_level -68
 set ipp_prof 2 aer_cng_tx_level -68
 set ipp_prof 2 aer_nlp_linattn_max_erle 18
@@ -166,16 +166,16 @@ set ipp_prof 8 aer_tx_ag_chg_synch_delay         44
 set ipp_prof 8 aer_rx_ag_chg_synch_delay         26
 set ipp_prof 8 aer_tx_ag_chg_settling_period      4
 set ipp_prof 8 aer_rx_linear_threshold        30000
-              
+
 set ipp_prof 8 aer_hlc                enable
 set ipp_prof 8 aer_hlc_ramp_down_tc   10
 set ipp_prof 8 aer_hlc_ramp_up_tc     700
 set ipp_prof 8 aer_hlc_power_tc       1
 set ipp_prof 8 aer_hlc_max_siglevel   -21
 
-set ipp_prof 8 
+set ipp_prof 8
 set ipp_prof 8 aer_rx_cng disable
-set ipp_prof 8 aer_tx_cng disable 
+set ipp_prof 8 aer_tx_cng disable
 set ipp_prof 8 aer_cng_rx_level -68
 set ipp_prof 8 aer_cng_tx_level -68
 set ipp_prof 8 aer_nlp_linattn_max_erle 18
@@ -188,10 +188,10 @@ set ipp_prof 8 aer_nlp_tx_linattn_max   12
 set ipp_prof 8 aer_duplex_stabilizer enable
 ; aer_eq_params update at 2007/05/17
 set ipp_prof  8 aer_eq rx disable
-;set ipp_prof  8 aer_eq_params rx 32767 -1 0 -1 0 0 0 0 0 32767 19749 21732 -9919 933 0 0 0 0 -1229 -13626 -32768 -6770 -10474 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -2 0 0 3 
+;set ipp_prof  8 aer_eq_params rx 32767 -1 0 -1 0 0 0 0 0 32767 19749 21732 -9919 933 0 0 0 0 -1229 -13626 -32768 -6770 -10474 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -2 0 0 3
 ;
 set ipp_prof  8 aer_eq tx disable
-;set ipp_prof  8 aer_eq_params tx 32767 8385 21809 3109 4239 0 0 0 0 32767 -21333 10117 -3255 805 0 0 0 0 16875 -32768 9235 32767 -26112 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2 -3 1 0 5 
+;set ipp_prof  8 aer_eq_params tx 32767 8385 21809 3109 4239 0 0 0 0 32767 -21333 10117 -3255 805 0 0 0 0 16875 -32768 9235 32767 -26112 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2 -3 1 0 5
 
 
 set ipp_prof 17 copyof 2
@@ -766,22 +766,22 @@ set coding 5 valid
 ;=========================
 ;# Coding Profile 6 == l16pcm_256 packet time ==> 10 ms
 
-set coding 6 coding_type   tx     l16pcm_256       
-set coding 6 coding_type   rx     l16pcm_256       
-set coding 6 usage fax                off          
-set coding 6 usage voice              on           
-set coding 6 usage modem              off          
-set coding 6 usage data               off          
-;set coding 6 vif                      2560         
-set coding 6 codec_init_rate_idx      0           
-set coding 6 encap                    rtp          
-set coding 6 vad                      on          
-set coding 6 vad_thresh               32767        
-;set coding 6 min_delay                40           
-;set coding 6 nom_delay                60           
-;set coding 6 max_delay                140          
-set coding 6 dtmf_relay        off           
-set coding 6 ec                       on           
+set coding 6 coding_type   tx     l16pcm_256
+set coding 6 coding_type   rx     l16pcm_256
+set coding 6 usage fax                off
+set coding 6 usage voice              on
+set coding 6 usage modem              off
+set coding 6 usage data               off
+;set coding 6 vif                      2560
+set coding 6 codec_init_rate_idx      0
+set coding 6 encap                    rtp
+set coding 6 vad                      on
+set coding 6 vad_thresh               32767
+;set coding 6 min_delay                40
+;set coding 6 nom_delay                60
+;set coding 6 max_delay                140
+set coding 6 dtmf_relay        off
+set coding 6 ec                       on
 ;set coding 6 ec_tail                  8
 set coding 6 ec_nl                   on
 set coding 6 lec_tail                 10
@@ -865,7 +865,7 @@ set sec_prof 0 cipher aes_cm_128
 set sec_prof 0 mac hmac_sha1_32
 set sec_prof 0 priority 255
 set sec_prof 0 rtcp off
-set sec_prof 0 kdr_offer 24 
+set sec_prof 0 kdr_offer 24
 ;
 ;###############################
 ;####        tcid           ####

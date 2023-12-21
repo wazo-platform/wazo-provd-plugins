@@ -10,4 +10,3 @@
       command: jq . plugins/_build/testing/plugins.db
       args:
         chdir: "{{ zuul.project.src_dir }}"
-

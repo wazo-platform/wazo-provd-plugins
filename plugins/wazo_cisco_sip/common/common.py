@@ -6,19 +6,16 @@ import logging
 import os
 import re
 
-from provd import plugins
-from provd import tzinform
+from provd import plugins, synchronize, tzinform
 from provd.devices.config import RawConfigError
+from provd.devices.ident import DHCPRequest, RequestType
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
-from provd.servers.tftp.service import TFTPFileService
-from provd import synchronize
-from provd.util import norm_mac, format_mac
-from provd.devices.ident import RequestType, DHCPRequest
 from provd.servers.tftp.packet import Packet
-from provd.servers.tftp.service import TFTPRequest
+from provd.servers.tftp.service import TFTPFileService, TFTPRequest
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-cisco-sip')

@@ -2,22 +2,20 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any
 import logging
 import math
 import os.path
 import re
+from typing import TYPE_CHECKING, Any
 
-from provd import plugins
-from provd import synchronize
-from provd import tzinform
+from provd import plugins, synchronize, tzinform
 from provd.devices.config import RawConfigError
-from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
+from provd.devices.ident import RequestType
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
-from provd.devices.ident import RequestType
-from provd.util import norm_mac, format_mac
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-fanvil')
