@@ -27,13 +27,12 @@ import urllib.request
 from operator import itemgetter
 
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import BasePgAssociator, DeviceSupport
-from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
-from provd.servers.tftp.service import TFTPFileService
-from provd.services import JsonConfigPersister, PersistentConfigureServiceDecorator
-from provd.util import norm_mac, format_mac
 from provd.devices.ident import RequestType
-from provd.servers.tftp.service import TFTPRequest
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
+from provd.servers.tftp.service import TFTPFileService, TFTPRequest
+from provd.services import JsonConfigPersister, PersistentConfigureServiceDecorator
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-zenitel')

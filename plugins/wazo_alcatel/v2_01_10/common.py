@@ -20,7 +20,6 @@ Support the IP Touch 4008EE and 4018EE.
 """
 from __future__ import annotations
 
-
 import calendar
 import datetime
 import logging
@@ -30,14 +29,13 @@ import time
 
 from provd import tzinform
 from provd.devices.config import RawConfigError
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
-from provd.devices.pgasso import BasePgAssociator, DeviceSupport
-from provd.servers.http import HTTPNoListingFileService
-from provd.servers.tftp.service import TFTPFileService
-from provd.util import norm_mac, format_mac
-from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
-from provd.servers.tftp.service import TFTPRequest
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
+from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.servers.tftp.service import TFTPFileService, TFTPRequest
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer, threads
 
 logger = logging.getLogger('plugin.wazo-alcatel')

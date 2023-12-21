@@ -25,12 +25,12 @@ b-c: cp * i18n/
 
 [file_6930-fw]
 filename: 58015373rev035101018sp16930.zip
-url: 
+url:
 size: 44968084
 sha1sum: 8ad19807445ac1af8f44002388c054a8bc8755b6
 
 [file_lang]
 filename: 58015373rev035101018sp16930lang.zip
-url:                                                                                                  
+url:
 size: 44968084
 sha1sum: 8ad19807445ac1af8f44002388c054a8bc8755b6

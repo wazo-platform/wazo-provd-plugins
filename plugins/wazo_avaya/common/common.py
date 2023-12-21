@@ -20,21 +20,19 @@ Support the 1220IP and 1230IP.
 """
 from __future__ import annotations
 
-import re
-import os
 import logging
+import os
+import re
 
-from provd import tzinform
-from provd import synchronize
+from provd import synchronize, tzinform
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import BasePgAssociator, DeviceSupport
-from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
-from provd.servers.http import HTTPNoListingFileService
-from provd.servers.tftp.service import TFTPFileService
-from provd.util import format_mac, norm_mac
-from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
-from provd.servers.tftp.service import TFTPRequest
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
+from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.servers.tftp.service import TFTPFileService, TFTPRequest
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-avaya')

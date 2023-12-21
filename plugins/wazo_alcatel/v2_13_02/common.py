@@ -5,24 +5,17 @@ from __future__ import annotations
 import logging
 import os.path
 import re
-
-from provd import plugins
-from provd import tzinform
-from provd import synchronize
-from provd.devices.config import RawConfigError
-from provd.devices.pgasso import BasePgAssociator, DeviceSupport
-from provd.plugins import (
-    FetchfwPluginHelper,
-    StandardPlugin,
-    TemplatePluginHelper,
-)
-from provd.servers.http_site import Request
-from provd.servers.http import HTTPNoListingFileService
-from provd.util import format_mac, norm_mac
-from provd.devices.ident import RequestType
-from twisted.internet import defer
-
 from typing import Any
+
+from provd import plugins, synchronize, tzinform
+from provd.devices.config import RawConfigError
+from provd.devices.ident import RequestType
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
+from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.util import format_mac, norm_mac
+from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-alcatel')
 

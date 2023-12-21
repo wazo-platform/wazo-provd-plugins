@@ -6,26 +6,20 @@ Common code shared by the various wazo-gigaset plugins.
 """
 from __future__ import annotations
 
-import os
 import logging
+import os
 import re
 import time
+from typing import Any
 
-from provd import (
-    plugins,
-    synchronize,
-    tzinform,
-)
-
+from provd import plugins, synchronize, tzinform
+from provd.devices.ident import RequestType
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
-from provd.plugins import StandardPlugin, TemplatePluginHelper, FetchfwPluginHelper
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
 from provd.servers.http import HTTPNoListingFileService
 from provd.servers.http_site import Request
-from provd.devices.ident import RequestType
-from provd.util import norm_mac, format_mac
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer
-
-from typing import Any
 
 logger = logging.getLogger('plugin.wazo-gigaset')
 

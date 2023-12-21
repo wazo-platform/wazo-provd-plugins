@@ -1,14 +1,13 @@
 from __future__ import annotations
 
 import importlib.util
+from collections.abc import Generator
 from os.path import basename
 from types import ModuleType
-from typing import Any, Generator, Callable
+from typing import Any, Callable
 
 import pytest
-
 from pytest import FixtureRequest
-
 
 ModuleInitializer = Callable[[str, dict[str, Any]], ModuleType]
 

@@ -5,5 +5,5 @@
 <TEMPLATE MATCH="......." Timeout="1" User="Phone"></TEMPLATE>
 <TEMPLATE MATCH=".........." Timeout="1" User="Phone"></TEMPLATE>
 <TEMPLATE MATCH="1.........." Timeout="1" User="Phone"></TEMPLATE>
-<TEMPLATE MATCH="*" Timeout="15"></TEMPLATE> 
-</DIALTEMPLATE> 
+<TEMPLATE MATCH="*" Timeout="15"></TEMPLATE>
+</DIALTEMPLATE>

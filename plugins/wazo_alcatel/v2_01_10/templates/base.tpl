@@ -50,4 +50,3 @@ dtmf_type={{ XX_dtmf_type }}
 [appl]
 admin_password={{ admin_password }}
 {{ XX_fkeys }}
-

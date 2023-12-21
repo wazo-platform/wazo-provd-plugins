@@ -156,4 +156,3 @@ port fxs 0 {{ line['fxs_port_no'] }}
   bind interface IF_FXS{{ line['fxs_port_no'] }} switch
   no shutdown
 {% endfor %}
-

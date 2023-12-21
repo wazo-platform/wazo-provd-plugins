@@ -10,7 +10,7 @@ description: Firmware for Grandstream GXP1165
 description_fr: Micrologiciel pour Grandstream GXP1165
 version: 1.0.8.9
 files: GXP116X-fw
-install: grandstream-fw 
+install: grandstream-fw
 
 [pkg_GXP1400-fw]
 description: Firmware for Grandstream GXP1400
@@ -50,4 +50,3 @@ sha1sum: 3bde6a4ad7176b4028ff0f9002b2374f85539533
 url: http://firmware.grandstream.com/Release_GXP1450_1.0.8.9.zip
 size: 7026846
 sha1sum: 2e5d0e4f94274ba6e764f6812ac4cc22d821e147
-

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <settings>
-	
+
     <!-- Configuration du DM et Réseau  -->
-    <setting id="LocalEnetcfgDmUrl" value="{{ XX_server_url }}" override="true"/> 
+    <setting id="LocalEnetcfgDmUrl" value="{{ XX_server_url }}" override="true"/>
     <setting id="EdsEnetcfgDmUrl" value="{{ XX_server_url }}" override="true"/>
 {% if vlan_enabled -%}
-    <setting id="LocalEnetcfgVlanEnabl" value="true" override="true"/> 
+    <setting id="LocalEnetcfgVlanEnabl" value="true" override="true"/>
     <setting id="LocalEnetcfgVlan" value="{{ vlan_id }}" override="true"/>
 {% else -%}
     <setting id="LocalEnetcfgVlanEnabl" value="false" override="true"/>
     <setting id="LocalEnetcfgVlan" value="" override="true"/>
-{% endif -%} 
+{% endif -%}
 
     <!-- SIP mode -->
     <setting id="SipAppRunMode" value="0" override="true"/>
     <setting id="LocalAdmcfgRunMode" value="SIP" override="true"/>
-	
+
     <!-- Phone Parameter	-->
     <setting id="DialingRuleCountryCode" value="*FR" override="true"/>
     <setting id="DialingRuleAreaCode" value="*{{ timezone }}" override="true"/>

@@ -47,7 +47,7 @@
 	{% endif %}
 
 		<phoneLabel>{{ sip_lines[line_nb]['number'] }}</phoneLabel>
-	
+
 		<sipCallFeatures>
 			<cnfJoinEnabled>true</cnfJoinEnabled>
 			<rfc2543Hold>false</rfc2543Hold>
@@ -98,7 +98,7 @@
 			</line>
 		</sipLines>
 		<dialTemplate>dialplan.xml</dialTemplate>
-		
+
 	</sipProfile>
 	{% if XX_locale -%}
         <userLocale>

@@ -10,7 +10,7 @@ description: Firmware for Grandstream GXP1105
 description_fr: Micrologiciel pour Grandstream GXP1105
 version: 1.0.8.6
 files: GXP110X-fw
-install: grandstream-fw 
+install: grandstream-fw
 
 [pkg_GXP2100-fw]
 description: Firmware for Grandstream GXP2100
@@ -24,7 +24,7 @@ description: Firmware for Grandstream GXP2110
 description_fr: Micrologiciel pour Grandstream GXP2110
 version: 1.0.8.6
 files: GXP2110-fw
-install: grandstream-fw 
+install: grandstream-fw
 
 [pkg_GXP2120-fw]
 description: Firmware for Grandstream GXP2120
@@ -38,7 +38,7 @@ description: Firmware for Grandstream GXP2124
 description_fr: Micrologiciel pour Grandstream GXP2124
 version: 1.0.8.6
 files: GXP2124-fw
-install: grandstream-fw 
+install: grandstream-fw
 
 [install_grandstream-fw]
 a-b: unzip $FILE1
@@ -68,4 +68,3 @@ sha1sum: 555169dbfe75d953bb8d4d706d41fbefcdf26f39
 url: http://www.grandstream.com/sites/default/files/Resources/Release_GXP2124_1.0.8.6.zip
 size: 7065756
 sha1sum: 3ad9dffb5f29a9ca1b24d52f55aaf93476a649d0
-

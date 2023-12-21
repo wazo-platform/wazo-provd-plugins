@@ -15,19 +15,19 @@
 from __future__ import annotations
 
 import logging
-import re
 import os.path
+import re
 from operator import itemgetter
 from xml.sax.saxutils import escape
-from provd import tzinform
-from provd import synchronize
+
+from provd import synchronize, tzinform
 from provd.devices.config import RawConfigError
-from provd.devices.pgasso import BasePgAssociator, DeviceSupport
-from provd.plugins import StandardPlugin, FetchfwPluginHelper, TemplatePluginHelper
-from provd.servers.http import HTTPNoListingFileService
-from provd.util import norm_mac, format_mac
-from provd.servers.http_site import Request
 from provd.devices.ident import RequestType
+from provd.devices.pgasso import BasePgAssociator, DeviceSupport
+from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
+from provd.servers.http import HTTPNoListingFileService
+from provd.servers.http_site import Request
+from provd.util import format_mac, norm_mac
 from twisted.internet import defer
 
 logger = logging.getLogger('plugin.wazo-polycom')

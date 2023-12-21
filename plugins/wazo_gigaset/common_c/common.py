@@ -28,11 +28,11 @@ from configparser import RawConfigParser
 from contextlib import closing
 from io import StringIO
 
+from provd.devices.ident import DHCPRequest, RequestType
 from provd.devices.pgasso import BasePgAssociator, DeviceSupport
 from provd.plugins import StandardPlugin, TemplatePluginHelper
 from provd.util import norm_mac
 from twisted.internet import defer, threads
-from provd.devices.ident import RequestType, DHCPRequest
 
 logger = logging.getLogger('plugin.wazo-gigaset')
 

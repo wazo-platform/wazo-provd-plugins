@@ -1,4 +1,4 @@
-# Copyright (C) 2010-2014 Avencall
+# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@
 from provd.plugins import Plugin
 from provd.servers.tftp.service import TFTPNullService
 from twisted.web.resource import NoResource
-
 
 _MSG = 'Null plugin always reject requests'
 

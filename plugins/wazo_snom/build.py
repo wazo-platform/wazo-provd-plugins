@@ -8,9 +8,9 @@ Depends on the following external programs:
 """
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Callable
-from subprocess import check_call
 from pathlib import Path
+from subprocess import check_call
+from typing import TYPE_CHECKING, Callable
 
 if TYPE_CHECKING:
 

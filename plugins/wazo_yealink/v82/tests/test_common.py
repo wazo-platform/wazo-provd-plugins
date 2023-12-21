@@ -1,17 +1,14 @@
 # Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from textwrap import dedent
-import pytest
-
 from unittest.mock import MagicMock, patch, sentinel
+
+import pytest
 from provd.devices.config import RawConfigError
 from provd.devices.pgasso import DeviceSupport
 from provd.tzinform import TimezoneNotFoundError
 
-from ..common import (
-    BaseYealinkHTTPDeviceInfoExtractor,
-    BaseYealinkPgAssociator,
-)
+from ..common import BaseYealinkHTTPDeviceInfoExtractor, BaseYealinkPgAssociator
 
 BASE_TEST_LINES = """\
 linekey.1.type = 13
