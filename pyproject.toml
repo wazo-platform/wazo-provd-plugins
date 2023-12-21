@@ -25,3 +25,6 @@ exclude_lines = [
     "FileNotFoundError = OSError",
 ]
 
+[tool.isort]
+profile = "black"
+py_version = 39
