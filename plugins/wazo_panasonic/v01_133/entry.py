@@ -13,14 +13,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 from __future__ import annotations
-from typing import TYPE_CHECKING
+
 import logging
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import TypedDict
+
     from ..common.common import (  # noqa: F401
-        BasePanasonicPlugin,
         BasePanasonicPgAssociator,
+        BasePanasonicPlugin,
     )
 
     class CommonGlobalsDict(TypedDict):

@@ -36,13 +36,15 @@ The following Polycom phones are supported:
 
 # XXX version for VVX1500 is 3.2.4.0244, not 3.2.4.0267.
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import TypedDict
+
     from ..common_v3.common import (  # noqa: F401
-        BasePolycomPlugin,
         BasePolycomPgAssociator,
+        BasePolycomPlugin,
     )
 
     class CommonGlobalsDict(TypedDict):

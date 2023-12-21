@@ -13,11 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import TypedDict
-    from ..common.common import BaseCiscoPlugin, BaseCiscoPgAssociator  # noqa: F401
+
+    from ..common.common import BaseCiscoPgAssociator, BaseCiscoPlugin  # noqa: F401
 
     class CommonGlobalsDict(TypedDict):
         BaseCiscoPlugin: type[BaseCiscoPlugin]

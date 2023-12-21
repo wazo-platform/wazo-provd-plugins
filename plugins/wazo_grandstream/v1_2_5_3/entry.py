@@ -1,7 +1,6 @@
 # Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
-from typing import TYPE_CHECKING
 
 import binascii
 import os.path
@@ -9,14 +8,16 @@ import struct
 import urllib.error
 import urllib.parse
 import urllib.request
+from typing import TYPE_CHECKING
 
 from provd.util import format_mac
 
 if TYPE_CHECKING:
     from typing import TypedDict
+
     from ..common.common import (  # noqa: F401
-        BaseGrandstreamPlugin,
         BaseGrandstreamPgAssociator,
+        BaseGrandstreamPlugin,
     )
 
     class CommonGlobalsDict(TypedDict):

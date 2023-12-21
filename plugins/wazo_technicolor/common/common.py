@@ -20,6 +20,7 @@ from twisted.internet import defer
 
 if TYPE_CHECKING:
     from typing import TypedDict
+
     from provd.tzinform import Time
 
     # TODO these types should be defined in provd

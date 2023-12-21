@@ -20,10 +20,11 @@
 
 # provisioning url to use in Jitsi: http://<provd_ip:provd_port>/jitsi?uuid=${uuid}
 from __future__ import annotations
-from typing import Any
+
 import logging
 import os.path
 import re
+from typing import Any
 
 from provd.devices.config import RawConfigError
 from provd.devices.ident import RequestType

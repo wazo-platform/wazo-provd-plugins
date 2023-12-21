@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2022 Avencall
+# Copyright 2012-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,9 +17,9 @@
 #  -rsync
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Callable
-from subprocess import check_call
 import os
+from subprocess import check_call
+from typing import TYPE_CHECKING, Callable
 
 if TYPE_CHECKING:
 

@@ -24,13 +24,15 @@ The following Polycom phones are supported:
 
 """
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import TypedDict
+
     from ..common_v3.common import (  # noqa: F401
-        BasePolycomPlugin,
         BasePolycomPgAssociator,
+        BasePolycomPlugin,
     )
 
     class CommonGlobalsDict(TypedDict):

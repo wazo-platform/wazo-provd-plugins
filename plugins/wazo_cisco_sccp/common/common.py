@@ -20,7 +20,7 @@ from provd.util import format_mac, norm_mac
 from twisted.internet import defer
 
 if TYPE_CHECKING:
-    from typing import TypedDict, Literal
+    from typing import Literal, TypedDict
 
     class DevInfoDict(TypedDict, total=False):
         vendor: Literal['Cisco']

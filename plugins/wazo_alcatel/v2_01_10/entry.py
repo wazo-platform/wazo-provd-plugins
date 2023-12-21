@@ -21,12 +21,14 @@ The following Alcatel "extended edition" phones are supported:
 
 """
 from __future__ import annotations
-from typing import TYPE_CHECKING
+
 import logging
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import TypedDict
-    from .common import BaseAlcatelPlugin, BaseAlcatelPgAssociator  # noqa: F401
+
+    from .common import BaseAlcatelPgAssociator, BaseAlcatelPlugin  # noqa: F401
 
     class CommonGlobalsDict(TypedDict):
         BaseAlcatelPlugin: type[BaseAlcatelPlugin]

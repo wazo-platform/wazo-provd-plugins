@@ -1,11 +1,13 @@
 # Copyright 2018-2023 The Wazo Authors (see AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import TypedDict
-    from ..common.common import BaseSnomPlugin, BaseSnomPgAssociator  # noqa: F401
+
+    from ..common.common import BaseSnomPgAssociator, BaseSnomPlugin  # noqa: F401
 
     class CommonGlobalsDict(TypedDict):
         BaseSnomPlugin: type[BaseSnomPlugin]

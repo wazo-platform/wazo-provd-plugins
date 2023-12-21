@@ -18,10 +18,12 @@
 """
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import TypedDict
+
     from ..common.common import BaseZenitelPlugin  # noqa: F401
 
     class CommonGlobalsDict(TypedDict):

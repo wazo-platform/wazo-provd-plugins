@@ -15,11 +15,13 @@
 
 """Plugin for Avaya 1220IP and 1230IP using the 04.01.13.00 SIP software."""
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import TypedDict
-    from ..common.common import BaseAvayaPlugin, BaseAvayaPgAssociator  # noqa: F401
+
+    from ..common.common import BaseAvayaPgAssociator, BaseAvayaPlugin  # noqa: F401
 
     class CommonGlobalsDict(TypedDict):
         BaseAvayaPlugin: type[BaseAvayaPlugin]

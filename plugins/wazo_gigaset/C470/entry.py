@@ -23,16 +23,18 @@ The following Gigaset phones are supported:
 
 """
 from __future__ import annotations
-from typing import TYPE_CHECKING
+
 import logging
 import re
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import TypedDict
+
     from ..common_c.common import (  # noqa: F401
-        BaseGigasetRequestBroker,
-        BaseGigasetPlugin,
         BaseGigasetPgAssociator,
+        BaseGigasetPlugin,
+        BaseGigasetRequestBroker,
         GigasetInteractionError,
     )
 
