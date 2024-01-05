@@ -48,5 +48,5 @@ repos:
           - "types-setuptools"
           - "types-werkzeug"
           - "pytest"
-          - "twisted==18.9.0"
+          - "twisted==20.3.0"
           - "https://github.com/wazo-platform/wazo-provd/archive/master.zip"
