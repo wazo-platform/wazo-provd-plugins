@@ -8,5 +8,4 @@
           - jq
           - make
           - rsync
-          - gcc
         state: present
