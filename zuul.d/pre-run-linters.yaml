@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: Install requirements
+      become: yes
+      apt:
+        name:
+          - gcc
+        state: present

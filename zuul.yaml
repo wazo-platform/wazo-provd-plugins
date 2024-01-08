@@ -1,20 +1,28 @@
 - job:
-    parent: wazo-tox
     name: wazo-provd-plugins
+    parent: wazo-tox
     description: Build Provd plugins
     pre-run: zuul.d/pre-run.yaml
     run: zuul.d/run.yaml
     post-run: zuul.d/post-run.yaml
 
+- job:
+    name: wazo-tox-linters-310-provd
+    parent: tox-linters
+    pre-run: zuul.d/pre-run-linters.yaml
+
 - project:
     templates:
       - wazo-tox-py39
-      - wazo-tox-linters-310
     wazo-check:
       jobs:
+        - wazo-tox-linters-310-provd:
+            nodeset: pod-python-310
         - wazo-provd-plugins:
             nodeset: vm-debian-11-m1s
     wazo-gate:
       jobs:
+        - wazo-tox-linters-310-provd:
+            nodeset: pod-python-310
         - wazo-provd-plugins:
             nodeset: vm-debian-11-m1s
