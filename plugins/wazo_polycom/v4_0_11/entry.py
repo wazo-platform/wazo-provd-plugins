@@ -1,4 +1,4 @@
-# Copyright (C) 2014-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,9 +12,22 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+from __future__ import annotations
 
-common_globals = {}
-execfile_('common.py', common_globals)
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import TypedDict
+
+    from ..common.common import BasePolycomPgAssociator, BasePolycomPlugin  # noqa: F401
+
+    class CommonGlobalsDict(TypedDict):
+        BasePolycomPlugin: type[BasePolycomPlugin]
+        BasePolycomPgAssociator: type[BasePolycomPgAssociator]
+
+
+common_globals: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 MODELS = [
     'SPIP321',
@@ -31,7 +44,7 @@ MODELS = [
 ]
 
 
-class PolycomPlugin(common_globals['BasePolycomPlugin']):
+class PolycomPlugin(common_globals['BasePolycomPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     pg_associator = common_globals['BasePolycomPgAssociator'](MODELS)

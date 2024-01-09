@@ -7,7 +7,7 @@ repos:
         # Required to make flake8 read fdrom pyproject.toml for now :(
         additional_dependencies: ["flake8-pyproject"]
   - repo: https://github.com/psf/black
-    rev: 23.10.1
+    rev: 23.12.0
     hooks:
       - id: black
 # Automatically update to modern python (as modern as allowed by your Python version)
@@ -34,3 +34,19 @@ repos:
     rev: 1.1.1
     hooks:
       - id: wazo-copyright-check
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.7.1
+    hooks:
+      - id: mypy
+        language_version: "3.10"
+        additional_dependencies:
+          - "types-flask"
+          - "types-psycopg2"
+          - "types-pytz"
+          - "types-pyyaml"
+          - "types-requests"
+          - "types-setuptools"
+          - "types-werkzeug"
+          - "pytest"
+          - "twisted==20.3.0"
+          - "https://github.com/wazo-platform/wazo-provd/archive/master.zip"

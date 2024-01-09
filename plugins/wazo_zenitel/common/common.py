@@ -213,14 +213,14 @@ class BaseZenitelPlugin(StandardPlugin):
             # ignore
             logger.info('error while removing file: %s', e)
 
-    def _do_synchronize(self, ip):
+    def _do_synchronize(self, ip: str):
         # XXX could use twisted native http stuff one day...
         url = f"http://{ip}/goform/zForm_send_cmd"
         pwd_manager = urllib.request.HTTPPasswordMgrWithDefaultRealm()
         pwd_manager.add_password(None, url, 'admin', 'alphaadmin')
         basic_auth_handler = urllib.request.HTTPBasicAuthHandler(pwd_manager)
         opener = urllib.request.build_opener(basic_auth_handler)
-        fobj = opener.open(url, 'message=Reboot', 15)
+        fobj = opener.open(url, b'message=Reboot', 15)
         try:
             fobj.read()
         except Exception as e:

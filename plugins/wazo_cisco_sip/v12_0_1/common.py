@@ -6,6 +6,7 @@ import logging
 import os
 import re
 from operator import itemgetter
+from typing import Any
 from xml.sax.saxutils import escape
 
 from provd import plugins, synchronize, tzinform
@@ -59,7 +60,7 @@ class BaseCiscoHTTPDeviceInfoExtractor:
     def _do_extract(self, request: Request):
         ua = request.getHeader(b'User-Agent')
         if ua:
-            dev_info = {}
+            dev_info: dict[str, Any] = {}
             self._extract_from_ua(ua.decode('ascii'), dev_info)
             if dev_info:
                 dev_info['vendor'] = 'Cisco'

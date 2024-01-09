@@ -440,8 +440,8 @@ class BaseYealinkPlugin(StandardPlugin):
         else:
             xx_sip_lines = {}
             for line_no in range(1, sip_accounts + 1):
-                line_no = str(line_no)
-                xx_sip_lines[line_no] = sip_lines.get(line_no)
+                str_line_no = str(line_no)
+                xx_sip_lines[str_line_no] = sip_lines.get(str_line_no)
         raw_config['XX_sip_lines'] = xx_sip_lines
 
     def _get_sip_accounts(self, model):

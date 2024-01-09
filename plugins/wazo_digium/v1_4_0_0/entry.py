@@ -1,4 +1,4 @@
-# Copyright (C) 2014-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,15 +12,28 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+from __future__ import annotations
 
-common = {}
-execfile_('common.py', common)
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import TypedDict
+
+    from ..common.common import BaseDigiumPlugin, DigiumPgAssociator  # noqa: F401
+
+    class CommonGlobalsDict(TypedDict):
+        BaseDigiumPlugin: type[BaseDigiumPlugin]
+        DigiumPgAssociator: type[DigiumPgAssociator]
+
+
+common: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common)  # type: ignore[name-defined]
 
 
 VERSION = '1.4.0.0.57389'
 
 
-class DigiumPlugin(common['BaseDigiumPlugin']):
+class DigiumPlugin(common['BaseDigiumPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     pg_associator = common['DigiumPgAssociator'](VERSION)

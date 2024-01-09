@@ -152,8 +152,7 @@ class BaseDigiumPlugin(StandardPlugin):
             raise Exception('Device need to have at least one line')
 
         line_no = min(int(x) for x in list(raw_config['sip_lines']))
-        line_no = str(line_no)
-        return raw_config['sip_lines'][line_no]['proxy_ip']
+        return raw_config['sip_lines'][str(line_no)]['proxy_ip']
 
     def _add_server_url(self, raw_config):
         if raw_config.get('http_base_url'):

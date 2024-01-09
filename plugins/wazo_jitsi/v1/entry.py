@@ -24,6 +24,7 @@ from __future__ import annotations
 import logging
 import os.path
 import re
+from typing import Any
 
 from provd.devices.config import RawConfigError
 from provd.devices.ident import RequestType
@@ -78,7 +79,7 @@ class JitsiPgAssociator(BasePgAssociator):
         self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == model == 'Jitsi':
-            if version.startswith('1.'):
+            if version and version.startswith('1.'):
                 return DeviceSupport.EXACT
             return DeviceSupport.PROBABLE
         return DeviceSupport.IMPROBABLE

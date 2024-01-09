@@ -258,6 +258,7 @@ class BaseAastraPlugin(StandardPlugin):
         },
     }
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.cfg$')
+    _tftpboot_dir: str
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         super().__init__(app, plugin_dir, gen_cfg, spec_cfg)

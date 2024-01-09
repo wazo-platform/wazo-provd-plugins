@@ -53,6 +53,7 @@ class BasePattonHTTPDeviceInfoExtractor:
                 'version': raw_version,
                 'mac': mac,
             }
+        return None
 
 
 class BasePattonPgAssociator(BasePgAssociator):

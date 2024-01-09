@@ -78,7 +78,7 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
     ) -> DeviceSupport:
         if vendor == 'Grandstream':
             if model in self._models:
-                if version.startswith(self._version):
+                if version and version.startswith(self._version):
                     return DeviceSupport.EXACT
                 return DeviceSupport.COMPLETE
             return DeviceSupport.UNKNOWN
@@ -100,6 +100,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         'tcp': 'TCP',
         'tls': 'TlsOrTcp',
     }
+    _tftpboot_dir: str
 
     def __init__(self, app, plugin_dir, gen_cfg, spec_cfg):
         super().__init__(app, plugin_dir, gen_cfg, spec_cfg)

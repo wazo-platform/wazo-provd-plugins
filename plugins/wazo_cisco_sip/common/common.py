@@ -190,7 +190,7 @@ _ZONE_MAP = {
 
 
 def _gen_tz_map():
-    result = {}
+    result: dict[int, dict[str | None, str]] = {}
     for tz_name, param_value in _ZONE_MAP.items():
         tzinfo = tzinform.get_timezone_info(tz_name)
         inner_dict = result.setdefault(tzinfo['utcoffset'].as_minutes, {})

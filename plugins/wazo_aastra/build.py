@@ -12,14 +12,13 @@ if TYPE_CHECKING:
 
     def target(
         target_id: str, plugin_id: str, std_dirs: bool = True
-    ) -> Callable[[str], None]:
-        """
-        The `target` method is injected in `exec` call by the build script.
+    ) -> Callable[[Callable[[str], None]], None]:
+        """The `target` method is injected in `exec` call by the build script."""
 
-        Any error raised will be considered a build error
-        Current directory is the one of the bplugin script and `pg_dir` is initially empty
-        """
-        return lambda x: None
+        def wrapper(func: Callable[[str], None]) -> None:
+            pass
+
+        return wrapper
 
 
 @target('3.3.1-SP4', 'wazo-aastra-3.3.1-SP4')

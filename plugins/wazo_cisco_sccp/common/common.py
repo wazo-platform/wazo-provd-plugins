@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 import os
 import re
+from typing import TYPE_CHECKING
 
 from provd import plugins, tzinform
 from provd.devices.config import RawConfigError
@@ -18,11 +19,20 @@ from provd.servers.tftp.service import TFTPFileService, TFTPRequest
 from provd.util import format_mac, norm_mac
 from twisted.internet import defer
 
+if TYPE_CHECKING:
+    from typing import Literal, TypedDict
+
+    class DevInfoDict(TypedDict, total=False):
+        vendor: Literal['Cisco']
+        model: str
+        mac: str
+
+
 logger = logging.getLogger('plugin.wazo-cisco')
 
 
 class BaseCiscoPgAssociator(BasePgAssociator):
-    def __init__(self, models):
+    def __init__(self, models) -> None:
         self._models = models
 
     def _do_associate(
@@ -44,15 +54,18 @@ class BaseCiscoPgAssociator(BasePgAssociator):
 class BaseCiscoDHCPDeviceInfoExtractor:
     _VDI_REGEX = re.compile(r'\bPhone (?:79(\d\d)|CP-79(\d\d)G|CP-(\d\d\d\d))')
 
-    def extract(self, request: DHCPRequest, request_type: RequestType):
+    def extract(
+        self, request: DHCPRequest, request_type: RequestType
+    ) -> defer.Deferred:
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: DHCPRequest):
+    def _do_extract(self, request: DHCPRequest) -> DevInfoDict | None:
         options = request['options']
         if 60 in options:
             return self._extract_from_vdi(options[60])
+        return None
 
-    def _extract_from_vdi(self, vdi: str):
+    def _extract_from_vdi(self, vdi: str) -> DevInfoDict | None:
         # Vendor class identifier:
         #   "Cisco Systems, Inc." (Cisco 6901 9.1.2/9.2.1)
         #   "Cisco Systems, Inc. IP Phone 7912" (Cisco 7912 9.0.3)
@@ -63,7 +76,7 @@ class BaseCiscoDHCPDeviceInfoExtractor:
         #   "Cisco Systems, Inc. IP Phone CP-9951\x00" (Cisco 9951 9.1.2)
         #   "Cisco Systems Inc. Wireless Phone 7921"
         if vdi.startswith('Cisco Systems'):
-            dev_info = {'vendor': 'Cisco'}
+            dev_info: DevInfoDict = {'vendor': 'Cisco'}
             m = self._VDI_REGEX.search(vdi)
             if m:
                 _7900_modelnum = m.group(1) or m.group(2)
@@ -77,6 +90,7 @@ class BaseCiscoDHCPDeviceInfoExtractor:
                     model_num = m.group(3)
                     dev_info['model'] = model_num
             return dev_info
+        return None
 
 
 class BaseCiscoHTTPDeviceInfoExtractor:
@@ -88,22 +102,23 @@ class BaseCiscoHTTPDeviceInfoExtractor:
         re.compile(r'^/ITLFile\.tlv$'),
     ]
 
-    def extract(self, request: Request, request_type: RequestType):
+    def extract(self, request: Request, request_type: RequestType) -> defer.Deferred:
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: Request):
+    def _do_extract(self, request: Request) -> DevInfoDict | None:
         if self._CIPC_REGEX.match(request.path.decode('ascii')):
             return {'vendor': 'Cisco', 'model': 'CIPC'}
         for regex in self._FILENAME_REGEXES:
             m = regex.match(request.path.decode('ascii'))
             if m:
-                dev_info = {'vendor': 'Cisco'}
+                dev_info: DevInfoDict = {'vendor': 'Cisco'}
                 if m.lastindex == 1:
                     try:
                         dev_info['mac'] = norm_mac(m.group(1))
                     except ValueError as e:
                         logger.warning('Could not normalize MAC address: %s', e)
                 return dev_info
+        return None
 
 
 class BaseCiscoTFTPDeviceInfoExtractor:
@@ -118,7 +133,7 @@ class BaseCiscoTFTPDeviceInfoExtractor:
     def extract(self, request: TFTPRequest, request_type: RequestType):
         return defer.succeed(self._do_extract(request))
 
-    def _do_extract(self, request: TFTPRequest):
+    def _do_extract(self, request: TFTPRequest) -> DevInfoDict | None:
         packet: Packet = request['packet']
         filename = packet['filename'].decode('ascii')
         if self._CIPC_REGEX.match(filename):
@@ -127,8 +142,9 @@ class BaseCiscoTFTPDeviceInfoExtractor:
             m = regex.match(filename)
             if m:
                 return {'vendor': 'Cisco'}
+        return None
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return object.__repr__(self) + "-SCCP"
 
 
@@ -142,8 +158,8 @@ _ZONE_MAP = {
     'Etc/GMT+7': 'US Mountain Standard Time',
     'US/Central': 'Central Standard/Daylight Time',
     'America/Mexico_City': 'Mexico Standard/Daylight Time',
-    #    '': u'Canada Central Standard Time',
-    #    '': u'SA Pacific Standard Time',
+    #    '': 'Canada Central Standard Time',
+    #    '': 'SA Pacific Standard Time',
     'US/Eastern': 'Eastern Standard/Daylight Time',
     'Etc/GMT+5': 'US Eastern Standard Time',
     'Canada/Atlantic': 'Atlantic Standard/Daylight Time',
@@ -155,42 +171,42 @@ _ZONE_MAP = {
     'Atlantic/Azores': 'Azores Standard/Daylight Time',
     'Europe/London': 'GMT Standard/Daylight Time',
     'Etc/GMT': 'Greenwich Standard Time',
-    #    'Europe/Belfast': u'W. Europe Standard/Daylight Time',
-    #    '': u'GTB Standard/Daylight Time',
+    #    'Europe/Belfast': 'W. Europe Standard/Daylight Time',
+    #    '': 'GTB Standard/Daylight Time',
     'Egypt': 'Egypt Standard/Daylight Time',
     'Europe/Athens': 'E. Europe Standard/Daylight Time',
-    #    'Europe/Rome': u'Romance Standard/Daylight Time',
+    #    'Europe/Rome': 'Romance Standard/Daylight Time',
     'Europe/Paris': 'Central Europe Standard/Daylight Time',
     'Africa/Johannesburg': 'South Africa Standard Time ',
     'Asia/Jerusalem': 'Jerusalem Standard/Daylight Time',
     'Asia/Riyadh': 'Saudi Arabia Standard Time',
     'Europe/Moscow': 'Russian Standard/Daylight Time',  # Russia covers 8 time zones.
     'Iran': 'Iran Standard/Daylight Time',
-    #    '': u'Caucasus Standard/Daylight Time',
+    #    '': 'Caucasus Standard/Daylight Time',
     'Etc/GMT-4': 'Arabian Standard Time',
     'Asia/Kabul': 'Afghanistan Standard Time ',
     'Etc/GMT-5': 'West Asia Standard Time',
-    #    '': u'Ekaterinburg Standard Time',
+    #    '': 'Ekaterinburg Standard Time',
     'Asia/Calcutta': 'India Standard Time',
     'Etc/GMT-6': 'Central Asia Standard Time ',
     'Etc/GMT-7': 'SE Asia Standard Time',
-    #    '': u'China Standard/Daylight Time', # China doesn't observe DST since 1991
+    #    '': 'China Standard/Daylight Time', # China doesn't observe DST since 1991
     'Asia/Taipei': 'Taipei Standard Time',
     'Asia/Tokyo': 'Tokyo Standard Time',
     'Australia/ACT': 'Cen. Australia Standard/Daylight Time',
     'Australia/Brisbane': 'AUS Central Standard Time',
-    #    '': u'E. Australia Standard Time',
-    #    '': u'AUS Eastern Standard/Daylight Time',
+    #    '': 'E. Australia Standard Time',
+    #    '': 'AUS Eastern Standard/Daylight Time',
     'Etc/GMT-10': 'West Pacific Standard Time',
     'Australia/Tasmania': 'Tasmania Standard/Daylight Time',
     'Etc/GMT-11': 'Central Pacific Standard Time',
     'Etc/GMT-12': 'Fiji Standard Time',
-    #    '': u'New Zealand Standard/Daylight Time',
+    #    '': 'New Zealand Standard/Daylight Time',
 }
 
 
-def _gen_tz_map():
-    result = {}
+def _gen_tz_map() -> dict[int, dict[str | None, str]]:
+    result: dict[int, dict[str | None, str]] = {}
     for tz_name, param_value in _ZONE_MAP.items():
         tzinfo = tzinform.get_timezone_info(tz_name)
         inner_dict = result.setdefault(tzinfo['utcoffset'].as_minutes, {})

@@ -127,7 +127,7 @@ class BaseAlcatelPlugin(StandardPlugin):
     _SIP_TRANSPORT = {'udp': '1', 'tcp': '2'}
     _SIP_DTMF_MODE = {'RTP-in-band': '1', 'RTP-out-of-band': '0', 'SIP-INFO': '2'}
     # XXX this is confused, but I don't care that much right now
-    _TONE_COUNTRY = [
+    _TONE_COUNTRY: list[list[str]] = [
         # "English" tone country
         ['US', 'CA'],
         # "French" tone country
@@ -248,18 +248,17 @@ class BaseAlcatelPlugin(StandardPlugin):
                 except Exception:
                     logger.error('Error while formating tzinfo', exc_info=True)
 
-    def _add_tone_country(self, raw_config):
+    def _add_tone_country(self, raw_config) -> None:
         if 'locale' in raw_config:
             try:
-                country = raw_config['locale'].rsplit('_', 1)[1]
+                country: str = raw_config['locale'].rsplit('_', 1)[1]
             except IndexError:
                 # locale is not of the form 'xx_XX'
-                pass
-            else:
-                for i, countries in enumerate(self._TONE_COUNTRY):
-                    if country in countries:
-                        raw_config['XX_tone_country'] = str(i)
-                        break
+                return None
+            for i, countries in enumerate(self._TONE_COUNTRY):
+                if country in countries:
+                    raw_config['XX_tone_country'] = str(i)
+                    break
 
     def _add_dtmf_type(self, raw_config):
         if 'sip_dtmf_mode' in raw_config:

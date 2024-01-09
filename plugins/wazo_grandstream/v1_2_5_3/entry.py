@@ -1,5 +1,6 @@
 # Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import binascii
 import os.path
@@ -7,11 +8,25 @@ import struct
 import urllib.error
 import urllib.parse
 import urllib.request
+from typing import TYPE_CHECKING
 
 from provd.util import format_mac
 
-common = {}
-execfile_('common.py', common)
+if TYPE_CHECKING:
+    from typing import TypedDict
+
+    from ..common.common import (  # noqa: F401
+        BaseGrandstreamPgAssociator,
+        BaseGrandstreamPlugin,
+    )
+
+    class CommonGlobalsDict(TypedDict):
+        BaseGrandstreamPlugin: type[BaseGrandstreamPlugin]
+        BaseGrandstreamPgAssociator: type[BaseGrandstreamPgAssociator]
+
+
+common: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common)  # type: ignore[name-defined]
 
 MODELS = [
     'GXP2000',
@@ -19,7 +34,7 @@ MODELS = [
 VERSION = '1.2.5.3'
 
 
-class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
+class GrandstreamPlugin(common['BaseGrandstreamPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     _MODELS = MODELS
@@ -44,41 +59,39 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
         path = os.path.join(self._tftpboot_dir, filename)
         rawdata = self._tpl_helper.render(tpl, raw_config, self._ENCODING)
 
-        # Convert to binary
+        # Prepare binary data
         config = ''
         for line in rawdata.splitlines():
-            cleanedLine = line.strip()
-            if cleanedLine:  # is not empty
-                items = [x.strip() for x in cleanedLine.split('=')]
+            cleaned_line = line.strip()
+            if cleaned_line:  # is not empty
+                items = [x.strip() for x in cleaned_line.split('=')]
                 if len(items) == 2:  # Only interested in pairs (name=value)
-                    config += items[0] + '=' + urllib.parse.quote(items[1]) + '&'
+                    config += f'{items[0]}={urllib.parse.quote(items[1])}&'
 
         formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
-        short_mac = formatted_mac[2:6]
-        config = config + 'gnkey=' + short_mac
-        # Convert to ascii
-        config = str(config)
+        config += f'gnkey={formatted_mac[2:6]}'
+        b_config = config.encode('ascii')
 
         # Convert mac to binary
         b_mac = binascii.unhexlify(formatted_mac)
 
         # Make sure length is even bytewise
-        if len(config) % 2 != 0:
-            config += '\x00'
+        if len(b_config) % 2 != 0:
+            b_config += b'\x00'
 
         # Make sure length is even wordwise
-        if len(config) % 4 != 0:
-            config += "\x00\x00"
+        if len(b_config) % 4 != 0:
+            b_config += b'\x00\x00'
 
-        config_length = 8 + (len(config) / 2)
+        config_length = 8 + (len(b_config) / 2)
 
         b_length = struct.pack('>L', config_length)
 
-        b_crlf = '\x0D\x0A\x0D\x0A'
+        b_crlf = b'\x0D\x0A\x0D\x0A'
         b_string = b_length
         b_string += b_mac
         b_string += b_crlf
-        b_string += config
+        b_string += b_config
 
         # check sum ...
         csv = 0
@@ -90,11 +103,11 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):
         csv &= 0xFFFF
         b_checksum = struct.pack('>H', csv)
 
-        b_config = b_length + b_checksum + b_mac + b_crlf + config
+        b_full_config = b_length + b_checksum + b_mac + b_crlf + b_config
 
         # Write config file
         with open(path, 'w') as content_file:
-            content_file.write(b_config)
+            content_file.write(b_full_config.decode('ascii'))
 
-    def _format_line(self, code, value):
+    def _format_line(self, code: str, value: str) -> str:
         return f'    {code} = {value}'

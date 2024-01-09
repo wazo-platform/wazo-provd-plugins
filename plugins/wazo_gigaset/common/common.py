@@ -10,6 +10,7 @@ import datetime
 import logging
 import os
 import re
+from typing import Any
 
 from provd import plugins, synchronize, tzinform
 from provd.devices.ident import DHCPRequest, RequestType

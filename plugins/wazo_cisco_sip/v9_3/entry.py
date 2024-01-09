@@ -1,4 +1,4 @@
-# Copyright (C) 2018-2022 Wazo Authors
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,9 +12,22 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+from __future__ import annotations
 
-common = {}
-execfile_('common.py', common)
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import TypedDict
+
+    from ..common.common import BaseCiscoPgAssociator, BaseCiscoSipPlugin  # noqa: F401
+
+    class CommonGlobalsDict(TypedDict):
+        BaseCiscoSipPlugin: type[BaseCiscoSipPlugin]
+        BaseCiscoPgAssociator: type[BaseCiscoPgAssociator]
+
+
+common: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
+execfile_('common.py', common)  # type: ignore[name-defined]
 
 MODELS = [
     '8941',
@@ -22,7 +35,7 @@ MODELS = [
 ]
 
 
-class CiscoSipPlugin(common['BaseCiscoSipPlugin']):
+class CiscoSipPlugin(common['BaseCiscoSipPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     pg_associator = common['BaseCiscoPgAssociator'](MODELS)
