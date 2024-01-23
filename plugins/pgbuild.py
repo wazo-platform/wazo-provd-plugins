@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""
-Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
-SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
+"""
 A tool for building provd plugins.
 """
 from __future__ import annotations
@@ -70,6 +70,7 @@ BUILD_FILENAME = 'build.py'
 DB_FILENAME = 'plugins.db'
 PLUGIN_INFO_FILENAME = 'plugin-info'
 PACKAGE_SUFFIX = '.tar.bz2'
+WAZO_TEST_PLUGINS = 'wazo-test-plugins'
 
 
 def cmp(a: Any, b: Any) -> bool:
@@ -193,6 +194,9 @@ def build_op(
         # build all plugins from all build plugins
         build_plugin_targets = {}
         for build_plugin_path in _list_build_plugins(build_dir):
+            plugin_name = os.path.basename(build_plugin_path)
+            if not opts.include_test_plugins and plugin_name == WAZO_TEST_PLUGINS:
+                continue
             build_plugin_targets[build_plugin_path] = None
 
     # create build plugin objects and check targets
@@ -486,6 +490,12 @@ def main() -> None:
         action='store_true',
         dest='pretty_db',
         help='pretty format the DB file',
+    )
+    parser.add_argument(
+        '--include-test-plugins',
+        action='store_true',
+        dest='include_test_plugins',
+        help='include wazo_test_plugins',
     )
 
     options, args = parser.parse_known_args()
