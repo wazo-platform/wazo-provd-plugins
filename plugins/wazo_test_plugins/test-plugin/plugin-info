@@ -1,0 +1,9 @@
+{
+    "version": "1.0",
+    "description": "Plugin that has no other purpose than to test provd features.",
+    "capabilities": {
+        "*, *, *": {
+            "sip.lines": 0
+        }
+    }
+}

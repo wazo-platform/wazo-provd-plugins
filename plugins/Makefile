@@ -31,6 +31,16 @@ build :
 	chmod +r $(TESTING_PATH)/*
 
 
+.PHONY : build-tests
+build-tests :
+	rm -rf $(PLUGINS_PATH) $(TESTING_PATH)
+	mkdir -p $(PLUGINS_PATH) $(TESTING_PATH)
+	$(PGBUILD) --build --source . --destination $(PLUGINS_PATH) wazo_test_plugins
+	$(PGBUILD) --package --source $(PLUGINS_PATH) --destination $(TESTING_PATH)
+	$(PGBUILD) --db --source $(TESTING_PATH) --destination $(TESTING_PATH)
+	chmod +r $(TESTING_PATH)/*
+
+
 .PHONY : upload
 upload : build
 	rsync -v --recursive --times --delete $(TESTING_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_TESTING_PATH)
