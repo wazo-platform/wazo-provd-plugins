@@ -1,0 +1,17 @@
+[pkg_testpkg]
+description: Test package
+description_fr: Paquet de test
+version: 1.0
+files: testfile
+install: test
+
+
+[install_test]
+a-b: include test-file.txt
+
+
+[file_testfile]
+filename: test-file.txt
+url:
+size: 57
+sha1sum: 2c0811f4abad4613d739b4f7e1b8015280a90903
