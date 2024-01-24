@@ -10,3 +10,8 @@ from subprocess import check_call
 @target('test-plugin', 'test-plugin')
 def build_test_plugin(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', 'test-plugin/', path])
+
+
+@target('test-plugin-legacy-import', 'test-plugin-legacy-import')
+def build_test_plugin_legacy_import(path):
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'test-plugin-legacy-import/', path])
