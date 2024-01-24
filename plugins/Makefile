@@ -19,67 +19,67 @@ REMOTE_FIRMWARES_PATH := /var/www/provd/firmwares
 .PHONY : download
 download :
 	mkdir -p $(TESTING_PATH)
-	rsync -v -rt --delete $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_TESTING_PATH)/ $(TESTING_PATH)
+	rsync -v --recurse --times --delete $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_TESTING_PATH)/ $(TESTING_PATH)
 
 .PHONY : build
 build :
 	rm -rf $(PLUGINS_PATH) $(TESTING_PATH)
 	mkdir -p $(PLUGINS_PATH) $(TESTING_PATH)
-	$(PGBUILD) -B -s . -d $(PLUGINS_PATH)
-	$(PGBUILD) -P -s $(PLUGINS_PATH) -d $(TESTING_PATH)
-	$(PGBUILD) -D -s $(TESTING_PATH) -d $(TESTING_PATH)
+	$(PGBUILD) --build --source . --destination $(PLUGINS_PATH)
+	$(PGBUILD) --package --source $(PLUGINS_PATH) --destination $(TESTING_PATH)
+	$(PGBUILD) --db --source $(TESTING_PATH) --destination $(TESTING_PATH)
 	chmod +r $(TESTING_PATH)/*
 
 
 .PHONY : upload
 upload : build
-	rsync -v -rt --delete $(TESTING_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_TESTING_PATH)
+	rsync -v --recurse --times --delete $(TESTING_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_TESTING_PATH)
 
 
 .PHONY : download-stable
 download-stable :
 	mkdir -p $(STABLE_PATH)
-	rsync -v -rt --delete $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_STABLE_PATH)/ $(STABLE_PATH)
+	rsync -v --recurse --times --delete $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_STABLE_PATH)/ $(STABLE_PATH)
 
 
 .PHONY : build-stable
 build-stable :
-	$(PGBUILD) -D -s $(STABLE_PATH) -d $(STABLE_PATH)
+	$(PGBUILD) --db --source $(STABLE_PATH) --destination $(STABLE_PATH)
 	chmod +r $(STABLE_PATH)/*
 
 
 .PHONY : upload-stable
 upload-stable : build-stable
-	rsync -v -rt --delete $(STABLE_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_STABLE_PATH)
+	rsync -v --recurse --times --delete $(STABLE_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_STABLE_PATH)
 
 
 .PHONY : download-archive
 download-archive :
 	mkdir -p $(ARCHIVE_PATH)
-	rsync -v -rt --delete $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_ARCHIVE_PATH)/ $(ARCHIVE_PATH)
+	rsync -v --recurse --times --delete $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_ARCHIVE_PATH)/ $(ARCHIVE_PATH)
 
 
 .PHONY : build-archive
 build-archive :
-	$(PGBUILD) -D -s $(ARCHIVE_PATH) -d $(ARCHIVE_PATH)
+	$(PGBUILD) --db --source $(ARCHIVE_PATH) --destination $(ARCHIVE_PATH)
 	chmod +r $(ARCHIVE_PATH)/*
 
 
 .PHONY : upload-archive
 upload-archive : build-archive
-	rsync -v -rt --delete $(ARCHIVE_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_ARCHIVE_PATH)
+	rsync -v --recurse --times --delete $(ARCHIVE_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_ARCHIVE_PATH)
 
 
 .PHONY : download-firmwares
 download-firmwares :
 	mkdir -p $(FIRMWARES_PATH)
-	rsync -v -rt $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_FIRMWARES_PATH)/ $(FIRMWARES_PATH)
+	rsync -v --recurse --times $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_FIRMWARES_PATH)/ $(FIRMWARES_PATH)
 
 
 .PHONY : upload-firmwares
 upload-firmwares:
 	chmod +r $(FIRMWARES_PATH)/*
-	rsync -v -rt $(FIRMWARES_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_FIRMWARES_PATH)
+	rsync -v --recurse --times $(FIRMWARES_PATH)/ $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_FIRMWARES_PATH)
 
 
 .PHONY : clean
