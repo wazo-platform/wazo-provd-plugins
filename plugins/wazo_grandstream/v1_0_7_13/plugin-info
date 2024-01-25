@@ -1,5 +1,5 @@
 {
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Plugin for Grandstream GXP1610, GXP1615, GXP1620, GXP1625, GXP1628 and GXP1630 in version 1.0.7.13.",
     "description_fr": "Greffon pour Grandstream GXP1610, GXP1615, GXP1620, GXP1625, GXP1628 and GXP1630 en version 1.0.7.13.",
     "vendor" : "Grandstream",

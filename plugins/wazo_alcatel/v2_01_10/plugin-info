@@ -1,5 +1,5 @@
 {
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Plugin for Alcatel IP Touch 4008 and 4018 \"extended edition\" in version SIP 2.01.10.",
     "description_fr": "Greffon pour Alcatel IP Touch 4008 and 4018 \"extended edition\" en version SIP 2.01.10.",
     "capabilities": {

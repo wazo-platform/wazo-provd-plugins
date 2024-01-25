@@ -1,5 +1,5 @@
 {
-    "version": "0.7.7",
+    "version": "0.7.8",
     "description": "Plugin for Snom D3x5, D71x, D7x5, D86x in version 10.1.159.12",
     "description_fr": "Greffon pour Snom D3x5, D71x, D7x5, D86x en version 10.1.159.12",
     "capabilities": {

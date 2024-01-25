@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Plugin for Aastra/Mitel 6930 in version 5.1.0",
     "description_fr": "Greffon pour Aastra/Mitel 6930 en version 5.1.0",
     "capabilities": {
