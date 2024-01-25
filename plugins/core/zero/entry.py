@@ -1,9 +1,15 @@
-# Copyright (C) 2010-2022 Avencall
+# Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from provd.plugins import StandardPlugin
-from provd.servers.http import HTTPNoListingFileService
-from provd.servers.tftp.service import TFTPFileService
+try:
+    from wazo_provd.plugins import StandardPlugin
+    from wazo_provd.servers.http import HTTPNoListingFileService
+    from wazo_provd.servers.tftp.service import TFTPFileService
+except ImportError:
+    # Compatibility with wazo < 24.02
+    from provd.plugins import StandardPlugin
+    from provd.servers.http import HTTPNoListingFileService
+    from provd.servers.tftp.service import TFTPFileService
 
 
 class ZeroPlugin(StandardPlugin):
