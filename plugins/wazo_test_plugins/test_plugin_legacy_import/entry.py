@@ -9,7 +9,7 @@ from twisted.web.resource import NoResource
 _MSG = 'Test plugin with legacy import for integration tests'
 
 
-class TestPlugin(StandardPlugin):
+class TestPluginLegacyImport(StandardPlugin):
     IS_PLUGIN = True
 
     http_service = NoResource(_MSG)
