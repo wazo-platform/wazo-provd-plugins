@@ -1,21 +1,15 @@
-# Copyright (C) 2010-2022 Avencall
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+# Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-from provd.plugins import StandardPlugin
-from provd.servers.http import HTTPNoListingFileService
-from provd.servers.tftp.service import TFTPFileService
+try:
+    from wazo_provd.plugins import StandardPlugin
+    from wazo_provd.servers.http import HTTPNoListingFileService
+    from wazo_provd.servers.tftp.service import TFTPFileService
+except ImportError:
+    # Compatibility with wazo < 24.02
+    from provd.plugins import StandardPlugin
+    from provd.servers.http import HTTPNoListingFileService
+    from provd.servers.tftp.service import TFTPFileService
 
 
 class ZeroPlugin(StandardPlugin):

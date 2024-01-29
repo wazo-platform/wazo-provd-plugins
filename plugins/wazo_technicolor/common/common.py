@@ -1,4 +1,4 @@
-# Copyright 2011-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
@@ -8,14 +8,30 @@ import re
 import time
 from typing import TYPE_CHECKING
 
-from provd import plugins, synchronize, tzinform
-from provd.devices.config import RawConfigError
-from provd.devices.ident import RequestType
-from provd.devices.pgasso import BasePgAssociator, DeviceSupport
-from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
-from provd.servers.http import HTTPNoListingFileService
-from provd.servers.http_site import Request
-from provd.util import format_mac, norm_mac
+try:
+    from wazo_provd import plugins, synchronize, tzinform
+    from wazo_provd.devices.config import RawConfigError
+    from wazo_provd.devices.ident import RequestType
+    from wazo_provd.devices.pgasso import BasePgAssociator, DeviceSupport
+    from wazo_provd.plugins import (
+        FetchfwPluginHelper,
+        StandardPlugin,
+        TemplatePluginHelper,
+    )
+    from wazo_provd.servers.http import HTTPNoListingFileService
+    from wazo_provd.servers.http_site import Request
+    from wazo_provd.util import format_mac, norm_mac
+except ImportError:
+    # Compatibility with wazo < 24.02
+    from provd import plugins, synchronize, tzinform
+    from provd.devices.config import RawConfigError
+    from provd.devices.ident import RequestType
+    from provd.devices.pgasso import BasePgAssociator, DeviceSupport
+    from provd.plugins import FetchfwPluginHelper, StandardPlugin, TemplatePluginHelper
+    from provd.servers.http import HTTPNoListingFileService
+    from provd.servers.http_site import Request
+    from provd.util import format_mac, norm_mac
+
 from twisted.internet import defer
 
 if TYPE_CHECKING:

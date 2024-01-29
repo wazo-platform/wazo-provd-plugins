@@ -1,5 +1,5 @@
 {
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "Plugin for Cisco 7905G, 7912G, 7920, 7937G, 7940(G) and 7960G in different versions of the SCCP software.<br/> Please see the documentation if you want to install Cisco firmwares.",
     "description_fr": "Greffon pour Cisco 7905G, 7912G, 7920, 7937G, 7940(G) et 7960G en version variées du logiciel SCCP.<br/> Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
     "capabilities": {

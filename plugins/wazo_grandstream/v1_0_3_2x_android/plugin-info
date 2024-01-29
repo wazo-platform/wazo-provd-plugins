@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Plugin for Grandstream GXV3350, GXV3370 and GXV3380 in version 1.0.3.2x-android.",
     "description_fr": "Greffon pour Grandstream GXV3350, GXV3370 et GXV3380 en version 1.0.3.2x-android.",
     "vendor" : "Grandstream",

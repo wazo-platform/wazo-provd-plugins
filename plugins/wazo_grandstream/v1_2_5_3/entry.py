@@ -1,4 +1,4 @@
-# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
@@ -10,7 +10,11 @@ import urllib.parse
 import urllib.request
 from typing import TYPE_CHECKING
 
-from provd.util import format_mac
+try:
+    from wazo_provd.util import format_mac
+except ImportError:
+    # Compatibility with wazo < 24.02
+    from provd.util import format_mac
 
 if TYPE_CHECKING:
     from typing import TypedDict

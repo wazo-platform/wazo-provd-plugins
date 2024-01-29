@@ -1,4 +1,4 @@
-# Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
@@ -6,9 +6,9 @@ from textwrap import dedent
 from unittest.mock import MagicMock, patch, sentinel
 
 import pytest
-from provd.devices.config import RawConfigError
-from provd.devices.pgasso import DeviceSupport
-from provd.tzinform import TimezoneNotFoundError
+from wazo_provd.devices.config import RawConfigError
+from wazo_provd.devices.pgasso import DeviceSupport
+from wazo_provd.tzinform import TimezoneNotFoundError
 
 from ..common import BaseYealinkHTTPDeviceInfoExtractor, BaseYealinkPgAssociator
 
