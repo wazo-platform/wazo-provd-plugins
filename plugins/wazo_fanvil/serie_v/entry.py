@@ -1,4 +1,4 @@
-# Copyright 2010-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
@@ -93,6 +93,7 @@ class FanvilPlugin(common['BaseFanvilPlugin']):  # type: ignore[valid-type,misc]
     _COMMON_FILES = COMMON_FILES
     _MODEL_FIRMWARE_MAPPING = MODEL_FIRMWARE_MAPPING
     _FUNCTION_KEYS_PER_PAGE = FUNCTION_KEYS_PER_PAGE
+    _TOP_FUNCTION_KEYS: dict[str, int] = {}
     _LOCALE = {
         'de_DE': '16',
         'es_ES': '6',
