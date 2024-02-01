@@ -1,5 +1,5 @@
 # Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from provd.plugins import FetchfwPluginHelper, StandardPlugin
 from provd.servers.tftp.service import TFTPNullService
