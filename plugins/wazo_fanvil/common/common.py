@@ -318,7 +318,7 @@ class BaseFanvilPlugin(StandardPlugin):
                 raw_config['XX_timezone'] = self._extract_tzinfo(device, tzinfo)
 
     def _is_new_model(self, device):
-        return self._NEW_MODEL_REGEX.match(device['model']) is not None
+        return self._NEW_MODEL_REGEX.match(device.get('model', '')) is not None
 
     def _add_locale(self, device, raw_config: dict[str, Any]):
         locale = raw_config.get('locale')
@@ -426,7 +426,7 @@ class BaseFanvilPlugin(StandardPlugin):
         exten_pickup_call: str | None = raw_config.get('exten_pickup_call')
         offset = 0 if self._is_new_model(device) else 1
         raw_config['XX_offset'] = offset
-        clean_model_name = device['model'].split('-')[0]
+        clean_model_name = device.get('model', '').split('-')[0]
         top_key_threshold = self._TOP_FUNCTION_KEYS.get(clean_model_name, 0)
         raw_config['XX_top_key_threshold'] = top_key_threshold
         top_keys, bottom_keys = self._split_fkeys(
