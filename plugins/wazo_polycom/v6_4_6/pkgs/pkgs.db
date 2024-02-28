@@ -1,0 +1,17 @@
+[pkg_software]
+description: UC software and language files
+description_fr: Logiciel UC et fichiers de langue
+version: 6.4.6
+files: software
+install: polycom-software
+
+
+[install_polycom-software]
+a-b: unzip $FILE1
+b-c: cp *.ld VVXLocalization ./
+
+
+[file_software]
+url: https://downloads.polycom.com/voice/voip/uc/UC_Software_6_4_6_release_sig_split.zip
+size: 985318661
+sha1sum: 746ff036056fd6beda2788b464839874f0916030
