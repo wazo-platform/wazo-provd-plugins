@@ -1,5 +1,5 @@
 {
-    "version": "0.1.5",
+    "version": "0.1.0",
     "description": "Plugin for Polycom VVX101, VVX150, VVX201, VVX250, VVX301, VVX311, VVX350, VVX401, VVX411, VVX450, VVX501, and VVX601 in version 6.4.6",
     "description_fr": "Greffon pour Polycom VVX101, VVX150, VVX201, VVX250, VVX301, VVX311, VVX350, VVX401, VVX411, VVX450, VVX501, and VVX601 en version 6.4.6",
     "capabilities": {
