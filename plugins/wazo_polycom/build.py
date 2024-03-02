@@ -1,4 +1,4 @@
-# Copyright 2014-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Depends on the following external programs:
@@ -248,6 +248,51 @@ def build_5_9_2(path: str) -> None:
         ]
     )
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v5_9_2/', path])
+
+
+@target('6.4.6', 'wazo-polycom-6.4.6')
+def build_6_4_6(path: str) -> None:
+    check_call(
+        [
+            'rsync',
+            '-rlp',
+            '--exclude',
+            '.*',
+            '--include',
+            '/templates/base.tpl',
+            '--include',
+            '/templates/VVX101.tpl',
+            '--include',
+            '/templates/VVX150.tpl',
+            '--include',
+            '/templates/VVX201.tpl',
+            '--include',
+            '/templates/VVX250.tpl',
+            '--include',
+            '/templates/VVX301.tpl',
+            '--include',
+            '/templates/VVX310.tpl',
+            '--include',
+            '/templates/VVX311.tpl',
+            '--include',
+            '/templates/VVX350.tpl',
+            '--include',
+            '/templates/VVX401.tpl',
+            '--include',
+            '/templates/VVX411.tpl',
+            '--include',
+            '/templates/VVX450.tpl',
+            '--include',
+            '/templates/VVX501.tpl',
+            '--include',
+            '/templates/VVX601.tpl',
+            '--exclude',
+            '/templates/*',
+            'common/',
+            path,
+        ]
+    )
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v6_4_6/', path])
 
 
 @target('3.2.4B', 'wazo-polycom-3.2.4B')

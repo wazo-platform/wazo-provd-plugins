@@ -1,0 +1,115 @@
+{
+    "version": "0.1.0",
+    "description": "Plugin for Polycom VVX101, VVX150, VVX201, VVX250, VVX301, VVX311, VVX350, VVX401, VVX411, VVX450, VVX501, and VVX601 in version 6.4.6",
+    "description_fr": "Greffon pour Polycom VVX101, VVX150, VVX201, VVX250, VVX301, VVX311, VVX350, VVX401, VVX411, VVX450, VVX501, and VVX601 en version 6.4.6",
+    "capabilities": {
+        "Polycom, VVX101, 6.4.6": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX150, 6.4.6": {
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX201, 6.4.6": {
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX250, 6.4.6": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX301, 6.4.6": {
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX311, 6.4.6": {
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX350, 6.4.6": {
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 6,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX401, 6.4.6": {
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX411, 6.4.6": {
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX450, 6.4.6": {
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": true,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX501, 6.4.6": {
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 12,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Polycom, VVX601, 6.4.6": {
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 16,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}
