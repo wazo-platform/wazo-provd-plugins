@@ -1,0 +1,20 @@
+{
+    "version": "1.0.0",
+    "description": "Plugin for Fanvil H2U",
+    "description_fr": "Greffon pour les series H2U",
+    "vendor" : "Fanvil",
+    "vendor.url" : "http://www.fanvil.com",
+    "vendor.description" : "",
+    "vendor.official" : 1,
+    "capabilities": {
+        "Fanvil, H2U, 2.12.0": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 11,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}
