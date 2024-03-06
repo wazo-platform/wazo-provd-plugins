@@ -42,41 +42,41 @@ COMMON_FILES = {
     ),
     'F0V0V6200000.cfg': (
         'V62',
-        'v62-fanvil-release-ff01-5944-2.12.16.4-krnvUT2023-02-01-15.23.52.z',
+        'v62-fanvil-release-ff01-5944-2.12.16.17-krnvUT2023-05-05-18.17.53.z',
         'model-v6x.tpl',
     ),
     'fanvil_v62_hwv1_0.txt': (
         'V62',
-        'v62-fanvil-release-ff01-5944-2.12.16.4-krnvUT2023-02-01-15.23.52.z',
+        'v62-fanvil-release-ff01-5944-2.12.16.17-krnvUT2023-05-05-18.17.53.z',
         'model-v6x.tpl',
     ),
     'F0V0V6400000.cfg': (
         'V64',
-        'v64-fanvil-release-ff01-5922-2.12.16.4-krnvUT2023-02-01-15.09.29.z',
+        'v64-fanvil-release-ff01-5922-2.12.16.17-krnvUT2023-05-05-18.25.33.z',
         'model-v6x.tpl',
     ),
     'fanvil_v64_hwv1_0.txt': (
         'V64',
-        'v64-fanvil-release-ff01-5922-2.12.16.4-krnvUT2023-02-01-15.09.29.z',
+        'v64-fanvil-release-ff01-5922-2.12.16.17-krnvUT2023-05-05-18.25.33.z',
         'model-v6x.tpl',
     ),
     'F0V0V6500000.cfg': (
         'V65',
-        'v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z',
+        'v65-fanvil-release-5924-2.12.16.17-krnvlT2023-05-05-18.09.56.z',
         'model-v6x.tpl',
     ),
     'fanvil_v65_hwv1_0.txt': (
         'V65',
-        'v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z',
+        'v65-fanvil-release-5924-2.12.16.17-krnvlT2023-05-05-18.09.56.z',
         'model-v6x.tpl',
     ),
 }
 
 MODEL_FIRMWARE_MAPPING = {
     'V67': 'v67_fanvil_2.6.6.201_20230202_full.zip',
-    'V65': 'v65-fanvil-release-5924-2.12.16.4-krnvlT2023-02-01-14.54.27.z',
-    'V64': 'v64-fanvil-release-ff01-5922-2.12.16.4-krnvUT2023-02-01-15.09.29.z',
-    'V62': 'v62-fanvil-release-ff01-5944-2.12.16.4-krnvUT2023-02-01-15.23.52.z',
+    'V65': 'v65-fanvil-release-5924-2.12.16.17-krnvlT2023-05-05-18.09.56.z',
+    'V64': 'v64-fanvil-release-ff01-5922-2.12.16.17-krnvUT2023-05-05-18.25.33.z',
+    'V62': 'v62-fanvil-release-ff01-5944-2.12.16.17-krnvUT2023-05-05-18.17.53.z',
 }
 
 FUNCTION_KEYS_PER_PAGE = {
