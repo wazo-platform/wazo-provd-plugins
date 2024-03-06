@@ -1,6 +1,6 @@
 [pkg_X2-fw]
-description: Firmware for Fanvil X2
-description_fr: Micrologiciel pour Fanvil X2
+description: Firmware for Fanvil X2 or X2-V2
+description_fr: Micrologiciel pour Fanvil X2 ou X2-V2
 version: 2.14.0.7386
 files: X2-fw
 install: fanvil-fw
@@ -13,8 +13,8 @@ files: X210-fw
 install: fanvil-fw
 
 [pkg_X210-Pro-fw]
-description: Firmware for Fanvil X210-Pro
-description_fr: Micrologiciel pour Fanvil X210-Pro
+description: Firmware for Fanvil X210-Pro or X210-V2
+description_fr: Micrologiciel pour Fanvil X210-Pro ou X210-V2
 version: 2.12.16.17
 files: X210-Pro-fw
 install: fanvil-fw
@@ -55,24 +55,24 @@ files: X3SG-fw
 install: fanvil-fw
 
 [pkg_X4-fw]
-description: Firmware for Fanvil X4/G
-description_fr: Micrologiciel pour Fanvil X4/G
+description: Firmware for Fanvil X4/G or X4-V2
+description_fr: Micrologiciel pour Fanvil X4/G ou X4-V2
 version: 2.14.0.7386
 files: X4-fw
 install: fanvil-fw
 
 [pkg_X4U-fw]
-description: Firmware for Fanvil X4U
-description_fr: Micrologiciel pour Fanvil X4U
+description: Firmware for Fanvil X4U or X4U-V2
+description_fr: Micrologiciel pour Fanvil X4U ou X4U-V2
 version: 2.12.16.17
 files: X4U-fw
 install: fanvil-fw
 
 [pkg_X4U-Pro-fw]
-description: Firmware for Fanvil X4U-Pro
-description_fr: Micrologiciel pour Fanvil X4U-Pro
+description: Firmware for Fanvil X4U-Pro or X4U-V2 (Pro)
+description_fr: Micrologiciel pour Fanvil X4U-Pro ou X4U-V2 (Pro)
 version: 2.12.16.17
-files: X4U-Pro-fw
+files: X4U-fw
 install: fanvil-fw
 
 [pkg_X5-fw]
@@ -90,17 +90,17 @@ files: X5S-fw
 install: fanvil-fw
 
 [pkg_X5U-fw]
-description: Firmware for Fanvil X5U
-description_fr: Micrologiciel pour Fanvil X5U
+description: Firmware for Fanvil X5U or X5U-V2
+description_fr: Micrologiciel pour Fanvil X5U ou X5U-V2
 version: 2.12.16.17
 files: X5U-fw
 install: fanvil-fw
 
 [pkg_X5U-Pro-fw]
-description: Firmware for Fanvil X5U-Pro
-description_fr: Micrologiciel pour Fanvil X5U-Pro
+description: Firmware for Fanvil X5U-Pro or X5U-V2(Pro)
+description_fr: Micrologiciel pour Fanvil X5U-Pro ou X5U-V2(Pro)
 version: 2.12.16.17
-files: X5U-Pro-fw
+files: X5U-fw
 install: fanvil-fw
 
 [pkg_X6-fw]
@@ -118,45 +118,45 @@ files: X6V2-fw
 install: fanvil-fw
 
 [pkg_X6U-fw]
-description: Firmware for Fanvil X6U
-description_fr: Micrologiciel pour Fanvil X6U
+description: Firmware for Fanvil X6U or X6U-V2
+description_fr: Micrologiciel pour Fanvil X6U ou X6U-V2
 version: 2.12.16.17
 files: X6U-fw
 install: fanvil-fw
 
 [pkg_X6U-Pro-fw]
-description: Firmware for Fanvil X6U-Pro
-description_fr: Micrologiciel pour Fanvil X6U-Pro
+description: Firmware for Fanvil X6U-Pro or X5U-V2(Pro)
+description_fr: Micrologiciel pour Fanvil X6U-Pro ou X5U-V2(Pro)
 version: 2.12.16.17
-files: X6U-Pro-fw
+files: X6U-fw
 install: fanvil-fw
 
 [pkg_X7-fw]
-description: Firmware for Fanvil X7
-description_fr: Micrologiciel pour Fanvil X7
+description: Firmware for Fanvil X7 or X7-V2
+description_fr: Micrologiciel pour Fanvil X7 ou X7-V2
 version: 2.12.16.17
 files: X7-fw
 install: fanvil-fw
 
 [pkg_X7-Pro-fw]
-description: Firmware for Fanvil X7-Pro
-description_fr: Micrologiciel pour Fanvil X7-Pro
+description: Firmware for Fanvil X7-Pro or X7-V2(Pro)
+description_fr: Micrologiciel pour Fanvil X7-Pro ou X7-V2(Pro)
 version: 2.12.16.17
-files: X7-Pro-fw
+files: X7-fw
 install: fanvil-fw
 
 [pkg_X7C-fw]
-description: Firmware for Fanvil X7C
-description_fr: Micrologiciel pour Fanvil X7C
+description: Firmware for Fanvil X7C or X7C-V2
+description_fr: Micrologiciel pour Fanvil X7C ou X7C-V2
 version: 2.12.16.17
 files: X7C-fw
 install: fanvil-fw
 
 [pkg_X7C-Pro-fw]
-description: Firmware for Fanvil X7C-Pro
-description_fr: Micrologiciel pour Fanvil X7C-Pro
+description: Firmware for Fanvil X7C-Pro or X7C-V2(Pro)
+description_fr: Micrologiciel pour Fanvil X7C-Pro ou X7C-V2(Pro)
 version: 2.12.16.17
-files: X7C-Pro-fw
+files: X7C-fw
 install: fanvil-fw
 
 [install_fanvil-fw]
@@ -174,8 +174,8 @@ sha1sum: 5d47df43b9f02c7b64694e57773a51a4c0bf59e8
 
 [file_X210-Pro-fw]
 url: http://provd.wazo.community/firmwares/fanvil/x210pro-fanvil-release-6959-2.12.16.17-krnvlT2023-05-05-18.06.02.z
-size: 24831624
-sha1sum: b322581ee4312e98f19e0d5f77cea1f25127a240
+size: 30319812
+sha1sum: 261c6f87918ff256277f2df28123164b285652ba
 
 [file_X210i-fw]
 url: http://download.fanvil.com/Firmware/Release/X210i/20220811/x210i-6923-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.53.39.z
@@ -212,11 +212,6 @@ url: http://provd.wazo.community/firmwares/fanvil/x4upro-fanvil-release-ff01-690
 size: 32892652
 sha1sum: bb16b4b72a3eabe10b9c8b03d66efd27b33badc9
 
-[file_X4U-Pro-fw]
-url: http://provd.wazo.community/firmwares/fanvil/x4upro-fanvil-release-ff01-6903-2.12.16.17-krnvUT2023-05-05-18.33.33.z
-size: 32892652
-sha1sum: bb16b4b72a3eabe10b9c8b03d66efd27b33badc9
-
 [file_X5-fw]
 url: http://download.fanvil.com/Firmware/Release/X5/20170303/x51.4.0.2016T20170303151233.z
 size: 35992460
@@ -228,11 +223,6 @@ size: 38491164
 sha1sum: 059aed5ac70267c8a25c3c4ba6933607de2de7ab
 
 [file_X5U-fw]
-url: http://provd.wazo.community/firmwares/fanvil/x5upro-fanvil-release-ff01-6907-2.12.16.17-krnvUT2023-05-05-18.41.28.z
-size: 33163068
-sha1sum: 4edb7754a76bde055c41d4f2a89bd58399d3af96
-
-[file_X5U-Pro-fw]
 url: http://provd.wazo.community/firmwares/fanvil/x5upro-fanvil-release-ff01-6907-2.12.16.17-krnvUT2023-05-05-18.41.28.z
 size: 33163068
 sha1sum: 4edb7754a76bde055c41d4f2a89bd58399d3af96
@@ -252,27 +242,12 @@ url: http://provd.wazo.community/firmwares/fanvil/x6upro-fanvil-release-ff01-691
 size: 33146692
 sha1sum: eb25fdc099111b9c5bdb16c6d6f0d149780465a5
 
-[file_X6U-Pro-fw]
-url: http://provd.wazo.community/firmwares/fanvil/x6upro-fanvil-release-ff01-6916-2.12.16.17-krnvUT2023-05-05-18.49.37.z
-size: 33146692
-sha1sum: eb25fdc099111b9c5bdb16c6d6f0d149780465a5
-
 [file_X7-fw]
 url: http://provd.wazo.community/firmwares/fanvil/x7upro-fanvil-release-6957-2.12.16.17-krnvlT2023-05-05-17.43.48.z
 size: 31250308
 sha1sum: cf2411e47e946c84d45c3dcb720ef7f5976f479b
 
-[file_X7-Pro-fw]
-url: http://provd.wazo.community/firmwares/fanvil/x7upro-fanvil-release-6957-2.12.16.17-krnvlT2023-05-05-17.43.48.z
-size: 31250308
-sha1sum: cf2411e47e946c84d45c3dcb720ef7f5976f479b
-
 [file_X7C-fw]
-url: http://provd.wazo.community/firmwares/fanvil/x7cpro-fanvil-release-6958-2.12.16.17-krnvlT2023-05-05-17.48.40.z
-size: 30607224
-sha1sum: 1a54f8aaf7b2b17b9ff18f06d4b33c604dd34eef
-
-[file_X7C-Pro-fw]
 url: http://provd.wazo.community/firmwares/fanvil/x7cpro-fanvil-release-6958-2.12.16.17-krnvlT2023-05-05-17.48.40.z
 size: 30607224
 sha1sum: 1a54f8aaf7b2b17b9ff18f06d4b33c604dd34eef
