@@ -49,7 +49,7 @@ MODELS = [
 ]
 
 COMMON_FILES = {
-    'f0X2hw1.100.cfg': ('X2', 'x22.10.2.6887T20191115101133.z', 'model.tpl'),
+    'f0X2hw1.100.cfg': ('X2', 'x22.14.0.7386T20210730165954.z', 'model.tpl'),
     'F0V00X300000.cfg': ('X3', 'x31.4.0.2090T20180403152509.z', 'model.tpl'),
     'f0X3shw1.100.cfg': ('X3S', 'x3s2.10.2.6887T20191115101938.z', 'model.tpl'),
     'f0X3sghw1.100.cfg': (
@@ -57,7 +57,7 @@ COMMON_FILES = {
         'x3sg-5913-RECOVERY-P0.18.23.1.23-2.4.12-1164T2021-11-10-01.17.49.z',
         'model.tpl',
     ),
-    'f0X4hw1.100.cfg': ('X4', 'x42.10.2.6887T20191122095252.z', 'model.tpl'),
+    'f0X4hw1.100.cfg': ('X4', 'x42.14.0.7386T20210730173312.z', 'model.tpl'),
     'f0X5hw1.100.cfg': ('X5', 'x51.4.0.2016T20170303151233.z', 'model.tpl'),
     'F0V00X5S0000.cfg': (
         'X5S',
@@ -78,19 +78,19 @@ COMMON_FILES = {
 
 MODEL_FIRMWARE_MAPPING = {
     'X210': 'x210-6924-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.44.03.z',
-    'X210-Pro': 'x210pro-fanvil-release-6959-2.12.1.3-krnvlT2022-05-14-17.24.15.z',
+    'X210-Pro': 'x210pro-fanvil-release-6959-2.12.16.17-krnvlT2023-05-05-18.06.02.z',
     'X210i': 'x210i-6923-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.53.39.z',
     'X210i-Pro': 'x210ipro-fanvil-release-6960-2.12.1.3-krnvlT2022-05-14-17.29.43.z',
-    'X4U': 'x4u-6902-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.39.20.z',
-    'X4U-Pro': 'x4upro-fanvil-release-ff01-6903-2.12.4.1-krnvUT2022-05-18-17.16.07.z',
-    'X5U': 'x5u-6906-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.20.52.z',
-    'X5U-Pro': 'x5upro-fanvil-release-ff01-6907-2.12.4.1-krnvUT2022-05-18-17.22.39.z',
-    'X6U': 'x6u-6915-P0.18.23.89-2.4.5.2-3594T2022-07-28-17.32.21.z',
-    'X6U-Pro': 'x6upro-fanvil-release-ff01-6916-2.12.4.1-krnvUT2022-05-18-17.47.06.z',
-    'X7': 'x7-6926-P0.18.23.89-2.4.5.2-4229T2022-07-29-16.11.47.z',
-    'X7-Pro': 'x7upro-fanvil-release-6957-2.12.1.3-krnvlT2022-05-14-17.01.35.z',
-    'X7C': 'x7c-6925-P0.18.23.89-2.4.5.2-4229T2022-07-29-16.16.20.z',
-    'X7C-Pro': 'x7upro-fanvil-release-6957-2.12.1.3-krnvlT2022-05-14-17.01.35.z',
+    'X4U': 'x4upro-fanvil-release-ff01-6903-2.12.16.17-krnvUT2023-05-05-18.33.33.z',
+    'X4U-Pro': 'x4upro-fanvil-release-ff01-6903-2.12.16.17-krnvUT2023-05-05-18.33.33.z',
+    'X5U': 'x5upro-fanvil-release-ff01-6907-2.12.16.17-krnvUT2023-05-05-18.41.28.z',
+    'X5U-Pro': 'x5upro-fanvil-release-ff01-6907-2.12.16.17-krnvUT2023-05-05-18.41.28.z',
+    'X6U': 'x6upro-fanvil-release-ff01-6916-2.12.16.17-krnvUT2023-05-05-18.49.37.z',
+    'X6U-Pro': 'x6upro-fanvil-release-ff01-6916-2.12.16.17-krnvUT2023-05-05-18.49.37.z',
+    'X7': 'x7cpro-fanvil-release-6958-2.12.16.17-krnvlT2023-05-05-17.48.40.z',
+    'X7-Pro': 'x7cpro-fanvil-release-6958-2.12.16.17-krnvlT2023-05-05-17.48.40.z',
+    'X7C': 'x7cpro-fanvil-release-6958-2.12.16.17-krnvlT2023-05-05-17.48.40.z',
+    'X7C-Pro': 'x7cpro-fanvil-release-6958-2.12.16.17-krnvlT2023-05-05-17.48.40.z',
 }
 
 FUNCTION_KEYS_PER_PAGE = {
