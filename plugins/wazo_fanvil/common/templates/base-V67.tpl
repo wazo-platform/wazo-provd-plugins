@@ -310,9 +310,9 @@
         {% if loop.index0 != 0 -%}
         </internal>
         {%- endif %}
-        <internal index="{{ page + 1 }}">
+        <internal index="{{ page }}">
         {%- endif %}
-            <Fkey index="{{ index + 1}}">
+            <Fkey index="{{ index }}">
                 <Type>{{ fkey['type'] }}</Type>
                 <Value>{{ fkey['value'] }}</Value>
                 <Title>{{ fkey['title'] }}</Title>
