@@ -207,7 +207,7 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def _add_wazo_phoned_user_service_url(self, raw_config: dict[str, Any], service):
         if hasattr(plugins, 'add_wazo_phoned_user_service_url'):
-            plugins.add_wazo_phoned_user_service_url(raw_config, 'yealink', service)
+            plugins.add_wazo_phoned_user_service_url(raw_config, 'fanvil', service)
 
     def _add_server_url(self, raw_config: dict[str, Any]):
         if raw_config.get('http_base_url'):

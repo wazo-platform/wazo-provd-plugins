@@ -135,6 +135,14 @@
         </softkey>
         {% endif %}
     </phone>
+    <cti>
+        {% if XX_wazo_phoned_user_service_dnd_enabled_url -%}
+        <DNDOnUrl>{{ XX_wazo_phoned_user_service_dnd_enabled_url }}</DNDOnUrl>
+        {% endif -%}
+        {% if XX_wazo_phoned_user_service_dnd_disabled_url -%}
+        <DNDOffUrl>{{ XX_wazo_phoned_user_service_dnd_disabled_url }}</DNDOffUrl>
+        {% endif -%}
+    </cti>
     <dsskey>
         <dssSide index="1">
             {%- if sip_lines %}
