@@ -81,6 +81,7 @@ class BaseFanvilHTTPDeviceInfoExtractor:
         # Fanvil i10SV 2.12.10.1 0c383e2397f4
         # Fanvil i53W 2.12.9 0c383e10a440
         # Fanvil V65 2.12.2.4 0c383e38e123
+        # Fanvil H2U-V2 2.12.0 0c383e32342e
 
         dev_info = {}
         m = self._UA_REGEX.search(ua)
@@ -394,7 +395,7 @@ class BaseFanvilPlugin(StandardPlugin):
     ) -> FKeyDict:
         fkey: FKeyDict = {'id': funckey_number, 'title': funckey['label'], 'type': 2}
         if funckey['type'] == 'speeddial':
-            fkey['type'] = 4
+            fkey['type'] = 1
             fkey['value'] = self._format_funckey_speeddial(funckey)
         elif funckey['type'] == 'blf':
             fkey['value'] = self._format_funckey_blf(funckey, pickup_exten)
