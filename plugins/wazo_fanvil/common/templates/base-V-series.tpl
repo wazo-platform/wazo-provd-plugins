@@ -160,9 +160,9 @@
         {% if loop.index0 != 0 -%}
         </dssSide>
         {%- endif %}
-        <dssSide index="{{ page + 1 }}">
+        <dssSide index="{{ page }}">
         {%- endif %}
-            <Fkey index="{{ index + 1}}">
+            <Fkey index="{{ index }}">
             {%- if sip_lines %}
             {% for line_no in sip_lines -%}
                 <Type>{{ fkey['type'] }}</Type>
