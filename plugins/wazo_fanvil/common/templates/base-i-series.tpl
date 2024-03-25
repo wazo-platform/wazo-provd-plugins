@@ -380,6 +380,14 @@
             <DateSeparator>3</DateSeparator>
         </timeDisplay>
     </phone>
+    <cti>
+        {% if XX_wazo_phoned_user_service_dnd_enabled_url -%}
+        <DNDOnUrl>{{ XX_wazo_phoned_user_service_dnd_enabled_url }}</DNDOnUrl>
+        {% endif -%}
+        {% if XX_wazo_phoned_user_service_dnd_disabled_url -%}
+        <DNDOffUrl>{{ XX_wazo_phoned_user_service_dnd_disabled_url }}</DNDOffUrl>
+        {% endif -%}
+    </cti>
     <web>
         <WebServerType>0</WebServerType>
         <WebPort>80</WebPort>
