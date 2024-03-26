@@ -25,3 +25,9 @@ if TYPE_CHECKING:
 def build_4_1_13(path: str) -> None:
     check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v4_1_13/', path])
+
+
+@target('4.1.3', 'wazo-avaya-4.1.3')
+def build_4_1_3(path: str) -> None:
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v4_1_3/', path])
