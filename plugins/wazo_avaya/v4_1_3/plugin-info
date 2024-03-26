@@ -1,0 +1,34 @@
+{
+    "version": "1.0.0",
+    "description": "Plugin for Avaya (previously known as Nortel) J129, J169 and J179 Deskphone in version 04.01.03.06.",
+    "description_fr": "Greffon pour Avaya (auparavant connu comme Nortel) J129, J169 et J179 deskphone en version 04.01.03.06.",
+    "capabilities": {
+        "Avaya, J129, 04.01.03.06": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Avaya, J169, 04.01.03.06": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Avaya, J179, 04.01.03.06": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}
