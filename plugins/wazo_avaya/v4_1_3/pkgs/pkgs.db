@@ -8,7 +8,8 @@ install: avaya-fw
 
 
 [install_avaya-fw]
-a-b: cp $FILE1 firmware/
+a-b: unzip $FILE1
+b-c: cp */* firmware/
 
 
 
