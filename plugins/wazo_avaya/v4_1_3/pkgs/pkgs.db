@@ -12,7 +12,7 @@ a-b: cp $FILE1 firmware/
 
 
 
-[file_12x0IP-fw]
+[file_J1xIP-fw]
 url: https://download.avaya.com/tsoweb/J100/01052024/J100-IPT-SIP-R4_1_3_0-010324.zip
 size: 4101541
 sha1sum: 6ecb6064a06f91bec5bdb38b571b89e0b9aed853
