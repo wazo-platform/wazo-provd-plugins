@@ -1,7 +1,7 @@
 {
-    "version": "1.2.1",
-    "description": "Plugin for Yealink for CP920, CP960, T2X, T3X, T4X, T5X, W60, W70 and W90 series in version V85.",
-    "description_fr": "Greffon pour Yealink pour les series CP920, CP960, T2X, T3X, T4X, T5X, W60, W70 et W90 en version V85.",
+    "version": "1.2.2",
+    "description": "Plugin for Yealink for CP920, CP960, T2X, T3X, T4X, T5X, W60, W70, W80 and W90 series in version V85.",
+    "description_fr": "Greffon pour Yealink pour les series CP920, CP960, T2X, T3X, T4X, T5X, W60, W70, W80 et W90 en version V85.",
     "vendor" : "Yealink",
     "vendor.url" : "http://www.yealink.com",
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
@@ -154,6 +154,26 @@
         },
         "Yealink, W70B, 77.85.0.37": {
             "lines": 10,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "multicell": false,
+            "protocol": "sip"
+        },
+        "Yealink, W80B, 103.85.0.25": {
+            "lines": 30,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "multicell": false,
+            "protocol": "sip"
+        },
+        "Yealink, W80DM, 103.85.0.25": {
+            "lines": 30,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
