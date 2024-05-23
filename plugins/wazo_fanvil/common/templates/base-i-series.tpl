@@ -292,7 +292,7 @@
             <AutoResumeCurrent>1</AutoResumeCurrent>
             <CallTimeout>120</CallTimeout>
             <RingTimeout>120</RingTimeout>
-            <RingPriority>1</RingPriority>
+            <RingPriority>0</RingPriority>
             <AutoAnswerTone>1</AutoAnswerTone>
             <AlertingTone>1</AlertingTone>
             <BusyTone>1</BusyTone>
