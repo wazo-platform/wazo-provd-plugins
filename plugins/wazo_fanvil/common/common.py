@@ -404,7 +404,7 @@ class BaseFanvilPlugin(StandardPlugin):
             fkey['value'] = self._format_funckey_call_park(funckey)
         else:
             logger.info('Unsupported funckey type: %s', funckey['type'])
-            fkey['type'] = 2
+            fkey['type'] = 0
         return fkey
 
     def _format_fkeys(
