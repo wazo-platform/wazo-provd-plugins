@@ -292,7 +292,7 @@
         </internal>
         {%- endif %}
         <internal index="{{ page }}">
-        {%- endif %}                                                                                                                                                     
+        {%- endif %}
             <Fkey index="{{ index }}">
                 <Type>{{ fkey['type'] }}</Type>
                 <Value>{{ fkey['value'] }}</Value>
