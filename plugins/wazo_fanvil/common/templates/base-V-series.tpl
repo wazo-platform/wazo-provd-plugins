@@ -58,6 +58,13 @@
         </line>
         {% endfor -%}
     </sip>
+    <call>
+        <port index="1">
+            <AutoOnhook>1</AutoOnhook>
+            <AutoOnhookTime>0</AutoOnhookTime>
+            <RingPriority>0</RingPriority>
+        </port>
+    </call>
     <phone>
         <MenuPassword>{{ admin_password|d('123') }}</MenuPassword>
         <KeyLockPassword>123</KeyLockPassword>
