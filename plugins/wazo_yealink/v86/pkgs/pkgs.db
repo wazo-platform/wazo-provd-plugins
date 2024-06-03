@@ -48,8 +48,8 @@ files: T53_T53C_T53W_T54W_T57W-fw
 install: yealink-fw
 
 [pkg_T58A-fw]
-description: Firmware for Yealink T58A
-description_fr: Micrologiciel pour Yealink T58A
+description: Firmware for Yealink T56A and T58A
+description_fr: Micrologiciel pour Yealink T56A et T58A
 version: 58.86.0.20
 files: T58A-fw
 install: yealink-fw
@@ -104,8 +104,8 @@ files: CP930W-fw
 install: yealink-fw
 
 [pkg_T58_CP960-lang]
-description: Language pack for Yealink T58A and CP960
-description_fr: Paquet de langues pour Yealink T58A et CP960
+description: Language pack for Yealink T56A T58A and CP960
+description_fr: Paquet de langues pour Yealink T56A T58A et CP960
 version:
 files: T58_CP960-lang
 install: yealink-T58_CP960-lang
