@@ -285,6 +285,7 @@
             <AutoOnhookTime>0</AutoOnhookTime>
         </port>
     </call>
+    <dsskey>
         {% if XX_paginated_fkeys -%}
         {% for page, index, fkey in XX_paginated_fkeys -%}
         {% if loop.index0 == 0 or page != loop.previtem[0] -%}
