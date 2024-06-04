@@ -287,8 +287,12 @@
         </port>
     </call>
     <dsskey>
+        {% if XX_paginated_fkeys -%}
         {% for page, index, fkey in XX_paginated_fkeys -%}
         {% if loop.index0 == 0 or page != loop.previtem[0] -%}
+        {% if loop.index0 != 0 -%}
+        </internal>
+        {%- endif %}
         <internal index="{{ page }}">
         {%- endif %}
             <Fkey index="{{ index }}">
@@ -299,6 +303,7 @@
         {%- endfor %}
         </internal>
         {%- else %}
+        <internal index="1">
             <Fkey index="2">
                 <Type>0</Type>
                 <Value></Value>
@@ -337,6 +342,5 @@
             </Fkey>
         </internal>
         {% endif -%}
-
     </dsskey>
 </sysConf>
