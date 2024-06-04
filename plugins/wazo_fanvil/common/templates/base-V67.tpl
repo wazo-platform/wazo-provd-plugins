@@ -283,6 +283,7 @@
         <port index="1">
             <AutoOnhook>1</AutoOnhook>
             <AutoOnhookTime>0</AutoOnhookTime>
+            <RingPriority>0</RingPriority>
         </port>
     </call>
     <dsskey>
