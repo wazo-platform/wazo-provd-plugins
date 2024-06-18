@@ -16,10 +16,14 @@ SET LANGUAGES firmware/Mlf_J169_J179_ParisianFrench.xml
 SET INPUT_METHOD 3
 SET REG_DATE_HEADER 1718640719
 SET DATEFORMAT %d/%m
-SET HTTPUSED {{ XX_server_url_without_port }}
-SET HTTPSRVR {{ XX_server_url_without_port }}
-SET HTTPSRVR_IN_USE {{ XX_server_url_without_port }}
-SET HTTPPORT {{ XX_server_url_port }}
+{% if ip -%}
+SET HTTPUSED {{ ip }}
+SET HTTPSRVR {{ ip }}
+SET HTTPSRVR_IN_USE {{ ip }}
+{% endif -%}
+{% if http_port -%}
+SET HTTPPORT {{ http_port }}
+{% endif -%}
 SET CHECK_FILE_SERVER 0
 {% if ntp_enabled -%}
 SET SNTPSRVR {{ ntp_ip }}
@@ -36,13 +40,13 @@ SET TIMEZONE Europe/Paris
 SET SIPSIGNAL 0
 SET SIPPROXYSRVR {{ proxy_ip }}
 SET SIP_CONTROLLER_MODE 1
-SET SIP_CONTROLLER_LIST {{ proxy_ip }}:{{ proxy_port }};transport=udp
+SET SIP_CONTROLLER_LIST {{ proxy_ip }}:{{ line['proxy_port'] }};transport=udp
 SET SIPPROXYSRVR_IN_USE {{ proxy_ip }}
 SET SIP_PROXY_SELECTION_POLICY 1
 SET SIPDOMAIN {{ proxy_ip }}
 SET MWISRVR {{ proxy_ip }}
 SET USER_LOGGED_IN 1
-SET DISPLAY_NAME Wazo
+SET DISPLAY_NAME {{ line['display_name'] }}
 SET SIP_USER_ACCOUNT {{ line['username'] }}@{{ proxy_ip }}
 SET SIP_USER_ID {{ line['auth_username'] }}
 SET PREV_SIP_USER_ACCOUNT {{ line['username'] }}@{{ proxy_ip }}

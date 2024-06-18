@@ -75,7 +75,7 @@ class BaseAvayaHTTPDeviceInfoExtractor:
     def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "AVAYA/SIP12x0\x17/04.00.04.00"
-        #   "AVAYA/SIP12x0\x16/04.00.04.00"   
+        #   "AVAYA/SIP12x0\x16/04.00.04.00"
         #   "AVAYA/SIP12x0\x14/04.00.04.00"
         #   "AVAYA/SIP12x0\xff/04.01.13.00"
         #   "Mozilla/4.0 (compatible; MSIE 6.0) AVAYA/J179-4.1.3.0.6 (MAC:c81fea83e85a)"
@@ -94,7 +94,9 @@ class BaseAvayaHTTPDeviceInfoExtractor:
                     try:
                         dev_info['mac'] = norm_mac(mac)
                     except ValueError as e:
-                        logger.warning('Could not normalize MAC address "%s": %s', mac, e)
+                        logger.warning(
+                            'Could not normalize MAC address "%s": %s', mac, e
+                        )
                     return dev_info
                 else:
                     return {'vendor': 'Avaya', 'version': m.group(1)}
@@ -175,18 +177,6 @@ class BaseAvayaPlugin(StandardPlugin):
                 raw_config[
                     'XX_timezone'
                 ] = f'TIMEZONE_OFFSET {tzinfo["utcoffset"].as_seconds:d}'
-    
-    def _add_server_url(self, raw_config):
-        if raw_config.get('http_base_url'):
-            _, _, remaining_url = raw_config['http_base_url'].partition('://')
-            raw_config['XX_server_url'] = raw_config['http_base_url']
-            raw_config['XX_server_url_without_scheme'] = remaining_url
-        else:
-            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
-            raw_config['XX_server_url_without_scheme'] = base_url
-            raw_config['XX_server_url'] = f"http://{base_url}"
-            raw_config['XX_server_url_without_port'] = f"http://{raw_config['ip']}"
-            raw_config['XX_server_url_port'] = f"http://{raw_config['http_port']}"
 
     def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
@@ -212,7 +202,6 @@ class BaseAvayaPlugin(StandardPlugin):
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
         self._add_timezone(raw_config)
-        self._add_server_url(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
