@@ -57,9 +57,8 @@ _FILENAME_MAP = {
 
 class BaseAvayaHTTPDeviceInfoExtractor:
     _UA_REGEX_LIST = [
-        r'^AVAYA/[^/]+/([\d.]{11})$',
-        r'AVAYA\/+(\w+)\-+([\d.]+)\s+\(MAC\:([\da-fA-F]{12})\)$',
-        r'^(.+)\bAVAYA/(\w+)-([\d.]+)\s\(MAC:([0-9a-fA-F]{12})\)$',
+        re.compile(r'^AVAYA/[^/]+/([\d.]{11})$'),
+        re.compile(r'^(.+)\bAVAYA\/(\w+)-([\d.]+)\s\(MAC:([0-9a-fA-F]{12})\)$'),
     ]
 
     _PATH_REGEX = re.compile(r'\bSIP([\dA-F]{12})\.cfg$')
@@ -79,27 +78,32 @@ class BaseAvayaHTTPDeviceInfoExtractor:
     def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
         #   "AVAYA/SIP12x0\x17/04.00.04.00"
-        #   "AVAYA/SIP12x0\x16/04.00.04.00"
+        #   "AVAYA/SIP12x0\x16/04.00.04.00"   
         #   "AVAYA/SIP12x0\x14/04.00.04.00"
         #   "AVAYA/SIP12x0\xff/04.01.13.00"
         #   "Mozilla/4.0 (compatible; MSIE 6.0) AVAYA/J179-4.1.3.0.6 (MAC:c81fea83e85a)"
-        for UA_REGEX in self._UA_REGEX:
+        logger.info('USER AGENT : %s', ua)
+        for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
+            logger.info('LOGGER UA REGEX : %s', m)
             if m:
-                model, version, mac = m.groups()
-                device_info = {
-                    'vendor': 'Avaya',
-                    'model': model,
-                    'version': version,
-                }
-                try:
-                    device_info['mac'] = norm_mac(mac)
-                except ValueError as e:
-                    logger.warning('Could not normalize MAC address "%s": %s', mac, e)
-                return device_info
+                if len(m.groups()) == 4:
+                    browser, model, version, mac = m.groups()
+                    dev_info = {
+                        'vendor': 'Avaya',
+                        'model': model,
+                        'version': version,
+                    }
+                    try:
+                        dev_info['mac'] = norm_mac(mac)
+                    except ValueError as e:
+                        logger.warning('Could not normalize MAC address "%s": %s', mac, e)
+                    return dev_info
+                else:
+                    return {'vendor': 'Avaya', 'version': m.group(1)}
         return None
 
-    def _extract_from_path(self, path: str, dev_info: dict):
+    def _extract_from_path(self, path: str, dev_info: dict[str, str]):
         m = self._PATH_REGEX.search(path)
         if m:
             dev_info['mac'] = norm_mac(m.group(1))
