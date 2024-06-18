@@ -49,9 +49,6 @@ _FILENAME_MAP = {
     '1220SIP.cfg': '1220IP',
     '1230.cfg': '1230IP',
     '1230SIP.cfg': '1230IP',
-    'J100Supgrade.txt': 'J129',
-    'J100Supgrade.txt': 'J169',
-    'J100Supgrade.txt': 'J179',
 }
 
 
@@ -178,6 +175,18 @@ class BaseAvayaPlugin(StandardPlugin):
                 raw_config[
                     'XX_timezone'
                 ] = f'TIMEZONE_OFFSET {tzinfo["utcoffset"].as_seconds:d}'
+    
+    def _add_server_url(self, raw_config):
+        if raw_config.get('http_base_url'):
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
+            raw_config['XX_server_url_without_port'] = f"http://{raw_config['ip']}"
+            raw_config['XX_server_url_port'] = f"http://{raw_config['http_port']}"
 
     def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
@@ -203,6 +212,7 @@ class BaseAvayaPlugin(StandardPlugin):
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
         self._add_timezone(raw_config)
+        self._add_server_url(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
         self._tpl_helper.dump(tpl, raw_config, path, self._ENCODING)
