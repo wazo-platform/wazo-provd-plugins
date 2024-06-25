@@ -490,7 +490,9 @@ class BaseFanvilPlugin(StandardPlugin):
             hasattr(plugins, 'add_xivo_phonebook_url')
             and raw_config.get('config_version', 0) >= 1
         ):
-            plugins.add_xivo_phonebook_url(raw_config, 'fanvil')
+            plugins.add_xivo_phonebook_url(
+                raw_config, 'fanvil', entry_point='lookup', qs_suffix='term='
+            )
 
     def _add_firmware(self, device, raw_config: dict[str, Any]) -> None:
         model = device.get('model')
