@@ -140,6 +140,15 @@
         <softkey>
             <DesktopSoftkey>history;dss1;;menu;</DesktopSoftkey>
         </softkey>
+        <xmlContact index="1">
+            <Name>{{ XX_directory|d('Directory') }}</Name>
+            <Addr>{{ XX_xivo_phonebook_url }}</Addr>
+            <UserName></UserName>
+            <PassWd></PassWd>
+            <Sipline>-1</Sipline>
+            <BindLine>-1</BindLine>
+            <PhonebookType>0</PhonebookType>
+        </xmlContact>
         {% endif %}
     </phone>
     <cti>
