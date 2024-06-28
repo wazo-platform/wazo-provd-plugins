@@ -49,6 +49,7 @@ SET SIPDOMAIN {{ proxy_ip }}
 SET MWISRVR {{ proxy_ip }}
 SET USER_LOGGED_IN 1
 SET DISPLAY_NAME {{ line['display_name'] }}
+SET PRIMARY_LINE_EXTENSION "{{ line['display_name'] }}"
 SET SIP_USER_ACCOUNT {{ line['username'] }}@{{ proxy_ip }}
 SET SIP_USER_ID {{ line['auth_username'] }}
 SET PREV_SIP_USER_ACCOUNT {{ line['username'] }}@{{ proxy_ip }}
