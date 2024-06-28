@@ -1,1 +1,1 @@
-{% include 'base.tpl' -%}
+{% include 'base-J100series.tpl' -%}

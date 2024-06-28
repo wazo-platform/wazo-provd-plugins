@@ -6,7 +6,25 @@
         "Avaya, J129, 04.01.03.06": {
             "lines": 1,
             "high_availability": true,
-            "function_keys": 0,
+            "function_keys": 1,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Avaya, J139, 04.01.03.06": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 96,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Avaya, J159, 04.01.03.06": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 96,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -15,7 +33,7 @@
         "Avaya, J169, 04.01.03.06": {
             "lines": 1,
             "high_availability": true,
-            "function_keys": 0,
+            "function_keys": 96,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -24,7 +42,16 @@
         "Avaya, J179, 04.01.03.06": {
             "lines": 1,
             "high_availability": true,
-            "function_keys": 8,
+            "function_keys": 96,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Avaya, J189, 04.01.03.06": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 96,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",

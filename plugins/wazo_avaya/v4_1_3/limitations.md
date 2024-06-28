@@ -1,3 +1,7 @@
 # Limitations
 
-Generic open SIP - redundant mode is not supported.
+Generic open SIP (FR):
+- redundant mode is not supported.
+- BLF Keys is not supported.
+- name on SIP line not supported.
+- actualy based on French translation
