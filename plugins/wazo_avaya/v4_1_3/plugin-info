@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
-    "description": "Plugin for Avaya (previously known as Nortel) J129, J169 and J179 Deskphone in version 04.01.03.06.",
-    "description_fr": "Greffon pour Avaya (auparavant connu comme Nortel) J129, J169 et J179 deskphone en version 04.01.03.06.",
+    "description": "Plugin for Avaya (previously known as Nortel) J129, J139, J159, J169, J179 and J189 Deskphone in version 04.01.03.06.",
+    "description_fr": "Greffon pour Avaya (auparavant connu comme Nortel) J129, J139, J159, J169, J179 et J189 deskphone en version 04.01.03.06.",
     "capabilities": {
         "Avaya, J129, 04.01.03.06": {
             "lines": 1,
