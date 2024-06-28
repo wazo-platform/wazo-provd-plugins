@@ -142,8 +142,24 @@ class BaseGrandstreamPlugin(StandardPlugin):
             'vpk': 16,
             'mpk': 24,
         },
+        'GXP2130': {
+            'vpk': 12,
+            'mpk': 8,
+        },
         'GXP2135': {
             'vpk': 32,
+            'mpk': 0,
+        },
+        'GXP2140': {
+            'vpk': 16,
+            'mpk': 0,
+        },
+        'GXP2160': {
+            'vpk': 24,
+            'mpk': 24,
+        },
+        'GXP2170': {
+            'vpk': 48,
             'mpk': 0,
         },
     }
