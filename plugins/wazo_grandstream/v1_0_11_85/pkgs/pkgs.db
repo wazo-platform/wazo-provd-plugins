@@ -1,0 +1,63 @@
+[pkg_GXP2130-fw]
+description: Firmware for Grandstream GXP2130
+description_fr: Micrologiciel pour Grandstream GXP2130
+version: 1.0.11.85
+files: GXP2130-fw
+install: grandstream-fw
+
+[pkg_GXP2135-fw]
+description: Firmware for Grandstream GXP2135
+description_fr: Micrologiciel pour Grandstream GXP2135
+version: 1.0.11.85
+files: GXP2135-fw
+install: grandstream-fw
+
+[pkg_GXP2140-fw]
+description: Firmware for Grandstream GXP2140
+description_fr: Micrologiciel pour Grandstream GXP2140
+version: 1.0.11.85
+files: GXP2140-fw
+install: grandstream-fw
+
+[pkg_GXP2160-fw]
+description: Firmware for Grandstream GXP2160
+description_fr: Micrologiciel pour Grandstream GXP2160
+version: 1.0.11.85
+files: GXP2160-fw
+install: grandstream-fw
+
+[pkg_GXP2170-fw]
+description: Firmware for Grandstream GXP2170
+description_fr: Micrologiciel pour Grandstream GXP2170
+version: 1.0.11.85
+files: GXP2170-fw
+install: grandstream-fw
+
+[install_grandstream-fw]
+a-b: unzip $FILE1
+
+
+[file_GXP2130-fw]
+url: https://firmware.grandstream.com/Release_GXP2130_1.0.11.85.zip
+size: 0
+sha1sum: 0
+
+[file_GXP2135-fw]
+url: https://firmware.grandstream.com/Release_GXP2135_1.0.11.85.zip
+size: 0
+sha1sum: 0
+
+[file_GXP2140-fw]
+url: https://firmware.grandstream.com/Release_GXP2140_1.0.11.85.zip
+size: 0
+sha1sum: 0
+
+[file_GXP2160-fw]
+url: https://firmware.grandstream.com/Release_GXP2160_1.0.11.85.zip
+size: 0
+sha1sum: 0
+
+[file_GXP2170-fw]
+url: https://firmware.grandstream.com/Release_GXP2170_1.0.11.85.zip
+size: 0
+sha1sum: 0

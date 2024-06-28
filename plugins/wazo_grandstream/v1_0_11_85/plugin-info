@@ -1,0 +1,56 @@
+{
+    "version": "0.1.0",
+    "description": "Plugin for Grandstream GXP2130, GXP2135, GXP2140, GXP2160 and GXP2170 in version 1.0.11.85.",
+    "description_fr": "Greffon pour GXP2130, GXP2135, GXP2140, GXP2160 et GXP2170 en version 1.0.11.85.",
+    "vendor" : "Grandstream",
+    "vendor.url" : "http://www.grandstream.com",
+    "vendor.description" : "Grandstream Networks, Inc. is an award-winning designer and ISO 9001 certified manufacturer of next generation IP voice & video products for broadband networks. Grandstream’s products deliver superb sound and picture quality, rich telephony features, full compliance with industry standards, and broad interoperability with most service providers and 3rd party SIP based VoIP products.",
+    "vendor.official" : 0,
+    "capabilities": {
+        "Grandstream, GXP2130, 1.0.11.85": {
+            "lines": 3,
+            "high_availability": true,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GXP2135, 1.0.11.85": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GXP2140, 1.0.11.85": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 5,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GXP2160, 1.0.11.85": {
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 5,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Grandstream, GXP2170, 1.0.11.85": {
+            "lines": 6,
+            "high_availability": true,
+            "function_keys": 5,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}
