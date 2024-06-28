@@ -79,10 +79,8 @@ class BaseAvayaHTTPDeviceInfoExtractor:
         #   "AVAYA/SIP12x0\x14/04.00.04.00"
         #   "AVAYA/SIP12x0\xff/04.01.13.00"
         #   "Mozilla/4.0 (compatible; MSIE 6.0) AVAYA/J179-4.1.3.0.6 (MAC:c81fea83e85a)"
-        logger.info('USER AGENT : %s', ua)
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
-            logger.info('LOGGER UA REGEX : %s', m)
             if m:
                 if len(m.groups()) == 4:
                     browser, model, version, mac = m.groups()
