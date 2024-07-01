@@ -283,28 +283,11 @@
         <port index="1">
             <AutoOnhook>1</AutoOnhook>
             <AutoOnhookTime>0</AutoOnhookTime>
+            <RingPriority>0</RingPriority>
         </port>
     </call>
     <dsskey>
-        <internal index="1">
-            {%- if sip_lines %}
-            {% for line_no, line in sip_lines.items() -%}
-            <Fkey index="{{ line_no }}">
-                <Type>2</Type>
-                <Value>SIP{{ line_no }}</Value>
-                <Title>{{ line['number'] }}</Title>
-            </Fkey>
-            {%- endfor %}
-            {%- else %}
-            <Fkey index="1">
-                <Type>2</Type>
-                <Value>SIP1</Value>
-                <Title></Title>
-            </Fkey>
-            {%- endif %}
-        </internal>
         {% if XX_paginated_fkeys -%}
-            <FuncKeyPageNum>{{ XX_max_page }}</FuncKeyPageNum>
         {% for page, index, fkey in XX_paginated_fkeys -%}
         {% if loop.index0 == 0 or page != loop.previtem[0] -%}
         {% if loop.index0 != 0 -%}
@@ -320,6 +303,7 @@
         {%- endfor %}
         </internal>
         {%- else %}
+        <internal index="1">
             <Fkey index="2">
                 <Type>0</Type>
                 <Value></Value>
@@ -358,6 +342,5 @@
             </Fkey>
         </internal>
         {% endif -%}
-
     </dsskey>
 </sysConf>
