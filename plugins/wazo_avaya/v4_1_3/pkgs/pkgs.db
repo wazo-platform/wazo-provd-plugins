@@ -1,0 +1,19 @@
+[pkg_J1xIP-fw]
+description: Firmware for Avaya J100 series IP Deskphone
+description_fr: Micrologiciel pour Avaya série J100 Deskphone
+version: 04.01.03.06
+files: J1xIP-fw
+install: avaya-fw
+
+
+
+[install_avaya-fw]
+a-b: unzip $FILE1
+b-c: cp *.bin *.xml firmware/
+
+
+
+[file_J1xIP-fw]
+url: https://download.avaya.com/tsoweb/J100/01052024/J100-IPT-SIP-R4_1_3_0-010324.zip
+size: 4101541
+sha1sum: 651c419c9db8666ec023d995dfb956a8f67df4bf
