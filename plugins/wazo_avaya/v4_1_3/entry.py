@@ -1,4 +1,4 @@
-# Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 """Plugin for Avaya J100 series using the 04.01.03.06 SIP software."""
@@ -20,7 +20,7 @@ common_globals: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
 execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 
-MODELS = ['J129', 'J169', 'J179']
+MODELS = ['J129', 'J139', 'J159', 'J169', 'J179', 'J189']
 VERSION = '04.01.03.06'
 
 
