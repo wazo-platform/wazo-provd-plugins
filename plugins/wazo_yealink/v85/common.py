@@ -76,6 +76,7 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         #   "Yealink W70B 146.85.0.5 80:5e:0c:1d:65:4e"
         #   "Yealink W80B 103.83.0.122 24:9a:d8:d1:a6:31"
         #   "Yealink W80DM 103.83.0.122 24:9a:d8:d1:a6:31"
+        #   "Yealink W75B 175.85.0.5 24:9a:d8:df:fb:11"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)

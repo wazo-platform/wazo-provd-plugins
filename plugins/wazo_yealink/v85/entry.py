@@ -144,12 +144,12 @@ MODEL_INFO = {
     },
     'W75DM': {
         'version': '175.85.0.5',
-        'firmware': '$PN-175.85.0.5.rom',
+        'firmware': 'W75DM-175.85.0.5.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W75B': {
         'version': '175.85.0.5',
-        'firmware': '$PN-175.85.0.5.rom',
+        'firmware': 'W75B-175.85.0.5.rom',
         'handsets_fw': HANDSETS_FW,
     },
 }
