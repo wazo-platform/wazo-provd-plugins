@@ -82,16 +82,19 @@ static.security.user_password = {{ admin_username|d('admin') }}:{{ admin_passwor
 
 {% for line_no, line in XX_sip_lines.items() -%}
 {% if line -%}
+template.X.name = Wazo Line {{ line_no }}
+template.{{ line_no }}.sip_server.1.address = {{ line['proxy_ip'] }}
+template.{{ line_no }}.sip_server.1.port = {{ line['proxy_port']|d('%NULL%') }}
+template.{{ line_no }}.sip_server.2.address = {{ line['backup_proxy_ip']|d('%NULL%') }}
+template.{{ line_no }}.sip_server.2.port = {{ line['backup_proxy_port']|d('%NULL%') }}
+
+account.{{ line_no }}.sip_server.template = {{ line_no }}
 account.{{ line_no }}.enable = 1
 account.{{ line_no }}.label = {{ line['number']|d(line['display_name']) }}
 account.{{ line_no }}.display_name = {{ line['display_name'] }}
 account.{{ line_no }}.auth_name = {{ line['auth_username'] }}
 account.{{ line_no }}.user_name = {{ line['username'] }}
 account.{{ line_no }}.password = {{ line['password'] }}
-account.{{ line_no }}.sip_server.1.address = {{ line['proxy_ip'] }}
-account.{{ line_no }}.sip_server.1.port = {{ line['proxy_port']|d('%NULL%') }}
-account.{{ line_no }}.sip_server.2.address = {{ line['backup_proxy_ip']|d('%NULL%') }}
-account.{{ line_no }}.sip_server.2.port = {{ line['backup_proxy_port']|d('%NULL%') }}
 account.{{ line_no }}.fallback.redundancy_type = 1
 account.{{ line_no }}.cid_source = 2
 account.{{ line_no }}.alert_info_url_enable = 0

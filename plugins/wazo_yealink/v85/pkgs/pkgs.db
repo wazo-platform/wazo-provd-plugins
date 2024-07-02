@@ -61,6 +61,20 @@ version: 103.85.0.25
 files: W80DM-fw
 install: yealink-fw
 
+[pkg_W75B-fw]
+description: Firmware for Yealink W75B
+description_fr: Micrologiciel pour Yealink W75B
+version: 103.85.0.25
+files: W75B-fw
+install: yealink-fw
+
+[pkg_W75DM-fw]
+description: Firmware for Yealink W75DM
+description_fr: Micrologiciel pour Yealink W75DM
+version: 103.85.0.25
+files: W75DM-fw
+install: yealink-fw
+
 [pkg_W90DM-fw]
 description: Firmware for Yealink W90DM
 description_fr: Micrologiciel pour Yealink W90DM
