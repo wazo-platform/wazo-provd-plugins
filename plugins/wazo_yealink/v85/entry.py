@@ -122,12 +122,12 @@ MODEL_INFO = {
     },
     'W80DM': {
         'version': '103.85.0.25',
-        'firmware': '$PN-103.85.0.25.rom',  # $PN = Product Name, i.e W90DM
+        'firmware': '$PN-103.85.0.25.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W80B': {
         'version': '103.85.0.25',
-        'firmware': '$PN-103.85.0.25.rom',  # $PN = Product Name, i.e W90B
+        'firmware': '$PN-103.85.0.25.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W90DM': {
