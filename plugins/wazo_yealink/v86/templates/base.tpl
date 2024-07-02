@@ -43,6 +43,8 @@ features.show_action_uri_option = 0
 local_time.date_format = 2
 
 sip.notify_reboot_enable = 0
+sip.trust_ctrl = 1
+features.direct_ip_call_enable = 1
 
 transfer.dsskey_deal_type = 1
 

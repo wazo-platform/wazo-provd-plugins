@@ -38,9 +38,11 @@ logger = logging.getLogger('plugin.wazo-yealink')
 class BaseYealinkHTTPDeviceInfoExtractor:
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'^[yY]ealink\s+(W90(?:DM|B))\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(
+            r'^[yY]ealink\s+(W[789][05](?:DM|B))\s+([\d.]+)\s+([\da-fA-F:]{17})$'
+        ),
         re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'^[yY]ealink\s+(W[67]0B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(r'^[yY]ealink\s+(W[6]0B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'(VP530P?|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
     ]
@@ -72,6 +74,9 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         #   "Yealink SIP-T33G 124.85.257.55 80:5e:c0:bd:ea:ef"
         #   "Yealink W90DM 130.85.0.15 80:5e:c0:d9:c7:44"
         #   "Yealink W70B 146.85.0.5 80:5e:0c:1d:65:4e"
+        #   "Yealink W80B 103.83.0.122 24:9a:d8:d1:a6:31"
+        #   "Yealink W80DM 103.83.0.122 24:9a:d8:d1:a6:31"
+        #   "Yealink W75B 175.85.0.5 24:9a:d8:df:fb:11"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
