@@ -12,6 +12,13 @@ version: 148.86.0.5
 files: CP925-fw
 install: yealink-fw
 
+[pkg_CP965-fw]
+description: Firmware for Yealink CP965
+description_fr: Micrologiciel pour Yealink CP965
+version: 143.86.0.10
+files: CP965-fw
+install: yealink-fw
+
 [pkg_T27G-fw]
 description: Firmware for Yealink T27G
 description_fr: Micrologiciel pour Yealink T27G
@@ -141,6 +148,12 @@ filename: CP925-148.86.0.5.rom
 url: http://provd.wazo.community/firmwares/yealink/CP925-148.86.0.5.rom
 size: 34804864
 sha1sum: 58ae7b0fe67607e64b5cb0ca99d2a82354587436
+
+[file_CP965-fw]
+filename: CP965-143.86.0.10.rom
+url: http://provd.wazo.community/firmwares/yealink/CP965-143.86.0.10.rom
+size: 435432624
+sha1sum: 02545bcab0f7f32781133d34fa25e79cbf333208
 
 [file_T27G-fw]
 filename: T27G-69.86.0.15.rom

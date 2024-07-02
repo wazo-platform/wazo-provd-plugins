@@ -34,10 +34,18 @@ distinctive_ring_tones.alert_info.8.ringer = 8
 features.caller_name_type_on_dialing = 1
 features.text_message.enable = 0
 features.text_message_popup.enable = 0
+features.config_dsskey_length = 1
+features.dnd.large_icon.enable = 1
+{% for line_no, line in XX_sip_lines.items() if line -%}
+features.action_uri_limit_ip = {{ line['proxy_ip'] }}
+{% endfor -%}
+features.show_action_uri_option = 0
 
 local_time.date_format = 2
 
 sip.notify_reboot_enable = 0
+sip.trust_ctrl = 1
+features.direct_ip_call_enable = 1
 
 transfer.dsskey_deal_type = 1
 

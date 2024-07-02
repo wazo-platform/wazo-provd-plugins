@@ -36,6 +36,10 @@ MODEL_INFO = {
         'version': '148.86.0.5',
         'firmware': 'CP925-148.86.0.5.rom',
     },
+    'CP965': {
+        'version': '143.86.0.10',
+        'firmware': 'CP925-143.86.0.10.rom',
+    },
     'T27G': {
         'version': '69.86.0.15',
         'firmware': 'T27G-69.86.0.15.rom',
