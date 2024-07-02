@@ -21,6 +21,7 @@ execfile_('common.py', common_globals)  # type: ignore[name-defined]
 HANDSETS_FW = {
     'w53h': 'W53H-88.85.0.20.rom',
     'w56h': 'W56H-61.85.0.20.rom',
+    'w57r': 'W57R-118.85.0.15.rom',
     'w59r': 'W59R-115.85.0.20.rom',
     'w73h': 'W73H-116.85.0.15.rom',
     'w74h': 'W74H-116.85.0.15.rom',

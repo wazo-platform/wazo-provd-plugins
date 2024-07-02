@@ -96,6 +96,13 @@ version: 61.85.0.20
 files: W56H-fw
 install: yealink-fw
 
+[pkg_W57R-fw]
+description: Firmware for Yealink W57R handset
+description_fr: Micrologiciel pour le combiné Yealink W57R
+version: 118.85.0.15
+files: W57R-fw
+install: yealink-fw
+
 [pkg_W59R-fw]
 description: Firmware for Yealink W59R handset
 description_fr: Micrologiciel pour le combiné Yealink W59R
@@ -248,6 +255,12 @@ filename: W56H-61.85.0.20.rom
 url: http://provd.wazo.community/firmwares/yealink/W56H-61.85.0.20.rom
 size: 4412384
 sha1sum: 42b7b4dbfc98058635c6c5dc8bd8f88a4ade2568
+
+[file_W57R-fw]
+filename: W57R-118.85.0.15.rom
+url: http://provd.wazo.community/firmwares/yealink/W57R-118.85.0.15.rom
+size: 2793648
+sha1sum: bdd6ec31aa2b1b83a1ff47621a3801f5dbaee4d3
 
 [file_W59R-fw]
 filename: W59R-115.85.0.20.rom
