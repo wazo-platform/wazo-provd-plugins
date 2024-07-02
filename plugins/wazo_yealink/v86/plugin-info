@@ -1,7 +1,7 @@
 {
     "version": "1.4.3",
-    "description": "Plugin for Yealink for CP920, CP925, T27G, T3X, T4X and T5X series in version 86.",
-    "description_fr": "Greffon pour Yealink pour les series CP920, CP925, T27G, T3X, T4X et T5X en version 86.",
+    "description": "Plugin for Yealink for CP920, CP925, CP965, T27G, T3X, T4X and T5X series in version 86.",
+    "description_fr": "Greffon pour Yealink pour les series CP920, CP925, CP965, T27G, T3X, T4X et T5X en version 86.",
     "vendor" : "Yealink",
     "vendor.url" : "http://www.yealink.com",
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",

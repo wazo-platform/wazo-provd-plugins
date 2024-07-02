@@ -205,6 +205,18 @@ url: http://provd.wazo.community/firmwares/yealink/W80DM-103.85.0.25.rom
 size: 19382912
 sha1sum: 47d95a50954e41a2380a617ac70fbdbbd4e04f65
 
+[file_W75B-fw]
+filename: W75B-175.85.0.5.rom
+url: http://provd.wazo.community/firmwares/yealink/W75B-175.85.0.5.rom
+size: 19382320
+sha1sum: 1a7868c5e211d9ab03553c483b921a5ad3db59fe
+
+[file_W75DM-fw]
+filename: W75DM-175.85.0.5.rom
+url: http://provd.wazo.community/firmwares/yealink/W75DM-175.85.0.5.rom
+size: 19382912
+sha1sum: 47d95a50954e41a2380a617ac70fbdbbd4e04f65
+
 [file_W90DM-fw]
 filename: W90DM-130.85.0.44.rom
 url: http://provd.wazo.community/firmwares/yealink/W90DM-130.85.0.44.rom
@@ -232,6 +244,18 @@ sha1sum: 3e826495b1585156a300b1e3752013491791db2d
 [file_W73H-fw]
 filename: W73H-116.85.0.15.rom
 url: https://provd.wazo.community/firmwares/yealink/W73H-116.85.0.15.rom
+size: 2936160
+sha1sum: 399dfe27733d1ad1410f9fadcf04b85722e75783
+
+[file_W74H-fw]
+filename: W74H-116.85.0.15.rom
+url: https://provd.wazo.community/firmwares/yealink/W74H-116.85.0.15.rom
+size: 2936160
+sha1sum: 399dfe27733d1ad1410f9fadcf04b85722e75783
+
+[file_W78H-fw]
+filename: W78H-116.85.0.15.rom
+url: https://provd.wazo.community/firmwares/yealink/W78H-116.85.0.15.rom
 size: 2936160
 sha1sum: 399dfe27733d1ad1410f9fadcf04b85722e75783
 
