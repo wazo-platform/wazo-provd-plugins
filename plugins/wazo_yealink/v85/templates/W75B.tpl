@@ -1,6 +1,4 @@
 #!version:1.0.0.1
-<<<<<<< HEAD
-=======
 
 static.auto_provision.server.url = {{ XX_server_url }}/
 static.firmware.url = {{ XX_server_url }}/firmware/{{ XX_fw_filename }}
@@ -146,4 +144,3 @@ call_waiting.enable = 0
 {% else -%}
 call_waiting.enable = 1
 {% endif %}
->>>>>>> fdf23387 (W75DM provisioning improvement)
