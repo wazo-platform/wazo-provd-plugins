@@ -82,7 +82,11 @@ static.security.user_password = {{ admin_username|d('admin') }}:{{ admin_passwor
 
 {% for line_no, line in XX_sip_lines.items() -%}
 {% if line -%}
+<<<<<<< HEAD
 template.X.name = Wazo Line {{ line_no }}
+=======
+template.{{ line_no }}.name = Wazo Line {{ line_no }}
+>>>>>>> fdf23387 (W75DM provisioning improvement)
 template.{{ line_no }}.sip_server.1.address = {{ line['proxy_ip'] }}
 template.{{ line_no }}.sip_server.1.port = {{ line['proxy_port']|d('%NULL%') }}
 template.{{ line_no }}.sip_server.2.address = {{ line['backup_proxy_ip']|d('%NULL%') }}
