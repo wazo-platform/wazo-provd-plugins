@@ -398,12 +398,13 @@ class BaseFanvilPlugin(StandardPlugin):
             fkey['type'] = 1
             fkey['value'] = self._format_funckey_speeddial(funckey)
         elif funckey['type'] == 'blf':
+            fkey['type'] = 1
             fkey['value'] = self._format_funckey_blf(funckey, pickup_exten)
         elif funckey['type'] == 'park':
             fkey['value'] = self._format_funckey_call_park(funckey)
         else:
             logger.info('Unsupported funckey type: %s', funckey['type'])
-            fkey['type'] = 2
+            fkey['type'] = 0
         return fkey
 
     def _format_fkeys(
