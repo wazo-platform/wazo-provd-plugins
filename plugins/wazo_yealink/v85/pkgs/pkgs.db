@@ -61,17 +61,10 @@ version: 103.85.0.25
 files: W80DM-fw
 install: yealink-fw
 
-[pkg_W75B-fw]
-description: Firmware for Yealink W75B
-description_fr: Micrologiciel pour Yealink W75B
-version: 103.85.0.25
-files: W75B-fw
-install: yealink-fw
-
 [pkg_W75DM-fw]
-description: Firmware for Yealink W75DM
-description_fr: Micrologiciel pour Yealink W75DM
-version: 103.85.0.25
+description: Firmware for Yealink W75DM and W75B
+description_fr: Micrologiciel pour Yealink W75DM et W75B
+version: 175.85.0.5
 files: W75DM-fw
 install: yealink-fw
 
@@ -108,6 +101,27 @@ description: Firmware for Yealink W59R handset
 description_fr: Micrologiciel pour le combiné Yealink W59R
 version: 115.85.0.20
 files: W59R-fw
+install: yealink-fw
+
+[pkg_W73H-fw]
+description: Firmware for Yealink W73H handset
+description_fr: Micrologiciel pour le combiné Yealink W73H
+version: 116.85.0.35
+files: W73H-fw
+install: yealink-fw
+
+[pkg_W74H-fw]
+description: Firmware for Yealink W74H handset
+description_fr: Micrologiciel pour le combiné Yealink W74H
+version: 119.85.0.15
+files: W74H-fw
+install: yealink-fw
+
+[pkg_W78H-fw]
+description: Firmware for Yealink W78H handset
+description_fr: Micrologiciel pour le combiné Yealink W78H
+version: 16.85.0.15
+files: W78H-fw
 install: yealink-fw
 
 [pkg_T4S-ddphone-fw]
@@ -226,17 +240,11 @@ url: http://provd.wazo.community/firmwares/yealink/W80DM-103.85.0.25.rom
 size: 19382912
 sha1sum: 47d95a50954e41a2380a617ac70fbdbbd4e04f65
 
-[file_W75B-fw]
-filename: W75B-175.85.0.5.rom
-url: http://provd.wazo.community/firmwares/yealink/W75B-175.85.0.5.rom
-size: 19382320
-sha1sum: 1a7868c5e211d9ab03553c483b921a5ad3db59fe
-
 [file_W75DM-fw]
 filename: W75DM-175.85.0.5.rom
 url: http://provd.wazo.community/firmwares/yealink/W75DM-175.85.0.5.rom
-size: 19382912
-sha1sum: 47d95a50954e41a2380a617ac70fbdbbd4e04f65
+size: 25051296
+sha1sum: 83e76a69c797a139b94bb7d372c86b5c26adc4b9
 
 [file_W90DM-fw]
 filename: W90DM-130.85.0.44.rom
@@ -269,22 +277,22 @@ size: 3148768
 sha1sum: 3e826495b1585156a300b1e3752013491791db2d
 
 [file_W73H-fw]
-filename: W73H-116.85.0.15.rom
-url: https://provd.wazo.community/firmwares/yealink/W73H-116.85.0.15.rom
-size: 2936160
-sha1sum: 399dfe27733d1ad1410f9fadcf04b85722e75783
+filename: W73H-116.85.0.35.rom
+url: https://provd.wazo.community/firmwares/yealink/W73H-116.85.0.35.rom
+size: 2785984
+sha1sum: 25f578ee7d08c12da0897c2a6b71dfc5932d9bf1
 
 [file_W74H-fw]
-filename: W74H-116.85.0.15.rom
-url: https://provd.wazo.community/firmwares/yealink/W74H-116.85.0.15.rom
-size: 2936160
-sha1sum: 399dfe27733d1ad1410f9fadcf04b85722e75783
+filename: W74H-119.85.0.15.rom
+url: https://provd.wazo.community/firmwares/yealink/W74H-119.85.0.15.rom
+size: 4724736
+sha1sum: 660265f563eee219bacd6888702a885e4e7a0566
 
 [file_W78H-fw]
-filename: W78H-116.85.0.15.rom
-url: https://provd.wazo.community/firmwares/yealink/W78H-116.85.0.15.rom
-size: 2936160
-sha1sum: 399dfe27733d1ad1410f9fadcf04b85722e75783
+filename: W78H-16.85.0.15.rom
+url: https://provd.wazo.community/firmwares/yealink/W78H-16.85.0.15.rom
+size: 7140432
+sha1sum: 2b04640826166acac90a13a38e801ea0d9aa9dd3
 
 [file_T4S-ddphone-fw]
 filename: T4S-ddphone-66.85.0.56.rom

@@ -23,9 +23,9 @@ HANDSETS_FW = {
     'w56h': 'W56H-61.85.0.20.rom',
     'w57r': 'W57R-118.85.0.15.rom',
     'w59r': 'W59R-115.85.0.20.rom',
-    'w73h': 'W73H-116.85.0.15.rom',
-    'w74h': 'W74H-116.85.0.15.rom',
-    'w78h': 'W78H-116.85.0.15.rom',
+    'w73h': 'W73H-116.85.0.35.rom',
+    'w74h': 'W74H-119.85.0.15.rom',
+    'w78h': 'W78H-16.85.0.15.rom',
     'cp930w': 'CP930W-87.85.0.20.rom',
     't41s_dd10k': 'T4S-ddphone-66.85.0.56.rom',
     't54w_dd10k': 'T54W-ddphone-96.85.0.65.rom ',
@@ -150,7 +150,7 @@ MODEL_INFO = {
     },
     'W75B': {
         'version': '175.85.0.5',
-        'firmware': 'W75B-175.85.0.5.rom',
+        'firmware': 'W75DM-175.85.0.5.rom', # Yealink Inject W75B fw inside W75DM
         'handsets_fw': HANDSETS_FW,
     },
 }
