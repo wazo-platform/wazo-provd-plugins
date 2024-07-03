@@ -150,7 +150,7 @@ MODEL_INFO = {
     },
     'W75B': {
         'version': '175.85.0.5',
-        'firmware': 'W75DM-175.85.0.5.rom', # Yealink Inject W75B fw inside W75DM
+        'firmware': 'W75DM-175.85.0.5.rom',  # Yealink Inject W75B fw inside W75DM
         'handsets_fw': HANDSETS_FW,
     },
 }
