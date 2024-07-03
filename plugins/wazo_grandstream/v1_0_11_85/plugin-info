@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0",
+    "version": "0.0.2",
     "description": "Plugin for Grandstream GXP2130, GXP2135, GXP2140, GXP2160 and GXP2170 in version 1.0.11.85.",
     "description_fr": "Greffon pour GXP2130, GXP2135, GXP2140, GXP2160 et GXP2170 en version 1.0.11.85.",
     "vendor" : "Grandstream",
