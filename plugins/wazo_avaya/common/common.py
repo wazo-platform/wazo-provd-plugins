@@ -4,6 +4,7 @@
 """Common code shared by the various wazo-avaya plugins.
 
 Support the 1220IP and 1230IP.
+Support the J129, J169 and J179
 
 """
 from __future__ import annotations
@@ -52,7 +53,11 @@ _FILENAME_MAP = {
 
 
 class BaseAvayaHTTPDeviceInfoExtractor:
-    _UA_REGEX = re.compile(r'^AVAYA/[^/]+/([\d.]{11})$')
+    _UA_REGEX_LIST = [
+        re.compile(r'^AVAYA/[^/]+/([\d.]{11})$'),
+        re.compile(r'^(.+)\bAVAYA\/(\w+)-([\d.]+)\s\(MAC:([0-9a-fA-F]{12})\)$'),
+    ]
+
     _PATH_REGEX = re.compile(r'\bSIP([\dA-F]{12})\.cfg$')
 
     def extract(self, request: Request, request_type: RequestType):
@@ -73,9 +78,26 @@ class BaseAvayaHTTPDeviceInfoExtractor:
         #   "AVAYA/SIP12x0\x16/04.00.04.00"
         #   "AVAYA/SIP12x0\x14/04.00.04.00"
         #   "AVAYA/SIP12x0\xff/04.01.13.00"
-        m = self._UA_REGEX.match(ua)
-        if m:
-            return {'vendor': 'Avaya', 'version': m.group(1)}
+        #   "Mozilla/4.0 (compatible; MSIE 6.0) AVAYA/J179-4.1.3.0.6 (MAC:c81fea83e85a)"
+        for UA_REGEX in self._UA_REGEX_LIST:
+            m = UA_REGEX.match(ua)
+            if m:
+                if len(m.groups()) == 4:
+                    browser, model, version, mac = m.groups()
+                    dev_info = {
+                        'vendor': 'Avaya',
+                        'model': model,
+                        'version': version,
+                    }
+                    try:
+                        dev_info['mac'] = norm_mac(mac)
+                    except ValueError as e:
+                        logger.warning(
+                            'Could not normalize MAC address "%s": %s', mac, e
+                        )
+                    return dev_info
+                else:
+                    return {'vendor': 'Avaya', 'version': m.group(1)}
         return None
 
     def _extract_from_path(self, path: str, dev_info: dict[str, str]):
@@ -156,8 +178,12 @@ class BaseAvayaPlugin(StandardPlugin):
 
     def _dev_specific_filename(self, device: dict[str, str]) -> str:
         # Return the device specific filename (not pathname) of device
-        formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
-        return f'SIP{formatted_mac}.cfg'
+        if device['model'].startswith("J1"):
+            formatted_mac = format_mac(device['mac'], separator='', uppercase=False)
+            return f'{formatted_mac}.cfg'
+        else:
+            formatted_mac = format_mac(device['mac'], separator='', uppercase=True)
+            return f'SIP{formatted_mac}.cfg'
 
     def _check_config(self, raw_config):
         if 'http_port' not in raw_config:
