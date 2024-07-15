@@ -32,7 +32,7 @@ MODELS = [
 COMMON_FILES = {
     'F0V0V6700000.cfg': (
         'V67',
-        'v67_fanvil_2.6.6.201_20230202_full.zip',
+        'v67_fanvil_2.6.10.1515_20240711_update_full.zip',
         'model-v.tpl',
     ),
     'fanvil_v67_hw1_1.txt': (
