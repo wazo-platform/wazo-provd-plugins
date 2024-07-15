@@ -158,7 +158,7 @@
         {% if XX_xivo_phonebook_url -%}
         <xmlContact index="1">
             <Name>{{ XX_directory|d('Directory') }}</Name>
-            <Addr>{{ XX_xivo_phonebook_url }}</Addr>
+            <Addr>{{ XX_xivo_phonebook_url }}&amp;term=</Addr>
             <UserName></UserName>
             <PassWd></PassWd>
             <Sipline>-1</Sipline>
