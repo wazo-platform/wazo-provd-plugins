@@ -1,7 +1,7 @@
 [pkg_V67]
 description: Firmware for Fanvil V67
 description_fr: Micrologiciel pour Fanvil V67
-version: 2.6.6.201
+version: 2.6.10.1515
 files: V67-fw
 install: fanvil-fw
 
@@ -30,9 +30,9 @@ install: fanvil-fw
 a-b: cp $FILE1 firmware/
 
 [file_V67-fw]
-url: http://provd.wazo.community/firmwares/fanvil/v67_fanvil_2.6.6.201_20230202_full.zip
-size: 586284655
-sha1sum: 578745e82b0148eb8e1ecb59b1b8119b530e7d8c
+url: http://provd.wazo.community/firmwares/fanvil/v67_fanvil_2.6.10.1515_20240711_update_full.zip
+size: 595996780
+sha1sum: 70d932f47bbcd832da2af9d854b5d3d9bc950eb0
 
 [file_V65-fw]
 url: http://provd.wazo.community/firmwares/fanvil/v65-fanvil-release-5924-2.12.16.17-krnvlT2023-05-05-18.09.56.z
