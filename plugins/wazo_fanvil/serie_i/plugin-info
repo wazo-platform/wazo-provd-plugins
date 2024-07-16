@@ -70,7 +70,7 @@
             "type": "doorphone",
             "protocol": "sip"
         },
-        "Fanvil, i53W, 2.12.44.10": {
+        "Fanvil, i53W, 2.12.44.25": {
             "lines": 6,
             "high_availability": false,
             "function_keys": 3,

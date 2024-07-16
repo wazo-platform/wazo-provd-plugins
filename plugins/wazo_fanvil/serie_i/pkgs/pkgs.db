@@ -50,7 +50,7 @@ install: fanvil-fw
 [pkg_i53W]
 description: Firmware for Fanvil i53W
 description_fr: Micrologiciel pour Fanvil i53W
-version: 2.12.44.10
+version: 2.12.44.25
 files: i53w-fw
 install: fanvil-fw
 
@@ -121,9 +121,9 @@ size: 27421216
 sha1sum: 24d042cdd2b76ae2fae6ab25d5952bae3a756438
 
 [file_i53w-fw]
-url: http://provd.wazo.community/firmwares/fanvil/i53w-fanvil-release-4908-2.12.44.10-krnvlT2023-10-16-16.37.59.z
-size: 27117628
-sha1sum: 53ac656e2b796259c42cad23e3b5382319ac5259
+url: http://provd.wazo.community/firmwares/fanvil/i53w-fanvil-release-4908-2.12.44.25-krnvlT2024-07-12-19.44.05.z
+size: 27003588
+sha1sum: acf9f5b543692aa5b5fba284d1061915b1176679
 
 [file_i61-fw]
 url: http://provd.wazo.community/firmwares/fanvil/I61-fanvil-3940-full-V0.2.2-2.12.44.8.4-1877-D0.29.0-T2024-01-31-11.28.20.z
