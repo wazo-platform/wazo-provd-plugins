@@ -55,3 +55,9 @@ named `.brand` in it. Commit it to the git repository. Then, add the firmware fi
 
 If you wish to download all firmwares present on the web server, you can execute
 `make download-firmwares`
+
+## To build Test plugins
+
+wazo-test-plugins is mainly used by wazo-provd integration tests. To build it,
+we can execute
+`make build-tests`
