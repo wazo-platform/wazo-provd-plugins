@@ -500,7 +500,7 @@ class BaseFanvilPlugin(StandardPlugin):
             hasattr(plugins, 'add_wazo_phonebook_url_v2')
             and raw_config.get('config_version', 0) >= 1
         ):
-            plugins.add_xivo_phonebook_url_v2(
+            plugins.add_wazo_phonebook_url_v2(
                 raw_config, 'fanvil', entry_point='lookup', qs_suffix='term=#'
             )
 
