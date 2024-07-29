@@ -155,10 +155,10 @@
             <DesktopLongPress>status;none;none;mwi;none;</DesktopLongPress>
             <DialerConfSoftkey>audio;video;cancel;contact;history;redial;</DialerConfSoftkey>
         </softKeyConfig>
-        {% if XX_xivo_phonebook_url -%}
+        {% if XX_wazo_phonebook_url_v2 -%}
         <xmlContact index="1">
             <Name>{{ XX_directory|d('Directory') }}</Name>
-            <Addr>{{ XX_xivo_phonebook_url }}</Addr>
+            <Addr>{{ XX_wazo_phonebook_url_v2 }}</Addr>
             <UserName></UserName>
             <PassWd></PassWd>
             <Sipline>-1</Sipline>

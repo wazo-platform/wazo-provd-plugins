@@ -32,12 +32,12 @@ MODELS = [
 COMMON_FILES = {
     'F0V0V6700000.cfg': (
         'V67',
-        'v67_fanvil_2.6.6.201_20230202_full.zip',
+        'v67_fanvil_2.6.10.1515_20240711_update_full.zip',
         'model-v.tpl',
     ),
     'fanvil_v67_hw1_1.txt': (
         'V67',
-        'v67_fanvil_2.6.6.201_20230202_full.zip',
+        'v67_fanvil_2.6.10.1515_20240711_update_full.zip',
         'model-v67.tpl',
     ),
     'F0V0V6200000.cfg': (
@@ -73,7 +73,7 @@ COMMON_FILES = {
 }
 
 MODEL_FIRMWARE_MAPPING = {
-    'V67': 'v67_fanvil_2.6.6.201_20230202_full.zip',
+    'V67': 'v67_fanvil_2.6.10.1515_20240711_update_full.zip',
     'V65': 'v65-fanvil-release-5924-2.12.16.17-krnvlT2023-05-05-18.09.56.z',
     'V64': 'v64-fanvil-release-ff01-5922-2.12.16.17-krnvUT2023-05-05-18.25.33.z',
     'V62': 'v62-fanvil-release-ff01-5944-2.12.16.17-krnvUT2023-05-05-18.17.53.z',

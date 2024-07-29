@@ -229,6 +229,7 @@ class BaseFanvilPlugin(StandardPlugin):
         self._update_lines(raw_config)
         self._add_fkeys(device, raw_config)
         self._add_phonebook_url(raw_config)
+        self._add_phonebook_url_v2(raw_config)
         self._add_wazo_phoned_user_service_url(raw_config, 'dnd')
         self._add_server_url(raw_config)
         self._add_firmware(device, raw_config)
@@ -490,7 +491,26 @@ class BaseFanvilPlugin(StandardPlugin):
             hasattr(plugins, 'add_xivo_phonebook_url')
             and raw_config.get('config_version', 0) >= 1
         ):
-            plugins.add_xivo_phonebook_url(raw_config, 'fanvil')
+            plugins.add_xivo_phonebook_url(
+                raw_config, 'fanvil', entry_point='lookup', qs_suffix='term='
+            )
+
+    def _add_phonebook_url_v2(self, raw_config: dict[str, Any]) -> None:
+        if (
+            hasattr(plugins, 'add_xivo_phonebook_url')
+            and raw_config.get('config_version', 0) >= 1
+        ):
+            original_phonebook_url = raw_config.get('XX_xivo_phonebook_url')
+            if not original_phonebook_url:
+                return
+
+            plugins.add_xivo_phonebook_url(
+                raw_config, 'fanvil-v2', entry_point='lookup', qs_suffix='term=#'
+            )
+            fixed_url = raw_config['XX_xivo_phonebook_url'].replace('&', '&amp;')
+
+            raw_config['XX_wazo_phonebook_url_v2'] = fixed_url
+            raw_config['XX_xivo_phonebook_url'] = original_phonebook_url
 
     def _add_firmware(self, device, raw_config: dict[str, Any]) -> None:
         model = device.get('model')

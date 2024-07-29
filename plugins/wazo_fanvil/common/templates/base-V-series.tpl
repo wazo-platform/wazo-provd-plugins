@@ -136,10 +136,19 @@
             <DateDisplayStyle>2</DateDisplayStyle>
             <DateSeparator>0</DateSeparator>
         </timeDisplay>
-        {% if XX_xivo_phonebook_url -%}
         <softkey>
             <DesktopSoftkey>history;dss1;;menu;</DesktopSoftkey>
         </softkey>
+        {% if XX_wazo_phonebook_url_v2 -%}
+        <xmlContact index="1">
+            <Name>{{ XX_directory|d('Directory') }}</Name>
+            <Addr>{{ XX_wazo_phonebook_url_v2 }}</Addr>
+            <UserName></UserName>
+            <PassWd></PassWd>
+            <Sipline>-1</Sipline>
+            <BindLine>-1</BindLine>
+            <PhonebookType>0</PhonebookType>
+        </xmlContact>
         {% endif %}
     </phone>
     <cti>

@@ -1,5 +1,5 @@
 {
-    "version": "1.1.3",
+    "version": "1.1.4",
     "description": "Plugin for Fanvil i10X/i16X, i6X series and i51W/i52W/i53W",
     "description_fr": "Greffon pour les series i10X/i16X, i6X et i51W/i52W/i53W Fanvil",
     "vendor" : "Fanvil",
@@ -70,7 +70,7 @@
             "type": "doorphone",
             "protocol": "sip"
         },
-        "Fanvil, i53W, 2.12.44.10": {
+        "Fanvil, i53W, 2.12.44.25": {
             "lines": 6,
             "high_availability": false,
             "function_keys": 3,

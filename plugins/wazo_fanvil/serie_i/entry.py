@@ -80,7 +80,7 @@ COMMON_FILES = {
     ),
     'F0Vi53W00000.cfg': (
         'i53W',
-        'i53w-fanvil-release-4908-2.12.44.10-krnvlT2023-10-16-16.37.59.z',
+        'i53w-fanvil-release-4908-2.12.44.25-krnvlT2024-07-12-19.44.05.z',
         'model-i5x.tpl',
     ),
     'fanvil_i51w_hwv1_0.txt': (
@@ -95,7 +95,7 @@ COMMON_FILES = {
     ),
     'fanvil_i53w_hwv1_0.txt': (
         'i53w',
-        'i53w-fanvil-release-4908-2.12.44.10-krnvlT2023-10-16-16.37.59.z',
+        'i53w-fanvil-release-4908-2.12.44.25-krnvlT2024-07-12-19.44.05.z',
         'model-i5x.tpl',
     ),
     'F0V16S00000.cfg': (
@@ -166,7 +166,7 @@ MODEL_FIRMWARE_MAPPING = {
     'i10SD': 'I10SD-fanvil-3922-full-V0.2.2-2.12.44.6-1864-D0.29.0-T2023-09-08-12.20.09.z',
     'i51W': 'i51w-fanvil-release-4900-2.12.44.10-krnvlT2023-10-16-16.58.43.z',
     'i52W': 'i52w-fanvil-release-4902-2.12.44.10-krnvlT2023-10-16-17.11.35.z',
-    'i53W': 'i53w-fanvil-release-4908-2.12.44.10-krnvlT2023-10-16-16.37.59.z',
+    'i53W': 'i53w-fanvil-release-4908-2.12.44.25-krnvlT2024-07-12-19.44.05.z',
     'i16S': 'I16S-fanvil-3925-full-V0.2.2-2.12.44.6-1864-D0.29.0-T2023-09-08-12.32.55.z',
     'i16SV': 'I16SV-fanvil-3919-full-V0.2.2-2.12.44.6-1864-D0.29.0-T2023-09-08-12.39.00.z',
     'i61': 'I61-fanvil-3940-full-V0.2.2-2.12.44.8.4-1877-D0.29.0-T2024-01-31-11.28.20.z',

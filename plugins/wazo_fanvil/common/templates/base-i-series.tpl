@@ -379,6 +379,17 @@
             <DateDisplayStyle>9</DateDisplayStyle>
             <DateSeparator>3</DateSeparator>
         </timeDisplay>
+{% if XX_wazo_phonebook_url_v2 -%}
+       <xmlContact index="1">
+            <Name>{{ XX_directory|d('Directory') }}</Name>
+            <Addr>{{ XX_wazo_phonebook_url_v2 }}</Addr>
+            <UserName></UserName>
+            <PassWd></PassWd>
+            <Sipline>-1</Sipline>
+            <BindLine>-1</BindLine>
+            <PhonebookType>0</PhonebookType>
+        </xmlContact>
+{%- endif %}
     </phone>
     <cti>
         {% if XX_wazo_phoned_user_service_dnd_enabled_url -%}
