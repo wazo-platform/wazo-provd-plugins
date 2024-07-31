@@ -21,8 +21,11 @@ execfile_('common.py', common_globals)  # type: ignore[name-defined]
 HANDSETS_FW = {
     'w53h': 'W53H-88.85.0.20.rom',
     'w56h': 'W56H-61.85.0.20.rom',
+    'w57r': 'W57R-118.85.0.15.rom',
     'w59r': 'W59R-115.85.0.20.rom',
-    'w73h': 'W73H-116.85.0.15.rom',
+    'w73h': 'W73H-116.85.0.35.rom',
+    'w74h': 'W74H-119.85.0.15.rom',
+    'w78h': 'W78H-16.85.0.15.rom',
     'cp930w': 'CP930W-87.85.0.20.rom',
     't41s_dd10k': 'T4S-ddphone-66.85.0.56.rom',
     't54w_dd10k': 'T54W-ddphone-96.85.0.65.rom ',
@@ -120,6 +123,16 @@ MODEL_INFO = {
         'firmware': 'W70B-146.85.0.37.rom',
         'handsets_fw': HANDSETS_FW,
     },
+    'W80DM': {
+        'version': '103.85.0.25',
+        'firmware': '$PN-103.85.0.25.rom',
+        'handsets_fw': HANDSETS_FW,
+    },
+    'W80B': {
+        'version': '103.85.0.25',
+        'firmware': '$PN-103.85.0.25.rom',
+        'handsets_fw': HANDSETS_FW,
+    },
     'W90DM': {
         'version': '130.85.0.44',
         'firmware': '$PN-130.85.0.44.rom',  # $PN = Product Name, i.e W90DM
@@ -128,6 +141,16 @@ MODEL_INFO = {
     'W90B': {
         'version': '130.85.0.44',
         'firmware': '$PN-130.85.0.44.rom',  # $PN = Product Name, i.e W90B
+        'handsets_fw': HANDSETS_FW,
+    },
+    'W75DM': {
+        'version': '175.85.0.5',
+        'firmware': 'W75DM-175.85.0.5.rom',
+        'handsets_fw': HANDSETS_FW,
+    },
+    'W75B': {
+        'version': '175.85.0.5',
+        'firmware': 'W75DM-175.85.0.5.rom',  # Yealink Inject W75B fw inside W75DM
         'handsets_fw': HANDSETS_FW,
     },
 }

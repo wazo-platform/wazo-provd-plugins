@@ -36,6 +36,10 @@ MODEL_INFO = {
         'version': '148.86.0.5',
         'firmware': 'CP925-148.86.0.5.rom',
     },
+    'CP965': {
+        'version': '143.86.0.10',
+        'firmware': 'CP925-143.86.0.10.rom',
+    },
     'T27G': {
         'version': '69.86.0.15',
         'firmware': 'T27G-69.86.0.15.rom',
@@ -99,24 +103,32 @@ MODEL_INFO = {
         'firmware': 'T46S(T48S,T42S,T41S)-66.86.0.15.rom',
     },
     'T41U': {
-        'version': '108.86.0.45',
-        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom',
+        'version': '108.86.0.90',
+        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U,T44U,T44W)-108.86.0.90.rom',
     },
     'T42U': {
-        'version': '108.86.0.45',
-        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom',
+        'version': '108.86.0.90',
+        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U,T44U,T44W)-108.86.0.90.rom',
     },
     'T43U': {
-        'version': '108.86.0.45',
-        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom',
+        'version': '108.86.0.90',
+        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U,T44U,T44W)-108.86.0.90.rom',
+    },
+    'T44U': {
+        'version': '108.86.0.90',
+        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U,T44U,T44W)-108.86.0.90.rom',
+    },
+    'T44W': {
+        'version': '108.86.0.90',
+        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U,T44U,T44W)-108.86.0.90.rom',
     },
     'T46U': {
-        'version': '108.86.0.45',
-        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom',
+        'version': '108.86.0.90',
+        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U,T44U,T44W)-108.86.0.90.rom',
     },
     'T48U': {
-        'version': '108.86.0.45',
-        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom',
+        'version': '108.86.0.90',
+        'firmware': 'T46U(T43U,T46U,T41U,T48U,T42U,T44U,T44W)-108.86.0.90.rom',
     },
     'T53': {
         'version': '96.86.0.45',

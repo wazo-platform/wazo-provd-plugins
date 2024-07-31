@@ -12,6 +12,13 @@ version: 148.86.0.5
 files: CP925-fw
 install: yealink-fw
 
+[pkg_CP965-fw]
+description: Firmware for Yealink CP965
+description_fr: Micrologiciel pour Yealink CP965
+version: 143.86.0.10
+files: CP965-fw
+install: yealink-fw
+
 [pkg_T27G-fw]
 description: Firmware for Yealink T27G
 description_fr: Micrologiciel pour Yealink T27G
@@ -33,11 +40,11 @@ version: 66.86.0.15
 files: T46S_T48S_T42S_T41S-fw
 install: yealink-fw
 
-[pkg_T43U_T46U_T41U_T48U_T42U-fw]
-description: Firmware for Yealink T43U T46U T41U T48U T42U
-description_fr: Micrologiciel pour Yealink T43U T46U T41U T48U T42U
-version: 108.86.0.45
-files: T43U_T46U_T41U_T48U_T42U-fw
+[pkg_T43U_T46U_T41U_T48U_T42U_T44-fw]
+description: Firmware for Yealink T41U T42U T43U T44U T44W T46U T48U
+description_fr: Micrologiciel pour Yealink T41U T42U T43U T44U T44W T46U T48U
+version: 108.86.0.90
+files: T43U_T46U_T41U_T48U_T42U_T44-fw
 install: yealink-fw
 
 [pkg_T53_T53C_T53W_T54W_T57W-fw]
@@ -142,6 +149,12 @@ url: http://provd.wazo.community/firmwares/yealink/CP925-148.86.0.5.rom
 size: 34804864
 sha1sum: 58ae7b0fe67607e64b5cb0ca99d2a82354587436
 
+[file_CP965-fw]
+filename: CP965-143.86.0.10.rom
+url: http://provd.wazo.community/firmwares/yealink/CP965-143.86.0.10.rom
+size: 435432624
+sha1sum: 02545bcab0f7f32781133d34fa25e79cbf333208
+
 [file_T27G-fw]
 filename: T27G-69.86.0.15.rom
 url: http://provd.wazo.community/firmwares/yealink/T27G-69.86.0.15.rom
@@ -160,11 +173,11 @@ url: http://provd.wazo.community/firmwares/yealink/T46S(T48S,T42S,T41S)-66.86.0.
 size: 23192144
 sha1sum: 2eff966f4969ba06f236134821e46c70fadad7e8
 
-[file_T43U_T46U_T41U_T48U_T42U-fw]
-filename: T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom
-url: http://provd.wazo.community/firmwares/yealink/T46U(T43U,T46U,T41U,T48U,T42U)-108.86.0.45(20211130).rom
-size: 37055696
-sha1sum: a4371f5b62b44af5104275caa6d4b289750e419b
+[file_T43U_T46U_T41U_T48U_T42U_T44-fw]
+filename: T46U(T43U,T46U,T41U,T48U,T42U,T44U,T44W)-108.86.0.90.rom
+url: http://provd.wazo.community/firmwares/yealink/T46U(T43U,T46U,T41U,T48U,T42U,T44U,T44W)-108.86.0.90.rom
+size: 46525712
+sha1sum: bd21892506d5542b0b3f661d6c684b4cadeb07c1
 
 [file_T53_T53C_T53W_T54W_T57W-fw]
 filename: T54W(T57W,T53W,T53,T53C,T54,T57)-96.86.0.45(20211130).rom
