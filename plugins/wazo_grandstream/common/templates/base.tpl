@@ -55,6 +55,8 @@
     <P2301>0</P2301>
     <P2302>0</P2302>
     <P2303>1</P2303>
+    {# Allow SIP Reset (synchronize) #}
+    <P26015>1</P26015>
     <P191>0</P191>
   {% else -%}
     {% set position = line_no|int + 2 %}
@@ -71,6 +73,8 @@
     <P2{{ position }}02>0</P2{{ position }}02>
     <P2{{ position }}03>1</P2{{ position }}03>
     <P2{{ position }}12>{{ line['backup_registrar_ip'] }}</P2{{ position }}12>
+    {# Allow SIP Reset (synchronize) #}
+    <P26{{ position }}15>1</P26{{ position }}15>
   {% endif -%}
 {% endfor %}
 {% if XX_fkeys -%}
