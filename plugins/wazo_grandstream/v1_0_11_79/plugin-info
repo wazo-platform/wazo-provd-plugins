@@ -1,5 +1,5 @@
 {
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Plugin for Grandstream GXP2135 in version 1.0.11.79.",
     "description_fr": "Greffon pour Grandstream GXP2135 en version 1.0.11.79.",
     "vendor" : "Grandstream",

@@ -1,5 +1,5 @@
 {
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Plugin for Grandstream GRP2612, GRP2613, GRP2614, GRP2615 and GRP2616 in version 1.0.5.48.",
     "description_fr": "Greffon pour Grandstream GRP2612, GRP2613, GRP2614, GRP2615 et GRP2616 en version 1.0.5.48.",
     "vendor" : "Grandstream",
