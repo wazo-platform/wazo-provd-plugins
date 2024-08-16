@@ -10,7 +10,7 @@
         "Grandstream, GXP2130, 1.0.11.85": {
             "lines": 3,
             "high_availability": true,
-            "function_keys": 3,
+            "function_keys": 8,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -19,7 +19,7 @@
         "Grandstream, GXP2135, 1.0.11.85": {
             "lines": 4,
             "high_availability": true,
-            "function_keys": 4,
+            "function_keys": 32,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -28,8 +28,8 @@
         "Grandstream, GXP2140, 1.0.11.85": {
             "lines": 4,
             "high_availability": true,
-            "function_keys": 5,
-            "expansion_modules": 0,
+            "function_keys": 4,
+            "expansion_modules": 4,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
@@ -37,7 +37,7 @@
         "Grandstream, GXP2160, 1.0.11.85": {
             "lines": 6,
             "high_availability": true,
-            "function_keys": 5,
+            "function_keys": 24,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -46,8 +46,8 @@
         "Grandstream, GXP2170, 1.0.11.85": {
             "lines": 6,
             "high_availability": true,
-            "function_keys": 5,
-            "expansion_modules": 0,
+            "function_keys": 12,
+            "expansion_modules": 4,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
