@@ -468,4 +468,10 @@
         <updatePBInterval>720</updatePBInterval>
         <APConfigPriority>0</APConfigPriority>
     </ap>
+    <mm>
+        <SelectYourTone>{{ XX_country }}</SelectYourTone>
+        <capability>
+            <AudioCodecSets>PCMU,PCMA,G722</AudioCodecSets>
+        </capability>
+    </mm>
 </sysConf>

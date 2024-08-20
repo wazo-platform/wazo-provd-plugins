@@ -458,7 +458,7 @@
         <APConfigPriority>0</APConfigPriority>
     </ap>
     <mm>
-        <SelectYourTone>25</SelectYourTone>
+        <SelectYourTone>{{ XX_country }}</SelectYourTone>
         <capability>
             <AudioCodecSets>PCMU,PCMA,G722</AudioCodecSets>
         </capability>
