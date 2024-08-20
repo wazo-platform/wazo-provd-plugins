@@ -60,6 +60,7 @@
     <item name="account.{{ line_no }}.dtmf.sendInRtp">{{ XX_dtmf_in_rtp }}</item>
     <item name="account.{{ line_no }}.dtmf.sendInSip">{{ XX_dtmf_in_sip }}</item>
     <item name="account.{{ line_no }}.featureCodes.callFeatures">No</item>
+    <item name="account.{{ line_no }}.sip.allowSipReset">Yes</item>
 {% endfor -%}
 {% if XX_v2_fkeys -%}
   {% for number, fkey in XX_v2_fkeys -%}
