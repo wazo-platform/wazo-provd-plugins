@@ -124,6 +124,17 @@ class BaseFanvilPgAssociator(BasePgAssociator):
 class BaseFanvilPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
     _LOCALE: dict[str, str] = {}
+    _COUNTRY = {
+        'de_DE': '2',
+        'en_CA': '18',
+        'en_GB': '13',
+        'en_US': '11',
+        'es_ES': '33',
+        'fr_CA': '18',
+        'fr_FR': '25',
+        'it_IT': '21',
+        'nl_NL': '5',
+    }
     _TZ_INFO: dict[int, list[tuple[str, int]]] = {}
     _SIP_DTMF_MODE = {
         'RTP-in-band': '0',
@@ -326,6 +337,7 @@ class BaseFanvilPlugin(StandardPlugin):
         locale = raw_config.get('locale')
         if not locale:
             return
+        raw_config['XX_country'] = self._COUNTRY.get(locale, self._COUNTRY['en_US'])
         language = locale.split('_')[0]
         if self._is_new_model(device):
             language = self._NEW_MODEL_SHORT_LANGUAGE_MAPPINGS.get(language, language)

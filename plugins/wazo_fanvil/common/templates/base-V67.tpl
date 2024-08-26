@@ -37,59 +37,6 @@
             <DHCPv6Option>0</DHCPv6Option>
         </opt>
     </ap>
-    <mm>
-        <G723BitRate>1</G723BitRate>
-        <ILBCPayloadType>97</ILBCPayloadType>
-        <ILBCPayloadLen>20</ILBCPayloadLen>
-        <AMRPayloadType>108</AMRPayloadType>
-        <AMRWBPayloadType>109</AMRWBPayloadType>
-        <G726-16PayloadType>103</G726-16PayloadType>
-        <G726-24PayloadType>104</G726-24PayloadType>
-        <G726-32PayloadType>102</G726-32PayloadType>
-        <G726-40PayloadType>105</G726-40PayloadType>
-        <DtmfPayloadType>101</DtmfPayloadType>
-        <OpusPayloadType>107</OpusPayloadType>
-        <OpusSampleRate>0</OpusSampleRate>
-        <VAD>0</VAD>
-        <H264PayloadType>117</H264PayloadType>
-        <H264PacketMode>0</H264PacketMode>
-        <H264Profile>0</H264Profile>
-        <ResvAudioBand>0</ResvAudioBand>
-        <H265PayloadType>98</H265PayloadType>
-        <RTPInitialPort>10000</RTPInitialPort>
-        <RTPPortQuantity>200</RTPPortQuantity>
-        <RTPKeepAlive>0</RTPKeepAlive>
-        <RTPRelay>0</RTPRelay>
-        <RTCPCNAMEUser></RTCPCNAMEUser>
-        <RTCPCNAMEHost></RTCPCNAMEHost>
-        <SelectYourTone>25</SelectYourTone>
-        <SidetoneGAIN>1</SidetoneGAIN>
-        <PlayEgressDTMF>0</PlayEgressDTMF>
-        <DialTone>440/0</DialTone>
-        <RingbackTone>440/1500,0/3500</RingbackTone>
-        <BusyTone>440/500,0/500</BusyTone>
-        <CongestionTone>440/500,0/500</CongestionTone>
-        <CallwaitingTone>440/300,0/10000</CallwaitingTone>
-        <HoldingTone></HoldingTone>
-        <ErrorTone></ErrorTone>
-        <StutterTone></StutterTone>
-        <InformationTone></InformationTone>
-        <DialRecallTone></DialRecallTone>
-        <MessageTone></MessageTone>
-        <HowlerTone></HowlerTone>
-        <NumberUnobtainable></NumberUnobtainable>
-        <WarningTone></WarningTone>
-        <RecordTone></RecordTone>
-        <AutoAnswerTone></AutoAnswerTone>
-        <capability>
-            <AudioCodecSets>G722,PCMU,PCMA</AudioCodecSets>
-            <VideoCodecSets>H264</VideoCodecSets>
-            <VideoFrameRate>30</VideoFrameRate>
-            <VideoBitRate>2000000</VideoBitRate>
-            <VideoResolution>7</VideoResolution>
-            <VideoNegotiateDir>0</VideoNegotiateDir>
-        </capability>
-    </mm>
     <phone>
         <MenuPassword>{{ admin_password|d('123') }}</MenuPassword>
         <display>
@@ -343,4 +290,15 @@
         </internal>
         {% endif -%}
     </dsskey>
+    <mm>
+        <SelectYourTone>{{ XX_country }}</SelectYourTone>
+        <capability>
+            <AudioCodecSets>G722,PCMU,PCMA</AudioCodecSets>
+            <VideoCodecSets>H264</VideoCodecSets>
+            <VideoFrameRate>30</VideoFrameRate>
+            <VideoBitRate>2000000</VideoBitRate>
+            <VideoResolution>7</VideoResolution>
+            <VideoNegotiateDir>0</VideoNegotiateDir>
+        </capability>
+    </mm>
 </sysConf>
