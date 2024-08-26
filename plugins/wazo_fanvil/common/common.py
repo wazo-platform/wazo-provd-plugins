@@ -337,7 +337,7 @@ class BaseFanvilPlugin(StandardPlugin):
         locale = raw_config.get('locale')
         if not locale:
             return
-        raw_config['XX_country'] = self._COUNTRY[locale]
+        raw_config['XX_country'] = self._COUNTRY.get(locale, self._COUNTRY['en_US'])
         language = locale.split('_')[0]
         if self._is_new_model(device):
             language = self._NEW_MODEL_SHORT_LANGUAGE_MAPPINGS.get(language, language)
