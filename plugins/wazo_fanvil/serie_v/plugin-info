@@ -1,5 +1,5 @@
 {
-    "version": "1.1.9",
+    "version": "1.2.0",
     "description": "Plugin for Fanvil V6x series",
     "description_fr": "Greffon pour La serie V6x Fanvil",
     "vendor" : "Fanvil",
@@ -16,7 +16,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, V64, 2.12.16.17": {
+        "Fanvil, V64, 2.12.21.2": {
             "lines": 12,
             "high_availability": false,
             "function_keys": 21,
@@ -25,7 +25,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, V65, 2.12.16.17": {
+        "Fanvil, V65, 2.12.21.1": {
             "lines": 20,
             "high_availability": false,
             "function_keys": 45,

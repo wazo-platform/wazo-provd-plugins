@@ -8,14 +8,14 @@ install: fanvil-fw
 [pkg_V65]
 description: Firmware for Fanvil V65
 description_fr: Micrologiciel pour Fanvil V65
-version: 2.12.16.17
+version: 2.12.21.1
 files: V65-fw
 install: fanvil-fw
 
 [pkg_V64]
 description: Firmware for Fanvil V64
 description_fr: Micrologiciel pour Fanvil V64
-version: 2.12.16.17
+version: 2.12.21.2
 files: V64-fw
 install: fanvil-fw
 
@@ -35,14 +35,14 @@ size: 595996780
 sha1sum: 70d932f47bbcd832da2af9d854b5d3d9bc950eb0
 
 [file_V65-fw]
-url: http://provd.wazo.community/firmwares/fanvil/v65-fanvil-release-5924-2.12.16.17-krnvlT2023-05-05-18.09.56.z
-size: 29766168
-sha1sum: db7d736e1427df06b2d216eafcfe3a861259be35
+url: http://provd.wazo.community/firmwares/fanvil/v65-fanvil-release-5924-2.12.21.1-krnvlT2024-08-28-09.41.46.z
+size: 30729472
+sha1sum: 05e0abada10f1b8cb56657b9cb2867329d2b9e04
 
 [file_V64-fw]
-url: http://provd.wazo.community/firmwares/fanvil/v64-fanvil-release-ff01-5922-2.12.16.17-krnvUT2023-05-05-18.25.33.z
-size: 32310460
-sha1sum: 78a5392b0690829c94978aa4f5c11402b3816aec
+url: http://provd.wazo.community/firmwares/fanvil/v64-fanvil-release-ff01-5922-2.12.21.2-krnlvUT2024-08-28-09.42.06.z
+size: 33608588
+sha1sum: d0bfadfeca3d9f85722d82c710d42401eb82d964
 
 [file_V62-fw]
 url: http://provd.wazo.community/firmwares/fanvil/v62-fanvil-release-ff01-5944-2.12.16.17-krnvUT2023-05-05-18.17.53.z
