@@ -7,6 +7,7 @@
 
 
 # provisioning url to use in Jitsi: http://<provd_ip:provd_port>/jitsi?uuid=${uuid}
+
 from __future__ import annotations
 
 import logging
