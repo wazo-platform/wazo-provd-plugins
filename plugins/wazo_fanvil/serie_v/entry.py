@@ -53,22 +53,22 @@ COMMON_FILES = {
     'F0V0V6400000.cfg': (
         'V64',
         'v64-fanvil-release-ff01-5922-2.12.21.2-krnlvUT2024-08-28-09.42.06.z',
-        'model-v6x.tpl',
+        'model-v64.tpl',
     ),
     'fanvil_v64_hwv1_0.txt': (
         'V64',
         'v64-fanvil-release-ff01-5922-2.12.21.2-krnlvUT2024-08-28-09.42.06.z',
-        'model-v6x.tpl',
+        'model-v64.tpl',
     ),
     'F0V0V6500000.cfg': (
         'V65',
         'v65-fanvil-release-5924-2.12.21.1-krnvlT2024-08-28-09.41.46.z',
-        'model-v6x.tpl',
+        'model-v65.tpl',
     ),
     'fanvil_v65_hwv1_0.txt': (
         'V65',
         'v65-fanvil-release-5924-2.12.21.1-krnvlT2024-08-28-09.41.46.z',
-        'model-v6x.tpl',
+        'model-v65.tpl',
     ),
 }
 

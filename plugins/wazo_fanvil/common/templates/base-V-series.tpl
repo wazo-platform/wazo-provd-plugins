@@ -198,10 +198,10 @@
         {%- endfor %}
         </dssSide>
         {% endif -%}
-        {% if XX_xivo_phonebook_url -%}
+        {% if XX_wazo_phonebook_url_v2 -%}
         <dssSoft index="1">
             <Type>21</Type>
-            <Value>{{ XX_xivo_phonebook_url }}</Value>
+            <Value>{{ XX_wazo_phonebook_url_v2 }}</Value>
             <Title>{{ XX_directory|d('Directory') }}</Title>
         </dssSoft>
         {%- endif %}
