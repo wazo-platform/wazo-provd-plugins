@@ -137,7 +137,8 @@
             <DateSeparator>0</DateSeparator>
         </timeDisplay>
         <softkey>
-            <DesktopSoftkey>history;dss1;;menu;</DesktopSoftkey>
+            <DesktopClick>history;status;xml;none;menu;</DesktopClick>
+            <DesktopSoftkey>history;;;menu;</DesktopSoftkey>
         </softkey>
         {% if XX_wazo_phonebook_url_v2 -%}
         <xmlContact index="1">
@@ -198,13 +199,6 @@
         {%- endfor %}
         </dssSide>
         {% endif -%}
-        {% if XX_wazo_phonebook_url_v2 -%}
-        <dssSoft index="1">
-            <Type>21</Type>
-            <Value>{{ XX_wazo_phonebook_url_v2 }}</Value>
-            <Title>{{ XX_directory|d('Directory') }}</Title>
-        </dssSoft>
-        {%- endif %}
     </dsskey>
     <web>
         <WebServerType>0</WebServerType>
