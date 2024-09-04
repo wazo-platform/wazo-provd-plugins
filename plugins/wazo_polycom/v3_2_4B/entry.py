@@ -1,4 +1,4 @@
-# Copyright 2014-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 """Plugin for Polycom phones using the 3.2.4.0267 SIP application.
@@ -23,6 +23,7 @@ The following Polycom phones are supported:
 """
 
 # XXX version for VVX1500 is 3.2.4.0244, not 3.2.4.0267.
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
