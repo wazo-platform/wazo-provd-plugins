@@ -41,6 +41,7 @@ KNOWN_MAC_PREFIXES = (
     b'805ec0',
     b'805e0c',  # NOTE(afournier): not a mistake
     b'249ad8',
+    b'44dbd2',
 )
 
 
@@ -225,6 +226,8 @@ class BaseYealinkFunckeyPrefixIterator:
         'T42S': 15,
         'T42U': 15,
         'T43U': 15,
+        'T44W': 24,
+        'T44U': 24,
         'T46S': 27,
         'T46U': 27,
         'T48S': 29,
@@ -255,6 +258,8 @@ class BaseYealinkFunckeyPrefixIterator:
         'T42S': 0,
         'T42U': 0,
         'T43U': 0,
+        'T44W': 0,
+        'T44U': 0,
         'T46S': 0,
         'T46U': 0,
         'T48S': 0,
@@ -352,6 +357,8 @@ class BaseYealinkPlugin(StandardPlugin):
         'T42S': 12,
         'T42U': 12,
         'T43U': 12,
+        'T44W': 12,
+        'T44U': 12,
         'T46S': 16,
         'T46U': 16,
         'T48S': 16,
