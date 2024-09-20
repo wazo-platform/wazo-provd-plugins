@@ -33,13 +33,6 @@ version: 6.4.0.140
 files: 6873i-fw
 install: 6873i-fw
 
-[pkg_lang]
-description: Language files
-description_fr: Fichiers de langue
-version: 6.4.0.140
-files: lang
-install: aastra-lang
-
 
 [install_6863i-fw]
 a-b: untar $FILE1
@@ -60,10 +53,6 @@ b-c: include *.st
 [install_6873i-fw]
 a-b: untar $FILE1
 b-c: include *.st
-
-[install_aastra-lang]
-a-b: untar $FILE1
-b-c: cp * i18n/
 
 
 [file_6863i-fw]
@@ -95,9 +84,3 @@ filename: 6873i.tar.gz
 url:
 size: 49339842
 sha1sum: c42142ea99b9fd8af8c0f8fb272c505f40845ae9
-
-[file_lang]
-filename: R500-6800-5801456REV00LangPacks3.zip
-url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/6867/r500-6800-5801456rev00langpacks1.zip
-size: 905670
-sha1sum: 931ca34c03f43713d59e7afe1f5cf5ca5e114b0a
