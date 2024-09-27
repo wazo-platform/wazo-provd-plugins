@@ -1181,8 +1181,8 @@ def build_10_1_159_12(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_159_12/', path])
 
 
-@target('10.1.175.10', 'wazo-snom-10.1.175.10')
-def build_10_1_175_10(path):
+@target('10.1.175.16', 'wazo-snom-10.1.175.16')
+def build_10_1_175_16(path):
     MODELS = [
         ('D315', 'r'),
         ('D335', 'r'),
@@ -1195,6 +1195,8 @@ def build_10_1_175_10(path):
         ('725', 'r'),
         ('D735', 'r'),
         ('D785', 'r'),
+        ('D812', 'r'),
+        ('D815', 'r'),
         ('D862', 'r'),
         ('D865', 'r'),
     ]
@@ -1215,6 +1217,8 @@ def build_10_1_175_10(path):
             '--include',
             '/templates/D7*5.tpl',
             '--include',
+            '/templates/D81*.tpl',
+            '--exclude',
             '/templates/D86*.tpl',
             '--exclude',
             '/templates/*.tpl',
@@ -1229,9 +1233,9 @@ def build_10_1_175_10(path):
     for model, fw_suffix in MODELS:
         # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
         model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
-        sed_script = f's/#FW_FILENAME#/snom{model}-10.1.175.10-SIP-{fw_suffix}.bin/'
+        sed_script = f's/#FW_FILENAME#/snom{model}-10.1.175.16-SIP-{fw_suffix}.bin/'
         if model.startswith("D8"):
-            sed_script = f's/#FW_FILENAME#/snom{model}-10.1.175.10-SIP-{fw_suffix}.swu/'
+            sed_script = f's/#FW_FILENAME#/snom{model}-10.1.175.16-SIP-{fw_suffix}.swu/'
         with model_tpl.open(mode='wb') as f:
             check_call(
                 [
@@ -1260,4 +1264,4 @@ def build_10_1_175_10(path):
                 stdout=f,
             )
 
-    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_175_10/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_175_16/', path])
