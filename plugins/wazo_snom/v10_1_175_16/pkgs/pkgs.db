@@ -75,20 +75,6 @@ version: 10.1.175.16
 files: 785-fw
 install: snom-fw
 
-[pkg_812-fw]
-description: Firmware for Snom D812
-description_fr: Firmware pour Snom D812
-version: 10.1.175.16
-files: 812-fw
-install: snom-fw
-
-[pkg_815-fw]
-description: Firmware for Snom D815
-description_fr: Firmware pour Snom D815
-version: 10.1.175.16
-files: 815-fw
-install: snom-fw
-
 [pkg_862-fw]
 description: Firmware for Snom D862
 description_fr: Firmware pour Snom D862
@@ -184,16 +170,6 @@ sha1sum: 1fca7af802f2c8a636dc33c3b5403eb29b9e2ced
 url: https://downloads.snom.com/fw/10.1.175.16/bin/snomD785-10.1.175.16-SIP-r.bin
 size: 39105152
 sha1sum: 80302e4e34bd6eb0ed53faff994c3f6d03ab60b8
-
-[file_812-fw]
-url: https://downloads.snom.com/fw/10.1.175.16/bin/snomD812-10.1.175.16-SIP-r.swu
-size: 63942144
-sha1sum: 8d81c8d9a486a67306f1ed55f32855c961447fda
-
-[file_815-fw]
-url: https://downloads.snom.com/fw/10.1.175.16/bin/snomD815-10.1.175.16-SIP-r.swu
-size: 63942144
-sha1sum: 79b9af24b500780b7feca0b87d7f495958424487
 
 [file_862-fw]
 url: https://downloads.snom.com/fw/10.1.175.16/bin/snomD862-10.1.175.16-SIP-r.swu

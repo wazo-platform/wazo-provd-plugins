@@ -19,21 +19,10 @@ common_globals: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
 execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 MODELS = [
-    'D315',
-    'D335',
-    'D345',
-    'D385',
-    'D712',
-    'D713',
-    '715',
-    'D717',
-    '725',
-    'D735',
-    'D785',
-    'D862',
-    'D865',
+    'D812',
+    'D815',
 ]
-VERSION = '10.1.175.16'
+VERSION = '10.1.184.15'
 
 
 class SnomPlugin(common_globals['BaseSnomPlugin']):  # type: ignore[valid-type,misc]
