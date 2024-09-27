@@ -4,4 +4,5 @@
 {% endblock %}
 
 {% block settings_suffix %}
+<locale perm="PERMISSIONFLAG">{{ XX_locale|e }}</locale>
 {% endblock %}

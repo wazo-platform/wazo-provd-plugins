@@ -262,6 +262,7 @@ class BaseSnomPlugin(StandardPlugin):
             locale = raw_config['locale']
             if locale in self._LOCALE:
                 raw_config['XX_lang'] = self._LOCALE[locale]
+                raw_config['XX_locale'] = locale
 
     def _add_timezone(self, raw_config):
         if 'timezone' in raw_config and 'XX_lang' in raw_config:
