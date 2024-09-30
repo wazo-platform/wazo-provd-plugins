@@ -7,6 +7,7 @@
     </initialization>
     <action>
         <url target="{{ XX_xivo_phonebook_url|e }}" when="on press"/>
+        <variable name="icon" value="kIconTypeFkeyAdrBook"/>
     </action>
 </gui_fkey3>
 {% endblock %}

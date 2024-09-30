@@ -4,6 +4,7 @@
 <gui_fkey3 perm="R">
     <initialization>
         <variable name="label" value="{{ XX_dict['remote_directory'] }}"/>
+        <variable name="icon" value="kIconTypeFkeyAdrBook"/>
     </initialization>
     <action>
         <url target="{{ XX_xivo_phonebook_url|e }}" when="on press"/>
