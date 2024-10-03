@@ -1,0 +1,86 @@
+[pkg_6863i-fw]
+description: Firmware for Aastra 6863i
+description_fr: Micrologiciel pour Aastra 6863i
+version: 6.4.0.140
+files: 6863i-fw
+install: 6863i-fw
+
+[pkg_6865i-fw]
+description: Firmware for Aastra 6865i
+description_fr: Micrologiciel pour Aastra 6865i
+version: 6.4.0.140
+files: 6865i-fw
+install: 6865i-fw
+
+[pkg_6867i-fw]
+description: Firmware for Aastra 6867i
+description_fr: Micrologiciel pour Aastra 6867i
+version: 6.4.0.140
+files: 6867i-fw
+install: 6867i-fw
+
+[pkg_6869i-fw]
+description: Firmware for Aastra 6869i
+description_fr: Micrologiciel pour Aastra 6869i
+version: 6.4.0.140
+files: 6869i-fw
+install: 6869i-fw
+
+[pkg_6873i-fw]
+description: Firmware for Aastra 6873i
+description_fr: Micrologiciel pour Aastra 6873i
+version: 6.4.0.140
+files: 6873i-fw
+install: 6873i-fw
+
+
+[install_6863i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_6865i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_6867i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_6869i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_6873i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+
+[file_6863i-fw]
+filename: 6863i.tar.gz
+url:
+size: 22410141
+sha1sum: 3698559ed72b93c7c22cf424120a7979b373cd2e
+
+[file_6865i-fw]
+filename: 6865i.tar.gz
+url:
+size: 36612548
+sha1sum: 0558d04301357a298c2b87395ec43ec27d781f12
+
+[file_6867i-fw]
+filename: 6867i.tar.gz
+url:
+size: 45996520
+sha1sum: 92dfa03afe5eb5fa6ec9da304b882196722da54b
+
+[file_6869i-fw]
+filename: 6869i.tar.gz
+url:
+size: 46396335
+sha1sum: 60e7aba123bf7b51d9ce9310c44ca375c307e085
+
+[file_6873i-fw]
+filename: 6873i.tar.gz
+url:
+size: 49339842
+sha1sum: c42142ea99b9fd8af8c0f8fb272c505f40845ae9

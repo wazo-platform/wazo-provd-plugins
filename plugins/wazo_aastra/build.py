@@ -115,3 +115,22 @@ def build_5_1_0(path: str) -> None:
         ]
     )
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v5_1_0/', path])
+
+
+@target('6.4.0-SP2', 'wazo-aastra-6.4.0-SP2')
+def build_6_4_0_sp2(path: str) -> None:
+    check_call(
+        [
+            'rsync',
+            '-rlp',
+            '--exclude',
+            '.*',
+            '--exclude',
+            '/templates/67*',
+            '--exclude',
+            '/templates/9*',
+            'common/',
+            path,
+        ]
+    )
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v6_4_0_SP2/', path])
