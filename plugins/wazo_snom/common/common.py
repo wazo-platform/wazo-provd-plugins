@@ -160,6 +160,15 @@ class BaseSnomPlugin(StandardPlugin):
         'fr': {
             'remote_directory': 'Annuaire',
         },
+        'es': {
+            'remote_directory': 'Directorio',
+        },
+        'it': {
+            'remote_directory': 'Directory',
+        },
+        'nl': {
+            'remote_directory': 'Map',
+        },
     }
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.xml')
 
@@ -262,6 +271,7 @@ class BaseSnomPlugin(StandardPlugin):
             locale = raw_config['locale']
             if locale in self._LOCALE:
                 raw_config['XX_lang'] = self._LOCALE[locale]
+                raw_config['XX_locale'] = locale
 
     def _add_timezone(self, raw_config):
         if 'timezone' in raw_config and 'XX_lang' in raw_config:
@@ -297,7 +307,13 @@ class BaseSnomPlugin(StandardPlugin):
         raw_config['XX_msgs_blocked'] = msgs_blocked
 
     def _add_xivo_phonebook_url(self, raw_config):
-        plugins.add_xivo_phonebook_url(raw_config, 'snom')
+        for model in self._MODELS:
+            if model.startswith("D8"):
+                plugins.add_xivo_phonebook_url(
+                    raw_config, 'snom', entry_point='lookup', qs_suffix='term=#'
+                )
+            else:
+                plugins.add_xivo_phonebook_url(raw_config, 'snom')
 
     def _add_server_url(self, raw_config):
         if raw_config.get('http_base_url'):

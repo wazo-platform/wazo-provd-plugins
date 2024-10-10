@@ -1,0 +1,26 @@
+[pkg_812-fw]
+description: Firmware for Snom D812
+description_fr: Firmware pour Snom D812
+version: 10.1.184.15
+files: 812-fw
+install: snom-fw
+
+[pkg_815-fw]
+description: Firmware for Snom D815
+description_fr: Firmware pour Snom D815
+version: 10.1.184.15
+files: 815-fw
+install: snom-fw
+
+[install_snom-fw]
+a-b: cp $FILE1 firmware/
+
+[file_812-fw]
+url: https://downloads.snom.com/fw/10.1.184.15/bin/snomD812-10.1.184.15-SIP-r.swu
+size: 81024000
+sha1sum: fe236deef94c7d3090e9cb18131db01d60763789
+
+[file_815-fw]
+url: https://downloads.snom.com/fw/10.1.184.15/bin/snomD815-10.1.184.15-SIP-r.swu
+size: 81024000
+sha1sum: 9cad6d3dbed6bdc97ad653a85f35fb164bc194d8

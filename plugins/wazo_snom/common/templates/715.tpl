@@ -1,6 +1,6 @@
 {% extends 'base.tpl' -%}
 
-{% block gui_fkey1 %}{% endblock %}
+{% block gui_fkey %}{% endblock %}
 
 {% block settings_suffix %}
 {% if XX_xivo_phonebook_url -%}
