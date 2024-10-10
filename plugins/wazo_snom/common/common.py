@@ -160,6 +160,15 @@ class BaseSnomPlugin(StandardPlugin):
         'fr': {
             'remote_directory': 'Annuaire',
         },
+        'es': {
+            'remote_directory': 'Directorio',
+        },
+        'it': {
+            'remote_directory': 'Directory',
+        },
+        'nl': {
+            'remote_directory': 'Map',
+        },
     }
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9A-F]{12}\.xml')
 
