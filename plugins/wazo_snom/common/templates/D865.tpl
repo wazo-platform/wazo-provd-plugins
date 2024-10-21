@@ -1,11 +1,19 @@
 {% extends 'base.tpl' -%}
 
-{% block gui_fkey1 %}{% endblock %}
+{% block gui_fkey %}
+<gui_fkey1 perm="R">
+    <initialization>
+        <variable name="label" value="{{ XX_dict['remote_directory'] }}"/>
+        <variable name="icon" value="kIconTypeFkeyAdrBook"/>
+    </initialization>
+    <action>
+        <url target="{{ XX_xivo_phonebook_url|e }}" when="on press"/>
+    </action>
+</gui_fkey1>
+<context_key idx="2" perm="">redirect 490</context_key>
+<context_key idx="3" perm="">keyevent F_SETTINGS</context_key>
+{% endblock %}
 
 {% block settings_suffix %}
-{% if XX_xivo_phonebook_url -%}
-<gui_fkey4 perm="R">keyevent F_NONE</gui_fkey4>
-{% else -%}
-<gui_fkey4 perm="R">keyevent F_ADR_BOOK</gui_fkey4>
-{% endif -%}
+<locale perm="RW">{{ XX_locale|e }}</locale>
 {% endblock %}
