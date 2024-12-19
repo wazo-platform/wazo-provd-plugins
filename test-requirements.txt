@@ -5,8 +5,8 @@ https://github.com/wazo-platform/wazo-auth-client/archive/master.zip  # from waz
 https://github.com/wazo-platform/xivo-fetchfw/archive/master.zip  # from wazo-provd
 https://github.com/wazo-platform/xivo-lib-python/archive/master.zip  # from wazo-provd
 beautifulsoup4==4.7.1  # from xivo-fetchfw
-jinja2==2.11.3  # from wazo-provd
-markupsafe==1.1.1  # from jinja2
+jinja2==3.0.3  # from wazo-provd
+markupsafe==2.0.1  # from jinja2
 pydantic==1.7.4  # from wazo-provd
 pytest
 pyyaml  # from xivo
