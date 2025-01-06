@@ -10,8 +10,7 @@
         <url target="{{ XX_xivo_phonebook_url|e }}" when="on press"/>
     </action>
 </gui_fkey1>
-<context_key idx="2" perm="">redirect 490</context_key>
-<context_key idx="3" perm="">keyevent F_SETTINGS</context_key>
+
 {% endblock %}
 
 {% block settings_suffix %}
