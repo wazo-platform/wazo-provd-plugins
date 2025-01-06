@@ -1339,6 +1339,8 @@ def build_10_1_refs_changes_66_26666_2(path):
             '--exclude',
             '.*',
             '--include',
+            '/templates/base.tpl',
+            '--include',
             '/templates/D86*.tpl',
             '--exclude',
             '/templates/*.tpl',
@@ -1355,7 +1357,9 @@ def build_10_1_refs_changes_66_26666_2(path):
         model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
         sed_script = f's/#FW_FILENAME#/snom{model}-8.10.1.{fw_suffix}.bin/'
         if model.startswith("D8"):
-            sed_script = f's/#FW_FILENAME#/snom{model}-8.10.1{fw_suffix}.swu/'
+            sed_script = (
+                f's/#FW_FILENAME#/snom{model}-8.10.1.66-26666-2-{fw_suffix}.swu/'
+            )
         with model_tpl.open(mode='wb') as f:
             check_call(
                 [
