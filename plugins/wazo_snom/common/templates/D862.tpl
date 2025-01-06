@@ -9,8 +9,6 @@
 <gui_fkey1 perm="R">keyevent F_ADR_BOOK</gui_fkey1>
 {% endif -%}
 <gui_fkey4 perm="R">keyevent F_STATUS</gui_fkey4>
-{% endblock %}
 
-{% block settings_suffix %}
 <locale perm="RW">{{ XX_locale|e }}</locale>
 {% endblock %}
