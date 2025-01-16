@@ -1,4 +1,4 @@
-# Copyright 2013-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ HANDSETS_FW = {
     'w59r': 'W59R-115.85.0.20.rom',
     'w73h': 'W73H-116.85.0.35.rom',
     'w74h': 'W74H-119.85.0.15.rom',
-    'w78h': 'W78H-16.85.0.15.rom',
+    'w78h': 'W78H-16.85.0.20.rom',
     'cp930w': 'CP930W-87.85.0.20.rom',
     't41s_dd10k': 'T4S-ddphone-66.85.0.56.rom',
     't54w_dd10k': 'T54W-ddphone-96.85.0.65.rom ',
@@ -120,8 +120,8 @@ MODEL_INFO = {
         'handsets_fw': HANDSETS_FW,
     },
     'W70B': {
-        'version': '146.85.0.37',
-        'firmware': 'W70B-146.85.0.37.rom',
+        'version': '146.85.0.40',
+        'firmware': 'W70B-146.85.0.40.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W80DM': {

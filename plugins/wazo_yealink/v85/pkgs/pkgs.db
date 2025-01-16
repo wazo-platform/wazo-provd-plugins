@@ -43,7 +43,7 @@ install: yealink-fw
 [pkg_W70B-fw]
 description: Firmware for Yealink W70B
 description_fr: Micrologiciel pour Yealink W70B
-version: 146.85.0.37
+version: 146.85.0.40
 files: W70B-fw
 install: yealink-fw
 
@@ -120,7 +120,7 @@ install: yealink-fw
 [pkg_W78H-fw]
 description: Firmware for Yealink W78H handset
 description_fr: Micrologiciel pour le combiné Yealink W78H
-version: 16.85.0.15
+version: 16.85.0.20
 files: W78H-fw
 install: yealink-fw
 
@@ -223,10 +223,10 @@ size: 10732848
 sha1sum: 73f3d3485395e53bb647f7da270a49f13acca6c0
 
 [file_W70B-fw]
-filename: W70B-146.85.0.37.rom
-url: http://provd.wazo.community/firmwares/yealink/W70B-146.85.0.37.rom
-size: 16650944
-sha1sum: 42c58e4507ff4bd51971e2055c7ab250e5f5ebc9
+filename: W70B-146.85.0.40.rom
+url: http://provd.wazo.community/firmwares/yealink/W70B-146.85.0.40.rom
+size: 17489424
+sha1sum: ca5d7ea8fb9c0c96fd24299f4b040d3763bbd774
 
 [file_W80B-fw]
 filename: W80B-103.85.0.25.rom
@@ -289,10 +289,10 @@ size: 4724736
 sha1sum: 660265f563eee219bacd6888702a885e4e7a0566
 
 [file_W78H-fw]
-filename: W78H-16.85.0.15.rom
-url: https://provd.wazo.community/firmwares/yealink/W78H-16.85.0.15.rom
-size: 7140432
-sha1sum: 2b04640826166acac90a13a38e801ea0d9aa9dd3
+filename: W78H-16.85.0.20.rom
+url: https://provd.wazo.community/firmwares/yealink/W78H-16.85.0.20.rom
+size: 7140944
+sha1sum: 130bb726a927b9628fdd383a4f8f7f510a91ea3a
 
 [file_T4S-ddphone-fw]
 filename: T4S-ddphone-66.85.0.56.rom
