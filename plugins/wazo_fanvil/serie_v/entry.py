@@ -156,22 +156,22 @@ COMMON_FILES = {
     ),
     'F0V0V6600000.cfg': (
         'V66',
-        'v6x-unified-release-a006-2.12.20.3-krvnlUT2024-12-12-16.09.35.z',
+        'v66pro-fanvil-release-5927-2.12.18.16-krnvlT2024-12-13-19.26.56.z',
         'model-v.tpl',
     ),
     'fanvil_v66_hwv1_0.txt': (
         'V66',
-        'v6x-unified-release-a006-2.12.20.3-krvnlUT2024-12-12-16.09.35.z',
+        'v66pro-fanvil-release-5927-2.12.18.16-krnvlT2024-12-13-19.26.56.z',
         'model-v66.tpl',
     ),
     'F0V0V66100000.cfg': (
         'V66Pro',
-        'v6x-unified-release-a006-2.12.20.3-krvnlUT2024-12-12-16.09.35.z',
+        'v66pro-fanvil-release-5927-2.12.18.16-krnvlT2024-12-13-19.26.56.z',
         'model-v.tpl',
     ),
     'fanvil_v66_pro_hwv1_0.txt': (
         'V66Pro',
-        'v6x-unified-release-a006-2.12.20.3-krvnlUT2024-12-12-16.09.35.z',
+        'v66pro-fanvil-release-5927-2.12.18.16-krnvlT2024-12-13-19.26.56.z',
         'model-v66.tpl',
     ),
 }
