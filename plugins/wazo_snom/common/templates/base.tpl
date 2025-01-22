@@ -4,9 +4,7 @@
     {% if vlan_enabled -%}
     <vlan_id perm="R">{{ vlan_id }}</vlan_id>
     <vlan_qos perm="R">{{ vlan_priority|d('0') }}</vlan_qos>
-    {% else -%}
-    <vlan_id perm="R"></vlan_id>
-    <vlan_qos perm="R"></vlan_qos>
+    <vlan_pc_id perm="R">{{ vlan_pc_port_id|d('0') }}</vlan_pc_id>
     {% endif -%}
 
     <codec_tos perm="R">184</codec_tos>
