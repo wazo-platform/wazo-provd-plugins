@@ -19,4 +19,6 @@
     <context_key idx="3" perm="R">keyevent F_STATUS</context_key>
     {% endblock %}
 
-    {% block settings_suffix %}{% endblock %}
+    {% block settings_suffix %}
+    <locale perm="R">{{ XX_locale|e }}</locale>
+    {% endblock %}
