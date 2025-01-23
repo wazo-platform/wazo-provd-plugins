@@ -83,9 +83,9 @@
 
     {% if XX_xivo_phonebook_url -%}
     <dkey_directory perm="R">url {{ XX_xivo_phonebook_url|e }}</dkey_directory>
-    {% block gui_fkey %}
-    {% endblock %}
     {% endif -%}
+
+    {% block gui_fkey %}{% endblock %}
 
     {% if XX_lang -%}
     <language perm="R">{{ XX_lang[0] }}</language>
@@ -96,7 +96,7 @@
     {{ XX_timezone }}
 
     <!-- hide the "identity not registered" msg when Wazo HA is enabled -->
-    <status_msgs_that_are_blocked perm="R">PhoneHasVoiceMessages PhoneHasTextMessages{{ XX_msgs_blocked }}</status_msgs_that_are_blocked>
+    <status_msgs_that_are_blocked perm="R">{{ XX_msgs_blocked }}</status_msgs_that_are_blocked>
 
     <call_waiting perm="R">{{ 'off' if XX_options['switchboard'] else 'on' }}</call_waiting>
 

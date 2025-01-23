@@ -140,10 +140,10 @@ class BaseSnomPlugin(StandardPlugin):
         'de_DE': ('Deutsch', 'GER'),
         'en_US': ('English', 'USA'),
         'es_ES': ('Espanol', 'ESP'),
-        'fr_FR': ('Francais', 'FRA'),
-        'fr_CA': ('Francais', 'USA'),
+        'fr_FR': ('Français', 'FRA'),
+        'fr_CA': ('Français', 'USA'),
         'it_IT': ('Italiano', 'ITA'),
-        'nl_NL': ('Dutch', 'NLD'),
+        'nl_NL': ('Nederlands', 'NLD'),
     }
     _SIP_DTMF_MODE = {
         'RTP-in-band': 'off',
