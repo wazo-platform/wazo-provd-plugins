@@ -16,26 +16,8 @@
       F_HOLD transfer(not:Transfer) F_CONTACTPOOL(Holding,Transfer) F_ABS F_DELETE_MSG F_
       CALLRECORD_CONTROL_ON </call_screen_fkeys_on_holding>
     <cancel_on_hold perm="">on</cancel_on_hold>
-    <status_msgs_that_are_blocked perm="">EmergencyCallNumbersMisconfigured
-      PhoneHasVoiceMessages PhoneHasTextMessages PhoneProvisioningFailed CurrentIdentityIsDnd
-      RingerIsSilent AnonymousIdOn AudioDeviceIsviceIsSpeaker AudioDeviceIsHeadset AudioDeviceIsHandset</status_msgs_that_are_blocked>
-    <status_msgs_that_show_directly perm="">StatusLineSystemMessage:3 AudioDeviceIsSpeaker
-      AudioDeviceIsHeadset AudioIsMuted CallBackOnBusyInProgress CallBackOnBusyAvailable PhonePr
-      ovisioningStarting PhoneProvisioningInProgress PhoneHasIncomingPublicAnnouncement&amp;#xD;
-      PhoneIsLocked EthernetUnplugged PhoneHasFirmwareUpdate FirmwareUpdateFailed PhoneWantsToUpdate
-      VisionConnectionLost PhoneWantsReboot PhoneHasDisabledSipStack PhoneHasVpnError
-      PhoneHasLowMemory
-      PhoneRefusedHugeXcapSync&amp;#xD;
-      CurrentIdentityIsNotRegistered PhoneIsWaitingForCallCompletion CurrentIdentityForewardsAlways
-      CurrentIdentityIsDnd CurrentIdentityForewardsWhenBusy CurrentIdentityForewardsAfterTimeout
-      PhoneWai
-      tsOnNtpServer&amp;#xD;
-      PhoneCannotReachNtpServer ActiveLocations PhoneHasNoHttpPassword PhoneHasNoAdminPassword
-      ServerMessageToBeShownDirectly CurrentIdentityHasVoiceMessages PhoneHasMissedCalls
-      CurrentIdentityHasTex
-      tMessages&amp;#xD;
-      TryParking:5 UxmConnected:5 WlanActive:5 HidConnecting:10 HidConnected:5
-      ExpDeviceCabelingBroken ExpDeviceLimitExceeded CanceledCall:3</status_msgs_that_show_directly>
+    <status_msgs_that_are_blocked perm="">EmergencyCallNumbersMisconfigured PhoneHasVoiceMessages PhoneHasTextMessages PhoneProvisioningFailed CurrentIdentityIsDnd RingerIsSilent AnonymousIdOn AudioDeviceIsviceIsSpeaker AudioDeviceIsHeadset AudioDeviceIsHandset</status_msgs_that_are_blocked>
+    <status_msgs_that_show_directly perm="">StatusLineSystemMessage:3 AudioDeviceIsSpeaker AudioDeviceIsHeadset AudioIsMuted CallBackOnBusyInProgress CallBackOnBusyAvailable PhoneProvisioningStarting PhoneProvisioningInProgress PhoneHasIncomingPublicAnnouncement&amp;#xD; PhoneIsLocked EthernetUnplugged PhoneHasFirmwareUpdate FirmwareUpdateFailed PhoneWantsToUpdate VisionConnectionLost PhoneWantsReboot PhoneHasDisabledSipStack PhoneHasVpnError PhoneHasLowMemory PhoneRefusedHugeXcapSync&amp;#xD; CurrentIdentityIsNotRegistered PhoneIsWaitingForCallCompletion CurrentIdentityForewardsAlways CurrentIdentityIsDnd CurrentIdentityForewardsWhenBusy CurrentIdentityForewardsAfterTimeout PhoneWaitsOnNtpServer&amp;#xD; PhoneCannotReachNtpServer ActiveLocations PhoneHasNoHttpPassword PhoneHasNoAdminPassword ServerMessageToBeShownDirectly CurrentIdentityHasVoiceMessages PhoneHasMissedCalls CurrentIdentityHasTextMessages&amp;#xD; TryParking:5 UxmConnected:5 WlanActive:5 HidConnecting:10 HidConnected:5 ExpDeviceCabelingBroken ExpDeviceLimitExceeded CanceledCall:3</status_msgs_that_show_directly>
     <transfer_on_hangup perm="">on</transfer_on_hangup>
     <transfer_on_hangup_non_pots perm="">on</transfer_on_hangup_non_pots>
     <transfer_on_hangup_with_starcode perm="">on</transfer_on_hangup_with_starcode>
@@ -44,7 +26,7 @@
     <vlan_id perm="R">{{ vlan_id }}</vlan_id>
     <vlan_qos perm="R">{{ vlan_priority|d('0') }}</vlan_qos>
     {% else -%}
-    <vlan_id perm="R"></vlan_id> [53/94]
+    <vlan_id perm="R"></vlan_id>
     <vlan_qos perm="R"></vlan_qos>
     {% endif -%}
 
@@ -131,7 +113,7 @@
       </action>
     </context_key>
     <context_key_icon_type idx="3" perm="RW">kIconTypeFkeyAdrBook</context_key_icon_type>
-    <context_key_label idx="3" perm="RW">Annuaire</context_key_label>
+    <context_key_label idx="3" perm="RW">{{ XX_dict['remote_directory'] }}</context_key_label>
     {% block gui_fkey %}
     {% endblock %}
     {% endif -%}
@@ -147,13 +129,11 @@
     {{ XX_timezone }}
 
     <!-- hide the "identity not registered" msg when Wazo HA is enabled -->
-    <status_msgs_that_are_blocked perm="R">EmergencyCallNumbersMisconfigured
-      PhoneHasVoiceMessages PhoneHasTextMessages PhoneProvisioningFailed CurrentIdentityIsDnd
-      RingerIsSilent AnonymousIdOn AudioDeviceIsviceIsSpeaker AudioDeviceIsHeadset AudioDeviceIsHandset PhoneHasVoiceMessages PhoneHasTextMessages{{XX_msgs_blocked }}</status_msgs_that_are_blocked>
+    <status_msgs_that_are_blocked perm="R">EmergencyCallNumbersMisconfigured PhoneHasVoiceMessages PhoneHasTextMessages PhoneProvisioningFailed CurrentIdentityIsDnd RingerIsSilent AnonymousIdOn AudioDeviceIsviceIsSpeaker AudioDeviceIsHeadset AudioDeviceIsHandset PhoneHasVoiceMessages PhoneHasTextMessages{{XX_msgs_blocked }}</status_msgs_that_are_blocked>
 
     <call_waiting perm="R">{{ 'off' if XX_options['switchboard'] else 'on' }}</call_waiting>
-    <quick_transfer perm="R">blind</quick_transfer>
-
+    <quick_transfer perm="R">attended</quick_transfer>
+    <mute_is_dnd_in_idle perm="R">on</mute_is_dnd_in_idle>
     {% block settings_suffix %}
     {% endblock %}
   </phone-settings>
