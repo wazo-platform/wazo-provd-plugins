@@ -1,5 +1,5 @@
 {
-    "version": "1.2.2",
+    "version": "1.2.3",
     "description": "Plugin for Yealink for CP920, CP960, T2X, T3X, T4X, T5X, W60, W70, W75, W80 and W90 series in version V85.",
     "description_fr": "Greffon pour Yealink pour les series CP920, CP960, T2X, T3X, T4X, T5X, W60, W70, W75, W80 et W90 en version V85.",
     "vendor" : "Yealink",
@@ -152,7 +152,7 @@
             "multicell": false,
             "protocol": "sip"
         },
-        "Yealink, W70B, 77.85.0.37": {
+        "Yealink, W70B, 77.85.0.40": {
             "lines": 10,
             "high_availability": false,
             "function_keys": 0,
