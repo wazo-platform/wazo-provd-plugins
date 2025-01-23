@@ -1339,7 +1339,7 @@ def build_10_1_refs_changes_66_26666_2(path):
             '--exclude',
             '.*',
             '--include',
-            '/templates/base.tpl',
+            '/templates/base*.tpl',
             '--include',
             '/templates/D86*.tpl',
             '--exclude',
