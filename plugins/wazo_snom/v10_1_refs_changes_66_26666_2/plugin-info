@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Plugin for Snom D81x in version 8.10.1.refs-changes-66-26666-2",
     "description_fr": "Greffon pour Snom D81x en version 8.10.1.refs-changes-66-26666-2",
     "capabilities": {
