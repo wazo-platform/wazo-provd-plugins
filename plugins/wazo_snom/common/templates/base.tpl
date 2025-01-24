@@ -38,7 +38,7 @@
     {% for line_no, line in sip_lines.items() %}
     <user_active idx="{{ line_no }}" perm="R">on</user_active>
     <user_idle_text idx="{{ line_no }}" perm="R">{{ line['display_name']|e }}</user_idle_text>
-    <user_idle_number idx="{{ line_no }}" perm="R">{{ line['number'] }}</user_idle_text>
+    <user_idle_number idx="{{ line_no }}" perm="R">{{ line['number'] }}</user_idle_number>
     <user_host idx="{{ line_no }}" perm="R">{{ line['proxy_ip'] }}</user_host>
     <user_outbound idx="{{ line_no }}" perm="R">{{ line['proxy_ip'] }}:{{ line['proxy_port'] }};transport={{ XX_sip_transport }}</user_outbound>
     {% if XX_sip_transport == 'tls' and line['number'] != 'autoprov' -%}
