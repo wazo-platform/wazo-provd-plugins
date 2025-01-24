@@ -31,8 +31,6 @@
 
     {% if ntp_enabled -%}
     <ntp_server perm="R">{{ ntp_ip }}</ntp_server>
-    {% else -%}
-    <ntp_server perm="R"></ntp_server>
     {% endif -%}
 
     {% for line_no, line in sip_lines.items() %}
