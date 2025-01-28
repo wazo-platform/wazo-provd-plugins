@@ -294,14 +294,13 @@ class BaseSnomPlugin(StandardPlugin):
                 msgs_blocked += f' Identity{backup_line_no:02d}IsNotRegistered'
         raw_config['XX_msgs_blocked'] = msgs_blocked
 
-    def _add_xivo_phonebook_url(self, raw_config):
-        for model in self._MODELS:
-            if model.startswith("D8"):
-                plugins.add_xivo_phonebook_url(
-                    raw_config, 'snom', entry_point='lookup', qs_suffix='term=#'
-                )
-            else:
-                plugins.add_xivo_phonebook_url(raw_config, 'snom')
+    def _add_xivo_phonebook_url(self, raw_config, model):
+        if model.startswith("D86"):
+            plugins.add_xivo_phonebook_url(
+                raw_config, 'snom', entry_point='lookup', qs_suffix='term=#'
+            )
+        else:
+            plugins.add_xivo_phonebook_url(raw_config, 'snom', entry_point='input')
 
     def _add_server_url(self, raw_config):
         if raw_config.get('http_base_url'):
@@ -354,7 +353,7 @@ class BaseSnomPlugin(StandardPlugin):
         self._add_user_dtmf_info(raw_config)
         self._add_sip_transport(raw_config)
         self._add_msgs_blocked(raw_config)
-        self._add_xivo_phonebook_url(raw_config)
+        self._add_xivo_phonebook_url(raw_config, model)
         self._add_server_url(raw_config)
         raw_config['XX_dict'] = self._gen_xx_dict(raw_config)
         raw_config['XX_options'] = device.get('options', {})
