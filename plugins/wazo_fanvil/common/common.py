@@ -518,7 +518,7 @@ class BaseFanvilPlugin(StandardPlugin):
                 return
 
             plugins.add_xivo_phonebook_url(
-                raw_config, 'fanvil-v2', entry_point='lookup', qs_suffix='term=#'
+                raw_config, 'fanvil-v2', entry_point='lookup', qs_suffix='term='
             )
             fixed_url = raw_config['XX_xivo_phonebook_url'].replace('&', '&amp;')
 

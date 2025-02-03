@@ -1,1 +1,1 @@
-{% extends 'base-V67.tpl' %}
+{% extends 'base-V66-67.tpl' %}

@@ -164,7 +164,7 @@ COMMON_FILES = {
         'v66pro-fanvil-release-5927-2.12.18.16-krnvlT2024-12-13-19.26.56.z',
         'model-v66.tpl',
     ),
-    'F0V0V66100000.cfg': (
+    'F0V0V6610000.cfg': (
         'V66Pro',
         'v66pro-fanvil-release-5927-2.12.18.16-krnvlT2024-12-13-19.26.56.z',
         'model-v.tpl',
