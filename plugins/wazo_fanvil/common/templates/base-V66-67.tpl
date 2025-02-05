@@ -235,13 +235,24 @@
     </call>
     <dsskey>
         {% if XX_paginated_fkeys -%}
+        <dssSide index="1">
+            {% for page, index, fkey in XX_paginated_fkeys -%}
+                {% if loop.index0 < 11 -%}
+                    <Fkey index="{{ index }}">
+                        <Type>{{ fkey['type'] }}</Type>
+                        <Value>{{ fkey['value'] }}</Value>
+                        <Title>{{ fkey['title'] }}</Title>
+                    </Fkey>
+                {% endif -%}
+            {% endfor %}
+        </dssSide>
         {% for page, index, fkey in XX_paginated_fkeys -%}
-        {% if loop.index0 == 0 or page != loop.previtem[0] -%}
-        {% if loop.index0 != 0 -%}
-        </internal>
-        {%- endif %}
-        <internal index="{{ page }}">
-        {%- endif %}
+            {% if loop.index0 == 0 or page != loop.previtem[0] -%}
+                {% if loop.index0 != 0 -%}
+                    </internal>
+                {%- endif %}
+                <internal index="{{ page }}">
+            {%- endif %}
             <Fkey index="{{ index }}">
                 <Type>{{ fkey['type'] }}</Type>
                 <Value>{{ fkey['value'] }}</Value>
