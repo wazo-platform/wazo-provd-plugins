@@ -26,6 +26,7 @@ execfile_('common.py', common)  # type: ignore[name-defined]
 MODELS = [
     'X2',
     'X210',
+    'X210-V2'
     'X210i',
     'X210-Pro',
     'X210i-Pro',
@@ -51,6 +52,7 @@ MODELS = [
 
 COMMON_FILES = {
     'f0X2hw1.100.cfg': ('X2', 'x22.14.0.7386T20210730165954.z', 'model.tpl'),
+    'F0V10V200000.cfg': ('X210', 'x210pro-fanvil-release-6959-2.12.16.17-krnvlT2023-05-05-18.06.02.z', 'model.tpl'),
     'F0V00X300000.cfg': ('X3', 'x31.4.0.2090T20180403152509.z', 'model.tpl'),
     'f0X3shw1.100.cfg': ('X3S', 'x3s2.10.2.6887T20191115101938.z', 'model.tpl'),
     'f0X3sghw1.100.cfg': (
@@ -79,6 +81,7 @@ COMMON_FILES = {
 
 MODEL_FIRMWARE_MAPPING = {
     'X210': 'x210-6924-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.44.03.z',
+    'X210-V2': 'x210pro-fanvil-release-6959-2.12.16.17-krnvlT2023-05-05-18.06.02.z',
     'X210-Pro': 'x210pro-fanvil-release-6959-2.12.16.17-krnvlT2023-05-05-18.06.02.z',
     'X210i': 'x210i-6923-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.53.39.z',
     'X210i-Pro': 'x210ipro-fanvil-release-6960-2.12.1.3-krnvlT2022-05-14-17.29.43.z',
@@ -96,6 +99,8 @@ MODEL_FIRMWARE_MAPPING = {
 
 FUNCTION_KEYS_PER_PAGE = {
     'X210': 32,
+    'X210-Pro': 32,
+    'X210-V2': 32,
     'X210i': 32,
     'X4U': 6,
     'X5U': 6,
@@ -104,6 +109,8 @@ FUNCTION_KEYS_PER_PAGE = {
 
 LINE_KEYS_PER_PAGE = {
     'X210': 10,
+    'X210-Pro': 10,
+    'X210-V2': 10,
     'X210i': 10,
     'X4U': 3,
     'X5U': 4,
@@ -112,6 +119,8 @@ LINE_KEYS_PER_PAGE = {
 
 TOP_FUNCTION_KEYS = {
     'X210': 10,
+    'X210-Pro': 10,
+    'X210-V2': 10,
     'X210i': 10,
     'X4U': 3,
     'X5U': 4,
