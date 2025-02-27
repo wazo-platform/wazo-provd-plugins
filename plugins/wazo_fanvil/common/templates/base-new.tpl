@@ -126,6 +126,12 @@
         <Voice_Priority>0</Voice_Priority>
         {% endif -%}
     </qos>
+    <mm>
+        <SelectYourTone>{{ XX_country }}</SelectYourTone>
+        <capability>
+            <AudioCodecSets>PCMU,PCMA,G722</AudioCodecSets>
+        </capability>
+    </mm>
     <log>
         <OutputDevice>stdout</OutputDevice>
         <FileName>platform.log</FileName>

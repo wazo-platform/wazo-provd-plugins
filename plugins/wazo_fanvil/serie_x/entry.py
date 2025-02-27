@@ -1,4 +1,4 @@
-# Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -60,12 +60,12 @@ COMMON_FILES = {
     'fanvil_x210_v2_hwv2_0.txt': (
         'X210-V2',
         'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
-        'model-v.tpl',
+        'model-x210-v2.tpl',
     ),
     'fanvil_x210_pro_hwv2_0.txt': (
         'X210-Pro',
         'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
-        'model-v.tpl',
+        'model-x210-v2.tpl',
     ),
     'F0V00X300000.cfg': ('X3', 'x31.4.0.2090T20180403152509.z', 'model.tpl'),
     'f0X3shw1.100.cfg': ('X3S', 'x3s2.10.2.6887T20191115101938.z', 'model.tpl'),

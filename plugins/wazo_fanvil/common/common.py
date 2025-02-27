@@ -1,4 +1,4 @@
-# Copyright 2013-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -151,7 +151,7 @@ class BaseFanvilPlugin(StandardPlugin):
         'en': 'Directory',
         'fr': 'Annuaire',
     }
-    _NEW_MODEL_REGEX = re.compile(r'^X([4-9][UC]|(210i?)|7)([- ]Pro)?$')
+    _NEW_MODEL_REGEX = re.compile(r'^X([4-9][UC]|(210i?)|7)([- ](Pro|V2))?$')
     _NEW_MODEL_SHORT_LANGUAGE_MAPPINGS = {
         'ca': 'cat',
         'eu': 'eus',
