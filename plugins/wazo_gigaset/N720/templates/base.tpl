@@ -44,9 +44,6 @@
         <SYMB_ITEM ID="BS_IP_Data.aucS_NETWORK_DEVICENAME[%]" class="symb_item" value='"N720-DM-PRO"'/>
         <SYMB_ITEM ID="BS_RAP.astRAPServices[1].ActivateService" class="symb_item" value="0"/>
         <SYMB_ITEM ID="BS_CUSTOM.WebUIPassword" class="symb_item" value='"{{ admin_password }}"'/>
-    {%- if http_port %}
-        <SYMB_ITEM ID="BS_IP_Data.aucS_DATA_SERVER[%]" class="symb_item" value='"{{ XX_server_url }}"'/>
-    {%- endif %}
         <SYMB_ITEM ID="BS_CUSTOM.bit.UseRandomRegistrationPIN" class="symb_item" value="0"/>
     	<SYMB_ITEM ID="BS_CUSTOM.aucKdsPin[%]" class="symb_item" value="0x00,0x00"/>
         <SYMB_ITEM ID="BS_IP_Data.ucB_USE_DHCP" class="symb_item" value="1"/>
@@ -74,6 +71,7 @@
         <SYMB_ITEM ID="BS_IP_Data.aucS_HTTP_PROXY_URL[%]" class="symb_item" value='""'/>
         <SYMB_ITEM ID="BS_IP_Data.uiI_HTTP_PROXY_PORT" class="symb_item" value="8080"/>
         <SYMB_ITEM ID="BS_IP_Data.ucI_HTTPLANGUAGE" class="symb_item" value="1"/>
+        <SYMB_ITEM ID="BS_AE_SwConfig.ucCountryCodeTone" class="symb_item" value="{{ XX_country }}"/>
 
     {%- if ntp_enabled %}
         <SYMB_ITEM ID="BS_IP_Data.aucS_TIME_NTP_SERVER[%]" class="symb_item" value='"{{ ntp_ip }}"'/>

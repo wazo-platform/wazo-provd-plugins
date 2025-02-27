@@ -143,6 +143,14 @@ class HTTPServiceWrapper(HTTPNoListingFileService):
 class BaseGigasetPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
 
+    _COUNTRY_CODE = {
+        'de_DE': '0',
+        'en_US': '1',
+        'es_ES': '6',
+        'fr_FR': '7',
+        'fr_CA': '1',
+    }
+
     _TZ_GIGASET = {
         (-12, 0): 0x00,
         (-11, 0): 0x01,
@@ -207,6 +215,13 @@ class BaseGigasetPlugin(StandardPlugin):
         uuid_format = '{scheme}://{hostname}:{port}/0.1/directories/lookup/default/gigaset/{user_uuid}?'  # noqa: E501
         plugins.add_xivo_phonebook_url_from_format(raw_config, uuid_format)
 
+    def _add_country_code(self, raw_config):
+        locale = raw_config.get('locale')
+        if locale in self._COUNTRY_CODE:
+            raw_config['XX_country'] = self._COUNTRY_CODE[locale]
+        else:
+            raw_config['XX_country'] = '0'
+
     def _add_timezone_code(self, raw_config):
         timezone = raw_config.get('timezone', 'Etc/UTC')
         tz_db = tzinform.TextTimezoneInfoDB()
@@ -258,6 +273,7 @@ class BaseGigasetPlugin(StandardPlugin):
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
+        self._add_country_code(raw_config)
         self._add_sip_info(raw_config)
         self._add_xx_vars(device, raw_config)
         self._add_phonebook(raw_config)
