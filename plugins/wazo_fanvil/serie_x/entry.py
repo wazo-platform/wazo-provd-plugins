@@ -27,8 +27,8 @@ MODELS = [
     'X2',
     'X210',
     'X210i',
-    'X210-V2',
     'X210-Pro',
+    'X210-V2',
     'X210i-Pro',
     'X3',
     'X3S',
@@ -52,9 +52,19 @@ MODELS = [
 
 COMMON_FILES = {
     'f0X2hw1.100.cfg': ('X2', 'x22.14.0.7386T20210730165954.z', 'model.tpl'),
-    'F0V10V200000.cfg': (
+    'F0V00X200000.cfg': (
         'X210',
-        'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
+        'x210-6924-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.44.03.z',
+        'model.tpl',
+    ),
+    'fanvil_x210_v2_hwv2_0.txt': (
+        'X210-V2',
+        'x210pro-fanvil-release-6959-2.12.16.17-krnvlT2023-05-05-18.06.02.z',
+        'model.tpl',
+    ),
+    'fanvil_x210_pro_hwv2_0.txt': (
+        'X210-Pro',
+        'x210pro-fanvil-release-6959-2.12.16.17-krnvlT2023-05-05-18.06.02.z',
         'model.tpl',
     ),
     'F0V00X300000.cfg': ('X3', 'x31.4.0.2090T20180403152509.z', 'model.tpl'),
@@ -85,8 +95,8 @@ COMMON_FILES = {
 
 MODEL_FIRMWARE_MAPPING = {
     'X210': 'x210-6924-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.44.03.z',
-    'X210-V2': 'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
-    'X210-Pro': 'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
+    'X210-V2': 'x210pro-fanvil-release-6959-2.12.16.17-krnvlT2023-05-05-18.06.02.z',
+    'X210-Pro': 'x210pro-fanvil-release-6959-2.12.16.17-krnvlT2023-05-05-18.06.02.z',
     'X210i': 'x210i-6923-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.53.39.z',
     'X210i-Pro': 'x210ipro-fanvil-release-6960-2.12.1.3-krnvlT2022-05-14-17.29.43.z',
     'X4U': 'x4upro-fanvil-release-ff01-6903-2.12.16.17-krnvUT2023-05-05-18.33.33.z',
