@@ -73,7 +73,7 @@
             <TimeDisplayStyle>0</TimeDisplayStyle>
             <DateDisplayStyle>2</DateDisplayStyle>
         </timeDisplay>
-        {% if XX_xivo_phonebook_url_v2 -%}
+        {% if XX_wazo_phonebook_url_v2 -%}
         <softkey>
             <DesktopSoftkey>history;dss1;;menu;</DesktopSoftkey>
         </softkey>
@@ -262,10 +262,10 @@
     {%- endfor %}
     </internal>
     {% endif -%}
-    {% if XX_wazo_phonebook_url -%}
+    {% if XX_xivo_phonebook_url -%}
         <dssSoft index="1">
             <Type>21</Type>
-            <Value>{{ XX_wazo_phonebook_url }}</Value>
+            <Value>{{ XX_xivo_phonebook_url }}</Value>
             <Title>{{ XX_directory|d('Directory') }}</Title>
         </dssSoft>
     {%- endif %}
