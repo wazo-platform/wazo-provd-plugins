@@ -22,7 +22,7 @@ MODELS = [
     'D862',
     'D865',
 ]
-VERSION = '8.10.1.refs-changes-66-26666-2'
+VERSION = '10.1.198.12-HW6-SIP'
 
 
 class SnomPlugin(common_globals['BaseSnomPlugin']):  # type: ignore[valid-type,misc]

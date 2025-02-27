@@ -20,4 +20,3 @@
     {% endblock %}
 
     {% block settings_suffix %}{% endblock %}
-    

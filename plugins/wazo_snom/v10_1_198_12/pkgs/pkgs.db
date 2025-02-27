@@ -1,0 +1,26 @@
+[pkg_862-fw]
+description: Firmware for Snom D862
+description_fr: Firmware pour Snom D862
+version: 10.1.198.12-HW6-SIP
+files: 862-fw
+install: snom-fw
+
+[pkg_865-fw]
+description: Firmware for Snom D865
+description_fr: Firmware pour Snom D865
+version: 10.1.198.12-HW6-SIP
+files: 865-fw
+install: snom-fw
+
+[install_snom-fw]
+a-b: cp $FILE1 firmware/
+
+[file_862-fw]
+url: http://provd.wazo.community/firmwares/snomD862-10.1.198.12-HW6-SIP-r.swu
+size: 131819520
+sha1sum: f8f0e091aa30e5323177359ced2a88ab3716623f
+
+[file_865-fw]
+url: http://provd.wazo.community/firmwares/snomD865-10.1.198.12-HW6-SIP-r.swu
+size: 133343232
+sha1sum: 5ca4cb92e7ea1bc041754589e809a68dff81e9ea
