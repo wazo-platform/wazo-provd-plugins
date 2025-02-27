@@ -1367,8 +1367,8 @@ def build_10_1_184_15(path):
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_184_15/', path])
 
 
-@target('v10_1_198_12', 'wazo-snom-v10.1.198.12')
-def build_v10_1_198_12(path):
+@target('10_1_198_12', 'wazo-snom-10.1.198.12')
+def build_10_1_198_12(path):
     MODELS = [
         ('D862', 'r'),
         ('D865', 'r'),
