@@ -73,11 +73,24 @@
             <TimeDisplayStyle>0</TimeDisplayStyle>
             <DateDisplayStyle>2</DateDisplayStyle>
         </timeDisplay>
-        {% if XX_xivo_phonebook_url -%}
+        {% if XX_xivo_phonebook_url_v2 -%}
         <softkey>
             <DesktopSoftkey>history;dss1;;menu;</DesktopSoftkey>
         </softkey>
-        {% endif %}
+        <xmlContact index="1">
+            <Name>Wazo</Name>
+            <Addr>{{ XX_wazo_phonebook_url_v2 }}</Addr>
+            <UserName></UserName>
+            <PassWd></PassWd>
+            <Sipline>-1</Sipline>
+            <BindLine>-1</BindLine>
+            <PhonebookType>0</PhonebookType>
+        </xmlContact>
+        {% else -%}
+        <softkey>
+            <DesktopSoftkey>history;dss1;;menu;</DesktopSoftkey>
+        </softkey>
+        {% endif -%}
     </phone>
     <cti>
         {% if XX_wazo_phoned_user_service_dnd_enabled_url -%}
@@ -249,6 +262,13 @@
     {%- endfor %}
     </internal>
     {% endif -%}
+    {% if XX_wazo_phonebook_url -%}
+        <dssSoft index="1">
+            <Type>21</Type>
+            <Value>{{ XX_wazo_phonebook_url }}</Value>
+            <Title>{{ XX_directory|d('Directory') }}</Title>
+        </dssSoft>
+    {%- endif %}
     {% block model_specific_parameters -%}
     {% endblock %}
     </dsskey>
