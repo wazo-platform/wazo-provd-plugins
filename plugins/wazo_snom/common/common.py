@@ -295,12 +295,7 @@ class BaseSnomPlugin(StandardPlugin):
         raw_config['XX_msgs_blocked'] = msgs_blocked
 
     def _add_xivo_phonebook_url(self, raw_config, model):
-        if model.startswith("D86"):
-            plugins.add_xivo_phonebook_url(
-                raw_config, 'snom', entry_point='lookup', qs_suffix='term=#'
-            )
-        else:
-            plugins.add_xivo_phonebook_url(raw_config, 'snom', entry_point='input')
+        plugins.add_xivo_phonebook_url(raw_config, 'snom', entry_point='input')
 
     def _add_server_url(self, raw_config):
         if raw_config.get('http_base_url'):
