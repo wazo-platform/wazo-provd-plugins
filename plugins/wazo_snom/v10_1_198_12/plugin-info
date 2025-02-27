@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Plugin for Snom D81x in version 10.1.198.12-HW6-SIP",
     "description_fr": "Greffon pour Snom D81x en version 10.1.198.12-HW6-SIP",
     "capabilities": {
