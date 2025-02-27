@@ -26,7 +26,8 @@ execfile_('common.py', common)  # type: ignore[name-defined]
 MODELS = [
     'X2',
     'X210',
-    'X210-V2' 'X210i',
+    'X210i',
+    'X210-V2',
     'X210-Pro',
     'X210i-Pro',
     'X3',

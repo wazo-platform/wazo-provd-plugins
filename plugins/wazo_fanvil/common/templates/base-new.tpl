@@ -25,7 +25,7 @@
         </opt>
     </ap>
     <fwCheck>
-        <EnableAutoUpgrade>0</EnableAutoUpgrade>
+        <EnableAutoUpgrade>1</EnableAutoUpgrade>
         <UpgradeServer1></UpgradeServer1>
         <UpgradeServer2></UpgradeServer2>
         <AutoUpgradeInterval>24</AutoUpgradeInterval>
