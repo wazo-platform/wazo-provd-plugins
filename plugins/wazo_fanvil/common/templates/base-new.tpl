@@ -71,7 +71,9 @@
         </date>
         <timeDisplay>
             <TimeDisplayStyle>0</TimeDisplayStyle>
-            <DateDisplayStyle>2</DateDisplayStyle>
+            {% if XX_displaydate -%}
+            <DateDisplayStyle>{{ XX_displaydate }}</DateDisplayStyle>
+            {% endif -%}
         </timeDisplay>
         {% if XX_wazo_phonebook_url_v2 -%}
         <softkey>

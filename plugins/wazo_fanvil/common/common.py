@@ -180,6 +180,17 @@ class BaseFanvilPlugin(StandardPlugin):
         'pl',
         'ar',
     )
+    _DISPLAYDATE = {
+        'de_DE': '4',
+        'en_CA': '4',
+        'en_GB': '4',
+        'en_US': '10',
+        'es_ES': '4',
+        'fr_CA': '13',
+        'fr_FR': '4',
+        'it_IT': '4',
+        'nl_NL': '4',
+    }
 
     _COMMON_FILES: dict[str, tuple[str, str, str]]
     _MODEL_FIRMWARE_MAPPING: dict[str, str]
@@ -339,6 +350,9 @@ class BaseFanvilPlugin(StandardPlugin):
         if not locale:
             return
         raw_config['XX_country'] = self._COUNTRY.get(locale, self._COUNTRY['en_US'])
+        raw_config['XX_displaydate'] = self._DISPLAYDATE.get(
+            locale, self._DISPLAYDATE['en_US']
+        )
         language = locale.split('_')[0]
         if self._is_new_model(device):
             language = self._NEW_MODEL_SHORT_LANGUAGE_MAPPINGS.get(language, language)
@@ -523,7 +537,9 @@ class BaseFanvilPlugin(StandardPlugin):
             fixed_url = raw_config['XX_xivo_phonebook_url'].replace('&', '&amp;')
 
             raw_config['XX_wazo_phonebook_url_v2'] = fixed_url
-            raw_config['XX_xivo_phonebook_url'] = original_phonebook_url
+            raw_config['XX_xivo_phonebook_url'] = original_phonebook_url.replace(
+                '&', '&amp;'
+            )
 
     def _add_firmware(self, device, raw_config: dict[str, Any]) -> None:
         model = device.get('model')
