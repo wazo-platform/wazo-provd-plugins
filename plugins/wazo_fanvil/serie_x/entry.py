@@ -36,7 +36,7 @@ MODELS = [
     'X4',
     'X4U',
     'X4U-Pro',
-    'X4U-V2'
+    'X4U-V2', 
     'X5',
     'X5U',
     'X5U-Pro',
