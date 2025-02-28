@@ -100,7 +100,7 @@
         "Fanvil, X4U, 2.12.16.17": {
             "lines": 12,
             "high_availability": false,
-            "function_keys": 33,
+            "function_keys": 30,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -109,7 +109,7 @@
         "Fanvil, X4U Pro, 2.12.16.17": {
             "lines": 12,
             "high_availability": false,
-            "function_keys": 33,
+            "function_keys": 30,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
