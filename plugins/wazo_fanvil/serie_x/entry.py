@@ -36,6 +36,7 @@ MODELS = [
     'X4',
     'X4U',
     'X4U-Pro',
+    'X4U-V2'
     'X5',
     'X5U',
     'X5U-Pro',
@@ -60,12 +61,22 @@ COMMON_FILES = {
     'fanvil_x210_v2_hwv2_0.txt': (
         'X210-V2',
         'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
-        'model-x210-v2.tpl',
+        'model-x-v2.tpl',
     ),
     'fanvil_x210_pro_hwv2_0.txt': (
         'X210-Pro',
         'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
-        'model-x210-v2.tpl',
+        'model-x-v2.tpl',
+    ),
+    'fanvil_x4u_v2_hwv2_0.txt': (
+        'X4U-V2',
+        'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
+        'model-x-v2.tpl',
+    ),
+    'fanvil_x4u_pro_hwv2_0.txt': (
+        'X4U-Pro',
+        'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
+        'model-x-v2.tpl',
     ),
     'F0V00X300000.cfg': ('X3', 'x31.4.0.2090T20180403152509.z', 'model.tpl'),
     'f0X3shw1.100.cfg': ('X3S', 'x3s2.10.2.6887T20191115101938.z', 'model.tpl'),
@@ -100,7 +111,8 @@ MODEL_FIRMWARE_MAPPING = {
     'X210i': 'x210i-6923-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.53.39.z',
     'X210i-Pro': 'x210ipro-fanvil-release-6960-2.12.1.3-krnvlT2022-05-14-17.29.43.z',
     'X4U': 'x4upro-fanvil-release-ff01-6903-2.12.16.17-krnvUT2023-05-05-18.33.33.z',
-    'X4U-Pro': 'x4upro-fanvil-release-ff01-6903-2.12.16.17-krnvUT2023-05-05-18.33.33.z',
+    'X4U-V2': 'x4upro-fanvil-release-ff01-6903-2.12.20-krnlvUT2024-07-16-04.42.26.z',
+    'X4U-Pro': 'x4upro-fanvil-release-ff01-6903-2.12.20-krnlvUT2024-07-16-04.42.26.z',
     'X5U': 'x5upro-fanvil-release-ff01-6907-2.12.16.17-krnvUT2023-05-05-18.41.28.z',
     'X5U-Pro': 'x5upro-fanvil-release-ff01-6907-2.12.16.17-krnvUT2023-05-05-18.41.28.z',
     'X6U': 'x6upro-fanvil-release-ff01-6916-2.12.16.17-krnvUT2023-05-05-18.49.37.z',
@@ -117,6 +129,8 @@ FUNCTION_KEYS_PER_PAGE = {
     'X210-V2': 32,
     'X210i': 32,
     'X4U': 6,
+    'X4U-Pro': 30,
+    'X4U-V2': 30,
     'X5U': 6,
     'X6U': 12,
 }
@@ -127,6 +141,8 @@ LINE_KEYS_PER_PAGE = {
     'X210-V2': 10,
     'X210i': 10,
     'X4U': 3,
+    'X4U-Pro': 6,
+    'X4U-V2': 6,
     'X5U': 4,
     'X6U': 5,
 }
@@ -137,6 +153,8 @@ TOP_FUNCTION_KEYS = {
     'X210-V2': 10,
     'X210i': 10,
     'X4U': 3,
+    'X4U-Pro': 3,
+    'X4U-V2': 3,
     'X5U': 4,
     'X6U': 5,
 }
