@@ -48,44 +48,53 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Aastra, 6910, 8.2.0": {
-            "lines": 24,
+        "Aastra, 6905, 8.2.0": {
+            "lines": 2,
             "high_availability": true,
-            "function_keys": 72,
+            "function_keys": 3,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6910, 8.2.0": {
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 8,
             "expansion_modules": 3,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
         "Aastra, 6915, 8.2.0": {
-            "lines": 24,
+            "lines": 2,
             "high_availability": true,
-            "function_keys": 72,
+            "function_keys": 6,
             "expansion_modules": 3,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
         "Aastra, 6920, 8.2.0": {
-            "lines": 24,
+            "lines": 2,
             "high_availability": true,
-            "function_keys": 72,
+            "function_keys": 6,
             "expansion_modules": 3,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
         "Aastra, 6930, 8.2.0": {
-            "lines": 24,
+            "lines": 2,
             "high_availability": true,
-            "function_keys": 72,
+            "function_keys": 12,
             "expansion_modules": 3,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
         "Aastra, 6940, 8.2.0": {
-            "lines": 24,
+            "lines": 2,
             "high_availability": true,
             "function_keys": 72,
             "expansion_modules": 3,
@@ -94,10 +103,10 @@
             "protocol": "sip"
         },
         "Aastra, 6970, 8.2.0": {
-            "lines": 24,
+            "lines": 2,
             "high_availability": true,
-            "function_keys": 72,
-            "expansion_modules": 3,
+            "function_keys": 0,
+            "expansion_modules": 0,
             "switchboard": false,
             "type": "conference",
             "protocol": "sip"
