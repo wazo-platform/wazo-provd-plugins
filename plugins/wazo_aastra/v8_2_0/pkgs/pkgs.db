@@ -144,7 +144,7 @@ b-c: include *.st
 
 [install_aastra-lang]
 a-b: unzip $FILE1
-b-c: cp * i18n/
+b-c: cp 58017085_lang_R6.4.SP3_Rev1/* i18n/
 
 
 [file_6863i-fw]
