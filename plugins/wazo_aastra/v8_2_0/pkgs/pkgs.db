@@ -33,75 +33,82 @@ version: 8.2.0
 files: 6873i-fw
 install: 6873i-fw
 
+[pkg_6905-fw]
+description: Firmware for Mitel 6905
+description_fr: Micrologiciel pour Mitel 6905
+version: 8.2.0
+files: 6905-fw
+install: 6900-fw
+
 [pkg_6910-fw]
 description: Firmware for Mitel 6910
 description_fr: Micrologiciel pour Mitel 6910
 version: 8.2.0
 files: 6910-fw
-install: 6910-fw
+install: 6900-fw
 
 [pkg_6915-fw]
 description: Firmware for Mitel 6915
 description_fr: Micrologiciel pour Mitel 6915
 version: 8.2.0
 files: 6915-fw
-install: 6915-fw
+install: 6900-fw
 
 [pkg_6915d-fw]
 description: Firmware for Mitel 6915d
 description_fr: Micrologiciel pour Mitel 6915d
 version: 8.2.0
 files: 6915d-fw
-install: 6915d-fw
+install: 6900-fw
 
 [pkg_6920-fw]
 description: Firmware for Mitel 6920
 description_fr: Micrologiciel pour Mitel 6920
 version: 8.2.0
 files: 6920-fw
-install: 6920-fw
+install: 6900-fw
 
 [pkg_6920w-fw]
 description: Firmware for Mitel 6920w
 description_fr: Micrologiciel pour Mitel 6920w
 version: 8.2.0
 files: 6920w-fw
-install: 6920w-fw
+install: 6900-fw
 
 [pkg_6930-fw]
 description: Firmware for Mitel 6930
 description_fr: Micrologiciel pour Mitel 6930
 version: 8.2.0
 files: 6930-fw
-install: 6930-fw
+install: 6900-fw
 
 [pkg_6930w-fw]
 description: Firmware for Mitel 6930w
 description_fr: Micrologiciel pour Mitel 6930w
 version: 8.2.0
 files: 6930w-fw
-install: 6930w-fw
+install: 6900-fw
 
 [pkg_6940-fw]
 description: Firmware for Mitel 6940
 description_fr: Micrologiciel pour Mitel 6940
 version: 8.2.0
 files: 6940-fw
-install: 6940-fw
+install: 6900-fw
 
 [pkg_6940w-fw]
 description: Firmware for Mitel 6940w
 description_fr: Micrologiciel pour Mitel 6940w
 version: 8.2.0
 files: 6940w-fw
-install: 6940w-fw
+install: 6900-fw
 
 [pkg_6970-fw]
 description: Firmware for Mitel 6970
 description_fr: Micrologiciel pour Mitel 6970
 version: 8.2.0
 files: 6970-fw
-install: 6970-fw
+install: 6900-fw
 
 [pkg_lang]
 description: Language files
@@ -128,6 +135,10 @@ a-b: untar $FILE1
 b-c: include *.st
 
 [install_6873i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_6900-fw]
 a-b: untar $FILE1
 b-c: include *.st
 
@@ -233,7 +244,7 @@ size: 37559232
 sha1sum: b2a0df9f495d41e8b92612b56d781b7e4216f71e
 
 [file_lang]
-filename: R500-6800-5801456REV00LangPacks3.zip
-url: https://www.mitel.com/-/media/mitel/file/zip/open-solutions/6867/r500-6800-5801456rev00langpacks1.zip
-size: 905670
-sha1sum: 931ca34c03f43713d59e7afe1f5cf5ca5e114b0a
+filename: 58017085_lang_R6.4.SP3_Rev1.zip
+url: http://provd.wazo.community/firmwares/mitel/58017085_lang_R6.4.SP3_Rev1.zip
+size: 25069108
+sha1sum: d031bcc3f8fe232ce5144edd92721957bf10da34
