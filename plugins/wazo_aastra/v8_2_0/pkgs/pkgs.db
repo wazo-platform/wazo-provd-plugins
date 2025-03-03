@@ -111,9 +111,9 @@ files: 6970-fw
 install: 6900-fw
 
 [pkg_lang]
-description: Language files
-description_fr: Fichiers de langue
-version: 8.2.0
+description: Language files 6.4.0 SP3
+description_fr: Fichiers de langue 6.4.0 SP3
+version: 6.4.SP3
 files: lang
 install: aastra-lang
 
@@ -143,7 +143,7 @@ a-b: untar $FILE1
 b-c: include *.st
 
 [install_aastra-lang]
-a-b: untar $FILE1
+a-b: unzip $FILE1
 b-c: cp * i18n/
 
 
