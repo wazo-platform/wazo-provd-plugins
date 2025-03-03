@@ -43,6 +43,13 @@ tos rtp: 46
 {% if ntp_enabled -%}
 time server disabled: 0
 time server1: {{ ntp_ip }}
+upgrade uri: http://{{ ntp_ip }}:8667/Aastra
+contact rcs: 0
+inactive minet present: 1
+download protocol: HTTP
+http server: {{ ntp_ip }}
+http path: Aastra
+http port: 8667
 {% else -%}
 time server disabled: 1
 {% endif -%}
