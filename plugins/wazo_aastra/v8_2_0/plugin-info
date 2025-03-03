@@ -1,0 +1,106 @@
+{
+    "version": "1.1.0",
+    "description": "Plugin for Aastra/Mitel 6800 and 6900 series in version 8.2.0",
+    "description_fr": "Greffon pour Aastra/Mitel series 6800 et 6900(W) en version 8.2.0",
+    "capabilities": {
+        "Aastra, 6863i, 8.2.0": {
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6865i, 8.2.0": {
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 8,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6867i, 8.2.0": {
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 38,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6869i, 8.2.0": {
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 68,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6873i, 8.2.0": {
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 72,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6910, 8.2.0": {
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 72,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6915, 8.2.0": {
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 72,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6920, 8.2.0": {
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 72,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6930, 8.2.0": {
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 72,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6940, 8.2.0": {
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 72,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Aastra, 6970, 8.2.0": {
+            "lines": 24,
+            "high_availability": true,
+            "function_keys": 72,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}

@@ -65,6 +65,7 @@ class BaseAastraHTTPDeviceInfoExtractor:
         #   "Aastra6735i MAC:00-08-5D-2E-A0-94 V:3.2.2.6038-SIP"
         #   "Aastra6737i MAC:00-08-5D-30-A6-CE V:3.2.2.6038-SIP"
         #   "Aastra6863i MAC:00-08-5D-40-90-5F V:4.1.0.128-SIP"
+        #   "Mitel6915 MAC:14-00-E9-1B-E2-41 V:6.4.0.140-SIP"
         m = self._UA_REGEX.match(ua)
         if m:
             model, mac, version = m.groups()
@@ -201,11 +202,62 @@ class BaseAastraPlugin(StandardPlugin):
             nb_expmod=3,
             nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
         ),
-        '6930': AastraModel(
-            nb_topsoftkey=44,
-            nb_softkey=24,
+        '6905': AastraModel(
+            nb_prgkey=3,
+        ),
+        '6910': AastraModel(
+            nb_prgkey=8,
+        ),
+        '6915': AastraModel(
+            nb_topsoftkey=4,
+            nb_softkey=6,
             nb_expmod=3,
             nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        '6915d': AastraModel(
+            nb_topsoftkey=4,
+            nb_softkey=6,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        '6920': AastraModel(
+            nb_topsoftkey=4,
+            nb_softkey=8,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        '6920w': AastraModel(
+            nb_topsoftkey=4,
+            nb_softkey=8,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        '6930': AastraModel(
+            nb_topsoftkey=5,
+            nb_softkey=12,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        '6930w': AastraModel(
+            nb_topsoftkey=5,
+            nb_softkey=12,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        '6940': AastraModel(
+            nb_topsoftkey=6,
+            nb_softkey=48,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        '6940w': AastraModel(
+            nb_topsoftkey=6,
+            nb_softkey=48,
+            nb_expmod=3,
+            nb_expmodkey=max(_M680_NB_KEY, _M685_NB_KEY),
+        ),
+        '6970': AastraModel(
+            nb_topsoftkey=6,
         ),
         '9143i': AastraModel(
             nb_prgkey=7,
