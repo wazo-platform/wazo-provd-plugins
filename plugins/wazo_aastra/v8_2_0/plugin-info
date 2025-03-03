@@ -99,7 +99,7 @@
             "function_keys": 72,
             "expansion_modules": 3,
             "switchboard": false,
-            "type": "deskphone",
+            "type": "conference",
             "protocol": "sip"
         }
     }
