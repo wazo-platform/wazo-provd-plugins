@@ -1,4 +1,4 @@
-# Copyright 2011-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -153,7 +153,10 @@ class BaseYealinkFunckeyGenerator:
 
         funckey_type = funckey['type']
         if funckey_type == 'speeddial':
-            self._format_funckey_speeddial(prefix, funckey)
+            if funckey['value'] == '*3':
+                self._format_funckey_recording(prefix, funckey)
+            else:
+                self._format_funckey_speeddial(prefix, funckey)
         elif funckey_type == 'blf':
             self._format_funckey_blf(prefix, funckey)
         elif funckey_type == 'park':
@@ -173,6 +176,14 @@ class BaseYealinkFunckeyGenerator:
     def _format_funckey_speeddial(self, prefix, funckey):
         self._lines += [
             f'{prefix}.type = 13',
+            f'{prefix}.line = {funckey.get("line", 1)}',
+            f'{prefix}.value = {funckey["value"]}',
+            f'{prefix}.label = {funckey.get("label", "")}',
+        ]
+
+    def _format_funckey_recording(self, prefix, funckey):
+        self._lines += [
+            f'{prefix}.type = 11',
             f'{prefix}.line = {funckey.get("line", 1)}',
             f'{prefix}.value = {funckey["value"]}',
             f'{prefix}.label = {funckey.get("label", "")}',
