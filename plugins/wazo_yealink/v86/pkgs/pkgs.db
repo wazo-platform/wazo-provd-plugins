@@ -68,6 +68,13 @@ version: 150.86.0.5
 files: T58W-fw
 install: yealink-fw
 
+[pkg_AX83H-fw]
+description: Firmware for Yealink AX83H
+description_fr: Micrologiciel pour Yealink AX83H
+version: 180.86.0.5
+files: AX83H-fw
+install: yealink-fw
+
 [pkg_W53H-fw]
 description: Firmware for Yealink W53H handset
 description_fr: Micrologiciel pour le combiné Yealink W53H
@@ -196,6 +203,12 @@ filename: T58W-150.86.0.5.rom
 url: http://provd.wazo.community/firmwares/yealink/T58W-150.86.0.5.rom
 size: 699497760
 sha1sum: 184675f3f7965f3ed564876a0078594710904daa
+
+[file_AX83H-fw]
+filename: AX83-180.86.0.5.rom
+url: http://provd.wazo.community/firmwares/yealink/AX83-180.86.0.5.rom
+size: 35696704
+sha1sum: 76c35d412be024abb2966354bb84d5bad97d33e0
 
 
 [file_W53H-fw]
