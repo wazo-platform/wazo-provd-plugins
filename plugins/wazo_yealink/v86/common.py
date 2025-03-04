@@ -53,6 +53,7 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         re.compile(r'^[yY]ealink\s+(W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'(VP530P?|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
+        re.compile(r'^[yY]ealink\s+(AX83H)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
     ]
 
     def extract(self, request: Request, request_type: RequestType):
