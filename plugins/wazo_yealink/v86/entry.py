@@ -171,6 +171,10 @@ MODEL_INFO = {
         'firmware': 'T58W-150.86.0.11.rom',
         'handsets_fw': HANDSETS_FW,
     },
+    'AX83H': {
+        'version': '180.86.0.5',
+        'firmware': 'AX83-180.86.0.5.rom',
+    },
 }
 
 
