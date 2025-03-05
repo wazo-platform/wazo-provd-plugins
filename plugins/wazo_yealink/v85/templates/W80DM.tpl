@@ -14,9 +14,6 @@ static.auto_provision.pnp_enable = 0
 static.auto_provision.custom.protect = 1
 static.auto_provision.handset_configured.enable = 1
 
-custom.handset.date_format = 2
-custom.handset.screen_saver.enable = 0
-
 sip.notify_reboot_enable = 0
 
 {% if vlan_enabled -%}
@@ -39,6 +36,8 @@ static.syslog.server = %NULL%
 
 lang.wui = {{ XX_lang|d('%NULL%') }}
 custom.handset.language = {{ XX_handset_lang|d('%NULL%') }}
+custom.handset.date_format = {{ XX_handset_lang|d('%NULL%') }}
+custom.handset.screen_saver.enable = 0
 
 voice.tone.country = {{ XX_country|d('%NULL%') }}
 

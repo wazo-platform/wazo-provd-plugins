@@ -41,7 +41,7 @@ features.action_uri_limit_ip = {{ line['proxy_ip'] }}
 {% endfor -%}
 features.show_action_uri_option = 0
 
-local_time.date_format = 2
+local_time.date_format = {{ XX_handset_lang|d('2') }}
 
 sip.notify_reboot_enable = 0
 sip.trust_ctrl = 1
