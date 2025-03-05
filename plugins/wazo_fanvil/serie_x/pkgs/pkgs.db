@@ -15,7 +15,7 @@ install: fanvil-fw
 [pkg_X210-Pro-fw]
 description: Firmware for Fanvil X210-Pro or X210-V2
 description_fr: Micrologiciel pour Fanvil X210-Pro ou X210-V2
-version: 2.12.16.17
+version: 2.12.20
 files: X210-Pro-fw
 install: fanvil-fw
 
@@ -61,17 +61,10 @@ version: 2.14.0.7386
 files: X4-fw
 install: fanvil-fw
 
-[pkg_X4U-fw]
-description: Firmware for Fanvil X4U or X4U-V2
-description_fr: Micrologiciel pour Fanvil X4U ou X4U-V2
-version: 2.12.16.17
-files: X4U-fw
-install: fanvil-fw
-
 [pkg_X4U-Pro-fw]
-description: Firmware for Fanvil X4U-Pro or X4U-V2 (Pro)
-description_fr: Micrologiciel pour Fanvil X4U-Pro ou X4U-V2 (Pro)
-version: 2.12.16.17
+description: Firmware for Fanvil X4U-Pro or X4U-V2
+description_fr: Micrologiciel pour Fanvil X4U-Pro ou X4U-V2
+version: 2.12.20
 files: X4U-fw
 install: fanvil-fw
 
@@ -173,9 +166,9 @@ size: 45171152
 sha1sum: 5d47df43b9f02c7b64694e57773a51a4c0bf59e8
 
 [file_X210-Pro-fw]
-url: http://provd.wazo.community/firmwares/fanvil/x210pro-fanvil-release-6959-2.12.16.17-krnvlT2023-05-05-18.06.02.z
-size: 30319812
-sha1sum: 261c6f87918ff256277f2df28123164b285652ba
+url: http://provd.wazo.community/firmwares/fanvil/x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z
+size: 31205828
+sha1sum: c423efaa6ca11a1561b7a4b4ecb6bd6045fa9537
 
 [file_X210i-fw]
 url: http://download.fanvil.com/Firmware/Release/X210i/20220811/x210i-6923-P0.18.23.89-2.4.5.2-3594T2022-07-29-09.53.39.z
@@ -208,9 +201,9 @@ size: 3916387
 sha1sum: 60882726a8e6119878cb4b8d6d30c271650712cc
 
 [file_X4U-fw]
-url: http://provd.wazo.community/firmwares/fanvil/x4upro-fanvil-release-ff01-6903-2.12.16.17-krnvUT2023-05-05-18.33.33.z
-size: 32892652
-sha1sum: bb16b4b72a3eabe10b9c8b03d66efd27b33badc9
+url: http://provd.wazo.community/firmwares/fanvil/x4upro-fanvil-release-ff01-6903-2.12.20-krnlvUT2024-07-16-04.42.26.z
+size: 35371328
+sha1sum: ede9e84ea7cd12cecae6a275bc68611ce915047f
 
 [file_X5-fw]
 url: http://download.fanvil.com/Firmware/Release/X5/20170303/x51.4.0.2016T20170303151233.z

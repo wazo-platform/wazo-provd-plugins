@@ -25,8 +25,8 @@
         </opt>
     </ap>
     <fwCheck>
-        <EnableAutoUpgrade>0</EnableAutoUpgrade>
-        <UpgradeServer1></UpgradeServer1>
+        <EnableAutoUpgrade>1</EnableAutoUpgrade>
+        <UpgradeServer1>{{ XX_server_url }}/Fanvil</UpgradeServer1>
         <UpgradeServer2></UpgradeServer2>
         <AutoUpgradeInterval>24</AutoUpgradeInterval>
     </fwCheck>
@@ -71,13 +71,28 @@
         </date>
         <timeDisplay>
             <TimeDisplayStyle>0</TimeDisplayStyle>
-            <DateDisplayStyle>2</DateDisplayStyle>
+            {% if XX_displaydate -%}
+            <DateDisplayStyle>{{ XX_displaydate }}</DateDisplayStyle>
+            {% endif -%}
         </timeDisplay>
-        {% if XX_xivo_phonebook_url -%}
+        {% if XX_wazo_phonebook_url_v2 -%}
         <softkey>
             <DesktopSoftkey>history;dss1;;menu;</DesktopSoftkey>
         </softkey>
-        {% endif %}
+        <xmlContact index="1">
+            <Name>Wazo</Name>
+            <Addr>{{ XX_wazo_phonebook_url_v2 }}</Addr>
+            <UserName></UserName>
+            <PassWd></PassWd>
+            <Sipline>-1</Sipline>
+            <BindLine>-1</BindLine>
+            <PhonebookType>0</PhonebookType>
+        </xmlContact>
+        {% else -%}
+        <softkey>
+            <DesktopSoftkey>history;dss1;;menu;</DesktopSoftkey>
+        </softkey>
+        {% endif -%}
     </phone>
     <cti>
         {% if XX_wazo_phoned_user_service_dnd_enabled_url -%}
@@ -126,6 +141,12 @@
         <Voice_Priority>0</Voice_Priority>
         {% endif -%}
     </qos>
+    <mm>
+        <SelectYourTone>{{ XX_country }}</SelectYourTone>
+        <capability>
+            <AudioCodecSets>PCMU,PCMA,G722</AudioCodecSets>
+        </capability>
+    </mm>
     <log>
         <OutputDevice>stdout</OutputDevice>
         <FileName>platform.log</FileName>
@@ -244,11 +265,13 @@
     </internal>
     {% endif -%}
     {% if XX_xivo_phonebook_url -%}
-    <dssSoft index="1">
-        <Type>21</Type>
-        <Value>{{ XX_xivo_phonebook_url }}</Value>
-        <Title>{{ XX_directory|d('Directory') }}</Title>
-    </dssSoft>
+        <dssSoft index="1">
+            <Type>21</Type>
+            <Value>{{ XX_xivo_phonebook_url }}</Value>
+            <Title>{{ XX_directory|d('Directory') }}</Title>
+        </dssSoft>
     {%- endif %}
+    {% block model_specific_parameters -%}
+    {% endblock %}
     </dsskey>
 </sysConf>
