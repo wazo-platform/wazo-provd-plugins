@@ -1,0 +1,250 @@
+[pkg_6863i-fw]
+description: Firmware for Aastra 6863i
+description_fr: Micrologiciel pour Aastra 6863i
+version: 6.4.0.140
+files: 6863i-fw
+install: 6863i-fw
+
+[pkg_6865i-fw]
+description: Firmware for Aastra 6865i
+description_fr: Micrologiciel pour Aastra 6865i
+version: 6.4.0.140
+files: 6865i-fw
+install: 6865i-fw
+
+[pkg_6867i-fw]
+description: Firmware for Aastra 6867i
+description_fr: Micrologiciel pour Aastra 6867i
+version: 6.4.0.140
+files: 6867i-fw
+install: 6867i-fw
+
+[pkg_6869i-fw]
+description: Firmware for Aastra 6869i
+description_fr: Micrologiciel pour Aastra 6869i
+version: 6.4.0.140
+files: 6869i-fw
+install: 6869i-fw
+
+[pkg_6873i-fw]
+description: Firmware for Aastra 6873i
+description_fr: Micrologiciel pour Aastra 6873i
+version: 6.4.0.140
+files: 6873i-fw
+install: 6873i-fw
+
+[pkg_6905-fw]
+description: Firmware for Mitel 6905
+description_fr: Micrologiciel pour Mitel 6905
+version: 6.4.0.140
+files: 6905-fw
+install: 6900-fw
+
+[pkg_6910-fw]
+description: Firmware for Mitel 6910
+description_fr: Micrologiciel pour Mitel 6910
+version: 6.4.0.140
+files: 6910-fw
+install: 6900-fw
+
+[pkg_6915-fw]
+description: Firmware for Mitel 6915
+description_fr: Micrologiciel pour Mitel 6915
+version: 6.4.0.140
+files: 6915-fw
+install: 6900-fw
+
+[pkg_6915d-fw]
+description: Firmware for Mitel 6915d
+description_fr: Micrologiciel pour Mitel 6915d
+version: 6.4.0.140
+files: 6915d-fw
+install: 6900-fw
+
+[pkg_6920-fw]
+description: Firmware for Mitel 6920
+description_fr: Micrologiciel pour Mitel 6920
+version: 6.4.0.140
+files: 6920-fw
+install: 6900-fw
+
+[pkg_6920w-fw]
+description: Firmware for Mitel 6920w
+description_fr: Micrologiciel pour Mitel 6920w
+version: 6.4.0.140
+files: 6920w-fw
+install: 6900-fw
+
+[pkg_6930-fw]
+description: Firmware for Mitel 6930
+description_fr: Micrologiciel pour Mitel 6930
+version: 6.4.0.140
+files: 6930-fw
+install: 6900-fw
+
+[pkg_6930w-fw]
+description: Firmware for Mitel 6930w
+description_fr: Micrologiciel pour Mitel 6930w
+version: 6.4.0.140
+files: 6930w-fw
+install: 6900-fw
+
+[pkg_6940-fw]
+description: Firmware for Mitel 6940
+description_fr: Micrologiciel pour Mitel 6940
+version: 6.4.0.140
+files: 6940-fw
+install: 6900-fw
+
+[pkg_6940w-fw]
+description: Firmware for Mitel 6940w
+description_fr: Micrologiciel pour Mitel 6940w
+version: 6.4.0.140
+files: 6940w-fw
+install: 6900-fw
+
+[pkg_6970-fw]
+description: Firmware for Mitel 6970
+description_fr: Micrologiciel pour Mitel 6970
+version: 6.4.0.140
+files: 6970-fw
+install: 6900-fw
+
+[pkg_lang]
+description: Language files 6.4.0 SP3
+description_fr: Fichiers de langue 6.4.0 SP3
+version: 6.4.SP3
+files: lang
+install: aastra-lang
+
+
+[install_6863i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_6865i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_6867i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_6869i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_6873i-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_6900-fw]
+a-b: untar $FILE1
+b-c: include *.st
+
+[install_aastra-lang]
+a-b: unzip $FILE1
+b-c: cp 58017085_lang_R6.4.SP3_Rev1/* i18n/
+
+
+[file_6863i-fw]
+filename: 6863i.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6863i.tar.gz
+size: 22410141
+sha1sum: 3698559ed72b93c7c22cf424120a7979b373cd2e
+
+[file_6865i-fw]
+filename: 6865i.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6865i.tar.gz
+size: 36612548
+sha1sum: 0558d04301357a298c2b87395ec43ec27d781f12
+
+[file_6867i-fw]
+filename: 6867i.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6867i.tar.gz
+size: 45996520
+sha1sum: 92dfa03afe5eb5fa6ec9da304b882196722da54b
+
+[file_6869i-fw]
+filename: 6869i.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6869i.tar.gz
+size: 46396335
+sha1sum: 60e7aba123bf7b51d9ce9310c44ca375c307e085
+
+[file_6873i-fw]
+filename: 6873i.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6873i.tar.gz
+size: 49339842
+sha1sum: c42142ea99b9fd8af8c0f8fb272c505f40845ae9
+
+[file_6905-fw]
+filename: 6905.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6905.tar.gz
+size: 23836698
+sha1sum: 6cefb146edf5261d491a948801daf47dfd72cd43
+
+[file_6910-fw]
+filename: 6910.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6910.tar.gz
+size: 37954906
+sha1sum: b568e88695850f9bd5ba21b1c9cb700c16f17c61
+
+[file_6915-fw]
+filename: 6915.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6915.tar.gz
+size: 46225474
+sha1sum: cf625d4a9a2bd94f04fe5e24152b3e3ffef7056e
+
+[file_6915d-fw]
+filename: 6915d.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6915d.tar.gz
+size: 51224748
+sha1sum: d3581bc7d64e93aea0dcd76870339cd5a6d46294
+
+[file_6920-fw]
+filename: 6920.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6920.tar.gz
+size: 46664537
+sha1sum: 1b81eb3cf567b5c656f939e4b05af8b443332e2b
+
+[file_6920w-fw]
+filename: 6920w.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6920w.tar.gz
+size: 62424970
+sha1sum: e2fbb6d0a00612b2270c134e6bf52ebf7d937e2b
+
+[file_6930-fw]
+filename: 6930.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6930.tar.gz
+size: 48301091
+sha1sum: 54869654ecb45dff9b1463422424d09dce234d7f
+
+[file_6930w-fw]
+filename: 6930w.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6930w.tar.gz
+size: 62729315
+sha1sum: 4565f92b6ff3843efca686f9406f84c357e4add3
+
+[file_6940-fw]
+filename: 6940.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6940.tar.gz
+size: 49746780
+sha1sum: bced1644abd50f1a77aaaa7b2e411b7e83e063b1
+
+[file_6940w-fw]
+filename: 6940w.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6940w.tar.gz
+size: 64043797
+sha1sum: 4a2d475fb0cd3cdcded1f952e2414a4e3f57ff9b
+
+[file_6970-fw]
+filename: 6970.tar.gz
+url: http://provd.wazo.community/firmwares/mitel/6970.tar.gz
+size: 37559232
+sha1sum: b2a0df9f495d41e8b92612b56d781b7e4216f71e
+
+[file_lang]
+filename: 58017085_lang_R6.4.SP3_Rev1.zip
+url: http://provd.wazo.community/firmwares/mitel/58017085_lang_R6.4.SP3_Rev1.zip
+size: 25069108
+sha1sum: d031bcc3f8fe232ce5144edd92721957bf10da34
