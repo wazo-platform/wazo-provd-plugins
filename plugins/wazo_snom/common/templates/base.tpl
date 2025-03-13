@@ -53,6 +53,7 @@
     <user_mailbox idx="{{ line_no }}" perm="R">{{ line['voicemail'] }}</user_mailbox>
     <user_dtmf_info idx="{{ line_no }}" perm="R">{{ line['XX_user_dtmf_info'] }}</user_dtmf_info>
     <codec_priority_list idx="{{ line_no }}" perm="R">pcma,pcmu,g722,g729,telephone-event</codec_priority_list>
+    <mac_info_in_sip_register idx="{{ line_no }}" perm="R">on</mac_info_in_sip_register>
 
     {% if line['backup_proxy_ip'] -%}
     <user_failover_identity idx="{{ line_no }}" perm="R">{{ line_no|int + 1 }}</user_failover_identity>
@@ -75,6 +76,7 @@
     <user_mailbox idx="{{ line_no|int + 1 }}" perm="R">{{ line['voicemail'] }}</user_mailbox>
     <user_dtmf_info idx="{{ line_no|int + 1 }}" perm="R">{{ line['XX_user_dtmf_info'] }}</user_dtmf_info>
     <hide_identity idx="{{ line_no|int + 1 }}" perm="R">true</hide_identity>
+    <mac_info_in_sip_register idx="{{ line_no|int + 1 }}" perm="R">on</mac_info_in_sip_register>
     {% endif -%}
 
     {% endfor -%}
