@@ -53,6 +53,7 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         re.compile(r'^[yY]ealink\s+(W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'(VP530P?|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'[yY]ealink-(\w+)\s+([\d.]+)\s+([\d.]+)$'),
+        re.compile(r'^[yY]ealink\s+(AX83H)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
     ]
 
     def extract(self, request: Request, request_type: RequestType):
@@ -250,6 +251,7 @@ class BaseYealinkFunckeyPrefixIterator:
         'T57W': 29,
         'T58': 27,
         'T58W': 27,
+        'AX83H': 0,
     }
     _NB_MEMORYKEY = {
         'CP920': 0,
@@ -282,6 +284,7 @@ class BaseYealinkFunckeyPrefixIterator:
         'T57W': 0,
         'T58': 0,
         'T58W': 0,
+        'AX83H': 0,
     }
 
     class NullExpansionModule:
@@ -382,6 +385,7 @@ class BaseYealinkPlugin(StandardPlugin):
         'T57W': 16,
         'T58': 16,
         'T58W': 16,
+        'AX83H': 4,
     }
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
 
