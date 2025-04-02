@@ -6,7 +6,7 @@ from ..common import BaseYealinkPgAssociator, BaseYealinkPlugin
 
 
 @pytest.fixture
-def v86_entry(module_initializer):
+def v87_entry(module_initializer):
     def execfile_(_, common_globals):
         common_globals['BaseYealinkPlugin'] = BaseYealinkPlugin
         common_globals['BaseYealinkPgAssociator'] = BaseYealinkPgAssociator
@@ -15,8 +15,8 @@ def v86_entry(module_initializer):
 
 
 @pytest.fixture
-def v86_plugin(v86_entry):
-    with patch('plugins.wazo_yealink.v86.common.FetchfwPluginHelper'), patch(
-        'plugins.wazo_yealink.v86.common.TemplatePluginHelper'
+def v87_plugin(v87_entry):
+    with patch('plugins.wazo_yealink.v87.common.FetchfwPluginHelper'), patch(
+        'plugins.wazo_yealink.v87.common.TemplatePluginHelper'
     ):
-        yield v86_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())
+        yield v87_entry.YealinkPlugin(MagicMock(), 'test_dir', MagicMock(), MagicMock())

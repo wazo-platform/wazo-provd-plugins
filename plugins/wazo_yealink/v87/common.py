@@ -253,14 +253,14 @@ class BaseYealinkFunckeyPrefixIterator:
         'T58W': 27,
         'AX83H': 0,
         'AX86R': 0,
-        'T73U': 4,
-        'T73W': 4,
-        'T74U': 6,
-        'T74W': 6,
-        'T77U': 8,
-        'T85W': 12,
-        'T87W': 12,
-        'T88W': 12,
+        'T73U': 48,
+        'T73W': 48,
+        'T74U': 60,
+        'T74W': 60,
+        'T77U': 95,
+        'T85W': 72,
+        'T87W': 95,
+        'T88W': 95,
     }
     _NB_MEMORYKEY = {
         'CP920': 0,
@@ -404,6 +404,15 @@ class BaseYealinkPlugin(StandardPlugin):
         'T58': 16,
         'T58W': 16,
         'AX83H': 4,
+        'AX86R': 4,
+        'T73U': 8,
+        'T73W': 8,
+        'T74U': 10,
+        'T74W': 10,
+        'T77U': 12,
+        'T85W': 12,
+        'T87W': 12,
+        'T88W': 12,
     }
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
 
