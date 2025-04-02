@@ -351,7 +351,7 @@ class BaseYealinkFunckeyPrefixIterator:
             return self.EXP43ExpansionModule
         elif model.startswith('T5'):
             return self.EXP50ExpansionModule
-        elif model.startswith('T7', 'T8'):
+        elif model.startswith('T7') or model.startswith('T8'):
             return self.EXP55ExpansionModule
         else:
             return self.NullExpansionModule
