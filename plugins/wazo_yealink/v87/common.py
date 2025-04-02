@@ -75,6 +75,9 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         #   "Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72"
         #   "Yealink SIP-T33G 124.85.257.55 80:5e:c0:bd:ea:ef"
         #   "Yealink SIP-T34W 124.86.0.75 24:9a:d8:88:d0:f4"
+        #   "Yealink SIP-T77U 185.87.0.10 44:db:d2:bd:b5:69"
+        #   "Yealink SIP-T85W 185.87.0.10 44:db:d2:67:58:4b"
+        #   "Yealink SIP-T87W 185.87.0.10 44:db:d2:c9:73:b7"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)

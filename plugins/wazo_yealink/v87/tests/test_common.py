@@ -1,4 +1,4 @@
-# Copyright 2021-2025 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -48,16 +48,16 @@ class TestInfoExtraction:
 
     def test_http_ua_extractor_when_all_info(self):
         ua_info = {
-            b'Yealink SIP-T73U 185.87.0.10 00:15:65:5e:16:7c': {
+            b'Yealink SIP-T20P 9.72.0.30 00:15:65:5e:16:7c': {
                 'vendor': 'Yealink',
-                'model': 'T73U',
-                'version': '185.87.0.10',
+                'model': 'T20P',
+                'version': '9.72.0.30',
                 'mac': '00:15:65:5e:16:7c',
             },
-            b'Yealink SIP-T74U 185.87.0.10 80:5e:c0:d5:7d:72': {
+            b'Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72': {
                 'vendor': 'Yealink',
-                'model': 'T74U',
-                'version': '185.87.0.10',
+                'model': 'T31G',
+                'version': '124.85.257.55',
                 'mac': '80:5e:c0:d5:7d:72',
             },
         }
@@ -72,15 +72,15 @@ class TestInfoExtraction:
     @patch('plugins.wazo_yealink.v87.common.defer')
     def test_extract(self, mocked_defer):
         self.http_info_extractor.extract(
-            self._mock_request(b'Yealink SIP-T74U 185.87.0.10 80:5e:c0:d5:7d:72'),
+            self._mock_request(b'Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72'),
             None,
         )
         mocked_defer.succeed.assert_called_with(
             {
                 'mac': '80:5e:c0:d5:7d:72',
-                'version': '185.87.0.10',
+                'version': '124.85.257.55',
                 'vendor': 'Yealink',
-                'model': 'T74U',
+                'model': 'T31G',
             }
         )
 
@@ -102,7 +102,7 @@ class TestInfoExtraction:
     @patch('plugins.wazo_yealink.v87.common.logger')
     def test_invalid_mac(self, mocked_logger):
         self.http_info_extractor._extract_from_ua(
-            'Yealink SIP-T73U 185.87.0.10 00:15:655e167c'
+            'Yealink SIP-T20P 9.72.0.30 00:15:6525ef16a7c'
         )
         message, mac, exception = mocked_logger.warning.call_args[0]
         assert message == 'Could not normalize MAC address "%s": %s'
@@ -165,8 +165,8 @@ class TestPlugin:
     def test_configure(self, v87_plugin):
         device = {
             'vendor': 'Yealink',
-            'model': 'T73U',
-            'version': '185.87.0.10',
+            'model': 'T31G',
+            'version': '124.85.257.55',
             'mac': '80:5e:c0:d5:7d:72',
         }
         raw_config = {
@@ -339,9 +339,9 @@ class TestPlugin:
             'sip_lines': {'1': {'number': '5888'}},
             'exten_pickup_call': '1234',
         }
-        v87_plugin._add_fkeys({'model': 'T73U'}, raw_config)
+        v87_plugin._add_fkeys({'model': 'T32G'}, raw_config)
         assert raw_config['XX_fkeys'] == ''
-        v87_plugin._add_fkeys({'model': 'T73U'}, raw_config)
+        v87_plugin._add_fkeys({'model': 'T33G'}, raw_config)
         mocked_logger.info.assert_called_with('Unsupported funckey type: %s', 'other')
         assert raw_config['XX_fkeys'] == TEST_LINES + self._build_fkey_expectation(
             4, 12
@@ -412,9 +412,9 @@ class TestPlugin:
             'exten_pickup_call': '1234',
         }
         raw_config = dict(**base_raw_config)
-        v87_plugin._add_fkeys({'model': 'T74U'}, raw_config)
+        v87_plugin._add_fkeys({'model': 'T27G'}, raw_config)
         assert raw_config['XX_fkeys'] == TEST_LINES + self._build_exp_expectation(
             4, 21, 40
         )
         raw_config = dict(**base_raw_config)
-        v87_plugin._add_fkeys({'model': 'T7'}, raw_config)
+        v87_plugin._add_fkeys({'model': 'T5'}, raw_config)
