@@ -26,55 +26,55 @@
             "protocol": "sip"
         },
         "Yealink, T73(U)(W), 185.87.0.10": {
-            "lines": 8,
+            "lines": 12,
             "high_availability": true,
             "function_keys": 48,
-            "expansion_modules": 0,
+            "expansion_modules": 1,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T74(U)(W), 185.87.0.10": {
-            "lines": 10,
+            "lines": 16,
             "high_availability": true,
             "function_keys": 60,
-            "expansion_modules": 0,
+            "expansion_modules": 3,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T77(U), 185.87.0.10": {
-            "lines": 12,
+            "lines": 16,
             "high_availability": true,
             "function_keys": 95,
-            "expansion_modules": 0,
+            "expansion_modules": 3,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T85(W), 185.87.0.10": {
-            "lines": 12,
+            "lines": 16,
             "high_availability": true,
             "function_keys": 72,
-            "expansion_modules": 0,
+            "expansion_modules": 3,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
         "Yealink, T87(W), 185.87.0.10": {
-            "lines": 12,
+            "lines": 16,
             "high_availability": true,
             "function_keys": 95,
-            "expansion_modules": 0,
+            "expansion_modules": 3,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T88(W), 185.87.0.10": {
-            "lines": 12,
+        "Yealink, T88(W)(V), 185.87.0.10": {
+            "lines": 16,
             "high_availability": true,
             "function_keys": 95,
-            "expansion_modules": 0,
+            "expansion_modules": 3,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"

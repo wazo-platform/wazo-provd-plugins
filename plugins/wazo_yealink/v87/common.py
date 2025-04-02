@@ -264,6 +264,7 @@ class BaseYealinkFunckeyPrefixIterator:
         'T85W': 72,
         'T87W': 95,
         'T88W': 95,
+        'T88V': 95,
     }
     _NB_MEMORYKEY = {
         'CP920': 0,
@@ -306,6 +307,7 @@ class BaseYealinkFunckeyPrefixIterator:
         'T85W': 0,
         'T87W': 0,
         'T88W': 0,
+        'T88V': 0,
     }
 
     class NullExpansionModule:
@@ -321,6 +323,10 @@ class BaseYealinkFunckeyPrefixIterator:
         max_daisy_chain = 3
 
     class EXP50ExpansionModule(NullExpansionModule):
+        key_count = 60
+        max_daisy_chain = 3
+
+    class EXP55ExpansionModule(NullExpansionModule):
         key_count = 60
         max_daisy_chain = 3
 
@@ -345,6 +351,8 @@ class BaseYealinkFunckeyPrefixIterator:
             return self.EXP43ExpansionModule
         elif model.startswith('T5'):
             return self.EXP50ExpansionModule
+        elif model.startswith('T7', 'T8'):
+            return self.EXP55ExpansionModule
         else:
             return self.NullExpansionModule
 
@@ -408,14 +416,15 @@ class BaseYealinkPlugin(StandardPlugin):
         'T58W': 16,
         'AX83H': 4,
         'AX86R': 4,
-        'T73U': 8,
-        'T73W': 8,
-        'T74U': 10,
-        'T74W': 10,
-        'T77U': 12,
-        'T85W': 12,
-        'T87W': 12,
-        'T88W': 12,
+        'T73U': 12,
+        'T73W': 12,
+        'T74U': 16,
+        'T74W': 16,
+        'T77U': 16,
+        'T85W': 16,
+        'T87W': 16,
+        'T88W': 16,
+        'T88V': 16,
     }
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
 

@@ -61,6 +61,10 @@ MODEL_INFO = {
         'version': '185.87.0.10',
         'firmware': 'T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.10.rom',
     },
+    'T88V': {
+        'version': '185.87.0.10',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.10.rom',
+    },
     'AX83H': {
         'version': '180.87.0.5',
         'firmware': 'AX83(AX83,AX86)-180.87.0.5.rom',
