@@ -327,7 +327,7 @@ class BaseYealinkFunckeyPrefixIterator:
         max_daisy_chain = 3
 
     class EXP55ExpansionModule(NullExpansionModule):
-        key_count = 60
+        key_count = 78
         max_daisy_chain = 3
 
     def __init__(self, model):
