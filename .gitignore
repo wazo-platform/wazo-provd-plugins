@@ -12,3 +12,4 @@ pycodestyle.txt
 pylint.txt
 unit-tests.xml
 .DS_Store
+.vscode/

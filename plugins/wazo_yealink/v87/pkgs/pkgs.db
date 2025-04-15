@@ -1,0 +1,94 @@
+[pkg_T7T8-fw]
+description: Firmware for Yealink T7x & T8x
+description_fr: Micrologiciel pour Yealink T7x & T8x
+version: 185.87.0.10
+files: T7T8-fw
+install: yealink-fw
+
+[pkg_AX8X-fw]
+description: Firmware for Yealink AX83H & AX86R
+description_fr: Micrologiciel pour Yealink AX83H & AX86R
+version: 180.87.0.5
+files: AX8X-fw
+install: yealink-fw
+
+[pkg_W53H-fw]
+description: Firmware for Yealink W53H handset
+description_fr: Micrologiciel pour le combiné Yealink W53H
+version: 88.85.0.20
+files: W53H-fw
+install: yealink-fw
+
+[pkg_W56H-fw]
+description: Firmware for Yealink W56H handset
+description_fr: Micrologiciel pour le combiné Yealink W56H
+version: 61.85.0.20
+files: W56H-fw
+install: yealink-fw
+
+[pkg_W59R-fw]
+description: Firmware for Yealink W59R handset
+description_fr: Micrologiciel pour le combiné Yealink W59R
+version: 115.85.0.20
+files: W59R-fw
+install: yealink-fw
+
+[pkg_T4S-ddphone-fw]
+description: Firmware for Yealink T4XS in ddphone mode
+description_fr: Micrologiciel pour le poste Yealink T4XS en mode ddphone
+version: 66.85.0.56
+files: T4S-ddphone-fw
+install: yealink-fw
+
+[pkg_T54W-ddphone-fw]
+description: Firmware for Yealink T54W in ddphone mode
+description_fr: Micrologiciel pour le poste Yealink T54W en mode ddphone
+version: 96.85.0.65
+files: T54W-ddphone-fw
+install: yealink-fw
+
+[install_yealink-fw]
+a-b: cp *.rom firmware/
+
+
+[file_T7T8-fw]
+filename: T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.10.rom
+url: http://provd.wazo.community/firmwares/yealink/T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.10.rom
+size: 46668144
+sha1sum: c972484415a0b4b45ee24c846ecc5d36d65a6527
+
+[file_AX8X-fw]
+filename: AX83(AX83,AX86)-180.87.0.5.rom
+url: http://provd.wazo.community/firmwares/yealink/AX83(AX83,AX86)-180.87.0.5.rom
+size: 38007952
+sha1sum: 9a71f73be9fcf63ace754a94932111c1c3c29684
+
+[file_W53H-fw]
+filename: W53H-88.85.0.20.rom
+url: http://provd.wazo.community/firmwares/yealink/W53H-88.85.0.20.rom
+size: 2631680
+sha1sum: 8184fdfadbceac79e6256e7f0f70ac0d1832f9a9
+
+[file_W56H-fw]
+filename: W56H-61.85.0.20.rom
+url: http://provd.wazo.community/firmwares/yealink/W56H-61.85.0.20.rom
+size: 4412384
+sha1sum: 42b7b4dbfc98058635c6c5dc8bd8f88a4ade2568
+
+[file_W59R-fw]
+filename: W59R-115.85.0.20.rom
+url: http://provd.wazo.community/firmwares/yealink/W59R-115.85.0.20.rom
+size: 3148768
+sha1sum: 3e826495b1585156a300b1e3752013491791db2d
+
+[file_T4S-ddphone-fw]
+filename: T4S-ddphone-66.85.0.56.rom
+url: http://provd.wazo.community/firmwares/yealink/T4S-ddphone-66.85.0.56.rom
+size: 2110592
+sha1sum: 88b0b4690f52205aced4ba0a08b5cef94b1314d0
+
+[file_T54W-ddphone-fw]
+filename: T54W-ddphone-96.85.0.65.rom
+url: http://provd.wazo.community/firmwares/yealink/T54W-ddphone-96.85.0.65.rom
+size: 2304784
+sha1sum: 8a0c1e872ef9819ad2006661f753eb022eb2fd8e
