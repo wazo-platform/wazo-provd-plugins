@@ -1,5 +1,5 @@
 """
-Copyright 2014-2023 The Wazo Authors  (see the AUTHORS file)
+Copyright 2014-2025 The Wazo Authors  (see the AUTHORS file)
 SPDX-License-Identifier: GPL-3.0-or-later
 
 Depends on the following external programs:
@@ -856,6 +856,90 @@ def build_05_20_0001(path):
             )
 
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v05_20_0001/', path])
+
+
+@target('07.40.0104', 'wazo-snom-dect-07.40.0104')
+def build_07_40_0104(path):
+    MODELS = [
+        'M400',
+        'M900',
+    ]
+    check_call(
+        [
+            'rsync',
+            '-rlp',
+            '--exclude',
+            '.*',
+            '--include',
+            '/templates/base-new.tpl',
+            '--include',
+            '/templates/M400.tpl',
+            '--include',
+            '/templates/M900.tpl',
+            '--exclude',
+            '/templates/*.tpl',
+            '--exclude',
+            '*.btpl',
+            'common_dect/',
+            path,
+        ]
+    )
+    template_dir = Path(path) / 'templates' / 'common'
+
+    for model in MODELS:
+        # generate snom<model>-firmware.htm.tpl from snom-model-firmware-740.htm.tpl.btpl
+        model_tpl = template_dir / f'snom{model}-firmware.htm.tpl'
+        sed_script = f's/#FW_FILENAME#/{model}_v0740_b0104.fwu/'
+        with model_tpl.open(mode='wb') as f:
+            check_call(
+                [
+                    'sed',
+                    sed_script,
+                    'common_dect/templates/common/snom-model-firmware-740.htm.tpl.btpl',
+                ],
+                stdout=f,
+            )
+
+        # generate snom<model>-firmware.xml.tpl from snom-model-firmware-740.xml.tpl.btpl
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
+        sed_script = f's/#FW_FILENAME#/{model}_v0740_b0104.fwu/'
+        with model_tpl.open(mode='wb') as f:
+            check_call(
+                [
+                    'sed',
+                    sed_script,
+                    'common_dect/templates/common/snom-model-firmware-740.xml.tpl.btpl',
+                ],
+                stdout=f,
+            )
+
+        # generate snom<model>.htm.tpl from snom-model-new.htm.tpl.mtpl
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
+        sed_script = f's/#MODEL#/{model}/'
+        with model_tpl.open(mode='wb') as f:
+            check_call(
+                [
+                    'sed',
+                    sed_script,
+                    'common_dect/templates/common/snom-model-new.htm.tpl.btpl',
+                ],
+                stdout=f,
+            )
+
+        # generate snom<model>.xml.tpl from snom-model.xml.mtpl
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
+        sed_script = f's/#MODEL#/{model}/'
+        with model_tpl.open(mode='wb') as f:
+            check_call(
+                [
+                    'sed',
+                    sed_script,
+                    'common_dect/templates/common/snom-model-new.xml.tpl.btpl',
+                ],
+                stdout=f,
+            )
+
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v07_40_0104/', path])
 
 
 @target('10.1.101.11', 'wazo-snom-10.1.101.11')

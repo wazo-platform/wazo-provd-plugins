@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<setting-files>
+  <file url="{{ XX_server_url }}/snom#MODEL#-firmware.htm" />
+  <file url="{{ XX_server_url }}/snom-general.xml" />
+  <file url="{{ XX_server_url }}/snom#MODEL#.xml" />
+</setting-files>
