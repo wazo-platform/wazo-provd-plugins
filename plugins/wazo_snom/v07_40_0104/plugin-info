@@ -1,0 +1,27 @@
+{
+    "version": "0.1.0",
+    "description": "Plugin for Snom M400 and M900 in version 07.40.0104",
+    "description_fr": "Greffon pour Snom M400 et M900 en version 07.40.0104",
+    "capabilities": {
+        "Snom, M400, 07.40.0104": {
+            "protocol": "sip",
+            "type": "dect",
+            "multicell": true,
+            "lines": 20,
+            "switchboard": false,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0
+        },
+        "Snom, M900, 07.40.0104": {
+            "protocol": "sip",
+            "type": "dect",
+            "multicell": true,
+            "lines": 1000,
+            "switchboard": false,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0
+        }
+    }
+}

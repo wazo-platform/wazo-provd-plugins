@@ -1,0 +1,121 @@
+[pkg_M400-fw]
+description: Firmware for Snom M400
+description_fr: Firmware pour Snom M400
+version: 07.40.0104
+files: M400-fw
+install: snom-M400-fw
+
+[pkg_M900-fw]
+description: Firmware for Snom M900
+description_fr: Firmware pour Snom M900
+version: 07.40.0104
+files: M900-fw
+install: snom-M900-fw
+
+[pkg_M30-fw]
+description: Firmware for Snom M30 handset
+description_fr: Firmware pour combiné Snom M30
+version: 07.40.0104
+files: M25-fw
+install: snom-M25-fw
+
+[pkg_M65-fw]
+description: Firmware for Snom M65 handset
+description_fr: Firmware pour combiné Snom M65
+version: 07.40.0104
+files: M65-fw
+install: snom-M65-fw
+
+[pkg_M70-fw]
+description: Firmware for Snom M70 handset
+description_fr: Firmware pour combiné Snom M70
+version: 07.40.0104
+files: M70-fw
+install: snom-M70-fw
+
+[pkg_M80-fw]
+description: Firmware for Snom M80 handset
+description_fr: Firmware pour combiné Snom M80
+version: 07.40.0104
+files: M80-fw
+install: snom-M80-fw
+
+[pkg_M85-fw]
+description: Firmware for Snom M85 handset
+description_fr: Firmware pour combiné Snom M85
+version: 07.40.0104
+files: M85-fw
+install: snom-M85-fw
+
+[pkg_M90-fw]
+description: Firmware for Snom M90 handset
+description_fr: Firmware pour combiné Snom M90
+version: 07.40.0104
+files: M90-fw
+install: snom-M90-fw
+
+
+[install_snom-M400-fw]
+a-b: cp $FILE1 M400/
+
+[install_snom-M900-fw]
+a-b: cp $FILE1 M900/
+
+[install_snom-M30-fw]
+a-b: cp $FILE1 M30/
+
+[install_snom-M65-fw]
+a-b: cp $FILE1 M65/
+
+[install_snom-M70-fw]
+a-b: cp $FILE1 M70/
+
+[install_snom-M80-fw]
+a-b: cp $FILE1 M80/
+
+[install_snom-M85-fw]
+a-b: cp $FILE1 M85/
+
+[install_snom-M90-fw]
+a-b: cp $FILE1 M90/
+
+
+[file_M400-fw]
+url: https://dect.snom.com/M400/M400_v0740_b0104.fwu
+size: 4070599
+sha1sum: dbbf14284901ee3b3272a59e84ca186e56cf7d52
+
+[file_M900-fw]
+url: https://dect.snom.com/M900/M900_v0740_b0104.fwu
+size: 4201217
+sha1sum: f3e4307d0fa4e003dea3405f3fb82781f4041fb5
+
+[file_M30-fw]
+url: https://dect.snom.com/M30/M30_v0740_b0104.fwu
+size: 1373076
+sha1sum: 182b215b5e4615b8adc3ddea58aa3d2a063087c1
+
+[file_M65-fw]
+url: https://dect.snom.com/M65/M65_v0740_b0104.fwu
+size: 1063667
+sha1sum: ec0558a6eb7d63b0cc574f71202ee1449b1d55ab
+
+[file_M70-fw]
+url: https://dect.snom.com/M70/M70_v0740_b0104.fwu
+size: 1611077
+sha1sum: e81a20dfdb8356fd7287ec22869996f6a7e2cc74
+
+[file_M80-fw]
+url: https://dect.snom.com/M80/M80_v0740_b0104.fwu
+size: 1620329
+sha1sum: 7b8a5da469d511ae8ce0455b610d06d3ab61b69e
+
+[file_M85-fw]
+url: https://dect.snom.com/M85/M85_v0740_b0104.fwu
+size: 1619815
+sha1sum: b8bb8e7dfcf357d7add9aafad4184922621338e5
+
+[file_M90-fw]
+url: https://dect.snom.com/M90/M90_v0740_b0104.fwu
+size: 1611591
+sha1sum: 354922e9933e8c0c982901e4143582ea040a5592
