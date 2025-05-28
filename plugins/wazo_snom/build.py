@@ -861,7 +861,7 @@ def build_05_20_0001(path):
 @target('07.40.0104', 'wazo-snom-dect-07.40.0104')
 def build_07_40_0104(path):
     MODELS = [
-        'M300',
+        'M400',
         'M900',
     ]
     check_call(
