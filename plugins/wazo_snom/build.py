@@ -900,6 +900,19 @@ def build_07_40_0104(path):
                 stdout=f,
             )
 
+        # generate snom<model>-firmware.xml.tpl from snom-model-firmware-740.xml.tpl.btpl
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
+        sed_script = f's/#FW_FILENAME#/{model}_v0740_b0104.fwu/'
+        with model_tpl.open(mode='wb') as f:
+            check_call(
+                [
+                    'sed',
+                    sed_script,
+                    'common_dect/templates/common/snom-model-firmware-740.xml.tpl.btpl',
+                ],
+                stdout=f,
+            )
+
         # generate snom<model>.htm.tpl from snom-model-new.htm.tpl.mtpl
         model_tpl = template_dir / f'snom{model}.htm.tpl'
         sed_script = f's/#MODEL#/{model}/'
