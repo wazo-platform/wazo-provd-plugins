@@ -871,7 +871,7 @@ def build_07_40_0104(path):
             '--exclude',
             '.*',
             '--include',
-            '/templates/base.tpl',
+            '/templates/base-new.tpl',
             '--include',
             '/templates/M400.tpl',
             '--include',

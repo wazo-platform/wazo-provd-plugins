@@ -1,1 +1,1 @@
-{% include 'base.tpl' -%}
+{% include 'base-new.tpl' -%}
