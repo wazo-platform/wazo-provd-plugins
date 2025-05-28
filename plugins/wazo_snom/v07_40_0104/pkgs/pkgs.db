@@ -16,8 +16,8 @@ install: snom-M900-fw
 description: Firmware for Snom M30 handset
 description_fr: Firmware pour combiné Snom M30
 version: 07.40.0104
-files: M25-fw
-install: snom-M25-fw
+files: M30-fw
+install: snom-M30-fw
 
 [pkg_M65-fw]
 description: Firmware for Snom M65 handset
