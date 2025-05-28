@@ -4,8 +4,8 @@
   <fp_fwu_sw_version>740</fp_fwu_sw_version>
   <fp_fwu_branch_version>104</fp_fwu_branch_version>
 
-  <pp_fwu_sw_version type="M25">740</pp_fwu_sw_version>
-  <pp_fwu_branch_version type="M25">104</pp_fwu_branch_version>
+  <pp_fwu_sw_version type="M30">740</pp_fwu_sw_version>
+  <pp_fwu_branch_version type="M30">104</pp_fwu_branch_version>
 
   <pp_fwu_sw_version type="M65">740</pp_fwu_sw_version>
   <pp_fwu_branch_version type="M65">104</pp_fwu_branch_version>
