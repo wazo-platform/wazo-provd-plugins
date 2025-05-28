@@ -30,15 +30,15 @@
     {%- endif %}
 
     {%- if user_username %}
-        <http_user>{{ user_username|e }}</http_user>
+        <http_basic_user>{{ user_username|e }}</http_basic_user>
     {%- else %}
-        <http_user>User</http_user>
+        <http_basic_user>User</http_basic_user>
     {%- endif %}
 
     {%- if user_password %}
-        <http_pass>{{ user_password|e }}</http_pass>
+        <http_basic_pass>{{ user_password|e }}</http_basic_pass>
     {%- else %}
-        <http_pass>wazo!2025</http_pass>
+        <http_basic_pass>wazo!2025</http_basic_pass>
     {%- endif %}
 
     {%- if ntp_enabled %}
