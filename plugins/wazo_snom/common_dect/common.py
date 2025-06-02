@@ -1,4 +1,4 @@
-# Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -158,6 +158,7 @@ class BaseSnomPlugin(StandardPlugin):
             ('common/snom%s.htm.tpl', 'snom%s.htm'),
             ('common/snom%s.xml.tpl', 'snom%s.xml'),
             ('common/snom%s-firmware.xml.tpl', 'snom%s-firmware.xml'),
+            ('common/snom%s-firmware.htm.tpl', 'snom%s-firmware.htm'),
         ]:
             for model in self._MODELS:
                 yield tpl_format % model, file_format % model
