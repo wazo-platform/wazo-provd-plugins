@@ -421,6 +421,7 @@ class BaseFanvilPlugin(StandardPlugin):
         fkey_offset: int,
         pickup_exten: str | None,
     ) -> FKeyDict:
+        funckey['label'] = re.sub(r'[^\w\sÀ-ÿ]', '', funckey['label'], flags=re.UNICODE)
         fkey: FKeyDict = {'id': funckey_number, 'title': funckey['label'], 'type': 2}
         if funckey['type'] == 'speeddial':
             fkey['type'] = 1
@@ -518,6 +519,10 @@ class BaseFanvilPlugin(StandardPlugin):
             hasattr(plugins, 'add_xivo_phonebook_url')
             and raw_config.get('config_version', 0) >= 1
         ):
+            phonebook_url = raw_config.get('XX_xivo_phonebook_url')
+            if not phonebook_url:
+                return
+
             plugins.add_xivo_phonebook_url(
                 raw_config, 'fanvil', entry_point='lookup', qs_suffix='term='
             )
