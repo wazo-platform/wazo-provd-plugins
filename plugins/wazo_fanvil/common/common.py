@@ -519,16 +519,12 @@ class BaseFanvilPlugin(StandardPlugin):
             hasattr(plugins, 'add_xivo_phonebook_url')
             and raw_config.get('config_version', 0) >= 1
         ):
-            phonebook_url = raw_config.get('XX_xivo_phonebook_url')
-            if not phonebook_url:
-                return
-
             plugins.add_xivo_phonebook_url(
                 raw_config, 'fanvil', entry_point='lookup', qs_suffix='term='
             )
-            fixed_url = raw_config['XX_xivo_phonebook_url'].replace('&', '&amp;')
-
-            raw_config['XX_xivo_phonebook_url'] = fixed_url
+            if 'XX_xivo_phonebook_url' in raw_config:
+                fixed_url = raw_config['XX_xivo_phonebook_url'].replace('&', '&amp;')
+                raw_config['XX_xivo_phonebook_url'] = fixed_url
 
     def _add_phonebook_url_v2(self, raw_config: dict[str, Any]) -> None:
         if (
