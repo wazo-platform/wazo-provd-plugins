@@ -49,6 +49,11 @@ def build_Nx70_83_v2_49_1(path: str) -> None:
     check_call(['rsync', '-rlp', '--exclude', '.*', 'Nx70_83_v2_49_1/', path])
 
 
+@target('Nx70-83.v2.62.1', 'wazo-gigaset-Nx70-83.v2.62.1')
+def build_Nx70_83_v2_62_1(path: str) -> None:
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'Nx70_83_v2_62_1/', path])
+
+
 @target('C470', 'wazo-gigaset-C470')
 def build_C470(path: str) -> None:
     check_call(['rsync', '-rlp', '--exclude', '.*', 'common_c/', path])
