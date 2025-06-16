@@ -25,6 +25,8 @@
         <param name="DmGlobal.0.HSIdleDisplay" value="1"/>
         <param name="DmGlobal.0.SystemRegDomain" value="EUR"/>
 
+        <param name="dm.local.FwUpdateCallBlockAttempts" value="288" />
+
 
         <!-- Date and time -->
     {%- if ntp_enabled %}
