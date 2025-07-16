@@ -99,14 +99,14 @@ install: snom-fw
 [pkg_uxmd7c-fw]
 description: Firmware for Snom USB Extension Module UXM D7C
 description_fr: Micrologiciel pour module d'extension USB Snom UXM D7C
-version: 1.5.3
+version: 1.6.1
 files: uxmd7c-fw
 install: snom-fw
 
 [pkg_uxmd8c-fw]
 description: Firmware for Snom USB Extension Module UXM D8C
 description_fr: Micrologiciel pour module d'extension USB Snom UXM D8C
-version: 1.5.3
+version: 1.6.1
 files: uxmd8c-fw
 install: snom-fw
 
@@ -222,11 +222,11 @@ size: 133343232
 sha1sum: be8b31a1545c6b9d54d987effcb34be3e28d6d3e
 
 [file_uxmd7c-fw]
-url: https://downloads.snom.com/fw/d7c/snomD7C-1.5.3-r.bin
-size: 37784323
-sha1sum:6c6825751131b87a1c1fbc69da3e1ac307a1efc7
+url: https://downloads.snom.com/fw/d7c/snomD7C-1.6.1-r.bin
+size: 37916419
+sha1sum: e519567249b9f740a25dc8b72b1af1cc7f537754
 
 [file_uxmd8c-fw]
-url: https://downloads.snom.com/fw/d8c/snomD8C-1.5.3-r.bin
-size: 67149059
-sha1sum:538a6937271313c0dba1995551c17f5070de17d6
+url: https://downloads.snom.com/fw/d8c/snomD8C-1.6.1-r.bin
+size: 67294467
+sha1sum: 419c8c29b82dc27834af2bbfde4b92f31c47fc33

@@ -1517,9 +1517,9 @@ def build_10_1_198_19(path):
             sed_script = f's/#FW_FILENAME#/snom{model}-ramdisk-chained-update-r.bin/'
             sed_script += f';s/#CHAINED_FILENAME#/snom{model}-10.1.198.19-SIP-r.bin/'
         if model.startswith("D8"):
-            sed_script += ';s/#UXMC_FILENAME#/snomD8C-1.5.3-r.bin/'
+            sed_script += ';s/#UXMC_FILENAME#/snomD8C-1.6.1-r.bin/'
         elif model in ['D717', 'D735', 'D785']:
-            sed_script += ';s/#UXMC_FILENAME#/snomD7C-1.5.3-r.bin/'
+            sed_script += ';s/#UXMC_FILENAME#/snomD7C-1.6.1-r.bin/'
         else:
             sed_script += ';/<firmware_uxm>/d'
 
