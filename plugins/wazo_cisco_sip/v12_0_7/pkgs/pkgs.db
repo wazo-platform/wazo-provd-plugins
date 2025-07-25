@@ -1,0 +1,46 @@
+[pkg_78xx-mpp-fw]
+description: Multiplatform firmware for Cisco 78xx (Downloadable only from the Cisco website)
+description_fr: Micrologiciel MPP pour Cisco 78xx (Téléchargeable uniquement sur le site de Cisco)
+version: 12-0-7MPP0001-245
+files: 78xx-mpp-fw
+install: cisco-mpp-fw
+
+[pkg_88xx-mpp-fw]
+description: Multiplatform firmware for Cisco 88xx (Downloadable only from the Cisco website)
+description_fr: Micrologiciel MPP pour Cisco 88xx (Téléchargeable uniquement sur le site de Cisco)
+version: 12-0-7MPP0001-245
+files: 88xx-mpp-fw
+install: cisco-mpp-fw
+
+[pkg_cisco-mpp-locales]
+description: Multiplatform phone locales (Downloadable only from the Cisco website)
+description_fr: Fichiers de langue multi-plateformes (Téléchargeable uniquement sur le site de Cisco)
+version: 12-0-4MPP0001-245
+files: cisco-mpp-locales
+install: cisco-mpp-locales
+
+
+[install_cisco-mpp-fw]
+a-b: unzip $FILE1
+
+[install_cisco-mpp-locales]
+a-b: unzip $FILE1
+b-c: cp *.xml locales/
+
+[file_78xx-mpp-fw]
+filename: cmterm-78xx.12-0-7MPP0001-245_REL.zip
+url:
+size: 188024536
+sha1sum: 1ebdfb72d460d96b5e3653b4224effb95a3d746a
+
+[file_88xx-mpp-fw]
+filename: cmterm-88xx.12-0-7MPP0001-245_REL.zip
+url:
+size: 188024536
+sha1sum: 1ebdfb72d460d96b5e3653b4224effb95a3d746a
+
+[file_cisco-mpp-locales]
+filename: cmterm-68xx_78xx_88xx.12-0-4MPP-195-Locale-1.zip
+url:
+size: 40043650
+sha1sum: 833e4b49c5f8c2d92d93dc77aa414edf9e84dab4
