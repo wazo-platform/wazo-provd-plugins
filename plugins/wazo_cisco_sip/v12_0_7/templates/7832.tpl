@@ -1,7 +1,7 @@
 {% extends 'base.tpl' -%}
 
 {% block upgrade_rule -%}
-<Upgrade_Rule>{{ XX_server_url }}/sip88xx.12-0-7MPP0001-245.loads</Upgrade_Rule>
+<Upgrade_Rule>{{ XX_server_url }}/sip78xx.12-0-7MPP0201-66.loads</Upgrade_Rule>
 {% endblock -%}
 
 {% block dictionary_server_script %}

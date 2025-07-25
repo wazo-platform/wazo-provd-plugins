@@ -28,19 +28,16 @@ a-b: unzip $FILE1
 b-c: cp *.xml locales/
 
 [file_78xx-mpp-fw]
-filename: cmterm-78xx.12-0-7MPP0001-245_REL.zip
-url:
-size: 188024536
-sha1sum: 1ebdfb72d460d96b5e3653b4224effb95a3d746a
+url: http://provd.wazo.community/firmwares/cisco/cmterm-78xx.12-0-7MPP0201-66_REL.zip
+size: 51959947
+sha1sum: 67ca72f3723c23c99d4475858b3fc95a743f9cdb
 
 [file_88xx-mpp-fw]
-filename: cmterm-88xx.12-0-7MPP0001-245_REL.zip
-url:
-size: 188024536
-sha1sum: 1ebdfb72d460d96b5e3653b4224effb95a3d746a
+url: http://provd.wazo.community/firmwares/cisco/cmterm-88xx.12-0-7MPP0201-66_REL.zip
+size: 200104420
+sha1sum: 7c64aa2ddc6bfbed3b84e7c7731e4c6b51756ce8
 
 [file_cisco-mpp-locales]
-filename: cmterm-68xx_78xx_88xx.12-0-4MPP-195-Locale-1.zip
-url:
+url: http://provd.wazo.community/firmwares/cisco/cmterm-68xx_78xx_88xx.12-0-4MPP-195-Locale-1.zip
 size: 40043650
 sha1sum: 833e4b49c5f8c2d92d93dc77aa414edf9e84dab4

@@ -1,9 +1,54 @@
 {
     "version": "0.1.0",
-    "description": "Plugin for Cisco 8811, 8841, 8851 and 8861 in version 12.0.1 of the SIP software. Please see the documentation if you want to install Cisco firmwares.",
-    "description_fr": "Greffon pour Cisco 8811, 8841, 8851 et 8861 en version 12.0.1 du logiciel SIP. Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
+    "description": "Plugin for Cisco 78xx, 8811, 8841, 8851 and 8861 in version 12.0.7 of the SIP software. Please see the documentation if you want to install Cisco firmwares.",
+    "description_fr": "Greffon pour Cisco 78xx, 8811, 8841, 8851 et 8861 en version 12.0.7 du logiciel SIP. Veuillez vous référer à la documentation pour l'installation de firmwares Cisco.",
     "capabilities": {
-        "Cisco, 8811, 12.0.1-MPP0001-245": {
+        "Cisco, 7811, 12.0.7-MPP0201-66": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 1,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Cisco, 7821, 12.0.7-MPP0201-66": {
+            "lines": 2,
+            "high_availability": true,
+            "function_keys": 1,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Cisco, 7832, 12.0.7-MPP0201-66": {
+            "lines": 1,
+            "high_availability": true,
+            "function_keys": 1,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Cisco, 7841, 12.0.7-MPP0201-66": {
+            "lines": 4,
+            "high_availability": true,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Cisco, 7861, 12.0.7-MPP0201-66": {
+            "lines": 16,
+            "high_availability": true,
+            "function_keys": 16,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Cisco, 8811, 12.0.7-MPP0201-66": {
             "lines": 10,
             "high_availability": true,
             "function_keys": 10,
@@ -12,7 +57,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Cisco, 8841, 12.0.1-MPP0001-245": {
+        "Cisco, 8841, 12.0.7-MPP0201-66": {
             "lines": 10,
             "high_availability": true,
             "function_keys": 10,
@@ -21,7 +66,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Cisco, 8851, 12.0.1-MPP0001-245": {
+        "Cisco, 8851, 12.0.7-MPP0201-66": {
             "lines": 10,
             "high_availability": true,
             "function_keys": 10,
@@ -30,7 +75,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Cisco, 8861, 12.0.1-MPP0001-245": {
+        "Cisco, 8861, 12.0.7-MPP0201-66": {
             "lines": 10,
             "high_availability": true,
             "function_keys": 10,
