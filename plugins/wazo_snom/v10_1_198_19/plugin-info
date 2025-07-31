@@ -1,0 +1,133 @@
+{
+    "version": "1.0.0",
+    "description": "Plugin for Snom D1xx, D3xx, D7xx, D8xx in version 10.1.198.19",
+    "description_fr": "Greffon pour Snom D1xx, D3xx, D7xx, D8xx en version 10.1.198.19",
+    "capabilities": {
+        "Snom, D140, 10.1.198.19": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D150, 10.1.198.19": {
+            "lines": 2,
+            "high_availability": false,
+            "function_keys": 2,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D315, 10.1.198.19": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 5,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D335, 10.1.198.19": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 32,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D385, 10.1.198.19": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 48,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D713, 10.1.198.19": {
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 4,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, 715, 10.1.198.19": {
+            "lines": 4,
+            "high_availability": false,
+            "function_keys": 5,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D717, 10.1.198.19": {
+            "lines": 6,
+            "high_availability": false,
+            "function_keys": 3,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D735, 10.1.198.19": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 32,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D785, 10.1.198.19": {
+            "lines": 12,
+            "high_availability": false,
+            "function_keys": 24,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D812, 10.1.198.19": {
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 28,
+            "expansion_modules": 1,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D815, 10.1.198.19": {
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 36,
+            "expansion_modules": 1,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D862, 10.1.198.19": {
+            "lines": 8,
+            "high_availability": true,
+            "function_keys": 28,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        },
+        "Snom, D865, 10.1.198.19": {
+            "lines": 12,
+            "high_availability": true,
+            "function_keys": 43,
+            "expansion_modules": 3,
+            "switchboard": false,
+            "type": "deskphone",
+            "protocol": "sip"
+        }
+    }
+}
