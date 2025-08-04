@@ -6,7 +6,7 @@
         "Cisco, 7811, 12.0.7-MPP0201-66": {
             "lines": 1,
             "high_availability": true,
-            "function_keys": 1,
+            "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -15,8 +15,8 @@
         "Cisco, 7821, 12.0.7-MPP0201-66": {
             "lines": 2,
             "high_availability": true,
-            "function_keys": 1,
-            "expansion_modules": 0,
+            "function_keys": 2,
+            "expansion_modules": 1,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
@@ -24,7 +24,7 @@
         "Cisco, 7832, 12.0.7-MPP0201-66": {
             "lines": 1,
             "high_availability": true,
-            "function_keys": 1,
+            "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "deskphone",
@@ -34,7 +34,7 @@
             "lines": 4,
             "high_availability": true,
             "function_keys": 4,
-            "expansion_modules": 0,
+            "expansion_modules": 1,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
@@ -43,7 +43,7 @@
             "lines": 16,
             "high_availability": true,
             "function_keys": 16,
-            "expansion_modules": 0,
+            "expansion_modules": 1,
             "switchboard": false,
             "type": "deskphone",
             "protocol": "sip"
