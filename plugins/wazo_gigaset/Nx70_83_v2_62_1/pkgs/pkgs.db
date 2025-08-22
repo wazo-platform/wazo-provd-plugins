@@ -1,0 +1,15 @@
+[pkg_Nx70-fw]
+description: Firmware for Gigaset N670 IP PRO and N870(E) IP PRO
+description_fr: Micrologiciel pour Gigaset N670 IP PRO et N870(E) IP PRO
+version: 83.V2.62.1
+files: Nx70-fw
+install: Nx70-fw
+
+[install_Nx70-fw]
+a-b: cp $FILE1 ./
+
+[file_Nx70-fw]
+filename: Gigaset-Nx70-V2.62.1-build.d1d6a22.bin
+url: https://profile.gigaset.net/device/83/1/firmware/Gigaset-Nx70-V2.62.1-build.d1d6a22.bin
+size: 46797184
+sha1sum: d43935693267e956059c2781f04a4d71d6805c8e
