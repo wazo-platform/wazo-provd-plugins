@@ -1,4 +1,4 @@
-{% extends 'base.tpl' -%}
+{% extends 'base-dect.tpl' -%}
 
 static.auto_provision.pnp_enable = 0
 static.auto_provision.custom.protect = 1

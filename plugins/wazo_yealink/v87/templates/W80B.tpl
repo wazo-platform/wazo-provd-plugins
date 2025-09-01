@@ -1,1 +1,1 @@
-{% extends 'base.tpl' -%}
+{% extends 'base-dect.tpl' -%}
