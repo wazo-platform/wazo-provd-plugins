@@ -48,7 +48,9 @@ KNOWN_MAC_PREFIXES = (
 class BaseYealinkHTTPDeviceInfoExtractor:
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'^[yY]ealink\s+(W[789][05](?:DM|B))\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(
+            r'^[yY]ealink\s+(W[789][05](?:DM|B))\s+([\d.]+)\s+([\da-fA-F:]{17})$'
+        ),
         re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'^[yY]ealink\s+(W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'(VP530P?|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),

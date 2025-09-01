@@ -40,6 +40,13 @@ version: 175.87.0.10
 files: W75DM-fw
 install: yealink-fw
 
+[pkg_W90B-fw]
+description: Firmware for Yealink W90B
+description_fr: Micrologiciel pour Yealink W90B
+version: 130.87.0.10
+files: W90B-fw
+install: yealink-fw
+
 [pkg_W90DM-fw]
 description: Firmware for Yealink W90DM
 description_fr: Micrologiciel pour Yealink W90DM
@@ -142,6 +149,12 @@ filename: W75DM-175.87.0.10.rom
 url: http://provd.wazo.community/firmwares/yealink/W75DM-175.87.0.10.rom
 size: 46633248
 sha1sum: 5161cfdcca6ad79622cad84ed636d9f62841b6ce
+
+[file_W90B-fw]
+filename: W90B-130.87.0.10.rom
+url: http://provd.wazo.community/firmwares/yealink/W90B-130.87.0.10.rom
+size: 28203264
+sha1sum: 8503de2bae12644a79d4252f9808721fdbf52ef9
 
 [file_W90DM-fw]
 filename: W90DM-130.87.0.10.rom
