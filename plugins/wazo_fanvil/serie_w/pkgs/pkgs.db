@@ -1,0 +1,38 @@
+[pkg_W610W]
+description: Firmware for Fanvil Linkvil W610W
+description_fr: Micrologiciel pour Fanvil Linkvil W610W
+version: 2.14.1.4.6
+files: W610W-fw
+install: fanvil-fw
+
+[pkg_W611W]
+description: Firmware for Fanvil Linkvil W611W
+description_fr: Micrologiciel pour Fanvil Linkvil W611W
+version: 2.14.2.28.1
+files: W611W-fw
+install: fanvil-fw
+
+[pkg_W620W]
+description: Firmware for Fanvil Linkvil W620W
+description_fr: Micrologiciel pour Fanvil Linkvil W620W
+version: 2.16.10
+files: W620W-fw
+install: fanvil-fw
+
+[install_fanvil-fw]
+a-b: cp $FILE1 firmware/
+
+[file_W610W-fw]
+url: http://provd.wazo.community/firmwares/fanvil/w600-unified-release-ff01-2.14.1.4.6-krnvUT2025-02-14-15.21.33.z
+size: 43328704
+sha1sum: ed55a2c8435aa1510a0fbec00ce80bb767a5514a
+
+[file_W611W-fw]
+url: http://provd.wazo.community/firmwares/fanvil/w611-linkvil-release-ff01-9001-2.14.2.28.1-UkrnlvUT2025-02-13-23.15.10.z
+size: 38806544
+sha1sum: a664c9161833162b3a81b29fbe72c503afbf0106
+
+[file_W620W-fw]
+url: http://provd.wazo.community/firmwares/fanvil/w620w-Linkvil-release-9011-a00e-2.16.10-UkrvT2025-07-22-09.43.48.z
+size: 40529268
+sha1sum: 94dede4a293d9bb168243ba69fd965016a6b6000
