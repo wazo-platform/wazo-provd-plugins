@@ -42,13 +42,29 @@ COMMON_FILES = {
         '2.14.1.4.6',
         'model-w.tpl',
     ),
+    'fanvil_w610w_hwv1_0.txt': (
+        'W610W',
+        'w600-unified-release-ff01-2.14.1.4.6-krnvUT2025-02-14-15.21.33.z',
+        'model-w.tpl',
+    ),
     'F0V611W00000.cfg': (
         'W611W',
         'w611-linkvil-release-ff01-9001-2.14.2.28.1-UkrnlvUT2025-02-13-23.15.10.z',
         '2.14.2.28.1',
         'model-w.tpl',
     ),
+    'fanvil_w611w_hwv1_0.txt': (
+        'W611W',
+        'w611-linkvil-release-ff01-9001-2.14.2.28.1-UkrnlvUT2025-02-13-23.15.10.z',
+        'model-w.tpl',
+    ),
     'F0V620W00000.cfg': (
+        'W620W',
+        'w620w-Linkvil-release-9011-a00e-2.16.10-UkrvT2025-07-22-09.43.48.z',
+        '2.16.10',
+        'model-w.tpl',
+    ),
+    'fanvil_w620w_hwv1_0.txt': (
         'W620W',
         'w620w-Linkvil-release-9011-a00e-2.16.10-UkrvT2025-07-22-09.43.48.z',
         '2.16.10',
