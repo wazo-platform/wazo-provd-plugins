@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -320,8 +320,7 @@ class BaseHtekPlugin(StandardPlugin):
 
     def _add_timezone(self, raw_config):
         timezone = raw_config.get('timezone', 'Etc/UTC')
-        tz_db = tzinform.TextTimezoneInfoDB()
-        tz_timezone_info = tz_db.get_timezone_info(timezone)
+        tz_timezone_info = tzinform.get_timezone_info(timezone)
         tz_info = tz_timezone_info['utcoffset'].as_hms
         offset_hour = tz_info[0]
         offset_minutes = tz_info[1]
