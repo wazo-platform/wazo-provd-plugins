@@ -1,4 +1,4 @@
-# Copyright 2011-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 """
@@ -242,8 +242,7 @@ class BaseGigasetPlugin(StandardPlugin):
     def _fix_timezone(self, raw_config):
         timezone = raw_config.get('timezone', 'Greenwich')
         if timezone not in self._VALID_TZ_GIGASET:
-            tz_db = tzinform.TextTimezoneInfoDB()
-            tz_info = tz_db.get_timezone_info(timezone)['utcoffset'].as_hms
+            tz_info = tzinform.get_timezone_info(timezone)['utcoffset'].as_hms
             offset_hour = tz_info[0]
             offset_minutes = tz_info[1]
             raw_config['timezone'] = self._FALLBACK_TZ[(offset_hour, offset_minutes)]

@@ -1,4 +1,4 @@
-# Copyright 2011-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 """
@@ -224,8 +224,7 @@ class BaseGigasetPlugin(StandardPlugin):
 
     def _add_timezone_code(self, raw_config):
         timezone = raw_config.get('timezone', 'Etc/UTC')
-        tz_db = tzinform.TextTimezoneInfoDB()
-        tz_info = tz_db.get_timezone_info(timezone)['utcoffset'].as_hms
+        tz_info = tzinform.get_timezone_info(timezone)['utcoffset'].as_hms
         offset_hour = tz_info[0]
         offset_minutes = tz_info[1]
         raw_config['XX_timezone_code'] = self._TZ_GIGASET[(offset_hour, offset_minutes)]
