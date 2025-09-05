@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Plugin for Gigaset N670 IP PRO and N870(E) IP PRO.",
     "description_fr": "Greffon pour Gigaset N670 IP PRO et N870(E) IP PRO.",
     "capabilities": {
