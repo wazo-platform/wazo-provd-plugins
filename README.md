@@ -61,3 +61,4 @@ If you wish to download all firmwares present on the web server, you can execute
 wazo-test-plugins is mainly used by wazo-provd integration tests. To build it,
 we can execute
 `make build-tests`
+
