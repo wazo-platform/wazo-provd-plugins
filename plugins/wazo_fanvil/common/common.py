@@ -57,7 +57,7 @@ if TYPE_CHECKING:
 class BaseFanvilHTTPDeviceInfoExtractor:
     _PATH_REGEX = re.compile(r'\b(?!0{12})([\da-f]{12})\.cfg$')
     _UA_REGEX = re.compile(
-        r'^Fanvil (?P<model>[XVi][0-9]{1,3}[WSGVUCi]?[DV]?[0-9]?(-V[12])?(\s?Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
+        r'^Fanvil (?P<model>[VHXWi][0-9]{1,3}[WSGVUCi]?[DV]?[0-9]?(-V[12])?(\s?Pro)?) (?P<version>[0-9.]+) (?P<mac>[\da-f]{12})$'  # noqa: E501
     )
 
     def __init__(self, common_files):
@@ -83,6 +83,7 @@ class BaseFanvilHTTPDeviceInfoExtractor:
         # Fanvil i53W 2.12.9 0c383e10a440
         # Fanvil V65 2.12.2.4 0c383e38e123
         # Fanvil H2U-V2 2.12.0 0c383e32342e
+        # Fanvil W620W 2.16.10 0c383e7dd216
 
         dev_info = {}
         m = self._UA_REGEX.search(ua)
@@ -268,15 +269,25 @@ class BaseFanvilPlugin(StandardPlugin):
 
     def configure_common(self, raw_config: dict[str, Any]) -> None:
         self._add_server_url(raw_config)
-        for filename, (
-            model_info,
-            fw_filename,
-            tpl_filename,
-        ) in self._COMMON_FILES.items():
+        for filename, values in self._COMMON_FILES.items():
+            # Support for 3 or 4 element tuples to handle legacy versions of entry.py
+            # If the tuple has 4 elements, retrieve all; otherwise, fw_version=None
+            if len(values) == 4:
+                model_info, fw_filename, fw_version, tpl_filename = values
+            elif len(values) == 3:
+                model_info, fw_filename, tpl_filename = values
+                fw_version = None
+            else:
+                raise ValueError(
+                    f"COMMON_FILES entry for {filename} unexpected length: {len(values)}"
+                )
+
             tpl = self._tpl_helper.get_template(f'common/{tpl_filename}')
             dst = os.path.join(self._tftpboot_dir, filename)
             raw_config['XX_fw_filename'] = fw_filename
             raw_config['XX_model_info'] = model_info
+            if fw_version:
+                raw_config['XX_model_fw_version'] = fw_version
             self._tpl_helper.dump(tpl, raw_config, dst, self._ENCODING)
 
     def _remove_configuration_file(self, device):

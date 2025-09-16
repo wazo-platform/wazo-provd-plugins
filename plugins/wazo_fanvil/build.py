@@ -1,5 +1,5 @@
 """
-Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
+Copyright 2013-2025 The Wazo Authors  (see the AUTHORS file)
 SPDX-License-Identifier: GPL-3.0-or-later
 
 Depends on the following external programs:
@@ -51,3 +51,9 @@ def build_i(path: str) -> None:
 def build_h(path: str) -> None:
     check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
     check_call(['rsync', '-rlp', '--exclude', '.*', 'serie_h/', path])
+
+
+@target('serie-w', 'wazo-fanvil-serie-w')
+def build_w(path: str) -> None:
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'common/', path])
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'serie_w/', path])
