@@ -300,10 +300,10 @@ class TestPlugin:
             local_time.time_zone = -6
             local_time.summer_time = 0"""
         )
-        # Europe/Kyiv
+        # Europe/Bucharest
         # DST Start: Sunday March 30 2025 03:00 (W5.7)
         # DST Stop: Sunday October 26 04:00 (W4.7)
-        raw_config = {'timezone': 'Europe/Kyiv'}
+        raw_config = {'timezone': 'Europe/Bucharest'}
         v86_plugin._add_timezone(raw_config)
         assert raw_config['XX_timezone'] == dedent(
             """\
