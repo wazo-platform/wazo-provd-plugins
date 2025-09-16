@@ -418,7 +418,6 @@ class BaseYealinkPlugin(StandardPlugin):
             return f'{month:02d}/{int(day[1:]):02d}/{time.as_hours:02d}'
         else:
             week, weekday = list(map(int, day[1:].split('.')))
-            weekday = tzinform.week_start_on_monday(weekday)
             return f'{month:d}/{week:d}/{weekday:d}/{time.as_hours:d}'
 
     def _format_tz_info(self, tzinfo):

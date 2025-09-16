@@ -1,4 +1,4 @@
-# Copyright 2021-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -284,6 +284,9 @@ class TestPlugin:
 
     @patch('plugins.wazo_yealink.v84.common.logger')
     def test_timezones(self, mocked_logger, v84_plugin):
+        # America/Montreal
+        # DST Start: Sunday March 9 2025 02:00  (W2.7)
+        # DST Stop: Sunday November 2 2025 02:00 (W1.7)
         raw_config = {'timezone': 'America/Montreal'}
         v84_plugin._add_timezone(raw_config)
         assert raw_config['XX_timezone'] == dedent(
@@ -295,6 +298,7 @@ class TestPlugin:
             local_time.end_time = 11/1/7/2
             local_time.offset_time = 60"""
         )
+        # No DST
         raw_config = {'timezone': 'America/Regina'}
         v84_plugin._add_timezone(raw_config)
         assert raw_config['XX_timezone'] == dedent(
@@ -302,15 +306,18 @@ class TestPlugin:
             local_time.time_zone = -6
             local_time.summer_time = 0"""
         )
-        raw_config = {'timezone': 'Asia/Tehran'}
+        # Europe/Bucharest
+        # DST Start: Sunday March 30 2025 03:00 (W5.7)
+        # DST Stop: Sunday October 26 04:00 (W4.7)
+        raw_config = {'timezone': 'Europe/Bucharest'}
         v84_plugin._add_timezone(raw_config)
         assert raw_config['XX_timezone'] == dedent(
             """\
-            local_time.time_zone = +3
+            local_time.time_zone = +2
             local_time.summer_time = 1
-            local_time.dst_time_type = 0
-            local_time.start_time = 03/22/00
-            local_time.end_time = 09/22/00
+            local_time.dst_time_type = 1
+            local_time.start_time = 3/5/7/3
+            local_time.end_time = 10/4/7/4
             local_time.offset_time = 60"""
         )
         v84_plugin._add_timezone({'timezone': 'Doesnt/Exist'})
