@@ -48,7 +48,9 @@ KNOWN_MAC_PREFIXES = (
 class BaseYealinkHTTPDeviceInfoExtractor:
     _UA_REGEX_LIST = [
         re.compile(r'^[yY]ealink\s+SIP-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
-        re.compile(r'^[yY]ealink\s+(W90(?:DM|B))\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
+        re.compile(
+            r'^[yY]ealink\s+(W[789][05](?:DM|B))\s+([\d.]+)\s+([\da-fA-F:]{17})$'
+        ),
         re.compile(r'^[yY]ealink\s+SIP(?: VP)?-(\w+)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'^[yY]ealink\s+(W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
         re.compile(r'(VP530P?|W60B)\s+([\d.]+)\s+([\da-fA-F:]{17})$'),
@@ -78,6 +80,11 @@ class BaseYealinkHTTPDeviceInfoExtractor:
         #   "Yealink SIP-T77U 185.87.0.10 44:db:d2:bd:b5:69"
         #   "Yealink SIP-T85W 185.87.0.10 44:db:d2:67:58:4b"
         #   "Yealink SIP-T87W 185.87.0.10 44:db:d2:c9:73:b7"
+        #   "Yealink W90DM 130.87.0.10 80:5e:c0:d9:c7:44"
+        #   "Yealink W70B 146.87.0.15 80:5e:0c:1d:65:4e"
+        #   "Yealink W80B 103.87.0.10 24:9a:d8:d1:a6:31"
+        #   "Yealink W80DM 103.87.0.10 24:9a:d8:d1:a6:31"
+        #   "Yealink W75B 175.87.0.10 24:9a:d8:df:fb:11"
 
         for UA_REGEX in self._UA_REGEX_LIST:
             m = UA_REGEX.match(ua)
@@ -265,6 +272,13 @@ class BaseYealinkFunckeyPrefixIterator:
         'T87W': 95,
         'T88W': 95,
         'T88V': 95,
+        'W70B': 0,
+        'W75B': 0,
+        'W75DM': 0,
+        'W80DM': 0,
+        'W80B': 0,
+        'W90DM': 0,
+        'W90B': 0,
     }
     _NB_MEMORYKEY = {
         'CP920': 0,
@@ -308,6 +322,13 @@ class BaseYealinkFunckeyPrefixIterator:
         'T87W': 0,
         'T88W': 0,
         'T88V': 0,
+        'W70B': 0,
+        'W75B': 0,
+        'W75DM': 0,
+        'W80DM': 0,
+        'W80B': 0,
+        'W90DM': 0,
+        'W90B': 0,
     }
 
     class NullExpansionModule:
@@ -425,6 +446,13 @@ class BaseYealinkPlugin(StandardPlugin):
         'T87W': 16,
         'T88W': 16,
         'T88V': 16,
+        'W70B': 10,
+        'W75B': 0,
+        'W75DM': 20,
+        'W80DM': 30,
+        'W80B': 0,
+        'W90DM': 250,
+        'W90B': 0,
     }
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
 
