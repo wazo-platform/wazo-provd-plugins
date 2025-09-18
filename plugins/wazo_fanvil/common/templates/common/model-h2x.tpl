@@ -1,6 +1,6 @@
-Version=2.12.0
+Version={{ XX_model_fw_version }}
 Firmware={{ XX_server_url }}/Fanvil/firmware/{{ XX_fw_filename }}
-BuildTime=2022-11-29
+BuildTime=2025-05-20
 Info=TXT|XML
-{{ XX_model_info }}-2.12.0
+{{ XX_model_info }}-{{ XX_model_fw_version }}
 Fanvil
