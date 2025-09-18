@@ -1,13 +1,13 @@
 {
-    "version": "1.0.4",
-    "description": "Plugin for Fanvil H2U",
-    "description_fr": "Greffon pour les series H2U",
+    "version": "1.0.5",
+    "description": "Plugin for Fanvil H2U-V2",
+    "description_fr": "Greffon pour les series H2U-V2",
     "vendor" : "Fanvil",
     "vendor.url" : "http://www.fanvil.com",
     "vendor.description" : "",
     "vendor.official" : 1,
     "capabilities": {
-        "Fanvil, H2U, 2.12.0": {
+        "Fanvil, H2U-V2, 2.12.20.2": {
             "lines": 2,
             "high_availability": false,
             "function_keys": 11,

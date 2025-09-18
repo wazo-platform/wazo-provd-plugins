@@ -1,4 +1,4 @@
-# Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -24,28 +24,29 @@ common: CommonGlobalsDict = {}  # type: ignore[typeddict-item]
 execfile_('common.py', common)  # type: ignore[name-defined]
 
 MODELS = [
-    'H2U',
+    'H2U-V2',
 ]
 
 COMMON_FILES = {
     'F0V2UV200000.cfg': (
-        'H2U',
-        'h2u-v2-fanvil-release-ff01-5946-2.12.0-krnvUT2022-10-12-16.39.18.z',
+        'H2U-V2',
+        'h2u-v2-fanvil-release-ff01-5946-2.12.20.2-krnlvUT2025-02-14-14.27.56.z',
+        '2.12.20.2',
         'model-h2x.tpl',
     ),
     'fanvil_h2u_v2_hwv1_0.txt': (
-        'H2U',
-        'h2u-v2-fanvil-release-ff01-5946-2.12.0-krnvUT2022-10-12-16.39.18.z',
+        'H2U-V2',
+        'h2u-v2-fanvil-release-ff01-5946-2.12.20.2-krnlvUT2025-02-14-14.27.56.z',
         'model-h2x.tpl',
     ),
 }
 
 MODEL_FIRMWARE_MAPPING = {
-    'H2U': 'h2u-v2-fanvil-release-ff01-5946-2.12.0-krnvUT2022-10-12-16.39.18.z',
+    'H2U-V2': 'h2u-v2-fanvil-release-ff01-5946-2.12.20.2-krnlvUT2025-02-14-14.27.56.z',
 }
 
 FUNCTION_KEYS_PER_PAGE = {
-    'H2U': 10,
+    'H2U-V2': 10,
 }
 
 
