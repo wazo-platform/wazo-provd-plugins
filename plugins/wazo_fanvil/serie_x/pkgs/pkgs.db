@@ -90,10 +90,17 @@ files: X5U-fw
 install: fanvil-fw
 
 [pkg_X5U-Pro-fw]
-description: Firmware for Fanvil X5U-Pro or X5U-V2(Pro)
-description_fr: Micrologiciel pour Fanvil X5U-Pro ou X5U-V2(Pro)
+description: Firmware for Fanvil X5U-Pro
+description_fr: Micrologiciel pour Fanvil X5U-Pro
 version: 2.12.16.17
 files: X5U-fw
+install: fanvil-fw
+
+[pkg_X5U-V2-fw]
+description: Firmware for Fanvil X5U-V2
+description_fr: Micrologiciel pour Fanvil X5U-V2
+version: 2.12.16.17
+files: X5U-V2-fw
 install: fanvil-fw
 
 [pkg_X6-fw]
@@ -216,6 +223,11 @@ size: 38491164
 sha1sum: 059aed5ac70267c8a25c3c4ba6933607de2de7ab
 
 [file_X5U-fw]
+url: http://provd.wazo.community/firmwares/fanvil/x5upro-fanvil-release-ff01-6907-2.12.16.17-krnvUT2023-05-05-18.41.28.z
+size: 33163068
+sha1sum: 4edb7754a76bde055c41d4f2a89bd58399d3af96
+
+[file_X5U-V2-fw]
 url: http://provd.wazo.community/firmwares/fanvil/x5upro-fanvil-release-ff01-6907-2.12.16.17-krnvUT2023-05-05-18.41.28.z
 size: 33163068
 sha1sum: 4edb7754a76bde055c41d4f2a89bd58399d3af96
