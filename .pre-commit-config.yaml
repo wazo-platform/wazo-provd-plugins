@@ -10,19 +10,19 @@ repos:
     rev: 23.12.0
     hooks:
       - id: black
-# Automatically update to modern python (as modern as allowed by your Python version)
+  # Automatically update to modern python (as modern as allowed by your Python version)
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.15.0
     hooks:
       - id: pyupgrade
+        # Must be compatible with old stacks
         args: [--py37-plus, --keep-runtime-typing]
-# Automatically sort and format imports (in black compatible way)
+  # Automatically sort and format imports (in black compatible way)
   - repo: https://github.com/pycqa/isort
     rev: 5.13.2
     hooks:
       - id: isort
         args: [--filter-files]
-# See https://pre-commit.com for more information
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:
@@ -40,7 +40,7 @@ repos:
     rev: v1.7.1
     hooks:
       - id: mypy
-        language_version: "3.10"
+        language_version: "3.11"
         additional_dependencies:
           - "types-flask"
           - "types-psycopg2"
@@ -50,5 +50,5 @@ repos:
           - "types-setuptools"
           - "types-werkzeug"
           - "pytest"
-          - "twisted==20.3.0"
+          - "twisted==22.4.0"
           - "https://github.com/wazo-platform/wazo-provd/archive/master.zip"

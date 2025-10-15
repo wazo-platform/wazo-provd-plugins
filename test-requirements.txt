@@ -4,11 +4,9 @@ https://github.com/wazo-platform/wazo-amid-client/archive/master.zip  # from waz
 https://github.com/wazo-platform/wazo-auth-client/archive/master.zip  # from wazo-provd
 https://github.com/wazo-platform/xivo-fetchfw/archive/master.zip  # from wazo-provd
 https://github.com/wazo-platform/xivo-lib-python/archive/master.zip  # from wazo-provd
-beautifulsoup4==4.7.1  # from xivo-fetchfw
-jinja2==3.0.3  # from wazo-provd
-markupsafe==2.0.1  # from jinja2
-pydantic==1.7.4  # from wazo-provd
+jinja2==3.1.2  # from wazo-provd
+pydantic==1.10.4  # from wazo-provd
 pytest
-pyyaml  # from xivo
-twisted==20.3.0  # from wazo-provd
-zope.interface==5.2.0  # from wazo-provd
+pyyaml==6.0  # from xivo
+twisted==22.4.0  # from wazo-provd
+zope.interface==5.5.0  # from wazo-provd
