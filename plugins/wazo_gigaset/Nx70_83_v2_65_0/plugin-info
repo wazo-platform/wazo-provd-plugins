@@ -1,0 +1,47 @@
+{
+    "version": "0.1.0",
+    "description": "Plugin for Gigaset N610 N670 N770 and N870(E) IP PRO.",
+    "description_fr": "Greffon pour Gigaset N610 N670 N770 et N870(E) IP PRO.",
+    "capabilities": {
+        "Gigaset, N610 IP PRO, 83.V2.65.0": {
+            "lines": 8,
+            "high_availability": true,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "protocol": "sip"
+        },
+        "Gigaset, N670 IP PRO, 83.V2.65.0": {
+            "lines": 20,
+            "high_availability": true,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "protocol": "sip"
+        },
+        "Gigaset, N770 IP PRO, 83.V2.65.0": {
+            "lines": 100,
+            "high_availability": true,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "protocol": "sip"
+        },
+        "Gigaset, N870 IP PRO, 83.V2.65.0": {
+            "lines": 250,
+            "high_availability": true,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "protocol": "sip"
+        },
+        "Gigaset, N870E IP PRO, 83.V2.65.0": {
+            "lines": 250,
+            "high_availability": true,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "protocol": "sip"
+        }
+    }
+}
