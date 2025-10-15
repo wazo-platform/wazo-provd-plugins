@@ -7,22 +7,22 @@
     post-run: zuul.d/post-run.yaml
 
 - job:
-    name: wazo-tox-linters-310-provd
+    name: wazo-tox-linters-provd
     parent: tox-linters
     pre-run: zuul.d/pre-run-linters.yaml
 
 - project:
     templates:
-      - wazo-tox-py39
+      - wazo-tox-py311
     wazo-check:
       jobs:
-        - wazo-tox-linters-310-provd:
-            nodeset: pod-python-310
+        - wazo-tox-linters-provd:
+            nodeset: pod-python-py311
         - wazo-provd-plugins:
-            nodeset: vm-debian-11-m1s
+            nodeset: vm-debian-12-m1s
     wazo-gate:
       jobs:
-        - wazo-tox-linters-310-provd:
-            nodeset: pod-python-310
+        - wazo-tox-linters-provd:
+            nodeset: pod-python-py311
         - wazo-provd-plugins:
-            nodeset: vm-debian-11-m1s
+            nodeset: vm-debian-12-m1s
