@@ -1,4 +1,4 @@
-# Copyright 2011-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 """Common code shared by the various wazo-gigaset plugins.
@@ -283,7 +283,9 @@ class BaseGigasetPlugin(StandardPlugin):
                     device.update(dev_info)
                     from twisted.internet import reactor
 
-                    reactor.callFromThread(self._app.dev_update, device)
+                    reactor.callFromThread(  # type: ignore[attr-defined]
+                        self._app.dev_update, device
+                    )
 
             # configure lines
             if general.get('skip_lines_configuration') != '1':
