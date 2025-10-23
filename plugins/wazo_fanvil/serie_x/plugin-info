@@ -124,7 +124,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, X5U, 2.12.16.17": {
+        "Fanvil, X5U, 2.12.22.2": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 34,
@@ -133,7 +133,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, X5U-V2, 2.12.16.17": {
+        "Fanvil, X5U-V2, 2.12.22.2": {
             "lines": 16,
             "high_availability": true,
             "function_keys": 34,
@@ -142,7 +142,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Fanvil, X5U Pro, 2.12.16.17": {
+        "Fanvil, X5U Pro, 2.12.22.2": {
             "lines": 16,
             "high_availability": false,
             "function_keys": 34,
