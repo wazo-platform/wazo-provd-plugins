@@ -1,5 +1,5 @@
 {
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Plugin for Yealink for AX83H & AX86R, T7X, T8X, W70, W75, W80 and W90 series in version 87.",
     "description_fr": "Greffon pour Yealink pour les series AX83H & AX86R, T7X, T8X, W70, W75, W80 and W90 en version 87.",
     "vendor" : "Yealink",
