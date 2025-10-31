@@ -80,7 +80,7 @@
             "protocol": "sip"
         },
 
-        "Yealink, W70B, 146.87.0.15": {
+        "Yealink, W70B, 146.87.0.18": {
             "lines": 10,
             "high_availability": false,
             "function_keys": 0,
@@ -90,47 +90,57 @@
             "multicell": false,
             "protocol": "sip"
         },
-        "Yealink, W75B, 175.87.0.10": {
+        "Yealink, W75B, 175.87.0.14": {
             "lines": 20,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "dect",
-            "multicell": false,
+            "multicell": true,
             "protocol": "sip"
         },
-        "Yealink, W75DM, 175.87.0.10": {
+        "Yealink, W75DM, 175.87.0.14": {
             "lines": 20,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "dect",
-            "multicell": false,
+            "multicell": true,
             "protocol": "sip"
         },
-        "Yealink, W80B, 103.87.0.10": {
+        "Yealink, W80B, 103.87.0.14": {
             "lines": 30,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "dect",
-            "multicell": false,
+            "multicell": true,
             "protocol": "sip"
         },
-        "Yealink, W80DM, 103.87.0.10": {
+        "Yealink, W80DM, 103.87.0.14": {
             "lines": 30,
             "high_availability": false,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
             "type": "dect",
-            "multicell": false,
+            "multicell": true,
             "protocol": "sip"
         },
-        "Yealink, W90, 130.87.0.10": {
+        "Yealink, W90B, 130.87.0.14": {
+            "lines": 250,
+            "high_availability": false,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "multicell": true,
+            "protocol": "sip"
+        },
+        "Yealink, W90DM, 130.87.0.14": {
             "lines": 250,
             "high_availability": false,
             "function_keys": 0,
