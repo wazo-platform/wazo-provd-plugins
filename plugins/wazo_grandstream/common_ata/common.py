@@ -97,10 +97,15 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
         if vendor == 'Grandstream':
             if model in self._models:
                 if version:
-                    versions = (
-                        self._version
-                        if isinstance(self._version, list)
-                        else [self._version]
+                # Ensure model-specific version matching:
+                #   - non-V2 models match only self._version (e.g., 1.0.63.x)
+                #   - V2 models     match only self._versionv2 (e.g., 1.0.5.x)
+                is_v2_model = model is not None and model.upper().endswith('V2')
+                if version:
+                    if is_v2_model and self._versionv2 and version.startswith(self._versionv2):
+                        return DeviceSupport.EXACT
+                    if not is_v2_model and self._version and version.startswith(self._version):
+                        return DeviceSupport.EXACT
                     )
                     for v in versions:
                         if version.startswith(v):
