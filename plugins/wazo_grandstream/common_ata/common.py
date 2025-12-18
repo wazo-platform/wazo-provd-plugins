@@ -112,6 +112,7 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
 
 class BaseGrandstreamPlugin(StandardPlugin):
     _ENCODING = 'UTF-8'
+    _MODEL_FIRMWARE_MAPPING: dict[str, str]
 
     DTMF_MODES = {
         # mode: (in audio, in RTP, in SIP)
@@ -167,6 +168,8 @@ class BaseGrandstreamPlugin(StandardPlugin):
         self._add_locale(raw_config)
         self._add_dtmf_mode(raw_config)
         self._add_dns(raw_config)
+        self._add_firmware(device, raw_config)
+        self._add_server_url(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
@@ -223,3 +226,18 @@ class BaseGrandstreamPlugin(StandardPlugin):
         sip_transport = raw_config.get('sip_transport')
         if sip_transport in self.SIP_TRANSPORTS:
             raw_config['XX_sip_transport'] = self.SIP_TRANSPORTS[sip_transport]
+
+    def _add_firmware(self, device, raw_config):
+        model = device.get('model')
+        if model in self._MODEL_FIRMWARE_MAPPING:
+            raw_config['XX_fw_filename'] = self._MODEL_FIRMWARE_MAPPING[model]
+
+    def _add_server_url(self, raw_config):
+        if raw_config.get('http_base_url'):
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
