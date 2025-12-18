@@ -88,5 +88,9 @@
     # Mandatory -#}
     <P4417>1</P4417>
     <P20502>1</P20502>
+    {# 1 - HTTP server firmware upgrade -#}
+    <P6767>1</P6767>
+    {# URL firmware upgrade -#}
+    <P192>{{ XX_server_url_without_scheme }}/Grandstream/</P192>
   </config>
 </gs_provision>
