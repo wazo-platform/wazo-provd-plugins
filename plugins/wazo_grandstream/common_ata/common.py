@@ -1,4 +1,4 @@
-# Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -49,6 +49,7 @@ LOCALE = {
 
 class BaseGrandstreamHTTPDeviceInfoExtractor:
     # Grandstream Model HW HT801 V1.1A SW 1.0.17.5 DevId c074ad273a10
+    # Grandstream Model HW HT802V2 V1.0A SW 1.0.5.4 DevId ec74d763e419
 
     _UA_REGEX_LIST = [
         re.compile(
@@ -95,8 +96,15 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
     ) -> DeviceSupport:
         if vendor == 'Grandstream':
             if model in self._models:
-                if version and version.startswith(self._version):
-                    return DeviceSupport.EXACT
+                if version:
+                    versions = (
+                        self._version
+                        if isinstance(self._version, list)
+                        else [self._version]
+                    )
+                    for v in versions:
+                        if version.startswith(v):
+                            return DeviceSupport.EXACT
                 return DeviceSupport.COMPLETE
             return DeviceSupport.UNKNOWN
         return DeviceSupport.IMPROBABLE
@@ -159,6 +167,7 @@ class BaseGrandstreamPlugin(StandardPlugin):
         self._add_locale(raw_config)
         self._add_dtmf_mode(raw_config)
         self._add_dns(raw_config)
+        self._add_server_url(raw_config)
         filename = self._dev_specific_filename(device)
         tpl = self._tpl_helper.get_dev_template(filename, device)
 
@@ -215,3 +224,13 @@ class BaseGrandstreamPlugin(StandardPlugin):
         sip_transport = raw_config.get('sip_transport')
         if sip_transport in self.SIP_TRANSPORTS:
             raw_config['XX_sip_transport'] = self.SIP_TRANSPORTS[sip_transport]
+
+    def _add_server_url(self, raw_config):
+        if raw_config.get('http_base_url'):
+            _, _, remaining_url = raw_config['http_base_url'].partition('://')
+            raw_config['XX_server_url'] = raw_config['http_base_url']
+            raw_config['XX_server_url_without_scheme'] = remaining_url
+        else:
+            base_url = f"{raw_config['ip']}:{raw_config['http_port']}"
+            raw_config['XX_server_url_without_scheme'] = base_url
+            raw_config['XX_server_url'] = f"http://{base_url}"
