@@ -51,6 +51,9 @@
     <P3>{{ line['display_name'] }}</P3>
     <P191>0</P191>
     <P854>4</P854>
+    <P40>5067</P40>
+    {# Use Random Local SIP Port -#}
+    <P20501>1</P20501>
   {% endif -%}
 {% endfor %}
     {# Fax-specific -#}
