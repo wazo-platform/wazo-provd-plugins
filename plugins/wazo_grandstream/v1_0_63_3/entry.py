@@ -31,18 +31,11 @@ VERSION = [
     '1.0.63.3',
     '1.0.5.10',
 ]
-MODEL_FIRMWARE_MAPPING = {
-    'HT801': 'ht801fw.bin',
-    'HT802': 'ht802fw.bin',
-    'HT801V2': 'ht80xv2fw.bin',
-    'HT802V2': 'ht80xv2fw.bin',
-}
 
 
 class GrandstreamPlugin(common['BaseGrandstreamPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
     _MODELS = MODELS
-    _MODEL_FIRMWARE_MAPPING = MODEL_FIRMWARE_MAPPING
 
     pg_associator = common['BaseGrandstreamPgAssociator'](MODELS, VERSION)
