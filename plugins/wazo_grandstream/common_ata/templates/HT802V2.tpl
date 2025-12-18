@@ -51,6 +51,9 @@
     <P3>{{ line['display_name'] }}</P3>
     <P191>0</P191>
     <P854>4</P854>
+    <P40>5067</P40>
+    {# Use Random Local SIP Port -#}
+    <P20501>1</P20501>
   {% else -%}
     <P703>{{ line['display_name'] }}</P703>
     <P734>{{ line['password'] }}</P734>
@@ -61,6 +64,8 @@
     <P987>{{ line['backup_registrar_ip'] }}</P987>
     <P751>0</P751>
     <P864>4</P864>
+    {# Use Random Local SIP Port -#}
+    <P20502>1</P20502>
   {% endif -%}
 {% endfor %}
     {# Fax-specific -#}
@@ -97,7 +102,6 @@
     # Number: 0, 1
     # Mandatory -#}
     <P4417>1</P4417>
-    <P20502>1</P20502>
     {# 1 - HTTP server firmware upgrade -#}
     <P6767>1</P6767>
     {# URL firmware upgrade -#}
