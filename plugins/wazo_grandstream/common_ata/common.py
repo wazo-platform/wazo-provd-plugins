@@ -1,4 +1,4 @@
-# Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -49,6 +49,7 @@ LOCALE = {
 
 class BaseGrandstreamHTTPDeviceInfoExtractor:
     # Grandstream Model HW HT801 V1.1A SW 1.0.17.5 DevId c074ad273a10
+    # Grandstream Model HW HT802V2 V1.0A SW 1.0.5.4 DevId ec74d763e419
 
     _UA_REGEX_LIST = [
         re.compile(
@@ -85,10 +86,11 @@ class BaseGrandstreamHTTPDeviceInfoExtractor:
 
 
 class BaseGrandstreamPgAssociator(BasePgAssociator):
-    def __init__(self, models, version):
+    def __init__(self, models, version, versionv2):
         super().__init__()
         self._models = models
         self._version = version
+        self._versionv2 = versionv2
 
     def _do_associate(
         self, vendor: str, model: str | None, version: str | None
@@ -96,6 +98,8 @@ class BaseGrandstreamPgAssociator(BasePgAssociator):
         if vendor == 'Grandstream':
             if model in self._models:
                 if version and version.startswith(self._version):
+                    return DeviceSupport.EXACT
+                if version and version.startswith(self._versionv2):
                     return DeviceSupport.EXACT
                 return DeviceSupport.COMPLETE
             return DeviceSupport.UNKNOWN
