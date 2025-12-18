@@ -27,8 +27,10 @@ MODELS = [
     'HT801V2',
     'HT802V2',
 ]
-VERSION = '1.0.63.3'
-VERSIONV2 = '1.0.5.10'
+VERSION = [
+    '1.0.63.3',
+    '1.0.5.10',
+]
 
 
 class GrandstreamPlugin(common['BaseGrandstreamPlugin']):  # type: ignore[valid-type,misc]
@@ -36,4 +38,4 @@ class GrandstreamPlugin(common['BaseGrandstreamPlugin']):  # type: ignore[valid-
 
     _MODELS = MODELS
 
-    pg_associator = common['BaseGrandstreamPgAssociator'](MODELS, VERSION, VERSIONV2)
+    pg_associator = common['BaseGrandstreamPgAssociator'](MODELS, VERSION)

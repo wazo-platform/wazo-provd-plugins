@@ -86,21 +86,25 @@ class BaseGrandstreamHTTPDeviceInfoExtractor:
 
 
 class BaseGrandstreamPgAssociator(BasePgAssociator):
-    def __init__(self, models, version, versionv2):
+    def __init__(self, models, version):
         super().__init__()
         self._models = models
         self._version = version
-        self._versionv2 = versionv2
 
     def _do_associate(
         self, vendor: str, model: str | None, version: str | None
     ) -> DeviceSupport:
         if vendor == 'Grandstream':
             if model in self._models:
-                if version and version.startswith(self._version):
-                    return DeviceSupport.EXACT
-                if version and version.startswith(self._versionv2):
-                    return DeviceSupport.EXACT
+                if version:
+                    versions = (
+                        self._version
+                        if isinstance(self._version, list)
+                        else [self._version]
+                    )
+                    for v in versions:
+                        if version.startswith(v):
+                            return DeviceSupport.EXACT
                 return DeviceSupport.COMPLETE
             return DeviceSupport.UNKNOWN
         return DeviceSupport.IMPROBABLE
