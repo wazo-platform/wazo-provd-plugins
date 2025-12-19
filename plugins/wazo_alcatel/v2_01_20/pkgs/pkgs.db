@@ -1,0 +1,19 @@
+[pkg_4028-fw]
+description: Firmware for Alcatel 4028EE, 4038EE & 4068EE
+description_fr: Micrologiciel pour Alcatel 4028EE, 4038EE & 4068EE
+version: 2.01.20
+files: 4028-fw
+install: alcatel-fw
+
+
+
+[install_alcatel-fw]
+a-b: unzip $FILE1
+b-c: include *
+
+
+
+[file_4028-fw]
+url: http://provd.wazo.community/firmwares/alcatel/sip_Alcatel_4028_4038_4068.zip
+size: 11459908
+sha1sum: 4bd75fec41c3c276e660a8dcecb4f5f345c9c5ca
