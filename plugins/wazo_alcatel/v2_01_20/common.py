@@ -280,7 +280,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         lines = []
         for funckey_no, funckey_dict in raw_config['funckeys'].items():
             int_funckey_no = int(funckey_no)
-            if int_funckey_no > 4:
+            if int_funckey_no > 8:
                 logger.warning('Out of range funckey number: %s', funckey_no)
             else:
                 funckey_type = funckey_dict['type']
