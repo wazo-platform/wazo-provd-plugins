@@ -305,13 +305,18 @@ class BaseAlcatelPlugin(StandardPlugin):
         raw_config['XX_fkeys'] = '\n'.join(lines)
 
     def _update_admin_password(self, raw_config):
-        password = raw_config.get('admin_password', self._DEFAULT_PASSWORD)
-        # ensure password is digits only
-        if not password.isdigit():
+        password = raw_config.get('admin_password')
+        if password is None:
+            password = self._DEFAULT_PASSWORD
+        # ensure password is a string and contains digits only
+        password_str = str(password)
+        if not password_str.isdigit():
             logger.warning(
                 'admin_password contains non-digit characters, using default password'
             )
             password = self._DEFAULT_PASSWORD
+        else:
+            password = password_str
         raw_config['admin_password'] = password
 
     def _dev_specific_filename(self, device: dict[str, str]) -> str:
