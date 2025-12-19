@@ -32,6 +32,7 @@ logger = logging.getLogger('plugin.wazo-alcatel')
 MODELS = ['4028', '4038', '4068']
 VERSION = '2.01.20'
 
+
 class AlcatelPlugin(common_globals['BaseAlcatelPlugin']):  # type: ignore[valid-type,misc]
     IS_PLUGIN = True
 
