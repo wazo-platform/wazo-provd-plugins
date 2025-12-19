@@ -131,6 +131,7 @@ class BaseAlcatelPlugin(StandardPlugin):
     _DEFAULT_PASSWORD = '000000'
     _SIP_TRANSPORT = {'udp': '1', 'tcp': '2'}
     _SIP_DTMF_MODE = {'RTP-in-band': '1', 'RTP-out-of-band': '0', 'SIP-INFO': '2'}
+    _NB_FKEYS = {'4028': 4, '4038': 6, '4068': 8}
     # XXX this is confused, but I don't care that much right now
     _TONE_COUNTRY: list[list[str]] = [
         # "English" tone country
@@ -278,12 +279,19 @@ class BaseAlcatelPlugin(StandardPlugin):
             else:
                 raw_config['XX_dtmf_type'] = dtmf_type
 
-    def _add_fkeys(self, raw_config):
+    def _add_fkeys(self, raw_config, device):
         lines = []
+        model = device.get('model')
+        nb_fkeys = self._NB_FKEYS.get(model, 8)
         for funckey_no, funckey_dict in raw_config['funckeys'].items():
             int_funckey_no = int(funckey_no)
-            if int_funckey_no > 8:
-                logger.warning('Out of range funckey number: %s', funckey_no)
+            if int_funckey_no > nb_fkeys:
+                logger.warning(
+                    'Out of range funckey number for model %s: %s (max: %s)',
+                    model,
+                    funckey_no,
+                    nb_fkeys,
+                )
             else:
                 funckey_type = funckey_dict['type']
                 if funckey_type == 'speeddial':
@@ -335,7 +343,7 @@ class BaseAlcatelPlugin(StandardPlugin):
         self._add_timezone(raw_config)
         self._add_tone_country(raw_config)
         self._add_dtmf_type(raw_config)
-        self._add_fkeys(raw_config)
+        self._add_fkeys(raw_config, device)
         self._update_admin_password(raw_config)
 
         path = os.path.join(self._tftpboot_dir, filename)
