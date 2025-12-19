@@ -198,10 +198,12 @@ class BaseAlcatelPlugin(StandardPlugin):
 
     def _add_dns_addr(self, raw_config):
         # this function must be called after _extract_sip_line_info
+        # bypass DNS if not enabled to Google DNS issues, because Wazo EUC
+        # does not provide IP DNS server configuration for the phones
         if raw_config.get('dns_enabled'):
             dns_addr = raw_config['dns_ip']
         else:
-            dns_addr = raw_config['sip_proxy_ip']
+            dns_addr = '8.8.8.8'
         raw_config['XX_dns_addr'] = dns_addr
 
     def _add_sip_transport_mode(self, raw_config):
@@ -296,6 +298,7 @@ class BaseAlcatelPlugin(StandardPlugin):
 
     def _update_admin_password(self, raw_config):
         password = raw_config.get('admin_password', self._DEFAULT_PASSWORD)
+        # ensure password is digits only
         if not password.isdigit():
             logger.warning(
                 'admin_password contains non-digit characters, using default password'

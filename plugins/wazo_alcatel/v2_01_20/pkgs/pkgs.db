@@ -9,7 +9,7 @@ install: alcatel-fw
 
 [install_alcatel-fw]
 a-b: unzip $FILE1
-b-c: include *
+b-c: cp sip_Alcatel_4028_4038_4068/* ./
 
 
 
