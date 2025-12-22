@@ -1552,3 +1552,107 @@ def build_10_1_198_19(path):
             )
 
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_198_19/', path])
+
+
+@target('10.1.215.13', 'wazo-snom-10.1.215.13')
+def build_10_1_215_13(path):
+    MODELS = [
+        ('D140', False),
+        ('D150', False),
+        ('D335', True),
+        ('D385', True),
+        ('D713', False),
+        ('715', True),
+        ('D717', True),
+        ('D735', True),
+        ('D785', True),
+        ('D810', False),
+        ('D812', False),
+        ('D815', False),
+        ('D862', False),
+        ('D865', False),
+        ('D892', False),
+    ]
+    check_call(
+        [
+            'rsync',
+            '-rlp',
+            '--exclude',
+            '.*',
+            '--include',
+            '/templates/base.tpl',
+            '--include',
+            '/templates/D1*.tpl',
+            '--include',
+            '/templates/D335.tpl',
+            '--include',
+            '/templates/D385.tpl',
+            '--include',
+            '/templates/D713.tpl',
+            '--include',
+            '/templates/715.tpl',
+            '--include',
+            '/templates/D717.tpl',
+            '--include',
+            '/templates/D735.tpl',
+            '--include',
+            '/templates/D785.tpl',
+            '--include',
+            '/templates/D8*.tpl',
+            '--exclude',
+            '/templates/*.tpl',
+            '--exclude',
+            '*.btpl',
+            'common/',
+            path,
+        ]
+    )
+    template_dir = Path(path) / 'templates' / 'common'
+
+    for model, ramdisk in MODELS:
+        # generate snom<model>-firmware.xml.tpl from snom-model-firmware.xml.tpl.btpl
+        model_tpl = template_dir / f'snom{model}-firmware.xml.tpl'
+        sed_script = f's/#FW_FILENAME#/snom{model}-10.1.215.13-SIP-r.bin/'
+        sed_script += ';s/&chained_url=.*{mac}//'
+        if model.startswith("D8"):
+            sed_script = f's/#FW_FILENAME#/snom{model}-10.1.215.13-SIP-r.swu/'
+            sed_script += ';s/&chained_url=.*{mac}//'
+        if ramdisk:
+            sed_script = f's/#FW_FILENAME#/snom{model}-ramdisk-chained-update-r.bin/'
+            sed_script += f';s/#CHAINED_FILENAME#/snom{model}-10.1.215.13-SIP-r.bin/'
+        if model.startswith("D8"):
+            sed_script += ';s/#UXMC_FILENAME#/snomD8C-1.6.1-r.bin/'
+        elif model in ['D717', 'D735', 'D785']:
+            sed_script += ';s/#UXMC_FILENAME#/snomD7C-1.6.1-r.bin/'
+        else:
+            sed_script += ';/<firmware_uxm>/d'
+
+        with model_tpl.open(mode='wb') as f:
+            check_call(
+                [
+                    'sed',
+                    sed_script,
+                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                ],
+                stdout=f,
+            )
+
+        # generate snom<model>.htm.tpl from snom-model.htm.tpl.mtpl
+        model_tpl = template_dir / f'snom{model}.htm.tpl'
+        sed_script = f's/#MODEL#/{model}/'
+        with model_tpl.open(mode='wb') as f:
+            check_call(
+                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                stdout=f,
+            )
+
+        # generate snom<model>.xml.tpl from snom-model.xml.mtpl
+        model_tpl = template_dir / f'snom{model}.xml.tpl'
+        sed_script = f's/#MODEL#/{model}/'
+        with model_tpl.open(mode='wb') as f:
+            check_call(
+                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                stdout=f,
+            )
+
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v10_1_215_13/', path])
