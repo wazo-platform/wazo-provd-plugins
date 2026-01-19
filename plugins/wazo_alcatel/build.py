@@ -35,3 +35,8 @@ def build_2_13_02(path: str) -> None:
 @target('1.51.52', 'wazo-alcatel-1.51.52')
 def build_1_51_52(path: str) -> None:
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v1_51_52/', path])
+
+
+@target('2.01.20', 'wazo-alcatel-2.01.20')
+def build_2_01_20(path: str) -> None:
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v2_01_20/', path])
