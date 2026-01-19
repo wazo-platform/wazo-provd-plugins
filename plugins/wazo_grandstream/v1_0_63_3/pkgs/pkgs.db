@@ -1,0 +1,39 @@
+[pkg_HT801-fw]
+description: Firmware for Grandstream HT801
+description_fr: Micrologiciel pour Grandstream HT801
+version: 1.0.63.3
+files: HT801-fw
+install: grandstream-fw
+
+[pkg_HT802-fw]
+description: Firmware for Grandstream HT802
+description_fr: Micrologiciel pour Grandstream HT802
+version: 1.0.63.3
+files: HT802-fw
+install: grandstream-fw
+
+[pkg_HT80xV2-fw]
+description: Firmware for Grandstream HT801V2 & HT802V2
+description_fr: Micrologiciel pour Grandstream HT801V2 & HT802V2
+version: 1.0.5.10
+files: HT80xV2-fw
+install: grandstream-fw
+
+[install_grandstream-fw]
+a-b: unzip $FILE1
+b-c: cp */*.bin ./
+
+[file_HT801-fw]
+url: https://firmware.grandstream.com/Release_HT801_1.0.63.3.zip
+size: 18884255
+sha1sum: 3e48899e75c83367cb39ce3ee8f54b9701765713
+
+[file_HT802-fw]
+url: https://firmware.grandstream.com/Release_HT802_1.0.63.3.zip
+size: 18888219
+sha1sum: 49ae309298d6efc70b8c1c930612d2e73e334b1c
+
+[file_HT80xV2-fw]
+url: https://firmware.grandstream.com/Release_HT80xV2_1.0.5.10.zip
+size: 16231507
+sha1sum: edfd8bcff25bf1f639c06deb90593b5ed3e23851

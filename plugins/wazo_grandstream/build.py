@@ -1,5 +1,5 @@
 """
-Copyright 2013-2023 The Wazo Authors  (see the AUTHORS file)
+Copyright 2013-2025 The Wazo Authors  (see the AUTHORS file)
 SPDX-License-Identifier: GPL-3.0-or-later
 
 Depends on the following external programs:
@@ -191,3 +191,20 @@ def build_1_0_11_79(path: str) -> None:
         ]
     )
     check_call(['rsync', '-rlp', '--exclude', '.*', 'v1_0_11_79/', path])
+
+
+@target('1.0.63.3', 'wazo-grandstream-1.0.63.3')
+def build_1_0_63_3(path: str) -> None:
+    check_call(
+        [
+            'rsync',
+            '-rlp',
+            '--exclude',
+            '.*',
+            '--include',
+            '/templates/*',
+            'common_ata/',
+            path,
+        ]
+    )
+    check_call(['rsync', '-rlp', '--exclude', '.*', 'v1_0_63_3/', path])
