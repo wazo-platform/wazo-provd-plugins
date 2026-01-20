@@ -1,4 +1,4 @@
-# Copyright 2013-2025 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2026 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -469,8 +469,14 @@ class BaseFanvilPlugin(StandardPlugin):
         exten_pickup_call: str | None = raw_config.get('exten_pickup_call')
         offset = 0 if self._is_new_model(device) else 1
         raw_config['XX_offset'] = offset
+
         clean_model_name = device.get('model', '').split('-')[0]
-        top_key_threshold = self._TOP_FUNCTION_KEYS.get(clean_model_name, 0)
+        complete_model_name = device.get('model', '')
+        model_name_to_use = complete_model_name
+        if model_name_to_use not in self._TOP_FUNCTION_KEYS:
+            model_name_to_use = clean_model_name
+
+        top_key_threshold = self._TOP_FUNCTION_KEYS.get(model_name_to_use, 0)
         raw_config['XX_top_key_threshold'] = top_key_threshold
         top_keys, bottom_keys = self._split_fkeys(
             raw_config['funckeys'].items(), top_key_threshold
@@ -479,8 +485,8 @@ class BaseFanvilPlugin(StandardPlugin):
         raw_config['XX_top_keys'] = top_keys
         raw_config['XX_bottom_keys'] = bottom_keys
 
-        top_keys_per_page = self._LINE_KEYS_PER_PAGE.get(clean_model_name, None)
-        keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(clean_model_name, None)
+        top_keys_per_page = self._LINE_KEYS_PER_PAGE.get(model_name_to_use, None)
+        keys_per_page = self._FUNCTION_KEYS_PER_PAGE.get(model_name_to_use, None)
 
         max_top_keys = max(top_keys) if top_keys else 0
         max_bottom_keys = max(bottom_keys) if bottom_keys else 0
