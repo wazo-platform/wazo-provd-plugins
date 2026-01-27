@@ -39,6 +39,7 @@ MODELS = [
     'X4U-V2',
     'X5',
     'X5U',
+    'X5U-V2',
     'X5U-Pro',
     'X5S',
     'X6',
@@ -61,21 +62,25 @@ COMMON_FILES = {
     'fanvil_x210_v2_hwv2_0.txt': (
         'X210-V2',
         'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
+        '2.12.20',
         'model-x-v2.tpl',
     ),
     'fanvil_x210_pro_hwv2_0.txt': (
         'X210-Pro',
         'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
+        '2.12.20',
         'model-x-v2.tpl',
     ),
     'fanvil_x4u_v2_hwv2_0.txt': (
         'X4U-V2',
         'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
+        '2.12.20',
         'model-x-v2.tpl',
     ),
     'fanvil_x4u_pro_hwv2_0.txt': (
         'X4U-Pro',
         'x210pro-fanvil-release-6959-2.12.20-krnvlT2024-07-16-04.32.33.z',
+        '2.12.20',
         'model-x-v2.tpl',
     ),
     'F0V00X300000.cfg': ('X3', 'x31.4.0.2090T20180403152509.z', 'model.tpl'),
@@ -87,6 +92,18 @@ COMMON_FILES = {
     ),
     'f0X4hw1.100.cfg': ('X4', 'x42.14.0.7386T20210730173312.z', 'model.tpl'),
     'f0X5hw1.100.cfg': ('X5', 'x51.4.0.2016T20170303151233.z', 'model.tpl'),
+    'F0V5UV200000.cfg': (
+        'X5U-V2',
+        'x5upro-fanvil-release-ff01-6907-2.12.22.2-krnlvUT2025-04-16-20.32.45.z',
+        '2.12.22.2',
+        'model-x-v2.tpl',
+    ),
+    'fanvil_x5u_v2_hwv2_0.txt': (
+        'X5U-V2',
+        'x5upro-fanvil-release-ff01-6907-2.12.22.2-krnlvUT2025-04-16-20.32.45.z',
+        '2.12.22.2',
+        'model-x-v2.tpl',
+    ),
     'F0V00X5S0000.cfg': (
         'X5S',
         'x5s-6900-P0.16.5-1.12.2-3144T2019-07-23-14.20.37.z',
@@ -113,8 +130,9 @@ MODEL_FIRMWARE_MAPPING = {
     'X4U': 'x4upro-fanvil-release-ff01-6903-2.12.16.17-krnvUT2023-05-05-18.33.33.z',
     'X4U-V2': 'x4upro-fanvil-release-ff01-6903-2.12.20-krnlvUT2024-07-16-04.42.26.z',
     'X4U-Pro': 'x4upro-fanvil-release-ff01-6903-2.12.20-krnlvUT2024-07-16-04.42.26.z',
-    'X5U': 'x5upro-fanvil-release-ff01-6907-2.12.16.17-krnvUT2023-05-05-18.41.28.z',
-    'X5U-Pro': 'x5upro-fanvil-release-ff01-6907-2.12.16.17-krnvUT2023-05-05-18.41.28.z',
+    'X5U': 'x5upro-fanvil-release-ff01-6907-2.12.22.2-krnlvUT2025-04-16-20.32.45.z',
+    'X5U-Pro': 'x5upro-fanvil-release-ff01-6907-2.12.22.2-krnlvUT2025-04-16-20.32.45.z',
+    'X5U-V2': 'x5upro-fanvil-release-ff01-6907-2.12.22.2-krnlvUT2025-04-16-20.32.45.z',
     'X6U': 'x6upro-fanvil-release-ff01-6916-2.12.16.17-krnvUT2023-05-05-18.49.37.z',
     'X6U-Pro': 'x6upro-fanvil-release-ff01-6916-2.12.16.17-krnvUT2023-05-05-18.49.37.z',
     'X7': 'x7cpro-fanvil-release-6958-2.12.16.17-krnvlT2023-05-05-17.48.40.z',
@@ -132,6 +150,8 @@ FUNCTION_KEYS_PER_PAGE = {
     'X4U-Pro': 6,
     'X4U-V2': 6,
     'X5U': 6,
+    'X5U-Pro': 6,
+    'X5U-V2': 6,
     'X6U': 12,
 }
 
@@ -144,6 +164,8 @@ LINE_KEYS_PER_PAGE = {
     'X4U-Pro': 6,
     'X4U-V2': 6,
     'X5U': 4,
+    'X5U-Pro': 5,
+    'X5U-V2': 5,
     'X6U': 5,
 }
 
@@ -156,6 +178,8 @@ TOP_FUNCTION_KEYS = {
     'X4U-Pro': 10,
     'X4U-V2': 10,
     'X5U': 4,
+    'X5U-Pro': 4,
+    'X5U-V2': 4,
     'X6U': 5,
 }
 
