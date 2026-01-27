@@ -20,12 +20,14 @@ execfile_('common.py', common_globals)  # type: ignore[name-defined]
 
 
 HANDSETS_FW = {
-    'w56h': 'W56H-61.87.0.5.rom',
-    'w57r': 'W57R-118.87.0.5.rom',
-    'w59r': 'W59R-115.87.0.5.rom',
-    'w73h': 'W73H-116.87.0.5.rom',
-    'w74h': 'W74H-119.87.0.5.rom',
-    'w78h': 'W78H-16.87.0.5.rom',
+    'w53h': 'W56H-88.87.0.7.rom',
+    'w56h': 'W56H-61.87.0.8.rom',
+    'w57r': 'W57R-118.87.0.7.rom',
+    'w59r': 'W59R-115.87.0.8.rom',
+    'w71h': 'W73H-116.87.0.6.rom',
+    'w73h': 'W73H-116.87.0.7.rom',
+    'w74h': 'W74H-119.87.0.6.rom',
+    'w78h': 'W78H-16.87.0.7.rom',
     'cp930w': 'CP930W-87.85.0.20.rom',
     't41s_dd10k': 'T4S-ddphone-66.85.0.56.rom',
     't54w_dd10k': 'T54W-ddphone-96.85.0.65.rom ',
@@ -77,38 +79,38 @@ MODEL_INFO = {
         'firmware': 'AX83(AX83,AX86)-180.87.0.5.rom',
     },
     'W70B': {
-        'version': '146.87.0.15',
-        'firmware': 'W70B-146.87.0.15.rom',
+        'version': '146.87.0.18',
+        'firmware': 'W70B-146.87.0.18.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W75DM': {
-        'version': '175.87.0.10',
-        'firmware': 'W75DM-175.87.0.10.rom',
+        'version': '175.87.0.14',
+        'firmware': '$PN-175.87.0.14.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W75B': {
-        'version': '175.87.0.10',
-        'firmware': 'W75DM-175.87.0.10.rom',  # Yealink Inject W75B fw inside W75DM
+        'version': '175.87.0.14',
+        'firmware': '$PN-175.87.0.14.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W80DM': {
-        'version': '103.87.0.10',
-        'firmware': '$PN-103.87.0.10.rom',
+        'version': '103.87.0.14',
+        'firmware': '$PN-103.87.0.14.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W80B': {
-        'version': '103.87.0.10',
-        'firmware': '$PN-103.87.0.10.rom',
+        'version': '103.87.0.14',
+        'firmware': '$PN-103.87.0.14.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W90DM': {
-        'version': '130.87.0.10',
-        'firmware': '$PN-130.87.0.10.rom',  # $PN = Product Name, i.e W90DM
+        'version': '130.87.0.14',
+        'firmware': '$PN-130.87.0.14.rom',  # $PN = Product Name, i.e W90DM
         'handsets_fw': HANDSETS_FW,
     },
     'W90B': {
-        'version': '130.87.0.10',
-        'firmware': '$PN-130.87.0.10.rom',  # $PN = Product Name, i.e W90B
+        'version': '130.87.0.14',
+        'firmware': '$PN-130.87.0.14.rom',  # $PN = Product Name, i.e W90B
         'handsets_fw': HANDSETS_FW,
     },
 }
