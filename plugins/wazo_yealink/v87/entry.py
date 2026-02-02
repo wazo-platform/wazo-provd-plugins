@@ -1,4 +1,4 @@
-# Copyright 2013-2025 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2013-2026 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -32,6 +32,22 @@ HANDSETS_FW = {
 }
 
 MODEL_INFO = {
+    'T53W': {
+        'version': '96.87.0.15',
+        'firmware': 'T54W(T57W,T53W,T53,T53C,T54,T57)-96.87.0.15.rom',
+    },
+    'T54W': {
+        'version': '96.87.0.15',
+        'firmware': 'T54W(T57W,T53W,T53,T53C,T54,T57)-96.87.0.15.rom',
+    },
+    'T57W': {
+        'version': '96.87.0.15',
+        'firmware': 'T54W(T57W,T53W,T53,T53C,T54,T57)-96.87.0.15.rom',
+    },
+    'T58W': {
+        'version': '150.87.0.15',
+        'firmware': 'T58W-OS12-150.87.0.15.rom',
+    },
     'T73U': {
         'version': '185.87.0.10',
         'firmware': 'T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.10.rom',
