@@ -2,13 +2,13 @@
 description: Firmware for Yealink T53W T54W and T57W
 description_fr: Micrologiciel pour Yealink T53W T54W et T57W
 version: 96.87.0.15
-files: T53_T53C_T53W_T54W_T57W-fw
+files: T53W_T54W_T57W-fw
 install: yealink-fw
 
 [pkg_T58W-fw]
 description: Firmware for Yealink T58W
 description_fr: Micrologiciel pour Yealink T58W
-version: 96.87.0.15
+version: 150.87.0.15
 files: T58W-fw
 install: yealink-fw
 
