@@ -1,4 +1,4 @@
-# Copyright 2011-2025 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2011-2026 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -69,14 +69,6 @@ class BaseYealinkHTTPDeviceInfoExtractor:
 
     def _extract_from_ua(self, ua: str):
         # HTTP User-Agent:
-        #   "Yealink SIP-T20P 9.72.0.30 00:15:65:5e:16:7c"
-        #   "Yealink SIP-T21P 34.72.0.1 00:15:65:4c:4c:26"
-        #   "Yealink SIP-T21P_E2 52.80.0.3 00:15:65:4c:4c:26"
-        #   "Yealink SIP-T22P 7.72.0.30 00:15:65:39:31:fc"
-        #   "Yealink SIP-T23G 44.80.0.60 00:15:65:93:70:f2"
-        #   "Yealink SIP-T31G 124.85.257.55 80:5e:c0:d5:7d:72"
-        #   "Yealink SIP-T33G 124.85.257.55 80:5e:c0:bd:ea:ef"
-        #   "Yealink SIP-T34W 124.86.0.75 24:9a:d8:88:d0:f4"
         #   "Yealink SIP-T77U 185.87.0.10 44:db:d2:bd:b5:69"
         #   "Yealink SIP-T85W 185.87.0.10 44:db:d2:67:58:4b"
         #   "Yealink SIP-T87W 185.87.0.10 44:db:d2:c9:73:b7"

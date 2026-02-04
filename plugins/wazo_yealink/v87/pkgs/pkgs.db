@@ -1,3 +1,17 @@
+[pkg_T53W_T54W_T57W-fw]
+description: Firmware for Yealink T53W T54W and T57W
+description_fr: Micrologiciel pour Yealink T53W T54W et T57W
+version: 96.87.0.15
+files: T53W_T54W_T57W-fw
+install: yealink-fw
+
+[pkg_T58W-fw]
+description: Firmware for Yealink T58W
+description_fr: Micrologiciel pour Yealink T58W
+version: 150.87.0.15
+files: T58W-fw
+install: yealink-fw
+
 [pkg_T7T8-fw]
 description: Firmware for Yealink T7x & T8x
 description_fr: Micrologiciel pour Yealink T7x & T8x
@@ -113,6 +127,18 @@ install: yealink-fw
 [install_yealink-fw]
 a-b: cp *.rom firmware/
 
+
+[file_T53W_T54W_T57W-fw]
+filename: T54W(T57W,T53W,T53,T53C,T54,T57)-96.87.0.15.rom
+url: http://provd.wazo.community/firmwares/yealink/T54W(T57W,T53W,T53,T53C,T54,T57)-96.87.0.15.rom
+size: 48750176
+sha1sum: dc453e1670080a5d0347bdd6395b622e8248e844
+
+[file_T58W-fw]
+filename: T58W-OS12-150.87.0.15.rom
+url: http://provd.wazo.community/firmwares/yealink/T58W-OS12-150.87.0.15.rom
+size: 753583408
+sha1sum: 37e035ee92f9f2ba98af39c1d529ab943fadda10
 
 [file_T7T8-fw]
 filename: T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.10.rom
