@@ -13,7 +13,7 @@ try:
     from packaging.version import Version
 except ImportError:
     # Compatibility with wazo < 25.01
-    from pkg_resources import parse_version as Version
+    from pkg_resources import parse_version as Version  # type: ignore[no-redef]
 
 try:
     from wazo_provd import plugins, synchronize, tzinform
