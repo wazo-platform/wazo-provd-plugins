@@ -5,6 +5,7 @@ https://github.com/wazo-platform/wazo-auth-client/archive/master.zip  # from waz
 https://github.com/wazo-platform/xivo-fetchfw/archive/master.zip  # from wazo-provd
 https://github.com/wazo-platform/xivo-lib-python/archive/master.zip  # from wazo-provd
 jinja2==3.1.2  # from wazo-provd
+packaging==23.0
 pydantic==1.10.4  # from wazo-provd
 pytest
 pyyaml==6.0  # from xivo
