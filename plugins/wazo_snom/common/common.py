@@ -1,4 +1,4 @@
-# Copyright 2010-2025 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2026 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -9,7 +9,11 @@ import re
 from operator import itemgetter
 from xml.sax.saxutils import escape
 
-from pkg_resources import parse_version
+try:
+    from packaging.version import Version
+except ImportError:
+    # Compatibility with wazo < 25.01
+    from pkg_resources import parse_version as Version  # type: ignore[no-redef]
 
 try:
     from wazo_provd import plugins, synchronize, tzinform
@@ -126,8 +130,8 @@ class BaseSnomPgAssociator(BasePgAssociator):
 
     def _is_incompatible_version(self, version):
         try:
-            maj_version = parse_version(version)
-            if maj_version < parse_version('7.0.0.0'):
+            maj_version = Version(version)
+            if maj_version < Version('7.0.0.0'):
                 return True
         except (IndexError, ValueError):
             pass
