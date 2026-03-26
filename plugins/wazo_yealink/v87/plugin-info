@@ -1,5 +1,5 @@
 {
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Plugin for Yealink for AX83H & AX86R, T5xW, T7X, T8X, W70, W75, W80 and W90 series in version 87.",
     "description_fr": "Greffon pour Yealink pour les series AX83H & AX86R, T5xW, T7X, T8X, W70, W75, W80 and W90 en version 87.",
     "vendor" : "Yealink",
@@ -7,7 +7,7 @@
     "vendor.description" : "Companies choose Yealink for that enable their geographically dispersed workforces to communicate and collaborate more effectively and productively over distances. Through the service provided by Yealink, people connect and collaborate from their desktops, meeting rooms, class rooms, and mobile setting.",
     "vendor.official" : 1,
     "capabilities": {
-        "Yealink, AX86R, 180.87.0.5": {
+        "Yealink, AX86R, 180.87.0.15": {
             "lines": 2,
             "high_availability": true,
             "function_keys": 0,
@@ -16,7 +16,7 @@
             "type": "wifidect",
             "protocol": "sip"
         },
-        "Yealink, AX83H, 180.87.0.5": {
+        "Yealink, AX83H, 180.87.0.15": {
             "lines": 2,
             "high_availability": true,
             "function_keys": 0,
