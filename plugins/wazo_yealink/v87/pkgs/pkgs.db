@@ -15,8 +15,15 @@ install: yealink-fw
 [pkg_T7T8-fw]
 description: Firmware for Yealink T7x & T8x
 description_fr: Micrologiciel pour Yealink T7x & T8x
-version: 185.87.0.10
+version: 185.87.0.33
 files: T7T8-fw
+install: yealink-fw
+
+[pkg_T88x-fw]
+description: Firmware for Yealink T88x
+description_fr: Micrologiciel pour Yealink T88x
+version: 192.87.0.10
+files: T88x-fw
 install: yealink-fw
 
 [pkg_AX8X-fw]
@@ -29,7 +36,7 @@ install: yealink-fw
 [pkg_W70B-fw]
 description: Firmware for Yealink W70B
 description_fr: Micrologiciel pour Yealink W70B
-version: 146.87.0.15
+version: 146.87.0.21
 files: W70B-fw
 install: yealink-fw
 
@@ -43,14 +50,14 @@ install: yealink-fw
 [pkg_W80DM-fw]
 description: Firmware for Yealink W80DM
 description_fr: Micrologiciel pour Yealink W80DM
-version: 103.87.0.10
+version: 103.87.0.18
 files: W80DM-fw
 install: yealink-fw
 
 [pkg_W75DM-fw]
 description: Firmware for Yealink W75DM and W75B
 description_fr: Micrologiciel pour Yealink W75DM et W75B
-version: 175.87.0.10
+version: 175.87.0.18
 files: W75DM-fw
 install: yealink-fw
 
@@ -64,7 +71,7 @@ install: yealink-fw
 [pkg_W90DM-fw]
 description: Firmware for Yealink W90DM
 description_fr: Micrologiciel pour Yealink W90DM
-version: 130.87.0.10
+version: 130.87.0.18
 files: W90DM-fw
 install: yealink-fw
 
@@ -141,10 +148,16 @@ size: 753583408
 sha1sum: 37e035ee92f9f2ba98af39c1d529ab943fadda10
 
 [file_T7T8-fw]
-filename: T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.10.rom
-url: http://provd.wazo.community/firmwares/yealink/T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.10.rom
-size: 46668144
-sha1sum: c972484415a0b4b45ee24c846ecc5d36d65a6527
+filename: T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom
+url: http://provd.wazo.community/firmwares/yealink/T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom
+size: 47483744
+sha1sum: ae351cfb185d002ac0e50177915cf67054270c8d
+
+[file_T88x-fw]
+filename: T88(T88W,T88V)-192.87.0.10.rom
+url: http://provd.wazo.community/firmwares/yealink/T88(T88W,T88V)-192.87.0.10.rom
+size: 893504432
+sha1sum: f0e72143075b6f0c89bbcfc8c604d38f3404bca7
 
 [file_AX8X-fw]
 filename: AX83(AX83,AX86)-180.87.0.15.rom
@@ -153,10 +166,10 @@ size: 77761216
 sha1sum: 6dde809fce7c8781891156c85d83b94a91daaa63
 
 [file_W70B-fw]
-filename: W70B-146.87.0.15.rom
-url: http://provd.wazo.community/firmwares/yealink/W70B-146.87.0.15.rom
-size: 22066224
-sha1sum: 215d69345c9318206bf8dad2e6864be16990c836
+filename: W70B-146.87.0.21.rom
+url: http://provd.wazo.community/firmwares/yealink/W70B-146.87.0.21.rom
+size: 22258512
+sha1sum: 5423916e902da326fe391203e6782df3ac6f46f0
 
 [file_W80B-fw]
 filename: W80B-103.87.0.10.rom
@@ -165,16 +178,16 @@ size: 27997808
 sha1sum: c932819fe6d991804acc63e4ec0da4b094078d0c
 
 [file_W80DM-fw]
-filename: W80DM-103.87.0.10.rom
-url: http://provd.wazo.community/firmwares/yealink/W80DM-103.87.0.10.rom
-size: 45266400
-sha1sum: 4d6dd50cb4b5528e523af571e5db1c721c479b6e
+filename: W80DM-103.87.0.18.rom
+url: http://provd.wazo.community/firmwares/yealink/W80DM-103.87.0.18.rom
+size: 46423216
+sha1sum: f20b2fd778b8bdf9bdbd85033ac084d1c4c1b58e
 
 [file_W75DM-fw]
-filename: W75DM-175.87.0.10.rom
-url: http://provd.wazo.community/firmwares/yealink/W75DM-175.87.0.10.rom
-size: 46633248
-sha1sum: 5161cfdcca6ad79622cad84ed636d9f62841b6ce
+filename: W75DM-175.87.0.18.rom
+url: http://provd.wazo.community/firmwares/yealink/W75DM-175.87.0.18.rom
+size: 47861440
+sha1sum: 27fda4d0fd297824ca2ef4a5b9b4dceaa303e234
 
 [file_W90B-fw]
 filename: W90B-130.87.0.10.rom
@@ -183,10 +196,10 @@ size: 28203264
 sha1sum: 8503de2bae12644a79d4252f9808721fdbf52ef9
 
 [file_W90DM-fw]
-filename: W90DM-130.87.0.10.rom
-url: http://provd.wazo.community/firmwares/yealink/W90DM-130.87.0.10.rom
-size: 45686608
-sha1sum: 095c87b54d1dfc5018b36449bdb909ba268d5e84
+filename: W90DM-130.87.0.18.rom
+url: http://provd.wazo.community/firmwares/yealink/W90DM-130.87.0.18.rom
+size: 46846944
+sha1sum: 10d8630e9f73f039df27c0acf57c37df88e1aac1
 
 [file_W56H-fw]
 filename: W56H-61.87.0.5.rom

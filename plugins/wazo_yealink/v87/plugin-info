@@ -61,7 +61,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T73(U)(W), 185.87.0.10": {
+        "Yealink, T73(U)(W), 185.87.0.33": {
             "lines": 12,
             "high_availability": true,
             "function_keys": 48,
@@ -70,7 +70,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T74(U)(W), 185.87.0.10": {
+        "Yealink, T74(U)(W), 185.87.0.33": {
             "lines": 16,
             "high_availability": true,
             "function_keys": 60,
@@ -79,7 +79,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T77(U), 185.87.0.10": {
+        "Yealink, T77(U), 185.87.0.33": {
             "lines": 16,
             "high_availability": true,
             "function_keys": 95,
@@ -88,7 +88,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T85(W), 185.87.0.10": {
+        "Yealink, T85(W), 185.87.0.33": {
             "lines": 16,
             "high_availability": true,
             "function_keys": 72,
@@ -97,7 +97,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T87(W), 185.87.0.10": {
+        "Yealink, T87(W), 185.87.0.33": {
             "lines": 16,
             "high_availability": true,
             "function_keys": 95,
@@ -106,7 +106,7 @@
             "type": "deskphone",
             "protocol": "sip"
         },
-        "Yealink, T88(W)(V), 185.87.0.10": {
+        "Yealink, T88(W)(V), 192.87.0.10": {
             "lines": 16,
             "high_availability": true,
             "function_keys": 95,
@@ -116,9 +116,9 @@
             "protocol": "sip"
         },
 
-        "Yealink, W70B, 146.87.0.15": {
+        "Yealink, W70B, 146.87.0.21": {
             "lines": 10,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
@@ -128,7 +128,7 @@
         },
         "Yealink, W75B, 175.87.0.10": {
             "lines": 20,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
@@ -136,9 +136,9 @@
             "multicell": false,
             "protocol": "sip"
         },
-        "Yealink, W75DM, 175.87.0.10": {
+        "Yealink, W75DM, 175.87.0.18": {
             "lines": 20,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
@@ -148,7 +148,7 @@
         },
         "Yealink, W80B, 103.87.0.10": {
             "lines": 30,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
@@ -156,9 +156,9 @@
             "multicell": false,
             "protocol": "sip"
         },
-        "Yealink, W80DM, 103.87.0.10": {
+        "Yealink, W80DM, 103.87.0.18": {
             "lines": 30,
-            "high_availability": false,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
@@ -166,9 +166,19 @@
             "multicell": false,
             "protocol": "sip"
         },
-        "Yealink, W90, 130.87.0.10": {
+        "Yealink, W90B, 130.87.0.10": {
             "lines": 250,
-            "high_availability": false,
+            "high_availability": true,
+            "function_keys": 0,
+            "expansion_modules": 0,
+            "switchboard": false,
+            "type": "dect",
+            "multicell": true,
+            "protocol": "sip"
+        },
+        "Yealink, W90DM, 130.87.0.18": {
+            "lines": 250,
+            "high_availability": true,
             "function_keys": 0,
             "expansion_modules": 0,
             "switchboard": false,
