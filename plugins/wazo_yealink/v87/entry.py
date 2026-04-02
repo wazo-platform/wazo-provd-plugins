@@ -58,23 +58,23 @@ MODEL_INFO = {
     },
     'T74U': {
         'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.33.rom',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
     },
     'T74W': {
         'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.33.rom',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
     },
     'T77U': {
         'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.33.rom',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
     },
     'T85W': {
         'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.33.rom',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
     },
     'T87W': {
         'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77,T77U,T85W,T87W)-185.87.0.33.rom',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
     },
     'T88W': {
         'version': '192.87.0.10',
@@ -99,22 +99,22 @@ MODEL_INFO = {
     },
     'W75DM': {
         'version': '175.87.0.18',
-        'firmware': 'W75DM-175.87.0.18.rom',
+        'firmware': '$PN-175.87.0.18.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W75B': {
-        'version': '175.87.0.10',
-        'firmware': 'W75DM-175.87.0.10.rom',  # Yealink Inject W75B fw inside W75DM
+        'version': '175.87.0.18',
+        'firmware': '$PN-175.87.0.18.rom',  # Yealink Inject W75B fw inside W75DM
         'handsets_fw': HANDSETS_FW,
     },
     'W80DM': {
         'version': '103.87.0.18',
-        'firmware': 'W80DM-103.87.0.18.rom',
+        'firmware': '$PN-103.87.0.18.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W80B': {
-        'version': '103.87.0.10',
-        'firmware': '$PN-103.87.0.10.rom',
+        'version': '103.87.0.18',
+        'firmware': '$PN-103.87.0.18.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W90DM': {
@@ -123,8 +123,8 @@ MODEL_INFO = {
         'handsets_fw': HANDSETS_FW,
     },
     'W90B': {
-        'version': '130.87.0.10',
-        'firmware': '$PN-130.87.0.10.rom',  # $PN = Product Name, i.e W90B
+        'version': '130.87.0.18',
+        'firmware': '$PN-130.87.0.18.rom',  # $PN = Product Name, i.e W90B
         'handsets_fw': HANDSETS_FW,
     },
 }

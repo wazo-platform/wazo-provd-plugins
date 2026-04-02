@@ -126,7 +126,7 @@
             "multicell": false,
             "protocol": "sip"
         },
-        "Yealink, W75B, 175.87.0.10": {
+        "Yealink, W75B, 175.87.0.18": {
             "lines": 20,
             "high_availability": true,
             "function_keys": 0,
@@ -146,7 +146,7 @@
             "multicell": false,
             "protocol": "sip"
         },
-        "Yealink, W80B, 103.87.0.10": {
+        "Yealink, W80B, 103.87.0.18": {
             "lines": 30,
             "high_availability": true,
             "function_keys": 0,
@@ -166,7 +166,7 @@
             "multicell": false,
             "protocol": "sip"
         },
-        "Yealink, W90B, 130.87.0.10": {
+        "Yealink, W90B, 130.87.0.18": {
             "lines": 250,
             "high_availability": true,
             "function_keys": 0,

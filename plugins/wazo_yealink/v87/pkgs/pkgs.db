@@ -40,10 +40,24 @@ version: 146.87.0.21
 files: W70B-fw
 install: yealink-fw
 
+[pkg_W75B-fw]
+description: Firmware for Yealink W75B
+description_fr: Micrologiciel pour W75B
+version: 175.87.0.18
+files: W75B-fw
+install: yealink-fw
+
+[pkg_W75DM-fw]
+description: Firmware for Yealink W75DM
+description_fr: Micrologiciel pour Yealink W75DM
+version: 175.87.0.18
+files: W75DM-fw
+install: yealink-fw
+
 [pkg_W80B-fw]
 description: Firmware for Yealink W80B
 description_fr: Micrologiciel pour Yealink W80B
-version: 103.87.0.10
+version: 103.87.0.18
 files: W80B-fw
 install: yealink-fw
 
@@ -54,17 +68,10 @@ version: 103.87.0.18
 files: W80DM-fw
 install: yealink-fw
 
-[pkg_W75DM-fw]
-description: Firmware for Yealink W75DM and W75B
-description_fr: Micrologiciel pour Yealink W75DM et W75B
-version: 175.87.0.18
-files: W75DM-fw
-install: yealink-fw
-
 [pkg_W90B-fw]
 description: Firmware for Yealink W90B
 description_fr: Micrologiciel pour Yealink W90B
-version: 130.87.0.10
+version: 130.87.0.18
 files: W90B-fw
 install: yealink-fw
 
@@ -171,17 +178,11 @@ url: http://provd.wazo.community/firmwares/yealink/W70B-146.87.0.21.rom
 size: 22258512
 sha1sum: 5423916e902da326fe391203e6782df3ac6f46f0
 
-[file_W80B-fw]
-filename: W80B-103.87.0.10.rom
-url: http://provd.wazo.community/firmwares/yealink/W80B-103.87.0.10.rom
-size: 27997808
-sha1sum: c932819fe6d991804acc63e4ec0da4b094078d0c
-
-[file_W80DM-fw]
-filename: W80DM-103.87.0.18.rom
-url: http://provd.wazo.community/firmwares/yealink/W80DM-103.87.0.18.rom
-size: 46423216
-sha1sum: f20b2fd778b8bdf9bdbd85033ac084d1c4c1b58e
+[file_W75B-fw]
+filename: W75B-175.87.0.18.rom
+url: http://provd.wazo.community/firmwares/yealink/W75B-175.87.0.18.rom
+size: 29108528
+sha1sum: ca9a01579576cc049846eb8ed2a13b6c9ef342a5
 
 [file_W75DM-fw]
 filename: W75DM-175.87.0.18.rom
@@ -189,11 +190,23 @@ url: http://provd.wazo.community/firmwares/yealink/W75DM-175.87.0.18.rom
 size: 47861440
 sha1sum: 27fda4d0fd297824ca2ef4a5b9b4dceaa303e234
 
+[file_W80B-fw]
+filename: W80B-103.87.0.18.rom
+url: http://provd.wazo.community/firmwares/yealink/W80B-103.87.0.18.rom
+size: 28329680
+sha1sum: b0bc1bf63eeb2ec473bb18aaa0d2caf5e1a8d50b
+
+[file_W80DM-fw]
+filename: W80DM-103.87.0.18.rom
+url: http://provd.wazo.community/firmwares/yealink/W80DM-103.87.0.18.rom
+size: 46423216
+sha1sum: f20b2fd778b8bdf9bdbd85033ac084d1c4c1b58e
+
 [file_W90B-fw]
-filename: W90B-130.87.0.10.rom
-url: http://provd.wazo.community/firmwares/yealink/W90B-130.87.0.10.rom
-size: 28203264
-sha1sum: 8503de2bae12644a79d4252f9808721fdbf52ef9
+filename: W90B-130.87.0.18.rom
+url: http://provd.wazo.community/firmwares/yealink/W90B-130.87.0.18.rom
+size: 28538688
+sha1sum: 2894f3a5e0ce18f9392044b47e6dda2ff49fccd9
 
 [file_W90DM-fw]
 filename: W90DM-130.87.0.18.rom
