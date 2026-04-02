@@ -49,32 +49,32 @@ MODEL_INFO = {
         'firmware': 'T58W-OS12-150.87.0.15.rom',
     },
     'T73U': {
-        'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
+        'version': '185.87.0.34',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.34.rom',
     },
     'T73W': {
-        'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
+        'version': '185.87.0.34',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.34.rom',
     },
     'T74U': {
-        'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
+        'version': '185.87.0.34',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.34.rom',
     },
     'T74W': {
-        'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
+        'version': '185.87.0.34',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.34.rom',
     },
     'T77U': {
-        'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
+        'version': '185.87.0.34',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.34.rom',
     },
     'T85W': {
-        'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
+        'version': '185.87.0.34',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.34.rom',
     },
     'T87W': {
-        'version': '185.87.0.33',
-        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.33.rom',
+        'version': '185.87.0.34',
+        'firmware': 'T77(T73,T74,T73U,T74U,T77U,T85W,T87W)-185.87.0.34.rom',
     },
     'T88W': {
         'version': '192.87.0.10',
