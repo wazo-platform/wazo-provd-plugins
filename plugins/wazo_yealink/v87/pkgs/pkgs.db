@@ -15,7 +15,7 @@ install: yealink-fw
 [pkg_T7T8-fw]
 description: Firmware for Yealink T7x & T8x
 description_fr: Micrologiciel pour Yealink T7x & T8x
-version: 185.87.0.33
+version: 185.87.0.34
 files: T7T8-fw
 install: yealink-fw
 
