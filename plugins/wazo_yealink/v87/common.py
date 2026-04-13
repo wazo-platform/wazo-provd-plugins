@@ -41,7 +41,13 @@ KNOWN_MAC_PREFIXES = (
     b'805ec0',
     b'805e0c',  # NOTE(afournier): not a mistake
     b'249ad8',
+    b'3497d7',
     b'44dbd2',
+    b'644f56',
+    b'b061a9',
+    b'c4fc22',
+    b'ec1da9',
+    b'f01653',
 )
 
 
