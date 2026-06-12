@@ -445,12 +445,12 @@ class BaseYealinkPlugin(StandardPlugin):
         'T88W': 16,
         'T88V': 16,
         'W70B': 10,
-        'W75B': 0,
+        'W75B': 20,
         'W75DM': 20,
-        'W80DM': 30,
-        'W80B': 0,
+        'W80DM': 100,
+        'W80B': 100,
         'W90DM': 250,
-        'W90B': 0,
+        'W90B': 250,
     }
     _SENSITIVE_FILENAME_REGEX = re.compile(r'^[0-9a-f]{12}\.cfg')
 
