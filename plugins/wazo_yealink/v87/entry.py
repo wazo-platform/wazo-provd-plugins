@@ -108,13 +108,13 @@ MODEL_INFO = {
         'handsets_fw': HANDSETS_FW,
     },
     'W80DM': {
-        'version': '103.87.0.18',
-        'firmware': '$PN-103.87.0.18.rom',
+        'version': '103.87.0.30',
+        'firmware': '$PN-103.87.0.30.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W80B': {
-        'version': '103.87.0.18',
-        'firmware': '$PN-103.87.0.18.rom',
+        'version': '103.87.0.30',
+        'firmware': '$PN-103.87.0.30.rom',
         'handsets_fw': HANDSETS_FW,
     },
     'W90DM': {
