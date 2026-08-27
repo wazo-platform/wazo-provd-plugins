@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<firmware-settings>
+  <firmware>{{ XX_server_url }}/firmware/#FW_FILENAME#?mac={mac}&chained_url={{ XX_server_url }}/firmware/#CHAINED_FILENAME#%3Fmac%3D{mac}</firmware>
+  <firmware_uxm>{{ XX_server_url }}/firmware/#UXMC_FILENAME#?mac={mac}</firmware_uxm>
+</firmware-settings>

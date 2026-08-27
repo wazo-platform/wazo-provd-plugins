@@ -296,7 +296,7 @@ def build_10_1_20_0(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -311,7 +311,7 @@ def build_10_1_20_0(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -321,7 +321,11 @@ def build_10_1_20_0(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -330,7 +334,11 @@ def build_10_1_20_0(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -356,7 +364,7 @@ def build_10_1_26_1(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -371,7 +379,7 @@ def build_10_1_26_1(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -381,7 +389,11 @@ def build_10_1_26_1(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -390,7 +402,11 @@ def build_10_1_26_1(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -427,7 +443,7 @@ def build_10_1_39_11(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -442,7 +458,7 @@ def build_10_1_39_11(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -452,7 +468,11 @@ def build_10_1_39_11(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -461,7 +481,11 @@ def build_10_1_39_11(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -506,7 +530,7 @@ def build_10_1_46_16(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -523,7 +547,7 @@ def build_10_1_46_16(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -533,7 +557,11 @@ def build_10_1_46_16(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -542,7 +570,11 @@ def build_10_1_46_16(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -587,7 +619,7 @@ def build_10_1_49_11(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -602,7 +634,7 @@ def build_10_1_49_11(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -612,7 +644,11 @@ def build_10_1_49_11(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -621,7 +657,11 @@ def build_10_1_49_11(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -665,7 +705,7 @@ def build_10_1_51_12(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -680,7 +720,7 @@ def build_10_1_51_12(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -690,7 +730,11 @@ def build_10_1_51_12(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -699,7 +743,11 @@ def build_10_1_51_12(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -743,7 +791,7 @@ def build_10_1_54_13(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -758,7 +806,7 @@ def build_10_1_54_13(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -768,7 +816,11 @@ def build_10_1_54_13(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -777,7 +829,11 @@ def build_10_1_54_13(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -978,7 +1034,7 @@ def build_10_1_101_11(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -993,7 +1049,7 @@ def build_10_1_101_11(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -1003,7 +1059,11 @@ def build_10_1_101_11(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1012,7 +1072,11 @@ def build_10_1_101_11(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1058,7 +1122,7 @@ def build_10_1_141_13(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -1075,7 +1139,7 @@ def build_10_1_141_13(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -1085,7 +1149,11 @@ def build_10_1_141_13(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1094,7 +1162,11 @@ def build_10_1_141_13(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1140,7 +1212,7 @@ def build_10_1_152_12(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -1157,7 +1229,7 @@ def build_10_1_152_12(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -1167,7 +1239,11 @@ def build_10_1_152_12(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1176,7 +1252,11 @@ def build_10_1_152_12(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1222,7 +1302,7 @@ def build_10_1_159_12(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -1239,7 +1319,7 @@ def build_10_1_159_12(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -1249,7 +1329,11 @@ def build_10_1_159_12(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1258,7 +1342,11 @@ def build_10_1_159_12(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1304,7 +1392,7 @@ def build_10_1_175_16(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -1321,7 +1409,7 @@ def build_10_1_175_16(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -1331,7 +1419,11 @@ def build_10_1_175_16(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1340,7 +1432,11 @@ def build_10_1_175_16(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1396,7 +1492,7 @@ def build_10_1_184_15(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -1425,7 +1521,7 @@ def build_10_1_184_15(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -1435,7 +1531,11 @@ def build_10_1_184_15(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1444,7 +1544,11 @@ def build_10_1_184_15(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1499,7 +1603,7 @@ def build_10_1_198_19(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -1528,7 +1632,7 @@ def build_10_1_198_19(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -1538,7 +1642,11 @@ def build_10_1_198_19(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1547,7 +1655,11 @@ def build_10_1_198_19(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1603,7 +1715,7 @@ def build_10_1_215_13(path):
             '/templates/*.tpl',
             '--exclude',
             '*.btpl',
-            'common/',
+            'common_v10/',
             path,
         ]
     )
@@ -1632,7 +1744,7 @@ def build_10_1_215_13(path):
                 [
                     'sed',
                     sed_script,
-                    'common/templates/common/snom-model-firmware.xml.tpl.btpl',
+                    'common_v10/templates/common/snom-model-firmware.xml.tpl.btpl',
                 ],
                 stdout=f,
             )
@@ -1642,7 +1754,11 @@ def build_10_1_215_13(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.htm.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.htm.tpl.btpl',
+                ],
                 stdout=f,
             )
 
@@ -1651,7 +1767,11 @@ def build_10_1_215_13(path):
         sed_script = f's/#MODEL#/{model}/'
         with model_tpl.open(mode='wb') as f:
             check_call(
-                ['sed', sed_script, 'common/templates/common/snom-model.xml.tpl.btpl'],
+                [
+                    'sed',
+                    sed_script,
+                    'common_v10/templates/common/snom-model.xml.tpl.btpl',
+                ],
                 stdout=f,
             )
 
