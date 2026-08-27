@@ -33,6 +33,13 @@ version: 10.1.226.16
 files: 713-fw
 install: snom-fw
 
+[pkg_715-fw]
+description: Firmware for Snom D715
+description_fr: Firmware pour Snom D715
+version: 10.1.226.16
+files: 715-fw 715-ramdisk
+install: snom-fw-ramdisk
+
 [pkg_717-fw]
 description: Firmware for Snom D717
 description_fr: Firmware pour Snom D717
@@ -157,6 +164,16 @@ sha1sum: 83a71eb47053a92493e12efca50f99931e97cd94
 url: https://downloads.snom.com/fw/10.1.226.16/bin/snomD713-10.1.226.16-SIP-r.bin
 size: 47204832
 sha1sum: 9d07ce1cd915c520359428a7ff1f25e028d19172
+
+[file_715-fw]
+url: https://downloads.snom.com/fw/10.1.226.16/bin/snom715-10.1.226.16-SIP-r.bin
+size: 33702656
+sha1sum: 678f834fe06d9a3a9cb8d2765c0d8ca56c5a46d5
+
+[file_715-ramdisk]
+url: https://downloads.snom.com/fw/update/snom715-ramdisk-chained-update-r.bin
+size: 10576
+sha1sum: d83c4ca90e8c4eef7846e57d5ab45e0b77a51906
 
 [file_717-fw]
 url: https://downloads.snom.com/fw/10.1.226.16/bin/snomD717-10.1.226.16-SIP-r.bin
