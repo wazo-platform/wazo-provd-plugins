@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Plugin for Snom D1xx, D3xx, D7xx, D8xx in version 10.1.226.16",
     "description_fr": "Greffon pour Snom D1xx, D3xx, D7xx, D8xx en version 10.1.226.16",
     "capabilities": {
