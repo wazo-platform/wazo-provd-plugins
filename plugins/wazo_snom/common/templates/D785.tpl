@@ -12,7 +12,7 @@
       </action>
     </context_key>
     {% else -%}
-    <context_key idx="0" perm="R">keyevent F_ADR_BOOK</gui_fkey1>
+    <context_key idx="0" perm="R">keyevent F_ADR_BOOK</context_key>
     {% endif -%}
     <context_key idx="1" perm="R">keyevent F_REDIRECT</context_key>
     <context_key idx="2" perm="R">keyevent F_CALL_LIST</context_key>
