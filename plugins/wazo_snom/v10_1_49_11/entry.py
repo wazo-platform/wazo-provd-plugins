@@ -29,7 +29,7 @@ MODELS = [
     'D765',
     'D785',
 ]
-VERSION = '10.1.46.16'
+VERSION = '10.1.49.11'
 
 
 class SnomPlugin(common_globals['BaseSnomPlugin']):  # type: ignore[valid-type,misc]
