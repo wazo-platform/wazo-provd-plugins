@@ -1,7 +1,7 @@
 {
     "version": "0.2.9",
-    "description": "Plugin for Snom D3x5, D717, D7x5 in version 10.1.39.11.",
-    "description_fr": "Greffon pour Snom D3x5, D717, D7x5 en version 10.1.39.11.",
+    "description": "Plugin for Snom D3x5, D7x5 in version 10.1.39.11.",
+    "description_fr": "Greffon pour Snom D3x5, D7x5 en version 10.1.39.11.",
     "capabilities": {
         "Snom, D375, 10.1.39.11": {
             "lines": 12,
@@ -16,15 +16,6 @@
             "lines": 4,
             "high_availability": false,
             "function_keys": 5,
-            "expansion_modules": 3,
-            "switchboard": false,
-            "type": "deskphone",
-            "protocol": "sip"
-        },
-        "Snom, D717, 10.1.39.11": {
-            "lines": 6,
-            "high_availability": false,
-            "function_keys": 3,
             "expansion_modules": 3,
             "switchboard": false,
             "type": "deskphone",

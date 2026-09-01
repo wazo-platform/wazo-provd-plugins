@@ -402,7 +402,6 @@ def build_10_1_39_11(path):
     MODELS = [
         ('D375', 'r'),
         ('715', 'r'),
-        ('D717', 'r'),
         ('725', 'r'),
         ('D735', 'r'),
         ('D745', 'r'),
@@ -421,8 +420,6 @@ def build_10_1_39_11(path):
             '/templates/D7*5.tpl',
             '--include',
             '/templates/D375.tpl',
-            '--include',
-            '/templates/D717.tpl',
             '--exclude',
             '/templates/*.tpl',
             '--exclude',
