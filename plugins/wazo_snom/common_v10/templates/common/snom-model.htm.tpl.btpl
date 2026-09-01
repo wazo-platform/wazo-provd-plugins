@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<setting-files>
+  <file url="{{ XX_server_url }}/snom-general.xml"/>
+  <file url="{{ XX_server_url }}/snom#MODEL#.xml"/>
+  <file url="{{ XX_server_url }}/gui_lang.xml"/>
+  <file url="{{ XX_server_url }}/web_lang.xml"/>
+</setting-files>
