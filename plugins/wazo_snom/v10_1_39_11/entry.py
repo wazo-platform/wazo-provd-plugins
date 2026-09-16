@@ -21,7 +21,6 @@ execfile_('common.py', common_globals)  # type: ignore[name-defined]
 MODELS = [
     'D375',
     '715',
-    'D717',
     '725',
     'D735',
     'D745',
