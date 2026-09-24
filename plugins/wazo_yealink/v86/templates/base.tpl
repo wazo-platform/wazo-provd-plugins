@@ -48,7 +48,7 @@ features.direct_ip_call_enable = 1
 
 transfer.dsskey_deal_type = 1
 
-{% if vlan_enabled -%}
+{% if vlan_enabled and vlan_id|int(0) != 0 -%}
 static.network.vlan.internet_port_enable = 1
 static.network.vlan.internet_port_vid = {{ vlan_id }}
 static.network.vlan.internet_port_priority = {{ vlan_priority|d('%NULL%') }}
@@ -58,7 +58,7 @@ static.network.vlan.internet_port_vid = %NULL%
 static.network.vlan.internet_port_priority = %NULL%
 {% endif %}
 
-{% if vlan_enabled and vlan_pc_port_id -%}
+{% if vlan_enabled and vlan_pc_port_id|int(0) != 0 -%}
 static.network.vlan.pc_port_enable = 1
 static.network.vlan.pc_port_vid = {{ vlan_pc_port_id }}
 {% else -%}
