@@ -1,4 +1,4 @@
-# Copyright 2010-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2010-2026 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -41,6 +41,9 @@ logger = logging.getLogger('plugin.wazo-polycom')
 
 class BasePolycomHTTPDeviceInfoExtractor:
     _UA_REGEX = re.compile(r'^FileTransport Polycom\w+-(\w*?)-UA/([\d.]+)')
+    # Present when device.prov.tagSerialNo="1" (set in base.tpl).
+    # On Polycom phones, the serial number is the MAC address.
+    _UA_SN_REGEX = re.compile(r'\(SN:(?!000000000000)([\da-fA-F]{12})\)')
     _PATH_REGEX = re.compile(
         r'/(?!000000000000)([\da-f]{12})(?:\.cfg|-user\.cfg|-boot\.log|-phone\.cfg|-license\.cfg|-directory\.xml|-app\.log)$'  # noqa: E501
     )
@@ -54,13 +57,16 @@ class BasePolycomHTTPDeviceInfoExtractor:
     def _do_extract(self, request: Request):
         ua = request.getHeader(b'User-Agent')
         if ua:
+            ua = ua.decode('ascii')
             dev_info: dict[str, Any] = {}
-            self._extract_info_from_ua(ua.decode('ascii'), dev_info)
+            self._extract_info_from_ua(ua, dev_info)
             if dev_info:
                 path = request.path.decode('ascii')
                 if 'version' in dev_info and not self._is_sip_application_request(path):
                     del dev_info['version']
                 self._extract_mac_from_path(path, dev_info)
+                if 'mac' not in dev_info:
+                    self._extract_mac_from_ua(ua, dev_info)
                 return dev_info
         return None
 
@@ -87,6 +93,15 @@ class BasePolycomHTTPDeviceInfoExtractor:
             model, version = m.groups()
             dev_info['model'] = model.replace('_', '')
             dev_info['version'] = version
+
+    def _extract_mac_from_ua(self, ua: str, dev_info: dict[str, str]):
+        # Fallback for requests whose path doesn't contain the MAC address
+        # (e.g. /000000000000.cfg, /common.cfg, firmware, dictionaries), which
+        # can't otherwise be matched to a device when provd runs with NAT=1:
+        #   "FileTransport PolycomVVX-VVX_500-UA/5.9.2.3446 (SN:0004f2123456) Type/Application"
+        m = self._UA_SN_REGEX.search(ua)
+        if m:
+            dev_info['mac'] = norm_mac(m.group(1))
 
     def _extract_mac_from_path(self, path: str, dev_info: dict[str, str]):
         # Extract the MAC address from the requested path if possible
