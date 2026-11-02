@@ -24,6 +24,7 @@
             <EnableReg>1</EnableReg>
             <Transport>{{ X_sip_transport_protocol }}</Transport>
             <DTMFMode>{{ line['XX_dtmf_mode'] }}</DTMFMode>
+            <VoiceCodecMap>PCMU,PCMA,opus,G722</VoiceCodecMap>
             {% if line['voicemail'] -%}
             <MWINum>{{ line['voicemail'] }}</MWINum>
             {% else -%}
